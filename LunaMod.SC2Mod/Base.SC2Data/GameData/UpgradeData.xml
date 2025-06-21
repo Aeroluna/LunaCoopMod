@@ -6,6 +6,8 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannTurrets">
         <EffectArray Reference="Unit,ThorAP,CostResource[Vespene]" Value="100"/>
+        <EffectArray Reference="Unit,WidowMine,CostResource[Vespene]" Value="13"/>
+        <EffectArray Reference="Unit,WidowMineBurrowed,CostResource[Vespene]" Value="13"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannTurretsArmor">
         <EffectArray Reference="Unit,PlanetaryFortress,LifeArmor" Value="2"/>
@@ -32,8 +34,12 @@
         <EffectArray index="17" Value="35"/>
         <EffectArray index="18" Value="35"/>
         <EffectArray index="19" Value="35"/>
-        <EffectArray index="30" Value="24"/>
-        <EffectArray index="31" Value="24"/>
+        <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
+        <EffectArray Reference="Unit,WidowMine,LifeStart" Value="18"/>
+        <EffectArray Reference="Unit,WidowMineBurrowed,LifeMax" Value="18"/>
+        <EffectArray Reference="Unit,WidowMineBurrowed,LifeStart" Value="18"/>
+        <AffectedUnitArray value="WidowMineBurrowed"/>
+        <AffectedUnitArray value="WidowMine"/>
         <!-- Old 40% Health -->
         <!--EffectArray Reference="Unit,Hellion,LifeMax" Value="36"/>
         <EffectArray Reference="Unit,Hellion,LifeStart" Value="36"/>
@@ -96,7 +102,8 @@
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileRightSet,EffectArray[1]" Value="CycloneAirWeaponLaunchMissileRight"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileRightSet,EffectArray[2]" Value="CycloneWeaponLaunchMissileAlternateRB"/>
         <EffectArray Operation="Set" Reference="Effect,LockOnCP,PeriodicPeriodArray[0]" Value="0.7"/>
-        <EffectArray Reference="Abil,LockOn,AutoCastRange" Value="0.5"/>
+        <EffectArray Operation="Set" Reference="Button,LockOn,AlertTooltip" Value="Button/Tooltip/LockOnSwann"/>
+        <EffectArray Operation="Set" Reference="Button,LockOn,Tooltip" Value="Button/Tooltip/LockOnSwann"/>
         <EditorCategories value="Race:Terran"/>
         <LeaderAlias value=""/>
     </CUpgrade>

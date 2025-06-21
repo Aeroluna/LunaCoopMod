@@ -23,6 +23,9 @@
     <CActorModel id="CycloneLazerRight" parent="CycloneLazerLeft">
         <HostSiteOps Ops="SOpAttachWeapon01"/>
     </CActorModel>
+    <CActorBeamSimple id="HHWidowMineTargetingBeam">
+        <On Terms="Abil.WidowMineAttack.SourcePrepStop" Send="Destroy"/>
+    </CActorBeamSimple>
     <CActorAction id="HighTemplarAttackNerazim" parent="GenericAttack" effectImpact="HighTemplarWeaponDamageNerazim" effectLaunch="HighTemplarWeaponLMNerazim">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <LaunchAssets Sound="Ascendant_Launch"/>
