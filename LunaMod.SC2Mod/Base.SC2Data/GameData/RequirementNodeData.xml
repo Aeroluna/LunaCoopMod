@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CRequirementCountUpgrade id="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CycloneLockOnDamageUpgrade" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
+    <CRequirementCountUpgrade id="CountUpgradeTransformationServosCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="TransformationServos" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="NotCountUpgradeTransformationServosQueuedOrBetterTechTreeCheat">
+        <OperandArray index="0" value="CountUpgradeTransformationServosQueuedOrBetterTechTreeCheat"/>
+    </CRequirementNot>
+    <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat"/>
     </CRequirementOr>
 </Catalog>

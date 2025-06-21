@@ -31,6 +31,29 @@
             <LayoutButtons Face="TrainGoliathNova" Type="AbilCmd" AbilCmd="FactoryTrainNova,Train1" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="FactoryTechLab">
+        <CardLayouts index="0">
+            <LayoutButtons Face="ResearchTransformationServos" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research4" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="FactoryTechReactor">
+        <CardLayouts index="0">
+            <LayoutButtons Face="ResearchTransformationServos" Type="AbilCmd" AbilCmd="FactoryTechLabResearch,Research4" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <!--  Swann Commander Mech Rebirth  -->
+    <CUnit id="Hellion">
+        <CardLayouts index="0">
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
+        <!--BehaviorArray Link="SwannCommanderMechRebirth"/-->
+    </CUnit>
+    <CUnit id="HellionTank">
+        <CardLayouts index="0">
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
+        <!--BehaviorArray Link="SwannCommanderMechRebirth"/-->
+    </CUnit>
     <CUnit id="HighTemplarShakuras">
         <Description value="Button/Tooltip/HighTemplarNerazim"/>
         <BehaviorArray index="2" removed="1"/>
@@ -55,17 +78,18 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SiegeTank">
-        <LifeStart value="175"/>
-        <LifeMax value="175"/>
-        <Speed value="3.1484"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Requirements="" Column="2"/>
+            <LayoutButtons index="9" Face="AfterburnersLocked" Type="Passive" AbilCmd="" Requirements="RaynorLevel11"/>
+            <LayoutButtons index="10" Face="MaelstromRounds" Requirements="HaveMaelstromRounds"/>
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SiegeTankSieged">
-        <LifeStart value="175"/>
-        <LifeMax value="175"/>
-    </CUnit>
-    <CUnit id="SiegeTankWreckage">
-        <LifeStart value="175"/>
-        <LifeMax value="175"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="StarportTechLab">
         <CardLayouts index="0">
@@ -162,7 +186,8 @@
             <LayoutButtons index="7" Face="SelfRepair" AbilCmd="SelfRepair,Execute" Row="1" Column="1"/>
             <LayoutButtons index="8" Face="CommanderSwannImmortalityProtocol" Requirements="HaveSwannCommanderImmortalityProtocol" Row="1"/>
             <LayoutButtons index="9" Face="ArmorpiercingMode" AbilCmd="ThorAPMode,Execute" Column="1"/>
-            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="10" Face="HellArmorThor" Requirements="HaveHellbatHellArmor" Row="2" Column="3"/>
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="ThorAP">
@@ -180,9 +205,13 @@
             </LayoutButtons>
             <LayoutButtons Face="330mmBarrageCannonLocked" Type="Passive" Requirements="SwannLevel07" Row="2" Column="0"/>
             <LayoutButtons Face="330mmBarrageCannons" Type="AbilCmd" AbilCmd="330mmBarrageCannons,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HellArmorThor" Type="Passive" Requirements="HaveHellbatHellArmor" Row="2" Column="3"/>
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
         </CardLayouts>
         <WeaponArray index="0" Link="LanceMissileLaunchers"/>
         <WeaponArray index="1" Link="ThorsHammer"/>
+        <WeaponArray Link="LanceMissileLaunchersMulti" Turret="FreeRotate"/>
+        <WeaponArray Link="ThorsHammerMulti"/>
     </CUnit>
     <!--CUnit id="ThorWreckage">-->
     <!--        <CostResource index="Vespene" value="200"/>-->
@@ -190,10 +219,24 @@
     <CUnit id="ThorWreckageSwann">
         <!--BehaviorArray Link="Supply6"/-->
         <CardLayouts index="0">
+            <LayoutButtons index="5" Face="250mmStrikeCannons" AbilCmd="250mmStrikeCannons,Execute" Column="0"/>
+            <LayoutButtons index="6" Face="SelfRepair" AbilCmd="SelfRepair,Execute" Row="1" Column="1"/>
+            <LayoutButtons index="7" Face="CommanderSwannImmortalityProtocol" Type="Passive" AbilCmd="" Requirements="HaveSwannCommanderImmortalityProtocol" Row="1"/>
             <LayoutButtons index="8" Row="1" Column="1"/>
-            <LayoutButtons index="10" Row="1" Column="1"/>
-            <LayoutButtons index="11" Row="1" Column="1"/>
-            <LayoutButtons index="12" Row="1" Column="1"/>
+            <LayoutButtons index="9" Face="SwannCommanderRebuild" Type="AbilCmd" AbilCmd="ThorRebornSwann,Execute" Requirements="" Column="1"/>
+            <LayoutButtons index="10" Face="SwannCommanderRebuild" AbilCmd="ThorRebornSwannCheap,Execute" Row="1" Column="1"/>
+            <LayoutButtons index="11" Face="HellArmorThor" Type="Passive" AbilCmd="" Requirements="HaveHellbatHellArmor" Column="3"/>
+            <LayoutButtons index="12" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="WidowMine">
+        <CardLayouts index="0">
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="WidowMineBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
 </Catalog>
