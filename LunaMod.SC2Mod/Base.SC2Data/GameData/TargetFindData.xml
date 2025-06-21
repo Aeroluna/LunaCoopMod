@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTargetFindBestPoint id="PsiStormBestPointNormalNerazim">
+        <Flags index="EvaluateCmd" value="1"/>
+        <DamageBase value="40"/>
+        <Effect value="PsiStormSearchNerazim"/>
+        <MinCount value="3"/>
+        <MinScore value="2.5"/>
+    </CTargetFindBestPoint>
+    <CTargetFindSet id="PsiStormNerazim">
+        <Type value="Successful"/>
+        <Array value="PsiStormNormalNerazim"/>
+        <Array value="PsiStormLowNerazim"/>
+    </CTargetFindSet>
+    <CTargetFindBestPoint id="PsiStormBestPointLowNerazim">
+        <Flags index="EvaluateCmd" value="1"/>
+        <DamageBase value="30"/>
+        <Effect value="PsiStormSearchNerazim"/>
+        <MinScore value="0.5"/>
+    </CTargetFindBestPoint>
+    <CTargetFindSet id="PsiStormLowNerazim">
+        <CasterValidator value="CasterLifeLT60Percent"/>
+        <Type value="Sequential"/>
+        <Array value="PsiStormSearchNerazim"/>
+        <Array value="PsiStormBestPointLowNerazim"/>
+    </CTargetFindSet>
+    <CTargetFindSet id="PsiStormNormalNerazim">
+        <Type value="Sequential"/>
+        <Array value="PsiStormSearchNerazim"/>
+        <Array value="PsiStormBestPointNormalNerazim"/>
+    </CTargetFindSet>
+    <CTargetFindEffect id="PsiStormSearchNerazim">
+        <TargetValidator value="PsiStormTestBuffNerazim"/>
+    </CTargetFindEffect>
+</Catalog>

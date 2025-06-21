@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="PlayerCommanders">
+        <Instances Id="[Override]TerranSwann">
+            <AbilCmd Abil="CalldownMULE">
+                <Field Id="DefaultAbilityCommands" Index="8"/>
+            </AbilCmd>
+            <AbilCmd Abil="SupplyDrop">
+                <Field Id="DefaultAbilityCommands" Index="9"/>
+            </AbilCmd>
+            <Upgrade Upgrade="SwannVersusParity">
+                <Field Id="DefaultUpgrades" Index="2"/>
+            </Upgrade>
+        </Instances>
+    </CUser>
+    <CUser id="TechUnit">
+        <Instances Id="[Override]OrbitalCommand">
+            <User Type="PlayerCommanders" Instance="TerranSwann">
+                <Field Id="Commander" Index="1"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]PlanetaryFortress">
+            <User Type="PlayerCommanders" Instance="TerranSwann">
+                <Field Id="Commander"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]HighTemplarShakuras">
+            <User Type="PlayerCommanders" Instance="ProtossVorazun">
+                <Field Id="Commander"/>
+            </User>
+        </Instances>
+    </CUser>
+</Catalog>

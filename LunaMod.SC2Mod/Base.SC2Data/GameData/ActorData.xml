@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorModel id="330mmBarrageCannonsLaunch" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.330mmBarrageCannonsSearch.Impact; At Caster" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="ThorAttach330mm"/>
+        <Model value="ThorAAAttackLaunchLance"/>
+        <Scale value="0.750000"/>
+    </CActorModel>
+    <CActorUnit id="Cyclone">
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerLeft"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerRight"/>
+        <On Terms="UnitBirth.Cyclone; ValidatePlayer HasCycloneDamage" Send="Create CycloneLazerLeft"/>
+        <On Terms="UnitBirth.Cyclone; ValidatePlayer HasCycloneDamage" Send="Create CycloneLazerRight"/>
+    </CActorUnit>
+    <CActorModel id="CycloneLazerLeft" parent="ModelAnimationStyleContinuous">
+        <Inherits index="CloakEffect" value="1"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon02"/>
+        <Model value="CycloneLazer"/>
+    </CActorModel>
+    <CActorModel id="CycloneLazerRight" parent="CycloneLazerLeft">
+        <HostSiteOps Ops="SOpAttachWeapon01"/>
+    </CActorModel>
+    <CActorAction id="HighTemplarAttackNerazim" parent="GenericAttack" effectImpact="HighTemplarWeaponDamageNerazim" effectLaunch="HighTemplarWeaponLMNerazim">
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
+        <LaunchAssets Sound="Ascendant_Launch"/>
+        <Missile value="HighTemplarAttackMissileNerazim"/>
+        <ImpactMap index="None" Model="HighTemplarAttackImpactNerazim" Sound="Ascendant_Impact"/>
+        <ImpactPhysics Name="HighTemplarPsiBlastImpact" MatchKeys="Basic" Physics="HighTemplarPsiBlastDeathImpactForce"/>
+    </CActorAction>
+    <CActorMissile id="HighTemplarAttackMissileNerazim" parent="GenericAttackMissile" unitName="HighTemplarWeaponNerazim"/>
+    <CActorSound id="HighTemplarPsiPStormImpactSoundNerazim" parent="SoundOneShot">
+        <On Terms="Behavior.PsiStormNerazim.On" Send="Create"/>
+        <Sound value="AC_PirateCapitalShip_TractorBeam_Launch"/>
+    </CActorSound>
+    <CActorModel id="HighTemplarPsiStormImpactNerazim" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.PsiStormNerazim" Send="Create"/>
+        <On Terms="Behavior.PsiStormNerazim" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorModel id="HighTemplarPsiStormModelNerazim" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PsiStormPersistentNerazim.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormPersistentNerazim.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Scale value="1.300000"/>
+    </CActorModel>
+    <CActorSound id="HighTemplarPsiStormSoundNerazim" parent="SoundContinuous">
+        <On Terms="Effect.PsiStormPersistentNerazim.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormPersistentNerazim.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Sound value="AC_PirateCapitalShip_TractorBeam_Impact"/>
+    </CActorSound>
+    <CActorUnit id="HighTemplarShakuras">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-signifier-ds.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-blue.dds"/>
+        <SoundArray index="Ready" value="Mothership_Ready"/>
+        <SoundArray index="Help" value="Mothership_Help"/>
+        <SoundArray index="What" value="Mothership_What"/>
+        <SoundArray index="Yes" value="Mothership_Yes"/>
+        <SoundArray index="Attack" value="Mothership_Attack"/>
+        <SoundArray index="Pissed" value="Mothership_What"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-blue.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-signifier-ds.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-signifier-ds-shield1.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-signifier-ds-shield2.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-signifier-ds-shield3.dds"/>
+        </WireframeShield>
+        <On Terms="WeaponStart.HighTemplarWeaponNerazim.AttackStart" Send="$Spell,A"/>
+        <AbilSoundArray index="0" AbilCmd="PsiStormShakuras,Execute" Sound="Mothership_TimeBombVO"/>
+        <AbilSoundArray index="1" removed="1"/>
+        <AbilSoundArray index="2" removed="1"/>
+    </CActorUnit>
+    <CActorModel id="HighTemplarShakurasShadow">
+        <Model value="HighTemplarShadowNerazim"/>
+        <On index="3" Send="SetTintColor 0,0,128 0.800000"/>
+        <On index="4" Send="SetOpacity"/>
+        <On index="5" Send="SetOpacity 0.500000 0.400000"/>
+        <On index="6" Terms="TimerExpired; TimerName ShadowFade" Send="SetOpacity 0.000000 0.400000"/>
+        <On index="7" removed="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorSound id="HighTemplar_Death">
+        <On index="3" removed="1"/>
+        <On index="4" removed="1"/>
+        <On index="5" removed="1"/>
+    </CActorSound>
+    <CActorSound id="HighTemplar_DeathNerazim" parent="SoundOneShot">
+        <On Terms="UnitDeathCustomize.HighTemplarAir; ValidateUnit IsNotHallucination; PassChance 25.000000" Send="Create"/>
+        <On Terms="UnitDeathCustomize.HighTemplarShakuras; ValidateUnit IsNotHallucination; PassChance 25.000000" Send="Create"/>
+        <Sound value="Adept_Death"/>
+    </CActorSound>
+    <CActorUnit id="Thor">
+        <On index="94" Terms="Abil.330mmBarrageCannons.SourceCastStart; ValidateUnit SourceIsThor" Send="AnimPlay Morph Morph NonLooping -1.000000 -1.000000 0.900000 AsDuration"/>
+        <On index="95" Terms="Abil.330mmBarrageCannons.SourceCastStop; ValidateUnit SourceIsThor"/>
+        <On index="99" Terms="Abil.330mmBarrageCannons.SourceFinishStart; ValidateUnit SourceIsThor" Send="AnimPlay MorphEnd Morph,End NonLooping -1.000000 -1.000000 0.900000 AsDuration"/>
+        <On index="100" Terms="Abil.330mmBarrageCannons.SourceFinishStop; ValidateUnit SourceIsThor"/>
+        <On index="105" Send="AnimBracketStart ThorMorph IGNORE Morph,Stand Morph,End"/>
+        <On index="106" Send="AnimBracketStart ThorMorph Morph Morph,Stand Morph,End 0 0.900000 AsTimeScale"/>
+        <On index="107" Send="AnimBracketStop ThorMorph 0 0.900000 AsTimeScale"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thor.dds"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo ThorAP" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thor.dds"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo ThorAP" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
+    </CActorUnit>
+    <CActorSiteOpAttach id="ThorAttach330mm">
+        <AttachQuery Methods="AMFilterWeaponSetA2 AMPatternThor330mmBarrageCannons"/>
+    </CActorSiteOpAttach>
+</Catalog>

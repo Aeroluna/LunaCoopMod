@@ -1,0 +1,69 @@
+include "TriggerLibs/NativeLib"
+include "LibCOMI"
+
+include "Lib74A68E34_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: LunaMod
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib74A68E34_InitLibraries () {
+    libNtve_InitVariables();
+    libCOMI_InitVariables();
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Untitled Trigger 001
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    unitgroup autoED52FE58_g;
+    int autoED52FE58_u;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoED52FE58_g = UnitGroupSelected(EventPlayer());
+    autoED52FE58_u = UnitGroupCount(autoED52FE58_g, c_unitCountAll);
+    for (;; autoED52FE58_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(autoED52FE58_g, autoED52FE58_u);
+        if (lv_unit == null) { break; }
+        libCOMI_gf_DisplayRewardFloatingText(UnitGetPosition(lv_unit), libCOMI_ge_CacheResourceType_Vespene, UnitGetPropertyInt(lv_unit, c_unitPropLife, c_unitPropCurrent), null, null, 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UntitledTrigger001_Init () {
+    lib74A68E34_gt_UntitledTrigger001 = TriggerCreate("lib74A68E34_gt_UntitledTrigger001_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_UntitledTrigger001, c_playerAny, "-prio", true);
+}
+
+void lib74A68E34_InitTriggers () {
+    lib74A68E34_gt_UntitledTrigger001_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_InitLib_completed = false;
+
+void lib74A68E34_InitLib () {
+    if (lib74A68E34_InitLib_completed) {
+        return;
+    }
+
+    lib74A68E34_InitLib_completed = true;
+
+    lib74A68E34_InitLibraries();
+    lib74A68E34_InitTriggers();
+}
+
