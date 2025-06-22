@@ -55,8 +55,9 @@
         <EffectArray Reference="Unit,PlanetaryFortress,LifeStart" Value="30"/>
     </CUpgrade>
     <CUpgrade id="SwannCommander">
-        <EffectArray index="11" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
+        <EffectArray Operation="Set" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,Tooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FactoryTrain,InfoArray[Train25].Time" Value="8"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
