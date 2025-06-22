@@ -25,7 +25,6 @@
     <CUpgrade id="CycloneLockOnRangeUpgrade">
         <EffectArray Reference="Abil,WidowMineAttack,AutoCastRange" Value="3"/>
         <EffectArray Reference="Abil,WidowMineAttack,Range[0]" Value="3"/>
-        <EffectArray Operation="Subtract" Reference="Abil,WidowMineAttack,PrepTime[0]" Value="1.000000"/>
     </CUpgrade>
     <CUpgrade id="HellbatHellArmor">
         <EffectArray Reference="Unit,ThorAP,LifeArmor" Value="2"/>
@@ -33,6 +32,19 @@
         <EffectArray Reference="Unit,ThorWreckageSwann,LifeArmor" Value="2"/>
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Thor"/>
+    </CUpgrade>
+    <CUpgrade id="HellburstPayload">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-engineeringbay-orbitaldrop.dds"/>
+        <Race value="Terr"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Effect,WidowMineExplodeDirect,Amount" Value="20"/>
+        <EffectArray Reference="Effect,WidowMineExplodeSplash,Amount" Value="80"/>
+        <EffectArray Reference="Effect,WidowMineExplodeSplash2,Amount" Value="60"/>
+        <EffectArray Reference="Effect,WidowMineExplodeSplash3,Amount" Value="40"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="WidowMine"/>
+        <AffectedUnitArray value="WidowMineBurrowed"/>
     </CUpgrade>
     <CUpgrade id="MasterySwannBuildingHealth">
         <EffectArray Reference="Unit,PlanetaryFortress,LifeMax" Value="30"/>

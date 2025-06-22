@@ -20,6 +20,22 @@
         <HostSiteOps Ops="SOpAttachWeapon02"/>
         <Model value="CycloneLazer"/>
     </CActorModel>
+    <CActorSiteOpRotationExplicit id="SOpPitch90">
+        <Forward value="0.000000,0.000000,1.000000"/>
+        <Up value="0.000000,1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorUnit id="WidowMine">
+        <On Terms="Upgrade.HellburstPayload.Add" Send="Create WidowMineLazer"/>
+        <On Terms="UnitBirth; ValidatePlayer HasWidowMineDamage" Send="Create WidowMineLazer"/>
+    </CActorUnit>
+    <CActorModel id="WidowMineLazer" parent="ModelAnimationStyleContinuous">
+        <Inherits index="CloakEffect" value="1"/>
+        <On Terms="Upgrade.HellburstPayload.Remove" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon SOpPitch90"/>
+        <Model value="CycloneLazer"/>
+    </CActorModel>
     <CActorModel id="CycloneLazerRight" parent="CycloneLazerLeft">
         <HostSiteOps Ops="SOpAttachWeapon01"/>
     </CActorModel>
