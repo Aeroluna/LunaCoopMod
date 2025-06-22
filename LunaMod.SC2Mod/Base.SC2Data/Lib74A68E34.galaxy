@@ -1,5 +1,4 @@
 include "TriggerLibs/NativeLib"
-include "LibCOMI"
 
 include "Lib74A68E34_h"
 
@@ -9,20 +8,23 @@ include "Lib74A68E34_h"
 // External Library Initialization
 void lib74A68E34_InitLibraries () {
     libNtve_InitVariables();
-    libCOMI_InitVariables();
 }
 
 // Triggers
 //--------------------------------------------------------------------------------------------------
-// Trigger: Untitled Trigger 001
+// Trigger: ExtraUpgrades
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ExtraUpgrades_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_unit;
+    int lv_upgradeLevel;
+    string lv_extraUpgrades;
+    int lv_index;
 
     // Automatic Variable Declarations
-    unitgroup autoED52FE58_g;
-    int autoED52FE58_u;
+    string autoC0E27C80_userType;
+    int autoC0E27C80_i;
+    int auto9C1173A7_ae;
+    const int auto9C1173A7_ai = 1;
 
     // Variable Initialization
 
@@ -31,24 +33,32 @@ bool lib74A68E34_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    autoED52FE58_g = UnitGroupSelected(EventPlayer());
-    autoED52FE58_u = UnitGroupCount(autoED52FE58_g, c_unitCountAll);
-    for (;; autoED52FE58_u -= 1) {
-        lv_unit = UnitGroupUnitFromEnd(autoED52FE58_g, autoED52FE58_u);
-        if (lv_unit == null) { break; }
-        libCOMI_gf_DisplayRewardFloatingText(UnitGetPosition(lv_unit), libCOMI_ge_CacheResourceType_Vespene, UnitGetPropertyInt(lv_unit, c_unitPropLife, c_unitPropCurrent), null, null, 1);
+    autoC0E27C80_userType = "ExtraUpgrades";
+    autoC0E27C80_i = 1;
+    for ( ; autoC0E27C80_i <= UserDataInstanceCount(autoC0E27C80_userType) ; autoC0E27C80_i += 1 ) {
+        lv_extraUpgrades = UserDataInstance(autoC0E27C80_userType, autoC0E27C80_i);
+        if ((EventUpgradeName() == UserDataGetUpgrade("ExtraUpgrades", lv_extraUpgrades, "Source Upgrade", 1))) {
+            lv_upgradeLevel = TechTreeUpgradeCount(EventPlayer(), EventUpgradeName(), c_techCountCompleteOnly);
+            auto9C1173A7_ae = UserDataFieldValueCount("ExtraUpgrades", "Target Upgrades");
+            lv_index = 1;
+            for ( ; ( (auto9C1173A7_ai >= 0 && lv_index <= auto9C1173A7_ae) || (auto9C1173A7_ai < 0 && lv_index >= auto9C1173A7_ae) ) ; lv_index += auto9C1173A7_ai ) {
+                libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), UserDataGetUpgrade("ExtraUpgrades", lv_extraUpgrades, "Target Upgrades", lv_index), lv_upgradeLevel);
+            }
+            return true;
+        }
+
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_UntitledTrigger001_Init () {
-    lib74A68E34_gt_UntitledTrigger001 = TriggerCreate("lib74A68E34_gt_UntitledTrigger001_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_UntitledTrigger001, c_playerAny, "-prio", true);
+void lib74A68E34_gt_ExtraUpgrades_Init () {
+    lib74A68E34_gt_ExtraUpgrades = TriggerCreate("lib74A68E34_gt_ExtraUpgrades_Func");
+    TriggerAddEventUpgradeLevelChanged(lib74A68E34_gt_ExtraUpgrades, c_playerAny);
 }
 
 void lib74A68E34_InitTriggers () {
-    lib74A68E34_gt_UntitledTrigger001_Init();
+    lib74A68E34_gt_ExtraUpgrades_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
