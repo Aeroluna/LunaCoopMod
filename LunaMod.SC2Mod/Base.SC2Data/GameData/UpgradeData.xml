@@ -30,10 +30,10 @@
         <EffectArray Reference="Unit,ThorAP,LifeArmor" Value="2"/>
         <EffectArray Reference="Unit,Thor,LifeArmor" Value="2"/>
         <EffectArray Reference="Unit,ThorWreckageSwann,LifeArmor" Value="2"/>
-        <EffectArray Reference="Unit,Hellion,LifeMax" Value="60"/>
-        <EffectArray Reference="Unit,HellionTank,LifeMax" Value="60"/>
-        <EffectArray Reference="Unit,Hellion,LifeStart" Value="60"/>
-        <EffectArray Reference="Unit,HellionTank,LifeStart" Value="60"/>
+        <EffectArray Reference="Unit,Hellion,LifeMax" Value="40"/>
+        <EffectArray Reference="Unit,HellionTank,LifeMax" Value="40"/>
+        <EffectArray Reference="Unit,Hellion,LifeStart" Value="40"/>
+        <EffectArray Reference="Unit,HellionTank,LifeStart" Value="40"/>
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Thor"/>
     </CUpgrade>
@@ -54,7 +54,10 @@
         <EffectArray Reference="Unit,PlanetaryFortress,LifeMax" Value="30"/>
         <EffectArray Reference="Unit,PlanetaryFortress,LifeStart" Value="30"/>
     </CUpgrade>
-    <CUpgrade id="SwannCommander"/>
+    <CUpgrade id="SwannCommander">
+        <EffectArray index="11" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
+        <EffectArray Operation="Set" Reference="Button,OrbitalCommand,Tooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
+    </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
         <EffectArray Reference="Unit,WidowMine,LifeStart" Value="18"/>
@@ -97,6 +100,43 @@
         <EffectArray Reference="Unit,CycloneWreckage,LifeStart" Value="80"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/-->
     </CUpgrade>
+    <CUpgrade id="SwannCommanderVehicleMovementSpeed">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
+        <EffectArray Reference="Unit,Cyclone,Speed" Value="0.562500"/>
+        <EffectArray Reference="Unit,Diamondback,Speed" Value="0.589800"/>
+        <EffectArray Reference="Unit,Goliath,Speed" Value="0.539000"/>
+        <EffectArray Reference="Unit,HellionTank,Speed" Value="0.449200"/>
+        <EffectArray Reference="Unit,Hellion,Speed" Value="0.851500"/>
+        <EffectArray Reference="Unit,SiegeTank,Speed" Value="0.449200"/>
+        <EffectArray Reference="Unit,Thor,Speed" Value="0.375000"/>
+        <EffectArray Reference="Unit,ThorAP,Speed" Value="0.375000"/>
+        <EffectArray Reference="Unit,Wraith,Speed" Value="0.375000"/>
+        <EffectArray Reference="Unit,ScienceVessel,Speed" Value="0.199200"/>
+        <EffectArray Reference="Unit,Hercules,Speed" Value="0.273400"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Cyclone"/>
+        <AffectedUnitArray value="Diamondback"/>
+        <AffectedUnitArray value="Goliath"/>
+        <AffectedUnitArray value="HellionTank"/>
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="SiegeTank"/>
+        <AffectedUnitArray value="Thor"/>
+        <AffectedUnitArray value="ThorAP"/>
+        <AffectedUnitArray value="Wraith"/>
+    </CUpgrade>
+    <CUpgrade id="SwannCommanderVehicleCooldown">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
+        <EffectArray Operation="Subtract" Reference="Abil,330mmBarrageCannons,Cost[0].Cooldown.TimeUse" Value="12.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineAttack,Cost[0].Cooldown.TimeUse" Value="8.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineMakeAttackCharges,InfoArray[Specialize1].Time" Value="8.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,LockOn,Cost[0].Cooldown.TimeUse" Value="1.200000"/>
+        <EffectArray Operation="Subtract" Reference="Effect,LockOnResetCooldown,Cost[0].CooldownTimeUse" Value="1.200000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Hyperjump,Cost[0].Cooldown.TimeUse" Value="12.000000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+    </CUpgrade>
     <CUpgrade id="SwannKelMorianTurretUpgrades">
         <EffectArray Reference="Effect,TwinIbiksCannon,AreaArray[0].Radius" Value="0.25"/>
         <EffectArray Reference="Effect,TwinIbiksCannon,AreaArray[1].Radius" Value="0.4"/>
@@ -108,14 +148,8 @@
         <AffectedUnitArray value="PlanetaryFortress"/>
     </CUpgrade>
     <CUpgrade id="SwannVersusParity">
-        <EffectArray Operation="Set" Reference="Weapon,ThorsHammer,Period" Value="0.910000"/>
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,Period" Value="2.140000"/>
-        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,Period" Value="0.910000"/>
         <EffectArray Operation="Set" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="25"/>
         <EffectArray Operation="Set" Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="10"/>
-        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Period" Value="1.430000"/>
-        <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Period" Value="1.790000"/>
-        <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,Period" Value="0.710000"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[0]" Value="CycloneWeaponLaunchMissileLeft"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[1]" Value="CycloneAirWeaponLaunchMissileLeft"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[2]" Value="CycloneWeaponLaunchMissileAlternateAB"/>
@@ -125,8 +159,6 @@
         <EffectArray Operation="Set" Reference="Effect,LockOnCP,PeriodicPeriodArray[0]" Value="0.7"/>
         <EffectArray Operation="Set" Reference="Button,LockOn,AlertTooltip" Value="Button/Tooltip/LockOnSwann"/>
         <EffectArray Operation="Set" Reference="Button,LockOn,Tooltip" Value="Button/Tooltip/LockOnSwann"/>
-        <EffectArray Operation="Set" Reference="Weapon,CrucioShockCannon,Period" Value="2.14"/>
-        <EffectArray Operation="Set" Reference="Weapon,90mmCannons,Period" Value="0.74"/>
         <EditorCategories value="Race:Terran"/>
         <LeaderAlias value=""/>
     </CUpgrade>
