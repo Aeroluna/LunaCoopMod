@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorUnitOrderQueue id="SourceIsNotMoving">
+        <WhichUnit Value="Source"/>
+        <AbilLink value="move"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorPlayerRequirement id="CommanderPrestigeSwannMoving">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeSwannMoving"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="CommanderPrestigeSwannMovingInverse">
+        <CombineArray value="CommanderPrestigeSwannMoving"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="HasCycloneDamage">
         <Find value="1"/>
         <Value value="UseCycloneDamage"/>
@@ -12,6 +25,19 @@
         <Find value="1"/>
         <Value value="HaveSmartServosSwann"/>
     </CValidatorPlayerRequirement>
+    <CValidatorCombine id="LockOnAutoCast">
+        <CombineArray value="LockOnAutoCastCheckB"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrder id="LockOnAutoCastCheckB">
+        <AbilLink value="LockOn"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorCombine id="SwannGoliathCanSwing">
+        <CombineArray value="CommanderPrestigeSwannMovingInverse"/>
+        <CombineArray value="CasterIsNotMoving"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="PsiStormTestBuffNerazim">
         <Behavior value="PsiStormNerazim"/>
     </CValidatorUnitCompareBehaviorCount>

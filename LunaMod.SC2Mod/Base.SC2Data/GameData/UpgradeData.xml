@@ -4,6 +4,47 @@
         <EffectArray index="0" Reference="Unit,ThorAP,SubgroupPriorityDelta"/>
         <EffectArray Reference="Unit,Thor,SubgroupPriorityDelta" Value="8"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
+        <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTank,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,90mmCannons,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,90mmCannons,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,90mmCannons,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithG,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithG,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithG,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithA,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithA,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,WraithA,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathGUpgraded,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathA,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathA,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathA,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathAUpgraded,AllowedMovement" Value="Moving"/>
+        <EffectArray Reference="Unit,KelMorianGrenadeTurret,CostResource[Minerals]" Value="150"/>
+        <EffectArray Reference="Unit,MissileTurret,CostResource[Minerals]" Value="100"/>
+        <EffectArray Reference="Unit,PerditionTurret,CostResource[Minerals]" Value="150"/>
+        <EffectArray Reference="Unit,PlanetaryFortress,CostResource[Vespene]" Value="150"/>
+        <EffectArray Reference="Unit,PlanetaryFortress,CostResource[Minerals]" Value="150"/>
+        <EffectArray Reference="Unit,KelMorianMissileTurret,CostResource[Minerals]" Value="100"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeSwannMovingTurretPrice">
+        <EffectArray Operation="Subtract" Reference="Unit,PerditionTurret,CostResource[Minerals]" Value="75"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannTurrets">
         <EffectArray Reference="Unit,ThorAP,CostResource[Vespene]" Value="100"/>
         <EffectArray Reference="Unit,WidowMine,CostResource[Vespene]" Value="13"/>
@@ -54,10 +95,75 @@
         <EffectArray Reference="Unit,PlanetaryFortress,LifeMax" Value="30"/>
         <EffectArray Reference="Unit,PlanetaryFortress,LifeStart" Value="30"/>
     </CUpgrade>
+    <CUpgrade id="MultilockTargetingSystems">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,Options[Hidden]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Options[Hidden]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Options[Disabled]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,Options[Hidden]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Options[Hidden]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Options[Disabled]" Value="0"/>
+    </CUpgrade>
     <CUpgrade id="SwannCommander">
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,Tooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
         <EffectArray Operation="Subtract" Reference="Abil,FactoryTrain,InfoArray[Train25].Time" Value="8"/>
+    </CUpgrade>
+    <CUpgrade id="SwannCommanderVehicleAttackSpeed">
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,RateMultiplier" Value="0.2"/>
+        <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,RateMultiplier" Value="0.2"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeapons">
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Level" Value="1"/>
+        <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel1">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel2">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel3">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel4">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeapons">
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsLevel1">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsLevel2">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsLevel3">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsUltraCapacitors">
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsUltraCapacitorsLevel1">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsUltraCapacitorsLevel2">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleWeaponsUltraCapacitorsLevel3">
+        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="SwannCommanderVehicleWeaponRange">
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Range" Value="1"/>
+        <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,Range" Value="1"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
@@ -149,8 +255,6 @@
         <AffectedUnitArray value="PlanetaryFortress"/>
     </CUpgrade>
     <CUpgrade id="SwannVersusParity">
-        <EffectArray Operation="Set" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="25"/>
-        <EffectArray Operation="Set" Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="10"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[0]" Value="CycloneWeaponLaunchMissileLeft"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[1]" Value="CycloneAirWeaponLaunchMissileLeft"/>
         <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[2]" Value="CycloneWeaponLaunchMissileAlternateAB"/>

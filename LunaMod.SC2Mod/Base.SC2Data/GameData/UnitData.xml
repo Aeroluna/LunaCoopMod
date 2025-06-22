@@ -16,6 +16,9 @@
             <LayoutButtons index="1" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Cyclone">
+        <BehaviorArray Link="MovingLockOn"/>
+    </CUnit>
     <CUnit id="Factory">
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="1"/>
@@ -101,6 +104,25 @@
         <CardLayouts index="0">
             <LayoutButtons index="8" Column="2"/>
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Starport">
+        <CardLayouts index="0">
+            <LayoutButtons index="19">
+                <Face value="CommanderPrestigeSwannHerculesLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="CommanderPrestigeSwannMoving"/>
+                <ShowInGlossary value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="20" Face="BuildScienceVessel" AbilCmd="StarportTrain,Train9"/>
+            <LayoutButtons index="21" Face="TrainRavenNova" AbilCmd="StarportTrainNova,Train2" Column="2"/>
+            <LayoutButtons index="22" Face="VikingFighter" AbilCmd="StarportTrain,Train5"/>
+            <LayoutButtons index="23" Face="TrainLiberatorNova" Type="AbilCmd" AbilCmd="StarportTrainNova,Train3" Requirements="" Row="0"/>
+            <LayoutButtons index="24" Face="OrbitalDropPodsPassive" Requirements="HaveOrbitalDropPods"/>
+            <LayoutButtons index="25" Face="MasteryNovaArmyAttackSpeedAppend" Requirements="HaveMasteryNovaArmyAttackSpeed" Column="0"/>
+            <LayoutButtons Face="MasteryNovaArmyOOCRegenSpeedAppend" Type="Passive" Requirements="HaveMasteryNovaArmyOOCRegenSpeed" Row="1" Column="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="StarportTechLab">
@@ -200,7 +222,10 @@
             <LayoutButtons index="9" Face="ArmorpiercingMode" AbilCmd="ThorAPMode,Execute" Column="1"/>
             <LayoutButtons index="10" Face="HellArmorThor" Requirements="HaveHellbatHellArmor" Row="2" Column="3"/>
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+            <LayoutButtons Face="MultiLockTargetingSystemThor" Type="Passive" Requirements="UseMultilockTargetingSystems" Row="1" Column="2"/>
         </CardLayouts>
+        <WeaponArray index="1" Link="JavelinMissileLaunchersMoving" Turret="FreeRotate"/>
+        <WeaponArray Link="ThorsHammer"/>
     </CUnit>
     <CUnit id="ThorAP">
         <AbilArray Link="330mmBarrageCannons"/>
@@ -219,11 +244,11 @@
             <LayoutButtons Face="330mmBarrageCannons" Type="AbilCmd" AbilCmd="330mmBarrageCannons,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="HellArmorThor" Type="Passive" Requirements="HaveHellbatHellArmor" Row="2" Column="3"/>
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
+            <LayoutButtons Face="MultiLockTargetingSystemThor" Type="Passive" Requirements="UseMultilockTargetingSystems" Row="1" Column="2"/>
         </CardLayouts>
         <WeaponArray index="0" Link="LanceMissileLaunchers"/>
-        <WeaponArray index="1" Link="ThorsHammer"/>
-        <WeaponArray Link="LanceMissileLaunchersMulti" Turret="FreeRotate"/>
-        <WeaponArray Link="ThorsHammerMulti"/>
+        <WeaponArray index="1" Link="LanceMissileLaunchersMoving"/>
+        <WeaponArray Link="ThorsHammer"/>
     </CUnit>
     <!--CUnit id="ThorWreckage">-->
     <!--        <CostResource index="Vespene" value="200"/>-->

@@ -20,6 +20,17 @@
         <HostSiteOps Ops="SOpAttachWeapon02"/>
         <Model value="CycloneLazer"/>
     </CActorModel>
+    <CActorUnit id="Goliath">
+        <On index="66" Terms="WeaponStart.GoliathA.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
+        <On index="67" Terms="WeaponStop.GoliathA.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
+        <On index="68" Terms="WeaponStart.GoliathAUpgraded.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
+        <On index="69" Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
+        <On Terms="WeaponStart.GoliathA.AttackStart; ValidateUnit CasterIsNotMoving" Send="AnimBracketStart Spell Spell"/>
+        <On Terms="WeaponStop.GoliathA.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
+        <On Terms="WeaponStart.GoliathAUpgraded.AttackStart; ValidateUnit CasterIsNotMoving" Send="AnimBracketStart Spell Spell"/>
+        <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+    </CActorUnit>
     <CActorSiteOpRotationExplicit id="SOpPitch90">
         <Forward value="0.000000,0.000000,1.000000"/>
         <Up value="0.000000,1.000000,0.000000"/>
@@ -131,6 +142,10 @@
         <On Terms="AbilMorph.*.Finish; MorphTo ThorAP" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
         <On Terms="AbilMorph.*.Finish; MorphTo Thor" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thor.dds"/>
         <On Terms="AbilMorph.*.Finish; MorphTo ThorAP" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchersMoving.AttackStart" Send="TimerKill CoverDelay"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchersMoving.AttackStart" Send="AnimClear CoverStand"/>
+        <On Terms="WeaponStart.JavelinMissileLaunchersMoving.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
+        <On Terms="WeaponStop.JavelinMissileLaunchersMoving.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
     </CActorUnit>
     <CActorSiteOpAttach id="ThorAttach330mm">
         <AttachQuery Methods="AMFilterWeaponSetA2 AMPatternThor330mmBarrageCannons"/>

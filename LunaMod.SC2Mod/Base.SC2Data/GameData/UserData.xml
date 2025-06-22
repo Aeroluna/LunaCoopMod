@@ -8,6 +8,36 @@
             <Upgrade Upgrade="SwannVersusParity">
                 <Field Id="DefaultUpgrades" Index="2"/>
             </Upgrade>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeSwannMoving">
+                <Field Id="Prestige" Index="3"/>
+            </User>
+        </Instances>
+        <Fields index="36" Count="4"/>
+    </CUser>
+    <CUser id="PlayerPrestige">
+        <Instances Id="CommanderPrestigeSwannMoving">
+            <GameLink GameLink="CommanderPrestigeSwannMoving">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <GameLink GameLink="MultilockTargetingSystems">
+                <Field Id="SecondaryUpgradesSelf"/>
+            </GameLink>
+            <Unit Unit="Hercules">
+                <Field Id="DisableUnit"/>
+            </Unit>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="SwannMoving1">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+        </Instances>
+    </CUser>
+    <CUser id="PlayerPrestigeUpgradeSupplements">
+        <Instances Id="SwannMoving1">
+            <GameLink GameLink="CommanderPrestigeSwannMovingTurretPrice">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="SwannKelMorianTurretUpgrades">
+                <Field Id="Upgrade"/>
+            </GameLink>
         </Instances>
     </CUser>
     <CUser id="TechUnit">

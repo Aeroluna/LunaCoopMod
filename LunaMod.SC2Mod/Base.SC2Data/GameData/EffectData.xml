@@ -32,6 +32,23 @@
         <AmmoUnit value="HighTemplarWeaponNerazim"/>
         <Movers Link="HighTemplarWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="LanceMissileLaunchersDamage">
+        <AttributeBonus index="Massive" value="10"/>
+        <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectIssueOrder id="MovingLockOnIssueOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="LockOn"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="MovingLockOnSearch">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="10" Effect="MovingLockOnIssueOrder"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="PsiStormApplyBehaviorNerazim">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>

@@ -1,10 +1,13 @@
 ﻿Abil/Name/PsiStormShakuras=Astral Storm
 Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
+Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
+Button/Name/CommanderPrestigeSwannMoving=Rolling Thunder
 Button/Name/CripplingPsionicStorm=Astral Storm
 Button/Name/HellArmorThor=Infernal Plating
 Button/Name/HellburstPayload=Hellburst Payload
 Button/Name/HighTemplarNerazim=Warp In Signifier
+Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
 Button/Name/ResearchHellburstPayload=Research Hellburst Payload
 Button/Name/ResearchOverdriveActuators=Research Overdrive Actuators
 Button/Name/ResearchPulseLoopCapacitors=Research Pulse-Loop Capacitors
@@ -15,6 +18,7 @@ Button/Tooltip/ACSwannCommandCenter=Primary structure. Used to receive gathered 
 Button/Tooltip/ACSwannCommandCenterUpgraded=Primary structure. Used to receive gathered resources. Can use the Lift Off ability and can upgrade into a Big Bertha.<n/><n/><c val="ffff8a">Enables:</c><n/>- SCVs
 Button/Tooltip/ACSwannEngineeringBay=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Missile Turrets from SCVs<n/>- Planetary Fortresses from Command Centers
 Button/Tooltip/ACSwannEngineeringBayUpgraded=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
+Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>All units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/>Cyclones can use Lock On while moving.<n/>Only Thor anti-air weapons can attack while moving.<n/>Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CycloneLockOnDamageUpgrade=Increases the damage of Lock On by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/EngineeringBayUpgradedSwann=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
 Button/Tooltip/HellArmor=Increases Hellbat and Hellion armor by 2 and hitpoints by 40.
@@ -24,11 +28,14 @@ Button/Tooltip/HighTemplarNerazim=Potent psionic master. Can use Signify, Crippl
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
 Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
 Button/Tooltip/MAFServosLiberator2=Raid Liberators transform between modes four times faster.
+Button/Tooltip/MultiLockTargetingSystemThor=The Thor can target ground and air units simultaneously.
 Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep and Calldown: Supplies. Cannot load SCVs.
+Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/ResearchCycloneLockOnDamageUpgrade=Increases <c val="ffff8a">Cyclone</c> Lock On damage by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/ResearchHellbatHellArmor=<c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, and <c val="ffff8a">Thor</c> gain +2 armor. <c val="ffff8a">Hellions</c> and <c val="ffff8a">Hellbats</c> gain 60 hitpoints.
 Button/Tooltip/ResearchHellburstPayload=Increases the direct damage of <c val="ffff8a">Widow Mine</c> Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/ResearchLockOnRangeUpgrade=Increases <c val="ffff8a">Widow Mine</c> Sentinel Missile and <c val="ffff8a">Cyclone</c> Lock On initial and tracking range by 3.
+Button/Tooltip/ResearchMultiLockWeaponsSystem=<c val="ffff8a">Goliaths</c> and <c val="ffff8a">Thors</c> can target and attack ground and air units simultaneously.
 Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c val="ffff8a">vehicles</c> by 20% and <c val="ffff8a">ships</c> by 10%.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
@@ -37,6 +44,8 @@ DocInfo/Name=LunaMod
 Effect/Name/HighTemplarWeaponDamageNerazim=High Templar Nerazim Weapon Damage
 Effect/Name/HighTemplarWeaponLMNerazim=High Templar Nerazim Weapon Launch Missile
 Effect/Name/HighTemplarWeaponNerazim=High Templar Nerazim Weapon Set
+Effect/Name/MovingLockOnIssueOrder=Moving Lock On Issue Order
+Effect/Name/MovingLockOnSearch=Moving Lock On Search
 Effect/Name/PsiStormApplyBehaviorNerazim=Psi Storm Nerazim (Apply Buff)
 Effect/Name/PsiStormDamageInitialNerazim=Psi Storm Nerazim (Damage2)
 Effect/Name/PsiStormDamageNerazim=Psi Storm Nerazim (Damage)
@@ -46,12 +55,18 @@ Effect/Name/PsiStormSearchSetNerazim=PsiStormNerazimSearchSet (Unnamed)
 Unit/Name/HighTemplarShakuras=Signifier
 Unit/Name/HighTemplarWeaponNerazim=High Templar Nerazim Weapon
 Unit/Name/PlanetaryFortressUpgraded=Big Bertha
+Upgrade/Name/CommanderPrestigeSwannMoving=CommanderPrestigeSwannMoving
+Upgrade/Name/CommanderPrestigeSwannMovingTurretPrice=CommanderPrestigeSwannMovingTurretPrice
 Upgrade/Name/HellburstPayload=Hellburst Payload
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators
 Upgrade/Name/SwannVersusParity=Swann Versus Parity
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
 UserData/TechUnit/[Override]HighTemplarShakuras_Name=Signifier
+Weapon/Name/JavelinMissileLaunchersMoving=Javelin Missile LaunchersMoving
+Weapon/Name/LanceMissileLaunchers=250mm Punisher Cannons
+Weapon/Name/LanceMissileLaunchersMoving=250mm Punisher Cannons
 Weapon/Name/VoidBlast=Star Blast
 Weapon/Tip/LanceMissileLaunchers=
+Weapon/Tip/LanceMissileLaunchersMoving=
 Weapon/Tip/ThorsHammer=
