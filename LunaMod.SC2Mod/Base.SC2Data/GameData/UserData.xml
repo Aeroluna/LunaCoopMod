@@ -4,6 +4,82 @@
         <Fields Id="Source Upgrade" Type="Upgrade"/>
         <Fields Id="Target Upgrades" Type="Upgrade" Count="4"/>
         <Instances Id="[Default]"/>
+
+        <Instances Id="ProtossAirWeaponsExtraLevel1">
+            <Upgrade Upgrade="ProtossAirWeaponsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossAirWeaponsExtraLevel2">
+            <Upgrade Upgrade="ProtossAirWeaponsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossAirWeaponsExtraLevel3">
+            <Upgrade Upgrade="ProtossAirWeaponsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+
+        <Instances Id="ProtossAirArmorsExtraLevel1">
+            <Upgrade Upgrade="ProtossAirArmorsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossAirArmorsExtraLevel2">
+            <Upgrade Upgrade="ProtossAirArmorsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossAirArmorsExtraLevel3">
+            <Upgrade Upgrade="ProtossAirArmorsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+
+        <Instances Id="ProtossShieldsExtraLevel1">
+            <Upgrade Upgrade="ProtossShieldsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossShieldsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossShieldsExtraLevel2">
+            <Upgrade Upgrade="ProtossShieldsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossShieldsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ProtossShieldsExtraLevel3">
+            <Upgrade Upgrade="ProtossShieldsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ProtossShieldsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+
         <Instances Id="TerranVehicleAndShipWeaponsExtraLevel1">
             <Upgrade Upgrade="TerranVehicleAndShipWeaponsLevel1">
                 <Field Id="Source Upgrade"/>
@@ -41,7 +117,6 @@
                 <Field Id="Prestige" Index="3"/>
             </User>
         </Instances>
-        <Fields index="36" Count="4"/>
     </CUser>
     <CUser id="PlayerPrestige">
         <Instances Id="CommanderPrestigeSwannMoving">
@@ -70,6 +145,17 @@
         </Instances>
     </CUser>
     <CUser id="TechUnit">
+        <Instances Id="MothershipArtanis">
+            <Text Text="UserData/TechUnit/MothershipArtanis_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/TechUnit/MothershipArtanis_Name">
+                <Field Id="Name"/>
+            </Text>
+            <User Type="PlayerCommanders" Instance="ProtossArtanis">
+                <Field Id="Commander"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]OrbitalCommand">
             <User Type="PlayerCommanders" Instance="TerranSwann">
                 <Field Id="Commander" Index="1"/>

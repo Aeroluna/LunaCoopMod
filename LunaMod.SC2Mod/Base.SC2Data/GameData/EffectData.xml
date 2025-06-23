@@ -36,6 +36,51 @@
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectDamage id="MothershipArtanisBeamDamage" parent="DU_WEAP_MISSILE">
+        <ValidatorArray value="MothershipRangeCheck"/>
+        <ValidatorArray value="NotHidden"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Visibility value="Visible"/>
+        <Amount value="6"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="MothershipArtanisBeamDummy">
+        <ValidatorArray value="MothershipRangeCheck"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="MothershipArtanisBeamDummy"/>
+        <PeriodCount value="6"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="MothershipArtanisBeamDamage"/>
+        <PeriodicPeriodArray value="0.375"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="MothershipArtanisBeamSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="4" Radius="7.5" Effect="MothershipArtanisBeamSet"/>
+        <MaxCount value="4"/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MothershipArtanisBeamSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="MothershipArtanisBeamPersistent"/>
+        <EffectArray value="MothershipArtanisSecondaryBeamPersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="MothershipArtanisBeamDummy"/>
+        <PeriodCount value="6"/>
+        <PeriodicValidator value="MothershipArtanisRangeCheckCombine"/>
+        <PeriodicEffectArray value="MothershipArtanisBeamDamage"/>
+        <PeriodicPeriodArray value="0.375"/>
+    </CEffectCreatePersistent>
     <CEffectIssueOrder id="MovingLockOnIssueOrder">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Source"/>
@@ -49,6 +94,18 @@
         <AreaArray MaxCount="1" Radius="10" Effect="MovingLockOnIssueOrder"/>
         <MaxCount value="1"/>
     </CEffectEnumArea>
+    <CEffectSwitch id="OnDeathControllerDeathPrevent">
+        <CaseArray index="11" Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>
+        <CaseArray index="12" Validator="SourceIsDehakaCoop" Effect="OnDeathDehakaRecallOnDeathAB"/>
+        <CaseArray index="13" Validator="HHWidowMineCombine" Effect="HHWidowMineBlossomIssueOrderSetTrigger"/>
+        <CaseArray index="14" Validator="HHReaperCombine" Effect="HHD8ClusterDeathSetTrigger"/>
+        <CaseArray index="15" Validator="HHHellionDeathStim" Effect="HHHellionStimDeathSetTrigger"/>
+        <!--CaseArray Validator="IsFenixSuitCombine" Effect="SOASummonFenixWarpOutAB"/-->
+        <CaseArray index="16" Validator="HHHellionDeathFear" Effect="HHHellionTankDeathFearSetTrigger"/>
+        <!--CaseArray Validator="TychusWarhoundTurretDeathExplosion" Effect="TychusWarhoundTurretExplosionDeathSet"/-->
+        <CaseArray index="17" Validator="TychusWarhoundDeathExplosion" Effect="TychusWarhoundExplosionDeathSet"/>
+        <CaseArray Validator="OnDeathTychusHercGrappleArmorPassive" Effect="TychusHERCShieldApply"/>
+    </CEffectSwitch>
     <CEffectApplyBehavior id="PsiStormApplyBehaviorNerazim">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>
@@ -87,4 +144,8 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="PsiStormSearchNerazim"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="MothershipTimedLifeExpireAB">
+        <WhichUnit Value="Source"/>
+        <Behavior value="MothershipArtanisTimedLifeExpire"/>
+    </CEffectApplyBehavior>
 </Catalog>

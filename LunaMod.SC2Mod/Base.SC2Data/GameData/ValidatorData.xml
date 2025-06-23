@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorCombine id="HasActiveDeathPrevent">
+        <CombineArray value="OnDeathMothershipDeath"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="OnDeathMothershipDeath">
+        <WhichUnit Value="Caster"/>
+        <Value value="MothershipArtanis"/>
+    </CValidatorUnitType>
     <CValidatorUnitOrderQueue id="SourceIsNotMoving">
         <WhichUnit Value="Source"/>
         <AbilLink value="move"/>

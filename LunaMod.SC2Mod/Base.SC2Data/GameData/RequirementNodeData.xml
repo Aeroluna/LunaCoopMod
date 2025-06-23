@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeSwannMovingCompleteOnly">
+    <CRequirementAnd id="AndCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
+    </CRequirementAnd>
+    <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MothershipArtanis" State="QueuedOrBetter"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeSwannMovingCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeSwannMoving" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
@@ -27,6 +36,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TransformationServos" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementEq id="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
+        <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
     <CRequirementNot id="NotCountUpgradeHellburstPayloadQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeHellburstPayloadQueuedOrBetter"/>
     </CRequirementNot>

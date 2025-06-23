@@ -84,6 +84,25 @@
         <Race value="Prot"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
+    <CUnit id="MothershipArtanis" parent="Mothership">
+        <Name value="Unit/Name/MothershipArtanis"/>
+        <Description value="Button/Tooltip/MothershipArtanis"/>
+        <WeaponArray index="0" Link="MothershipArtanisBeam"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Coop"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <ShieldsStart value="1000"/>
+        <ShieldsMax value="1000"/>
+        <Speed value="2.25"/>
+        <CostResource index="Minerals" value="1000"/>
+        <CostResource index="Vespene" value="1000"/>
+    </CUnit>
+    <CUnit id="Nexus">
+        <AbilArray Link="NexusTrainMothershipArtanis"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MothershipArtanis" Type="AbilCmd" AbilCmd="NexusTrainMothershipArtanis,Train1" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="OrbitalCommand">
         <AbilArray Link="VespeneDroneCast"/>
         <!--LayoutButtons Face="TrainKelMorianWorkers" Type="AbilCmd" AbilCmd="CommandCenterTrain,Train2" Row="0" Column="1"/-->

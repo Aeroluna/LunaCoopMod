@@ -31,6 +31,81 @@
         <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
     </CActorUnit>
+    <CActorModel id="MotherShipBeaconLight">
+        <On Terms="Abil.NexusTrainMothershipArtanis.Start" Send="Create"/>
+        <On Terms="Abil.NexusTrainMothershipArtanis.Stop" Send="Destroy"/>
+    </CActorModel>
+    <CActorUnit id="MothershipArtanis" parent="Mothership" unitName="MothershipArtanis">
+        <On index="0" Terms="UnitBirth.MothershipArtanis"/>
+        <On index="1" Terms="UnitBirth.MothershipArtanis"/>
+        <On index="2" Terms="UnitRevive.MothershipArtanis"/>
+        <On index="3" Terms="UnitRevive.MothershipArtanis"/>
+        <On index="4" Terms="UnitConstruction.MothershipArtanis"/>
+        <On index="5" Terms="UnitConstruction.MothershipArtanis"/>
+        <On index="66" Terms="ActorCreation" Send="SetOpacity"/>
+        <On index="67" Terms="ActorCreation" Send="TimerSet 1.500000 Reveal"/>
+        <On index="68" Terms="TimerExpired; TimerName Reveal" Send="SetOpacity 1.000000"/>
+        <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="TimerSet 0.250000 FadeOutScale"/>
+        <On Terms="TimerExpired; TimerName FadeOutScale" Send="SetOpacity 0.000000 0.750000"/>
+        <On Terms="ActorCreation" Send="Create MothershipArtanisStargateWarpIn"/>
+        <PortraitActor value="SelendisEx2Portrait"/>
+        <PortraitModel value="SelendisEx2Portrait"/>
+        <SoundArray index="Ready" value="Selendis_Ready"/>
+        <SoundArray index="Help" value="Selendis_Help"/>
+        <SoundArray index="What" value="Selendis_What"/>
+        <SoundArray index="Yes" value="Selendis_Yes"/>
+        <SoundArray index="Attack" value="Selendis_Attack"/>
+        <SoundArray index="Pissed" value="Selendis_Pissed"/>
+    </CActorUnit>
+    <CActorBeamSimple id="MothershipArtanisAttackBeam" parent="MothershipAttackBeam">
+        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorModel id="MothershipArtanisStargateWarpIn" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value=""/>
+        <On index="0" Terms="ActorCreation" Send="$Spell"/>
+        <On index="1" Terms="ActorCreation" Send="TimerSet 1.500000 Kill"/>
+        <On index="2" Terms="TimerExpired; TimerName Kill" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachTurret"/>
+        <Model value="MothershipWarpIn2"/>
+        <Scale value="0.600000"/>
+    </CActorModel>
+    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam" parent="MothershipSecondaryAttackBeam">
+        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorAction id="MothershipArtanisAttack" parent="MothershipAttack">
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent.Start" Send="Create"/>
+        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
+        <Beam value="MothershipArtanisAttackBeam"/>
+    </CActorAction>
+    <CActorAction id="MothershipArtanisSecondaryAttack" parent="MothershipSecondaryAttack">
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent.Start" Send="Create"/>
+        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
+        <Beam value="MothershipArtanisSecondaryAttackBeam"/>
+    </CActorAction>
+    <CActorModel id="MothershipArtanisGhostWarpOut" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,255 4.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachTurret"/>
+        <Model value="MothershipWarpIn2"/>
+        <Scale value="0.600000"/>
+    </CActorModel>
+    <CActorSound id="MothershipAttackImpact">
+        <On Terms="Effect.MothershipArtanisBeamDamage.Start; EffectExecuteIndex 1" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="MothershipArtanisTeleportOut" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Model value="ArtanisMothershipTeleportOut"/>
+    </CActorModel>
     <CActorSiteOpRotationExplicit id="SOpPitch90">
         <Forward value="0.000000,0.000000,1.000000"/>
         <Up value="0.000000,1.000000,0.000000"/>
