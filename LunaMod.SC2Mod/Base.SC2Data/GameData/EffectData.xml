@@ -159,27 +159,23 @@
     </CEffectApplyBehavior>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
-        <Amount value="5"/>
+        <Amount value="2.5"/>
         <Death value="Remove"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="VortexArtanisApplyDisableOther" parent="VortexApplyDisableOther">
-        <Name value="Effect/Name/VortexArtanisApplyDisableOther2"/>
         <Marker Link="Effect/VortexArtanisApplyDisableOther"/>
         <Behavior value="VortexArtanisBehavior"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="VortexArtanisApplyDisableEnemy" parent="VortexApplyDisableEnemy">
-        <Name value="Effect/Name/VortexArtanisApplyDisableEnemy"/>
         <Marker Link="Effect/VortexArtanisApplyDisableEnemy"/>
         <Behavior value="VortexArtanisBehaviorEnemy"/>
     </CEffectApplyBehavior>
     <CEffectSwitch id="VortexArtanisApplyDisable" parent="VortexApplyDisable">
-        <Name value="Effect/Name/VortexArtanisApplyDisable"/>
         <Marker Link="Effect/VortexArtanisApplyDisable"/>
         <CaseArray index="0" Validator="TargetIsEnemy" Effect="VortexArtanisApplyDisableEnemy"/>
         <CaseDefault value="VortexArtanisApplyDisableOther"/>
     </CEffectSwitch>
     <CEffectCreatePersistent id="VortexArtanisCreatePersistent" parent="VortexCreatePersistent">
-        <Name value="Effect/Name/VortexArtanisCreatePersistent"/>
         <Marker Link="Effect/VortexArtanisCreatePersistent"/>
         <PeriodicEffectArray index="0" value="VortexArtanisSearchArea"/>
     </CEffectCreatePersistent>
@@ -195,13 +191,11 @@
         <InitialOffset value="0.25,0.15,0"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="VortexArtanisSearchArea" parent="VortexSearchArea">
-        <Name value="Effect/Name/VortexArtanisSearchArea2"/>
         <Marker Link="Effect/VortexArtanisSearchArea"/>
         <SearchFilters value="-;Self,Structure,Missile,Item,Dead,Hidden,Unstoppable"/>
         <AreaArray index="0" Radius="3" Effect="VortexArtanisEffect"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="VortexArtanisCreatePersistentInitial" parent="VortexCreatePersistentInitial">
-        <Name value="Effect/Name/VortexArtanisCreatePersistentInitial2"/>
         <Marker Link="Effect/VortexArtanisCreatePersistentInitial"/>
         <InitialEffect value="VortexArtanisCreatePersistent"/>
     </CEffectCreatePersistent>
