@@ -3,6 +3,11 @@
     <CValidatorCombine id="HasActiveDeathPrevent">
         <CombineArray value="OnDeathMothershipDeath"/>
     </CValidatorCombine>
+    <CValidatorCombine id="MothershipArtanisRangeCheckCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="MothershipRangeCheck"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="OnDeathMothershipDeath">
         <WhichUnit Value="Caster"/>
         <Value value="MothershipArtanis"/>

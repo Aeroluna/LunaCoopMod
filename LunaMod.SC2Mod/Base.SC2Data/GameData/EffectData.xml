@@ -36,6 +36,11 @@
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectSet id="MothershipArtanisBeamAttack">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="MothershipArtanisBeamSet"/>
+        <EffectArray value="MothershipArtanisBeamSearch"/>
+    </CEffectSet>
     <CEffectDamage id="MothershipArtanisBeamDamage" parent="DU_WEAP_MISSILE">
         <ValidatorArray value="MothershipRangeCheck"/>
         <ValidatorArray value="NotHidden"/>
@@ -54,16 +59,20 @@
         <TimeScaleSource Value="Caster"/>
         <InitialEffect value="MothershipArtanisBeamDummy"/>
         <PeriodCount value="6"/>
-        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicValidator value="MothershipArtanisRangeCheckCombine"/>
         <PeriodicEffectArray value="MothershipArtanisBeamDamage"/>
         <PeriodicPeriodArray value="0.375"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="MothershipArtanisBeamSearch">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="4" Radius="7.5" Effect="MothershipArtanisBeamSet"/>
-        <MaxCount value="4"/>
+        <AreaArray MaxCount="3" Radius="7.5" Effect="MothershipArtanisBeamSet"/>
         <ImpactLocation Value="SourceUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="0"/>
     </CEffectEnumArea>
     <CEffectSet id="MothershipArtanisBeamSet">
         <EditorCategories value="Race:Protoss"/>
@@ -147,5 +156,68 @@
     <CEffectApplyBehavior id="MothershipTimedLifeExpireAB">
         <WhichUnit Value="Source"/>
         <Behavior value="MothershipArtanisTimedLifeExpire"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="VortexArtanis">
+        <EditorCategories value=""/>
+        <Amount value="5"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="VortexArtanisApplyDisableOther" parent="VortexApplyDisableOther">
+        <Name value="Effect/Name/VortexArtanisApplyDisableOther2"/>
+        <Marker Link="Effect/VortexArtanisApplyDisableOther"/>
+        <Behavior value="VortexArtanisBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="VortexArtanisApplyDisableEnemy" parent="VortexApplyDisableEnemy">
+        <Name value="Effect/Name/VortexArtanisApplyDisableEnemy"/>
+        <Marker Link="Effect/VortexArtanisApplyDisableEnemy"/>
+        <Behavior value="VortexArtanisBehaviorEnemy"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="VortexArtanisApplyDisable" parent="VortexApplyDisable">
+        <Name value="Effect/Name/VortexArtanisApplyDisable"/>
+        <Marker Link="Effect/VortexArtanisApplyDisable"/>
+        <CaseArray index="0" Validator="TargetIsEnemy" Effect="VortexArtanisApplyDisableEnemy"/>
+        <CaseDefault value="VortexArtanisApplyDisableOther"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="VortexArtanisCreatePersistent" parent="VortexCreatePersistent">
+        <Name value="Effect/Name/VortexArtanisCreatePersistent"/>
+        <Marker Link="Effect/VortexArtanisCreatePersistent"/>
+        <PeriodicEffectArray index="0" value="VortexArtanisSearchArea"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="VortexArtanisEffect" parent="VortexEffect">
+        <Marker Link="Effect/VortexArtanisEffect"/>
+        <EffectArray index="4" value="VortexArtanisApplyDisable"/>
+        <EffectArray value="VortexArtanisForceOffset"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="VortexArtanisForceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Effect="VortexArtanisSearchArea" Value="TargetPoint"/>
+        <InitialEffect value="VortexArtanisForce"/>
+        <InitialOffset value="0.25,0.15,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="VortexArtanisSearchArea" parent="VortexSearchArea">
+        <Name value="Effect/Name/VortexArtanisSearchArea2"/>
+        <Marker Link="Effect/VortexArtanisSearchArea"/>
+        <SearchFilters value="-;Self,Structure,Missile,Item,Dead,Hidden,Unstoppable"/>
+        <AreaArray index="0" Radius="3" Effect="VortexArtanisEffect"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="VortexArtanisCreatePersistentInitial" parent="VortexCreatePersistentInitial">
+        <Name value="Effect/Name/VortexArtanisCreatePersistentInitial2"/>
+        <Marker Link="Effect/VortexArtanisCreatePersistentInitial"/>
+        <InitialEffect value="VortexArtanisCreatePersistent"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="VortexArtanisForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Effect="VortexArtanisEffect"/>
+        <Amount value="-1"/>
+    </CEffectApplyForce>
+    <CEffectApplyForce id="VortexArtanisForceBehavior">
+        <ValidatorArray value="IsNotWarpBubble"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="VortexArtanisCreatePersistent" Value="TargetPoint"/>
+        <Amount value="-0.1"/>
+    </CEffectApplyForce>
+    <CEffectApplyBehavior id="VortexArtanisExit">
+        <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
 </Catalog>

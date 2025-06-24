@@ -35,4 +35,48 @@
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VortexArtanisBehaviorEnemy" parent="VortexBehaviorEnemy">
+        <InitialEffect value="VortexArtanisForceBehavior"/>
+        <RefreshEffect value="VortexArtanisForceBehavior"/>
+        <ExpireEffect value="VortexArtanisExit"/>
+        <Cost>
+            <Charge Link="Behavior/VortexArtanisBehavior"/>
+            <Cooldown Link="Behavior/VortexArtanisBehavior"/>
+        </Cost>
+        <Period value="0.5"/>
+        <PeriodicEffect value="VortexArtanis"/>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/VortexArtanisBehavior"/>
+                <Cooldown Link="Behavior/VortexArtanisBehavior"/>
+            </Cost>
+        </DamageResponse>
+        <ReplaceLocation Effect="VortexArtanisCreatePersistentInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VortexArtanisBehavior" parent="VortexBehavior">
+        <Cost>
+            <Charge Link="Behavior/VortexArtanisBehavior"/>
+            <Cooldown Link="Behavior/VortexArtanisBehavior"/>
+        </Cost>
+        <DamageResponse>
+            <Cost>
+                <Charge Link="Behavior/VortexArtanisBehavior"/>
+                <Cooldown Link="Behavior/VortexArtanisBehavior"/>
+            </Cost>
+        </DamageResponse>
+        <InitialEffect value="VortexArtanisForceBehavior"/>
+        <RefreshEffect value="VortexArtanisForceBehavior"/>
+        <ExpireEffect value=""/>
+        <ReplaceLocation Effect="VortexArtanisCreatePersistentInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VortexArtanisExit">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-phaseshift.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1.5"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
 </Catalog>

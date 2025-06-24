@@ -111,6 +111,37 @@
         <Up value="0.000000,1.000000,0.000000"/>
         <IsLocal value="1"/>
     </CActorSiteOpRotationExplicit>
+    <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorModel id="VortexArtanisModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.VortexArtanisCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.VortexArtanisCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="VortexModel"/>
+        <Scale value="1.200000"/>
+    </CActorModel>
+    <CActorSound id="VortexBirthSound">
+        <On Terms="Effect.VortexArtanisCreatePersistent" Send="Create"/>
+    </CActorSound>
+    <CActorSplat id="VortexArtanisCursorSplat" parent="ProtossCursorSplat" abil="VortexArtanis"/>
+    <CActorSound id="VortexDeathSound">
+        <On Terms="Effect.VortexArtanisCreatePersistent" Send="Create"/>
+    </CActorSound>
+    <!--                                                                                         -->
+    <!-- Vortex                                                                                  -->
+    <!--                                                                                         -->
+    <CActorSimple id="VortexExitOpacity">
+        <On Terms="Behavior.VortexArtanisExit.On" Send="Create"/>
+        <On Terms="Behavior.VortexArtanisExit; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
+        <On Terms="Behavior.VortexArtanisExit" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
+        <On Terms="Behavior.VortexArtanisExit" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSound id="VortexLoopSound">
+        <On Terms="Effect.VortexArtanisCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.VortexArtanisCreatePersistent.Stop" Send="Destroy"/>
+    </CActorSound>
     <CActorUnit id="WidowMine">
         <On Terms="Upgrade.HellburstPayload.Add" Send="Create WidowMineLazer"/>
         <On Terms="UnitBirth; ValidatePlayer HasWidowMineDamage" Send="Create WidowMineLazer"/>
