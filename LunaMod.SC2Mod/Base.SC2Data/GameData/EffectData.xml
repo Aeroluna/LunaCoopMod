@@ -79,6 +79,39 @@
         <EffectArray value="MothershipArtanisBeamPersistent"/>
         <EffectArray value="MothershipArtanisSecondaryBeamPersistent"/>
     </CEffectSet>
+    <CEffectDamage id="MothershipArtanisPlanetCrackerDamage2">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Armored" value="15"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="30"/>
+        <Death value="Fire"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="MothershipArtanisPlanetCrackerDamage3">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Armored" value="5"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="10"/>
+        <Death value="Fire"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="MothershipArtanisPlanetCrackerDamage4">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Armored" value="2.5"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="5"/>
+        <Death value="Fire"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
@@ -157,6 +190,31 @@
         <WhichUnit Value="Source"/>
         <Behavior value="MothershipArtanisTimedLifeExpire"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MothershipArtanisPlanetCrackerCharge">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MothershipArtanisPlanetCracker">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="MothershipArtanisPlanetCrackerSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Self,Player,Ally,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="MothershipArtanisPlanetCrackerDamage"/>
+        <AreaArray Radius="4" Effect="MothershipArtanisPlanetCrackerDamage2"/>
+        <AreaArray Radius="6" Effect="MothershipArtanisPlanetCrackerDamage3"/>
+        <AreaArray Radius="8" Effect="MothershipArtanisPlanetCrackerDamage4"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="MothershipArtanisPlanetCrackerDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Armored" value="20"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="40"/>
+        <Death value="Fire"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>
@@ -213,5 +271,6 @@
     </CEffectApplyForce>
     <CEffectApplyBehavior id="VortexArtanisExit">
         <EditorCategories value="Race:Protoss"/>
+        <Behavior value="VortexArtanisExitEnemy"/>
     </CEffectApplyBehavior>
 </Catalog>

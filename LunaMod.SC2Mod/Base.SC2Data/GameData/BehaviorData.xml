@@ -35,6 +35,26 @@
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipArtanisPlanetCrackerCharge">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-phasemine-zeratul.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <ExpireEffect value="MothershipArtanisPlanetCracker"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipArtanisPlanetCracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="20"/>
+        <Period value="0.5"/>
+        <InitialEffect value="MothershipArtanisPlanetCrackerSearch"/>
+        <RefreshEffect value="MothershipArtanisPlanetCrackerSearch"/>
+        <PeriodicEffect value="MothershipArtanisPlanetCrackerSearch"/>
+        <Modification>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <AbilLinkDisableArray value="attack"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VortexArtanisBehaviorEnemy" parent="VortexBehaviorEnemy">
         <InitialEffect value="VortexArtanisForceBehavior"/>
         <RefreshEffect value="VortexArtanisForceBehavior"/>
@@ -66,17 +86,27 @@
         </DamageResponse>
         <InitialEffect value="VortexArtanisForceBehavior"/>
         <RefreshEffect value="VortexArtanisForceBehavior"/>
-        <ExpireEffect value=""/>
+        <ExpireEffect value="VortexArtanisEffect"/>
         <ReplaceLocation Effect="VortexArtanisCreatePersistentInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VortexArtanisExitEnemy">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-phaseshift.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="VortexArtanisExit">
         <Alignment value="Negative"/>
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-phaseshift.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Duration value="1.5"/>
+        <Duration value="2"/>
         <Modification>
-            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
         </Modification>
     </CBehaviorBuff>
 </Catalog>

@@ -106,6 +106,45 @@
         <Host Subject="_Selectable"/>
         <Model value="ArtanisMothershipTeleportOut"/>
     </CActorModel>
+    <CActorBeamSimple id="MothershipArtanisPlanetCrackerBeam" parent="PurifierPlanetCrackerBeam">
+        <On index="3" Terms="Behavior.MothershipArtanisPlanetCrackerCharge.On"/>
+        <On index="4" Terms="Behavior.MothershipArtanisPlanetCracker.Off"/>
+        <Model value="PurifierPlanetCrackerVoidBeam"/>
+        <Scale value="1.200000"/>
+    </CActorBeamSimple>
+    <CActorModel id="PurifierPlanetCrackerImpact">
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage3.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage4.Start; At Target" Send="Create"/>
+    </CActorModel>
+    <CActorAction id="PurifierPlanetCrackerShieldHitter">
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Start" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Start" Send="ActionDamage"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Stop" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Stop" Send="Destroy"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Start" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Start" Send="ActionDamage"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Stop" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Stop" Send="Destroy"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage3.Start" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage3.Start" Send="ActionDamage"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage3.Stop" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage3.Stop" Send="Destroy"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage4.Start" Send="Create"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage4.Start" Send="ActionDamage"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage4.Stop" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerDamage4.Stop" Send="Destroy"/>
+    </CActorAction>
+    <CActorSound id="PurifierPlanetCrackerSound">
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="Create"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="TimerSet 10.000000 Stage2Sound"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="PurifierPowerUp">
+        <On Terms="Behavior.MothershipArtanisPlanetCrackerCharge.On" Send="Create"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCrackerCharge.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorSiteOpRotationExplicit id="SOpPitch90">
         <Forward value="0.000000,0.000000,1.000000"/>
         <Up value="0.000000,1.000000,0.000000"/>
@@ -133,10 +172,10 @@
     <!-- Vortex                                                                                  -->
     <!--                                                                                         -->
     <CActorSimple id="VortexExitOpacity">
-        <On Terms="Behavior.VortexArtanisExit.On" Send="Create"/>
-        <On Terms="Behavior.VortexArtanisExit; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
-        <On Terms="Behavior.VortexArtanisExit" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
-        <On Terms="Behavior.VortexArtanisExit" Send="Destroy"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy.On" Send="Create"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="VortexLoopSound">
         <On Terms="Effect.VortexArtanisCreatePersistent.Start" Send="Create"/>
