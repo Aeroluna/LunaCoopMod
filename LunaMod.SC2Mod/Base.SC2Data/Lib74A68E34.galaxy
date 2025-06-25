@@ -1,4 +1,6 @@
 include "TriggerLibs/NativeLib"
+include "LibCOOC"
+include "LibCOUI"
 
 include "Lib74A68E34_h"
 
@@ -8,6 +10,33 @@ include "Lib74A68E34_h"
 // External Library Initialization
 void lib74A68E34_InitLibraries () {
     libNtve_InitVariables();
+    libCOOC_InitVariables();
+    libCOUI_InitVariables();
+}
+
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: ApplyVoicePack
+//--------------------------------------------------------------------------------------------------
+void voicepack_apply(string reward_id, int player)
+{
+    int i;
+    int count;
+    string tmp;
+
+    count = CatalogFieldValueCount(c_gameCatalogReward, reward_id, "ReplacementArray", c_playerAny);
+    for (i = 0; i < count; i += 1) {
+        tmp = "ReplacementArray[" + IntToString(i) + "]";
+        CatalogLinkReplace(
+            player,
+            c_gameCatalogSound,
+            CatalogFieldValueGet(c_gameCatalogReward, reward_id, tmp + ".From", c_playerAny),
+            CatalogFieldValueGet(c_gameCatalogReward, reward_id, tmp + ".To", c_playerAny)
+        );
+    }
+}
+
+void lib74A68E34_InitCustomScript () {
 }
 
 // Triggers
@@ -57,8 +86,112 @@ void lib74A68E34_gt_ExtraUpgrades_Init () {
     TriggerAddEventUpgradeLevelChanged(lib74A68E34_gt_ExtraUpgrades, c_playerAny);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: ApplyCommanderRewards
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ApplyCommanderRewards_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_voicePackName;
+    int lv_index;
+    string lv_voicePack;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup autoFB1B9E07_g;
+    int auto39FD07A2_ae;
+    const int auto39FD07A2_ai = 1;
+    string auto48A45068_val;
+
+    // Variable Initialization
+    lv_voicePackName = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoFB1B9E07_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoFB1B9E07_g, lv_player);
+        if (lv_player < 0) { break; }
+        auto39FD07A2_ae = UserDataFieldValueCount("PlayerCommanders", "DefaultVoicePack");
+        lv_index = 1;
+        for ( ; ( (auto39FD07A2_ai >= 0 && lv_index <= auto39FD07A2_ae) || (auto39FD07A2_ai < 0 && lv_index >= auto39FD07A2_ae) ) ; lv_index += auto39FD07A2_ai ) {
+            lv_voicePack = UserDataGetGameLink("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lv_player), "DefaultVoicePack", lv_index);
+            lv_voicePackName = (lv_voicePack);
+            voicepack_apply(lv_voicePackName, lv_player);
+        }
+        auto48A45068_val = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
+        if (auto48A45068_val == "TerranRaynor") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Default");
+        }
+        else if (auto48A45068_val == "ZergKerrigan") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Default");
+        }
+        else if (auto48A45068_val == "ZergZagara") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Zagara");
+        }
+        else if (auto48A45068_val == "ProtossArtanis") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
+        }
+        else if (auto48A45068_val == "TerranSwann") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Swann");
+        }
+        else if (auto48A45068_val == "ZergAbathur") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Abathur");
+        }
+        else if (auto48A45068_val == "ProtossKarax") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
+        }
+        else if (auto48A45068_val == "ProtossAlarak") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Forged");
+        }
+        else if (auto48A45068_val == "ZergDehaka") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Dehaka");
+        }
+        else if (auto48A45068_val == "ProtossFenix") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Fenix");
+        }
+        else if (auto48A45068_val == "TerranHorner") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
+        }
+        else if (auto48A45068_val == "TerranNova") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Nova");
+        }
+        else if (auto48A45068_val == "ZergStukov") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
+        }
+        else if (auto48A45068_val == "TerranTychus") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
+        }
+        else if (auto48A45068_val == "ProtossVorazun") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Nerazim");
+        }
+        else if (auto48A45068_val == "ProtossZeratul") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Ihanrii");
+        }
+        else if (auto48A45068_val == "ZergStetmann") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
+        }
+        else if (auto48A45068_val == "TerranMengsk") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Imperial");
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ApplyCommanderRewards_Init () {
+    lib74A68E34_gt_ApplyCommanderRewards = TriggerCreate("lib74A68E34_gt_ApplyCommanderRewards_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ApplyCommanderRewards);
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
+    lib74A68E34_gt_ApplyCommanderRewards_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -74,6 +207,7 @@ void lib74A68E34_InitLib () {
     lib74A68E34_InitLib_completed = true;
 
     lib74A68E34_InitLibraries();
+    lib74A68E34_InitCustomScript();
     lib74A68E34_InitTriggers();
 }
 

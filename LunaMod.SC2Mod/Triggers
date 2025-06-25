@@ -3,6 +3,8 @@
     <Library Id="74A68E34">
         <Root>
             <Item Type="Trigger" Library="74A68E34" Id="ABC038C0"/>
+            <Item Type="CustomScript" Library="74A68E34" Id="AEED6653"/>
+            <Item Type="Trigger" Library="74A68E34" Id="734C0295"/>
         </Root>
         <Element Type="Trigger" Id="ABC038C0">
             <Variable Type="Variable" Library="74A68E34" Id="D350FEC3"/>
@@ -253,6 +255,759 @@
             <Value>Source Upgrade</Value>
             <ValueType Type="userfield"/>
             <ValueContext Value="ExtraUpgrades"/>
+        </Element>
+        <Element Type="CustomScript" Id="AEED6653">
+            <ScriptCode>
+                void voicepack_apply(string reward_id, int player)
+                {
+                    int i;
+                    int count;
+                    string tmp;
+                
+                    count = CatalogFieldValueCount(c_gameCatalogReward, reward_id, &quot;ReplacementArray&quot;, c_playerAny);
+                    for (i = 0; i &lt; count; i += 1) {
+                        tmp = &quot;ReplacementArray[&quot; + IntToString(i) + &quot;]&quot;;
+                        CatalogLinkReplace(
+                            player,
+                            c_gameCatalogSound,
+                            CatalogFieldValueGet(c_gameCatalogReward, reward_id, tmp + &quot;.From&quot;, c_playerAny),
+                            CatalogFieldValueGet(c_gameCatalogReward, reward_id, tmp + &quot;.To&quot;, c_playerAny)
+                        );
+                    }
+                }
+            </ScriptCode>
+        </Element>
+        <Element Type="Trigger" Id="734C0295">
+            <Variable Type="Variable" Library="74A68E34" Id="CCAD8F58"/>
+            <Variable Type="Variable" Library="74A68E34" Id="848C7655"/>
+            <Variable Type="Variable" Library="74A68E34" Id="17F23C3A"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+            <Event Type="FunctionCall" Library="74A68E34" Id="263D733F"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="FB1B9E07"/>
+        </Element>
+        <Element Type="Variable" Id="CCAD8F58">
+            <VariableType>
+                <Type Value="string"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="C9DB712C"/>
+        </Element>
+        <Element Type="Param" Id="C9DB712C">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Variable" Id="848C7655">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="AE15485A"/>
+        </Element>
+        <Element Type="Param" Id="AE15485A">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="17F23C3A">
+            <VariableType>
+                <Type Value="gamelink"/>
+                <GameType Value="Reward"/>
+                <EntryType Value="CRewardVoicePack"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="C9AFF845"/>
+        </Element>
+        <Element Type="Param" Id="C9AFF845">
+            <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
+        </Element>
+        <Element Type="Variable" Id="3F4ED9AC">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="3177DE77"/>
+        </Element>
+        <Element Type="Param" Id="3177DE77">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="263D733F">
+            <FunctionDef Type="FunctionDef" Library="COUI" Id="F12044CA"/>
+        </Element>
+        <Element Type="FunctionCall" Id="FB1B9E07">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="B525B112"/>
+            <Parameter Type="Param" Library="74A68E34" Id="39E8467D"/>
+            <Parameter Type="Param" Library="74A68E34" Id="95B0A427"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="39FD07A2"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="48A45068"/>
+        </Element>
+        <Element Type="Param" Id="39E8467D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="A4B226A9"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3C7BFDC3"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3C7BFDC3">
+            <FunctionDef Type="FunctionDef" Library="COOC" Id="806D9A12"/>
+        </Element>
+        <Element Type="Param" Id="95B0A427">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="857209C7"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="FunctionCall" Id="39FD07A2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="66474248"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DF50D5F0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B64E5A3F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FB0FEC4A"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3FF13D84"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B8B01D46"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3C2AA79C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="FDC95C1D"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="7889F637"/>
+        </Element>
+        <Element Type="Param" Id="B64E5A3F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F13E2CDE"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FB0FEC4A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C25E6187"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="685ADCB5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="685ADCB5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D6D5CB34"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E8C3B264"/>
+            <Parameter Type="Param" Library="74A68E34" Id="4B78241F"/>
+        </Element>
+        <Element Type="Param" Id="E8C3B264">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BCBE3805"/>
+            <Value>PlayerCommanders</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="4B78241F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D20CD3A5"/>
+            <Value>DefaultVoicePack</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="Param" Id="3FF13D84">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F3144A4A"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="B8B01D46">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="8CB41668"/>
+            <Variable Type="Variable" Library="74A68E34" Id="848C7655"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3C2AA79C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DAF49931"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C337C05E"/>
+            <Parameter Type="Param" Library="74A68E34" Id="23FBCAC1"/>
+        </Element>
+        <Element Type="Param" Id="C337C05E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="74A68E34" Id="17F23C3A"/>
+        </Element>
+        <Element Type="Param" Id="23FBCAC1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="9E71E2B3"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9E71E2B3">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D8DCE241"/>
+            <Parameter Type="Param" Library="74A68E34" Id="32F0F910"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D31C18A1"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3484D2DB"/>
+            <Parameter Type="Param" Library="74A68E34" Id="47D3BDE6"/>
+        </Element>
+        <Element Type="Param" Id="32F0F910">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="68AA6D6F"/>
+            <Variable Type="Variable" Library="74A68E34" Id="848C7655"/>
+        </Element>
+        <Element Type="Param" Id="D31C18A1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="CDE53498"/>
+            <Value>PlayerCommanders</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="3484D2DB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="94E0250F"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="6A10C3D7"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6A10C3D7">
+            <FunctionDef Type="FunctionDef" Library="COOC" Id="A82A60A4"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0046175B"/>
+        </Element>
+        <Element Type="Param" Id="0046175B">
+            <ParameterDef Type="ParamDef" Library="COOC" Id="20F9D0B8"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="47D3BDE6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F91B226F"/>
+            <Value>DefaultVoicePack</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="FDC95C1D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DAF49931"/>
+            <Parameter Type="Param" Library="74A68E34" Id="DEE7A9E0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="35506839"/>
+        </Element>
+        <Element Type="Param" Id="DEE7A9E0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="74A68E34" Id="CCAD8F58"/>
+        </Element>
+        <Element Type="Param" Id="35506839">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="600D700B"/>
+        </Element>
+        <Element Type="FunctionCall" Id="600D700B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="E4B86923"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E5CB92DF"/>
+        </Element>
+        <Element Type="Param" Id="E5CB92DF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="711D5A26"/>
+            <Variable Type="Variable" Library="74A68E34" Id="17F23C3A"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7889F637">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DAF49931"/>
+            <ScriptCode>
+                voicepack_apply(lv_voicePackName, lv_player);
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionCall" Id="48A45068">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="91C49196"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="DF50D5F0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E756201A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="DE8119DE"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="C296EED9"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="311D274F"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="063E301B"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="E0A88148"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="75126B7C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="EEB3AA58"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="14C1D44A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="AFE375C8"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3265B661"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="528115B1"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="231EA70A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="89442211"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="8B314E31"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="2EEB1D64"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="31DCF15E"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D9FD355A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="4995AF71"/>
+        </Element>
+        <Element Type="Param" Id="E756201A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="B4ACF12A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3CEE3244"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3CEE3244">
+            <FunctionDef Type="FunctionDef" Library="COOC" Id="A82A60A4"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E72B3C12"/>
+        </Element>
+        <Element Type="Param" Id="E72B3C12">
+            <ParameterDef Type="ParamDef" Library="COOC" Id="20F9D0B8"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DE8119DE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B6BB4147"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="CAD7D3ED"/>
+        </Element>
+        <Element Type="Param" Id="B6BB4147">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranRaynor</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="CAD7D3ED">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7B78FB88"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3E9E592D"/>
+        </Element>
+        <Element Type="Param" Id="7B78FB88">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="3E9E592D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Default</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C296EED9">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="69ABB720"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="868A4DAE"/>
+        </Element>
+        <Element Type="Param" Id="69ABB720">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergKerrigan</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="868A4DAE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FF481491"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D067FE43"/>
+        </Element>
+        <Element Type="Param" Id="FF481491">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="D067FE43">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Default</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="311D274F">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="1E0A2369"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="F3A77A6E"/>
+        </Element>
+        <Element Type="Param" Id="1E0A2369">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergZagara</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="F3A77A6E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="1CC20D6C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C72AE205"/>
+        </Element>
+        <Element Type="Param" Id="1CC20D6C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="C72AE205">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Zagara</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="063E301B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8FC908D1"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3E7D21BA"/>
+        </Element>
+        <Element Type="Param" Id="8FC908D1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossArtanis</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3E7D21BA">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="893712CB"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BC1E2DA0"/>
+        </Element>
+        <Element Type="Param" Id="893712CB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="BC1E2DA0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Default</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="E0A88148">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FB83FE0C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="BB56FBDB"/>
+        </Element>
+        <Element Type="Param" Id="FB83FE0C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranSwann</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BB56FBDB">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9E0FED43"/>
+            <Parameter Type="Param" Library="74A68E34" Id="5411EE12"/>
+        </Element>
+        <Element Type="Param" Id="9E0FED43">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="5411EE12">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Swann</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="75126B7C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CD7045F7"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="BDEED872"/>
+        </Element>
+        <Element Type="Param" Id="CD7045F7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergAbathur</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BDEED872">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7B4BBEAE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="976B0330"/>
+        </Element>
+        <Element Type="Param" Id="7B4BBEAE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="976B0330">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Abathur</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="EEB3AA58">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="648B8799"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="10B62091"/>
+        </Element>
+        <Element Type="Param" Id="648B8799">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossKarax</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="10B62091">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F17D4BEA"/>
+            <Parameter Type="Param" Library="74A68E34" Id="588AB449"/>
+        </Element>
+        <Element Type="Param" Id="F17D4BEA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="588AB449">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Default</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="14C1D44A">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FB1E62FE"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="2F7BC865"/>
+        </Element>
+        <Element Type="Param" Id="FB1E62FE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossAlarak</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2F7BC865">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="420D7A19"/>
+            <Parameter Type="Param" Library="74A68E34" Id="799F888E"/>
+        </Element>
+        <Element Type="Param" Id="420D7A19">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="799F888E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Forged</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="AFE375C8">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="AE72B74D"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3C9A77DE"/>
+        </Element>
+        <Element Type="Param" Id="AE72B74D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergDehaka</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3C9A77DE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="AF752D34"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0F4B9108"/>
+        </Element>
+        <Element Type="Param" Id="AF752D34">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="0F4B9108">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Dehaka</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3265B661">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8DF69FD0"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="031E870E"/>
+        </Element>
+        <Element Type="Param" Id="8DF69FD0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossFenix</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="031E870E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="025AA351"/>
+            <Parameter Type="Param" Library="74A68E34" Id="EFEBEF99"/>
+        </Element>
+        <Element Type="Param" Id="025AA351">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="EFEBEF99">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Fenix</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="528115B1">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3DBF3822"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="2DBAA111"/>
+        </Element>
+        <Element Type="Param" Id="3DBF3822">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranHorner</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2DBAA111">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E5E925EE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="84FB4C35"/>
+        </Element>
+        <Element Type="Param" Id="E5E925EE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="84FB4C35">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Horner</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="231EA70A">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="78FC1DB3"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="21A8A596"/>
+        </Element>
+        <Element Type="Param" Id="78FC1DB3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranNova</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="21A8A596">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="39F14769"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A616D71D"/>
+        </Element>
+        <Element Type="Param" Id="39F14769">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="A616D71D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Nova</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="89442211">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="025089DC"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D9BBDAA1"/>
+        </Element>
+        <Element Type="Param" Id="025089DC">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergStukov</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D9BBDAA1">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9861ABA5"/>
+            <Parameter Type="Param" Library="74A68E34" Id="DDF54C89"/>
+        </Element>
+        <Element Type="Param" Id="9861ABA5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="DDF54C89">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Mecha</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8B314E31">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="12D4BC0B"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="1E2F3DB9"/>
+        </Element>
+        <Element Type="Param" Id="12D4BC0B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranTychus</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1E2F3DB9">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FDE126BD"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7F945654"/>
+        </Element>
+        <Element Type="Param" Id="FDE126BD">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="7F945654">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Horner</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2EEB1D64">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="65BED99B"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="B16E27D6"/>
+        </Element>
+        <Element Type="Param" Id="65BED99B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossVorazun</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="B16E27D6">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F98BDB58"/>
+            <Parameter Type="Param" Library="74A68E34" Id="DD8B10BF"/>
+        </Element>
+        <Element Type="Param" Id="F98BDB58">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="DD8B10BF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Nerazim</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="31DCF15E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C397912A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="85BE6152"/>
+        </Element>
+        <Element Type="Param" Id="C397912A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ProtossZeratul</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="85BE6152">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="83719A2D"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D56E4A7E"/>
+        </Element>
+        <Element Type="Param" Id="83719A2D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="D56E4A7E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleProtoss_Ihanrii</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D9FD355A">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2BC06D6C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="42F4EF9C"/>
+        </Element>
+        <Element Type="Param" Id="2BC06D6C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>ZergStetmann</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="42F4EF9C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="21B54997"/>
+            <Parameter Type="Param" Library="74A68E34" Id="5854B293"/>
+        </Element>
+        <Element Type="Param" Id="21B54997">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="5854B293">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleZerg_Mecha</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
+        </Element>
+        <Element Type="FunctionCall" Id="4995AF71">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9510E112"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="B00E3E5C"/>
+        </Element>
+        <Element Type="Param" Id="9510E112">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9A8F1093"/>
+            <Value>TerranMengsk</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="B00E3E5C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="8CF1C041"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8B97B555"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7FB9A68C"/>
+        </Element>
+        <Element Type="Param" Id="8B97B555">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="08C32D67"/>
+            <Variable Type="Variable" Library="74A68E34" Id="3F4ED9AC"/>
+        </Element>
+        <Element Type="Param" Id="7FB9A68C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E0CF8EA2"/>
+            <Value>ConsoleTerran_Imperial</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="ConsoleSkin"/>
         </Element>
     </Library>
 </TriggerData>
