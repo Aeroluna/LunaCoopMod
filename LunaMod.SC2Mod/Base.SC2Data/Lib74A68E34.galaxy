@@ -23,7 +23,6 @@ void voicepack_apply(string reward_id, int player)
     int i;
     int count;
     string tmp;
-
     count = CatalogFieldValueCount(c_gameCatalogReward, reward_id, "ReplacementArray", c_playerAny);
     for (i = 0; i < count; i += 1) {
         tmp = "ReplacementArray[" + IntToString(i) + "]";
@@ -189,9 +188,83 @@ void lib74A68E34_gt_ApplyCommanderRewards_Init () {
     libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ApplyCommanderRewards);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: ActivateCommanderTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_playerCommander;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup auto00AA9AB2_g;
+    string auto560DABDD_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto00AA9AB2_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(auto00AA9AB2_g, lv_player);
+        if (lv_player < 0) { break; }
+        lv_playerCommander = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
+        auto560DABDD_val = lv_playerCommander;
+        if (auto560DABDD_val == "ProtossArtanis") {
+            TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ActivateCommanderTriggers_Init () {
+    lib74A68E34_gt_ActivateCommanderTriggers = TriggerCreate("lib74A68E34_gt_ActivateCommanderTriggers_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ActivateCommanderTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ArtanisMothershipWarpHaste
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ArtanisMothershipWarpHaste_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeUpgradeCount(EventPlayer(), "MasteryArtanisSoAPowerFieldHaste", c_techCountCompleteOnly) > 0))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnitProgressUnit()) == "MothershipArtanis"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnitProgressUnit(), "MasteryArtanisSoAPowerFieldHaste_Target", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ArtanisMothershipWarpHaste_Init () {
+    lib74A68E34_gt_ArtanisMothershipWarpHaste = TriggerCreate("lib74A68E34_gt_ArtanisMothershipWarpHaste_Func");
+    TriggerAddEventUnitTrainProgress(lib74A68E34_gt_ArtanisMothershipWarpHaste, null, c_unitProgressStageComplete);
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
+    lib74A68E34_gt_ActivateCommanderTriggers_Init();
+    lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

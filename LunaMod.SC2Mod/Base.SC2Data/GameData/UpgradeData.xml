@@ -4,6 +4,17 @@
         <EffectArray index="0" Reference="Unit,ThorAP,SubgroupPriorityDelta"/>
         <EffectArray Reference="Unit,Thor,SubgroupPriorityDelta" Value="8"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeArtanisCombatAbilities">
+        <EffectArray Reference="Unit,MothershipArtanis,CostResource[Minerals]" Value="300"/>
+        <EffectArray Reference="Unit,MothershipArtanis,CostResource[Vespene]" Value="300"/>
+        <EffectArray Reference="Effect,VortexArtanis,Amount" Value="2.5"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage,Amount" Value="40"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[Armored]" Value="20"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage2,Amount" Value="30"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage2,AttributeBonus[Armored]" Value="15"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage3,Amount" Value="10"/>
+        <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage3,AttributeBonus[Armored]" Value="5"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
@@ -96,6 +107,10 @@
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="WidowMine"/>
         <AffectedUnitArray value="WidowMineBurrowed"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryArtanisEnergyRegenCooldown">
+        <EffectArray Reference="Unit,MothershipArtanis,EnergyRegenRate" Value="0.0084375"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MothershipArtanisPlanetCracker,Cost[0].Cooldown.TimeUse" Value="5.400000"/>
     </CUpgrade>
     <CUpgrade id="MasterySwannBuildingHealth">
         <EffectArray Reference="Unit,PlanetaryFortress,LifeMax" Value="30"/>

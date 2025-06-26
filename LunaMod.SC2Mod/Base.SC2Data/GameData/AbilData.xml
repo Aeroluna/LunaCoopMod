@@ -11,7 +11,7 @@
         <Name value="Abil/Name/MothershipArtanisMassRecall"/>
         <DataCollection value="MothershipArtanisMassRecall"/>
         <Cost index="0">
-            <Vital index="Energy" value="100"/>
+            <Vital index="Energy" value="50"/>
             <Charge Link="Abil/MothershipArtanisMassRecall"/>
             <Cooldown Link="Abil/MothershipArtanisMassRecall"/>
         </Cost>
@@ -74,7 +74,7 @@
         <InfoArray index="Train1" Time="120">
             <Charge Link="Abil/NexusTrainMothershipArtanis"/>
             <Cooldown Link="Abil/NexusTrainMothershipArtanis"/>
-            <Button DefaultButtonFace="MothershipArtanis"/>
+            <Button DefaultButtonFace="MothershipArtanis" Requirements="MothershipArtanisRequirements"/>
             <Unit index="0" value="MothershipArtanis"/>
         </InfoArray>
         <InfoArray index="Train2">
@@ -204,7 +204,7 @@
         <Effect index="0" value="MothershipArtanisPlanetCrackerCharge"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="360"/>
+            <Cooldown Location="Player" TimeUse="360"/>
         </Cost>
         <AINotifyEffect value="PurifierPlanetCracker"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="PlanetCrackerArtanis">
