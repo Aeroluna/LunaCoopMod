@@ -48,6 +48,8 @@
         <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="TimerSet 0.250000 FadeOutScale"/>
         <On Terms="TimerExpired; TimerName FadeOutScale" Send="SetOpacity 0.000000 0.750000"/>
         <On Terms="ActorCreation" Send="Create MothershipArtanisStargateWarpIn"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.Off" Send="AnimBracketStop Work"/>
         <PortraitActor value="SelendisEx2Portrait"/>
         <PortraitModel value="SelendisEx2Portrait"/>
         <SoundArray index="Ready" value="Selendis_Ready"/>
@@ -138,7 +140,6 @@
     </CActorAction>
     <CActorSound id="PurifierPlanetCrackerSound">
         <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="Create"/>
-        <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="TimerSet 10.000000 Stage2Sound"/>
         <On Terms="Behavior.MothershipArtanisPlanetCracker.Off" Send="Destroy"/>
     </CActorSound>
     <CActorModel id="PurifierPowerUp">
@@ -176,6 +177,10 @@
         <On Terms="Behavior.VortexArtanisExitEnemy; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
         <On Terms="Behavior.VortexArtanisExitEnemy" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
         <On Terms="Behavior.VortexArtanisExitEnemy" Send="Destroy"/>
+        <On Terms="Behavior.VortexArtanisExit.On" Send="Create"/>
+        <On Terms="Behavior.VortexArtanisExit; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
+        <On Terms="Behavior.VortexArtanisExit" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
+        <On Terms="Behavior.VortexArtanisExit" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="VortexLoopSound">
         <On Terms="Effect.VortexArtanisCreatePersistent.Start" Send="Create"/>
