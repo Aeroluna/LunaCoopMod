@@ -7,6 +7,18 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="ArtanisIonCannonsU">
+        <AttributeBonus index="Light" value="2"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="ArtanisIonCannonsULeft">
+        <AttributeBonus index="Light" value="2"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="ArtanisIonCannonsURight">
+        <AttributeBonus index="Light" value="2"/>
+        <Amount value="10"/>
+    </CEffectDamage>
     <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileLeft">
         <ImpactEffect value="CycloneWeaponDamage"/>
     </CEffectLaunchMissile>
@@ -65,7 +77,7 @@
     </CEffectCreatePersistent>
     <CEffectEnumArea id="MothershipArtanisBeamSearch">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray MaxCount="3" Radius="7.5" Effect="MothershipArtanisBeamSet"/>
         <ImpactLocation Value="SourceUnit"/>
         <ExcludeArray Value="Target"/>
@@ -83,10 +95,10 @@
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="15"/>
+        <AttributeBonus index="Armored" value="10"/>
         <Visibility value="Visible"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="30"/>
+        <Amount value="20"/>
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
@@ -94,10 +106,10 @@
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="5"/>
+        <AttributeBonus index="Armored" value="2.5"/>
         <Visibility value="Visible"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="10"/>
+        <Amount value="5"/>
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
@@ -207,10 +219,10 @@
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="20"/>
+        <AttributeBonus index="Armored" value="15"/>
         <Visibility value="Visible"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="40"/>
+        <Amount value="30"/>
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
@@ -241,6 +253,9 @@
         <EffectArray index="4" value="VortexArtanisApplyDisable"/>
         <EffectArray value="VortexArtanisForceOffset"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="VortexArtanisExitEnemy">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="VortexArtanisForceOffset">
         <EditorCategories value="Race:Protoss"/>
         <OffsetVectorStartLocation Effect="VortexArtanisSearchArea" Value="TargetPoint"/>
@@ -270,6 +285,5 @@
     </CEffectApplyForce>
     <CEffectApplyBehavior id="VortexArtanisExit">
         <EditorCategories value="Race:Protoss"/>
-        <Behavior value="VortexArtanisExitEnemy"/>
     </CEffectApplyBehavior>
 </Catalog>
