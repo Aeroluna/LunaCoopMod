@@ -29,19 +29,19 @@
         <ArmorReduction value="0"/>
         <Amount value="25"/>
     </CEffectDamage>
-    <CEffectDamage id="HighTemplarWeaponDamageNerazim" parent="DU_WEAP">
+    <CEffectDamage id="HighTemplarNerazimWeaponDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Kind value="Ranged"/>
         <Amount value="9"/>
         <Death value="Blast"/>
     </CEffectDamage>
-    <CEffectSet id="HighTemplarWeaponNerazim">
-        <EffectArray value="HighTemplarWeaponDamageNerazim"/>
+    <CEffectSet id="HighTemplarNerazimWeapon">
+        <EffectArray value="HighTemplarNerazimWeaponDamage"/>
     </CEffectSet>
-    <CEffectLaunchMissile id="HighTemplarWeaponLMNerazim">
+    <CEffectLaunchMissile id="HighTemplarNerazimWeaponLM">
         <EditorCategories value="Race:Protoss"/>
-        <ImpactEffect value="HighTemplarWeaponNerazim"/>
-        <AmmoUnit value="HighTemplarWeaponNerazim"/>
+        <ImpactEffect value="HighTemplarNerazimWeapon"/>
+        <AmmoUnit value="HighTemplarNerazimWeapon"/>
         <Movers Link="HighTemplarWeapon"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="LanceMissileLaunchersDamage">
@@ -160,43 +160,48 @@
         <CaseArray index="17" Validator="TychusWarhoundDeathExplosion" Effect="TychusWarhoundExplosionDeathSet"/>
         <CaseArray Validator="OnDeathTychusHercGrappleArmorPassive" Effect="TychusHERCShieldApply"/>
     </CEffectSwitch>
-    <CEffectApplyBehavior id="PsiStormApplyBehaviorNerazim">
+    <CEffectApplyBehavior id="PsiStormNerazimApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="PsiStormDamageNerazim">
+    <CEffectApplyBehavior id="PsiStormNerazimApplyBehaviorCripple">
+        <ValidatorArray index="0" value="PsiStormNerazimApplyBehaviorTargetFilters"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="AstralStormCripple"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PsiStormNerazimDamage">
         <ValidatorArray value="PsiStormUTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Hidden"/>
-        <Amount value="10"/>
+        <Amount value="4"/>
     </CEffectDamage>
-    <CEffectDamage id="PsiStormDamageInitialNerazim">
+    <CEffectDamage id="PsiStormNerazimDamageInitial">
         <ValidatorArray value="PsiStormUTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="10"/>
+        <Amount value="4"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="PsiStormPersistentNerazim">
+    <CEffectCreatePersistent id="PsiStormNerazimPersistent">
         <EditorCategories value="Race:Protoss"/>
-        <InitialEffect value="PsiStormSearchSetNerazim"/>
-        <PeriodCount value="6"/>
-        <PeriodicEffectArray value="PsiStormSearchSetNerazim"/>
-        <PeriodicPeriodArray value="0.5712"/>
-        <AINotifyEffect value="PsiStormSearchNerazim"/>
+        <InitialEffect value="PsiStormNerazimSearchSet"/>
+        <PeriodCount value="14"/>
+        <PeriodicEffectArray value="PsiStormNerazimSearchSet"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <AINotifyEffect value="PsiStormNerazimSearch"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="PsiStormSearchNerazim">
+    <CEffectEnumArea id="PsiStormNerazimSearch">
         <EditorCategories value="Race:Protoss"/>
         <AINotifyFlags index="HurtFriend" value="1"/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="PsiStormApplyBehaviorNerazim"/>
+        <AreaArray Radius="3" Effect="PsiStormShakurasImpactSet"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
-    <CEffectSet id="PsiStormSearchSetNerazim">
+    <CEffectSet id="PsiStormNerazimSearchSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="PsiStormSearchNerazim"/>
+        <EffectArray value="PsiStormNerazimSearch"/>
     </CEffectSet>
     <CEffectApplyBehavior id="MothershipTimedLifeExpireAB">
         <WhichUnit Value="Source"/>
@@ -226,6 +231,10 @@
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
+    <CEffectSet id="PsiStormShakurasImpactSet">
+        <EffectArray index="0" value="PsiStormNerazimApplyBehavior"/>
+        <EffectArray index="1" value="PsiStormNerazimApplyBehaviorCripple"/>
+    </CEffectSet>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>

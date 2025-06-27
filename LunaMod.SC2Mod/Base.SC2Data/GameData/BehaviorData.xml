@@ -16,8 +16,8 @@
         <TimeScaleSource Value="Global"/>
         <Duration value="0.6665"/>
         <Period value="0.571"/>
-        <InitialEffect value="PsiStormDamageInitialNerazim"/>
-        <PeriodicEffect value="PsiStormDamageNerazim"/>
+        <InitialEffect value="PsiStormNerazimDamageInitial"/>
+        <PeriodicEffect value="PsiStormNerazimDamage"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MothershipArtanisTimedLifeExpire">
         <InfoFlags index="Hidden" value="1"/>
@@ -57,6 +57,19 @@
         <DisplayDuration index="Ally" value="1"/>
         <DisplayDuration index="Neutral" value="1"/>
         <DisplayDuration index="Enemy" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AstralStormCripple">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-psistorm.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="4"/>
+        <Duration value="2"/>
+        <Modification MoveSpeedMultiplier="0.8" AttackSpeedMultiplier="0.6">
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressEnergy" value="1"/>
+            <LifeArmorBonus value="-1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="VortexArtanisBehaviorEnemy" parent="VortexBehaviorEnemy">
         <InitialEffect value="VortexArtanisForceBehavior"/>

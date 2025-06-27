@@ -31,6 +31,24 @@
         <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
     </CActorUnit>
+    <CActorModel id="HighTemplarNerazimPsiStormCripple" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.AstralStormCripple.On" Send="Create"/>
+        <On Terms="Behavior.AstralStormCripple.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HighTemplarNerazimPsiStormImpact"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorAction id="HighTemplarPsiStormShieldHitter">
+        <On Terms="Effect.PsiStormNerazimDamageInitial.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormNerazimDamageInitial.Start" Send="ActionDamage"/>
+        <On Terms="Effect.PsiStormNerazimDamageInitial.Stop" Send="Destroy"/>
+        <On Terms="Effect.PsiStormNerazimDamage.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormNerazimDamage.Start" Send="ActionDamage"/>
+        <On Terms="Effect.PsiStormNerazimDamage.Stop" Send="Destroy"/>
+    </CActorAction>
     <CActorModel id="HighTemplarTaldarimShadow">
         <On index="3" Send="SetTintColor 128,0,0 0.800000"/>
         <Model value="HighTemplarTaldarimShadow"/>
@@ -246,36 +264,39 @@
     <CActorBeamSimple id="HHWidowMineTargetingBeam">
         <On Terms="Abil.WidowMineAttack.SourcePrepStop" Send="Destroy"/>
     </CActorBeamSimple>
-    <CActorAction id="HighTemplarAttackNerazim" parent="GenericAttack" effectImpact="HighTemplarWeaponDamageNerazim" effectLaunch="HighTemplarWeaponLMNerazim">
+    <CActorAction id="HighTemplarNerazimAttack" parent="GenericAttack" effectImpact="HighTemplarNerazimWeaponDamage" effectLaunch="HighTemplarNerazimWeaponLM">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <LaunchAssets Sound="Ascendant_Launch"/>
-        <Missile value="HighTemplarAttackMissileNerazim"/>
-        <ImpactMap index="None" Model="HighTemplarAttackImpactNerazim" Sound="Ascendant_Impact"/>
+        <ImpactMap index="None" Sound="Ascendant_Impact"/>
         <ImpactPhysics Name="HighTemplarPsiBlastImpact" MatchKeys="Basic" Physics="HighTemplarPsiBlastDeathImpactForce"/>
     </CActorAction>
-    <CActorMissile id="HighTemplarAttackMissileNerazim" parent="GenericAttackMissile" unitName="HighTemplarWeaponNerazim"/>
-    <CActorSound id="HighTemplarPsiPStormImpactSoundNerazim" parent="SoundOneShot">
+    <CActorMissile id="HighTemplarNerazimAttackMissile" parent="GenericAttackMissile" unitName="HighTemplarNerazimWeapon"/>
+    <CActorSound id="HighTemplarNerazimPsiPStormImpactSound" parent="SoundOneShot">
         <On Terms="Behavior.PsiStormNerazim.On" Send="Create"/>
+        <On Terms="Behavior.AstralStormCripple.On" Send="Create"/>
+        <On Terms="Behavior.PsiStormNerazim.Off" Send="Destroy"/>
+        <On Terms="Behavior.AstralStormCripple.Off" Send="Destroy"/>
         <Sound value="AC_PirateCapitalShip_TractorBeam_Launch"/>
+        <LoopCount value="-1"/>
     </CActorSound>
-    <CActorModel id="HighTemplarPsiStormImpactNerazim" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="HighTemplarNerazimPsiStormImpact" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
-        <On Terms="Behavior.PsiStormNerazim" Send="Create"/>
-        <On Terms="Behavior.PsiStormNerazim" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.PsiStormNerazim.On" Send="Create"/>
+        <On Terms="Behavior.PsiStormNerazim.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <AutoScaleFactor value="0.750000"/>
     </CActorModel>
-    <CActorModel id="HighTemplarPsiStormModelNerazim" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.PsiStormPersistentNerazim.Start" Send="Create"/>
-        <On Terms="Effect.PsiStormPersistentNerazim.Stop" Send="AnimBracketStop BSD"/>
+    <CActorModel id="HighTemplarNerazimPsiStormModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.PsiStormNerazimPersistent.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormNerazimPersistent.Stop" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpShadow"/>
-        <Scale value="1.300000"/>
+        <Scale value="1.300000,1.300000,1.100000"/>
     </CActorModel>
-    <CActorSound id="HighTemplarPsiStormSoundNerazim" parent="SoundContinuous">
-        <On Terms="Effect.PsiStormPersistentNerazim.Start" Send="Create"/>
-        <On Terms="Effect.PsiStormPersistentNerazim.Stop" Send="Destroy"/>
+    <CActorSound id="HighTemplarNerazimPsiStormSound" parent="SoundContinuous">
+        <On Terms="Effect.PsiStormNerazimPersistent.Start" Send="Create"/>
+        <On Terms="Effect.PsiStormNerazimPersistent.Stop" Send="Destroy"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Sound value="AC_PirateCapitalShip_TractorBeam_Impact"/>
     </CActorSound>
@@ -299,26 +320,27 @@
             <Image index="1" value="Assets\Textures\wireframe-protoss-signifier-ds-shield2.dds"/>
             <Image index="2" value="Assets\Textures\wireframe-protoss-signifier-ds-shield3.dds"/>
         </WireframeShield>
-        <On Terms="WeaponStart.HighTemplarWeaponNerazim.AttackStart" Send="$Spell,A"/>
+        <On Terms="WeaponStart.HighTemplarNerazimWeapon.AttackStart" Send="$Spell,A"/>
         <AbilSoundArray index="0" AbilCmd="PsiStormShakuras,Execute" Sound="Mothership_TimeBombVO"/>
         <AbilSoundArray index="1" removed="1"/>
         <AbilSoundArray index="2" removed="1"/>
     </CActorUnit>
     <CActorModel id="HighTemplarShakurasShadow">
-        <Model value="HighTemplarShadowNerazim"/>
+        <Model value="HighTemplarNerazimShadow"/>
         <On index="3" Send="SetTintColor 0,0,128 0.800000"/>
         <On index="4" Send="SetOpacity"/>
         <On index="5" Send="SetOpacity 0.500000 0.400000"/>
         <On index="6" Terms="TimerExpired; TimerName ShadowFade" Send="SetOpacity 0.000000 0.400000"/>
         <On index="7" removed="1"/>
         <ModelFlags index="AllowHitTest" value="0"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOp2DRotation SOpMoveDownByDot25"/>
     </CActorModel>
     <CActorSound id="HighTemplar_Death">
         <On index="3" removed="1"/>
         <On index="4" removed="1"/>
         <On index="5" removed="1"/>
     </CActorSound>
-    <CActorSound id="HighTemplar_DeathNerazim" parent="SoundOneShot">
+    <CActorSound id="HighTemplarNerazim_Death" parent="SoundOneShot">
         <On Terms="UnitDeathCustomize.HighTemplarAir; ValidateUnit IsNotHallucination; PassChance 25.000000" Send="Create"/>
         <On Terms="UnitDeathCustomize.HighTemplarShakuras; ValidateUnit IsNotHallucination; PassChance 25.000000" Send="Create"/>
         <Sound value="Adept_Death"/>
