@@ -189,6 +189,11 @@
             <Image index="2" value="Assets\Textures\wireframe-protoss-warpstargate-alternate-shield3.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
+        <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Start; At Caster"/>
+        <ContainerAssets Model="VoidHighTemplarPsiOrbDamageCoopBunkerAttackLaunch" Sound="VoidHighTemplarPsiOrbDamageCoopBunkerAttackLaunch"/>
+    </CActorAction>
     <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
