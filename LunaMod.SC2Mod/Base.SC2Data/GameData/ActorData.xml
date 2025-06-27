@@ -31,6 +31,10 @@
         <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
     </CActorUnit>
+    <CActorModel id="HighTemplarTaldarimShadow">
+        <On index="3" Send="SetTintColor 128,0,0 0.800000"/>
+        <Model value="HighTemplarTaldarimShadow"/>
+    </CActorModel>
     <CActorModel id="MotherShipBeaconLight">
         <On Terms="Abil.NexusTrainMothershipArtanis.Start" Send="Create"/>
         <On Terms="Abil.NexusTrainMothershipArtanis.Stop" Send="Destroy"/>
