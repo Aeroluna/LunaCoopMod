@@ -153,6 +153,38 @@
         <Up value="0.000000,1.000000,0.000000"/>
         <IsLocal value="1"/>
     </CActorSiteOpRotationExplicit>
+    <CActorUnit id="StargateWarp">
+        <On index="73" Send="AnimPlay MorphBack Stand,Work,End 0 5.000000 -1.000000 10.000000 AsDuration"/>
+        <On index="77" Terms="AbilMorph.*.Finish; MorphFrom Stargate; MorphTo StargateWarp" Send="AnimClear Morph"/>
+        <On index="78" Terms="AbilMorph.*.Start; MorphFrom Stargate; MorphTo StargateWarp; ValidateUnit HaveProdigalEngineer" Send="AnimSetTimeScale GL_BSD 0.200000"/>
+        <On index="79" Terms="AnimDone; AnimName Morph" Send="AnimGroupApply Work"/>
+        <On Terms="AnimDone; AnimName MorphBack" Send="AnimGroupRemove Work"/>
+        <!--On Terms="ActorCreation; !ValidatePlayer HaveSOAWarpTech" Send="AnimGroupApply Superior"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveSOAWarpTech" Send="AnimPlay Morph Work,Start 0 0.000000"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveSOAWarpTech" Send="AnimGroupRemove Work"/>
+        <On Terms="ActorCreation" Send="AnimPlay Morph Work,Start 0 0.000000"/-->
+        <On Terms="AnimDone; AnimPlaying Unpowered Unpowered,Start" Send="AnimGroupRemove Work"/>
+        <On Terms="BehaviorLevel.PowerUserQueue.Stop; Level 0" Send="AnimGroupApply Work"/>
+        <!--On Terms="BehaviorLevel.PowerUserQueue.Start; Level 0" Send="TimerSet 0.01 WorkDelayBack"/>
+        <On Terms="TimerExpired; TimerName WorkDelayBack" Send="AnimPlay MorphBack Stand,Work,End DontResetOnUnhide 2.000000 2.000000 2.000000 AsDuration"/-->
+        <On Terms="ActorCreation" Send="AnimPlay Morph Work,Start DontResetOnUnhide 2.000000 2.000000 4.000000 AsDuration"/>
+        <!-- idk why this works -->
+        <!--On Terms="ActorCreation" Send="TimerSet 0.010000 WorkDelay"/>
+        <On Terms="TimerExpired; TimerName WorkDelay" Send="AnimPlay Morph Work,Start DontResetOnUnhide 2.000000 2.000000 2.000000 AsDuration"/-->
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-warpstargate-alternate.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-warpstargate-alternate.dds"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-warpstargate-alternate.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-warpstargate-alternate.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-warpstargate-alternate-shield1.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-warpstargate-alternate-shield2.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-warpstargate-alternate-shield3.dds"/>
+        </WireframeShield>
+    </CActorUnit>
     <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
