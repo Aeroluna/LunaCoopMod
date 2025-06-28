@@ -46,14 +46,14 @@
         <Model value="Assets\Effects\Protoss\ProtossSpiritDeath\ProtossSpiritDeath.m3"/>
     </CModel>
     <CModel id="HighTemplarShakurasPlacement">
-        <Model value="Assets\Units\Protoss\Signifier\Signifier_DS_PlacementBlue.m3"/>
+        <Model value="Assets\Units\Protoss\Signifier\Signifier_DS_PlacementGreen.m3"/>
     </CModel>
     <CModel id="HighTemplarShakurasPortrait">
         <Model value="Assets\Units\Protoss\Signifier\Signifier_DS_Portrait_Red_fixed.m3"/>
         <Lighting value="PortraitTalDarim_HighTemplar"/>
     </CModel>
     <CModel id="HighTemplarShakurasWarpIn">
-        <Model value="Assets\Units\Protoss\ProtossUnitWarpIn_Void\ProtossUnitWarpIn_Void.m3"/>
+        <Model value="Assets\Effects\Protoss\ProtossUnitWarpInGreen.m3"/>
     </CModel>
     <CModel id="HighTemplarNerazimWeapon" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\EyeOfAdunMissile\EyeofAdunMissile.m3"/>
@@ -61,6 +61,155 @@
     </CModel>
     <CModel id="MothershipWarpIn2">
         <Model value="Assets\Units\Protoss\Mothership\Mothership_WarpIn_Stargate.m3"/>
+    </CModel>
+    <CModel id="ProbeNerazim" parent="ProbeBase">
+        <Model value="Assets\Units\Protoss\Probe\Probe_Nerazim_Collection.m3"/>
+    </CModel>
+    <CModel id="ProbeNerazimPortrait" parent="ProbePortraitBase">
+        <Model value="Assets\Units\Protoss\Probe\Probe_Nerazim_Collection_Portrait.m3"/>
+        <Image value="Assets\Textures\probe_nerazim_collection_portrait_static.dds"/>
+        <Lighting value="HydraliskPortrait"/>
+    </CModel>
+    <CModel id="StalkerNerazim" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker\Stalker_Shakuras_DS.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Stalker_SwarmAnims\Stalker_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigh10"/>
+        <Radius value="0.850000"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="1.087000"/>
+        <ShadowRadius value="1.087000"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraHigh10"/>
+        <Tipability value="0.750000"/>
+        <TipabilityLength value="0.800000"/>
+        <TipabilityWidth value="0.800000"/>
+        <UnitGlossaryCamera value="Star2CameraHigh10"/>
+    </CModel>
+    <CModel id="StalkerNerazimDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker\Stalker_Shakuras_DS_Death.m3"/>
+        <LowQualityModel value="ProtossMediumUnitDeathLow"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Uni_DeathFXincidentallFire"/>
+            <Type value="Sound"/>
+            <Time value="0.250000"/>
+            <Payload value="Uni_DeathFXincidentallFire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Legs_Start"/>
+            <Type value="Sound"/>
+            <Time value="0.193000"/>
+            <Payload value="Stalker_Explode_Legs_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Legs_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.692000"/>
+            <Payload value="Stalker_Explode_Legs_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Start"/>
+            <Type value="Sound"/>
+            <Payload value="Stalker_Explode_Fall_Start"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Body"/>
+            <Type value="Sound"/>
+            <Time value="0.206000"/>
+            <Payload value="Stalker_Explode_Fall_Body"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Fall_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.602000"/>
+            <Payload value="Stalker_Explode_Fall_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Death,03"/>
+            <Name value="Stalker_Explode_Var"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode_Var"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Stalker_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Stalker_Explode"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Stalker_Explode"/>
+        </Events>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="StalkerNerazimPlacement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker\Stalker_Shakuras_DS_PlacementGreen.m3"/>
+        <Lighting value="Stalker"/>
+        <Occlusion value="Show"/>
+        <Radius value="-1.000000"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="0.941600"/>
+        <ShadowRadius value="0.941600"/>
+    </CModel>
+    <CModel id="StalkerNerazimPortrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Stalker\Stalker_Shakuras_DS_Portrait.m3"/>
+    </CModel>
+    <CModel id="StalkerNerazimWarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Stalker\Stalker_Shakuras_DS_WarpinGreen.m3"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="0.724600"/>
+        <ShadowRadius value="0.724600"/>
     </CModel>
     <CModel id="StargateWarp">
         <Model value="Assets\Buildings\Protoss\WarpStargate_Alternate\WarpStargate_Alternate.m3"/>
@@ -73,5 +222,51 @@
     </CModel>
     <CModel id="WarpStargateBirth">
         <Model value="Assets\Buildings\Protoss\StargateWarpIn\StargateWarpIn.m3"/>
+    </CModel>
+    <CModel id="ZealotNerazim">
+        <Model value="Assets\Units\Protoss\Centurion\Centurion_Shakuras_V2.m3"/>
+        <RequiredAnims value="Assets\Units\Protoss\Zealot_SwarmAnims\Zealot_SwarmAnims.m3a"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <Radius value="0.375000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+    </CModel>
+    <CModel id="ZealotNerazimDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Centurion\Centurion_Shakuras_Death.m3"/>
+        <LowQualityModel value="ProtossSpiritDeathLow"/>
+        <Occlusion value="Show"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CModel id="ZealotNerazimPlacement" parent="Placement" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Centurion\Centurion_Shakuras_Placement_Green.m3"/>
+        <Lighting value="Zealot"/>
+        <Occlusion value="Show"/>
+        <Radius value="-1.000000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.416500"/>
+        <ShadowRadius value="0.416500"/>
+    </CModel>
+    <CModel id="ZealotNerazimPortrait" parent="Portrait" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Centurion\Centurion_Shakuras_Portrait.m3"/>
+        <Image value="Assets\Textures\Centurion_Shakuras_Portrait_Static.dds"/>
+        <Lighting value="ZealotShakurasPortrait"/>
+    </CModel>
+    <CModel id="ZealotNerazimWarpIn" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Centurion\Centurion_Shakuras_WarpIn_Green.m3"/>
+        <LowQualityModel value="ProtossUnitBirth"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
     </CModel>
 </Catalog>
