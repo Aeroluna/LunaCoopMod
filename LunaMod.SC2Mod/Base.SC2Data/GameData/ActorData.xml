@@ -28,6 +28,22 @@
         <On Terms="ActorCreation" Send="SetOpacity 0.000000 1.000000"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <Scale value="0.750000"/>
+    </CActorModel>
+    <CActorSound id="FadeSound" parent="SoundOneShot">
+        <On Terms="Behavior.SignifierFade.On" Send="Create"/>
+        <On Terms="Behavior.SignifierFade.Off" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Zealot_ShadowChargeFadeSound"/>
+    </CActorSound>
+    <CActorModel id="FadeModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.SignifierFade.On" Send="Create"/>
+        <On Terms="Behavior.SignifierFade.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 100,100,100"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="SuperCloak"/>
     </CActorModel>
     <CActorUnit id="Goliath">
         <On index="66" Terms="WeaponStart.GoliathA.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
