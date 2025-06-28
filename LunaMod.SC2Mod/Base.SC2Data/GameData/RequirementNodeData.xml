@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CRequirementAnd id="AndCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
     </CRequirementAnd>
     <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MothershipArtanis" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeSwannMovingCompleteOnly">
@@ -23,6 +21,15 @@
     <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="HellburstPayload" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSignifierFadeCompleteOnly892173529">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="SignifierFade" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSignifierFadeQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SignifierFade" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSwannCommanderVehicleCooldownQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -42,6 +49,10 @@
     </CRequirementEq>
     <CRequirementNot id="NotCountUpgradeHellburstPayloadQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeHellburstPayloadQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSignifierFadeQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeSignifierFadeQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSwannCommanderVehicleCooldownQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeSwannCommanderVehicleCooldownQueuedOrBetter"/>

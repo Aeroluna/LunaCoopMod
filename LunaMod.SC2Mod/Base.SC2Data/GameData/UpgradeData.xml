@@ -91,6 +91,15 @@
         <EffectArray Reference="Abil,WidowMineAttack,AutoCastRange" Value="3"/>
         <EffectArray Reference="Abil,WidowMineAttack,Range[0]" Value="3"/>
     </CUpgrade>
+    <CUpgrade id="DarkArchonFullStartingEnergy">
+        <EffectArray Reference="Unit,HighTemplarShakuras,EnergyStart" Value="150"/>
+    </CUpgrade>
+    <CUpgrade id="SignifierFade">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-signifier-cloakally.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="HighTemplarShakuras"/>
+    </CUpgrade>
     <CUpgrade id="HellbatHellArmor">
         <EffectArray Reference="Unit,ThorAP,LifeArmor" Value="2"/>
         <EffectArray Reference="Unit,Thor,LifeArmor" Value="2"/>
@@ -260,14 +269,16 @@
     <CUpgrade id="VoidHighTemplarCloak">
         <EffectArray index="0" Value="Button/Name/HighTemplarNerazim"/>
         <EffectArray index="1" Value="Button/Tooltip/HighTemplarNerazim"/>
-        <EffectArray index="2" Value="Assets\Textures\btn-unit-protoss-signifier-ds-blue.dds"/>
-        <EffectArray index="3" Value="Assets\Textures\btn-unit-protoss-signifier-ds-blue.dds"/>
+        <EffectArray index="2" Value="Assets\Textures\btn-unit-protoss-signifier-ds-red.dds"/>
+        <EffectArray index="3" Value="Assets\Textures\btn-unit-protoss-signifier-ds-red.dds"/>
         <EffectArray index="4" Value="Button/Tooltip/HighTemplarNerazim"/>
-        <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-signifier-ds-blue.dds"/>
+        <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-signifier-ds-red.dds"/>
         <EffectArray index="6" Value="Unit/Name/HighTemplarShakuras"/>
         <EffectArray index="7" Value="Button/Tooltip/HighTemplarNerazim"/>
         <EffectArray index="8" Value="HighTemplarShakuras"/>
         <EffectArray index="9" Value="HighTemplarShakuras"/>
+        <EffectArray Operation="Set" Reference="Abil,GatewayTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
+        <EffectArray Operation="Set" Reference="Abil,WarpGateTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
     </CUpgrade>
     <!-- EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ProtossAirWeaponsExtra">

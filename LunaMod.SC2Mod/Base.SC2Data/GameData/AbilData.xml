@@ -7,6 +7,33 @@
         <CastIntroTime index="0" value="0.75"/>
         <FinishTime index="0" value="0.75"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="DarkShrineResearch">
+        <InfoArray index="Research7" Time="90" Upgrade="SignifierFade">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchSignifierFade" State="Restricted" Requirements="LearnSignifierFade"/>
+        </InfoArray>
+        <!--InfoArray index="Research7" Time="90" Upgrade="ZeratulZealotBlinkHeal">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchZeratulZealotBlinkHeal" State="Restricted" Requirements="LearnZeratulZealotBlinkHealUpgrade"/>
+        </InfoArray>
+        <InfoArray index="Research9" Time="90" Upgrade="ZeratulDarkTemplarShadowFury">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchZeratulDarkTemplarShadowFury" State="Restricted" Requirements="LearnZeratulDarkTemplarShadowFury"/>
+        </InfoArray>
+        <InfoArray index="Research10" Time="90" Upgrade="ZeratulZealotDarkTemplar">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchZeratulZealotDarkTemplar" State="Restricted" Requirements="LearnZeratulZealotDarkTemplar"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="90" Upgrade="ZeratulBlinkDarkTemplar">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchZeratulBlinkDarkTemplar" State="Restricted" Requirements="LearnZeratulBlinkDarkTemplarUpgrade"/>
+        </InfoArray-->
+    </CAbilResearch>
     <CAbilEffectTarget id="MothershipArtanisMassRecall" parent="AlarakMothershipMassRecall">
         <Name value="Abil/Name/MothershipArtanisMassRecall"/>
         <DataCollection value="MothershipArtanisMassRecall"/>
@@ -239,7 +266,7 @@
         </Cost>
         <AutoCastRange value="1"/>
         <AutoCastValidatorArray value="CasterInCombat"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="SignifierFade"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SignifierFade" Requirements="HaveSignifierFade"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="VortexArtanis" parent="TalDarimVortex">
         <Effect index="0" value="VortexArtanisCreatePersistentInitial"/>
