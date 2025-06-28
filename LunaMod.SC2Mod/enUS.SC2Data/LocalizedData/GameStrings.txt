@@ -10,7 +10,7 @@ Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/Enshroud=Aurora Veil
 Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Name/SignifierFade=Fading Star
-Behavior/Tooltip/Enshroud=This unit is cloaked unless revealed by detectors or effects.
+Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
@@ -39,13 +39,14 @@ Button/Tooltip/ACSwannCommandCenterUpgraded=Primary structure. Used to receive g
 Button/Tooltip/ACSwannEngineeringBay=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Missile Turrets from SCVs<n/>- Planetary Fortresses from Command Centers
 Button/Tooltip/ACSwannEngineeringBayUpgraded=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/>Cyclones can use Lock On while moving.<n/>Only Thor anti-air weapons can attack while moving.<n/>Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
+Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref="Effect,PsiStormNerazimPersistent,PeriodCount*Effect,PsiStormNerazimPersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,PsiStormNerazimDamage,Amount*(Effect,PsiStormNerazimPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Enemy units in the target area are revealed, have their movement speed reduced, and have up to 4 armor reduced. Does not affect friendly units.
 Button/Tooltip/CycloneLockOnDamageUpgrade=Increases the damage of Lock On by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/EngineeringBayUpgradedSwann=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
-Button/Tooltip/Enshroud=Creates a storm of psionic energy that lasts <d time="4"/>, causing up to <d ref="Effect,PsiStormDamage,Amount*(Effect,PsiStormPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Does not damage friendly units.
+Button/Tooltip/Enshroud=Creates a veil for all friendly units in a target area, granting cloak and healing <d ref="Effect,EnshroudHeal,RechargeVitalRate"/> hitpoints per second for <d ref="Behavior,Enshroud,Duration"/> seconds.
 Button/Tooltip/HellArmor=Increases Hellbat and Hellion armor by 2 and hitpoints by 40.
 Button/Tooltip/HellArmorThor=Increases Thor armor by 2.
 Button/Tooltip/HellburstPayload=Increases the direct damage of Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
-Button/Tooltip/HighTemplarNerazim=Potent psionic master. Can use Signify, Crippling Psionic Storm, and Merge with Shadows.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/HighTemplarNerazim=Potent psionic master. Can use Aurora Veil, Astral Storm, and Fading Star.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
 Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
@@ -65,7 +66,7 @@ Button/Tooltip/ResearchMultiLockWeaponsSystem=<c val="ffff8a">Goliaths</c> and <
 Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c val="ffff8a">vehicles</c> by 20% and <c val="ffff8a">ships</c> by 10%.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
-Button/Tooltip/SignifierFade=Injects the unit with powerful stimulants that greatly increase attack and movement speeds for <d ref="Behavior,Stimpack,Duration" precision="1"/> seconds. Injures the unit for <d ref="Abil,Stimpack,Cost[0].Vital[Life]"/> of the unit's life.
+Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for 2 seconds. Also ignores collision for the duration.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
 DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/Name=LunaMod
