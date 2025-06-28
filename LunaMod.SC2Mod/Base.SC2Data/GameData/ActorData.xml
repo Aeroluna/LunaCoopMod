@@ -20,6 +20,15 @@
         <HostSiteOps Ops="SOpAttachWeapon02"/>
         <Model value="CycloneLazer"/>
     </CActorModel>
+    <CActorModel id="EnshroudHealModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.EnshroudHeal.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 DelayDeath"/>
+        <On Terms="TimerExpired; TimerName DelayDeath" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 1.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+    </CActorModel>
     <CActorUnit id="Goliath">
         <On index="66" Terms="WeaponStart.GoliathA.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
         <On index="67" Terms="WeaponStop.GoliathA.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
@@ -41,6 +50,23 @@
         <Model value="HighTemplarNerazimPsiStormImpact"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorModel id="Enshroud" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.Enshroud.On" Send="Create"/>
+        <On Terms="Behavior.Enshroud.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="OracleEnvision"/>
+        <Scale value="0.650000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="EnshroudBehaviorSound" parent="SoundContinuous">
+        <On Terms="Behavior.Enshroud.On" Send="Create"/>
+        <On Terms="Behavior.Enshroud.Off" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Sound value="ProjectPowerField_Loop"/>
+    </CActorSound>
     <CActorAction id="HighTemplarPsiStormShieldHitter">
         <On Terms="Effect.PsiStormNerazimDamageInitial.Start" Send="Create"/>
         <On Terms="Effect.PsiStormNerazimDamageInitial.Start" Send="ActionDamage"/>
@@ -138,6 +164,23 @@
         <Model value="PurifierPlanetCrackerVoidBeam"/>
         <Scale value="1.200000"/>
     </CActorBeamSimple>
+    <CActorRange id="EnshroudRange" parent="RangeAbil" abil="Enshroud">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorSplat id="EnshroudCursorSplat" parent="ProtossCursorSplat" abil="Enshroud"/>
+    <CActorModel id="EnshroudModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.EnshroudSearch.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.500000 DelayDeath"/>
+        <On Terms="TimerExpired; TimerName DelayDeath" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Scale value="1.200000,1.200000,1.000000"/>
+    </CActorModel>
+    <CActorSound id="EnshroudSound" parent="SoundOneShot">
+        <On Terms="Effect.EnshroudSearch.Start" Send="Create"/>
+        <Sound value="Oracle_RevelationCast"/>
+    </CActorSound>
     <CActorModel id="PurifierPlanetCrackerImpact">
         <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Start; At Target" Send="Create"/>
         <On Terms="Effect.MothershipArtanisPlanetCrackerDamage2.Start; At Target" Send="Create"/>

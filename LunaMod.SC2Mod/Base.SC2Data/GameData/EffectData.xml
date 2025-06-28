@@ -29,6 +29,12 @@
         <ArmorReduction value="0"/>
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectCreateHealer id="EnshroudHeal">
+        <ValidatorArray value="IsNotK5Kerrigan"/>
+        <PeriodCount value="4"/>
+        <PeriodicPeriod value="0.25"/>
+        <RechargeVitalRate value="2"/>
+    </CEffectCreateHealer>
     <CEffectDamage id="HighTemplarNerazimWeaponDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Kind value="Ranged"/>
@@ -164,6 +170,10 @@
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="EnshroudApplyBuff">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="Enshroud"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="PsiStormNerazimApplyBehaviorCripple">
         <ValidatorArray index="0" value="PsiStormNerazimApplyBehaviorTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
@@ -197,6 +207,14 @@
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="3" Effect="PsiStormShakurasImpactSet"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="EnshroudSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <AINotifyFlags index="HelpFriend" value="1"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="EnshroudApplyBuff"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="PsiStormNerazimSearchSet">
