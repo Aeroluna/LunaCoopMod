@@ -7,6 +7,15 @@
         <Model value="ThorAAAttackLaunchLance"/>
         <Scale value="0.750000"/>
     </CActorModel>
+    <!-- Corsair          -->
+    <CActorUnit id="CorsairMP">
+        <On Terms="Behavior.WarpInEffect15.On" Send="ModelSwap CorsairMPWarpInStargate"/>
+        <On Terms="Behavior.WarpInEffect15.On" Send="$Spell"/>
+        <On Terms="Behavior.WarpInEffect15.On" Send="AnimBaselineStop"/>
+        <On Terms="Behavior.WarpInEffect15.Off" Send="ModelSwap CorsairMP"/>
+        <On Terms="Behavior.WarpInEffect15.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.WarpInEffect15.Off" Send="AnimBaselineStart"/>
+    </CActorUnit>
     <CActorUnit id="Cyclone">
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerLeft"/>
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerRight"/>
