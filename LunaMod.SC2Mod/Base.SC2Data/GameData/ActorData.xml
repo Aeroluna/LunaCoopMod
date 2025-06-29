@@ -20,6 +20,63 @@
         <HostSiteOps Ops="SOpAttachWeapon02"/>
         <Model value="CycloneLazer"/>
     </CActorModel>
+    <!-- VoidDarkTemplarDeepShadows -->
+    <CActorUnit id="DarkTemplarShakuras">
+        <On Terms="UnitPortrait.*.Customize; ModelVariation 1" Send="PortraitCustomize DarkTemplarNerazim2Portrait"/>
+        <On Terms="UnitPortrait.*.Customize; ModelVariation 0" Send="PortraitCustomize DarkTemplarNerazimPortrait"/>
+        <On Terms="UnitDeathCustomize; ModelVariation 0" Send="DeathCustomize Variation0"/>
+        <On Terms="UnitDeathCustomize; ModelVariation 1" Send="DeathCustomize Variation1"/>
+        <DeathCustoms ModelLink="DarkTemplarNerazimDeath00" Name="Variation0"/>
+        <DeathCustoms ModelLink="DarkTemplarDeath01" Name="Variation1"/>
+        <Model value="DarkTemplarNerazim"/>
+        <BuildModel value="DarkTemplarNerazimWarpIn"/>
+        <DeathArray index="Normal" ModelLink="DarkTemplarNerazimDeath"/>
+        <PlacementModel value="DarkTemplarNerazimPlacement"/>
+        <PortraitModel value="DarkTemplarNerazimPortrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </GroupIcon>
+        <GroupIconVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </GroupIconVariations>
+        <GroupIconVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </GroupIconVariations>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-darktemplar-nerazim.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-nerazim.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </Wireframe>
+        <WireframeVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </WireframeVariations>
+        <WireframeVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </WireframeVariations>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-darktemplar00-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
+        </WireframeShield>
+        <WireframeShieldVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield03.dds"/>
+        </WireframeShieldVariations>
+        <WireframeShieldVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield03.dds"/>
+        </WireframeShieldVariations>
+    </CActorUnit>
+    <CActorModel id="DarkTemplarVoidStasisImpact">
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000"/>
+        <Model value="VoidStasisNerazimModel"/>
+    </CActorModel>
+    <CActorSimple id="DarkTemplarVoidStasisModelMaterialController">
+        <On index="2" Send="ModelMaterialApply GlazeVoidStasisNerazim"/>
+        <On index="3" Target="GlazeVoidStasisNerazim"/>
+    </CActorSimple>
     <CActorModel id="EnshroudHealModel" parent="ModelAnimationStyleOneShot">
         <Inherits index="Visibility" value="1"/>
         <On Terms="Effect.EnshroudHeal.Start; At Target" Send="Create"/>
@@ -45,6 +102,9 @@
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="SuperCloak"/>
     </CActorModel>
+    <CActorModelMaterial id="GlazeVoidStasisNerazim" parent="GlazeParent">
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
     <CActorUnit id="Goliath">
         <On index="66" Terms="WeaponStart.GoliathA.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
         <On index="67" Terms="WeaponStop.GoliathA.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
