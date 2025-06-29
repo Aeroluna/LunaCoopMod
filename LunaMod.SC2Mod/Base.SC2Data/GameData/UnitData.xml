@@ -29,12 +29,33 @@
     <CUnit id="Cyclone">
         <BehaviorArray Link="MovingLockOn"/>
     </CUnit>
+    <CUnit id="DarkArchon">
+        <WeaponArray index="0" Link="DarkArchonNerazimWeapon"/>
+        <!--HotkeyCategory value="Unit/Category/ProtossNerazim"/-->
+    </CUnit>
     <CUnit id="DarkShrine">
         <CardLayouts index="0">
-            <LayoutButtons Face="ResearchSignifierFade" Type="AbilCmd" AbilCmd="DarkShrineResearch,Research7" Row="1" Column="4"/>
-            <LayoutButtons Face="SignifierPassive" Type="Passive" Requirements="HaveVorazunCommander" Row="1" Column="2"/>
+            <LayoutButtons index="16" Face="ZeratulDarkTemplarBlink" Requirements="HaveZeratulArtifactTier1AndDarkShine" Row="2" Column="0"/>
+            <LayoutButtons index="17" Face="ResearchZeratulZealotBlinkHeal" Requirements="HaveZeratulArtifactTier2AndDarkShine" Row="2"/>
+            <LayoutButtons index="18" Face="ResearchZeratulDarkTemplarShadowFury" Requirements="HaveZeratulArtifactTier3AndDarkShine" Column="2"/>
+            <LayoutButtons index="19" Face="SignifierPassive" Requirements="HaveVorazunCommander" Row="1"/>
+            <LayoutButtons index="20">
+                <Face value="ResearchSignifierFade"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DarkShrineResearch,Research7"/>
+                <Requirements value=""/>
+                <Row value="1"/>
+                <Column value="4"/>
+            </LayoutButtons>
         </CardLayouts>
         <TechTreeUnlockedUnitArray value="HighTemplarShakuras"/>
+    </CUnit>
+    <!-- VoidDarkTemplarDeepShadows -->
+    <CUnit id="DarkTemplarShakuras">
+        <CardLayouts index="0">
+            <LayoutButtons Face="DarkArchonMergeSelection" Type="AbilCmd" AbilCmd="DarkArchonMerge,SelectedUnits" Row="2" Column="3"/>
+        </CardLayouts>
+        <!--HotkeyCategory value="Unit/Category/ProtossNerazim"/-->
     </CUnit>
     <CUnit id="Factory">
         <CardLayouts index="0">
@@ -121,9 +142,16 @@
             <LayoutButtons index="6" Face="CripplingPsionicStorm" AbilCmd="PsiStormShakuras,Execute" Column="1"/>
             <LayoutButtons index="7" Face="Enshroud" AbilCmd="Enshroud,Execute" Column="0"/>
             <LayoutButtons index="8" Face="SignifierFade" AbilCmd="SignifierFade,Execute" Column="2"/>
-            <LayoutButtons index="9" Face="HaveSignifierFullStartingEnergy" Type="Passive" AbilCmd="" Requirements="HaveDarkArchonFullStartingEnergy" Column="3"/>
-            <LayoutButtons index="10" removed="1"/>
-            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="9">
+                <Face value="HaveSignifierFullStartingEnergy"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveDarkArchonFullStartingEnergy"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="10" Face="DarkArchonMergeSelection" Type="AbilCmd" AbilCmd="DarkArchonMerge,SelectedUnits" Requirements=""/>
+            <LayoutButtons index="11" Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Column="4"/>
         </CardLayouts>
         <AbilArray index="3" Link="Warpable"/>
         <AbilArray index="4" Link="ProgressRally"/>
@@ -131,6 +159,7 @@
         <AbilArray index="6" Link="attack"/>
         <AbilArray index="7" Link="Enshroud"/>
         <AbilArray index="8" Link="SignifierFade"/>
+        <AbilArray Link="DarkArchonMerge"/>
     </CUnit>
     <CUnit id="HighTemplarNerazimWeapon" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>

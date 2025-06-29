@@ -7,7 +7,6 @@
         <Model value="ThorAAAttackLaunchLance"/>
         <Scale value="0.750000"/>
     </CActorModel>
-    <!-- Corsair          -->
     <CActorUnit id="CorsairMP">
         <On Terms="Behavior.WarpInEffect15.On" Send="ModelSwap CorsairMPWarpInStargate"/>
         <On Terms="Behavior.WarpInEffect15.On" Send="$Spell"/>
@@ -29,7 +28,83 @@
         <HostSiteOps Ops="SOpAttachWeapon02"/>
         <Model value="CycloneLazer"/>
     </CActorModel>
-    <!-- VoidDarkTemplarDeepShadows -->
+    <CActorUnit id="DarkArchon">
+        <Remove Send="Create"/>
+    </CActorUnit>
+    <CActorBeamSimple id="DarkArchonNerazimAttackBeam">
+        <Macros value="ActionTargetTeleportDestroy"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+    </CActorBeamSimple>
+    <CActorAction id="DarkArchonNerazimAttack" parent="GenericAttack" effectAttack="DarkArchonNerazimWeaponDamage">
+        <LaunchAssets Sound="Archon_AttackLaunch"/>
+        <BeamScope value="Caster"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance VoidRaySOpForwardLaunch"/>
+        <ImpactMap index="None" Model="" Sound="Archon_AttackImpact"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+    </CActorAction>
+    <CActorUnit id="DarkArchonNerazim" parent="GenericUnitBase" unitName="DarkArchon">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="UnitPortrait.*.Customize; IsStatus Variation 1" Send="PortraitCustomize ArchonNerazim2Portrait"/>
+        <On Terms="UnitPortrait.*.Customize; IsStatus Variation 0" Send="PortraitCustomize ArchonNerazimPortrait"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundLarge"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Target="ArchonAttackBeam" Send="Destroy"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="Abil.attack.ReadyStop" Target="ArchonAttackBeam" Send="Destroy"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.*.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Archon_Land"/>
+        <On Terms="Abil.DarkArchonConfusion.SourceCastStart" Send="AnimPlay Confusion Attack,02"/>
+        <On Terms="Abil.DarkArchonConfusion.SourceCastStart" Send="Create DarkArchonConfusionCastModel"/>
+        <On Terms="Abil.DarkArchonMerge.Stop" Send="AnimPlay Work Stand,Work,End"/>
+        <On Terms="UnitBirth; IsStatus Variation 0" Send="ModelSwap ArchonNerazim 0"/>
+        <On Terms="UnitBirth; IsStatus Variation 1" Send="ModelSwap ArchonNerazim 1"/>
+        <On Terms="ModelSwap; IsStatus Variation 0" Send="SetWireframe 0 Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 1" Send="SetWireframe 0 Assets\Textures\wireframe-protoss-shadowarchon01.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 0" Send="SetWireframeShield 0 Assets\Textures\wireframe-protoss-shadowarchon00-shield01.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 0" Send="SetWireframeShield 1 Assets\Textures\wireframe-protoss-shadowarchon00-shield02.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 0" Send="SetWireframeShield 2 Assets\Textures\wireframe-protoss-shadowarchon00-shield03.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 1" Send="SetWireframeShield 0 Assets\Textures\wireframe-protoss-shadowarchon01-shield1.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 1" Send="SetWireframeShield 1 Assets\Textures\wireframe-protoss-shadowarchon01-shield2.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 1" Send="SetWireframeShield 2 Assets\Textures\wireframe-protoss-shadowarchon01-shield3.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 0" Send="SetGroupIcon 0 Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
+        <On Terms="ModelSwap; IsStatus Variation 1" Send="SetGroupIcon 0 Assets\Textures\wireframe-protoss-shadowarchon01.dds"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="DarkArchonNerazimMerge"/>
+        <DeathArray index="Normal" ModelLink="ArchonNerazimDeath" SoundLink="Archon_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="ProtossMediumUnitDeath" SoundLink="Archon_Explode"/>
+        <DeathCustoms ModelLink="DarkProtossArchonDeath" Name="DarkProtoss"/>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathLarge" Name="Hallucination"/>
+        <PlacementModel value="DarkArchonPlacement"/>
+        <PortraitModel value="ArchonNerazimPortrait"/>
+        <AbilSoundArray AbilCmd="DarkArchonMindControl,Execute" Sound="DarkArchon_MindControlVO"/>
+        <BarOffset value="120"/>
+        <BarWidth value="66"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>
+        <HighlightTooltip value="Unit/Name/DarkArchonNerazim"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Birth" value=""/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-shadowarchon00-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-shadowarchon00-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-shadowarchon00-shield03.dds"/>
+        </WireframeShield>
+        <Model value="ArchonNerazim"/>
+    </CActorUnit>
     <CActorUnit id="DarkTemplarShakuras">
         <On Terms="UnitPortrait.*.Customize; ModelVariation 1" Send="PortraitCustomize DarkTemplarNerazim2Portrait"/>
         <On Terms="UnitPortrait.*.Customize; ModelVariation 0" Send="PortraitCustomize DarkTemplarNerazimPortrait"/>

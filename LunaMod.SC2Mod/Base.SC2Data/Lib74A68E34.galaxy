@@ -217,6 +217,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         if (auto560DABDD_val == "ProtossArtanis") {
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
         }
+        else if (auto560DABDD_val == "ProtossVorazun") {
+            TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, true);
+        }
         else {
         }
     }
@@ -257,7 +260,36 @@ bool lib74A68E34_gt_ArtanisMothershipWarpHaste_Func (bool testConds, bool runAct
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_ArtanisMothershipWarpHaste_Init () {
     lib74A68E34_gt_ArtanisMothershipWarpHaste = TriggerCreate("lib74A68E34_gt_ArtanisMothershipWarpHaste_Func");
+    TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, false);
     TriggerAddEventUnitTrainProgress(lib74A68E34_gt_ArtanisMothershipWarpHaste, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: VorazunShadowArchonGender
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VorazunShadowArchonGender_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetType(EventUnit()) == "HighTemplarShakuras")) {
+        ActorSend(libNtve_gf_MainActorofUnit(EventUnitCreatedUnit()), "StatusSet Variation 1");
+        libNtve_gf_UnitSetVariation(EventUnitCreatedUnit(), "ArchonNerazimMerge", 1, "");
+    }
+    else {
+        ActorSend(libNtve_gf_MainActorofUnit(EventUnitCreatedUnit()), "StatusSet Variation 0");
+        libNtve_gf_UnitSetVariation(EventUnitCreatedUnit(), "ArchonNerazimMerge", 0, "");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VorazunShadowArchonGender_Init () {
+    lib74A68E34_gt_VorazunShadowArchonGender = TriggerCreate("lib74A68E34_gt_VorazunShadowArchonGender_Func");
+    TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_VorazunShadowArchonGender, null, "DarkArchonMerge", null);
 }
 
 void lib74A68E34_InitTriggers () {
@@ -265,6 +297,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
+    lib74A68E34_gt_VorazunShadowArchonGender_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
