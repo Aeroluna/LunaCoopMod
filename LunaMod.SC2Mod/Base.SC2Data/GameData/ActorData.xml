@@ -583,6 +583,90 @@
     <CActorSiteOpAttach id="ThorAttach330mm">
         <AttachQuery Methods="AMFilterWeaponSetA2 AMPatternThor330mmBarrageCannons"/>
     </CActorSiteOpAttach>
+    <CActorUnit id="ZealotShakuras">
+        <Model value="ZealotNerazim"/>
+        <BuildModel value="ZealotNerazimWarpIn"/>
+        <DeathArray index="Normal" ModelLink="ZealotNerazimDeath"/>
+        <PlacementModel value="ZealotNerazimPlacement"/>
+        <PortraitModel value="ZealotNerazimPortrait"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-centurion-shakuras.dds"/>
+    </CActorUnit>
+    <CActorUnit id="StalkerShakuras">
+        <Model value="StalkerNerazim"/>
+        <BuildModel value="StalkerNerazimWarpIn"/>
+        <DeathArray index="Normal" ModelLink="StalkerNerazimDeath"/>
+        <PlacementModel value="StalkerNerazimPlacement"/>
+        <PortraitModel value="StalkerNerazimPortrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-stalker-shakuras-ds.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-stalker-shakuras-ds.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-stalker-shakuras-ds.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-stalker-shakuras-ds-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-stalker-shakuras-ds-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-stalker-shakuras-ds-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="VorazunShadowGuard">
+        <Model value="DarkTemplar_Golden"/>
+        <DeathArray index="Normal" ModelLink="DarkTemplar_Golden_Death"/>
+        <PortraitModel value="DarkTemplar_Golden_Portrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-golden.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield01.dds"/>
+            <Image index="1" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield02.dds"/>
+            <Image index="2" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="VoidRayShakuras">
+        <Model value="VoidRayNerazim"/>
+        <DeathArray index="Normal" ModelLink="VoidRayNerazimDeath"/>
+        <PortraitModel value="VoidRayNerazimPortrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-voidray-reforged-ds.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-voidray-reforged-ds-nerazim.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-voidray-reforged-ds.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-voidray-reforged-ds-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-voidray-reforged-ds-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-voidray-reforged-ds-shield03.dds"/>
+        </WireframeShield>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathLarge" Name="Hallucination"/>
+        <DeathCustoms ModelLink="DarkVoidRayDeath" Name="DarkProtoss"/>
+        <DeathCustoms>
+            <ActorModel value="VoidRayDeathRagdoll"/>
+            <ModelLink value="VoidRayNerazimDeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="Basic" Model="ProtossTinyRobotSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <On index="96" Send="ModelSwap VoidRayNerazimWarpInStargate"/>
+        <On index="98" Send="ModelSwap VoidRayNerazim"/>
+    </CActorUnit>
     <!-- IMPORTED -->
     <CActorEventMacro id="GimbalZMacro">
         <Supporter Subject="_Unit"/>
