@@ -27,6 +27,11 @@
     <CAbilEffectTarget id="DarkTemplarVoidStasis">
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="FactoryTrain">
+        <InfoArray index="Train25">
+            <Button State="Restricted"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilResearch id="FleetBeaconResearch">
         <InfoArray index="Research19" Time="80" Upgrade="VoidRaySpeedUpgrade">
             <Resource index="Minerals" value="100"/>
@@ -34,6 +39,30 @@
             <Button DefaultButtonFace="ResearchVoidRaySpeedUpgrade" State="Restricted" Requirements="LearnVoidRayFluxVanes"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilResearch id="FusionCoreResearch">
+        <InfoArray index="Research3" Time="50" Upgrade="MedivacCaduceusReactor">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchMedivacEnergyUpgrade" Requirements="LearnCaduceusReactor"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilEffectTarget id="MedivacHeal">
+        <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedivacHealRaynor" parent="MedivacHeal">
+        <Name value="Abil/Name/MedivacHealRaynor"/>
+        <Effect index="0" value="MedivacHealACSwitch"/>
+        <CmdButtonArray index="Execute" State="Restricted" Requirements="NotHaveStabilizerMedPacks"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedivacHealRaynorPlusMech" parent="MedivacHealRaynor">
+        <Name value="Abil/Name/MedivacHeal"/>
+        <Effect index="0" value="MedicHealACSwitch"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <CmdButtonArray index="Execute" State="Available" Requirements="HaveStabilizerMedPacks"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="MedivacSpeedBoost">
+        <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="MothershipArtanisMassRecall" parent="AlarakMothershipMassRecall">
         <Name value="Abil/Name/MothershipArtanisMassRecall"/>
         <DataCollection value="MothershipArtanisMassRecall"/>

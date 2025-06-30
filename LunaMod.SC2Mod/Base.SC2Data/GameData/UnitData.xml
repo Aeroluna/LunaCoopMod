@@ -120,6 +120,13 @@
             <LayoutButtons index="28" Face="ResearchVoidRaySpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research19" Requirements="" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="FusionCore">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="ResearchMedivacEnergyUpgrade" AbilCmd="FusionCoreResearch,Research3"/>
+            <LayoutButtons index="8" Face="ResearchHHBomberNapalm" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research6" Requirements=""/>
+            <LayoutButtons Face="UnlockHHBomberNapalmPayload" Type="Passive" Requirements="HornerHanLevel13" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Hellion">
         <CardLayouts index="0">
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
@@ -160,6 +167,17 @@
     <CUnit id="HighTemplarNerazimWeapon" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="Medivac">
+        <AbilArray index="5" Link="WarpableNova"/>
+        <AbilArray index="6" Link="VehicleAfterburners"/>
+        <AbilArray Link="MedivacHealRaynor"/>
+        <AbilArray Link="MedivacHealRaynorPlusMech"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" AbilCmd="MedivacHealRaynor,Execute"/>
+            <LayoutButtons Face="Heal" Type="AbilCmd" AbilCmd="MedivacHealRaynorPlusMech,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="MothershipArtanis" parent="Mothership">
         <Name value="Unit/Name/MothershipArtanis"/>
@@ -230,6 +248,11 @@
     </CUnit>
     <CUnit id="Starport">
         <CardLayouts index="0">
+            <LayoutButtons index="0" Column="4"/>
+            <LayoutButtons index="1" Row="1" Column="0"/>
+            <LayoutButtons index="2" Row="1" Column="0"/>
+            <LayoutButtons index="14" Column="1"/>
+            <LayoutButtons index="16" Column="3"/>
             <LayoutButtons index="19">
                 <Face value="CommanderPrestigeSwannHerculesLocked"/>
                 <Type value="Passive"/>
@@ -242,7 +265,7 @@
             <LayoutButtons index="21" Face="TrainRavenNova" AbilCmd="StarportTrainNova,Train2" Column="2"/>
             <LayoutButtons index="22" Face="VikingFighter" AbilCmd="StarportTrain,Train5"/>
             <LayoutButtons index="23" Face="TrainLiberatorNova" Type="AbilCmd" AbilCmd="StarportTrainNova,Train3" Requirements="" Row="0"/>
-            <LayoutButtons index="24" Face="OrbitalDropPodsPassive" Requirements="HaveOrbitalDropPods"/>
+            <LayoutButtons index="24" Face="OrbitalDropPodsPassive" Requirements="HaveOrbitalDropPods" Column="1"/>
             <LayoutButtons index="25" Face="MasteryNovaArmyAttackSpeedAppend" Requirements="HaveMasteryNovaArmyAttackSpeed" Column="0"/>
             <LayoutButtons Face="MasteryNovaArmyOOCRegenSpeedAppend" Type="Passive" Requirements="HaveMasteryNovaArmyOOCRegenSpeed" Row="1" Column="1"/>
         </CardLayouts>

@@ -72,6 +72,23 @@
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectEnumArea id="MedivacHealACSearch">
+        <SearchFilters value="Biological,Structure,Visible;Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="RaynorMedivacSafeguardSet"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="MedivacHealACSwitch">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotStasis"/>
+        <ValidatorArray value="UnitIsBiologicalOrMechanical"/>
+        <ValidatorArray value="IsBiologicalOrStabilizerMedPacksPurchased"/>
+        <ValidatorArray value="UnitIsBiologicalOrNotStructure"/>
+        <ValidatorArray value="TargetLifeNotFull"/>
+        <ValidatorArray value="NotUnrepairable"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="NotWarpingInAnywhere"/>
+        <CaseArray Validator="IsStructure" Effect="MedivacHealACSearch"/>
+        <CaseDefault value="RaynorMedivacSafeguardSet"/>
+    </CEffectSwitch>
     <CEffectSet id="MothershipArtanisBeamAttack">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="MothershipArtanisBeamSet"/>
@@ -271,6 +288,42 @@
         <EffectArray index="0" value="PsiStormNerazimApplyBehavior"/>
         <EffectArray index="1" value="PsiStormNerazimApplyBehaviorCripple"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="RaynorMasteryHealMedivacSecondaryCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeling" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="RaynorMasteryHealMedivacSecondarySearch"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="RaynorMasteryHealMedivacSecondarySearch">
+        <ValidatorArray value="HaveMedicSecondaryHeal"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <AreaArray MaxCount="1" Radius="2" Effect="RaynorMasteryHealMedivacSecondary"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreateHealer id="RaynorMasteryHealMedivacSecondary">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="NotVortexd"/>
+        <ValidatorArray value="NotStasis"/>
+        <ValidatorArray value="UnitIsBiologicalOrMechanical"/>
+        <ValidatorArray value="IsBiologicalOrStabilizerMedPacksPurchased"/>
+        <ValidatorArray value="UnitIsBiologicalOrNotStructure"/>
+        <ValidatorArray value="NotUnrepairable"/>
+        <Flags index="Channeled" value="0"/>
+        <PeriodCount value="8"/>
+        <DrainVital value="Energy"/>
+    </CEffectCreateHealer>
+    <CEffectSet id="RaynorMedivacSafeguardSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="MedivacRaynorHeal"/>
+        <EffectArray value="RaynorMedicSafeguardSwitch"/>
+        <EffectArray value="RaynorMasteryHealMedivacSecondaryCP"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="SignifierFade">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
@@ -334,4 +387,16 @@
     <CEffectApplyBehavior id="VortexArtanisExit">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
+    <CEffectCreateHealer id="MedivacRaynorHeal">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="NotVortexd"/>
+        <ValidatorArray value="DisableMedicHealing"/>
+        <ValidatorArray value="NotStasis"/>
+        <DrainVital value="Energy"/>
+        <DrainVitalCostFactor value="0.33"/>
+        <RechargeVitalRate value="9"/>
+    </CEffectCreateHealer>
 </Catalog>

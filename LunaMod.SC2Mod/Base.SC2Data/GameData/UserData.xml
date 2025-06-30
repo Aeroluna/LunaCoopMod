@@ -132,6 +132,9 @@
     </CUser>
     <CUser id="PlayerCommanders">
         <Instances Id="[Override]TerranRaynor">
+            <AbilCmd Abil="MedivacHealRaynor">
+                <Field Id="DefaultAbilityCommands" Index="8"/>
+            </AbilCmd>
             <GameLink GameLink="VoicePackProtossRaynor">
                 <Field Id="DefaultVoicePack"/>
             </GameLink>
@@ -361,6 +364,11 @@
         </Instances>
         <Instances Id="[Override]PlanetaryFortress">
             <User Type="PlayerCommanders" Instance="TerranSwann">
+                <Field Id="Commander"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]Medivac">
+            <User Type="PlayerCommanders" Instance="TerranRaynor">
                 <Field Id="Commander"/>
             </User>
         </Instances>

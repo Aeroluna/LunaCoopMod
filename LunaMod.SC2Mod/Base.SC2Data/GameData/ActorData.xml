@@ -3,11 +3,46 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="Medivac">
+        <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
+        <On Terms="Behavior.VehicleAfterburners.On" Send="StatusSet Turbo 1"/>
+        <On Terms="Behavior.VehicleAfterburners.Off" Send="StatusSet Turbo 0"/>
+        <On Terms="Abil.MedivacHealRaynor.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.MedivacHealRaynor.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
+    </CActorUnit>
+    <CActorBeamSimple id="MedivacHealBeamRev1">
+        <On Terms="Effect.MedivacRaynorHeal.TargetStart" Send="Create"/>
+        <On Terms="Effect.MedivacRaynorHeal.TargetStop" Send="Destroy"/>
+    </CActorBeamSimple>
+    <CActorModel id="MedivacHealModelRev1">
+        <On Terms="Effect.MedivacRaynorHeal.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.MedivacRaynorHeal.TargetStop; At Target" Send="Destroy"/>
+    </CActorModel>
+    <CActorSound id="MedivacHealSoundRev1">
+        <On Terms="Effect.MedivacRaynorHeal.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.MedivacRaynorHeal.TargetStop; At Target" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="Medivac_IgniteAfterburners">
+        <On Terms="Behavior.VehicleAfterburners.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Medivac_IgniteAfterburners2">
+        <On Terms="Behavior.VehicleAfterburners.On" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="RaynorMasteryHealSecondary">
+        <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStop; At Target" Send="Destroy"/>
+    </CActorModel>
     <CActorUnit id="StukovInfestedBanshee">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="Banshee">
+        <On Terms="Behavior.VehicleAfterburners.On" Send="Create BansheeBoostModel"/>
+        <On Terms="Behavior.VehicleAfterburners.Off" Target="BansheeBoostModel" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="BansheeBoostModel" parent="ModelAddition">
         <Model value="BansheeBoost"/>
