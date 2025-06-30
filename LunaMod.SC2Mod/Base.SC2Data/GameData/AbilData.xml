@@ -7,6 +7,13 @@
         <CastIntroTime index="0" value="0.75"/>
         <FinishTime index="0" value="0.75"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="BurrowStukovInfestedBansheeDown">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="CommanderPrestigeStukovBansheesDeploy">
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="CorsairMPDisruptionWeb">
         <CmdButtonArray index="Execute" Requirements=""/>
     </CAbilEffectTarget>
@@ -245,6 +252,13 @@
         <CursorEffect value="EnshroudSearch"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Enshroud"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="SIStarportResearch">
+        <InfoArray index="Research7" Time="60" Upgrade="InfestedBansheeSpeedUpgrade">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchInfestedBansheeSpeedUpgrade" Requirements="LearnInfestedBansheeRotwingRotors"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="ShadowGuardVoidStasis">
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
     </CAbilEffectTarget>

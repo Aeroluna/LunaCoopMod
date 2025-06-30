@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorSound id="ActorSound_Banshee_MovementBoost">
+        <Sound value="Banshee_MovementBoost"/>
+    </CActorSound>
+    <CActorUnit id="StukovInfestedBanshee">
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+    </CActorUnit>
+    <CActorModel id="BansheeBoostModel" parent="ModelAddition">
+        <Model value="BansheeBoost"/>
+        <HostSiteOps Ops="SOpAttachTarget"/>
+    </CActorModel>
     <CActorModel id="330mmBarrageCannonsLaunch" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.330mmBarrageCannonsSearch.Impact; At Caster" Send="Create"/>
         <Host Subject="_Selectable"/>
@@ -436,9 +449,6 @@
     <CActorSound id="VortexDeathSound">
         <On Terms="Effect.VortexArtanisCreatePersistent" Send="Create"/>
     </CActorSound>
-    <!--                                                                                         -->
-    <!-- Vortex                                                                                  -->
-    <!--                                                                                         -->
     <CActorSimple id="VortexExitOpacity">
         <On Terms="Behavior.VortexArtanisExitEnemy.On" Send="Create"/>
         <On Terms="Behavior.VortexArtanisExitEnemy; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
