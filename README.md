@@ -154,6 +154,13 @@ For the prestige focused on stasising things, the P2 just makes Stasis Wards sad
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
 
+## Stukov
+
+- Added Rotwing Rotors upgrade which increases Infested Banshee speed by 2.
+- Changed Infested Banshee P2 Deploy ability to allow casting while moving.
+
+These two simple changes make playing P2 infinitely smoother to play.
+
 ## Credits
 
 - Warp Stargate Alternate - DaveSpectre
