@@ -1,0 +1,174 @@
+# LunaMod
+
+A set of changes and additions to the StarCraft 2 Co-op mode.
+
+## General
+
+- Added console skins for all commanders.
+- Added voice packs for all commanders.
+
+Some console skins were missing for commanders. Many commander have corresponding voice packs, why not use them?
+
+- Changed Shield Batteries to be accessible Artanis, Vorazun, and Fenix.
+- Changed Shield Battery to have 2 more range.
+- Changed Probe build command card to match Versus (Specifically swapped Khaydarin Monolith with Shield Battery).
+
+Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
+
+## Raynor
+
+- Changed Ignite Afterburners to increase acceleration by 1000.
+- Added Medivacs.
+  - Heal more efficiently than medics.
+  - Added Caduceus Reactor upgrade available at the Fusion Core which doubles energy regen for Medivacs.
+  - Changed Stabilizer Medpacks to also affect medivacs.
+- Reordered Starport command card to match Versus.
+
+Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1.
+
+## Artanis
+
+- Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Changed Phoenix price from 150/100 to 150/50.
+
+Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss
+
+- Added the Mothership.
+  - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
+  - Uses energy to cast abilities.
+  - Can use Mass Recall for 50 energy.
+    - Identical effect to Alarak's Mass Teleport.
+  - Can use Vortex for 50 energy.
+    - Similar to Wings of Liberty Vortex.
+    - Enemy units no longer get invulnerability while leaving the vortex (Still stunned).
+    - Friend units are no longer stunned while leaving the vortex (Still invulnerable).
+    - Deals up to 100 damage to enemy units within the Vortex.
+    - Damage doubles with P1.
+  - Can use Planet Cracker every 360 seconds.
+    - Briefly charges up before scorching the ground beneath the Mothership for 20 seconds, causing 1200 (1800 vs Armored) damage in an area below. Deals more damage closer to the beam.
+    - Damage doubles with P1.
+  - Provides a power field nearby.
+  - Uses Cloaking Field to cloak nearby friendly units/structures.
+
+An iconic unit thats missing from co-op, is now back. Mass Recall should help with Artanis's mobility problems. Vortex no longer grants invulnerability to enemy units so Archon toilets are back on the menu. Planet Cracker is such an iconic ability, it had to be added. Projecting a constant power field stays in line with Artanis's design of quickly warping in reinforcements during combat.
+
+- Increased Guardian Shell Life and Shield Regeneration mastery from 0.5% per point to 1.5% per point, increasing max from 15% to 45%.
+
+The Shield Overcharge mastery was so overwhelmingly better, this should help it be more competitive.
+
+## Swann
+
+- Changed Thors to have their High Impact Payload mode from Versus available for single-target long-range damage.
+- Changed Multi-Lock Weapons System upgrade to additionally affect the Thor.
+- Changed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion armor by 60.
+
+These changes should make Thors much more competitive. Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
+
+- Changed Cyclones to visually have their red lazer sights with Mag-Field and large missiles when locking on from Versus.
+- Changed Cyclone's Lock On to no longer be affected by armor.
+
+The little missile that was fired during Lock On was just sad, now Cyclones look as cool as they do in Versus. Also Lock On is a spell, and should not be affected by armor.
+
+- Added Widow Mines.
+  - Added Hellburst Payload upgrade which increases Sentinel Missile direct damage by 20 and splash damage by 80.
+  - Changed Cyclone's Targeting Optics upgrade to additionally increasing Sentinel Missile range by 3.
+
+Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
+
+- Changed Factory command card to match Versus.
+- Added Smart Servos upgrade which increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
+- Added Overdrive Actuators upgrade at the Armory which increases ground vehicle movement speed by 20% and ship movement speed by 10%.
+- Added Pulse-Loop Capacitors upgrade at the Armory which decreases all unit cooldowns by 20%.
+
+These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
+
+- Added the ability to morph Orbital Commands which have access to Calldown: Extra Supplies and Scanner Sweep.
+
+Scanner Sweeps should help Cyclones keep their Lock On active and provide detection without having to rely on the slow Science Vessels. Additionally, Calldown: Extra Supplies to help with the constant supply blocks on Swann.
+
+- Added the ability to morph Planetary Fortresses.
+  - Changed Swann level 3 perk to upgrade Planetary Fortresses to Big Berthas, increasing damage and splash range.
+  - Planetaries are considered turrets for all turret upgrades.
+
+An iconic defensive Terran structure for the defensive Terran commander.
+
+- Changed Defense Matrix to no longer require research.
+
+https://www.maguro.one/2017/10/upgrades-in-co-op.html
+
+- Added P4: Rolling Thunder
+  - Advantage: Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade. Cyclones can use Lock On while moving. Only Thor anti-air weapons can attack while moving. Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.
+  - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
+
+Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
+
+## Vorazun
+
+- Changed Vorazun to use custom Nerazim skinset.
+
+Green warp ins! Dark Templar now use both variants and Shadow Guard use the Golden skinset. Centurions, Stalkers, Dark Templar, Dark Archons, Corsairs, and Void Rays are given a makeover. Also changes some icons.
+
+- Added Vespene Crystalization, increasing vespene harvest rate by 25%.
+
+Vorazun is one of the most vespene limited commanders. Increasing her vespene harvest rate should help with the large amount of upgrades she needs and her extremely gas heavy army.
+
+- Changed Vorazun level 1 perk to additionally increase the shields of all combat units (except Dark Templar) by 40.
+
+Why does the level 1 only affect Dark Templar? This should help increase the viability of all her other units.
+
+- Changed Disruption Web to no longer require research.
+- Added Flux Vanes upgrade which increases the movement speed and acceleration of Void Rays.
+
+Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
+
+- Added Signifiers, an astral-themed High Templar.
+  - Available after building a Dark Shrine.
+  - Can use Aurora Veil for 50 energy.
+    - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
+  - Can use Astral Storm for 75 energy.
+    - Does less damage in a large area than Psionic Storm for 20 seconds.
+    - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
+    - Applies P2, dealing massive damage.
+  - Can use Fading Star after researching at a Dark Shrine.
+    - Grants super cloak, 50% increased movement speed, and ignores collision for 4 seconds.
+    - Can be autocast when damaged.
+  - Changed Argus Crystal upgrade to additionally grant Signifiers full energy.
+
+A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. The addition of a damaging spellcaster also helps improve the value of increased energy regeneration from Vorazun's level 15 perk.
+
+- Changed Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
+- Dark Archon weapon damage increased to 25 (+10 vs Biological)
+
+Should make massing Dark Archons more viable instead of watching them tickle units.
+
+- Changed Dark Archon skin.
+  - Visually green now instead of red.
+
+The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
+
+- Changed P2 to reduce Stasis Ward duration by 50% instead of 75%
+
+For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This should help with that.
+
+- Changed Void Stasis to target air units and no longer make the unit invulnerable.
+
+Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
+
+## Credits
+
+- Warp Stargate Alternate - DaveSpectre
+- Protoss Nerazim Buildings Pack - Kazor
+- Nerazim Buildings Warp In Pack (Green) - Herdal
+- Nerazim Corsair V2 - DaveSpectre/HammerTheTank107
+- Signifier - Nerazim High Templar (Based on concept by Phill-Art) - DaveSpectre
+- Void Ray Reforged (Updated Void Ray model) - DaveSpectre/HammerTheTank107
+- Red Ascendant Shadow Trail - DaveSpectre
+- Shadow Guard / Shakuras Signifier (Thrikodias version) - DaveSpectre/Thrikodias
+- Shadow Guard / Shakuras Centurion - DaveSpectre
+- Shadow Guard / Shakuras Stalker - DaveSpectre
+- Improved Dark Templar Models - DaveSpectre
+- Winged Archon / Dark protoss Archon portrait - DaveSpectre
+- Nerazim Shadow Archon - DaveSpectre
+- Female Nerazim Shadow Archon - DaveSpectre
+- Mothership Placement & Warp In - DaveSpectre
+- Nerazim Probe - DaveSpectre
