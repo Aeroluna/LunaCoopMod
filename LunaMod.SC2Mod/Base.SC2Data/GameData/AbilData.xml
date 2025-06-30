@@ -7,36 +7,26 @@
         <CastIntroTime index="0" value="0.75"/>
         <FinishTime index="0" value="0.75"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CorsairMPDisruptionWeb">
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
     <CAbilResearch id="DarkShrineResearch">
         <InfoArray index="Research7" Time="90" Upgrade="SignifierFade">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="ResearchSignifierFade" State="Restricted" Requirements="LearnSignifierFade"/>
         </InfoArray>
-        <!--InfoArray index="Research7" Time="90" Upgrade="ZeratulZealotBlinkHeal">
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
-            <Button DefaultButtonFace="ResearchZeratulZealotBlinkHeal" State="Restricted" Requirements="LearnZeratulZealotBlinkHealUpgrade"/>
-        </InfoArray>
-        <InfoArray index="Research9" Time="90" Upgrade="ZeratulDarkTemplarShadowFury">
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
-            <Button DefaultButtonFace="ResearchZeratulDarkTemplarShadowFury" State="Restricted" Requirements="LearnZeratulDarkTemplarShadowFury"/>
-        </InfoArray>
-        <InfoArray index="Research10" Time="90" Upgrade="ZeratulZealotDarkTemplar">
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
-            <Button DefaultButtonFace="ResearchZeratulZealotDarkTemplar" State="Restricted" Requirements="LearnZeratulZealotDarkTemplar"/>
-        </InfoArray>
-        <InfoArray index="Research11" Time="90" Upgrade="ZeratulBlinkDarkTemplar">
-            <Resource index="Minerals" value="100"/>
-            <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="ResearchZeratulBlinkDarkTemplar" State="Restricted" Requirements="LearnZeratulBlinkDarkTemplarUpgrade"/>
-        </InfoArray-->
     </CAbilResearch>
     <CAbilEffectTarget id="DarkTemplarVoidStasis">
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="FleetBeaconResearch">
+        <InfoArray index="Research19" Time="80" Upgrade="VoidRaySpeedUpgrade">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchVoidRaySpeedUpgrade" State="Restricted" Requirements="LearnVoidRayFluxVanes"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="MothershipArtanisMassRecall" parent="AlarakMothershipMassRecall">
         <Name value="Abil/Name/MothershipArtanisMassRecall"/>
         <DataCollection value="MothershipArtanisMassRecall"/>
@@ -282,43 +272,8 @@
         <Range index="0" value="9"/>
         <CursorEffect index="0" value="VortexArtanisSearchArea"/>
     </CAbilEffectTarget>
-    <!--CAbilEffectInstant id="ExplosiveMissiles">-->
-    <!--        <EditorCategories value="AbilityorEffectType:Units"/>-->
-    <!--        <Effect index="0" value="JavelinMissileLaunchers"/>-->
-    <!--        <CastIntroTime value="4"/>-->
-    <!--        <ShowProgressArray index="Cast" value="1"/>-->
-    <!--        <CancelableArray index="Cast" value="1"/>-->
-    <!--        <UninterruptibleArray index="Cast" value="1"/>-->
-    <!--        <ProgressButtonArray index="Cast" value="ExplosiveMode"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="ExplosiveMode" Requirements="NotInExplosiveMode"/>-->
-    <!--        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>-->
-    <!--        <Activity value="Abil/Thor/ReArm"/>-->
-    <!--    </CAbilEffectInstant>-->
-    <!--    <CAbilEffectInstant id="ArmorpiercingMissiles">-->
-    <!--        <EditorCategories value="AbilityorEffectType:Units"/>-->
-    <!--        <Effect index="0" value="LanceMissileLaunchers"/>-->
-    <!--        <CastIntroTime value="4"/>-->
-    <!--        <ShowProgressArray index="Cast" value="1"/>-->
-    <!--        <CancelableArray index="Cast" value="1"/>-->
-    <!--        <UninterruptibleArray index="Cast" value="1"/>-->
-    <!--        <ProgressButtonArray index="Cast" value="ArmorpiercingMode"/>-->
-    <!--        <CmdButtonArray index="Execute" DefaultButtonFace="ArmorpiercingMode" Requirements="NotInArmorpiercingMode"/>-->
-    <!--        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>-->
-    <!--        <Activity value="Abil/Thor/ReArm"/>-->
-    <!--    </CAbilEffectInstant-->
     <CAbilMorph id="ThorAPMode">
         <InfoArray index="0">
-            <!--SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray-->
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="1.9"/>
             </SectionArray>
@@ -344,16 +299,6 @@
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Cancel" DefaultButtonFace=""/>
-        <!--SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray-->
     </CAbilMorph>
     <CAbilMorph id="UpgradeToPlanetaryFortress">
         <InfoArray index="0">
