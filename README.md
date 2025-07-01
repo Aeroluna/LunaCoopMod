@@ -187,3 +187,4 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Female Nerazim Shadow Archon - DaveSpectre
 - Mothership Placement & Warp In - DaveSpectre
 - Nerazim Probe - DaveSpectre
+- Alternate Medic & Medivac Portraits - miazmatic
