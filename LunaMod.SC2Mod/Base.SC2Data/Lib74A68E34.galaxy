@@ -1,6 +1,7 @@
 include "TriggerLibs/NativeLib"
 include "LibCOOC"
 include "LibCOUI"
+include "LibA8FDA37D"
 
 include "Lib74A68E34_h"
 
@@ -12,6 +13,7 @@ void lib74A68E34_InitLibraries () {
     libNtve_InitVariables();
     libCOOC_InitVariables();
     libCOUI_InitVariables();
+    libA8FDA37D_InitVariables();
 }
 
 // Custom Script
@@ -39,6 +41,39 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: TestCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(libA8FDA37D_gt_UT_FastBuild, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Cooldown, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Money, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Ally, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TestCommand_Init () {
+    lib74A68E34_gt_TestCommand = TriggerCreate("lib74A68E34_gt_TestCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_TestCommand, c_playerAny, "-test", true);
+}
+
 //--------------------------------------------------------------------------------------------------
 // Trigger: ExtraUpgrades
 //--------------------------------------------------------------------------------------------------
@@ -293,6 +328,7 @@ void lib74A68E34_gt_VorazunShadowArchonGender_Init () {
 }
 
 void lib74A68E34_InitTriggers () {
+    lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();

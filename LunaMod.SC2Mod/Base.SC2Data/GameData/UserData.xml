@@ -334,6 +334,38 @@
                 <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>
+        <Instances Id="[Override]CommanderPrestigeKerriganCreep">
+            <AbilCmd Abil="evolutionchamberresearch" Cmd="19">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <AbilCmd Abil="evolutionchamberresearch" Cmd="20">
+                <Field Id="DisableAbil" Index="1"/>
+            </AbilCmd>
+            <AbilCmd Abil="evolutionchamberresearch" Cmd="21">
+                <Field Id="DisableAbil" Index="2"/>
+            </AbilCmd>
+            <Int Int="1">
+                <Field Id="SuppressHero"/>
+            </Int>
+            <Unit Unit="Bogus">
+                <Field Id="DisableUnit"/>
+            </Unit>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep2">
+                <Field Id="UpgradeSupplements" Index="1"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep3">
+                <Field Id="UpgradeSupplements" Index="2"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep4">
+                <Field Id="UpgradeSupplements" Index="3"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
+                <Field Id="UpgradeSupplements" Index="5"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep5">
+                <Field Id="UpgradeSupplements" Index="4"/>
+            </User>
+        </Instances>
     </CUser>
     <CUser id="PlayerPrestigeUpgradeSupplements">
         <Instances Id="SwannMoving1">
@@ -342,6 +374,38 @@
             </GameLink>
             <GameLink GameLink="SwannKelMorianTurretUpgrades">
                 <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="KerriganCreep2">
+            <GameLink GameLink="CommanderPrestigeKerriganCreepZerglingHealth">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="HotSZerglingHealth">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="KerriganCreep3">
+            <GameLink GameLink="CommanderPrestigeKerriganCreepHydraliskHealth">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="HotSHydraliskHealth">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="KerriganCreep4">
+            <GameLink GameLink="CommanderPrestigeKerriganCreepBroodlordHealth">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="KerriganVoidCoopBroodlordSpeed">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="KerriganCreep5">
+            <GameLink GameLink="KerriganCommander">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <GameLink GameLink="K5TwoDrones2">
+                <Field Id="Supplement"/>
             </GameLink>
         </Instances>
     </CUser>

@@ -26,6 +26,14 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1.
 
+## Kerrigan
+
+- Changed P2.
+  - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
+  - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
+
+Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The twin drones upgraded is added to help ease the massive nerf to Kerrigan's early game.
+
 ## Artanis
 
 - Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
@@ -114,7 +122,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 
 - Changed Vorazun level 1 perk to additionally increase the shields of all combat units (except Dark Templar) by 40.
 
-Why does the level 1 only affect Dark Templar? This should help increase the viability of all her other units.
+This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
 - Changed Disruption Web to no longer require research.
 - Added Flux Vanes upgrade which increases the movement speed and acceleration of Void Rays.
@@ -142,7 +150,7 @@ A cut unit from the LOTV campaign reimagined. Astral Storm provides detection ou
 Should make massing Dark Archons more viable instead of watching them tickle units.
 
 - Changed Dark Archon skin.
-  - Visually green now instead of red.
+  - Visually green instead of red.
 
 The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
 

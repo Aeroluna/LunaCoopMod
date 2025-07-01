@@ -17,6 +17,8 @@ Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move or att
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
+Button/Name/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=Evolve Ability Efficiency
+Button/Name/CommanderPrestigeKerriganChainReactionResearchLocked=Evolve Chain Reaction
 Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
 Button/Name/CommanderPrestigeSwannMoving=Rolling Thunder
 Button/Name/CripplingPsionicStorm=Astral Storm
@@ -26,6 +28,7 @@ Button/Name/HaveSignifierFullStartingEnergy=Argus Crystal
 Button/Name/HellArmorThor=Infernal Plating
 Button/Name/HellburstPayload=Hellburst Payload
 Button/Name/HighTemplarNerazim=Warp In Signifier
+Button/Name/MasteryKerriganEnergyRegen=Kerrigan and Queen Energy Regeneration
 Button/Name/MothershipArtanis=Warp In Mothership
 Button/Name/MothershipArtanisMassTeleport=Mass Recall
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
@@ -51,6 +54,9 @@ Button/Tooltip/ACSwannCommandCenterUpgraded=Primary structure. Used to receive g
 Button/Tooltip/ACSwannEngineeringBay=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Missile Turrets from SCVs<n/>- Planetary Fortresses from Command Centers
 Button/Tooltip/ACSwannEngineeringBayUpgraded=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
 Button/Tooltip/AutomatedAssimilatorTextKicker5=<s val="Kicker_Refinery">+5</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
+Button/Tooltip/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=This upgrade is locked by your Commander Prestige.
+Button/Tooltip/CommanderPrestigeKerriganChainReactionResearchLocked=This upgrade is locked by your Commander Prestige.
+Button/Tooltip/CommanderPrestigeKerriganCreep=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Malignant Creep effectiveness increased by 100%. Queens are no longer slowed and may place Creep Tumors while off creep. Creep Tumors gain Super Cloak when burrowed.<n/><n/>All combat units gain 50% increased life. Drones morph in pairs.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Kerrigan is unavailable.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/>Cyclones can use Lock On while moving.<n/>Only Thor anti-air weapons can attack while moving.<n/>Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref="Effect,PsiStormNerazimPersistent,PeriodCount*Effect,PsiStormNerazimPersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,PsiStormNerazimDamage,Amount*(Effect,PsiStormNerazimPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Enemy units in the target area are revealed, have their movement speed reduced, and have up to 4 armor reduced. Does not affect friendly units.
 Button/Tooltip/CycloneLockOnDamageUpgrade=Increases the damage of Lock On by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
@@ -66,6 +72,7 @@ Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
 Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
 Button/Tooltip/MAFServosLiberator2=Raid Liberators transform between modes four times faster.
+Button/Tooltip/MasteryKerriganEnergyRegen=Increases the energy regeneration of Kerrigan and her Queens.
 Button/Tooltip/MasteryRaynorSignifierFadeDurationAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases duration by <c val="FFFF8A"><d ref="Effect,MasteryRaynorStimDurationDisplayDummy,Amount" precision="1"/></c> seconds.
 Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Recall, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all nearby units you control to target friendly unit or structure's location.</n></n><c val="#ColorAttackInfo">Can only target friendly units or structures.</c>
@@ -140,6 +147,7 @@ RequirementNode/Tooltip/CountUpgradeInfestedBansheeSpeedUpgradeCompleteOnly46056
 RequirementNode/Tooltip/CountUpgradeSignifierFadeCompleteOnly892173529=Research Fading Star at the Dark Shrine
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
 Skin/Name/VorazunCoop=VorazunCoop
+Unit/Name/CreepTumorQueenNoCreep=Creep Tumor
 Unit/Name/DarkArchonNerazim=Dark Archon
 Unit/Name/HighTemplarNerazimWeapon=High Templar Nerazim Weapon
 Unit/Name/HighTemplarShakuras=Signifier
@@ -149,6 +157,7 @@ Upgrade/Name/CommanderPrestigeSwannMoving=CommanderPrestigeSwannMoving
 Upgrade/Name/CommanderPrestigeSwannMovingTurretPrice=CommanderPrestigeSwannMovingTurretPrice
 Upgrade/Name/HellburstPayload=Hellburst Payload
 Upgrade/Name/InfestedBansheeSpeedUpgrade=Rotwing Rotors
+Upgrade/Name/K5TwoDronesKerrigan=K5 Two Drones
 Upgrade/Name/ProtossAirArmorsExtra=Protoss Air Armor Extra
 Upgrade/Name/ProtossAirArmorsExtraLevel1=Protoss Air Armor Extra Level 1
 Upgrade/Name/ProtossAirArmorsExtraLevel2=Protoss Air Armor Extra Level 2
