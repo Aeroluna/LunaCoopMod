@@ -68,6 +68,48 @@
         <AmmoUnit value="HighTemplarNerazimWeapon"/>
         <Movers Link="HighTemplarWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="KerriganBroodRazorTalonsDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <ArmorReduction value="1"/>
+        <Kind value="Melee"/>
+        <KindSplash value="Splash"/>
+        <Amount value="30"/>
+        <Death value="Eviscerate"/>
+        <ValidatorArray value="NotHasChainLightningUpgrade"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="KerriganBroodRazorTalonsDamageUpgraded">
+        <ValidatorArray value="HasK5ChainLightningUpgrade"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Kind value="Melee"/>
+        <KindSplash value="Splash"/>
+        <Amount value="30"/>
+        <Death value="Eviscerate"/>
+        <AreaArray Radius="0.4687" Fraction="1"/>
+        <AreaArray Radius="0.7812" Fraction="0.5"/>
+        <AreaArray Radius="1.25" Fraction="0.25"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="KerriganPsiBlastSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganBroodPsiBlastLaunchMissile"/>
+        <EffectArray value="KerriganPrimalRageSwitch"/>
+    </CEffectSet>
+    <CEffectSet id="KerriganRazorTalonsSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganBroodRazorTalonsDamage"/>
+        <EffectArray value="KerriganBroodRazorTalonsDamageUpgraded"/>
+        <EffectArray value="KerriganPrimalRageSwitch"/>
+    </CEffectSet>
     <CEffectDamage id="LanceMissileLaunchersDamage">
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
@@ -327,6 +369,29 @@
     <CEffectApplyBehavior id="SignifierFade">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="KerriganBroodPsiBlastLaunchMissile">
+        <ValidatorArray index="0" value="PsiDischargeLaunchMissileTargetFilters"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="KerriganBroodPsiBlastDamage"/>
+        <AmmoUnit value="KerriganBroodWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="KerriganBroodPsiBlastDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <ArmorReduction value="1"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <Amount value="30"/>
+        <Death value="Fire"/>
+        <AreaArray MaxCount="0" Radius="0.4687" Fraction="1"/>
+        <AreaArray MaxCount="0" Radius="0.7812" Fraction="0.5"/>
+        <AreaArray MaxCount="0" Radius="1.25" Fraction="0.25"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectDamage>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>

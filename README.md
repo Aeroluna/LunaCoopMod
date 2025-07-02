@@ -34,6 +34,8 @@ Medivacs are cool, what more needs to be said? The more efficient healing and in
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The twin drones upgraded is added to help ease the massive nerf to Kerrigan's early game.
 
+- Fixed a bug where P1 and P3 used each other's icons.
+
 ## Artanis
 
 - Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).

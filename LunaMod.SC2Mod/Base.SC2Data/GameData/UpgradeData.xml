@@ -89,6 +89,25 @@
         <EffectArray Reference="Unit,BroodLord,LifeStart" Value="50"/>
         <AffectedUnitArray value="BroodLord"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKerriganBrood">
+        <EffectArray Operation="Set" Reference="Weapon,KerriganBroodPsiBlast,Options[Disabled]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,KerriganBroodPsiBlast,Options[Hidden]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,K5Ranged,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,K5Ranged,Options[Hidden]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,KerriganBroodRazorTalons,Options[Disabled]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,Icon" Value="Assets\Textures\btn-ability-hornerhan-hellbat-dot.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,AlertName" Value="Button/Name/ChainReactionBrood"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,AlertTooltip" Value="Button/Tooltip/ChainReactionBrood"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,AlertIcon" Value="Assets\Textures\btn-ability-hornerhan-hellbat-dot.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,Tooltip" Value="Button/Tooltip/ChainReactionBrood"/>
+        <EffectArray Operation="Set" Reference="Button,ChainReaction,Name" Value="Button/Name/ChainReactionBrood"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,Icon" Value="Assets\Textures\btn-ability-hornerhan-hellbat-dot.dds"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,Tooltip" Value="Button/Tooltip/EvolveK5ChainLightningBrood"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,AlertIcon" Value="Assets\Textures\btn-ability-hornerhan-hellbat-dot.dds"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,AlertTooltip" Value="Button/Tooltip/EvolveK5ChainLightningBrood"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,Name" Value="Button/Name/EvolveK5ChainLightningBrood"/>
+        <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,AlertName" Value="Button/Name/EvolveK5ChainLightningBrood"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
@@ -170,6 +189,21 @@
         <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="6" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
     </CUpgrade>
+    <CUpgrade id="K5ChainLightning">
+        <EffectArray Reference="Actor,KerriganBroodRangedAttackMissile,Scale" Value="0.250000"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodPsiBlastDamage,AreaArray[0].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodRazorTalonsDamage,AreaArray[0].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodPsiBlastDamage,AreaArray[1].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodRazorTalonsDamage,AreaArray[1].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodPsiBlastDamage,AreaArray[2].MaxCount" Value="4294967295"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodRazorTalonsDamage,AreaArray[2].MaxCount" Value="4294967295"/>
+    </CUpgrade>
+    <CUpgrade id="K5PrimalSlash">
+        <EffectArray Reference="Effect,KerriganBroodPsiBlastDamage,Amount" Value="10"/>
+        <EffectArray Reference="Effect,KerriganBroodRazorTalonsDamage,Amount" Value="10"/>
+        <EffectArray Reference="Effect,KerriganBroodRazorTalonsDamageUpgraded,Amount" Value="10"/>
+        <EffectArray Reference="Weapon,KerriganBroodPsiBlast,Range" Value="-3"/>
+    </CUpgrade>
     <CUpgrade id="K5TwoDronesKerrigan">
         <EffectArray Operation="Set" Reference="Abil,LarvaTrain,InfoArray[Train1].Unit[1]" Value="Drone"/>
         <EffectArray Operation="Set" Reference="Abil,DroneHarvest,ResourceAmountMultiplier[Vespene]" Value="1.0"/>
@@ -209,9 +243,29 @@
         <AffectedUnitArray value="DroneBurrowed"/>
         <LeaderAlias value=""/>
     </CUpgrade>
+    <CUpgrade id="KerriganBroodCosmetic">
+        <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,Wireframe.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,PlacementModel" Value="InfestedKerriganBrood"/>
+        <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,UnitIcon" Value="Assets\Textures\btn-unit-zerg-infested-kerrigan-remastered.dds"/>
+        <EffectArray Operation="Set" Reference="Unit,K5Kerrigan,Description" Value="Button/Tooltip/K5Kerrigan"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <AffectedUnitArray value="K5Kerrigan"/>
+        <AffectedUnitArray value="K5KerriganBurrowed"/>
+        <LeaderAlias value=""/>
+    </CUpgrade>
+    <CUpgrade id="MasteryKerriganAutoAttackDamage">
+        <EffectArray Reference="Effect,KerriganBroodPsiBlastDamage,Amount" Value="1"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodRazorTalonsDamage,Amount" Value="30"/>
+        <EffectArray Operation="Set" Reference="Effect,KerriganBroodRazorTalonsDamageUpgraded,Amount" Value="30"/>
+    </CUpgrade>
     <CUpgrade id="MasteryKerriganEnergyRegen">
         <EffectArray Reference="Unit,QueenCoop,EnergyRegenRate" Value="0.007800"/>
         <EffectArray Reference="Unit,QueenCoopBurrowed,EnergyRegenRate" Value="0.007800"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryKerriganPrimarySpeedDamage">
+        <EffectArray Reference="Weapon,KerriganBroodPsiBlast,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,KerriganBroodRazorTalons,RateMultiplier" Value="0.01"/>
     </CUpgrade>
     <CUpgrade id="MasteryRaynorMedicSecondaryHeal">
         <EffectArray Reference="Effect,RaynorMasteryHealMedivacSecondary,RechargeVitalRate" Value="0.269400"/>

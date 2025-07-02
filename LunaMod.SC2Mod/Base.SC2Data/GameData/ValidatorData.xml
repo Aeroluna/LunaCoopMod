@@ -3,6 +3,10 @@
     <CValidatorCombine id="HasActiveDeathPrevent">
         <CombineArray value="OnDeathMothershipDeath"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="HaveKerriganBroodCosmetic">
+        <Find value="1"/>
+        <Value value="KerriganBroodCosmetic"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="HaveStukovInfestedBansheeSpeed">
         <ResultNoPlayer value="Error"/>
         <Find value="1"/>
@@ -13,6 +17,10 @@
         <CombineArray value="CasterNotDead"/>
         <CombineArray value="MothershipRangeCheck"/>
         <CombineArray value="NotInvulnerable"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NotHasChainLightningUpgrade">
+        <CombineArray value="HasK5ChainLightningUpgrade"/>
+        <Negate value="1"/>
     </CValidatorCombine>
     <CValidatorUnitType id="OnDeathMothershipDeath">
         <WhichUnit Value="Caster"/>

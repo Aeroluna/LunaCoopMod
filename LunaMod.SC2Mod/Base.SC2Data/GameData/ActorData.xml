@@ -3,6 +3,36 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorAction id="KerriganBroodRangedAttackUpgraded" parent="GenericAttack" effectImpact="KerriganBroodPsiBlastDamage" effectLaunch="KerriganBroodPsiBlastLaunchMissile">
+        <On index="6" Terms="Effect.KerriganBroodPsiBlastLaunchMissile.Start; At Caster; ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchAssets Sound="Val03QueenRangedAttackLaunch"/>
+        <Missile value="KerriganBroodRangedAttackMissile"/>
+        <ImpactMap index="None" Model="KerriganCharWeaponImpact" Sound="Val03QueenRangedAttackImpact"/>
+    </CActorAction>
+    <CActorModel id="KerriganRazorTalons">
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone" Send="Destroy"/>
+        <On Terms="Effect.KerriganBroodRazorTalonsDamageUpgraded.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
+        <Model value="KerriganCharWeaponImpact"/>
+    </CActorModel>
+    <CActorSound id="KerriganRazorTalonsAttackImpact" parent="SoundOneShot">
+        <On Terms="Effect.KerriganBroodRazorTalonsDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.KerriganBroodRazorTalonsDamageUpgraded; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Ultralisk_AttackImpact"/>
+    </CActorSound>
+    <!--K5Kerrigan -->
+    <CActorMissile id="K5Kerrigan">
+        <SoundArray index="Ready" value="KerriganVoid_Ready"/>
+        <On index="1" Terms="UnitBirth.K5Kerrigan; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="2" Terms="UnitRevive.K5Kerrigan; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="4" Terms="UnitConstruction.K5Kerrigan.Start; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="81" Terms="UnitBirth.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="82" Terms="UnitRevive.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+    </CActorMissile>
     <CActorUnit id="Medivac">
         <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
         <On Terms="Behavior.VehicleAfterburners.On" Send="StatusSet Turbo 1"/>
@@ -461,6 +491,102 @@
             <Image index="2" value="Assets\Textures\wireframe-protoss-warpstargate-alternate-shield3.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorMissile id="KerriganBrood" parent="GenericUnitBase" unitName="K5Kerrigan">
+        <Aliases value="_MissileHybrids"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergLargeBurrowEffects"/>
+        <On index="1" Terms="UnitBirth.K5Kerrigan; ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="2" Terms="UnitRevive.K5Kerrigan; ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On index="4" Terms="UnitConstruction.K5Kerrigan.Start; ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.KerriganBroodPsiBlast.AttackStart" Send="AnimBracketStart SpellAttack Spell"/>
+        <On Terms="WeaponStop.KerriganBroodPsiBlast.AttackStop" Send="AnimBracketStop SpellAttack"/>
+        <On Terms="WeaponStart.KerriganBroodRazorTalons.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.KerriganBroodRazorTalons.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="UnitBirth.K5KerriganBurrowed; ValidatePlayer HaveKerriganBroodCosmetic" Send="Create"/>
+        <On Terms="UnitBirth.K5Kerrigan" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="Abil.OmegaStorm.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.Implosion.SourceCastStart" Send="$Spell"/>
+        <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>
+        <On Terms="Behavior.KerriganWalk.Off" Send="AnimGroupRemove Victory"/>
+        <On Terms="Behavior.KerriganWalk.On" Send="SetWalkAnimMoveSpeed 0.7968"/>
+        <On Terms="Behavior.KerriganWalk.Off" Send="SetWalkAnimMoveSpeed 1.1992"/>
+        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStart" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Abil.Val03QueenOfBladesDeepTunnel.SourceCastStop; ValidateUnit IsNotBuried" Send="AnimBracketStop Burrow"/>
+        <On Terms="UnitRevive.K5Kerrigan; AnimPlaying Death" Send="Destroy"/>
+        <On Terms="UnitRevive.K5Kerrigan" Send="Create ZergHeroRevive"/>
+        <On Terms="Behavior.KerriganPrimalRage5.On" Send="Create K5FurySound"/>
+        <Model value="InfestedKerriganBrood"/>
+        <AnimBlendTime value="0.250000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <EventDataSound Name="KerriganAttackLaunch" Actor="UnitSound" Sound="QueenOfBladesAttackLaunch"/>
+        <EventDataSound Name="KerriganAttackImpact" Actor="UnitSound" Sound="QueenOfBladesAttackImpact"/>
+        <Baselines index="Stand" AnimProps="Stand,00"/>
+        <BuildModel value="InfestedKerriganBrood"/>
+        <DeathArray index="Normal" ModelLink="InfestedKerriganBrood" SoundLink="Kerrigan_Death"/>
+        <PlacementModel value="InfestedKerriganBrood"/>
+        <PortraitModel value="KerriganBroodPortrait"/>
+        <WalkAnimMoveSpeed value="1.1992"/>
+        <BarOffset value="60"/>
+        <BarWidth value="78"/>
+        <CustomUnitStatusFrame value="Coop_UnitStatus/KerriganCoopStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/KerriganChar"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_kerriganascendant.dds"/>
+        <MinimapIconScale value="0.700000"/>
+        <MinimapRenderPriority value="Hero"/>
+        <MinimapTooltip value="Unit/Name/K5Kerrigan"/>
+        <MinimapUseSelfColor value="0"/>
+        <MinimapUseSelectionColor value="0"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-tissueassimilation.dds"/>
+        <SoundArray index="Birth" value="Kerrigan_Birth"/>
+        <SoundArray index="Ready" value="Kerrigan_Ready"/>
+        <SoundArray index="Help" value="Kerrigan_Help"/>
+        <SoundArray index="What" value="Kerrigan_What"/>
+        <SoundArray index="Yes" value="Kerrigan_Yes"/>
+        <SoundArray index="Attack" value="Kerrigan_Yes"/>
+        <SoundArray index="Pissed" value="Kerrigan_Pissed"/>
+        <SoundArray index="Movement" value="Kerrigan_Movement"/>
+        <SoundArray index="Turning" value="Kerrigan_Turning"/>
+        <SoundArray index="Board" value="Kerrigan_Board"/>
+        <StatusBarOn index="Shields" value="1"/>
+        <StatusBarOn index="Life" value="1"/>
+        <StatusBarOn index="Energy" value="1"/>
+        <StatusBarOn index="Progress" value="1"/>
+        <StatusBarOn index="Duration" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,255,128,0"/>
+        </StatusColors>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infested-kerrigan-remastered.dds"/>
+        <UnitKillRank Text="UnitKillRank/Kerrigan"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorMissile>
+    <CActorAction id="KerriganBroodRangedAttack" parent="GenericAttack" effectImpact="KerriganBroodPsiBlastDamage" effectLaunch="KerriganBroodPsiBlastLaunchMissile">
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchAssets Sound="Val03QueenRangedAttackLaunch"/>
+        <ImpactMap index="None" Model="Dragoon_Purifier_Coop_AirBomb_Impact" Sound="Val03QueenRangedAttackImpact"/>
+        <On index="6" Terms="Effect.KerriganBroodPsiBlastLaunchMissile.Start; At Caster; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
+    </CActorAction>
+    <CActorMissile id="KerriganBroodRangedAttackMissile" parent="GenericAttackMissile" unitName="KerriganBroodWeapon">
+        <Model value="KerriganCharWeapon"/>
+        <Scale value="0.750000"/>
+    </CActorMissile>
     <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
         <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>
         <On index="5" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Start; At Caster"/>

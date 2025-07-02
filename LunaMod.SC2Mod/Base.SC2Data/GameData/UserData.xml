@@ -198,17 +198,6 @@
                 <Field Id="DefaultVoicePack" Index="2"/>
             </GameLink>
         </Instances>
-        <Instances Id="[Override]TerranMengsk">
-            <GameLink GameLink="VoicePackProtossMengsk">
-                <Field Id="DefaultVoicePack"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackTerranMengsk">
-                <Field Id="DefaultVoicePack" Index="1"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackZergMengsk">
-                <Field Id="DefaultVoicePack" Index="2"/>
-            </GameLink>
-        </Instances>
         <Instances Id="[Override]ZergKerrigan">
             <GameLink GameLink="VoicePackProtossKerrigan">
                 <Field Id="DefaultVoicePack"/>
@@ -219,6 +208,9 @@
             <GameLink GameLink="VoicePackZergKerrigan">
                 <Field Id="DefaultVoicePack" Index="2"/>
             </GameLink>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeKerriganBrood">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ZergAbathur">
             <GameLink GameLink="VoicePackProtossAbathur">
@@ -239,17 +231,6 @@
                 <Field Id="DefaultVoicePack" Index="1"/>
             </GameLink>
             <GameLink GameLink="VoicePackZergDehaka">
-                <Field Id="DefaultVoicePack" Index="2"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="[Override]ZergStetmann">
-            <GameLink GameLink="VoicePackProtossStetmann">
-                <Field Id="DefaultVoicePack"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackTerranStetmann">
-                <Field Id="DefaultVoicePack" Index="1"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackZergStetmann">
                 <Field Id="DefaultVoicePack" Index="2"/>
             </GameLink>
         </Instances>
@@ -334,6 +315,17 @@
                 <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>
+        <Instances Id="CommanderPrestigeKerriganBrood">
+            <GameLink GameLink="K5ChainLightning">
+                <Field Id="SuppressUpgrade"/>
+            </GameLink>
+            <GameLink GameLink="KerriganBroodCosmetic">
+                <Field Id="SecondaryUpgradesSelf"/>
+            </GameLink>
+            <GameLink GameLink="CommanderPrestigeKerriganBrood">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeKerriganCreep">
             <AbilCmd Abil="evolutionchamberresearch" Cmd="19">
                 <Field Id="DisableAbil"/>
@@ -344,6 +336,9 @@
             <AbilCmd Abil="evolutionchamberresearch" Cmd="21">
                 <Field Id="DisableAbil" Index="2"/>
             </AbilCmd>
+            <GameLink GameLink="K5TwoDronesKerrigan">
+                <Field Id="SecondaryUpgradesSelf"/>
+            </GameLink>
             <Int Int="1">
                 <Field Id="SuppressHero"/>
             </Int>
@@ -362,7 +357,10 @@
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
                 <Field Id="UpgradeSupplements" Index="5"/>
             </User>
-            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep5">
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
+                <Field Id="UpgradeSupplements" Index="6"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
                 <Field Id="UpgradeSupplements" Index="4"/>
             </User>
         </Instances>
@@ -398,14 +396,6 @@
             </GameLink>
             <GameLink GameLink="KerriganVoidCoopBroodlordSpeed">
                 <Field Id="Upgrade"/>
-            </GameLink>
-        </Instances>
-        <Instances Id="KerriganCreep5">
-            <GameLink GameLink="KerriganCommander">
-                <Field Id="Upgrade"/>
-            </GameLink>
-            <GameLink GameLink="K5TwoDrones2">
-                <Field Id="Supplement"/>
             </GameLink>
         </Instances>
     </CUser>
