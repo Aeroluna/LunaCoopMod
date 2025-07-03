@@ -24,6 +24,17 @@
             <StateFlags index="Cloak" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganImplosionTempBuff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-mengsk-marauder-selfabsorbshield.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MovingLockOn">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -32,6 +43,16 @@
         <DisableValidatorArray value="CommanderPrestigeSwannMoving"/>
         <Period value="1"/>
         <PeriodicEffect value="MovingLockOnSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganRazorSwarm">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.6665"/>
+        <Period value="0.571"/>
+        <InitialEffect value="KerriganRazorSwarmDamage"/>
+        <PeriodicEffect value="KerriganRazorSwarmDamage"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PsiStormNerazim">
         <Alignment value="Negative"/>

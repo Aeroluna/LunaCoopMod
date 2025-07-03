@@ -68,6 +68,67 @@
         <AmmoUnit value="HighTemplarNerazimWeapon"/>
         <Movers Link="HighTemplarWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="KerriganImplosionCreatePersistentHeroic">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="KerriganImplosionSetHeroic"/>
+        <ExpireDelay value="0.25"/>
+        <FinalEffect value="KerriganImplosionEndSet"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="KerriganImplosionDrop"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="KerriganImplosionDrop">
+        <EditorCategories value="Race:Zerg"/>
+        <Height value="-2.5"/>
+        <HeightTime value="0.25"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="KerriganImplosionHeightMod">
+        <EditorCategories value="Race:Zerg"/>
+        <Height value="2.5"/>
+        <HeightTime value="2"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="KerriganImplosionApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganImplosionTempBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="KerriganImplosionCreatePersistent">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="KerriganImplosionSet"/>
+        <ExpireDelay value="0.25"/>
+        <FinalEffect value="KerriganImplosionEndSet"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="KerriganImplosionDrop"/>
+        <PeriodicPeriodArray value="3"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="KerriganImplosionDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectSet id="KerriganImplosionEndSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganImplosionRemoveBehavior"/>
+        <EffectArray value="KerriganImplosionDamage"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="KerriganImplosionHeightModHeroic">
+        <EditorCategories value="Race:Zerg"/>
+        <Height value="2.5"/>
+        <HeightTime value="1"/>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="KerriganImplosionRemoveBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <BehaviorLink value="KerriganImplosionTempBuff"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="KerriganImplosionSet">
+        <ValidatorArray value="KerriganImplosionNotActive"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganImplosionApplyBehavior"/>
+        <EffectArray value="KerriganImplosionHeightMod"/>
+    </CEffectSet>
     <CEffectDamage id="KerriganBroodRazorTalonsDamage">
         <EditorCategories value="Race:Zerg"/>
         <ArmorReduction value="1"/>
@@ -99,6 +160,19 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectDamage>
+    <CEffectSet id="KerriganImplosionSetHeroic">
+        <ValidatorArray value="KerriganImplosionNotActive"/>
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganImplosionApplyBehavior"/>
+        <EffectArray value="KerriganImplosionHeightModHeroic"/>
+    </CEffectSet>
+    <CEffectSwitch id="KerriganImplosionSwitch">
+        <ValidatorArray value="KerriganImplosionNotActive"/>
+        <ValidatorArray value="NotFrenzied"/>
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Validator="IsHeroic" Effect="KerriganImplosionCreatePersistentHeroic"/>
+        <CaseArray Effect="KerriganImplosionCreatePersistent" FallThrough="1"/>
+    </CEffectSwitch>
     <CEffectSet id="KerriganPsiBlastSet">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="KerriganBroodPsiBlastLaunchMissile"/>
@@ -251,8 +325,8 @@
     </CEffectDamage>
     <CEffectEnumArea id="KerriganRazorSwarmSearchArea">
         <EditorCategories value="Race:Zerg"/>
-        <SearchFilters value="-;Player,Ally,Neutral,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="KerriganRazorSwarmDamage"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="KerriganRazorSwarmAB"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
     <CEffectSwitch id="OnDeathControllerDeathPrevent">
@@ -267,6 +341,10 @@
         <CaseArray index="17" Validator="TychusWarhoundDeathExplosion" Effect="TychusWarhoundExplosionDeathSet"/>
         <CaseArray Validator="OnDeathTychusHercGrappleArmorPassive" Effect="TychusHERCShieldApply"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="KerriganRazorSwarmAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganRazorSwarm"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="PsiStormNerazimApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>

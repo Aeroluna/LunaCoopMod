@@ -46,6 +46,17 @@
             <Button DefaultButtonFace="ResearchMedivacEnergyUpgrade" Requirements="LearnCaduceusReactor"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="KerriganImplosion">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="KerriganImplosionSwitch"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Structure,Worker,Invulnerable,Unstoppable"/>
+        <Range value="9"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="KerriganImplosion" State="Restricted"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHeal">
         <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
     </CAbilEffectTarget>
@@ -253,12 +264,10 @@
     <CAbilEffectTarget id="KerriganRazorSwarm">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <DataCollection value="##id##"/>
         <Effect index="0" value="KerriganRazorSwarmCreatePersistent"/>
         <Flags index="AllowMovement" value="1"/>
         <Cost>
             <Vital index="Energy" value="75"/>
-            <Cooldown TimeUse="2"/>
         </Cost>
         <Range value="8"/>
         <CastOutroTime value="0.5"/>

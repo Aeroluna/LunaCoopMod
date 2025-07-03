@@ -3,6 +3,44 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="ImplosionImpact" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.KerriganImplosionDamage.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldPosition="1" HoldRotation="1"/>
+        <Model value="SJPirateYamatoAAttackImpact"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorSound id="KerriganImplosionImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.KerriganImplosionDamage.Start; At Target" Send="Create"/>
+        <Sound value="Battlecruiser_YamatoAttackImpact"/>
+    </CActorSound>
+    <CActorModel id="KerriganImplosion" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="ActorCreation" Send="SetTintColor 60,0,120"/>
+        <On Terms="ActorCreation" Send="Create ImplosionSound"/>
+        <On Terms="Behavior.KerriganImplosionTempBuff.On" Send="Create"/>
+        <On Terms="Behavior.KerriganImplosionTempBuff.Off" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="Implosion"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorSound id="KerriganRazorSwarmImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.KerriganRazorSwarmDamage; At Target" Send="Create"/>
+        <Sound value="QueenOfBlades_OmegaStormImpact"/>
+    </CActorSound>
+    <CActorModel id="KerriganRazorSwarmImpact" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.KerriganRazorSwarm.On" Send="Create"/>
+        <On Terms="Behavior.KerriganRazorSwarm.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
     <CActorModel id="K5KerriganFuryBuff">
         <On Terms="ActorCreation; ValidatePlayer HaveKerriganBroodCosmetic" Send="SetTintColor {255,200,100 2.000000}"/>
     </CActorModel>
@@ -27,7 +65,6 @@
         <Host Subject="_Selectable"/>
         <Sound value="Ultralisk_AttackImpact"/>
     </CActorSound>
-    <!--K5Kerrigan -->
     <CActorMissile id="K5Kerrigan">
         <SoundArray index="Ready" value="KerriganVoid_Ready"/>
         <On index="1" Terms="UnitBirth.K5Kerrigan; !ValidatePlayer HaveKerriganBroodCosmetic"/>
@@ -63,6 +100,7 @@
     <CActorSound id="Medivac_IgniteAfterburners2">
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create"/>
     </CActorSound>
+    <CActorRange id="KerriganImplosionRange" parent="RangeAbil" abil="KerriganImplosion"/>
     <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Stop" Send="Destroy"/>
@@ -531,7 +569,7 @@
         <On Terms="UnitBirth.K5KerriganBurrowed; ValidatePlayer HaveKerriganBroodCosmetic" Send="Create"/>
         <On Terms="UnitBirth.K5Kerrigan" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.KerriganRazorSwarm.SourceCastStart" Send="$Spell"/>
-        <On Terms="Abil.Implosion.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.KerriganImplosion.SourceCastStart" Send="$Spell"/>
         <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>
         <On Terms="Behavior.KerriganWalk.Off" Send="AnimGroupRemove Victory"/>
         <On Terms="Behavior.KerriganWalk.On" Send="SetWalkAnimMoveSpeed 0.7968"/>
@@ -541,6 +579,11 @@
         <On Terms="UnitRevive.K5Kerrigan; AnimPlaying Death" Send="Destroy"/>
         <On Terms="UnitRevive.K5Kerrigan" Send="Create ZergHeroRevive"/>
         <On Terms="Behavior.KerriganPrimalRage5.On" Send="Create K5FurySound"/>
+        <On Terms="Abil.KerriganVoidCoopEconDrop.SourceCastStart" Send="$Spell,B NonLooping"/>
+        <On Terms="Abil.KerriganVoidCoopCrushingGripWave.SourceCastStart" Send="$Spell,B NonLooping -1.000000 -1.000000 2.000000 AsDuration"/>
+        <!--On Terms="Abil.KerriganVoidCoopCrushingGripWave.SourceCastStart" Send="AnimPlay Spell Stand,Hover,Start PlayForever,NonLooping -1.000000 -1.000000 6.000000 AsDuration"/>
+        <On Terms="Abil.KerriganVoidCoopCrushingGripWave.SourceCastStart" Send="TimerSet 1.000000 CrushingGripWave"/>
+        <On Terms="TimerExpired; TimerName CrushingGripWave" Send="AnimPlay Spell Stand,Hover,End 0 0.000000 -1.000000 1.000000 AsDuration"/-->
         <Model value="InfestedKerriganBrood"/>
         <AnimBlendTime value="0.250000"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
