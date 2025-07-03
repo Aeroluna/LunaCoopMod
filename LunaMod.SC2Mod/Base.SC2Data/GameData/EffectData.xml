@@ -114,6 +114,7 @@
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectDamage id="MasteryKerriganRazorSwarmDamageDummy"/>
     <CEffectEnumArea id="MedivacHealACSearch">
         <SearchFilters value="Biological,Structure,Visible;Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="0.5" Effect="RaynorMedivacSafeguardSet"/>
@@ -230,6 +231,29 @@
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray MaxCount="1" Radius="10" Effect="MovingLockOnIssueOrder"/>
         <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="KerriganRazorSwarmCreatePersistent">
+        <ValidatorArray value="HasVision"/>
+        <EditorCategories value="Race:Zerg"/>
+        <InitialEffect value="KerriganRazorSwarmSearchArea"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray value="KerriganRazorSwarmSearchArea"/>
+        <PeriodicPeriodArray value="0.5712"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="KerriganRazorSwarmDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <AttributeBonus index="Structure" value="10"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="KerriganRazorSwarmSearchArea">
+        <EditorCategories value="Race:Zerg"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="KerriganRazorSwarmDamage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
     <CEffectSwitch id="OnDeathControllerDeathPrevent">
         <CaseArray index="11" Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>

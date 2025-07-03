@@ -3,6 +3,9 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="K5KerriganFuryBuff">
+        <On Terms="ActorCreation; ValidatePlayer HaveKerriganBroodCosmetic" Send="SetTintColor {255,200,100 2.000000}"/>
+    </CActorModel>
     <CActorAction id="KerriganBroodRangedAttackUpgraded" parent="GenericAttack" effectImpact="KerriganBroodPsiBlastDamage" effectLaunch="KerriganBroodPsiBlastLaunchMissile">
         <On index="6" Terms="Effect.KerriganBroodPsiBlastLaunchMissile.Start; At Caster; ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
         <LaunchAttachQuery Methods="Weapon"/>
@@ -60,6 +63,27 @@
     <CActorSound id="Medivac_IgniteAfterburners2">
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create"/>
     </CActorSound>
+    <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
+        <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Stop" Send="Destroy"/>
+        <Sound value="OmegaStormSound"/>
+    </CActorSound>
+    <CActorAction id="RazorSwarmShieldHitter" parent="AoEAttackBase">
+        <On Terms="Effect.KerriganRazorSwarmDamage.Start" Send="Create"/>
+        <On Terms="Effect.KerriganRazorSwarmDamage.Start; At Effect" Send="ActionDamage"/>
+        <On Terms="Effect.KerriganRazorSwarmDamage.Start; At Effect" Send="Destroy"/>
+        <Lifetime value="2.600000"/>
+    </CActorAction>
+    <CActorModel id="RazorSwarmModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
+        <Model value="OmegaStormModel"/>
+        <Scale value="0.800000"/>
+    </CActorModel>
+    <CActorRange id="RazorSwarmRange" parent="RangeAbil" abil="KerriganRazorSwarm"/>
+    <CActorSplat id="RazorSwarmCursorSplat" parent="ProtossCursorSplat" abil="KerriganRazorSwarm">
+        <Model value="ZergAOECursorSplat"/>
+    </CActorSplat>
     <CActorModel id="RaynorMasteryHealSecondary">
         <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStart; At Target" Send="Create"/>
         <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStop; At Target" Send="Destroy"/>
@@ -506,7 +530,7 @@
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="UnitBirth.K5KerriganBurrowed; ValidatePlayer HaveKerriganBroodCosmetic" Send="Create"/>
         <On Terms="UnitBirth.K5Kerrigan" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
-        <On Terms="Abil.OmegaStorm.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.KerriganRazorSwarm.SourceCastStart" Send="$Spell"/>
         <On Terms="Abil.Implosion.SourceCastStart" Send="$Spell"/>
         <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>
         <On Terms="Behavior.KerriganWalk.Off" Send="AnimGroupRemove Victory"/>
