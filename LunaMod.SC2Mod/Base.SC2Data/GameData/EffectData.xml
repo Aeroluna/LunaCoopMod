@@ -108,6 +108,8 @@
         <ResponseFlags index="Flee" value="1"/>
         <Flags index="Notification" value="1"/>
         <Amount value="300"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <Death value="Blast"/>
     </CEffectDamage>
     <CEffectSet id="KerriganImplosionEndSet">
         <EditorCategories value="Race:Zerg"/>
@@ -129,27 +131,16 @@
         <EffectArray value="KerriganImplosionApplyBehavior"/>
         <EffectArray value="KerriganImplosionHeightMod"/>
     </CEffectSet>
-    <CEffectDamage id="KerriganBroodRazorTalonsDamage">
+    <CEffectDamage id="KerriganBroodRazorTalonsDamage" parent="DU_WEAP">
+        <ValidatorArray value="NotHasChainLightningUpgrade"/>
         <EditorCategories value="Race:Zerg"/>
-        <ArmorReduction value="1"/>
-        <Kind value="Melee"/>
         <KindSplash value="Splash"/>
         <Amount value="30"/>
         <Death value="Eviscerate"/>
-        <ValidatorArray value="NotHasChainLightningUpgrade"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <Flags index="Notification" value="1"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="KerriganBroodRazorTalonsDamageUpgraded">
+    <CEffectDamage id="KerriganBroodRazorTalonsDamageUpgraded" parent="DU_WEAP">
         <ValidatorArray value="HasK5ChainLightningUpgrade"/>
         <EditorCategories value="Race:Zerg"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <ArmorReduction value="1"/>
-        <Kind value="Melee"/>
         <KindSplash value="Splash"/>
         <Amount value="30"/>
         <Death value="Eviscerate"/>
@@ -157,8 +148,6 @@
         <AreaArray Radius="0.7812" Fraction="0.5"/>
         <AreaArray Radius="1.25" Fraction="0.25"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectDamage>
     <CEffectSet id="KerriganImplosionSetHeroic">
         <ValidatorArray value="KerriganImplosionNotActive"/>
@@ -322,6 +311,7 @@
         <Visibility value="Hidden"/>
         <Flags index="Notification" value="1"/>
         <Amount value="10"/>
+        <Death value="Eviscerate"/>
     </CEffectDamage>
     <CEffectEnumArea id="KerriganRazorSwarmSearchArea">
         <EditorCategories value="Race:Zerg"/>
@@ -477,22 +467,16 @@
         <ImpactEffect value="KerriganBroodPsiBlastDamage"/>
         <AmmoUnit value="KerriganBroodWeapon"/>
     </CEffectLaunchMissile>
-    <CEffectDamage id="KerriganBroodPsiBlastDamage">
+    <CEffectDamage id="KerriganBroodPsiBlastDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Zerg"/>
-        <ArmorReduction value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
         <Amount value="30"/>
-        <Death value="Fire"/>
+        <Death value="Blast"/>
         <AreaArray MaxCount="0" Radius="0.4687" Fraction="1"/>
         <AreaArray MaxCount="0" Radius="0.7812" Fraction="0.5"/>
         <AreaArray MaxCount="0" Radius="1.25" Fraction="0.25"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <Flags index="Notification" value="1"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectDamage>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>

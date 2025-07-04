@@ -3,6 +3,15 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorForceSphere id="KerriganBroodRangedAttackForce">
+        <On Terms="Effect.KerriganBroodPsiBlastDamage.Start; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create ChainReactionAttackUpForce"/>
+        <Host Subject="_ImpactGuide"/>
+        <HostSiteOps Ops="SOpRandomPointInSphereDot15"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="12.000000,6.000000"/>
+        <Radius value="1.100000,0.150000"/>
+    </CActorForceSphere>
     <CActorModel id="ImplosionImpact" parent="ModelAnimationStyleOneShot">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
@@ -12,6 +21,16 @@
         <Model value="SJPirateYamatoAAttackImpact"/>
         <AutoScaleFactor value="0.750000"/>
     </CActorModel>
+    <CActorForceSphere id="KerriganBroodRangedAttackUpgradedForce">
+        <On Terms="Effect.KerriganBroodPsiBlastDamage.Start; ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
+        <On Terms="Effect.KerriganBroodRazorTalonsDamageUpgraded" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create ChainReactionAttackUpForce"/>
+        <Host Subject="_ImpactGuide"/>
+        <HostSiteOps Ops="SOpRandomPointInSphereDot15"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="27.500000,8.000000"/>
+        <Radius value="1.100000,0.150000"/>
+    </CActorForceSphere>
     <CActorSound id="KerriganImplosionImpactSound" parent="SoundOneShot">
         <On Terms="Effect.KerriganImplosionDamage.Start; At Target" Send="Create"/>
         <Sound value="Battlecruiser_YamatoAttackImpact"/>
@@ -50,6 +69,7 @@
         <LaunchAssets Sound="Val03QueenRangedAttackLaunch"/>
         <Missile value="KerriganBroodRangedAttackMissile"/>
         <ImpactMap index="None" Model="KerriganCharWeaponImpact" Sound="Val03QueenRangedAttackImpact"/>
+        <DamagePhysics Name="KerriganBroodRangedAttackUpgradedForce" MatchKeys="Basic" Physics="KerriganBroodRangedAttackUpgradedForce"/>
     </CActorAction>
     <CActorModel id="KerriganRazorTalons">
         <On Terms="ActorCreation" Send="$Death"/>
@@ -101,6 +121,14 @@
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create"/>
     </CActorSound>
     <CActorRange id="KerriganImplosionRange" parent="RangeAbil" abil="KerriganImplosion"/>
+    <CActorForceCylinder id="KerriganImplosionImpactForce">
+        <On Terms="Effect.KerriganImplosionDamage.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpMoveUpBy1"/>
+        <Duration value="0.250000"/>
+        <Magnitude value="20.000000,9.000000"/>
+        <HostEndSiteOps Ops="SOpMoveUpBy1"/>
+        <Radius value="1.000000,0.150000"/>
+    </CActorForceCylinder>
     <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Stop" Send="Destroy"/>
@@ -645,10 +673,11 @@
         <WireframeShieldColor value="255,0,128,0"/>
     </CActorMissile>
     <CActorAction id="KerriganBroodRangedAttack" parent="GenericAttack" effectImpact="KerriganBroodPsiBlastDamage" effectLaunch="KerriganBroodPsiBlastLaunchMissile">
+        <On index="6" Terms="Effect.KerriganBroodPsiBlastLaunchMissile.Start; At Caster; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
         <LaunchAttachQuery Methods="Weapon"/>
         <LaunchAssets Sound="Val03QueenRangedAttackLaunch"/>
         <ImpactMap index="None" Model="Dragoon_Purifier_Coop_AirBomb_Impact" Sound="Val03QueenRangedAttackImpact"/>
-        <On index="6" Terms="Effect.KerriganBroodPsiBlastLaunchMissile.Start; At Caster; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
+        <ImpactPhysics Name="KerriganBroodRangedAttackForce" MatchKeys="Basic" Physics="KerriganBroodRangedAttackForce"/>
     </CActorAction>
     <CActorMissile id="KerriganBroodRangedAttackMissile" parent="GenericAttackMissile" unitName="KerriganBroodWeapon">
         <Model value="KerriganCharWeapon"/>
