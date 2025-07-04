@@ -198,6 +198,32 @@
     <CModel id="GlazeVoidStasisNerazim" parent="Glaze">
         <Model value="Assets\Effects\Protoss\DarkTemplar\Glaze_VoidPrison_Nerazim.m3"/>
     </CModel>
+    <CModel id="GuardianSCBWDeath" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Zerg\GuardianSCBW\GuardianSCBW@Death.m3"/>
+        <LowQualityModel value="ZergLargeUnitDeathLow"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="ZergExplosionMedium"/>
+            <Type value="Sound"/>
+            <Time value="1.248000"/>
+        </Events>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="GuardianSCBW" parent="Unit" Race="Zerg">
+        <AnimBlendTime value="0.400000"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow08"/>
+        <Radius value="0.850000"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+        <SelectionOffset value="0.000000,0.000000,-0.700000"/>
+        <SelectionRadius value="1.000000"/>
+        <ShadowRadius value="1.000000"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraLow08"/>
+        <Tipability value="0.750000"/>
+        <UnitGlossaryCamera value="Star2CameraLow08"/>
+    </CModel>
     <CModel id="HighTemplarNerazimAttackImpact" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\EyeOfAdunMissileImpact\EyeofAdunMissileImpact.m3"/>
         <EditorCategories value="Race:Protoss"/>
@@ -327,6 +353,28 @@
         <Image value="Assets\Textures\KerriganPortrait_Static.dds"/>
         <Lighting value="BanelingPortrait"/>
     </CModel>
+    <CModel id="LurkerSCBWDeathFire" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Zerg\LurkerSCBW\LurkerSCBW@DeathFire.m3"/>
+        <LowQualityModel value="ZergMediumUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="LurkerSCBWDeathAcid" parent="UnitDeath" Race="Zerg">
+        <Model value="Assets\Units\Zerg\LurkerSCBW\LurkerSCBW@DeathAcid.m3"/>
+        <LowQualityModel value="ZergMediumUnitDeathLow"/>
+        <Occlusion value="Show"/>
+    </CModel>
+    <CModel id="LurkerSCBW" parent="Unit" Race="Zerg">
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid07"/>
+        <Radius value="0.937500"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+        <SelectionRadius value="0.700000"/>
+        <ShadowRadius value="0.937500"/>
+        <SquibTypeDefault value="Flesh"/>
+        <TechPurchaseCamera value="Star2CameraMid07"/>
+        <UnitGlossaryCamera value="Star2CameraMid07"/>
+    </CModel>
     <CModel id="MedicAlternatePortrait" parent="FXAPortrait" Race="Terran">
         <Model value="Assets\Units\Terran\Medic\MedicPortrait_Alternate.m3"/>
         <FacialController value="LocalizedData\Facial\MedicPortrait.fxa"/>
@@ -335,6 +383,13 @@
     </CModel>
     <CModel id="MothershipWarpIn2">
         <Model value="Assets\Units\Protoss\Mothership\Mothership_WarpIn_Stargate.m3"/>
+    </CModel>
+    <CModel id="MutaliskSCBWDeath" parent="MutaliskDeathBase">
+        <Model value="Assets\Units\Zerg\MutaliskSCBW\MutaliskSCBW@Death.m3"/>
+    </CModel>
+    <CModel id="MutaliskSCBW" parent="MutaliskBase">
+        <ScaleMax value="0.660000,0.660000,0.660000"/>
+        <ScaleMin value="0.540000,0.540000,0.540000"/>
     </CModel>
     <CModel id="NexusNerazimBuild" parent="NexusBuildBase">
         <Model value="Assets\Buildings\Protoss\ProtossBuildGreen.m3"/>
@@ -660,5 +715,28 @@
         <Model value="Assets\Effects\Protoss\DarkTemplar\VoidPrison_Nerazim.m3"/>
         <EditorCategories value="Race:Protoss"/>
         <Lighting value=""/>
+    </CModel>
+    <CModel id="ZerglingSCBWPortrait" parent="ZerglingPortraitBase">
+        <Model value="Assets\Portraits\ZerglingPortraitSCBW\ZerglingPortraitSCBW.m3"/>
+        <Flags index="VariationFallback" value="0"/>
+        <Image value="Assets\Textures\ZerglingSCBW@portrait_static.dds"/>
+        <Lighting value="ZerglingSCBW@Portrait"/>
+    </CModel>
+    <CModel id="ZerglingSCBWDeathRagdoll" parent="ZerglingDeathRagdollBase">
+        <Model value="Assets\Units\Zerg\ZerglingSCBW\ZerglingSCBW@DeathRagdoll.m3"/>
+    </CModel>
+    <CModel id="ZerglingSCBWDeathFire" parent="ZerglingDeathFireBase">
+        <Model value="Assets\Units\Zerg\ZerglingSCBW\ZerglingSCBW@DeathFire.m3"/>
+    </CModel>
+    <CModel id="ZerglingSCBWDeathAcid" parent="ZerglingDeathAcidBase">
+        <Model value="Assets\Units\Zerg\ZerglingSCBW\ZerglingSCBW@DeathAcid.m3"/>
+    </CModel>
+    <CModel id="ZerglingSCBWDeath" parent="ZerglingDeathBase">
+        <Model value="Assets\Units\Zerg\ZerglingSCBW\ZerglingSCBW@Death.m3"/>
+        <VariationCount value="2"/>
+    </CModel>
+    <CModel id="ZerglingSCBW" parent="ZerglingBase">
+        <ScaleMax value="0.840000,0.840000,0.840000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
     </CModel>
 </Catalog>

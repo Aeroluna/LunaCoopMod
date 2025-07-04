@@ -190,3 +190,4 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Mothership Placement & Warp In - DaveSpectre
 - Nerazim Probe - DaveSpectre
 - Alternate Medic & Medivac Portraits - miazmatic
+- SC: Evolution Complete for Creators - SC: Evolution Complete Team
