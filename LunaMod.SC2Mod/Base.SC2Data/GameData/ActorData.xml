@@ -31,6 +31,12 @@
         <Magnitude value="27.500000,8.000000"/>
         <Radius value="1.100000,0.150000"/>
     </CActorForceSphere>
+    <CActorModel id="KerriganCannibalizeImpact" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.KerriganCannibalizeMU.Start; At Target" Send="Create"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
     <CActorSound id="KerriganImplosionImpactSound" parent="SoundOneShot">
         <On Terms="Effect.KerriganImplosionDamage.Start; At Target" Send="Create"/>
         <Sound value="Battlecruiser_YamatoAttackImpact"/>
@@ -683,6 +689,14 @@
         <Model value="KerriganCharWeapon"/>
         <Scale value="0.750000"/>
     </CActorMissile>
+    <CActorModel id="KerriganCannibalizeModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.KerriganCannibalizeMU.Start; At Caster" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead" HoldRotation="1"/>
+        <Model value="TissueAssimilationModel"/>
+    </CActorModel>
     <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
         <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>
         <On index="5" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Start; At Caster"/>

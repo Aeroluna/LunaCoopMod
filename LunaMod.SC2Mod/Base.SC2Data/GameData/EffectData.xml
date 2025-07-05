@@ -478,6 +478,26 @@
         <AreaArray MaxCount="0" Radius="1.25" Fraction="0.25"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="KerriganCannibalizeAB">
+        <ValidatorArray index="0" value="IsBiological"/>
+        <EditorCategories value=""/>
+        <Behavior value="KerriganCannibalizeDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="KerriganCannibalizeSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="KerriganCannibalizeAB"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="KerriganCannibalizeMU">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="20"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="20"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>

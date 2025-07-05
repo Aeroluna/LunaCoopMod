@@ -128,6 +128,23 @@
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganCannibalize">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="1"/>
+        <PeriodicEffect value="KerriganCannibalizeSearch"/>
+        <DisableValidatorArray value="CommanderPrestigeKerriganBrood"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganCannibalizeDebuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="1.2"/>
+        <DamageResponse Fatal="1" Handled="KerriganCannibalizeMU">
+            <Chance value="1"/>
+        </DamageResponse>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TorrasqueEggInvulnerability">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
