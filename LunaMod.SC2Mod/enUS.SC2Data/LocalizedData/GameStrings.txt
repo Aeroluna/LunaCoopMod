@@ -15,6 +15,7 @@ Behavior/Name/Enshroud=Aurora Veil
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosionTempBuff=Implosion
 Behavior/Name/KerriganRazorSwarm=Razor Swarm
+Behavior/Name/KerriganRegenAuraTarget=Protective Brood
 Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
@@ -22,6 +23,7 @@ Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move or att
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
+Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Button/Name/BroodLordBrood=Morph to Primogenitor
@@ -39,10 +41,12 @@ Button/Name/HellArmorThor=Infernal Plating
 Button/Name/HellburstPayload=Hellburst Payload
 Button/Name/HighTemplarNerazim=Warp In Signifier
 Button/Name/HydraliskBrood=Morph to Hunter Killer
+Button/Name/KerriganBurialRites=Burial Rites
 Button/Name/KerriganCannibalize=Cannibalize
 Button/Name/KerriganEnvenomedSpines=Envenomed Spines
 Button/Name/KerriganImplosion=Implosion
 Button/Name/KerriganRazorSwarm=Razor Swarm
+Button/Name/KerriganRegenAura=Protective Brood
 Button/Name/LurkerBrood=Morph to Grave Splitter
 Button/Name/MasteryKerriganEnergyRegen=Kerrigan and Queen Energy Regeneration
 Button/Name/MothershipArtanis=Warp In Mothership
@@ -76,8 +80,10 @@ Button/Tooltip/ACSwannEngineeringBayUpgraded=Contains upgrades for structures. <
 Button/Tooltip/AutomatedAssimilatorTextKicker5=<s val="Kicker_Refinery">+5</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
 Button/Tooltip/ChainReactionBrood=Kerrigan's attacks deal splash damage to nearby enemy units.
 Button/Tooltip/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=This upgrade is locked by your Commander Prestige.
-Button/Tooltip/CommanderPrestigeKerriganAssimilationAuraUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> The cocoon is invulnerable.
 Button/Tooltip/CommanderPrestigeKerriganBrood=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Assimilation Aura resource drops increased by 100%. Kerrigan gains Kinetic Blast and Crushing Grip.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Leaping Strike and Psionic Shift are unavailable.
+Button/Tooltip/CommanderPrestigeKerriganBroodAddAbility=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Ability added.
+Button/Tooltip/CommanderPrestigeKerriganBroodBroodLord=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Lifetime of broodlings tripled.
+Button/Tooltip/CommanderPrestigeKerriganBroodCocoonUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> The cocoon is invulnerable.
 Button/Tooltip/CommanderPrestigeKerriganCreep=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Malignant Creep effectiveness increased by 100%. Queens are no longer slowed and may place Creep Tumors while off creep. Creep Tumors gain Super Cloak when burrowed.<n/><n/>All combat units gain 50% increased life. Drones morph in pairs.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Kerrigan is unavailable.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/>Cyclones can use Lock On while moving.<n/>Only Thor anti-air weapons can attack while moving.<n/>Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref="Effect,PsiStormNerazimPersistent,PeriodCount*Effect,PsiStormNerazimPersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,PsiStormNerazimDamage,Amount*(Effect,PsiStormNerazimPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Enemy units in the target area are revealed, have their movement speed reduced, and have up to 4 armor reduced. Does not affect friendly units.
@@ -91,10 +97,12 @@ Button/Tooltip/HellArmor=Increases Hellbat and Hellion armor by 2 and hitpoints 
 Button/Tooltip/HellArmorThor=Increases Thor armor by 2.
 Button/Tooltip/HellburstPayload=Increases the direct damage of Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/HighTemplarNerazim=Potent psionic master. Can use Aurora Veil, Astral Storm, and Fading Star.<n/><n/><c val="ffff8a">Can attack ground units.</c>
-Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 life and 20 shields.
+Button/Tooltip/KerriganBurialRites=Increases the radius and size of each spine by 50%.
+Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 hitpoints.
 Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d ref="Behavior,KerriganEnvenomedSpines,Duration"/> seconds, dealing <d ref="Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second. This effect stacks up to <d ref="Behavior,KerriganEnvenomedSpines,MaxStackCount"/> times.
 Button/Tooltip/KerriganImplosion=Kerrigan lifts a target, stunning them for <d ref="Effect,KerriganImplosionCreatePersistent,PeriodicPeriodArray[0]"/> seconds before dropping them, dealing <d ref="Effect,KerriganImplosionDamage,Amount"/> damage to target unit.<n/><n/><c val="ffff8a">Heroic units are stunned for <d ref="Effect,KerriganImplosionCreatePersistentHeroic,PeriodicPeriodArray[0]"/> second instead.</c>
 Button/Tooltip/KerriganRazorSwarm=Creates a razor swarm for <d ref="Effect,KerriganRazorSwarmCreatePersistent,PeriodCount*Effect,KerriganRazorSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,KerriganRazorSwarmDamage,Amount*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> (+<d ref="Effect,KerriganRazorSwarmDamage,AttributeBonus[Structure]*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> vs Structures) damage to all enemy units in the target area.
+Button/Tooltip/KerriganRegenAura=Nearby friendly units gain rapid life and energy regeneration.
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
 Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
@@ -164,6 +172,8 @@ Effect/Name/KerriganRazorSwarmCreatePersistent=Razor Swarm (Create Persistent)
 Effect/Name/KerriganRazorSwarmDamage=Razor Swarm (Damage)
 Effect/Name/KerriganRazorSwarmSearchArea=Razor Swarm (Search Area)
 Effect/Name/KerriganRazorTalonsSet=Razor Talons (Set)
+Effect/Name/KerriganRegenAuraSearch=Regeneration Aura (Search)
+Effect/Name/KerriganRegenAuraTarget=Regeneration Aura (Target)
 Effect/Name/MedivacHealACSearch=Medivac Heal AC Search
 Effect/Name/MedivacHealACSwitch=Medivac Heal AC Switch
 Effect/Name/MedivacRaynorHeal=Heal

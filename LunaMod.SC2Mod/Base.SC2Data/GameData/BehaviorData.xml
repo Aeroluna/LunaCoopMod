@@ -28,8 +28,10 @@
         <InfoIcon value="Assets\Textures\btn-ability-zerg-poisonnova.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <RemoveValidatorArray value="NotInvulnerable"/>
+        <RemoveValidatorArray value="NotStasis"/>
+        <RemoveValidatorArray value="NotHidden"/>
         <BuffFlags index="RefreshStack" value="1"/>
-        <MaxStackCount value="10"/>
+        <MaxStackCount value="5"/>
         <Duration value="6"/>
         <Period value="1"/>
         <PeriodicEffect value="KerriganEnvenomedSpinesDamage"/>
@@ -155,6 +157,22 @@
         </DamageResponse>
         <MaxStackCount value="65535"/>
         <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganRegenAuraSelf">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CommanderPrestigeKerriganBrood"/>
+        <Period value="1.875"/>
+        <PeriodicEffect value="KerriganRegenAuraSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganRegenAuraTarget">
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-transfusion.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification>
+            <VitalRegenArray index="Life" value="3"/>
+            <VitalRegenArray index="Energy" value="0.5625"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TorrasqueEggInvulnerability">
         <InfoFlags index="Hidden" value="1"/>

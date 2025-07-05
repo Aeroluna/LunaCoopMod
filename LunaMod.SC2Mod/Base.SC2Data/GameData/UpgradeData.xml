@@ -157,14 +157,6 @@
         <EffectArray Reference="Unit,HotSRaptor,LifeStart" Value="70"/>
         <EffectArray Reference="Unit,HotSRaptorBurrowed,LifeMax" Value="70"/>
         <EffectArray Reference="Unit,HotSRaptorBurrowed,LifeStart" Value="70"/>
-        <EffectArray Reference="Unit,Zergling,ShieldsMax" Value="40"/>
-        <EffectArray Reference="Unit,Zergling,ShieldRegenRate" Value="-5"/>
-        <EffectArray Reference="Unit,ZerglingBurrowed,ShieldsMax" Value="40"/>
-        <EffectArray Reference="Unit,ZerglingBurrowed,ShieldRegenRate" Value="-5"/>
-        <EffectArray Reference="Unit,HotSRaptor,ShieldsMax" Value="40"/>
-        <EffectArray Reference="Unit,HotSRaptor,ShieldRegenRate" Value="-5"/>
-        <EffectArray Reference="Unit,HotSRaptorBurrowed,ShieldsMax" Value="40"/>
-        <EffectArray Reference="Unit,HotSRaptorBurrowed,ShieldRegenRate" Value="-5"/>
         <EffectArray Reference="Unit,Hydralisk,LifeMax" Value="160"/>
         <EffectArray Reference="Unit,Hydralisk,LifeStart" Value="160"/>
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="160"/>
@@ -216,6 +208,27 @@
         <EffectArray Reference="Effect,NeedleClaws,Amount" Value="2"/>
         <EffectArray Reference="Effect,BroodlingEscortDamage,Amount" Value="10"/>
         <EffectArray Reference="Effect,BroodlingEscortDamageUnit,Amount" Value="10"/>
+        <EffectArray Reference="Unit,QueenCoop,Food" Value="-2"/>
+        <EffectArray Reference="Unit,QueenCoopBurrowed,Food" Value="-2"/>
+        <EffectArray Reference="Unit,Zergling,Food" Value="-0.5"/>
+        <EffectArray Reference="Unit,ZerglingBurrowed,Food" Value="-0.5"/>
+        <EffectArray Reference="Unit,HotSRaptor,Food" Value="-0.5"/>
+        <EffectArray Reference="Unit,HotSRaptorBurrowed,Food" Value="-0.5"/>
+        <EffectArray Reference="Unit,Hydralisk,Food" Value="-2"/>
+        <EffectArray Reference="Unit,HydraliskBurrowed,Food" Value="-2"/>
+        <EffectArray Reference="Unit,HydraliskLurker,Food" Value="-2"/>
+        <EffectArray Reference="Unit,HydraliskLurkerBurrowed,Food" Value="-2"/>
+        <EffectArray Reference="Unit,Lurker,Food" Value="-3"/>
+        <EffectArray Reference="Unit,LurkerBurrowed,Food" Value="-3"/>
+        <EffectArray Reference="Unit,Ultralisk,Food" Value="-6"/>
+        <EffectArray Reference="Unit,UltraliskBurrowed,Food" Value="-6"/>
+        <EffectArray Reference="Unit,HotSTorrasque,Food" Value="-6"/>
+        <EffectArray Reference="Unit,HotSTorrasqueBurrowed,Food" Value="-6"/>
+        <EffectArray Reference="Unit,Mutalisk,Food" Value="-2"/>
+        <EffectArray Reference="Unit,MutaliskBroodlord,Food" Value="-2"/>
+        <EffectArray Reference="Unit,BroodLord,Food" Value="-4"/>
+        <EffectArray Reference="Effect,LurkerCoopSearch,AreaArray[0].Radius" Value="0.625"/>
+        <EffectArray Reference="Behavior,BroodlingFate,Duration" Value="16.000000"/>
         <AffectedUnitArray value="QueenCoop"/>
         <AffectedUnitArray value="QueenCoopBurrowed"/>
         <AffectedUnitArray value="Zergling"/>
@@ -303,6 +316,14 @@
         <EffectArray Reference="Unit,BroodLord,LifeStart" Value="100"/>
         <AffectedUnitArray value="BroodLord"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKerriganBroodMutaliskSeveringGlaves">
+        <EffectArray Reference="Effect,CoopGlaiveWurmU2,Amount" Value="4"/>
+        <EffectArray Reference="Effect,CoopGlaiveWurmU3,Amount" Value="4"/>
+        <EffectArray Reference="Effect,CoopGlaiveWurmU4,Amount" Value="4"/>
+        <EffectArray Reference="Effect,CoopGlaiveWurmU5,Amount" Value="4"/>
+        <EffectArray Reference="Effect,CoopGlaiveWurmU6,Amount" Value="4"/>
+        <AffectedUnitArray value="MutaliskBroodlord"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
@@ -383,6 +404,10 @@
         <EffectArray index="0" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="6" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
+    </CUpgrade>
+    <CUpgrade id="HotSTissueAssimilation">
+        <EffectArray Reference="Effect,HotSUltraliskKaiserBladesDamage,LeechFraction[Life]" Value="0.4"/>
+        <EffectArray Reference="Effect,HotSUltraliskKaiserBladesSecondaryDamage,LeechFraction[Life]" Value="0.4"/>
     </CUpgrade>
     <CUpgrade id="K5ChainLightning">
         <EffectArray Reference="Actor,KerriganBroodRangedAttackMissile,Scale" Value="0.250000"/>

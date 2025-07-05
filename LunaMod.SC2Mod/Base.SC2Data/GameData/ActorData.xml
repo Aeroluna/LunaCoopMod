@@ -38,9 +38,14 @@
     <CActorModel id="KerriganCannibalizeImpact" parent="ModelAnimationStyleOneShot">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
-        <On Terms="Effect.KerriganCannibalizeMU.Start; At Target" Send="Create"/>
+        <On Terms="Effect.KerriganCannibalizeMU.Start; At Source" Send="Create"/>
         <AutoScaleFactor value="0.750000"/>
+        <Host Scope="Effect"/>
     </CActorModel>
+    <CActorSound id="KerriganCannibalizeImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.KerriganCannibalizeMU.Start" Send="Create"/>
+        <Sound value="Zerg_CombatMerge_Death"/>
+    </CActorSound>
     <CActorModel id="KerriganEnvenomedSpines" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
@@ -115,6 +120,9 @@
         <On index="81" Terms="UnitBirth.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
         <On index="82" Terms="UnitRevive.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
     </CActorMissile>
+    <CActorModel id="LurkerAttackSpikeAC">
+        <On Terms="ActorCreation; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.500000"/>
+    </CActorModel>
     <CActorUnit id="Medivac">
         <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
         <On Terms="Behavior.VehicleAfterburners.On" Send="StatusSet Turbo 1"/>
@@ -175,6 +183,9 @@
     <CActorModel id="RaynorMasteryHealSecondary">
         <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStart; At Target" Send="Create"/>
         <On Terms="Effect.RaynorMasteryHealMedivacSecondary.TargetStop; At Target" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="RegenImpact">
+        <On Terms="Effect.KerriganRegenAuraTarget.Start; At Target" Send="Create"/>
     </CActorModel>
     <CActorUnit id="StukovInfestedBanshee">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
@@ -712,6 +723,10 @@
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOverhead" HoldRotation="1"/>
         <Model value="TissueAssimilationModel"/>
+    </CActorModel>
+    <CActorModel id="SwarmQueenRegenAuraSplat">
+        <On Terms="Behavior.KerriganRegenAuraSelf.On" Send="Create"/>
+        <On Terms="Behavior.KerriganRegenAuraSelf.Off" Send="Destroy"/>
     </CActorModel>
     <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
         <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>

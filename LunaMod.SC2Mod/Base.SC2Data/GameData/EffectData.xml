@@ -505,8 +505,28 @@
         <VitalArray index="Life">
             <Change value="20"/>
         </VitalArray>
-        <VitalArray index="Shields">
-            <Change value="20"/>
+        <ValidatorArray value="CasterLifeNotFull"/>
+        <ValidatorArray value="CasterNotDead"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="KerriganRegenAuraSearch">
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="6" Effect="KerriganRegenAuraTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="SameCliff" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="KerriganRegenAuraTarget">
+        <ValidatorArray value="LifeNotFullOrEnergyNotFull"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="TissueAssimilation">
+        <VitalArray index="Life">
+            <Change value="0"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="TissueAssimilationSecondary">
+        <VitalArray index="Life">
+            <Change value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="VortexArtanis">
