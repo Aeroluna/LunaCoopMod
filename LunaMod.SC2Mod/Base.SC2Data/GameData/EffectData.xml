@@ -68,6 +68,14 @@
         <AmmoUnit value="HighTemplarNerazimWeapon"/>
         <Movers Link="HighTemplarWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="HydraliskMeleeSet">
+        <EffectArray value="KerriganEnvenomedSpinesAB"/>
+    </CEffectSet>
+    <CEffectDamage id="KerriganEnvenomedSpinesDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="4"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="KerriganImplosionCreatePersistentHeroic">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetUnit"/>
@@ -319,6 +327,9 @@
         <AreaArray Radius="2.5" Effect="KerriganRazorSwarmAB"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
+    <CEffectSet id="NeedleSpinesImpactSet">
+        <EffectArray value="KerriganEnvenomedSpinesAB"/>
+    </CEffectSet>
     <CEffectSwitch id="OnDeathControllerDeathPrevent">
         <CaseArray index="11" Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>
         <CaseArray index="12" Validator="SourceIsDehakaCoop" Effect="OnDeathDehakaRecallOnDeathAB"/>
@@ -570,4 +581,11 @@
         <DrainVitalCostFactor value="0.33"/>
         <RechargeVitalRate value="9"/>
     </CEffectCreateHealer>
+    <CEffectApplyBehavior id="KerriganEnvenomedSpinesAB">
+        <ValidatorArray index="0" value="NotStructure"/>
+        <ValidatorArray value="NotDestructible"/>
+        <ValidatorArray value="CommanderPrestigeKerriganBrood"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganEnvenomedSpines"/>
+    </CEffectApplyBehavior>
 </Catalog>

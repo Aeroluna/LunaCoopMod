@@ -3,6 +3,10 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="HotSTorrasque">
+        <On index="85" Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; !ValidatePlayer CommanderPrestigeKerriganBrood"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.200000 0.400000"/>
+    </CActorUnit>
     <CActorForceSphere id="KerriganBroodRangedAttackForce">
         <On Terms="Effect.KerriganBroodPsiBlastDamage.Start; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
         <On Terms="ActorCreation" Send="Create ChainReactionAttackUpForce"/>
@@ -35,6 +39,18 @@
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
         <On Terms="Effect.KerriganCannibalizeMU.Start; At Target" Send="Create"/>
+        <AutoScaleFactor value="0.750000"/>
+    </CActorModel>
+    <CActorModel id="KerriganEnvenomedSpines" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.KerriganEnvenomedSpines.On" Send="Create"/>
+        <On Terms="Behavior.KerriganEnvenomedSpines.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {100,255,100 2.000000}"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="MiasmaImpact"/>
         <AutoScaleFactor value="0.750000"/>
     </CActorModel>
     <CActorSound id="KerriganImplosionImpactSound" parent="SoundOneShot">
