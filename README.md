@@ -26,6 +26,10 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1.
 
+- Changed Medic portrait.
+
+Changed to be distinct from the Medivac portrait.
+
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
@@ -205,6 +209,10 @@ For the prestige focused on stasising things, the P2 just makes Stasis Wards sad
 - Changed Void Stasis to target air units and no longer make the unit invulnerable.
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
+
+## Alarak
+
+- Changed Ascendant shadow trail model to be red.
 
 ## Stukov
 
