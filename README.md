@@ -242,3 +242,8 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Alternate Medic & Medivac Portraits - miazmatic
 - SC: Evolution Complete for Creators - SC: Evolution Complete Team
 - Infested Kerrigan - StarCraft: Remastered look - DaveSpectre
+- Brood Queen / SC1 Queen Portrait + Leviathan Brood Version - DaveSpectre
+- Infested SCV Portrait - DaveSpectre
+- Infested Diamondback Portrait - DaveSpectre
+- Infested Liberator Portrait - DaveSpectre
+- Volatile Infested colonist Portrait - DaveSpectre

@@ -187,6 +187,18 @@
     <CActorModel id="RegenImpact">
         <On Terms="Effect.KerriganRegenAuraTarget.Start; At Target" Send="Create"/>
     </CActorModel>
+    <CActorMissile id="SIInfestedCivilian">
+        <PortraitModel value="InfestedColonistPortrait"/>
+    </CActorMissile>
+    <CActorUnit id="SILiberator">
+        <PortraitModel value="LiberatorInfestedPortrait"/>
+    </CActorUnit>
+    <CActorUnit id="SISCV">
+        <PortraitModel value="SCVInfestedPortrait"/>
+    </CActorUnit>
+    <CActorMissile id="SIVolatileInfested">
+        <PortraitModel value="InfestedExploderPortrait"/>
+    </CActorMissile>
     <CActorUnit id="StukovInfestedBanshee">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
