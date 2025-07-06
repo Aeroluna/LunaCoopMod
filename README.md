@@ -28,13 +28,55 @@ Medivacs are cool, what more needs to be said? The more efficient healing and in
 
 ## Kerrigan
 
+- Fixed a bug where P1 and P3 used each other's icons.
 - Changed P2.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The twin drones upgraded is added to help ease the massive nerf to Kerrigan's early game.
 
-- Fixed a bug where P1 and P3 used each other's icons.
+- Added P4: Champion of the Brood War
+  - Replaces Kerrigan with Brood War Kerrigan
+    - Uses Starcraft: Remastered themed skin.
+    - Replaces Leaping Strike with Implosion.
+      - Lifts unit, stunning for 3 seconds, before dropping and dealing high damage.
+      - Stuns heroic units for 1 second instead.
+      - Cannot be used against structures or unstoppable units.
+    - Replaces Psionic Shift with Razor Swarm.
+      - Does high damage over time in area.
+      - Does double damage against structures.
+    - Replaces Energy Blast weapon with a Psi Blast weapon.
+      - Uses melee animation at short range.
+    - Replaces Chain Reaction with Psionic Cleave.
+      - Grants AOE damage to weapon attacks.
+  - Replaces all combat units with elite Brood War variants that have 200% more health and 50% more weapon damage but cost 200% more resources and supply.
+  - Replaces Zergling with Devouring One.
+    - Gains Cannibalize passive.
+      - Heals for 20 life when a biological unit dies nearby.
+  - Replaces Queen with Brood Matron.
+    - Gains Protective Brood passive.
+      - Grants 3 life regeneration and 0.5625 energy regeneration to nearby friendly units.
+  - Replaces Hydralisk with Hunter Killer.
+    - Gains Envenomed Spines passive.
+      - Attacks against units apply venom for 6 seconds, dealing 4 damage per second. This effect stacks up to 5 times.
+  - Replaces Lurker with Grave Splitter.
+    - Gains Burial Rites passive.
+      - Increases the radius and size of each spine by 50%.
+  - Replaces Ultralisk with Torrasque.
+    - Improved Reincarnation passive.
+      - Cocoon is now invulnerable.
+  - Replaces Mutalisk with Scythewing.
+    - Gains Sundering Glaive passive.
+      - Attacks deal +6 vs. armored targets on the first hit.
+  - Replaces Brood Lord with Primogenitor.
+    - Improves Broodlings.
+      - Broodlings have improved stats as well.
+      - Lifetime increased by 200%.
+
+What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasques return from Brood War with some new friends. Kerrigan has also been rebranded with a new Brood War themed skin, which is much better than the boob sacs and bone heels of SC2's design (Seriously, why did they try to make her sexy?).
+
+Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
+
 
 ## Artanis
 
@@ -191,3 +233,4 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Nerazim Probe - DaveSpectre
 - Alternate Medic & Medivac Portraits - miazmatic
 - SC: Evolution Complete for Creators - SC: Evolution Complete Team
+- Infested Kerrigan - StarCraft: Remastered look - DaveSpectre
