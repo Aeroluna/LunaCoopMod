@@ -247,3 +247,4 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Infested Diamondback Portrait - DaveSpectre
 - Infested Liberator Portrait - DaveSpectre
 - Volatile Infested colonist Portrait - DaveSpectre
+- Infested Trooper - DaveSpectre
