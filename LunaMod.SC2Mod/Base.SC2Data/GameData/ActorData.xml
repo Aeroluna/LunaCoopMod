@@ -7,6 +7,20 @@
         <On index="85" Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; !ValidatePlayer CommanderPrestigeKerriganBrood"/>
         <On Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.200000 0.400000"/>
     </CActorUnit>
+    <CActorUnit id="ImpalerDehaka">
+        <Model value="Impaler_Primal_Collection"/>
+        <BuildModel value="Impaler_Primal_Collection"/>
+        <PlacementModel value="Impaler_Primal_Collection"/>
+        <PortraitModel value="Impaler_Primal_Collection_Portrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\Wireframe-zerg-impaler-primal-collection.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-impaler-primal-collection.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-impaler-primal-collection.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\Wireframe-zerg-impaler-primal-collection.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorForceSphere id="KerriganBroodRangedAttackForce">
         <On Terms="Effect.KerriganBroodPsiBlastDamage.Start; !ValidatePlayer HasK5ChainLightningUpgrade" Send="Create"/>
         <On Terms="ActorCreation" Send="Create ChainReactionAttackUpForce"/>
@@ -1053,5 +1067,25 @@
     </CActorTurret>
     <CActorUnit id="Wraith">
         <Macros value="GimbalZMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulDarkTemplar">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-ihanrii.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-darktemplar00-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="ZeratulWarpPrism">
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprism-ihanrii.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulWarpPrismPhasing">
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprismstationary-ihanrii.dds"/>
     </CActorUnit>
 </Catalog>

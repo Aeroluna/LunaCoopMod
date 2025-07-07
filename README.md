@@ -221,6 +221,27 @@ Ever get annoyed when your Dark Templar would run in and automatically stasis Mi
 
 These two simple changes make playing P2 infinitely smoother to play.
 
+- Added Infested SCV portrait.
+- Added Infested Diamondback portrait.
+- Added Infested Liberator portrait.
+- Changed Infested Siege Tank portrait to Infested Diamondback portrait.
+- Changed Infested Civilian portrait.
+- Added Infested Trooper model and portrait.
+
+Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
+
+## Dehaka
+
+- Changed Primal Impaler model.
+
+The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
+
+## Zeratul
+
+- Changed to Ihan-rii skin set.
+- Added Xel'Naga Ambusher portait.
+- Added Xel'Naga Enforcer portrait.
+
 ## Credits
 
 - Warp Stargate Alternate - DaveSpectre
@@ -248,3 +269,6 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Infested Liberator Portrait - DaveSpectre
 - Volatile Infested colonist Portrait - DaveSpectre
 - Infested Trooper - DaveSpectre
+- Primal Impaler - DaveSpectre
+- Ambusher (Ihan-rii Stalker) / Alrasz (Ambusher Hero) portrait - DaveSpectre
+- Enforcer / Ihan-rii Immortal Portrait - DaveSpectre
