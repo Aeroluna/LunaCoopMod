@@ -10,6 +10,16 @@
     <CAbilMorph id="BurrowStukovInfestedBansheeDown">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilArmMagazine id="CarrierRepairDroneHanger">
+        <ExternalAngle value="180"/>
+        <Leash value="10"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="CarrierRepairDroneHeal">
+        <Flags index="ReExecutable" value="1"/>
+        <AutoCastValidatorArray index="3" value="CarrierRepairDroneCasterNotRecalling"/>
+        <!--TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/-->
+        <!--AutoCastValidatorArray value="UnitIsNotBiologicalorIsHellbat"/-->
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="CommanderPrestigeStukovBansheesDeploy">
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>

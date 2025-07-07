@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorUnitCompareBehaviorCount id="CarrierRepairDroneNotRecalling">
+        <Behavior value="CarrierRepairDroneRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CarrierRepairDroneCasterNotRecalling">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="CarrierRepairDroneRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="CasterisGreaterThan6">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="6"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="CasterisLessThan1">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LT"/>
+        <Range value="1"/>
+    </CValidatorLocationCompareRange>
     <CValidatorPlayerRequirement id="CommanderPrestigeKerriganBrood">
         <Find value="1"/>
         <Value value="CommanderPrestigeKerriganBrood"/>

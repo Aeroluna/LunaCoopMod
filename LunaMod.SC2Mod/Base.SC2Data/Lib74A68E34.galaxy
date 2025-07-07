@@ -2,6 +2,7 @@ include "TriggerLibs/NativeLib"
 include "LibCOOC"
 include "LibCOUI"
 include "LibA8FDA37D"
+include "Lib01833E95"
 
 include "Lib74A68E34_h"
 
@@ -14,6 +15,7 @@ void lib74A68E34_InitLibraries () {
     libCOOC_InitVariables();
     libCOUI_InitVariables();
     libA8FDA37D_InitVariables();
+    lib01833E95_InitVariables();
 }
 
 // Custom Script
@@ -38,6 +40,19 @@ void voicepack_apply(string reward_id, int player)
 }
 
 void lib74A68E34_InitCustomScript () {
+}
+
+// Functions
+void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    TechTreeAbilityAllow(lp_player, AbilityCommand("PhaseStructure", 0), true);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("PhaseStructure", 2), true);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("PhaseStructure", 1), true);
+    TriggerEnable(lib01833E95_gt_K2_CannonPhased, true);
+    TriggerEnable(lib01833E95_gt_K2_PylonCreated, true);
+    TriggerEnable(lib01833E95_gt_K2_StructureAttackUpgrade, true);
+    TriggerEnable(lib01833E95_gt_K2_StructureArmorUpgrade, true);
 }
 
 // Triggers
@@ -252,6 +267,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         if (auto560DABDD_val == "ProtossArtanis") {
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
         }
+        else if (auto560DABDD_val == "ProtossKarax") {
+            lib74A68E34_gf_KaraxEnable20(lv_player);
+        }
         else if (auto560DABDD_val == "ProtossVorazun") {
             TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, true);
         }
@@ -265,6 +283,27 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 void lib74A68E34_gt_ActivateCommanderTriggers_Init () {
     lib74A68E34_gt_ActivateCommanderTriggers = TriggerCreate("lib74A68E34_gt_ActivateCommanderTriggers_Func");
     libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ActivateCommanderTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DisableLibraryTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DisableLibraryTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib01833E95_gt_K2_Karax20, false);
+    TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DisableLibraryTriggers_Init () {
+    lib74A68E34_gt_DisableLibraryTriggers = TriggerCreate("lib74A68E34_gt_DisableLibraryTriggers_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_DisableLibraryTriggers);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -332,6 +371,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
+    lib74A68E34_gt_DisableLibraryTriggers_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
 }

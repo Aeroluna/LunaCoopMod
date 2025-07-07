@@ -19,6 +19,48 @@
         <AttributeBonus index="Light" value="2"/>
         <Amount value="10"/>
     </CEffectDamage>
+    <CEffectIssueOrder id="CarrierRepairDroneRecallIssueOrder">
+        <ValidatorArray value="CarrierRepairDroneRecalling"/>
+        <EditorCategories value=""/>
+        <Abil value="move"/>
+        <Target Value="CasterPoint"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="CarrierRepairDroneIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="CarrierRepairDroneHeal"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="CarrierRepairDroneRecallAB">
+        <EditorCategories value=""/>
+        <Behavior value="CarrierRepairDroneRecalling"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="CarrierRepairDroneRecallRB">
+        <EditorCategories value=""/>
+        <BehaviorLink value="CarrierRepairDroneRecalling"/>
+    </CEffectRemoveBehavior>
+    <CEffectSwitch id="CarrierRepairDroneSearchSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="CarrierRepairDroneNotRecalling" Effect="CarrierRepairDroneSearch"/>
+        <CaseArray Effect="CarrierRepairDroneRecallIssueOrder" FallThrough="1"/>
+    </CEffectSwitch>
+    <CEffectSet id="CarrierRepairDroneSet">
+        <EditorCategories value=""/>
+        <EffectArray value="CarrierRepairDroneRecallSwitch"/>
+        <EffectArray value="CarrierRepairDroneSearchSwitch"/>
+    </CEffectSet>
+    <CEffectSwitch id="CarrierRepairDroneRecallSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="CasterisGreaterThan6" Effect="CarrierRepairDroneRecallAB"/>
+        <CaseArray Validator="CasterisLessThan1" Effect="CarrierRepairDroneRecallRB"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="CarrierRepairDroneSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Mechanical;Self,Neutral,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="8" Effect="CarrierRepairDroneIssueOrder"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
     <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileLeft">
         <ImpactEffect value="CycloneWeaponDamage"/>
     </CEffectLaunchMissile>

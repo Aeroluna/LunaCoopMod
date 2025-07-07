@@ -4,6 +4,12 @@
         <EffectArray index="0" Reference="Unit,ThorAP,SubgroupPriorityDelta"/>
         <EffectArray Reference="Unit,Thor,SubgroupPriorityDelta" Value="8"/>
     </CUpgrade>
+    <CUpgrade id="CarrierUpgrade">
+        <EffectArray index="4" removed="1"/>
+        <EffectArray index="5" removed="1"/>
+        <EffectArray index="6" removed="1"/>
+        <EffectArray index="7" removed="1"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeArtanisCombatAbilities">
         <EffectArray index="22" Value="15"/>
         <EffectArray Reference="Unit,MothershipArtanis,CostResource[Minerals]" Value="300"/>
@@ -534,6 +540,57 @@
         <AffectedUnitArray value="Drone"/>
         <AffectedUnitArray value="DroneBurrowed"/>
         <LeaderAlias value=""/>
+    </CUpgrade>
+    <CUpgrade id="Karax20Base">
+        <EffectArray index="8" Operation="Add" Reference="Behavior,TimeWarpProduction,Modification.VitalRegenMultiplier[Energy]" Value="6"/>
+        <EffectArray index="9" Reference="Behavior,TimeWarpProduction,Modification.VitalRegenMultiplier[Shields]"/>
+        <EffectArray index="10" Reference="Behavior,TimeWarpProduction,Modification.AttackSpeedMultiplier" Value="1"/>
+        <EffectArray index="11" Operation="Set" Reference="Button,ZealotPurifierRevive,Tooltip" Value="Button/Tooltip/ZealotPurifierRevive2"/>
+        <EffectArray index="12" Reference="Button,ZealotPurifierResearchReconstruction,Tooltip" Value="Button/Tooltip/ZealotPurifierResearchReconstruction2"/>
+        <EffectArray index="13" Operation="Add" Reference="Unit,SentryPurifier,ShieldsMax" Value="100"/>
+        <EffectArray index="14" Reference="Unit,SentryPurifier,ShieldsStart"/>
+        <EffectArray index="15" Operation="Set" Reference="Weapon,ColossusPurifierThermalLances,Period" Value="1.650000"/>
+        <EffectArray index="16" Reference="Effect,ThermalLancesFireBeamDamage,Amount" Value="25"/>
+        <EffectArray index="17" Operation="Add" Reference="Effect,ArtanisIonCannonsU,Amount" Value="5"/>
+        <EffectArray index="18" Operation="Subtract" Reference="Effect,ArtanisIonCannonsU,AttributeBonus[Light]"/>
+        <EffectArray index="19" Reference="Effect,ArtanisIonCannonsULeft,AttributeBonus[Light]"/>
+        <EffectArray index="20" Reference="Effect,ArtanisIonCannonsURight,AttributeBonus[Light]"/>
+        <EffectArray index="21" Operation="Add" Reference="Effect,ArtanisIonCannonsULeft,Amount"/>
+        <EffectArray index="22" Reference="Effect,ArtanisIonCannonsURight,Amount"/>
+        <EffectArray index="23" Operation="Set" Reference="Button,MasteryKaraxSoAChronoRegen,AlertName" Value="Button/Name/MasteryKaraxSoAChronoDefense"/>
+        <EffectArray index="24" Reference="Button,MasteryKaraxSoAChronoRegen,Tooltip" Value="Button/Tooltip/MasteryKaraxSoAChronoDefense"/>
+        <EffectArray index="25" Operation="Subtract" Reference="Button,KaraxTurretRange,Tooltip" Value="Button/Tooltip/KaraxTurretRange2"/>
+        <EffectArray index="26" Operation="Set" Reference="Button,ResearchKaraxTurretRange,Tooltip" Value="Button/Tooltip/ResearchKaraxTurretRange2"/>
+        <EffectArray index="27" Operation="Subtract" Reference="Abil,RoboticsBayResearch,InfoArray[Research10].Resource[Minerals]" Value="50"/>
+        <EffectArray index="28" Operation="Subtract" Reference="Abil,RoboticsBayResearch,InfoArray[Research10].Resource[Vespene]" Value="50"/>
+        <EffectArray index="29" Operation="Subtract" Reference="Behavior,ZealotPurifierReviveSupressed,DamageResponse.Cost.Cooldown.TimeStart" Value="180.000000"/>
+        <EffectArray index="30" Operation="Set" Reference="Button,ZealotPurifierResearchReconstruction,Name" Value="Button/Name/ZealotPurifierResearchReconstruction2"/>
+        <EffectArray index="31" Operation="Set" Reference="Button,TimeWarp,Tooltip" Value="Button/Tooltip/TimeWarp2"/>
+        <EffectArray index="32" Operation="Subtract" Reference="Abil,TwilightCouncilResearch,InfoArray[Research10].Resource[Minerals]" Value="50"/>
+        <EffectArray index="33" Operation="Subtract" Reference="Abil,TwilightCouncilResearch,InfoArray[Research10].Resource[Vespene]" Value="50"/>
+        <EffectArray index="34" Operation="Subtract" Reference="Abil,TwilightCouncilResearch,InfoArray[Research13].Resource[Minerals]" Value="50"/>
+        <EffectArray index="35" Reference="Abil,TwilightCouncilResearch,InfoArray[Research13].Resource[Vespene]"/>
+        <EffectArray index="36" Reference="Abil,TwilightCouncilResearch,InfoArray[Research14].Resource[Minerals]"/>
+        <EffectArray index="37" Reference="Abil,TwilightCouncilResearch,InfoArray[Research14].Resource[Vespene]"/>
+        <EffectArray index="38" Reference="Abil,SolarForgeResearch,InfoArray[Research1].Resource[Minerals]"/>
+        <EffectArray index="39" Reference="Abil,SolarForgeResearch,InfoArray[Research1].Resource[Vespene]"/>
+        <EffectArray index="40" Operation="Set" Reference="Abil,SolarForgeResearch,InfoArray[Research2].Resource[Minerals]" Value="25"/>
+        <EffectArray index="41" Reference="Abil,CarrierRepairDroneHanger,InfoArray[Ammo1].CountStart" Value="1"/>
+        <EffectArray index="42" Operation="Subtract" Reference="Abil,SolarForgeResearch,InfoArray[Research2].Resource[Vespene]" Value="25"/>
+        <EffectArray index="43" Operation="Add" Reference="Effect,SolarForgeSolarEfficiency2MU,VitalArray[Energy].Change" Value="50"/>
+        <EffectArray index="44" Operation="Add" Reference="Effect,SolarForgeSolarEfficiency3MU,VitalArray[Energy].Change" Value="3"/>
+        <EffectArray index="45" Operation="Add" Reference="Unit,SentryPhasing,ShieldsMax" Value="100"/>
+        <EffectArray index="46" Operation="Add" Reference="Unit,SentryPhasing,ShieldsStart" Value="100"/>
+        <EffectArray index="47" Operation="Add" Reference="Effect,SolarForgeSolarEfficiency3MU,VitalArray[Energy].Change" Value="3"/>
+        <EffectArray index="48" Operation="Set" Reference="Button,ResearchShadowCannon,Name" Value="Button/Name/ResearchShadowCannon2"/>
+        <EffectArray index="49" Operation="Set" Reference="Button,ResearchShadowCannon,Tooltip" Value="Button/Tooltip/ResearchShadowCannon2"/>
+        <EffectArray index="50" Operation="Set" Reference="Button,ResearchEnergizerReclamation,Tooltip" Value="Button/Tooltip/ResearchEnergizerReclamation2"/>
+        <EffectArray index="51" Operation="Set" Reference="Button,ResearchEnergizerReclamation,Name" Value="Button/Name/ResearchEnergizerReclamation2"/>
+        <EffectArray index="52" Reference="Actor,PowerVisual,Scale" Value="0.30000"/>
+        <EffectArray index="53" Operation="Add" Reference="Actor,PowerVisualLow,Range" Value="1.950000"/>
+        <EffectArray index="54" Operation="Add" Reference="Actor,UnpoweredVisual,Scale" Value="0.30000"/>
+        <EffectArray index="55" Operation="Add" Reference="Actor,UnpoweredVisualLow,Range" Value="1.950000"/>
+        <EffectArray index="56" Operation="Add" Reference="Actor,PylonSplat,Scale" Value="0.30000"/>
     </CUpgrade>
     <CUpgrade id="KerriganBroodCosmetic">
         <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>

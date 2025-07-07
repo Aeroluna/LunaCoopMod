@@ -20,6 +20,70 @@
             <LayoutButtons Face="VorazunImprovedVespene" Type="Passive" Requirements="HaveVorazunCommander" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <!--CUnit id="Harbinger">-->
+    <!--        <DeathRevealRadius value="3"/>-->
+    <!--        <Mob value="Campaign"/>-->
+    <!--        <FlagArray index="UseLineOfSight" value="1"/>-->
+    <!--        <PlaneArray index="Ground" value="1"/>-->
+    <!--        <LifeStart value="5000"/>-->
+    <!--        <LifeMax value="5000"/>-->
+    <!--        <LifeArmor value="2"/>-->
+    <!--        <LifeRegenRate value="0.2734"/>-->
+    <!--        <LifeArmorName value="Unit/LifeArmorName/HybridArmor"/>-->
+    <!--        <EnergyStart value="200"/>-->
+    <!--        <EnergyMax value="200"/>-->
+    <!--        <Mover value="Dragoon"/>-->
+    <!--        <Height value="1"/>-->
+    <!--        <Speed value="1.5"/>-->
+    <!--        <Acceleration value="6.25"/>-->
+    <!--        <LateralAcceleration value="46"/>-->
+    <!--        <Sight value="9"/>-->
+    <!--        <AttackTargetPriority value="20"/>-->
+    <!--        <DamageDealtXP value="1"/>-->
+    <!--        <DamageTakenXP value="1"/>-->
+    <!--        <KillXP value="80"/>-->
+    <!--        <WeaponArray Link="HarbingerWeapon"/>-->
+    <!--        <BehaviorArray Link="HarbingerAura"/>-->
+    <!--        <AbilArray Link="stop"/>-->
+    <!--        <AbilArray Link="attack"/>-->
+    <!--        <AbilArray Link="move"/>-->
+    <!--        <AbilArray Link="DisruptionCloud"/>-->
+    <!--        <AbilArray Link="VoidHarbingerDarkConsumption"/>-->
+    <!--        <AbilArray Link="VoidHarbingerVoidEmpowerment"/>-->
+    <!--        <AbilArray Link="EnervatingBeam"/>-->
+    <!--        <CardLayouts>-->
+    <!--            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>-->
+    <!--            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>-->
+    <!--            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>-->
+    <!--            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>-->
+    <!--            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>-->
+    <!--            <LayoutButtons Face="DisruptionCloud" Type="AbilCmd" AbilCmd="DisruptionCloud,Execute" Row="2" Column="0"/>-->
+    <!--            <LayoutButtons Face="DarkConsumptionOn" Type="AbilCmd" AbilCmd="VoidHarbingerDarkConsumption,On" Row="2" Column="1"/>-->
+    <!--            <LayoutButtons Face="DarkConsumptionOff" Type="AbilCmd" AbilCmd="VoidHarbingerDarkConsumption,Off" Row="2" Column="1"/>-->
+    <!--            <LayoutButtons Face="VoidEmpowermentOff" Type="AbilCmd" AbilCmd="VoidHarbingerVoidEmpowerment,Off" Row="2" Column="2"/>-->
+    <!--            <LayoutButtons Face="VoidEmpowermentOn" Type="AbilCmd" AbilCmd="VoidHarbingerVoidEmpowerment,On" Row="2" Column="2"/>-->
+    <!--            <LayoutButtons Face="HarbingerEnervatingBeam" Type="AbilCmd" AbilCmd="EnervatingBeam,Execute" Row="2" Column="3"/>-->
+    <!--        </CardLayouts>-->
+    <!--        <Radius value="1.5"/>-->
+    <!--        <InnerRadius value="1"/>-->
+    <!--        <CargoSize value="4"/>-->
+    <!--        <ScoreKill value="1600"/>-->
+    <!--        <SubgroupPriority value="15"/>-->
+    <!--        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>-->
+    <!--        <Attributes index="Psionic" value="1"/>-->
+    <!--        <Attributes index="Massive" value="1"/>-->
+    <!--    </CUnit>-->
+    <!--    <CUnit id="HarbingerKillEverythingWeapon" parent="MISSILE">-->
+    <!--        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>-->
+    <!--    </CUnit>-->
+    <!--    <CUnit id="HarbingerLaunchMissileWeapon" parent="MISSILE">-->
+    <!--        <Mover value="HarbingerKillEverythingWeapon"/>-->
+    <!--        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>-->
+    <!--    </CUnit-->
+    <CUnit id="CarrierRepairDrone">
+        <Collide index="Flying" value="0"/>
+        <Collide index="FlyingEscorts" value="1"/>
+    </CUnit>
     <CUnit id="CommandCenter">
         <CardLayouts index="0">
             <LayoutButtons index="1" Column="3"/>
@@ -241,6 +305,14 @@
         <Mover value="MissileDefault"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="KhaydarinMonolith">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="1"/>
+            <LayoutButtons index="4" Column="2"/>
+            <LayoutButtons index="5" Row="2"/>
+        </CardLayouts>
+        <!--HotkeyCategory value="Unit/Category/ProtossNerazim"/-->
+    </CUnit>
     <CUnit id="Lurker">
         <CardLayouts index="0">
             <LayoutButtons Face="KerriganBurialRites" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
@@ -313,6 +385,13 @@
     <CUnit id="PhoenixAiur">
         <CostResource index="Vespene" value="50"/>
     </CUnit>
+    <CUnit id="PhotonCannon">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="7" Row="2"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Probe">
         <CardLayouts index="1">
             <LayoutButtons index="10" Face="CommanderPrestigeKaraxKhaydarinMonolithBuildLocked" Type="Passive" AbilCmd="" Requirements="CommanderPrestigeKaraxArmy" Row="1"/>
@@ -336,6 +415,11 @@
     <CUnit id="SIStarportTechLab">
         <CardLayouts index="0">
             <LayoutButtons Face="ResearchInfestedBansheeSpeedUpgrade" Type="AbilCmd" AbilCmd="SIStarportResearch,Research7" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ShieldBattery">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Row="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SiegeTank">
