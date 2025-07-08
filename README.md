@@ -11,9 +11,10 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 - Changed Shield Batteries to be accessible Artanis, Vorazun, and Fenix.
 - Changed Shield Battery to have 2 more range.
-- Changed Probe build command card to match Versus (Specifically swapped Khaydarin Monolith with Shield Battery).
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
+
+- Reordered many command cards to match Versus.
 
 ## Raynor
 
@@ -22,7 +23,6 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
   - Heal more efficiently than medics.
   - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
   - Changed Stabilizer Medpacks to also affect medivacs.
-- Reordered Starport command card to match Versus.
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1.
 
@@ -130,7 +130,6 @@ The little missile that was fired during Lock On was just sad, now Cyclones look
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
 
-- Changed Factory command card to match Versus.
 - Added Smart Servos upgrade that increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
 - Added Overdrive Actuators upgrade at the Armory that increases ground vehicle movement speed by 20% and ship movement speed by 10%.
 - Added Pulse-Loop Capacitors upgrade at the Armory that decreases all unit cooldowns by 20%.
