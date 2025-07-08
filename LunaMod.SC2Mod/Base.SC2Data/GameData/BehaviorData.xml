@@ -247,4 +247,13 @@
             <StateFlags index="Invulnerable" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="KaraxStalkerBlink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CasterShieldsLT1"/>
+        <DisableValidatorArray value="HasPurifierBlinkAutocast"/>
+        <DamageResponse Handled="KaraxBlinkInitialPersistent">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
 </Catalog>

@@ -20,7 +20,7 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 - Changed Ignite Afterburners to increase acceleration by 1000.
 - Added Medivacs.
   - Heal more efficiently than medics.
-  - Added Caduceus Reactor upgrade available at the Fusion Core which doubles energy regen for Medivacs.
+  - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
   - Changed Stabilizer Medpacks to also affect medivacs.
 - Reordered Starport command card to match Versus.
 
@@ -125,19 +125,19 @@ These changes should make Thors much more competitive. Increased Hellion/Hellbat
 The little missile that was fired during Lock On was just sad, now Cyclones look as cool as they do in Versus. Also Lock On is a spell, and should not be affected by armor.
 
 - Added Widow Mines.
-  - Added Hellburst Payload upgrade which increases Sentinel Missile direct damage by 20 and splash damage by 80.
+  - Added Hellburst Payload upgrade that increases Sentinel Missile direct damage by 20 and splash damage by 80.
   - Changed Cyclone's Targeting Optics upgrade to additionally increasing Sentinel Missile range by 3.
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
 
 - Changed Factory command card to match Versus.
-- Added Smart Servos upgrade which increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
-- Added Overdrive Actuators upgrade at the Armory which increases ground vehicle movement speed by 20% and ship movement speed by 10%.
-- Added Pulse-Loop Capacitors upgrade at the Armory which decreases all unit cooldowns by 20%.
+- Added Smart Servos upgrade that increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
+- Added Overdrive Actuators upgrade at the Armory that increases ground vehicle movement speed by 20% and ship movement speed by 10%.
+- Added Pulse-Loop Capacitors upgrade at the Armory that decreases all unit cooldowns by 20%.
 
 These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
 
-- Added the ability to morph Orbital Commands which have access to Calldown: Extra Supplies and Scanner Sweep.
+- Added the ability to morph Orbital Commands that have access to Calldown: Extra Supplies and Scanner Sweep.
 
 Scanner Sweeps should help Cyclones keep their Lock On active and provide detection without having to rely on the slow Science Vessels. Additionally, Calldown: Extra Supplies to help with the constant supply blocks on Swann.
 
@@ -172,7 +172,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
 - Changed Disruption Web to no longer require research.
-- Added Flux Vanes upgrade which increases the movement speed and acceleration of Void Rays.
+- Added Flux Vanes upgrade that increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
 
@@ -223,13 +223,20 @@ Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono 
 
 Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
 
+- Added Instigators.
+   - A Purifier variant Stalker.
+   - Added Displacement Matrix upgrade that lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
+   - Blink can be set to autocast to automatically blink when the hull takes damage.
+
+Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
+
 ## Alarak
 
 - Changed Ascendant shadow trail model to be red.
 
 ## Stukov
 
-- Added Rotwing Rotors upgrade which increases Infested Banshee speed by 2.
+- Added Rotwing Rotors upgrade that increases Infested Banshee speed by 2.
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
 
 These two simple changes make playing P2 infinitely smoother to play.

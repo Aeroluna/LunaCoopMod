@@ -7,6 +7,20 @@
         <CastIntroTime index="0" value="0.75"/>
         <FinishTime index="0" value="0.75"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="BlinkMultiple">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost index="0">
+            <Charge>
+                <CountMax value="1"/>
+                <HideCount value="1"/>
+                <TimeStart value="8"/>
+                <TimeUse value="8"/>
+            </Charge>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
+        <CmdButtonArray index="Execute" Requirements="UseBlink"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="BurrowStukovInfestedBansheeDown">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
@@ -341,6 +355,12 @@
         <AutoCastValidatorArray value="CasterInCombat"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="SignifierFade" Requirements="HaveSignifierFade"/>
     </CAbilEffectInstant>
+    <CAbilResearch id="TwilightCouncilResearch">
+        <InfoArray index="Research4" Time="60">
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="VortexArtanis" parent="TalDarimVortex">
         <Effect index="0" value="VortexArtanisCreatePersistentInitial"/>
         <Cost index="0">

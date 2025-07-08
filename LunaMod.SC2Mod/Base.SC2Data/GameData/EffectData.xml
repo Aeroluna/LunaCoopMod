@@ -113,6 +113,14 @@
     <CEffectSet id="HydraliskMeleeSet">
         <EffectArray value="KerriganEnvenomedSpinesAB"/>
     </CEffectSet>
+    <CEffectIssueOrder id="KaraxBlinkIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="BlinkMultiple"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
     <CEffectDamage id="KerriganEnvenomedSpinesDamage">
         <EditorCategories value="Race:Zerg"/>
         <Amount value="4"/>
@@ -650,4 +658,8 @@
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="KerriganEnvenomedSpines"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="KaraxBlinkInitialPersistent">
+        <InitialEffect value="KaraxBlinkIssueOrder"/>
+        <InitialOffset value="0,100,0"/>
+    </CEffectCreatePersistent>
 </Catalog>

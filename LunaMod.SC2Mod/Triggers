@@ -1321,6 +1321,7 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
             <Parameter Type="Param" Library="74A68E34" Id="5D24EEDB"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="89E2D55B"/>
             <FunctionCall Type="FunctionCall" Library="74A68E34" Id="11515DD9"/>
         </Element>
         <Element Type="Param" Id="5D24EEDB">
@@ -1328,6 +1329,15 @@
             <Value>ProtossKarax</Value>
             <ValueType Type="userinstance"/>
             <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="89E2D55B">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="803AD8C8"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="74E85A09"/>
+        </Element>
+        <Element Type="Param" Id="74E85A09">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="7A89F033"/>
+            <Variable Type="Variable" Library="74A68E34" Id="543E3674"/>
         </Element>
         <Element Type="FunctionCall" Id="11515DD9">
             <FunctionDef Type="FunctionDef" Library="74A68E34" Id="8DB8103F"/>
@@ -1710,7 +1720,90 @@
             <ValueGameType Type="Unit"/>
         </Element>
         <Element Type="Category" Id="E9932DA6">
+            <Item Type="FunctionDef" Library="74A68E34" Id="803AD8C8"/>
             <Item Type="FunctionDef" Library="74A68E34" Id="8DB8103F"/>
+        </Element>
+        <Element Type="FunctionDef" Id="803AD8C8">
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="7A89F033"/>
+            <Variable Type="Variable" Library="74A68E34" Id="56D0E6AC"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="1523539D"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="C8220A99"/>
+        </Element>
+        <Element Type="ParamDef" Id="7A89F033">
+            <Identifier>player</Identifier>
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="74A68E34" Id="8D60B7CD"/>
+        </Element>
+        <Element Type="Param" Id="8D60B7CD">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="56D0E6AC">
+            <Identifier>upgradeCount</Identifier>
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="D3B19227"/>
+        </Element>
+        <Element Type="Param" Id="D3B19227">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1523539D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <Parameter Type="Param" Library="74A68E34" Id="488F5834"/>
+            <Parameter Type="Param" Library="74A68E34" Id="45556BEF"/>
+        </Element>
+        <Element Type="Param" Id="488F5834">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="74A68E34" Id="56D0E6AC"/>
+        </Element>
+        <Element Type="Param" Id="45556BEF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="CE2F3D8B"/>
+        </Element>
+        <Element Type="FunctionCall" Id="CE2F3D8B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000255"/>
+            <Parameter Type="Param" Library="74A68E34" Id="872138A2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C2EE9F22"/>
+            <Parameter Type="Param" Library="74A68E34" Id="10B26E03"/>
+        </Element>
+        <Element Type="Param" Id="872138A2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="448F39DC"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="D78D6018"/>
+        </Element>
+        <Element Type="Param" Id="C2EE9F22">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000447"/>
+            <Value>MasteryKaraxUnitVital</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Upgrade"/>
+        </Element>
+        <Element Type="Param" Id="10B26E03">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000446"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="7A89F033"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C8220A99">
+            <FunctionDef Type="FunctionDef" Library="COMI" Id="B4BC8DAE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="90470448"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C6BF91DC"/>
+            <Parameter Type="Param" Library="74A68E34" Id="811A0ABE"/>
+        </Element>
+        <Element Type="Param" Id="90470448">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="D5375F42"/>
+            <Value>StalkerPurifier</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Unit"/>
+        </Element>
+        <Element Type="Param" Id="C6BF91DC">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="C136138D"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="7A89F033"/>
+        </Element>
+        <Element Type="Param" Id="811A0ABE">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="BC2165B1"/>
+            <Variable Type="Variable" Library="74A68E34" Id="56D0E6AC"/>
         </Element>
         <Element Type="FunctionDef" Id="8DB8103F">
             <FlagAction/>

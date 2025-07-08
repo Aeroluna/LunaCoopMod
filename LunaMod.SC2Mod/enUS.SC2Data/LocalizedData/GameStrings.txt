@@ -26,6 +26,7 @@ Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm a
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
+Button/Name/BlinkChargesUpgrade=Displacement Matrix
 Button/Name/BroodLordBrood=Morph to Primogenitor
 Button/Name/ChainReactionBrood=Psionic Cleave
 Button/Name/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=Evolve Ability Efficiency
@@ -56,6 +57,7 @@ Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
 Button/Name/MutaliskBrood=Morph to Scythewing
 Button/Name/PlanetCrackerArtanis=Planet Cracker
 Button/Name/QueenBrood=Birth Brood Matron
+Button/Name/ResearchBlinkCharges=Research Displacement Matrix
 Button/Name/ResearchHellburstPayload=Research Hellburst Payload
 Button/Name/ResearchInfestedBansheeSpeedUpgrade=Research Rotwing Rotors
 Button/Name/ResearchOverdriveActuators=Research Overdrive Actuators
@@ -66,6 +68,7 @@ Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
 Button/Name/SmartServos=Smart Servos
 Button/Name/StabilizerMedPacksMedivac=Stabilizer Medpacks
+Button/Name/StalkerPurifier=Warp in Instigator
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
 Button/Name/VorazunImprovedVespene=Vespene Crystallization
@@ -79,6 +82,7 @@ Button/Tooltip/ACSwannCommandCenterUpgraded=Primary structure. Used to receive g
 Button/Tooltip/ACSwannEngineeringBay=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Missile Turrets from SCVs<n/>- Planetary Fortresses from Command Centers
 Button/Tooltip/ACSwannEngineeringBayUpgraded=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
 Button/Tooltip/AutomatedAssimilatorTextKicker5=<s val="Kicker_Refinery">+5</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
+Button/Tooltip/BlinkPurifier=Teleports the Instigator to a nearby target location. Ability can only be used once every <d ref="Abil,Blink,Cost[0].Cooldown.TimeUse"/> seconds.
 Button/Tooltip/ChainReactionBrood=Kerrigan's attacks deal splash damage to nearby enemy units.
 Button/Tooltip/CommanderPrestigeKaraxArmy=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat unit cost reduced by 40%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Photon Cannon and Khaydarin Monolith cost increased by 100%.
 Button/Tooltip/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=This upgrade is locked by your Commander Prestige.
@@ -120,6 +124,8 @@ Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
+Button/Tooltip/ResearchBlinkCharges=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
+Button/Tooltip/ResearchBlinkChargesUpgrade=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
 Button/Tooltip/ResearchCycloneLockOnDamageUpgrade=Increases <c val="ffff8a">Cyclone</c> Lock On damage by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/ResearchDarkArchonFullStartingEnergy=<c val="ffff8a">Dark Archons</c> and <c val="ffff8a">Signifiers</c> start with full energy.
 Button/Tooltip/ResearchHellbatHellArmor=<c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, and <c val="ffff8a">Thor</c> gain +2 armor. <c val="ffff8a">Hellions</c> and <c val="ffff8a">Hellbats</c> gain 60 hitpoints.
@@ -132,11 +138,14 @@ Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchSignifierFade=Allows a <c val="ffff8a">Signifier</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
+Button/Tooltip/ResearchStalkerPurifierTeleport=Allows <c val="ffff8a">Instigators</c> to teleport to a nearby target location.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Also ignores collision for the duration.
 Button/Tooltip/SignifierPassive=Dark Shrine allows you to warp in Signifier.
 Button/Tooltip/StabilizerMedPacksMedivac=Increases the Medivac's healing speed and allows them to heal mechanical units. Units being healed by Medivacs take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
+Button/Tooltip/StalkerBlinkMultiple=Teleports the Instigator to a nearby target location. Ability regains a charge every <d ref="Abil,BlinkMultiple,Cost[0].Charge.TimeUse"/> seconds. Can store a maximum of 3 charges.
+Button/Tooltip/StalkerPurifier=Ranged support strider. Can store multiple Blink charges.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidStasis=Places target unit or structure in stasis for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/VorazunImprovedVespene=Assimilators and Orbital Assimilators produce vespene gas 25% faster.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
@@ -158,6 +167,8 @@ Effect/Name/EnshroudSearch=Enshroud (Search)
 Effect/Name/HighTemplarNerazimWeapon=High Templar Nerazim Weapon Set
 Effect/Name/HighTemplarNerazimWeaponDamage=High Templar Nerazim Weapon Damage
 Effect/Name/HighTemplarNerazimWeaponLM=High Templar Nerazim Weapon Launch Missile
+Effect/Name/KaraxBlinkInitialPersistent=Karax Blink Initial Persistent
+Effect/Name/KaraxBlinkIssueOrder=Karax Blink Issue Order
 Effect/Name/KerriganBroodPsiBlastDamage=Psi Blast (Damage)
 Effect/Name/KerriganBroodPsiBlastLaunchMissile=Psi Blast (Launch Missile)
 Effect/Name/KerriganBroodRazorTalonsDamage=Razor Talons (Damage)
@@ -275,6 +286,7 @@ Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel1=Terran Vehicle And Ship Weap
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel2=Terran Vehicle And Ship Weapons Extra Level 2
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel3=Terran Vehicle And Ship Weapons Extra Level 3
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
+Upgrade/Name/VoidStalkerInstigator=Void Stalker Instigator
 Upgrade/Name/VorazunImprovedShields=Vorazun Improved Shields
 Upgrade/Name/VorazunImprovedVespene=Vorazun Improved Vespene
 UserData/TechUnit/MothershipArtanis_Name=MothershipArtanis

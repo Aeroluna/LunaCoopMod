@@ -26,6 +26,8 @@
         <EffectArray Reference="Unit,PhotonCannon,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Minerals]" Value="300"/>
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Vespene]" Value="100"/>
+        <EffectArray Operation="Subtract" Reference="Unit,StalkerPurifier,CostResource[Minerals]" Value="64"/>
+        <EffectArray Operation="Subtract" Reference="Unit,StalkerPurifier,CostResource[Vespene]" Value="26"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeKerriganCreep">
         <EffectArray Reference="Unit,QueenCoop,LifeMax" Value="87"/>
@@ -601,6 +603,12 @@
         <EffectArray index="55" removed="1"/>
         <EffectArray index="56" removed="1"/>
     </CUpgrade>
+    <CUpgrade id="KaraxCommander">
+        <EffectArray Reference="Unit,StalkerPurifier,LifeMax" Value="40"/>
+        <EffectArray Reference="Unit,StalkerPurifier,LifeStart" Value="40"/>
+        <EffectArray Reference="Unit,StalkerPurifier,CostResource[Minerals]" Value="38"/>
+        <EffectArray Reference="Unit,StalkerPurifier,CostResource[Vespene]" Value="15"/>
+    </CUpgrade>
     <CUpgrade id="KerriganBroodCosmetic">
         <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
         <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,Wireframe.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
@@ -703,6 +711,14 @@
     <CUpgrade id="StabilizerMedPacks">
         <EffectArray Reference="Effect,MedivacRaynorHeal,RechargeVitalRate" Value="3.000000"/>
         <EffectArray Operation="Subtract" Reference="Effect,MedivacRaynorHeal,DrainVitalCostFactor" Value="0.08"/>
+    </CUpgrade>
+    <CUpgrade id="StalkerResearchBlinkCharges">
+        <EffectArray Reference="Abil,BlinkMultiple,Cost[0].Charge.CountMax" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BlinkMultiple,Cost[0].Charge.TimeStart" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BlinkMultiple,Cost[0].Charge.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Set" Reference="Abil,BlinkMultiple,Cost[0].Charge.HideCount" Value="0"/>
+        <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,AlertTooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
+        <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,Tooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
     </CUpgrade>
     <CUpgrade id="SwannCommander">
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
@@ -850,6 +866,27 @@
         <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="2.00000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="StukovInfestedBanshee"/>
+    </CUpgrade>
+    <CUpgrade id="VoidStalkerInstigator">
+        <Flags index="UpgradeCheat" value="0"/>
+        <InfoTooltipPriority value="2"/>
+        <Race value="Protoss"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Button,Stalker,Name" Value="Button/Name/StalkerPurifier"/>
+        <EffectArray Operation="Set" Reference="Button,Stalker,Tooltip" Value="Button/Tooltip/StalkerPurifier"/>
+        <EffectArray Operation="Set" Reference="Button,Stalker,AlertTooltip" Value="Button/Tooltip/StalkerPurifier"/>
+        <EffectArray Operation="Set" Reference="Button,Stalker,Icon" Value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <EffectArray Operation="Set" Reference="Button,Stalker,AlertIcon" Value="Assets\Textures\btn-unit-protoss-stalker-purifier.dds"/>
+        <EffectArray Operation="Set" Reference="Abil,GatewayTrain,InfoArray[Train2].Unit[0]" Value="StalkerPurifier"/>
+        <EffectArray Operation="Set" Reference="Abil,WarpGateTrain,InfoArray[Train2].Unit" Value="StalkerPurifier"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchStalkerTeleport,AlertTooltip" Value="Button/Tooltip/ResearchStalkerPurifierTeleport"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchStalkerTeleport,Icon" Value="Assets\Textures\btn-ability-protoss-blinkcharges.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchStalkerTeleport,AlertIcon" Value="Assets\Textures\btn-ability-protoss-blinkcharges.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchStalkerTeleport,Tooltip" Value="Button/Tooltip/ResearchStalkerPurifierTeleport"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Stalker"/>
+        <AffectedUnitArray value="StalkerPurifier"/>
+        <LeaderAlias value=""/>
     </CUpgrade>
     <CUpgrade id="VoidZealotShadowCharge">
         <EffectArray index="2" Value="Assets\Textures\btn-unit-protoss-centurion-shakuras.dds"/>
