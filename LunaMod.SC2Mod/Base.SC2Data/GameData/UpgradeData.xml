@@ -28,6 +28,8 @@
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Vespene]" Value="100"/>
         <EffectArray Operation="Subtract" Reference="Unit,StalkerPurifier,CostResource[Minerals]" Value="64"/>
         <EffectArray Operation="Subtract" Reference="Unit,StalkerPurifier,CostResource[Vespene]" Value="26"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Disruptor,CostResource[Minerals]" Value="78"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Disruptor,CostResource[Vespene]" Value="78"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeKerriganCreep">
         <EffectArray Reference="Unit,QueenCoop,LifeMax" Value="87"/>
@@ -481,6 +483,9 @@
     <CUpgrade id="DarkArchonFullStartingEnergy">
         <EffectArray Reference="Unit,HighTemplarShakuras,EnergyStart" Value="150"/>
     </CUpgrade>
+    <CUpgrade id="DisruptorSecondExplosion">
+        <EffectArray Operation="Set" Reference="Effect,PurificationNovaTargettedSearchSet,EffectArray[0]" Value="FenixPurificationNovaUpgradedSet"/>
+    </CUpgrade>
     <CUpgrade id="HaveVoidCorsair">
         <EffectArray index="0" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
@@ -608,6 +613,16 @@
         <EffectArray Reference="Unit,StalkerPurifier,LifeStart" Value="40"/>
         <EffectArray Reference="Unit,StalkerPurifier,CostResource[Minerals]" Value="38"/>
         <EffectArray Reference="Unit,StalkerPurifier,CostResource[Vespene]" Value="15"/>
+        <EffectArray Reference="Unit,Disruptor,LifeMax" Value="50"/>
+        <EffectArray Reference="Unit,Disruptor,LifeStart" Value="50"/>
+        <EffectArray Reference="Unit,Disruptor,CostResource[Minerals]" Value="45"/>
+        <EffectArray Reference="Unit,Disruptor,CostResource[Vespene]" Value="45"/>
+        <EffectArray Operation="Set" Reference="Weapon,DisruptorPsiBlast,Options[Hidden]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,DisruptorPsiBlast,Options[Disabled]" Value="0"/>
+        <EffectArray Reference="Effect,PurificationNovaTargettedSearch,AreaArray[0].Radius" Value="0.3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,PurificationNovaTargeted,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
+        <EffectArray Reference="Unit,DisruptorPhased,Speed" Value="1.0"/>
+        <EffectArray Reference="Actor,DisruptorPurificationNovaTargettedRange,Range" Value="3.000000"/>
     </CUpgrade>
     <CUpgrade id="KerriganBroodCosmetic">
         <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>

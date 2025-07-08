@@ -45,7 +45,7 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
-void lib74A68E34_gf_KaraxInstigatorVitalMastery (int lp_player) {
+void lib74A68E34_gf_KaraxExtraUnitVitalMastery (int lp_player) {
     // Variable Declarations
     int lv_upgradeCount;
 
@@ -55,6 +55,7 @@ void lib74A68E34_gf_KaraxInstigatorVitalMastery (int lp_player) {
     // Implementation
     lv_upgradeCount = TechTreeUpgradeCount(lp_player, "MasteryKaraxUnitVital", c_techCountCompleteOnly);
     libCOMI_gf_CM_MasteryKaraxUnitVitalIncrease("StalkerPurifier", lp_player, lv_upgradeCount);
+    libCOMI_gf_CM_MasteryKaraxUnitVitalIncrease("Disruptor", lp_player, lv_upgradeCount);
 }
 
 void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
@@ -282,7 +283,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
         }
         else if (auto560DABDD_val == "ProtossKarax") {
-            lib74A68E34_gf_KaraxInstigatorVitalMastery(lv_player);
+            lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);
             lib74A68E34_gf_KaraxEnable20(lv_player);
         }
         else if (auto560DABDD_val == "ProtossVorazun") {

@@ -223,11 +223,22 @@ Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono 
 Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
 
 - Added Instigators.
-   - A Purifier variant Stalker.
-   - Added Displacement Matrix upgrade that lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
-   - Blink can be set to autocast to automatically blink when the hull takes damage.
+  - A Purifier variant Stalker.
+  - Added Displacement Matrix upgrade that lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
+  - Blink can be set to autocast to automatically blink when the hull takes damage.
 
 Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
+
+- Added Disruptors.
+  - Has Fenix Disruptor upgrades.
+  - Has regular controllable nova.
+  - Increased nova speed from 2.25 -> 3.25
+  - Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
+  - Increased Purification Nova radius by 20%.
+  - Changed price of Cloaking Module from 100/100 to 50/50.
+  - Changed price of Purification Nova from 150/150 to 100/100.
+
+Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
 ## Alarak
 
@@ -248,6 +259,12 @@ These two simple changes make playing P2 infinitely smoother to play.
 - Added Infested Trooper model and portrait.
 
 Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
+
+## Fenix
+
+- Remove Disruptors.
+
+Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
 
 ## Dehaka
 

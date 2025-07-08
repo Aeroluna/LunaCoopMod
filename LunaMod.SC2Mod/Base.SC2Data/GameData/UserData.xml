@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUser id="CampaignPerk">
+        <Instances index="157">
+            <GameLink index="1" removed="1"/>
+            <Upgrade index="0" removed="1"/>
+        </Instances>
+        <Instances Id="[Override]KaraxRoboticsBayUpgradesPack">
+            <AbilCmd Abil="RoboticsBayResearch" Cmd="18">
+                <Field Id="AbilityCommand" Index="2"/>
+            </AbilCmd>
+            <AbilCmd Abil="RoboticsBayResearch" Cmd="19">
+                <Field Id="AbilityCommand" Index="3"/>
+            </AbilCmd>
+        </Instances>
+        <Instances Id="[Override]FenixDisruptorSentryResearchCache">
+            <AbilCmd Abil="Bogus">
+                <Field Id="AbilityCommand"/>
+            </AbilCmd>
+            <AbilCmd Abil="Bogus">
+                <Field Id="AbilityCommand" Index="1"/>
+            </AbilCmd>
+        </Instances>
+    </CUser>
     <CUser id="ExtraUpgrades">
         <Fields Id="Source Upgrade" Type="Upgrade"/>
         <Fields Id="Target Upgrades" Type="Upgrade" Count="4"/>
@@ -680,6 +702,14 @@
             </User>
             <User Type="PlayerCommanders" Instance="ProtossFenix">
                 <Field Id="Commander" Index="4"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]Disruptor">
+            <Text Text="UserData/TechUnit/[Override]Disruptor_Name">
+                <Field Id="Name"/>
+            </Text>
+            <User Type="PlayerCommanders" Instance="ProtossKarax">
+                <Field Id="Commander"/>
             </User>
         </Instances>
         <Instances Id="[Override]StalkerPurifier">
