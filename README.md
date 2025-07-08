@@ -81,7 +81,6 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
-
 ## Artanis
 
 - Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
@@ -209,6 +208,20 @@ For the prestige focused on stasising things, the P2 just makes Stasis Wards sad
 - Changed Void Stasis to target air units and no longer make the unit invulnerable.
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
+
+## Karax
+
+- Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes.
+- Changed Carrier Repair Drone behavior to previous version, but with improved autocasting to no longer require stopping.
+- Removed Combat Chrono Wave.
+- Removed the ability to Chrono Boost defensive structures.
+- Changed Improved Reconstruction to 120 seconds.
+
+Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
+
+- Changed Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
+
+Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
 
 ## Alarak
 
