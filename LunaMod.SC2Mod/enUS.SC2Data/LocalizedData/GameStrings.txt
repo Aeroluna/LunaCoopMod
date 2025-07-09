@@ -9,6 +9,7 @@ Abil/Name/NexusTrainMothership2=Train Mothership Copy
 Abil/Name/NexusTrainMothershipArtanis2=Train Mothership
 Abil/Name/PsiStormShakuras=Astral Storm
 Abil/Name/SignifierFade=Fade
+Abil/Name/VehicleAfterburnersMedivac=Vehicle Afterburners
 Abil/Name/VehicleAfterburnersStimpack=Vehicle Afterburners
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
 Behavior/Name/AstralStormCripple=Astral Smolder
@@ -39,6 +40,7 @@ Button/Name/DarkArchonMergeSelection=Shadow Archon Merge
 Button/Name/Enshroud=Aurora Veil
 Button/Name/EvolveK5ChainLightningBrood=Evolve Psionic Cleave
 Button/Name/HaveSignifierFullStartingEnergy=Argus Crystal
+Button/Name/HealMedivac=Heal
 Button/Name/HellArmorThor=Infernal Plating
 Button/Name/HellburstPayload=Hellburst Payload
 Button/Name/HighTemplarNerazim=Warp In Signifier
@@ -56,6 +58,7 @@ Button/Name/MothershipArtanis=Warp In Mothership
 Button/Name/MothershipArtanisMassTeleport=Mass Recall
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
 Button/Name/MutaliskBrood=Morph to Scythewing
+Button/Name/OrbitalDropPodsMedivacPassive=Hot Drop
 Button/Name/PlanetCrackerArtanis=Planet Cracker
 Button/Name/QueenBrood=Birth Brood Matron
 Button/Name/ResearchBlinkCharges=Research Displacement Matrix
@@ -102,6 +105,7 @@ Button/Tooltip/EngineeringBayUpgradedSwann=Contains upgrades for structures. <n/
 Button/Tooltip/Enshroud=Creates a veil for all friendly units in a target area, granting cloak and healing <d ref="Effect,EnshroudHeal,RechargeVitalRate"/> hitpoints per second for <d ref="Behavior,Enshroud,Duration"/> seconds.
 Button/Tooltip/EvolveK5ChainLightningBrood=<c val="ffff8a">Kerrigan's</c> attacks deal splash damage to nearby enemy units.
 Button/Tooltip/HaveSignifierFullStartingEnergy=Signifiers start with full energy.
+Button/Tooltip/HealMedivac=Heals a friendly biological target.<n/><n/><c val="f078ff">Heals <d ref="Effect,MedivacRaynorHeal,RechargeVitalRate[0]"/> life per 1 energy.</c>
 Button/Tooltip/HellArmor=Increases Hellbat and Hellion armor by 2 and hitpoints by 40.
 Button/Tooltip/HellArmorThor=Increases Thor armor by 2.
 Button/Tooltip/HellburstPayload=Increases the direct damage of Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
@@ -119,11 +123,13 @@ Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, deali
 Button/Tooltip/MAFServosLiberator2=Raid Liberators transform between modes four times faster.
 Button/Tooltip/MasteryKerriganEnergyRegen=Increases the energy regeneration of Kerrigan and her Queens.
 Button/Tooltip/MasteryKerriganRazorSwarmAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases damage by <c val="FFFF8A"><d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,Amount"/> (+<d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,AttributeBonus[Structure]"/> vs Structures)</c>.
+Button/Tooltip/MasteryRaynorMedicAdditionalTargetHealMedivacAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Heals an additional target for <c val="FFFF8A"><d ref="Effect,MasteryRaynorMedicSecondaryHealDisplayDummy,Amount"/></c>%.
 Button/Tooltip/MasteryRaynorSignifierFadeDurationAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases duration by <c val="FFFF8A"><d ref="Effect,MasteryRaynorStimDurationDisplayDummy,Amount" precision="1"/></c> seconds.
 Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Recall, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all nearby units you control to target friendly unit or structure's location.</n></n><c val="#ColorAttackInfo">Can only target friendly units or structures.</c>
 Button/Tooltip/MultiLockTargetingSystemThor=The Thor can target ground and air units simultaneously.
 Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep and Calldown: Supplies. Cannot load SCVs.
+Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units unloaded from the Medivac gain <c val="FFFF8A"><d ref="Effect,MasteryRaynorDropPodHasteDisplayDummy,Amount"/></c>% increased attack speed, movement speed, cooldown reduction, and energy regeneration for <d ref="Behavior,DropPodHaste,Duration"/> seconds.
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
@@ -140,7 +146,7 @@ Button/Tooltip/ResearchMultiLockWeaponsSystem=<c val="ffff8a">Goliaths</c> and <
 Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c val="ffff8a">vehicles</c> by 20% and <c val="ffff8a">ships</c> by 10%.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchSignifierFade=Allows a <c val="ffff8a">Signifier</c> to gain Super Cloak for a short amount of time.
-Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
+Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/ResearchStalkerPurifierTeleport=Allows <c val="ffff8a">Instigators</c> to teleport to a nearby target location.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>

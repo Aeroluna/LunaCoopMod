@@ -156,6 +156,9 @@
         <On Terms="Abil.MedivacHealRaynor.SourceChannelStop" Send="AnimClear Spell"/>
         <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStart" Send="$Spell PlayForever"/>
         <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="AbilTransport.MedivacTransport.TransportLoad; AbilTransport SiegeTankSieged" Send="Create SiegeTankSiegedTransit"/>
+        <On Terms="Signal.*.TankTransit" Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
+        <On Terms="AbilTransport.MedivacTransport.PassengerKilled; AbilTransport SiegeTankSieged" Target="::actor.Thor" Send="Signal Dead"/>
     </CActorUnit>
     <CActorBeamSimple id="MedivacHealBeamRev1">
         <On Terms="Effect.MedivacRaynorHeal.TargetStart" Send="Create"/>
@@ -780,6 +783,20 @@
     <CActorModel id="SwarmQueenRegenAuraSplat">
         <On Terms="Behavior.KerriganRegenAuraSelf.On" Send="Create"/>
         <On Terms="Behavior.KerriganRegenAuraSelf.Off" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="SiegeTankSiegedTransit">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="Signal TankTransit"/>
+        <On Terms="AbilTransport.MedivacTransport.TransportUnload" Send="Destroy"/>
+        <On Terms="Signal.*.Dead" Send="Create ThorTransitDeath"/>
+        <On Terms="Signal.*.Dead" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy1Dot5"/>
+        <Model value="SiegeTankLoadTransit"/>
     </CActorModel>
     <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
         <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>

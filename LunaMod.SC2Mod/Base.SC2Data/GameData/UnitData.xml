@@ -67,6 +67,10 @@
     </CUnit>
     <CUnit id="Cyclone">
         <BehaviorArray Link="MovingLockOn"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="8" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="DarkArchon">
         <WeaponArray index="0" Link="DarkArchonNerazimWeapon"/>
@@ -387,15 +391,14 @@
     </CUnit>
     <CUnit id="Medivac">
         <AbilArray index="5" Link="WarpableNova"/>
-        <AbilArray index="6" Link="VehicleAfterburners"/>
+        <AbilArray index="6" Link="VehicleAfterburnersMedivac"/>
         <AbilArray Link="MedivacHealRaynor"/>
         <AbilArray Link="MedivacHealRaynorPlusMech"/>
-        <AbilArray Link="VehicleAfterburnersStimpack"/>
         <CardLayouts index="0">
-            <LayoutButtons index="11" AbilCmd="MedivacHealRaynor,Execute"/>
-            <LayoutButtons Face="Heal" Type="AbilCmd" AbilCmd="MedivacHealRaynorPlusMech,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersStimpack,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="11" Face="HealMedivac" AbilCmd="MedivacHealRaynor,Execute"/>
+            <LayoutButtons Face="HealMedivac" Type="AbilCmd" AbilCmd="MedivacHealRaynorPlusMech,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersMedivac,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="OrbitalDropPodsMedivacPassive" Type="Passive" Requirements="HaveMasteryRaynorDropPodHaste" Row="1" Column="1"/>
             <LayoutButtons Face="StabilizerMedPacksMedivac" Type="Passive" Requirements="UseStabilizerMedpacks" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
@@ -593,6 +596,7 @@
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
         </CardLayouts>
         <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <CargoSize value="8"/>
     </CUnit>
     <CUnit id="StalkerPurifier">
         <BehaviorArray Link="KaraxStalkerBlink"/>

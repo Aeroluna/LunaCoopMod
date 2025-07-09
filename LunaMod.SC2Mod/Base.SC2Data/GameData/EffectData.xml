@@ -396,16 +396,7 @@
         <EffectArray value="KerriganEnvenomedSpinesAB"/>
     </CEffectSet>
     <CEffectSwitch id="OnDeathControllerDeathPrevent">
-        <CaseArray index="11" Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>
-        <CaseArray index="12" Validator="SourceIsDehakaCoop" Effect="OnDeathDehakaRecallOnDeathAB"/>
-        <CaseArray index="13" Validator="HHWidowMineCombine" Effect="HHWidowMineBlossomIssueOrderSetTrigger"/>
-        <CaseArray index="14" Validator="HHReaperCombine" Effect="HHD8ClusterDeathSetTrigger"/>
-        <CaseArray index="15" Validator="HHHellionDeathStim" Effect="HHHellionStimDeathSetTrigger"/>
-        <!--CaseArray Validator="IsFenixSuitCombine" Effect="SOASummonFenixWarpOutAB"/-->
-        <CaseArray index="16" Validator="HHHellionDeathFear" Effect="HHHellionTankDeathFearSetTrigger"/>
-        <!--CaseArray Validator="TychusWarhoundTurretDeathExplosion" Effect="TychusWarhoundTurretExplosionDeathSet"/-->
-        <CaseArray index="17" Validator="TychusWarhoundDeathExplosion" Effect="TychusWarhoundExplosionDeathSet"/>
-        <CaseArray Validator="OnDeathTychusHercGrappleArmorPassive" Effect="TychusHERCShieldApply"/>
+        <CaseArray Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>
     </CEffectSwitch>
     <CEffectApplyBehavior id="KerriganRazorSwarmAB">
         <EditorCategories value="Race:Zerg"/>
@@ -458,7 +449,7 @@
         <EditorCategories value="Race:Protoss"/>
         <AINotifyFlags index="HelpFriend" value="1"/>
         <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden,MapBoss"/>
         <AreaArray Radius="4" Effect="EnshroudApplyBuff"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
@@ -583,6 +574,9 @@
     <CEffectApplyBehavior id="KerriganRegenAuraTarget">
         <ValidatorArray value="LifeNotFullOrEnergyNotFull"/>
         <EditorCategories value="Race:Zerg"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SpiderMineInvulnerable">
+        <ValidatorArray index="0" value="IsRaynorCoopCommander"/>
     </CEffectApplyBehavior>
     <CEffectModifyUnit id="TissueAssimilation">
         <VitalArray index="Life">

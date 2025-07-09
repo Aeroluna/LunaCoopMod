@@ -5,7 +5,6 @@
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndGTECountUpgradeCommanderLevelCompleteOnly6CountUpgradeZeratulCommanderCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
     </CRequirementAnd>
@@ -24,7 +23,9 @@
     <CRequirementCountUpgrade id="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <Count Link="CycloneLockOnDamageUpgrade" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnlyTechTreeCheat">
+    <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HellburstPayload" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadQueuedOrBetter">
@@ -92,8 +93,5 @@
     </CRequirementNot>
     <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat"/>
-    </CRequirementOr>
-    <CRequirementOr id="OrCountUpgradeHellburstPayloadCompleteOnlyTechTreeCheat">
-        <OperandArray value="CountUpgradeHellburstPayloadCompleteOnlyTechTreeCheat"/>
     </CRequirementOr>
 </Catalog>
