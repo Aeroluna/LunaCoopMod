@@ -18,17 +18,25 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 
 ## Raynor
 
-- Changed Ignite Afterburners to increase acceleration by 1000.
 - Added Medivacs.
   - Heal more efficiently than medics.
   - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
   - Changed Stabilizer Medpacks to also affect medivacs.
 
-Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1.
+Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying medic when going air.
 
 - Changed Medic portrait.
 
 Changed to be distinct from the Medivac portrait.
+
+- Changed Ignite Afterburners to additionally increase acceleration by 1000.
+- Removed the random delay on Battlecruiser weapons.
+- Reworked P2.
+  - Removed Ignite Afterburners cooldown.
+  - Added autocast to Ignite Afterburners.
+  - Ignite Afterburners no longer requires research.
+
+Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
 
 ## Kerrigan
 
