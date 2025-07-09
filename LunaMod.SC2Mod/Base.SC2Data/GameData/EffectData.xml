@@ -7,6 +7,9 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="AdvancedBombardmentSet">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
     <CEffectDamage id="ArtanisIonCannonsU">
         <AttributeBonus index="Light" value="2"/>
         <Amount value="10"/>
@@ -19,6 +22,15 @@
         <AttributeBonus index="Light" value="2"/>
         <Amount value="10"/>
     </CEffectDamage>
+    <CEffectEnumArea id="BileLauncherZagaraBombardmentDamageSearch">
+        <RevealerParams Duration="3" ShapeExpansion="1">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="BombardmentIO">
+        <AbilCmdIndex value="2"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
     <CEffectIssueOrder id="CarrierRepairDroneRecallIssueOrder">
         <ValidatorArray value="CarrierRepairDroneRecalling"/>
         <EditorCategories value=""/>

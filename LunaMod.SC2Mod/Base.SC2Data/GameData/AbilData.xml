@@ -7,6 +7,16 @@
         <CastIntroTime index="0" value="0.75"/>
         <FinishTime index="0" value="0.75"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="AdvancedBombardment">
+        <Flags index="RequireTargetVision" value="0"/>
+        <Range index="0" value="15"/>
+        <CmdButtonArray index="Execute" State="Available"/>
+    </CAbilEffectTarget>
+    <CAbilAttack id="BileLauncherZagaraAttack">
+        <CmdButtonArray index="Execute">
+            <Flags index="IgnoreUser" value="0"/>
+        </CmdButtonArray>
+    </CAbilAttack>
     <CAbilEffectTarget id="BlinkMultiple">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -31,8 +41,6 @@
     <CAbilEffectTarget id="CarrierRepairDroneHeal">
         <Flags index="ReExecutable" value="1"/>
         <AutoCastValidatorArray index="3" value="CarrierRepairDroneCasterNotRecalling"/>
-        <!--TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/-->
-        <!--AutoCastValidatorArray value="UnitIsNotBiologicalorIsHellbat"/-->
     </CAbilEffectTarget>
     <CAbilEffectTarget id="CommanderPrestigeStukovBansheesDeploy">
         <Flags index="AllowMovement" value="1"/>

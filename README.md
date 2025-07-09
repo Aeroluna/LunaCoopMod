@@ -156,6 +156,15 @@ https://www.maguro.one/2017/10/upgrades-in-co-op.html
 
 Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
 
+## Zagara
+
+- Reworked Bile Launchers.
+  - Can now target enemies automatically.
+  - Bombardment ability now uses smart casting.
+  - Bile Bombs now reveal a radius of 3 around them.
+
+Kinda stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
+
 ## Vorazun
 
 - Changed Vorazun to use custom Nerazim skinset.
