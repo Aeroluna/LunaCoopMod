@@ -302,6 +302,10 @@ Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly 
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
+## Abathur
+
+- Changed Viper Consumption to also allow targeting structures.
+
 ## Alarak
 
 - Changed Ascendant shadow trail model to be red.
