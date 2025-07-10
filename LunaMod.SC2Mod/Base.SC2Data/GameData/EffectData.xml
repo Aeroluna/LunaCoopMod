@@ -73,6 +73,9 @@
         <AreaArray Radius="8" Effect="CarrierRepairDroneIssueOrder"/>
         <MaxCount value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeArtanisPowerFieldSearch">
+        <AreaArray index="0" Radius="7.8"/>
+    </CEffectEnumArea>
     <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileLeft">
         <ImpactEffect value="CycloneWeaponDamage"/>
     </CEffectLaunchMissile>
@@ -614,6 +617,14 @@
             <Change value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectDamage id="TwinGatlingCannons">
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="0.3" Fraction="1" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="0.6" Fraction="0.5" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="1.2" Fraction="0.25" Validator="HALORocketsResearched"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>

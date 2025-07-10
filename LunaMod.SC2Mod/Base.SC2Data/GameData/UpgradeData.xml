@@ -25,6 +25,10 @@
         <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage3,Amount" Value="10"/>
         <EffectArray Reference="Effect,MothershipArtanisPlanetCrackerDamage3,AttributeBonus[Armored]" Value="5"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeArtanisPowerField">
+        <EffectArray index="0" Value="10"/>
+        <EffectArray Reference="Actor,SOAPylonPowerCursorSplat,Scale" Value="2.000000"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeKaraxArmy">
         <EffectArray Reference="Unit,PhotonCannon,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Minerals]" Value="300"/>
@@ -412,7 +416,7 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorMechAfterburners">
         <EffectArray Operation="Subtract" Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
-        <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].VitalFraction[Life]" Value="10"/>
+        <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
@@ -673,9 +677,18 @@
     </CUpgrade>
     <CUpgrade id="RaynorCommander">
         <EffectArray Operation="Subtract" Reference="Abil,StarportTrain,InfoArray[Train1].Time" Value="21.000000"/>
+        <EffectArray Reference="Effect,TwinGatlingCannons,AttributeBonus[Mechanical]" Value="8"/>
     </CUpgrade>
     <CUpgrade id="RaynorCommanderMechCostReduction">
         <EffectArray Operation="Subtract" Reference="Unit,Medivac,CostResource[Vespene]" Value="20"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorDoubleMULE">
+        <EffectArray Reference="Effect,CalldownMULECreateUnit,SpawnCount" Value="1"/>
+        <EffectArray Operation="Set" Reference="Button,CalldownMULE,Icon" Value="Assets\Textures\talent-raynor-level10-doublemule.dds"/>
+        <EffectArray Operation="Set" Reference="Button,CalldownMULE,AlertIcon" Value="Assets\Textures\talent-raynor-level10-doublemule.dds"/>
+        <EffectArray Operation="Set" Reference="Button,CalldownMULE,Tooltip" Value="Button/Tooltip/CalldownMULEDoubleDown"/>
+        <EffectArray Operation="Set" Reference="Button,CalldownMULE,AlertTooltip" Value="Button/Tooltip/CalldownMULEDoubleDown"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="SignifierFade">
         <Flags index="UpgradeCheat" value="0"/>

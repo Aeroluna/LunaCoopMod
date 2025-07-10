@@ -281,6 +281,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         auto560DABDD_val = lv_playerCommander;
         if (auto560DABDD_val == "ProtossArtanis") {
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeArtanisPowerField", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, true);
+            }
+
         }
         else if (auto560DABDD_val == "ProtossKarax") {
             lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);
@@ -320,6 +324,34 @@ bool lib74A68E34_gt_DisableLibraryTriggers_Func (bool testConds, bool runActions
 void lib74A68E34_gt_DisableLibraryTriggers_Init () {
     lib74A68E34_gt_DisableLibraryTriggers = TriggerCreate("lib74A68E34_gt_DisableLibraryTriggers_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_DisableLibraryTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ArtanisPowerFieldPrestigePylon
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetType(EventUnitCreatedUnit()) == "SOAPylonPowerUnit")) {
+        UnitBehaviorRemovePlayer(EventUnitCreatedUnit(), "SOAPylonPower", 1, 1);
+        UnitBehaviorAddPlayer(EventUnitCreatedUnit(), "SOAPylonPowerPrestige", 1, 1);
+    }
+    else if ((UnitGetType(EventUnitCreatedUnit()) == "SOAPylonPowerAllyUnit")) {
+        UnitBehaviorRemovePlayer(EventUnitCreatedUnit(), "SOAPylonPowerAlly", 1, 1);
+        UnitBehaviorAddPlayer(EventUnitCreatedUnit(), "SOAPylonPowerPrestigeAlly", 1, 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init () {
+    lib74A68E34_gt_ArtanisPowerFieldPrestigePylon = TriggerCreate("lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Func");
+    TriggerEnable(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -388,6 +420,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_DisableLibraryTriggers_Init();
+    lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
 }

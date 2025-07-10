@@ -22,8 +22,15 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
   - Heal more efficiently than medics.
   - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
   - Changed Stabilizer Medpacks to also affect medivacs.
+  - Units unloaded benefit from the Drop Pod Haste mastery.
+  - Can carry sieged Siege Tanks.
+  - Have lower cooldown Ignite Afterburners (20 seconds).
 
-Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying medic when going air.
+Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
+
+- Change Siege Tank (Sieged) cargo size to 8.
+
+Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann so this might need to be revisited.
 
 - Changed Medic portrait.
 
@@ -37,6 +44,29 @@ Changed to be distinct from the Medivac portrait.
   - Ignite Afterburners no longer requires research.
 
 Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
+
+- Changed Firebat weapon to have lower backswing and damage point.
+
+Small change to make stutter-stepping with Firebats feel smoother.
+
+- Added new Medic ability: Restoration.
+  - Removes any negative effects on target allied unit.
+  - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
+
+A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
+
+- Added autocast to Stimpack.
+
+Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor?
+
+- Added double MULEs.
+
+Old Raynor nerf reverted. Should help out P0 Raynor.
+
+- Changed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
+- Changed Viking Gatling Cannons to have +8 vs. Mechanical.
+
+Some ground Viking buffs because why not.
 
 ## Kerrigan
 
@@ -118,6 +148,12 @@ An iconic unit thats missing from co-op, is now back. Mass Recall should help wi
 - Increased Guardian Shell Life and Shield Regeneration mastery from 0.5% per point to 1.5% per point, increasing max from 15% to 45%.
 
 The Shield Overcharge mastery was so overwhelmingly better, this should help it be more competitive.
+
+- Changed P2.
+  - Unnerfed energy cost from 25 to 10.
+  - Increased Project Power Field radius from 6 to 8.
+
+Buff an underperforming prestige.
 
 ## Swann
 

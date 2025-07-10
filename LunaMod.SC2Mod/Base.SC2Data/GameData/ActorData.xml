@@ -267,6 +267,16 @@
     <CActorMissile id="SIVolatileInfested">
         <PortraitModel value="InfestedExploderPortrait"/>
     </CActorMissile>
+    <CActorSplat id="SOAPylonPowerUnitPowerVisual">
+        <On Terms="Behavior.SOAPylonPowerPrestige.Create; !Option Model Low" Send="Create"/>
+        <On Terms="Behavior.SOAPylonPowerPrestige.Destroy" Send="Destroy"/>
+        <On Terms="Behavior.SOAPylonPowerPrestige.Create" Send="SetScale 1.300000"/>
+    </CActorSplat>
+    <CActorRange id="SOAPylonPowerUnitPowerVisualLow">
+        <On Terms="Behavior.SOAPylonPowerPrestige.Create; Option Model Low" Send="Create"/>
+        <On Terms="Behavior.SOAPylonPowerPrestige.Destroy" Send="Destroy"/>
+        <On Terms="Behavior.SOAPylonPowerPrestige.Create" Send="SetScale 1.300000"/>
+    </CActorRange>
     <CActorUnit id="StukovInfestedBanshee">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
