@@ -25,6 +25,9 @@
         <Find value="1"/>
         <Value value="CommanderPrestigeKerriganBrood"/>
     </CValidatorPlayerRequirement>
+    <CValidatorCombine id="GravitonBeamValidators">
+        <CombineArray value="TargetNotHaveRestoration"/>
+    </CValidatorCombine>
     <CValidatorCombine id="HasActiveDeathPrevent">
         <CombineArray value="OnDeathMothershipDeath"/>
     </CValidatorCombine>
@@ -51,6 +54,9 @@
         <ResultFailed value="CantTargetUnitsInAStasisField,ImplosionCooldown"/>
         <Behavior value="KerriganImplosionTempBuff"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="LockOnGroundAirPeriodicValidators">
+        <CombineArray value="TargetNotHaveRestoration"/>
+    </CValidatorCombine>
     <CValidatorCombine id="MothershipArtanisRangeCheckCombine">
         <Type value="And"/>
         <CombineArray value="CasterNotDead"/>
@@ -65,6 +71,21 @@
         <WhichUnit Value="Caster"/>
         <Value value="MothershipArtanis"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="SeekerMissileRestored">
+        <WhichUnit Effect="SeekerMissileLaunchMissile"/>
+        <Compare value="GT"/>
+        <Behavior value="MedicRestoration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="SeekerMissileNotRestored">
+        <CombineArray value="SeekerMissileRestored"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SeekerMissileValidators">
+        <Type value="Or"/>
+        <CombineArray value="SeekerMissileRestored"/>
+        <!--CombineArray value="SeekerMissileTargetNotDead"/>
+        <CombineArray value="SeekerMissileTargetNotHidden"/-->
+    </CValidatorCombine>
     <CValidatorUnitOrderQueue id="SourceIsNotMoving">
         <WhichUnit Value="Source"/>
         <AbilLink value="move"/>
@@ -99,6 +120,13 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CValidatorUnitOrder>
+    <CValidatorUnitCompareBehaviorCount id="SourceNotHaveRestoration">
+        <WhichUnit Value="Source"/>
+        <Behavior value="MedicRestoration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TargetNotHaveRestoration">
+        <Behavior value="MedicRestoration"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="SwannGoliathCanSwing">
         <CombineArray value="CommanderPrestigeSwannMovingInverse"/>
         <CombineArray value="CasterIsNotMoving"/>

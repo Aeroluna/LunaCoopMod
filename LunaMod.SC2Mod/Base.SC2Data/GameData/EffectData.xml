@@ -251,6 +251,23 @@
         <Amount value="25"/>
     </CEffectDamage>
     <CEffectDamage id="MasteryKerriganRazorSwarmDamageDummy"/>
+    <CEffectApplyBehavior id="MedicRestorationAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="MedicRestoration"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="MedicRestorationRB">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorClass value="CBehaviorBuff"/>
+        <BehaviorAlignment value="Negative"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="MedicRestorationSearch">
+        <EditorCategories value="Race:Terran"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MedicRestorationSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="MedicRestorationAB"/>
+        <EffectArray value="MedicRestorationRB"/>
+    </CEffectSet>
     <CEffectEnumArea id="MedivacHealACSearch">
         <SearchFilters value="Biological,Structure,Visible;Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="0.5" Effect="RaynorMedivacSafeguardSet"/>
@@ -402,6 +419,9 @@
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="KerriganRazorSwarm"/>
     </CEffectApplyBehavior>
+    <CEffectCreateUnit id="ParasiticBombCU">
+        <ValidatorArray value="SourceNotHaveRestoration"/>
+    </CEffectCreateUnit>
     <CEffectApplyBehavior id="PsiStormNerazimApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="PsiStormNerazim"/>
@@ -525,6 +545,12 @@
         <EffectArray value="RaynorMedicSafeguardSwitch"/>
         <EffectArray value="RaynorMasteryHealMedivacSecondaryCP"/>
     </CEffectSet>
+    <!-- This handles the timeout -->
+    <CEffectCreatePersistent id="SeekerMissileLaunchCP">
+        <ExpireEffect value=""/>
+        <FinalEffect value="SeekerMissileSuicideSet"/>
+        <PeriodicValidator value="SeekerMissileNotRestored"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="SignifierFade">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>

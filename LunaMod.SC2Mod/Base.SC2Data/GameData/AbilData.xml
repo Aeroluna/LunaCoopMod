@@ -75,7 +75,7 @@
         <InfoArray index="Research3" Time="50" Upgrade="MedivacCaduceusReactor">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="ResearchMedivacEnergyUpgrade" Requirements="LearnCaduceusReactor"/>
+            <Button DefaultButtonFace="ResearchMedivacEnergyUpgrade" State="Restricted" Requirements="LearnCaduceusReactor"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilEffectTarget id="KerriganImplosion">
@@ -88,6 +88,21 @@
         <TargetFilters value="Visible;Player,Ally,Neutral,Structure,Worker,Invulnerable,Unstoppable"/>
         <Range value="9"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="KerriganImplosion" State="Restricted"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedicRestoration">
+        <Alignment value="Positive"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Effect index="0" value="MedicRestorationSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <Range value="6"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MedicRestoration">
+            <Flags index="AllowMinimap" value="0"/>
+        </CmdButtonArray>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHeal">
         <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>

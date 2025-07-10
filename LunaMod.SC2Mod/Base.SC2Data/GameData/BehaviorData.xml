@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="ArbiterMPStasisField">
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArbiterMPStasisFieldTimedLife">
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CarrierRepairDroneRecall">
         <BehaviorFlags index="Permanent" value="0"/>
         <PeriodicEffect value="CarrierRepairDroneSet"/>
@@ -44,6 +50,7 @@
         <Period value="1"/>
         <PeriodicEffect value="KerriganEnvenomedSpinesDamage"/>
         <PeriodicDisplayEffect value="KerriganEnvenomedSpinesDamage"/>
+        <BehaviorCategories index="User15" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KerriganImplosionTempBuff">
         <Alignment value="Negative"/>
@@ -55,6 +62,11 @@
             <ModifyFlags index="SuppressTurning" value="1"/>
             <StateFlags index="Stun" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MedicRestoration">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MovingLockOn">
         <InfoFlags index="Hidden" value="1"/>

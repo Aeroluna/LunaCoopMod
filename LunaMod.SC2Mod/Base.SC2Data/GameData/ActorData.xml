@@ -3,6 +3,18 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="Medic">
+        <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="$Spell 0 0.200000 0.200000"/>
+        <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
+        <AbilSoundArray AbilCmd="HealPlusMech,Execute" Sound="Medic_HealVO"/>
+        <AbilSoundArray AbilCmd="MedicRestoration,Execute" Sound="Medic_HealVO"/>
+    </CActorUnit>
+    <CActorRange id="MedicRestorationRange" parent="RangeAbil" abil="MedicRestoration"/>
+    <CActorSound id="MedicRestorationSound" parent="SoundOneShot">
+        <On Terms="Effect.MedicRestorationSet.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="MedicSCBWRestoration@Impact"/>
+    </CActorSound>
     <CActorUnit id="Disruptor">
         <On index="80" Terms="AbilCooldown.PurificationNovaTargeted.Spend"/>
         <On index="81" Terms="AbilCooldown.PurificationNovaTargeted.Regen"/>
@@ -147,6 +159,18 @@
     </CActorMissile>
     <CActorModel id="LurkerAttackSpikeAC">
         <On Terms="ActorCreation; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.500000"/>
+    </CActorModel>
+    <CActorModel id="MedicRestorationImpact" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 0.800000 AsTimeScale"/>
+        <On Terms="Effect.MedicRestorationSet.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <Model value="ArtanisAstralWindImpactModel"/>
+        <AutoScaleFactor value="1.000000"/>
     </CActorModel>
     <CActorUnit id="Medivac">
         <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
