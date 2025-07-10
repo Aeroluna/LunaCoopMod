@@ -159,6 +159,11 @@ The Shield Overcharge mastery was so overwhelmingly better, this should help it 
 
 Buff an underperforming prestige.
 
+- Changed P1.
+  - No longer increases vespene gas costs.
+
+Should help actually affording the high tech units with abilities like High Templar.
+
 ## Swann
 
 - Changed Thors to have their High Impact Payload mode from Versus available for single-target long-range damage.
