@@ -344,6 +344,15 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 - Added Xel'Naga Ambusher portait.
 - Added Xel'Naga Enforcer portrait.
 
+## Mutators
+
+- Reworked Fatal Attraction to no longer make the units uncommandable.
+  - No longer disables units attacks, abilities, and movement.
+  - Pull strength increased by 20%.
+  - Dehaka's Primal Impalers are no longer pulled.
+
+The most infurating because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
+
 ## Credits
 
 - Warp Stargate Alternate - DaveSpectre
