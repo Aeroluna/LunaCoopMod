@@ -119,6 +119,10 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
+- Changed P3 voice lines.
+
+Now uses the pre-infested voice lines from Heart of the Swarm.
+
 ## Artanis
 
 - Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
