@@ -68,6 +68,8 @@ Old Raynor nerf reverted. Should help out P0 Raynor.
 
 Some ground Viking buffs because why not.
 
+- Added flame jets to Vultures when moving.
+
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
@@ -383,3 +385,4 @@ The most infurating because it can permastun your units as well as interrupt all
 - Primal Impaler - DaveSpectre
 - Ambusher (Ihan-rii Stalker) / Alrasz (Ambusher Hero) portrait - DaveSpectre
 - Enforcer / Ihan-rii Immortal Portrait - DaveSpectre
+- Vulture with flaming Jets - DaveSpectre
