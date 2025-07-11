@@ -279,7 +279,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         if (lv_player < 0) { break; }
         lv_playerCommander = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
         auto560DABDD_val = lv_playerCommander;
-        if (auto560DABDD_val == "ProtossArtanis") {
+        if (auto560DABDD_val == "TerranRaynor") {
+            TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, true);
+        }
+        else if (auto560DABDD_val == "ProtossArtanis") {
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeArtanisPowerField", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, true);
@@ -324,6 +327,34 @@ bool lib74A68E34_gt_DisableLibraryTriggers_Func (bool testConds, bool runActions
 void lib74A68E34_gt_DisableLibraryTriggers_Init () {
     lib74A68E34_gt_DisableLibraryTriggers = TriggerCreate("lib74A68E34_gt_DisableLibraryTriggers_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_DisableLibraryTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RaynorHyperionWeaponSwitch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RaynorHyperionWeaponSwitch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "HyperionVoidCoop"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "HyperionVoidCoopWeaponSwitch", OrderGetTargetUnit(EventUnitOrder()), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init () {
+    lib74A68E34_gt_RaynorHyperionWeaponSwitch = TriggerCreate("lib74A68E34_gt_RaynorHyperionWeaponSwitch_Func");
+    TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, false);
+    TriggerAddEventUnitOrder(lib74A68E34_gt_RaynorHyperionWeaponSwitch, null, AbilityCommand("attack", 0));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -420,6 +451,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_DisableLibraryTriggers_Init();
+    lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();

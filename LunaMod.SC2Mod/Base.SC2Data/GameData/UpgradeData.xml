@@ -701,6 +701,9 @@
     <CUpgrade id="RaynorCommanderMechCostReduction">
         <EffectArray Operation="Subtract" Reference="Unit,Medivac,CostResource[Vespene]" Value="20"/>
     </CUpgrade>
+    <CUpgrade id="RaynorCommanderTerranWeaponAttackSpeed">
+        <EffectArray Reference="Weapon,HyperionVoidCoopDummy,RateMultiplier" Value="0.15"/>
+    </CUpgrade>
     <CUpgrade id="RaynorDoubleMULE">
         <EffectArray Reference="Effect,CalldownMULECreateUnit,SpawnCount" Value="1"/>
         <EffectArray Operation="Set" Reference="Button,CalldownMULE,Icon" Value="Assets\Textures\talent-raynor-level10-doublemule.dds"/>
@@ -791,6 +794,8 @@
         <EffectArray Reference="Weapon,WraithAMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,WraithGMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,WarbotAMoving,Range" Value="1"/>
+        <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Range" Value="1"/>
+        <EffectArray Reference="Effect,HyperionVoidCoopSecondaryWeaponSearch,AreaArray[0].Radius" Value="1"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
@@ -974,6 +979,10 @@
         <EffectArray Reference="Abil,ProbeHarvest,ResourceAmountBonus[Vespene]" Value="1"/>
         <EffectArray Operation="Set" Reference="Actor,AutomatedAssimilatorTextKicker4,Text" Value="Button/Tooltip/AutomatedAssimilatorTextKicker5"/>
     </CUpgrade>
+    <CUpgrade id="ZagaraCommander">
+        <EffectArray index="128" Reference="Button,InfestationPit,AlertTooltip" Value="Button/Tooltip/InfestationPitZagara"/>
+        <EffectArray index="129" Reference="Button,InfestationPit,Tooltip" Value="Button/Tooltip/InfestationPitZagara"/>
+    </CUpgrade>
     <!-- EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ProtossAirWeaponsExtra">
         <EditorCategories value="Race:Protoss,UpgradeType:AttackBonus"/>
@@ -1062,10 +1071,12 @@
         <EffectArray Reference="Weapon,WraithAMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,WraithGMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,WarbotAMoving,Level" Value="1"/>
+        <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Level" Value="1"/>
         <AffectedUnitArray value="Thor"/>
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Wraith"/>
         <AffectedUnitArray value="VoidCoopARES"/>
+        <AffectedUnitArray value="HyperionVoidCoop"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel1" parent="TerranVehicleAndShipWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
@@ -1073,6 +1084,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel1"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel2" parent="TerranVehicleAndShipWeaponsExtra">
@@ -1081,6 +1093,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel2"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel3" parent="TerranVehicleAndShipWeaponsExtra">
@@ -1089,10 +1102,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel3"/>
-    </CUpgrade>
-    <CUpgrade id="ZagaraCommander">
-        <EffectArray index="128" Reference="Button,InfestationPit,AlertTooltip" Value="Button/Tooltip/InfestationPitZagara"/>
-        <EffectArray index="129" Reference="Button,InfestationPit,Tooltip" Value="Button/Tooltip/InfestationPitZagara"/>
     </CUpgrade>
 </Catalog>

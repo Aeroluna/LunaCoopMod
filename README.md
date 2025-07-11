@@ -68,6 +68,14 @@ Old Raynor nerf reverted. Should help out P0 Raynor.
 
 Some ground Viking buffs because why not.
 
+- Reworked Hyperion weapons.
+  - AOE attack turned into a proper weapon and is affected by buffs like attack speed.
+  - Attack speed of single target and AOE weapon changed to 0.11.
+  - Unit info shows single "ATX Laser Battery" weapon.
+  - Will prioritize using AOE weapon unless issued attack order.
+
+No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affected the weapon.
+
 - Added flame jets to Vultures when moving.
 
 ## Kerrigan
