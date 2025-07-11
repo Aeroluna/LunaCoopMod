@@ -9,7 +9,7 @@ A set of changes and additions to the StarCraft 2 Co-op mode.
 
 Some console skins were missing for commanders. Many commander have corresponding voice packs, why not use them?
 
-- Added Shield Batteries to Artanis, Vorazun, and Fenix.
+- Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
 - Increased Shield Battery range by 2.
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
