@@ -76,6 +76,10 @@ Some ground Viking buffs because why not.
 
 No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affected the weapon.
 
+- Changed Hyperion portrait and sounds back to Horner.
+
+Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
+
 - Added flame jets to Vultures when moving.
 
 ## Kerrigan
