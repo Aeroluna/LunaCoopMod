@@ -124,6 +124,57 @@
     <CEffectEnumArea id="DefilerMPPlagueSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectDamage id="DehakaCoopClawCleaveDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="0">
+            <AccumulatorArray value="DehakaLevelAttackDamageScaling"/>
+            <AccumulatorArray value="DehakaLevelCleaveDamageFactor"/>
+        </Amount>
+    </CEffectDamage>
+    <CEffectEnumArea id="DehakaCoopClawCleave">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <Arc value="135"/>
+            <Radius value="0.5"/>
+            <RadiusBonus value="0.5"/>
+            <Effect value="DehakaCoopClawCleaveDamage"/>
+        </AreaArray>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="DehakaConsumeEffectPsionicExplosionRadiusBonus"/>
+        </ExtraRadiusBonus>
+        <ValidatorArray value="DehakaNoAirUpgrade"/>
+        <ImpactLocation Value="SourceUnit"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaCoopClawAirCleave">
+        <ValidatorArray value="DehakaAirUpgrade"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray>
+            <Arc value="135"/>
+            <Radius value="0.5"/>
+            <RadiusBonus value="0.5"/>
+            <Effect value="DehakaCoopClawCleaveDamage"/>
+        </AreaArray>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="DehakaConsumeEffectPsionicExplosionRadiusBonus"/>
+        </ExtraRadiusBonus>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DehakaCoopClawSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="DehakaCoop"/>
+        <EffectArray value="DehakaCoopClawCleave"/>
+        <EffectArray value="DehakaCoopClawAirCleave"/>
+    </CEffectSet>
     <CEffectCreateHealer id="EnshroudHeal">
         <ValidatorArray value="IsNotK5Kerrigan"/>
         <PeriodCount value="4"/>
@@ -277,6 +328,12 @@
     <CEffectDamage id="LanceMissileLaunchersDamage">
         <AttributeBonus index="Massive" value="10"/>
         <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectDamage id="MammothBeamDamage">
+        <AreaArray Radius="1" Fraction="0.5"/>
+        <AreaArray Radius="2" Fraction="0.25"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="MasteryKerriganRazorSwarmDamageDummy"/>
     <CEffectApplyBehavior id="MedicRestorationAB">

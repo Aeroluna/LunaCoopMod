@@ -368,6 +368,13 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
 
+- Changed the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
+- Added a cleave to Dehaka's Claws weapon.
+- Added splash damage to Dehaka's Mammoth Beam weapon.
+- Increased the damage of Dehaka's Mammoth Beam by 50%.
+
+Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get.
+
 ## Zeratul
 
 - Changed to Ihan-rii skin set.
