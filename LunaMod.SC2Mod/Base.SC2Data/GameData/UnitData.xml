@@ -97,6 +97,25 @@
             <LayoutButtons Face="DarkArchonMergeSelection" Type="AbilCmd" AbilCmd="DarkArchonMerge,SelectedUnits" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <!--                                                                                         -->
+    <!-- Defiler ............................................................................... -->
+    <!--                                                                                         -->
+    <CUnit id="DefilerMP">
+        <Speed value="2.9492"/>
+        <AbilArray index="6" Link="EvolveToBrutaliskDefiler"/>
+        <AbilArray index="7" Link="que1"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="8" Face="DefilerMPConsume" AbilCmd="DefilerMPConsume,Execute" Column="2"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons Face="DefilerMetasynapticNode" Type="Passive" Requirements="HaveDefilerMetasynapticNode" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DefilerMPBurrowed">
+        <Description value="Button/Tooltip/DefilerMP"/>
+    </CUnit>
     <CUnit id="DisruptorPhased">
         <CardLayouts index="0">
             <LayoutButtons index="7" removed="1"/>
@@ -200,6 +219,9 @@
             <LayoutButtons index="27" Face="ResearchCorsairPermanentCloakLocked" Requirements="VorazunLevel12" Column="2"/>
             <LayoutButtons index="28" Face="ResearchVoidRaySpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research19" Requirements="" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="ForceField">
+        <AbilArray index="0" removed="1"/>
     </CUnit>
     <CUnit id="Forge">
         <CardLayouts index="0">
@@ -310,6 +332,18 @@
     <CUnit id="ImpalerDehakaBurrowed">
         <Acceleration value="0"/>
         <LateralAcceleration value="0"/>
+    </CUnit>
+    <CUnit id="InfestationPit">
+        <CardLayouts index="0">
+            <LayoutButtons index="10" Face="ViperPassive" Requirements="HotSHaveViper"/>
+            <LayoutButtons index="11" Face="DefilerPassive" Requirements="HotSHaveDefiler" Column="0"/>
+            <LayoutButtons index="12" Face="EvolveViperImprovedCastRangeLocked" Type="Passive" AbilCmd="" Requirements="AbathurLevel08" Column="1"/>
+            <LayoutButtons index="13" Face="HotSPressurizedGlands" Type="AbilCmd" AbilCmd="InfestationPitResearch,Research8" Requirements="" Column="0"/>
+            <LayoutButtons index="14" Face="EvolveDefilerMetasynapticNode" AbilCmd="InfestationPitResearch,Research13" Column="0"/>
+            <LayoutButtons index="15" Face="ResearchNeuralParasite" AbilCmd="InfestationPitResearch,Research4"/>
+            <LayoutButtons index="16" Face="EvolveViperAbductImprovedStun" Type="AbilCmd" AbilCmd="InfestationPitResearch,Research10" Requirements=""/>
+            <LayoutButtons Face="EvolveViperAbductImprovedStunLocked" Type="Passive" Requirements="AbathurLevel09" Row="0" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="K5Kerrigan">
         <WeaponArray Link="KerriganBroodRazorTalons"/>

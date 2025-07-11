@@ -23,9 +23,18 @@
     <CRequirementCountUpgrade id="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <Count Link="CycloneLockOnDamageUpgrade" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnly">
+    <CRequirementCountUpgrade id="CountUpgradeDefilerMetasynapticNodeCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="DefilerMetasynapticNode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="DefilerMetasynapticNode" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
         <Count Link="HellburstPayload" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadQueuedOrBetter">
@@ -69,6 +78,10 @@
     </CRequirementEq>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeHellburstPayloadQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeHellburstPayloadQueuedOrBetter"/>

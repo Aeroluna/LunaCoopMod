@@ -53,7 +53,7 @@ Small change to make stutter-stepping with Firebats feel smoother.
   - Removes any negative effects on target allied unit.
   - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
 
-A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
+*I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
 - Added autocast to Stimpack.
 
@@ -219,6 +219,22 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
   - Bile Bombs now reveal a radius of 3 around them.
 
 Kinda stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
+
+- Added Defilers.
+  - Can use Dark Swarm for 100 energy.
+    - Creates a micro-organism cloud preventing all incoming ranged and splash damage for 30 seconds.
+  - Can use Plague for 150 energy.
+    - Infects all enemy units and buildings in the target area, inflicting 300 damage over 20 seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
+  - Can use Consume.
+    - Kills target friendly biological unit metabolizing it into 75 energy.
+  - Added Metasynaptic Node upgrade at the Infestation Pit.
+    - Adds 50 max energy and starts at full energy.
+
+Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units.
+
+- Increased visual scale of Hunter Killers by 20%
+
+When Hunter Killers were given the webby skin, their scale was reset to the normal Hydralisk scale.
 
 ## Vorazun
 

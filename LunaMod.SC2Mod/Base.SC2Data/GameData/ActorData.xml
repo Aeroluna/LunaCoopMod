@@ -3,6 +3,31 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="DefilerMP">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-defiler@scbw.dds"/>
+        <On index="71" Terms="Abil.DefilerMPConsume.SourceChannelStart" Send="AnimPlay Spell Attack,01"/>
+        <On index="72" Terms="Abil.DefilerMPDarkSwarm.SourcePrepStart" Send="$Spell,00 0 -1.000000 -1.000000 1.000000 AsDuration"/>
+        <On index="73" Terms="Abil.DefilerMPPlague.SourcePrepStart" Send="$Spell,01"/>
+        <On index="74" Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowDownMedium"/>
+        <On index="75" Terms="AbilTrain.EvolveToBrutaliskDefiler.Start" Send="Destroy"/>
+        <On index="76" Terms="AbilTrain.EvolveToBrutaliskDefiler.Cancel" Send="Create"/>
+        <On index="77" removed="1"/>
+    </CActorUnit>
+    <CActorModel id="DefilerMPPlagueAttackImpact">
+        <Model value="DefilerSCBWPlague@Impact"/>
+    </CActorModel>
+    <CActorModelMaterial id="DefilerMPPlagueGlaze">
+        <Model value="DefilerSCBWPlague@Glaze"/>
+    </CActorModelMaterial>
+    <CActorModel id="DefilerMPPlagueTargetModel">
+        <Model value="DefilerSCBWPlague@TargetModel"/>
+    </CActorModel>
+    <CActorModel id="DefilerMPPlagueTargetModelMedium">
+        <Model value="DefilerSCBWPlague@TargetModelMedium"/>
+    </CActorModel>
+    <CActorModel id="DefilerMPPlagueTargetModelSmall">
+        <Model value="DefilerSCBWPlague@TargetModelSmall"/>
+    </CActorModel>
     <CActorUnit id="Medic">
         <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="$Spell 0 0.200000 0.200000"/>
         <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
@@ -382,7 +407,6 @@
             <Image value="Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>
-        <HighlightTooltip value="Unit/Name/DarkArchonNerazim"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
         <SoundArray index="Birth" value=""/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>

@@ -104,6 +104,26 @@
     <CEffectSet id="DarkTemplarVoidStasisSet">
         <ValidatorArray value="VoidStasisNotActive"/>
     </CEffectSet>
+    <CEffectModifyUnit id="DefilerMPConsumeModifyUnit">
+        <VitalArray index="Energy">
+            <Change value="75"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="DefilerMPConsumeSet">
+        <ValidatorArray value="EnergyNotFullCaster"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DefilerMPDarkSwarmCreatePersistent">
+        <PeriodCount value="120"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DefilerMPDarkSwarmSearch">
+        <AreaArray index="0" Radius="6"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="DefilerMPPlagueDamage">
+        <Amount value="1.875"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="DefilerMPPlagueSearch">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
     <CEffectCreateHealer id="EnshroudHeal">
         <ValidatorArray value="IsNotK5Kerrigan"/>
         <PeriodCount value="4"/>
