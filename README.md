@@ -9,8 +9,8 @@ A set of changes and additions to the StarCraft 2 Co-op mode.
 
 Some console skins were missing for commanders. Many commander have corresponding voice packs, why not use them?
 
-- Changed Shield Batteries to be accessible Artanis, Vorazun, and Fenix.
-- Changed Shield Battery to have 2 more range.
+- Added Shield Batteries to Artanis, Vorazun, and Fenix.
+- Increased Shield Battery range by 2.
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
 
@@ -21,14 +21,14 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 - Added Medivacs.
   - Heal more efficiently than medics.
   - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
-  - Changed Stabilizer Medpacks to also affect medivacs.
+  - Stabilizer Medpacks also affect medivacs.
   - Units unloaded benefit from the Drop Pod Haste mastery.
   - Can carry sieged Siege Tanks.
   - Have lower cooldown Ignite Afterburners (20 seconds).
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
 
-- Change Siege Tank (Sieged) cargo size to 8.
+- Increased Siege Tank (Sieged) cargo size to 8.
 
 Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann so this might need to be revisited.
 
@@ -36,7 +36,7 @@ Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann s
 
 Changed to be distinct from the Medivac portrait.
 
-- Changed Ignite Afterburners to additionally increase acceleration by 1000.
+- Buffed Ignite Afterburners to additionally increase acceleration by 1000.
 - Removed the random delay on Battlecruiser weapons.
 - Reworked P2.
   - Removed Ignite Afterburners cooldown.
@@ -45,7 +45,7 @@ Changed to be distinct from the Medivac portrait.
 
 Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
 
-- Changed Firebat weapon to have lower backswing and damage point.
+- Reduced Firebat weapon backswing and damage point.
 
 Small change to make stutter-stepping with Firebats feel smoother.
 
@@ -57,14 +57,14 @@ Small change to make stutter-stepping with Firebats feel smoother.
 
 - Added autocast to Stimpack.
 
-Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor?
+Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor? Initiallly off and has to be enabled manually.
 
 - Added double MULEs.
 
 Old Raynor nerf reverted. Should help out P0 Raynor.
 
-- Changed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
-- Changed Viking Gatling Cannons to have +8 vs. Mechanical.
+- Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
+- Added +8 vs. Mechanical damage to Viking Gatling Cannons.
 
 Some ground Viking buffs because why not.
 
@@ -85,7 +85,7 @@ Just because he's a commander now doesn't mean he forgot how to pilot the Hyperi
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
-- Changed P2.
+- Reworked P2.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
 
@@ -139,10 +139,10 @@ Now uses the pre-infested voice lines from Heart of the Swarm.
 
 ## Artanis
 
-- Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
-- Changed Phoenix price from 150/100 to 150/50.
+- Reworked Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Reduced Phoenix price from 150/100 to 150/50.
 
-Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss
+Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
 
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
@@ -167,33 +167,33 @@ An iconic unit thats missing from co-op, is now back. Mass Recall should help wi
 
 The Shield Overcharge mastery was so overwhelmingly better, this should help it be more competitive.
 
-- Changed P2.
+- Buffed P2.
   - Unnerfed energy cost from 25 to 10.
   - Increased Project Power Field radius from 6 to 8.
 
 Buff an underperforming prestige.
 
-- Changed P1.
+- Buffed P1.
   - No longer increases vespene gas costs.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
 ## Swann
 
-- Changed Thors to have their High Impact Payload mode from Versus available for single-target long-range damage.
-- Changed Multi-Lock Weapons System upgrade to additionally affect the Thor.
-- Changed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion armor by 60.
+- Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
+- Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
+- Buffed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion armor by 60.
 
 These changes should make Thors much more competitive. Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
 
 - Changed Cyclones to visually have their red lazer sights with Mag-Field and large missiles when locking on from Versus.
-- Changed Cyclone's Lock On to no longer be affected by armor.
+- Buffed Cyclone's Lock On to no longer be affected by armor.
 
 The little missile that was fired during Lock On was just sad, now Cyclones look as cool as they do in Versus. Also Lock On is a spell, and should not be affected by armor.
 
 - Added Widow Mines.
   - Added Hellburst Payload upgrade that increases Sentinel Missile direct damage by 20 and splash damage by 80.
-  - Changed Cyclone's Targeting Optics upgrade to additionally increasing Sentinel Missile range by 3.
+  - Cyclone's Targeting Optics upgrade additionally increases Sentinel Missile range by 3.
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
 
@@ -208,12 +208,12 @@ These general improvements should make playing ground mech much smoother (Why do
 Scanner Sweeps should help Cyclones keep their Lock On active and provide detection without having to rely on the slow Science Vessels. Additionally, Calldown: Extra Supplies to help with the constant supply blocks on Swann.
 
 - Added the ability to morph Planetary Fortresses.
-  - Changed Swann level 3 perk to upgrade Planetary Fortresses to Big Berthas, increasing damage and splash range.
+  - Swann level 3 perk additionally upgrades Planetary Fortresses to Big Berthas, increasing damage and splash range.
   - Planetaries are considered turrets for all turret upgrades.
 
 An iconic defensive Terran structure for the defensive Terran commander.
 
-- Changed Defense Matrix to no longer require research.
+- Reworked Defense Matrix to no longer require research.
 
 https://www.maguro.one/2017/10/upgrades-in-co-op.html
 
@@ -258,11 +258,11 @@ Green warp ins! Dark Templar now use both variants and Shadow Guard use the Gold
 
 Vorazun is one of the most vespene limited commanders. Increasing her vespene harvest rate should help with the large amount of upgrades she needs and her extremely gas heavy army.
 
-- Changed Vorazun level 1 perk to additionally increase the shields of all combat units (except Dark Templar) by 40.
+- Buffed Vorazun level 1 perk to additionally increase the shields of all combat units (except Dark Templar) by 40.
 
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
-- Changed Disruption Web to no longer require research.
+- Buffed Disruption Web to no longer require research.
 - Added Flux Vanes upgrade that increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
@@ -278,12 +278,12 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
   - Can use Fading Star after researching at a Dark Shrine.
     - Grants super cloak, 50% increased movement speed, and ignores collision for 4 seconds.
     - Can be autocast when damaged.
-  - Changed Argus Crystal upgrade to additionally grant Signifiers full energy.
+  - Argus Crystal additionally grants Signifiers full energy.
 
 A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. The addition of a damaging spellcaster also helps improve the value of increased energy regeneration from Vorazun's level 15 perk.
 
-- Changed Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
-- Dark Archon weapon damage increased to 25 (+10 vs Biological)
+- Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
+- Increased Dark Archon weapon damage to 25 (+10 vs Biological)
 
 Should make massing Dark Archons more viable instead of watching them tickle units.
 
@@ -292,25 +292,26 @@ Should make massing Dark Archons more viable instead of watching them tickle uni
 
 The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
 
-- Changed P2 to reduce Stasis Ward duration by 50% instead of 75%
+- Buffed P2 to reduce Stasis Ward duration by 50% instead of 75%
 
 For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This should help with that.
 
-- Changed Void Stasis to target air units and no longer make the unit invulnerable.
+- Reworked Void Stasis to target air units and no longer make the unit invulnerable.
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
 
 ## Karax
 
 - Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes.
-- Changed Carrier Repair Drone behavior to previous version, but with improved autocasting to no longer require stopping.
+- Reworked Carrier Repair Drone behavior to previous version, but with improved autocasting to no longer require stopping.
 - Removed Combat Chrono Wave.
 - Removed the ability to Chrono Boost defensive structures.
-- Changed Improved Reconstruction to 120 seconds.
+- Nerfed Improved Reconstruction to 120 seconds.
+- Reworked Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
 
-- Changed Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
+- Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
 
 Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
 
@@ -327,14 +328,14 @@ Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly 
   - Increased nova speed from 2.25 -> 3.25
   - Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
   - Increased Purification Nova radius by 20%.
-  - Changed price of Cloaking Module from 100/100 to 50/50.
-  - Changed price of Purification Nova from 150/150 to 100/100.
+- Reduced price of Cloaking Module from 100/100 to 50/50.
+- Reduced price of Purification Nova from 150/150 to 100/100.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
 ## Abathur
 
-- Changed Viper Consumption to also allow targeting structures.
+- Rework Viper Consumption to also target structures.
 
 ## Alarak
 
@@ -343,7 +344,7 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 ## Stukov
 
 - Added Rotwing Rotors upgrade that increases Infested Banshee speed by 2.
-- Changed Infested Banshee P2 Deploy ability to allow casting while moving.
+- Reworked Infested Banshee P2 Deploy ability to allow casting while moving.
 
 These two simple changes make playing P2 infinitely smoother to play.
 
@@ -368,7 +369,7 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
 
-- Changed the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
+- Nerfed the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
 - Added a cleave to Dehaka's Claws weapon.
 - Added splash damage to Dehaka's Mammoth Beam weapon.
 - Increased the damage of Dehaka's Mammoth Beam by 50%.
