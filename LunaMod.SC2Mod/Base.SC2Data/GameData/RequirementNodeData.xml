@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CRequirementAnd id="AndCountUnitAlias_LairCompleteOnly1515591279LT3730171456CountUnitSwarmNetworkQueuedOrBetter4">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitAlias_LairCompleteOnly1515591279"/>
+        <OperandArray value="LT3730171456CountUnitSwarmNetworkQueuedOrBetter4"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
@@ -11,6 +16,11 @@
     <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="MothershipArtanis" State="QueuedOrBetter"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitSwarmNetworkQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SwarmNetwork" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -25,12 +35,10 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefilerMetasynapticNodeCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefilerMetasynapticNode" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DefilerMetasynapticNode" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnly">
@@ -76,11 +84,14 @@
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
+    <CRequirementLT id="LT3730171456CountUnitSwarmNetworkQueuedOrBetter4">
+        <OperandArray index="0" value="CountUnitSwarmNetworkQueuedOrBetter"/>
+        <OperandArray index="1" value="4"/>
+    </CRequirementLT>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeHellburstPayloadQueuedOrBetter">

@@ -445,7 +445,6 @@
         <AutoCastValidatorArray value="healCasterMinEnergy"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
-        <AutoCastValidatorArray value="UnitOrAttackable"/>
         <AutoCastValidatorArray value="TargetHas125LifeMissing"/>
     </CAbilEffectTarget>
     <CAbilResearch id="TwilightCouncilResearch">
@@ -555,7 +554,7 @@
         <FlagArray index="IgnoreUnitCost" value="1"/>
         <FlagArray index="PeonMaintained" value="0"/>
         <InfoArray index="Build1" Unit="SwarmLocus">
-            <Cooldown Link="Abil/##id##" Location="Unit" TimeUse="90"/>
+            <Cooldown Link="Abil/##id##" Location="Unit" TimeUse="120"/>
             <Button DefaultButtonFace="SwarmNetworkSwarmLocus"/>
             <ValidatorArray value="HasVisionOfTarget"/>
         </InfoArray>
@@ -563,9 +562,7 @@
     </CAbilBuild>
     <CAbilBuild id="ZergBuild">
         <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">
-            <Resource index="Minerals" value="200"/>
-            <Resource index="Vespene" value="200"/>
-            <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="HaveLair"/>
+            <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="BuildSwarmNetwork"/>
         </InfoArray>
     </CAbilBuild>
 </Catalog>

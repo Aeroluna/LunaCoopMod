@@ -252,6 +252,14 @@ When Hunter Killers were given the webby skin, their scale was reset to the norm
 
 Corpser representation!
 
+- Added Swarm Networks.
+  - Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
+  - Temporary zerg last 60 seconds, are uncontrollable, and attack closest enemies.
+  - Queen will try to place Creep Tumor if too few other Creep Tumors nearby.
+  - Limited to 4.
+
+If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
+
 ## Vorazun
 
 - Changed Vorazun to use custom Nerazim skinset.

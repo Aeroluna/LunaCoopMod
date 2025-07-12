@@ -495,8 +495,6 @@ bool lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Func (bool testConds, bool runAct
         }
 
     }
-    TextExpressionSetToken("Param/Expression/lib_74A68E34_E6360D2B", "A", IntToText(UnitGroupCount(lv_nearbyCreepTumors, c_unitCountAlive)));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_74A68E34_E6360D2B"), true);
     if ((UnitGroupCount(lv_nearbyCreepTumors, c_unitCountAlive) < 3)) {
         UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("QueenBuild", 0), UnitTypePlacementFromUnit("CreepTumor", 1, EventUnit(), 4.0)), c_orderQueueReplace);
         UnitWaitUntilIdle(EventUnit(), true);
@@ -595,6 +593,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func (bool testConds, bool runA
     }
 
     UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitTimedLife", EventUnit(), 1);
+    UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitSeekDestroy", EventUnit(), 1);
     return true;
 }
 
