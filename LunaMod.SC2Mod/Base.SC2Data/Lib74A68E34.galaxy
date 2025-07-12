@@ -322,6 +322,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergZagara") {
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusSetupQueen, true);
+            TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor, true);
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusRoachScale, true);
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy, true);
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior, true);
@@ -463,10 +464,6 @@ bool lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Func (bool testConds, bool runAct
     unitgroup lv_nearbyCreepTumors;
 
     // Automatic Variable Declarations
-    unitgroup auto31E1D9DB_g;
-    int auto31E1D9DB_u;
-    unit auto31E1D9DB_var;
-
     // Variable Initialization
     lv_nearbyCreepTumors = UnitGroupEmpty();
 
@@ -484,23 +481,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Func (bool testConds, bool runAct
 
     UnitSetPropertyFixed(EventUnit(), c_unitPropEnergyPercent, 100.0);
     UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("Transfusion", 0), true), c_orderQueueReplace);
-    Wait(1.0, c_timeGame);
-    auto31E1D9DB_g = UnitGroupSearch(null, c_playerAny, UnitGetPosition(EventUnit()), 6.0, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    auto31E1D9DB_u = UnitGroupCount(auto31E1D9DB_g, c_unitCountAll);
-    for (;; auto31E1D9DB_u -= 1) {
-        auto31E1D9DB_var = UnitGroupUnitFromEnd(auto31E1D9DB_g, auto31E1D9DB_u);
-        if (auto31E1D9DB_var == null) { break; }
-        if (((UnitGetType(auto31E1D9DB_var) != "SwarmLocus") && (UnitHasBehavior2(auto31E1D9DB_var, "makeCreep4x4") == true))) {
-            UnitGroupAdd(lv_nearbyCreepTumors, auto31E1D9DB_var);
-        }
-
-    }
-    if ((UnitGroupCount(lv_nearbyCreepTumors, c_unitCountAlive) < 3)) {
-        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("QueenBuild", 0), UnitTypePlacementFromUnit("CreepTumor", 1, EventUnit(), 4.0)), c_orderQueueReplace);
-        UnitWaitUntilIdle(EventUnit(), true);
-    }
-
-    UnitBehaviorAdd(EventUnit(), "SwarmLocusUnitSeekDestroy", EventUnit(), 1);
+    UnitBehaviorAdd(EventUnit(), "SwarmLocusTryCreepTumor", EventUnit(), 1);
     return true;
 }
 
@@ -509,6 +490,54 @@ void lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Init () {
     lib74A68E34_gt_ZagaraSwarmLocusSetupQueen = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Func");
     TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusSetupQueen, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_ZagaraSwarmLocusSetupQueen, null, "SwarmLocusUnitTimedLife", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZagaraSwarmLocusTryCreepTumor
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_queen;
+    unitgroup lv_nearbyCreepTumors;
+
+    // Automatic Variable Declarations
+    unitgroup auto0F391FFB_g;
+    int auto0F391FFB_u;
+    unit auto0F391FFB_var;
+
+    // Variable Initialization
+    lv_nearbyCreepTumors = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_queen = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    auto0F391FFB_g = UnitGroupSearch(null, c_playerAny, UnitGetPosition(lv_queen), 4.0, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto0F391FFB_u = UnitGroupCount(auto0F391FFB_g, c_unitCountAll);
+    for (;; auto0F391FFB_u -= 1) {
+        auto0F391FFB_var = UnitGroupUnitFromEnd(auto0F391FFB_g, auto0F391FFB_u);
+        if (auto0F391FFB_var == null) { break; }
+        if (((UnitGetType(auto0F391FFB_var) != "SwarmLocus") && (UnitHasBehavior2(auto0F391FFB_var, "makeCreep4x4") == true))) {
+            UnitGroupAdd(lv_nearbyCreepTumors, auto0F391FFB_var);
+        }
+
+    }
+    if ((UnitGroupCount(lv_nearbyCreepTumors, c_unitCountAlive) == 0)) {
+        UnitIssueOrder(lv_queen, OrderTargetingPoint(AbilityCommand("QueenBuild", 0), UnitTypePlacementFromUnit("CreepTumor", 1, lv_queen, 4.0)), c_orderQueueReplace);
+    }
+    else {
+        UnitBehaviorRemove(lv_queen, "SwarmLocusTryCreepTumor", 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Init () {
+    lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor, c_playerAny, "SwarmLocusTryCreepTumorTrigger");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -642,6 +671,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Init();
+    lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Init();
     lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Init();
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();

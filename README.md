@@ -14,6 +14,10 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
 
+- Removed Armored attribute from Queens.
+
+No more getting obliterated by Immortals.
+
 - Reordered many command cards to match Versus.
 
 ## Raynor
