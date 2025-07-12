@@ -90,13 +90,13 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="SeekerMissileNotRestored">
         <CombineArray value="SeekerMissileRestored"/>
+        <CombineArray value="SourceIsDead"/>
         <Negate value="1"/>
+        <Type value="And"/>
     </CValidatorCombine>
     <CValidatorCombine id="SeekerMissileValidators">
         <Type value="Or"/>
         <CombineArray value="SeekerMissileRestored"/>
-        <!--CombineArray value="SeekerMissileTargetNotDead"/>
-        <CombineArray value="SeekerMissileTargetNotHidden"/-->
     </CValidatorCombine>
     <CValidatorUnitOrderQueue id="SourceIsNotMoving">
         <WhichUnit Value="Source"/>

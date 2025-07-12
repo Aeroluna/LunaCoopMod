@@ -343,7 +343,7 @@
     <CEffectRemoveBehavior id="MedicRestorationRB">
         <EditorCategories value="Race:Terran"/>
         <BehaviorClass value="CBehaviorBuff"/>
-        <BehaviorAlignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CEffectRemoveBehavior>
     <CEffectEnumArea id="MedicRestorationSearch">
         <EditorCategories value="Race:Terran"/>
@@ -639,12 +639,25 @@
         <EffectArray value="RaynorMedicSafeguardSwitch"/>
         <EffectArray value="RaynorMasteryHealMedivacSecondaryCP"/>
     </CEffectSet>
-    <!-- This handles the timeout -->
-    <CEffectCreatePersistent id="SeekerMissileLaunchCP">
-        <ExpireEffect value=""/>
+    <CEffectRemoveBehavior id="SOARecallOnDeathCleanseRB">
+        <WhichUnit Effect="SOARecallOnDeathCastAB"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorClass value="CBehaviorBuff"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="SOARecallOnDeathRecallingBehaviorSet">
+        <EffectArray value="SOARecallOnDeathCleanseRB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="SeekerMissileLaunchRestoreCheck">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
         <FinalEffect value="SeekerMissileSuicideSet"/>
         <PeriodicValidator value="SeekerMissileNotRestored"/>
+        <PeriodicPeriodArray value="0.125"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="SeekerMissileLaunchSet">
+        <EffectArray value="SeekerMissileLaunchRestoreCheck"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="SignifierFade">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>

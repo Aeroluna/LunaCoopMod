@@ -304,6 +304,10 @@ For the prestige focused on stasising things, the P2 just makes Stasis Wards sad
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
 
+- Buffed Emergency Recall to cleanse negative debuffs.
+
+No more recalling Black Death straight into your mineral line.
+
 ## Karax
 
 - Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes.

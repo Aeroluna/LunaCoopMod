@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CBehaviorBuff id="ArbiterMPStasisField">
-        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisFieldTimedLife">
-        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarrierRepairDroneRecall">
         <BehaviorFlags index="Permanent" value="0"/>
@@ -14,6 +14,12 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Choked">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChokedDisableAbils">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeKerriganCreepSuperCloak">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
@@ -21,6 +27,12 @@
         <Modification>
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CorrosiveAcidSpell">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Corruption">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkTemplarVoidStasis">
         <Modification>
@@ -41,6 +53,21 @@
             <StateFlags index="Cloak" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FungalGrowth">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FungalGrowthMovement">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravitonPrison">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HybridGeneralPhaseShift">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HybridPnPStasisField">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="HyperionVoidCoopWeaponSwitch">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -49,6 +76,9 @@
             <WeaponEnableArray value="HyperionVoidCoopAir"/>
             <WeaponDisableArray value="HyperionVoidCoopGround"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Irradiate">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KerriganEnvenomedSpines">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-poisonnova.dds"/>
@@ -75,6 +105,9 @@
             <StateFlags index="Stun" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="LeapHunterlingStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MedicRestoration">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -99,6 +132,9 @@
         <InitialEffect value="KerriganRazorSwarmDamage"/>
         <PeriodicEffect value="KerriganRazorSwarmDamage"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorConcussiveAttacks">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorDeathPullModifySpeed">
         <Modification>
             <ModifyFlags index="DisableAbils" value="0"/>
@@ -106,8 +142,40 @@
             <StateFlags index="Uncommandable" value="0"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorFear">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorMomentOfSilence">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorPlagueBehavior">
-        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OracleStasisTrapTarget">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <!--CBehaviorBuff id="ParasiticBomb">-->
+    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
+    <!--        <Duration value="10"/>-->
+    <!--        <Period value="0.25"/>-->
+    <!--        <PeriodicEffect value="ParasiticBombSearchEffect"/>-->
+    <!--        <FinalEffect value="ParasiticBombExpireSet"/>-->
+    <!--        <ExpireEffect value="ParasiticBombExpireSet"/>-->
+    <!--    </CBehaviorBuff>-->
+    <!--    <CBehaviorBuff id="ParasiticBombDot">-->
+    <!--        <Alignment value="Negative"/>-->
+    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
+    <!--        <Duration value="15"/>-->
+    <!--        <Period value="1"/>-->
+    <!--        <PeriodicEffect value="ParasiticBombDotDamage"/>-->
+    <!--    </CBehaviorBuff>-->
+    <!--    <CBehaviorBuff id="ParasiticBombTintDummy">-->
+    <!--        <InfoFlags index="Hidden" value="1"/>-->
+    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
+    <!--        <Duration value="10"/>-->
+    <!--    </CBehaviorBuff-->
+    <CBehaviorBuff id="ParasiticBomb">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PsiStormNerazim">
         <Alignment value="Negative"/>
@@ -172,6 +240,9 @@
         <TechAliasArray value="Alias_VorazunStasis"/>
         <InitialEffect value="CommanderPrestigeVorazunStasisDoT"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="QueenMPEnsnare">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorPowerSource id="SOAPylonPowerPrestigeAlly">
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
@@ -230,6 +301,21 @@
             <VitalRegenArray index="Energy" value="0.5625"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SlaynElementalGrabAOEStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SlaynElementalGrabStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Slimed">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Slow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovInfestedDiamondbackSnare">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TorrasqueEggInvulnerability">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
@@ -240,6 +326,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="VehicleAfterburners">
         <Modification AccelerationBonus="1000"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidSliverDeathGripAutoCastBeamHeight">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VortexArtanisBehaviorEnemy" parent="VortexBehaviorEnemy">
         <InitialEffect value="VortexArtanisForceBehavior"/>
