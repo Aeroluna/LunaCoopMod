@@ -711,6 +711,110 @@
     <CEffectApplyBehavior id="SpiderMineInvulnerable">
         <ValidatorArray index="0" value="IsRaynorCoopCommander"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="SwarmLocusScourgeCP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="3"/>
+        <PeriodicValidator value="NotDead"/>
+        <PeriodicEffectArray value="SwarmLocusScourgeCU"/>
+        <PeriodicPeriodArray value="2.25"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="SwarmLocusScourgeCU">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnEffect value="SwarmLocusUnitABSet"/>
+        <SpawnUnit value="Scourge"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="SwarmLocusCreateUnitSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SwarmLocusRoachCP"/>
+        <EffectArray value="SwarmLocusZerglingCP"/>
+        <EffectArray value="SwarmLocusBanelingCP"/>
+        <EffectArray value="SwarmLocusQueenCP"/>
+        <EffectArray value="SwarmLocusScourgeCP"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SwarmLocusSeekDestroyAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="SwarmLocusUnitSeekDestroy"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SwarmLocusSeekDestroyTrigger">
+        <EditorCategories value="Race:Zerg"/>
+    </CEffectSet>
+    <CEffectEnumArea id="SwarmLocusSearchGround">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="500" Effect="SwarmLocusAttackOrder"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="SwarmLocusTimeoutAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="SwarmLocusTimeoutKill"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SwarmLocusUnitABSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SwarmLocusUnitTimedLifeAB"/>
+        <EffectArray value="SwarmLocusSeekDestroyAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SwarmLocusUnitTimedLifeAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="SwarmLocusUnitTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="SwarmLocusZerglingCP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="10"/>
+        <PeriodicValidator value="NotDead"/>
+        <PeriodicEffectArray value="SwarmLocusZerglingCU"/>
+        <PeriodicPeriodArray value="0.75"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SwarmLocusRoachCP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicValidator value="NotDead"/>
+        <PeriodicEffectArray value="SwarmLocusRoachCU"/>
+        <PeriodicPeriodArray value="3"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SwarmLocusBanelingCP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="5"/>
+        <PeriodicValidator value="NotDead"/>
+        <PeriodicEffectArray value="SwarmLocusBanelingCU"/>
+        <PeriodicPeriodArray value="1.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SwarmLocusQueenCP">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="1"/>
+        <PeriodicValidator value="NotDead"/>
+        <PeriodicEffectArray value="SwarmLocusQueenCU"/>
+        <PeriodicPeriodArray value="1.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="SwarmLocusZerglingCU">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnEffect value="SwarmLocusUnitABSet"/>
+        <SpawnUnit value="HotSSwarmling"/>
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="SwarmLocusRoachCU">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnEffect value="SwarmLocusUnitABSet"/>
+        <SpawnUnit value="RoachCorpser"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="SwarmLocusBanelingCU">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnEffect value="SwarmLocusUnitABSet"/>
+        <SpawnUnit value="HotSSplitterlingBig"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="SwarmLocusQueenCU">
+        <EditorCategories value="Race:Zerg"/>
+        <SpawnEffect value="SwarmLocusUnitTimedLifeAB"/>
+        <SpawnUnit value="QueenCoop"/>
+    </CEffectCreateUnit>
     <CEffectModifyUnit id="TissueAssimilation">
         <VitalArray index="Life">
             <Change value="0"/>

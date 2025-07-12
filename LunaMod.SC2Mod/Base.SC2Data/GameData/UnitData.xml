@@ -124,7 +124,7 @@
         </CardLayouts>
         <CardLayouts index="2">
             <LayoutButtons index="6" Face="ScourgeNest" Type="AbilCmd" AbilCmd="ZergBuild,Build25" Requirements="" Column="0"/>
-            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="7" Face="SwarmNetwork" AbilCmd="ZergBuild,Build12" Row="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="EvolutionChamber">
@@ -491,6 +491,140 @@
         <CardLayouts index="0">
             <LayoutButtons Face="MothershipArtanis" Type="AbilCmd" AbilCmd="NexusTrainMothershipArtanis,Train1" Row="0" Column="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="SwarmLocus">
+        <DeathRevealRadius value="3"/>
+        <Facing value="29.9707"/>
+        <Race value="Zerg"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="AIThreatGround" value="1"/>
+        <FlagArray index="AIThreatAir" value="1"/>
+        <FlagArray index="AIHighPrioTarget" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <LifeArmor value="1"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergBuildingArmor"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <Sight value="10"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="100"/>
+        <AttackTargetPriority value="11"/>
+        <AbilArray Link="BuildinProgressNydusCanal"/>
+        <AbilArray Link="stop"/>
+        <BehaviorArray Link="SwarmLocusTimeout"/>
+        <BehaviorArray Link="SwarmLocusDelay"/>
+        <BehaviorArray Link="makeCreep4x4"/>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <Footprint value="Footprint3x3IgnoreCreepContour"/>
+        <PlacementFootprint value="Footprint3x3IgnoreCreepContour"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="59"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Coop"/>
+        <AIEvalFactor value="0.2"/>
+        <GlossaryCategory value="Unit/Category/ZergUnits"/>
+        <GlossaryPriority value="261"/>
+        <HotkeyCategory value="Unit/Category/ZergUnits"/>
+    </CUnit>
+    <!-- make sure this guy is after NydusNetworkAlly -->
+    <CUnit id="NydusNetwork">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="0"/>
+            <LayoutButtons index="2" Column="1"/>
+            <LayoutButtons index="7" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="NydusNetworkAlly">
+        <!--AbilArray index="4" removed="1"/-->
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="0"/>
+            <LayoutButtons index="2" Column="1"/>
+            <LayoutButtons index="6" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SwarmNetwork">
+        <DeathRevealRadius value="3"/>
+        <Facing value="344.9707"/>
+        <Race value="Zerg"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="850"/>
+        <LifeMax value="850"/>
+        <LifeArmor value="1"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergBuildingArmor"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <Sight value="9"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="200"/>
+        <AttackTargetPriority value="11"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="BuildInProgress"/>
+        <AbilArray Link="SwarmNetworkBuildSwarmLocus"/>
+        <BehaviorArray Link="OnCreep"/>
+        <BehaviorArray Link="ZergBuildingNotOnCreep"/>
+        <BehaviorArray Link="ZergBuildingDies6"/>
+        <CardLayouts>
+            <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="SwarmNetworkSwarmLocus" Type="AbilCmd" AbilCmd="SwarmNetworkBuildSwarmLocus,Build1" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="1.375"/>
+        <SeparationRadius value="1.375"/>
+        <Footprint value="Footprint3x3NydusNetwork"/>
+        <PlacementFootprint value="Footprint3x3NydusNetwork"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="61"/>
+        <MinimapRadius value="1.5"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Coop"/>
+        <TechAliasArray value="Alias_NydusNetwork"/>
+        <GlossaryPriority value="249"/>
+        <HotkeyCategory value="Unit/Category/ZergUnits"/>
+        <TechTreeProducedUnitArray value="NydusCanal"/>
     </CUnit>
     <CUnit id="OrbitalCommand">
         <AbilArray Link="VespeneDroneCast"/>

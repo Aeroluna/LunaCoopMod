@@ -245,6 +245,70 @@
         <HostEndSiteOps Ops="SOpMoveUpBy1"/>
         <Radius value="1.000000,0.150000"/>
     </CActorForceCylinder>
+    <CActorUnit id="SwarmLocus" parent="ZergBuildingEx" unitName="SwarmLocus">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="BuildingFlattenTerrainMacro"/>
+        <Macros value="SnowVisualUnitMacroMP"/>
+        <On index="35" Send="$Birth 0 0.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On Terms="Effect.SwarmLocusZerglingCU.Start" Send="AnimClear Birth"/>
+        <On Terms="Effect.SwarmLocusZerglingCU.Start" Send="$Spell"/>
+        <On Terms="Behavior.SwarmLocusTimeoutKill.On" Send="AnimPlay Unburrow Unburrow PlayForever,NonLooping"/>
+        <BuildModel value="NydusRumble"/>
+        <DeathArray index="Normal" SoundLink=""/>
+        <DeathArray index="Disintegrate" ModelLink="SwarmLocusDeathAcid" SoundLink="Uni_DeathFXAcid"/>
+        <DeathArray index="Fire" ModelLink="SwarmLocusDeathFire" SoundLink="Uni_DeathFXFireLarge"/>
+        <DeathArray index="UnderConstruction" ModelLink="NydusCanalDeathUnderConstruction" SoundLink="Zerg_ExplosionLarge"/>
+        <DeathCustoms ModelLink="ZergGenericBuildingDeath" Name="Detached"/>
+        <DeathCustoms ModelLink="NydusCanalAirDeathLow" Name="AntiGravZerg"/>
+        <PlacementModel value="SwarmLocusWormPlacement"/>
+        <PortraitModel value="NydusCanalPortrait"/>
+        <BarOffset value="115"/>
+        <BarWidth value="85"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusWorm.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <NameOffset value="70"/>
+        <SoundArray index="Birth" value=""/>
+        <SoundArray index="Ready" value="NydusWorm_Ready"/>
+        <SoundArray index="What" value="NydusWorm_What"/>
+        <SoundArray index="Yes" value="NydusWorm_What"/>
+        <SoundArray index="Construction" value="Zerg_RockBuildingMorph_What"/>
+        <UnitIcon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusWorm.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="SwarmNetwork" parent="ZergBuildingEx" unitName="SwarmNetwork">
+        <Aliases value="_UnitHuge"/>
+        <On index="69" Terms="UnitConstruction.SwarmNetwork.Start" Send="Create NydusNetworkBuild"/>
+        <On Terms="AbilTransport.NydusCanalTransport.TransportLoad" Send="$Spell"/>
+        <On Terms="AbilTransport.NydusCanalTransport.TransportUnload" Send="$Spell"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit HasZergGenericDeath" Send="DeathCustomize Detached"/>
+        <Model value="NydusNetwork"/>
+        <BuildModel value="NydusNetwork"/>
+        <DeathArray index="Normal" ModelLink="NydusNetworkDeath" SoundLink="NydusNetwork_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="NydusNetworkDeathUnderConstruction" SoundLink="NydusNetwork_Explode"/>
+        <DeathCustoms ModelLink="ZergGenericBuildingDeath" Name="Detached"/>
+        <PlacementModel value="NydusNetworkPlacement"/>
+        <PortraitModel value="NydusNetworkPortrait"/>
+        <BarOffset value="90"/>
+        <BarWidth value="135"/>
+        <ErrorArray Error="CantSeeBuildLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantSeeLandLocation" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantBuildLocationInvalid" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <ErrorArray Error="CantLandLocationInvalid" Sound="Alert_ZergBuildError" GroupSound="Alert_ZergBuildError"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusNetwork.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-zerg-nydusnetwork.dds"/>
+        <SoundArray index="Ready" value="NydusNetwork_Ready"/>
+        <SoundArray index="What" value="NydusNetwork_What"/>
+        <UnitIcon value="Assets\Textures\btn-building-zerg-nydusnetwork.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-NydusNetwork.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorBeamSimple id="PhasingBeam">
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorBeamSimple>

@@ -316,6 +316,48 @@
     <CBehaviorBuff id="StukovInfestedDiamondbackSnare">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusDelay">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <ExpireEffect value="SwarmLocusCreateUnitSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusTimeout">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <ExpireEffect value="SwarmLocusTimeoutAB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusTimeoutKill">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+        <ExpireEffect value="SuicideRemove"/>
+        <Modification>
+            <StateFlags index="Unselectable" value="1"/>
+        </Modification>
+        <DamageResponse Fatal="1" ModifyFraction="0">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusUnitTimedLife" parent="TimedLife">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Duration value="30"/>
+        <Modification>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="SuppressArmySelect" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
+        <KillCredit Value="Unknown"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusUnitSeekDestroy">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Period value="5"/>
+        <InitialEffect value="SwarmLocusSeekDestroyTrigger"/>
+        <PeriodicEffect value="SwarmLocusSeekDestroyTrigger"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TorrasqueEggInvulnerability">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>

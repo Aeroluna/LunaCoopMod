@@ -10,6 +10,7 @@ Abil/Name/NexusTrainMothership2=Train Mothership Copy
 Abil/Name/NexusTrainMothershipArtanis2=Train Mothership
 Abil/Name/PsiStormShakuras=Astral Storm
 Abil/Name/SignifierFade=Fade
+Abil/Name/SwarmNetworkBuildSwarmLocus=Build Swarm Locus
 Abil/Name/VehicleAfterburnersMedivac=Vehicle Afterburners
 Abil/Name/VehicleAfterburnersStimpack=Vehicle Afterburners
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
@@ -79,6 +80,8 @@ Button/Name/SignifierPassive=Signifier
 Button/Name/SmartServos=Smart Servos
 Button/Name/StabilizerMedPacksMedivac=Stabilizer Medpacks
 Button/Name/StalkerPurifier=Warp in Instigator
+Button/Name/SwarmNetwork=Mutate into Swarm Network
+Button/Name/SwarmNetworkSwarmLocus=Summon Swarm Locus
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
 Button/Name/VorazunImprovedVespene=Vespene Crystallization
@@ -177,6 +180,9 @@ Button/Tooltip/SignifierPassive=Dark Shrine allows you to warp in Signifier.
 Button/Tooltip/StabilizerMedPacksMedivac=Increases the Medivac's healing speed and allows them to heal mechanical units. Units being healed by Medivacs take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/StalkerBlinkMultiple=Teleports the Instigator to a nearby target location. Ability regains a charge every <d ref="Abil,BlinkMultiple,Cost[0].Charge.TimeUse"/> seconds. Can store a maximum of 3 charges.
 Button/Tooltip/StalkerPurifier=Ranged support strider. Can store multiple Blink charges.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/SwarmLocus=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
+Button/Tooltip/SwarmNetwork=Friendly ground units can use the Nydus Network to instantly travel to any other Nydus Network or Nydus Worm owned by the player.<n/><n/><c val="ffff8a">Enables:</c><n/>- Nydus Worm
+Button/Tooltip/SwarmNetworkSwarmLocus=Summons a Nydus Worm at the target location.<n/>Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/VoidStasis=Places target unit or structure in stasis for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/VorazunImprovedVespene=Assimilators and Orbital Assimilators produce vespene gas 25% faster.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
@@ -260,6 +266,23 @@ Effect/Name/RaynorMedivacSafeguardSet=Raynor Medivac Safeguard Set
 Effect/Name/SOARecallOnDeathCleanseRB=SOARecall On Death Cleanse RB
 Effect/Name/SeekerMissileLaunchRestoreCheck=Seeker Missile Launch Restore Check
 Effect/Name/SignifierFade=Fade (Apply Buff)
+Effect/Name/SwarmLocusBanelingCP=Swarm Locus Baneling CP
+Effect/Name/SwarmLocusBanelingCU=Swarm Locus Baneling CU
+Effect/Name/SwarmLocusCreateUnitSet=Swarm Locus Create Unit Set
+Effect/Name/SwarmLocusQueenCP=Swarm Locus Queen CP
+Effect/Name/SwarmLocusQueenCU=Swarm Locus Queen CU
+Effect/Name/SwarmLocusRoachCP=Swarm Locus Roach CP
+Effect/Name/SwarmLocusRoachCU=Swarm Locus Roach CU
+Effect/Name/SwarmLocusScourgeCP=Swarm Locus Scourge CP
+Effect/Name/SwarmLocusScourgeCU=Swarm Locus Scourge CU
+Effect/Name/SwarmLocusSearchGround=Swarm Locus Search Ground
+Effect/Name/SwarmLocusSeekDestroyAB=Swarm Locus Seek Destroy AB
+Effect/Name/SwarmLocusSeekDestroyTrigger=Swarm Locus Seek Destroy Trigger
+Effect/Name/SwarmLocusTimeoutAB=Swarm Locus Timeout AB
+Effect/Name/SwarmLocusUnitABSet=Swarm Locus Unit AB Set
+Effect/Name/SwarmLocusUnitTimedLifeAB=Swarm Locus Unit Timed Life AB
+Effect/Name/SwarmLocusZerglingCP=Swarm Locus Zergling CP
+Effect/Name/SwarmLocusZerglingCU=Swarm Locus Zergling CU
 Effect/Name/VortexArtanis=Vortex (Damage)
 Effect/Name/VortexArtanisApplyDisable=Vortex Apply Disable
 Effect/Name/VortexArtanisApplyDisableEnemy=Vortex Apply Disable Enemy
@@ -270,6 +293,8 @@ Effect/Name/VortexArtanisForce=Vortex (Force)
 Effect/Name/VortexArtanisForceBehavior=Vortex (ForceBehavior)
 Effect/Name/VortexArtanisForceOffset=Vortex (Force Offset)
 ImplosionCooldown=Cannot target units that have recently been affected by Implosion
+Param/Expression/lib_74A68E34_E2739024=SetScale ~A~
+Param/Expression/lib_74A68E34_E6360D2B=Found ~A~ nearby creep tumors.
 RequirementNode/Tooltip/CountUpgradeInfestedBansheeSpeedUpgradeCompleteOnly460564875=Evolve Rotwing Rotors at the Infested Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeSignifierFadeCompleteOnly892173529=Research Fading Star at the Dark Shrine
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
@@ -291,6 +316,8 @@ Unit/Name/PhaseMonolithDummy=Phasing Khaydarin Monolith
 Unit/Name/PhaseShieldBatteryDummy=Phasing Shield Battery
 Unit/Name/PlanetaryFortressUpgraded=Big Bertha
 Unit/Name/QueenBrood=Brood Matron
+Unit/Name/SwarmLocus=Swarm Locus
+Unit/Name/SwarmNetwork=Swarm Network
 Unit/Name/UltraliskBrood=Torrasque
 Unit/Name/ZerglingBrood=Devouring One
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node

@@ -432,6 +432,22 @@
         <AutoCastValidatorArray value="CasterIsFiringWeapon"/>
         <AutoCastValidatorArray value="IsNotMarauderStimmed"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="Transfusion">
+        <Flags index="AutoCast" value="1"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAlliancePassive"/>
+            <SortArray value="TSLifeFraction"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Biological,Visible;Neutral,Enemy,Missile,Stasis,Dead,Invulnerable"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="healCasterMinEnergy"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="UnitOrAttackable"/>
+        <AutoCastValidatorArray value="TargetHas125LifeMissing"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="TwilightCouncilResearch">
         <InfoArray index="Research4" Time="60">
             <Resource index="Minerals" value="50"/>
@@ -534,4 +550,22 @@
     <CAbilEffectTarget id="WidowMineAttack">
         <PrepEffect value="HHWidowMineTargetingBeamDummy"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="SwarmNetworkBuildSwarmLocus">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <FlagArray index="IgnoreUnitCost" value="1"/>
+        <FlagArray index="PeonMaintained" value="0"/>
+        <InfoArray index="Build1" Unit="SwarmLocus">
+            <Cooldown Link="Abil/##id##" Location="Unit" TimeUse="90"/>
+            <Button DefaultButtonFace="SwarmNetworkSwarmLocus"/>
+            <ValidatorArray value="HasVisionOfTarget"/>
+        </InfoArray>
+        <Range value="500"/>
+    </CAbilBuild>
+    <CAbilBuild id="ZergBuild">
+        <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+            <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="HaveLair"/>
+        </InfoArray>
+    </CAbilBuild>
 </Catalog>
