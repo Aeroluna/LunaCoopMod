@@ -45,6 +45,37 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
+void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player) {
+    // Variable Declarations
+    fixed lv_upgradeCount;
+    fixed lv_healthStarting;
+    fixed lv_healthPerPoint;
+    fixed lv_healthNew;
+    fixed lv_damageStarting;
+    fixed lv_damagePerPoint;
+    fixed lv_damageNew;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_healthStarting = 145.0;
+    lv_healthPerPoint = 29.0;
+    lv_healthNew = 145.0;
+    lv_damageStarting = 16.0;
+    lv_damagePerPoint = 0.32;
+
+    // Implementation
+    lv_upgradeCount = TechTreeUpgradeCount(lp_player, "MasteryZagaraRoachDropDamageAndHealth", c_techCountCompleteOnly);
+    if ((lv_upgradeCount == 0.0)) {
+        return ;
+    }
+
+    lv_healthNew = (lv_healthStarting+(lv_upgradeCount*lv_healthPerPoint/10));
+    CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpser", "LifeMax", lp_player, IntToString(FixedToInt(lv_healthNew)));
+    CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpser", "LifeStart", lp_player, IntToString(FixedToInt(lv_healthNew)));
+    CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpserBurrowed", "LifeMax", lp_player, IntToString(FixedToInt(lv_healthNew)));
+    CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpserBurrowed", "LifeStart", lp_player, IntToString(FixedToInt(lv_healthNew)));
+}
+
 void lib74A68E34_gf_KaraxExtraUnitVitalMastery (int lp_player) {
     // Variable Declarations
     int lv_upgradeCount;
@@ -288,6 +319,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, true);
             }
 
+        }
+        else if (auto560DABDD_val == "ZergZagara") {
+            lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth(lv_player);
         }
         else if (auto560DABDD_val == "ProtossKarax") {
             lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);

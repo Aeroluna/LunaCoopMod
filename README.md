@@ -248,6 +248,10 @@ Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking fa
 
 When Hunter Killers were given the webby skin, their scale was reset to the normal Hydralisk scale.
 
+- Buffed Infested Drop Roaches to Corpser Roaches.
+
+Corpser representation!
+
 ## Vorazun
 
 - Changed Vorazun to use custom Nerazim skinset.
