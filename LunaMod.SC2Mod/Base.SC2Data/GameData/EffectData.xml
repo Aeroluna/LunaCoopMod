@@ -22,6 +22,11 @@
         <AttributeBonus index="Light" value="2"/>
         <Amount value="10"/>
     </CEffectDamage>
+    <CEffectRemoveBehavior id="BanelingDontExplodeSource">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="BanelingExplode"/>
+    </CEffectRemoveBehavior>
     <CEffectEnumArea id="BileLauncherZagaraBombardmentDamageSearch">
         <RevealerParams Duration="3" ShapeExpansion="1">
             <RevealFlags index="Unfog" value="1"/>
@@ -717,7 +722,7 @@
         <PeriodCount value="1"/>
         <PeriodicValidator value="NotDead"/>
         <PeriodicEffectArray value="SwarmLocusHunterKillerCU"/>
-        <PeriodicPeriodArray value="3.75"/>
+        <PeriodicPeriodArray value="4.5"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="SwarmLocusHunterKillerCU">
         <EditorCategories value="Race:Zerg"/>
@@ -780,6 +785,26 @@
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="SwarmLocusUnitTimedLife"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SwarmLocusUnitTimedLifeExpireAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="SwarmLocusUnitTimedLifeExpire"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SwarmLocusUnitTimedLifeAirExpireAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="SwarmLocusUnitTimedLifeAirExpire"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="SwarmLocusUnitTimedLifeExpireSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SwarmLocusUnitTimedLifeExpireAB"/>
+        <EffectArray value="BanelingDontExplodeSource"/>
+    </CEffectSet>
+    <CEffectSwitch id="SwarmLocusUnitTimedLifeExpireSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="SourceIsScourge" Effect="SwarmLocusUnitTimedLifeAirExpireAB"/>
+        <CaseDefault value="SwarmLocusUnitTimedLifeExpireSet"/>
+    </CEffectSwitch>
     <CEffectCreatePersistent id="SwarmLocusZerglingCP">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="TargetUnit"/>

@@ -154,26 +154,6 @@
     <CBehaviorBuff id="OracleStasisTrapTarget">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
-    <!--CBehaviorBuff id="ParasiticBomb">-->
-    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
-    <!--        <Duration value="10"/>-->
-    <!--        <Period value="0.25"/>-->
-    <!--        <PeriodicEffect value="ParasiticBombSearchEffect"/>-->
-    <!--        <FinalEffect value="ParasiticBombExpireSet"/>-->
-    <!--        <ExpireEffect value="ParasiticBombExpireSet"/>-->
-    <!--    </CBehaviorBuff>-->
-    <!--    <CBehaviorBuff id="ParasiticBombDot">-->
-    <!--        <Alignment value="Negative"/>-->
-    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
-    <!--        <Duration value="15"/>-->
-    <!--        <Period value="1"/>-->
-    <!--        <PeriodicEffect value="ParasiticBombDotDamage"/>-->
-    <!--    </CBehaviorBuff>-->
-    <!--    <CBehaviorBuff id="ParasiticBombTintDummy">-->
-    <!--        <InfoFlags index="Hidden" value="1"/>-->
-    <!--        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>-->
-    <!--        <Duration value="10"/>-->
-    <!--    </CBehaviorBuff-->
     <CBehaviorBuff id="ParasiticBomb">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
@@ -346,6 +326,7 @@
         <ExpireEffect value="SuicideRemove"/>
         <Modification>
             <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
         </Modification>
         <DamageResponse Fatal="1" ModifyFraction="0">
             <Chance value="1"/>
@@ -360,6 +341,51 @@
             <StateFlags index="Uncommandable" value="1"/>
         </Modification>
         <KillCredit Value="Unknown"/>
+        <ExpireEffect value="SwarmLocusUnitTimedLifeExpireSwitch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusUnitTimedLifeAirExpire">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Duration value="6"/>
+        <FinalEffect value="SuicideRemove"/>
+        <Modification Height="25">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+            <HeightTime index="Start" value="5"/>
+            <HeightTime index="Stop" value="0.5"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusUnitTimedLifeSummoned" parent="TimedLife">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Duration value="30"/>
+        <Modification>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="SuppressArmySelect" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
+        <KillCredit Value="Unknown"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmLocusUnitTimedLifeExpire">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <FinalEffect value="SuicideRemove"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="SwarmLocusUnitSeekDestroy">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -445,5 +471,11 @@
         <DamageResponse Handled="KaraxBlinkInitialPersistent">
             <Chance value="1"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZagaraVoidCoopInfestedPodsTimedLife">
+        <ExpireEffect value="SwarmLocusUnitTimedLifeExpireAB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZagaraVoidCoopSpawnHunterKillersTimedLife">
+        <ExpireEffect value="SwarmLocusUnitTimedLifeExpireAB"/>
     </CBehaviorBuff>
 </Catalog>

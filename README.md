@@ -262,6 +262,7 @@ When Hunter Killers were given the webby skin, their scale was reset to the norm
 
 Corpser representation!
 
+- Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 - Added Swarm Networks.
   - Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
   - Temporary zerg last 60 seconds, are uncontrollable, and attack closest enemies.
