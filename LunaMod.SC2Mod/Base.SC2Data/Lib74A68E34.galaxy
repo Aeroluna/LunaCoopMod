@@ -694,13 +694,24 @@ void lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init () {
 // Trigger: ZagaraSwarmLocusSeekDestroy
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_source;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
     }
 
-    libCOMI_gf_FindandAttackNearestEnemy(EventPlayerEffectUsedUnit(c_effectUnitSource), 30.0, 6.0, 2.0, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))), UnitFilter(0, 0, (1 << c_targetFilterAir) | (1 << c_targetFilterMissile) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))));
+    lv_source = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    if ((UnitGetType(lv_source) == "Scourge")) {
+        libCOMI_gf_FindandAttackNearestEnemy(EventPlayerEffectUsedUnit(c_effectUnitSource), 30.0, 6.0, 2.0, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))), UnitFilter(0, 0, (1 << c_targetFilterGround) | (1 << c_targetFilterMissile) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))));
+    }
+    else {
+        libCOMI_gf_FindandAttackNearestEnemy(EventPlayerEffectUsedUnit(c_effectUnitSource), 30.0, 6.0, 2.0, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))), UnitFilter(0, 0, (1 << c_targetFilterAir) | (1 << c_targetFilterMissile) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32))));
+    }
     return true;
 }
 
