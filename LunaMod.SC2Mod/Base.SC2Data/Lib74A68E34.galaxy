@@ -45,6 +45,26 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
+bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport) {
+    // Automatic Variable Declarations
+    unitgroup auto91D6D4B5_g;
+    int auto91D6D4B5_u;
+    unit auto91D6D4B5_var;
+
+    // Implementation
+    auto91D6D4B5_g = UnitCargoGroup(lp_transport);
+    auto91D6D4B5_u = UnitGroupCount(auto91D6D4B5_g, c_unitCountAll);
+    for (;; auto91D6D4B5_u -= 1) {
+        auto91D6D4B5_var = UnitGroupUnitFromEnd(auto91D6D4B5_g, auto91D6D4B5_u);
+        if (auto91D6D4B5_var == null) { break; }
+        if ((UnitTypeTestAttribute(UnitGetType(auto91D6D4B5_var), c_unitAttributeHeroic) == true)) {
+            return true;
+        }
+
+    }
+    return false;
+}
+
 void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player) {
     // Variable Declarations
     fixed lv_upgradeCount;
@@ -99,6 +119,50 @@ void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
     TriggerEnable(lib01833E95_gt_K2_PylonCreated, true);
     TriggerEnable(lib01833E95_gt_K2_StructureAttackUpgrade, true);
     TriggerEnable(lib01833E95_gt_K2_StructureArmorUpgrade, true);
+}
+
+void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
+    // Variable Declarations
+    int lv_i;
+    text lv_tooltip;
+    int lv_dimensionsX;
+    int lv_dimensionsY;
+    int lv_imageDimensionsX;
+    int lv_imageDimensionsY;
+    int lv_offsetY;
+
+    // Automatic Variable Declarations
+    const int autoAF74CBE2_ae = 3;
+    const int autoAF74CBE2_ai = 1;
+
+    // Variable Initialization
+    lv_tooltip = StringExternal("Param/Value/lib_74A68E34_770DBAA1");
+    lv_dimensionsX = 40;
+    lv_dimensionsY = 25;
+    lv_imageDimensionsX = 30;
+    lv_imageDimensionsY = 13;
+    lv_offsetY = 17;
+
+    // Implementation
+    TriggerEnable(lib01833E95_gt_AF_ButtonClicked, true);
+    TriggerEnable(lib01833E95_gt_AF_HeroPurchased, true);
+    lib01833E95_gv_aF_TychusPlayer = lp_player;
+    DialogCreate(500, 500, c_anchorTop, 0, 0, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lib01833E95_gv_aF_TopBarIconsDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(lib01833E95_gv_aF_TychusPlayer), true);
+    lv_i = 1;
+    for ( ; ( (autoAF74CBE2_ai >= 0 && lv_i <= autoAF74CBE2_ae) || (autoAF74CBE2_ai < 0 && lv_i >= autoAF74CBE2_ae) ) ; lv_i += autoAF74CBE2_ai ) {
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lv_dimensionsX, lv_dimensionsY, c_anchorTop, ((92 * (lv_i - 1)) + 7), lv_offsetY, lv_tooltip, StringToText(""), "");
+        lib01833E95_gv_aF_TopBarIcons[lv_i][0] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lv_imageDimensionsX, lv_imageDimensionsY, c_anchorTopLeft, 0, 0, StringToText(""), "Tychus_SwitchOutlaw.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lib01833E95_gv_aF_TopBarIcons[lv_i][1] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib01833E95_gv_aF_TopBarIcons[lv_i][0], c_anchorCenter, 0, 0);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    }
+    TriggerExecute(lib01833E95_gt_AF_HeroPurchased, true, false);
 }
 
 // Triggers
@@ -320,6 +384,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             }
 
         }
+        else if (auto560DABDD_val == "ZergKerrigan") {
+            TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+        }
         else if (auto560DABDD_val == "ZergZagara") {
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusSetupQueen, true);
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor, true);
@@ -335,6 +402,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ProtossVorazun") {
             TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, true);
         }
+        else if (auto560DABDD_val == "ZergAbathur") {
+            TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+        }
+        else if (auto560DABDD_val == "TerranTychus") {
+            lib74A68E34_gf_TychusEnableUIReorder(lv_player);
+        }
         else {
         }
     }
@@ -348,24 +421,62 @@ void lib74A68E34_gt_ActivateCommanderTriggers_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: DisableLibraryTriggers
+// Trigger: ApplyMaguroChanges
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_DisableLibraryTriggers_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Actions
     if (!runActions) {
         return true;
     }
 
+    TriggerEnable(lib01833E95_gt_AF_TopBarClicked, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseEntersTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseExitsTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_UnloadHeroic, true);
     TriggerEnable(lib01833E95_gt_K2_Karax20, false);
     TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_DisableLibraryTriggers_Init () {
-    lib74A68E34_gt_DisableLibraryTriggers = TriggerCreate("lib74A68E34_gt_DisableLibraryTriggers_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_DisableLibraryTriggers);
+void lib74A68E34_gt_ApplyMaguroChanges_Init () {
+    lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: GeneralNydusUnloadHero
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_GeneralNydusUnloadHero_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityExists(EventUnit(), "DummyUnloadAbil") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lib74A68E34_gf_TransportHasHeroic(EventUnit()) == true)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("DummyUnloadAbil", 0), true);
+    }
+    else {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("DummyUnloadAbil", 0), false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_GeneralNydusUnloadHero_Init () {
+    lib74A68E34_gt_GeneralNydusUnloadHero = TriggerCreate("lib74A68E34_gt_GeneralNydusUnloadHero_Func");
+    TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, false);
+    TriggerAddEventUnitCargo(lib74A68E34_gt_GeneralNydusUnloadHero, null, true);
+    TriggerAddEventUnitCargo(lib74A68E34_gt_GeneralNydusUnloadHero, null, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -666,7 +777,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
-    lib74A68E34_gt_DisableLibraryTriggers_Init();
+    lib74A68E34_gt_ApplyMaguroChanges_Init();
+    lib74A68E34_gt_GeneralNydusUnloadHero_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();

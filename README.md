@@ -20,6 +20,12 @@ No more getting obliterated by Immortals.
 
 - Reordered many command cards to match Versus.
 
+Help muscle memory from Versus for people who use grid hotkeys.
+
+- Added Unload Heroic ability to Nydus Worms.
+
+Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
+
 ## Raynor
 
 - Added Medivacs.
@@ -396,6 +402,12 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get.
 
+## Tychus
+
+- Added ability to reorder Tychus outlaws.
+
+https://www.maguro.one/2019/06/uiux-tweaks.html
+
 ## Zeratul
 
 - Changed to Ihan-rii skin set.
@@ -409,7 +421,7 @@ Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gain
   - Pull strength increased by 20%.
   - Dehaka's Primal Impalers are no longer pulled.
 
-The most infurating because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
+The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
 
 ## Credits
 
