@@ -167,19 +167,6 @@ void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
 
 // Triggers
 //--------------------------------------------------------------------------------------------------
-// Trigger: Untitled Trigger 001
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_UntitledTrigger001_Init () {
-    lib74A68E34_gt_UntitledTrigger001 = TriggerCreate("lib74A68E34_gt_UntitledTrigger001_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: TestCommand
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
@@ -417,6 +404,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergAbathur") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+            TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
         }
         else if (auto560DABDD_val == "TerranTychus") {
             lib74A68E34_gf_TychusEnableUIReorder(lv_player);
@@ -796,8 +784,46 @@ void lib74A68E34_gt_VorazunShadowArchonGender_Init () {
     TriggerAddEventUnitCreated(lib74A68E34_gt_VorazunShadowArchonGender, null, "DarkArchonMerge", null);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurSwarmHostSplitBLocustLaunchCast
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_cooldown;
+    fixed lv_multiplier;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeUpgradeCount(EventPlayer(), "AbathurCommander", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_cooldown = UnitWeaponPeriod(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1);
+    lv_multiplier = UnitWeaponSpeedMultiplier(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1);
+    UnitAbilityReset(EventPlayerEffectUsedUnit(c_effectUnitCaster), AbilityCommand("LocustLaunchCreeper", 0), c_spendLocationUnit);
+    UnitModifyCooldown(EventPlayerEffectUsedUnit(c_effectUnitCaster), "Abil/LocustLaunchCreeper", ((lv_cooldown * lv_multiplier) / 16.0), c_cooldownOperationSet);
+    UnitBehaviorSetDurationRemaining(EventPlayerEffectUsedUnit(c_effectUnitCaster), "SwarmHostEggAnimation", ((lv_cooldown * lv_multiplier) / 16.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init () {
+    lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast = TriggerCreate("lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, c_playerAny, "LocustCreeperCreateSet");
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, c_playerAny, "LocustWeaponCreeperCreateSet");
+}
+
 void lib74A68E34_InitTriggers () {
-    lib74A68E34_gt_UntitledTrigger001_Init();
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
@@ -813,6 +839,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Init();
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
+    lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

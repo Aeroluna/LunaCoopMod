@@ -504,6 +504,78 @@
             <LayoutButtons Face="UnloadHero" Type="AbilCmd" AbilCmd="DummyUnloadAbil,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SwarmHostSplitB">
+        <BehaviorArray index="0" Link="SwarmHostPressurizedGlands"/>
+        <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
+        <BehaviorArray index="2" removed="1"/>
+        <WeaponArray Link="SwarmHostFakeWeapon"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="MovePatrol" AbilCmd="move,Patrol" Column="3"/>
+            <LayoutButtons index="4" Face="AcquireMove" AbilCmd="move,AcquireMove"/>
+            <LayoutButtons index="5" Face="Attack" AbilCmd="attack,Execute" Column="4"/>
+            <LayoutButtons index="6" Face="BurrowSwarmHost" Requirements="HaveHotSBurrowSwarmHost" Row="1" Column="1"/>
+            <LayoutButtons index="7" Face="RapidIncubation" Requirements="HaveHotSRapidIncubation" Row="1" Column="1"/>
+            <LayoutButtons index="8" Face="LocustSpeed" Requirements="HaveHotSLocustSpeed" Row="1" Column="1"/>
+            <LayoutButtons index="9" Face="HotSPressurizedGlands" Requirements="HaveHotSPressurizedGlands" Row="1" Column="0"/>
+            <LayoutButtons index="10">
+                <Face value="SwarmHostRootBurrow"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="MorphToSwarmHostSplitBBurrowed,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" AbilCmd="AbathurDeepTunnel,Execute"/>
+            <LayoutButtons index="12" Face="BrutaliskDeepTunnel" AbilCmd="AbathurDeepTunnelImproved,Execute" Column="1"/>
+            <LayoutButtons index="13" Face="DeepTunnelLocked" Type="Passive" AbilCmd="" Requirements="AbathurLevel09" Column="1"/>
+            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="CommanderPrestigeAbathurBrutaliskLocked" Type="Passive" Requirements="CommanderPrestigeAbathurBiomass" Row="2" Column="2"/>
+            <LayoutButtons Face="EvolveToBrutalisk" Type="AbilCmd" AbilCmd="EvolveToBrutaliskSwarmHost,Train1" Row="2" Column="2"/>
+            <LayoutButtons Face="EvolveToBrutaliskLocked" Type="Passive" Requirements="AbathurLevel02" Row="2" Column="2"/>
+            <LayoutButtons Face="LocustLaunch" Type="AbilCmd" AbilCmd="LocustLaunchCreeper,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BiomassPassive" Type="Passive" Requirements="BiomassBuffVisible" Row="1" Column="4"/>
+            <LayoutButtons Face="BiomassPassiveEmpty" Type="Passive" Requirements="BiomassBuffEmptyVisible" Row="1" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <AbilArray Link="AbathurDeepTunnel"/>
+        <AbilArray Link="AbathurDeepTunnelImproved"/>
+        <AbilArray Link="LocustLaunchCreeper"/>
+        <AbilArray Link="EvolveToBrutaliskSwarmHost"/>
+        <AbilArray Link="que1"/>
+    </CUnit>
+    <CUnit id="SwarmHostSplitBBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="BurrowSwarmHost" Requirements="HaveHotSBurrowSwarmHost" Row="1" Column="1"/>
+            <LayoutButtons index="2" Face="RapidIncubation" Requirements="HaveHotSRapidIncubation" Row="1" Column="1"/>
+            <LayoutButtons index="3" Face="LocustSpeed" Requirements="HaveHotSLocustSpeed" Row="1" Column="1"/>
+            <LayoutButtons index="4" Face="HotSPressurizedGlands" Requirements="HaveHotSPressurizedGlands" Row="1" Column="0"/>
+            <LayoutButtons index="5">
+                <Face value="SwarmHostUprootUnburrow"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="MorphToSwarmHostSplitB,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="6" Face="AttackBuilding" AbilCmd="attack,Execute" Row="0"/>
+            <LayoutButtons index="7" Face="LocustLaunch" AbilCmd="LocustLaunchCreeper,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="8" Face="CommanderPrestigeAbathurBrutaliskLocked" Type="Passive" AbilCmd="" Requirements="CommanderPrestigeAbathurBiomass" Column="2"/>
+            <LayoutButtons index="9" Face="EvolveToBrutalisk" AbilCmd="EvolveToBrutaliskSwarmHost,Train1" Column="2"/>
+            <LayoutButtons Face="EvolveToBrutaliskLocked" Type="Passive" Requirements="AbathurLevel02" Row="2" Column="2"/>
+            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="AbathurDeepTunnel" Type="AbilCmd" AbilCmd="AbathurDeepTunnel,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="BrutaliskDeepTunnel" Type="AbilCmd" AbilCmd="AbathurDeepTunnelImproved,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DeepTunnelLocked" Type="Passive" Requirements="AbathurLevel09" Row="2" Column="1"/>
+            <LayoutButtons Face="BiomassPassive" Type="Passive" Requirements="BiomassBuffVisible" Row="1" Column="4"/>
+            <LayoutButtons Face="BiomassPassiveEmpty" Type="Passive" Requirements="BiomassBuffEmptyVisible" Row="1" Column="4"/>
+        </CardLayouts>
+        <AbilArray Link="AbathurDeepTunnel"/>
+        <AbilArray Link="AbathurDeepTunnelImproved"/>
+        <AbilArray Link="EvolveToBrutaliskSwarmHost"/>
+        <Radius value="0.75"/>
+    </CUnit>
     <CUnit id="SwarmLocus">
         <DeathRevealRadius value="3"/>
         <Facing value="29.9707"/>

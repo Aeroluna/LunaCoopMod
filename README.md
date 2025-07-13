@@ -374,6 +374,10 @@ Vipers rarely were worth mixing into your army, now they should be much more usa
 
 Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances.
 
+- Buffed Swarm Host by upgrading to Creeper strain.
+
+Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
+
 ## Alarak
 
 - Changed Ascendant shadow trail model to be red.

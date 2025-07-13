@@ -5,6 +5,10 @@
         <EffectArray Reference="Unit,Thor,SubgroupPriorityDelta" Value="8"/>
     </CUpgrade>
     <CUpgrade id="AbathurBiomassLifeLeech"/>
+    <CUpgrade id="AbathurDeepTunnel">
+        <AffectedUnitArray value="SwarmHostSplitB"/>
+        <AffectedUnitArray value="SwarmHostSplitBBurrowed"/>
+    </CUpgrade>
     <CUpgrade id="BileLauncherIncreasedRange">
         <EffectArray Reference="Abil,AdvancedBombardment,Range[0]" Value="10"/>
     </CUpgrade>
@@ -13,6 +17,10 @@
         <EffectArray index="5" removed="1"/>
         <EffectArray index="6" removed="1"/>
         <EffectArray index="7" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeAbathurDeepTunnel">
+        <EffectArray Reference="Unit,SwarmHostSplitB,CostResource[Vespene]" Value="25"/>
+        <EffectArray Reference="Unit,SwarmHostSplitBBurrowed,CostResource[Vespene]" Value="25"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeArtanisCombatAbilities">
         <EffectArray index="14" Reference="Unit,HighTemplar,CostResource[Minerals]"/>
@@ -513,6 +521,14 @@
         <EffectArray index="0" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
         <EffectArray index="6" Value="Assets\Textures\btn-unit-protoss-corsair-nerazim-hammer-ds.dds"/>
+    </CUpgrade>
+    <CUpgrade id="HotSPressurizedGlands">
+        <EffectArray index="11" Value="Button/Tooltip/SwarmHostAbathurPressurizedGlands"/>
+        <EffectArray index="12" Value="Button/Tooltip/SwarmHostAbathurPressurizedGlands"/>
+        <EffectArray Operation="Set" Reference="Unit,SwarmHostSplitB,Description" Value="Button/Tooltip/SwarmHostSplitBPressurizedGlands"/>
+        <EffectArray Operation="Set" Reference="Unit,SwarmHostSplitBBurrowed,Description" Value="Button/Tooltip/SwarmHostSplitBPressurizedGlands"/>
+        <AffectedUnitArray value="SwarmHostSplitB"/>
+        <AffectedUnitArray value="SwarmHostSplitBBurrowed"/>
     </CUpgrade>
     <CUpgrade id="HotSTissueAssimilation">
         <EffectArray Reference="Effect,HotSUltraliskKaiserBladesDamage,LeechFraction[Life]" Value="0.4"/>

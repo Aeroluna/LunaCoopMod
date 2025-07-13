@@ -280,6 +280,27 @@
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="TimerSet 0.700000 BurrowDeath"/>
         <On Terms="TimerExpired; TimerName BurrowDeath" Send="Destroy"/>
     </CActorUnit>
+    <CActorUnit id="SwarmHostSplitB">
+        <On Terms="AbilTrain.EvolveToBrutaliskSwarmHost.Start" Send="Destroy"/>
+        <On Terms="AbilTrain.EvolveToBrutaliskSwarmHost.Cancel" Send="Create"/>
+        <On Terms="Abil.AbathurDeepTunnel.SourceCastStart" Send="Signal DeepTunnelStart"/>
+        <On Terms="Abil.AbathurDeepTunnel.SourceCastStop" Send="Signal DeepTunnelStop"/>
+        <On Terms="Abil.AbathurDeepTunnelImproved.SourceCastStart" Send="Signal DeepTunnelStart"/>
+        <On Terms="Abil.AbathurDeepTunnelImproved.SourceCastStop" Send="Signal DeepTunnelStop"/>
+        <On Terms="Signal.*.DeepTunnelStart; ValidateUnit IsAbathurSwarmHostSplitB" Send="AnimBracketStart DeepBurrow Burrow,Superior,A IGNORE Unburrow,Superior,A ClosingFull,OpeningPlayForever"/>
+        <On Terms="Signal.*.DeepTunnelStart; ValidateUnit IsAbathurSwarmHostBurrowedSpllitB" Send="AnimBracketStart DeepBurrow Burrow,Superior,B IGNORE IGNORE ClosingFull,OpeningPlayForever"/>
+        <On Terms="Signal.*.DeepTunnelStart" Send="Create Spell_DeepTunnel_Burrow"/>
+        <On Terms="Signal.*.DeepTunnelStop" Send="AnimBracketStop DeepBurrow"/>
+        <On Terms="Signal.*.DeepTunnelStop" Send="AnimBracketClear Burrow"/>
+        <!--On Terms="Abil.AbathurDeepTunnel.SourceCastStop; ValidateUnit IsAbathurSwarmHostBurrowed" Send="AnimBracketStart Burrow Unburrow,Superior,B IGNORE Unburrow ClosingFull,OpeningPlayForever"/-->
+        <!-- changed so we get the creep generation on the model -->
+        <On Terms="Signal.*.DeepTunnelStop; ValidateUnit IsAbathurSwarmHostBurrowedSplitB" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Signal.*.DeepTunnelStop" Send="Create Spell_DeepTunnel_Unburrow"/>
+        <!--Macros value="AbathurBiomassCustomUnitFrameMacro"/-->
+        <!--On Terms="Abil.AbathurDeepTunnel.SourceChannelStop; ValidateUnit IsAbathurSwarmHostBurrowedSplitB" Send="Create SwarmHostBurrowedSplat"/-->
+        <On Terms="Signal.*.DeepTunnelStart" Send="TimerSet 1.200000 DeepBurrowTimer"/>
+        <On Terms="TimerExpired; TimerName DeepBurrowTimer" Send="Create SwarmHostDeepBurrow"/>
+    </CActorUnit>
     <CActorUnit id="SwarmLocus" parent="ZergBuildingEx" unitName="SwarmLocus">
         <Aliases value="_UnitHuge"/>
         <Macros value="BuildingFlattenTerrainMacro"/>
