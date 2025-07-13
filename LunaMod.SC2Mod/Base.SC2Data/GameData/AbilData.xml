@@ -382,6 +382,14 @@
         <CursorEffect value="EnshroudSearch"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Enshroud"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="RavagerAbathurCorrosiveBile">
+        <Flags index="AutoCast" value="1"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AutoCastFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="RoboticsBayResearch">
         <InfoArray index="Research19">
             <Resource index="Minerals" value="50"/>
@@ -491,7 +499,7 @@
         </CmdButtonArray>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="ViperConsumption">
-        <TargetFilters index="0" value="Biological;Self,Enemy,Heroic,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <TargetFilters index="0" value="Biological;Self,Enemy,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VortexArtanis" parent="TalDarimVortex">
         <Effect index="0" value="VortexArtanisCreatePersistentInitial"/>
@@ -557,12 +565,15 @@
         <FlagArray index="IgnoreUnitCost" value="1"/>
         <FlagArray index="PeonMaintained" value="0"/>
         <InfoArray index="Build1" Unit="SwarmLocus">
-            <Cooldown Link="Abil/##id##" Location="Unit" TimeUse="180"/>
+            <Cooldown Location="Unit" TimeUse="180"/>
             <Button DefaultButtonFace="SwarmNetworkSwarmLocus"/>
             <ValidatorArray value="HasVisionOfTarget"/>
         </InfoArray>
         <Range value="500"/>
     </CAbilBuild>
+    <CAbilEffectTarget id="Yoink">
+        <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+    </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
         <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">
             <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="BuildSwarmNetwork"/>

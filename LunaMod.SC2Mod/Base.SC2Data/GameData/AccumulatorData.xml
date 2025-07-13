@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CAccumulatorBehavior id="AbathurBiomass1">
+        <Behavior value="BiomassBuff1"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorBehavior id="AbathurBiomass10">
+        <Behavior value="BiomassBuff10"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorBehavior id="AbathurBiomass100">
+        <Behavior value="BiomassBuff100"/>
+    </CAccumulatorBehavior>
+    <CAccumulatorArithmetic id="AbathurBiomass1Arith">
+        <Parameters value="0">
+            <AccumulatorArray value="BiomassBuff1"/>
+        </Parameters>
+        <Parameters value="0.01"/>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="AbathurBiomass10Arith">
+        <Parameters value="0">
+            <AccumulatorArray value="AbathurBiomass10"/>
+        </Parameters>
+        <Parameters value="0.1"/>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
+    <CAccumulatorArithmetic id="AbathurBiomass100Arith">
+        <Parameters value="0">
+            <AccumulatorArray value="AbathurBiomass100"/>
+        </Parameters>
+        <Parameters value="1"/>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
     <CAccumulatorConstant id="DehakaLevelCleaveDamageFactor">
         <ApplicationRule value="Multiply"/>
         <Amount value="0.5"/>

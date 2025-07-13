@@ -6,6 +6,21 @@
     <CBehaviorBuff id="ArbiterMPStasisFieldTimedLife">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BiomassBuff1">
+        <Modification>
+            <VitalMaxAdditiveMultiplierArray index="Energy" value="0.01"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BiomassBuff10">
+        <Modification>
+            <VitalMaxAdditiveMultiplierArray index="Energy" value="0.1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BiomassBuff100">
+        <Modification>
+            <VitalMaxAdditiveMultiplierArray index="Energy" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CarrierRepairDroneRecall">
         <BehaviorFlags index="Permanent" value="0"/>
         <PeriodicEffect value="CarrierRepairDroneSet"/>
@@ -156,6 +171,18 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ParasiticBomb">
         <BehaviorCategories index="Restorable" value="1"/>
+        <PeriodicEffectRateMultiplier value="1">
+            <AccumulatorArray value="AbathurBiomass1Arith"/>
+            <AccumulatorArray value="AbathurBiomass10Arith"/>
+            <AccumulatorArray value="AbathurBiomass100Arith"/>
+        </PeriodicEffectRateMultiplier>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ParasiticBombSecondaryUnitSearch">
+        <PeriodicEffectRateMultiplier value="1">
+            <AccumulatorArray value="AbathurBiomass1Arith"/>
+            <AccumulatorArray value="AbathurBiomass10Arith"/>
+            <AccumulatorArray value="AbathurBiomass100Arith"/>
+        </PeriodicEffectRateMultiplier>
     </CBehaviorBuff>
     <CBehaviorBuff id="PsiStormNerazim">
         <Alignment value="Negative"/>

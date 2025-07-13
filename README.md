@@ -65,7 +65,7 @@ Small change to make stutter-stepping with Firebats feel smoother.
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
-- Added autocast to Stimpack.
+- Added autocast to Stimpack (initiallly off).
 
 Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor? Initiallly off and has to be enabled manually.
 
@@ -362,7 +362,17 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 ## Abathur
 
-- Rework Viper Consumption to also target structures.
+- Buffed Viper Consumption to also target structures.
+- Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 2.
+- Buffed Biomass to additionally increase max energy by 1% per biomass.
+- Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
+- Buffed Abduct to allow abducting Heroic units (will pull but not stun).
+
+Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air with Devourers.
+
+- Added autocast to Corrosive Bile (initially off).
+
+Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances.
 
 ## Alarak
 
