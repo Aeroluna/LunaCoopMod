@@ -26,6 +26,10 @@ Help muscle memory from Versus for people who use grid hotkeys.
 
 Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
 
+- Fixed Protoss warp-in animations.
+
+For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take 16 seconds to warp in.
+
 ## Raynor
 
 - Added Medivacs.
