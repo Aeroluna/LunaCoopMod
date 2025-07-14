@@ -30,6 +30,10 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take 16 seconds to warp in.
 
+- Added autocast for Queen's Transfusion.
+
+Won't cast efficiently but does help if you are overcapping energy anyways.
+
 ## Raynor
 
 - Added Medivacs.

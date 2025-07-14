@@ -973,8 +973,8 @@
         <EffectArray index="7" Value="Button/Tooltip/HighTemplarNerazim"/>
         <EffectArray index="8" Value="HighTemplarShakuras"/>
         <EffectArray index="9" Value="HighTemplarShakuras"/>
-        <EffectArray Operation="Set" Reference="Abil,GatewayTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
-        <EffectArray Operation="Set" Reference="Abil,WarpGateTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
+        <!--EffectArray Operation="Set" Reference="Abil,GatewayTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
+        <EffectArray Operation="Set" Reference="Abil,WarpGateTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/-->
     </CUpgrade>
     <CUpgrade id="VoidRaySpeedUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-protoss-fluxvanes-green.dds"/>
@@ -1006,6 +1006,10 @@
         <EffectArray index="3" Value="Assets\Textures\btn-unit-protoss-centurion-shakuras.dds"/>
         <EffectArray index="5" Value="Assets\Textures\btn-unit-protoss-centurion-shakuras.dds"/>
     </CUpgrade>
+    <CUpgrade id="VorazunCommander">
+        <EffectArray Operation="Set" Reference="Button,TemplarArchive,Tooltip" Value="Button/Tooltip/ACVorazunTemplarArchive"/>
+        <EffectArray Operation="Set" Reference="Unit,TemplarArchive,Description" Value="Button/Tooltip/ACVorazunTemplarArchive"/>
+    </CUpgrade>
     <CUpgrade id="VorazunImprovedShields">
         <EffectArray Reference="Unit,Zealot,ShieldsMax" Value="40"/>
         <EffectArray Reference="Unit,Zealot,ShieldsStart" Value="40"/>
@@ -1032,6 +1036,11 @@
         <EffectArray Reference="Effect,AutoHarvestVespene4,Resources" Value="-1"/>
         <EffectArray Reference="Abil,ProbeHarvest,ResourceAmountBonus[Vespene]" Value="1"/>
         <EffectArray Operation="Set" Reference="Actor,AutomatedAssimilatorTextKicker4,Text" Value="Button/Tooltip/AutomatedAssimilatorTextKicker5"/>
+    </CUpgrade>
+    <CUpgrade id="VorazunUnlockDarkArchon">
+        <EffectArray Operation="Set" Reference="Button,TemplarArchive,Tooltip" Value="Button/Tooltip/ACVorazunTemplarArchiveUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,TemplarArchive,AlertTooltip" Value="Button/Tooltip/ACVorazunTemplarArchiveUpgraded"/>
+        <EffectArray Operation="Set" Reference="Unit,TemplarArchive,Description" Value="Button/Tooltip/ACVorazunTemplarArchiveUpgraded"/>
     </CUpgrade>
     <CUpgrade id="ZagaraCommander">
         <EffectArray Operation="Set" Reference="Abil,UpgradeToHive,CmdButtonArray[Execute].Requirements" Value="HaveInfestationPit"/>
