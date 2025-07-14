@@ -498,6 +498,37 @@
         <EffectArray index="0" Value="7.500000"/>
         <EffectArray index="1" Value="7.500000"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZagaraSwarm" parent="CommanderPrestige">
+        <EffectArray Operation="Set" Reference="Abil,ZergBuild,InfoArray[Build12].Button.Requirements" Value="HaveLair"/>
+        <EffectArray Reference="Effect,SwarmLocusZerglingCP,PeriodCount" Value="5"/>
+        <EffectArray Reference="Behavior,SwarmLocusTimeout,Duration" Value="4.000000"/>
+        <EffectArray Reference="Effect,SwarmLocusBanelingCP,PeriodCount" Value="2"/>
+        <EffectArray Reference="Effect,SwarmLocusScourgeCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Effect,SwarmLocusHunterKillerCP,PeriodCount" Value="1"/>
+        <EffectArray Reference="Unit,SwarmNetwork,CostResource[Minerals]" Value="-50"/>
+        <EffectArray Reference="Unit,SwarmNetwork,CostResource[Vespene]" Value="-50"/>
+        <EffectArray Reference="Unit,InfestedAbomination,CostResource[Minerals]" Value="45"/>
+        <EffectArray Reference="Unit,InfestedAbomination,CostResource[Vespene]" Value="17"/>
+        <EffectArray Reference="Unit,InfestedAbominationBurrowed,CostResource[Minerals]" Value="45"/>
+        <EffectArray Reference="Unit,InfestedAbominationBurrowed,CostResource[Vespene]" Value="17"/>
+        <EffectArray Reference="Unit,ZagaraCorruptor,CostResource[Minerals]" Value="34"/>
+        <EffectArray Reference="Unit,ZagaraCorruptor,CostResource[Vespene]" Value="23"/>
+        <EffectArray Reference="Unit,Scourge,CostResource[Minerals]" Value="3"/>
+        <EffectArray Reference="Unit,Scourge,CostResource[Vespene]" Value="3"/>
+        <EffectArray Reference="Abil,LarvaTrainSwarmling,InfoArray[Train1].Resource[Minerals]" Value="11"/>
+        <EffectArray Reference="Abil,LarvaTrain,InfoArray[Train2].Resource[Minerals]" Value="7"/>
+        <EffectArray Reference="Unit,DefilerMP,CostResource[Minerals]" Value="11"/>
+        <EffectArray Reference="Unit,DefilerMP,CostResource[Vespene]" Value="34"/>
+        <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Minerals]" Value="11"/>
+        <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Vespene]" Value="34"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZagaraZagara">
+        <EffectArray index="15" Value="3"/>
+        <EffectArray Reference="Unit,DefilerMP,CostResource[Minerals]" Value="11"/>
+        <EffectArray Reference="Unit,DefilerMP,CostResource[Vespene]" Value="34"/>
+        <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Minerals]" Value="11"/>
+        <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Vespene]" Value="34"/>
+    </CUpgrade>
     <CUpgrade id="CycloneLockOnDamageUpgrade">
         <EffectArray index="0" Reference="Effect,CycloneWeaponDamage,Amount" Value="25"/>
         <EffectArray index="1" removed="1"/>
@@ -735,6 +766,9 @@
     </CUpgrade>
     <CUpgrade id="SIImprovedMarineSpawning">
         <EffectArray index="0" Value="5"/>
+    </CUpgrade>
+    <CUpgrade id="ScourgeGasCostReduction">
+        <EffectArray index="0" removed="1"/>
     </CUpgrade>
     <CUpgrade id="SignifierFade">
         <Flags index="UpgradeCheat" value="0"/>
@@ -1000,9 +1034,7 @@
         <EffectArray Operation="Set" Reference="Actor,AutomatedAssimilatorTextKicker4,Text" Value="Button/Tooltip/AutomatedAssimilatorTextKicker5"/>
     </CUpgrade>
     <CUpgrade id="ZagaraCommander">
-        <EffectArray index="128" Reference="Button,InfestationPit,AlertTooltip" Value="Button/Tooltip/InfestationPitZagara"/>
-        <EffectArray index="129" Reference="Button,InfestationPit,Tooltip" Value="Button/Tooltip/InfestationPitZagara"/>
-        <EffectArray Reference="Unit,RoachCorpser,Speed" Value="0.750000"/>
+        <EffectArray Operation="Set" Reference="Abil,UpgradeToHive,CmdButtonArray[Execute].Requirements" Value="HaveInfestationPit"/>
     </CUpgrade>
     <!-- EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ProtossAirWeaponsExtra">

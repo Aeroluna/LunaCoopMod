@@ -244,7 +244,7 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
   - Bombardment ability now uses smart casting.
   - Bile Bombs now reveal a radius of 3 around them.
 
-Kinda stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
+Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
 
 - Added Defilers.
   - Can use Dark Swarm for 100 energy.
@@ -260,11 +260,22 @@ Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking fa
 
 - Increased visual scale of Hunter Killers by 20%
 
-When Hunter Killers were given the webby skin, their scale was reset to the normal Hydralisk scale.
+When Hunter Killers were given the webby skin, their scale was accidently reset to the normal Hydralisk scale.
 
 - Buffed Infested Drop Roaches to Corpser Roaches.
 
 Corpser representation!
+
+- Reduced Scourge vespene cost by 25.
+- Removed Simplified Genome.
+- Added Dampening Membrane upgrade that reduces the splash and spell damage dealt to Scourge by 75%.
+- Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
+
+Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
+
+- Increased max supply from 100 to 150.
+
+One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
 
 - Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 - Added Swarm Networks.
@@ -273,7 +284,13 @@ Corpser representation!
   - Queen will try to place Creep Tumor if too few other Creep Tumors nearby.
   - Limited to 4.
 
-If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
+If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking. These act as a sort of top bar ability that Zagara is missing.
+
+- Added P4: Subterranean Tide
+  - Advantage: Swarm Networks are no longer limited, cost 25% less, and spawn 50% more units.
+  - Disadvantage: Combat units cost 25% more. Swarm Networks cost 100 more minerals for every one built.
+
+I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
 
 ## Vorazun
 

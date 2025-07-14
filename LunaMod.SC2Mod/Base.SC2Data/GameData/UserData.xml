@@ -326,6 +326,12 @@
             <AbilCmd Abil="ZergBuild" Cmd="11">
                 <Field Id="DefaultAbilityCommands" Index="8"/>
             </AbilCmd>
+            <Int Int="150">
+                <Field Id="SuppliesMax"/>
+            </Int>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeZagaraSwarm">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ZergAbathur">
             <GameLink GameLink="VoicePackProtossAbathur">
@@ -522,6 +528,11 @@
                 <Field Id="UpgradeSupplements" Index="12"/>
             </User>
         </Instances>
+        <Instances Id="CommanderPrestigeZagaraSwarm">
+            <GameLink GameLink="CommanderPrestigeZagaraSwarm">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeKerriganCreep">
             <AbilCmd Abil="evolutionchamberresearch" Cmd="19">
                 <Field Id="DisableAbil"/>
@@ -558,6 +569,11 @@
             </User>
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
                 <Field Id="UpgradeSupplements" Index="4"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]CommanderPrestigeZagaraMaxSupply">
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
+                <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>
         <Instances Id="[Override]CommanderPrestigeRaynorMechAfterburners">

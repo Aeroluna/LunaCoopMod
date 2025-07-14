@@ -65,6 +65,12 @@ bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport) {
     return false;
 }
 
+void lib74A68E34_gf_ZagaraSwarmLocusUpdatePrice (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", lp_player, (UnitGroupCount(UnitGroup("SwarmNetwork", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) * 100), c_upgradeOperationAdd);
+}
+
 void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player) {
     // Variable Declarations
     fixed lv_upgradeCount;
@@ -394,6 +400,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy, true);
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior, true);
             lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth(lv_player);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeZagaraSwarm", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, true);
+            }
+
         }
         else if (auto560DABDD_val == "ProtossKarax") {
             lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);
@@ -566,6 +577,62 @@ void lib74A68E34_gt_ArtanisMothershipWarpHaste_Init () {
     lib74A68E34_gt_ArtanisMothershipWarpHaste = TriggerCreate("lib74A68E34_gt_ArtanisMothershipWarpHaste_Func");
     TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, false);
     TriggerAddEventUnitTrainProgress(lib74A68E34_gt_ArtanisMothershipWarpHaste, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZagaraSwarmLocusPrestigePriceCreate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "SwarmNetwork"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_ZagaraSwarmLocusUpdatePrice(UnitGetOwner(EventUnitCreatedUnit()));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Init () {
+    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ZagaraSwarmLocusPrestigePriceDeath
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "SwarmNetwork"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_ZagaraSwarmLocusUpdatePrice(UnitGetOwner(EventUnit()));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Init () {
+    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, false);
+    TriggerAddEventUnitDied(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -833,6 +900,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
+    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Init();
+    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Init();
     lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Init();
     lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init();
