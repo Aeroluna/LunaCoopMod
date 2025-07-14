@@ -212,10 +212,22 @@
         <AreaArray index="0" Radius="6.5"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="VorazunBlinkInitialPersistent">
+        <InitialEffect value="VorazunBlinkIssueOrder"/>
+        <InitialOffset value="0,100,0"/>
+    </CEffectCreatePersistent>
     <CEffectIssueOrder id="KaraxBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Abil value="BlinkMultiple"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="VorazunBlinkIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="BlinkShieldRestore"/>
         <CmdFlags index="Preempt" value="1"/>
         <Player Value="Caster"/>
         <Target Value="TargetPoint"/>

@@ -95,6 +95,15 @@
     <CBehaviorBuff id="Irradiate">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunStalkerBlink">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CasterShieldsLT1"/>
+        <DisableValidatorArray value="HasShakurasBlinkAutocast"/>
+        <DamageResponse Handled="VorazunBlinkInitialPersistent">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="KerriganEnvenomedSpines">
         <InfoIcon value="Assets\Textures\btn-ability-zerg-poisonnova.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>

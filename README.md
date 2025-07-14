@@ -331,6 +331,10 @@ Ever get annoyed when your Dark Templar would run in and automatically stasis Mi
 
 No more recalling Black Death straight into your mineral line.
 
+- Added autocast to Stalker Blink.
+
+Unsurprisingly, autocasting the shield restoring Blink when out of shields is strong.
+
 ## Karax
 
 - Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes.
