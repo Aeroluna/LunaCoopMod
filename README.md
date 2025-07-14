@@ -406,6 +406,13 @@ These two simple changes make playing P2 infinitely smoother to play.
 
 Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
 
+- Reworked Infested Marines
+  - Buffed supply cost from 1 to 0.5.
+  - Doubled cost but spawns 2 from 1 egg.
+  - Halved max charges and doubled charge cooldown on Infested Barracks.
+
+These guys clog up your supply until they time out, this should help mitigate that.
+
 ## Fenix
 
 - Remove Disruptors.
