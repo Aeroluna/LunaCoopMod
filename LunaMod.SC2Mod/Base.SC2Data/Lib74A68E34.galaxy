@@ -68,7 +68,7 @@ bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport) {
 void lib74A68E34_gf_ZagaraSwarmLocusUpdatePrice (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", lp_player, (UnitGroupCount(UnitGroup("SwarmNetwork", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) * 100), c_upgradeOperationAdd);
+    libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", lp_player, ((UnitGroupCount(UnitGroup("SwarmNetwork", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) * 100) + 150), c_upgradeOperationSet);
 }
 
 void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player) {
