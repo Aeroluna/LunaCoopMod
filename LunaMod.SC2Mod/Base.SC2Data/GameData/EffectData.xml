@@ -1009,4 +1009,20 @@
     <CEffectCreateUnit id="ZagaraVoidCoopInfestedPodsImpactCU">
         <SpawnUnit index="1" value="RoachCorpser"/>
     </CEffectCreateUnit>
+    <CEffectIssueOrder id="ZeratulStalkerBlinkIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="ZeratulStalkerBlink"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="ZeratulStalkerShadowBlinkInitialPersistent">
+        <ValidatorArray index="0" value="HaveZeratulArtifactTier1"/>
+        <ValidatorArray index="1" value="CasterInCombat"/>
+        <ValidatorArray index="2" removed="1"/>
+        <InitialEffect value="ZeratulStalkerBlinkIssueOrder"/>
+        <InitialOffset value="0,100,0"/>
+        <FinalEffect value=""/>
+    </CEffectCreatePersistent>
 </Catalog>

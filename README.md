@@ -461,8 +461,12 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
 
 ## Zeratul
 
+- Reworked Xel'naga Ambusher Predictive Blink autocast.
+
+For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
+
 - Changed to Ihan-rii skin set.
-- Added Xel'Naga Ambusher portait.
+- Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
 
 ## Mutators
