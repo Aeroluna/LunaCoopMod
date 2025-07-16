@@ -469,6 +469,12 @@ For some reason, Predictive Blink would autocast once and then kinda just chill 
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
 
+## Stetmann
+
+- Buffed Stetellites by adding Map Boss attribute.
+
+Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite to far forward, a Propagator could just feast on them for free.
+
 ## Mutators
 
 - Reworked Fatal Attraction to no longer make the units uncommandable.
