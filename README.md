@@ -487,8 +487,6 @@ The most infurating mutator because it can permastun your units as well as inter
 ## Credits
 
 - Warp Stargate Alternate - DaveSpectre
-- Protoss Nerazim Buildings Pack - Kazor
-- Nerazim Buildings Warp In Pack (Green) - Herdal
 - Nerazim Corsair V2 - DaveSpectre/HammerTheTank107
 - Signifier - Nerazim High Templar (Based on concept by Phill-Art) - DaveSpectre
 - Void Ray Reforged (Updated Void Ray model) - DaveSpectre/HammerTheTank107
@@ -515,3 +513,4 @@ The most infurating mutator because it can permastun your units as well as inter
 - Ambusher (Ihan-rii Stalker) / Alrasz (Ambusher Hero) portrait - DaveSpectre
 - Enforcer / Ihan-rii Immortal Portrait - DaveSpectre
 - Vulture with flaming Jets - DaveSpectre
+- Nerazim Structure Pack (+ effects) - DaveSpectre
