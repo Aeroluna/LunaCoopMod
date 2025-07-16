@@ -835,11 +835,9 @@ bool lib74A68E34_gt_VorazunShadowArchonGender_Func (bool testConds, bool runActi
 
     if ((UnitGetType(EventUnit()) == "HighTemplarShakuras")) {
         ActorSend(libNtve_gf_MainActorofUnit(EventUnitCreatedUnit()), "StatusSet Variation 1");
-        libNtve_gf_UnitSetVariation(EventUnitCreatedUnit(), "ArchonNerazimMerge", 1, "");
     }
     else {
         ActorSend(libNtve_gf_MainActorofUnit(EventUnitCreatedUnit()), "StatusSet Variation 0");
-        libNtve_gf_UnitSetVariation(EventUnitCreatedUnit(), "ArchonNerazimMerge", 0, "");
     }
     return true;
 }
