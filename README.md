@@ -18,6 +18,10 @@ Shield Batteries can help other Protoss commanders that rely on armies to defend
 
 No more getting obliterated by Immortals.
 
+- Added autocast for Queen's Transfusion.
+
+Won't cast efficiently but does help if you are overcapping energy anyways.
+
 - Reordered many command cards to match Versus.
 
 Help muscle memory from Versus for people who use grid hotkeys.
@@ -30,9 +34,11 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take 16 seconds to warp in.
 
-- Added autocast for Queen's Transfusion.
+## Amon
 
-Won't cast efficiently but does help if you are overcapping energy anyways.
+- Removed slow from Viper Disabling Cloud.
+
+Number one most infurating spell to get hit by? Abathur Vipers are unaffected.
 
 ## Raynor
 
