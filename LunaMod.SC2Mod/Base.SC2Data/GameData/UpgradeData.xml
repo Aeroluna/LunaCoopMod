@@ -442,9 +442,11 @@
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,AllowedMovement" Value="Moving"/>
-        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
-        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
-        <EffectArray Operation="Set" Reference="Weapon,HellionTank,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,LegacyOptions[LockTurretWhileFiring]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[Hidden]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTank,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Options[Hidden]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Options[Disabled]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,TyphoonMissilePod,AllowedMovement" Value="Moving"/>
@@ -455,10 +457,10 @@
         <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,AllowedMovement" Value="Moving"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,AllowedMovement" Value="Moving"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,AllowedMovement" Value="Moving"/>
-        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
-        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
-        <EffectArray Operation="Set" Reference="Weapon,GoliathG,AllowedMovement" Value="Moving"/>
-        <EffectArray Operation="Set" Reference="Weapon,GoliathGUpgraded,AllowedMovement" Value="Moving"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[Hidden]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathGUpgraded,Options[Disabled]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathGUpgraded,Options[Hidden]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,GoliathA,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,GoliathA,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,GoliathA,AllowedMovement" Value="Moving"/>
@@ -817,14 +819,28 @@
         <EffectArray Reference="Unit,PlanetaryFortress,LifeStart" Value="30"/>
     </CUpgrade>
     <CUpgrade id="MultilockTargetingSystems">
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,Options[Hidden]" Value="1"/>
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchers,Options[Disabled]" Value="1"/>
+        <EffectArray index="3" Reference="Weapon,SpartanCompanyA,Options[Hidden]" Value="1"/>
+        <EffectArray index="4" Reference="Weapon,SpartanCompanyG,Options[Hidden]"/>
+        <EffectArray index="5" Reference="Weapon,GoliathA,Options[Hidden]"/>
+        <EffectArray index="6" Reference="Weapon,MengskGoliathAUpgraded,Options[Hidden]" Value="0"/>
+        <EffectArray index="7" Reference="Weapon,MengskGoliathGUpgraded,Options[Hidden]" Value="0"/>
+        <EffectArray index="8" Reference="Weapon,MengskGoliathA,Options[Hidden]" Value="1"/>
+        <EffectArray index="9" Reference="Weapon,MengskGoliathG,Options[Hidden]" Value="1"/>
+        <EffectArray index="10" Reference="Weapon,JavelinMissileLaunchers,Options[Hidden]"/>
+        <EffectArray index="11" Reference="Weapon,JavelinMissileLaunchers,Options[Disabled]"/>
         <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Options[Hidden]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Options[Disabled]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,Options[Hidden]" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchers,Options[Disabled]" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Options[Hidden]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Options[Disabled]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathG,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathA,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,GoliathAUpgraded,Options[Disabled]" Value="0"/>
+        <AffectedUnitArray value="Goliath"/>
+        <AffectedUnitArray value="ThorAP"/>
+        <AffectedUnitArray value="Thor"/>
     </CUpgrade>
     <CUpgrade id="StabilizerMedPacks">
         <EffectArray Reference="Effect,MedivacRaynorHeal,RechargeVitalRate" Value="3.000000"/>
@@ -848,6 +864,7 @@
         <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,RateMultiplier" Value="0.2"/>
         <EffectArray Reference="Weapon,WraithAMoving,RateMultiplier" Value="0.2"/>
         <EffectArray Reference="Weapon,WraithGMoving,RateMultiplier" Value="0.2"/>
+        <EffectArray Reference="Weapon,HellionTankMoving,RateMultiplier" Value="0.2"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleWeaponRange">
         <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Range" Value="1"/>
@@ -855,6 +872,7 @@
         <EffectArray Reference="Weapon,WraithAMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,WraithGMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,WarbotAMoving,Range" Value="1"/>
+        <EffectArray Reference="Weapon,HellionTankMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Range" Value="1"/>
         <EffectArray Reference="Effect,HyperionVoidCoopSecondaryWeaponSearch,AreaArray[0].Radius" Value="1"/>
     </CUpgrade>
@@ -1140,11 +1158,13 @@
         <EffectArray Reference="Weapon,WraithAMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,WraithGMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,WarbotAMoving,Level" Value="1"/>
+        <EffectArray Reference="Weapon,HellionTankMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Level" Value="1"/>
         <AffectedUnitArray value="Thor"/>
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Wraith"/>
         <AffectedUnitArray value="VoidCoopARES"/>
+        <AffectedUnitArray value="HellionTank"/>
         <AffectedUnitArray value="HyperionVoidCoop"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel1" parent="TerranVehicleAndShipWeaponsExtra">
@@ -1153,6 +1173,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel1"/>
     </CUpgrade>
@@ -1162,6 +1183,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel2"/>
     </CUpgrade>
@@ -1171,6 +1193,7 @@
         <EffectArray Operation="Set" Reference="Weapon,WraithGMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WarbotAMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel3"/>
     </CUpgrade>
