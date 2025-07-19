@@ -641,10 +641,10 @@
         <On index="67" Terms="WeaponStop.GoliathA.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
         <On index="68" Terms="WeaponStart.GoliathAUpgraded.AttackStart; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
         <On index="69" Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidatePlayer CommanderPrestigeSwannMovingInverse"/>
-        <On Terms="WeaponStart.GoliathA.AttackStart; ValidateUnit CasterIsNotMoving" Send="AnimBracketStart Spell Spell"/>
-        <On Terms="WeaponStop.GoliathA.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
-        <On Terms="WeaponStart.GoliathAUpgraded.AttackStart; ValidateUnit CasterIsNotMoving" Send="AnimBracketStart Spell Spell"/>
-        <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit CasterIsNotMoving" Send="AnimBracketStop Spell"/>
+        <On Terms="WeaponStart.GoliathA.AttackStart; ValidateUnit SwannGoliathCanSwing" Send="AnimBracketStart Spell Spell"/>
+        <On Terms="WeaponStop.GoliathA.AttackStop; ValidateUnit SwannGoliathCanSwing" Send="AnimBracketStop Spell"/>
+        <On Terms="WeaponStart.GoliathAUpgraded.AttackStart; ValidateUnit SwannGoliathCanSwing" Send="AnimBracketStart Spell Spell"/>
+        <On Terms="WeaponStop.GoliathAUpgraded.AttackStop; ValidateUnit SwannGoliathCanSwing" Send="AnimBracketStop Spell"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
     </CActorUnit>
     <CActorModel id="HighTemplarNerazimPsiStormCripple" parent="ModelAnimationStyleContinuous">
@@ -1288,6 +1288,8 @@
     </CActorTurret>
     <CActorUnit id="Wraith">
         <Macros value="GimbalZMacro"/>
+        <On Terms="Effect.WraithAPersistent.Start; At Caster" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="Effect.WraithGLaunchMissile.Start; At Caster" Send="AnimBracketStart Attack Attack"/>
     </CActorUnit>
     <CActorUnit id="ZeratulDarkTemplar">
         <GroupIcon>

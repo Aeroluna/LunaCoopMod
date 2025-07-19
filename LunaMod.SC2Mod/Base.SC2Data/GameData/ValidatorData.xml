@@ -83,6 +83,10 @@
     <CValidatorUnitCompareBehaviorCount id="IsNotMarineStimmed">
         <Behavior value="Stimpack"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareSpeed id="CasterNotMoving">
+        <Compare value="LT"/>
+        <Value value="0.5"/>
+    </CValidatorUnitCompareSpeed>
     <CValidatorUnitType id="SourceIsScourge">
         <WhichUnit Value="Source"/>
         <Value value="Scourge"/>
@@ -123,11 +127,6 @@
         <Type value="Or"/>
         <CombineArray value="SeekerMissileRestored"/>
     </CValidatorCombine>
-    <CValidatorUnitOrderQueue id="SourceIsNotMoving">
-        <WhichUnit Value="Source"/>
-        <AbilLink value="move"/>
-        <Find value="0"/>
-    </CValidatorUnitOrderQueue>
     <CValidatorPlayerRequirement id="CommanderPrestigeSwannMoving">
         <Find value="1"/>
         <Value value="CommanderPrestigeSwannMoving"/>
@@ -177,7 +176,7 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="SwannGoliathCanSwing">
         <CombineArray value="CommanderPrestigeSwannMovingInverse"/>
-        <CombineArray value="CasterIsNotMoving"/>
+        <CombineArray value="CasterNotMoving"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="PsiStormNerazimTestBuff">
         <Behavior value="PsiStormNerazim"/>
