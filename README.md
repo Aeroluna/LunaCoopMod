@@ -34,6 +34,10 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take 16 seconds to warp in.
 
+- Removed Wait Until Stopped flag from Viking Assault Mode and Fighter Mode.
+
+Makes Raynor and HH Viking feel smoother to land.
+
 ## Amon
 
 - Removed slow from Viper Disabling Cloud.
@@ -79,7 +83,7 @@ Small change to make stutter-stepping with Firebats feel smoother.
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
-- Added autocast to Stimpack (initiallly off).
+- Added autocast to Stimpack.
 
 Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor? Initiallly off and has to be enabled manually.
 
@@ -89,6 +93,7 @@ Old Raynor nerf reverted. Should help out P0 Raynor.
 
 - Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
 - Added +8 vs. Mechanical damage to Viking Gatling Cannons.
+- Added faster transformation speed to Phobos Weapons System.
 
 Some ground Viking buffs because why not.
 
