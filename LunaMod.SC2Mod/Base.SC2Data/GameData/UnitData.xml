@@ -1138,7 +1138,6 @@
             <LayoutButtons index="17" Row="1" Column="1"/>
             <LayoutButtons index="18" Face="ResearchDragoonChassis" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research7" Requirements=""/>
             <LayoutButtons index="19" Face="FenixTalisAdeptLearnBounceShotUpgradeLocked" Type="Passive" AbilCmd="" Requirements="FenixLevel04" Column="3"/>
-            <!--LayoutButtons Face="ResearchAlarakSupplicantShieldRegen" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research20" Row="0" Column="0"/-->
             <LayoutButtons index="20" Face="ResearchAdeptFenixShadeSpawn" AbilCmd="TwilightCouncilResearch,Research27" Column="1"/>
             <LayoutButtons index="21" Face="ResearchWhirlwindLocked" Type="Passive" AbilCmd="ChampionWarpTrain,Train4" Requirements="ArtanisLevel04" Column="2"/>
             <LayoutButtons index="22" Face="ResearchShadowStunLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel04" Column="2"/>
@@ -1151,53 +1150,6 @@
             <LayoutButtons index="29" Face="ArmorResearchSupplicantShieldArmor" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research25" Requirements="" Column="0"/>
             <LayoutButtons Face="ResearchKaraxEnergyRegenLocked" Type="Passive" Requirements="KaraxLevel04" Row="1" Column="0"/>
         </CardLayouts>
-        <!--LayoutButtons index="6">
-                <Face value="ResearchShadowCharge"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="TwilightCouncilResearch,Research2"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
-            <LayoutButtons index="7">
-                <Face value="ResearchRevive"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="TwilightCouncilResearch,Research3"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="0"/>
-            </LayoutButtons>
-            <LayoutButtons index="8" Face="ResearchPsionicStorm" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research7" Row="0" Column="2"/>
-            <LayoutButtons index="9">
-                <Face value="ResearchCripplingPsionicStorm"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="TwilightCouncilResearch,Research8"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="2"/>
-            </LayoutButtons>
-            <LayoutButtons index="10" Face="ResearchPsionicOrb" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research9" Row="0" Column="2"/>
-            <LayoutButtons index="11">
-                <Face value="ResearchShadowFury"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="TwilightCouncilResearch,Research10"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="3"/>
-            </LayoutButtons>
-            <LayoutButtons index="12" Face="ResearchVoidStasis" Type="AbilCmd" AbilCmd="TwilightCouncilResearch,Research11" Row="0" Column="3"/>
-            <LayoutButtons index="13">
-                <Face value="ResearchShadowArchon"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="TwilightCouncilResearch,Research12"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="3"/>
-            </LayoutButtons>
-            <LayoutButtons index="14" removed="1"/>
-            <LayoutButtons index="15" removed="1"/>
-            <LayoutButtons index="16" removed="1"/>
-            <LayoutButtons index="17" removed="1"/-->
     </CUnit>
     <CUnit id="VikingAssault">
         <AbilArray Link="VehicleAfterburnersStimpack"/>
@@ -1243,8 +1195,9 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Wraith">
-        <WeaponArray Link="WraithAMoving" Turret="Phoenix"/>
-        <WeaponArray Link="WraithGMoving" Turret="Phoenix"/>
+        <WeaponArray Link="WraithMoving" Turret="Phoenix"/>
+        <EquipmentArray Weapon="WraithADummy"/>
+        <EquipmentArray Weapon="WraithGDummy"/>
     </CUnit>
     <CUnit id="Zergling">
         <BehaviorArray Link="KerriganCannibalize"/>
