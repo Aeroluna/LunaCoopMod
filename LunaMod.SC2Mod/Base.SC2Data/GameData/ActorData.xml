@@ -3,6 +3,28 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorAction id="ColossusTaldarimAttack" effectAttack="ColossusTaldarimSet" effectImpact="Bogus" effectLaunch="Bogus">
+        <On index="0" Terms="Effect.ColossusTaldarimSet.Stop; FromEffectTreeDescendant"/>
+        <On index="1" Terms="Effect.Bogus.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.Bogus.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.ColossusTaldarimSet.Start; At Caster"/>
+        <On index="6" Terms="Effect.Bogus.Start; At Caster"/>
+        <BeamScope value="Caster"/>
+        <Missile value="Bogus"/>
+        <ImpactMap index="None" Scale="1.500000"/>
+        <ImpactPhysics Name="ColossusTaldarimImpact" MatchKeys="Basic" Physics="ColossusTaldarimAttackForce"/>
+    </CActorAction>
+    <CActorBeamSimple id="ColossusTaldarimAttackBeam2" parent="BeamSimpleAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="$Death"/>
+        <On index="1" Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
+        <On index="2" Terms="ActorCreation" Send="TimerSet 0.350000 Death"/>
+        <On Terms="TimerExpired; TimerName Death" Send="Destroy Immediate"/>
+        <Host Subject="::Creator"/>
+        <Model value="SOAMothershipLineAttackMissileBeam"/>
+        <Scale value="2.000000"/>
+        <HostLaunch Subject="_LaunchGuide"/>
+        <HostImpact Subject="_ImpactGuide"/>
+    </CActorBeamSimple>
     <CActorUnit id="DefilerMP">
         <UnitIcon value="Assets\Textures\btn-unit-zerg-defiler@scbw.dds"/>
         <On index="71" Terms="Abil.DefilerMPConsume.SourceChannelStart" Send="AnimPlay Spell Attack,01"/>
@@ -61,6 +83,12 @@
         <SoundArray index="Attack" value="Hyperion_Attack"/>
         <SoundArray index="Pissed" value="Hyperion_Pissed"/>
     </CActorUnit>
+    <CActorBeamSimple id="ColossusTaldarimAttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="$Death"/>
+        <On index="1" Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <On index="2" Terms="ActorCreation" Send="Create ColossusTaldarimAttackBeam2"/>
+        <Scale value="2.000000"/>
+    </CActorBeamSimple>
     <CActorUnit id="Medic">
         <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="$Spell 0 0.200000 0.200000"/>
         <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
@@ -263,12 +291,31 @@
     <CActorRange id="KerriganImplosionRange" parent="RangeAbil" abil="KerriganImplosion"/>
     <CActorForceCylinder id="KerriganImplosionImpactForce">
         <On Terms="Effect.KerriganImplosionDamage.Start" Send="Create"/>
-        <HostSiteOps Ops="SOpMoveUpBy1"/>
-        <Duration value="0.250000"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpForwardLaunchGuide SOp2DRotation SOpRandomPointInCircleDot35"/>
+        <Duration value="0.150000"/>
         <Magnitude value="20.000000,9.000000"/>
-        <HostEndSiteOps Ops="SOpMoveUpBy1"/>
+        <HostEndSiteOps Ops="SOpTargetPoint SOpMoveUpBy1"/>
         <Radius value="1.000000,0.150000"/>
     </CActorForceCylinder>
+    <CActorForceCylinder id="ColossusTaldarimAttackForce">
+        <HostSiteOps Ops="SOpIncomingDirect SOpMoveBackBy1 SOpMoveDownBy1"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="20.000000,9.000000"/>
+        <HostEndSiteOps Ops="SOpIncomingDirect SOpMoveBy1 SOpMoveUpBy1"/>
+        <Radius value="1.000000,0.150000"/>
+    </CActorForceCylinder>
+    <CActorEventMacro id="PhysicsDeathsSwarmAir">
+        <On Terms="UnitDeathCustomize; KilledByEffect {KerriganImplosionDamage KerriganBroodPsiBlastDamage KerriganBroodRazorTalonsDamageUpgraded}" Send="DeathCustomize RagdollSiegeTank"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="PhysicsDeathsSwarmGround">
+        <On Terms="UnitDeathCustomize; KilledByEffect {KerriganImplosionDamage KerriganBroodPsiBlastDamage KerriganBroodRazorTalonsDamageUpgraded}" Send="DeathCustomize RagdollSiegeTank"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="PhysicsDeathsVoidAir">
+        <On Terms="UnitDeathCustomize; KilledByEffect ColossusTaldarimDamage" Send="DeathCustomize RagdollFire"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="PhysicsDeathsVoidGround">
+        <On Terms="UnitDeathCustomize; KilledByEffect ColossusTaldarimDamage" Send="DeathCustomize RagdollFire"/>
+    </CActorEventMacro>
     <CActorUnit id="QueenCoop">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownMedium"/>
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create LargeBurrowDownEffects"/>

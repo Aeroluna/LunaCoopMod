@@ -462,6 +462,10 @@ Typically when using the Death Fleet or playing P3, you would end up with a lot 
 
 Copied from LOTV Nightmare. The nerf from campaign to co-op made building these feel sad. To compensate for unnerfing the damage, the range has been reduced. The reduced range also helps them live up to their name.
 
+- Reworked Wrathwalker attack to hitscan instead of a projectile.
+
+Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers much stronger against smaller units, especially with P1.
+
 - Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 
