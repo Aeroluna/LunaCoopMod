@@ -243,6 +243,15 @@ Scanner Sweeps should help Cyclones keep their Lock On active and provide detect
 
 An iconic defensive Terran structure for the defensive Terran commander.
 
+- Buffed P2.
+  - Upgrade Fire Suppression System heals structures to 100% health.
+
+P2 suspiciously improved all upgrades but this one.
+
+- Added Dual-Fusion Welders.
+
+The turret/mech commander gets more improvements to sustaining turrets/mech.
+
 - Reworked Defense Matrix to no longer require research.
 
 https://www.maguro.one/2017/10/upgrades-in-co-op.html
