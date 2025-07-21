@@ -431,6 +431,18 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 
 ## Alarak
 
+- Reworked Mothership Terminator Beam to only target air units.
+- Reworked Mothership Thermal Lance.
+  - Only targets ground units instead of all units.
+  - Travels at 25% speed instead.
+  - Cooldown increased to 2 seconds.
+  - Damage buffed from 10 to 100.
+  - Now visible as a weapon.
+- Renamed Mothership to Crimson Sovereign.
+
+Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 damage death laser. As compensation, the original Terminator Beam can only hit air units and Thermal Lance can only hit ground units (it seemed weird that hitting the ground under air units would damage them anyways). Mothership was renamed to be more distinct from other variants and be in line with other Tal'darim variant unit names.
+
+- Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 
 ## Stukov

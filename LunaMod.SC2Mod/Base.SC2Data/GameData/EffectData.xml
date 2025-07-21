@@ -212,6 +212,17 @@
         <AreaArray index="0" Radius="6.5"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectEnumArea>
+    <CEffectDamage id="SOAMothershipLineAttackDamage">
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="SOAMothershipLineAttackScanCP">
+        <PeriodCount value="20"/>
+        <PeriodicPeriodArray index="0" value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="SOAMothershipLineAttackSearch">
+        <IncludeArray Effect="SOAMothershipLineAttackAutoOnCheck" Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectCreatePersistent id="VorazunBlinkInitialPersistent">
         <InitialEffect value="VorazunBlinkIssueOrder"/>
         <InitialOffset value="0,100,0"/>
