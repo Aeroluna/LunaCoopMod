@@ -42,14 +42,14 @@ Makes Raynor and HH Viking feel smoother to land.
 
 - Removed slow from Viper Disabling Cloud.
 
-Number one most infurating spell to get hit by? Abathur Vipers are unaffected.
+Possibly number one most infurating spell to get hit by? Abathur Vipers are unaffected.
 
 ## Raynor
 
 - Added Medivacs.
-  - Heal more efficiently than medics.
+  - Heal more efficiently than Medics, but same heal speed.
   - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
-  - Stabilizer Medpacks also affect medivacs.
+  - Stabilizer Medpacks also affect Medivacs.
   - Units unloaded benefit from the Drop Pod Haste mastery.
   - Can carry sieged Siege Tanks.
   - Have lower cooldown Ignite Afterburners (20 seconds).
@@ -85,7 +85,7 @@ Small change to make stutter-stepping with Firebats feel smoother.
 
 - Added autocast to Stimpack.
 
-Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor? Initiallly off and has to be enabled manually.
+Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor?
 
 - Added double MULEs.
 
@@ -109,7 +109,7 @@ No longer have to queue a bunch of move commands to get value out of the Hyperio
 
 Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
 
-- Added flame jets to Vultures when moving.
+- Added cosmetic flame jets to Vultures when moving.
 
 ## Kerrigan
 
@@ -204,6 +204,7 @@ Buff an underperforming prestige.
 
 - Buffed P1.
   - No longer increases vespene gas costs.
+  - Combat units still cost 30% more minerals
 
 Should help actually affording the high tech units with abilities like High Templar.
 
@@ -327,17 +328,18 @@ This should help increase the survivability of all her other units. Pairs well w
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
 
 - Added Signifiers, an astral-themed High Templar.
-  - Available after building a Dark Shrine.
+  - Available after building a Templar Archives.
   - Can use Aurora Veil for 50 energy.
     - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
   - Can use Astral Storm for 75 energy.
     - Does less damage in a large area than Psionic Storm for 20 seconds.
     - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
     - Applies P2, dealing massive damage.
-  - Can use Fading Star after researching at a Dark Shrine.
+  - Can use Fading Star after researching at a Templar Archives.
     - Grants super cloak, 50% increased movement speed, and ignores collision for 4 seconds.
     - Can be autocast when damaged.
   - Argus Crystal additionally grants Signifiers full energy.
+  - Dark Archon upgrades moved to Templar Archives.
 
 A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. The addition of a damaging spellcaster also helps improve the value of increased energy regeneration from Vorazun's level 15 perk.
 
@@ -353,7 +355,7 @@ The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a
 
 - Buffed P2 to reduce Stasis Ward duration by 50% instead of 75%
 
-For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This should help with that.
+For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This slight buff should help with that.
 
 - Reworked Void Stasis to target air units and no longer make the unit invulnerable.
 
@@ -380,7 +382,7 @@ Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono 
 
 - Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
 
-Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
+Copied from CXL. Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
 
 - Added Instigators.
   - A Purifier variant Stalker.
