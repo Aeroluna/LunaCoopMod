@@ -457,6 +457,11 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 
 Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that do 0.5 damage to zergling with +1 armor. Reducing the amount of Destroyers active but making them more impactful should better match the visual intensity of their bouncing attack.
 
+- Increased Vanguard attack count from 8 to 16.
+- Reduced Vanguard range by 1.5.
+
+Copied from LOTV Nightmare. The nerf from campaign to co-op made building these feel sad. To compensate for unnerfing the damage, the range has been reduced. The reduced range also helps them live up to their name.
+
 - Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 
