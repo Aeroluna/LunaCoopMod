@@ -75,7 +75,7 @@ Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly worki
 
 - Reduced Firebat weapon backswing and damage point.
 
-Small change to make stutter-stepping with Firebats feel smoother.
+Small change to make stutter-stepping with Firebats feel smoother. What mod doesn't do this?
 
 - Added new Medic ability: Restoration.
   - Removes any negative effects on target allied unit.
@@ -441,6 +441,21 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 - Renamed Mothership to Crimson Sovereign.
 
 Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 damage death laser. As compensation, the original Terminator Beam can only hit air units and Thermal Lance can only hit ground units (it seemed weird that hitting the ground under air units would damage them anyways). Mothership was renamed to be more distinct from other variants and be in line with other Tal'darim variant unit names.
+
+- Increased Destroyer supply cost from 3 to 6.
+- Increased Destroyer price from 125/75 to 250/150.
+- Increased Destroyer bounce damage by 1 for each charge level.
+- Reworked Destroyer attacks to ignore armor.
+- Reworked Level 13 Burning Skies perk.
+  - No longer increases the amount of Destroyers spawned.
+  - Increases visual scale of Destroyers by 20%.
+  - Increases the life/shield of Destroyers by 100%.
+  - Increases damage of Destroyers by 50%.
+- Reworked P3.
+  - Warp in Destroyer charges take 100% longer to accrue.
+  - Warp in Destroyer charges max reduced by 50%.
+
+Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that do 0.5 damage to zergling with +1 armor. Reducing the amount of Destroyers active but making them more impactful should better match the visual intensity of their bouncing attack.
 
 - Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
