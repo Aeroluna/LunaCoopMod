@@ -78,6 +78,7 @@ Button/Name/ResearchInfestedBansheeSpeedUpgrade=Research Rotwing Rotors
 Button/Name/ResearchOverdriveActuators=Research Overdrive Actuators
 Button/Name/ResearchPulseLoopCapacitors=Research Pulse-Loop Capacitors
 Button/Name/ResearchSignifierFade=Research Fading Star
+Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
 Button/Name/ResearchTransformationServos=Research Smart Servos
 Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
@@ -86,6 +87,7 @@ Button/Name/StabilizerMedPacksMedivac=Stabilizer Medpacks
 Button/Name/StalkerPurifier=Warp in Instigator
 Button/Name/SwarmNetwork=Mutate into Swarm Network
 Button/Name/SwarmNetworkSwarmLocus=Summon Swarm Locus
+Button/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
 Button/Name/VorazunImprovedVespene=Vespene Crystallization
@@ -197,6 +199,7 @@ Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c>
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/ResearchStalkerPurifierTeleport=Allows <c val="ffff8a">Instigators</c> to teleport to a nearby target location.
+Button/Tooltip/ResearchTempestDestabilizingResiduum=Causes <c val="ffff8a">Tempests</c> attacks to leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
@@ -212,6 +215,7 @@ Button/Tooltip/SwarmHostSplitBPressurizedGlands=Siege unit that attacks by spawn
 Button/Tooltip/SwarmLocus=Friendly ground units can use a Nydus Worm to instantly travel to any other Nydus Worm or Nydus Network owned by the player. Grows creep used to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/SwarmNetwork=Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
 Button/Tooltip/SwarmNetworkSwarmLocus=Summons a Swarm Locus at the target location that unloads uncontrollable zerg that last 60 seconds. The summoned zerg seek out and attack the nearest enemy.
+Button/Tooltip/TempestDestabilizingResiduum=Tempest attacks leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
 Button/Tooltip/ViperImprovedCastRangePassive=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +2 radius.
 Button/Tooltip/VoidStasis=Places target unit or structure in stasis for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/VoidVoidRayBeamBounce=Prismatic Beam splits and deals damage to additional nearby targets as the Destroyer continues to attack, up to a maximum of 3 additional targets. All attacks ignore armor.
@@ -322,6 +326,15 @@ Effect/Name/SwarmLocusUnitTimedLifeExpireSet=Swarm Locus Unit Timed Life Expire 
 Effect/Name/SwarmLocusUnitTimedLifeExpireSwitch=Swarm Locus Unit Timed Life Expire Switch
 Effect/Name/SwarmLocusZerglingCP=Swarm Locus Zergling CP
 Effect/Name/SwarmLocusZerglingCU=Swarm Locus Zergling CU
+Effect/Name/TempestDotCP=Tempest Dot CP
+Effect/Name/TempestDotCPGround=Tempest Dot CP (Ground)
+Effect/Name/TempestDotDamage=Tempest Dot Damage
+Effect/Name/TempestDotRandomOffset=Tempest Dot Random Offset
+Effect/Name/TempestDotRandomOffsetGround=Tempest Dot Random Offset (Ground)
+Effect/Name/TempestDotSearch=Tempest Dot Search
+Effect/Name/TempestDotSearchGround=Tempest Dot Search (Ground)
+Effect/Name/TempestImpactSet=Tempest Impact Set
+Effect/Name/TempestImpactSetGround=Tempest Impact Set (Ground)
 Effect/Name/VorazunBlinkInitialPersistent=Vorazun Blink Initial Persistent
 Effect/Name/VorazunBlinkIssueOrder=Vorazun Blink Issue Order
 Effect/Name/VortexArtanis=Vortex (Damage)
@@ -339,8 +352,13 @@ ImplosionCooldown=Cannot target units that have recently been affected by Implos
 Param/Expression/lib_74A68E34_E2739024=SetScale ~A~
 Param/Expression/lib_74A68E34_F34019F3=Found ~A~ nearby creep tumors.
 Param/Value/lib_74A68E34_770DBAA1=Switch Outlaws
+RequirementNode/Tooltip/CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180=Evolve Metasynaptic Node at the Infestation Pit
+RequirementNode/Tooltip/CountUpgradeHellburstPayloadCompleteOnly2216400238=Research Hellburst Payload at the Factory Tech Lab
 RequirementNode/Tooltip/CountUpgradeInfestedBansheeSpeedUpgradeCompleteOnly460564875=Evolve Rotwing Rotors at the Infested Starport Tech Lab
+RequirementNode/Tooltip/CountUpgradeScourgeGasCostReductionCompleteOnly2371086511=Evolve Dampening Membrane at the Scourge Nest
 RequirementNode/Tooltip/CountUpgradeSignifierFadeCompleteOnly892173529=Research Fading Star at the Dark Shrine
+RequirementNode/Tooltip/CountUpgradeTempestDestabilizingResiduumCompleteOnly3548369632=Research Destablizing Residuum at the Fleet Beacon
+RequirementNode/Tooltip/CountUpgradeTransformationServosCompleteOnly1133472468=Research Smart Servos at the Factory Tech Lab
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
 RequirementNode/Tooltip/LT3730171456CountUnitSwarmNetworkQueuedOrBetter4=Limit 4
 Skin/Name/KerriganBroodCoop=KerriganBroodCoop
@@ -392,6 +410,7 @@ Upgrade/Name/SignifierFade=Fade
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators
 Upgrade/Name/SwannVersusParity=Swann Versus Parity
+Upgrade/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Upgrade/Name/TerranVehicleAndShipWeaponsExtra=Terran Vehicle And Ship Weapons Extra
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel1=Terran Vehicle And Ship Weapons Extra Level 1
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel2=Terran Vehicle And Ship Weapons Extra Level 2

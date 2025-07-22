@@ -173,6 +173,13 @@ Now uses the pre-infested voice lines from Heart of the Swarm.
 
 Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
 
+- Reduced duration of Disintegration from 20 seconds to 10 seconds (total damage unchanged).
+- Added Destabilizing Residuum upgrade at the Fleet Beacon.
+  - Causes Tempest attacks to leave an AOE field that does 20 damage over 5 seconds.
+  - Damage doubled by P2.
+
+These changes should make massing Tempests more viable. Faster Disintegration reduces Tempests wasting shots on disintegrating targets and allow easier chaining Disintegrations. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
+
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
   - Uses energy to cast abilities.
@@ -509,7 +516,7 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 - Added splash damage to Dehaka's Mammoth Beam weapon.
 - Increased the damage of Dehaka's Mammoth Beam by 50%.
 
-Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get.
+Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get instead of feeling like a damage nerf.
 
 ## Tychus
 

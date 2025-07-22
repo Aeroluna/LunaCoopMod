@@ -233,6 +233,65 @@
         <IncludeArray Effect="SOAMothershipLineAttackAutoOnCheck" Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="TempestDotCPGround">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="TempestDotSearchGround"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TempestDotCP">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="TempestDotSearch"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="TempestDotDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="2"/>
+    </CEffectDamage>
+    <CEffectRandomPointInCircle id="TempestDotRandomOffsetGround">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Effect value="TempestDotCPGround"/>
+        <Radius value="0.2"/>
+    </CEffectRandomPointInCircle>
+    <CEffectRandomPointInCircle id="TempestDotRandomOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <Chance value="0"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <Effect value="TempestDotCP"/>
+        <Radius value="0.2"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="TempestDotSearchGround">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="TempestDotDamage"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="TempestDotSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Air;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="TempestDotDamage"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TempestImpactSetGround">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="TempestDamageGround"/>
+        <EffectArray value="TempestDotRandomOffsetGround"/>
+    </CEffectSet>
+    <CEffectSet id="TempestImpactSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="TempestDamageGround"/>
+        <EffectArray value="TempestDotRandomOffset"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="TempestLaunchMissile">
+        <ImpactEffect value="TempestImpactSet"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="TempestLaunchMissileGround">
+        <ImpactEffect value="TempestImpactSetGround"/>
+    </CEffectLaunchMissile>
     <CEffectDamage id="VoidRayChargeBeamBounce1Damage">
         <ArmorReduction value="0"/>
         <Amount value="2"/>

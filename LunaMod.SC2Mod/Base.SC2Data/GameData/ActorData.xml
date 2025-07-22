@@ -53,6 +53,46 @@
     <CActorTurret id="GoliathTurret">
         <On Terms="TurretEnable.GoliathFull" Send="Create"/>
     </CActorTurret>
+    <CActorModel id="StormSphereAttachment">
+        <On Terms="Signal.*.Upgraded" Send="ModelSwap StormSphereUpgradedAttachment"/>
+    </CActorModel>
+    <CActorUnit id="Tempest">
+        <On Terms="ActorCreation; ValidateUnit HaveTempestDestabilizingResiduum" Target="StormSphereAttachment" Send="Signal Upgraded"/>
+        <On Terms="Upgrade.TempestDestabilizingResiduum.Add" Target="StormSphereAttachment" Send="Signal Upgraded"/>
+    </CActorUnit>
+    <CActorSound id="TempestDotSound" parent="SoundContinuous">
+        <On Terms="Effect.TempestDotCP.Start" Send="Create"/>
+        <On Terms="Effect.TempestDotCP.Stop" Send="Destroy"/>
+        <On Terms="Effect.TempestDotCPGround.Start" Send="Create"/>
+        <On Terms="Effect.TempestDotCPGround.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Sound value="Tempest_Disintegration_Impact"/>
+    </CActorSound>
+    <CActorModel id="TempestDotImpact" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.TempestDotDamage.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HighTemplarPsiStormImpact"/>
+        <AutoScaleFactor value="0.400000"/>
+    </CActorModel>
+    <CActorModel id="TempestDotModel" parent="ModelAnimationStyleContinuous">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Stand,Work,Start Stand,Work Death 0 0.500000 AsDuration"/>
+        <On Terms="Effect.TempestDotCP.Start" Send="Create"/>
+        <On Terms="Effect.TempestDotCP.Stop" Send="Signal Kill"/>
+        <On Terms="Effect.TempestDotCPGround.Start" Send="Create"/>
+        <On Terms="Effect.TempestDotCPGround.Stop" Send="Signal Kill"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000 0.500000"/>
+        <On Terms="ActorCreation" Send="Create TempestDotModel2"/>
+        <On Terms="Signal.*.Kill" Send="AnimBracketStop BSD 0 0.500000 AsDuration"/>
+        <On Terms="Signal.*.Kill" Target="TempestDotModel2" Send="Destroy"/>
+        <On Terms="Signal.*.Kill" Send="SetOpacity 0.000000 0.500000"/>
+        <Model value="TempestWeaponGround"/>
+        <Scale value="4.000000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
     <CActorUnit id="HotSSplitterlingBig">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownSmall"/>
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create SmallBurrowDownEffects"/>
@@ -1037,6 +1077,15 @@
         <Host Subject="::Creator"/>
         <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy1Dot5"/>
         <Model value="SiegeTankLoadTransit"/>
+    </CActorModel>
+    <CActorModel id="TempestDotModel2" parent="ModelAnimationStyleContinuous">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000 0.500000"/>
+        <Model value="DisintegrationState"/>
+        <Scale value="3.000000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Host Subject="::Creator"/>
     </CActorModel>
     <CActorAction id="VoidHighTemplarPsiOrbBeamAttack" effectAttack="VoidHighTemplarPsiOrbDamageCoop">
         <On index="0" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Stop; FromEffectTreeDescendant"/>
