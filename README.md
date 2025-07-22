@@ -499,6 +499,12 @@ Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
 
 These guys clog up your supply until they time out, this should help mitigate that.
 
+- Added strafing movement to Infested Liberator Cloud Dispersal.
+- Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
+- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+
+Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. Increasing the lingering duration allows running away before the 85% damage reduction fades.
+
 ## Fenix
 
 - Remove Disruptors.

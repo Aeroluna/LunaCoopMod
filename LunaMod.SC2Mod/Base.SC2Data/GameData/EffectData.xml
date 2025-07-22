@@ -222,6 +222,32 @@
     <CEffectCreatePersistent id="ImmortalTaldarimWeaponRandomLarge">
         <PeriodCount value="8"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="SILiberatorBaseSet">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <EffectArray value="SILiberatorBaseLM"/>
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
+    </CEffectSet>
+    <CEffectSet id="SILiberatorSwarmFormPermanentDamageSplashSet">
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown2"/>
+    </CEffectSet>
+    <CEffectSet id="SILiberatorSwarmFormPermanentImpactSet">
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown2"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="SILiberatorSwarmFormLaunchAttack,Execute" CooldownOperation="Max" CooldownTimeUse="6">
+            <Player Value="Caster"/>
+        </Cost>
+    </CEffectModifyUnit>
+    <CEffectSet id="SILiberatorSwarmFormPermanentDummySet">
+        <EffectArray index="0" removed="1"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown2">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <ImpactUnit Value="Caster"/>
+        <Weapon Weapon="SILiberator" CooldownOperation="Max" CooldownFraction="1"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
     </CEffectDamage>
