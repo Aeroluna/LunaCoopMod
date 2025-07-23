@@ -128,7 +128,9 @@
     </CUnit>
     <CUnit id="SILiberator">
         <BehaviorArray Link="SILiberatorSwarmFormHoldPositionWeapon"/>
+        <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
         <WeaponArray index="1" Link="SILiberatorSwarmFormPermanentStrafe"/>
+        <EnergyMax value="100"/>
         <AbilArray Link="SILiberatorAGTarget"/>
         <AbilArray Link="SILiberatorMorphtoAG"/>
         <CardLayouts index="0">
@@ -151,6 +153,7 @@
         <LifeMax value="180"/>
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <EnergyMax value="100"/>
         <Mover value="Fly"/>
         <TurningRate value="1499.9414"/>
         <Sight value="10"/>
@@ -169,6 +172,8 @@
         <AbilArray Link="SILiberatorMorphtoAA"/>
         <BehaviorArray Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="LiberatorInitialMovable"/>
+        <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
+        <WeaponArray Link="SILiberatorAGWeapon2"/>
         <WeaponArray Link="SILiberatorAGWeapon"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -198,6 +203,11 @@
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>
+    </CUnit>
+    <CUnit id="SILiberatorAmmoRestockWeapon" parent="MISSILE_INVULNERABLE">
+        <Race value="InfT"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionInfested"/>
     </CUnit>
     <CUnit id="Tempest">
         <CardLayouts index="0">

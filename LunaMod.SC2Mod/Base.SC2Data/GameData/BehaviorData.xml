@@ -144,6 +144,23 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SILiberatorAmmoRestockSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="2.5"/>
+        <PeriodicEffect value="SILiberatorAmmoRestockSearch"/>
+        <Modification>
+            <StateFlags index="SuppressEnergyRegen" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\talent-zagara-level08-incubatebroodlings.dds"/>
+        <Requirements value="HaveStukovInfestedCivilianSpawnBroodlingOnDeath"/>
+        <Modification>
+            <DeathResponse Chance="1" Effect="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VorazunStalkerBlink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

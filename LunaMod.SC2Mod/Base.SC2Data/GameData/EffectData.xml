@@ -240,6 +240,22 @@
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="SILiberatorAGMissileLM"/>
     </CEffectSet>
+    <CEffectRemoveBehavior id="SILiberatorAmmoRestockBroodlingRB">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="StukovInfestedCivilianSpawnBroodlingOnDeath"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="SILiberatorAmmoRestockBroodlingAB">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="SILiberatorAmmoRestockEnergy">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <VitalArray index="Energy">
+            <Change value="20"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectIssueOrder id="SILiberatorTargetAAMorphOrder">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Source"/>
@@ -303,6 +319,72 @@
         <IncludeArray Effect="SOAMothershipLineAttackAutoOnCheck" Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectSet id="SILiberatorAmmoRestockLMSet">
+        <ValidatorArray value="TargetIsGround"/>
+        <ValidatorArray value="IsSIInfestedTrooperCombineOrIsSIInfestedCivilianCombine"/>
+        <ValidatorArray value="SILiberatorAmmoMissingEnergy"/>
+        <ValidatorArray value="NoInfestedCivDisableJump"/>
+        <ValidatorArray value="NoYoink"/>
+        <EditorCategories value="Race:InfestedTerran"/>
+        <EffectArray value="SILiberatorAmmoRestock"/>
+        <EffectArray value="KillMissile"/>
+        <EffectArray value="YoinkMarker"/>
+    </CEffectSet>
+    <CEffectEnumArea id="SILiberatorAmmoRestockSearch">
+        <ValidatorArray value="SILiberatorAmmoMissingEnergy"/>
+        <SearchFilters value="Ground,Biological,Visible;Self,Enemy,Structure,Missile,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSLife"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="5" Effect="SILiberatorAmmoRestockLMSet"/>
+        <MaxCount value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="SILiberatorAmmoRestock">
+        <ValidatorArray value="IsSIInfestedTrooperCombineOrIsSIInfestedCivilianCombine"/>
+        <ValidatorArray value="SILiberatorAmmoMissingEnergy"/>
+        <ValidatorArray value="NoYoink"/>
+        <EditorCategories value="Race:Protoss"/>
+        <FinishEffect value="SILiberatorAmmoRestockImpact"/>
+        <PeriodicValidator value="SICivRestockVaildator"/>
+        <Flags index="ValidateAbil" value="0"/>
+        <Flags index="ValidateBenign" value="0"/>
+        <Flags index="ValidateTeleport" value="0"/>
+        <Flags index="ValidateWeapon" value="0"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="SILiberatorAmmoRestockImpact">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KillMissile"/>
+        <EffectArray value="StukovInfestedSiegeTankAmmoRestockImpactAB"/>
+        <EffectArray value="SILiberatorAmmoRestockReturnTarget"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="SILiberatorAmmoRestockReturnTarget">
+        <ValidatorArray value="CasterAndTargetNotDead"/>
+        <EditorCategories value="Race:Protoss"/>
+        <LaunchLocation Value="TargetUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <ImpactEffect value="SILiberatorAmmoRestockSet"/>
+        <Movers Link="MissileDefault"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="SILiberatorAmmoRestockSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SILiberatorAmmoRestockBroodlingRB"/>
+        <EffectArray value="SILiberatorAmmoRestockBroodlingAB"/>
+        <EffectArray value="SILiberatorAmmoRestockKillTarget"/>
+        <EffectArray value="SILiberatorAmmoRestockEnergy"/>
+        <EffectArray value="StukovInfestedSiegeTankRestoreAmmoHeal"/>
+    </CEffectSet>
+    <CEffectDamage id="SILiberatorAmmoRestockKillTarget">
+        <ImpactLocation Value="SourceUnit"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Remove"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath">
+        <EditorCategories value=""/>
+        <SpawnEffect value="BroodlingTimedLife"/>
+        <SpawnUnit value="SIBroodlingFlying"/>
+    </CEffectCreateUnit>
     <CEffectCreatePersistent id="TempestDotCPGround">
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Flee" value="1"/>

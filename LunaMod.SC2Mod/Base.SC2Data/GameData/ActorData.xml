@@ -111,6 +111,12 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,0,255,0"/>
+        </StatusColors>
+        <VitalColors index="Energy">
+            <ColorArray value="255,0,255,0"/>
+        </VitalColors>
     </CActorUnit>
     <CActorUnit id="SILiberatorMorphModel" parent="GenericUnitBaseMorphTransition" unitName="LiberatorMorphModel">
         <Aliases value="_UnitLarge"/>
@@ -157,6 +163,12 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-zerg-stukov-infestedliberator.dds"/>
         </Wireframe>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,0,255,0"/>
+        </StatusColors>
+        <VitalColors index="Energy">
+            <ColorArray value="255,0,255,0"/>
+        </VitalColors>
     </CActorUnit>
     <CActorUnit id="SILiberatorAG" parent="GenericUnitBase" unitName="SILiberatorAG">
         <Aliases value="_UnitLarge"/>
@@ -203,6 +215,12 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,0,255,0"/>
+        </StatusColors>
+        <VitalColors index="Energy">
+            <ColorArray value="255,0,255,0"/>
+        </VitalColors>
     </CActorUnit>
     <CActorRange id="SILiberatorAGTargetRange" parent="RangeAbil" abil="SILiberatorAGTarget">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
@@ -213,6 +231,80 @@
     </CActorSplat>
     <CActorModel id="StormSphereAttachment">
         <On Terms="Signal.*.Upgraded" Send="ModelSwap StormSphereUpgradedAttachment"/>
+    </CActorModel>
+    <CActorAction id="SILiberatorTentacleStunAttack" parent="GenericAttack" effectImpact="SILiberatorAmmoRestockImpact" effectLaunch="SILiberatorAmmoRestock">
+        <On Terms="Signal.*.ImpactSiteCreated" Send="RefSetFromMsg ::actor.ImpactSite ::Sender"/>
+        <On Terms="Signal.*.ImpactSiteCreated" Target="_SILiberatorAirStunTentacleAlias" Send="RefSet ::actor.ImpactSite ::actor.ImpactSite"/>
+        <On Terms="Signal.*.ImpactSiteCreated" Target="_SILiberatorAirStunTentacleAlias" Send="Signal RefSent"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <LaunchSite value="SILiberatorAirStunTentacleLaunchSite"/>
+        <LaunchAttachQuery Methods="Weapon 1"/>
+        <LaunchAssets Sound="StukovInfestedSiegeTank_GrabInfested_Launch"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpForwardLaunchGuide"/>
+        <ImpactSiteOpsReaction Ops="SOp2DRotation SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ImpactSite value="SILiberatorTentacleStunAttackImpactSite"/>
+        <ImpactAttachQuery Methods="Target 0"/>
+        <ImpactMap index="None" Sound="StukovInfestedSiegeTank_GrabInfested_Impact"/>
+        <ShieldFlashType value="None"/>
+        <ActionFlags index="VictimRevealsAttacker" value="1"/>
+        <CombatRevealDurationType value="ByVictim"/>
+    </CActorAction>
+    <CActorModel id="SILiberatorAirStunTentacle">
+        <Aliases value="_SILiberatorAirStunTentacleAlias"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.SILiberatorAmmoRestock.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Attack Stand Death"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.SILiberatorTentacle ::Self"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 0.500000"/>
+        <On Terms="Effect.SILiberatorAmmoRestockImpact.Start; FromEffectTreeDescendant" Send="RefSetFromRequest SILiberatorAirStunTentacleAttack ::actor.ImpactSite"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Target="_Selectable" Send="CombatRevealComplete SILiberatorTentacleStunAttack"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="Signal.*.RefSent" Target="::actor.ImpactSite" Send="Signal ImpactSiteLink"/>
+        <On Terms="Signal.*.RefSent" Send="AliasRemove _SILiberatorAirStunTentacleAlias"/>
+        <On Terms="Signal.*.MyStukovTentacleCleanup" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Effect.SILiberatorAmmoRestockSet.Start" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft"/>
+        <Model value="NeuralParasiteTentacle"/>
+        <HostedAttaches Name="SILiberatorAirStunTentacleAttack">
+            <AttachQuery Methods="Weapon"/>
+        </HostedAttaches>
+    </CActorModel>
+    <CActorMissile id="SILiberatorTentacleStunAttackMissile" parent="GenericAttackMissile" unitName="SILiberatorAmmoRestockWeapon">
+        <Supporter>
+            <Subject value="SILiberatorAirStunTentacle"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="SILiberatorTentacleStunSearchLM"/>
+        </Supporter>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSet SILiberatorAirStunTentacleAttack ::Self"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSetFromRequest ::scope.SILiberatorAirStunTarget _Unit Target Find"/>
+        <Model value="Invisible"/>
+    </CActorMissile>
+    <CActorSite id="SILiberatorAirStunTentacleLaunchSite">
+        <Host Subject="::scope.SILiberatorTentacle"/>
+    </CActorSite>
+    <CActorSite id="SILiberatorTentacleStunAttackImpactSite">
+        <On Terms="ActorCreation" Target="::Creator" Send="Signal ImpactSiteCreated"/>
+        <On Terms="Signal.*.ImpactSiteLink" Send="RefSetFromMsg ::actor.MyStukovTentacle ::Sender"/>
+        <On Terms="ActorDestruction" Target="::actor.MyStukovTentacle" Send="Signal MyStukovTentacleCleanup"/>
+        <On Terms="ActorCreation" Send="Create SILiberatorTentacleStunAttackImpactSiteKeepAlive"/>
+        <On Terms="ActorOrphan" Target="SILiberatorTentacleStunAttackImpactSiteKeepAlive" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="TimerSet 5.000000 Life"/>
+        <On Terms="TimerExpired; TimerName Life" Send="Destroy"/>
+        <HostSiteOps HoldRotation="1"/>
+    </CActorSite>
+    <CActorModel id="SILiberatorTentacleStunAttackImpactSiteKeepAlive" parent="ModelAnimationStyleContinuous">
+        <On Terms="UnitDeathCustomize" Target="::Creator" Send="Destroy"/>
+        <On Terms="UnitDeathCustomize" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="TimerSet 5.000000 Life"/>
+        <On Terms="TimerExpired; TimerName Life" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <Model value="Invisible"/>
     </CActorModel>
     <CActorUnit id="Tempest">
         <On Terms="ActorCreation; ValidateUnit HaveTempestDestabilizingResiduum" Target="StormSphereAttachment" Send="Signal Upgraded"/>
@@ -675,6 +767,12 @@
         <On Terms="ActorCreation" Send="StatusSet Morphed 0"/>
         <On Terms="Effect.LiberatorTargetMorphDelayPersistent.Start" Send="Create LiberatorAGBirthSearchIndicatorModel"/>
         <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,0,255,0"/>
+        </StatusColors>
+        <VitalColors index="Energy">
+            <ColorArray value="255,0,255,0"/>
+        </VitalColors>
     </CActorUnit>
     <CActorUnit id="SISCV">
         <PortraitModel value="SCVInfestedPortrait"/>
