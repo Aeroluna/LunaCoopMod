@@ -65,6 +65,66 @@
     <CAbilMorph id="FighterMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectInstant id="SILiberatorAATarget">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SILiberatorTargetAAMorphOrderSet"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LiberatorAAMode"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SILiberatorAGTarget">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="SILiberatorTargetMorphOrderInitialSet"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LiberatorAGMode"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="SILiberatorMorphtoAA">
+        <AbilSetId value="LiberatorAA"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LiberatorAAMode">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="IgnoreFacing" value="1"/>
+        <CancelUnit value="Liberator"/>
+        <InfoArray Unit="SILiberator">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="1.5417"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="1.5417"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="SILiberatorMorphtoAG">
+        <AbilSetId value="LiberatorAG"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LiberatorAGMode"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray Unit="SILiberatorAG">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="3.5417"/>
+            </SectionArray>
+            <SectionArray index="Facing">
+                <DurationArray index="Duration" value="0.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.5"/>
+                <DurationArray index="Duration" value="3.5417"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilEffectTarget id="SOAMothershipLineAttack">
         <Cost index="0">
             <Cooldown TimeUse="2"/>

@@ -475,6 +475,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 
 - Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
+- Restored missing beam effect on Ascendant's Psionic Orb.
 
 ## Stukov
 

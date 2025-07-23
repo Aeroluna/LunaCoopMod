@@ -115,6 +115,11 @@
         <WeaponArray index="2" Link="GoliathG" Turret="Goliath"/>
         <WeaponArray index="3" Turret="GoliathFull"/>
     </CUnit>
+    <CUnit id="SILiberatorAGMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="LiberatorAGMissile"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="PowerTowerStetmann">
         <Attributes index="MapBoss" value="1"/>
     </CUnit>
@@ -124,6 +129,72 @@
     <CUnit id="SILiberator">
         <BehaviorArray Link="SILiberatorSwarmFormHoldPositionWeapon"/>
         <WeaponArray index="1" Link="SILiberatorSwarmFormPermanentStrafe"/>
+        <AbilArray Link="SILiberatorAGTarget"/>
+        <AbilArray Link="SILiberatorMorphtoAG"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="LiberatorAGMode" Type="AbilCmd" AbilCmd="SILiberatorAGTarget,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SILiberatorAG">
+        <DeathRevealRadius value="3"/>
+        <Race value="InfT"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="180"/>
+        <LifeMax value="180"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <Mover value="Fly"/>
+        <TurningRate value="1499.9414"/>
+        <Sight value="10"/>
+        <Height value="3.75"/>
+        <VisionHeight value="4"/>
+        <Food value="-3"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="125"/>
+        <RepairTime value="50"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="SILiberatorAATarget"/>
+        <AbilArray Link="SILiberatorMorphtoAA"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="LiberatorInitialMovable"/>
+        <WeaponArray Link="SILiberatorAGWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="SILiberatorImprovedAoeAttack" Type="Passive" Requirements="HaveSILiberatorAoeAttack" Row="1" Column="0"/>
+            <LayoutButtons Face="SILiberatorBecometheSwarm" Type="Passive" Requirements="HaveSILiberatorInfestedBees" Row="1" Column="1"/>
+            <LayoutButtons Face="LiberatorAAMode" Type="AbilCmd" AbilCmd="SILiberatorAATarget,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.625"/>
+        <SubgroupPriority value="113"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionInfested"/>
+        <TacticalAIThink value="AIThinkSILiberator"/>
+        <GlossaryCategory value="Unit/Category/InfestedTerranUnits"/>
+        <GlossaryPriority value="160"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryStrongArray value="VoidRay"/>
+        <GlossaryStrongArray value="Battlecruiser"/>
+        <GlossaryWeakArray value="SporeCrawler"/>
+        <GlossaryWeakArray value="PhotonCannon"/>
+        <GlossaryWeakArray value="MissileTurret"/>
+        <HotkeyCategory value="Unit/Category/InfestedTerranUnits"/>
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>

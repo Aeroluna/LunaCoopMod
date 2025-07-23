@@ -53,6 +53,164 @@
     <CActorTurret id="GoliathTurret">
         <On Terms="TurretEnable.GoliathFull" Send="Create"/>
     </CActorTurret>
+    <CActorAction id="SILiberatorAGAttack" parent="GenericAttack" effectImpact="SILiberatorAGDamage" effectLaunch="SILiberatorAGMissileLM">
+        <LaunchAssets Sound="Liberator_AG_Launch"/>
+        <ImpactMap index="None">
+            <Model value="DevastatingShotAttackImpact"/>
+            <Scale value="0.600000"/>
+            <Sound value="Spell_CorrosiveBlast_Impact"/>
+            <ModelReaction value="DevastatingShotAttackImpactReaction"/>
+        </ImpactMap>
+        <ImpactMap index="Shield" Sound="DevastatingShotAttackImpactShield" ModelReaction="DevastatingShotAttackImpactReactionShield"/>
+        <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic" Physics="RailgunAttackDeathForce"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+    </CActorAction>
+    <CActorMissile id="SILiberatorAGAttackMissile" parent="GenericAttackMissile" unitName="SILiberatorAGMissile">
+        <Model value="DevastatingShotWeapon"/>
+        <Scale value="0.600000"/>
+    </CActorMissile>
+    <CActorUnit id="SILiberatorAGMorphModel" parent="GenericUnitBaseMorphTransition" unitName="LiberatorAGMorphModel">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SILiberatorAG" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SILiberatorAG" Send="AnimPlay Start Work,Start"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SILiberatorAG" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SILiberator" Send="Destroy"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed LE Normal" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,Start PlayForever,NonLooping 0.250000 0.250000 4.000000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed Eq Fast" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,Start PlayForever,NonLooping 0.250000 0.250000 3.330000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed GE Faster" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,Start PlayForever,NonLooping 0.250000 0.250000 2.850000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="PortraitAnimSetTimeFrom Visor MorphStart"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Liberator_Land"/>
+        <On Terms="AbilMorph.*.Start; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <Model value="Liberator_Stukov_Coop"/>
+        <DeathArray index="Normal" ModelLink="Liberator_Stukov_Coop_Death" SoundLink="Liberator_Death" VoiceLink="SILiberatorDeathVoice"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="LiberatorInfestedPortrait"/>
+        <BarOffset value="50"/>
+        <BarWidth value="70"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/SILiberatorAGMorphModel"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Birth" value="SILiberator_Birth"/>
+        <SoundArray index="Ready" value="SILiberator_Ready"/>
+        <SoundArray index="Help" value="SILiberator_Help"/>
+        <SoundArray index="What" value="SILiberator_What"/>
+        <SoundArray index="Yes" value="SILiberator_Yes"/>
+        <SoundArray index="Attack" value="SILiberator_Attack"/>
+        <SoundArray index="Pissed" value="SILiberator_Pissed"/>
+        <SoundArray index="Movement" value="Liberator_Move_Start"/>
+        <SoundArray index="Turning" value="SILiberator_Turning"/>
+        <SoundArray index="Board" value="SILiberator_Board"/>
+        <SoundArray index="Click" value="SILiberator_Click"/>
+        <SoundArray index="ClickError" value="SILiberator_ClickError"/>
+        <SoundArray index="Highlight" value="SILiberator_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedliberator.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="SILiberatorMorphModel" parent="GenericUnitBaseMorphTransition" unitName="LiberatorMorphModel">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SILiberator" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SILiberator" Send="AnimPlay End Work,End"/>
+        <On Terms="AbilMorph.*.Start; MorphTo SILiberator" Send="TimerSet 0.100000 StartDisengage"/>
+        <On Terms="TimerExpired; TimerName StartDisengage" Target="LiberatorAGTurret" Send="LookAtDisengage"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SILiberator" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SILiberatorAG" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom SILiberatorAG" Target="LiberatorAGTurret" Send="Destroy"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed LE Normal" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,End PlayForever,NonLooping 0.250000 0.250000 2.000000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed Eq Fast" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,End PlayForever,NonLooping 0.250000 0.250000 1.660000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure; GameSpeed GE Faster" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,End PlayForever,NonLooping 0.250000 0.250000 1.420000 AsDuration"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="PortraitAnimSetTimeFrom Visor MorphStart"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Liberator_Land"/>
+        <On Terms="AbilMorph.*.Start; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <Model value="Liberator_Stukov_Coop"/>
+        <DeathArray index="Normal" ModelLink="Liberator_Stukov_Coop_Death" SoundLink="Liberator_Death" VoiceLink="SILiberatorDeathVoice"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="LiberatorInfestedPortrait"/>
+        <BarOffset value="50"/>
+        <BarWidth value="70"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-zerg-stukov-infestedliberator.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/SILiberatorMorphModel"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Birth" value="SILiberator_Birth"/>
+        <SoundArray index="Ready" value="SILiberator_Ready"/>
+        <SoundArray index="Help" value="SILiberator_Help"/>
+        <SoundArray index="What" value="SILiberator_What"/>
+        <SoundArray index="Yes" value="SILiberator_Yes"/>
+        <SoundArray index="Attack" value="SILiberator_Attack"/>
+        <SoundArray index="Pissed" value="SILiberator_Pissed"/>
+        <SoundArray index="Movement" value="Liberator_Move_Start"/>
+        <SoundArray index="Turning" value="SILiberator_Turning"/>
+        <SoundArray index="Board" value="SILiberator_Board"/>
+        <SoundArray index="Click" value="SILiberator_Click"/>
+        <SoundArray index="ClickError" value="SILiberator_ClickError"/>
+        <SoundArray index="Highlight" value="SILiberator_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedliberator.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-stukov-infestedliberator.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="SILiberatorAG" parent="GenericUnitBase" unitName="SILiberatorAG">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="ActorCreation" Send="Create LiberatorAGTurret"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon.AttackStart" Target="LiberatorAGTurret" Send="LookAtEngage"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon.AttackStart" Send="TimerKill ResetOnNoTargets"/>
+        <On Terms="Abil.attack.ReadyStop" Target="LiberatorAGTurret" Send="RefClear ::HostTarget"/>
+        <On Terms="Abil.attack.ReadyStop" Send="TimerSet 2.000000 ResetOnNoTargets"/>
+        <On Terms="TimerExpired; TimerName ResetOnNoTargets" Target="LiberatorAGTurret" Send="LookAtStop"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon.AttackStart" Send="AnimBracketStart AttackA Attack,A"/>
+        <On Terms="WeaponStop.SILiberatorAGWeapon.AttackStop" Send="AnimBracketStop AttackA"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Work {} Stand,Work Stand,Work,End Instant"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SILiberatorAG" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SILiberatorAG" Send="Destroy"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,Stand PlayForever 0.000000"/>
+        <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <HostSiteOps Ops="SOpBankerLiberator"/>
+        <Model value="Liberator_Stukov_Coop"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" ModelLink="Liberator_Stukov_Coop_Death" SoundLink="Liberator_Death" VoiceLink="SILiberatorDeathVoice"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="LiberatorInfestedPortrait"/>
+        <BarOffset value="50"/>
+        <BarWidth value="70"/>
+        <GlossaryAnim value="Stand,Work"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Birth" value="SILiberator_Birth"/>
+        <SoundArray index="Ready" value="SILiberator_Ready"/>
+        <SoundArray index="Help" value="SILiberator_Help"/>
+        <SoundArray index="What" value="SILiberator_What"/>
+        <SoundArray index="Pissed" value="SILiberator_Pissed"/>
+        <SoundArray index="Movement" value="Liberator_Move_Start"/>
+        <SoundArray index="Turning" value="SILiberator_Turning"/>
+        <SoundArray index="Board" value="SILiberator_Board"/>
+        <SoundArray index="Click" value="SILiberator_Click"/>
+        <SoundArray index="ClickError" value="SILiberator_ClickError"/>
+        <SoundArray index="Highlight" value="SILiberator_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedliberator.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorRange id="SILiberatorAGTargetRange" parent="RangeAbil" abil="SILiberatorAGTarget">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorSplat id="SILiberatorAGTargetCursorSplat" parent="CursorSplat" abil="SILiberatorAGTarget">
+        <Model value="LiberatorAGTargetCursorSplat"/>
+    </CActorSplat>
     <CActorModel id="StormSphereAttachment">
         <On Terms="Signal.*.Upgraded" Send="ModelSwap StormSphereUpgradedAttachment"/>
     </CActorModel>
@@ -507,6 +665,16 @@
     </CActorMissile>
     <CActorUnit id="SILiberator">
         <PortraitModel value="LiberatorInfestedPortrait"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo SILiberator" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SILiberator" Send="Destroy"/>
+        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimClear Visor 0.000000"/>
+        <On Terms="ActorCreation" Send="AnimBlendTimeApply 0.000000"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStop"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStart"/>
+        <On Terms="ActorCreation" Send="AnimBlendTimeApply"/>
+        <On Terms="ActorCreation" Send="StatusSet Morphed 0"/>
+        <On Terms="Effect.LiberatorTargetMorphDelayPersistent.Start" Send="Create LiberatorAGBirthSearchIndicatorModel"/>
+        <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
     </CActorUnit>
     <CActorUnit id="SISCV">
         <PortraitModel value="SCVInfestedPortrait"/>

@@ -222,6 +222,50 @@
     <CEffectCreatePersistent id="ImmortalTaldarimWeaponRandomLarge">
         <PeriodCount value="8"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="SILiberatorAGDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Visibility value="Visible"/>
+        <Kind value="Ranged"/>
+        <Amount value="85"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="SILiberatorAGMissileLM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="SILiberatorAGDamage"/>
+        <AmmoUnit value="SILiberatorAGMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="SILiberatorAGMissileLMSet">
+        <ValidatorArray value="LiberatorAGTargets"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="SILiberatorAGMissileLM"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="SILiberatorTargetAAMorphOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="SILiberatorMorphtoAA"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="SILiberatorTargetAAMorphOrderSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LiberatorTargetAAMorphRB"/>
+        <EffectArray value="SILiberatorTargetAAMorphOrder"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="SILiberatorTargetMorphAGOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="SILiberatorMorphtoAG"/>
+        <Player Value="Creator"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="SILiberatorTargetMorphOrderInitialSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LiberatorTargetMorphAB"/>
+        <EffectArray value="SILiberatorTargetMorphAGOrder"/>
+        <EffectArray value="LiberatorTargetMorphDelayPersistent"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
     <CEffectSet id="SILiberatorBaseSet">
         <EditorCategories value="Race:InfestedTerran"/>
         <EffectArray value="SILiberatorBaseLM"/>
