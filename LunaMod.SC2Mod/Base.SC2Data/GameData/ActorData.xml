@@ -3,6 +3,24 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorSound id="InfestedTerran_AirAttackLaunchSwtnrSound" parent="SoundOneShot">
+        <On Terms="Effect.InfestedAcidSpinesLM.Start; At Caster" Send="Create"/>
+        <Sound value="InfestedTerran_AirAttackLaunchSwtnr"/>
+    </CActorSound>
+    <CActorAction id="InfestedAcidSpinesAttack" parent="GenericAttack" effectImpact="InfestedAcidSpines" effectLaunch="InfestedAcidSpinesLM">
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchAssets Model="InfestedTerranAAMPLaunch" Sound="InfestedTerran_AirAttackLaunch"/>
+        <ImpactMap index="None" Model="InfestedTerranInfestedAcidSpinesMissileImpact" Sound="InfestedTerran_AirAttackImpact"/>
+        <ImpactPhysics Name="AcidSpinesImpact" MatchKeys="Basic" Physics="QueenAttackDeathForce"/>
+        <ShieldFlashType value="Header"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon SOpMoveByDot25"/>
+    </CActorAction>
+    <CActorMissile id="InfestedAcidSpinesAttackMissile" parent="GenericAttackMissile" unitName="InfestedAcidSpinesWeapon"/>
+    <CActorMissile id="SIInfestedMarine">
+        <On Terms="WeaponStart.InfestedAcidSpines.AttackStart" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.SIInfestedMarine.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+    </CActorMissile>
     <CActorModel id="SILiberatorDummyRange" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.SILiberatorTargetMorphPersistent.Start" Send="Create"/>
         <On Terms="Effect.SILiberatorTargetMorphPersistent.Stop" Send="Destroy"/>

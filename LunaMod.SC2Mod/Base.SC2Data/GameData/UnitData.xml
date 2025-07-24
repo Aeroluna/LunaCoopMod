@@ -52,6 +52,21 @@
     <CUnit id="SICommandCenter">
         <AbilArray index="6" Link="que5CancelToSelection"/>
     </CUnit>
+    <CUnit id="SIEngineeringBay">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="TerranInfantryArmorLevel1" Type="AbilCmd" AbilCmd="SIEngineeringBayResearch,Research4" Row="0" Column="1"/>
+            <LayoutButtons index="5" Face="TerranInfantryArmorLevel2" AbilCmd="SIEngineeringBayResearch,Research5"/>
+            <LayoutButtons index="6" Face="TerranInfantryArmorLevel3" AbilCmd="SIEngineeringBayResearch,Research6"/>
+            <LayoutButtons index="7" Face="TerranInfantryWeaponsLevel1" AbilCmd="SIEngineeringBayResearch,Research1" Column="0"/>
+            <LayoutButtons index="8" Face="TerranInfantryWeaponsLevel2" AbilCmd="SIEngineeringBayResearch,Research2"/>
+            <LayoutButtons index="9" Face="TerranInfantryWeaponsLevel3" AbilCmd="SIEngineeringBayResearch,Research3"/>
+            <LayoutButtons index="10" Face="ResearchInfestedBunkerLifeRegen" AbilCmd="SIEngineeringBayResearch,Research13" Row="2"/>
+            <LayoutButtons index="11" Face="ResearchRegenerativePlatingLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel05"/>
+            <LayoutButtons index="12" Face="ResearchInfestedBunkerArmor" Type="AbilCmd" AbilCmd="SIEngineeringBayResearch,Research12" Requirements="" Column="1"/>
+            <LayoutButtons index="13" Face="EvolveCalcifiedArmorLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel05"/>
+            <LayoutButtons index="14" Face="SIMissileTurretPassive" Requirements="" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
@@ -558,6 +573,10 @@
         <Acceleration value="0"/>
         <LateralAcceleration value="0"/>
     </CUnit>
+    <CUnit id="InfestedAcidSpinesWeapon" parent="MISSILE">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="InfestationPit">
         <CardLayouts index="0">
             <LayoutButtons index="10" Face="ViperPassive" Requirements="HotSHaveViper"/>
@@ -722,6 +741,8 @@
     </CUnit>
     <CUnit id="SIInfestedMarine">
         <Food value="-0.5"/>
+        <WeaponArray index="0" Link="InfestedAcidSpines"/>
+        <WeaponArray Link="SIInfestedMarine"/>
     </CUnit>
     <CUnit id="SIInfestedMarineBurrowed">
         <Food value="-0.5"/>

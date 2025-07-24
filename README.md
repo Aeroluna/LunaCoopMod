@@ -503,6 +503,10 @@ Grants a unique to trait to the Infested Banshee other than just burrowing for e
 
 These guys clog up your supply until they time out, this should help mitigate that.
 
+- Added Infested Rockets weapon from Versus to Infested Marines.
+
+Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
+
 - Added strafing movement to Infested Liberator Cloud Dispersal.
 - Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
 - Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).

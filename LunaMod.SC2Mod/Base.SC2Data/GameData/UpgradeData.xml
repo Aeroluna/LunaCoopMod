@@ -837,6 +837,9 @@
     <CUpgrade id="SIImprovedMarineSpawning">
         <EffectArray index="0" Value="5"/>
     </CUpgrade>
+    <CUpgrade id="SIMarineTrooperRange">
+        <EffectArray Reference="Weapon,InfestedAcidSpines,Range" Value="1"/>
+    </CUpgrade>
     <CUpgrade id="ScourgeGasCostReduction">
         <EffectArray index="0" removed="1"/>
     </CUpgrade>
@@ -1308,6 +1311,24 @@
         <EffectArray Operation="Set" Reference="Actor,SILiberatorMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,SILiberatorAGMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
         <Name value="Upgrade/Name/SITerranVehicleArmorsExtraLevel3"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranInfantryWeaponsExtra">
+        <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
+        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="1"/>
+        <EffectArray Reference="Weapon,InfestedAcidSpines,Level" Value="1"/>
+        <AffectedUnitArray value="SIInfestedMarine"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranInfantryWeaponsExtraLevel1" parent="SITerranInfantryWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,InfestedAcidSpines,Icon" Value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel1.dds"/>
+        <Name value="Upgrade/Name/SITerranInfantryWeaponsExtraLevel1"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranInfantryWeaponsExtraLevel2" parent="SITerranInfantryWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,InfestedAcidSpines,Icon" Value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel2.dds"/>
+        <Name value="Upgrade/Name/SITerranInfantryWeaponsExtraLevel2"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranInfantryWeaponsExtraLevel3" parent="SITerranInfantryWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,InfestedAcidSpines,Icon" Value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel3.dds"/>
+        <Name value="Upgrade/Name/SITerranInfantryWeaponsExtraLevel3"/>
     </CUpgrade>
     <CUpgrade id="ZagaraGroundAttacksLevel1">
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserAcidSaliva,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level1.dds"/>

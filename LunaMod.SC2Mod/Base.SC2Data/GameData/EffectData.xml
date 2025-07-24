@@ -60,6 +60,10 @@
     <CEffectSet id="SIBroodlingFlyingLaunchB">
         <EffectArray value="SIBansheeBroodlingRB"/>
     </CEffectSet>
+    <CEffectSet id="SIInfestedTrooperInfestedRocketsPlaguedMunitionsSet">
+        <EffectArray value="InfestedAcidSpines"/>
+        <EffectArray value="SIInfestedTrooperMarinePlaguedMunitions"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="SILiberatorTargetMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="SILiberatorTargetMorphPersistent"/>
@@ -294,6 +298,18 @@
     <CEffectCreatePersistent id="ImmortalTaldarimWeaponRandomLarge">
         <PeriodCount value="8"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="InfestedAcidSpines">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="16"/>
+        <ArmorReduction value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="InfestedAcidSpinesLM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="SIInfestedTrooperInfestedRocketsPlaguedMunitionsSet"/>
+        <AmmoUnit value="InfestedAcidSpinesWeapon"/>
+        <Movers Link="InfestedAcidSpinesWeapon"/>
+    </CEffectLaunchMissile>
     <CEffectSet id="InfestedCivilianVolatileSpawn">
         <EffectArray index="1" value="SILiberatorAmmoRestockBroodlingRB"/>
         <EffectArray value="SuicideRemove"/>
