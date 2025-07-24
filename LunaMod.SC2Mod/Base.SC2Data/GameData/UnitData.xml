@@ -49,6 +49,9 @@
     <CUnit id="BileLauncherZagaraMissile">
         <Sight value="3"/>
     </CUnit>
+    <CUnit id="SICommandCenter">
+        <AbilArray index="6" Link="que5CancelToSelection"/>
+    </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
@@ -239,6 +242,29 @@
         <MinimapRadius value="0"/>
         <EditorCategories value=""/>
     </CUnit>
+    <CUnit id="SIStarportTechLab">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="ResearchStukovInfestedBansheeInfestedLife" AbilCmd="SIStarportResearch,Research4" Column="3"/>
+            <LayoutButtons index="8" Face="ResearchBracedExoskeletonLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel11"/>
+            <LayoutButtons index="9">
+                <Face value="ResearchSIQueenEnergy"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="SIStarportResearch,Research6"/>
+                <Requirements value=""/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="10" Face="ResearchEnhancedMitochondriaLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel13"/>
+            <LayoutButtons index="11">
+                <Face value="SIBansheeResearchIncubationChambers"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="SIStarportResearch,Research7"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>
     </CUnit>
@@ -246,6 +272,19 @@
         <Race value="InfT"/>
         <Mover value="MissileDefault"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionInfested"/>
+    </CUnit>
+    <CUnit id="StukovInfestedBanshee">
+        <AbilArray Link="SIBansheeHangar"/>
+        <AbilArray Link="SIBansheeQueue"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SIBansheeIncubationChambers" Type="Passive" Requirements="HaveSIBansheeIncubationChambers" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="StukovInfestedBansheeBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons Face="SIBansheeIncubationChambers" Type="Passive" Requirements="HaveSIBansheeIncubationChambers" Row="1" Column="2"/>
+        </CardLayouts>
+        <BehaviorArray Link="SIBansheeIncubationChambersBurrowed"/>
     </CUnit>
     <CUnit id="Tempest">
         <CardLayouts index="0">
@@ -1027,11 +1066,6 @@
             <LayoutButtons index="5" Column="3"/>
             <LayoutButtons index="8" Column="0"/>
             <LayoutButtons index="9" Column="0"/>
-        </CardLayouts>
-    </CUnit>
-    <CUnit id="SIStarportTechLab">
-        <CardLayouts index="0">
-            <LayoutButtons Face="ResearchInfestedBansheeSpeedUpgrade" Type="AbilCmd" AbilCmd="SIStarportResearch,Research7" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="ShieldBattery">

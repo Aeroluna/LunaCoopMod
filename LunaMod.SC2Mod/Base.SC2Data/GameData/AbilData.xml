@@ -44,8 +44,38 @@
         <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilQueue id="SIBansheeQueue">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <QueueSize value="1"/>
+        <Flags index="Hidden" value="1"/>
+        <Flags index="Passive" value="1"/>
+    </CAbilQueue>
+    <CAbilArmMagazine id="SIBansheeHangar">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Flags index="AutoCastOffOwnerLeave" value="0"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Flags index="ShowStatus" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Leash value="8"/>
+        <InfoArray index="Ammo1" Time="2.5" Manage="Recall" Unit="SIBroodlingFlying">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="Broodling" Requirements="ArmSIBansheeBroodling"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <Alert value=""/>
+        <EffectArray index="Create" value="SIBansheeBroodlingAB"/>
+        <EffectArray index="Death" value="InterceptorFate"/>
+        <EffectArray index="Release" value="KillsToCaster"/>
+        <ExternalAngle value="180"/>
+        <MaxCount value="1"/>
+    </CAbilArmMagazine>
     <CAbilMorph id="BurrowStukovInfestedBansheeDown">
         <Flags index="WaitUntilStopped" value="0"/>
+        <CmdButtonArray index="Execute" Requirements=""/>
     </CAbilMorph>
     <CAbilArmMagazine id="CarrierRepairDroneHanger">
         <ExternalAngle value="180"/>
@@ -65,6 +95,14 @@
     <CAbilMorph id="FighterMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="QueenClassicParasite">
+        <Flags index="NoDeceleration" value="1"/>
+        <PrepTime index="0" value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="QueenStukovSpawnBroodlings">
+        <Flags index="NoDeceleration" value="1"/>
+        <PrepTime index="0" value="0"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="SILiberatorAATarget">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="SILiberatorTargetAAMorphOrderSet"/>
@@ -125,6 +163,16 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="SIQueenFungalGrowth">
+        <Flags index="NoDeceleration" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilResearch id="SIStarportResearch">
+        <InfoArray index="Research7" Time="60" Upgrade="SIBansheeIncubationChambers">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="SIBansheeResearchIncubationChambers" Requirements="LearnSIBansheeIncubationChambers"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="SOAMothershipLineAttack">
         <Cost index="0">
             <Cooldown TimeUse="2"/>
@@ -522,13 +570,6 @@
             <Unit value="SIInfestedMarine"/>
         </InfoArray>
     </CAbilTrain>
-    <CAbilResearch id="SIStarportResearch">
-        <InfoArray index="Research7" Time="60" Upgrade="InfestedBansheeSpeedUpgrade">
-            <Resource index="Minerals" value="100"/>
-            <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="ResearchInfestedBansheeSpeedUpgrade" Requirements="LearnInfestedBansheeRotwingRotors"/>
-        </InfoArray>
-    </CAbilResearch>
     <CAbilEffectTarget id="ShadowGuardVoidStasis">
         <TargetFilters index="0" value="-;Player,Ally,Missile,Stasis,UnderConstruction,Hidden,Invulnerable"/>
     </CAbilEffectTarget>

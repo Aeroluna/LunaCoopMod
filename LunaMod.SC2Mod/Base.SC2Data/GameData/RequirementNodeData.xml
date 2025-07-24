@@ -8,10 +8,20 @@
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeSIBansheeIncubationChambersCompleteOnlyNotCountBehaviorPopStunCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeSIBansheeIncubationChambersCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorPopStunCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndGTECountUpgradeCommanderLevelCompleteOnly6CountUpgradeZeratulCommanderCompleteOnly">
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="PopStun" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="MothershipArtanis" State="QueuedOrBetter"/>
@@ -59,16 +69,26 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="HellburstPayload" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeInfestedBansheeSpeedUpgradeCompleteOnly460564875">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="InfestedBansheeSpeedUpgrade" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="InfestedBansheeSpeedUpgrade" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeKerriganBroodCosmeticCompleteOnlyTechTreeCheat">
         <Count Link="KerriganBroodCosmetic" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SIBansheeIncubationChambers" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersCompleteOnly3518554317">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="SIBansheeIncubationChambers" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SIBansheeIncubationChambers" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeScourgeGasCostReductionCompleteOnly2371086511">
         <Flags index="TechTreeCheat" value="0"/>
@@ -81,6 +101,10 @@
     <CRequirementCountUpgrade id="CountUpgradeSignifierFadeQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SignifierFade" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeStukovInfestedBansheeInfestedLifeCompleteOnly4081429596">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StukovInfestedBansheeInfestedLife" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSwannCommanderVehicleCooldownQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -96,7 +120,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTempestDestabilizingResiduumQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TempestDestabilizingResiduum" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTransformationServosCompleteOnly1133472468">
@@ -111,6 +134,10 @@
         <OperandArray index="0" value="CountUnitSwarmNetworkQueuedOrBetter"/>
         <OperandArray index="1" value="4"/>
     </CRequirementLT>
+    <CRequirementNot id="NotCountBehaviorPopStunCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly"/>
     </CRequirementNot>
@@ -126,6 +153,10 @@
     <CRequirementNot id="NotCountUpgradeRaynorCommanderCompleteOnly">
         <OperandArray index="0" value="CountUpgradeRaynorCommanderCompleteOnly"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSIBansheeIncubationChambersQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeSIBansheeIncubationChambersQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSignifierFadeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeSignifierFadeQueuedOrBetter"/>
     </CRequirementNot>
@@ -136,7 +167,6 @@
         <OperandArray index="0" value="CountUpgradeSwannCommanderVehicleMovementSpeedQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeTempestDestabilizingResiduumQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeTempestDestabilizingResiduumQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeTransformationServosQueuedOrBetterTechTreeCheat">

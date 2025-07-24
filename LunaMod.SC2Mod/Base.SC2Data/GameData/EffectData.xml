@@ -32,6 +32,34 @@
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
+    <CEffectCreateUnit id="QueenStukovSpawnBroodlingsFlyingCreateUnit">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Effect="QueenStukovSpawnBroodlingsAB" Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnEffect value="BroodlingTimedLife"/>
+        <SpawnUnit value="SIBroodlingFlying"/>
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
+    <CEffectSwitch id="QueenStukovSpawnBroodlingsSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="SourceIsGroundUnitFilter" Effect="QueenStukovSpawnBroodlingsCreateUnit"/>
+        <CaseDefault value="QueenStukovSpawnBroodlingsFlyingCreateUnit"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="SIBansheeBroodlingAB">
+        <EditorCategories value=""/>
+        <Behavior value="SIBansheeBroodling"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SIBansheeBroodlingRB">
+        <EditorCategories value=""/>
+        <BehaviorLink value="SIBansheeBroodling"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="SIBroodlingFlyingLaunch">
+        <EffectArray value="SIBansheeBroodlingRB"/>
+    </CEffectSet>
+    <CEffectSet id="SIBroodlingFlyingLaunchB">
+        <EffectArray value="SIBansheeBroodlingRB"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="SILiberatorTargetMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="SILiberatorTargetMorphPersistent"/>
@@ -448,6 +476,11 @@
         <ImpactUnit Value="Caster"/>
         <Weapon Weapon="SILiberator" CooldownOperation="Max" CooldownFraction="1"/>
     </CEffectModifyUnit>
+    <CEffectCreateUnit id="SIBansheeIncubationChambersBurrowedCU">
+        <SpawnEffect value="BroodlingTimedLife"/>
+        <SpawnUnit value="StukovInfestBroodling"/>
+        <WhichLocation Value="TargetPoint"/>
+    </CEffectCreateUnit>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
     </CEffectDamage>

@@ -338,7 +338,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
-- Buffed Disruption Web to no longer require research.
+- Reworked Disruption Web to no longer require research.
 - Added Flux Vanes upgrade that increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
@@ -479,22 +479,25 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 
 ## Stukov
 
-- Added Rotwing Rotors upgrade that increases Infested Banshee speed by 2.
 - Reworked Infested Banshee P2 Deploy ability to allow casting while moving.
+- Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton that additionally increases Infested Banshee speed by 2.
+  - Adds visual boosters to the Infested Banshee.
 
 These two simple changes make playing P2 infinitely smoother to play.
 
-- Added Infested SCV portrait.
-- Added Infested Diamondback portrait.
-- Added Infested Liberator portrait.
-- Changed Infested Siege Tank portrait to Infested Diamondback portrait.
-- Changed Infested Civilian portrait.
-- Added Infested Trooper model and portrait.
+- Reworked Rapid Hibernation to no longer require research.
+- Removed deceleration from Infested Banshee Burrow (no longer has to fully stop to cast).
 
-Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
+As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
+
+- Added Incubation Chambers upgrade which adds a Broodling escort to Infested Banshees, similar to Brood Lords.
+  - Does not do impact damage on landing, unlike the Brood Lord.
+  - Continues to spawn regular Broodlings while burrowed.
+
+Grants a unique to trait to the Infested Banshee other than just burrowing for energy. Borrowing from the P2 idea of ferrying around infested, this upgrade lets Infested Banshees carry around and throw Broodlings. Combined with the new move speed upgrade, these things turn into Brood Lords with turbo boosters. Should make the tech required to build them feel more worth it.
 
 - Reworked Infested Marines
-  - Buffed supply cost from 1 to 0.5.
+  - Decreased supply cost from 1 to 0.5.
   - Doubled cost but spawns 2 from 1 egg.
   - Halved max charges and doubled charge cooldown on Infested Barracks.
 
@@ -514,7 +517,24 @@ Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, 
 
 I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Also gives more reason to invest in sky Stukov.
 
+- Buffed P1 to also affect Brood Queens.
+- Removed prepare time from Ocular Symbiote and Spawn Broodlings.
+- Removed deceleration from Ocular Symbiote and Spawn Broodlings.
+- Reworked Spawn Broodlings to spawn flying Broodlings (must land before attacking) when casted on a flying unit.
+
+Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.
+
+- Added Infested SCV portrait.
+- Added Infested Diamondback portrait.
+- Added Infested Liberator portrait.
+- Changed Infested Siege Tank portrait to Infested Diamondback portrait.
+- Changed Infested Civilian portrait.
+- Added Infested Trooper model and portrait.
+
+Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
+
 - Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
+- Fixed a bug where you could not queue multiple upgrades on the Infested Command Center.
 
 ## Fenix
 

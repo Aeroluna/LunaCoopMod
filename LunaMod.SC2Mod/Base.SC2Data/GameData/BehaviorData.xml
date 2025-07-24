@@ -120,6 +120,17 @@
             <WeaponDisableArray index="5" removed="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="QueenStukovSpawnBroodling">
+        <DamageResponse Handled="QueenStukovSpawnBroodlingsSwitch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SIBansheeBroodling">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="SILiberatorMitosis">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -155,6 +166,14 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SILiberatorSwarmFormPermanentTracker">
         <Duration value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SIBansheeIncubationChambersBurrowed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:InfestedTerran,AbilityorEffectType:Units"/>
+        <Requirements value="HaveSIBansheeIncubationChambers"/>
+        <DisableValidatorArray value="CasterNotStunnedorStasised"/>
+        <Period value="2.5"/>
+        <PeriodicEffect value="SIBansheeIncubationChambersBurrowedCU"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScourgeSplashReduction">
         <InfoFlags index="Hidden" value="1"/>

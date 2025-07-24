@@ -473,6 +473,10 @@
         <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Minerals]" Value="45"/>
         <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Vespene]" Value="38"/>
         <EffectArray Reference="Effect,SILiberatorMitosis,VitalArray[Energy].Change" Value="0.2"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SICocoonQueen,CostResource[Minerals]" Value="30"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SICocoonQueen,CostResource[Vespene]" Value="30"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SIQueen,CostResource[Minerals]" Value="30"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SIQueen,CostResource[Vespene]" Value="30"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
@@ -827,6 +831,9 @@
         <EffectArray Operation="Set" Reference="Button,CalldownMULE,AlertTooltip" Value="Button/Tooltip/CalldownMULEDoubleDown"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
     </CUpgrade>
+    <CUpgrade id="SIBansheeIncubationChambers">
+        <AffectedUnitArray value="StukovInfestedBanshee"/>
+    </CUpgrade>
     <CUpgrade id="SIImprovedMarineSpawning">
         <EffectArray index="0" Value="5"/>
     </CUpgrade>
@@ -913,6 +920,9 @@
         <EffectArray Operation="Set" Reference="Abil,BlinkMultiple,Cost[0].Charge.HideCount" Value="0"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,AlertTooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,Tooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
+    </CUpgrade>
+    <CUpgrade id="StukovInfestedBansheeInfestedLife">
+        <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="2.000000"/>
     </CUpgrade>
     <CUpgrade id="SwannCommander">
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
@@ -1069,15 +1079,6 @@
         <EffectArray Reference="Unit,VoidRayShakuras,Speed" Value="1.2"/>
         <EffectArray Reference="Unit,VoidRayShakuras,Acceleration" Value="1.2"/>
         <AffectedUnitArray value="VoidRayShakuras"/>
-    </CUpgrade>
-    <CUpgrade id="InfestedBansheeSpeedUpgrade">
-        <Icon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
-        <Alert value="ResearchComplete"/>
-        <Race value="InfT"/>
-        <ScoreResult value="BuildOrder"/>
-        <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="2.00000"/>
-        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
-        <AffectedUnitArray value="StukovInfestedBanshee"/>
     </CUpgrade>
     <CUpgrade id="VoidStalkerBlinkCharges">
         <EffectArray Operation="Set" Reference="Button,Stalker,AlertTooltip" Value="Button/Tooltip/StalkerPurifier"/>
