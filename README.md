@@ -514,6 +514,8 @@ Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, 
 
 I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Also gives more reason to invest in sky Stukov.
 
+- Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
+
 ## Fenix
 
 - Remove Disruptors.
