@@ -506,6 +506,14 @@ These guys clog up your supply until they time out, this should help mitigate th
 
 Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 
+- Added Defender Mode ability to Infested Liberators.
+  - Uses a slightly slower attack speed version of the Liberator AG weapon.
+  - Has a Volatile Spray weapon which sprays enemies with acid, leaving behind a pool that deals damage and slows, but requires energy to use.
+  - Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
+  - Benefits from Automated Mitosis upgrade.
+
+I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Also gives more reason to invest in sky Stukov.
+
 ## Fenix
 
 - Remove Disruptors.
