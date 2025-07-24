@@ -533,6 +533,7 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 
 Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
 
+- Fixed a bug where if an Infested Civilian has jumped using Anaerobic Enhancement, and an Infested Siege Tank tried to eat it, the Infested Civilian would die without healing or gaining a charge.
 - Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
 - Fixed a bug where you could not queue multiple upgrades on the Infested Command Center.
 
