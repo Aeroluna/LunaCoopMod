@@ -49,8 +49,17 @@
     <CUnit id="BileLauncherZagaraMissile">
         <Sight value="3"/>
     </CUnit>
+    <CUnit id="SIBarracksFlying">
+        <PushPriority value="11"/>
+    </CUnit>
+    <CUnit id="SICivilianStructureFlying">
+        <PushPriority value="11"/>
+    </CUnit>
     <CUnit id="SICommandCenter">
         <AbilArray index="6" Link="que5CancelToSelection"/>
+    </CUnit>
+    <CUnit id="SICommandCenterFlying">
+        <PushPriority value="11"/>
     </CUnit>
     <CUnit id="SIEngineeringBay">
         <CardLayouts index="0">
@@ -66,6 +75,74 @@
             <LayoutButtons index="13" Face="EvolveCalcifiedArmorLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel05"/>
             <LayoutButtons index="14" Face="SIMissileTurretPassive" Requirements="" Row="1" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="SIFactoryFlying">
+        <PushPriority value="11"/>
+    </CUnit>
+    <CUnit id="SIInfestedBunker">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="SIInfestedBunkerSpawnInfestedMarine" AbilCmd="SIInfestedBunkerTrainMarine,Execute"/>
+            <LayoutButtons index="1" Face="BunkerLoad" AbilCmd="SIInfestedBunkerTransport,Load"/>
+            <!--LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="StopRedirect,Execute" Row="0" Column="1"/-->
+            <!--LayoutButtons Face="AttackRedirect" Type="AbilCmd" AbilCmd="AttackRedirect,Execute" Row="0" Column="4"/-->
+            <LayoutButtons index="3" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast" Column="4"/>
+            <LayoutButtons index="4">
+                <Face value="CancelBuilding"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BuildInProgress,Cancel"/>
+                <Behavior value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="5" Face="BunkerUnloadAll" AbilCmd="SIInfestedBunkerTransport,UnloadAll" Row="2" Column="2"/>
+            <LayoutButtons index="6">
+                <Face value="SIInfestedBunkerInfestedMarineSpawner"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Behavior value="SIInfestedBunkerAutoSpawner"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="7">
+                <Face value="AttackRedirect"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="AttackRedirect,Execute"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="8" Face="SIBunkerRegenerativePlating" Requirements="HaveSIBunkerLifeRegen" Column="1"/>
+            <LayoutButtons index="9">
+                <Face value="MasteryStukovUnitRegenSpeedAppend"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryStukovUnitRegenSpeed"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="10" Face="Stop" AbilCmd="StopRedirect,Execute" Row="0" Column="1"/>
+            <LayoutButtons index="11" Face="SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="SIStukovPlaceHordeRally,Execute" Column="4"/>
+            <LayoutButtons index="12" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="SICommandCenterTrain,Train1" Row="1"/>
+            <LayoutButtons index="13" Face="Halt" AbilCmd="BuildInProgress,Halt" Column="3"/>
+            <LayoutButtons index="14" Face="SIInfestedBunkerUproot" AbilCmd="SIInfestedBunkerUproot,Execute" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SIInfestedBunkerUprooted">
+        <PushPriority value="11"/>
+        <AbilArray Link="SIInfestedBunkerTrainMarine"/>
+        <BehaviorArray Link="SIInfestedBunkerAutoSpawner"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="2"/>
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons Face="SIInfestedBunkerSpawnInfestedMarine" Type="AbilCmd" AbilCmd="SIInfestedBunkerTrainMarine,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SIInfestedCivilian">
+        <PushPriority value="9"/>
+    </CUnit>
+    <CUnit id="SIInfestedTrooper">
+        <PushPriority value="9"/>
     </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
@@ -257,6 +334,12 @@
         <MinimapRadius value="0"/>
         <EditorCategories value=""/>
     </CUnit>
+    <CUnit id="SIMissileTurretFlying">
+        <PushPriority value="11"/>
+    </CUnit>
+    <CUnit id="SIStarportFlying">
+        <PushPriority value="11"/>
+    </CUnit>
     <CUnit id="SIStarportTechLab">
         <CardLayouts index="0">
             <LayoutButtons index="7" Face="ResearchStukovInfestedBansheeInfestedLife" AbilCmd="SIStarportResearch,Research4" Column="3"/>
@@ -279,6 +362,9 @@
                 <Column value="2"/>
             </LayoutButtons>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="SIVolatileInfested">
+        <PushPriority value="9"/>
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>
@@ -743,6 +829,7 @@
         <Food value="-0.5"/>
         <WeaponArray index="0" Link="InfestedAcidSpines"/>
         <WeaponArray Link="SIInfestedMarine"/>
+        <PushPriority value="9"/>
     </CUnit>
     <CUnit id="SIInfestedMarineBurrowed">
         <Food value="-0.5"/>

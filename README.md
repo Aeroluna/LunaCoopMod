@@ -528,6 +528,11 @@ I know they were originally meant to be Valkyries, but hey, they're Liberators, 
 
 Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.
 
+- Reduced push priority of infantry to 9.
+- Increased push priority of uprooted buildings to 11.
+
+It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other units out of the way. This helps trying to push your bunker line up.
+
 - Added Infested SCV portrait.
 - Added Infested Diamondback portrait.
 - Added Infested Liberator portrait.
