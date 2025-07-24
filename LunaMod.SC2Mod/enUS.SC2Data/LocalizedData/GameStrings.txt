@@ -25,6 +25,8 @@ Behavior/Name/KerriganImplosionTempBuff=Implosion
 Behavior/Name/KerriganRazorSwarm=Razor Swarm
 Behavior/Name/KerriganRegenAuraTarget=Protective Brood
 Behavior/Name/PsiStormNerazim=Astral Storm
+Behavior/Name/SILiberatorSprayDummyValidate=SILiberator Spray Dummy Validate
+Behavior/Name/SILiberatorSprayPool=Acid
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
@@ -35,8 +37,10 @@ Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:Kerr
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
+Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
+Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/Name/BlinkChargesUpgrade=Displacement Matrix
 Button/Name/BroodLordBrood=Morph to Primogenitor
 Button/Name/ChainReactionBrood=Psionic Cleave
@@ -86,6 +90,8 @@ Button/Name/ResearchPulseLoopCapacitors=Research Pulse-Loop Capacitors
 Button/Name/ResearchSignifierFade=Research Fading Star
 Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
 Button/Name/ResearchTransformationServos=Research Smart Servos
+Button/Name/SILiberatorAmmo=Volatile Biomass
+Button/Name/SILiberatorAutomatedMitosis=Automated Mitosis
 Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
 Button/Name/SmartServos=Smart Servos
@@ -209,7 +215,10 @@ Button/Tooltip/ResearchTempestDestabilizingResiduum=Causes <c val="ffff8a">Tempe
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
-Button/Tooltip/SILiberatorAG=Artillery fighter. Attacks deal area damage to enemy air units.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
+Button/Tooltip/SILiberator=Artillery fighter. Attacks deal area damage to enemy air units. Can switch into Defender Mode to provide siege support.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
+Button/Tooltip/SILiberatorAG=Immobile defender. Deals heavy single target damage to ground units. Can switch into Fighter mode to provide air support.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/SILiberatorAmmo=Consumes nearby Infested Civilians and Infested Troopers to restore 20 life and restore <d ref="Effect,SILiberatorAmmoRestockEnergy,VitalArray[Energy].Change"/> energy for the Infested Liberator. Normal energy consumption is suppressed. The Volatile Spray weapon consumes <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]/Weapon,SILiberatorAGWeapon2,Period"/> energy per second.
+Button/Tooltip/SILiberatorAutomatedMitosis=Infested Liberators automatically generate <d ref="Effect,SILiberatorMitosis,VitalArray[Energy].Change/Behavior,SILiberatorMitosis,Period" precision="1"/> energy every second.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Also ignores collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
@@ -310,8 +319,9 @@ Effect/Name/SILiberatorAGDamage=SILiberator AG Damage
 Effect/Name/SILiberatorAGMissileLM=SILiberator AG Missile LM
 Effect/Name/SILiberatorAGMissileLMSet=SILiberator AG Missile LM Set
 Effect/Name/SILiberatorAmmoRestock=SILiberatorAmmoRestock
-Effect/Name/SILiberatorAmmoRestockBroodlingAB=SILiberatorAmmoRestockBroodlingAB
+Effect/Name/SILiberatorAmmoRestockBroodlingFlyingAB=SILiberatorAmmoRestockBroodlingFlyingAB
 Effect/Name/SILiberatorAmmoRestockBroodlingRB=SILiberatorAmmoRestockBroodlingRB
+Effect/Name/SILiberatorAmmoRestockDelay=SILiberatorAmmoRestockDelay
 Effect/Name/SILiberatorAmmoRestockEnergy=SILiberatorAmmoRestockEnergy
 Effect/Name/SILiberatorAmmoRestockImpact=SILiberatorAmmoRestockImpact
 Effect/Name/SILiberatorAmmoRestockKillTarget=SILiberatorAmmoRestockKillTarget
@@ -320,12 +330,35 @@ Effect/Name/SILiberatorAmmoRestockReturnTarget=SILiberatorAmmoRestockReturnTarge
 Effect/Name/SILiberatorAmmoRestockSearch=SILiberatorAmmoRestockSearch
 Effect/Name/SILiberatorAmmoRestockSet=SILiberatorAmmoRestockSet
 Effect/Name/SILiberatorBaseSet=SILiberatorBaseSet
+Effect/Name/SILiberatorMitosis=SILiberator Mitosis
+Effect/Name/SILiberatorSprayDummyCP=SILiberator Spray Dummy CP
+Effect/Name/SILiberatorSprayDummyCU=SILiberator Spray Dummy CU
+Effect/Name/SILiberatorSprayDummyCUSpawnSet=SILiberator Spray Dummy CU Spawn Set
+Effect/Name/SILiberatorSprayDummyUT=SILiberator Spray Dummy UT
+Effect/Name/SILiberatorSprayDummyValidateAB=SILiberator Spray Dummy Validate AB
+Effect/Name/SILiberatorSprayETU=SILiberator Spray ETU
+Effect/Name/SILiberatorSprayPoolAB=SILiberator Spray Pool AB
+Effect/Name/SILiberatorSprayPoolCP=SILiberator Spray Pool CP
+Effect/Name/SILiberatorSprayPoolCounterAB=SILiberator Spray Pool Counter AB
+Effect/Name/SILiberatorSprayPoolCounterRB=SILiberator Spray Pool Counter RB
+Effect/Name/SILiberatorSprayPoolDamage=SILiberator Spray Pool Damage
+Effect/Name/SILiberatorSprayPoolSearch=SILiberator Spray Pool Search
+Effect/Name/SILiberatorSpraySet=SILiberator Spray Set
+Effect/Name/SILiberatorSprayTrackedDamage=SILiberator Spray Tracked Damage
+Effect/Name/SILiberatorSprayTrackedImpactSet=SILiberator Spray Tracked Impact Set
+Effect/Name/SILiberatorSprayTrackedIssueOrder=SILiberator Spray Tracked Issue Order
+Effect/Name/SILiberatorSprayTrackedLM=SILiberator Spray Tracked LM
+Effect/Name/SILiberatorSprayTrackedSet=SILiberator Spray Tracked Set
 Effect/Name/SILiberatorSwarmFormPermanentSetCooldown=SILiberatorBaseSetCooldown
 Effect/Name/SILiberatorSwarmFormPermanentSetCooldown2=SILiberatorSwarmFormPermanentSetCooldown
 Effect/Name/SILiberatorTargetAAMorphOrder=SILiberator Target AA Morph Order
 Effect/Name/SILiberatorTargetAAMorphOrderSet=SILiberator Target AA Morph Order Set
 Effect/Name/SILiberatorTargetMorphAGOrder=SILiberator Target Morph AG Order
+Effect/Name/SILiberatorTargetMorphDelayPersistent=SILiberator Target Morph Delay Persistent
 Effect/Name/SILiberatorTargetMorphOrderInitialSet=SILiberator Target Morph Order Initial Set
+Effect/Name/SILiberatorTargetMorphPersistent=SILiberator Target Morph Persistent
+Effect/Name/SILiberatorTargetMorphSearchAB=SILiberator Target Morph Search AB
+Effect/Name/SILiberatorTargetMorphSearchArea=SILiberator Target Morph Search Area
 Effect/Name/SOARecallOnDeathCleanseRB=SOARecall On Death Cleanse RB
 Effect/Name/SeekerMissileLaunchRestoreCheck=Seeker Missile Launch Restore Check
 Effect/Name/SignifierFade=Fade (Apply Buff)
@@ -363,6 +396,7 @@ Effect/Name/TempestDotSearch=Tempest Dot Search
 Effect/Name/TempestDotSearchGround=Tempest Dot Search (Ground)
 Effect/Name/TempestImpactSet=Tempest Impact Set
 Effect/Name/TempestImpactSetGround=Tempest Impact Set (Ground)
+Effect/Name/UnknownEffect2=Unknown Effect
 Effect/Name/VorazunBlinkInitialPersistent=Vorazun Blink Initial Persistent
 Effect/Name/VorazunBlinkIssueOrder=Vorazun Blink Issue Order
 Effect/Name/VortexArtanis=Vortex (Damage)
@@ -412,6 +446,8 @@ Unit/Name/SILiberatorAGMissile=SILiberator AG Missile
 Unit/Name/SILiberatorAGMorphModel=Infested Liberator
 Unit/Name/SILiberatorAmmoRestockWeapon=SILiberatorAmmoRestockWeapon
 Unit/Name/SILiberatorMorphModel=Infested Liberator
+Unit/Name/SILiberatorSprayDummy=SILiberator Spray Dummy
+Unit/Name/SILiberatorVolatileSpray=SILiberator Volatile Spray
 Unit/Name/SOAMothershipv4=Crimson Sovereign
 Unit/Name/SwarmLocus=Swarm Locus
 Unit/Name/SwarmNetwork=Swarm Network
@@ -448,6 +484,14 @@ Upgrade/Name/TerranVehicleAndShipWeaponsExtra=Terran Vehicle And Ship Weapons Ex
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel1=Terran Vehicle And Ship Weapons Extra Level 1
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel2=Terran Vehicle And Ship Weapons Extra Level 2
 Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel3=Terran Vehicle And Ship Weapons Extra Level 3
+Upgrade/Name/SITerranVehicleWeaponsExtra=Stukov Terran Vehicle Weapons Extra
+Upgrade/Name/SITerranVehicleWeaponsExtraLevel1=Stukov Terran Vehicle Weapons Extra Level 1
+Upgrade/Name/SITerranVehicleWeaponsExtraLevel2=Stukov Terran Vehicle Weapons Extra Level 2
+Upgrade/Name/SITerranVehicleWeaponsExtraLevel3=Stukov Terran Vehicle Weapons Extra Level 3
+Upgrade/Name/SITerranVehicleArmorsExtra=Stukov Terran Vehicle Armor Extra
+Upgrade/Name/SITerranVehicleArmorsExtraLevel1=Stukov Terran Vehicle Armor Extra Level 1
+Upgrade/Name/SITerranVehicleArmorsExtraLevel2=Stukov Terran Vehicle Armor Extra Level 2
+Upgrade/Name/SITerranVehicleArmorsExtraLevel3=Stukov Terran Vehicle Armor Extra Level 3
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
 Upgrade/Name/VorazunImprovedShields=Vorazun Improved Shields
 Upgrade/Name/VorazunImprovedVespene=Vorazun Improved Vespene
@@ -469,6 +513,7 @@ Weapon/Name/LanceMissileLaunchersMoving=250mm Punisher Cannons
 Weapon/Name/MothershipArtanisBeam=Purifier Beam
 Weapon/Name/SILiberatorAGWeapon=Corrosive Cannon
 Weapon/Name/SILiberatorAGWeapon2=Volatile Spray
+Weapon/Name/SILiberatorAGWeapon2Dummy=Volatile Spray Dummy
 Weapon/Name/SILiberatorSwarmFormPermanentStrafe=Swarm Form Permanent Strafe
 Weapon/Name/SOAMothershipLineAttack=Thermal Lance
 Weapon/Name/VoidBlast=Star Blast

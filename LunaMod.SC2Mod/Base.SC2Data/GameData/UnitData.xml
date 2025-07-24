@@ -49,6 +49,12 @@
     <CUnit id="BileLauncherZagaraMissile">
         <Sight value="3"/>
     </CUnit>
+    <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <TacticalAI value=""/>
+        <AIEvaluateAlias value=""/>
+    </CUnit>
     <CUnit id="CarrierRepairDrone">
         <Collide index="Flying" value="0"/>
         <Collide index="FlyingEscorts" value="1"/>
@@ -129,12 +135,15 @@
     <CUnit id="SILiberator">
         <BehaviorArray Link="SILiberatorSwarmFormHoldPositionWeapon"/>
         <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
+        <BehaviorArray Link="SILiberatorMitosis"/>
         <WeaponArray index="1" Link="SILiberatorSwarmFormPermanentStrafe"/>
         <EnergyMax value="100"/>
         <AbilArray Link="SILiberatorAGTarget"/>
         <AbilArray Link="SILiberatorMorphtoAG"/>
         <CardLayouts index="0">
             <LayoutButtons Face="LiberatorAGMode" Type="AbilCmd" AbilCmd="SILiberatorAGTarget,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SILiberatorAmmo" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="SILiberatorAutomatedMitosis" Type="Passive" Requirements="HaveInfestedSiegeTankAmmo" Row="1" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SILiberatorAG">
@@ -173,6 +182,9 @@
         <BehaviorArray Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="LiberatorInitialMovable"/>
         <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
+        <BehaviorArray Link="SILiberatorSprayDummyTracker"/>
+        <BehaviorArray Link="SILiberatorMitosis"/>
+        <WeaponArray Link="SILiberatorAGWeapon2Dummy"/>
         <WeaponArray Link="SILiberatorAGWeapon2"/>
         <WeaponArray Link="SILiberatorAGWeapon"/>
         <CardLayouts>
@@ -184,6 +196,8 @@
             <LayoutButtons Face="SILiberatorImprovedAoeAttack" Type="Passive" Requirements="HaveSILiberatorAoeAttack" Row="1" Column="0"/>
             <LayoutButtons Face="SILiberatorBecometheSwarm" Type="Passive" Requirements="HaveSILiberatorInfestedBees" Row="1" Column="1"/>
             <LayoutButtons Face="LiberatorAAMode" Type="AbilCmd" AbilCmd="SILiberatorAATarget,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="SILiberatorAmmo" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="SILiberatorAutomatedMitosis" Type="Passive" Requirements="HaveInfestedSiegeTankAmmo" Row="1" Column="4"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.625"/>
@@ -200,6 +214,30 @@
         <GlossaryWeakArray value="PhotonCannon"/>
         <GlossaryWeakArray value="MissileTurret"/>
         <HotkeyCategory value="Unit/Category/InfestedTerranUnits"/>
+        <LeaderAlias value="SILiberator"/>
+        <HotkeyAlias value="SILiberator"/>
+        <SelectAlias value="SILiberator"/>
+        <SubgroupAlias value="SILiberator"/>
+    </CUnit>
+    <CUnit id="SILiberatorSprayDummy">
+        <Race value="InfT"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <LifeRegenRate value="100000"/>
+        <Mover value="Fly"/>
+        <Speed value="3"/>
+        <Acceleration value="1000"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="SILiberatorSprayDummyTracker"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value=""/>
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>

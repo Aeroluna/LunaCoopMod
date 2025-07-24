@@ -469,6 +469,11 @@
         <EffectArray Operation="Set" Reference="Abil,SIAdvancedBuild,InfoArray[Build12].Button.Requirements"/>
         <EffectArray Operation="Set" Reference="Abil,SIStarportTrain,InfoArray[Train1].Button.Requirements"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeStukovMech">
+        <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Minerals]" Value="45"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Vespene]" Value="38"/>
+        <EffectArray Reference="Effect,SILiberatorMitosis,VitalArray[Energy].Change" Value="0.2"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
@@ -790,6 +795,11 @@
     </CUpgrade>
     <CUpgrade id="MasteryRaynorMedicSecondaryHeal">
         <EffectArray Reference="Effect,RaynorMasteryHealMedivacSecondary,RechargeVitalRate" Value="0.269400"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryStukovMechAttackSpeed">
+        <EffectArray Reference="Weapon,SILiberatorAGWeapon,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,SILiberatorAGWeapon2,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Behavior,SILiberatorSwarmFormPermanentDamageSearch,PeriodicEffectRateMultiplier" Value="0.01"/>
     </CUpgrade>
     <CUpgrade id="MedivacCaduceusReactor">
         <EffectArray index="0" Reference="Unit,Medivac,EnergyRegenRate" Value="0.5625"/>
@@ -1253,6 +1263,50 @@
         <EffectArray Operation="Set" Reference="Weapon,HellionTankMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
         <Name value="Upgrade/Name/TerranVehicleAndShipWeaponsExtraLevel3"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleWeaponsExtra">
+        <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
+        <EffectArray Reference="Effect,SILiberatorAGDamage,Amount" Value="5"/>
+        <EffectArray Reference="Effect,SILiberatorSprayTrackedDamage,Amount" Value="1"/>
+        <EffectArray Reference="Weapon,SILiberatorAGWeapon,Level" Value="1"/>
+        <EffectArray Reference="Weapon,SILiberatorAGWeapon2,Level" Value="1"/>
+        <AffectedUnitArray value="SILiberatorAG"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleWeaponsExtraLevel1" parent="SITerranVehicleWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,SILiberatorAGWeapon,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleWeaponsExtraLevel1"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleWeaponsExtraLevel2" parent="SITerranVehicleWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,SILiberatorAGWeapon,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleWeaponsExtraLevel2"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleWeaponsExtraLevel3" parent="SITerranVehicleWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,SILiberatorAGWeapon,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleWeaponsExtraLevel3"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleArmorsExtra">
+        <EditorCategories value="Race:Protoss,UpgradeType:ArmorBonus"/>
+        <EffectArray Reference="Unit,SILiberatorAG,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,SILiberatorAG,LifeArmor" Value="1"/>
+        <AffectedUnitArray value="SILiberatorAG"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleArmorsExtraLevel1" parent="SITerranVehicleArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAG,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAGMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleArmorsExtraLevel1"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleArmorsExtraLevel2" parent="SITerranVehicleArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAG,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAGMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleArmorsExtraLevel2"/>
+    </CUpgrade>
+    <CUpgrade id="SITerranVehicleArmorsExtraLevel3" parent="SITerranVehicleArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAG,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SILiberatorAGMorphModel,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <Name value="Upgrade/Name/SITerranVehicleArmorsExtraLevel3"/>
     </CUpgrade>
     <CUpgrade id="ZagaraGroundAttacksLevel1">
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserAcidSaliva,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level1.dds"/>

@@ -3,6 +3,85 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="SILiberatorDummyRange" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.SILiberatorTargetMorphPersistent.Start" Send="Create"/>
+        <On Terms="Effect.SILiberatorTargetMorphPersistent.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create LiberatorAGSearchRange"/>
+        <On Terms="ActorDestruction" Target="LiberatorAGSearchRange" Send="Destroy"/>
+        <Model value="LiberatorRangeIndicatorDummy"/>
+    </CActorModel>
+    <CActorModel id="SILiberatorAGBirthSearchIndicatorModel">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Effect.SILiberatorTargetMorphDelayPersistent.Stop" Send="Destroy"/>
+        <HostForProps Subject="_Unit" Scope="Caster"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpShadowSyncGround"/>
+        <ScopeBearingsTracking value="ForceOff"/>
+        <Model value="LiberatorAGSearchIndicator"/>
+    </CActorModel>
+    <CActorModel id="SILiberatorSprayPoolModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.SILiberatorSprayPoolCP.Start" Send="Create"/>
+        <On Terms="Effect.SILiberatorSprayPoolCP.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpShadow SOpRotationRandomDisc"/>
+        <Model value="AcidPool"/>
+        <Scale value="0.600000"/>
+    </CActorModel>
+    <CActorUnit id="SILiberatorSprayDummy" parent="GenericUnitBase" unitName="SILiberatorSprayDummy">
+        <Macros value="RemoveFlyerHelperMacro"/>
+        <Model value="Invisible"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
+    <CActorModel id="SILiberatorVolatieSprayAcid" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.SILiberatorSprayPool.On" Send="Create"/>
+        <On Terms="Behavior.SILiberatorSprayPool.Off" Send="Destroy"/>
+        <Model value="KaboomerAcidDebuff"/>
+        <MaxScale value="2.500000"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorAction id="SILiberatorVolatileSpray" parent="GenericAttack" effectImpact="SILiberatorSprayTrackedImpactSet" effectLaunch="SILiberatorSprayTrackedLM">
+        <LaunchAssets Model="BlightbringerVileStreamLaunch"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactMap index="None" Model="Stukov_Infested_Liberator_Missile_Impact"/>
+        <AccuracyHalfArc value="10.000000"/>
+    </CActorAction>
+    <CActorModel id="SILiberatorVolatileSprayImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.SILiberatorSprayTrackedImpactSet.Start" Send="Create"/>
+        <Model value="BlightbringerVileStreamImpact"/>
+    </CActorModel>
+    <CActorModel id="SILiberatorVolatileSprayLaunch" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.SILiberatorSprayTrackedLM.Start" Send="Create"/>
+        <Model value="BlightbringerVileStreamLaunch"/>
+    </CActorModel>
+    <CActorSound id="SILiberatorVolatileSprayLoopSound" parent="SoundContinuous">
+        <Sound value="Corruptor_CausticSpray_Loop"/>
+        <On Terms="Effect.SILiberatorSprayPoolCP.Start" Send="Create"/>
+        <On Terms="Effect.SILiberatorSprayPoolCP.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="SILiberatorVolatileSprayBuffLoopSound" parent="SoundContinuous">
+        <On Terms="Behavior.SILiberatorSprayPool.On" Send="Create"/>
+        <On Terms="Behavior.SILiberatorSprayPool.Off" Send="Destroy"/>
+        <Sound value="Corruptor_CausticSpray_Loop"/>
+    </CActorSound>
+    <CActorSound id="SILiberatorVolatileSprayLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.SILiberatorSprayTrackedLM.Start; At Caster" Send="Create"/>
+        <Sound value="Devourer_CorrosiveAcidLaunch"/>
+    </CActorSound>
+    <CActorMissile id="SILiberatorVolatileSprayMissile" parent="GenericAttackMissile" unitName="SILiberatorVolatileSpray">
+        <Model value="BlightbringerVileStream"/>
+        <Scale value="0.600000"/>
+    </CActorMissile>
     <CActorAction id="ColossusTaldarimAttack" effectAttack="ColossusTaldarimSet" effectImpact="Bogus" effectLaunch="Bogus">
         <On index="0" Terms="Effect.ColossusTaldarimSet.Stop; FromEffectTreeDescendant"/>
         <On index="1" Terms="Effect.Bogus.Start; FromEffectTreeDescendant"/>
@@ -107,16 +186,16 @@
         <SoundArray index="Click" value="SILiberator_Click"/>
         <SoundArray index="ClickError" value="SILiberator_ClickError"/>
         <SoundArray index="Highlight" value="SILiberator_Highlight"/>
+        <StatusColors index="Energy">
+            <ColorArray index="0" value="255,0,64,0"/>
+        </StatusColors>
         <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedliberator.dds"/>
+        <VitalColors index="Energy">
+            <ColorArray value="255,0,64,0"/>
+        </VitalColors>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
-        <StatusColors index="Energy">
-            <ColorArray index="0" value="255,0,255,0"/>
-        </StatusColors>
-        <VitalColors index="Energy">
-            <ColorArray value="255,0,255,0"/>
-        </VitalColors>
     </CActorUnit>
     <CActorUnit id="SILiberatorMorphModel" parent="GenericUnitBaseMorphTransition" unitName="LiberatorMorphModel">
         <Aliases value="_UnitLarge"/>
@@ -164,10 +243,10 @@
             <Image value="Assets\Textures\wireframe-zerg-stukov-infestedliberator.dds"/>
         </Wireframe>
         <StatusColors index="Energy">
-            <ColorArray index="0" value="255,0,255,0"/>
+            <ColorArray index="0" value="255,0,64,0"/>
         </StatusColors>
         <VitalColors index="Energy">
-            <ColorArray value="255,0,255,0"/>
+            <ColorArray value="255,0,64,0"/>
         </VitalColors>
     </CActorUnit>
     <CActorUnit id="SILiberatorAG" parent="GenericUnitBase" unitName="SILiberatorAG">
@@ -187,6 +266,10 @@
         <On Terms="AbilMorph.*.Start; MorphFrom SILiberatorAG" Send="Destroy"/>
         <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimPlay Visor Morph,Stand PlayForever 0.000000"/>
         <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon2.AttackStart" Target="LiberatorAGTurret" Send="LookAtEngage"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon2.AttackStart" Send="TimerKill ResetOnNoTargets"/>
+        <On Terms="WeaponStart.SILiberatorAGWeapon2.AttackStart" Send="AnimBracketStart AttackA Attack,A"/>
+        <On Terms="WeaponStop.SILiberatorAGWeapon2.AttackStop" Send="AnimBracketStop AttackA"/>
         <HostSiteOps Ops="SOpBankerLiberator"/>
         <Model value="Liberator_Stukov_Coop"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
@@ -216,10 +299,10 @@
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
         <StatusColors index="Energy">
-            <ColorArray index="0" value="255,0,255,0"/>
+            <ColorArray index="0" value="255,0,64,0"/>
         </StatusColors>
         <VitalColors index="Energy">
-            <ColorArray value="255,0,255,0"/>
+            <ColorArray value="255,0,64,0"/>
         </VitalColors>
     </CActorUnit>
     <CActorRange id="SILiberatorAGTargetRange" parent="RangeAbil" abil="SILiberatorAGTarget">
@@ -765,13 +848,14 @@
         <On Terms="ActorCreation" Send="AnimBaselineStart"/>
         <On Terms="ActorCreation" Send="AnimBlendTimeApply"/>
         <On Terms="ActorCreation" Send="StatusSet Morphed 0"/>
-        <On Terms="Effect.LiberatorTargetMorphDelayPersistent.Start" Send="Create LiberatorAGBirthSearchIndicatorModel"/>
+        <On Terms="Effect.SILiberatorTargetMorphDelayPersistent.Start" Send="Create SILiberatorAGBirthSearchIndicatorModel"/>
         <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom SILiberator" Target="SILiberatorSwarmFormCloud" Send="AnimBracketStop BSD"/>
         <StatusColors index="Energy">
-            <ColorArray index="0" value="255,0,255,0"/>
+            <ColorArray index="0" value="255,0,64,0"/>
         </StatusColors>
         <VitalColors index="Energy">
-            <ColorArray value="255,0,255,0"/>
+            <ColorArray value="255,0,64,0"/>
         </VitalColors>
     </CActorUnit>
     <CActorUnit id="SISCV">

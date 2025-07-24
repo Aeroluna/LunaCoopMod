@@ -106,6 +106,24 @@
         <Value value="20"/>
         <Vital value="Energy"/>
     </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareBehaviorCount id="SILiberatorSprayPoolCounterReset">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Value value="4"/>
+        <Behavior value="SILiberatorPoolCounter"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SILiberatorSprayCanPool">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SILiberatorPoolCounter"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="SILiberatorSprayDummyValidators">
+        <Type value="And"/>
+        <CombineArray value="CasterIsAttacking"/>
+        <CombineArray value="CasterNotDeadAndCasterNotStunned"/>
+    </CValidatorCombine>
+    <CValidatorCompareTrackedUnitsCount id="SILiberatorSprayNoDummyTracked">
+        <BehaviorLink value="SILiberatorSprayDummyTracker"/>
+    </CValidatorCompareTrackedUnitsCount>
     <CValidatorUnitType id="SourceIsScourge">
         <WhichUnit Value="Source"/>
         <Value value="Scourge"/>
