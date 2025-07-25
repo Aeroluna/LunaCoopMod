@@ -64,6 +64,12 @@ Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann s
 
 Changed to be distinct from the Medivac portrait.
 
+- Added new Medic ability: Restoration.
+  - Removes any negative effects on target allied unit.
+  - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
+
+*I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
+
 - Buffed Ignite Afterburners to additionally increase acceleration by 1000.
 - Removed the random delay on Battlecruiser weapons.
 - Reworked P2.
@@ -76,12 +82,6 @@ Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly worki
 - Reduced Firebat weapon backswing and damage point.
 
 Small change to make stutter-stepping with Firebats feel smoother. What mod doesn't do this?
-
-- Added new Medic ability: Restoration.
-  - Removes any negative effects on target allied unit.
-  - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
-
-*I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
 - Added autocast to Stimpack.
 
@@ -110,6 +110,8 @@ No longer have to queue a bunch of move commands to get value out of the Hyperio
 Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
 
 - Added cosmetic flame jets to Vultures when moving.
+
+*Bring it on!*
 
 ## Kerrigan
 
@@ -274,7 +276,7 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
 - Reworked Bile Launchers.
   - Can now target enemies automatically.
   - Bombardment ability now uses smart casting.
-  - Bile Bombs now reveal a radius of 3 around them.
+  - Bile Bomb projectiles now reveal a radius of 3 around them.
 
 Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
 
@@ -313,7 +315,7 @@ One of Zagara's greatest weaknesses is the inability to hit a critical mass of u
 - Added Swarm Networks.
   - Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
   - Temporary zerg last 60 seconds, are uncontrollable, and attack closest enemies.
-  - Queen will try to place Creep Tumor if too few other Creep Tumors nearby.
+  - Queen will try to place Creep Tumor if no other Creep Tumors nearby.
   - Limited to 4.
 
 If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking. These act as a sort of top bar ability that Zagara is missing.
@@ -332,7 +334,7 @@ Green warp ins! Dark Templar now use both variants and Shadow Guard use the Gold
 
 - Added Vespene Crystalization, increasing vespene harvest rate by 25%.
 
-Vorazun is one of the most vespene limited commanders. Increasing her vespene harvest rate should help with the large amount of upgrades she needs and her extremely gas heavy army.
+Vorazun is one of the most vespene limited commanders. Increasing her vespene harvest rate should help with the large amount of tech she needs and her extremely gas heavy army.
 
 - Buffed Vorazun level 1 perk to additionally increase the shields of all combat units (except Dark Templar) by 40.
 
@@ -348,7 +350,7 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
   - Can use Aurora Veil for 50 energy.
     - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
   - Can use Astral Storm for 75 energy.
-    - Does less damage in a large area than Psionic Storm for 20 seconds.
+    - Does less damage in a larger area than Psionic Storm for 20 seconds.
     - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
     - Applies P2, dealing massive damage.
   - Can use Fading Star after researching at a Templar Archives.
@@ -357,7 +359,7 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
   - Argus Crystal additionally grants Signifiers full energy.
   - Dark Archon upgrades moved to Templar Archives.
 
-A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. The addition of a damaging spellcaster also helps improve the value of increased energy regeneration from Vorazun's level 15 perk.
+A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. Can also heal units after they use Emergency Recall.
 
 - Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
 - Increased Dark Archon weapon damage to 25 (+10 vs Biological)
@@ -387,18 +389,18 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 
 ## Karax
 
-- Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes.
-- Reworked Carrier Repair Drone behavior to previous version, but with improved autocasting to no longer require stopping.
+- Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes listed below.
+- Reworked Carrier Repair Drone behavior to vanilla version, but with improved autocasting to no longer require stopping.
 - Removed Combat Chrono Wave.
 - Removed the ability to Chrono Boost defensive structures.
 - Nerfed Improved Reconstruction to 120 seconds.
-- Reworked Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Reworked Mirage weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
 
 - Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
 
-Copied from CXL. Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with ghosts.
+Copied from CXL. Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with nuke-happy Ghosts.
 
 - Added Instigators.
   - A Purifier variant Stalker.
@@ -420,7 +422,7 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 ## Abathur
 
-- Buffed Viper Consumption to also target structures.
+- Buffed Viper's Consumption ability to also target structures.
 - Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 2.
 - Buffed Biomass to additionally increase max energy by 1% per biomass.
 - Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
@@ -462,7 +464,7 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
   - Warp in Destroyer charges take 100% longer to accrue.
   - Warp in Destroyer charges max reduced by 50%.
 
-Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that do 0.5 damage to zergling with +1 armor. Reducing the amount of Destroyers active but making them more impactful should better match the visual intensity of their bouncing attack.
+Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that end up doing 0.5 damage to a Zergling that has +1 armor. Reducing the amount of active Destroyers but making them more impactful should better match the visual intensity of their bouncing attack.
 
 - Increased Vanguard attack count from 8 to 16.
 - Reduced Vanguard range by 1.5.
@@ -471,11 +473,13 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 - Reworked Wrathwalker attack to hitscan instead of a projectile.
 
-Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers much stronger against smaller units, especially with P1.
+Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
 - Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Restored missing beam effect on Ascendant's Psionic Orb.
+
+A few visual fixes/changes.
 
 ## Stukov
 
@@ -483,7 +487,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 - Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton that additionally increases Infested Banshee speed by 2.
   - Adds visual boosters to the Infested Banshee.
 
-These two simple changes make playing P2 infinitely smoother to play.
+These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
 
 - Reworked Rapid Hibernation to no longer require research.
 - Removed deceleration from Infested Banshee Burrow (no longer has to fully stop to cast).
@@ -519,7 +523,7 @@ Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, 
   - Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
   - Benefits from Automated Mitosis upgrade.
 
-I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Also gives more reason to invest in sky Stukov.
+I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Defender Mode covers significantly less ground than an Infested Siege Tank, but it has more DPS.
 
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.
@@ -531,12 +535,12 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 - Reduced push priority of infantry to 9.
 - Increased push priority of uprooted buildings to 11.
 
-It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other units out of the way. This helps trying to push your bunker line up.
+It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other smaller units out of the way. This helps trying to push your bunker line up.
 
 - Added Infested SCV portrait.
 - Added Infested Diamondback portrait.
 - Added Infested Liberator portrait.
-- Changed Infested Siege Tank portrait to Infested Diamondback portrait.
+- Changed Infested Siege Tank portrait to previous Infested Diamondback portrait.
 - Changed Infested Civilian portrait.
 - Added Infested Trooper model and portrait.
 
@@ -546,6 +550,8 @@ Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
 - Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
 - Fixed a bug where you could not queue multiple upgrades on the Infested Command Center.
 
+A few fixes. The Siege Tank bug took way too long to figure out...
+
 ## Fenix
 
 - Remove Disruptors.
@@ -554,16 +560,16 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 ## Dehaka
 
-- Changed Primal Impaler model.
-
-The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
-
-- Nerfed the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
+- Reduced the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
 - Added a cleave to Dehaka's Claws weapon.
 - Added splash damage to Dehaka's Mammoth Beam weapon.
 - Increased the damage of Dehaka's Mammoth Beam by 50%.
 
 Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get instead of feeling like a damage nerf.
+
+- Changed Primal Impaler model.
+
+The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
 
 ## Tychus
 
@@ -581,18 +587,20 @@ For some reason, Predictive Blink would autocast once and then kinda just chill 
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
 
+The Ihan-rii skin is basically a more complete version of Zeratul's skin. Also added some more lore-accurate portraits.
+
 ## Stetmann
 
 - Buffed Stetellites by adding Map Boss attribute.
 
-Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite to far forward, a Propagator could just feast on them for free.
+Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free.
 
 ## Mutators
 
 - Reworked Fatal Attraction to no longer make the units uncommandable.
   - No longer disables units attacks, abilities, and movement.
   - Pull strength increased by 20%.
-  - Dehaka's Primal Impalers are no longer pulled.
+  - Fixed bug where Dehaka's Primal Impalers were pulled when burrowed.
 
 The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
 
@@ -626,3 +634,5 @@ The most infurating mutator because it can permastun your units as well as inter
 - Enforcer / Ihan-rii Immortal Portrait - DaveSpectre
 - Vulture with flaming Jets - DaveSpectre
 - Nerazim Structure Pack (+ effects) - DaveSpectre
+
+DaveSpectre is the goat <3
