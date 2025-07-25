@@ -458,6 +458,60 @@ void lib74A68E34_gt_ApplyMaguroChanges_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DisableMindControlTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DisableMindControlTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libCOMI_gt_MindControlSupplyOn, false);
+    TriggerEnable(libCOMI_gt_MindControlSupplyOff, false);
+    TriggerEnable(libCOMI_gt_BehaviorPermanentlyChangesOwner, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DisableMindControlTriggers_Init () {
+    lib74A68E34_gt_DisableMindControlTriggers = TriggerCreate("lib74A68E34_gt_DisableMindControlTriggers_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_DisableMindControlTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MindControlAddCoopUnitBehavior
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MindControlAddCoopUnitBehavior_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_mindcontrolunit;
+    string lv_mindcontrolbehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_mindcontrolunit = EventUnit();
+    lv_mindcontrolbehavior = EventUnitBehavior();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(lv_mindcontrolunit, "OnDeathControllerDeathPrevent") == false)) {
+        UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", lv_mindcontrolunit, 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MindControlAddCoopUnitBehavior_Init () {
+    lib74A68E34_gt_MindControlAddCoopUnitBehavior = TriggerCreate("lib74A68E34_gt_MindControlAddCoopUnitBehavior_Func");
+    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MindControlAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MindControlAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeRefresh);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: GeneralNydusUnloadHero
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_GeneralNydusUnloadHero_Func (bool testConds, bool runActions) {
@@ -894,6 +948,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_ApplyMaguroChanges_Init();
+    lib74A68E34_gt_DisableMindControlTriggers_Init();
+    lib74A68E34_gt_MindControlAddCoopUnitBehavior_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();

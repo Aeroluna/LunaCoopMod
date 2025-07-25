@@ -14,6 +14,11 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
 
+- Reworked mind control effects to keep upgrades of targeted unit.
+- Reworked Dark Archon Mind Control ability to no longer take up supply.
+
+Who cares if it's OP? If Zeratul exists, what does OP really mean anyways? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
+
 - Removed Armored attribute from Queens.
 
 No more getting obliterated by Immortals.
