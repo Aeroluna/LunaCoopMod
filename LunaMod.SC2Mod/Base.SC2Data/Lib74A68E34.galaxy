@@ -20,6 +20,18 @@ void lib74A68E34_InitLibraries () {
     lib01833E95_InitVariables();
 }
 
+// Variable Initialization
+bool lib74A68E34_InitVariables_completed = false;
+
+void lib74A68E34_InitVariables () {
+    if (lib74A68E34_InitVariables_completed) {
+        return;
+    }
+
+    lib74A68E34_InitVariables_completed = true;
+
+}
+
 // Custom Script
 //--------------------------------------------------------------------------------------------------
 // Custom Script: ApplyVoicePack
@@ -45,6 +57,71 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
+string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType) {
+    // Variable Declarations
+    string lv_result;
+    int lv_morphUnitIndex;
+    string lv_morphUnits;
+
+    // Automatic Variable Declarations
+    const int auto74E127F8_ae = libA8FDA37D_gv_uT_DL_MaxUnits;
+    int auto74E127F8_var;
+    string auto872F6E3E_userType;
+    int auto872F6E3E_i;
+    int auto25E63305_ae;
+    const int auto25E63305_ai = 1;
+    const int autoF3A5A78C_ae = libA8FDA37D_gv_uT_DL_MaxUnits;
+    int autoF3A5A78C_var;
+
+    // Variable Initialization
+
+    // Implementation
+    auto74E127F8_var = 1;
+    for ( ; auto74E127F8_var <= auto74E127F8_ae; auto74E127F8_var += 1 ) {
+        if ((lp_unitType == lib74A68E34_gv_cachedMorphUnits[auto74E127F8_var].lv_morphUnit)) {
+            return lib74A68E34_gv_cachedMorphUnits[auto74E127F8_var].lv_sourceUnit;
+        }
+
+    }
+    auto872F6E3E_userType = "MorphUnits";
+    auto872F6E3E_i = 1;
+    for ( ; auto872F6E3E_i <= UserDataInstanceCount(auto872F6E3E_userType) ; auto872F6E3E_i += 1 ) {
+        lv_morphUnits = UserDataInstance(auto872F6E3E_userType, auto872F6E3E_i);
+        auto25E63305_ae = UserDataFieldValueCount("MorphUnits", "Morph Units");
+        lv_morphUnitIndex = 1;
+        for ( ; ( (auto25E63305_ai >= 0 && lv_morphUnitIndex <= auto25E63305_ae) || (auto25E63305_ai < 0 && lv_morphUnitIndex >= auto25E63305_ae) ) ; lv_morphUnitIndex += auto25E63305_ai ) {
+            if ((lp_unitType == UserDataGetUnit("MorphUnits", lv_morphUnits, "Morph Units", lv_morphUnitIndex))) {
+                lv_result = UserDataGetUnit("MorphUnits", lv_morphUnits, "Source Unit", lv_morphUnitIndex);
+                break;
+            }
+
+        }
+        if ((lv_result != null)) {
+            break;
+        }
+
+    }
+    if ((lv_result == null)) {
+        lv_result = lp_unitType;
+    }
+
+    autoF3A5A78C_var = 1;
+    for ( ; autoF3A5A78C_var <= autoF3A5A78C_ae; autoF3A5A78C_var += 1 ) {
+        if ((lib74A68E34_gv_cachedMorphUnits[autoF3A5A78C_var].lv_morphUnit == "")) {
+            lib74A68E34_gv_cachedMorphUnits[autoF3A5A78C_var].lv_morphUnit = lp_unitType;
+            lib74A68E34_gv_cachedMorphUnits[autoF3A5A78C_var].lv_sourceUnit = lv_result;
+            break;
+        }
+        else {
+            if ((autoF3A5A78C_var == libA8FDA37D_gv_uT_DL_MaxUnits)) {
+                UIDisplayMessage(PlayerGroupSingle(EventUnitDamageSourcePlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D3F4D90E"));
+            }
+
+        }
+    }
+    return lv_result;
+}
+
 bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport) {
     // Automatic Variable Declarations
     unitgroup auto91D6D4B5_g;
@@ -355,6 +432,231 @@ void lib74A68E34_gt_ApplyCommanderRewards_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ApplyMaguroChanges
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib01833E95_gt_AF_TopBarClicked, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseEntersTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseExitsTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_UnloadHeroic, true);
+    TriggerEnable(lib01833E95_gt_K2_Karax20, false);
+    TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ApplyMaguroChanges_Init () {
+    lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MCDisableMindControlTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MCDisableMindControlTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libCOMI_gt_MindControlSupplyOn, false);
+    TriggerEnable(libCOMI_gt_MindControlSupplyOff, false);
+    TriggerEnable(libCOMI_gt_BehaviorPermanentlyChangesOwner, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MCDisableMindControlTriggers_Init () {
+    lib74A68E34_gt_MCDisableMindControlTriggers = TriggerCreate("lib74A68E34_gt_MCDisableMindControlTriggers_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_MCDisableMindControlTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MCAddCoopUnitBehavior
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MCAddCoopUnitBehavior_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_mindcontrolunit;
+    string lv_mindcontrolbehavior;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_mindcontrolunit = EventUnit();
+    lv_mindcontrolbehavior = EventUnitBehavior();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(lv_mindcontrolunit, "OnDeathControllerDeathPrevent") == false)) {
+        UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", lv_mindcontrolunit, 1);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MCAddCoopUnitBehavior_Init () {
+    lib74A68E34_gt_MCAddCoopUnitBehavior = TriggerCreate("lib74A68E34_gt_MCAddCoopUnitBehavior_Func");
+    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MCAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MCAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeRefresh);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LogDisableOriginal
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_LogDisableOriginal_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libA8FDA37D_gt_UT_DL_DamageLogging, false);
+    TriggerEnable(libA8FDA37D_gt_UT_DL_LogDisplay, false);
+    TriggerEnable(lib74A68E34_gt_LogDamageLogging, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_LogDisableOriginal_Init () {
+    lib74A68E34_gt_LogDisableOriginal = TriggerCreate("lib74A68E34_gt_LogDisableOriginal_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_LogDisableOriginal);
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_LogDisableOriginal);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LogDisplay
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_LogDisplay_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_vChangeInDataPlayer;
+
+    // Automatic Variable Declarations
+    string autoB108FE4B_val;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Visual, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB108FE4B_val = StringWord(EventChatMessage(false), 2);
+    if (autoB108FE4B_val == "2") {
+        if ((libA8FDA37D_gv_uT_DL_PlayerData[EventPlayer()] != libA8FDA37D_gf_UT_OtherPlayer(EventPlayer()))) {
+            libA8FDA37D_gv_uT_DL_PlayerData[EventPlayer()] = libA8FDA37D_gf_UT_OtherPlayer(EventPlayer());
+            lv_vChangeInDataPlayer = true;
+        }
+
+    }
+    else if (autoB108FE4B_val == "clear") {
+        libA8FDA37D_gf_UT_DL_LogClear(EventPlayer());
+        return true;
+    }
+    else {
+        if ((libA8FDA37D_gv_uT_DL_PlayerData[EventPlayer()] != EventPlayer())) {
+            libA8FDA37D_gv_uT_DL_PlayerData[EventPlayer()] = EventPlayer();
+            lv_vChangeInDataPlayer = true;
+        }
+
+    }
+    if (((libA8FDA37D_gv_uT_DL_LogDialog == c_invalidDialogId) || (lv_vChangeInDataPlayer == true) || (DialogIsVisible(libA8FDA37D_gv_uT_DL_LogDialog, EventPlayer()) == false))) {
+        libA8FDA37D_gf_UT_DL_DialogCreate();
+        libA8FDA37D_gf_UT_DL_DialogUpdate(libA8FDA37D_gv_uT_DL_PlayerData[EventPlayer()], EventPlayer());
+        DialogSetVisible(libA8FDA37D_gv_uT_DL_LogDialog, PlayerGroupSingle(EventPlayer()), true);
+        TriggerExecute(libA8FDA37D_gt_UT_DL_PeriodicUpdate, true, false);
+    }
+    else {
+        DialogSetVisible(libA8FDA37D_gv_uT_DL_LogDialog, PlayerGroupSingle(EventPlayer()), false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_LogDisplay_Init () {
+    lib74A68E34_gt_LogDisplay = TriggerCreate("lib74A68E34_gt_LogDisplay_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_LogDisplay, c_playerAny, "-log", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: LogDamageLogging
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_LogDamageLogging_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto13250914_ae = libA8FDA37D_gv_uT_DL_MaxUnits;
+    int auto13250914_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(libA8FDA37D_gv_uT_DL_LoggingPlayers, EventUnitDamageSourcePlayer()) == true))) {
+            return false;
+        }
+
+        if (!((EventUnitDamageSourceUnit() != EventUnit()))) {
+            return false;
+        }
+
+        if (!((EventUnitDamageAmount() >= 0.1))) {
+            return false;
+        }
+
+        if (!((EventUnitDamageSourceUnit() != null))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto13250914_var = 1;
+    for ( ; auto13250914_var <= auto13250914_ae; auto13250914_var += 1 ) {
+        if ((lib74A68E34_gf_LogGetSourceUnit(UnitGetType(EventUnitDamageSourceUnit())) == libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType)) {
+            libA8FDA37D_gf_UT_DL_AddHealingDamage(auto13250914_var, 0, EventUnitDamageSourcePlayer(), EventUnitDamageAmount());
+            break;
+        }
+        else {
+            if ((libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType == null)) {
+                libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType = UnitGetType(EventUnitDamageSourceUnit());
+                libA8FDA37D_gf_UT_DL_AddHealingDamage(auto13250914_var, 0, EventUnitDamageSourcePlayer(), EventUnitDamageAmount());
+                break;
+            }
+            else {
+                if ((auto13250914_var == libA8FDA37D_gv_uT_DL_MaxUnits)) {
+                    UIDisplayMessage(PlayerGroupSingle(EventUnitDamageSourcePlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_07197534"));
+                }
+
+            }
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_LogDamageLogging_Init () {
+    lib74A68E34_gt_LogDamageLogging = TriggerCreate("lib74A68E34_gt_LogDamageLogging_Func");
+    TriggerEnable(lib74A68E34_gt_LogDamageLogging, false);
+    TriggerAddEventUnitDamaged(lib74A68E34_gt_LogDamageLogging, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ActivateCommanderTriggers
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActions) {
@@ -381,6 +683,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         lv_playerCommander = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
         auto560DABDD_val = lv_playerCommander;
         if (auto560DABDD_val == "TerranRaynor") {
+            TriggerEnable(lib74A68E34_gt_RaynorMULEMineralSearch, true);
             TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, true);
         }
         else if (auto560DABDD_val == "ProtossArtanis") {
@@ -433,85 +736,6 @@ void lib74A68E34_gt_ActivateCommanderTriggers_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ApplyMaguroChanges
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(lib01833E95_gt_AF_TopBarClicked, true);
-    TriggerEnable(lib01833E95_gt_AF_MouseEntersTopBar, true);
-    TriggerEnable(lib01833E95_gt_AF_MouseExitsTopBar, true);
-    TriggerEnable(lib01833E95_gt_AF_UnloadHeroic, true);
-    TriggerEnable(lib01833E95_gt_K2_Karax20, false);
-    TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ApplyMaguroChanges_Init () {
-    lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DisableMindControlTriggers
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_DisableMindControlTriggers_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(libCOMI_gt_MindControlSupplyOn, false);
-    TriggerEnable(libCOMI_gt_MindControlSupplyOff, false);
-    TriggerEnable(libCOMI_gt_BehaviorPermanentlyChangesOwner, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_DisableMindControlTriggers_Init () {
-    lib74A68E34_gt_DisableMindControlTriggers = TriggerCreate("lib74A68E34_gt_DisableMindControlTriggers_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_DisableMindControlTriggers);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MindControlAddCoopUnitBehavior
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MindControlAddCoopUnitBehavior_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_mindcontrolunit;
-    string lv_mindcontrolbehavior;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_mindcontrolunit = EventUnit();
-    lv_mindcontrolbehavior = EventUnitBehavior();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((UnitHasBehavior2(lv_mindcontrolunit, "OnDeathControllerDeathPrevent") == false)) {
-        UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", lv_mindcontrolunit, 1);
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MindControlAddCoopUnitBehavior_Init () {
-    lib74A68E34_gt_MindControlAddCoopUnitBehavior = TriggerCreate("lib74A68E34_gt_MindControlAddCoopUnitBehavior_Func");
-    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MindControlAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeCreate);
-    TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MindControlAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeRefresh);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: GeneralNydusUnloadHero
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_GeneralNydusUnloadHero_Func (bool testConds, bool runActions) {
@@ -559,7 +783,7 @@ bool lib74A68E34_gt_RaynorMULEMineralSearch_Func (bool testConds, bool runAction
         return true;
     }
 
-    Wait(1.0, c_timeGame);
+    Wait(0.5, c_timeGame);
     if ((UnitOrderCount(EventUnit()) == 0)) {
         autoCA11A285_g = UnitGroupSearch(null, c_playerAny, UnitGetPosition(EventUnit()), 4.0, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         autoCA11A285_u = UnitGroupCount(autoCA11A285_g, c_unitCountAll);
@@ -579,6 +803,7 @@ bool lib74A68E34_gt_RaynorMULEMineralSearch_Func (bool testConds, bool runAction
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_RaynorMULEMineralSearch_Init () {
     lib74A68E34_gt_RaynorMULEMineralSearch = TriggerCreate("lib74A68E34_gt_RaynorMULEMineralSearch_Func");
+    TriggerEnable(lib74A68E34_gt_RaynorMULEMineralSearch, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_RaynorMULEMineralSearch, null, "MULETimedLife", c_unitBehaviorChangeCreate);
 }
 
@@ -983,10 +1208,13 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
-    lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_ApplyMaguroChanges_Init();
-    lib74A68E34_gt_DisableMindControlTriggers_Init();
-    lib74A68E34_gt_MindControlAddCoopUnitBehavior_Init();
+    lib74A68E34_gt_MCDisableMindControlTriggers_Init();
+    lib74A68E34_gt_MCAddCoopUnitBehavior_Init();
+    lib74A68E34_gt_LogDisableOriginal_Init();
+    lib74A68E34_gt_LogDisplay_Init();
+    lib74A68E34_gt_LogDamageLogging_Init();
+    lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();
     lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
@@ -1016,6 +1244,7 @@ void lib74A68E34_InitLib () {
     lib74A68E34_InitLib_completed = true;
 
     lib74A68E34_InitLibraries();
+    lib74A68E34_InitVariables();
     lib74A68E34_InitCustomScript();
     lib74A68E34_InitTriggers();
 }

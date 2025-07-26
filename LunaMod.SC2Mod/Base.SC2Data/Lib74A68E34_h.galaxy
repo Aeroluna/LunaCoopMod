@@ -1,9 +1,19 @@
-include "TriggerLibs/natives"
+include "LibA8FDA37D"
 
 //--------------------------------------------------------------------------------------------------
 // Library: LunaMod
 //--------------------------------------------------------------------------------------------------
+// Structures
+struct lib74A68E34_gs_MorphUnitType {
+    string lv_sourceUnit;
+    string lv_morphUnit;
+};
+
+// Variable Declarations
+lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
+
 // Function Declarations
+string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType);
 bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport);
 void lib74A68E34_gf_ZagaraSwarmLocusUpdatePrice (int lp_player);
 void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player);
@@ -15,10 +25,13 @@ void lib74A68E34_gf_TychusEnableUIReorder (int lp_player);
 trigger lib74A68E34_gt_TestCommand;
 trigger lib74A68E34_gt_ExtraUpgrades;
 trigger lib74A68E34_gt_ApplyCommanderRewards;
-trigger lib74A68E34_gt_ActivateCommanderTriggers;
 trigger lib74A68E34_gt_ApplyMaguroChanges;
-trigger lib74A68E34_gt_DisableMindControlTriggers;
-trigger lib74A68E34_gt_MindControlAddCoopUnitBehavior;
+trigger lib74A68E34_gt_MCDisableMindControlTriggers;
+trigger lib74A68E34_gt_MCAddCoopUnitBehavior;
+trigger lib74A68E34_gt_LogDisableOriginal;
+trigger lib74A68E34_gt_LogDisplay;
+trigger lib74A68E34_gt_LogDamageLogging;
+trigger lib74A68E34_gt_ActivateCommanderTriggers;
 trigger lib74A68E34_gt_GeneralNydusUnloadHero;
 trigger lib74A68E34_gt_RaynorMULEMineralSearch;
 trigger lib74A68E34_gt_RaynorHyperionWeaponSwitch;
@@ -33,4 +46,7 @@ trigger lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy;
 trigger lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior;
 trigger lib74A68E34_gt_VorazunShadowArchonGender;
 trigger lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast;
+
+// Library Initialization
+void lib74A68E34_InitVariables ();
 
