@@ -546,6 +546,43 @@ void lib74A68E34_gt_GeneralNydusUnloadHero_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: RaynorMULEMineralSearch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RaynorMULEMineralSearch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoCA11A285_g;
+    int autoCA11A285_u;
+    unit autoCA11A285_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(1.0, c_timeGame);
+    if ((UnitOrderCount(EventUnit()) == 0)) {
+        autoCA11A285_g = UnitGroupSearch(null, c_playerAny, UnitGetPosition(EventUnit()), 4.0, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoCA11A285_u = UnitGroupCount(autoCA11A285_g, c_unitCountAll);
+        for (;; autoCA11A285_u -= 1) {
+            autoCA11A285_var = UnitGroupUnitFromEnd(autoCA11A285_g, autoCA11A285_u);
+            if (autoCA11A285_var == null) { break; }
+            if ((UnitHasBehavior2(autoCA11A285_var, "MineralFieldMinerals") == true)) {
+                UnitIssueOrder(EventUnit(), OrderTargetingUnit(AbilityCommand("MULEGather", 0), autoCA11A285_var), c_orderQueueReplace);
+            }
+
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RaynorMULEMineralSearch_Init () {
+    lib74A68E34_gt_RaynorMULEMineralSearch = TriggerCreate("lib74A68E34_gt_RaynorMULEMineralSearch_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_RaynorMULEMineralSearch, null, "MULETimedLife", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: RaynorHyperionWeaponSwitch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_RaynorHyperionWeaponSwitch_Func (bool testConds, bool runActions) {
@@ -951,6 +988,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_DisableMindControlTriggers_Init();
     lib74A68E34_gt_MindControlAddCoopUnitBehavior_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();
+    lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();

@@ -114,6 +114,10 @@ No longer have to queue a bunch of move commands to get value out of the Hyperio
 
 Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
 
+- Added behavior to Calldown MULE, will try to search for nearby mineral field to gather if not ordered directly.
+
+Ever get annoyed when you *slightly* missed a mineral field and your MULE just afked? Does not affect MULEs dropped away from minerals.
+
 - Added cosmetic flame jets to Vultures when moving.
 
 *Bring it on!*
