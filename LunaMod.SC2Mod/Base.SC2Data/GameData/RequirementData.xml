@@ -35,6 +35,14 @@
     <CRequirement id="HaveSIBansheeIncubationChambers">
         <NodeArray index="Use" Link="CountUpgradeSIBansheeIncubationChambersCompleteOnly3518554317"/>
     </CRequirement>
+    <CRequirement id="HaveSILiberatorEnergyLeech">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSILiberatorNecroplasmicSynthesisCompleteOnly1838460704"/>
+        <NodeArray index="Show" Link="AndCountUpgradeStukovCommanderCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveSILiberatorInfestedBees">
+        <NodeArray index="Use" Link="CountUpgradeLiberatorInfestedBecomeSwarmCompleteOnly4025277999"/>
+    </CRequirement>
     <CRequirement id="HaveScienceVesselFreeRepair">
         <NodeArray index="Show" Link="CountUpgradeSwannCommanderCompleteOnly"/>
     </CRequirement>
@@ -78,6 +86,14 @@
     </CRequirement>
     <CRequirement id="LearnDisruptorSecondExplosion">
         <NodeArray index="Show" Link="NotCountUpgradeDisruptorSecondExplosionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnSILiberatorEnergyLeech">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUnitSIArmoryCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUpgradeStukovCommanderCompleteOnlyNotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnSILiberatorInfestedBees">
+        <NodeArray index="Use" Link=""/>
     </CRequirement>
     <CRequirement id="LearnSolarEfficiencyLevel3">
         <NodeArray index="Use" Link="AndOrCountUnitRoboticsBayCompleteOnlyTechTreeCheatCountUnitFleetBeaconCompleteOnlyTechTreeCheatCountUpgradeSolarEfficiencyLevel2CompleteOnly"/>

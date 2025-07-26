@@ -517,18 +517,35 @@ These guys clog up your supply until they time out, this should help mitigate th
 Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
 
 - Added strafing movement to Infested Liberator Cloud Dispersal.
+- Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
 - Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
 - Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
 
-Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. Increasing the lingering duration allows running away before the 85% damage reduction fades.
+Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
+
+- Added 100 max energy to Infested Liberators.
+- Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
+
+Added a new mechanic to Infested Liberators that lets them eat Infested to empower their weapons, similar to Infested Siege Tanks.
 
 - Added Defender Mode ability to Infested Liberators.
   - Uses a slightly slower attack speed version of the Liberator AG weapon.
   - Has a Volatile Spray weapon which sprays enemies with acid, leaving behind a pool that deals damage and slows, but requires energy to use.
-  - Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
-  - Benefits from Automated Mitosis upgrade.
 
 I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Defender Mode covers significantly less ground than an Infested Siege Tank, but it has more DPS.
+
+- Added Volatile Fuel passive which increases attack and movement speed by 25% while attacking with Cloud Dispersal at the cost of 2 energy per second.
+
+*Zoooom*
+
+- Increased damage of Viral Swarm from 10 to 15 (AOE and primary).
+- Removed Viral Contamination upgrade.
+- Added Necroplasmic Synthesis upgrade which restores energy equal to 2.5% of damage dealt.
+  - Requires Armory to research.
+  - Upgraded by P1.
+- Removed Armory requirement from Cloud Dispersal.
+
+Made Viral Contamination upgrade partially baseline in favor of a new upgrade that compliments the Infested Liberator's new mechanics. Also lowered the tech requirement of Cloud Dispersal as it's a much-get upgrade.
 
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.

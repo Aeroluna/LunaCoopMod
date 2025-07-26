@@ -141,12 +141,24 @@
         <Period value="0.2"/>
         <PeriodicEffect value="SILiberatorMitosis"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SILiberatorNecroplasmicSynthesis">
+        <InfoFlags index="Hidden" value="1"/>
+        <Requirements value="HaveSILiberatorEnergyLeech"/>
+        <Modification>
+            <VitalDamageLeechArray index="Energy">
+                <KindArray index="Spell" value="0.025"/>
+                <KindArray index="Melee" value="0.025"/>
+                <KindArray index="Ranged" value="0.025"/>
+                <KindArray index="Splash" value="0.025"/>
+                <KindArray index="NoProc" value="0.025"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="SILiberatorPoolCounter">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <BuffFlags index="RefreshStack" value="1"/>
-        <MaxStackCount value="65535"/>
-        <Duration value="1"/>
+        <Duration value="0.2"/>
     </CBehaviorBuff>
     <CBehaviorUnitTracker id="SILiberatorSprayDummyTracker">
         <InfoFlags index="Hidden" value="1"/>
@@ -167,6 +179,23 @@
             <WeaponDisableArray value="SILiberatorSwarmFormPermanentStrafe"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SILiberatorSwarmFormPermanentDamageSearch">
+        <DisableValidatorArray value="SILiberatorNotUseVolatileFuel"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SILiberatorSwarmFormPermanentDamageSearchFueled">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:InfestedTerran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SILiberatorUseVolatileFuel"/>
+        <RemoveValidatorArray value="HaveSILiberatorSwarmFormPermanentTracker"/>
+        <RemoveValidatorArray value="CasterNotStunned"/>
+        <RemoveValidatorArray value="NotStasis"/>
+        <RemoveValidatorArray value="CanUseAttack"/>
+        <TimeScaleSource Value="Global"/>
+        <Period value="0.75"/>
+        <PeriodicEffect value="SILiberatorSwarmFormPermanentSplashSearch"/>
+        <FinalEffect value="SILiberatorSwarmFormPermanentDamageResistantRB"/>
+        <Modification AccelerationBonus="1000"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="SILiberatorSwarmFormPermanentTracker">
         <Duration value="2"/>
     </CBehaviorBuff>
@@ -177,6 +206,15 @@
         <DisableValidatorArray value="CasterNotStunnedorStasised"/>
         <Period value="2.5"/>
         <PeriodicEffect value="SIBansheeIncubationChambersBurrowedCU"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SILiberatorVolatileFuel">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-kerrigan-vespeneefficiency.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SILiberatorUseVolatileFuel"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="SILiberatorVolatileFuelMU"/>
+        <Modification MoveSpeedMultiplier="1.25" AccelerationBonus="10"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ScourgeSplashReduction">
         <InfoFlags index="Hidden" value="1"/>

@@ -109,12 +109,6 @@
         <Value value="20"/>
         <Vital value="Energy"/>
     </CValidatorUnitCompareVital>
-    <CValidatorUnitCompareBehaviorCount id="SILiberatorSprayPoolCounterReset">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="2"/>
-        <Behavior value="SILiberatorPoolCounter"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="SILiberatorSprayCanPool">
         <WhichUnit Value="Caster"/>
         <Behavior value="SILiberatorPoolCounter"/>
@@ -127,6 +121,15 @@
     <CValidatorCompareTrackedUnitsCount id="SILiberatorSprayNoDummyTracked">
         <BehaviorLink value="SILiberatorSprayDummyTracker"/>
     </CValidatorCompareTrackedUnitsCount>
+    <CValidatorCombine id="SILiberatorUseVolatileFuel">
+        <Type value="And"/>
+        <CombineArray value="CasterHas3Energy"/>
+        <CombineArray value="HaveSILiberatorSwarmFormPermanentTracker"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SILiberatorNotUseVolatileFuel">
+        <CombineArray value="SILiberatorUseVolatileFuel"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="SourceIsScourge">
         <WhichUnit Value="Source"/>
         <Value value="Scourge"/>

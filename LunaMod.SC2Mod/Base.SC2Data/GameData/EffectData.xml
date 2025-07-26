@@ -64,6 +64,29 @@
         <EffectArray value="InfestedAcidSpines"/>
         <EffectArray value="SIInfestedTrooperMarinePlaguedMunitions"/>
     </CEffectSet>
+    <CEffectDamage id="SILiberatorDamageDirect">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="SILiberatorDamageDirectSwarmForm">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="SILiberatorDamageSplash">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="SILiberatorDamageSplashSwarmForm">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="SILiberatorSwarmFormPermanentDamagePrimary">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="SILiberatorSwarmFormPermanentDamageSearchFueledAB">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SILiberatorSwarmFormPermanentDamageSearchFueled"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="SILiberatorSwarmFormPermanentDamageSplash">
+        <Amount value="15"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="SILiberatorTargetMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="SILiberatorTargetMorphPersistent"/>
@@ -335,13 +358,8 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Behavior value="SILiberatorPoolCounter"/>
+        <ValidatorArray index="0" value="SILiberatorSprayCanPool"/>
     </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="SILiberatorSprayPoolCounterRB">
-        <ValidatorArray index="0" value="SILiberatorSprayPoolCounterReset"/>
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="SILiberatorPoolCounter"/>
-    </CEffectRemoveBehavior>
     <CEffectDamage id="SILiberatorSprayPoolDamage">
         <EditorCategories value=""/>
         <Visibility value="Hidden"/>
@@ -368,7 +386,6 @@
         <EffectArray value="SILiberatorSprayTrackedDamage"/>
         <EffectArray value="SILiberatorSprayPoolCP"/>
         <EffectArray value="SILiberatorSprayPoolCounterAB"/>
-        <EffectArray value="SILiberatorSprayPoolCounterRB"/>
     </CEffectSet>
     <CEffectLaunchMissile id="SILiberatorSprayTrackedLM">
         <EditorCategories value="Race:Terran"/>
@@ -476,6 +493,7 @@
     </CEffectSet>
     <CEffectSet id="SILiberatorSwarmFormPermanentImpactSet">
         <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown2"/>
+        <EffectArray value="SILiberatorSwarmFormPermanentDamageSearchFueledAB"/>
     </CEffectSet>
     <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown">
         <EditorCategories value="Race:InfestedTerran"/>
@@ -497,6 +515,12 @@
         <SpawnUnit value="StukovInfestBroodling"/>
         <WhichLocation Value="TargetPoint"/>
     </CEffectCreateUnit>
+    <CEffectModifyUnit id="SILiberatorVolatileFuelMU">
+        <EditorCategories value=""/>
+        <VitalArray index="Energy">
+            <Change value="-0.5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
     </CEffectDamage>

@@ -59,6 +59,9 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
+    <CActorModel id="SILiberatorSwarmFormCloud">
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+    </CActorModel>
     <CActorModel id="SILiberatorVolatieSprayAcid" parent="ModelAnimationStyleContinuous">
         <EditorCategories value=""/>
         <On Terms="Behavior.SILiberatorSprayPool.On" Send="Create"/>
@@ -873,12 +876,16 @@
         <On Terms="Effect.SILiberatorTargetMorphDelayPersistent.Start" Send="Create SILiberatorAGBirthSearchIndicatorModel"/>
         <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
         <On Terms="AbilMorph.*.Start; MorphFrom SILiberator" Target="SILiberatorSwarmFormCloud" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.SILiberatorSwarmFormPermanentTracker.On" Send="Create SILiberatorSwarmFormCloud"/>
+        <On Terms="Behavior.SILiberatorSwarmFormPermanentTracker.Off" Target="SILiberatorSwarmFormCloud" Send="AnimBracketStop BSD"/>
         <StatusColors index="Energy">
             <ColorArray index="0" value="255,0,64,0"/>
         </StatusColors>
         <VitalColors index="Energy">
             <ColorArray value="255,0,64,0"/>
         </VitalColors>
+        <Remove Terms="Behavior.SILiberatorSwarmFormPermanentDamageSearch.On" Send="Create SILiberatorSwarmFormCloud"/>
+        <Remove Terms="Behavior.SILiberatorSwarmFormPermanentDamageSearch.Off" Target="SILiberatorSwarmFormCloud" Send="AnimBracketStop BSD"/>
     </CActorUnit>
     <CActorUnit id="SISCV">
         <PortraitModel value="SCVInfestedPortrait"/>

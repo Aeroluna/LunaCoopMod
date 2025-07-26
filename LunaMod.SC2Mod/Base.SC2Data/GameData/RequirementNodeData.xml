@@ -12,8 +12,16 @@
         <OperandArray value="CountUpgradeSIBansheeIncubationChambersCompleteOnly"/>
         <OperandArray value="NotCountBehaviorPopStunCompleteOnly"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountUpgradeSwannCommanderCompleteOnlyNotCountUpgradeScienceVesselFreeRepairCompleteOnly3119778345">
+    <CRequirementAnd id="AndCountUpgradeStukovCommanderCompleteOnly">
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeStukovCommanderCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeStukovCommanderCompleteOnlyNotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeStukovCommanderCompleteOnly"/>
+        <OperandArray value="NotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeSwannCommanderCompleteOnlyNotCountUpgradeScienceVesselFreeRepairCompleteOnly3119778345">
         <OperandArray value="CountUpgradeSwannCommanderCompleteOnly"/>
         <OperandArray value="NotCountUpgradeScienceVesselFreeRepairCompleteOnly3119778345"/>
     </CRequirementAnd>
@@ -79,6 +87,10 @@
     <CRequirementCountUpgrade id="CountUpgradeKerriganBroodCosmeticCompleteOnlyTechTreeCheat">
         <Count Link="KerriganBroodCosmetic" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeLiberatorInfestedBecomeSwarmCompleteOnly4025277999">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="LiberatorInfestedBecomeSwarm" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SIBansheeIncubationChambers" State="CompleteOnly"/>
@@ -90,6 +102,15 @@
     <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SIBansheeIncubationChambers" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSILiberatorNecroplasmicSynthesisCompleteOnly1838460704">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="SILiberatorNecroplasmicSynthesis" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SILiberatorNecroplasmicSynthesis" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeScourgeGasCostReductionCompleteOnly2371086511">
         <Flags index="TechTreeCheat" value="0"/>
@@ -155,6 +176,10 @@
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSIBansheeIncubationChambersQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeSIBansheeIncubationChambersQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSignifierFadeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeSignifierFadeQueuedOrBetter"/>

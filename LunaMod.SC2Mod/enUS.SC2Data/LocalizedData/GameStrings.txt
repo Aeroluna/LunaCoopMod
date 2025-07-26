@@ -30,6 +30,7 @@ Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Name/SIBansheeBroodling=SIBanshee Broodling
 Behavior/Name/SILiberatorSprayDummyValidate=SILiberator Spray Dummy Validate
 Behavior/Name/SILiberatorSprayPool=Acid
+Behavior/Name/SILiberatorVolatileFuel=Volatile Fuel
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
@@ -41,6 +42,7 @@ Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm a
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
+Behavior/Tooltip/SILiberatorVolatileFuel=This unit is expending energy to gain 50% increased attack and movement speed.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
@@ -89,6 +91,8 @@ Button/Name/ResearchBlinkCharges=Research Displacement Matrix
 Button/Name/ResearchHellburstPayload=Research Hellburst Payload
 Button/Name/ResearchOverdriveActuators=Research Overdrive Actuators
 Button/Name/ResearchPulseLoopCapacitors=Research Pulse-Loop Capacitors
+Button/Name/ResearchSILiberatorBecometheSwarm=Evolve Cloud Dispersal
+Button/Name/ResearchSILiberatorEnergyLeech=Research Necroplasmic Synthesis
 Button/Name/ResearchSignifierFade=Research Fading Star
 Button/Name/ResearchStukovInfestedBansheeInfestedLife=Research Hyperadaptive Exoskeleton
 Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
@@ -97,6 +101,9 @@ Button/Name/SIBansheeIncubationChambers=Incubation Chambers
 Button/Name/SIBansheeResearchIncubationChambers=Evolve Incubation Chambers
 Button/Name/SILiberatorAmmo=Volatile Biomass
 Button/Name/SILiberatorAutomatedMitosis=Automated Mitosis
+Button/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
+Button/Name/SILiberatorVolatileFuel=Volatile Fuel
+Button/Name/SILiberatorVolatileSpray=Volatile Spray
 Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
 Button/Name/SmartServos=Smart Servos
@@ -145,7 +152,7 @@ Button/Tooltip/CommanderPrestigeKerriganCreep=<s val="Coop_Prestige_Advantage">A
 Button/Tooltip/CommanderPrestigeRaynorAfterburners=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Ignite Afterburners additionally increases attack speed by 100%. Cooldown removed. Can now be autocast.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Units no longer cost less. Ignite Afterburners costs 10 life and its movement speed bonus is reduced to 50%.
 Button/Tooltip/CommanderPrestigeRaynorAfterburnersUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Additionally increases attack speed by <s val="Coop_Prestige_Tooltip"><d ref="$UpgradeEffectArrayValue:CommanderPrestigeRaynorMechAfterburners:Behavior,VehicleAfterburners,Modification.AttackSpeedMultiplier$*100"/></s>%. Cooldown removed. Can autocast.
 Button/Tooltip/CommanderPrestigeStukov=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Infested Banshees can load up to 16 Infested infantry and can launch their cargo at a ground target.<n/><n/>Infested Starports and Infested Banshees no longer have tech requirements. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Infested Infantry have 30% reduced timed life.
-Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less. Automated Mitosis generates Infested Siege Tank ammunition 200% faster.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
+Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less.</n></n>Automated Mitosis and Necroplasmic Synthesis are 200% more effective.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
 Button/Tooltip/CommanderPrestigeStukovMechAutoAmmo=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% faster.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/>Cyclones can use Lock On while moving.<n/>Only Thor anti-air weapons can attack while moving.<n/>Hellbat and Thor heavy air can only fire in an arc in front of them while moving.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CommanderPrestigeVorazunCrowdControlDamage=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Void Stasis, Confusion, Stasis Ward, Disruption Web, Darkcoil, and Astral Storm may affect heroic units and cause enemies to lose 20 life per second. This effect cannot kill.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units deal 25% reduced damage. Stasis Ward duration reduced by 75%.
@@ -200,7 +207,7 @@ Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units 
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
-Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds. <c val="ffff8a">Infested Liberators</c> automatically generate <d ref="Effect,SILiberatorMitosis,VitalArray[Energy].Change/Behavior,SILiberatorMitosis,Period" precision="1"/> energy every second.
+Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds.
 Button/Tooltip/ResearchBlinkCharges=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
 Button/Tooltip/ResearchBlinkChargesUpgrade=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
 Button/Tooltip/ResearchCycloneLockOnDamageUpgrade=Increases <c val="ffff8a">Cyclone</c> Lock On damage by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
@@ -215,6 +222,7 @@ Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c
 Button/Tooltip/ResearchPhobosClassWeaponsSystem=<c val="ffff8a">Viking</c> weapons system upgrade. Increases air attack range by 2 and ground attack range by 1. Allows <c val="ffff8a">Vikings</c> to transform quickly between combat modes.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c> missiles and gatling cannons to deal area damage.
+Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/ResearchStalkerPurifierTeleport=Allows <c val="ffff8a">Instigators</c> to teleport to a nearby target location.
@@ -227,8 +235,11 @@ Button/Tooltip/SIBansheeIncubationChambers=Infested Banshees spawns a Broodling 
 Button/Tooltip/SIBansheeResearchIncubationChambers=Allows <c val="ffff8a">Infested Banshees</c> to spawn a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds.
 Button/Tooltip/SILiberator=Artillery fighter. Attacks deal area damage to enemy air units. Can switch into Defender Mode to provide siege support.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
 Button/Tooltip/SILiberatorAG=Immobile defender. Deals heavy single target damage to ground units. Can switch into Fighter mode to provide air support.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
-Button/Tooltip/SILiberatorAmmo=Consumes nearby Infested Civilians and Infested Troopers to restore 20 life and restore <d ref="Effect,SILiberatorAmmoRestockEnergy,VitalArray[Energy].Change"/> energy for the Infested Liberator. Normal energy regeneration is suppressed. The Volatile Spray weapon uses <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy every attack.
+Button/Tooltip/SILiberatorAmmo=Consumes nearby Infested Civilians and Infested Troopers to restore 20 life and restore <d ref="Effect,SILiberatorAmmoRestockEnergy,VitalArray[Energy].Change"/> energy for the Infested Liberator. Normal energy regeneration is suppressed.
 Button/Tooltip/SILiberatorAutomatedMitosis=Infested Liberators automatically generate <d ref="Effect,SILiberatorMitosis,VitalArray[Energy].Change/Behavior,SILiberatorMitosis,Period" precision="1"/> energy every second.
+Button/Tooltip/SILiberatorNecroplasmicSynthesis=Infested Liberators regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
+Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased attack and movement speed while using Cloud Dispersal.</n></n>Uses <d ref="-1*Effect,SILiberatorVolatileFuelMU,VitalArray[Energy].Change/Behavior,SILiberatorVolatileFuel,Period" precision="4"/> energy per second.
+Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.</n></n>Each attack uses <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy every attack.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Also ignores collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
@@ -358,7 +369,6 @@ Effect/Name/SILiberatorSprayETU=SILiberator Spray ETU
 Effect/Name/SILiberatorSprayPoolAB=SILiberator Spray Pool AB
 Effect/Name/SILiberatorSprayPoolCP=SILiberator Spray Pool CP
 Effect/Name/SILiberatorSprayPoolCounterAB=SILiberator Spray Pool Counter AB
-Effect/Name/SILiberatorSprayPoolCounterRB=SILiberator Spray Pool Counter RB
 Effect/Name/SILiberatorSprayPoolDamage=SILiberator Spray Pool Damage
 Effect/Name/SILiberatorSprayPoolSearch=SILiberator Spray Pool Search
 Effect/Name/SILiberatorSpraySet=SILiberator Spray Set
@@ -367,6 +377,7 @@ Effect/Name/SILiberatorSprayTrackedImpactSet=SILiberator Spray Tracked Impact Se
 Effect/Name/SILiberatorSprayTrackedIssueOrder=SILiberator Spray Tracked Issue Order
 Effect/Name/SILiberatorSprayTrackedLM=SILiberator Spray Tracked LM
 Effect/Name/SILiberatorSprayTrackedSet=SILiberator Spray Tracked Set
+Effect/Name/SILiberatorSwarmFormPermanentDamageSearchFueledAB=SILiberatorSwarmFormPermanentDamageSearchFueledAB
 Effect/Name/SILiberatorSwarmFormPermanentSetCooldown=SILiberatorBaseSetCooldown
 Effect/Name/SILiberatorSwarmFormPermanentSetCooldown2=SILiberatorSwarmFormPermanentSetCooldown
 Effect/Name/SILiberatorTargetAAMorphOrder=SILiberator Target AA Morph Order
@@ -377,6 +388,7 @@ Effect/Name/SILiberatorTargetMorphOrderInitialSet=SILiberator Target Morph Order
 Effect/Name/SILiberatorTargetMorphPersistent=SILiberator Target Morph Persistent
 Effect/Name/SILiberatorTargetMorphSearchAB=SILiberator Target Morph Search AB
 Effect/Name/SILiberatorTargetMorphSearchArea=SILiberator Target Morph Search Area
+Effect/Name/SILiberatorVolatileFuelMU=SILiberator Volatile Fuel MU
 Effect/Name/SOARecallOnDeathCleanseRB=SOARecall On Death Cleanse RB
 Effect/Name/SeekerMissileLaunchRestoreCheck=Seeker Missile Launch Restore Check
 Effect/Name/SignifierFade=Fade (Apply Buff)
@@ -434,7 +446,9 @@ Param/Expression/lib_74A68E34_F34019F3=Found ~A~ nearby creep tumors.
 Param/Value/lib_74A68E34_770DBAA1=Switch Outlaws
 RequirementNode/Tooltip/CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180=Evolve Metasynaptic Node at the Infestation Pit
 RequirementNode/Tooltip/CountUpgradeHellburstPayloadCompleteOnly2216400238=Research Hellburst Payload at the Factory Tech Lab
+RequirementNode/Tooltip/CountUpgradeLiberatorInfestedBecomeSwarmCompleteOnly4025277999=Evolve Cloud Dispersal at the Infested Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeSIBansheeIncubationChambersCompleteOnly3518554317=Evolve Incubation Chambers at the Infested Starport Tech Lab
+RequirementNode/Tooltip/CountUpgradeSILiberatorNecroplasmicSynthesisCompleteOnly1838460704=Research Necroplasmic Synthesis at the Infested Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeScourgeGasCostReductionCompleteOnly2371086511=Evolve Dampening Membrane at the Scourge Nest
 RequirementNode/Tooltip/CountUpgradeSignifierFadeCompleteOnly892173529=Research Fading Star at the Dark Shrine
 RequirementNode/Tooltip/CountUpgradeStukovInfestedBansheeInfestedLifeCompleteOnly4081429596=Research Hyperadaptive Exoskeleton at the Infested Starport Tech Lab
@@ -494,6 +508,11 @@ Upgrade/Name/ProtossShieldsExtraLevel2=Protoss Shields Extra Level 2
 Upgrade/Name/ProtossShieldsExtraLevel3=Protoss Shields Extra Level 3
 Upgrade/Name/RaynorDoubleMULE=Raynor Double MULE
 Upgrade/Name/SIBansheeIncubationChambers=Incubation Chambers
+Upgrade/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
+Upgrade/Name/SITerranInfantryWeaponsExtra=Stukov Terran Infantry Weapons Extra
+Upgrade/Name/SITerranInfantryWeaponsExtraLevel1=Stukov Terran Infantry Weapons Extra Level 1
+Upgrade/Name/SITerranInfantryWeaponsExtraLevel2=Stukov Terran Infantry Weapons Extra Level 2
+Upgrade/Name/SITerranInfantryWeaponsExtraLevel3=Stukov Terran Infantry Weapons Extra Level 3
 Upgrade/Name/SITerranVehicleArmorsExtra=Stukov Terran Vehicle Armor Extra
 Upgrade/Name/SITerranVehicleArmorsExtraLevel1=Stukov Terran Vehicle Armor Extra Level 1
 Upgrade/Name/SITerranVehicleArmorsExtraLevel2=Stukov Terran Vehicle Armor Extra Level 2
@@ -502,10 +521,6 @@ Upgrade/Name/SITerranVehicleWeaponsExtra=Stukov Terran Vehicle Weapons Extra
 Upgrade/Name/SITerranVehicleWeaponsExtraLevel1=Stukov Terran Vehicle Weapons Extra Level 1
 Upgrade/Name/SITerranVehicleWeaponsExtraLevel2=Stukov Terran Vehicle Weapons Extra Level 2
 Upgrade/Name/SITerranVehicleWeaponsExtraLevel3=Stukov Terran Vehicle Weapons Extra Level 3
-Upgrade/Name/SITerranInfantryWeaponsExtra=Stukov Terran Infantry Weapons Extra
-Upgrade/Name/SITerranInfantryWeaponsExtraLevel1=Stukov Terran Infantry Weapons Extra Level 1
-Upgrade/Name/SITerranInfantryWeaponsExtraLevel2=Stukov Terran Infantry Weapons Extra Level 2
-Upgrade/Name/SITerranInfantryWeaponsExtraLevel3=Stukov Terran Infantry Weapons Extra Level 3
 Upgrade/Name/SignifierFade=Fade
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators

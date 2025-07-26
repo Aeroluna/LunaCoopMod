@@ -230,16 +230,27 @@
     <CUnit id="SILiberator">
         <BehaviorArray Link="SILiberatorSwarmFormHoldPositionWeapon"/>
         <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
-        <BehaviorArray Link="SILiberatorMitosis"/>
+        <BehaviorArray Link="SILiberatorVolatileFuel"/>
+        <BehaviorArray Link="SILiberatorNecroplasmicSynthesis"/>
         <WeaponArray index="1" Link="SILiberatorSwarmFormPermanentStrafe"/>
         <EnergyMax value="100"/>
         <AbilArray Link="SILiberatorAGTarget"/>
         <AbilArray Link="SILiberatorMorphtoAG"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="LiberatorAGMode" Type="AbilCmd" AbilCmd="SILiberatorAGTarget,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="5" Face="SILiberatorBecometheSwarm" Requirements="HaveSILiberatorInfestedBees"/>
+            <LayoutButtons index="6">
+                <Face value="LiberatorAGMode"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="SILiberatorAGTarget,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
             <LayoutButtons Face="SILiberatorAmmo" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="SILiberatorAutomatedMitosis" Type="Passive" Requirements="HaveInfestedSiegeTankAmmo" Row="1" Column="4"/>
+            <LayoutButtons Face="SILiberatorVolatileFuel" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="SILiberatorNecroplasmicSynthesis" Type="Passive" Requirements="HaveSILiberatorEnergyLeech" Row="1" Column="1"/>
         </CardLayouts>
+        <LateralAcceleration value="10"/>
     </CUnit>
     <CUnit id="SILiberatorAG">
         <DeathRevealRadius value="3"/>
@@ -278,7 +289,7 @@
         <BehaviorArray Link="LiberatorInitialMovable"/>
         <BehaviorArray Link="SILiberatorAmmoRestockSearch"/>
         <BehaviorArray Link="SILiberatorSprayDummyTracker"/>
-        <BehaviorArray Link="SILiberatorMitosis"/>
+        <BehaviorArray Link="SILiberatorNecroplasmicSynthesis"/>
         <WeaponArray Link="SILiberatorAGWeapon2Dummy"/>
         <WeaponArray Link="SILiberatorAGWeapon2"/>
         <WeaponArray Link="SILiberatorAGWeapon"/>
@@ -288,11 +299,11 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="SILiberatorImprovedAoeAttack" Type="Passive" Requirements="HaveSILiberatorAoeAttack" Row="1" Column="0"/>
-            <LayoutButtons Face="SILiberatorBecometheSwarm" Type="Passive" Requirements="HaveSILiberatorInfestedBees" Row="1" Column="1"/>
+            <LayoutButtons Face="SILiberatorBecometheSwarm" Type="Passive" Requirements="HaveSILiberatorInfestedBees" Row="1" Column="0"/>
             <LayoutButtons Face="LiberatorAAMode" Type="AbilCmd" AbilCmd="SILiberatorAATarget,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="SILiberatorAmmo" Type="Passive" Row="2" Column="4"/>
-            <LayoutButtons Face="SILiberatorAutomatedMitosis" Type="Passive" Requirements="HaveInfestedSiegeTankAmmo" Row="1" Column="4"/>
+            <LayoutButtons Face="SILiberatorNecroplasmicSynthesis" Type="Passive" Requirements="HaveSILiberatorEnergyLeech" Row="1" Column="1"/>
+            <LayoutButtons Face="SILiberatorVolatileSpray" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.625"/>
@@ -342,25 +353,14 @@
     </CUnit>
     <CUnit id="SIStarportTechLab">
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="ResearchStukovInfestedBansheeInfestedLife" AbilCmd="SIStarportResearch,Research4" Column="3"/>
-            <LayoutButtons index="8" Face="ResearchBracedExoskeletonLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel11"/>
-            <LayoutButtons index="9">
-                <Face value="ResearchSIQueenEnergy"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="SIStarportResearch,Research6"/>
-                <Requirements value=""/>
-                <Row value="1"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons index="10" Face="ResearchEnhancedMitochondriaLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel13"/>
-            <LayoutButtons index="11">
-                <Face value="SIBansheeResearchIncubationChambers"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="SIStarportResearch,Research7"/>
-                <Requirements value=""/>
-                <Row value="0"/>
-                <Column value="2"/>
-            </LayoutButtons>
+            <LayoutButtons index="4" Face="ResearchSILiberatorBecometheSwarm" AbilCmd="SIStarportResearch,Research2"/>
+            <LayoutButtons index="5" Face="ResearchCloudDispersalLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel11" Column="0"/>
+            <LayoutButtons index="6" Face="ResearchStukovInfestedBansheeInfestedLife" Type="AbilCmd" AbilCmd="SIStarportResearch,Research4" Requirements="" Column="3"/>
+            <LayoutButtons index="7" Face="ResearchBracedExoskeletonLocked" Type="Passive" AbilCmd="" Requirements="StukovLevel11" Column="3"/>
+            <LayoutButtons index="8" Face="ResearchSIQueenEnergy" AbilCmd="SIStarportResearch,Research6" Row="1" Column="1"/>
+            <LayoutButtons index="9" Face="ResearchEnhancedMitochondriaLocked" Requirements="StukovLevel13" Row="1" Column="1"/>
+            <LayoutButtons index="10" Face="SIBansheeResearchIncubationChambers" AbilCmd="SIStarportResearch,Research7" Row="0" Column="2"/>
+            <LayoutButtons index="11" Face="ResearchSILiberatorEnergyLeech" Type="AbilCmd" AbilCmd="SIStarportResearch,Research8" Requirements="" Row="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SIVolatileInfested">
