@@ -614,13 +614,33 @@ For some reason, Predictive Blink would autocast once and then kinda just chill 
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
 
-The Ihan-rii skin is basically a more complete version of Zeratul's skin. Also added some more lore-accurate portraits.
+The Ihan-rii skin is basically a more complete version of Zeratul's skin so it used over his skin. Also added some more lore-accurate portraits.
 
 ## Stetmann
 
 - Buffed Stetellites by adding Map Boss attribute.
 
 Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free.
+
+## Mengsk
+
+- Removed hittest from Imperial Witness's Amplified Airwaves hologram.
+- Fixed a bug where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
+
+It's happened to everyone, the hologram lifts off and then you accidentally a-move it and kill your own blimp. *Fun fact: this bug is caused by Blizzard attaching the hologram incorrectly, then offsetting the hologram to move it where it should be, then because it's not attached properly, it randomly applies that offset over and over again.*
+
+- Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
+
+Oops.
+
+- Added Pride of Augustgrad portrait.
+- Added Sky Fury portrait.
+- Added Imperial Intercessor portrait.
+- Added Imperial Witness portrait.
+- Added Shock Division portrait.
+- Added Blackhammer portrait.
+
+Mengsk's infantry had custom portraits, but not his mech.
 
 ## Mutators
 
@@ -661,5 +681,6 @@ The most infurating mutator because it can permastun your units as well as inter
 - Enforcer / Ihan-rii Immortal Portrait - DaveSpectre
 - Vulture with flaming Jets - DaveSpectre
 - Nerazim Structure Pack (+ effects) - DaveSpectre
+- Royal Guard Portraits (Co-op) - DaveSpectre
 
 DaveSpectre is the goat <3
