@@ -1616,6 +1616,10 @@
         <On Terms="WeaponStart.JavelinMissileLaunchersMoving.AttackStart" Send="AnimClear CoverStand"/>
         <On Terms="WeaponStart.JavelinMissileLaunchersMoving.AttackStart" Send="AnimPlay Cover Cover PlayForever"/>
         <On Terms="WeaponStop.JavelinMissileLaunchersMoving.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
+        <On Terms="WeaponStart.ThorsHammerMoving.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.ThorsHammerMoving.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.ThorsHammerMoving.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
+        <On Terms="WeaponStart.ThorsHammerMoving.AttackStart" Send="AnimBracketStart Attack Attack"/>
     </CActorUnit>
     <CActorSiteOpAttach id="ThorAttach330mm">
         <AttachQuery Methods="AMFilterWeaponSetA2 AMPatternThor330mmBarrageCannons"/>

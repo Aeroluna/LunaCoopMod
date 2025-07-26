@@ -598,9 +598,15 @@ void lib74A68E34_gt_LogDisplay_Init () {
 // Trigger: LogDamageLogging
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_LogDamageLogging_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_sourceUnitType;
+
     // Automatic Variable Declarations
     const int auto13250914_ae = libA8FDA37D_gv_uT_DL_MaxUnits;
     int auto13250914_var;
+
+    // Variable Initialization
+    lv_sourceUnitType = lib74A68E34_gf_LogGetSourceUnit(UnitGetType(EventUnitDamageSourceUnit()));
 
     // Conditions
     if (testConds) {
@@ -628,13 +634,13 @@ bool lib74A68E34_gt_LogDamageLogging_Func (bool testConds, bool runActions) {
 
     auto13250914_var = 1;
     for ( ; auto13250914_var <= auto13250914_ae; auto13250914_var += 1 ) {
-        if ((lib74A68E34_gf_LogGetSourceUnit(UnitGetType(EventUnitDamageSourceUnit())) == libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType)) {
+        if ((lv_sourceUnitType == libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType)) {
             libA8FDA37D_gf_UT_DL_AddHealingDamage(auto13250914_var, 0, EventUnitDamageSourcePlayer(), EventUnitDamageAmount());
             break;
         }
         else {
             if ((libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType == null)) {
-                libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType = UnitGetType(EventUnitDamageSourceUnit());
+                libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType = lv_sourceUnitType;
                 libA8FDA37D_gf_UT_DL_AddHealingDamage(auto13250914_var, 0, EventUnitDamageSourcePlayer(), EventUnitDamageAmount());
                 break;
             }
