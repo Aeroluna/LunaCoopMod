@@ -283,12 +283,9 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
 
 ## Zagara
 
-- Reworked Bile Launchers.
-  - Can now target enemies automatically.
-  - Bombardment ability now uses smart casting.
-  - Bile Bomb projectiles now reveal a radius of 3 around them.
+- Increased max supply from 100 to 150.
 
-Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
+One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
 
 - Added Defilers.
   - Can use Dark Swarm for 100 energy.
@@ -302,13 +299,12 @@ Idea stolen from CXL, should make Bile Launchers more effectively than just on i
 
 Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units.
 
-- Increased visual scale of Hunter Killers by 20%
+- Reworked Bile Launchers.
+  - Can now target enemies automatically.
+  - Bombardment ability now uses smart casting.
+  - Bile Bomb projectiles now reveal a radius of 3 around them.
 
-When Hunter Killers were given the webby skin, their scale was accidently reset to the normal Hydralisk scale.
-
-- Buffed Infested Drop Roaches to Corpser Roaches.
-
-Corpser representation!
+Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
 
 - Reduced Scourge vespene cost by 25.
 - Removed Simplified Genome.
@@ -316,10 +312,6 @@ Corpser representation!
 - Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
 
 Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
-
-- Increased max supply from 100 to 150.
-
-One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
 
 - Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 - Added Swarm Networks.
@@ -335,6 +327,24 @@ If there is one think Stukov P3 has taught me, it's that throwing free units at 
   - Disadvantage: Combat units cost 25% more. Swarm Networks cost 100 more minerals for every one built.
 
 I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
+
+- Buffed Infested Drop Roaches to Corpser Roaches.
+
+Corpser representation!
+
+- Increased visual scale of Hunter Killers by 20%
+
+When Hunter Killers were given the webby skin, their scale was accidently reset to the normal Hydralisk scale.
+
+- Added wireframe and group icon to Zagara.
+
+If you thought Zagara's wireframe looked oddly low res, you aren't crazy. Zagara never had a wireframe set and just used her icon as a fallback.
+
+- Increased speed of Zagara's Acid Spines projectile by 100%.
+- Reduced Zagara's Acid Spines attack period from 1.5 to 1 (+50% attack speed).
+- Increased Medusa Blade's damage 33% of attack damage to 50% attack damage.
+
+Zagara has a mastery for attack damage but her attacks feel so lethargic and she attacked slower than queens.
 
 ## Vorazun
 
