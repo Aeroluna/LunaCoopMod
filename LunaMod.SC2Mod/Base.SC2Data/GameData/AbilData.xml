@@ -51,6 +51,21 @@
             <Button DefaultButtonFace="ResearchMengskAcademyMissileCount" Requirements="LearnMengskAcademyMissileCount"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="MedivacMengskDoubleBeamHeal">
+        <SmartValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray index="1" value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="NotUnrepairable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedivacMengskHeal">
+        <SmartValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="NotUnrepairable"/>
+    </CAbilEffectTarget>
     <CAbilQueue id="SIBansheeQueue">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <QueueSize value="1"/>
@@ -295,6 +310,11 @@
         <Name value="Abil/Name/MedivacHealRaynor"/>
         <Effect index="0" value="MedivacHealACSwitch"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HealMedivac" State="Restricted" Requirements="NotHaveStabilizerMedPacks"/>
+        <SmartValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="NotUnrepairable"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHealRaynorPlusMech" parent="MedivacHealRaynor">
         <Name value="Abil/Name/MedivacHeal"/>

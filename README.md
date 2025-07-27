@@ -647,6 +647,11 @@ It's happened to everyone, the hologram lifts off and then you accidentally a-mo
 
 Missile play is cool so lets make it more viable! Lower delay and bigger radius should make missiles more consistent. Storing additional missiles should lower the footprint of building enough academies to constantly be nuking.
 
+- Removed fake heal from Imperial Intercessors.
+
+It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
+
+- Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
 
 Oops.
