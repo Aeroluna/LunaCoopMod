@@ -682,5 +682,6 @@ The most infurating mutator because it can permastun your units as well as inter
 - Vulture with flaming Jets - DaveSpectre
 - Nerazim Structure Pack (+ effects) - DaveSpectre
 - Royal Guard Portraits (Co-op) - DaveSpectre
+- Purifier Shield Battery - Enoki
 
 DaveSpectre is the goat <3

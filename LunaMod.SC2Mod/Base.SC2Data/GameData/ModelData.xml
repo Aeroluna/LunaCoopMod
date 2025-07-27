@@ -368,6 +368,34 @@
     <CModel id="SIInfestedMarine">
         <Model value="Assets\Units\Zerg\InfestedMarine_Ex3\InfestedMarine_Ex3.m3"/>
     </CModel>
+    <CModel id="ShieldBatteryPurifierDeath" parent="UnitDeath">
+        <Model value="Assets\Buildings\Protoss\ShieldBattery_Purifier\ShieldBattery_Purifier_Collection_Death.m3"/>
+        <LowQualityModel value="ProtossSmallBuildingDeathLow"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="ShieldBatteryPurifierBirth" parent="Building" Race="Protoss">
+        <Model value="Assets\Buildings\Protoss\ShieldBattery_Purifier\ShieldBattery_Purifier_Collection_WarpIn.m3"/>
+        <Events>
+            <Anim value="Stand,Build,End"/>
+            <Name value="BuildingWarpIn"/>
+            <Type value="Sound"/>
+            <Time value="1.200000"/>
+        </Events>
+        <Lighting value="ShieldBattery"/>
+        <Radius value="1.000000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="1.250000"/>
+        <ShadowRadius value="1.000000"/>
+        <SquibTypeDefault value="Metal"/>
+    </CModel>
+    <CModel id="ShieldBatteryPurifier" parent="Building" Race="Protoss">
+        <Model value="Assets\Buildings\Protoss\ShieldBattery_Purifier\ShieldBattery_Purifier_Collection.m3"/>
+        <Radius value="1.000000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="1.250000"/>
+        <ShadowRadius value="1.000000"/>
+        <SquibTypeDefault value="Metal"/>
+    </CModel>
     <CModel id="ShieldBatteryNerazimBuild" parent="ShieldBatteryBuildBase">
         <Model value="Assets\Effects\Protoss\Nerazim\ProtossBuild_Nerazim_V2.m3"/>
     </CModel>
