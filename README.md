@@ -639,6 +639,14 @@ Grants immunity to certain mutators like Propagators. Previously, if you put a S
 
 It's happened to everyone, the hologram lifts off and then you accidentally a-move it and kill your own blimp. *Fun fact: this bug is caused by Blizzard attaching the hologram incorrectly, then offsetting the hologram to move it where it should be, then because it's not attached properly, it randomly applies that offset over and over again.*
 
+- Reduced Tactical Missile Strike Delay from 4 to 3 seconds.
+- Increased Tactical Missile Strike radius from 2 to 3.
+- Added Ordnance Depot Retrofit upgrade to the Royal Academy.
+  - Requires an Armory.
+  - Allows Royal Academies to arm and store 1 additional missile at a time.
+
+Missile play is cool so lets make it more viable! Lower delay and bigger radius should make missiles more consistent. Storing additional missiles should lower the footprint of building enough academies to constantly be nuking.
+
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
 
 Oops.

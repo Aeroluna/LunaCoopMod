@@ -8,16 +8,19 @@
         <OperandArray value="CountUnitFleetBeaconCompleteOnlyTechTreeCheat"/>
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeMengskAcademyMissileCountCompleteOnly"/>
+        <OperandArray value="LTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeSIBansheeIncubationChambersCompleteOnlyNotCountBehaviorPopStunCompleteOnly">
         <OperandArray value="CountUpgradeSIBansheeIncubationChambersCompleteOnly"/>
         <OperandArray value="NotCountBehaviorPopStunCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeStukovCommanderCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeStukovCommanderCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeStukovCommanderCompleteOnlyNotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeStukovCommanderCompleteOnly"/>
         <OperandArray value="NotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter"/>
     </CRequirementAnd>
@@ -33,6 +36,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PopStun" State="CompleteOnly"/>
     </CRequirementCountBehavior>
+    <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="ArmoryMengsk" State="CompleteOnly"/>
+    </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="MothershipArtanis" State="QueuedOrBetter"/>
@@ -91,6 +99,20 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="LiberatorInfestedBecomeSwarm" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MengskAcademyMissileCount" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountCompleteOnly3665151284">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="MengskAcademyMissileCount" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MengskAcademyMissileCount" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SIBansheeIncubationChambers" State="CompleteOnly"/>
@@ -109,7 +131,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="SILiberatorNecroplasmicSynthesis" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeScourgeGasCostReductionCompleteOnly2371086511">
@@ -156,8 +177,17 @@
         <OperandArray index="0" value="CountUnitSwarmNetworkQueuedOrBetter"/>
         <OperandArray index="1" value="4"/>
     </CRequirementLT>
+    <CRequirementLT id="LTCountUnitNukeMengskQueuedOrBetterAtUnit2">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementLT>
     <CRequirementNot id="NotCountBehaviorPopStunCompleteOnly">
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly"/>
@@ -171,6 +201,10 @@
     <CRequirementNot id="NotCountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeMengskAcademyMissileCountQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeMengskAcademyMissileCountQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeRaynorCommanderCompleteOnly">
         <OperandArray index="0" value="CountUpgradeRaynorCommanderCompleteOnly"/>
     </CRequirementNot>
@@ -178,7 +212,6 @@
         <OperandArray index="0" value="CountUpgradeSIBansheeIncubationChambersQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeSILiberatorNecroplasmicSynthesisQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSignifierFadeQueuedOrBetter">
@@ -196,6 +229,10 @@
     <CRequirementNot id="NotCountUpgradeTransformationServosQueuedOrBetterTechTreeCheat">
         <OperandArray index="0" value="CountUpgradeTransformationServosQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
+    <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
+        <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
+        <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
+    </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat"/>
     </CRequirementOr>
