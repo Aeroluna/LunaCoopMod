@@ -101,8 +101,9 @@ Small change to make stutter-stepping with Firebats feel smoother. What mod does
 Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor?
 
 - Added double MULEs.
+- Added invulnerability to unburrowed spider mines.
 
-Old Raynor nerf reverted. Should help out P0 Raynor.
+Old Raynor nerfs reverted. Double MULEs in particular should help out P0 Raynor.
 
 - Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
 - Added +8 vs. Mechanical damage to Viking Gatling Cannons.
@@ -681,6 +682,32 @@ Mengsk's infantry had custom portraits, but not his mech.
   - Fixed bug where Dehaka's Primal Impalers were pulled when burrowed.
 
 The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
+
+- Removed Micro Transaction from Brutal+.
+
+Not even a hard mutation, just SUPER unfun.
+
+- Increased Slim Pickings points from 5 to 10.
+
+Very crippling mutator so its cost has been increased. Unfortunately, doesn't help the fact that hero commanders are kinda unaffected.
+
+- Removed invulnerability from unburrowed Spider Mines from the Minersweeper mutation.
+
+ Raynor lost his invulnerable Spider Mines, but Minesweeper was overlooked.
+
+- Removed Going Nuclear from Brutal+.
+- Added Nuclear Mines to Brutal+ costing 3 points.
+
+Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nukes without needing constant attention.
+
+- Added Infestation Station to Brutal+ costing 3 points.
+- Added Great Wall to Brutal+ costing 5 points.
+- Added Rip Field Generators to Brutal+ costing 5 points.
+- Added Repulsive Field to Brutal+ costing 3 points.
+- Added Mothership to Brutal+ costing 7 points.
+- Added The Mist to Brutal+ costing 7 points.
+
+Added Maguro mutators to Brutal+ system.
 
 ## Credits
 
