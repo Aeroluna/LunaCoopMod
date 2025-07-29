@@ -7,8 +7,10 @@ A set of changes and additions to the StarCraft 2 Co-op mode.
 - Added Brutal+ system.
   - Can select a Brutal+ level to randomize mutators.
   - Can use refresh button to rerandomize.
+  - Can use +Retry option to retry previously played mutators.
+  - Added Brutal+ levels +7 - +10.
 
-Can now randomize mutators. See Mutators section for specific changes to mutators.
+Added Brutal+ system. See Mutators section for specific changes to mutators.
 
 - Added console skins for all commanders.
 - Added voice packs for all commanders.

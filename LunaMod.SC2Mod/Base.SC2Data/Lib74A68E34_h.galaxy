@@ -10,6 +10,8 @@ struct lib74A68E34_gs_MorphUnitType {
 };
 
 // Variable Declarations
+string[100][3] lib74A68E34_gv_mutatorsListPreviousMutators;
+bank[3] lib74A68E34_gv_mutatorListBank;
 int lib74A68E34_gv_mutatorListRandomizerDialog;
 int lib74A68E34_gv_mutatorListRandomizerPulldown;
 int lib74A68E34_gv_mutatorListRandomizerRefreshButton;
@@ -17,6 +19,7 @@ int lib74A68E34_gv_mutatorListDialog;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
 
 // Function Declarations
+void lib74A68E34_gf_MutatorListLoadBank (int lp_player);
 void lib74A68E34_gf_MutatorListRandomizerUpdate ();
 void lib74A68E34_gf_MutatorListInit ();
 void lib74A68E34_gf_MutatorListCreate ();
@@ -33,6 +36,7 @@ trigger lib74A68E34_gt_TestCommand;
 trigger lib74A68E34_gt_ExtraUpgrades;
 trigger lib74A68E34_gt_ApplyCommanderRewards;
 trigger lib74A68E34_gt_ApplyMaguroChanges;
+trigger lib74A68E34_gt_MutatorListLoadBankInit;
 trigger lib74A68E34_gt_MutatorListRandomizerCreate;
 trigger lib74A68E34_gt_MutatorListRandomizerSelected;
 trigger lib74A68E34_gt_MutatorListRandomizerRefresh;

@@ -63,6 +63,83 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
+trigger auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
+
+void lib74A68E34_gf_MutatorListLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_MutatorListLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_MutatorListLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorListLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
+
+    // Variable Declarations
+    string lv_mutatorName;
+    string lv_previousMutators;
+    int lv_mutatorIndex;
+    int lv_substringIndex;
+    string lv_indexMutator;
+
+    // Automatic Variable Declarations
+    const int autoB8B96F7D_ae = 99;
+    int autoB8B96F7D_var;
+    int auto3D1D01F4_ai;
+    int auto3D1D01F4_ae;
+    int autoEC119FAF_ai;
+    int autoEC119FAF_ae;
+
+    // Variable Initialization
+    lv_mutatorName = "";
+    lv_previousMutators = "";
+
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    lib74A68E34_gv_mutatorListBank[lp_player] = libCOOC_gv_cC_CoopBank[lp_player];
+    lv_previousMutators = BankValueGetAsString(lib74A68E34_gv_mutatorListBank[lp_player], "LunaCoopMod", "PreviousMutators");
+    autoB8B96F7D_var = 1;
+    for ( ; autoB8B96F7D_var <= autoB8B96F7D_ae; autoB8B96F7D_var += 1 ) {
+        lv_substringIndex = StringFind(lv_previousMutators, ",", c_stringNoCase);
+        lv_mutatorIndex += 1;
+        if ((lv_substringIndex != -1)) {
+            lv_mutatorName = StringSub(lv_previousMutators, 1, (lv_substringIndex - 1));
+            autoEC119FAF_ai = 1;
+            autoEC119FAF_ae = UserDataInstanceCount("Mutators")+1;
+            while (autoEC119FAF_ai < autoEC119FAF_ae) {
+                lv_indexMutator = UserDataInstance("Mutators", autoEC119FAF_ai);
+                autoEC119FAF_ai = autoEC119FAF_ai+1;
+                if (((lv_indexMutator) == lv_mutatorName)) {
+                    lib74A68E34_gv_mutatorsListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
+                }
+
+            }
+            lv_previousMutators = StringSub(lv_previousMutators, (lv_substringIndex + 1), StringLength(lv_previousMutators));
+        }
+        else {
+            lv_mutatorName = lv_previousMutators;
+            auto3D1D01F4_ai = 1;
+            auto3D1D01F4_ae = UserDataInstanceCount("Mutators")+1;
+            while (auto3D1D01F4_ai < auto3D1D01F4_ae) {
+                lv_indexMutator = UserDataInstance("Mutators", auto3D1D01F4_ai);
+                auto3D1D01F4_ai = auto3D1D01F4_ai+1;
+                if (((lv_indexMutator) == lv_mutatorName)) {
+                    lib74A68E34_gv_mutatorsListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
+                }
+
+            }
+            break;
+        }
+    }
+    return true;
+}
+
 void lib74A68E34_gf_MutatorListRandomizerUpdate () {
     // Variable Declarations
     int lv_selectedItem;
@@ -71,30 +148,55 @@ void lib74A68E34_gf_MutatorListRandomizerUpdate () {
     int lv_mutatorcount;
 
     // Automatic Variable Declarations
-    int auto6DF20036_ai;
-    int auto6DF20036_ae;
+    int auto4506CB45_ai;
+    int auto4506CB45_ae;
+    const int autoC2EC3EAA_ae = 99;
+    int autoC2EC3EAA_var;
+    int autoB748BC2B_ai;
+    int autoB748BC2B_ae;
     playergroup auto3266967C_g;
 
     // Variable Initialization
 
     // Implementation
     lv_selectedItem = DialogControlGetSelectedItem(lib74A68E34_gv_mutatorListRandomizerPulldown, EventPlayer());
-    if ((lv_selectedItem <= 1)) {
-        auto6DF20036_ai = 1;
-        auto6DF20036_ae = UserDataInstanceCount("Mutators")+1;
-        while (auto6DF20036_ai < auto6DF20036_ae) {
-            lv_indexMutator = UserDataInstance("Mutators", auto6DF20036_ai);
-            auto6DF20036_ai = auto6DF20036_ai+1;
+    DialogControlSelectItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), lv_selectedItem);
+    if ((lv_selectedItem <= 2)) {
+        DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), false);
+        auto4506CB45_ai = 1;
+        auto4506CB45_ae = UserDataInstanceCount("Mutators")+1;
+        while (auto4506CB45_ai < auto4506CB45_ae) {
+            lv_indexMutator = UserDataInstance("Mutators", auto4506CB45_ai);
+            auto4506CB45_ai = auto4506CB45_ai+1;
             libCOMU_gf_EnableDisableMutator(false, lv_indexMutator);
         }
+        if ((lv_selectedItem <= 1)) {
+            autoC2EC3EAA_var = 1;
+            for ( ; autoC2EC3EAA_var <= autoC2EC3EAA_ae; autoC2EC3EAA_var += 1 ) {
+                if ((lib74A68E34_gv_mutatorsListPreviousMutators[autoC2EC3EAA_var][EventPlayer()] != null)) {
+                    autoB748BC2B_ai = 1;
+                    autoB748BC2B_ae = UserDataInstanceCount("Mutators")+1;
+                    while (autoB748BC2B_ai < autoB748BC2B_ae) {
+                        lv_indexMutator = UserDataInstance("Mutators", autoB748BC2B_ai);
+                        autoB748BC2B_ai = autoB748BC2B_ai+1;
+                        if (((lib74A68E34_gv_mutatorsListPreviousMutators[autoC2EC3EAA_var][EventPlayer()]) == (lv_indexMutator))) {
+                            libCOMU_gf_EnableDisableMutator(true, lv_indexMutator);
+                        }
+
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
     }
     else {
-        libCOMU_gf_CT_SetMutationDifficultyLevel(UserDataInstance("MutationDifficultyLevels", (lv_selectedItem - 1)));
+        DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), true);
+        libCOMU_gf_CT_SetMutationDifficultyLevel(UserDataInstance("MutationDifficultyLevels", (lv_selectedItem - 2)));
         lv_mutatorcount = libCOMU_gf_CT_GetRandomMutatorCount();
         libCOMU_gf_CreateMutationAbominationProbabilities(lv_mutatorcount, lv_mutatorcount, UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1));
-        TextExpressionSetToken("Param/Expression/lib_74A68E34_49E2027E", "A", IntToText(UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1)));
-        TextExpressionSetToken("Param/Expression/lib_74A68E34_49E2027E", "B", IntToText(UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1)));
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_74A68E34_49E2027E"));
     }
     auto3266967C_g = libCOOC_gf_HumanPlayers();
     lv_indexPlayer = -1;
@@ -560,6 +662,40 @@ void lib74A68E34_gt_ApplyMaguroChanges_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MutatorListLoadBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorListLoadBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto79E4DF7D_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto79E4DF7D_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto79E4DF7D_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_MutatorListLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorListLoadBankInit_Init () {
+    lib74A68E34_gt_MutatorListLoadBankInit = TriggerCreate("lib74A68E34_gt_MutatorListLoadBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_MutatorListLoadBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MutatorListRandomizerCreate
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorListRandomizerCreate_Func (bool testConds, bool runActions) {
@@ -589,15 +725,17 @@ bool lib74A68E34_gt_MutatorListRandomizerCreate_Func (bool testConds, bool runAc
     DialogControlHookup(lv_panel, c_triggerControlTypePulldown, "MutatorRandomizerPulldown");
     lib74A68E34_gv_mutatorListRandomizerPulldown = DialogControlLastCreated();
     DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_CD6B2610"));
+    DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_B71F489D"));
     autoF01CDD37_ae = UserDataInstanceCount("MutationDifficultyLevels");
     lv_index = 1;
     for ( ; ( (autoF01CDD37_ai >= 0 && lv_index <= autoF01CDD37_ae) || (autoF01CDD37_ai < 0 && lv_index >= autoF01CDD37_ae) ) ; lv_index += autoF01CDD37_ai ) {
         TextExpressionSetToken("Param/Expression/lib_74A68E34_6F69C080", "A", IntToText(lv_index));
         DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), TextExpressionAssemble("Param/Expression/lib_74A68E34_6F69C080"));
     }
-    DialogControlSelectItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), 1);
+    DialogControlSelectItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), 2);
     DialogControlHookup(lv_panel, c_triggerControlTypeButton, "RefreshButton");
     lib74A68E34_gv_mutatorListRandomizerRefreshButton = DialogControlLastCreated();
+    DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), false);
     return true;
 }
 
@@ -651,7 +789,6 @@ bool lib74A68E34_gt_MutatorListRandomizerRefresh_Func (bool testConds, bool runA
         return true;
     }
 
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_74A68E34_CAB6950D"));
     lib74A68E34_gf_MutatorListRandomizerUpdate();
     return true;
 }
@@ -687,7 +824,19 @@ void lib74A68E34_gt_MutatorListUpdate_Init () {
 // Trigger: MutatorListFinish
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorListFinish_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_previousMutators;
+    string lv_indexMutator;
+    int lv_indexPlayer;
+
     // Automatic Variable Declarations
+    playergroup auto4E59C304_g;
+    int autoC9F48251_ai;
+    int autoC9F48251_ae;
+
+    // Variable Initialization
+    lv_previousMutators = "";
+
     // Actions
     if (!runActions) {
         return true;
@@ -700,6 +849,30 @@ bool lib74A68E34_gt_MutatorListFinish_Func (bool testConds, bool runActions) {
     TriggerEnable(lib74A68E34_gt_MutatorListRandomizerSelected, false);
     TriggerEnable(lib74A68E34_gt_MutatorListRandomizerRefresh, false);
     DialogDestroy(lib74A68E34_gv_mutatorListRandomizerDialog);
+    auto4E59C304_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto4E59C304_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        BankKeyRemove(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators");
+        autoC9F48251_ai = 1;
+        autoC9F48251_ae = UserDataInstanceCount("Mutators")+1;
+        while (autoC9F48251_ai < autoC9F48251_ae) {
+            lv_indexMutator = UserDataInstance("Mutators", autoC9F48251_ai);
+            autoC9F48251_ai = autoC9F48251_ai+1;
+            if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
+                if ((lv_previousMutators == "")) {
+                    lv_previousMutators = (lv_indexMutator);
+                }
+                else {
+                    lv_previousMutators = (lv_previousMutators + "," + (lv_indexMutator));
+                }
+            }
+
+        }
+        BankValueSetFromString(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators", lv_previousMutators);
+        BankSave(lib74A68E34_gv_mutatorListBank[lv_indexPlayer]);
+    }
     return true;
 }
 
@@ -1468,6 +1641,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ApplyMaguroChanges_Init();
+    lib74A68E34_gt_MutatorListLoadBankInit_Init();
     lib74A68E34_gt_MutatorListRandomizerCreate_Init();
     lib74A68E34_gt_MutatorListRandomizerSelected_Init();
     lib74A68E34_gt_MutatorListRandomizerRefresh_Init();
