@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="MutatorRandomizer">
+        <Height val="100"/>
+        <Width val="220"/>
+
+        <Frame type="Pulldown" name="MutatorRandomizerPulldown" template="StandardTemplates/StandardPulldownTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+            <Width val="160"/>
+        </Frame>
+
+        <Frame type="Label" name="DescriptionLabel">
+            <Anchor side="Bottom" relative="$parent/MutatorRandomizerPulldown" pos="Min" offset="-5"/>
+            <Anchor side="Left" relative="$parent/MutatorRandomizerPulldown" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/MutatorRandomizerPulldown" pos="Max" offset="0"/>
+            <Height val="20"/>
+            <Text val="Brutal+"/>
+            <Style val="Coop_CommanderMutatorRandomizerLabel"/>
+        </Frame>
+
+        <Frame type="Button" name="RefreshButton">
+            <Width val="70"/>
+            <Height val="70"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <ClickSound val="@UI_ActionButtonSelect"/>
+            
+            <NormalImage val="NormalImage"/>
+            <HoverImage val="HoverImage"/>
+        
+            <Frame type="Image" name="NormalImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_techpurchase_techbutton_hired_normalpressed.dds"/>    
+                <Color val="80,180,255"/>
+                <TextureType val="Border"/>
+                <StateCount val="2"/>
+                <DesaturateOnDisable val="true"/>
+                <Alpha val="255"/>
+            </Frame>
+
+            <Frame type="Image" name="HoverImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_techpurchase_techbutton_hired_normaloverpressedover.dds"/>
+                <Color val="80,180,255"/>
+                <TextureType val="Border"/>
+                <StateCount val="2"/>
+                <DesaturateOnDisable val="false"/>
+                <Alpha val="255"/>
+            </Frame>
+            
+            <Frame type="Image" name="Icon">
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Width val="50"/>
+                <Height val="50"/>
+                <Alpha val="255"/>
+                <DesaturateOnDisable val="false"/>
+                <DisabledAlpha val="50"/>
+                <Texture val="Assets\Textures\btn-command-returncargo.dds"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>
