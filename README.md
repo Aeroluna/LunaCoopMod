@@ -51,6 +51,10 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 
 Makes Raynor and HH Viking feel smoother to land.
 
+- Added cosmetic flame jets to Vultures when moving.
+
+*Bring it on!*
+
 ## Amon
 
 - Removed slow from Viper Disabling Cloud.
@@ -126,10 +130,6 @@ Just because he's a commander now doesn't mean he forgot how to pilot the Hyperi
 - Added behavior to Calldown MULE, will try to search for nearby mineral field to gather if not ordered directly.
 
 Ever get annoyed when you *slightly* missed a mineral field and your MULE just afked? Does not affect MULEs dropped away from minerals.
-
-- Added cosmetic flame jets to Vultures when moving.
-
-*Bring it on!*
 
 ## Kerrigan
 

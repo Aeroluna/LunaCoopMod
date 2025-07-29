@@ -1032,7 +1032,6 @@ bool lib74A68E34_gt_LogDamageLogging_Func (bool testConds, bool runActions) {
     int auto13250914_var;
 
     // Variable Initialization
-    lv_sourceUnitType = lib74A68E34_gf_LogGetSourceUnit(UnitGetType(EventUnitDamageSourceUnit()));
 
     // Conditions
     if (testConds) {
@@ -1058,6 +1057,7 @@ bool lib74A68E34_gt_LogDamageLogging_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    lv_sourceUnitType = lib74A68E34_gf_LogGetSourceUnit(UnitGetType(EventUnitDamageSourceUnit()));
     auto13250914_var = 1;
     for ( ; auto13250914_var <= auto13250914_ae; auto13250914_var += 1 ) {
         if ((lv_sourceUnitType == libA8FDA37D_gv_uT_DL_Data[auto13250914_var][0][EventUnitDamageSourcePlayer()].lv_unitType)) {
