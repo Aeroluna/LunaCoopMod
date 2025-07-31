@@ -76,6 +76,10 @@
         <Find value="1"/>
         <Value value="KerriganBroodCosmetic"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="HaveSIBroodlingBehavior">
+        <Compare value="GT"/>
+        <Behavior value="StukovInfestedCivilianSpawnBroodlingOnDeath"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="HaveSimplifiedGenome">
         <Find value="1"/>
         <Value value="HaveScourgeGasCostReduction"/>
@@ -98,6 +102,10 @@
         <Compare value="LT"/>
         <Value value="0.5"/>
     </CValidatorUnitCompareSpeed>
+    <CValidatorCombine id="IsSIInfestedTrooperCombineOrIsSIInfestedCivilianCombine">
+        <CombineArray value="IsSIInfestedMarine"/>
+        <CombineArray value="IsSIInfestedMarineBurrowed"/>
+    </CValidatorCombine>
     <CValidatorCombine id="Life12HPOrSwannPrestigeTurrets">
         <CombineArray value="LifeLTHalf"/>
         <CombineArray value="CommanderPrestigeSwannTurrets"/>

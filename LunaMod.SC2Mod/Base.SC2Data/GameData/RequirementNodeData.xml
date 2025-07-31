@@ -9,7 +9,6 @@
         <OperandArray value="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeMengskAcademyMissileCountCompleteOnly"/>
         <OperandArray value="LTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
     </CRequirementAnd>
@@ -36,9 +35,13 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PopStun" State="CompleteOnly"/>
     </CRequirementCountBehavior>
-    <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
+    <CRequirementCountBehavior id="CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="SIBarracksCorruption" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
         <Count Link="ArmoryMengsk" State="CompleteOnly"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitMothershipArtanisQueuedOrBetter">
@@ -101,7 +104,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MengskAcademyMissileCount" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountCompleteOnly3665151284">
@@ -110,7 +112,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MengskAcademyMissileCount" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSIBansheeIncubationChambersCompleteOnly">
@@ -173,12 +174,15 @@
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
+    <CRequirementLT id="LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5">
+        <OperandArray index="0" value="CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit"/>
+        <OperandArray index="1" value="5"/>
+    </CRequirementLT>
     <CRequirementLT id="LT3730171456CountUnitSwarmNetworkQueuedOrBetter4">
         <OperandArray index="0" value="CountUnitSwarmNetworkQueuedOrBetter"/>
         <OperandArray index="1" value="4"/>
     </CRequirementLT>
     <CRequirementLT id="LTCountUnitNukeMengskQueuedOrBetterAtUnit2">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
@@ -186,7 +190,6 @@
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
@@ -202,7 +205,6 @@
         <OperandArray index="0" value="CountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeMengskAcademyMissileCountQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeMengskAcademyMissileCountQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeRaynorCommanderCompleteOnly">

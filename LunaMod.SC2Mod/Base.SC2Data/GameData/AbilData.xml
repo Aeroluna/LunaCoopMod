@@ -125,6 +125,17 @@
         <Flags index="NoDeceleration" value="1"/>
         <PrepTime index="0" value="0"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="SIBarracksTrainCorruption">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <ErrorAlert value="Error"/>
+        <Activity value="UI/Researching"/>
+        <InfoArray index="Train1" Time="60">
+            <Button DefaultButtonFace="ResearchSIBarracksCorruption" Requirements="SIBarracksCanIncreaseCorruption"/>
+            <Unit value="SIBarracksCorruptionDummy"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <Alert value="ResearchComplete"/>
+    </CAbilTrain>
     <CAbilEffectInstant id="SICivilianStructureSpawnCivilian">
         <Cost index="0">
             <Cooldown TimeStart="15" TimeUse="15"/>
@@ -602,14 +613,23 @@
     </CAbilTrain>
     <CAbilTrain id="SIBarracksTrain">
         <InfoArray index="Train1">
-            <Charge CountMax="5" TimeStart="10" TimeUse="10"/>
+            <Charge>
+                <CountMax value="0"/>
+                <CountStart value="0"/>
+                <CountUse value="0"/>
+                <TimeStart value="0"/>
+                <TimeUse value="0"/>
+            </Charge>
+            <Cooldown TimeUse="120"/>
+            <Unit value="SICocoonInfestedMarine"/>
             <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
         </InfoArray>
+        <Flags index="Transient" value="1"/>
     </CAbilTrain>
     <CAbilTrain id="SIMorphtoInfestedMarine">
         <InfoArray index="Train1">
-            <Resource index="Minerals" value="30"/>
-            <Unit value="SIInfestedMarine"/>
+            <Resource index="Minerals" value="0"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilEffectTarget id="ShadowGuardVoidStasis">

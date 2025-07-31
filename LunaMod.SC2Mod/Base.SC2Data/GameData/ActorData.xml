@@ -6,6 +6,18 @@
     <CActorUnit id="BattlecruiserMengsk">
         <PortraitModel value="BattlecruiserMengskPortrait"/>
     </CActorUnit>
+    <CActorModel id="SIBarracksCorruptionModel" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+        <Remove Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Behavior.SIBarracksCorruption.On" Send="Create"/>
+        <On Terms="Behavior.SIBarracksCorruption.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft"/>
+        <Model value="ContaminateModel"/>
+        <Scale value="0.600000"/>
+        <AutoScaleFactor value="0.500000"/>
+    </CActorModel>
     <CActorSound id="InfestedTerran_AirAttackLaunchSwtnrSound" parent="SoundOneShot">
         <On Terms="Effect.InfestedAcidSpinesLM.Start; At Caster" Send="Create"/>
         <Sound value="InfestedTerran_AirAttackLaunchSwtnr"/>
@@ -28,6 +40,7 @@
         <On Terms="WeaponStart.InfestedAcidSpines.AttackStart" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.SIInfestedMarine.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <SoundArray index="Ready" value="Bogus"/>
     </CActorMissile>
     <CActorModel id="SILiberatorDummyRange" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.SILiberatorTargetMorphPersistent.Start" Send="Create"/>

@@ -1152,6 +1152,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
         }
+        else if (auto560DABDD_val == "ZergStukov") {
+            TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
+            TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
+        }
         else if (auto560DABDD_val == "TerranTychus") {
             lib74A68E34_gf_TychusEnableUIReorder(lv_player);
         }
@@ -1636,6 +1640,57 @@ void lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init () {
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, c_playerAny, "LocustWeaponCreeperCreateSet");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: StukovAddCorruption
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovAddCorruption_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUnitType() == "SIBarracksCorruptionDummy"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitRemove(EventUnitProgressUnit());
+    UnitBehaviorAdd(EventUnit(), "SIBarracksCorruption", EventUnit(), 1);
+    UnitIssueOrder(EventUnit(), Order(AbilityCommand("que1", 0)), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovAddCorruption_Init () {
+    lib74A68E34_gt_StukovAddCorruption = TriggerCreate("lib74A68E34_gt_StukovAddCorruption_Func");
+    TriggerEnable(lib74A68E34_gt_StukovAddCorruption, false);
+    TriggerAddEventUnitTrainProgress(lib74A68E34_gt_StukovAddCorruption, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: StukovCorruptionSetCD
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovCorruptionSetCD_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (180.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 30.0)), c_cooldownOperationSet);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
+    lib74A68E34_gt_StukovCorruptionSetCD = TriggerCreate("lib74A68E34_gt_StukovCorruptionSetCD_Func");
+    TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_StukovCorruptionSetCD, null, "SIBarracksTrain", null);
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -1667,6 +1722,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
+    lib74A68E34_gt_StukovAddCorruption_Init();
+    lib74A68E34_gt_StukovCorruptionSetCD_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -11,6 +11,7 @@ Abil/Name/NexusTrainMothershipArtanis2=Train Mothership
 Abil/Name/PsiStormShakuras=Astral Storm
 Abil/Name/SIBansheeHangar=SIBanshee Hangar
 Abil/Name/SIBansheeQueue=SIBanshee Queue
+Abil/Name/SIBarracksTrainCorruption=SIBarracksTrainCorruption
 Abil/Name/SILiberatorAATarget=AA Target
 Abil/Name/SILiberatorAGTarget=AG Target
 Abil/Name/SILiberatorMorphtoAA=Morph to AA
@@ -28,6 +29,7 @@ Behavior/Name/KerriganRazorSwarm=Razor Swarm
 Behavior/Name/KerriganRegenAuraTarget=Protective Brood
 Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Name/SIBansheeBroodling=SIBanshee Broodling
+Behavior/Name/SIBarracksCorruption=Corruption
 Behavior/Name/SILiberatorSprayDummyValidate=SILiberator Spray Dummy Validate
 Behavior/Name/SILiberatorSprayPool=Acid
 Behavior/Name/SILiberatorVolatileFuel=Volatile Fuel
@@ -41,6 +43,7 @@ Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:Kerr
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
+Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*30"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
 Behavior/Tooltip/SILiberatorVolatileFuel=This unit is expending energy to gain 50% increased attack and movement speed.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
@@ -93,6 +96,7 @@ Button/Name/ResearchHellburstPayload=Research Hellburst Payload
 Button/Name/ResearchMengskAcademyMissileCount=Research Ordnance Depot Retrofit
 Button/Name/ResearchOverdriveActuators=Research Overdrive Actuators
 Button/Name/ResearchPulseLoopCapacitors=Research Pulse-Loop Capacitors
+Button/Name/ResearchSIBarracksCorruption=Increase Corruption
 Button/Name/ResearchSILiberatorBecometheSwarm=Evolve Cloud Dispersal
 Button/Name/ResearchSILiberatorEnergyLeech=Research Necroplasmic Synthesis
 Button/Name/ResearchSignifierFade=Research Fading Star
@@ -229,6 +233,7 @@ Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c
 Button/Tooltip/ResearchPhobosClassWeaponsSystem=<c val="ffff8a">Viking</c> weapons system upgrade. Increases air attack range by 2 and ground attack range by 1. Allows <c val="ffff8a">Vikings</c> to transform quickly between combat modes.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c> missiles and gatling cannons to deal area damage.
+Button/Tooltip/ResearchSIBarracksCorruption=Increase the level of Corruption for this <c val="ffff8a">Infested Barracks</c>, reducing the cooldown of <c val="ffff8a">Spawn Infested Marines</c> by 30 seconds. Can have up to 5 levels of Corruption.
 Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
@@ -470,6 +475,7 @@ RequirementNode/Tooltip/CountUpgradeStukovInfestedBansheeInfestedLifeCompleteOnl
 RequirementNode/Tooltip/CountUpgradeTempestDestabilizingResiduumCompleteOnly3548369632=Research Destablizing Residuum at the Fleet Beacon
 RequirementNode/Tooltip/CountUpgradeTransformationServosCompleteOnly1133472468=Research Smart Servos at the Factory Tech Lab
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
+RequirementNode/Tooltip/LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5=Can only have 5 levels of Corruption
 RequirementNode/Tooltip/LT3730171456CountUnitSwarmNetworkQueuedOrBetter4=Limit 4
 RequirementNode/Tooltip/Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2=No Tactical Missile at this Royal Academy
 Skin/Name/KerriganBroodCoop=KerriganBroodCoop
@@ -490,6 +496,7 @@ Unit/Name/PhaseMonolithDummy=Phasing Khaydarin Monolith
 Unit/Name/PhaseShieldBatteryDummy=Phasing Shield Battery
 Unit/Name/PlanetaryFortressUpgraded=Big Bertha
 Unit/Name/QueenBrood=Brood Matron
+Unit/Name/SIBarracksCorruptionDummy=SIBarracks Corruption Dummy
 Unit/Name/SILiberatorAG=Infested Liberator
 Unit/Name/SILiberatorAGMissile=SILiberator AG Missile
 Unit/Name/SILiberatorAGMorphModel=Infested Liberator
@@ -510,6 +517,7 @@ Upgrade/Name/KerriganBroodCosmetic=Cosmetic
 Upgrade/Name/MengskAcademyMissileCount=Ordnance Depot Retrofit
 Upgrade/Name/RaynorDoubleMULE=Raynor Double MULE
 Upgrade/Name/SIBansheeIncubationChambers=Incubation Chambers
+Upgrade/Name/SIBarracksCorruption=SIBarracks Corruption
 Upgrade/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
 Upgrade/Name/SignifierFade=Fade
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors

@@ -59,6 +59,23 @@
     <CUnit id="MedivacMengsk">
         <ShieldArmorName value="Unit/ShieldArmorName/ScatterVeil"/>
     </CUnit>
+    <CUnit id="SIBarracks">
+        <Food value="-1"/>
+        <AbilArray Link="SIBarracksTrainCorruption"/>
+        <AbilArray Link="que1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" AbilCmd="que1,CancelLast"/>
+            <LayoutButtons Face="ResearchSIBarracksCorruption" Type="AbilCmd" AbilCmd="SIBarracksTrainCorruption,Train1" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SIBarracksCorruptionDummy">
+        <Race value="Zerg"/>
+        <Mover value="Fly"/>
+        <Food value="-1"/>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="50"/>
+        <EditorCategories value=""/>
+    </CUnit>
     <CUnit id="SIBarracksFlying">
         <PushPriority value="11"/>
     </CUnit>
@@ -150,9 +167,18 @@
     </CUnit>
     <CUnit id="SIInfestedCivilian">
         <PushPriority value="9"/>
+        <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
+    </CUnit>
+    <CUnit id="SIInfestedCivilianBurrowed">
+        <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="SIInfestedTrooper">
         <PushPriority value="9"/>
+        <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
+    </CUnit>
+    <CUnit id="SIInfestedTrooperBurrowed">
+        <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="NoScrapDrop"/>
     </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
@@ -864,16 +890,23 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SICocoonInfestedMarine">
-        <CostResource index="Minerals" value="30"/>
+        <CostResource index="Minerals" value="0"/>
+        <Food value="0"/>
     </CUnit>
     <CUnit id="SIInfestedMarine">
-        <Food value="-0.5"/>
+        <Food value="0"/>
         <WeaponArray index="0" Link="InfestedAcidSpines"/>
         <WeaponArray Link="SIInfestedMarine"/>
         <PushPriority value="9"/>
+        <CostResource index="Minerals" value="0"/>
+        <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="NoScrapDrop"/>
     </CUnit>
     <CUnit id="SIInfestedMarineBurrowed">
-        <Food value="-0.5"/>
+        <Food value="0"/>
+        <CostResource index="Minerals" value="0"/>
+        <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="NoScrapDrop"/>
     </CUnit>
     <CUnit id="Scourge">
         <CostResource index="Vespene" value="12"/>
