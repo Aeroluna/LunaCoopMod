@@ -125,6 +125,11 @@
         <Flags index="NoDeceleration" value="1"/>
         <PrepTime index="0" value="0"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="SICivilianStructureSpawnCivilian">
+        <Cost index="0">
+            <Cooldown TimeStart="15" TimeUse="15"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="SILiberatorAATarget">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="SILiberatorTargetAAMorphOrderSet"/>
@@ -185,6 +190,10 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <!-- Note when changing costs, change them in the Unit, the Cocoon and the train ability to match -->
+    <CAbilTrain id="SIMorphtoInfestedCivilian">
+        <InfoArray index="Train1" Time="15"/>
+    </CAbilTrain>
     <CAbilEffectTarget id="SIQueenFungalGrowth">
         <Flags index="NoDeceleration" value="1"/>
     </CAbilEffectTarget>
@@ -594,6 +603,7 @@
     <CAbilTrain id="SIBarracksTrain">
         <InfoArray index="Train1">
             <Charge CountMax="5" TimeStart="10" TimeUse="10"/>
+            <Flags index="AutoCast" value="1"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilTrain id="SIMorphtoInfestedMarine">
