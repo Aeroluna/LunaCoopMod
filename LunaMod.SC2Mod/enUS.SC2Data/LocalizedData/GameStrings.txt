@@ -105,11 +105,13 @@ Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
 Button/Name/ResearchTransformationServos=Research Smart Servos
 Button/Name/SIBansheeIncubationChambers=Incubation Chambers
 Button/Name/SIBansheeResearchIncubationChambers=Evolve Incubation Chambers
+Button/Name/SIInfestedMissileTurretViralBioSteel=Biomass Coating
 Button/Name/SILiberatorAmmo=Volatile Biomass
 Button/Name/SILiberatorAutomatedMitosis=Automated Mitosis
 Button/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
 Button/Name/SILiberatorVolatileFuel=Volatile Fuel
 Button/Name/SILiberatorVolatileSpray=Volatile Spray
+Button/Name/SIMissileTurretRegenerativePlating=Regenerative Plating
 Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
 Button/Name/SmartServos=Smart Servos
@@ -225,6 +227,8 @@ Button/Tooltip/ResearchDarkArchonFullStartingEnergy=<c val="ffff8a">Dark Archons
 Button/Tooltip/ResearchFireSuppressionSystemsPrestige=All structure fires are automatically extinguished and all structures automatically repair themselves to 100% of their maximum life.
 Button/Tooltip/ResearchHellbatHellArmor=<c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, and <c val="ffff8a">Thor</c> gain +2 armor. <c val="ffff8a">Hellions</c> and <c val="ffff8a">Hellbats</c> gain 60 hitpoints.
 Button/Tooltip/ResearchHellburstPayload=Increases the direct damage of <c val="ffff8a">Widow Mine</c> Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
+Button/Tooltip/ResearchInfestedBunkerArmor=<c val = "ffff8a">Infested Bunkers</c> and <c val = "ffff8a">Infested Missile Turrets</c> gain +3 armor.
+Button/Tooltip/ResearchInfestedBunkerLifeRegen=<c val="ffff8a">Infested Bunkers</c> and <c val="ffff8a">Infested Missile Turrets</c> regenerate life twice as fast while rooted.
 Button/Tooltip/ResearchLockOnRangeUpgrade=Increases <c val="ffff8a">Widow Mine</c> Sentinel Missile and <c val="ffff8a">Cyclone</c> Lock On initial and tracking range by 3.
 Button/Tooltip/ResearchMedivacEnergyUpgrade=Increases the <c val="ffff8a">Medivac</c>'s energy regeneration rate by 100%.
 Button/Tooltip/ResearchMengskAcademyMissileCount=Allows <c val="ffff8a">Royal Academies</c> to arm and store 1 additional nuke at a time.
@@ -245,6 +249,7 @@ Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an abi
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
 Button/Tooltip/SIBansheeIncubationChambers=Infested Banshees spawns a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds. A Broodling is a small creature that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/SIBansheeResearchIncubationChambers=Allows <c val="ffff8a">Infested Banshees</c> to spawn a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds.
+Button/Tooltip/SIInfestedMissileTurretViralBioSteel=Infested Missile regenerate life while rooted.
 Button/Tooltip/SILiberator=Artillery fighter. Attacks deal area damage to enemy air units. Can switch into Defender Mode to provide siege support.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
 Button/Tooltip/SILiberatorAG=Immobile defender. Deals heavy single target damage to ground units. Can switch into Fighter mode to provide air support.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/SILiberatorAmmo=Consumes nearby Infested Civilians and Infested Troopers to restore 20 life and restore <d ref="Effect,SILiberatorAmmoRestockEnergy,VitalArray[Energy].Change"/> energy for the Infested Liberator. Normal energy regeneration is suppressed.
@@ -252,6 +257,7 @@ Button/Tooltip/SILiberatorAutomatedMitosis=Infested Liberators automatically gen
 Button/Tooltip/SILiberatorNecroplasmicSynthesis=Infested Liberators regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
 Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased attack and movement speed while using Cloud Dispersal.</n></n>Uses <d ref="-1*Effect,SILiberatorVolatileFuelMU,VitalArray[Energy].Change/Behavior,SILiberatorVolatileFuel,Period" precision="4"/> energy per second.
 Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.</n></n>Each attack uses <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy every attack.
+Button/Tooltip/SIMissileTurretRegenerativePlating=Infested Missile Turrets regenerate life twice as fast while rooted.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Also ignores collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
@@ -537,6 +543,7 @@ UserData/TechUnit/[Override]Defiler_Name=Defiler
 UserData/TechUnit/[Override]Defiler_Prefix=Zerg -
 UserData/TechUnit/[Override]HighTemplarShakuras_Name=Signifier
 Weapon/Name/DarkArchonNerazimWeapon=Tenebris Lance
+Weapon/Name/FireflyMissilesLookAt=FireflyMissilesLookAt
 Weapon/Name/GoliathATargetingDummy=Hellfire Missiles
 Weapon/Name/GoliathGTargetingDummy=Autocannon
 Weapon/Name/HellionTankMoving=Napalm Spray

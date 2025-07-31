@@ -381,8 +381,24 @@
         <MinimapRadius value="0"/>
         <EditorCategories value=""/>
     </CUnit>
+    <CUnit id="SIMissileTurret">
+        <LifeRegenRate value="4"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SIInfestedMissileTurretViralBioSteel" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="SIMissileTurretRegenerativePlating" Type="Passive" Requirements="HaveSIBunkerLifeRegen" Row="1" Column="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SIMissileTurretFlying">
         <PushPriority value="11"/>
+        <WeaponArray Link="SILongboltMissile" Turret="MissileTurret"/>
+        <WeaponArray Link="FireflyMissilesLookAt" Turret="MissileTurret"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="Detector" Type="Passive" Requirements="NotUnderConstruction" Row="2" Column="2"/>
+            <LayoutButtons Face="SIInfestedMissileTurretViralBioSteel" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="SIMissileTurretRegenerativePlating" Type="Passive" Requirements="HaveSIBunkerLifeRegen" Row="1" Column="1"/>
+        </CardLayouts>
+        <BehaviorArray Link="Detector11"/>
     </CUnit>
     <CUnit id="SIStarportFlying">
         <PushPriority value="11"/>
