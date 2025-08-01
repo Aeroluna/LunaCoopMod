@@ -1680,7 +1680,12 @@ bool lib74A68E34_gt_StukovCorruptionSetCD_Func (bool testConds, bool runActions)
         return true;
     }
 
-    UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (180.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 30.0)), c_cooldownOperationSet);
+    if ((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "CommanderPrestigeStukovBunkers", c_techCountCompleteOnly) > 0)) {
+        UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (80.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 13.3)), c_cooldownOperationSet);
+    }
+    else {
+        UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (120.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 20.0)), c_cooldownOperationSet);
+    }
     return true;
 }
 

@@ -512,13 +512,13 @@ A few visual fixes/changes.
 
 ## Stukov
 
-- Reworked Infested Banshee P2 Deploy ability to allow casting while moving.
+- Changed Infested Banshee P2 Deploy ability to allow casting while moving.
 - Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton that additionally increases Infested Banshee speed by 2.
   - Adds visual boosters to the Infested Banshee.
 
 These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
 
-- Reworked Rapid Hibernation to no longer require research.
+- Changed Rapid Hibernation to no longer require research.
 - Removed deceleration from Infested Banshee Burrow (no longer has to fully stop to cast).
 
 As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
@@ -528,29 +528,6 @@ As the Infested Banshee's defining trait, it seems odd that it requires research
   - Continues to spawn regular Broodlings while burrowed.
 
 Grants a unique to trait to the Infested Banshee other than just burrowing for energy. Borrowing from the P2 idea of ferrying around infested, this upgrade lets Infested Banshees carry around and throw Broodlings. Combined with the new move speed upgrade, these things turn into Brood Lords with turbo boosters. Should make the tech required to build them feel more worth it.
-
-- Reworked Infested Marines
-  - Decreased supply cost from 1 to 0.5.
-  - Doubled cost but spawns 2 from 1 egg.
-  - Halved max charges and doubled charge cooldown on Infested Barracks.
-
-These guys clog up your supply until they time out, this should help mitigate that.
-
-- Added Infested Rockets weapon from Versus to Infested Marines.
-
-Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
-
-- Added strafing movement to Infested Liberator Cloud Dispersal.
-- Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
-- Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
-- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
-
-Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
-
-- Added 100 max energy to Infested Liberators.
-- Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
-
-Added a new mechanic to Infested Liberators that lets them eat Infested to empower their weapons, similar to Infested Siege Tanks.
 
 - Added Defender Mode ability to Infested Liberators.
   - Uses a slightly slower attack speed version of the Liberator AG weapon.
@@ -577,6 +554,45 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Reworked Spawn Broodlings to spawn flying Broodlings (must land before attacking) when casted on a flying unit.
 
 Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.
+
+- Increased duration of infested troopers from 30 to 60.
+
+Infested troopers were previously reliant on the infantry duration mastery. This should increase their consistency without the mastery.
+
+- Added Infested Rockets weapon from Versus to Infested Marines.
+
+Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
+
+- Reworked Infested Barracks
+  - Costs 1 supply.
+  - Automatically spawns free Infested Marines.
+  - Can pay 100/50 and 1 supply to increase level of Corruption up to 5 times, decreasing the cooldown of spawning Infested Marines.
+  - Can autocast Increase Corruption.
+- Changed Infested Siege Tanks to also consume Infested Marines.
+
+Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
+
+- Added strafing movement to Infested Liberator Cloud Dispersal.
+- Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
+- Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
+- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+
+Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
+
+- Added 100 max energy to Infested Liberators.
+- Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
+
+Added a new mechanic to Infested Liberators that lets them eat Infested to empower their weapons, similar to Infested Siege Tanks.
+
+- Reduced the cooldown of Spawn Infested Civilians from 60 seconds to 15 seconds.
+- Reduced the amount of Infested Civilians created from 8 to 2.
+
+Instead of creating huge waves, the Infested Colonist Compound now does many smaller waves. Each infestation upgrade still doubles the amount of infested spawned.
+
+- Reworked P3.
+  - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
+
+This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
 
 - Reduced push priority of infantry to 9.
 - Increased push priority of uprooted buildings to 11.

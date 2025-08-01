@@ -472,6 +472,21 @@
         <EffectArray Operation="Set" Reference="Abil,SIAdvancedBuild,InfoArray[Build12].Button.Requirements"/>
         <EffectArray Operation="Set" Reference="Abil,SIStarportTrain,InfoArray[Train1].Button.Requirements"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeStukovBunkers">
+        <EffectArray index="2" Value="10.000000"/>
+        <EffectArray index="3" Value="10.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SICivilianStructureSpawnCivilian,Cost[0].Cooldown.TimeStart" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SICivilianStructureSpawnCivilian,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,SICivilianStructureSpawnCivilianGlobalTimer,Duration" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,SICivilianStructureSpawnCivilianGlobalTimerRebuild,Duration" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeUse" Value="40.000000"/>
+        <EffectArray Operation="Subtract" Reference="Effect,StukovSIBunkerCDRDummy,Amount" Value="6.6"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeStart" Value="40.000000"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeStukovBunkersPerk">
+        <EffectArray index="2" Value="2.000000"/>
+        <EffectArray index="3" Value="2.000000"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeStukovMech">
         <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Minerals]" Value="45"/>
         <EffectArray Operation="Subtract" Reference="Unit,SILiberatorAG,CostResource[Vespene]" Value="38"/>

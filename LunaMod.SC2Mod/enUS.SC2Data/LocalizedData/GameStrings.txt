@@ -43,7 +43,7 @@ Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:Kerr
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
-Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*30"/> seconds.
+Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*Effect,StukovSIBunkerCDRDummy,Amount"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
 Behavior/Tooltip/SILiberatorVolatileFuel=This unit is expending energy to gain 50% increased attack and movement speed.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
@@ -160,6 +160,7 @@ Button/Tooltip/CommanderPrestigeKerriganCreep=<s val="Coop_Prestige_Advantage">A
 Button/Tooltip/CommanderPrestigeRaynorAfterburners=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Ignite Afterburners additionally increases attack speed by 100%. Cooldown removed. Can now be autocast.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Units no longer cost less. Ignite Afterburners costs 10 life and its movement speed bonus is reduced to 50%.
 Button/Tooltip/CommanderPrestigeRaynorAfterburnersUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Additionally increases attack speed by <s val="Coop_Prestige_Tooltip"><d ref="$UpgradeEffectArrayValue:CommanderPrestigeRaynorMechAfterburners:Behavior,VehicleAfterburners,Modification.AttackSpeedMultiplier$*100"/></s>%. Cooldown removed. Can autocast.
 Button/Tooltip/CommanderPrestigeStukov=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Infested Banshees can load up to 16 Infested infantry and can launch their cargo at a ground target.<n/><n/>Infested Starports and Infested Banshees no longer have tech requirements. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Infested Infantry have 30% reduced timed life.
+Button/Tooltip/CommanderPrestigeStukovBunkers=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Infested Bunkers, Infested Barracks, and the Infested Colonist Compound spawn infantry 50% faster.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Infested Bunkers no longer have cargo capacity.
 Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less.</n></n>Automated Mitosis and Necroplasmic Synthesis are 200% more effective.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
 Button/Tooltip/CommanderPrestigeStukovMechAutoAmmo=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% faster.
 Button/Tooltip/CommanderPrestigeStukovMechEnergyLeech=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% more energy.
@@ -237,7 +238,7 @@ Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c
 Button/Tooltip/ResearchPhobosClassWeaponsSystem=<c val="ffff8a">Viking</c> weapons system upgrade. Increases air attack range by 2 and ground attack range by 1. Allows <c val="ffff8a">Vikings</c> to transform quickly between combat modes.
 Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
 Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c> missiles and gatling cannons to deal area damage.
-Button/Tooltip/ResearchSIBarracksCorruption=Increase the level of Corruption for this <c val="ffff8a">Infested Barracks</c>, reducing the cooldown of <c val="ffff8a">Spawn Infested Marines</c> by 30 seconds. Can have up to 5 levels of Corruption.
+Button/Tooltip/ResearchSIBarracksCorruption=Increase the level of Corruption for this <c val="ffff8a">Infested Barracks</c>, reducing the cooldown of <c val="ffff8a">Spawn Infested Marines</c> by <d ref="Effect,StukovSIBunkerCDRDummy,Amount"/> seconds. Can have up to 5 levels of Corruption.
 Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
@@ -412,6 +413,7 @@ Effect/Name/SOARecallOnDeathCleanseRB=SOARecall On Death Cleanse RB
 Effect/Name/SeekerMissileLaunchRestoreCheck=Seeker Missile Launch Restore Check
 Effect/Name/SignifierFade=Fade (Apply Buff)
 Effect/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Stukov Infested Civilian Spawn Broodling Flying On Death
+Effect/Name/StukovSIBunkerCDRDummy=StukovSIBunkerCDRDummy
 Effect/Name/SwarmLocusBanelingCP=Swarm Locus Baneling CP
 Effect/Name/SwarmLocusBanelingCU=Swarm Locus Baneling CU
 Effect/Name/SwarmLocusCreateUnitSet=Swarm Locus Create Unit Set
