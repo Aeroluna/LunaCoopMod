@@ -22,8 +22,8 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
 
-- Reworked mind control effects to keep upgrades of targeted unit.
-- Reworked Dark Archon Mind Control ability to no longer take up supply.
+- Buffed mind control effects to keep upgrades of targeted unit.
+- Buffed Dark Archon Mind Control ability to no longer take up supply.
 
 Who cares if it's OP? If Zeratul exists, what does OP really mean anyways? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
 
@@ -188,7 +188,7 @@ Now uses the pre-infested voice lines from Heart of the Swarm.
 
 ## Artanis
 
-- Reworked Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
 - Reduced Phoenix price from 150/100 to 150/50.
 
 Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
@@ -280,7 +280,7 @@ P2 suspiciously improved all upgrades but this one.
 
 The turret/mech commander gets more improvements to sustaining turrets/mech.
 
-- Reworked Defense Matrix to no longer require research.
+- Changed Defense Matrix to no longer require research.
 
 https://www.maguro.one/2017/10/upgrades-in-co-op.html
 
@@ -369,7 +369,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
-- Reworked Disruption Web to no longer require research.
+- Changed Disruption Web to no longer require research.
 - Added Flux Vanes upgrade that increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
@@ -423,7 +423,7 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 - Removed Combat Chrono Wave.
 - Removed the ability to Chrono Boost defensive structures.
 - Nerfed Improved Reconstruction to 120 seconds.
-- Reworked Mirage weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Changed Mirage weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
 
@@ -551,7 +551,7 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.
 - Removed deceleration from Ocular Symbiote and Spawn Broodlings.
-- Reworked Spawn Broodlings to spawn flying Broodlings (must land before attacking) when casted on a flying unit.
+- Changed Spawn Broodlings to spawn flying Broodlings (must land before attacking) when casted on a flying unit.
 
 Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.
 
@@ -641,7 +641,7 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
 
 ## Zeratul
 
-- Reworked Xel'naga Ambusher Predictive Blink autocast.
+- Fixed Xel'naga Ambusher Predictive Blink autocast.
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
 
