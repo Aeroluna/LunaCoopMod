@@ -109,12 +109,32 @@
         <Duration value="10"/>
         <Period value="0.2"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MarauderMengskAbsorb">
+        <Modification>
+            <VitalMaxArray index="Shields" value="300"/>
+        </Modification>
+        <DamageResponse ModifyFraction="1" ModifyLimit="0" ModifyMinimumDamage="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MarauderMengskAbsorbReapplicator">
+        <ExpireEffect value="MarauderMengskAbsorbSet"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MengskAcademyMissileCount">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Requirements value="HaveMengskAcademyMissileCount"/>
         <Modification QueueCount="1" QueueSize="3"/>
     </CBehaviorBuff>
+    <CBehaviorVeterancy id="MengskVeterancyMarauderMengsk">
+        <VeterancyLevelArray index="1">
+            <Modification ShieldArmorBonus="1"/>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray index="2">
+            <Modification ShieldArmorBonus="1"/>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray index="3">
+            <Modification ShieldArmorBonus="1"/>
+        </VeterancyLevelArray>
+    </CBehaviorVeterancy>
     <CBehaviorBuff id="MultilockTargetingSystems">
         <Modification>
             <WeaponEnableArray index="1" value="SpartanCompanyAUpgraded"/>

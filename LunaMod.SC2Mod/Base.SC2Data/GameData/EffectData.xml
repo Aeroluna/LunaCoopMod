@@ -42,9 +42,23 @@
     <CEffectCreatePersistent id="GhostMengskNukeGuidedCP">
         <ExpireDelay value="1"/>
     </CEffectCreatePersistent>
+    <CEffectModifyUnit id="MarauderMengskAbsorbMU">
+        <EditorCategories value=""/>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MarauderMengskAbsorbSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MarauderMengskAbsorbAB"/>
+        <EffectArray value="MarauderMengskAbsorbMU"/>
+    </CEffectSet>
     <CEffectCreateHealer id="MedivacMengskHealLevel1">
         <ValidatorArray value="TargetLifeNotFull"/>
     </CEffectCreateHealer>
+    <CEffectCreatePersistent id="MedivacMengskHealScanPersistent">
+        <PeriodicValidator value="MedivacMengskHealPeriodicCombine"/>
+    </CEffectCreatePersistent>
     <CEffectCreateUnit id="QueenStukovSpawnBroodlingsFlyingCreateUnit">
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Effect="QueenStukovSpawnBroodlingsAB" Value="TargetPoint"/>
@@ -393,7 +407,7 @@
     <CEffectDamage id="SILiberatorSprayTrackedDamage" parent="DU_WEAP_SPLASH">
         <EditorCategories value=""/>
         <Type value="Acid"/>
-        <Amount value="12"/>
+        <Amount value="15"/>
         <Death value="Disintegrate"/>
         <AreaArray Radius="0.5" Fraction="1"/>
         <IncludeArray Effect="SILiberatorSpraySet" Value="Target"/>

@@ -690,6 +690,10 @@ Oops.
 
 Mengsk's infantry had custom portraits, but not his mech.
 
+- Improved Mengsk status bars to show energy/shield and be wider for Thors/Battlecruisers.
+
+Previously the status bar only showed hp.
+
 ## Mutators
 
 - Reworked Fatal Attraction to no longer make the units uncommandable.
@@ -757,5 +761,6 @@ Added Maguro mutators to Brutal+ system.
 - Nerazim Structure Pack (+ effects) - DaveSpectre
 - Royal Guard Portraits (Co-op) - DaveSpectre
 - Purifier Shield Battery - Enoki
+- Better Mengsk Status Frames - Enoki
 
 DaveSpectre is the goat <3
