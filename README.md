@@ -635,9 +635,27 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 ## Tychus
 
-- Added ability to reorder Tychus outlaws.
+- Added ability to reorder outlaws.
 
 https://www.maguro.one/2019/06/uiux-tweaks.html
+
+- Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
+  - Now possible to not have Tychus as any of your outlaws.
+  - Calldown Odin will only revive Tychus if Tychus is one of your outlaws.
+
+It's probably still worth taking Tychus, but now atleast you have a choice.
+
+- Reduced Crooked Sam's Demolition Charge visual explosion scale by 60%.
+
+It looked like a massive explosion for a single target nuke.
+
+- Fixed Odin weapon tooltip showing wrong damage.
+
+It was showing the damage numbers from WOL campaign instead of the Co-op numbers.
+
+- Reduced Miles "Blaze" Lewis weapon backswing and damage point.
+
+Same change to Raynor's firebats.
 
 ## Zeratul
 

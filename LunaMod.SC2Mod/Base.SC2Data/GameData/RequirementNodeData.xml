@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CRequirementAnd id="And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly">
+        <OperandArray value="CountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
+        <OperandArray value="CountUpgradeTychusACPiercingRoundsCompleteOnly"/>
+        <OperandArray value="CountUpgradeTychusACRageGrenadesCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitAlias_LairCompleteOnly1515591279LT3730171456CountUnitSwarmNetworkQueuedOrBetter4">
         <OperandArray value="CountUnitAlias_LairCompleteOnly1515591279"/>
         <OperandArray value="LT3730171456CountUnitSwarmNetworkQueuedOrBetter4"/>
@@ -27,6 +32,10 @@
         <OperandArray value="CountUpgradeSwannCommanderCompleteOnly"/>
         <OperandArray value="NotCountUpgradeScienceVesselFreeRepairCompleteOnly3119778345"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeTychusACOwnedCompleteOnlyAnd3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly">
+        <OperandArray value="CountUpgradeTychusACOwnedCompleteOnly"/>
+        <OperandArray value="And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndGTECountUpgradeCommanderLevelCompleteOnly6CountUpgradeZeratulCommanderCompleteOnly">
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
@@ -50,6 +59,11 @@
     <CRequirementCountUnit id="CountUnitSwarmNetworkQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SwarmNetwork" State="QueuedOrBetter"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitTychusOdinQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="TychusOdin" State="QueuedOrBetter"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -185,6 +199,9 @@
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
+    <CRequirementNot id="Not1826056550CountUnitTychusOdinQueuedOrBetter">
+        <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorPopStunCompleteOnly">
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
     </CRequirementNot>
@@ -230,6 +247,9 @@
     <CRequirementNot id="NotCountUpgradeTransformationServosQueuedOrBetterTechTreeCheat">
         <OperandArray index="0" value="CountUpgradeTransformationServosQueuedOrBetterTechTreeCheat"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
+    <CRequirementNot id="NotCountUpgradeTychusACPiercingRoundsCompleteOnly"/>
+    <CRequirementNot id="NotCountUpgradeTychusACRageGrenadesCompleteOnly"/>
     <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>

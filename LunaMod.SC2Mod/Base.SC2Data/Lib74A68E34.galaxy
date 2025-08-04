@@ -408,7 +408,47 @@ void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
     TriggerEnable(lib01833E95_gt_K2_StructureArmorUpgrade, true);
 }
 
-void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
+void lib74A68E34_gf_TychusHeroTechInit (int lp_player) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoBB5F0DE8_ae = 10;
+    const int autoBB5F0DE8_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_i = 0;
+    for ( ; ( (autoBB5F0DE8_ai >= 0 && lv_i <= autoBB5F0DE8_ae) || (autoBB5F0DE8_ai < 0 && lv_i >= autoBB5F0DE8_ae) ) ; lv_i += autoBB5F0DE8_ai ) {
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogAbil, "TychusBarracksTrain", "InfoArray[" + IntToString(lv_i) + "].Charge.CountMax", lp_player, 5.0);
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogAbil, "TychusFactoryTrain", "InfoArray[" + IntToString(lv_i) + "].Charge.CountMax", lp_player, 5.0);
+        libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogAbil, "TychusStarportTrain", "InfoArray[" + IntToString(lv_i) + "].Charge.CountMax", lp_player, 5.0);
+    }
+    lib74A68E34_gf_TychusUpdateHeroTechTreeChanged(lp_player);
+}
+
+void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p) {
+    // Variable Declarations
+    int lv_heroCount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_heroCount = libCOMI_gf_CM_Tychus_TechLevel2(lp_p);
+
+    // Implementation
+    if ((lv_heroCount == 0)) {
+        libCOMI_gf_CM_Tychus_SetHeroCostMultiply(lp_p, 0.0, 0.0);
+    }
+    else if (((TechTreeUpgradeCount(lp_p, "TychusCoopHeroHalfCostUpgrade", c_techCountCompleteOnly) == 0) || (lv_heroCount > 1))) {
+        libCOMI_gf_CM_Tychus_SetHeroCostMultiply(lp_p, 2.0, 2.0);
+    }
+    else if (true) {
+        libCOMI_gf_CM_Tychus_SetHeroCostMultiply(lp_p, 1.0, 1.0);
+    }
+}
+
+void lib74A68E34_gf_TychusUIReorderEnable (int lp_player) {
     // Variable Declarations
     int lv_i;
     text lv_tooltip;
@@ -431,14 +471,14 @@ void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
     lv_offsetY = 17;
 
     // Implementation
-    TriggerEnable(lib01833E95_gt_AF_ButtonClicked, true);
-    TriggerEnable(lib01833E95_gt_AF_HeroPurchased, true);
+    TriggerEnable(lib74A68E34_gt_TychusUIReorderButtonClicked, true);
+    TriggerEnable(lib74A68E34_gt_TychusUIReorderHeroPurchased, true);
     lib01833E95_gv_aF_TychusPlayer = lp_player;
     DialogCreate(500, 500, c_anchorTop, 0, 0, true);
     DialogSetImageVisible(DialogLastCreated(), false);
     lib01833E95_gv_aF_TopBarIconsDialog = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(lib01833E95_gv_aF_TychusPlayer), true);
-    lv_i = 1;
+    lv_i = 0;
     for ( ; ( (autoAF74CBE2_ai >= 0 && lv_i <= autoAF74CBE2_ae) || (autoAF74CBE2_ai < 0 && lv_i >= autoAF74CBE2_ae) ) ; lv_i += autoAF74CBE2_ai ) {
         libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lv_dimensionsX, lv_dimensionsY, c_anchorTop, ((92 * (lv_i - 1)) + 7), lv_offsetY, lv_tooltip, StringToText(""), "");
         lib01833E95_gv_aF_TopBarIcons[lv_i][0] = DialogControlLastCreated();
@@ -449,7 +489,7 @@ void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
         DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib01833E95_gv_aF_TopBarIcons[lv_i][0], c_anchorCenter, 0, 0);
         DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
     }
-    TriggerExecute(lib01833E95_gt_AF_HeroPurchased, true, false);
+    TriggerExecute(lib74A68E34_gt_TychusUIReorderHeroPurchased, true, false);
 }
 
 // Triggers
@@ -458,6 +498,10 @@ void lib74A68E34_gf_TychusEnableUIReorder (int lp_player) {
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    unitgroup auto10F70256_g;
+    int auto10F70256_u;
+    unit auto10F70256_var;
+
     // Conditions
     if (testConds) {
         if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
@@ -477,6 +521,13 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     TriggerExecute(libA8FDA37D_gt_UT_Ally, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
+    auto10F70256_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto10F70256_u = UnitGroupCount(auto10F70256_g, c_unitCountAll);
+    for (;; auto10F70256_u -= 1) {
+        auto10F70256_var = UnitGroupUnitFromEnd(auto10F70256_g, auto10F70256_u);
+        if (auto10F70256_var == null) { break; }
+        UnitBehaviorRemove(auto10F70256_var, "TychusResearchCenterDisableCommands", 1);
+    }
     return true;
 }
 
@@ -1157,7 +1208,15 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
         }
         else if (auto560DABDD_val == "TerranTychus") {
-            lib74A68E34_gf_TychusEnableUIReorder(lv_player);
+            TriggerEnable(libCOMI_gt_CM_TychusReplaceResearchCenter, false);
+            TriggerEnable(lib74A68E34_gt_TychusReplaceResearchCenter, true);
+            TriggerEnable(lib74A68E34_gt_TychusSetHeroUnit, true);
+            TriggerEnable(libCOMI_gt_CM_Tychus_HeroQueue, false);
+            TriggerEnable(libCOMI_gt_CM_Tychus_HeroCancel, false);
+            TriggerEnable(lib74A68E34_gt_TychusHeroQueueChanged, true);
+            TriggerEnable(lib74A68E34_gt_TychusHeroCancelChanged, true);
+            lib74A68E34_gf_TychusHeroTechInit(lv_player);
+            lib74A68E34_gf_TychusUIReorderEnable(lv_player);
         }
         else {
         }
@@ -1696,6 +1755,269 @@ void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
     TriggerAddEventUnitCreated(lib74A68E34_gt_StukovCorruptionSetCD, null, "SIBarracksTrain", null);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusHeroQueueChanged
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusHeroQueueChanged_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_TychusUpdateHeroTechTreeChanged(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusHeroQueueChanged_Init () {
+    lib74A68E34_gt_TychusHeroQueueChanged = TriggerCreate("lib74A68E34_gt_TychusHeroQueueChanged_Func");
+    TriggerEnable(lib74A68E34_gt_TychusHeroQueueChanged, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusBarracksTrain", 255), c_unitAbilStageQueue, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusBarracksTrain", 255), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusFactoryTrain", 255), c_unitAbilStageQueue, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusFactoryTrain", 255), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusStarportTrain", 255), c_unitAbilStageQueue, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroQueueChanged, null, AbilityCommand("TychusStarportTrain", 255), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusHeroCancelChanged
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusHeroCancelChanged_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_p = EventPlayer();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_TychusUpdateHeroTechTreeChanged(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusHeroCancelChanged_Init () {
+    lib74A68E34_gt_TychusHeroCancelChanged = TriggerCreate("lib74A68E34_gt_TychusHeroCancelChanged_Func");
+    TriggerEnable(lib74A68E34_gt_TychusHeroCancelChanged, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroCancelChanged, null, AbilityCommand("TychusBarracksTrain", 255), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroCancelChanged, null, AbilityCommand("TychusFactoryTrain", 255), c_unitAbilStageCancel, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_TychusHeroCancelChanged, null, AbilityCommand("TychusStarportTrain", 255), c_unitAbilStageCancel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusReplaceResearchCenter
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusReplaceResearchCenter_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_p;
+
+    // Automatic Variable Declarations
+    unitgroup auto3667DFBF_g;
+    int auto3667DFBF_u;
+    unit auto3667DFBF_var;
+
+    // Variable Initialization
+    lv_unit = libCOMI_gf_EventTychusHero();
+    lv_p = UnitGetOwner(lv_unit);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    CatalogLinkReplace(UnitGetOwner(libCOMI_gf_EventTychusHero()), c_gameCatalogUnit, "TychusResearchCenter", "TychusResearchCenterUnlocked");
+    auto3667DFBF_g = UnitGroup("TychusResearchCenter", UnitGetOwner(libCOMI_gf_EventTychusHero()), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto3667DFBF_u = UnitGroupCount(auto3667DFBF_g, c_unitCountAll);
+    for (;; auto3667DFBF_u -= 1) {
+        auto3667DFBF_var = UnitGroupUnitFromEnd(auto3667DFBF_g, auto3667DFBF_u);
+        if (auto3667DFBF_var == null) { break; }
+        libNtve_gf_ReplaceUnit(auto3667DFBF_var, "TychusResearchCenterUnlocked", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+        libNtve_gf_CopyUnitControlGroups(auto3667DFBF_var, libNtve_gf_LastReplacedUnit());
+        UnitCreateEffectUnit(auto3667DFBF_var, "TychusResearchCenterCopyRally", libNtve_gf_LastReplacedUnit());
+        libCOUI_gv_cU_TychusSquadBar = libNtve_gf_LastReplacedUnit();
+        if ((UnitIsSelected(auto3667DFBF_var, UnitGetOwner(libCOMI_gf_EventTychusHero())) == true)) {
+            UnitSelect(libNtve_gf_LastReplacedUnit(), UnitGetOwner(libCOMI_gf_EventTychusHero()), true);
+        }
+
+        libCOUI_gf_CU_TychusSetBarUnit(libNtve_gf_LastReplacedUnit());
+    }
+    DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[0], PlayerGroupAll(), "TrainingState", "NotTraining");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusReplaceResearchCenter_Init () {
+    lib74A68E34_gt_TychusReplaceResearchCenter = TriggerCreate("lib74A68E34_gt_TychusReplaceResearchCenter_Func");
+    TriggerEnable(lib74A68E34_gt_TychusReplaceResearchCenter, false);
+    libCOMI_gf_TychusHeroEvent(lib74A68E34_gt_TychusReplaceResearchCenter, "Event_TychusHeroCreate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusSetHeroUnit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusSetHeroUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+    int lv_p;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = libCOMI_gf_EventTychusHero();
+    lv_p = UnitGetOwner(lv_unit);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(libCOMI_gf_EventTychusHero()) == "TychusCoop"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    libCOMI_gv_cM_HeroUnit[lv_p] = libCOMI_gf_EventTychusHero();
+    libCOUI_gv_cU_HeroUnit[0][lv_p] = lv_unit;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusSetHeroUnit_Init () {
+    lib74A68E34_gt_TychusSetHeroUnit = TriggerCreate("lib74A68E34_gt_TychusSetHeroUnit_Func");
+    TriggerEnable(lib74A68E34_gt_TychusSetHeroUnit, false);
+    libCOMI_gf_TychusHeroEvent(lib74A68E34_gt_TychusSetHeroUnit, "Event_TychusHeroCreate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusUIReorderButtonClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusUIReorderButtonClicked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_firsthero;
+    unit lv_hero;
+    string lv_squadinstance;
+    int lv_squadindex;
+    int lv_a;
+
+    // Automatic Variable Declarations
+    int auto0A504FB0_val;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((EventDialogControl() == lib01833E95_gv_aF_TopBarIcons[0][0]) || (EventDialogControl() == lib01833E95_gv_aF_TopBarIcons[1][0]) || (EventDialogControl() == lib01833E95_gv_aF_TopBarIcons[2][0]) || (EventDialogControl() == lib01833E95_gv_aF_TopBarIcons[3][0])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto0A504FB0_val = EventDialogControl();
+    if (auto0A504FB0_val == lib01833E95_gv_aF_TopBarIcons[0][0]) {
+        lv_a = 0;
+    }
+    else if (auto0A504FB0_val == lib01833E95_gv_aF_TopBarIcons[1][0]) {
+        lv_a = 1;
+    }
+    else if (auto0A504FB0_val == lib01833E95_gv_aF_TopBarIcons[2][0]) {
+        lv_a = 2;
+    }
+    else if (auto0A504FB0_val == lib01833E95_gv_aF_TopBarIcons[3][0]) {
+        lv_a = 3;
+    }
+    else {
+    }
+    lv_firsthero = libCOUI_gv_cU_TychusSquadHeroes[lv_a];
+    lv_squadinstance = lib01833E95_gf_AF_GetTychusSquadInstance(lv_firsthero);
+    lv_squadindex = (lv_a + 1);
+    lib01833E95_gf_AF_SetTychusSquadMember(lv_firsthero, lv_squadindex, lv_squadinstance);
+    UnitBehaviorRemovePlayer(lv_firsthero, "TychusHeroSubGroup", 1, UnitBehaviorCount(lv_firsthero, "TychusHeroSubGroup"));
+    UnitBehaviorAdd(lv_firsthero, "TychusHeroSubGroup", lv_firsthero, lv_squadindex);
+    lv_hero = libCOUI_gv_cU_TychusSquadHeroes[(lv_a + 1)];
+    lv_squadinstance = lib01833E95_gf_AF_GetTychusSquadInstance(lv_hero);
+    lv_squadindex = lv_a;
+    lib01833E95_gf_AF_SetTychusSquadMember(lv_hero, lv_squadindex, lv_squadinstance);
+    UnitBehaviorRemovePlayer(lv_hero, "TychusHeroSubGroup", 1, UnitBehaviorCount(lv_hero, "TychusHeroSubGroup"));
+    UnitBehaviorAdd(lv_hero, "TychusHeroSubGroup", lv_hero, lv_squadindex);
+    libCOUI_gv_cU_TychusSquadHeroes[lv_a] = lv_hero;
+    libCOUI_gv_cU_TychusSquadHeroes[(lv_a + 1)] = lv_firsthero;
+    if ((UnitIsAlive(lv_firsthero) == false)) {
+        DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[(lv_a + 1)], PlayerGroupAll(), "DeathState", "Dead");
+    }
+
+    if ((UnitIsAlive(lv_hero) == false)) {
+        DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[lv_a], PlayerGroupAll(), "DeathState", "Dead");
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusUIReorderButtonClicked_Init () {
+    lib74A68E34_gt_TychusUIReorderButtonClicked = TriggerCreate("lib74A68E34_gt_TychusUIReorderButtonClicked_Func");
+    TriggerEnable(lib74A68E34_gt_TychusUIReorderButtonClicked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_TychusUIReorderButtonClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusUIReorderHeroPurchased
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusUIReorderHeroPurchased_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int autoE4C0023F_ae;
+    int autoE4C0023F_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(1.0, c_timeReal);
+    lv_index = (lib01833E95_gf_AF_GetTychusSquadIndex() - 2);
+    if ((((lv_index >= 0) && (lv_index <= 3)) == true)) {
+        autoE4C0023F_ae = lv_index;
+        autoE4C0023F_var = 0;
+        for ( ; autoE4C0023F_var <= autoE4C0023F_ae; autoE4C0023F_var += 1 ) {
+            if ((DialogControlIsVisible(lib01833E95_gv_aF_TopBarIcons[autoE4C0023F_var][0], lib01833E95_gv_aF_TychusPlayer) == false)) {
+                DialogControlSetVisible(lib01833E95_gv_aF_TopBarIcons[autoE4C0023F_var][0], PlayerGroupSingle(lib01833E95_gv_aF_TychusPlayer), true);
+                DialogControlSetVisible(lib01833E95_gv_aF_TopBarIcons[autoE4C0023F_var][1], PlayerGroupSingle(lib01833E95_gv_aF_TychusPlayer), true);
+                DialogControlFadeTransparency(lib01833E95_gv_aF_TopBarIcons[autoE4C0023F_var][1], PlayerGroupAll(), 0.0, 100.0);
+                Wait(0.0, c_timeReal);
+                DialogControlFadeTransparency(lib01833E95_gv_aF_TopBarIcons[autoE4C0023F_var][1], PlayerGroupAll(), 0.7, 40.0);
+            }
+
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusUIReorderHeroPurchased_Init () {
+    lib74A68E34_gt_TychusUIReorderHeroPurchased = TriggerCreate("lib74A68E34_gt_TychusUIReorderHeroPurchased_Func");
+    TriggerEnable(lib74A68E34_gt_TychusUIReorderHeroPurchased, false);
+    libCOMI_gf_TychusHeroEvent(lib74A68E34_gt_TychusUIReorderHeroPurchased, "Event_TychusHeroCreate");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -1729,6 +2051,12 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
+    lib74A68E34_gt_TychusHeroQueueChanged_Init();
+    lib74A68E34_gt_TychusHeroCancelChanged_Init();
+    lib74A68E34_gt_TychusReplaceResearchCenter_Init();
+    lib74A68E34_gt_TychusSetHeroUnit_Init();
+    lib74A68E34_gt_TychusUIReorderButtonClicked_Init();
+    lib74A68E34_gt_TychusUIReorderHeroPurchased_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
