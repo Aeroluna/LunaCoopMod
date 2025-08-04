@@ -10,6 +10,15 @@
     <CActorUnit id="GhostMengsk">
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskGhost_StatusFrame"/>
     </CActorUnit>
+    <CActorModel id="TychusMarauderAttackImpactUpgrade">
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone" Send="Destroy"/>
+        <On Terms="Effect.TychusPunisherGrenadesAoESet.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+        <Model value="RetributionFieldLaunch"/>
+        <Scale value="1.200000"/>
+    </CActorModel>
     <CActorUnit id="MarauderMengsk">
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskMarauder_StatusFrame"/>
     </CActorUnit>
@@ -25,6 +34,11 @@
     <CActorUnit id="ThorMengskMorph">
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskThor_StatusFrame"/>
     </CActorUnit>
+    <CActorAction id="TychusMarauderAttack" effectImpact="TychusPunisherGrenadesSwitch">
+        <On index="1" Terms="Effect.TychusPunisherGrenadesSwitch.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.TychusPunisherGrenadesSwitch.Stop; FromEffectTreeDescendant"/>
+    </CActorAction>
+    <CActorSplat id="TychusMauraderHealingWardSplat" parent="TerranCursorSplat" abil="TychusMarauderBuildHealingWard"/>
     <CActorUnit id="VikingMengskAssault">
         <PortraitModel value="VikingMengskAssaultPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskViking_StatusFrame"/>

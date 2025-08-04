@@ -657,6 +657,12 @@ It was showing the damage numbers from WOL campaign instead of the Co-op numbers
 
 Same change to Raynor's firebats.
 
+- Added a cursor splat for Kev "Rattlesnake" West's Deploy Revitalizer.
+- Fixed a bug where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
+- Added a new AOE visual effect after purchasing Hammer Munitions.
+
+yeah.
+
 ## Zeratul
 
 - Fixed Xel'naga Ambusher Predictive Blink autocast.
