@@ -56,6 +56,19 @@
             <LayoutButtons Face="MengskAcademyMissileCount" Type="Passive" Requirements="HaveMengskAcademyMissileCount" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="HHWidowMine">
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="HHWidowMineBurrowAutocast"/>
+        <WeaponArray Link="HHWidowMineBurrowDummy"/>
+    </CUnit>
+    <CUnit id="HHWidowMineBlossomWeapon">
+        <Mover value="TornadoMissileWeapon"/>
+    </CUnit>
+    <CUnit id="HHWidowMineBlossomWeaponInit" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="WidowMineWeapon"/>
+        <EditorCategories value="ObjectFamily:FactionMarauder,ObjectType:Projectile"/>
+    </CUnit>
     <CUnit id="MarauderMengsk">
         <ShieldArmor value="1"/>
         <ShieldArmorName value="Unit/ShieldArmorName/MarauderMengskShield"/>

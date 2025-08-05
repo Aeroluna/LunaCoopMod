@@ -42,6 +42,80 @@
     <CEffectCreatePersistent id="GhostMengskNukeGuidedCP">
         <ExpireDelay value="1"/>
     </CEffectCreatePersistent>
+    <CEffectEnumArea id="HHWidowMineBlossomExplodeSplashSearch">
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HHWidowMineBlossomInitImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="HHWidowMineBlossomCP"/>
+        <EffectArray value="HHWidowMineBlossomExplodeSplashSearch"/>
+    </CEffectSet>
+    <CEffectSet id="HHWidowMineBlossomInitImpactSetUpgrade">
+        <EditorCategories value=""/>
+        <EffectArray value="HHWidowMineBlossomCPUpgrade"/>
+        <EffectArray value="HHWidowMineBlossomExplodeSplashSearch"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="HHWidowMineBlossomInitLM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <ImpactEffect value="HHWidowMineBlossomInitImpactSet"/>
+        <AmmoUnit value="HHWidowMineBlossomWeaponInit"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="HHWidowMineBlossomInitLMUpgrade">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnitOrPoint"/>
+        <ImpactEffect value="HHWidowMineBlossomInitImpactSetUpgrade"/>
+        <AmmoUnit value="HHWidowMineBlossomWeaponInit"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="HHWidowMineBlossomInitSearch">
+        <EditorCategories value="Race:Terran"/>
+        <IncludeArray/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSEnemy"/>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray Radius="8" Effect="HHWidowMineBlossomInitLM"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="HHWidowMineBlossomInitSearchUpgrade">
+        <EditorCategories value="Race:Terran"/>
+        <IncludeArray/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSEnemy"/>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray Radius="8" Effect="HHWidowMineBlossomInitLMUpgrade"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HHWidowMineBlossomIssueOrderSet">
+        <EffectArray index="0" value="HHWidowMineBlossomInitSearch"/>
+    </CEffectSet>
+    <CEffectSet id="HHWidowMineBlossomIssueOrderSetUpgrade">
+        <EffectArray index="0" value="HHWidowMineBlossomInitSearchUpgrade"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="HHWidowMineBlossomLM">
+        <LaunchLocation Value="SourceUnitOrPoint"/>
+    </CEffectLaunchMissile>
+    <CEffectIssueOrder id="HHWidowMineBurrowIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="HHWidowMineBurrow"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="HHWidowMineBurrowSet">
+        <ValidatorArray value="HHWidowMineNoBurrowTarget"/>
+        <EditorCategories value=""/>
+        <EffectArray value="HHWidowMineBurrowIssueOrder"/>
+        <EffectArray value="HHWidowMineBurrowTargetAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HHWidowMineBurrowTargetAB">
+        <ValidatorArray index="0" value="HHWidowMineAttackNotOnCooldown"/>
+        <EditorCategories value=""/>
+        <Behavior value="HHWidowMineBurrowTarget"/>
+    </CEffectApplyBehavior>
     <CEffectModifyUnit id="MarauderMengskAbsorbMU">
         <EditorCategories value=""/>
         <VitalArray index="Shields">

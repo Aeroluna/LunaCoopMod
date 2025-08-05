@@ -239,7 +239,7 @@ Should help actually affording the high tech units with abilities like High Temp
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
 - Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
-- Buffed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion armor by 60.
+- Buffed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion hp by 40.
 - Reduced 330m Barrage Cannon cast and finish time from 2 to 0.75.
 
 These changes should make Thors much more competitive. Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
@@ -632,6 +632,14 @@ Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gain
 - Changed Primal Impaler model.
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
+
+## Han & Horner
+
+- Added autocast to Widow Mine Burrow.
+- Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
+- Fixed bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
+
+These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow helps in particular when training Widow Mines at the front lines.
 
 ## Tychus
 

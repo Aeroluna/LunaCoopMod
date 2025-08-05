@@ -10,6 +10,24 @@
     <CActorUnit id="GhostMengsk">
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskGhost_StatusFrame"/>
     </CActorUnit>
+    <CActorRange id="HHWidowMineAttackRange">
+        <Remove Terms="SelectionLocalUpdate.HHWidowMine.Start; ValidatePlayer HHWidowMineAttackRangeUpgraded" Send="Create"/>
+        <Remove Terms="SelectionLocalUpdate.HHWidowMine.StartEditorGround; ValidatePlayer HHWidowMineAttackRangeUpgraded" Send="Create"/>
+        <Remove Terms="SelectionLocalUpdate.HHWidowMine.StartEditorFlyer; ValidatePlayer HHWidowMineAttackRangeUpgraded" Send="Create"/>
+        <Remove Terms="SelectionLocalUpdate.HHWidowMine.Stop; ValidatePlayer HHWidowMineAttackRangeUpgraded" Send="Destroy"/>
+        <Remove Terms="AbilMorph.*.Start; ValidatePlayer HHWidowMineAttackRangeUpgraded; MorphTo HHWidowMine; Selected" Send="Create"/>
+        <Remove Terms="AbilMorph.*.Start; ValidatePlayer HHWidowMineAttackRangeUpgraded; MorphTo HHWidowMineBurrowed" Send="Destroy"/>
+    </CActorRange>
+    <CActorMissile id="HHWidowMineBlossomWeapon">
+        <Remove Terms="ActorCreation" Send="Create HHWidowMineAttackLaunch"/>
+    </CActorMissile>
+    <CActorMissile id="HHWidowMineBlossomWeaponInit" parent="GenericAttackMissile" unitName="HHWidowMineBlossomWeaponInit">
+        <On Terms="ActorCreation" Send="$Spell PlayForever"/>
+        <On Terms="ActorCreation" Send="Create HHWidowMineAttackLaunch"/>
+        <On Terms="ActorCreation" Send="Create HH_TornadoMissile_LaunchBlossom_AS"/>
+        <Model value="TornadoMissileWeapon"/>
+        <Scale value="1.200000"/>
+    </CActorMissile>
     <CActorModel id="TychusMarauderAttackImpactUpgrade">
         <On Terms="ActorCreation" Send="$Death"/>
         <On Terms="AnimDone" Send="Destroy"/>
