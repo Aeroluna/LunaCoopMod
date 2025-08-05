@@ -243,10 +243,13 @@ Should help actually affording the high tech units with abilities like High Temp
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
 - Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
-- Buffed Infernal Plating upgrade to additionally grant Thor armor and increase Hellbat/Hellion hp by 40.
 - Reduced 330m Barrage Cannon cast and finish time from 2 to 0.75.
 
-These changes should make Thors much more competitive. Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
+These changes should make Thors much more competitive.
+
+- Buffed Infernal Plating upgrade to additionally increase Hellbat/Hellion hp by 40.
+
+Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
 
 - Changed Cyclones to visually have their red lazer sights with Mag-Field and large missiles when locking on from Versus.
 - Buffed Cyclone's Lock On to no longer be affected by armor.
