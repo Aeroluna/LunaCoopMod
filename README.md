@@ -65,13 +65,13 @@ Possibly number one most infurating spell to get hit by? Abathur Vipers are unaf
 
 - Added Medivacs.
   - Heal more efficiently than Medics, but same heal speed.
-  - Added Caduceus Reactor upgrade available at the Fusion Core that doubles energy regen for Medivacs.
+  - Added Caduceus Reactor upgrade available at the Fusion Core, which doubles energy regen for Medivacs.
   - Stabilizer Medpacks also affect Medivacs.
   - Units unloaded benefit from the Drop Pod Haste mastery.
   - Can carry sieged Siege Tanks.
   - Have lower cooldown Ignite Afterburners (20 seconds).
 
-Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
+Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying Medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
 
 - Increased Siege Tank (Sieged) cargo size to 8.
 
@@ -86,6 +86,10 @@ Changed to be distinct from the Medivac portrait.
   - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
+
+- Added Cellular Reactor upgrade, which gives Medics full starting energy.
+
+Anyone who has played P1 knows how painful it is to get energy on these things.
 
 - Buffed Ignite Afterburners to additionally increase acceleration by 1000.
 - Removed the random delay on Battlecruiser weapons.
@@ -250,14 +254,14 @@ These changes should make Thors much more competitive. Increased Hellion/Hellbat
 The little missile that was fired during Lock On was just sad, now Cyclones look as cool as they do in Versus. Also Lock On is a spell, and should not be affected by armor.
 
 - Added Widow Mines.
-  - Added Hellburst Payload upgrade that increases Sentinel Missile direct damage by 20 and splash damage by 80.
+  - Added Hellburst Payload upgrade, which increases Sentinel Missile direct damage by 20 and splash damage by 80.
   - Cyclone's Targeting Optics upgrade additionally increases Sentinel Missile range by 3.
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
 
-- Added Smart Servos upgrade that increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
-- Added Overdrive Actuators upgrade at the Armory that increases ground vehicle movement speed by 20% and ship movement speed by 10%.
-- Added Pulse-Loop Capacitors upgrade at the Armory that decreases all unit cooldowns by 20%.
+- Added Smart Servos upgrade, which increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
+- Added Overdrive Actuators upgrade at the Armory, which increases ground vehicle movement speed by 20% and ship movement speed by 10%.
+- Added Pulse-Loop Capacitors upgrade at the Armory, which decreases all unit cooldowns by 20%.
 
 These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
 
@@ -317,7 +321,7 @@ Idea stolen from CXL, should make Bile Launchers more effectively than just on i
 
 - Reduced Scourge vespene cost by 25.
 - Removed Simplified Genome.
-- Added Dampening Membrane upgrade that reduces the splash and spell damage dealt to Scourge by 75%.
+- Added Dampening Membrane upgrade, which reduces the splash and spell damage dealt to Scourge by 75%.
 - Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
 
 Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
@@ -370,7 +374,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
 - Changed Disruption Web to no longer require research.
-- Added Flux Vanes upgrade that increases the movement speed and acceleration of Void Rays.
+- Added Flux Vanes upgrade, which increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
 
@@ -433,7 +437,7 @@ Copied from CXL. Keeps it unviable to use static defense aggressively without co
 
 - Added Instigators.
   - A Purifier variant Stalker.
-  - Added Displacement Matrix upgrade that lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
+  - Added Displacement Matrix upgrade, which lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
   - Blink can be set to autocast to automatically blink when the hull takes damage.
 
 Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
@@ -513,7 +517,7 @@ A few visual fixes/changes.
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
-- Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton that additionally increases Infested Banshee speed by 2.
+- Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton, which additionally increases Infested Banshee speed by 2.
   - Adds visual boosters to the Infested Banshee.
 
 These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
@@ -523,7 +527,7 @@ These two simple changes make playing P2 infinitely smoother to play. It was kin
 
 As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
 
-- Added Incubation Chambers upgrade which adds a Broodling escort to Infested Banshees, similar to Brood Lords.
+- Added Incubation Chambers upgrade, which adds a Broodling escort to Infested Banshees, similar to Brood Lords.
   - Does not do impact damage on landing, unlike the Brood Lord.
   - Continues to spawn regular Broodlings while burrowed.
 
@@ -531,17 +535,17 @@ Grants a unique to trait to the Infested Banshee other than just burrowing for e
 
 - Added Defender Mode ability to Infested Liberators.
   - Uses a slightly slower attack speed version of the Liberator AG weapon.
-  - Has a Volatile Spray weapon which sprays enemies with acid, leaving behind a pool that deals damage and slows, but requires energy to use.
+  - Has a Volatile Spray weapon, which sprays enemies with acid, leaving behind a pool that deals damage and slows, but requires energy to use.
 
 I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Defender Mode covers significantly less ground than an Infested Siege Tank, but it has more DPS.
 
-- Added Volatile Fuel passive which increases attack and movement speed by 25% while attacking with Cloud Dispersal at the cost of 2 energy per second.
+- Added Volatile Fuel passive, which increases attack and movement speed by 25% while attacking with Cloud Dispersal at the cost of 2 energy per second.
 
 *Zoooom*
 
 - Increased damage of Viral Swarm from 10 to 15 (AOE and primary).
 - Removed Viral Contamination upgrade.
-- Added Necroplasmic Synthesis upgrade which restores energy equal to 2.5% of damage dealt.
+- Added Necroplasmic Synthesis upgrade, which restores energy equal to 2.5% of damage dealt.
   - Requires Armory to research.
   - Upgraded by P1.
 - Removed Armory requirement from Cloud Dispersal.

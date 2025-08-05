@@ -1166,6 +1166,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         lv_playerCommander = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
         auto560DABDD_val = lv_playerCommander;
         if (auto560DABDD_val == "TerranRaynor") {
+            TriggerEnable(lib74A68E34_gt_RaynorStimpackAutocast, true);
             TriggerEnable(lib74A68E34_gt_RaynorMULEMineralSearch, true);
             TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, true);
         }
@@ -1262,6 +1263,39 @@ void lib74A68E34_gt_GeneralNydusUnloadHero_Init () {
     TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, false);
     TriggerAddEventUnitCargo(lib74A68E34_gt_GeneralNydusUnloadHero, null, true);
     TriggerAddEventUnitCargo(lib74A68E34_gt_GeneralNydusUnloadHero, null, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RaynorStimpackAutocast
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RaynorStimpackAutocast_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitAbilityExists(EventUnitCreatedUnit(), "Stimpack") == true) || (UnitAbilityExists(EventUnitCreatedUnit(), "StimpackMarauder") == true)))) {
+            return false;
+        }
+
+        if (!((libCOOC_gf_ActiveCommanderForPlayer(UnitGetOwner(EventUnitCreatedUnit())) == "TerranRaynor"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnitCreatedUnit(), OrderSetAutoCast(AbilityCommand("Stimpack", 0), true), c_orderQueueAddToFront);
+    UnitIssueOrder(EventUnitCreatedUnit(), OrderSetAutoCast(AbilityCommand("StimpackMarauder", 0), true), c_orderQueueAddToFront);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RaynorStimpackAutocast_Init () {
+    lib74A68E34_gt_RaynorStimpackAutocast = TriggerCreate("lib74A68E34_gt_RaynorStimpackAutocast_Func");
+    TriggerEnable(lib74A68E34_gt_RaynorStimpackAutocast, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_RaynorStimpackAutocast, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2036,6 +2070,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_LogDamageLogging_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();
+    lib74A68E34_gt_RaynorStimpackAutocast_Init();
     lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
