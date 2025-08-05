@@ -326,7 +326,7 @@ string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType) {
     return lv_result;
 }
 
-bool lib74A68E34_gf_TransportHasHeroic (unit lp_transport) {
+bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport) {
     // Automatic Variable Declarations
     unitgroup auto91D6D4B5_g;
     int auto91D6D4B5_u;
@@ -1208,6 +1208,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
         }
+        else if (auto560DABDD_val == "TerranHorner") {
+            TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
+            TriggerEnable(libCOMI_gt_BanelingScourgeDeathrattleScrapDeaths, false);
+            TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, true);
+        }
         else if (auto560DABDD_val == "TerranTychus") {
             TriggerEnable(libCOMI_gt_CM_TychusReplaceResearchCenter, false);
             TriggerEnable(lib74A68E34_gt_TychusReplaceResearchCenter, true);
@@ -1248,7 +1253,7 @@ bool lib74A68E34_gt_GeneralNydusUnloadHero_Func (bool testConds, bool runActions
         return true;
     }
 
-    if ((lib74A68E34_gf_TransportHasHeroic(EventUnit()) == true)) {
+    if ((lib74A68E34_gf_GeneralTransportHasHeroic(EventUnit()) == true)) {
         TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("DummyUnloadAbil", 0), true);
     }
     else {
@@ -1790,6 +1795,104 @@ void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: HornerScrapDropChanged
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_dyingUnitMineralCost;
+    int lv_dyingUnitVespeneCost;
+    int lv_dyingUnitPlayer;
+    fixed lv_scrapPlayerMultiplier;
+    int lv_hornerCommander;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_hornerCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("TerranHorner", libCOOC_gf_CommanderPlayers());
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_hornerCommander != c_playerAny))) {
+            return false;
+        }
+
+        if (!((EventUnitDamageDeathCheck(c_deathTypeRemove) == false))) {
+            return false;
+        }
+
+        if (!((UnitTestState(EventUnit(), c_unitStateHallucination) == false))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "HHScrapPickup", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+
+        if (!((((EventUnitDamageDeathCheck(c_deathTypeTimeout) == false) && (UnitFilterMatch(EventUnit(), 1, UnitFilter(0, (1 << (c_targetFilterSummoned - 32)), 0, 0)) != true) && (UnitHasBehavior2(EventUnit(), "NoScrapDrop") != true) && (libCOOC_gf_PlayerIsCommander(UnitGetOwner(EventUnit())) == true) && (libNtve_gf_KillingPlayer() != c_playerAny)) || ((UnitGetType(EventUnit()) == "Baneling") || (UnitGetType(EventUnit()) == "BanelingBurrowed") || (UnitGetType(EventUnit()) == "HotSSplitterlingBig") || (UnitGetType(EventUnit()) == "HotSSplitterlingBigBurrowed") || (UnitGetType(EventUnit()) == "Scourge") || (UnitGetType(EventUnit()) == "HHReaper") || (UnitGetType(EventUnit()) == "HHReaperFlying") || (UnitGetType(EventUnit()) == "HHHellion") || (UnitGetType(EventUnit()) == "HHHellionTank") || (UnitGetType(EventUnit()) == "HHWidowMine") || (UnitGetType(EventUnit()) == "HHWidowMineBurrowed") || (UnitGetType(EventUnit()) == "Supplicant"))))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_dyingUnitPlayer = UnitGetOwner(EventUnit());
+    if ((lv_dyingUnitPlayer == c_playerAny)) {
+        return true;
+    }
+
+    if ((libCOMI_gf_ActiveCommanderForPlayer2(lv_dyingUnitPlayer) == "Horner")) {
+        lv_scrapPlayerMultiplier = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, "HHScrapDummy", "Amount", lv_hornerCommander);
+    }
+    else {
+        lv_scrapPlayerMultiplier = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, "HHScrapAllyDummy", "Amount", lv_hornerCommander);
+    }
+    lv_dyingUnitMineralCost = CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnit()), "CostResource[" + IntToString(0) + "]", lv_dyingUnitPlayer);
+    lv_dyingUnitVespeneCost = CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnit()), "CostResource[" + IntToString(1) + "]", lv_dyingUnitPlayer);
+    if ((UnitHasBehavior2(EventUnit(), "TychusHeroCount") == true)) {
+        lv_dyingUnitMineralCost = 250;
+        lv_dyingUnitVespeneCost = 0;
+    }
+
+    lv_dyingUnitMineralCost = RoundI((FixedToInt(lv_dyingUnitMineralCost) * lv_scrapPlayerMultiplier));
+    lv_dyingUnitVespeneCost = RoundI((FixedToInt(lv_dyingUnitVespeneCost) * lv_scrapPlayerMultiplier));
+    if ((lv_dyingUnitMineralCost > 0)) {
+        if ((RandomInt(1, 100) <= FixedToInt(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "MasteryHornerDoubleSalvageChanceDisplayDummy", "Amount", lv_hornerCommander)))) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HHScrapPickup", 0, lv_dyingUnitPlayer, PointWithOffset(UnitGetPosition(EventUnit()), -0.25, 0.0));
+            libCOMI_gf_CM_Horner_ScrapResourceSetStack(UnitLastCreated(), lv_dyingUnitMineralCost, lv_dyingUnitVespeneCost);
+            if ((lv_dyingUnitVespeneCost == 0)) {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "ModelSwap HHScrapMineral");
+            }
+
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HHScrapPickup", 0, lv_dyingUnitPlayer, PointWithOffset(UnitGetPosition(EventUnit()), 0.25, 0.0));
+            libCOMI_gf_CM_Horner_ScrapResourceSetStack(UnitLastCreated(), lv_dyingUnitMineralCost, lv_dyingUnitVespeneCost);
+            if ((lv_dyingUnitVespeneCost == 0)) {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "ModelSwap HHScrapMineral");
+            }
+
+        }
+        else {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HHScrapPickup", 0, lv_dyingUnitPlayer, UnitGetPosition(EventUnit()));
+            libCOMI_gf_CM_Horner_ScrapResourceSetStack(UnitLastCreated(), lv_dyingUnitMineralCost, lv_dyingUnitVespeneCost);
+            if ((lv_dyingUnitVespeneCost == 0)) {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "ModelSwap HHScrapMineral");
+            }
+
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HornerScrapDropChanged_Init () {
+    lib74A68E34_gt_HornerScrapDropChanged = TriggerCreate("lib74A68E34_gt_HornerScrapDropChanged_Func");
+    TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, false);
+    TriggerAddEventUnitDied(lib74A68E34_gt_HornerScrapDropChanged, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: TychusHeroQueueChanged
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_TychusHeroQueueChanged_Func (bool testConds, bool runActions) {
@@ -2086,6 +2189,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
+    lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();
     lib74A68E34_gt_TychusHeroCancelChanged_Init();
     lib74A68E34_gt_TychusReplaceResearchCenter_Init();

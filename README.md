@@ -650,7 +650,7 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 - Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
 - Fixed bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
 
-These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow helps in particular when training Widow Mines at the front lines.
+These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
 
 - Increased visual scale of Assault Galleons by 20%.
 - Increased life of Assault Galleons from 500 to 750.
@@ -659,7 +659,39 @@ These changes should make Widow Mines more viable at pushing into enemy bases. A
 - Increased visual scale of Assault Drones by 20%.
 - Increased life of Assault Drones from 80 to 100.
 
-Assault Galleons are suppose to be mobile Starports that can equip hangar bays, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
+Assault Galleons are suppose to be mobile Starports that can turn into aircraft carriers, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
+
+- Increased Salvage rate from 20% to 40% for Han & Horner and from 10% to 20% for ally.
+
+Mira's units usually trade horribly, this should help mitigate that.
+
+- Fixed a bug where Mag Mines woulld not play their entire animation when firing.
+
+The animation was too slow and only got around half way through. I bet no one would even notice this though.
+
+- Reworked P1:
+  - Removed Mag Mine improvements.
+  - Increases the production speed of Mira's units by 50%.
+  - Increases the Salvage rate from 40% to 60%.
+  - Added tooltips to death effect passives that were missing.
+
+Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
+
+- Increased projectile speed of Deimos Viking's W.I.L.D. Missiles by 100%.
+
+Often, whatever these were shooting at would already be dead by the time the projectile arrives.
+
+- Increased range of Sovereign Battlecruiser's Mini Yamato Cannon from 6 to 8.
+
+It's a damn Yamato cannon, it should be long range! Just feels natural, y'know?
+
+- Increased range of Theia Raven's Analyze Weakness from 8 to 10.
+
+This should keep the Raven farther back and not randomly die as easily.
+
+- Removed Junker skins for Deimos Viking, Theia Raven, Sovereign Battlecruiser, and Strike Fighters.
+
+Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
 ## Tychus
 

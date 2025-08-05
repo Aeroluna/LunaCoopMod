@@ -148,8 +148,14 @@ Button/Tooltip/BiomassPassiveEnergyUpgraded=Units gain <d ref="Behavior,BiomassB
 Button/Tooltip/BlinkPurifier=Teleports the Instigator to a nearby target location. Ability can only be used once every <d ref="Abil,Blink,Cost[0].Cooldown.TimeUse"/> seconds.
 Button/Tooltip/CalldownMULEDoubleDown=Drops two experimental robotic MULE miners onto the target Mineral Field. MULEs collect minerals more quickly than SCVs.  <n/><n/>MULEs last <d time="90"/> before their systems fail.
 Button/Tooltip/ChainReactionBrood=Kerrigan's attacks deal splash damage to nearby enemy units.
+Button/Tooltip/CommanderHornerLevel06=Mira's Unit Build and Research times are reduced by 40%.
 Button/Tooltip/CommanderPrestigeAlarakDeathFleet=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Summon Death Fleet has no duration or initial cooldown. The Crimson Sovereign may construct Destroyers.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Destroyers are no longer summoned with the Crimson Sovereign. The Crimson Sovereign and Destroyers have resource and supply costs. Mass Teleport now has a 60 second cooldown and no longer teleports allied units.
 Button/Tooltip/CommanderPrestigeArtanisCombatAbilities=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Increase the effectiveness of all active combat unit abilities by 100%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units cost 30% more minerals.
+Button/Tooltip/CommanderPrestigeHornerMagMines=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Mira's units are produced 50% faster and their on-death effects are 100% more effective. Salvage gives 50% more resources.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Horner's units cost 30% more.
+Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDamage=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect damage increased.
+Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDuration=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect duration increased.
+Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectEffective=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect bonuses increased.
+Button/Tooltip/CommanderPrestigeHornerMagMinesScrap=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Salvage value increased.
 Button/Tooltip/CommanderPrestigeKaraxArmy=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat unit cost reduced by 40%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Photon Cannon and Khaydarin Monolith cost increased by 100%.
 Button/Tooltip/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=This upgrade is locked by your Commander Prestige.
 Button/Tooltip/CommanderPrestigeKerriganBrood=<s val="Coop_Prestige_Advantage">Advantage</s><n/>All combat units are replaced with elite variants with improved stats and abilities.<n/><n/>Kerrigan gains Implosion, Razor Swarm, and Psionic Cleave.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units cost 200% more resources and supply.<n/><n/>Leaping Strike, Psionic Shift, and Chain Reaction are unavailable.
@@ -219,6 +225,7 @@ Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command
 Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units unloaded from the Medivac gain <c val="FFFF8A"><d ref="Effect,MasteryRaynorDropPodHasteDisplayDummy,Amount"/></c>% increased attack speed, movement speed, cooldown reduction, and energy regeneration for <d ref="Behavior,DropPodHaste,Duration"/> seconds.
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
+Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
 Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds.
 Button/Tooltip/ResearchBlinkCharges=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
@@ -296,6 +303,8 @@ Effect/Name/DarkArchonNerazimWeaponDamage=Dark Archon Nerazim Weapon Damage
 Effect/Name/EnshroudApplyBuff=Enshroud (Apply Buff)
 Effect/Name/EnshroudHeal=Enshroud (Heal)
 Effect/Name/EnshroudSearch=Enshroud (Search)
+Effect/Name/HHScrapAllyDummy=HHScrapAllyDummy
+Effect/Name/HHScrapDummy=HHScrapDummy
 Effect/Name/HHWidowMineBlossomInitImpactSet=HHWidowMineBlossomInitImpactSet
 Effect/Name/HHWidowMineBlossomInitImpactSet2=HHWidowMineBlossomInitImpactSet
 Effect/Name/HHWidowMineBlossomInitLM=HHWidowMineBlossomInitLM
@@ -534,6 +543,7 @@ Unit/Name/UltraliskBrood=Torrasque
 Unit/Name/ZerglingBrood=Devouring One
 Unit/ShieldArmorName/MarauderMengskShield=Aegis Barrier
 Unit/ShieldArmorName/ScatterVeil=Scatter Veil
+Upgrade/Name/CommanderPrestigeHornerMagMinesBuildTime=CommanderPrestigeHornerMagMinesBuildTime
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
 Upgrade/Name/HellburstPayload=Hellburst Payload
 Upgrade/Name/K5TwoDronesKerrigan=K5 Two Drones

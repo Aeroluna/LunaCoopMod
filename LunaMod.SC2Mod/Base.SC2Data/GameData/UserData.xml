@@ -924,11 +924,6 @@
         <Fields index="35" Count="3"/>
     </CUser>
     <CUser id="PlayerPrestige">
-        <Instances index="10">
-            <AbilCmd index="0" removed="1"/>
-            <Unit index="0" removed="1"/>
-            <Unit index="1" removed="1"/>
-        </Instances>
         <Instances Id="CommanderPrestigeSwannMoving">
             <GameLink GameLink="CommanderPrestigeSwannMoving">
                 <Field Id="PrimaryUpgrade"/>
@@ -1024,6 +1019,17 @@
                 <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>
+        <Instances Id="[Override]CommanderPrestigeKaraxArmy">
+            <AbilCmd Abil="Bogus">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <Unit Unit="Bogus">
+                <Field Id="DisableUnit"/>
+            </Unit>
+            <Unit Unit="Bogus">
+                <Field Id="DisableUnit" Index="1"/>
+            </Unit>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeKerriganCreep">
             <AbilCmd Abil="evolutionchamberresearch" Cmd="19">
                 <Field Id="DisableAbil"/>
@@ -1052,14 +1058,10 @@
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="KerriganCreep4">
                 <Field Id="UpgradeSupplements" Index="3"/>
             </User>
-            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
-                <Field Id="UpgradeSupplements" Index="5"/>
-            </User>
-            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
-                <Field Id="UpgradeSupplements" Index="6"/>
-            </User>
-            <User Type="PlayerPrestigeUpgradeSupplements" Instance="[Default]">
-                <Field Id="UpgradeSupplements" Index="4"/>
+        </Instances>
+        <Instances Id="[Override]CommanderPrestigeHornerMagMines">
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="HornerMagMines2">
+                <Field Id="UpgradeSupplements" Index="1"/>
             </User>
         </Instances>
         <Instances Id="[Override]CommanderPrestigeZagaraMaxSupply">
@@ -1220,6 +1222,14 @@
                 <Field Id="Supplement"/>
             </GameLink>
         </Instances>
+        <Instances Id="HornerMagMines2">
+            <GameLink GameLink="CommanderPrestigeHornerMagMinesBuildTime">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="HHMiraBuildResearchTimeReduction">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
     </CUser>
     <CUser id="TechUnit">
         <Instances Id="MothershipArtanis">
@@ -1265,7 +1275,7 @@
             </User>
         </Instances>
         <Instances Id="[Override]SwarmHost">
-            <User Type="PlayerCommanders" Instance="[Default]">
+            <User Type="PlayerCommanders" Instance="Bogus">
                 <Field Id="Commander"/>
             </User>
         </Instances>
@@ -1316,6 +1326,33 @@
             <User Type="PlayerCommanders" Instance="ProtossVorazun">
                 <Field Id="Commander"/>
             </User>
+        </Instances>
+    </CUser>
+    <CUser id="TheHornersMiraTakeOver">
+        <Instances Id="[Override]HHVikingRockets">
+            <GameLink GameLink="Bogus">
+                <Field Id="Skin"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]HHVikingPiecingAttacks">
+            <GameLink GameLink="Bogus">
+                <Field Id="Skin"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]HHMultiLock">
+            <GameLink GameLink="Bogus">
+                <Field Id="Skin"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]HHBomberNapalm">
+            <GameLink GameLink="Bogus">
+                <Field Id="Skin"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="[Override]HHMiniYamato">
+            <GameLink GameLink="Bogus">
+                <Field Id="Skin"/>
+            </GameLink>
         </Instances>
     </CUser>
 </Catalog>
