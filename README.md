@@ -652,6 +652,15 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow helps in particular when training Widow Mines at the front lines.
 
+- Increased visual scale of Assault Galleons by 20%.
+- Increased life of Assault Galleons from 500 to 750.
+- Reduced Assault Galleon limit from 5 to 4.
+- Added the ability for the Assault Galleon to produce 2 units at once.
+- Increased visual scale of Assault Drones by 20%.
+- Increased life of Assault Drones from 80 to 100.
+
+Assault Galleons are suppose to be mobile Starports that can equip hangar bays, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
+
 ## Tychus
 
 - Added ability to reorder outlaws.
