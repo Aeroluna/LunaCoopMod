@@ -690,8 +690,15 @@ It's a damn Yamato cannon, it should be long range! Just feels natural, y'know?
 This should keep the Raven farther back and not randomly die as easily.
 
 - Removed Junker skins for Deimos Viking, Theia Raven, Sovereign Battlecruiser, and Strike Fighters.
+- Added Covert-Ops portraits for Deimos viking, Theia Raven, and Sovereign Battlecruiser.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
+
+- Buffed Strike Fighter to be invulnerable.
+- Added visual trail to Strike Fighter.
+- Adjusted Strike Fighter acceleration.
+
+Why could this thing even be shot down in the first place?
 
 ## Tychus
 

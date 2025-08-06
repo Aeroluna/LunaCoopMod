@@ -528,6 +528,7 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
         if (auto10F70256_var == null) { break; }
         UnitBehaviorRemove(auto10F70256_var, "TychusResearchCenterDisableCommands", 1);
     }
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SupplyDummy", 0, EventPlayer(), RegionGetBoundsMin(RegionEntireMap()));
     return true;
 }
 
@@ -1212,6 +1213,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
             TriggerEnable(libCOMI_gt_BanelingScourgeDeathrattleScrapDeaths, false);
             TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, true);
+            TriggerEnable(libCOMI_gt_CM_Horner_BomberPlatform_Individual_TargetSelected, false);
+            TriggerEnable(lib74A68E34_gt_HornerBomberPlatformImproved, true);
         }
         else if (auto560DABDD_val == "TerranTychus") {
             TriggerEnable(libCOMI_gt_CM_TychusReplaceResearchCenter, false);
@@ -1795,6 +1798,130 @@ void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: HornerBomberPlatformImproved
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HornerBomberPlatformImproved_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_bomberPlayer;
+    unit lv_bomberPlatform;
+    unit lv_bomber;
+    unit lv_bomberTargetUnit;
+    point lv_bomberTargetPoint;
+    bool lv_bomberTargetIsUnit;
+    int lv_bomberState;
+    actor lv_bomberTargetActor;
+    bool lv_bomberDiveSoundPlayed;
+
+    // Automatic Variable Declarations
+    int auto016B85DB_val;
+
+    // Variable Initialization
+    lv_bomberPlayer = EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerAddChargeUsed(EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin), "Abil/HHBomberPlatformAreaBombTopBarOrder", 1.0);
+    lv_bomberPlatform = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    UnitCreate(1, "HHBomber", c_unitCreateIgnorePlacement, lv_bomberPlayer, Point((PointGetX(UnitGetPosition(lv_bomberPlatform)) + 0.26), (PointGetY(UnitGetPosition(lv_bomberPlatform)) - 0.26)), 225.0);
+    lv_bomber = UnitLastCreated();
+    libNtve_gf_SendActorMessageToUnit(lv_bomber, "Signal LiftOff");
+    UnitSetHeight(lv_bomber, 1.7, 0.0);
+    lv_bomberState = 1;
+    UnitBehaviorAdd(lv_bomberPlatform, "HHBomberPlatformAreaBombDisabler", lv_bomberPlatform, 1);
+    libCOMI_gf_CM_Horner_BomberStatusCheck(EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin));
+    if ((EventPlayerEffectUsedUnit(c_effectUnitTarget) != null)) {
+        lv_bomberTargetIsUnit = true;
+        lv_bomberTargetUnit = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+        lv_bomberTargetPoint = UnitGetPosition(lv_bomberTargetUnit);
+        ActorCreate(ActorScopeFromUnit(lv_bomberTargetUnit), "HHBomberAreaBombWarning", null, null, null);
+        lv_bomberTargetActor = libNtve_gf_ActorLastCreated();
+        if ((TechTreeUpgradeCount(lv_bomberPlayer, "HHBomberNapalm", c_techCountCompleteOnly) > 0)) {
+            ActorSend(lv_bomberTargetActor, "ModelSwap MiraHorner_Bomber_Coop_Cursor_Persist 255 PredecessorDestroyImmediate,PreventAllDynamicTextureTransfers");
+        }
+
+        ActorSend(lv_bomberTargetActor, "Signal OnUnit");
+    }
+    else {
+        lv_bomberTargetPoint = EventPlayerEffectUsedPoint(c_effectLocationTargetPoint);
+        libNtve_gf_CreateActorAtPoint("HHBomberAreaBombWarning", lv_bomberTargetPoint);
+        lv_bomberTargetActor = libNtve_gf_ActorLastCreated();
+        if ((TechTreeUpgradeCount(lv_bomberPlayer, "HHBomberNapalm", c_techCountCompleteOnly) > 0)) {
+            ActorSend(lv_bomberTargetActor, "ModelSwap MiraHorner_Bomber_Coop_Cursor_Persist 255 PredecessorDestroyImmediate,PreventAllDynamicTextureTransfers");
+        }
+
+    }
+    UnitSetHeight(lv_bomber, 3.75, 0.5);
+    ActorSend(lv_bomberTargetActor, (("SetScale " + CatalogFieldValueGet(c_gameCatalogActor, "HHBomberAreaBombWarning", "Scale", lv_bomberPlayer))));
+    libNtve_gf_MakeUnitFacePoint(lv_bomber, lv_bomberTargetPoint, 0.5);
+    Wait(0.5, c_timeGame);
+    libNtve_gf_SendActorMessageToUnit(lv_bomber, "Signal FlyOut");
+    UnitIssueOrder(lv_bomber, OrderTargetingPoint(AbilityCommand("move", 0), lv_bomberTargetPoint), c_orderQueueReplace);
+    while ((lv_bomberState > 0)) {
+        auto016B85DB_val = lv_bomberState;
+        if (auto016B85DB_val == 1) {
+            if (((lv_bomberTargetIsUnit == true) && (UnitIsAlive(lv_bomberTargetUnit) == true))) {
+                lv_bomberTargetPoint = UnitGetPosition(lv_bomberTargetUnit);
+                UnitIssueOrder(lv_bomber, OrderTargetingPoint(AbilityCommand("move", 0), libNtve_gf_PointOffsetTowardsPoint(lv_bomberTargetPoint, -10.0, UnitGetPosition(lv_bomber))), c_orderQueueReplace);
+            }
+
+            if (((lv_bomberTargetIsUnit == false))) {
+                UnitIssueOrder(lv_bomber, OrderTargetingPoint(AbilityCommand("move", 0), libNtve_gf_PointOffsetTowardsPoint(lv_bomberTargetPoint, -10.0, UnitGetPosition(lv_bomber))), c_orderQueueReplace);
+            }
+
+            if (((DistanceBetweenPoints(UnitGetPosition(lv_bomber), lv_bomberTargetPoint) < 20.0) && (lv_bomberDiveSoundPlayed == false))) {
+                libNtve_gf_SendActorMessageToUnit(lv_bomber, "Signal DiveSoundStart");
+                lv_bomberDiveSoundPlayed = true;
+            }
+
+            if ((DistanceBetweenPoints(UnitGetPosition(lv_bomber), lv_bomberTargetPoint) < 6.0)) {
+                UnitCreateEffectPoint(lv_bomber, "HHBomberAreaBombInitialSet", lv_bomberTargetPoint);
+                Wait(0.0625, c_timeGame);
+                lv_bomberState = 2;
+                ActorSend(lv_bomberTargetActor, "Destroy");
+            }
+
+        }
+        else if (auto016B85DB_val == 2) {
+            UnitIssueOrder(lv_bomber, OrderTargetingPoint(AbilityCommand("move", 0), UnitGetPosition(lv_bomberPlatform)), c_orderQueueReplace);
+            if (((DistanceBetweenPoints(UnitGetPosition(lv_bomber), UnitGetPosition(lv_bomberPlatform)) < 1.0) && (UnitHasBehavior2(lv_bomber, "HHBomberFiredReturnDelay") == false))) {
+                UnitCreateEffectUnit(lv_bomberPlatform, "HHBomberPlatformAreaBombReturnSet", lv_bomber);
+                UnitRemove(lv_bomber);
+                libCOMI_gf_CM_Horner_BomberStatusCheck(lv_bomberPlayer);
+                lv_bomberState = 0;
+            }
+
+        }
+        else {
+        }
+        if (((UnitIsAlive(lv_bomber) == false) && (lv_bomberState > 0))) {
+            lv_bomberState = 0;
+            UnitCreateEffectUnit(lv_bomberPlatform, "KillMagazine", lv_bomberPlatform);
+            ActorSend(lv_bomberTargetActor, "Destroy");
+        }
+
+        if ((UnitIsAlive(lv_bomberPlatform) == false)) {
+            UnitKill(lv_bomber);
+            libCOMI_gf_CM_Horner_BomberStatusCheck(lv_bomberPlayer);
+            lv_bomberState = 0;
+            ActorSend(lv_bomberTargetActor, "Destroy");
+        }
+
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HornerBomberPlatformImproved_Init () {
+    lib74A68E34_gt_HornerBomberPlatformImproved = TriggerCreate("lib74A68E34_gt_HornerBomberPlatformImproved_Func");
+    TriggerEnable(lib74A68E34_gt_HornerBomberPlatformImproved, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_HornerBomberPlatformImproved, c_playerAny, "HHBomberPlatformAreaBombOrderTargetDummyCP");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: HornerScrapDropChanged
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions) {
@@ -2189,6 +2316,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
+    lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();
     lib74A68E34_gt_TychusHeroCancelChanged_Init();

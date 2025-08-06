@@ -3,6 +3,10 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="HHBomberBoostModel" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot35 SOp180"/>
+        <Model value="Baneling_Stetmann_COOP_RocketTrail"/>
+    </CActorModel>
     <CActorUnit id="BattlecruiserMengsk">
         <PortraitModel value="BattlecruiserMengskPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskBattlecruiser_StatusFrame"/>
@@ -16,6 +20,19 @@
     <CActorUnit id="HHBattlecruiser">
         <PortraitModel value="BattleCruiser_CovertOps_Collection_Portrait"/>
     </CActorUnit>
+    <CActorMissile id="HHBomber">
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="Create HHBomberBoostModel"/>
+        <!--On Terms="UnitMovementUpdate.*.Stand" Target="HHBomberBoostModel" Send="Destroy"/-->
+    </CActorMissile>
     <CActorUnit id="HHFighterMorphModel">
         <PortraitModel value="VikingFighter_CovertOps_Collection_Portrait"/>
     </CActorUnit>

@@ -75,6 +75,11 @@
             <LayoutButtons Face="MengskAcademyMissileCount" Type="Passive" Requirements="HaveMengskAcademyMissileCount" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="HHBomber">
+        <FlagArray index="Invulnerable" value="1"/>
+        <Acceleration value="20"/>
+        <Deceleration value="1000"/>
+    </CUnit>
     <CUnit id="HHGriffon">
         <LifeStart value="100"/>
         <LifeMax value="100"/>
@@ -495,6 +500,21 @@
             <LayoutButtons Face="SIBansheeIncubationChambers" Type="Passive" Requirements="HaveSIBansheeIncubationChambers" Row="1" Column="0"/>
         </CardLayouts>
         <BehaviorArray Link="SIBansheeIncubationChambersBurrowed"/>
+    </CUnit>
+    <CUnit id="SupplyDummy">
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="NoDraw" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <Mover value="FlyIgnoreAirPathingBlockers"/>
+        <Food value="999"/>
+        <EditorCategories value=""/>
     </CUnit>
     <CUnit id="Tempest">
         <CardLayouts index="0">
