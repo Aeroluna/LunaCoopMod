@@ -239,6 +239,10 @@ Buff an underperforming prestige.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
+- Changed Tempest voice lines to Versus quotes.
+
+Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite using the Versus model.
+
 ## Swann
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
