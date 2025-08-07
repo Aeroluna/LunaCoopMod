@@ -640,6 +640,14 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get instead of feeling like a damage nerf.
 
+- Fixed a bug where P2 did not increase the damage of Dakrun's Greater Spiked Hide.
+- Increased Dakrun's Brutal Charge damage from 200 to 200 (+100 vs Structures).
+- Buffed Dakrun's Brutal Charge to affect invisible units.
+- Buffed Dakrun's Brutal Charge to affect structures.
+- Buffed Dakrun's spawn knockback to affect structures.
+
+Why did Dakrun slam his giant head into a building and do 0 damage? Also why did it not affect invisible units? Now Dakrun has a niche of smashing into buildings.
+
 - Changed Primal Impaler model.
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.

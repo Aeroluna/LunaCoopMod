@@ -32,6 +32,36 @@
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
     </CEffectEnumArea>
+    <CEffectSet id="DakrunSpawningTargetSet">
+        <EffectArray index="0" value="DehakaDakrunCrashingChargeDamage"/>
+        <EffectArray index="1" value="DehakaDakrunCrashingChargeKnockbackSwitch"/>
+    </CEffectSet>
+    <CEffectDamage id="DehakaDakrunCrashingChargeDamage">
+        <AttributeBonus index="Structure" value="100"/>
+    </CEffectDamage>
+    <CEffectSwitch id="DehakaDakrunCrashingChargeKnockbackSwitch">
+        <ValidatorArray value="IsNotBuried"/>
+        <ValidatorArray value="NotMapBossOrHeroic"/>
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsStructure" Effect="UnitKnockbackBy2"/>
+        <CaseDefault value="UnitKnockbackBy3"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="DehakaDakrunCrashingChargeTargetSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaDakrunCrashingChargeTargetSearchAlly">
+        <SearchFilters value="Ground;Self,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DehakaDakrunCrashingChargeTargetSet">
+        <EffectArray index="0" value="DehakaDakrunCrashingChargeKnockbackSwitch"/>
+    </CEffectSet>
+    <CEffectDamage id="DehakaDakrunThornsDamage">
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectDamage>
+    <CEffectSet id="DehakaDakrunTopBarSpawnSet">
+        <EffectArray index="1" value="CommanderPrestigeDehakaPackLeadersCooldownSet"/>
+        <EffectArray index="2" removed="1"/>
+    </CEffectSet>
     <CEffectSet id="HHBomberAreaBombEMPImpactSet">
         <EditorCategories value=""/>
         <EffectArray value="HHBomberAreaBombEMPSearch"/>
