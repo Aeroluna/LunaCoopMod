@@ -51,6 +51,22 @@
         <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZagaraCorruption">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Corruption"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Invulnerable"/>
+        <Range value="6"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <AINotifyEffect value="Corruption"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CorruptionAbility"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="GhostAcademyMengskResearch">
         <InfoArray index="Research3" Time="120" Upgrade="MengskAcademyMissileCount">
             <Resource index="Minerals" value="150"/>
@@ -869,7 +885,13 @@
         <FlagArray index="IgnoreUnitCost" value="1"/>
         <FlagArray index="PeonMaintained" value="0"/>
         <InfoArray index="Build1" Unit="SwarmLocus">
-            <Cooldown Location="Unit" TimeUse="180"/>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <TimeUse value="180"/>
+            </Charge>
+            <Cooldown Location="Unit"/>
             <Button DefaultButtonFace="SwarmNetworkSwarmLocus"/>
             <ValidatorArray value="HasVisionOfTarget"/>
         </InfoArray>

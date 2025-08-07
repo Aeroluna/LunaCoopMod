@@ -330,6 +330,7 @@ Idea stolen from CXL, should make Bile Launchers more effectively than just on i
 - Removed Simplified Genome.
 - Added Dampening Membrane upgrade, which reduces the splash and spell damage dealt to Scourge by 75%.
 - Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
+- Buffed Corruptor's Corruption to allow targeting structures.
 
 Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
 
@@ -768,6 +769,12 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free.
 
 ## Mengsk
+
+- Added P4: Cerberus Director
+  - Advantage: Dogs of War refunds 50% of energy cost and has 100% reduced cooldown.
+  - Disadvantage: Dogs of War costs minerals. Trooper weapons cost 100% more.
+
+Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
 
 - Removed hittest from Imperial Witness's Amplified Airwaves hologram.
 - Fixed a bug where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
