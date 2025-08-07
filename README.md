@@ -8,7 +8,7 @@ A set of changes and additions to the StarCraft 2 Co-op mode.
   - Can select a Brutal+ level to randomize mutators.
   - Can use refresh button to rerandomize.
   - Can use +Retry option to retry previously played mutators.
-  - Added Brutal+ levels +7 - +10.
+  - Added Brutal+ levels 7 - 10.
 
 Added Brutal+ system. See Mutators section for specific changes to mutators.
 
@@ -125,7 +125,7 @@ Some ground Viking buffs because why not.
   - Unit info shows single "ATX Laser Battery" weapon.
   - Will prioritize using AOE weapon unless issued attack order.
 
-No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affected the weapon.
+No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affecting the weapon.
 
 - Changed Hyperion portrait and sounds back to Horner.
 
@@ -133,7 +133,7 @@ Just because he's a commander now doesn't mean he forgot how to pilot the Hyperi
 
 - Added behavior to Calldown MULE, will try to search for nearby mineral field to gather if not ordered directly.
 
-Ever get annoyed when you *slightly* missed a mineral field and your MULE just afked? Does not affect MULEs dropped away from minerals.
+Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
 
 ## Kerrigan
 
@@ -142,7 +142,7 @@ Ever get annoyed when you *slightly* missed a mineral field and your MULE just a
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
 
-Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The twin drones upgraded is added to help ease the massive nerf to Kerrigan's early game.
+Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
 
 - Added P4: Champion of the Brood War
   - Replaces Kerrigan with Brood War Kerrigan
@@ -204,6 +204,10 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
 
 These changes should make massing Tempests more viable. Faster Disintegration reduces Tempests wasting shots on disintegrating targets and allow easier chaining Disintegrations. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
 
+- Changed Tempest voice lines to Versus quotes.
+
+Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite using the Versus model.
+
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
   - Uses energy to cast abilities.
@@ -238,10 +242,6 @@ Buff an underperforming prestige.
   - Combat units still cost 30% more minerals
 
 Should help actually affording the high tech units with abilities like High Templar.
-
-- Changed Tempest voice lines to Versus quotes.
-
-Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite using the Versus model.
 
 ## Swann
 
@@ -363,13 +363,13 @@ When Hunter Killers were given the webby skin, their scale was accidently reset 
 
 - Added wireframe and group icon to Zagara.
 
-If you thought Zagara's wireframe looked oddly low res, you aren't crazy. Zagara never had a wireframe set and just used her icon as a fallback.
+If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy. Zagara never had a wireframe set and just used her unit icon as a fallback.
 
 - Increased speed of Zagara's Acid Spines projectile by 100%.
 - Reduced Zagara's Acid Spines attack period from 1.5 to 1 (+50% attack speed).
 - Increased Medusa Blade's damage 33% of attack damage to 50% attack damage.
 
-Zagara has a mastery for attack damage but her attacks feel so lethargic and she attacked slower than queens.
+Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens.
 
 ## Vorazun
 
@@ -452,7 +452,7 @@ Copied from CXL. Keeps it unviable to use static defense aggressively without co
   - Added Displacement Matrix upgrade, which lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
   - Blink can be set to autocast to automatically blink when the hull takes damage.
 
-Karax's anti-air is very lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
+Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
 
 - Added Disruptors.
   - Has Fenix Disruptor upgrades.
@@ -473,7 +473,7 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 - Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
 - Buffed Abduct to allow abducting Heroic units (will pull but not stun).
 
-Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air with Devourers.
+Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air against Devourers.
 
 - Added autocast to Corrosive Bile (initially off).
 
@@ -488,9 +488,9 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 - Reworked Mothership Terminator Beam to only target air units.
 - Reworked Mothership Thermal Lance.
   - Only targets ground units instead of all units.
-  - Travels at 25% speed instead.
-  - Cooldown increased to 2 seconds.
-  - Damage buffed from 10 to 100.
+  - Reduced travel speed by 75% speed.
+  - Cooldown increased from 1 to 2 seconds.
+  - Damage increased from 10 to 100.
   - Now visible as a weapon.
 - Renamed Mothership to Crimson Sovereign.
 
@@ -545,11 +545,16 @@ As the Infested Banshee's defining trait, it seems odd that it requires research
 
 Grants a unique to trait to the Infested Banshee other than just burrowing for energy. Borrowing from the P2 idea of ferrying around infested, this upgrade lets Infested Banshees carry around and throw Broodlings. Combined with the new move speed upgrade, these things turn into Brood Lords with turbo boosters. Should make the tech required to build them feel more worth it.
 
+- Added 100 max energy to Infested Liberators.
+- Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
+
+Added a new mechanic to Infested Liberators that lets them eat Infested to empower their weapons, similar to Infested Siege Tanks.
+
 - Added Defender Mode ability to Infested Liberators.
   - Uses a slightly slower attack speed version of the Liberator AG weapon.
   - Has a Volatile Spray weapon, which sprays enemies with acid, leaving behind a pool that deals damage and slows, but requires energy to use.
 
-I know they were originally meant to be Valkyries, but hey, they're Liberators, so give them Defender Mode! Defender Mode covers significantly less ground than an Infested Siege Tank, but it has more DPS.
+I know they were originally meant to be Valkyries, but hey, they ended up as Liberators, so give them Defender Mode! Defender Mode covers significantly less ground than an Infested Siege Tank, but it has more DPS.
 
 - Added Volatile Fuel passive, which increases attack and movement speed by 25% while attacking with Cloud Dispersal at the cost of 2 energy per second.
 
@@ -562,7 +567,14 @@ I know they were originally meant to be Valkyries, but hey, they're Liberators, 
   - Upgraded by P1.
 - Removed Armory requirement from Cloud Dispersal.
 
-Made Viral Contamination upgrade partially baseline in favor of a new upgrade that compliments the Infested Liberator's new mechanics. Also lowered the tech requirement of Cloud Dispersal as it's a much-get upgrade.
+Made Viral Contamination upgrade partially baseline in favor of a new upgrade that compliments the Infested Liberator's new mechanics. Also lowered the tech requirement of Cloud Dispersal as it's a must-get upgrade.
+
+- Added strafing movement to Infested Liberator Cloud Dispersal.
+- Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
+- Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
+- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+
+Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.
@@ -587,18 +599,6 @@ Despite Infested Marines and Infested Troopers being different units, they are p
 - Changed Infested Siege Tanks to also consume Infested Marines.
 
 Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
-
-- Added strafing movement to Infested Liberator Cloud Dispersal.
-- Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
-- Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
-- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
-
-Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
-
-- Added 100 max energy to Infested Liberators.
-- Regenerates energy by consuming nearby Infested Troopers or Infested Civilians. Normal means of energy regeneration are suppressed.
-
-Added a new mechanic to Infested Liberators that lets them eat Infested to empower their weapons, similar to Infested Siege Tanks.
 
 - Reduced the cooldown of Spawn Infested Civilians from 60 seconds to 15 seconds.
 - Reduced the amount of Infested Civilians created from 8 to 2.
@@ -678,7 +678,7 @@ Assault Galleons are suppose to be mobile Starports that can turn into aircraft 
 
 Mira's units usually trade horribly, this should help mitigate that.
 
-- Fixed a bug where Mag Mines woulld not play their entire animation when firing.
+- Fixed a bug where Mag Mines would not play their entire animation when firing.
 
 The animation was too slow and only got around half way through. I bet no one would even notice this though.
 
@@ -703,7 +703,7 @@ It's a damn Yamato cannon, it should be long range! Just feels natural, y'know?
 This should keep the Raven farther back and not randomly die as easily.
 
 - Removed Junker skins for Deimos Viking, Theia Raven, Sovereign Battlecruiser, and Strike Fighters.
-- Added Covert-Ops portraits for Deimos viking, Theia Raven, and Sovereign Battlecruiser.
+- Added Covert-Ops portraits for Deimos Viking, Theia Raven, and Sovereign Battlecruiser.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
@@ -731,8 +731,8 @@ Old P3 had an awkward design where it buffed how many platforms you could build 
 https://www.maguro.one/2019/06/uiux-tweaks.html
 
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
-  - Now possible to not have Tychus as any of your outlaws.
-  - Calldown Odin will only revive Tychus if Tychus is one of your outlaws.
+  - Now possible to not have Tychus active at all.
+  - Calldown Odin will only revive Tychus if Tychus is recruites.
 
 It's probably still worth taking Tychus, but now atleast you have a choice.
 
@@ -780,7 +780,7 @@ Grants immunity to certain mutators like Propagators. Previously, if you put a S
 
 Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
 
-- Removed hittest from Imperial Witness's Amplified Airwaves hologram.
+- Removed hit test from Imperial Witness's Amplified Airwaves hologram (Can no longer be clicked).
 - Fixed a bug where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
 
 It's happened to everyone, the hologram lifts off and then you accidentally a-move it and kill your own blimp. *Fun fact: this bug is caused by Blizzard attaching the hologram incorrectly, then offsetting the hologram to move it where it should be, then because it's not attached properly, it randomly applies that offset over and over again.*
