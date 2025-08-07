@@ -1227,6 +1227,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             lib74A68E34_gf_TychusHeroTechInit(lv_player);
             lib74A68E34_gf_TychusUIReorderEnable(lv_player);
         }
+        else if (auto560DABDD_val == "TerranMengsk") {
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeMengskZerg", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_MengskPrestigeZergRefund, true);
+            }
+
+        }
         else {
         }
     }
@@ -2282,6 +2288,37 @@ void lib74A68E34_gt_TychusUIReorderHeroPurchased_Init () {
     libCOMI_gf_TychusHeroEvent(lib74A68E34_gt_TychusUIReorderHeroPurchased, "Event_TychusHeroCreate");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MengskPrestigeZergRefund
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MengskPrestigeZergRefund_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_mengskplayer;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_mengskplayer = UnitGetOwner(EventUnit());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventUnit(), c_unitPropEnergy, (UnitGetPropertyFixed(EventUnit(), c_unitPropEnergy, c_unitPropCurrent) + Round((libNtve_gf_CostOfAbility(AbilityCommandGetAbility(EventUnitAbility()), "Energy") * 0.5))));
+    libCOMI_gf_CM_Mengsk_EnergyChanged(lv_mengskplayer);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MengskPrestigeZergRefund_Init () {
+    lib74A68E34_gt_MengskPrestigeZergRefund = TriggerCreate("lib74A68E34_gt_MengskPrestigeZergRefund_Func");
+    TriggerEnable(lib74A68E34_gt_MengskPrestigeZergRefund, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_MengskPrestigeZergRefund, null, AbilityCommand("MengskZergCalldownLevel1", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_MengskPrestigeZergRefund, null, AbilityCommand("MengskZergCalldownLevel2", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_MengskPrestigeZergRefund, null, AbilityCommand("MengskZergCalldownLevel3", 0), c_unitAbilStageExecute, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_MengskPrestigeZergRefund, null, AbilityCommand("MengskZergCalldownLevel4", 0), c_unitAbilStageExecute, false);
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -2324,6 +2361,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TychusSetHeroUnit_Init();
     lib74A68E34_gt_TychusUIReorderButtonClicked_Init();
     lib74A68E34_gt_TychusUIReorderHeroPurchased_Init();
+    lib74A68E34_gt_MengskPrestigeZergRefund_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
