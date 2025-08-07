@@ -76,9 +76,21 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="HHBomber">
-        <FlagArray index="Invulnerable" value="1"/>
         <Acceleration value="20"/>
         <Deceleration value="1000"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+    </CUnit>
+    <CUnit id="HHBomberPlatform">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="HHBomberNapalmImproved" Requirements="HaveHHBomberNapalmImproved"/>
+            <LayoutButtons index="5" Face="HHBomberNapalm" Requirements="HaveHHBomberNapalm" Column="0"/>
+            <LayoutButtons index="6" Face="HHMSOHealth" Type="Passive" AbilCmd="" Requirements="HaveHHSOBuff" Column="4"/>
+            <LayoutButtons index="7" Face="HHBomberAreaBomb" Type="AbilCmd" AbilCmd="HHBomberPlatformAreaBombOrder,Execute"/>
+            <LayoutButtons Face="SelectBuilder" Type="SelectBuilder" Row="1" Column="3"/>
+            <LayoutButtons Face="HHBomberTriple" Type="Passive" Requirements="HaveHHBomberTriple" Row="1" Column="1"/>
+            <LayoutButtons Face="HHBomberEMP" Type="Passive" Requirements="HaveHHBomberEMP" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HHGriffon">
         <LifeStart value="100"/>
@@ -706,6 +718,9 @@
             <LayoutButtons index="7" Face="ResearchMedivacEnergyUpgrade" AbilCmd="FusionCoreResearch,Research3"/>
             <LayoutButtons index="8" Face="ResearchHHBomberNapalm" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research6" Requirements=""/>
             <LayoutButtons Face="UnlockHHBomberNapalmPayload" Type="Passive" Requirements="HornerHanLevel13" Row="0" Column="1"/>
+            <LayoutButtons Face="ResearchHHBomberNapalmImproved" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research7" Row="2" Column="0"/>
+            <LayoutButtons Face="ResearchHHBomberTriple" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research8" Row="2" Column="1"/>
+            <LayoutButtons Face="ResearchHHBomberEMP" Type="AbilCmd" AbilCmd="FusionCoreResearch,Research9" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Gateway">

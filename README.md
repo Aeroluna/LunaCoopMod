@@ -694,11 +694,22 @@ This should keep the Raven farther back and not randomly die as easily.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
-- Buffed Strike Fighter to be invulnerable.
+- Increased Strike Fighter hitpoints from 50 to 100.
+- Buffed Precision Strike to also hit air.
 - Added visual trail to Strike Fighter.
 - Adjusted Strike Fighter acceleration.
 
-Why could this thing even be shot down in the first place?
+Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
+
+- Reworked P3:
+  - Added advantage: Can research one exclusive Precision Strike upgrade.
+    - Thermal Cascade Payload: Napalm upgrade but spreads to a larger radius.
+    - Cluster Payload: Drops 2 additional bombs behind the target area.
+    - EMP Warhead Payload: Replaces explosion with EMP that has similar effects to Mengsk's EMP.
+  - Removed Strike Fighter Platform cost disadvantage.
+  - Added disadvantage: Salvage is unavailable.
+
+Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
 
 ## Tychus
 

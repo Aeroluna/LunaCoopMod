@@ -23,6 +23,7 @@ Abil/Name/VehicleAfterburnersStimpack=Vehicle Afterburners
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
 Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/Enshroud=Aurora Veil
+Behavior/Name/GhostMengskEMPStun=Shock and Awe
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosionTempBuff=Implosion
 Behavior/Name/KerriganRazorSwarm=Razor Swarm
@@ -39,6 +40,7 @@ Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its a
 Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move or attack.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
+Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
@@ -66,6 +68,9 @@ Button/Name/EvolveK5ChainLightningBrood=Evolve Psionic Cleave
 Button/Name/EvolveScourgeGasCostReduction=Evolve Dampening Membrane
 Button/Name/EvolveViperAbductImprovedStun=Evolve Paralytic Barbs
 Button/Name/EvolveViperImprovedCastRange=Evolve Virulent Microbes
+Button/Name/HHBomberEMP=EMP Warhead Payload
+Button/Name/HHBomberNapalmImproved=Thermal Cascade Payload
+Button/Name/HHBomberTriple=Cluster Payload
 Button/Name/HaveScourgeGasCostReduction=Dampening Membrane
 Button/Name/HaveSignifierFullStartingEnergy=Argus Crystal
 Button/Name/HealMedivac=Heal
@@ -91,6 +96,9 @@ Button/Name/OrbitalDropPodsMedivacPassive=Hot Drop
 Button/Name/PlanetCrackerArtanis=Planet Cracker
 Button/Name/QueenBrood=Birth Brood Matron
 Button/Name/ResearchBlinkCharges=Research Displacement Matrix
+Button/Name/ResearchHHBomberEMP=Research EMP Warhead Payload
+Button/Name/ResearchHHBomberNapalmImproved=Research Thermal Cascade Payload
+Button/Name/ResearchHHBomberTriple=Research Cluster Payload
 Button/Name/ResearchHellburstPayload=Research Hellburst Payload
 Button/Name/ResearchMedicStartingEnergy=Research Cellular Reactor
 Button/Name/ResearchMengskAcademyMissileCount=Research Ordnance Depot Retrofit
@@ -151,6 +159,7 @@ Button/Tooltip/ChainReactionBrood=Kerrigan's attacks deal splash damage to nearb
 Button/Tooltip/CommanderHornerLevel06=Mira's Unit Build and Research times are reduced by 40%.
 Button/Tooltip/CommanderPrestigeAlarakDeathFleet=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Summon Death Fleet has no duration or initial cooldown. The Crimson Sovereign may construct Destroyers.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Destroyers are no longer summoned with the Crimson Sovereign. The Crimson Sovereign and Destroyers have resource and supply costs. Mass Teleport now has a 60 second cooldown and no longer teleports allied units.
 Button/Tooltip/CommanderPrestigeArtanisCombatAbilities=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Increase the effectiveness of all active combat unit abilities by 100%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units cost 30% more minerals.
+Button/Tooltip/CommanderPrestigeHornerBombingPlatforms=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Bombing Platforms are no longer capped. One exclusive Precision Strike upgrade may be researched.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Salvage is no longer available.
 Button/Tooltip/CommanderPrestigeHornerMagMines=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Mira's units are produced 50% faster and their on-death effects are 100% more effective. Salvage gives 50% more resources.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Horner's units cost 30% more.
 Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDamage=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect damage increased.
 Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDuration=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect duration increased.
@@ -194,6 +203,9 @@ Button/Tooltip/EvolveMedusaBlades=<c val="ffff8a">Zagara's</c> attacks deal 50% 
 Button/Tooltip/EvolveScourgeGasCostReduction=Reduces the splash and spell damage dealt to <c val="ffff8a">Scourge</c> by 75%.
 Button/Tooltip/EvolveViperImprovedCastRange=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +2 radius.
 Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds. Cannot occur more than once every <d ref="Behavior,GhostMengskSuperCloakController,DamageResponse.Cost.Cooldown.TimeUse"/> seconds.
+Button/Tooltip/HHBomberEMP=Precision Strikes cause an EMP instead of an explosion. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
+Button/Tooltip/HHBomberNapalmImproved=Precision Strikes ignite the target location with napalm that spreads further. Enemies units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
+Button/Tooltip/HHBomberTriple=Precision Strikes drop two additional bombs behind the target area.
 Button/Tooltip/HaveScourgeGasCostReduction=Reduces the splash and spell damage dealt to Scourge by 75%.
 Button/Tooltip/HaveSignifierFullStartingEnergy=Signifiers start with full energy.
 Button/Tooltip/HealMedivac=Heals a friendly biological target.<n/><n/><c val="f078ff">Heals <d ref="Effect,MedivacRaynorHeal,RechargeVitalRate[0]"/> life per 1 energy.</c>
@@ -233,6 +245,9 @@ Button/Tooltip/ResearchBlinkChargesUpgrade=<c val="ffff8a">Instigators</c> can n
 Button/Tooltip/ResearchCycloneLockOnDamageUpgrade=Increases <c val="ffff8a">Cyclone</c> Lock On damage by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/ResearchDarkArchonFullStartingEnergy=<c val="ffff8a">Dark Archons</c> and <c val="ffff8a">Signifiers</c> start with full energy.
 Button/Tooltip/ResearchFireSuppressionSystemsPrestige=All structure fires are automatically extinguished and all structures automatically repair themselves to 100% of their maximum life.
+Button/Tooltip/ResearchHHBomberEMP=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes cause an EMP instead of an explosion. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
+Button/Tooltip/ResearchHHBomberNapalmImproved=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm that spreads further. Enemies units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
+Button/Tooltip/ResearchHHBomberTriple=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes drop two additional bombs behind the target area.
 Button/Tooltip/ResearchHellburstPayload=Increases the direct damage of <c val="ffff8a">Widow Mine</c> Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/ResearchInfestedBunkerArmor=<c val = "ffff8a">Infested Bunkers</c> and <c val = "ffff8a">Infested Missile Turrets</c> gain +3 armor.
 Button/Tooltip/ResearchInfestedBunkerLifeRegen=<c val="ffff8a">Infested Bunkers</c> and <c val="ffff8a">Infested Missile Turrets</c> regenerate life twice as fast while rooted.
@@ -303,6 +318,20 @@ Effect/Name/DarkArchonNerazimWeaponDamage=Dark Archon Nerazim Weapon Damage
 Effect/Name/EnshroudApplyBuff=Enshroud (Apply Buff)
 Effect/Name/EnshroudHeal=Enshroud (Heal)
 Effect/Name/EnshroudSearch=Enshroud (Search)
+Effect/Name/GhostMengskEMPBigSearch2=GhostMengskEMPBigSearch
+Effect/Name/GhostMengskEMPDamage2=GhostMengskEMPDamage
+Effect/Name/GhostMengskEMPDecloakAB2=GhostMengskEMPDecloakAB
+Effect/Name/GhostMengskEMPFeedbackDamage2=GhostMengskEMPFeedbackDamage
+Effect/Name/GhostMengskEMPRemoveEnergy2=GhostMengskEMPRemoveEnergy
+Effect/Name/GhostMengskEMPSet2=GhostMengskEMPSet
+Effect/Name/GhostMengskEMPStunLongAB2=GhostMengskEMPStunLongAB
+Effect/Name/HHBomberAreaBombEMPImpactSet=HHBomberAreaBombEMPImpactSet
+Effect/Name/HHBomberAreaBombEMPStunAB=HHBomberAreaBombEMPStunAB
+Effect/Name/HHBomberAreaBombFireExpandCP=HHBomberAreaBombFireExpandCP
+Effect/Name/HHBomberAreaBombFireExpandSecondaryCP=HHBomberAreaBombFireExpandSecondaryCP
+Effect/Name/HHBomberAreaBombImpactSwitch=HHBomberAreaBombImpactSwitch
+Effect/Name/HHBomberAreaBombInitialSwitch=HHBomberAreaBombInitialSwitch
+Effect/Name/HHBomberAreaBombTripleCP=HHBomberAreaBombTripleCP
 Effect/Name/HHScrapAllyDummy=HHScrapAllyDummy
 Effect/Name/HHScrapDummy=HHScrapDummy
 Effect/Name/HHWidowMineBlossomInitImpactSet=HHWidowMineBlossomInitImpactSet
@@ -493,7 +522,11 @@ Param/Value/lib_74A68E34_B71F489D=+0
 Param/Value/lib_74A68E34_CD6B2610=+Retry
 Param/Value/lib_74A68E34_D3F4D90E=<c val="FF0000">Damage caching overflow</c>
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
+RequirementNode/Tooltip/CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992=Construction complete
 RequirementNode/Tooltip/CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180=Evolve Metasynaptic Node at the Infestation Pit
+RequirementNode/Tooltip/CountUpgradeHHBomberEMPCompleteOnly2458650312=Research Napalm Payload at the Fusion Core.
+RequirementNode/Tooltip/CountUpgradeHHBomberNapalmImprovedCompleteOnly2458650312=Research Napalm Payload at the Fusion Core.
+RequirementNode/Tooltip/CountUpgradeHHBomberTripleCompleteOnly2458650312=Research Napalm Payload at the Fusion Core.
 RequirementNode/Tooltip/CountUpgradeHellburstPayloadCompleteOnly2216400238=Research Hellburst Payload at the Factory Tech Lab
 RequirementNode/Tooltip/CountUpgradeLiberatorInfestedBecomeSwarmCompleteOnly4025277999=Evolve Cloud Dispersal at the Infested Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeMengskAcademyMissileCountCompleteOnly3665151284=Research Ordnance Depot Retrofit at the Royal Academy
@@ -508,6 +541,9 @@ RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No
 RequirementNode/Tooltip/LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5=Can only have 5 levels of Corruption
 RequirementNode/Tooltip/LT3730171456CountUnitSwarmNetworkQueuedOrBetter4=Limit 4
 RequirementNode/Tooltip/Not1826056550CountUnitTychusOdinQueuedOrBetter=Tychus currently piloting Odin
+RequirementNode/Tooltip/Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen
+RequirementNode/Tooltip/Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter=Only one Precision Strike upgrade can be chosen
+RequirementNode/Tooltip/Not318348000OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen
 RequirementNode/Tooltip/Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2=No Tactical Missile at this Royal Academy
 Skin/Name/KerriganBroodCoop=KerriganBroodCoop
 Skin/Name/KerriganPrestigeBroodCoop=KerriganPrestigeBroodCoop
@@ -545,6 +581,9 @@ Unit/ShieldArmorName/MarauderMengskShield=Aegis Barrier
 Unit/ShieldArmorName/ScatterVeil=Scatter Veil
 Upgrade/Name/CommanderPrestigeHornerMagMinesBuildTime=CommanderPrestigeHornerMagMinesBuildTime
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
+Upgrade/Name/HHBomberEMP=EMP
+Upgrade/Name/HHBomberNapalmImproved=Napalm Improved
+Upgrade/Name/HHBomberTriple=Triple
 Upgrade/Name/HellburstPayload=Hellburst Payload
 Upgrade/Name/K5TwoDronesKerrigan=K5 Two Drones
 Upgrade/Name/KerriganBroodCosmetic=Cosmetic

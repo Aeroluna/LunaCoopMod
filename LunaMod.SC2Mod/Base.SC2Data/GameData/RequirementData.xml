@@ -35,6 +35,18 @@
         <NodeArray index="Use" Link="CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180"/>
         <NodeArray index="Show" Link="CountUpgradeZagaraCommanderCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="HaveHHBomberNapalmImproved">
+        <NodeArray index="Use" Link="CountUpgradeHHBomberNapalmImprovedCompleteOnly2458650312"/>
+        <NodeArray index="Show" Link="AndNot1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnitCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveHHBomberTriple">
+        <NodeArray index="Use" Link="CountUpgradeHHBomberTripleCompleteOnly2458650312"/>
+        <NodeArray index="Show" Link="AndNot1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnitCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveHHBomberEMP">
+        <NodeArray index="Use" Link="CountUpgradeHHBomberEMPCompleteOnly2458650312"/>
+        <NodeArray index="Show" Link="AndNot1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnitCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="HaveMengskAcademyMissileCount">
         <NodeArray index="Use" Link="CountUpgradeMengskAcademyMissileCountCompleteOnly3665151284"/>
     </CRequirement>
@@ -58,6 +70,21 @@
     <CRequirement id="LearnCellularReactor">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="NotCountUpgradeMedicStartingEnergyQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnHHBomberNapalm">
+        <NodeArray index="Show" Link="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnHHBomberNapalmImproved">
+        <NodeArray index="Use" Link="Not318348000OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnHHBomberTriple">
+        <NodeArray index="Use" Link="Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnHHBomberEMP">
+        <NodeArray index="Use" Link="Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeHHBomberEMPQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirement>
     <CRequirement id="LearnMengskAcademyMissileCount">
         <NodeArray index="Use" Link="CountUnitArmoryMengskCompleteOnly"/>

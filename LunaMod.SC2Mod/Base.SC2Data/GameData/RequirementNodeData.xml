@@ -40,6 +40,23 @@
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndNot1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnitCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="Not1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeHHBomberEMPQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <OperandArray value="NotCountUpgradeHHBomberEMPQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <OperandArray value="NotCountUpgradeHHBomberNapalmImprovedQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <OperandArray value="NotCountUpgradeHHBomberTripleQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PopStun" State="CompleteOnly"/>
@@ -47,6 +64,10 @@
     <CRequirementCountBehavior id="CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="SIBarracksCorruption" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UnderConstruction" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -95,6 +116,30 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="DefilerMetasynapticNode" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPCompleteOnly2458650312">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberEMP" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberEMP" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberNapalmImprovedCompleteOnly2458650312">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberNapalmImproved" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberNapalmImprovedQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberNapalmImproved" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberTripleCompleteOnly2458650312">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberTriple" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHHBomberTripleQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HHBomberTriple" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHellburstPayloadCompleteOnly2216400238">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="HellburstPayload" State="CompleteOnly"/>
@@ -116,7 +161,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeMedicStartingEnergyQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MedicStartingEnergy" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeMengskAcademyMissileCountCompleteOnly">
@@ -206,8 +250,20 @@
     <CRequirementNot id="Not1826056550CountUnitTychusOdinQueuedOrBetter">
         <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter">
+        <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="Not318348000OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter">
+        <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="Not318348000OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter">
+        <OperandArray index="0" value="OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorPopStunCompleteOnly">
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992">
+        <OperandArray index="0" value="CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
@@ -218,6 +274,15 @@
     <CRequirementNot id="NotCountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeHHBomberEMPQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHHBomberEMPQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeHHBomberNapalmImprovedQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHHBomberNapalmImprovedQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeHHBomberTripleQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHHBomberTripleQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeHellburstPayloadQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeHellburstPayloadQueuedOrBetter"/>
     </CRequirementNot>
@@ -225,7 +290,6 @@
         <OperandArray index="0" value="CountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeMedicStartingEnergyQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeMedicStartingEnergyQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeMengskAcademyMissileCountQueuedOrBetter">
@@ -258,11 +322,30 @@
     <CRequirementNot id="NotCountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
     <CRequirementNot id="NotCountUpgradeTychusACPiercingRoundsCompleteOnly"/>
     <CRequirementNot id="NotCountUpgradeTychusACRageGrenadesCompleteOnly"/>
+    <CRequirementNot id="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementNot>
     <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter">
+        <OperandArray value="CountUpgradeHHBomberNapalmImprovedQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeHHBomberEMPQueuedOrBetter"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter">
+        <OperandArray value="CountUpgradeHHBomberNapalmImprovedQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeHHBomberTripleQueuedOrBetter"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
+        <OperandArray value="CountUpgradeHHBomberNapalmQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter">
+        <OperandArray value="CountUpgradeHHBomberTripleQueuedOrBetter"/>
+        <OperandArray value="CountUpgradeHHBomberEMPQueuedOrBetter"/>
     </CRequirementOr>
 </Catalog>

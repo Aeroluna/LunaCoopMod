@@ -3,6 +3,32 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorSound id="HHBomberAreaBombAreaSound" parent="SoundOneShot">
+        <On Terms="Effect.HHBomberAreaBombEMPSearch.Start" Send="Create"/>
+        <Sound value="EMPBurstSound"/>
+    </CActorSound>
+    <CActorModel id="HHBomberAreaBombCursorSplat">
+        <Model value="MiraHorner_Bomber_Coop_Cursor"/>
+    </CActorModel>
+    <CActorModel id="HHBomberAreaBombEMPImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.HHBomberAreaBombEMPSearch.Start" Send="Create"/>
+        <On Terms="Effect.HHBomberAreaBombEMPSearch.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="GhostMengskEMPBigImpactEffect"/>
+    </CActorModel>
+    <CActorModel id="HHBomberAreaBombFireSecondaryModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.HHBomberAreaBombFireExpandSecondaryCP.Start" Send="Create"/>
+        <On Terms="Effect.HHBomberAreaBombFireExpandSecondaryCP.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <Model value="HHBomberAreaBombFireModel"/>
+    </CActorModel>
+    <CActorModel id="HHBomberAreaBombTopBarCursorSplat">
+        <Model value="MiraHorner_Bomber_Coop_Cursor"/>
+    </CActorModel>
+    <CActorModel id="HHBomberAreaBombWarning">
+        <Model value="MiraHorner_Bomber_Coop_Cursor_Persist"/>
+    </CActorModel>
     <CActorModel id="HHBomberBoostModel" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot35 SOp180"/>
         <Model value="Baneling_Stetmann_COOP_RocketTrail"/>
@@ -21,15 +47,6 @@
         <PortraitModel value="BattleCruiser_CovertOps_Collection_Portrait"/>
     </CActorUnit>
     <CActorMissile id="HHBomber">
-        <StatusBarFlags index="Shields" value="0"/>
-        <StatusBarFlags index="Life" value="0"/>
-        <StatusBarFlags index="Energy" value="0"/>
-        <StatusBarFlags index="Cargo" value="0"/>
-        <StatusBarFlags index="Progress" value="0"/>
-        <StatusBarFlags index="Duration" value="0"/>
-        <StatusBarFlags index="Magazine" value="0"/>
-        <StatusBarFlags index="Workers" value="0"/>
-        <StatusBarFlags index="Custom" value="0"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="Create HHBomberBoostModel"/>
         <!--On Terms="UnitMovementUpdate.*.Stand" Target="HHBomberBoostModel" Send="Destroy"/-->
     </CActorMissile>
