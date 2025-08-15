@@ -724,6 +724,11 @@ Why is this thing so easy to shoot down? The initial explosion can also now hit 
 
 Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
 
+- Fixed a bug where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
+- Fixed a bug where Call in the Fleet would launch at a different trajectory than intended.
+
+Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
+
 ## Tychus
 
 - Added ability to reorder outlaws.
