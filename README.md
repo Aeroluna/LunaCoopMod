@@ -436,6 +436,10 @@ No more recalling Black Death straight into your mineral line.
 
 Unsurprisingly, autocasting the shield restoring Blink when out of shields is strong.
 
+- Fixed a bug where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
+
+Funny that this passive could *nerf* some units.
+
 ## Karax
 
 - Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes listed below.

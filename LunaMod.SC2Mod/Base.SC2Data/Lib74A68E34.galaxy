@@ -1238,6 +1238,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             lib74A68E34_gf_KaraxEnable20(lv_player);
         }
         else if (auto560DABDD_val == "ProtossVorazun") {
+            TriggerEnable(lib74A68E34_gt_VorazunNegativeEnergyFix, true);
             TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, true);
         }
         else if (auto560DABDD_val == "ZergAbathur") {
@@ -1930,6 +1931,45 @@ void lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: VorazunNegativeEnergyFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VorazunNegativeEnergyFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "VorazunCloakDamageBoost", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(EventUnit(), "VorazunCloakDamageBoostPermanentEnergy") == true)) {
+        if ((UnitGetPropertyFixed(EventUnit(), c_unitPropEnergyRegen, c_unitPropCurrent) < 0.0)) {
+            UnitBehaviorRemove(EventUnit(), "VorazunCloakDamageBoostPermanentEnergy", 1);
+        }
+
+    }
+    else {
+        if ((UnitGetPropertyFixed(EventUnit(), c_unitPropEnergyRegen, c_unitPropCurrent) > 0.0)) {
+            UnitBehaviorAdd(EventUnit(), "VorazunCloakDamageBoostPermanentEnergy", EventUnit(), 1);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VorazunNegativeEnergyFix_Init () {
+    lib74A68E34_gt_VorazunNegativeEnergyFix = TriggerCreate("lib74A68E34_gt_VorazunNegativeEnergyFix_Func");
+    TriggerEnable(lib74A68E34_gt_VorazunNegativeEnergyFix, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_VorazunNegativeEnergyFix, null, null, c_unitBehaviorChangeAny);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: VorazunShadowArchonGender
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_VorazunShadowArchonGender_Func (bool testConds, bool runActions) {
@@ -2600,6 +2640,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Init();
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
+    lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
