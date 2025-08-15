@@ -55,6 +55,10 @@ Makes Raynor and HH Viking feel smoother to land.
 
 *Bring it on!*
 
+- Fixed a bug where all Zerg building construction sounds would use Stetmann's Mecha variants.
+
+Fun fact: this bug has existed as long as Stetmann has.
+
 ## Amon
 
 - Removed slow from Viper Disabling Cloud.
