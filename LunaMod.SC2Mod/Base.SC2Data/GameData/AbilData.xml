@@ -54,6 +54,23 @@
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="YoinkAmon">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="YoinkStartSwitch"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Structure,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+        <Range value="9"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <AINotifyEffect value="FaceEmbrace"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FaceEmbraceAmon"/>
+        <FinishTime value="0.8"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="ZagaraCorruption">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="Corruption"/>
@@ -903,6 +920,7 @@
     </CAbilBuild>
     <CAbilEffectTarget id="Yoink">
         <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
         <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">

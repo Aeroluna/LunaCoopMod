@@ -65,6 +65,10 @@ Fun fact: this bug has existed as long as Stetmann has.
 - Added Viper Blinding Cloud ability.
 - Removed Viper Consumption ability.
 - Added Viper Consume ability.
+- Increased Viper Abduct energy cost to 75.
+- Added 0.8 second cast finish time to Abduct.
+- Removed stun from Abduct.
+- Improved Viper Abduct AI to pull siege units.
 
 Possibly most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
 

@@ -2,6 +2,53 @@
 //  *** Viper ***
 //--------------------------------------------------------------------------------------------------
 
+const string c_AB_ViperAbductAmon                   = "YoinkAmon";
+order AbductAmon (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // cast abduct on massive units and siege targets
+    order ord;
+    unitgroup filterGroup;
+    unit unitToCheck;
+    int scanCount;
+    point aiUnitPosition;
+    fixed dist;
+
+    ord = AICreateOrder(player, c_AB_ViperAbductAmon, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    aiUnitPosition = UnitGetPosition(aiUnit);
+    filterGroup = UnitGroupEmpty();
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitMarkerCount(unitToCheck, mark) > 0) {
+            continue;  // already yoinking this
+        }
+
+        dist = DistanceBetweenPoints(aiUnitPosition, UnitGetPosition(unitToCheck));
+        if (dist < 8.0) {
+            continue;   // already close enough, no reason to yoink
+        }
+
+        if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeHeroic) == true) {
+            UnitGroupAdd(filterGroup,unitToCheck);
+        }
+        else if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeMassive) == true) {
+            UnitGroupAdd(filterGroup,unitToCheck);
+        }
+        else if (UnitIsSiegeUnit(unitToCheck)) {
+            UnitGroupAdd(filterGroup,unitToCheck);
+        }
+    }
+
+    //  Return valid target order
+    //
+    return AIUnitGroupGetValidOrder(filterGroup, ord, aiUnit, c_forwards);
+}
+
 const int c_aiConsumeTargetMinLife = 200;
 const int c_aiConsumeCasterMinDelta = 75;
 const string c_AB_ViperConsume                      = "ViperConsumeStructure";
@@ -11,9 +58,10 @@ order ViperConsume (int player, unit aiUnit, unitgroup scanGroup) {
     aifilter filter;
     aifilter enemyFilter;
 
+    // Dont try to consume in combat
     enemyFilter = AIFilter(player);
     AISetFilterAlliance(enemyFilter, c_playerGroupEnemy);
-    AISetFilterRange(enemyFilter, aiUnit, 10.0);
+    AISetFilterRange(enemyFilter, aiUnit, 8.0);
     AISetFilterInCombat(enemyFilter, c_onlyInCombat);
     if (UnitGroupCount(AIGetFilterGroup(enemyFilter, scanGroup), c_unitCountAlive) > 0) {
         return null;
@@ -106,7 +154,7 @@ void AIThinkViperLuna (int player, unit aiUnit, unitgroup scanGroup) {
     if(AIPlayerDifficulty(player) > c_campNormal) {
         if (AITactCooldownAllow(aiUnit, c_AbductCoolDown)) {
             mark = AIMarker(aiUnit, c_MK_ViperAbduct);
-            ord = Abduct(player, aiUnit, scanGroup, mark);
+            ord = AbductAmon(player, aiUnit, scanGroup, mark);
             if (ord != null) {
                 //AICast(aiUnit, ord, mark, c_castHold);
                 if (diff == c_campAdvanced) {
