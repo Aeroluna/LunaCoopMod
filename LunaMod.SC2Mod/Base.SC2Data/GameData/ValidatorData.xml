@@ -127,6 +127,10 @@
         <Find value="1"/>
         <Value value="HaveTempestDestabilizingResiduum"/>
     </CValidatorPlayerRequirement>
+    <CValidatorCombine id="IsForceFieldOrNotInvulnerabe">
+        <CombineArray value="TargetIsForceField"/>
+        <CombineArray value="NotInvulnerableAndNotNeutral"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="IsNotMarauderStimmed">
         <Behavior value="StimpackMarauder"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -145,6 +149,9 @@
         <CombineArray value="LifeLTHalf"/>
         <CombineArray value="CommanderPrestigeSwannTurrets"/>
     </CValidatorCombine>
+    <CValidatorUnitFilters id="NotInvulnerableAndNotNeutral">
+        <Filters value="-;Neutral,Invulnerable"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitCompareVital id="SILiberatorAmmoMissingEnergy">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>

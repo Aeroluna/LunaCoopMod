@@ -59,18 +59,22 @@ Makes Raynor and HH Viking feel smoother to land.
 
 Fun fact: this bug has existed as long as Stetmann has.
 
+- Fixed a bug where Viper Abduct would not unburrow most units.
+
+You are pulling them into the air after all.
+
 ## Amon
 
 - Removed Viper Disabling Cloud ability.
 - Added Viper Blinding Cloud ability.
 - Removed Viper Consumption ability.
 - Added Viper Consume ability.
-- Increased Viper Abduct energy cost to 75.
+- Increased Viper Abduct energy cost from 25 to 75.
 - Added 0.8 second cast finish time to Abduct.
 - Removed stun from Abduct.
 - Improved Viper Abduct AI to pull siege units.
 
-Possibly most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
+Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
 
 ## Raynor
 
@@ -483,7 +487,7 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 ## Abathur
 
 - Buffed Viper's Consumption ability to also target structures.
-- Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 2.
+- Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 1.
 - Buffed Biomass to additionally increase max energy by 1% per biomass.
 - Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
 - Buffed Abduct to allow abducting Heroic units (will pull but not stun).
@@ -492,7 +496,7 @@ Vipers rarely were worth mixing into your army, now they should be much more usa
 
 - Added autocast to Corrosive Bile (initially off).
 
-Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances.
+Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range (sorry Alarak).
 
 - Buffed Swarm Host by upgrading to Creeper strain.
 

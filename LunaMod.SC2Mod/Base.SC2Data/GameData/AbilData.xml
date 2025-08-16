@@ -669,10 +669,12 @@
     <CAbilEffectTarget id="RavagerAbathurCorrosiveBile">
         <Flags index="AutoCast" value="1"/>
         <TargetSorts>
+            <SortArray value="TSNotForceField"/>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AutoCastFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden"/>
         <AutoCastRange value="12"/>
+        <AutoCastValidatorArray value="IsForceFieldOrNotInvulnerabe"/>
     </CAbilEffectTarget>
     <CAbilResearch id="RoboticsBayResearch">
         <InfoArray index="Research19">
