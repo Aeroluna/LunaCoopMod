@@ -61,9 +61,12 @@ Fun fact: this bug has existed as long as Stetmann has.
 
 ## Amon
 
-- Removed slow from Viper Disabling Cloud.
+- Removed Viper Disabling Cloud ability.
+- Added Viper Blinding Cloud ability.
+- Removed Viper Consumption ability.
+- Added Viper Consume ability.
 
-Possibly number one most infurating spell to get hit by? Abathur Vipers are unaffected.
+Possibly most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
 
 ## Raynor
 

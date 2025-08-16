@@ -1,0 +1,141 @@
+//--------------------------------------------------------------------------------------------------
+//  *** Viper ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_aiConsumeTargetMinLife = 200;
+const int c_aiConsumeCasterMinDelta = 75;
+const string c_AB_ViperConsume                      = "ViperConsumeStructure";
+order ViperConsume (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unitgroup consumptionTargets;
+    aifilter filter;
+    aifilter enemyFilter;
+
+    enemyFilter = AIFilter(player);
+    AISetFilterAlliance(enemyFilter, c_playerGroupEnemy);
+    AISetFilterRange(enemyFilter, aiUnit, 10.0);
+    AISetFilterInCombat(enemyFilter, c_onlyInCombat);
+    if (UnitGroupCount(AIGetFilterGroup(enemyFilter, scanGroup), c_unitCountAlive) > 0) {
+        return null;
+    }
+
+    if ((UnitGetPropertyFixed(aiUnit, c_unitPropEnergyMax, c_unitPropCurrent) - UnitGetPropertyFixed(aiUnit, c_unitPropEnergy, c_unitPropCurrent)) < c_aiConsumeCasterMinDelta) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_AB_ViperConsume, 0);
+    if(!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterSelf(filter, aiUnit);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    AISetFilterLife(filter, c_aiConsumeTargetMinLife, c_noMax);
+    AISetFilterLifeSortReference(filter, c_aiConsumeTargetMinLife, c_aiConsumeTargetMinLife*c_distanceFromDamage);
+
+    consumptionTargets = AIFindUnits(player, null, UnitGetPosition(aiUnit), 10.0, c_noMaxCount);
+    consumptionTargets = AIGetFilterGroup(filter, consumptionTargets);
+    if (consumptionTargets == null) {
+        return null;
+    }
+
+    ord = AIUnitGroupGetValidOrder(consumptionTargets, ord, aiUnit, c_forwards);
+    return ord;
+}
+
+fixed BlindingCloudCoolDown_Hard = 45;
+fixed BlindingCloudCoolDown_Brutal = 30;
+fixed ViperConsumeCoolDown_Hard = 30;
+fixed ViperConsumeCoolDown_Brutal = 30;
+
+const int c_BlindingCloudCoolDown = c_tactTimerThird;
+const int c_ViperConsumeCoolDown = c_tactTimerFourth;
+
+void AIThinkViperLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+    fixed cooldown;
+    int diff = AIPlayerDifficulty(player);
+
+    if(AIPlayerDifficulty(player) <= c_campNormal) {
+        return;
+    }
+
+    //Ordered abilities with the longest cooldown first, so the Vipers do not
+    //get stuck overcasting low cooldown abilities and never use the others
+
+    //Parasitic Bomb
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_ParasiticBombCoolDown)) {
+            mark = AIMarker(aiUnit, c_MK_ViperParasiticBomb);
+            ord = ParasiticBomb(player, aiUnit, scanGroup, mark);
+            if (ord != null) {
+                //AICast(aiUnit, ord, mark, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = ParasiticBombCooldown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = ParasiticBombCooldown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, mark, c_castHold, c_ParasiticBombCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+
+    //Blinding Cloud
+    if(AIPlayerDifficulty(player) > c_campAdvanced) {
+        if (AITactCooldownAllow(aiUnit, c_BlindingCloudCoolDown)) {
+            ord = BlindingCloud(player, aiUnit, scanGroup);
+            if (ord != null) {
+                //AICast(aiUnit, ord, c_noMarker, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = BlindingCloudCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = BlindingCloudCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_BlindingCloudCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+
+    //Abduct
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_AbductCoolDown)) {
+            mark = AIMarker(aiUnit, c_MK_ViperAbduct);
+            ord = Abduct(player, aiUnit, scanGroup, mark);
+            if (ord != null) {
+                //AICast(aiUnit, ord, mark, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = AbductCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = AbductCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, mark, c_castHold, c_AbductCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+
+    //Consume
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_ViperConsumeCoolDown)) {
+            ord = ViperConsume(player, aiUnit, scanGroup);
+            if (ord != null) {
+                //AICast(aiUnit, ord, c_noMarker, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = ViperConsumeCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = ViperConsumeCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_ViperConsumeCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+}

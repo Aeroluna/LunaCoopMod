@@ -51,6 +51,9 @@
         <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="DisablingCloud">
+        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="ZagaraCorruption">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="Corruption"/>
@@ -820,6 +823,7 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="ViperConsumption">
         <TargetFilters index="0" value="Biological;Self,Enemy,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
+        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VortexArtanis" parent="TalDarimVortex">
         <Effect index="0" value="VortexArtanisCreatePersistentInitial"/>
