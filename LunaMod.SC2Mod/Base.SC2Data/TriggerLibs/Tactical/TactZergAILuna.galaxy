@@ -187,3 +187,105 @@ void AIThinkViperLuna (int player, unit aiUnit, unitgroup scanGroup) {
         }
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** QueenClassic ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+order QueenMPSpawnBroodlingsLuna (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // Targetted shot that kills the target and spawns to Broodlings at that location
+    // Spawn Broodlings on massive units and siege targets
+    order ord;
+    unitgroup filterGroup;
+    unit unitToCheck;
+    int scanCount;
+
+    if (!AITactCooldownAllow(aiUnit, c_SpawnBroodlingsCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_AB_QueenMPSpawnBroodlings, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    filterGroup = UnitGroupEmpty();
+
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    if(scanCount == 0) {
+        return null;
+    }
+
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitHasBehavior(unitToCheck, c_AB_QueenClassicParasite)) {
+            continue; // Ignore unit with parasite
+        }
+
+        if (UnitMarkerCount(unitToCheck, mark) > 0) {
+            continue; // Ignore unit marked for SpawnBroodling
+        }
+
+        // We intentionally use spawn broodling inefficiently, because it would be unfun to have your expensive thor insta-killed
+        if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeHeroic) || UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeMassive)) {
+            continue; // Ignore heroic and massive units
+        }
+
+        if (UnitGetPropertyFixed(unitToCheck, c_unitPropLifeMax, c_unitPropCurrent) <= 100) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+    }
+
+    return AIUnitGroupGetValidOrder(filterGroup, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkQueenClassicLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+    fixed cooldown;
+
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        mark = AIMarker(aiUnit, c_MK_SpawnBroodlings);
+        ord = QueenMPSpawnBroodlingsLuna(player, aiUnit, scanGroup, mark);
+        if (ord != null) {
+            if (AIPlayerDifficulty(player) < c_campAdvanced) {
+                cooldown = 30.0;
+            }
+            else {
+                cooldown = 30.0;
+            }
+            AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_SpawnBroodlingsCooldown, cooldown);
+            return;
+        }
+    }
+
+    //mark = AIMarker(aiUnit, c_MK_Parasite);
+    //ord = QueenClassicParasite(player, aiUnit, scanGroup, mark);
+    //if (ord != null) {
+    //    AICast(aiUnit, ord, mark, c_castRetreat);
+    //    return;
+    //}
+
+    mark = AIMarker(aiUnit, c_MK_Ensnare);
+    ord = QueenMPEnsnare(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        if (AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 15.0;
+        }
+        else {
+            cooldown = 5.0;
+        }
+        AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_EnsnareCooldown, cooldown);
+        return;
+    }
+
+    //ord = CreepTumor(player, aiUnit);
+    //if (ord != null) {
+    //    AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+    //    return;
+    //}
+}

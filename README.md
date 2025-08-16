@@ -76,6 +76,15 @@ You are pulling them into the air after all.
 
 Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
 
+- Increased Brutal AI cooldown of Brood Queen's Ensnare from 0 seconds to 5 seconds.
+- Buffed Spawn Broodling to allow targeting massive units (This only affects mind controlled Brood Queens).
+- Reworked Spawn Broodling casting AI.
+  - Will not be used on Normal difficulty and lower.
+  - Added a 30 second cooldown.
+  - Only targets units with less than 100 max hitpoints.
+
+Fun fact: Spawn Broodling was previously only casted on Siege Tanks. They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter.
+
 ## Raynor
 
 - Added Medivacs.
