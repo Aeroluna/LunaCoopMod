@@ -526,13 +526,9 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 - Added Spike Burst ability to Symbiote.
   - Deals 50 damage to nearby enemies every 10 seconds.
 - Increased Symbiote's Stab cooldown from 1 second to 1.2 seconds.
-
-Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?). Stab DPS slightly nerfed to compensate. Overall single target DPS is identical.
-
-- Removed flying helper from Symbiote.
 - Changed Stab to prioritize units and attacking structures.
 
-QOL.
+Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?). Stab DPS slightly nerfed to compensate. Overall single target DPS is identical.
 
 - Added P4: Symbiotic Hivemind.
   - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
