@@ -51,12 +51,55 @@
         <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CreateSymbiote">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="PrestigeCreateSymbioteAB"/>
+        <Cost>
+            <Resource index="Minerals" value="400"/>
+            <Resource index="Vespene" value="200"/>
+        </Cost>
+        <TargetFilters value="-;Neutral,Enemy,Missile,Uncommandable,Dead,Hidden,Invulnerable,Summoned,MapBoss"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CreateSymbiote" Requirements="CommanderPrestigeAbathurSymbiote"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="QueenMPSpawnBroodlings">
         <TargetFilters index="0" value="-;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="SymbioteCarapacePrestige">
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SymbioteCarapaceSet"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="20"/>
+        </Cost>
+        <AutoCastRange value="500"/>
+        <AutoCastValidatorArray value="HasCarapaceTakenDamageBehaviorCheck"/>
+        <AutoCastValidatorArray value="IsNotBuried"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CommanderKerriganMutatingCarapace"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SymbioteSpikeBurst">
+        <Cost index="0">
+            <Cooldown TimeStart="1"/>
+        </Cost>
+        <AutoCastRange value="5"/>
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="SymbioteStab">
+        <Cost index="0">
+            <Cooldown TimeUse="1.2"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="YoinkAmon">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="YoinkStartSwitch"/>

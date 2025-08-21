@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorUnit id="AbathurSymbioteBrutalisk">
+        <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper All" Send="Create FlyerHelperSplat"/>
+        <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper Selected" Send="Create FlyerHelperSplat"/>
+        <Remove Terms="ActorCreation; FlyerHelper All; ValidateUnit IsFlying" Send="Create FlyerHelperSplat"/>
+        <Remove Terms="FlyerHelperChange; FlyerHelper Selected; HasStatus FlyerHelper; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <Remove Terms="FlyerHelperChange; FlyerHelper All; ValidateUnit IsFlying; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+    </CActorUnit>
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
@@ -83,6 +90,67 @@
         <Model value="TornadoMissileWeapon"/>
         <Scale value="1.200000"/>
     </CActorMissile>
+    <CActorUnit id="Ravager">
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorUnit id="RavagerAbathur">
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorUnit id="Devourer">
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorUnit id="Guardian">
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorUnit id="GuardianMP">
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorSiteOpLocalOffset id="SOpMoveDownBy2Dot5">
+        <LocalOffset value="0.000000,0.000000,-2.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorModel id="SymbioteSpikedBurst">
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy2Dot5"/>
+    </CActorModel>
     <CActorModel id="TychusMarauderAttackImpactUpgrade">
         <On Terms="ActorCreation" Send="$Death"/>
         <On Terms="AnimDone" Send="Destroy"/>

@@ -21,6 +21,10 @@
         <Compare value="LT"/>
         <Range value="1"/>
     </CValidatorLocationCompareRange>
+    <CValidatorPlayerRequirement id="CommanderPrestigeAbathurSymbiote">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeAbathurSymbiote"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="CommanderPrestigeHornerMagMines">
         <Value value="CrossSpectrumDampenersResearched"/>
     </CValidatorPlayerRequirement>
@@ -55,6 +59,10 @@
     <CValidatorUnitCompareBehaviorCount id="DehakaNoAirUpgrade">
         <WhichUnit Value="Caster"/>
         <Behavior value="DehakaAirAttackUpgrade"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotHavePrestigeSymbiote">
+        <Behavior value="AbathurPrestigeSymbiote"/>
+        <ResultFailed value="Error,Error/AlreadyHasSymbiote"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitFilters id="EnemyTargetAbductVikingAir">
         <Filters value="-;Self,Player,Ally,Heroic"/>
@@ -255,10 +263,22 @@
     <CValidatorUnitType id="IsAbathurSwarmHostBurrowedSplitB">
         <Value value="SwarmHostSplitBBurrowed"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasSymbiote">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="AbathurPrestigeSymbiote"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="SourceNotHaveRestoration">
         <WhichUnit Value="Source"/>
         <Behavior value="MedicRestoration"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="SpikeBurstMinimum3EnemyTargets">
+        <AreaArray index="0" Count="1"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationCompareRange id="SymbiotePushCheck">
+        <Range value="1"/>
+    </CValidatorLocationCompareRange>
     <CValidatorUnitCompareVital id="TargetHas100LifeMissing">
         <Compare value="GE"/>
         <Type value="Delta"/>

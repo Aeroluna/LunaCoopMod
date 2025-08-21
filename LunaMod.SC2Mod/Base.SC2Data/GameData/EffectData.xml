@@ -7,6 +7,50 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray index="3" value="TSUnitsAndAttackingStructures"/>
+            <SortArray index="4" value="TSRandom"/>
+            <SortArray index="5" removed="1"/>
+            <SortArray index="6" removed="1"/>
+            <SortArray index="7" removed="1"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch2">
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray index="3" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch3">
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray index="3" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch4">
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray index="3" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch5">
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray index="3" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="PrestigeCreateSymbioteAB">
+        <ValidatorArray index="0" value="NotHavePrestigeSymbiote"/>
+        <ValidatorArray value="NotAtFullSupply"/>
+        <ValidatorArray value="NotUnderConstruction"/>
+        <Behavior value="AbathurPrestigeSymbiote"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="AdvancedBombardmentSet">
         <TargetLocationType value="Point"/>
     </CEffectSet>
@@ -964,6 +1008,32 @@
         <EditorCategories value=""/>
         <Amount value="20"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="SymbioteFollowCP">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <FinalEffect value="KillTargetDeathNormal"/>
+        <PeriodicValidator value="CasterHasSymbiote"/>
+        <PeriodicEffectArray value="SymbioteFollowOrder"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="SymbioteFollowOrder">
+        <EditorCategories value=""/>
+        <Abil value="move"/>
+        <Target Value="CasterPoint"/>
+    </CEffectIssueOrder>
+    <CEffectApplyForce id="SymbioteRecallPush">
+        <Amount value="-0.5"/>
+    </CEffectApplyForce>
+    <CEffectEnumArea id="SymbioteSpikeBurstSearch">
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray index="0" Radius="5"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="SymbioteStabSearch">
+        <TargetSorts>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+        </TargetSorts>
+    </CEffectEnumArea>
     <CEffectCreatePersistent id="TempestDotCPGround">
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Flee" value="1"/>

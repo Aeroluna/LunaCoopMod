@@ -68,6 +68,26 @@ void lib74A68E34_InitCustomScript () {
 }
 
 // Functions
+void lib74A68E34_gf_FourthChangeAllyPrestige () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerStatus(2) != c_playerStatusActive)) {
+        if (libA8FDA37D_gv_uT_PrestigeIndex >= 4) {
+            libA8FDA37D_gv_uT_PrestigeIndex = 0;
+        }
+        else {
+            libA8FDA37D_gv_uT_PrestigeIndex = libA8FDA37D_gv_uT_PrestigeIndex + 1;
+        }
+        libCOOC_gv_cCX_PlayerPrestigeIndex[2] = libA8FDA37D_gv_uT_PrestigeIndex;
+        libCOUI_gf_CU_CommanderUpdatePrestigeLabels(1);
+        libCOUI_gf_CU_CommanderUpdatePrestigeLabels(2);
+        TriggerEnable(libA8FDA37D_gt_UT_CommanderClicked, true);
+    }
+    else {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_10B8F288"));
+    }
+}
+
 trigger auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = null;
 int auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
 
@@ -534,51 +554,6 @@ void lib74A68E34_gf_TychusUIReorderEnable (int lp_player) {
 
 // Triggers
 //--------------------------------------------------------------------------------------------------
-// Trigger: TestCommand
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    unitgroup auto10F70256_g;
-    int auto10F70256_u;
-    unit auto10F70256_var;
-
-    // Conditions
-    if (testConds) {
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerExecute(libA8FDA37D_gt_UT_FastBuild, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Cooldown, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Money, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Ally, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
-    auto10F70256_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    auto10F70256_u = UnitGroupCount(auto10F70256_g, c_unitCountAll);
-    for (;; auto10F70256_u -= 1) {
-        auto10F70256_var = UnitGroupUnitFromEnd(auto10F70256_g, auto10F70256_u);
-        if (auto10F70256_var == null) { break; }
-        UnitBehaviorRemove(auto10F70256_var, "TychusResearchCenterDisableCommands", 1);
-    }
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SupplyDummy", 0, EventPlayer(), RegionGetBoundsMin(RegionEntireMap()));
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_TestCommand_Init () {
-    lib74A68E34_gt_TestCommand = TriggerCreate("lib74A68E34_gt_TestCommand_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_TestCommand, c_playerAny, "-test", true);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: ExtraUpgrades
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ExtraUpgrades_Func (bool testConds, bool runActions) {
@@ -744,6 +719,9 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(lib01833E95_gt_K2_Karax20, false);
     TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
     TriggerEnable(libA8FDA37D_gt_UT_OldMengsk, false);
+    TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
+    TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
+    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
     return true;
 }
 
@@ -751,6 +729,154 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_ApplyMaguroChanges_Init () {
     lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TestCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto10F70256_g;
+    int auto10F70256_u;
+    unit auto10F70256_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(libA8FDA37D_gt_UT_FastBuild, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Cooldown, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
+    TriggerExecute(lib74A68E34_gt_AllyImproved, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_AllySupply, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
+    PlayerModifyPropertyInt(1, c_playerPropMinerals, c_playerPropOperAdd, 50000);
+    PlayerModifyPropertyInt(1, c_playerPropVespene, c_playerPropOperAdd, 50000);
+    PlayerModifyPropertyInt(2, c_playerPropMinerals, c_playerPropOperAdd, 50000);
+    PlayerModifyPropertyInt(2, c_playerPropVespene, c_playerPropOperAdd, 50000);
+    auto10F70256_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto10F70256_u = UnitGroupCount(auto10F70256_g, c_unitCountAll);
+    for (;; auto10F70256_u -= 1) {
+        auto10F70256_var = UnitGroupUnitFromEnd(auto10F70256_g, auto10F70256_u);
+        if (auto10F70256_var == null) { break; }
+        UnitBehaviorRemove(auto10F70256_var, "TychusResearchCenterDisableCommands", 1);
+    }
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SupplyDummy", 0, 1, RegionGetBoundsMin(RegionEntireMap()));
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "SupplyDummy", 0, 2, RegionGetBoundsMin(RegionEntireMap()));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TestCommand_Init () {
+    lib74A68E34_gt_TestCommand = TriggerCreate("lib74A68E34_gt_TestCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_TestCommand, c_playerAny, "-test", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AllyImproved
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AllyImproved_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((PlayerGetAlliance(1, c_allianceIdControl, 2) == false)) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_57C032DF"));
+        PlayerSetAlliance(2, c_allianceIdControl, 1, true);
+        PlayerSetAlliance(1, c_allianceIdControl, 2, true);
+        PlayerSetAlliance(2, c_allianceIdSpend, 1, true);
+        PlayerSetAlliance(1, c_allianceIdSpend, 2, true);
+        PlayerSetAlliance(2, c_allianceIdPushable, 1, true);
+        PlayerSetAlliance(1, c_allianceIdPushable, 2, true);
+    }
+    else {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C80C6639"));
+        PlayerSetAlliance(2, c_allianceIdControl, 1, false);
+        PlayerSetAlliance(1, c_allianceIdControl, 2, false);
+        PlayerSetAlliance(2, c_allianceIdSpend, 1, false);
+        PlayerSetAlliance(1, c_allianceIdSpend, 2, false);
+        PlayerSetAlliance(2, c_allianceIdPushable, 1, false);
+        PlayerSetAlliance(1, c_allianceIdPushable, 2, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AllyImproved_Init () {
+    lib74A68E34_gt_AllyImproved = TriggerCreate("lib74A68E34_gt_AllyImproved_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_AllyImproved, c_playerAny, "-ally", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FourthPrestigeAlly
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FourthPrestigeAlly_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((GameGetMissionTime() == 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_FourthChangeAllyPrestige();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FourthPrestigeAlly_Init () {
+    lib74A68E34_gt_FourthPrestigeAlly = TriggerCreate("lib74A68E34_gt_FourthPrestigeAlly_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_FourthPrestigeAlly, c_playerAny, "-pnext", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FourthAllyPrestigeChanged
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FourthAllyPrestigeChanged_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib01833E95_gv_aF_CS_AllyPrestigeButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_FourthChangeAllyPrestige();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FourthAllyPrestigeChanged_Init () {
+    lib74A68E34_gt_FourthAllyPrestigeChanged = TriggerCreate("lib74A68E34_gt_FourthAllyPrestigeChanged_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_FourthAllyPrestigeChanged, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1199,7 +1325,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         return true;
     }
 
-    auto00AA9AB2_g = libCOOC_gf_HumanPlayers();
+    auto00AA9AB2_g = libCOOC_gf_CommanderPlayers();
     lv_player = -1;
     while (true) {
         lv_player = PlayerGroupNextPlayer(auto00AA9AB2_g, lv_player);
@@ -1249,6 +1375,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ZergAbathur") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAbathurSymbiote", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, true);
+                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, true);
+                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, true);
+            }
+
         }
         else if (auto560DABDD_val == "ZergStukov") {
             TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
@@ -2040,6 +2172,102 @@ void lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AbathurSymbiotePrestigeCreate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "CarapaceDamageResponse", EventUnit(), 1);
+    UnitAbilityAdd(EventUnit(), "SymbioteCarapacePrestige");
+    if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter((1 << c_targetFilterAir), 0, 0, 0)) == true)) {
+        UnitCreate(1, "AbathurSymbioteLeviathan", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
+        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
+            UnitSetHeight(UnitLastCreated(), 6.0, 0.0);
+        }
+        else {
+            UnitSetHeight(UnitLastCreated(), 7.0, 0.0);
+        }
+    }
+    else {
+        UnitCreate(1, "AbathurSymbioteBrutalisk", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
+        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
+            UnitSetHeight(UnitLastCreated(), 3.0, 0.0);
+        }
+        else {
+            UnitSetHeight(UnitLastCreated(), 4.0, 0.0);
+        }
+    }
+    UnitCreateEffectUnit(EventUnit(), "SymbioteFollowCP", UnitLastCreated());
+    UnitCreateEffectUnit(EventUnit(), "SymbioteCreateSet", UnitLastCreated());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Init () {
+    lib74A68E34_gt_AbathurSymbiotePrestigeCreate = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurSymbiotePrestigeIncreaseSupply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_abathurCommander;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Init () {
+    lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurSymbiotePrestigeDecreaseSupply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_abathurCommander;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", -1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init () {
+    lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: StukovAddCorruption
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_StukovAddCorruption_Func (bool testConds, bool runActions) {
@@ -2612,10 +2840,13 @@ void lib74A68E34_gt_MengskPrestigeZergRefund_Init () {
 }
 
 void lib74A68E34_InitTriggers () {
-    lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ApplyMaguroChanges_Init();
+    lib74A68E34_gt_TestCommand_Init();
+    lib74A68E34_gt_AllyImproved_Init();
+    lib74A68E34_gt_FourthPrestigeAlly_Init();
+    lib74A68E34_gt_FourthAllyPrestigeChanged_Init();
     lib74A68E34_gt_MutatorListLoadBankInit_Init();
     lib74A68E34_gt_MutatorListRandomizerCreate_Init();
     lib74A68E34_gt_MutatorListRandomizerSelected_Init();
@@ -2648,6 +2879,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
+    lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Init();
+    lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Init();
+    lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();

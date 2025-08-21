@@ -860,6 +860,9 @@
             <GameLink GameLink="VoicePackZergAbathur">
                 <Field Id="DefaultVoicePack" Index="2"/>
             </GameLink>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeAbathurSymbiote">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ZergDehaka">
             <GameLink GameLink="VoicePackProtossDehaka">
@@ -1050,6 +1053,23 @@
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
         </Instances>
+        <Instances Id="CommanderPrestigeAbathurSymbiote">
+            <AbilCmd Abil="AbathurSymbioteHangerBrutalisk">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <AbilCmd Abil="AbathurSymbioteHangerLeviathan">
+                <Field Id="DisableAbil" Index="1"/>
+            </AbilCmd>
+            <AbilCmd Abil="SymbioteCarapace">
+                <Field Id="DisableAbil" Index="2"/>
+            </AbilCmd>
+            <GameLink GameLink="CommanderPrestigeAbathurSymbiote">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <GameLink GameLink="AbathurEnableSymbiote">
+                <Field Id="SuppressUpgrade"/>
+            </GameLink>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
                 <Field Id="UpgradeSupplements"/>
@@ -1123,9 +1143,6 @@
             <AbilCmd Abil="ArmoryResearchVoidCoop" Cmd="11">
                 <Field Id="DisableAbil" Index="1"/>
             </AbilCmd>
-            <GameLink GameLink="VehicleAfterburners">
-                <Field Id="SecondaryUpgradesSelf"/>
-            </GameLink>
         </Instances>
         <Fields index="4" Count="13"/>
     </CUser>
@@ -1273,6 +1290,13 @@
             <GameLink GameLink="HHMiraBuildResearchTimeReduction">
                 <Field Id="Upgrade"/>
             </GameLink>
+        </Instances>
+    </CUser>
+    <CUser id="SharedUpgrades">
+        <Instances Id="AbathurSymbioteMastery">
+            <Upgrade Upgrade="MasteryAbathurSymbioteCarapace">
+                <Field Id="Upgrade"/>
+            </Upgrade>
         </Instances>
     </CUser>
     <CUser id="TechUnit">

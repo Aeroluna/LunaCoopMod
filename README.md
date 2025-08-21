@@ -12,6 +12,10 @@ A set of changes and additions to the StarCraft 2 Co-op mode.
 
 Added Brutal+ system. See Mutators section for specific changes to mutators.
 
+- Added ability to select a fourth prestige.
+
+Not all commanders have a fourth prestige yet, but do try the ones that exist!
+
 - Added console skins for all commanders.
 - Added voice packs for all commanders.
 
@@ -120,7 +124,6 @@ Anyone who has played P1 knows how painful it is to get energy on these things.
 - Reworked P2.
   - Removed Ignite Afterburners cooldown.
   - Added autocast to Ignite Afterburners.
-  - Ignite Afterburners no longer requires research.
 
 Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
 
@@ -162,11 +165,16 @@ Ever get annoyed when you *slightly* missed a mineral field and your MULE just A
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
-- Reworked P2.
+- Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
+
+- Changed P2 to also hit structures.
+  - Will prioritize units and attacking structures.
+
+Now your damage isn't just nerfed against structures.
 
 - Added P4: Champion of the Brood War
   - Replaces Kerrigan with Brood War Kerrigan
@@ -209,6 +217,10 @@ Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The presti
 What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasques return from Brood War with some new friends. Kerrigan has also been rebranded with a new Brood War themed skin, which is much better than the boob sacs and bone heels of SC2's design (Seriously, why did they try to make her sexy?).
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
+
+- Changed Ultralisk Tissue Assimilation upgrade to increase leech by 40% instead of healing a flat amount.
+
+This allows the healing to scale with damage increase or damage reduction effects.
 
 - Changed P3 voice lines.
 
@@ -510,6 +522,23 @@ Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict 
 - Buffed Swarm Host by upgrading to Creeper strain.
 
 Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
+
+- Added Spike Burst ability to Symbiote.
+  - Deals 50 damage to nearby enemies every 10 seconds.
+- Increased Symbiote's Stab cooldown from 1 second to 1.2 seconds.
+
+Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?). Stab DPS slightly nerfed to compensate. Overall single target DPS is identical.
+
+- Removed flying helper from Symbiote.
+- Changed Stab to prioritize units and attacking structures.
+
+QOL.
+
+- Added P4: Symbiotic Hivemind.
+  - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
+  - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
+
+Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. Highly effective with commanders who have few but important units such as hero commanders.
 
 ## Alarak
 
