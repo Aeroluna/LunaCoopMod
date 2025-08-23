@@ -60,6 +60,10 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="DehakaAirAttackUpgrade"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HasWidowMineUpgrade">
+        <CombineArray value="HasWidowMineDamage"/>
+        <CombineArray value="HHWidowMineAttackRangeUpgraded"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NotHavePrestigeSymbiote">
         <Behavior value="AbathurPrestigeSymbiote"/>
         <ResultFailed value="Error,Error/AlreadyHasSymbiote"/>
@@ -236,7 +240,7 @@
         <CombineArray value="CommanderPrestigeSwannMoving"/>
         <Negate value="1"/>
     </CValidatorCombine>
-    <CValidatorPlayerRequirement id="HasCycloneDamage">
+    <CValidatorPlayerRequirement id="HaveCycloneLockOnDamageUpgrade">
         <Find value="1"/>
         <Value value="UseCycloneDamage"/>
     </CValidatorPlayerRequirement>
@@ -284,6 +288,18 @@
         <Type value="Delta"/>
         <Value value="100"/>
     </CValidatorUnitCompareVital>
+    <CValidatorCombine id="TargetStillAimedAtByCasterWidowMineCombine">
+        <CombineArray value="TargetStillAimedAtByCasterWidowMine"/>
+        <CombineArray value="TargetStillAimedAtByCasterHHWidowMine"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="TargetStillAimedAtByCasterWidowMine">
+        <AbilLink value="WidowMineAttack"/>
+        <Target Value="TargetUnit"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="TargetStillAimedAtByCasterHHWidowMine">
+        <AbilLink value="HHWidowMineBurrowedAttack"/>
+        <Target Value="TargetUnit"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorUnitFilters id="SourceIsGroundUnitFilter">
         <WhichUnit Value="Source"/>
         <Filters value="Ground;-"/>

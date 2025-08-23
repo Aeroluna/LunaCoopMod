@@ -1,6 +1,6 @@
 # LunaMod
 
-A set of changes and additions to the StarCraft 2 Co-op mode.
+A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode.
 
 ## General
 
@@ -66,6 +66,11 @@ Fun fact: this bug has existed as long as Stetmann has.
 - Fixed a bug where Viper Abduct would not unburrow most units.
 
 You are pulling them into the air after all.
+
+- Added targeting beam to Widow Mine attack.
+- Increased visibility of targeting line and targeted unit.
+
+Added high visibility targeting beam and tint from Versus.
 
 ## Amon
 
@@ -193,7 +198,7 @@ Now your damage isn't just nerfed against structures.
   - Replaces all combat units with elite Brood War variants that have 200% more health and 50% more weapon damage but cost 200% more resources and supply.
   - Replaces Zergling with Devouring One.
     - Gains Cannibalize passive.
-      - Heals for 20 life when a biological unit dies nearby.
+      - Heals for 40 life when a biological unit dies nearby.
   - Replaces Queen with Brood Matron.
     - Gains Protective Brood passive.
       - Grants 3 life regeneration and 0.5625 energy regeneration to nearby friendly units.
@@ -282,6 +287,7 @@ Should help actually affording the high tech units with abilities like High Temp
 ## Swann
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
+- Added a sound effect when shooting High Impact Payload weapon.
 - Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
 - Reduced 330m Barrage Cannon cast and finish time from 2 to 0.75.
 
@@ -298,6 +304,7 @@ The little missile that was fired during Lock On was just sad, now Cyclones look
 
 - Added Widow Mines.
   - Added Hellburst Payload upgrade, which increases Sentinel Missile direct damage by 20 and splash damage by 80.
+  - Adds a visual red light on top after researching Hellburst Payload.
   - Cyclone's Targeting Optics upgrade additionally increases Sentinel Missile range by 3.
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
@@ -715,6 +722,7 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 - Added autocast to Widow Mine Burrow.
 - Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
 - Fixed bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
+- Added a visual red light on top after researching Black Market Launchers.
 
 These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
 
@@ -897,7 +905,7 @@ Very crippling mutator so its cost has been increased. Unfortunately, doesn't he
 - Removed Going Nuclear from Brutal+.
 - Added Nuclear Mines to Brutal+ costing 3 points.
 
-Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nukes without needing constant attention.
+Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
 
 - Added Infestation Station to Brutal+ costing 3 points.
 - Added Great Wall to Brutal+ costing 5 points.

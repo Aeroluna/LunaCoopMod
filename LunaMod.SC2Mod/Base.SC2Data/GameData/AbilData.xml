@@ -946,8 +946,13 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="HHWidowMineBurrowedAttack">
+        <PrepEffect index="0" value="WidowMineTargetTintApplyBehavior"/>
+        <CancelEffect index="Prep" value="WidowMineTargetTintRemoveBehavior"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="WidowMineAttack">
-        <PrepEffect value="HHWidowMineTargetingBeamDummy"/>
+        <PrepEffect value="WidowMineTargetTintApplyBehavior"/>
+        <CancelEffect index="Prep" value="WidowMineTargetTintRemoveBehavior"/>
     </CAbilEffectTarget>
     <CAbilBuild id="SwarmNetworkBuildSwarmLocus">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

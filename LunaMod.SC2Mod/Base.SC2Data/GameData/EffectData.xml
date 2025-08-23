@@ -1657,7 +1657,7 @@
         <EditorCategories value=""/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Life">
-            <Change value="20"/>
+            <Change value="40"/>
         </VitalArray>
         <ValidatorArray value="CasterLifeNotFull"/>
         <ValidatorArray value="CasterNotDead"/>
@@ -1924,6 +1924,15 @@
         <CaseArray Validator="TargetIsAirUnitFilter" Effect="WraithAPersistent"/>
         <CaseDefault value="WraithGLaunchMissile"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="WidowMineTargetTintApplyBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="WidowMineTargeted"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="WidowMineTargetTintRemoveBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="WidowMineTargeted"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="YoinkEnemyStun">
         <ValidatorArray value="IsAbathurCoopCommander"/>
     </CEffectApplyBehavior>

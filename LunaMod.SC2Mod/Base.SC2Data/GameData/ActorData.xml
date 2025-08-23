@@ -151,6 +151,9 @@
     <CActorModel id="SymbioteSpikedBurst">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy2Dot5"/>
     </CActorModel>
+    <CActorAction id="ThorAALanceAttack">
+        <LaunchAssets Sound="WarHound_MeleeAttackLaunch"/>
+    </CActorAction>
     <CActorModel id="TychusMarauderAttackImpactUpgrade">
         <On Terms="ActorCreation" Send="$Death"/>
         <On Terms="AnimDone" Send="Destroy"/>
@@ -1154,17 +1157,28 @@
         <On Terms="Behavior.WarpInEffect15.Off" Send="AnimBaselineStart"/>
     </CActorUnit>
     <CActorUnit id="Cyclone">
-        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerLeft"/>
-        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneLazerRight"/>
-        <On Terms="UnitBirth.Cyclone; ValidatePlayer HasCycloneDamage" Send="Create CycloneLazerLeft"/>
-        <On Terms="UnitBirth.Cyclone; ValidatePlayer HasCycloneDamage" Send="Create CycloneLazerRight"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveCycloneLockOnDamageUpgrade" Send="Create CycloneUpgradeBeamLeft"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveCycloneLockOnDamageUpgrade" Send="Create CycloneUpgradeBeamRight"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneUpgradeBeamLeft"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneUpgradeBeamRight"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamLeft" Send="Destroy"/>
+        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamRight" Send="Destroy"/>
     </CActorUnit>
-    <CActorModel id="CycloneLazerLeft" parent="ModelAnimationStyleContinuous">
-        <Inherits index="CloakEffect" value="1"/>
-        <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Send="Destroy"/>
+    <CActorModel id="CycloneUpgradeBeamLeft" parent="ModelAnimationStyleContinuous">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeapon01"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Model value="CycloneUpgradeBeam"/>
+    </CActorModel>
+    <CActorModel id="CycloneUpgradeBeamRight" parent="ModelAnimationStyleContinuous">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachWeapon02"/>
-        <Model value="CycloneLazer"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Model value="CycloneUpgradeBeam"/>
     </CActorModel>
     <CActorUnit id="DarkArchon">
         <Remove Send="Create"/>
@@ -1725,22 +1739,33 @@
         <On Terms="Effect.VortexArtanisCreatePersistent.Stop" Send="Destroy"/>
     </CActorSound>
     <CActorUnit id="WidowMine">
-        <On Terms="Upgrade.HellburstPayload.Add" Send="Create WidowMineLazer"/>
-        <On Terms="UnitBirth; ValidatePlayer HasWidowMineDamage" Send="Create WidowMineLazer"/>
+        <On Terms="Behavior.WidowMineDrillingClawsTracker.On" Send="Create WidowMineDrillingClawsUpgrade"/>
+        <On Terms="Behavior.WidowMineDrillingClawsTracker.Off" Target="WidowMineDrillingClawsUpgrade" Send="Destroy"/>
     </CActorUnit>
-    <CActorModel id="WidowMineLazer" parent="ModelAnimationStyleContinuous">
-        <Inherits index="CloakEffect" value="1"/>
-        <On Terms="Upgrade.HellburstPayload.Remove" Send="Destroy"/>
+    <CActorUnit id="HHWidowMine">
+        <On Terms="Behavior.WidowMineDrillingClawsTracker.On" Send="Create WidowMineDrillingClawsUpgrade"/>
+        <On Terms="Behavior.WidowMineDrillingClawsTracker.Off" Target="WidowMineDrillingClawsUpgrade" Send="Destroy"/>
+    </CActorUnit>
+    <CActorModel id="WidowMineDrillingClawsUpgrade" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachWeapon SOpPitch90"/>
-        <Model value="CycloneLazer"/>
-    </CActorModel>
-    <CActorModel id="CycloneLazerRight" parent="CycloneLazerLeft">
-        <HostSiteOps Ops="SOpAttachWeapon01"/>
+        <HostSiteOps Ops="SOpAttachWeapon SOpPointUp"/>
     </CActorModel>
     <CActorBeamSimple id="HHWidowMineTargetingBeam">
+        <On Terms="Effect.WidowMineTargetTintApplyBehavior.Start; At Caster" Send="Create"/>
         <On Terms="Abil.WidowMineAttack.SourcePrepStop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 255,255,255 {221,0,0 1.500000} 1.350000"/>
+        <On Terms="ActorCreation" Send="SetScale 2.000000 3.000000"/>
+        <Scale value="0.400000"/>
     </CActorBeamSimple>
+    <CActorSimple id="WidowMineTargetTint">
+        <On Terms="Behavior.WidowMineTargeted.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,138,138 0.000000 OneShot WidowMineTarget"/>
+        <On Terms="Behavior.WidowMineTargeted.Off" Target="_Unit" Send="ClearTintColor 0.000000 WidowMineTarget"/>
+        <On Terms="Behavior.WidowMineTargeted.Off" Send="Destroy"/>
+    </CActorSimple>
     <CActorAction id="HighTemplarNerazimAttack" parent="GenericAttack" effectImpact="HighTemplarNerazimWeaponDamage" effectLaunch="HighTemplarNerazimWeaponLM">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <LaunchAssets Sound="Ascendant_Launch"/>
