@@ -45,12 +45,25 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
     </CEffectEnumArea>
+    <CEffectEnumArea id="DarkArchonConfusionSearch">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
     <CEffectDamage id="HHD8ChargeExplodeDamage">
         <AreaArray index="0" Radius="2"/>
     </CEffectDamage>
     <CEffectEnumArea id="HHReaperKnockbackSearch">
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OracleDeceleration"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="OracleStasisTrapBuildStartSet">
+        <EditorCategories value=""/>
+        <EffectArray value="OracleStasisTrapBuildBeamOn"/>
+        <EffectArray value="OracleStasisTrapBuildDeceleration"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="PrestigeCreateSymbioteAB">
         <ValidatorArray index="0" value="NotHavePrestigeSymbiote"/>
         <ValidatorArray value="NotAtFullSupply"/>
@@ -1507,7 +1520,7 @@
         <ValidatorArray value="PsiStormUTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Hidden"/>
-        <Amount value="6"/>
+        <Amount value="4"/>
     </CEffectDamage>
     <CEffectDamage id="PsiStormNerazimDamageInitial">
         <ValidatorArray value="PsiStormUTargetFilters"/>
@@ -1515,14 +1528,14 @@
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="6"/>
+        <Amount value="4"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="PsiStormNerazimPersistent">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="PsiStormNerazimSearchSet"/>
         <PeriodCount value="12"/>
         <PeriodicEffectArray value="PsiStormNerazimSearchSet"/>
-        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0.5712"/>
         <AINotifyEffect value="PsiStormNerazimSearch"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="PsiStormNerazimSearch">

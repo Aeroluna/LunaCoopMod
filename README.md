@@ -77,7 +77,7 @@ This includes upgrades like Virulent Microbes erroneously showing up on mind-con
 - Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched (Affects Artanis and Karax).
 - Added a visual blue trail to Marauder attacks after upgrading Concussive Shells (Affects Raynor, Tychus, and Mengsk).
 - Increased Zealot animation walk speed from 2.25 to 3. This makes Zealots visually bounce around less at high movement speeds (Affects Artanis, Vorazun, Karax, and Fenix).
-- Added turret tracking to Colossus attacks (Affects Karax and Fenix).
+- Added turret tracking to Colossi (Affects Karax and Fenix).
 
 Copied from Versus.
 
@@ -87,6 +87,10 @@ Copied from Versus.
 - Fixed a bug where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
 - Changed Hi-Sec Auto Tracking to additionally increase the upgrade level on the unit info panel.
 - Changed Phoenix weapon attack priority to attempt to keep hitting the same target.
+- Added turret tracking to Hellions.
+- Fixed a bug where Hellions would not play their attack animation.
+- Reduced visual scale of High Templar's Psionic Storm ability.
+- Increased visual scale of Psionic Storm impact effect.
 
 thanks CSB.
 
@@ -306,6 +310,10 @@ Buff an underperforming prestige.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
+- Fixed a bug where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
+
+yeah
+
 ## Swann
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
@@ -464,19 +472,20 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
   - Can use Aurora Veil for 50 energy.
     - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
   - Can use Astral Storm for 75 energy.
-    - Does less damage in a larger area than Psionic Storm for 20 seconds.
+    - Does less damage in a larger area than Psionic Storm for 7 seconds.
     - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
     - Applies P2, dealing massive damage.
   - Can use Fading Star after researching at a Templar Archives.
-    - Grants super cloak, 50% increased movement speed, and ignores collision for 4 seconds.
+    - Grants super cloak, 50% increased movement speed, and ignores unit collision for 4 seconds.
     - Can be autocast when damaged.
   - Argus Crystal additionally grants Signifiers full energy.
-  - Dark Archon upgrades moved to Templar Archives.
 
 A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. Can also heal units after they use Emergency Recall.
 
+- Dark Archon upgrades moved to Templar Archives.
 - Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
-- Increased Dark Archon weapon damage to 25 (+10 vs Biological)
+- Increased Dark Archon weapon damage to 25 (+10 vs Biological).
+- Increased Dark Archon Confusion radius from 2 to 3.
 
 Should make massing Dark Archons more viable instead of watching them tickle units.
 
@@ -493,7 +502,15 @@ That's their main gimmick, why did they remove it? Oracles are still detectors s
 
 For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This slight buff should help with that.
 
-- Reworked Void Stasis to target air units and no longer make the unit invulnerable.
+- Removed deceleration from Oracle's Stasis Ward ability (no longer has to fully stop to cast).
+
+Makes casting much smoother.
+
+- Reworked Void Stasis into Void Prison.
+  - Stuns instead of stasis.
+  - Stil disables detection.
+  - Can target air units.
+- Added cast animation for Void Prison.
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
 
@@ -625,7 +642,7 @@ A few visual fixes/changes.
 These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
 
 - Changed Rapid Hibernation to no longer require research.
-- Removed deceleration from Infested Banshee Burrow (no longer has to fully stop to cast).
+- Removed deceleration from Infested Banshee's Burrow ability (no longer has to fully stop to cast).
 
 As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
 
@@ -668,7 +685,7 @@ Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, 
 
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.
-- Removed deceleration from Ocular Symbiote and Spawn Broodlings.
+- Removed deceleration from Ocular Symbiote and Spawn Broodlings (no longer has to fully stop to cast).
 - Changed Spawn Broodlings to spawn flying Broodlings (must land before attacking) when casted on a flying unit.
 
 Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.

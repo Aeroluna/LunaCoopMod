@@ -125,6 +125,26 @@
         <On Terms="UnitBirth.HHD8ClusterBomb" Send="TimerSet 2.500000 ChargeTime"/>
         <Sound value="Reaper_D8ChargeAttackImpact"/>
     </CActorSound>
+    <CActorUnit id="Hellion">
+        <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimClear StandStart01"/>
+        <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
+    </CActorUnit>
+    <CActorModel id="HighArchonPsiStormImpact">
+        <On index="3" Terms="Behavior.HighArchonPsiStorm.On"/>
+        <Scale value="1.200000"/>
+        <AutoScaleFactor value="1.200000"/>
+    </CActorModel>
+    <CActorModel id="HighArchonPsiStormModel">
+        <Scale value="1.100000"/>
+    </CActorModel>
+    <CActorModel id="HighTemplarPsiStormImpact">
+        <Scale value="1.200000"/>
+        <AutoScaleFactor value="1.200000"/>
+    </CActorModel>
+    <CActorModel id="HighTemplarPsiStormModel">
+        <Scale value="1.100000"/>
+    </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeEx2">
         <On index="5" Send="TimerSet 0.860000 DelayDestroy"/>
     </CActorModel>
@@ -152,6 +172,10 @@
     <CActorAction id="ArtanisPhoenixAirAttackRight">
         <ImpactModel value="PhoenixAttackImpactModel"/>
     </CActorAction>
+    <CActorBeamSimple id="OracleStasisTrapBuildBeam">
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="AnimBracketStop BSD"/>
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
     <CActorMissile id="PhoenixAirAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PhoenixRangeUpgraded" Send="ModelSwap IonCannonsWeapon_Upgrade"/>
     </CActorMissile>
@@ -1357,6 +1381,7 @@
         <On Terms="UnitPortrait.*.Customize; ModelVariation 0" Send="PortraitCustomize DarkTemplarNerazimPortrait"/>
         <On Terms="UnitDeathCustomize; ModelVariation 0" Send="DeathCustomize Variation0"/>
         <On Terms="UnitDeathCustomize; ModelVariation 1" Send="DeathCustomize Variation1"/>
+        <On Terms="Abil.DarkTemplarVoidStasis.SourceCastStart" Send="AnimPlay Spell Attack"/>
         <DeathCustoms ModelLink="DarkTemplarNerazimDeath00" Name="Variation0"/>
         <DeathCustoms ModelLink="DarkTemplarDeath01" Name="Variation1"/>
         <Model value="DarkTemplarNerazim"/>
@@ -1884,11 +1909,14 @@
         <On Terms="Behavior.PsiStormNerazim.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
-        <AutoScaleFactor value="0.750000"/>
+        <AutoScaleFactor value="1.200000"/>
+        <Scale value="1.200000"/>
     </CActorModel>
     <CActorModel id="HighTemplarNerazimPsiStormModel" parent="ModelAnimationStyleContinuous">
         <On Terms="Effect.PsiStormNerazimPersistent.Start" Send="Create"/>
         <On Terms="Effect.PsiStormNerazimPersistent.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.400000 1.000000"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Scale value="1.300000,1.300000,1.100000"/>
     </CActorModel>
@@ -2009,6 +2037,7 @@
         </WireframeShield>
     </CActorUnit>
     <CActorUnit id="VorazunShadowGuard">
+        <On Terms="Abil.ShadowGuardVoidStasis" Send="AnimPlay Spell Attack"/>
         <Model value="DarkTemplar_Golden"/>
         <DeathArray index="Normal" ModelLink="DarkTemplar_Golden_Death"/>
         <PortraitModel value="DarkTemplar_Golden_Portrait"/>

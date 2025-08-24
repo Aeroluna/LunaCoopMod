@@ -206,11 +206,13 @@
         <BehaviorArray index="0" Link="VorazunOracleDetector11"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
-            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="7" AbilCmd="OracleStasisTrapBuildVorazun,Build1" Column="1"/>
             <LayoutButtons index="9" Column="3"/>
             <LayoutButtons index="11" Face="HaveOracleStasisWardUpgrade" Requirements="HaveOracleStasisWardUpgrade" Row="1" Column="0"/>
             <LayoutButtons index="12" Face="PermanentlyCloakedOracle" Requirements="HaveCorsairPermanentCloak" Row="1" Column="1"/>
+            <LayoutButtons Face="OracleBuildStasisTrap" Type="AbilCmd" AbilCmd="OracleStasisTrapBuild,Build1" Row="2" Column="1"/>
         </CardLayouts>
+        <AbilArray Link="OracleStasisTrapBuildVorazun"/>
     </CUnit>
     <CUnit id="QueenClassic">
         <TacticalAIThink value="AIThinkQueenClassicLuna"/>
@@ -556,7 +558,6 @@
     <CUnit id="SIMissileTurretFlying">
         <PushPriority value="11"/>
         <WeaponArray Link="SILongboltMissile" Turret="MissileTurret"/>
-        <WeaponArray Link="FireflyMissilesLookAt" Turret="MissileTurret"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="Detector" Type="Passive" Requirements="NotUnderConstruction" Row="2" Column="2"/>
@@ -1733,6 +1734,11 @@
         <Food value="-6"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+    </CUnit>
+    <CUnit id="VorazunShadowGuard">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Row="1" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Vulture">
         <AbilArray Link="VehicleAfterburnersStimpack"/>

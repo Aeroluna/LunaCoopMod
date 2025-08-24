@@ -75,6 +75,19 @@
     <CAbilEffectTarget id="OracleRevelation">
         <CmdButtonArray index="Execute" State="Available"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="OracleStasisTrapBuildVorazun">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoArray index="Build1" Unit="OracleStasisTrap" Time="5">
+            <Vital index="Energy" value="50"/>
+            <Button DefaultButtonFace="OracleBuildStasisTrap" Requirements="HaveVorazunCommander">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+        <Range value="5"/>
+        <EffectArray index="Start" value="OracleStasisTrapBuildStartSet"/>
+        <EffectArray index="Finish" value="OracleStasisTrapBuildBeamOff"/>
+        <EffectArray index="Cancel" value="OracleStasisTrapBuildBeamOff"/>
+    </CAbilBuild>
     <CAbilEffectTarget id="QueenMPSpawnBroodlings">
         <TargetFilters index="0" value="-;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
