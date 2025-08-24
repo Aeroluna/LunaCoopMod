@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CWeaponLegacy id="ArtanisIonCannons">
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="BileLauncherZagaraBombardment">
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AcquireFilters value="-;-"/>
         <AcquireScanFilters value="-;-"/>
         <RandomDelayMin value="-0.2"/>
         <RandomDelayMax value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ColossusPurifierThermalLances">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="ColossusTaldarimChargedBeam">
         <DisplayAttackCount value="0"/>
@@ -27,6 +34,10 @@
     <CWeaponLegacy id="DehakaCoop">
         <Effect value="DehakaCoopClawSet"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="FenixWarbringerColossusThermalLance">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="Firebat">
         <DamagePoint value="0.05"/>
         <Backswing value="0.5"/>
@@ -34,6 +45,7 @@
     <CWeaponLegacy id="GoliathGUpgraded">
         <Arc value="360"/>
         <AllowedMovement value="Moving"/>
+        <AcquirePrioritization value="ByAngle"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="HHLaserBattery">
         <MinScanRange value="8.5"/>
@@ -130,11 +142,12 @@
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Options index="LinkedCooldown" value="0"/>
         <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="LanceMissileLaunchers">
         <MinScanRange value="11.5"/>
         <Range value="11"/>
-        <Period value="1.6"/>
+        <Period value="1.28"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="LanceMissileLaunchersMoving" parent="LanceMissileLaunchers">
         <Options index="Disabled" value="1"/>
@@ -288,12 +301,20 @@
         <RandomDelayMin value="0"/>
         <RandomDelayMax value="0"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="ThermalLances">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="ThorsHammerMoving" parent="ThorsHammer">
         <Options index="Disabled" value="1"/>
         <Options index="Hidden" value="1"/>
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Options index="LinkedCooldown" value="0"/>
         <Arc value="29.9926"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TwinIbiksCannon">
+        <AcquirePrioritization value="ByAngle"/>
+        <Arc value="14.9963"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="TychusFirebatFlameThrower">
         <DamagePoint value="0.05"/>
@@ -303,6 +324,7 @@
         <Options index="Disabled" value="1"/>
         <Options index="Hidden" value="1"/>
         <AllowedMovement value="Moving"/>
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="WraithGDummy" parent="WraithG">
         <Options index="Hidden" value="1"/>
@@ -320,6 +342,7 @@
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Effect value="WraithMovingSwitch"/>
         <AllowedMovement value="Moving"/>
+        <AcquirePrioritization value="ByDistanceFromTarget"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="ZagaraVoidCoopRanged">
         <Period value="1"/>

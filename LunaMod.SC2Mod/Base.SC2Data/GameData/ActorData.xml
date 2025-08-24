@@ -10,6 +10,28 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorBeamSimple id="ColossusAttackBeam">
+        <On Terms="ActorCreation; ValidateCreationEffect ColossusRangeUpgraded" Send="ModelSwap ColossusAttackBeam_Upgrade"/>
+        <Inherits index="Visibility" value="1"/>
+        <HostForProps Subject="_Selectable" Scope="Caster"/>
+    </CActorBeamSimple>
+    <CActorModel id="ColossusAttackBeamImpact">
+        <On Terms="ActorCreation; ValidateCreationEffect ColossusRangeUpgraded" Send="ModelSwap ColossusAttackBeamImpact_Upgrade"/>
+    </CActorModel>
+    <CActorModel id="ColossusAttackBeamImpactReverse">
+        <On Terms="ActorCreation; ValidateCreationEffect ColossusRangeUpgraded" Send="ModelSwap ColossusAttackBeamImpact_Upgrade"/>
+    </CActorModel>
+    <CActorBeamSimple id="ColossusAttackBeamReverse">
+        <On Terms="ActorCreation; ValidateCreationEffect ColossusRangeUpgraded" Send="ModelSwap ColossusAttackBeam_Upgrade"/>
+        <Inherits index="Visibility" value="1"/>
+        <HostForProps Subject="_Selectable" Scope="Caster"/>
+    </CActorBeamSimple>
+    <CActorAction id="ColossusAttackShieldHitter">
+        <On Terms="Effect.ThermalLancesFriendlyDamage.Start" Send="Create"/>
+        <On Terms="Effect.ThermalLancesFriendlyDamage.Start" Send="ActionDamage"/>
+        <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="Destroy"/>
+    </CActorAction>
     <CActorSound id="HHBomberAreaBombAreaSound" parent="SoundOneShot">
         <On Terms="Effect.HHBomberAreaBombEMPSearch.Start" Send="Create"/>
         <Sound value="EMPBurstSound"/>
@@ -40,6 +62,7 @@
         <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot35 SOp180"/>
         <Model value="Baneling_Stetmann_COOP_RocketTrail"/>
     </CActorModel>
+    <CActorSplat id="HHD8SingleClusterCursorSplat" parent="TerranCursorSplat" abil="HHD8SingleCharge"/>
     <CActorUnit id="BattlecruiserMengsk">
         <PortraitModel value="BattlecruiserMengskPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskBattlecruiser_StatusFrame"/>
@@ -90,7 +113,73 @@
         <Model value="TornadoMissileWeapon"/>
         <Scale value="1.200000"/>
     </CActorMissile>
+    <CActorSound id="HHD8ClusterCreationSound" parent="SoundOneShot">
+        <On Terms="TimerExpired; TimerName ChargeTime" Send="Destroy"/>
+        <On Terms="UnitBirth.HHD8SingleCluster" Send="Create"/>
+        <On Terms="UnitBirth.HHD8SingleCluster" Send="TimerSet 1.500000 ChargeTime"/>
+        <On Terms="UnitBirth.HHD8CenterCluster" Send="Create"/>
+        <On Terms="UnitBirth.HHD8CenterCluster" Send="TimerSet 3.500000 ChargeTime"/>
+        <On Terms="UnitBirth.HHD8CenterClusterUpgrade" Send="Create"/>
+        <On Terms="UnitBirth.HHD8CenterClusterUpgrade" Send="TimerSet 3.500000 ChargeTime"/>
+        <On Terms="UnitBirth.HHD8ClusterBomb" Send="Create"/>
+        <On Terms="UnitBirth.HHD8ClusterBomb" Send="TimerSet 2.500000 ChargeTime"/>
+        <Sound value="Reaper_D8ChargeAttackImpact"/>
+    </CActorSound>
+    <CActorModel id="LurkerMPAttackSpikeEx2">
+        <On index="5" Send="TimerSet 0.860000 DelayDestroy"/>
+    </CActorModel>
+    <CActorModel id="LurkerMPAttackSpikeImpact">
+        <Scale value="1.750000"/>
+    </CActorModel>
+    <CActorMissile id="MarauderAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
+    </CActorMissile>
+    <CActorAction id="MarauderMengskAttack">
+        <On index="5" Terms="Effect.PunisherGrenadesMengskLM.Start; At Caster; !ValidateEffect HaveMarauderMengskSlow"/>
+    </CActorAction>
+    <CActorMissile id="MarauderMengskAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit HaveMarauderMengskSlow" Send="ModelSwap MarauderConcussiveShellMissile"/>
+    </CActorMissile>
+    <CActorAction id="MarauderMengskUpgradedAttack">
+        <On index="5" Terms="Effect.PunisherGrenadesMengskLM.Start; At Caster; ValidateEffect HaveMarauderMengskSlow"/>
+    </CActorAction>
+    <CActorMissile id="ArtanisPhoenixAirAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit PhoenixRangeUpgraded" Send="ModelSwap IonCannonsWeapon_Upgrade"/>
+    </CActorMissile>
+    <CActorAction id="ArtanisPhoenixAirAttackLeft">
+        <ImpactModel value="PhoenixAttackImpactModel"/>
+    </CActorAction>
+    <CActorAction id="ArtanisPhoenixAirAttackRight">
+        <ImpactModel value="PhoenixAttackImpactModel"/>
+    </CActorAction>
+    <CActorMissile id="PhoenixAirAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit PhoenixRangeUpgraded" Send="ModelSwap IonCannonsWeapon_Upgrade"/>
+    </CActorMissile>
+    <CActorAction id="PhoenixAirAttackLeft">
+        <ImpactModel value="PhoenixAttackImpactModel"/>
+    </CActorAction>
+    <CActorAction id="PhoenixAirAttackRight">
+        <ImpactModel value="PhoenixAttackImpactModel"/>
+    </CActorAction>
+    <CActorModel id="PhoenixAttackImpactModel" parent="GenericAttackModel">
+        <On Terms="ActorCreation; ValidateCreationEffect PhoenixRangeUpgraded" Send="ModelSwap PhoenixAirAttackImpact_Upgrade"/>
+    </CActorModel>
+    <CActorAction id="TychusMarauderUpgradedAttack" parent="MarauderAttackBase" effectImpact="TychusPunisherGrenadesSwitch" effectLaunch="TychusPunisherGrenadesLM">
+        <On Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; ValidateEffect HaveTychusMarauderAttackSplash" Send="Create"/>
+        <LaunchAttachQuery Methods="AMPatternMarauder"/>
+        <LaunchAssets Model="MarauderAttackLaunch" Scale="1.450000"/>
+        <Missile value="TychusMarauderAttackMissile"/>
+        <ImpactMap index="None" Model="MarauderUpgradedAttackImpact" Scale="1.450000"/>
+        <ImpactPhysics Name="PunisherGrenadesImpact" MatchKeys="Basic" Physics="MarauderAttackDeathForce"/>
+    </CActorAction>
+    <CActorMissile id="TychusMarauderAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit HaveTychusMarauderAttackSplash" Send="ModelSwap MarauderConcussiveShellMissile"/>
+        <Scale value="1.450000"/>
+    </CActorMissile>
     <CActorUnit id="Ravager">
+        <On index="78" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.RavagerCorrosiveBile.SourceCastStart" Send="$Spell"/>
         <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
         <StatusColors index="Shields">
             <ColorArray index="0" value="255,0,128,0"/>
@@ -102,6 +191,9 @@
         <WireframeShieldColor value="255,0,128,0"/>
     </CActorUnit>
     <CActorUnit id="RavagerAbathur">
+        <On index="78" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.RavagerAbathurCorrosiveBile.SourceCastStart" Send="$Spell"/>
         <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
         <StatusColors index="Shields">
             <ColorArray index="0" value="255,0,128,0"/>
@@ -181,6 +273,9 @@
     <CActorAction id="TychusMarauderAttack" effectImpact="TychusPunisherGrenadesSwitch">
         <On index="1" Terms="Effect.TychusPunisherGrenadesSwitch.Start; FromEffectTreeDescendant"/>
         <On index="2" Terms="Effect.TychusPunisherGrenadesSwitch.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; !ValidateEffect HaveTychusMarauderAttackSplash"/>
+        <LaunchAssets Scale="1.450000"/>
+        <ImpactMap index="None" Scale="1.450000"/>
     </CActorAction>
     <CActorSplat id="TychusMauraderHealingWardSplat" parent="TerranCursorSplat" abil="TychusMarauderBuildHealingWard"/>
     <CActorUnit id="VikingMengskAssault">
@@ -858,6 +953,7 @@
         <On index="82" Terms="UnitRevive.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
     </CActorMissile>
     <CActorModel id="LurkerAttackSpikeAC">
+        <On index="7" Send="TimerSet 0.860000 DelayDestroy"/>
         <On Terms="ActorCreation; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.500000"/>
     </CActorModel>
     <CActorModel id="MedicRestorationImpact" parent="ModelAnimationStyleOneShot">
@@ -1878,6 +1974,12 @@
             <Image value="Assets\Textures\wireframe-zerg-expeditionqueenlevel2.dds"/>
         </Wireframe>
     </CActorMissile>
+    <CActorUnit id="ZealotAiur">
+        <WalkAnimMoveSpeed value="3"/>
+    </CActorUnit>
+    <CActorUnit id="ZealotPurifier">
+        <WalkAnimMoveSpeed value="3"/>
+    </CActorUnit>
     <CActorUnit id="ZealotShakuras">
         <Model value="ZealotNerazim"/>
         <BuildModel value="ZealotNerazimWarpIn"/>
@@ -1885,6 +1987,7 @@
         <PlacementModel value="ZealotNerazimPlacement"/>
         <PortraitModel value="ZealotNerazimPortrait"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-centurion-shakuras.dds"/>
+        <WalkAnimMoveSpeed value="3"/>
     </CActorUnit>
     <CActorUnit id="StalkerShakuras">
         <Model value="StalkerNerazim"/>

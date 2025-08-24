@@ -67,10 +67,28 @@ Fun fact: this bug has existed as long as Stetmann has.
 
 You are pulling them into the air after all.
 
-- Added targeting beam to Widow Mine attack.
-- Increased visibility of targeting line and targeted unit.
+- Fixed various commander-specific upgrades appearing on the command card.
 
-Added high visibility targeting beam and tint from Versus.
+This includes upgrades like Virulent Microbes erroneously showing up on mind-controlled Vipers or Extended Thermal Lance missing from Fenix's Colossi.
+
+- Added targeting beam to Widow Mine attack (Affects Swann and Horner).
+- Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
+- Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched (Affects Fenix).
+- Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched (Affects Artanis and Karax).
+- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells (Affects Raynor, Tychus, and Mengsk).
+- Increased Zealot animation walk speed from 2.25 to 3. This makes Zealots visually bounce around less at high movement speeds (Affects Artanis, Vorazun, Karax, and Fenix).
+- Added turret tracking to Colossus attacks (Affects Karax and Fenix).
+
+Copied from Versus.
+
+- Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
+- Increased Lurker attack spine animation speed by 75%.
+- Increased Lurker attack impact model scale by 75%.
+- Fixed a bug where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
+- Changed Hi-Sec Auto Tracking to additionally increase the upgrade level on the unit info panel.
+- Changed Phoenix weapon attack priority to attempt to keep hitting the same target.
+
+thanks CSB.
 
 ## Amon
 
@@ -93,6 +111,10 @@ Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and 
   - Only targets units with less than 100 max hitpoints.
 
 Fun fact: Spawn Broodling was previously only casted on Siege Tanks. They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter.
+
+- Removed Detector from Oracles.
+
+A leftover from granting detection to Vorazun's Oracles. Vorazun is unaffected.
 
 ## Raynor
 
@@ -325,6 +347,10 @@ Scanner Sweeps should help Cyclones keep their Lock On active and provide detect
 
 An iconic defensive Terran structure for the defensive Terran commander.
 
+- Changed Planetary Fortress attack priority to "By Angle" instead of "By Distance".
+
+Should make Planetaries spend less time spinning around randomly when surrounded.
+
 - Added Commander Center Reactor.
 
 It takes forever to eco up on Swann. Maybe now not so much.
@@ -458,6 +484,10 @@ Should make massing Dark Archons more viable instead of watching them tickle uni
   - Visually green instead of red.
 
 The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
+
+- Added Revelation to Oracle.
+
+That's their main gimmick, why did they remove it? Oracles are still detectors so using this ability is not necessary.
 
 - Buffed P2 to reduce Stasis Ward duration by 50% instead of 75%
 
@@ -790,6 +820,14 @@ Old P3 had an awkward design where it buffed how many platforms you could build 
 
 Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
 
+- Fixed a bug where Reaper's death rattle grenades continued their ticking sound after exploding.
+- Added a ticking sound to Reaper's KD8 Charge ability.
+- Added a cursor splat to Reaper's KD8 Charge ability.
+- Increased KD8 Charge damage radius from 1.5 to 2.
+- Increased KD8 Charge knockback radius from 1 to 2.
+
+Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the damage and knockback had different radii.
+
 ## Tychus
 
 - Added ability to reorder outlaws.
@@ -817,8 +855,14 @@ Same change to Raynor's firebats.
 - Added a cursor splat for Kev "Rattlesnake" West's Deploy Revitalizer.
 - Fixed a bug where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
 - Added a new AOE visual effect after purchasing Hammer Munitions.
+- Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
 
 yeah.
+
+- Increased the scale of Rattlesnake's projectiles by 45%.
+- Increased the speed of Rattlesnake's projectiles by 45%.
+
+As the only outlaw to use projectiles, it looked silly having this giant Marauder shooting out tiny little grenades.
 
 ## Zeratul
 
