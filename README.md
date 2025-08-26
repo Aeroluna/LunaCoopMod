@@ -313,7 +313,7 @@ Should help actually affording the high tech units with abilities like High Temp
 
 - Fixed a bug where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
 
-yeah
+yeah.
 
 ## Swann
 
@@ -526,6 +526,10 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 - Fixed a bug where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
 
 Funny that this passive could *nerf* some units.
+
+- Fixed a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+
+yeah.
 
 ## Karax
 
