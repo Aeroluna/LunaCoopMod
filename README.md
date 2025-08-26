@@ -978,10 +978,29 @@ Missile play is cool so lets make it more viable! Lower delay and bigger radius 
 
 It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
 
+- Removed cooldown from Emperor's Shadow's Pyrokinetic Immolation ability.
+- Removed cooldown from Emperor's Shadow's EMP Blast ability.
+
+Emperor's Shadows are limited by energy anyways, so why do they have cooldowns on their abilities?
+
+- Reduced cooldown of Emperor's Shadow's Labryinth Cloak ability from 30 seconds to 20 seconds.
+- Added Shadow of the Dominion passive to Emperor's Shadows.
+  - While cloaked, gain health regen and 30% move speed.
+
+With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labryinth Cloak. Now cloak has increased uptime and grants health regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
+
+- Increased projectile speed of Emperor's Shadow's Pyrokinetic Immolation ability.
+
+It travels so slow that often the unit is already dead by the time the ability lands, causing the explosion to not happen.
+
+- Added 50% spell reduction to all Royal Guards.
+
+Nobody likes having their Royal Guards Yamato'd to death, this should help their survivability to large bursts of damage.
+
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
 
-Oops.
+yeah.
 
 - Added Pride of Augustgrad portrait.
 - Added Sky Fury portrait.

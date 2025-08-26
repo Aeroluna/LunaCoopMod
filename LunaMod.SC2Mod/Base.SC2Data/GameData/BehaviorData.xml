@@ -80,6 +80,14 @@
     <CBehaviorBuff id="DefilerMPPlague">
         <Duration value="20"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GhostMengskCloakBuff">
+        <InfoIcon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SourceIsCloaked"/>
+        <Modification MoveSpeedMultiplier="1.3">
+            <VitalRegenArray index="Life" value="10"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMagrailMunitionsStun">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-magrailmunitions.dds"/>
@@ -98,6 +106,17 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="5"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MengskGuardSpellReduction">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse ModifyFraction="0.5">
+            <Kind index="Melee" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="OracleDeceleration">
         <InfoFlags index="Hidden" value="1"/>

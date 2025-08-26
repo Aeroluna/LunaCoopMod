@@ -31,6 +31,7 @@ Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/DarkTemplarVoidStasis=Void Prison
 Behavior/Name/DarkTemplarVoidStasisCooldown=Recently Void Prisoned
 Behavior/Name/Enshroud=Aurora Veil
+Behavior/Name/GhostMengskCloakBuff=Shadow of the Dominion
 Behavior/Name/GhostMengskEMPStun=Shock and Awe
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosionTempBuff=Implosion
@@ -52,6 +53,7 @@ Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attac
 Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affected by Void Prison and cannot be targeted again.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
+Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneration and movement speed while cloaked.
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
@@ -108,6 +110,7 @@ Button/Name/LurkerBrood=Morph to Grave Splitter
 Button/Name/MasteryKerriganEnergyRegen=Kerrigan and Queen Energy Regeneration
 Button/Name/MedicRestoration=Restoration
 Button/Name/MengskAcademyMissileCount=Ordnance Depot Retrofit
+Button/Name/MengskGhostCloakBuff=Shadow of the Dominion
 Button/Name/MothershipArtanis=Warp In Mothership
 Button/Name/MothershipArtanisMassTeleport=Mass Recall
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
@@ -241,7 +244,7 @@ Button/Tooltip/EvolveScourgeGasCostReduction=Reduces the splash and spell damage
 Button/Tooltip/EvolveViperImprovedCastRange=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
 Button/Tooltip/FaceEmbrace=Pulls target unit to the Viper. Enemy units are stunned for <d ref="Behavior,YoinkEnemyStun,Duration"/> <lang rule="plural">second,seconds</lang>.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune to the stun.</c>
 Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
-Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds. Cannot occur more than once every <d ref="Behavior,GhostMengskSuperCloakController,DamageResponse.Cost.Cooldown.TimeUse"/> seconds.
+Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds.
 Button/Tooltip/HHBomberEMP=Precision Strikes cause an EMP instead of an explosion. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/HHBomberNapalmImproved=Precision Strikes ignite the target location with napalm that spreads further. Enemies units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/HHBomberTriple=Precision Strikes drop two additional bombs behind the target area.
@@ -269,6 +272,7 @@ Button/Tooltip/MasteryRaynorMedicAdditionalTargetHealMedivacAppend=<n/><n/><c va
 Button/Tooltip/MasteryRaynorSignifierFadeDurationAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases duration by <c val="FFFF8A"><d ref="Effect,MasteryRaynorStimDurationDisplayDummy,Amount" precision="1"/></c> seconds.
 Button/Tooltip/MedicRestoration=Removes any negative effects from the target allied unit.
 Button/Tooltip/MengskAcademyMissileCount=Royal Academies can arm and store 1 additional nuke at a time.
+Button/Tooltip/MengskGhostCloakBuff=Emperor's Shadow gain health regeneration and <d ref="Behavior,GhostMengskCloakBuff,Modification.MoveSpeedMultiplier-1*100"/>% movement speed while cloaked.
 Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Recall, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all nearby units you control to target friendly unit or structure's location.</n></n><c val="#ColorAttackInfo">Can only target friendly units or structures.</c>
 Button/Tooltip/MothershipPassive=Fleet Beacon enables you to warp in Motherships.
