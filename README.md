@@ -183,6 +183,7 @@ Some ground Viking buffs because why not.
   - Attack speed of single target and AOE weapon changed to 0.11.
   - Unit info shows single "ATX Laser Battery" weapon.
   - Will prioritize using AOE weapon unless issued attack order.
+  - Removed random delay from weapon.
 
 No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affecting the weapon.
 
@@ -899,6 +900,10 @@ Fun fact: the second bug was caused by trying to launch the missile to a positio
 
 Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the damage and knockback had different radii.
 
+- Removed random delay between shots from Sovereign Battlecruiser's weapon.
+
+Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
+
 ## Tychus
 
 - Added ability to reorder outlaws.
@@ -1000,6 +1005,10 @@ It traveled so slow that often the unit is already dead by the time the ability 
 - Changed Pyrokinetic Immolation to no longer allow casting on targets already immolated.
 
 Hopefully prevents dumping all their energy at once. Still probably more efficient to cast these yourself.
+
+- Removed random delay between shots from Pride of Augustgrad's weapon.
+
+Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
 - Added 50% spell reduction to all Royal Guards.
 
