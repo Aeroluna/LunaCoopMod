@@ -75,7 +75,7 @@ This includes upgrades like Virulent Microbes erroneously showing up on mind-con
 - Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
 - Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched (Affects Fenix).
 - Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched (Affects Artanis and Karax).
-- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells (Affects Raynor, Tychus, and Mengsk).
+- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells (Affects Raynor, Nova, Tychus, and Mengsk).
 - Increased Zealot animation walk speed from 2.25 to 3. This makes Zealots visually bounce around less at high movement speeds (Affects Artanis, Vorazun, Karax, and Fenix).
 - Added turret tracking to Colossi (Affects Karax and Fenix).
 
@@ -151,6 +151,7 @@ Changed to be distinct from the Medivac portrait.
 Anyone who has played P1 knows how painful it is to get energy on these things.
 
 - Buffed Ignite Afterburners to additionally increase acceleration by 1000.
+- Added visual boost effect to Medivac and Banshee when using Ignite Afterburners.
 - Removed the random delay on Battlecruiser weapons.
 - Reworked P2.
   - Removed Ignite Afterburners cooldown.
@@ -633,6 +634,41 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 
 A few visual fixes/changes.
 
+## Nova
+
+- Reworked Covert Banshee's Rocket Barrage ability.
+  - Now does damage over time rather than instantly.
+  - Fixed bug where missiles would not launch from weapons.
+  - Changed autocast to prioritize hitting multiple enemies, but can target fewer.
+
+Looked silly dealing the damage instantly and afterwards the rockets land.
+
+- Reworked Covert Banshee's Advanced Cloaking Field upgrade into Phantom Drive upgrade.
+  - Still perma cloaks but additionally provides movement speed.
+
+Nobody likes slow Banshees.
+
+- Added visual change to Raid Liberator ground attacks after researching Raid Artillery.
+
+Copied from Versus.
+
+- Reworked Marauder Commando's Magrail Munitions.
+  - Added 5 second stun (Heroic and Massive units get slowed instead).
+  - Reduced damage from 90 to 50.
+  - Changed to an ability instead of an attack augment, allowing it to target enemies separate from basic attacking.
+  - Changed autocast to prioritize non-stunned units.
+  - Changed visual effect.
+  - Changed damage from ranged to spell (ignores armor).
+
+Changes Magrail Munitions from a low-dps nuke to a CC ability to further reinforce the Marauder's role as a support frontliner.
+
+- Reduced the cooldown of Covert Banshee's Rocket Barrage ability from 15 seconds to 10 seconds.
+- Reduced the cooldown of Spec Ops Ghost's Snipe ability from 30 seconds to 10 seconds.
+- Reduced the cooldown of Spec Ops Ghost's EMP Round ability from 45 seconds to 10 seconds.
+- Reduced the cooldown of Marauder Commandos's Magrail Munitions ability from 30 seconds to 10 seconds.
+
+Many of Nova's unit cooldowns are so long that they usually are used once at the start of a fight and then never again. Reduced cooldowns should help her in longer fights.
+
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
@@ -640,6 +676,11 @@ A few visual fixes/changes.
   - Adds visual boosters to the Infested Banshee.
 
 These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
+
+- Added advantage for P2:
+  - Starports and Banshees no longer have tech requirements.
+
+These take super long to tech to before you can get any value from P2. Removing the tech requirements similar to P1 should streamline it.
 
 - Changed Rapid Hibernation to no longer require research.
 - Removed deceleration from Infested Banshee's Burrow ability (no longer has to fully stop to cast).

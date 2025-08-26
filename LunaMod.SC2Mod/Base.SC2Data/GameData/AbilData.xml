@@ -20,11 +20,26 @@
     <CAbilMorph id="AssaultMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="Banshee_BlackOpsAirstrike">
+        <TargetSorts>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSBlackOpsAirstrike4Target"/>
+            <SortArray value="TSBlackOpsAirstrike3Target"/>
+            <SortArray value="TSBlackOpsAirstrike2Target"/>
+        </TargetSorts>
+        <Arc value="14.9963"/>
+        <TrackingArc value="0"/>
+        <AutoCastValidatorArray index="0" value="noMarkers"/>
+        <Cost index="0">
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="BarracksTechLabResearch">
         <InfoArray index="Research15" Time="60" Upgrade="MedicStartingEnergy">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="ResearchMedicStartingEnergy" Requirements="LearnCellularReactor"/>
+            <Button DefaultButtonFace="ResearchMedicStartingEnergy" State="Restricted" Requirements="LearnCellularReactor"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilAttack id="BileLauncherZagaraAttack">
@@ -66,11 +81,30 @@
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="EMPBlackOps">
+        <Cost index="0">
+            <Cooldown TimeUse="10"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="GravitonBeamVoidCampaign">
         <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MarauderMagrailMunitions">
+        <Effect index="0" value="MarauderMagrailMunitionsSet"/>
+        <Cost index="0">
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSMagrailStun"/>
+        </TargetSorts>
+        <Arc value="14.9963"/>
+        <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OracleRevelation">
         <CmdButtonArray index="Execute" State="Available"/>
@@ -90,6 +124,11 @@
     </CAbilBuild>
     <CAbilEffectTarget id="QueenMPSpawnBroodlings">
         <TargetFilters index="0" value="-;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Snipe_BlackOps">
+        <Cost index="0">
+            <Cooldown TimeUse="10"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SymbioteCarapacePrestige">
         <Alignment value="Positive"/>

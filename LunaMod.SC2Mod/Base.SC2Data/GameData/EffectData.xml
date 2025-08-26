@@ -7,6 +7,21 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="Banshee_BlackOpsAirstrikeDamage">
+        <Amount value="10.714"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Banshee_BlackOpsAirstrikeFakeShotLM">
+        <LaunchLocation Value="CasterUnit"/>
+        <Movers index="0" Link="Banshee_BlackOpsAirstrikeFake"/>
+        <ImpactEffect value="Banshee_BlackOpsAirstrikeSearch"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="Banshee_BlackOpsAirstrikeSet">
+        <Marker Duration="0.5" Link="Abil/Banshee_BlackOpsAirstrike">
+            <MatchFlags index="Link" value="1"/>
+            <MismatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectSet>
     <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch">
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
@@ -54,13 +69,37 @@
     <CEffectEnumArea id="HHReaperKnockbackSearch">
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
+    <CEffectSwitch id="MarauderMagrailMunitionsCCSwitch">
         <EditorCategories value=""/>
+        <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="MarauderMagrailMunitionsSlowAB"/>
+        <CaseDefault value="MarauderMagrailMunitionsStunAB"/>
+    </CEffectSwitch>
+    <CEffectDamage id="MarauderMagrailMunitionsDamage">
+        <ArmorReduction value="0"/>
+        <Kind value="Spell"/>
+        <Death value="Blast"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectSet id="MarauderMagrailMunitionsSet">
+        <EditorCategories value=""/>
+        <EffectArray value="MarauderMagrailMunitionsDamage"/>
+        <EffectArray value="MarauderMagrailMunitionsCCSwitch"/>
+        <Marker Duration="1" Link="Abil/MarauderMagrailMunitions">
+            <MatchFlags index="Link" value="1"/>
+            <MismatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MarauderMagrailMunitionsStunAB">
+        <Behavior value="MarauderMagrailMunitionsStun"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
+        <Behavior value="MarauderMagrailMunitionsSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
         <WhichUnit Value="Caster"/>
         <Behavior value="OracleDeceleration"/>
     </CEffectApplyBehavior>
     <CEffectSet id="OracleStasisTrapBuildStartSet">
-        <EditorCategories value=""/>
         <EffectArray value="OracleStasisTrapBuildBeamOn"/>
         <EffectArray value="OracleStasisTrapBuildDeceleration"/>
     </CEffectSet>
@@ -1006,6 +1045,12 @@
     <CEffectSet id="SentryReclamationSet">
         <EffectArray index="2" removed="1"/>
     </CEffectSet>
+    <CEffectEnumArea id="Snipe_BlackOpsTripleTapSearch">
+        <AreaArray index="0" Radius="5"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="Snipe_BlackOpsTripleTapSearchNoPrimary">
+        <AreaArray index="0" Radius="5"/>
+    </CEffectEnumArea>
     <CEffectCreateUnit id="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath">
         <EditorCategories value=""/>
         <SpawnEffect value="BroodlingTimedLife"/>

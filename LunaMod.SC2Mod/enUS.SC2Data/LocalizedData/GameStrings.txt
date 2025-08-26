@@ -36,6 +36,8 @@ Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosionTempBuff=Implosion
 Behavior/Name/KerriganRazorSwarm=Razor Swarm
 Behavior/Name/KerriganRegenAuraTarget=Protective Brood
+Behavior/Name/MarauderMagrailMunitionsSlow=Slowed
+Behavior/Name/MarauderMagrailMunitionsStun=Stunned
 Behavior/Name/PsiStormNerazim=Astral Storm
 Behavior/Name/SIBansheeBroodling=SIBanshee Broodling
 Behavior/Name/SIBarracksCorruption=Corruption
@@ -54,6 +56,8 @@ Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
+Behavior/Tooltip/MarauderMagrailMunitionsSlow=This unit's movement and attack speed are slowed.
+Behavior/Tooltip/MarauderMagrailMunitionsStun=This unit is stunned.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*Effect,StukovSIBunkerCDRDummy,Amount"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
@@ -130,6 +134,7 @@ Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
 Button/Name/ResearchTransformationServos=Research Smart Servos
 Button/Name/ResearchVoidStasis=Research Void Prison
 Button/Name/ResearchVoidStasisLocked=Research Void Prison
+Button/Name/ResearchXN51CloakTechnology=Research Phantom Drive
 Button/Name/RipwaveMissiles=Ripwave Munitions
 Button/Name/SIBansheeIncubationChambers=Incubation Chambers
 Button/Name/SIBansheeResearchIncubationChambers=Evolve Incubation Chambers
@@ -156,6 +161,7 @@ Button/Name/VoidStasis=Void Prison
 Button/Name/VoidStasisLocked=Void Prison
 Button/Name/VorazunImprovedVespene=Vespene Crystallization
 Button/Name/VortexArtanis=Vortex
+Button/Name/XN51CloakTechnology=Phantom Drive
 Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
 Button/Name/ZergGroundAttacksLevel2=Evolve Ground Attacks Level 2
 Button/Name/ZergGroundAttacksLevel3=Evolve Ground Attacks Level 3
@@ -175,6 +181,7 @@ Button/Tooltip/AbathurBrutaliskLeviathanSymbiote=Gains a Symbiote with the follo
 Button/Tooltip/AlarakACSummonDeathfleet=Warps in a Crimson Sovereign and <d ref="Effect,AlarakDestroyerCreationCP,PeriodCount" player="current"/> Destroyers that are controllable and will fight for <d ref="Behavior,AlarakDestroyerTimedLife,Duration"/> seconds.
 Button/Tooltip/AresClassWeaponsSystemviking=Increases air attack range by 2 and ground attack range by 1. Allows Vikings to transform quickly between combat modes.
 Button/Tooltip/AutomatedAssimilatorTextKicker5=<s val="Kicker_Refinery">+5</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
+Button/Tooltip/Banshee_BlackOpsAirstrike=Deals <d ref="Effect,Banshee_BlackOpsAirstrikeDamage,Amount*(Effect,Banshee_BlackOpsAirstrikeFakeShotCP,PeriodCount+1)"/> damage to enemy ground units in the target area.
 Button/Tooltip/BiomassPassiveEnergy=Units gain <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Life]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% life, <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy, <d ref="Behavior,BiomassBuff100,Modification.AdditiveAttackSpeedFactor*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% attack speed, <d ref="Behavior,BiomassBuff100,Modification.VitalRegenMultiplier[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy regeneration, and <d ref="($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$"/>% spell damage.
 Button/Tooltip/BiomassPassiveEnergyUpgraded=Units gain <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Life]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% life, <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy, <d ref="Behavior,BiomassBuff100,Modification.AdditiveAttackSpeedFactor*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% attack speed, <d ref="Behavior,BiomassBuff100,Modification.VitalRegenMultiplier[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy regeneration, <d ref="($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$"/>% spell damage, and <d ref="Behavior,BiomassBuff100,Modification.VitalDamageLeechArray[Life].KindArray[Melee]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% Biotic Leech.
 Button/Tooltip/BlinkPurifier=Teleports the Instigator to a nearby target location. Ability can only be used once every <d ref="Abil,Blink,Cost[0].Cooldown.TimeUse"/> seconds.
@@ -254,6 +261,7 @@ Button/Tooltip/KerriganSunderingGlaive=Attacks deal +6 vs. armored targets on th
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
 Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
+Button/Tooltip/MarauderMagrailMunitions=Fires a rail gun at a target enemy unit, dealing <d ref="Effect,MarauderMagrailMunitionsDamage,Amount"/> damage and stunning for <d ref="Behavior,MarauderMagrailMunitionsStun,Duration"/> seconds<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are slowed.</c>
 Button/Tooltip/MarauderMengskShield=Grants the Aegis Guard a shield that absorbs <d ref="Behavior,MarauderMengskAbsorb,Modification.VitalMaxArray[Shields]"/> damage. When the shield takes fatal damage, it releases a pulse of energy that knocks back nearby ground units. This shield refreshes to full every <d ref="Behavior,MarauderMengskAbsorbReapplicator,Cost.Cooldown.TimeUse"/> seconds.
 Button/Tooltip/MasteryKerriganEnergyRegen=Increases the energy regeneration of Kerrigan and her Queens.
 Button/Tooltip/MasteryKerriganRazorSwarmAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases damage by <c val="FFFF8A"><d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,Amount"/> (+<d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,AttributeBonus[Structure]"/> vs Structures)</c>.
@@ -302,6 +310,7 @@ Button/Tooltip/ResearchStukovInfestedBansheeInfestedLife=<c val="ffff8a">Infeste
 Button/Tooltip/ResearchTempestDestabilizingResiduum=Causes <c val="ffff8a">Tempests</c> attacks to leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
 Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>, <c val="ffff8a">Hellbats</c>, <c val="ffff8a">Thors</c>, <c val="ffff8a">Siege Tanks</c>, and <c val="ffff8a">Widow Mines</c> to transform twice as fast.
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
+Button/Tooltip/ResearchXN51CloakTechnology=Allows <c val="ffff8a">Covert Banshees</c> to remain permanently cloaked and have increased movement speed.
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
 Button/Tooltip/SIBansheeIncubationChambers=Infested Banshees spawns a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds. A Broodling is a small creature that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/SIBansheeResearchIncubationChambers=Allows <c val="ffff8a">Infested Banshees</c> to spawn a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds.
@@ -334,6 +343,7 @@ Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,Da
 Button/Tooltip/VoidVoidRayBeamBounce=Prismatic Beam splits and deals damage to additional nearby targets as the Destroyer continues to attack, up to a maximum of 3 additional targets. All attacks ignore armor.
 Button/Tooltip/VorazunImprovedVespene=Assimilators and Orbital Assimilators produce vespene gas 25% faster.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
+Button/Tooltip/XN51CloakTechnology=Covert Banshees are permanently cloaked and have increased movement speed.
 Button/Tooltip/ZagaraVoidCoopAttackUpgrade=Zagara's attacks deal 50% damage to three enemy units near her primary target.
 Button/Tooltip/ZealotPurifierResearchReconstruction2=Reduce cooldown of <c val="ffff8a">Sentinels</c>' Reconstruction from 180 to 120 seconds.
 Button/Tooltip/ZealotPurifierRevive3=Revives the Sentinel when killed. This effect can only occur once every 120 seconds.
@@ -571,6 +581,7 @@ Param/Value/lib_74A68E34_CD6B2610=+Retry
 Param/Value/lib_74A68E34_D3F4D90E=<c val="FF0000">Damage caching overflow</c>
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
 RequirementNode/Tooltip/CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992=Construction complete
+RequirementNode/Tooltip/CountUpgradeBansheePermaCloakCompleteOnly314643618=Research Phantom Drive at the Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180=Evolve Metasynaptic Node at the Infestation Pit
 RequirementNode/Tooltip/CountUpgradeHHBomberEMPCompleteOnly2458650312=Research Napalm Payload at the Fusion Core.
 RequirementNode/Tooltip/CountUpgradeHHBomberNapalmImprovedCompleteOnly2458650312=Research Napalm Payload at the Fusion Core.

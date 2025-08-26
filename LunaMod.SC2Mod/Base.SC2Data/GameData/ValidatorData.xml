@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum4EnemyTargets">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="6"/>
+            <Radius value="2"/>
+            <Validator value="noMarkers"/>
+        </AreaArray>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum3EnemyTargets">
+        <WhichLocation Value="TargetPoint"/>
+        <AreaArray index="0" Count="4" Radius="2" Validator="noMarkers"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum2EnemyTargets">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="2"/>
+            <Radius value="2"/>
+            <Validator value="noMarkers"/>
+        </AreaArray>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="CarrierRepairDroneNotRecalling">
         <Behavior value="CarrierRepairDroneRecalling"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -65,10 +92,17 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="DehakaAirAttackUpgrade"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="GhostBlackOpsTripleTapEnemyCheck">
+        <AreaArray index="0" Radius="5"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="HasWidowMineUpgrade">
         <CombineArray value="HasWidowMineDamage"/>
         <CombineArray value="HHWidowMineAttackRangeUpgraded"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="HaveNovaBansheeSpeed">
+        <Find value="1"/>
+        <Value value="HaveBansheePermaCloak"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="NotHavePrestigeSymbiote">
         <Behavior value="AbathurPrestigeSymbiote"/>
         <ResultFailed value="Error,Error/AlreadyHasSymbiote"/>
@@ -169,6 +203,17 @@
     <CValidatorUnitFilters id="NotInvulnerableAndNotNeutral">
         <Filters value="-;Neutral,Invulnerable"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitCompareBehaviorCount id="NotMarauderMagrailMunitionsSlowed">
+        <Behavior value="MarauderMagrailMunitionsSlow"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="NotMarauderMagrailMunitionsSlowedOrStunned">
+        <Type value="And"/>
+        <CombineArray value="NotMarauderMagrailMunitionsSlowed"/>
+        <CombineArray value="NotMarauderMagrailMunitionsStunned"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NotMarauderMagrailMunitionsStunned">
+        <Behavior value="MarauderMagrailMunitionsStun"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVital id="SILiberatorAmmoMissingEnergy">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
@@ -208,6 +253,11 @@
     <CValidatorCombine id="LockOnGroundAirPeriodicValidators">
         <CombineArray value="TargetNotHaveRestoration"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="LiberatorAGRangeUpgraded">
+        <Find value="1"/>
+        <Value value="HaveLiberatorStructureAttack"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="MothershipArtanisRangeCheckCombine">
         <Type value="And"/>
         <CombineArray value="CasterNotDead"/>

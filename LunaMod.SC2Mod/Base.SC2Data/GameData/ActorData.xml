@@ -10,6 +10,17 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="Banshee_BlackOps">
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="Create BansheeBoostModel"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveNovaBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveNovaBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+    </CActorUnit>
+    <CActorAction id="Banshee_BlackOpsAirstrikeFakeAttack" effectImpact="Banshee_BlackOpsAirstrikeSearch">
+        <LaunchAttachQuery Methods="AMPatternBansheeBlackOpsAirstrikeFake"/>
+        <On index="1" Terms="Effect.Banshee_BlackOpsAirstrikeSearch.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.Banshee_BlackOpsAirstrikeSearch.Stop; FromEffectTreeDescendant"/>
+    </CActorAction>
     <CActorBeamSimple id="ColossusAttackBeam">
         <On Terms="ActorCreation; ValidateCreationEffect ColossusRangeUpgraded" Send="ModelSwap ColossusAttackBeam_Upgrade"/>
         <Inherits index="Visibility" value="1"/>
@@ -145,6 +156,42 @@
     <CActorModel id="HighTemplarPsiStormModel">
         <Scale value="1.100000"/>
     </CActorModel>
+    <CActorAction id="LiberatorAG_BlackOpsAttack">
+        <ImpactModel value="LiberatorAG_BlackOpsAttackImpactModel"/>
+    </CActorAction>
+    <CActorModel id="LiberatorAG_BlackOpsSearchIndicatorModel">
+        <Remove Terms="Effect.LiberatorTargetMorphPersistent.Start" Send="Create"/>
+        <Remove Terms="Effect.LiberatorTargetMorphPersistent.Start" Send="AnimBracketStart BSD {} Stand Death"/>
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGSearchIndicator_Upgrade"/>
+    </CActorModel>
+    <CActorBeamSimple id="Liberator_BlackOpsAttackBeam">
+        <On Terms="ActorCreation; ValidateUnit LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAttackBeamUpgraded"/>
+    </CActorBeamSimple>
+    <CActorModel id="Liberator_BlackOpsDummyRange">
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
+    </CActorModel>
+    <CActorModel id="LiberatorAG_BlackOpsBirthSearchIndicatorModel">
+        <On Terms="ActorCreation; ValidateUnit LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGSearchIndicator_Upgrade"/>
+    </CActorModel>
+    <CActorSplat id="LiberatorAG_BlackOpsTargetCursorSplat">
+        <On Terms="ActorCreation; ValidatePlayer LiberatorAGRangeUpgraded" Send="Destroy"/>
+    </CActorSplat>
+    <CActorSplat id="LiberatorAG_BlackOpsTargetCursorSplat_Upgrade" parent="CursorSplat" abil="LiberatorAG_BlackOpsTarget">
+        <On Terms="ActorCreation; !ValidatePlayer LiberatorAGRangeUpgraded" Send="Destroy"/>
+        <Model value="LiberatorAGTargetCursorSplat_Upgrade"/>
+    </CActorSplat>
+    <CActorModel id="LiberatorAG_BlackOpsAttackImpactModel" parent="GenericAttackModel">
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGAttackImpactUpgraded"/>
+    </CActorModel>
+    <CActorModel id="MarauderMagrailMunitionsModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.MarauderMagrailMunitionsStun.On" Send="Create"/>
+        <On Terms="Behavior.MarauderMagrailMunitionsStun.Off" Send="Destroy"/>
+        <On Terms="Behavior.MarauderMagrailMunitionsSlow.On" Send="Create"/>
+        <On Terms="Behavior.MarauderMagrailMunitionsSlow.Off" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="Ultralisk_Stetmann_COOP_Stunned"/>
+    </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeEx2">
         <On index="5" Send="TimerSet 0.860000 DelayDestroy"/>
     </CActorModel>
@@ -154,6 +201,20 @@
     <CActorMissile id="MarauderAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
     </CActorMissile>
+    <CActorAction id="MarauderMagrailMunitionsBeamAttack" parent="GenericAttack" effectAttack="MarauderMagrailMunitionsDamage">
+        <LaunchAttachQuery Methods="SetC 0"/>
+        <LaunchAssets Model="MagrailMunition_Launch" Sound="RailGun_Launch"/>
+        <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic" Physics="MengskDiamondbackAttackDeathForce"/>
+        <BeamScope value="Caster"/>
+        <ImpactMap index="None" Model="MagrailMunition_Impact" Sound="RailGun_Impact"/>
+    </CActorAction>
+    <CActorBeamSimple id="MarauderMagrailMunitionsBeamAttackBeam" parent="GenericAttackBeam">
+        <On Terms="ActorCreation" Send="TimerSet 0.250000 DeathDelay"/>
+        <On Terms="TimerExpired; TimerName DeathDelay" Send="Destroy"/>
+        <Model value="DiamondbackAttackBeamCharged"/>
+        <HostLaunchSiteOps HoldPosition="1" HoldRotation="1"/>
+        <HostImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
     <CActorAction id="MarauderMengskAttack">
         <On index="5" Terms="Effect.PunisherGrenadesMengskLM.Start; At Caster; !ValidateEffect HaveMarauderMengskSlow"/>
     </CActorAction>
@@ -171,6 +232,22 @@
     </CActorAction>
     <CActorAction id="ArtanisPhoenixAirAttackRight">
         <ImpactModel value="PhoenixAttackImpactModel"/>
+    </CActorAction>
+    <CActorUnit id="Marauder_BlackOps">
+        <On Terms="Abil.MarauderMagrailMunitions.SourceCastStart" Send="AnimPlay AttackRight Attack,Right"/>
+        <On Terms="Abil.MarauderMagrailMunitions.SourceCastStart" Send="StatusSet WeaponNext 1"/>
+    </CActorUnit>
+    <CActorAction id="Marauder_BlackOpsAttack">
+        <On index="5" Terms="Effect.Marauder_BlackOpsLM.Start; At Caster; !ValidateEffect HaveNovaConcussiveShells"/>
+    </CActorAction>
+    <CActorMissile id="Marauder_BlackOpsAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit HaveNovaConcussiveShells" Send="ModelSwap MarauderConcussiveShellMissile"/>
+    </CActorMissile>
+    <CActorAction id="Marauder_BlackOpsUpgradedAttack" parent="Marauder_BlackOpsAttackBase" effectImpact="Marauder_BlackOpsDamage" effectLaunch="Marauder_BlackOpsLM">
+        <LaunchAttachQuery Methods="AMPatternMarauder"/>
+        <On Terms="Effect.Marauder_BlackOpsLM.Start; At Caster; ValidateEffect HaveNovaConcussiveShells" Send="Create"/>
+        <ImpactPhysics Name="PunisherGrenadesImpact" MatchKeys="Basic" Physics="MarauderAttackDeathForce"/>
+        <ImpactMap index="None" Model="MarauderUpgradedAttackImpact"/>
     </CActorAction>
     <CActorBeamSimple id="OracleStasisTrapBuildBeam">
         <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="AnimBracketStop BSD"/>
@@ -1256,6 +1333,8 @@
     <CActorUnit id="Banshee">
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create BansheeBoostModel"/>
         <On Terms="Behavior.VehicleAfterburners.Off" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="Behavior.VehicleAfterburners.On" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="Behavior.VehicleAfterburners.Off" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="BansheeBoostModel" parent="ModelAddition">
         <Model value="BansheeBoost"/>
