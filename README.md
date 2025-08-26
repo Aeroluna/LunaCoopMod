@@ -669,6 +669,15 @@ Changes Magrail Munitions from a low-dps nuke to a CC ability to further reinfor
 
 Many of Nova's unit cooldowns are so long that they usually are used once at the start of a fight and then never again. Reduced cooldowns should help her in longer fights.
 
+- Increased attack speed of Railgun Turrets by 100%.
+- Reduced duration of Railgun Turrets built by Raven Type-II from 60 seconds to 30 seconds.
+
+Despite being an elite Raven, they actually end up dropping worse Auto-Turrets with lower DPS and can't hit air. Now the Railgun shoots twice as fast but the duration is reduced by half to compensate.
+
+- Fixed a bug where the attack range indicator for Railgun Turrets was larger than intended.
+
+Fun fact: it was using the range for the Build Railgun Turret ability rather than the weapon range.
+
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
