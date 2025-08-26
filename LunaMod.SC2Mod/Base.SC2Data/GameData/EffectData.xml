@@ -19,7 +19,6 @@
     <CEffectSet id="Banshee_BlackOpsAirstrikeSet">
         <Marker Duration="0.5" Link="Abil/Banshee_BlackOpsAirstrike">
             <MatchFlags index="Link" value="1"/>
-            <MismatchFlags index="Id" value="1"/>
         </Marker>
     </CEffectSet>
     <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch">
@@ -69,6 +68,34 @@
     <CEffectEnumArea id="DarkArchonConfusionSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="GhostMengskEMPMarker">
+        <EditorCategories value=""/>
+        <Behavior value="GhostMengskEMPPreMarker"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="GhostMengskEMPSearchMarker">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,User1,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="GhostMengskEMPMarker"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GhostMengskEMPStartSet">
+        <EditorCategories value=""/>
+        <EffectArray value="GhostMengskEMPSmallLM"/>
+        <EffectArray value="GhostMengskEMPSearchMarker"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="GhostMengskIrradiateImpactDummy">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="GhostMengskIrradiateLM">
+        <ImpactEffect value="GhostMengskIrradiateImpactDummy"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="GhostMengskIrradiateSet">
+        <ValidatorArray value="NotHaveGhostMengskIrradiate"/>
+        <EditorCategories value=""/>
+        <EffectArray value="GhostMengskIrradiateAB"/>
+        <EffectArray value="GhostMengskIrradiateLM"/>
+    </CEffectSet>
     <CEffectDamage id="HHD8ChargeExplodeDamage">
         <AreaArray index="0" Radius="2"/>
     </CEffectDamage>

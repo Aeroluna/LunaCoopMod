@@ -989,13 +989,21 @@ Emperor's Shadows are limited by energy anyways, so why do they have cooldowns o
 
 With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labryinth Cloak. Now cloak has increased uptime and grants health regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
 
-- Increased projectile speed of Emperor's Shadow's Pyrokinetic Immolation ability.
+- Changed Emperor's Shadow's Pyrokinetic Immolation ability to apply instantly rather with a projectile (Projectile is purely visual).
 
-It travels so slow that often the unit is already dead by the time the ability lands, causing the explosion to not happen.
+It traveled so slow that often the unit is already dead by the time the ability lands, causing the explosion to not happen. Now the debuff is applied instantly for gauranteed big boom.
+
+- Improved autocasting AI for Emperor's Shadows.
+  - Autocasts Pyrokinetic Immolation if no enemies near target are immolated.
+  - Autocasts EMP Blast if not stunned.
+- Fixed a bug where Pyrokinetic Imomlation and EMP Blast would have their autocast toggled off after leveling up.
+- Changed Pyrokinetic Immolation to no longer allow casting on targets already immolated.
+
+Hopefully prevents dumping all their energy at once. Still probably more efficient to cast these yourself.
 
 - Added 50% spell reduction to all Royal Guards.
 
-Nobody likes having their Royal Guards Yamato'd to death, this should help their survivability to large bursts of damage.
+Nobody likes having their elite units Yamato'd to death, this should help their survivability against unpreventable bursts of damage.
 
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".

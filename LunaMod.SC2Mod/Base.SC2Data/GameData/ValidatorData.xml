@@ -95,6 +95,22 @@
     <CValidatorLocationEnumArea id="GhostBlackOpsTripleTapEnemyCheck">
         <AreaArray index="0" Radius="5"/>
     </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="GhostMengskEMPBigMinimum3EnemyTargets">
+        <AreaArray index="0" Validator="GhostMengskEMPValidTarget"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="GhostMengskEMPSmallMinimum3EnemyTargets">
+        <AreaArray index="0" Validator="GhostMengskEMPValidTarget"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="GhostMengskEMPValidTarget">
+        <Type value="And"/>
+        <CombineArray value="IsMechanicalOrHas50EnergyOrHas50Shields"/>
+        <CombineArray value="noMarkers"/>
+        <CombineArray value="NotHaveGhostMengskEMPPreMarker"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="GhostMengskIrradiateNoNearby">
+        <AreaArray Radius="3" Validator="HaveGhostMengskIrradiate"/>
+        <Compare value="Eq"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="HasWidowMineUpgrade">
         <CombineArray value="HasWidowMineDamage"/>
         <CombineArray value="HHWidowMineAttackRangeUpgraded"/>
@@ -103,6 +119,22 @@
         <Find value="1"/>
         <Value value="HaveBansheePermaCloak"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="HaveGhostMengskIrradiate">
+        <Compare value="GT"/>
+        <Behavior value="GhostMengskIrradiate"/>
+        <ResultFailed value="Error,Error/AlreadyHasImmolate"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsMechanicalAndNotStunned">
+        <Type value="And"/>
+        <CombineArray value="IsMechanical"/>
+        <CombineArray value="TargetNotStunned"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsMechanicalOrHas50EnergyOrHas50Shields">
+        <CombineArray index="0" value="IsMechanicalAndNotStunned"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveGhostMengskEMPPreMarker">
+        <Behavior value="GhostMengskEMPPreMarker"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NotHavePrestigeSymbiote">
         <Behavior value="AbathurPrestigeSymbiote"/>
         <ResultFailed value="Error,Error/AlreadyHasSymbiote"/>

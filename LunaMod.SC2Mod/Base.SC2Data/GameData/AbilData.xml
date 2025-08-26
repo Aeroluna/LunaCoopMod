@@ -90,21 +90,45 @@
         <Cost index="0">
             <Cooldown TimeUse="0"/>
         </Cost>
+        <Effect index="0" value="GhostMengskEMPStartSet"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="GhostMengskEMPValidTarget"/>
+        <Marker Duration="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GhostMengskEMPShortStun">
         <Cost index="0">
             <Cooldown TimeUse="0"/>
         </Cost>
+        <Effect index="0" value="GhostMengskEMPStartSet"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="GhostMengskEMPValidTarget"/>
+        <Marker Duration="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GhostMengskIrradiateBigDamage">
+        <Effect index="0" value="GhostMengskIrradiateSet"/>
         <Cost index="0">
             <Cooldown TimeUse="0"/>
         </Cost>
+        <AutoCastValidatorArray value="GhostMengskIrradiateNoNearby"/>
+        <Arc value="0"/>
+        <PrepTime value="0.01"/>
+        <FinishTime value="0.0625"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Channel" value="0"/>
+        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GhostMengskIrradiateSmallDamage">
+        <Effect index="0" value="GhostMengskIrradiateSet"/>
         <Cost index="0">
             <Cooldown TimeUse="0"/>
         </Cost>
+        <AutoCastValidatorArray value="GhostMengskIrradiateNoNearby"/>
+        <Arc value="0"/>
+        <PrepTime value="0.01"/>
+        <FinishTime value="0.0625"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Channel" value="0"/>
+        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="GhostMengskSuperCloak">
         <Cost index="0">

@@ -1405,6 +1405,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             lib74A68E34_gf_TychusUIReorderEnable(lv_player);
         }
         else if (auto560DABDD_val == "TerranMengsk") {
+            TriggerEnable(lib74A68E34_gt_MengskPreserveAutocast, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeMengskZerg", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_MengskPrestigeZergRefund, true);
             }
@@ -2809,6 +2810,34 @@ void lib74A68E34_gt_TychusUIReorderHeroPurchased_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MengskPreserveAutocast
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MengskPreserveAutocast_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitCheckAbilCmdState(EventUnit(), AbilityCommand("GhostMengskEMPShortStun", 0), c_cmdStateIsAutoCast) == true)) {
+        UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("GhostMengskEMPLongStun", 0), true), c_orderQueueAddToFront);
+    }
+
+    if ((UnitCheckAbilCmdState(EventUnit(), AbilityCommand("GhostMengskIrradiateSmallDamage", 0), c_cmdStateIsAutoCast) == true)) {
+        UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("GhostMengskIrradiateBigDamage", 0), true), c_orderQueueAddToFront);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MengskPreserveAutocast_Init () {
+    lib74A68E34_gt_MengskPreserveAutocast = TriggerCreate("lib74A68E34_gt_MengskPreserveAutocast_Func");
+    TriggerEnable(lib74A68E34_gt_MengskPreserveAutocast, false);
+    TriggerAddEventUnitGainLevel(lib74A68E34_gt_MengskPreserveAutocast, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MengskPrestigeZergRefund
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MengskPrestigeZergRefund_Func (bool testConds, bool runActions) {
@@ -2892,6 +2921,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TychusSetHeroUnit_Init();
     lib74A68E34_gt_TychusUIReorderButtonClicked_Init();
     lib74A68E34_gt_TychusUIReorderHeroPurchased_Init();
+    lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
 }
 

@@ -43,6 +43,10 @@
         <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="ActionDamagePhysics"/>
         <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="Destroy"/>
     </CActorAction>
+    <CActorAction id="GhostMengskIrradiateAttack" effectImpact="GhostMengskIrradiateImpactDummy">
+        <On index="1" Terms="Effect.GhostMengskIrradiateImpactDummy.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.GhostMengskIrradiateImpactDummy.Stop; FromEffectTreeDescendant"/>
+    </CActorAction>
     <CActorSound id="HHBomberAreaBombAreaSound" parent="SoundOneShot">
         <On Terms="Effect.HHBomberAreaBombEMPSearch.Start" Send="Create"/>
         <Sound value="EMPBurstSound"/>
@@ -80,6 +84,12 @@
     </CActorUnit>
     <CActorUnit id="GhostMengsk">
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskGhost_StatusFrame"/>
+        <On Terms="Abil.GhostMengskIrradiateSmallDamage.SourceCastStart" Send="AnimPlay SpellC Spell,C 0 0.000000 0.300000"/>
+        <On Terms="Abil.GhostMengskIrradiateBigDamage.SourceCastStart" Send="AnimPlay SpellC Spell,C 0 0.000000 0.300000"/>
+        <AbilSoundArray index="0" Sound="GhostAlternate_CloakOnVO"/>
+        <AbilSoundArray index="1" Sound="GhostAlternate_EmpVO"/>
+        <AbilSoundArray index="2" Sound="GhostAlternate_EmpVO"/>
+        <AbilSoundArray index="3" Sound="GhostAlternate_NuclearStrikeVO"/>
     </CActorUnit>
     <CActorUnit id="HHAssaultMorphModel">
         <PortraitModel value="VikingAssault_CovertOps_Collection_Portrait"/>
