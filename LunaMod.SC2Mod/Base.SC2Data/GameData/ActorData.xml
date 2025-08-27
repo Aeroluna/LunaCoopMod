@@ -43,10 +43,18 @@
         <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="ActionDamagePhysics"/>
         <On Terms="Effect.ThermalLancesFriendlyDamage.Stop" Send="Destroy"/>
     </CActorAction>
+    <CActorModel id="CommanderPrestigeNovaAirliftLockdown" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.CommanderPrestigeNovaAirliftSearch.Start; At Source" Send="Create"/>
+        <Model value="CommanderPrestigeNovaAirliftModel"/>
+    </CActorModel>
     <CActorAction id="GhostMengskIrradiateAttack" effectImpact="GhostMengskIrradiateImpactDummy">
         <On index="1" Terms="Effect.GhostMengskIrradiateImpactDummy.Start; FromEffectTreeDescendant"/>
         <On index="2" Terms="Effect.GhostMengskIrradiateImpactDummy.Stop; FromEffectTreeDescendant"/>
     </CActorAction>
+    <CActorModelMaterial id="Glaze_Goliath_Lockdown">
+        <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.On" Send="Create"/>
+        <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.Off" Send="AnimBracketStop BSD"/>
+    </CActorModelMaterial>
     <CActorSound id="HHBomberAreaBombAreaSound" parent="SoundOneShot">
         <On Terms="Effect.HHBomberAreaBombEMPSearch.Start" Send="Create"/>
         <Sound value="EMPBurstSound"/>
@@ -262,6 +270,10 @@
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>
     </CActorRange>
+    <CActorModel id="NovaUnitLockdownTarget">
+        <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.On" Send="Create"/>
+        <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorBeamSimple id="OracleStasisTrapBuildBeam">
         <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="AnimBracketStop BSD"/>
         <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="AnimBracketStop BSD"/>

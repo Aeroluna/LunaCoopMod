@@ -128,6 +128,24 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="NovaGriffinTransportUnloadUnitsInitialCP">
+        <InitialEffect value="NovaGriffinTransportUnloadUnitsSet"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="CommanderPrestigeNovaAirliftAB">
+        <EditorCategories value=""/>
+        <Behavior value="CommanderPrestigeNovaAirliftStun"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="CommanderPrestigeNovaAirliftSearch">
+        <ValidatorArray value="CommanderPrestigeNovaAirlift"/>
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="8" Effect="CommanderPrestigeNovaAirliftAB"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NovaGriffinTransportUnloadUnitsSet">
+        <EditorCategories value=""/>
+        <EffectArray value="NovaGriffinTransportTeleportOut"/>
+        <EffectArray value="CommanderPrestigeNovaAirliftSearch"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
         <WhichUnit Value="Caster"/>
         <Behavior value="OracleDeceleration"/>

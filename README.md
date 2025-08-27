@@ -641,6 +641,10 @@ A few visual fixes/changes.
 
 ## Nova
 
+- Added P2 Advantage: Stuns enemies for 4 seconds when unloading.
+
+P2 was such a boring prestige. Stunning enemies at least grants a niche of dropping right on top of enemies and bursting them down.
+
 - Reworked Covert Banshee's Rocket Barrage ability.
   - Now does damage over time rather than instantly.
   - Fixed bug where missiles would not launch from weapons.
