@@ -141,6 +141,11 @@
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
     </CAbilEffectTarget>
+    <CAbilSpecialize id="MakeVultureSpiderMines">
+        <InfoArray index="Specialize1">
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+    </CAbilSpecialize>
     <CAbilEffectTarget id="MarauderMagrailMunitions">
         <Effect index="0" value="MarauderMagrailMunitionsSet"/>
         <Cost index="0">
@@ -993,7 +998,7 @@
         <AutoCastRange value="5"/>
         <AutoCastValidatorArray value="CasterIsFiringWeapon"/>
         <AutoCastValidatorArray value="CasterHasAfterburners"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="IgniteAfterburners" State="Restricted" Requirements="HaveRaynorCommander">
+        <CmdButtonArray index="Execute" DefaultButtonFace="IgniteAfterburners" State="Restricted" Requirements="HaveVehicleAfterburners">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectInstant>

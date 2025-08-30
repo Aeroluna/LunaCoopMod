@@ -195,6 +195,10 @@ Just because he's a commander now doesn't mean he forgot how to pilot the Hyperi
 
 Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
 
+- Changed Vulture's Replenish Spider Mine ability to be autocast on intially.
+
+I don't see why you wouldn't want this autocasting.
+
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
@@ -687,6 +691,10 @@ Despite being an elite Raven, they actually end up dropping worse Auto-Turrets w
 
 Fun fact: it was using the range for the Build Railgun Turret ability rather than the weapon range.
 
+- Increased the range of Spec Ops Ghost's Triple Tap upgrade from 3 to 5.
+
+This increases the reliability of Ghosts getting the extra snipes off.
+
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
@@ -901,6 +909,7 @@ Fun fact: the second bug was caused by trying to launch the missile to a positio
 - Added a cursor splat to Reaper's KD8 Charge ability.
 - Increased KD8 Charge damage radius from 1.5 to 2.
 - Increased KD8 Charge knockback radius from 1 to 2.
+- Removed status bars from placed KD8 Charges.
 
 Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the damage and knockback had different radii.
 
