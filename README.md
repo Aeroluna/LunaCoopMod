@@ -901,7 +901,7 @@ Why is this thing so easy to shoot down? The initial explosion can also now hit 
   - Added advantage: Can research one exclusive Precision Strike upgrade.
     - Thermal Cascade Payload: Napalm upgrade but spreads to a larger radius.
     - Cluster Payload: Drops 2 additional bombs behind the target area.
-    - EMP Warhead Payload: Replaces explosion with EMP that has similar effects to Mengsk's EMP.
+    - EMP Warhead Payload: Additionally deploys an EMP that has similar effects to Mengsk's EMP.
   - Removed Strike Fighter Platform cost disadvantage.
   - Added disadvantage: Salvage is unavailable.
 
