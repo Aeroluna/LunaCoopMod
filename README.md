@@ -203,6 +203,10 @@ Ever get annoyed when you *slightly* missed a mineral field and your MULE just A
 
 I don't see why you wouldn't want this autocasting.
 
+- Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
+
+yeah.
+
 ## Kerrigan
 
 - Fixed a bug where P1 and P3 used each other's icons.
