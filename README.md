@@ -81,6 +81,10 @@ This includes upgrades like Virulent Microbes erroneously showing up on mind-con
 
 Copied from Versus.
 
+- Fixed a bug where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
+
+Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
+
 - Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
@@ -925,6 +929,10 @@ Overall increases attack speed and allows the Battlecruiser to be affected by at
   - Can detect cloaked units.
 
 Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
+
+- Fixed a bug where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
+
+yeah.
 
 ## Tychus
 

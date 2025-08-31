@@ -1386,6 +1386,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
         }
+        else if (auto560DABDD_val == "ProtossFenix") {
+            TriggerEnable(lib74A68E34_gt_FenixAddHeroCarrierMorph, true);
+        }
         else if (auto560DABDD_val == "TerranHorner") {
             TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
             TriggerEnable(libCOMI_gt_BanelingScourgeDeathrattleScrapDeaths, false);
@@ -2325,6 +2328,34 @@ void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: FenixAddHeroCarrierMorph
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FenixAddHeroCarrierMorph_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) == "Carrier"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAbilityAdd(EventUnitCreatedUnit(), "FenixClolarionCarrierMorph");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FenixAddHeroCarrierMorph_Init () {
+    lib74A68E34_gt_FenixAddHeroCarrierMorph = TriggerCreate("lib74A68E34_gt_FenixAddHeroCarrierMorph_Func");
+    TriggerEnable(lib74A68E34_gt_FenixAddHeroCarrierMorph, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_FenixAddHeroCarrierMorph, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: HornerBomberPlatformImproved
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_HornerBomberPlatformImproved_Func (bool testConds, bool runActions) {
@@ -2913,6 +2944,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
+    lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();
