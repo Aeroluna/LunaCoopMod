@@ -917,6 +917,15 @@ Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the dama
 
 Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
+- Added Ordnance Towers that can be build by SCVs.
+  - These are flying defensive structures with long-range attacks.
+  - Spawns up to 4 Valkyries that fly around and defend the area.
+    - Valkyries have 100 hp and their own long-range missile attack.
+  - Can use the Nano-Repair ability to heal mech units.
+  - Can detect cloaked units.
+
+Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
+
 ## Tychus
 
 - Added ability to reorder outlaws.

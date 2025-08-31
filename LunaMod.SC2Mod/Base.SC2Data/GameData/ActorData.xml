@@ -127,6 +127,56 @@
     <CActorUnit id="HHMagneticMine">
         <On index="69" Send="AnimPlay Work Stand,Work 0 0.000000 0.000000 1.500000 AsDuration"/>
     </CActorUnit>
+    <CActorUnit id="HHMercStarportNoArmy">
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="EngineeringBay_Explode"/>
+    </CActorUnit>
+    <CActorModel id="HHOrdnanceTowerConstructionBuild" parent="TerranBuildingBuild">
+        <Model value="HHMercStarportNoArmyBuild"/>
+    </CActorModel>
+    <CActorUnit id="HHOrdnanceTower">
+        <On Terms="AbilMorph.*.Start; MorphTo HHOrdnanceTower" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom HHOrdnanceTower" Send="Destroy"/>
+        <SoundArray index="Ready" value="Bunker_Ready"/>
+        <SoundArray index="What" value="Bunker_What"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <AcceptedHostedPropTransfers index="CreepEngulfment" value="0"/>
+        <PlacementModel value="HHOrdnanceTower_Placement"/>
+        <BarOffset value="100"/>
+        <BarWidth value="140"/>
+        <NameOffset value="100"/>
+    </CActorUnit>
+    <CActorUnit id="HHOrdnanceTowerConstruction" parent="TerranBuilding" unitName="HHOrdnanceTowerConstruction">
+        <On Terms="AbilMorph.*.Start; MorphFrom HHOrdnanceTowerConstruction" Send="Destroy"/>
+        <Model value="HHOrdnanceTower"/>
+        <BuildModel value="HHOrdnanceTower"/>
+        <DeathArray index="Normal" ModelLink="HHOrdnanceTowerDeath" SoundLink=""/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="EngineeringBay_Explode"/>
+        <PlacementModel value="HHOrdnanceTower_Placement"/>
+        <PortraitModel value="SJEnemyFighterPortrait"/>
+        <BarWidth value="140"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-SpaceOrdinanceTower.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-doodad-spaceordinancetower.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <NameOffset value="100"/>
+        <SoundArray index="Ready" value="Bunker_Ready"/>
+        <SoundArray index="What" value="Bunker_What"/>
+        <SoundArray index="Construction" value="Terran_ConstructionWhat"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-doodad-spaceordinancetower.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-SpaceOrdinanceTower.dds"/>
+        </Wireframe>
+        <CreepHeightClass value=""/>
+        <CreepRateGrow value=""/>
+        <CreepRateShrink value=""/>
+        <Remove Terms="ActorCreation; CreepIntersects" Send="CreepEngulfmentStartTransition"/>
+        <Aliases index="2" removed="1"/>
+        <PlacementSound value="Terran_ConstructionStart"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <PlacementActorModel value="HHOrdnanceTowerPlacementModel"/>
+    </CActorUnit>
     <CActorUnit id="HHRaven">
         <PortraitModel value="Raven_CovertOps_Portrait"/>
     </CActorUnit>
@@ -282,6 +332,34 @@
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>
     </CActorRange>
+    <CActorRange id="HHOrdnanceTowerAttackRange" parent="RangeWeapon" weapon="HHOrdnanceTower">
+        <On Terms="SelectionLocalUpdate.HHOrdnanceTower.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.HHOrdnanceTower.Stop" Send="Destroy"/>
+        <On Terms="SelectionLocalUpdate.HHOrdnanceTowerConstruction.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.HHOrdnanceTowerConstruction.Stop" Send="Destroy"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorModel id="HHOrdnanceTowerPlacementModel">
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.300000"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Placement"/>
+        <On Terms="ActorCreation" Send="$Stand PlayForever"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <On Terms="ActorCreation; ModelName HHOrdnanceTower_Placement" Send="Create HHOrdnanceTowerAttackRange"/>
+        <On Terms="ActorCreation; ModelName HHOrdnanceTower; ModelIsLowQuality" Send="Create HHOrdnanceTowerAttackRange"/>
+        <On Terms="ActorDestruction" Target="HHOrdnanceTowerAttackRange" Send="Destroy"/>
+        <HostSiteOps Ops="SOpTipabilityFloorScope"/>
+        <Model value="PlacementModel"/>
+    </CActorModel>
     <CActorModel id="NovaUnitLockdownTarget">
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.On" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.Off" Send="AnimBracketStop BSD"/>
@@ -302,6 +380,13 @@
     <CActorModel id="PhoenixAttackImpactModel" parent="GenericAttackModel">
         <On Terms="ActorCreation; ValidateCreationEffect PhoenixRangeUpgraded" Send="ModelSwap PhoenixAirAttackImpact_Upgrade"/>
     </CActorModel>
+    <CActorAction id="HHValkyrie2Attack" parent="GenericAttack" effectImpact="HHValkyrie2Damage" effectLaunch="HHValkyrie2LM">
+        <LaunchAttachQuery Methods="AMFilterVikingFighter AMPatternVikingFighter"/>
+        <LaunchAssets Sound="SJValkyrie_AttackLaunch"/>
+        <ImpactMap index="None" Sound="SJValkyrie_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+    </CActorAction>
+    <CActorMissile id="HHValkyrie2AttackMissile" parent="GenericAttackMissile" unitName="HHValkyrie2Weapon"/>
     <CActorAction id="TychusMarauderUpgradedAttack" parent="MarauderAttackBase" effectImpact="TychusPunisherGrenadesSwitch" effectLaunch="TychusPunisherGrenadesLM">
         <On Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; ValidateEffect HaveTychusMarauderAttackSplash" Send="Create"/>
         <LaunchAttachQuery Methods="AMPatternMarauder"/>

@@ -21,6 +21,16 @@
             <MatchFlags index="Link" value="1"/>
         </Marker>
     </CEffectSet>
+    <CEffectApplyBehavior id="HHValkyrieRecallAB">
+        <EditorCategories value=""/>
+        <Behavior value="HHValkyrieRecall"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="HHValkyrieRecallIssueOrder">
+        <ValidatorArray value="CasterisGreaterThan10"/>
+        <EditorCategories value=""/>
+        <Abil value="move"/>
+        <Target Value="CasterPoint"/>
+    </CEffectIssueOrder>
     <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch">
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
@@ -1023,6 +1033,16 @@
             <Change value="-0.5"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectDamage id="HHValkyrie2Damage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="25"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="HHValkyrie2LM">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="HHValkyrie2Damage"/>
+        <AmmoUnit value="HHValkyrie2Weapon"/>
+    </CEffectLaunchMissile>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
     </CEffectDamage>

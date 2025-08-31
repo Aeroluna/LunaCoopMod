@@ -138,9 +138,56 @@
     <CAbilEffectTarget id="GravitonBeamVoidCampaign">
         <Arc value="360"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="HHBuild">
+        <InfoArray index="Build19" Unit="HHOrdnanceTowerConstruction" Time="60">
+            <Button DefaultButtonFace="HHOrdnanceTowerTopBar" Requirements="HHMercCompound"/>
+        </InfoArray>
+    </CAbilBuild>
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
     </CAbilEffectTarget>
+    <CAbilArmMagazine id="HHOrdnanceTowerHangar">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="10"/>
+        <InfoArray index="Ammo1" Time="10" CountStart="4" Distance="2" Manage="Ignore" Unit="HHValkyrie">
+            <Charge Link="Abil/##id##"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="HHValkyrie" Requirements="ArmValkyrie4">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+            <Flags index="LeashRetarget" value="1"/>
+        </InfoArray>
+        <Alert value="NoAlert"/>
+        <EffectArray index="Create" value="HHValkyrieRecallAB"/>
+        <MaxCount value="4"/>
+    </CAbilArmMagazine>
+    <CAbilMorph id="HHOrdnanceTowerMorph">
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown"/>
+        <Flags index="Automatic" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="Rally" value="1"/>
+        <InfoArray Unit="HHOrdnanceTower">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="4"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="4"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Duration" value="4"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="4"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="-;Ally,Neutral,Enemy"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
     <CAbilSpecialize id="MakeVultureSpiderMines">
         <InfoArray index="Specialize1">
             <Flags index="AutoCastOn" value="1"/>

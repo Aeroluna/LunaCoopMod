@@ -105,6 +105,16 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HHValkyrieCombatSpeed">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="EnemyInWeaponRange"/>
+        <Modification MoveSpeedBonus="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHValkyrieRecall">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="HHValkyrieRecallIssueOrder"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMagrailMunitionsStun">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-magrailmunitions.dds"/>
@@ -141,6 +151,11 @@
         <Duration value="2"/>
         <Modification DecelerationMultiplier="2.25"/>
     </CBehaviorBuff>
+    <CBehaviorWander id="HHValkyrieWander">
+        <Leash value="1"/>
+        <MinimumRange value="2"/>
+        <Range value="6"/>
+    </CBehaviorWander>
     <CBehaviorBuff id="VorazunOracleDetector11" parent="Detector">
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>

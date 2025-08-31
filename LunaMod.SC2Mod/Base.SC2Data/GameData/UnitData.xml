@@ -140,6 +140,60 @@
         <LifeStart value="100"/>
         <LifeMax value="100"/>
     </CUnit>
+    <CUnit id="HHValkyrie">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="AILifetime" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <EditorFlags index="NoPlacement" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="FlyingEscorts" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <Mover value="Fly"/>
+        <Speed value="2"/>
+        <Acceleration value="2.625"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="499.9218"/>
+        <Sight value="7"/>
+        <Height value="5.7"/>
+        <VisionHeight value="4"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="SuppressArmySelectUnderconstruction"/>
+        <!--BehaviorArray Link="Unrepairable"/-->
+        <BehaviorArray Link="TriggerInheritsParentBuffs"/>
+        <BehaviorArray Link="HHValkyrieWander"/>
+        <BehaviorArray Link="HHValkyrieCombatSpeed"/>
+        <WeaponArray Link="HHValkyrie2"/>
+        <EffectArray index="Create" value="TheHornersStatUpdate"/>
+        <EffectArray index="Death" value="TheHornersStatUpdate"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.25"/>
+        <SeparationRadius value="0.25"/>
+        <SubgroupPriority value="19"/>
+        <MinimapRadius value="0.25"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionMarauder"/>
+        <AIEvalFactor value="0"/>
+        <Mass value="0.2"/>
+        <TechAliasArray value="Alias_MercStarportMinion"/>
+    </CUnit>
     <CUnit id="HHMercStarportNoArmy">
         <LifeStart value="750"/>
         <LifeMax value="750"/>
@@ -148,6 +202,11 @@
         <LifeStart value="750"/>
         <LifeMax value="750"/>
         <BehaviorArray Link="AssaultGalleonReactor"/>
+    </CUnit>
+    <CUnit id="HHSCV">
+        <CardLayouts index="1">
+            <LayoutButtons Face="HHOrdnanceTowerTopBar" Type="AbilCmd" AbilCmd="HHBuild,Build19" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HHWidowMine">
         <AbilArray Link="attack"/>
@@ -194,6 +253,101 @@
     </CUnit>
     <CUnit id="HornerAirFleetTargeter">
         <Mover value="FlyIgnoreAirPathingBlockers"/>
+    </CUnit>
+    <CUnit id="HHOrdnanceTower">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PreventDefeat" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="AIDefense" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="800"/>
+        <LifeMax value="800"/>
+        <LifeArmor value="2"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <Mover value="Fly"/>
+        <Sight value="11"/>
+        <Height value="6"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="600"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="65"/>
+        <AttackTargetPriority value="19"/>
+        <AbilArray Link="BuildInProgress"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="HHOrdnanceTowerHangar"/>
+        <AbilArray Link="HangarQueue5"/>
+        <AbilArray Link="NanoRepair"/>
+        <WeaponArray Link="HHOrdnanceTower" Turret="MissileTurret"/>
+        <CardLayouts>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="HHValkyrie" Type="AbilCmd" AbilCmd="HHOrdnanceTowerHangar,Ammo1" Row="2" Column="0"/>
+            <LayoutButtons Face="NanoRepair" Type="AbilCmd" AbilCmd="NanoRepair,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="1.5"/>
+        <SeparationRadius value="1.5"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="3"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="250"/>
+        <GlossaryStrongArray value="SJFighter1"/>
+        <GlossaryWeakArray value="SJHyperion"/>
+        <BehaviorArray Link="Detector11"/>
+        <EquipmentArray Weapon="HHOrdnanceTowerValkyrieDummy"/>
+    </CUnit>
+    <CUnit id="HHOrdnanceTowerConstruction" parent="HHOrdnanceTower">
+        <PlaneArray index="Ground" value="1"/>
+        <PlaneArray index="Air" value="0"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Collide index="Flying" value="0"/>
+        <Height value="0"/>
+        <AbilArray index="1" Link="HHOrdnanceTowerMorph"/>
+        <AbilArray index="2" removed="1"/>
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <WeaponArray index="0" Link="" Turret="MissileTurret"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="Cancel" Type="AbilCmd" AbilCmd="que5Passive,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons index="1" Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="2" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="StarportTrain,Train5" Row="1" Column="3"/>
+            <LayoutButtons index="3" Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons index="4" removed="1"/>
+        </CardLayouts>
+        <Footprint value="Footprint3x3CreepNormalContour"/>
+        <PlacementFootprint value="Footprint3x3CreepNormalContour"/>
+        <BehaviorArray index="0" Link="UnderConstruction"/>
+        <EquipmentArray index="0" removed="1"/>
+    </CUnit>
+    <CUnit id="HHValkyrie2Weapon" parent="MISSILE">
+        <Race value="Terr"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="VikingMengskAssault">
         <BehaviorArray Link="MengskGuardSpellReduction"/>

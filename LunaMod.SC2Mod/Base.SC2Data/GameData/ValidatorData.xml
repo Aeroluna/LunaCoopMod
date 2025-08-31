@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorLocationEnumArea id="EnemyInWeaponRange">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <AreaArray Radius="10" Validator="TargetInWeaponRange"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum4EnemyTargets">
         <ResultFailed value="CantFindEnoughTargets"/>
         <AreaArray>
@@ -42,6 +48,11 @@
         <WhichLocation Value="TargetUnit"/>
         <Compare value="GT"/>
         <Range value="6"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="CasterisGreaterThan10">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="10"/>
     </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="CasterisLessThan1">
         <WhichLocation Value="TargetUnit"/>
