@@ -10,6 +10,13 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModelMaterial id="GlazeHellbatHardenedShield" parent="GlazeParent">
+        <Terms value="Cap 1"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.HellbatHardenedShell.DamageHandled" Send="Create"/>
+        <On Terms="AnimDone" Send="Destroy"/>
+        <Model value="Glaze_Regenerative_Biosteel"/>
+    </CActorModelMaterial>
     <CActorUnit id="Banshee_BlackOps">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="Create BansheeBoostModel"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveNovaBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
@@ -222,6 +229,11 @@
     <CActorUnit id="Hellion">
         <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimClear StandStart01"/>
         <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
+    </CActorUnit>
+    <CActorUnit id="HellionBlackOps">
+        <On Terms="Effect.HellionBlackOpsInfernalFlameThrowerCoop.Start" Send="AnimClear StandStart01"/>
+        <On Terms="Effect.HellionBlackOpsInfernalFlameThrowerCoop.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
     </CActorUnit>
     <CActorModel id="HighArchonPsiStormImpact">

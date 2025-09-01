@@ -703,6 +703,11 @@ Fun fact: it was using the range for the Build Railgun Turret ability rather tha
 
 This increases the reliability of Ghosts getting the extra snipes off.
 
+- Added a new Aegis Plating passive to Hellbat Rangers.
+  - Reduced damage taken to a maximum of 15.
+
+Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
+
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
