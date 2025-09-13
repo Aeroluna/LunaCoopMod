@@ -89,14 +89,15 @@ Fun fact: This bug has existed since Fenix was released. This bug was caused by 
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
 - Fixed a bug where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
-- Changed Hi-Sec Auto Tracking to additionally increase the upgrade level on the unit info panel.
+- Changed Hi-Sec Auto Tracking to additionally visually increase the upgrade level on the unit info panel.
 - Changed Phoenix weapon attack priority to attempt to keep hitting the same target.
 - Added turret tracking to Hellions.
 - Fixed a bug where Hellions would not play their attack animation.
 - Reduced visual scale of High Templar's Psionic Storm ability.
 - Increased visual scale of Psionic Storm impact effect.
+- Added Disruptor tint when firing and when on cooldown.
 
-thanks CSB.
+thanks Common Sense Balance.
 
 ## Amon
 
@@ -304,7 +305,6 @@ Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite us
     - Briefly charges up before scorching the ground beneath the Mothership for 20 seconds, causing 1200 (1800 vs Armored) damage in an area below. Deals more damage closer to the beam.
     - Damage doubles with P1.
   - Provides a power field nearby.
-  - Uses Cloaking Field to cloak nearby friendly units/structures.
 
 An iconic unit thats missing from co-op, is now back. Mass Recall should help with Artanis's mobility problems. Vortex no longer grants invulnerability to enemy units so Archon toilets are back on the menu. Planet Cracker is such an iconic ability, it had to be added. Projecting a constant power field stays in line with Artanis's design of quickly warping in reinforcements during combat.
 
@@ -522,7 +522,7 @@ Makes casting much smoother.
 
 - Reworked Void Stasis into Void Prison.
   - Stuns instead of stasis.
-  - Stil disables detection.
+  - Still disables detection.
   - Can target air units.
 - Added cast animation for Void Prison.
 
@@ -653,14 +653,15 @@ A few visual fixes/changes.
 
 ## Nova
 
-- Added P2 Advantage: Stuns enemies for 4 seconds when unloading.
+- Added P2 Advantage: Stuns enemy units in the drop off area for 4 seconds when unloading.
 
 P2 was such a boring prestige. Stunning enemies at least grants a niche of dropping right on top of enemies and bursting them down.
 
 - Reworked Covert Banshee's Rocket Barrage ability.
   - Now does damage over time rather than instantly.
-  - Fixed bug where missiles would not launch from weapons.
+  - Fixed bug where missiles would launch from the center of the model instead of the weapons.
   - Changed autocast to prioritize hitting multiple enemies, but can target fewer.
+  - Reduced casting arc from 360 to 0 (Now has to face target location).
 
 Looked silly dealing the damage instantly and afterwards the rockets land.
 
@@ -693,7 +694,7 @@ Many of Nova's unit cooldowns are so long that they usually are used once at the
 - Increased attack speed of Railgun Turrets by 100%.
 - Reduced duration of Railgun Turrets built by Raven Type-II from 60 seconds to 30 seconds.
 
-Despite being an elite Raven, they actually end up dropping worse Auto-Turrets with lower DPS and can't hit air. Now the Railgun shoots twice as fast but the duration is reduced by half to compensate.
+Despite being an elite Raven, they actually end up dropping worse Auto-Turrets with lower DPS and the inability to hit air. Now the Railgun shoots twice as fast but the duration is reduced by half to compensate.
 
 - Fixed a bug where the attack range indicator for Railgun Turrets was larger than intended.
 
@@ -751,7 +752,7 @@ I know they were originally meant to be Valkyries, but hey, they ended up as Lib
 - Removed Viral Contamination upgrade.
 - Added Necroplasmic Synthesis upgrade, which restores energy equal to 2.5% of damage dealt.
   - Requires Armory to research.
-  - Upgraded by P1.
+  - Improved by P1.
 - Removed Armory requirement from Cloud Dispersal.
 
 Made Viral Contamination upgrade partially baseline in favor of a new upgrade that compliments the Infested Liberator's new mechanics. Also lowered the tech requirement of Cloud Dispersal as it's a must-get upgrade.

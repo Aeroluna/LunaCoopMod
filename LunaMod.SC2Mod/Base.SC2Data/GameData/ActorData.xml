@@ -1372,6 +1372,18 @@
     <CActorModel id="PurificationNovaRangeIndicator">
         <On Terms="Behavior.PurificationNovaTargettedTarget.On; ValidatePlayer IsKaraxCoopCommander" Send="SetScale 1.200000"/>
     </CActorModel>
+    <CActorSimple id="DisruptorCasterTint">
+        <On Terms="Behavior.PurificationNovaTargettedCaster.On" Send="Create"/>
+        <On Terms="Behavior.PurificationNovaTargettedCaster.Off" Target="_Unit" Send="ClearTintColor 0.000000 DisruptorCaster"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {255,83,26 1.550000} 0.100000 Bounce DisruptorCaster"/>
+        <On Terms="Behavior.PurificationNovaTargettedCaster.Off" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple id="DisruptorCooldownTint">
+        <On Terms="Behavior.PurificationNovaCasterDarken.On" Send="Create"/>
+        <On Terms="Behavior.PurificationNovaCasterDarken.Off" Target="_Unit" Send="ClearTintColor 0.500000 DisruptorCooldown"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {171,156,156 0.500000} 0.000000 OneShot DisruptorCooldown"/>
+        <On Terms="Behavior.PurificationNovaCasterDarken.Off" Send="Destroy"/>
+    </CActorSimple>
     <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Stop" Send="Destroy"/>
