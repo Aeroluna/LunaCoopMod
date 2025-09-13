@@ -2055,6 +2055,14 @@
         <On index="5" Terms="Effect.VoidHighTemplarPsiOrbDamageCoop.Start; At Caster"/>
         <ContainerAssets Model="VoidHighTemplarPsiOrbDamageCoopBunkerAttackLaunch" Sound="VoidHighTemplarPsiOrbDamageCoopBunkerAttackLaunch"/>
     </CActorAction>
+    <CActorUnit id="VoidRay">
+        <Macros value="VoidRayGimbalMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VoidRayTaldarim">
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Macros value="VoidRayGimbalMacro"/>
+    </CActorUnit>
     <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
@@ -2321,7 +2329,61 @@
         <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
         <On index="96" Send="ModelSwap VoidRayNerazimWarpInStargate"/>
         <On index="98" Send="ModelSwap VoidRayNerazim"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Macros value="VoidRayGimbalMacro"/>
     </CActorUnit>
+    <CActorUnit id="Wraith">
+        <Macros value="GimbalZMacro"/>
+        <On Terms="Effect.WraithAPersistent.Start; At Caster" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="Effect.WraithGLaunchMissile.Start; At Caster" Send="AnimBracketStart Attack Attack"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulDarkTemplar">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-ihanrii.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-darktemplar00-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="ZeratulSummonVoidRay">
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Macros value="VoidRayGimbalMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulWarpPrism">
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprism-ihanrii.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulWarpPrismPhasing">
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprismstationary-ihanrii.dds"/>
+    </CActorUnit>
+    <CActorSound id="Zerg_BuildingMorphEndStetmann">
+        <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
+        <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 2" Send="Create"/>
+        <Remove Terms="ProgressLevel.ZergLairToHive.Start; Level 2" Send="Create"/>
+        <Remove Terms="ProgressLevel.LurkerDenMorph.Start; Level 2" Send="Create"/>
+        <Remove Terms="ProgressLevel.LurkerDenMPMorph.Start; Level 2" Send="Create"/>
+        <Remove Terms="ProgressLevel.PrimalZergConstruction.Start; Level 6" Send="Create"/>
+        <Remove Terms="ProgressLevel.PrimalZergConstructionAttachedExtra.Start; Level 6" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Zerg_BuildingMorphStartStetmann">
+        <Remove Terms="Abil.ZergBuild.BuiltStart" Send="Create"/>
+        <Remove Terms="Abil.QueenBuild.BuiltStart" Send="Create"/>
+        <Remove Terms="AbilMorph.*.Start; MorphTo GreaterSpire" Send="Create"/>
+        <Remove Terms="ProgressLevel.LurkerDenMorph.Start; Level 0" Send="Create"/>
+        <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 0" Send="Create"/>
+        <Remove Terms="ProgressLevel.ZergLairToHive.Start; Level 0" Send="Create"/>
+        <Remove Terms="ProgressLevel.ZergBuildingMorphModel.Start; Level 0" Send="Create"/>
+        <Remove Terms="ProgressLevel.LurkerDenMPMorph.Start; Level 0" Send="Create"/>
+        <Remove Terms="Abil.SIBasicBuild.BuiltStart" Send="Create"/>
+        <Remove Terms="Abil.ZagaraVoidCoopCreepMaster.BuiltStart" Send="Create"/>
+        <Remove Terms="Abil.DehakaDroneMorph.BuiltStart" Send="Create"/>
+    </CActorSound>
     <!-- IMPORTED -->
     <CActorEventMacro id="GimbalZMacro">
         <Supporter Subject="_Unit"/>
@@ -2382,51 +2444,70 @@
         <TurretBody Subject="_GimbalZ" FailOnNoHost="1"/>
         <On Terms="TurretEnable" Send="Create"/>
     </CActorTurret>
-    <CActorUnit id="Wraith">
-        <Macros value="GimbalZMacro"/>
-        <On Terms="Effect.WraithAPersistent.Start; At Caster" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="Effect.WraithGLaunchMissile.Start; At Caster" Send="AnimBracketStart Attack Attack"/>
-    </CActorUnit>
-    <CActorUnit id="ZeratulDarkTemplar">
-        <GroupIcon>
-            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
-        </GroupIcon>
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar-ihanrii.dds"/>
-        <Wireframe>
-            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
-        </Wireframe>
-        <WireframeShield>
-            <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00-shield01.dds"/>
-            <Image index="1" value="Assets\Textures\wireframe-protoss-darktemplar00-shield02.dds"/>
-            <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
-        </WireframeShield>
-    </CActorUnit>
-    <CActorUnit id="ZeratulWarpPrism">
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprism-ihanrii.dds"/>
-    </CActorUnit>
-    <CActorUnit id="ZeratulWarpPrismPhasing">
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprismstationary-ihanrii.dds"/>
-    </CActorUnit>
-    <CActorSound id="Zerg_BuildingMorphEndStetmann">
-        <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
-        <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 2" Send="Create"/>
-        <Remove Terms="ProgressLevel.ZergLairToHive.Start; Level 2" Send="Create"/>
-        <Remove Terms="ProgressLevel.LurkerDenMorph.Start; Level 2" Send="Create"/>
-        <Remove Terms="ProgressLevel.LurkerDenMPMorph.Start; Level 2" Send="Create"/>
-        <Remove Terms="ProgressLevel.PrimalZergConstruction.Start; Level 6" Send="Create"/>
-        <Remove Terms="ProgressLevel.PrimalZergConstructionAttachedExtra.Start; Level 6" Send="Create"/>
-    </CActorSound>
-    <CActorSound id="Zerg_BuildingMorphStartStetmann">
-        <Remove Terms="Abil.ZergBuild.BuiltStart" Send="Create"/>
-        <Remove Terms="Abil.QueenBuild.BuiltStart" Send="Create"/>
-        <Remove Terms="AbilMorph.*.Start; MorphTo GreaterSpire" Send="Create"/>
-        <Remove Terms="ProgressLevel.LurkerDenMorph.Start; Level 0" Send="Create"/>
-        <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 0" Send="Create"/>
-        <Remove Terms="ProgressLevel.ZergLairToHive.Start; Level 0" Send="Create"/>
-        <Remove Terms="ProgressLevel.ZergBuildingMorphModel.Start; Level 0" Send="Create"/>
-        <Remove Terms="ProgressLevel.LurkerDenMPMorph.Start; Level 0" Send="Create"/>
-        <Remove Terms="Abil.SIBasicBuild.BuiltStart" Send="Create"/>
-        <Remove Terms="Abil.ZagaraVoidCoopCreepMaster.BuiltStart" Send="Create"/>
-        <Remove Terms="Abil.DehakaDroneMorph.BuiltStart" Send="Create"/>
-    </CActorSound>
+    <CActorEventMacro id="VoidRayGimbalMacro">
+        <On Terms="UnitBirth" Send="Create PropsHost"/>
+        <On Terms="UnitBirth" Send="Create VoidRayGimbalModel"/>
+        <On Terms="UnitBirth" Target="_VoidRayGimbal" Send="Signal GimbalBirth"/>
+        <On Terms="UnitBirth" Target="_VoidRayGimbal" Send="Signal GimbalSetUp"/>
+        <On Terms="SupporterDestruction" Target="_VoidRayGimbal" Send="Signal GimbalDeath"/>
+        <On Terms="UnitDeath" Target="_VoidRayGimbal" Send="Signal GimbalDeath"/>
+        <On Terms="ActorOrphan" Target="_VoidRayGimbal" Send="Signal GimbalDeath"/>
+        <On Terms="SupporterDestruction" Target="PropsHost" Send="Destroy"/>
+        <On Terms="UnitDeath" Target="PropsHost" Send="Destroy"/>
+        <On Terms="ActorOrphan" Target="PropsHost" Send="Destroy"/>
+        <Supporter Subject="_Unit"/>
+    </CActorEventMacro>
+    <CActorLookAt id="VoidRayGimbalTurretLookAt" parent="UnitTurret">
+        <Supporter Subject="_VoidRayGimbal" Scope="Caster" ReachAcrossEffectTrees="1"/>
+        <Types Id="DefaultLookAtTurret">
+            <Start Group="Turret_Right" Weight="1" Time="360"/>
+            <Stop Group="Turret_Right" Weight="1" Time="360"/>
+        </Types>
+    </CActorLookAt>
+    <CActorModel id="VoidRayGimbalModel">
+        <Terms value="Cap 1"/>
+        <Aliases value="_UnitLarge"/>
+        <Aliases value="_Snapshot"/>
+        <Aliases value="_VoidRayGimbal"/>
+        <AcceptedTransfers index="FOWColor" value="1"/>
+        <AcceptedTransfers index="FOWShader" value="1"/>
+        <AcceptedTransfers index="Status" value="1"/>
+        <On Terms="Signal.*.GimbalDeath" Target="_Unit" Send="RefClear ::Host"/>
+        <On Terms="Signal.*.GimbalDeath" Target="PropsHost" Send="Destroy"/>
+        <On Terms="Signal.*.GimbalDeath" Target="VoidRayGimbalTurretLookAt" Send="Destroy"/>
+        <On Terms="Signal.*.GimbalDeath" Send="Destroy"/>
+        <On Terms="SupporterDestruction" Target="_Unit" Send="RefClear ::Host"/>
+        <On Terms="SupporterDestruction" Target="PropsHost" Send="Destroy"/>
+        <On Terms="SupporterDestruction" Target="VoidRayGimbalTurretLookAt" Send="Destroy"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="ActorOrphan" Target="_Unit" Send="RefClear ::Host"/>
+        <On Terms="ActorOrphan" Target="PropsHost" Send="Destroy"/>
+        <On Terms="ActorOrphan" Target="VoidRayGimbalTurretLookAt" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.GimbalBirth" Send="Create VoidRayGimbalTurretLookAt"/>
+        <On Terms="Abil.attack.ReadyStart" Target="VoidRayGimbalTurretLookAt" Send="LookAtEngage Continue"/>
+        <On Terms="Abil.attack.ReadyStop" Target="VoidRayGimbalTurretLookAt" Send="LookAtDisengage"/>
+        <On Terms="Signal.*.GimbalBirth" Send="SetOpacity 0.000000 0.000000 GimbalOpacity"/>
+        <On Terms="Signal.*.GimbalSetUp" Send="RefSet ::HostForProps PropsHost"/>
+        <On Terms="Signal.*.GimbalSetUp" Target="::Main" Send="RefClear ::Host"/>
+        <On Terms="Signal.*.GimbalSetUp" Target="::Main" Send="RefSet ::Host _VoidRayGimbal"/>
+        <On Terms="Signal.*.GimbalSetUp" Target="::Main" Send="RefSet ::HostForProps PropsHost"/>
+        <On Terms="Signal.*.GimbalSetUp" Target="::HostForProps" Send="HostSiteOpsSet ::HostForProps SOpMoveDownByDot75"/>
+        <On Terms="Signal.*.GimbalSetUp" Target="::Main" Send="HostSiteOpsSet ::Host SOpAttachTarget"/>
+        <On Terms="Signal.*.GimbalSetUp" Send="RefSet ::HostForProps _Unit"/>
+        <HostForProps Subject="_Unit"/>
+        <Model value="PhotonCannon"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+        <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
+        <AcceptedHostedPropTransfers index="CloakEffect" value="0"/>
+        <AcceptedHostedPropTransfers index="CreepEngulfment" value="0"/>
+        <AcceptedHostedPropTransfers index="Decal" value="0"/>
+        <AcceptedHostedPropTransfers index="LocalTintColor" value="0"/>
+        <AcceptedHostedPropTransfers index="ModelMaterials" value="0"/>
+        <AcceptedHostedPropTransfers index="Opacity" value="0"/>
+        <AcceptedHostedPropTransfers index="TeamColor" value="0"/>
+        <AcceptedHostedPropTransfers index="TintColor" value="0"/>
+        <AcceptedHostedPropTransfers index="WarpGroup" value="0"/>
+        <Supporter Subject="_Unit"/>
+    </CActorModel>
 </Catalog>

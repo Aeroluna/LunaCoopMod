@@ -1038,14 +1038,18 @@
     </CEffectLaunchMissile>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="SOAMothershipLineAttackScanCP">
-        <PeriodCount value="20"/>
         <PeriodicPeriodArray index="0" value="0.125"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="SourceNotDead"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="SOAMothershipLineAttackSearch">
         <IncludeArray Effect="SOAMothershipLineAttackAutoOnCheck" Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <DebugTrace value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="SILiberatorAmmoRestockLMSet">
         <ValidatorArray value="TargetIsGround"/>

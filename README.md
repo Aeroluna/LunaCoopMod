@@ -85,6 +85,10 @@ Copied from Versus.
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
 
+- Changed Void Rays to "look" at their targets.
+
+thanks Enoki.
+
 - Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
@@ -1053,6 +1057,10 @@ Overall increases attack speed and allows the Battlecruiser to be affected by at
 - Added 50% spell reduction to all Royal Guards.
 
 Nobody likes having their elite units Yamato'd to death, this should help their survivability against unpreventable bursts of damage.
+
+- Reworked Aegis Guard's Aegis Barrier passive from granting a 300 damage absorb to granting 300 shields.
+
+Makes it possible to track the Shield on the unit info panel. Will now interact with things like EMPs and Shield Batteries.
 
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
