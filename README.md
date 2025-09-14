@@ -71,6 +71,18 @@ You are pulling them into the air after all.
 
 This includes upgrades like Virulent Microbes erroneously showing up on mind-controlled Vipers or Extended Thermal Lance missing from Fenix's Colossi.
 
+- Added a range indicator when using the Oracle's Stasis Ward ability.
+
+yeah.
+
+- Fixed a bug where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
+
+Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
+
+- Changed Void Rays to "look" at their targets.
+
+thanks Enoki.
+
 - Added targeting beam to Widow Mine attack (Affects Swann and Horner).
 - Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
 - Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched (Affects Fenix).
@@ -80,14 +92,6 @@ This includes upgrades like Virulent Microbes erroneously showing up on mind-con
 - Added turret tracking to Colossi (Affects Karax and Fenix).
 
 Copied from Versus.
-
-- Fixed a bug where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
-
-Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
-
-- Changed Void Rays to "look" at their targets.
-
-thanks Enoki.
 
 - Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
 - Increased Lurker attack spine animation speed by 75%.
@@ -502,7 +506,7 @@ A cut unit from the LOTV campaign reimagined. Astral Storm provides detection ou
 
 - Dark Archon upgrades moved to Templar Archives.
 - Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
-- Increased Dark Archon weapon damage to 25 (+10 vs Biological).
+- Increased Dark Archon weapon damage from 18 to 25 (+10 vs Biological).
 - Increased Dark Archon Confusion radius from 2 to 3.
 
 Should make massing Dark Archons more viable instead of watching them tickle units.
@@ -516,9 +520,13 @@ The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a
 
 That's their main gimmick, why did they remove it? Oracles are still detectors so using this ability is not necessary.
 
+- Increased Oracle's Stasis Ward duration from 15 seconds to 30 seconds.
+
+When adding Oracles to co-op, this duration got halved, presumably because it wouldn't be fun to get hit by a 30 second stasis by Amon and they were worried it would be too strong with the Stasis Ward upgrade. Realistically, it's not easy getting big hits with Stasis Wards so reverting this should make Oracles more compelling for more than just detection.
+
 - Buffed P2 to reduce Stasis Ward duration by 50% instead of 75%
 
-For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This slight buff should help with that.
+For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This buff combined with the increased duration should help with that.
 
 - Removed deceleration from Oracle's Stasis Ward ability (no longer has to fully stop to cast).
 
@@ -1119,7 +1127,7 @@ Added Maguro mutators to Brutal+ system.
 
 - Warp Stargate Alternate - DaveSpectre
 - Nerazim Corsair V2 - DaveSpectre/HammerTheTank107
-- Signifier - Nerazim High Templar (Based on concept by Phill-Art) - DaveSpectre
+- Signifier (Lenassa) - Nerazim HT V2 (Based on concept by Phill-Art) - DaveSpectre
 - Void Ray Reforged (Updated Void Ray model) - DaveSpectre/HammerTheTank107
 - Red Ascendant Shadow Trail - DaveSpectre
 - Shadow Guard / Shakuras Signifier (Thrikodias version) - DaveSpectre/Thrikodias
@@ -1148,5 +1156,7 @@ Added Maguro mutators to Brutal+ system.
 - Royal Guard Portraits (Co-op) - DaveSpectre
 - Purifier Shield Battery - Enoki
 - Better Mengsk Status Frames - Enoki
+- Common Sense Balance - OmniSkeptic
+- Data-Driven Turrets - Enoki
 
 DaveSpectre is the goat <3

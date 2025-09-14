@@ -379,10 +379,30 @@
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.On" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorRange id="OracleStasisTrapAbilityRange" parent="RangeAbil" abil="OracleStasisTrapBuild">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorRange id="OracleStasisTrapAbilityRangeVorazun" parent="RangeAbil" abil="OracleStasisTrapBuildVorazun">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
     <CActorBeamSimple id="OracleStasisTrapBuildBeam">
         <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="AnimBracketStop BSD"/>
         <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="AnimBracketStop BSD"/>
     </CActorBeamSimple>
+    <CActorSound id="OracleStasisTrapBuildBeam_ActorSound">
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStart" Send="Create"/>
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="Destroy"/>
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="OracleStasisTrapBuildBeamStart_ActorSound">
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="OracleStasisTrapBuildBeamFinish_ActorSound">
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="Create"/>
+        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="Create"/>
+    </CActorSound>
     <CActorMissile id="PhoenixAirAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PhoenixRangeUpgraded" Send="ModelSwap IonCannonsWeapon_Upgrade"/>
     </CActorMissile>
@@ -2166,14 +2186,14 @@
         <GroupIcon>
             <Image index="0" value="Assets\Textures\wireframe-protoss-signifier-ds.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-red.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-redskin.dds"/>
         <SoundArray index="Ready" value="Oracle_ReadyAlt"/>
         <SoundArray index="Help" value="Oracle_Help"/>
         <SoundArray index="What" value="Oracle_What"/>
         <SoundArray index="Yes" value="Oracle_Yes"/>
         <SoundArray index="Attack" value="Oracle_Attack"/>
         <SoundArray index="Pissed" value="Oracle_Pissed"/>
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-red.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-signifier-ds-redskin.dds"/>
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-protoss-signifier-ds.dds"/>
         </Wireframe>
