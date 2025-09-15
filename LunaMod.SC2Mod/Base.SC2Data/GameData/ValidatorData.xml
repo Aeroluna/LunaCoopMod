@@ -145,6 +145,9 @@
         <Behavior value="GhostMengskIrradiate"/>
         <ResultFailed value="Error,Error/AlreadyHasImmolate"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitFilters id="IsMechAir">
+        <Filters value="Air,Mechanical;Ground"/>
+    </CValidatorUnitFilters>
     <CValidatorCombine id="IsMechanicalAndNotStunned">
         <Type value="And"/>
         <CombineArray value="IsMechanical"/>
@@ -152,6 +155,10 @@
     </CValidatorCombine>
     <CValidatorCombine id="IsMechanicalOrHas50EnergyOrHas50Shields">
         <CombineArray index="0" value="IsMechanicalAndNotStunned"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsNotMechAir">
+        <CombineArray value="IsMechAir"/>
+        <Negate value="1"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NotHaveGhostMengskEMPPreMarker">
         <Behavior value="GhostMengskEMPPreMarker"/>

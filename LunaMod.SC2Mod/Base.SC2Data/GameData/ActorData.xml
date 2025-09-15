@@ -10,6 +10,23 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="DehakaConsumeImpactModel" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.DehakaConsumeTentacle.On; ValidateUnit IsNotMechAir" Send="Create"/>
+        <On Terms="Behavior.DehakaConsumeTentacle.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <MaxScale value="3.000000"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="DehakaConsumeImpactModelVerticle">
+        <On index="3" Terms="Behavior.DehakaConsumeTentacle.On; ValidateUnit IsMechAir"/>
+        <On index="4" Terms="Behavior.DehakaConsumeTentacle.Off" Send="AnimBracketStop BSD"/>
+        <On index="5" removed="1"/>
+        <MaxScale value="3.000000"/>
+    </CActorModel>
     <CActorModelMaterial id="GlazeHellbatHardenedShield" parent="GlazeParent">
         <Terms value="Cap 1"/>
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
@@ -344,6 +361,13 @@
         <ImpactPhysics Name="PunisherGrenadesImpact" MatchKeys="Basic" Physics="MarauderAttackDeathForce"/>
         <ImpactMap index="None" Model="MarauderUpgradedAttackImpact"/>
     </CActorAction>
+    <!--                                                                                         -->
+    <!-- Void Ray Hero (Dark Prelate Mohandas) ................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Mohandar">
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Macros value="VoidRayGimbalMacro"/>
+    </CActorUnit>
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>
     </CActorRange>

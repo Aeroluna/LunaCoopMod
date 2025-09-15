@@ -857,6 +857,10 @@ Why did Dakrun slam his giant head into a building and do 0 damage? Also why did
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
 
+- Added a visual impact model for Dehaka's Devour.
+
+This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?feature=shared&t=93) but was removed before release for some reason. Fun fact: the visual still existed for Carriers and Void Rays only for some reason.
+
 ## Han & Horner
 
 - Added autocast to Widow Mine Burrow.
