@@ -810,6 +810,15 @@ Instead of creating huge waves, the Infested Colonist Compound now does many sma
 
 This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
 
+- Changed Infested Infantry to be affected by commander buffs, i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.
+
+It might be a little strong making all of the temporary units have Guardian Shell, but hey it's co-op, whats the harm in being OP?
+
+- Changed Infested Missile Turrets to attack while uprooted.
+- Changed Infested Missile Turrets to provide detection while uprooted.
+
+Bunkers can do it, why not the Missile Turret?
+
 - Reduced push priority of infantry to 9.
 - Increased push priority of uprooted buildings to 11.
 
