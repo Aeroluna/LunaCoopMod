@@ -877,6 +877,10 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?feature=shared&t=93) but was removed before release for some reason. Fun fact: the visual still existed for Carriers and Void Rays only for some reason.
 
+- Lowered tech requirement of Primal Wurms from requiring Glevig's Den to requiring a Primal Warden.
+
+Primal Wurms are Dehaka's only source of detection until evolving to level 5, making Dehaka extremely vulnerable to early stealth such as the We Move Unseen modifier. This buff should counteract that.
+
 ## Han & Horner
 
 - Added autocast to Widow Mine Burrow.
