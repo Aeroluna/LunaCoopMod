@@ -967,7 +967,7 @@ Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the dama
 
 Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
-- Added Ordnance Towers that can be build by SCVs.
+- Added Ordnance Towers that can be built by SCVs.
   - These are flying defensive structures with long-range attacks.
   - Spawns up to 4 Valkyries that fly around and defend the area.
     - Valkyries have 100 hp and their own long-range missile attack.
@@ -988,7 +988,8 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
 
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
   - Now possible to not have Tychus active at all.
-  - Calldown Odin will only revive Tychus if Tychus is recruites.
+  - Calldown Odin will only revive Tychus if Tychus is recruited.
+  - Cannot recruit Tychus while Odin is deployed.
 
 It's probably still worth taking Tychus, but now atleast you have a choice.
 
@@ -1011,10 +1012,19 @@ Same change to Raynor's firebats.
 
 yeah.
 
-- Increased the scale of Rattlesnake's projectiles by 45%.
+- Increased the visual scale of Rattlesnake's projectiles by 45%.
 - Increased the speed of Rattlesnake's projectiles by 45%.
+- Increased the visual scale of Blaze's attack by 40%.
 
-As the only outlaw to use projectiles, it looked silly having this giant Marauder shooting out tiny little grenades.
+It looked silly having this giant unit shooting out tiny little attacks.
+
+- Reordered SCV building menu.
+- Added Fortified Bunker that can be built by SCVs.
+  - Can hold up to two outlaws.
+  - Increases range of units inside by +2.
+  - Fortified Bunker has extra armor and life.
+
+Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.
 
 ## Zeratul
 

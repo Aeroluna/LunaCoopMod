@@ -35,6 +35,108 @@
     <CModel id="Broodling_Webby_Escort" parent="BroodlingEscortBase">
         <Model value="Assets\Units\Zerg\Symbiote_CollectionSkin_Webby\Symbiote_CollectionSkin_Webby.m3"/>
     </CModel>
+    <CModel id="Bunker_Tychus_Death" parent="BunkerDeathBase">
+        <Model value="Assets\Buildings\Terran\Bunker_CovertOps_Death\Bunker_CovertOps_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Terran_CovertOps_Explo_Fire"/>
+            <Type value="Sound"/>
+            <Time value="0.695000"/>
+            <Payload value="Terran_CovertOps_Explo_Fire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Terran_CovertOps_Explo_Debris"/>
+            <Type value="Sound"/>
+            <Time value="0.692000"/>
+            <Payload value="Terran_CovertOps_Explo_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Terran_CovertOps_Impact_Metal"/>
+            <Type value="Sound"/>
+            <Time value="0.007000"/>
+            <Payload value="Terran_CovertOps_Impact_Metal"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Terran_CovertOps_Explo_Fire"/>
+            <Type value="Sound"/>
+            <Time value="0.255000"/>
+            <Payload value="Terran_CovertOps_Explo_Fire"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Terran_CovertOps_Explo_Debris"/>
+            <Type value="Sound"/>
+            <Time value="0.398000"/>
+            <Payload value="Terran_CovertOps_Explo_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Terran_CovertOps_Impact_Metal"/>
+            <Type value="Sound"/>
+            <Time value="0.007000"/>
+            <Payload value="Terran_CovertOps_Impact_Metal"/>
+        </Events>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="Bunker_Tychus_Empty_Death" parent="BunkerEmptyDeathBase">
+        <Model value="Assets\Buildings\Terran\Bunker_CovertOps_Empty_Death\Bunker_CovertOps_Empty_Death.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Terran_CovertOps_Explo_SubPre"/>
+            <Type value="Sound"/>
+            <Time value="0.007000"/>
+            <Payload value="Terran_CovertOps_Explo_SubPre"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Terran_CovertOps_Explo_Debris"/>
+            <Type value="Sound"/>
+            <Time value="0.829000"/>
+            <Payload value="Terran_CovertOps_Explo_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Terran_CovertOps_Explo_Debris"/>
+            <Type value="Sound"/>
+            <Time value="0.043000"/>
+            <Payload value="Terran_CovertOps_Explo_Debris"/>
+        </Events>
+        <Events>
+            <Anim value="Death,02"/>
+            <Name value="Terran_CovertOps_Explo_Debris"/>
+            <Type value="Sound"/>
+            <Time value="0.043000"/>
+            <Payload value="Terran_CovertOps_Explo_Debris"/>
+        </Events>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="Bunker_Tychus_Build" parent="BunkerBuildBase" name="TerranBuilding_CovertOps_Build">
+        <Model value="Assets\Buildings\Terran\TerranBuild\TerranBuild.m3"/>
+        <ScaleMax value="0.840000,0.840000,0.840000"/>
+        <ScaleMin value="0.840000,0.840000,0.840000"/>
+        <TextureDeclares Prefix="Decal">
+            <Adaptions TriggerOnSubstring="NovaCovertOps_01.dds" Slot="decal"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="Bunker_Tychus" parent="BunkerBase">
+        <Model value="Assets\Buildings\Terran\Bunker_CovertOps\Bunker_CovertOps.m3"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+        <TextureDeclares Prefix="Decal">
+            <Adaptions TriggerOnSubstring="NovaCovertOps_01.dds" Slot="decal"/>
+        </TextureDeclares>
+    </CModel>
+    <CModel id="Bunker_Tychus_Placement" parent="BunkerPlacementBase" low="Bunker_CovertOps">
+        <Model value="Assets\Buildings\Terran\Bunker_CovertOps_Placement\Bunker_CovertOps_Placement.m3"/>
+        <LowQualityModel value="Bunker_Tychus"/>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
     <CModel id="COOP_AssaultGalleon_Placement">
         <ScaleMax value="0.600000,0.600000,0.600000"/>
         <ScaleMin value="0.600000,0.600000,0.600000"/>
@@ -46,6 +148,18 @@
     <CModel id="DehakaConsumeImpactModelVerticle">
         <ScaleMax value="0.800000,0.800000,0.800000"/>
         <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="TychusFirebatBunkerAttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\FirebatFireSprite\FirebatFireSprite.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.400000,4.200000,1.400000"/>
+        <ScaleMin value="1.400000,4.200000,1.400000"/>
+    </CModel>
+    <CModel id="TychusFirebatAttackLaunch" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\FirebatFireSprite\FirebatFireSprite.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="1.400000,2.800000,1.400000"/>
+        <ScaleMin value="1.400000,2.800000,1.400000"/>
     </CModel>
     <CModel id="Glaze_Regenerative_Biosteel" parent="Glaze" Race="Zerg">
         <Model value="Assets\Effects\Glaze\Glaze_RegenerativeBioSteel\Glaze_RegenerativeBioSteel.m3"/>

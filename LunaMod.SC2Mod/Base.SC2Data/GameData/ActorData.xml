@@ -10,6 +10,39 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="TychusBunkerBuild" parent="TerranBuildingBuild">
+        <Model value="Bunker_Tychus_Build"/>
+    </CActorModel>
+    <CActorUnit id="TychusBunker" parent="TerranBuildingEx" unitName="TychusBunker">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="BunkerTransportAnim"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit BunkerIsEmpty" Send="DeathCustomize Empty"/>
+        <On Terms="ActorCreation" Send="TextureSelectById Decal_Terran_0078_01"/>
+        <Model value="Bunker_Tychus"/>
+        <CreepHeightClass value="Tiny"/>
+        <BuildModel value="Bunker_Tychus"/>
+        <DeathArray index="Normal" ModelLink="Bunker_Tychus_Death"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="Bunker_Explode"/>
+        <DeathCustoms ModelLink="Bunker_Tychus_Empty_Death" Name="Empty"/>
+        <PlacementModel value="Bunker_Tychus_Placement"/>
+        <PlacementActorModel value="BunkerPlacementModel"/>
+        <PlaceholderActorModel value="BunkerPlaceholderModel"/>
+        <BarOffset value="80"/>
+        <BarWidth value="85"/>
+        <GlossaryAnim value="Stand,Work"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-terran-Bunker.dds"/>
+        <NameOffset value="70"/>
+        <SoundArray index="Ready" value="Bunker_Ready"/>
+        <SoundArray index="What" value="Bunker_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-terran-bunker-silver.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorModel id="DehakaConsumeImpactModel" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
@@ -446,6 +479,16 @@
         <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
     </CActorAction>
     <CActorMissile id="HHValkyrie2AttackMissile" parent="GenericAttackMissile" unitName="HHValkyrie2Weapon"/>
+    <CActorAction id="TychusCoopAttack">
+        <ContainerAssets Model="MarineBunkerAttackLaunch" Sound="TychusCoop_ChaingunAttackLaunch"/>
+    </CActorAction>
+    <CActorAction id="TychusFirebatAttack">
+        <LaunchAssets Model="TychusFirebatAttackLaunch"/>
+        <ContainerAssets Model="TychusFirebatBunkerAttackLaunch"/>
+    </CActorAction>
+    <CActorModel id="TychusFirebatAttackModel">
+        <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
+    </CActorModel>
     <CActorAction id="TychusMarauderUpgradedAttack" parent="MarauderAttackBase" effectImpact="TychusPunisherGrenadesSwitch" effectLaunch="TychusPunisherGrenadesLM">
         <On Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; ValidateEffect HaveTychusMarauderAttackSplash" Send="Create"/>
         <LaunchAttachQuery Methods="AMPatternMarauder"/>
