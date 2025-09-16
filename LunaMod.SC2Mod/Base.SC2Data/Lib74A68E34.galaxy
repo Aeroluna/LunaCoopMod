@@ -371,6 +371,67 @@ bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport) {
     return false;
 }
 
+void lib74A68E34_gf_KerriganMalignantCreep () {
+    // Variable Declarations
+    int lv_itPlayer;
+    int lv_totalPlayersLevel;
+    int[libCOOC_gv_cCC_MAXPLAYERS + 1] lv_playerLevel;
+    string lv_entry;
+    int lv_catalog;
+    int lv_index;
+    int lv_count;
+    fixed lv_add;
+    int lv_kerriganplayer;
+    fixed lv_attackspeedmultiplier;
+    fixed lv_liferegenrate;
+
+    // Automatic Variable Declarations
+    playergroup auto6D0D99B7_g;
+    int autoB0586CE5_ae;
+    const int autoB0586CE5_ai = 1;
+    playergroup auto103B9E59_g;
+
+    // Variable Initialization
+    lv_catalog = c_gameCatalogUnit;
+    lv_kerriganplayer = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergKerrigan", libCOOC_gf_CommanderPlayers());
+    lv_attackspeedmultiplier = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, "KerriganMalignantCreepAttackSpeedRealDummy", "Amount", lv_kerriganplayer);
+    lv_liferegenrate = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, "KerriganMalignantCreepLifeRegenRealDummy", "Amount", lv_kerriganplayer);
+
+    // Implementation
+    auto6D0D99B7_g = PlayerGroupAll();
+    lv_itPlayer = -1;
+    while (true) {
+        lv_itPlayer = PlayerGroupNextPlayer(auto6D0D99B7_g, lv_itPlayer);
+        if (lv_itPlayer < 0) { break; }
+        lv_playerLevel[lv_itPlayer] = TechTreeUpgradeCount(lv_itPlayer, libCOMI_gv_cM_TalentKerriganMalignantCreepUpgrade, c_techCountCompleteOnly);
+        lv_totalPlayersLevel += lv_playerLevel[lv_itPlayer];
+    }
+    if ((lv_totalPlayersLevel <= 0)) {
+        return ;
+    }
+
+    lv_count = CatalogEntryCount(lv_catalog);
+    autoB0586CE5_ae = lv_count;
+    lv_index = 1;
+    for ( ; ( (autoB0586CE5_ai >= 0 && lv_index <= autoB0586CE5_ae) || (autoB0586CE5_ai < 0 && lv_index >= autoB0586CE5_ae) ) ; lv_index += autoB0586CE5_ai ) {
+        lv_entry = CatalogEntryGet(lv_catalog, lv_index);
+        if ((CatalogEntryIsDefault(lv_catalog, lv_entry) == false) && (UnitTypeTestFlag(lv_entry, c_unitFlagInvulnerable) == false) && (UnitTypeTestFlag(lv_entry, c_unitFlagNoDraw) == false) && (UnitTypeTestFlag(lv_entry, c_unitFlagDestructible) == false) && (UnitTypeTestFlag(lv_entry, c_unitFlagMissile) == false) && ((UnitTypeTestAttribute(lv_entry, c_unitAttributeBiological) == true) || (UnitTypeTestAttribute(lv_entry, c_unitAttributeMechanical) == true) || (UnitTypeTestAttribute(lv_entry, c_unitAttributePsionic) == true))) {
+            auto103B9E59_g = PlayerGroupAll();
+            lv_itPlayer = -1;
+            while (true) {
+                lv_itPlayer = PlayerGroupNextPlayer(auto103B9E59_g, lv_itPlayer);
+                if (lv_itPlayer < 0) { break; }
+                if ((lv_playerLevel[lv_itPlayer] > 0)) {
+                    CatalogFieldValueModify(c_gameCatalogUnit, lv_entry, "LifeRegenRateCreep", lv_itPlayer, FixedToString(lv_liferegenrate, c_fixedPrecisionAny), c_upgradeOperationAdd);
+                    CatalogFieldValueModify(c_gameCatalogUnit, lv_entry, "AttackSpeedMultiplierCreep", lv_itPlayer, FixedToString(lv_attackspeedmultiplier, c_fixedPrecisionAny), c_upgradeOperationAdd);
+                }
+
+            }
+        }
+
+    }
+}
+
 void lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice (int lp_player) {
     // Variable Declarations
     bool lv_foundOrder;
@@ -1346,6 +1407,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergKerrigan") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+            lib74A68E34_gf_KerriganMalignantCreep();
         }
         else if (auto560DABDD_val == "ZergZagara") {
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusApplyDummyTimer, true);

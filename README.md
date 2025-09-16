@@ -225,6 +225,10 @@ yeah.
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
 
+- Changed Malignant Creep to affect structures and air units.
+
+Isn't it funny that vanilla P1 Kerrigan's best unit is still Mutalisks? This should allow P1 to interact with more units.
+
 - Changed P2 to also hit structures.
   - Will prioritize units and attacking structures.
 
@@ -816,6 +820,9 @@ It might be a little strong making all of the temporary units have Guardian Shel
 
 - Changed Infested Missile Turrets to attack while uprooted.
 - Changed Infested Missile Turrets to provide detection while uprooted.
+- Added Biomass Coating passive to Infested Missile Turrets, increasing life regen while rooted.
+- Changed Regenerative Plating upgrade to additionally affect Infested Missile Turrets.
+- Changed Calcified Armor upgrade to additionally affect Infested Missile Turrets.
 
 Bunkers can do it, why not the Missile Turret?
 
