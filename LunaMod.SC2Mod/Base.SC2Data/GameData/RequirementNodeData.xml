@@ -41,7 +41,6 @@
         <OperandArray value="And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeTychusACOwnedCompleteOnlyNotCountUnitTychusCoopQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeTychusACOwnedCompleteOnly"/>
         <OperandArray value="NotCountUnitTychusCoopQueuedOrBetter"/>
     </CRequirementAnd>
@@ -70,7 +69,6 @@
         <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeTychusHeroMaxedCompleteOnlyNotCountUnitTychusCoopQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="NotCountUpgradeTychusHeroMaxedCompleteOnly"/>
         <OperandArray value="NotCountUnitTychusCoopQueuedOrBetter"/>
     </CRequirementAnd>
@@ -260,6 +258,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TransformationServos" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTychusOdinRedButtonCompleteOnly959547084">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="TychusOdinRedButton" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementEq id="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
@@ -280,9 +282,6 @@
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="2"/>
     </CRequirementLT>
-    <CRequirementNot id="Not1826056550CountUnitTychusOdinQueuedOrBetter">
-        <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
-    </CRequirementNot>
     <CRequirementNot id="Not569486901OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter">
         <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter"/>
     </CRequirementNot>
@@ -300,6 +299,10 @@
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUnitTychusOdinQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly">
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly"/>
@@ -361,6 +364,10 @@
     <CRequirementNot id="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
         <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementNot>
+    <CRequirementOr id="Or1826056550CountUpgradeCommanderPrestigeTychusOdinCompleteOnlyNotCountUnitTychusOdinQueuedOrBetter">
+        <OperandArray value="CountUpgradeCommanderPrestigeTychusOdinCompleteOnly"/>
+        <OperandArray value="NotCountUnitTychusOdinQueuedOrBetter"/>
+    </CRequirementOr>
     <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>

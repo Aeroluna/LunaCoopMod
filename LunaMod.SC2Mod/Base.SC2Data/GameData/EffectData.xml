@@ -170,6 +170,15 @@
         <EffectArray value="NovaGriffinTransportTeleportOut"/>
         <EffectArray value="CommanderPrestigeNovaAirliftSearch"/>
     </CEffectSet>
+    <CEffectDamage id="OdinNukeDamage">
+        <AreaArray index="0" Radius="4"/>
+        <AreaArray index="1" Radius="6" Fraction="0.75"/>
+        <AreaArray index="2" Radius="8" Fraction="0.5"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="OdinNukePersistent">
+        <ValidatorArray value="HaveTychusBigRedButton"/>
+        <InitialDelay value="3"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
         <WhichUnit Value="Caster"/>
         <Behavior value="OracleDeceleration"/>
@@ -1253,6 +1262,12 @@
         <EffectArray index="4" value="TychusGhostConfusionSearch"/>
         <EffectArray index="5" removed="1"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="TychusOdinBarrageCP">
+        <InitialEffect value="OdinNukePersistent"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="TychusOdinBarrageSearchArea">
+        <AreaArray index="0" Radius="4"/>
+    </CEffectEnumArea>
     <CEffectLaunchMissile id="TychusPunisherGrenadesLM">
         <Movers index="0" Link="TychusPunisherGrenadesWeapon"/>
     </CEffectLaunchMissile>

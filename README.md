@@ -343,7 +343,8 @@ yeah.
 ## Swann
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
-- Added a sound effect when shooting High Impact Payload weapon.
+- Added a launch sound effect when shooting High Impact Payload weapon.
+- Added a launch sound effect when channeling 330m Barrage Cannon.
 - Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
 - Reduced 330m Barrage Cannon cast and finish time from 2 to 0.75.
 
@@ -991,15 +992,11 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
   - Calldown Odin will only revive Tychus if Tychus is recruited.
   - Cannot recruit Tychus while Odin is deployed.
 
-It's probably still worth taking Tychus, but now atleast you have a choice.
+It's probably still better to take Tychus, but now atleast you have a choice.
 
 - Reduced Crooked Sam's Demolition Charge visual explosion scale by 60%.
 
 It looked like a massive explosion for a single target nuke.
-
-- Fixed Odin weapon tooltip showing wrong damage.
-
-It was showing the damage numbers from WOL campaign instead of the Co-op numbers.
 
 - Reduced Miles "Blaze" Lewis weapon backswing and damage point.
 
@@ -1025,6 +1022,28 @@ It looked silly having this giant unit shooting out tiny little attacks.
   - Fortified Bunker has extra armor and life.
 
 Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.
+
+- Fixed Odin weapon tooltip showing wrong damage.
+
+It was showing the damage numbers from the WOL campaign instead of the Co-op numbers.
+
+- Fixed a bug where the Odin could attack while channeling Barrage.
+- Added a launch sound effect when channeling Barrage.
+- Reduced cast start time of Barrage from 2 to 1.5.
+- Reduced cast finish time of Barrage from 2.5 to 2.
+- Increased radius of Barrage from 3 to 4.
+
+Barrage is kinda garbage for something you only get to use once per Odin. These changes should make casting Barrage smoother, especiallly important for the Big Red Button rework.
+
+- Reduced radius of Big Red Button from 12 to 8.
+- Reduced Big Red Button damage falloff (Does more damage to targets far from the center).
+- Reworked Big Red Button upgrade.
+  - No longer replaces Barrage ability.
+  - Upgrades Barrage by adding a nuke to the end of the ability.
+- Changed Big Red Button to play audio sting when nuke lands instead of when it launches.
+- Increased volume of nuke launch sound effect.
+
+Is likely an overall nerf as the radius is reduced and now you have to channel Barrage, but it just *feels* satisfying.
 
 ## Zeratul
 

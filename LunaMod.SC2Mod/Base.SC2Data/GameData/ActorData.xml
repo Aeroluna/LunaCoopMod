@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorSound id="330mmBarrageCannonsLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.330mmBarrageCannonsSearch.Impact; At Caster" Send="Create"/>
+        <Sound value="Thor_BarrageLaunch"/>
+    </CActorSound>
     <!--CActorUnit id="AbathurSymbioteBrutalisk">
         <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper All" Send="Create FlyerHelperSplat"/>
         <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper Selected" Send="Create FlyerHelperSplat"/>
@@ -10,6 +14,11 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="OdinNukeIndicator">
+        <On index="0" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 6.250000 AsDuration"/>
+        <On Terms="Effect.OdinNukeDamage.Start" Send="Destroy"/>
+        <Remove Terms="Effect.OdinNukePersistent.Stop" Send="Destroy"/>
+    </CActorModel>
     <CActorModel id="TychusBunkerBuild" parent="TerranBuildingBuild">
         <Model value="Bunker_Tychus_Build"/>
     </CActorModel>
@@ -603,6 +612,24 @@
         <ImpactMap index="None" Scale="1.450000"/>
     </CActorAction>
     <CActorSplat id="TychusMauraderHealingWardSplat" parent="TerranCursorSplat" abil="TychusMarauderBuildHealingWard"/>
+    <CActorUnit id="TychusOdin">
+        <On index="71" Send="AnimPlay Morph Morph 0 -1.000000 -1.000000 1.400000 AsTimeScale"/>
+        <On index="80" Send="AnimPlay Morph Morph,End 0 -1.000000 -1.000000 1.200000 AsTimeScale"/>
+    </CActorUnit>
+    <CActorModel id="TychusOdinBarrageModel">
+        <Scale value="1.400000"/>
+    </CActorModel>
+    <CActorSound id="TychusOdinBarrageLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.TychusOdinBarrageSearchArea.Impact; At Caster" Send="Create"/>
+        <Sound value="Thor_BarrageLaunch"/>
+    </CActorSound>
+    <CActorModel id="TychusOdinBarrageWarning">
+        <Remove Terms="Abil.TychusOdinBarrage.TargetCastStart" Send="Create"/>
+        <Remove Terms="Abil.TychusOdinBarrage.TargetChannelStop" Send="Destroy"/>
+    </CActorModel>
+    <CActorSound id="TychusOdin_NukeLaunch_AS">
+        <On index="1" Terms="Effect.OdinNukeDamage.Start"/>
+    </CActorSound>
     <CActorUnit id="VikingMengskAssault">
         <PortraitModel value="VikingMengskAssaultPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskViking_StatusFrame"/>
