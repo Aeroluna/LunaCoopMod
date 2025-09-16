@@ -1015,6 +1015,11 @@ yeah.
 
 It looked silly having this giant unit shooting out tiny little attacks.
 
+- Changed Blaze's XCMC-670 Combat Suit visuals to a glaze instead of the Hardened Shield effect.
+- Reduced Blaze's XCMC-670 Combat Suit minimum from 30 to 20.
+
+For an ultimate gear, 30 is a high minimum to reach. Reducing the minimum should increase the reliability of the gear.
+
 - Reordered SCV building menu.
 - Added Fortified Bunker that can be built by SCVs.
   - Can hold up to two outlaws.

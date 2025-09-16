@@ -74,6 +74,7 @@
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
         <On Terms="Behavior.HellbatHardenedShell.DamageHandled" Send="Create"/>
         <On Terms="AnimDone" Send="Destroy"/>
+        <On Terms="Behavior.TychusFirebatShield.DamageHandled" Send="Create"/>
         <Model value="Glaze_Regenerative_Biosteel"/>
     </CActorModelMaterial>
     <CActorUnit id="Banshee_BlackOps">
@@ -497,6 +498,12 @@
     </CActorAction>
     <CActorModel id="TychusFirebatAttackModel">
         <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
+    </CActorModel>
+    <CActorSound id="TychusFirebatShieldSound">
+        <On Terms="Behavior.HellbatHardenedShell.DamageHandled" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="TychusFirebatShieldViz">
+        <Remove Terms="Behavior.TychusFirebatShield.DamageHandled" Send="Create"/>
     </CActorModel>
     <CActorAction id="TychusMarauderUpgradedAttack" parent="MarauderAttackBase" effectImpact="TychusPunisherGrenadesSwitch" effectLaunch="TychusPunisherGrenadesLM">
         <On Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; ValidateEffect HaveTychusMarauderAttackSplash" Send="Create"/>
