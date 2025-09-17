@@ -4,7 +4,7 @@ include "LibA8FDA37D"
 // Library: LunaMod
 //--------------------------------------------------------------------------------------------------
 // Constants
-const int lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked = 16;
+const int lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked = 16;
 
 // Structures
 struct lib74A68E34_gs_MorphUnitType {
@@ -20,8 +20,8 @@ int lib74A68E34_gv_mutatorListRandomizerPulldown;
 int lib74A68E34_gv_mutatorListRandomizerRefreshButton;
 int lib74A68E34_gv_mutatorListDialog;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
-int[lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraSwarmLocusPricesPaid;
-unit[lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraSwarmLocusPricesUnits;
+int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
+unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
 
 // Function Declarations
 void lib74A68E34_gf_FourthChangeAllyPrestige ();
@@ -32,7 +32,7 @@ void lib74A68E34_gf_MutatorListCreate ();
 string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType);
 bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport);
 void lib74A68E34_gf_KerriganMalignantCreep ();
-void lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice (int lp_player);
+void lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice (int lp_player);
 void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player);
 void lib74A68E34_gf_KaraxExtraUnitVitalMastery (int lp_player);
 void lib74A68E34_gf_KaraxEnable20 (int lp_player);
@@ -66,11 +66,11 @@ trigger lib74A68E34_gt_RaynorMULEMineralSearch;
 trigger lib74A68E34_gt_RaynorHyperionWeaponSwitch;
 trigger lib74A68E34_gt_ArtanisPowerFieldPrestigePylon;
 trigger lib74A68E34_gt_ArtanisMothershipWarpHaste;
-trigger lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate;
-trigger lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath;
-trigger lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder;
-trigger lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel;
-trigger lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish;
+trigger lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate;
+trigger lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath;
+trigger lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder;
+trigger lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel;
+trigger lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish;
 trigger lib74A68E34_gt_ZagaraSwarmLocusApplyDummyTimer;
 trigger lib74A68E34_gt_ZagaraSwarmLocusSetupQueen;
 trigger lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor;
@@ -80,12 +80,12 @@ trigger lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior;
 trigger lib74A68E34_gt_VorazunNegativeEnergyFix;
 trigger lib74A68E34_gt_VorazunShadowArchonGender;
 trigger lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast;
-trigger lib74A68E34_gt_AbathurSymbiotePrestigeCreate;
-trigger lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply;
-trigger lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply;
-trigger lib74A68E34_gt_NovaMeleePrestigeCliffJump;
-trigger lib74A68E34_gt_NovaFuryOfOneHeight;
-trigger lib74A68E34_gt_NovaFuryOfOneReset;
+trigger lib74A68E34_gt_AbathurPrestigeSymbioteCreate;
+trigger lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply;
+trigger lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply;
+trigger lib74A68E34_gt_NovaPrestigeMeleeCliffJump;
+trigger lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight;
+trigger lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset;
 trigger lib74A68E34_gt_StukovAddCorruption;
 trigger lib74A68E34_gt_StukovCorruptionSetCD;
 trigger lib74A68E34_gt_FenixAddHeroCarrierMorph;

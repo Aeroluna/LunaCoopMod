@@ -432,7 +432,7 @@ void lib74A68E34_gf_KerriganMalignantCreep () {
     }
 }
 
-void lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice (int lp_player) {
+void lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice (int lp_player) {
     // Variable Declarations
     bool lv_foundOrder;
     bool lv_isIndexed;
@@ -1418,11 +1418,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior, true);
             lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth(lv_player);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeZagaraSwarm", c_techCountCompleteOnly) == 1)) {
-                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, true);
-                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, true);
-                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder, true);
-                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel, true);
-                TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel, true);
+                TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish, true);
             }
 
         }
@@ -1438,18 +1438,18 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAbathurSymbiote", c_techCountCompleteOnly) == 1)) {
-                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, true);
-                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, true);
-                TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, true);
+                TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, true);
+                TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, true);
+                TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, true);
             }
 
         }
         else if (auto560DABDD_val == "TerranNova") {
             TriggerEnable(libCOMI_gt_CM_NovaPsiStrike, false);
-            TriggerEnable(lib74A68E34_gt_NovaFuryOfOneHeight, true);
-            TriggerEnable(lib74A68E34_gt_NovaFuryOfOneReset, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeNovaMelee", c_techCountCompleteOnly) == 1)) {
-                TriggerEnable(lib74A68E34_gt_NovaMeleePrestigeCliffJump, true);
+                TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeCliffJump, true);
+                TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight, true);
+                TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset, true);
             }
 
         }
@@ -1691,9 +1691,9 @@ void lib74A68E34_gt_ArtanisMothershipWarpHaste_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ZagaraSwarmLocusPrestigePriceCreate
+// Trigger: ZagaraPrestigeSwarmLocusPriceCreate
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -1708,21 +1708,21 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Func (bool testConds, bo
     }
 
     Wait(0.01, c_timeGame);
-    lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice(UnitGetOwner(EventUnitCreatedUnit()));
+    lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice(UnitGetOwner(EventUnitCreatedUnit()));
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Init () {
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Func");
-    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, false);
-    TriggerAddEventUnitCreated(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate, null, null, null);
+void lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate_Init () {
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate = TriggerCreate("lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ZagaraSwarmLocusPrestigePriceDeath
+// Trigger: ZagaraPrestigeSwarmLocusPriceDeath
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -1737,21 +1737,21 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Func (bool testConds, boo
     }
 
     Wait(0.01, c_timeGame);
-    lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice(UnitGetOwner(EventUnit()));
+    lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice(UnitGetOwner(EventUnit()));
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Init () {
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Func");
-    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, false);
-    TriggerAddEventUnitDied(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath, null);
+void lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath_Init () {
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath = TriggerCreate("lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath, false);
+    TriggerAddEventUnitDied(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath, null);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ZagaraSwarmLocusPrestigePriceOrder
+// Trigger: ZagaraPrestigeSwarmLocusPriceOrder
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Func (bool testConds, bool runActions) {
     // Variable Declarations
     bool lv_isIndexed;
     bool lv_foundOrder;
@@ -1760,11 +1760,11 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, boo
     // Automatic Variable Declarations
     int auto3089ADB7_ae;
     int auto3089ADB7_var;
-    const int auto6373314C_ae = lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked;
+    const int auto6373314C_ae = lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked;
     const int auto6373314C_ai = 1;
-    const int auto6DA903E1_ae = lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked;
+    const int auto6DA903E1_ae = lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked;
     int auto6DA903E1_var;
-    const int autoC659D0EE_ae = lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked;
+    const int autoC659D0EE_ae = lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked;
     int autoC659D0EE_var;
 
     // Variable Initialization
@@ -1784,7 +1784,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, boo
     if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("ZergBuild", 11))) {
         auto6DA903E1_var = 1;
         for ( ; auto6DA903E1_var <= auto6DA903E1_ae; auto6DA903E1_var += 1 ) {
-            if ((lib74A68E34_gv_zagaraSwarmLocusPricesUnits[auto6DA903E1_var] == EventUnit())) {
+            if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[auto6DA903E1_var] == EventUnit())) {
                 lv_isIndexed = true;
                 break;
             }
@@ -1793,9 +1793,9 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, boo
         if ((lv_isIndexed == false)) {
             autoC659D0EE_var = 1;
             for ( ; autoC659D0EE_var <= autoC659D0EE_ae; autoC659D0EE_var += 1 ) {
-                if ((lib74A68E34_gv_zagaraSwarmLocusPricesUnits[autoC659D0EE_var] == null)) {
-                    lib74A68E34_gv_zagaraSwarmLocusPricesUnits[autoC659D0EE_var] = EventUnit();
-                    lib74A68E34_gv_zagaraSwarmLocusPricesPaid[autoC659D0EE_var] = CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit()));
+                if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[autoC659D0EE_var] == null)) {
+                    lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[autoC659D0EE_var] = EventUnit();
+                    lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid[autoC659D0EE_var] = CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit()));
                     break;
                 }
 
@@ -1816,9 +1816,9 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, boo
         if ((lv_foundOrder == false)) {
             lv_currentIndex = 1;
             for ( ; ( (auto6373314C_ai >= 0 && lv_currentIndex <= auto6373314C_ae) || (auto6373314C_ai < 0 && lv_currentIndex >= auto6373314C_ae) ) ; lv_currentIndex += auto6373314C_ai ) {
-                if ((lib74A68E34_gv_zagaraSwarmLocusPricesUnits[lv_currentIndex] == EventUnit())) {
-                    lib74A68E34_gv_zagaraSwarmLocusPricesUnits[lv_currentIndex] = null;
-                    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropMinerals, c_playerPropOperSubtract, (CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit())) - lib74A68E34_gv_zagaraSwarmLocusPricesPaid[lv_currentIndex]));
+                if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[lv_currentIndex] == EventUnit())) {
+                    lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[lv_currentIndex] = null;
+                    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropMinerals, c_playerPropOperSubtract, (CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit())) - lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid[lv_currentIndex]));
                     break;
                 }
 
@@ -1827,21 +1827,21 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func (bool testConds, boo
 
     }
     Wait(0.01, c_timeGame);
-    lib74A68E34_gf_ZagaraSwarmLocusPrestigeUpdatePrice(UnitGetOwner(EventUnit()));
+    lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice(UnitGetOwner(EventUnit()));
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Init () {
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Func");
-    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder, false);
-    TriggerAddEventUnitOrder(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder, null, null);
+void lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Init () {
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder = TriggerCreate("lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder, false);
+    TriggerAddEventUnitOrder(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ZagaraSwarmLocusPrestigePriceCancel
+// Trigger: ZagaraPrestigeSwarmLocusPriceCancel
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel_Func (bool testConds, bool runActions) {
     // Variable Declarations
     bool lv_foundOrder;
     int lv_currentIndex;
@@ -1850,7 +1850,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Func (bool testConds, bo
     unitgroup auto43A5F4AE_g;
     int auto43A5F4AE_u;
     unit auto43A5F4AE_var;
-    const int autoB479CDDE_ae = lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked;
+    const int autoB479CDDE_ae = lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked;
     const int autoB479CDDE_ai = 1;
 
     // Variable Initialization
@@ -1875,9 +1875,9 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Func (bool testConds, bo
         if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("BuildInProgress", 0))) {
             lv_currentIndex = 1;
             for ( ; ( (autoB479CDDE_ai >= 0 && lv_currentIndex <= autoB479CDDE_ae) || (autoB479CDDE_ai < 0 && lv_currentIndex >= autoB479CDDE_ae) ) ; lv_currentIndex += autoB479CDDE_ai ) {
-                if ((lib74A68E34_gv_zagaraSwarmLocusPricesUnits[lv_currentIndex] == auto43A5F4AE_var)) {
-                    lib74A68E34_gv_zagaraSwarmLocusPricesUnits[lv_currentIndex] = null;
-                    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropMinerals, c_playerPropOperSubtract, (CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit())) - lib74A68E34_gv_zagaraSwarmLocusPricesPaid[lv_currentIndex]));
+                if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[lv_currentIndex] == auto43A5F4AE_var)) {
+                    lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[lv_currentIndex] = null;
+                    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropMinerals, c_playerPropOperSubtract, (CatalogFieldValueGetAsInt(c_gameCatalogUnit, "SwarmNetwork", "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit())) - lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid[lv_currentIndex]));
                     break;
                 }
 
@@ -1889,18 +1889,18 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Func (bool testConds, bo
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Init () {
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Func");
-    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel, false);
-    TriggerAddEventUnitOrder(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel, null, null);
+void lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel_Init () {
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel = TriggerCreate("lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel, false);
+    TriggerAddEventUnitOrder(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ZagaraSwarmLocusPrestigePriceFinish
+// Trigger: ZagaraPrestigeSwarmLocusPriceFinish
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    const int autoB2403CEE_ae = lib74A68E34_gv_zagaraSwarmLocusPricesMaxTracked;
+    const int autoB2403CEE_ae = lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked;
     int autoB2403CEE_var;
 
     // Conditions
@@ -1917,8 +1917,8 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Func (bool testConds, bo
 
     autoB2403CEE_var = 1;
     for ( ; autoB2403CEE_var <= autoB2403CEE_ae; autoB2403CEE_var += 1 ) {
-        if ((lib74A68E34_gv_zagaraSwarmLocusPricesUnits[autoB2403CEE_var] == EventUnit())) {
-            lib74A68E34_gv_zagaraSwarmLocusPricesUnits[autoB2403CEE_var] = null;
+        if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[autoB2403CEE_var] == EventUnit())) {
+            lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[autoB2403CEE_var] = null;
             break;
         }
 
@@ -1927,10 +1927,10 @@ bool lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Func (bool testConds, bo
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Init () {
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Func");
-    TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish, false);
-    TriggerAddEventUnitConstructProgress(lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish, null, c_unitProgressStageComplete);
+void lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish_Init () {
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish = TriggerCreate("lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish, false);
+    TriggerAddEventUnitConstructProgress(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2247,9 +2247,9 @@ void lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AbathurSymbiotePrestigeCreate
+// Trigger: AbathurPrestigeSymbioteCreate
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Actions
     if (!runActions) {
@@ -2282,16 +2282,16 @@ bool lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Func (bool testConds, bool run
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Init () {
-    lib74A68E34_gt_AbathurSymbiotePrestigeCreate = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeCreate, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeActivate);
+void lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteCreate = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeActivate);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AbathurSymbiotePrestigeIncreaseSupply
+// Trigger: AbathurPrestigeSymbioteIncreaseSupply
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_abathurCommander;
 
@@ -2309,16 +2309,16 @@ bool lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Func (bool testConds, 
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Init () {
-    lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeCreate);
+void lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AbathurSymbiotePrestigeDecreaseSupply
+// Trigger: AbathurPrestigeSymbioteDecreaseSupply
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_abathurCommander;
 
@@ -2336,16 +2336,16 @@ bool lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Func (bool testConds, 
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init () {
-    lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
+void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: NovaMeleePrestigeCliffJump
+// Trigger: NovaPrestigeMeleeCliffJump
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_NovaMeleePrestigeCliffJump_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -2369,17 +2369,17 @@ bool lib74A68E34_gt_NovaMeleePrestigeCliffJump_Func (bool testConds, bool runAct
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_NovaMeleePrestigeCliffJump_Init () {
-    lib74A68E34_gt_NovaMeleePrestigeCliffJump = TriggerCreate("lib74A68E34_gt_NovaMeleePrestigeCliffJump_Func");
-    TriggerEnable(lib74A68E34_gt_NovaMeleePrestigeCliffJump, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaMeleePrestigeCliffJump, null, "NovaCombatSuit", c_unitBehaviorChangeAny);
-    TriggerAddEventUnitRevive(lib74A68E34_gt_NovaMeleePrestigeCliffJump, null);
+void lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init () {
+    lib74A68E34_gt_NovaPrestigeMeleeCliffJump = TriggerCreate("lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Func");
+    TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeCliffJump, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaPrestigeMeleeCliffJump, null, "NovaCombatSuit", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_NovaPrestigeMeleeCliffJump, null);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: NovaFuryOfOneHeight
+// Trigger: NovaPrestigeMeleeFuryOfOneHeight
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_NovaFuryOfOneHeight_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_nova;
     unit lv_target;
@@ -2399,16 +2399,16 @@ bool lib74A68E34_gt_NovaFuryOfOneHeight_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_NovaFuryOfOneHeight_Init () {
-    lib74A68E34_gt_NovaFuryOfOneHeight = TriggerCreate("lib74A68E34_gt_NovaFuryOfOneHeight_Func");
-    TriggerEnable(lib74A68E34_gt_NovaFuryOfOneHeight, false);
-    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_NovaFuryOfOneHeight, c_playerAny, "NovaWeaponBlazefireBladeShadowFuryImpactSet");
+void lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init () {
+    lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight = TriggerCreate("lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Func");
+    TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight, c_playerAny, "NovaWeaponBlazefireBladeShadowFuryImpactSet");
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: NovaFuryOfOneReset
+// Trigger: NovaPrestigeMeleeFuryOfOneReset
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_NovaFuryOfOneReset_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_nova;
 
@@ -2426,10 +2426,10 @@ bool lib74A68E34_gt_NovaFuryOfOneReset_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_NovaFuryOfOneReset_Init () {
-    lib74A68E34_gt_NovaFuryOfOneReset = TriggerCreate("lib74A68E34_gt_NovaFuryOfOneReset_Func");
-    TriggerEnable(lib74A68E34_gt_NovaFuryOfOneReset, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaFuryOfOneReset, null, "NovaWeaponBlazefireBladeShadowFuryController", c_unitBehaviorChangeDeactivate);
+void lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init () {
+    lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset = TriggerCreate("lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Func");
+    TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset, null, "NovaWeaponBlazefireBladeShadowFuryController", c_unitBehaviorChangeDeactivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3086,11 +3086,11 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCreate_Init();
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceDeath_Init();
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceOrder_Init();
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceCancel_Init();
-    lib74A68E34_gt_ZagaraSwarmLocusPrestigePriceFinish_Init();
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate_Init();
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceDeath_Init();
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Init();
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCancel_Init();
+    lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish_Init();
     lib74A68E34_gt_ZagaraSwarmLocusApplyDummyTimer_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSetupQueen_Init();
     lib74A68E34_gt_ZagaraSwarmLocusTryCreepTumor_Init();
@@ -3100,12 +3100,12 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
-    lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Init();
-    lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Init();
-    lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init();
-    lib74A68E34_gt_NovaMeleePrestigeCliffJump_Init();
-    lib74A68E34_gt_NovaFuryOfOneHeight_Init();
-    lib74A68E34_gt_NovaFuryOfOneReset_Init();
+    lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
+    lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
+    lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
+    lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();
+    lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init();
+    lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
