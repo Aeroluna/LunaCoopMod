@@ -14,6 +14,107 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="NovaPsiStrikeModel">
+        <On Terms="Behavior.NovaDashAttackSpeed.On" Send="Create"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="NovaWeaponBlazefireBladeShadowFuryBlinkOriginModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 1.200000 AsTimeScale"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryTeleport.Start; At Source" Send="Create"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryFinal.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 0.200000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+        <Model value="Nova_BlinkOut"/>
+    </CActorModel>
+    <CActorModel id="NovaWeaponBlazefireBladeShadowFuryBlinkStopModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 1.200000 AsTimeScale"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryTeleport.Stop; At Source" Send="Create"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryFinal.Stop; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 0.200000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="Nova_BlinkIn"/>
+    </CActorModel>
+    <CActorMissile id="NovaCoop">
+        <On Terms="WeaponStart.NovaWeaponBlazefireBlade.AttackStart" Send="AnimBlendTimeApply 0.090000"/>
+        <On Terms="WeaponStart.NovaWeaponBlazefireBlade.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.NovaWeaponBlazefireBlade.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="WeaponStop.NovaWeaponBlazefireBlade.AttackStop" Send="AnimBlendTimeApply"/>
+        <On Terms="WeaponStart.NovaWeaponBlazefireBladeGun.AttackStart" Send="AnimBracketStart Attack Spell,H"/>
+        <On Terms="WeaponStop.NovaWeaponBlazefireBladeGun.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="WeaponStop.NovaWeaponBlazefireBladeGun.AttackStop" Send="AnimBlendTimeApply"/>
+        <On Terms="UnitRevive.NovaHero; ValidateUnit HaveNovaWeaponBlazefireBladeBehavior" Send="AnimGroupApply C"/>
+        <On Terms="UnitRevive.NovaHero; ValidateUnit HaveNovaWeaponBlazefireBladeBehavior" Send="AnimPlay GunbladeCover Custom PlayForever,DontResetOnUnhide"/>
+        <!-- Model swaps for suits -->
+        <On Terms="Behavior.NovaCombatSuit.On" Send="Signal SuitUpdate"/>
+        <On Terms="Behavior.NovaCombatSuit.Off" Send="Signal SuitUpdate"/>
+        <On Terms="ActorCreation" Send="Signal SuitUpdate"/>
+        <On Terms="UnitRevive.NovaHero" Send="Signal SuitUpdate"/>
+        <On Terms="Signal.*.SuitUpdate; !ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Send="Signal CombatSuit"/>
+        <On Terms="Signal.*.SuitUpdate; ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Send="Signal MeleeCombatSuit"/>
+        <On Terms="Signal.*.SuitUpdate; !ValidatePlayer CommanderPrestigeNovaMelee; ValidateUnit NotHaveNovaCombatSuit" Send="Signal StealthSuit"/>
+        <On Terms="Signal.*.SuitUpdate; ValidatePlayer CommanderPrestigeNovaMelee; ValidateUnit NotHaveNovaCombatSuit" Send="Signal MeleeStealthSuit"/>
+        <On Terms="Signal.*.SuitUpdate" Target="StimPackDevice_Nova" Send="Destroy"/>
+        <On Terms="Signal.*.MeleeCombatSuit" Send="ModelSwap NovaHeroJetpack"/>
+        <On Terms="Signal.*.MeleeCombatSuit" Send="SetWireframe 0 Assets\Textures\WireFrame-NovaJetpack-Sword.dds"/>
+        <On Terms="Signal.*.MeleeCombatSuit" Send="Create StimPackDevice_Nova"/>
+        <On Terms="Signal.*.MeleeStealthSuit" Send="ModelSwap NovaHeroApolloInfantrySuit"/>
+        <On Terms="Signal.*.MeleeStealthSuit" Send="SetWireframe 0 Assets\Textures\wireframe-NovaEx3-ApolloInfantrySuitSword.dds"/>
+        <On Terms="Signal.*.CombatSuit" Send="ModelSwap NovaHeroBlinkSuit"/>
+        <On Terms="Signal.*.CombatSuit" Send="SetWireframe 0 Assets\Textures\WireFrame-NovaEx3-BlinkSuit-Shotgun.dds"/>
+        <On Terms="Signal.*.StealthSuit" Send="ModelSwap NovaHeroBase"/>
+        <On Terms="Signal.*.StealthSuit" Send="SetWireframe 0 Assets\Textures\WireFrame-NovaEx3-Rifle.dds"/>
+        <!-- Model swaps for weapons -->
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="AnimPlay GunbladeCover Custom PlayForever,DontResetOnUnhide"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="AnimGroupApply C"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="AnimGroupRemove A"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="AnimGroupRemove M"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.On" Send="Signal WireframeUpdate"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.Off; !ValidateUnit HaveNovaWeaponPsiBladeBehavior" Send="AnimGroupRemove C"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.Off" Send="AnimClear GunbladeCover"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBlade.Off" Send="Signal WireframeUpdate"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveNovaWeaponBlazefireBladeBehavior" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation; ValidatePlayer HaveNovaWeaponBlazefireBladeBehavior" Send="Signal WireframeUpdate"/>
+        <On Terms="UnitRevive.NovaHero; ValidateUnit HaveNovaWeaponBlazefireBladeBehavior" Send="AnimGroupApply C"/>
+        <!-- weapon abilities -->
+        <On Terms="Abil.NovaGadgetFlashBangGrenades.SourcePrepStart" Send="Create Nova_FlashBangGrenade_PinPull_Sound"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="AnimBracketStop Charge"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.On" Send="StatusSet Charging 1"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="StatusSet Charging 0"/>
+        <!-- Sounds -->
+        <On Terms="Behavior.NovaCliffJump.Launch" Send="AnimBracketStart Jump Jump,Start Jump Jump,End"/>
+        <On Terms="Behavior.NovaCliffJump.LandDown" Send="AnimBracketStop Jump"/>
+        <On Terms="Behavior.NovaCliffJump.LandUp" Send="AnimBracketStop Jump"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Send="Create Nova_TurbojetJumpsuit_Movement_ActorSound"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Target="Nova_TurbojetJumpsuit_Movement_ActorSound" Send="Destroy"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryDamage.Start" Send="AnimPlay Attack Attack DontResetOnUnhide -1.000000 -1.000000 0.200000 AsDuration"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/>
+        <On Terms="Abil.NovaCoopDecoyTarget.SourceCastStart" Send="AnimPlay SpellE Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <Model value="NovaHeroBase"/>
+        <BarOffset value="50"/>
+    </CActorMissile>
+    <CActorModel id="NovaWeaponPsiStrikeImpact">
+        <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="StimPackDevice_Nova" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachHardPoint"/>
+    </CActorModel>
+    <CActorAction id="NovaGadgetFlashBangGrenadesAttack" parent="GenericAttack" effectImpact="NovaGadgetFlashBangGrenadeSearch" effectLaunch="NovaGadgetFlashBangGrenadeLaunchMissile">
+        <LaunchAttachQuery Methods="Weapon 2"/>
+        <LaunchAssets Sound="Nova_FlashBangGrenade_Toss"/>
+        <ImpactMap index="None" Sound="Nova_FlashBangGrenade_Impact"/>
+        <ImpactPointSiteOps Ops="SOpTargetPoint SOpShadow SOpMoveUpByDot25"/>
+    </CActorAction>
     <CActorModel id="OdinNukeIndicator">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 6.250000 AsDuration"/>
         <On Terms="Effect.OdinNukeDamage.Start" Send="Destroy"/>

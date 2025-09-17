@@ -726,6 +726,28 @@ This increases the reliability of Ghosts getting the extra snipes off.
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
 
+- Changed Nova to visually change suits between Stealth Mode and Assault Mode.
+- Added P4: Covert Crusader.
+  - Has higher movement speed than normal Nova.
+  - Replaces gear in both modes.
+  - Stealth Mode:
+    - Blazefire Gunblade/Fury of One
+      - Fury of One attacks twice as fast from NCO.
+    - Apollo Infantry Suit
+      - Can be activated for 30 seconds of cloak. Increases max energy by 100.
+    - Flashbang Grenades
+      - Heroic units are immune.
+  - Assault Mode:
+    - Monomolecular Blade/Dash Attack
+      - Dash Attack reworked, should more reliably charge in target direction, but may get stuck on impassable terrain.
+      - Dash Attack also grants a brief amount of invulnerability.
+    - Turbojet Jumpsuit
+      - Allows cliff jumping. Increases max health by 250.
+    - Stim Infusion
+  - Operation Efficiency and Infernal Projectiles affect Fury of One and Dash Attack respectively.
+
+Shows some love for the unused gear. Makes Nova less effective at supporting her army but stronger individually.
+
 ## Stukov
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.

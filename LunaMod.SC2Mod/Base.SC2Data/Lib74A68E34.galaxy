@@ -1444,6 +1444,15 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             }
 
         }
+        else if (auto560DABDD_val == "TerranNova") {
+            TriggerEnable(libCOMI_gt_CM_NovaPsiStrike, false);
+            TriggerEnable(lib74A68E34_gt_NovaFuryOfOneHeight, true);
+            TriggerEnable(lib74A68E34_gt_NovaFuryOfOneReset, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeNovaMelee", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_NovaMeleePrestigeCliffJump, true);
+            }
+
+        }
         else if (auto560DABDD_val == "ZergStukov") {
             TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
@@ -2334,6 +2343,96 @@ void lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: NovaMeleePrestigeCliffJump
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaMeleePrestigeCliffJump_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "NovaCoop"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(EventUnit(), "NovaCombatSuit") == true)) {
+        CatalogFieldValueSet(c_gameCatalogUnit, "NovaCoop", "Mover", EventPlayer(), "CliffJumper");
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogUnit, "NovaCoop", "Mover", EventPlayer(), "Ground");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaMeleePrestigeCliffJump_Init () {
+    lib74A68E34_gt_NovaMeleePrestigeCliffJump = TriggerCreate("lib74A68E34_gt_NovaMeleePrestigeCliffJump_Func");
+    TriggerEnable(lib74A68E34_gt_NovaMeleePrestigeCliffJump, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaMeleePrestigeCliffJump, null, "NovaCombatSuit", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_NovaMeleePrestigeCliffJump, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NovaFuryOfOneHeight
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaFuryOfOneHeight_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_nova;
+    unit lv_target;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_nova = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetHeight(lv_nova, UnitGetHeight(lv_target), 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaFuryOfOneHeight_Init () {
+    lib74A68E34_gt_NovaFuryOfOneHeight = TriggerCreate("lib74A68E34_gt_NovaFuryOfOneHeight_Func");
+    TriggerEnable(lib74A68E34_gt_NovaFuryOfOneHeight, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_NovaFuryOfOneHeight, c_playerAny, "NovaWeaponBlazefireBladeShadowFuryImpactSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NovaFuryOfOneReset
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaFuryOfOneReset_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_nova;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_nova = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetHeight(lv_nova, 0.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaFuryOfOneReset_Init () {
+    lib74A68E34_gt_NovaFuryOfOneReset = TriggerCreate("lib74A68E34_gt_NovaFuryOfOneReset_Func");
+    TriggerEnable(lib74A68E34_gt_NovaFuryOfOneReset, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_NovaFuryOfOneReset, null, "NovaWeaponBlazefireBladeShadowFuryController", c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: StukovAddCorruption
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_StukovAddCorruption_Func (bool testConds, bool runActions) {
@@ -3004,6 +3103,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurSymbiotePrestigeCreate_Init();
     lib74A68E34_gt_AbathurSymbiotePrestigeIncreaseSupply_Init();
     lib74A68E34_gt_AbathurSymbiotePrestigeDecreaseSupply_Init();
+    lib74A68E34_gt_NovaMeleePrestigeCliffJump_Init();
+    lib74A68E34_gt_NovaFuryOfOneHeight_Init();
+    lib74A68E34_gt_NovaFuryOfOneReset_Init();
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();

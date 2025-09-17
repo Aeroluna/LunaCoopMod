@@ -517,6 +517,20 @@
         <EffectArray Reference="Unit,TrooperMengskFlamethrower,CostResource[Minerals]" Value="160"/>
         <EffectArray Reference="Unit,TrooperMengskAA,CostResource[Minerals]" Value="160"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeNovaMelee">
+        <EffectArray Reference="Unit,NovaCoop,Speed" Value="0.500000"/>
+        <EffectArray Reference="Behavior,NovaCombatSuit,Modification.VitalMaxArray[Life]" Value="250"/>
+        <EffectArray Operation="Set" Reference="Behavior,NovaPermanentlyCloaked,Modification.StateFlags[Cloak]" Value="0"/>
+        <EffectArray Reference="Behavior,NovaPermanentlyCloaked,Modification.VitalMaxArray[Energy]" Value="100"/>
+        <EffectArray Reference="Effect,NovaWeaponImprovedCanisterRifleSnipeRefund,VitalArray[Energy].Change" Value="25"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaSnipeRefund,Tooltip" Value="Button/Tooltip/ResearchNovaSnipeRefundMelee"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaSnipeRefund,AlertTooltip" Value="Button/Tooltip/ResearchNovaSnipeRefundMelee"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaShotgunBlastRange,Name" Value="Button/Name/ResearchNovaShotgunBlastRangeMelee"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaShotgunBlastRange,Tooltip" Value="Button/Tooltip/ResearchNovaShotgunBlastRangeMelee"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaShotgunBlastRange,AlertTooltip" Value="Button/Tooltip/ResearchNovaShotgunBlastRangeMelee"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaShotgunBlastRange,Icon" Value="Assets\Textures\btn-ability-nova-neckbreaker.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchNovaShotgunBlastRange,AlertIcon" Value="Assets\Textures\btn-ability-nova-neckbreaker.dds"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorMechAfterburners">
         <EffectArray Operation="Subtract" Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
         <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
@@ -920,6 +934,14 @@
         <EffectArray Reference="Effect,MasteryKerriganRazorSwarmDamageDummy,Amount" Value="1.4"/>
         <EffectArray Reference="Effect,MasteryKerriganRazorSwarmDamageDummy,AttributeBonus[Structure]" Value="1.4"/>
     </CUpgrade>
+    <CUpgrade id="MasteryNovaPrimaryAbilityImprovement">
+        <EffectArray Reference="Effect,NovaWeaponBlazefireBladeShadowFuryDamage,Amount" Value="0.7514"/>
+        <EffectArray Reference="Behavior,FlashBangGrenade,Duration" Value="0.083500"/>
+        <EffectArray Reference="Effect,NovaDashAttackDamage,Amount" Value="1.67"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.AttackSpeedMultiplier" Value="0.00835"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.MoveSpeedMultiplier" Value="0.00835"/>
+        <EffectArray Reference="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]" Value="0.336000"/>
+    </CUpgrade>
     <CUpgrade id="MasteryRaynorMedicSecondaryHeal">
         <EffectArray Reference="Effect,RaynorMasteryHealMedivacSecondary,RechargeVitalRate" Value="0.269400"/>
     </CUpgrade>
@@ -939,6 +961,15 @@
     <CUpgrade id="NeosteelFrame">
         <EffectArray Operation="Set" Reference="Button,BunkerFortified,AlertIcon" Value="Assets\Textures\btn-building-terran-bunkerfortified.dds"/>
         <EffectArray Operation="Set" Reference="Button,BunkerFortified,Icon" Value="Assets\Textures\btn-building-terran-bunkerfortified.dds"/>
+    </CUpgrade>
+    <CUpgrade id="NovaShotgunBlastRange">
+        <EffectArray Reference="Effect,NovaDashAttackSearch,AreaArray[0].Radius" Value="1"/>
+        <EffectArray Reference="Actor,NovaPsiStrikeGuide,Width" Value="2.500000"/>
+        <EffectArray Reference="Actor,NovaPsiStrikeModel,Scale" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Button,NovaWeaponPsiBlade,Tooltip" Value="Button/Tooltip/NovaWeaponPsiBladeImproved"/>
+    </CUpgrade>
+    <CUpgrade id="NovaSnipeRefund">
+        <EffectArray Operation="Set" Reference="Button,NovaWeaponBlazefireBladeShadowFury,Tooltip" Value="Button/Tooltip/NovaWeaponBlazefireBladeShadowFuryMelee"/>
     </CUpgrade>
     <CUpgrade id="OrbitalStrike">
         <EffectArray Operation="Set" Reference="Abil,StarportTrain,InfoArray[Train1].Effect" Value="MercAirDrop"/>

@@ -152,6 +152,59 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectApplyForce id="NovaDashAttackApplyForce">
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Value="Caster"/>
+        <Amount value="-1"/>
+    </CEffectApplyForce>
+    <CEffectCreatePersistent id="NovaDashAttackCP">
+        <PeriodCount value="6"/>
+        <PeriodicEffectArray value="NovaDashAttackPeriodSet"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="NovaDashAttackInitialSet"/>
+        <FinalEffect value="NovaDashAttackSpeedRB"/>
+        <ExpireEffect value="NovaDashAttackPeriodSet"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="NovaDashAttackDamage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value=""/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="NovaDashAttackInitialCP">
+        <WhichLocation Value="CasterPoint"/>
+        <InitialEffect value="NovaDashAttackCP"/>
+        <InitialOffset value="0,-20,0"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
+    <CEffectSet id="NovaDashAttackInitialSet">
+        <EffectArray value="MakeCasterFacingTargetPoint"/>
+        <EffectArray value="NovaDashAttackSpeedAB"/>
+        <EffectArray value="NovaDashAttackApplyForce"/>
+        <EffectArray value="NovaDashAttackInvulnerabilityAB"/>
+    </CEffectSet>
+    <CEffectSet id="NovaDashAttackPeriodSet">
+        <EffectArray value="NovaDashAttackApplyForce"/>
+        <EffectArray value="NovaDashAttackSearch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="NovaDashAttackSearch">
+        <SearchFilters value="Ground,Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1" Effect="NovaDashAttackDamage"/>
+        <ImpactLocation Value="CasterUnit"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="NovaDashAttackSpeedAB">
+        <Behavior value="NovaDashAttackSpeed"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="NovaDashAttackSpeedRB">
+        <BehaviorLink value="NovaDashAttackSpeed"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="NovaGadgetFlashBangGrenadeSearch">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Heroic,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <AreaArray index="1" removed="1"/>
+    </CEffectEnumArea>
     <CEffectCreatePersistent id="NovaGriffinTransportUnloadUnitsInitialCP">
         <InitialEffect value="NovaGriffinTransportUnloadUnitsSet"/>
     </CEffectCreatePersistent>
@@ -170,6 +223,40 @@
         <EffectArray value="NovaGriffinTransportTeleportOut"/>
         <EffectArray value="CommanderPrestigeNovaAirliftSearch"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="NovaDashAttackInvulnerabilityAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NovaDashAttackInvulnerability"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="NovaWeaponBlazefireBladeShadowFuryCP">
+        <FinalEffect value="NovaWeaponBlazefireBladeShadowFuryRefundTrackerRB"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="NovaWeaponBlazefireBladeShadowFuryImpactSet">
+        <EffectArray index="1" value="NovaWeaponBlazefireBladeShadowFuryRefundAB"/>
+        <EffectArray value="NovaWeaponBlazefireBladeShadowFuryDamage"/>
+    </CEffectSet>
+    <CEffectSet id="NovaWeaponBlazefireBladeShadowFuryRefundImpactSet">
+        <ValidatorArray value="NotNovaBlazefireBladeShadowFuryRefunded"/>
+        <EffectArray value="NovaWeaponBlazefireBladeShadowFuryRefundCP"/>
+        <EffectArray value="NovaWeaponBlazefireBladeShadowFuryRefundTrackerAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="NovaWeaponBlazefireBladeShadowFuryRefundTrackerAB">
+        <Behavior value="NovaWeaponBlazefireBladeShadowFuryRefundTracker"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="NovaWeaponBlazefireBladeShadowFuryRefundTrackerRB">
+        <BehaviorLink value="NovaWeaponBlazefireBladeShadowFuryRefundTracker"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="NovaWeaponBlazefireBladeShadowFuryRefundAB">
+        <ValidatorArray index="0" value="HaveNovaSnipeRefund"/>
+        <Behavior value="NovaWeaponBlazefireBladeShadowFuryRefundUnnamed"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="NovaWeaponBlazefireBladeShadowFuryRefundCP">
+        <FinalEffect value="NovaWeaponImprovedCanisterRifleSnipeRefund"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="OdinNukeDamage">
         <AreaArray index="0" Radius="4"/>
         <AreaArray index="1" Radius="6" Fraction="0.75"/>

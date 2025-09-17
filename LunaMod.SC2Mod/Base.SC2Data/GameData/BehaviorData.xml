@@ -91,6 +91,9 @@
     <CBehaviorBuff id="DefilerMPPlague">
         <Duration value="20"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FlashBangGrenade">
+        <Duration value="5"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GhostMengskCloakBuff">
         <InfoIcon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -155,6 +158,53 @@
             <Kind index="NoProc" value="0"/>
             <Chance value="1"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaDashAttackSpeed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification MoveSpeedMaximum="30" MoveSpeedMinimum="30">
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaDashAttackInvulnerability">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="1.5"/>
+        <DamageResponse ModifyFraction="0">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponBlazefireBlade">
+        <BehaviorCategories index="User9" value="1"/>
+        <DisableValidatorArray index="0" value="HaveNovaStealthSuit"/>
+        <RemoveValidatorArray value="CommanderPrestigeNovaMelee"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryController">
+        <Duration value="2"/>
+        <Period value="0.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponHellfireShotgun">
+        <RemoveValidatorArray value="NotCommanderPrestigeNovaMelee"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponImprovedCanisterRifle">
+        <RemoveValidatorArray value="NotCommanderPrestigeNovaMelee"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryRefundUnnamed">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.0625"/>
+        <DamageResponse Fatal="1" Handled="NovaWeaponBlazefireBladeShadowFuryRefundImpactSet">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryRefundTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponPsiBlade">
+        <DisableValidatorArray index="0" value="HaveNovaCombatSuit"/>
+        <RemoveValidatorArray value="CommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OracleDeceleration">
         <InfoFlags index="Hidden" value="1"/>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorPlayerRequirement id="CommanderPrestigeNovaMelee">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeNovaMelee"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareCooldown id="DisruptorOnCooldown">
         <OtherUnit Value="Target"/>
         <Compare value="GT"/>
@@ -145,6 +149,11 @@
         <Behavior value="GhostMengskIrradiate"/>
         <ResultFailed value="Error,Error/AlreadyHasImmolate"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HaveNovaWeaponBlazefireBladeBehavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="NovaWeaponBlazefireBlade"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitFilters id="IsMechAir">
         <Filters value="Air,Mechanical;Ground"/>
     </CValidatorUnitFilters>
@@ -158,6 +167,10 @@
     </CValidatorCombine>
     <CValidatorCombine id="IsNotMechAir">
         <CombineArray value="IsMechAir"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="NotCommanderPrestigeNovaMelee">
+        <CombineArray value="CommanderPrestigeNovaMelee"/>
         <Negate value="1"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NotHaveGhostMengskEMPPreMarker">
@@ -278,6 +291,10 @@
         <Find value="1"/>
         <Value value="TychusResearchedOdinRedButton"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="NotNovaBlazefireBladeShadowFuryRefunded">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NovaWeaponBlazefireBladeShadowFuryRefundTracker"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVital id="SILiberatorAmmoMissingEnergy">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>

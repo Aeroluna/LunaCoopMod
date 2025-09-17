@@ -97,6 +97,38 @@
             <LayoutButtons Face="CommanderPrestigeAbathurSymbioteLocked" Type="Passive" Requirements="CommanderPrestigeAbathurSymbiote" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="NovaCoop">
+        <AbilArray Link="SuperStimpackNova"/>
+        <AbilArray Link="NovaPsiStrike"/>
+        <AbilArray Link="NovaGadgetFlashBangGrenades"/>
+        <AbilArray Link="NovaWeaponBlazefireBladeShadowFury"/>
+        <AbilArray Link="NovaApolloCloak"/>
+        <BehaviorArray Link="NovaWeaponBlazefireBlade"/>
+        <BehaviorArray Link="NovaWeaponPsiBlade"/>
+        <BehaviorArray Link="NovaCliffJump"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="14" Face="ApolloCloakOnNova" Type="AbilCmd" AbilCmd="NovaApolloCloak,Execute" Behavior="" Requirements=""/>
+            <LayoutButtons index="15" Face="NovaArmorStealthSuit" Behavior="NovaPermanentlyCloaked" Requirements="HaveNovaStealthSuit"/>
+            <LayoutButtons Face="NovaWeaponBlazefireBladeShadowFury" Type="AbilCmd" AbilCmd="NovaWeaponBlazefireBladeShadowFury,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="NovaWeaponPsiBlade" Type="AbilCmd" AbilCmd="NovaPsiStrike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="NovaGadgetFlashBangGrenades" Type="AbilCmd" AbilCmd="NovaGadgetFlashBangGrenades,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="SuperStimpackNova" Type="AbilCmd" AbilCmd="SuperStimpackNova,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="NovaArmorJumpSuit" Type="Passive" Requirements="PrestigeMeleeAndCombatSuit" Row="2" Column="1"/>
+            <LayoutButtons>
+                <Face value="NovaArmorCombatSuit"/>
+                <Type value="Passive"/>
+                <Behavior value="NovaCombatSuit"/>
+                <Requirements value="HaveNovaCombatSuit"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="NovaReviveBeacon">
+        <BehaviorArray index="3" Link="Unrepairable"/>
+        <BehaviorArray index="4" Link="Unmoved"/>
+        <BehaviorArray index="5" removed="1"/>
+    </CUnit>
     <CUnit id="TychusBunker">
         <DeathRevealRadius value="3"/>
         <Facing value="315"/>

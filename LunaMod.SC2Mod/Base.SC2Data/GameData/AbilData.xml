@@ -212,6 +212,37 @@
         <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="NovaApolloCloak">
+        <CmdButtonArray index="Execute" Requirements="HaveNovaStealthSuit"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="NovaGadgetFlashBangGrenades">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Charge>
+                <CountMax value="0"/>
+                <CountUse value="0"/>
+                <Link value="Abil/NovaGadgetFlashBangGrenades"/>
+                <Location value="Abil"/>
+            </Charge>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="HaveNovaStealthSuit"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="NovaPsiStrike">
+        <Effect index="0" value="NovaDashAttackInitialCP"/>
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Flags index="Transient" value="0"/>
+        <Flags index="TransientPreferred" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+        <CmdButtonArray index="Execute" State="Restricted" Requirements="HaveNovaCombatSuit"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="NovaWeaponBlazefireBladeShadowFury">
+        <CmdButtonArray index="Execute" Requirements="HaveNovaStealthSuit"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="OracleRevelation">
         <CmdButtonArray index="Execute" State="Available"/>
     </CAbilEffectTarget>
@@ -236,6 +267,12 @@
             <Cooldown TimeUse="10"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="SuperStimpackNova">
+        <CmdButtonArray index="Execute" State="Restricted" Requirements="HaveNovaCombatSuit"/>
+        <Cost index="0">
+            <Cooldown TimeUse="20"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="SymbioteCarapacePrestige">
         <Alignment value="Positive"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
