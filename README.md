@@ -942,6 +942,10 @@ Buffing a top bar ability feels kinda boring, instead P2 now improves how many M
 
 Often, whatever these were shooting at would already be dead by the time the projectile arrives.
 
+- Increased Deimos Viking's Gatling Cannon damage from 18 to 18 (+12 vs Mechanical).
+
+Copied bonus vs mechanical from Versus.
+
 - Increased range of Sovereign Battlecruiser's Mini Yamato Cannon from 6 to 8.
 
 It's a damn Yamato cannon, it should be long range! Just feels natural, y'know?
@@ -1149,6 +1153,20 @@ Nobody likes having their elite units Yamato'd to death, this should help their 
 - Reworked Aegis Guard's Aegis Barrier passive from granting a 300 damage absorb to granting 300 shields.
 
 Makes it possible to track the Shield on the unit info panel. Will now interact with things like EMPs and Shield Batteries.
+
+- Increased Sky Fury's Gatling Cannon damage from 18 to 24 (+16 vs Mechanical).
+- Increased Sky Fury's Lanzer Torpedos Damage from 15 (+6 vs Armored) to 28.
+
+Sky Furies have bad damage against non-massive targets, and still do less damage than an Aegis Guard even against massive targets.
+
+- Increased duration of Sky Fury's Tactical Realignment from 5 seconds to 10 seconds.
+- Reworked Sky Fury's Tactical Realignment to increase attack speed by 50% instead of attack damage.
+
+Increased duration should make it easier to get value from the buff. Increase attack speed instead of attack damage to help mitigate overkill.
+
+- Changed Sky Fury's Rank 1 to additionally increase weapon range by +2.
+
+Sky Furies are super fragile until reaching Rank 3. Increased range should help them kite enemies, especially with the Viking speed upgrade.
 
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
