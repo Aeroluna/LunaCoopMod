@@ -1459,6 +1459,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ProtossFenix") {
             TriggerEnable(lib74A68E34_gt_FenixAddHeroCarrierMorph, true);
+            TriggerEnable(lib74A68E34_gt_FenixHeroCarrierFix, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeFenixChampion", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(libCOMI_gt_CM_Fenix_ChampionMorphed, false);
+                TriggerEnable(lib74A68E34_gt_FenixPrestigeChampionMorphed, true);
+            }
+
         }
         else if (auto560DABDD_val == "TerranHorner") {
             TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
@@ -2517,6 +2523,79 @@ void lib74A68E34_gt_FenixAddHeroCarrierMorph_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: FenixHeroCarrierFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FenixHeroCarrierFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAbilityRemove(EventUnit(), "FenixClolarionCarrierHangar");
+    UnitAbilityRemove(EventUnit(), "FenixClolarionCarrierBomberHangar");
+    UnitAbilityRemove(EventUnit(), "FenixClolarionCarrierBomberDummy");
+    UnitAbilityRemove(EventUnit(), "FenixClolarionHangarQueue5");
+    UnitWeaponRemove(EventUnit(), "InterceptorLaunch");
+    UnitAbilityAdd(EventUnit(), "FenixClolarionCarrierHangar");
+    UnitAbilityAdd(EventUnit(), "FenixClolarionCarrierBomberHangar");
+    UnitAbilityAdd(EventUnit(), "FenixClolarionCarrierBomberDummy");
+    UnitAbilityAdd(EventUnit(), "FenixClolarionHangarQueue5");
+    UnitWeaponAdd(EventUnit(), "FenixClolarionInterceptorLaunch", null);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FenixHeroCarrierFix_Init () {
+    lib74A68E34_gt_FenixHeroCarrierFix = TriggerCreate("lib74A68E34_gt_FenixHeroCarrierFix_Func");
+    TriggerEnable(lib74A68E34_gt_FenixHeroCarrierFix, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_FenixHeroCarrierFix, null, AbilityCommand("FenixClolarionCarrierMorph", 0), c_abilMorphStageMoverEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FenixPrestigeChampionMorphed
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FenixPrestigeChampionMorphed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    int lv_player;
+    unit lv_newChampion;
+
+    // Automatic Variable Declarations
+    const int auto005FA1DD_ae = libCOMI_gv_cMC_Fenix_ChampionCount;
+    const int auto005FA1DD_ai = 1;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+    lv_newChampion = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 1;
+    for ( ; ( (auto005FA1DD_ai >= 0 && lv_i <= auto005FA1DD_ae) || (auto005FA1DD_ai < 0 && lv_i >= auto005FA1DD_ae) ) ; lv_i += auto005FA1DD_ai ) {
+        if ((UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitCaster)) == libCOMI_gv_cM_Fenix_ChampionUnitType[lv_i])) {
+            PlayerCreateEffectPoint(UnitGetOwner(libCOMI_gv_cM_Fenix_ChampionStructure[lv_player]), "FenixChampionSwapLaunch", UnitGetPosition(libCOMI_gv_cM_Fenix_ChampionStructure[lv_player]));
+            libCOMI_gf_CM_Fenix_AvengingProtocol(lv_i, lv_player, 5);
+            UnitGroupRemove(libCOMI_gv_cM_Fenix_ChampionVolunteerUnitGroup[lv_i][lv_player], lv_newChampion);
+            libCOMI_gf_CM_Fenix_UpdateNetworkValues(lv_i, UnitGetOwner(lv_newChampion));
+            libCOMI_gf_CM_Fenix_UpdateFenixChampionShellCountValues(lv_i, UnitGetOwner(lv_newChampion));
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FenixPrestigeChampionMorphed_Init () {
+    lib74A68E34_gt_FenixPrestigeChampionMorphed = TriggerCreate("lib74A68E34_gt_FenixPrestigeChampionMorphed_Func");
+    TriggerEnable(lib74A68E34_gt_FenixPrestigeChampionMorphed, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_FenixPrestigeChampionMorphed, c_playerAny, "FenixChampionSwapImpactUnit");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: HornerBomberPlatformImproved
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_HornerBomberPlatformImproved_Func (bool testConds, bool runActions) {
@@ -3109,6 +3188,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
+    lib74A68E34_gt_FenixHeroCarrierFix_Init();
+    lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();

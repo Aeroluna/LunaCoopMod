@@ -18,7 +18,6 @@
         <OperandArray value="LT8CountUpgradeCommanderLevelCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeCommanderPrestigeNovaMeleeCompleteOnlyCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly"/>
         <OperandArray value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
     </CRequirementAnd>
@@ -56,6 +55,11 @@
     <CRequirementAnd id="AndGTECountUpgradeCommanderLevelCompleteOnly6CountUpgradeZeratulCommanderCompleteOnly">
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndLT1640478685CountUnitFenixClolarionBomberQueuedOrBetterAtUnit2CountUpgradeFenixChampionCarrierBombersCompleteOnly1162600905">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="LT1640478685CountUnitFenixClolarionBomberQueuedOrBetterAtUnit2"/>
+        <OperandArray value="CountUpgradeFenixChampionCarrierBombersCompleteOnly1162600905"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNot1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnitCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
         <OperandArray value="Not1225867992CountBehaviorUnderConstructionCompleteOnlyAtUnit"/>
@@ -117,13 +121,16 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeAbathurSymbiote" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="CommanderPrestigeFenixChampion" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeKerriganBroodCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeKerriganBrood" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CommanderPrestigeNovaMelee" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeSwannMovingCompleteOnly">
@@ -152,6 +159,10 @@
     <CRequirementCountUpgrade id="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="DefilerMetasynapticNode" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeFenixChampionCarrierBombersCompleteOnly1162600905">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="FenixChampionCarrierBombers" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPCompleteOnly484288873">
         <Flags index="TechTreeCheat" value="0"/>
@@ -276,6 +287,10 @@
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
     </CRequirementEq>
+    <CRequirementLT id="LT1640478685CountUnitFenixClolarionBomberQueuedOrBetterAtUnit2">
+        <OperandArray index="0" value="CountUnitFenixClolarionBomberQueuedOrBetterAtUnit"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementLT>
     <CRequirementLT id="LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5">
         <OperandArray index="0" value="CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit"/>
         <OperandArray index="1" value="5"/>
@@ -311,7 +326,6 @@
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitTychusOdinQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly">
@@ -381,6 +395,30 @@
     <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixClolarionCarrierCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixClolarionCarrierCompleteOnly0"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixKaldalisZealotCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixKaldalisZealotCompleteOnly0"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixMojoScoutCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixMojoScoutCompleteOnly0"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixTaldarinImmortalCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixTaldarinImmortalCompleteOnly0"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixTalisAdeptCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixTalisAdeptCompleteOnly0"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixWarbringerColossusCompleteOnly0">
+        <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>
+        <OperandArray value="EqCountUnitFenixWarbringerColossusCompleteOnly0"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnlyTechTreeCheat"/>

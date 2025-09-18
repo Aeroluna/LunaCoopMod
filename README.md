@@ -555,9 +555,9 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 
 - Fixed a bug where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
 
-Funny that this passive could *nerf* some units.
+Funny that this passive could *nerf* some units. This happened because the buff would multiply energy regeneration by 1.5 and abilities like Cloak cause your energy regeneration to be negative.
 
-- Fixed a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+- Fixed (mostly) a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
 
 yeah.
 
@@ -875,6 +875,20 @@ A few fixes. The Siege Tank bug took way too long to figure out...
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
 
+- Changed Kaldalis's Engage ability to require researching Charge at the Twilight Council.
+- Changed Talis's Psionic Projection ability to require researching at the Twilight Council.
+- Reduced Warbringer's weapon from 9 to 6.
+- Changed Extended Thermal Lance to additionally affect Warbringer.
+- Changed Graviton Catapult to additionally affect Clolarion.
+
+It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *does* affect Mojo. Not sure why this was the exception.
+
+- Added P4: Ascendant Chorus
+  - Advantage: The number of Champion A.I.s is no longer limited.
+  - Disadvantage: All combat shell unit costs increased by 100%. Avenging Protocol is unavailable.
+
+Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
+
 ## Dehaka
 
 - Reduced the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
@@ -1090,9 +1104,9 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 
 ## Stetmann
 
-- Buffed Stetellites by adding Map Boss attribute.
+- Added Map Boss attribute to Stetellites.
 
-Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free.
+Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake.
 
 ## Mengsk
 
