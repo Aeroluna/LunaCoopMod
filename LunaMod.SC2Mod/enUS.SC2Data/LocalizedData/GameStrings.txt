@@ -55,6 +55,7 @@ Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
 Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attack, or detect.
 Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affected by Void Prison and cannot be targeted again.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
+Behavior/Tooltip/DuskWingBansheeCloak=This unit is cloaked and will only be revealed by detectors or effects. Its weapon range is also increased by 2.
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneration and movement speed while cloaked.
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
@@ -82,6 +83,7 @@ Button/Name/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=Evolve Abil
 Button/Name/CommanderPrestigeKerriganBrood=Champion of the Brood War
 Button/Name/CommanderPrestigeMengskZerg=Cerberus Director
 Button/Name/CommanderPrestigeNovaMelee=Covert Crusader
+Button/Name/CommanderPrestigeRaynorMercenary=Mercenary
 Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
 Button/Name/CommanderPrestigeSwannMoving=Rolling Thunder
 Button/Name/CommanderPrestigeZagaraSwarm=Subterranean Tide
@@ -229,6 +231,7 @@ Button/Tooltip/CommanderPrestigeNovaAirlift=<s val="Coop_Prestige_Advantage">Adv
 Button/Tooltip/CommanderPrestigeNovaMelee=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Nova gains Blazefire Gunblade, Apollo Infantry Suit, and Flashbang Grenades in Stealth Mode and Monomolecular Blade, Turbojet Jumpsuit, and Stim Infusion in Assault Mode.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Nova's normal gear is unavailable.
 Button/Tooltip/CommanderPrestigeRaynorAfterburners=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Ignite Afterburners additionally increases attack speed by 100% and has no cooldown. Can now be autocast.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Mechanical units no longer cost less. Ignite Afterburners costs 10 life and its movement speed bonus is reduced to 50%.
 Button/Tooltip/CommanderPrestigeRaynorAfterburnersUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Additionally increases attack speed by <s val="Coop_Prestige_Tooltip"><d ref="$UpgradeEffectArrayValue:CommanderPrestigeRaynorMechAfterburners:Behavior,VehicleAfterburners,Modification.AttackSpeedMultiplier$*100"/></s>%. Cooldown removed. Can autocast.
+Button/Tooltip/CommanderPrestigeRaynorMercenary=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Ignite Afterburners additionally increases attack speed by 100% and has no cooldown. Can now be autocast.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Mechanical units no longer cost less. Ignite Afterburners costs 10 life and its movement speed bonus is reduced to 50%.
 Button/Tooltip/CommanderPrestigeStukov=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Infested Banshees can load up to 16 Infested infantry and can launch their cargo at a ground target.<n/><n/>Infested Starports and Infested Banshees no longer have tech requirements. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Infested Infantry have 30% reduced timed life.
 Button/Tooltip/CommanderPrestigeStukovBunkers=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Infested Bunkers, Infested Barracks, and the Infested Colonist Compound spawn infantry 50% faster.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Infested Bunkers no longer have cargo capacity.
 Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less.</n></n>Automated Mitosis and Necroplasmic Synthesis are 200% more effective.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
@@ -405,6 +408,7 @@ Effect/Name/CarrierRepairDroneSet=Carrier Repair Drone Set
 Effect/Name/CommanderPrestigeNovaAirliftAB=CommanderPrestigeNovaAirliftAB
 Effect/Name/CommanderPrestigeNovaAirliftSearch=CommanderPrestigeNovaAirliftSearch
 Effect/Name/DarkArchonNerazimWeaponDamage=Dark Archon Nerazim Weapon Damage
+Effect/Name/DukesRevengeSwitch=DukesRevengeSwitch
 Effect/Name/EnshroudApplyBuff=Enshroud (Apply Buff)
 Effect/Name/EnshroudHeal=Enshroud (Heal)
 Effect/Name/EnshroudSearch=Enshroud (Search)
@@ -606,6 +610,7 @@ Param/Expression/lib_74A68E34_6F69C080=+~A~
 Param/Expression/lib_74A68E34_E2739024=SetScale ~A~
 Param/Expression/lib_74A68E34_F34019F3=Found ~A~ nearby creep tumors.
 Param/Value/lib_01833E95_4CBC5204=► Hello world!
+Param/Value/lib_74A68E34_06BC5908=Placement unit not found, falling back to spawn point based on player start!
 Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
 Param/Value/lib_74A68E34_10B8F288=<c val="FF0000">player 2 is playing!</c>
 Param/Value/lib_74A68E34_57C032DF=<c val="FF8000">Ally control acquired</c>
@@ -641,8 +646,10 @@ RequirementNode/Tooltip/LT3730171456CountUnitSwarmNetworkQueuedOrBetter4=Limit 4
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen.
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter=Only one Precision Strike upgrade can be chosen.
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen.
+RequirementNode/Tooltip/Or1394776239TechTreeCheatCountUpgradeClusterWarheadsCompleteOnlyNotCountUpgradeCommanderPrestigeRaynorMercenaryCompleteOnly=Research Shockwave Missile Battery at the Starport Tech Lab
 RequirementNode/Tooltip/Or1826056550CountUpgradeCommanderPrestigeTychusOdinCompleteOnlyNotCountUnitTychusOdinQueuedOrBetter=Tychus currently piloting Odin
 RequirementNode/Tooltip/Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2=No Tactical Missile at this Royal Academy
+RequirementNode/Tooltip/Or758801471TechTreeCheatCountUpgradeBansheeCloakCompleteOnlyNotCountUpgradeCommanderPrestigeRaynorMercenaryCompleteOnly=Research Cloaking Field at the Starport Tech Lab
 Skin/Name/KerriganBroodCoop=KerriganBroodCoop
 Skin/Name/KerriganPrestigeBroodCoop=KerriganPrestigeBroodCoop
 Skin/Name/VorazunCoop=VorazunCoop
@@ -689,6 +696,7 @@ Upgrade/Name/CommanderPrestigeFenixChampion=CommanderPrestigeFenixChampion
 Upgrade/Name/CommanderPrestigeHornerMagMinesBuildTime=CommanderPrestigeHornerMagMinesBuildTime
 Upgrade/Name/CommanderPrestigeMengskZerg=CommanderPrestigeMengskZerg
 Upgrade/Name/CommanderPrestigeNovaMelee=CommanderPrestigeNovaMelee
+Upgrade/Name/CommanderPrestigeRaynorMercenary=CommanderPrestigeRaynorMercenary
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
 Upgrade/Name/HHBomberEMP=EMP
 Upgrade/Name/HHBomberNapalmImproved=Napalm Improved
@@ -735,6 +743,7 @@ Weapon/Name/KerriganBroodPsiBlast=Psi Blast
 Weapon/Name/KerriganBroodRazorTalons=Razor Talons
 Weapon/Name/LanceMissileLaunchers=250mm Punisher Cannons
 Weapon/Name/LanceMissileLaunchersMoving=250mm Punisher Cannons
+Weapon/Name/MercSwitchLaserBattery=Switch Laser Battery
 Weapon/Name/MothershipArtanisBeam=Purifier Beam
 Weapon/Name/SILiberatorAGWeapon=Corrosive Cannon
 Weapon/Name/SILiberatorAGWeapon2=Volatile Spray

@@ -839,6 +839,9 @@
             <Upgrade Upgrade="RaynorDoubleMULE">
                 <Field Id="DefaultUpgrades" Index="1"/>
             </Upgrade>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeRaynorMercenary">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]TerranSwann">
             <AbilCmd Abil="SupplyDrop">
@@ -1189,6 +1192,14 @@
         </Instances>
         <Instances Id="CommanderPrestigeFenixChampion">
             <GameLink GameLink="CommanderPrestigeFenixChampion">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="CommanderPrestigeRaynorMercenary">
+            <AbilCmd Abil="TerranBuild" Cmd="12">
+                <Field Id="EnableAbil"/>
+            </AbilCmd>
+            <GameLink GameLink="CommanderPrestigeRaynorMercenary">
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
         </Instances>

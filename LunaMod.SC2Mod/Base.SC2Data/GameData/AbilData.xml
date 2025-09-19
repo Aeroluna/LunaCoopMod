@@ -86,6 +86,9 @@
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
+    <CAbilBehavior id="DuskWingBansheeCloakingField">
+        <CmdButtonArray index="On" Requirements="UseMercCloakingField"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="EMPBlackOps">
         <Cost index="0">
             <Cooldown TimeUse="10"/>
@@ -270,6 +273,29 @@
             <Cooldown TimeUse="10"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilTrain id="SummonMercenaries">
+        <InfoArray index="Train2">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Button State="Available"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilEffectInstant id="SuperStimpackNova">
         <CmdButtonArray index="Execute" State="Restricted" Requirements="HaveNovaCombatSuit"/>
         <Cost index="0">
@@ -324,6 +350,24 @@
             <Button DefaultButtonFace="TychusBunker"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilMorph id="WreckingCrewAssaultMode">
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray index="0">
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.533"/>
+                <DurationArray index="Duration" value="1.2"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="WreckingCrewFighterMode">
+        <Flags index="IgnoreUnitCost" value="0"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+        <InfoArray index="0">
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.85"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilEffectTarget id="YoinkAmon">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="YoinkStartSwitch"/>

@@ -213,6 +213,7 @@ Ever get annoyed when you *slightly* missed a mineral field and your MULE just A
 I don't see why you wouldn't want this autocasting.
 
 - Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
+- Fixed a bug where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
 
 yeah.
 

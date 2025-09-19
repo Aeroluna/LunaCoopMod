@@ -14,6 +14,36 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="Battlecruiser">
+        <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA" Send="LookAtEngage Continue"/>
+        <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
+        <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
+        <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
+        <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
+        <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
+    </CActorUnit>
+    <CActorModel id="DevilDogAttackModel">
+        <Remove Terms="ActorCreation; ValidateUnit BearclawNozzlesPurchased" Send="SetScale 2.250000,1.800000,1.000000"/>
+        <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
+    </CActorModel>
+    <!--CActorUnit id="DukesRevenge">
+        <On Terms="Abil.Yamato.SourcePrepStart" Send="$Spell 0 -1.000000 -1.000000 3.500000 AsDuration"/>
+        <On Terms="Abil.Yamato.SourcePrepStop" Send="AnimClear Spell"/>
+    </CActorUnit-->
+    <CActorUnit id="MercMedic">
+        <On Terms="Abil.heal.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.heal.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="ButtonHover.MedicHeal.On; ButtonEnabled" Send="Create MedicMedicHealRange"/>
+        <On Terms="ButtonHover.MedicHeal.Off; ButtonEnabled" Target="MedicMedicHealRange" Send="Destroy"/>
+        <On Terms="ButtonHover.MedicHealPlusMech.On; ButtonEnabled" Send="Create MedicMedicHealRange"/>
+        <On Terms="ButtonHover.MedicHealPlusMech.Off; ButtonEnabled" Target="MedicMedicHealRange" Send="Destroy"/>
+        <On Terms="Abil.HealPlusMech.SourceChannelStart" Send="$Spell PlayForever"/>
+        <On Terms="Abil.HealPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="$Spell 0 0.200000 0.200000"/>
+        <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
+        <AbilSoundArray AbilCmd="HealPlusMech,Execute" Sound="Medic_HealVO"/>
+        <AbilSoundArray AbilCmd="MedicRestoration,Execute" Sound="Medic_HealVO"/>
+    </CActorUnit>
     <CActorModel id="NovaPsiStrikeModel">
         <On Terms="Behavior.NovaDashAttackSpeed.On" Send="Create"/>
         <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="AnimBracketStop BSD"/>

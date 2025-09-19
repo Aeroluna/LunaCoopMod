@@ -371,6 +371,28 @@ bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport) {
     return false;
 }
 
+void lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure () {
+    // Variable Declarations
+    int lv_indexPlayer;
+    point lv_spawnPoint;
+    point lv_mineralPoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_indexPlayer = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("TerranRaynor", libCOOC_gf_CommanderPlayers());
+
+    // Implementation
+    lv_mineralPoint = UnitGroupCenterOfGroup(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lv_indexPlayer)), 10.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    if ((UnitGroupCount(UnitGroup("ACHeroSpawnPlacement", lv_indexPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), c_unitCountAlive) > 0)) {
+        lv_spawnPoint = UnitGetPosition(UnitGroupUnit(UnitGroup("ACHeroSpawnPlacement", lv_indexPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), 1));
+    }
+    else {
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_74A68E34_06BC5908"), false);
+        lv_spawnPoint = libNtve_gf_PointOffsetTowardsPoint(lv_mineralPoint, 13.0, UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lv_indexPlayer)));
+    }
+    UnitCreate(1, "MercCompound", 0, lv_indexPlayer, lv_spawnPoint, 225.0);
+}
+
 void lib74A68E34_gf_KerriganMalignantCreep () {
     // Variable Declarations
     int lv_itPlayer;
@@ -1397,6 +1419,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_RaynorStimpackAutocast, true);
             TriggerEnable(lib74A68E34_gt_RaynorMULEMineralSearch, true);
             TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeRaynorMercenary", c_techCountCompleteOnly) == 1)) {
+                lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure();
+            }
+
         }
         else if (auto560DABDD_val == "ProtossArtanis") {
             TriggerEnable(lib74A68E34_gt_ArtanisMothershipWarpHaste, true);

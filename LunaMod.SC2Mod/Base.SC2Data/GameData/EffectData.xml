@@ -21,6 +21,33 @@
             <MatchFlags index="Link" value="1"/>
         </Marker>
     </CEffectSet>
+    <CEffectSet id="DevilDogSet">
+        <EffectArray index="0" value="DevilDogACCP"/>
+        <EffectArray index="1" value="DevilDogDamageSet"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DevilDogACCP">
+        <EditorCategories value="Race:Terran"/>
+        <PeriodCount value="1"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodicEffectArray value="DevilDogACSearch"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DevilDogACSearch">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1.2" RectangleHeight="16" Effect="DevilDogDamageSet"/>
+        <ExcludeArray Value="Target"/>
+        <ImpactLocation Value="TargetPoint"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DevilDogDamageSet">
+        <ValidatorArray value="WeaponInRange"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="DevilDogDamage"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DuskWingScreecherMissilesCreateCarpetBombPersistent">
+        <ValidatorArray value="MercClusterWarheadsPurchased"/>
+    </CEffectCreatePersistent>
     <CEffectSet id="FenixTalisSpawnShadeSet">
         <ValidatorArray value="HaveAdeptFenixShadeSpawn"/>
     </CEffectSet>
@@ -162,6 +189,9 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="MercGroundDropBehaviorSet">
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
     <CEffectApplyForce id="NovaDashAttackApplyForce">
         <WhichLocation Value="TargetPoint"/>
         <WhichUnit Value="Caster"/>
@@ -663,6 +693,11 @@
         <EditorCategories value=""/>
         <CaseArray Validator="SourceIsGroundUnitFilter" Effect="QueenStukovSpawnBroodlingsCreateUnit"/>
         <CaseDefault value="QueenStukovSpawnBroodlingsFlyingCreateUnit"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="DukesRevengeSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="GroundUnitFilter" Effect="DRBattlecruiserGLM"/>
+        <CaseDefault value="DRBattlecruiserALM"/>
     </CEffectSwitch>
     <CEffectApplyBehavior id="SIBansheeBroodlingAB">
         <EditorCategories value=""/>
@@ -2208,6 +2243,9 @@
         <BehaviorLink value="WidowMineTargeted"/>
         <Count value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectDamage id="WreckingCrewAssault">
+        <AttributeBonus index="Mechanical" value="10"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="YoinkEnemyStun">
         <ValidatorArray value="IsAbathurCoopCommander"/>
     </CEffectApplyBehavior>

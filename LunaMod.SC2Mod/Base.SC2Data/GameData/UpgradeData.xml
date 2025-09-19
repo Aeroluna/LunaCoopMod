@@ -41,9 +41,21 @@
         <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.333000"/>
         <!--EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].RandomDelayMax" Value="0.500000"/>
         <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].RandomDelayMax" Value="0.500000"/-->
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewAssaultMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.010000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewAssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.533000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewAssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewFighterMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewFighterMode,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewAssaultMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.340000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewFighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.600000"/>
+        <EffectArray Reference="Abil,WreckingCrewFighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.150000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WreckingCrewFighterMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.333000"/>
     </CUpgrade>
     <CUpgrade id="BansheePermaCloak">
         <EffectArray Reference="Unit,Banshee_BlackOps,Speed" Value="1.000000"/>
+    </CUpgrade>
+    <CUpgrade id="BearclawNozzles">
+        <EffectArray Reference="Effect,DevilDogACSearch,AreaArray[0].RectangleWidth" Value="0.48"/>
     </CUpgrade>
     <CUpgrade id="BileLauncherIncreasedRange">
         <EffectArray Reference="Abil,AdvancedBombardment,Range[0]" Value="10"/>
@@ -555,6 +567,7 @@
         <EffectArray Operation="Subtract" Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
         <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeRaynorMercenary"/>
     <CUpgrade id="CommanderPrestigeStukovBanshees">
         <EffectArray Operation="Set" Reference="Abil,SIAdvancedBuild,InfoArray[Build12].Button.Requirements"/>
         <EffectArray Operation="Set" Reference="Abil,SIStarportTrain,InfoArray[Train1].Button.Requirements"/>
@@ -728,6 +741,10 @@
     </CUpgrade>
     <CUpgrade id="ExtendedThermalLance">
         <EffectArray Reference="Weapon,FenixWarbringerColossusThermalLance,Range" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="FirebatJuggernautPlating">
+        <EffectArray Reference="Unit,DevilDog,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,DevilDog,LifeStart" Value="100"/>
     </CUpgrade>
     <CUpgrade id="HHBomberNapalmImproved">
         <Icon value="Assets\Textures\btn-ability-hornerhan-bomberplatform-napalm.dds"/>
@@ -965,6 +982,21 @@
         <EffectArray Reference="Behavior,SuperStimNova,Modification.MoveSpeedMultiplier" Value="0.00835"/>
         <EffectArray Reference="Behavior,SuperStimNova,Modification.VitalRegenArray[Life]" Value="0.336000"/>
     </CUpgrade>
+    <CUpgrade id="MasteryRaynorMechAttackSpeed">
+        <EffectArray Reference="Weapon,HyperionVoidCoopDummy,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,SiegeBreaker,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,ArcliteShockCannon,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,WreckingCrewAssault,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,WreckingCrewFighter,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserA,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserG,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,DRCannonsA,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,DRCannonsG,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,DuskWingBanshee,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,HyperionVoidCoopAir,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,HyperionVoidCoopGround,RateMultiplier" Value="0.01"/>
+        <EffectArray Reference="Weapon,MercSwitchLaserBattery,RateMultiplier" Value="0.01"/>
+    </CUpgrade>
     <CUpgrade id="MasteryRaynorMedicSecondaryHeal">
         <EffectArray Reference="Effect,RaynorMasteryHealMedivacSecondary,RechargeVitalRate" Value="0.269400"/>
     </CUpgrade>
@@ -977,6 +1009,7 @@
     <CUpgrade id="MedicStartingEnergy">
         <Icon value="Assets\Textures\btn-upgrade-terran-moebiusreactor.dds"/>
         <EffectArray Reference="Unit,Medic,EnergyStart" Value="150"/>
+        <EffectArray Reference="Unit,MercMedic,EnergyStart" Value="150"/>
     </CUpgrade>
     <CUpgrade id="MedivacCaduceusReactor">
         <EffectArray index="0" Reference="Unit,Medivac,EnergyRegenRate" Value="0.5625"/>
@@ -1000,6 +1033,9 @@
         <EffectArray Operation="Subtract" Reference="Abil,StarportTrain,InfoArray[Train1].Time" Value="2.300000"/>
     </CUpgrade>
     <CUpgrade id="MengskAcademyMissileCount"/>
+    <CUpgrade id="PunisherGrenades">
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
     <CUpgrade id="RaynorCommander">
         <EffectArray Operation="Subtract" Reference="Abil,StarportTrain,InfoArray[Train1].Time" Value="21.000000"/>
         <EffectArray Reference="Effect,TwinGatlingCannons,AttributeBonus[Mechanical]" Value="8"/>
@@ -1009,6 +1045,18 @@
     </CUpgrade>
     <CUpgrade id="RaynorCommanderTerranWeaponAttackSpeed">
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,KelmorianMinerGaussRifle,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DevilDogFlameThrower,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,HammerSecurity,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,SiegeBreaker,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,ArcliteShockCannon,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,WreckingCrewAssault,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,WreckingCrewFighter,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserA,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserG,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRCannonsA,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRCannonsG,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,MercSwitchLaserBattery,RateMultiplier" Value="0.15"/>
     </CUpgrade>
     <CUpgrade id="RaynorDoubleMULE">
         <EffectArray Reference="Effect,CalldownMULECreateUnit,SpawnCount" Value="1"/>
@@ -1017,6 +1065,90 @@
         <EffectArray Operation="Set" Reference="Button,CalldownMULE,Tooltip" Value="Button/Tooltip/CalldownMULEDoubleDown"/>
         <EffectArray Operation="Set" Reference="Button,CalldownMULE,AlertTooltip" Value="Button/Tooltip/CalldownMULEDoubleDown"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorFirebatMedicRange">
+        <EffectArray Reference="Weapon,DevilDogFlameThrower,Range" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranInfantryArmorLevel1">
+        <EffectArray index="21" Value="6"/>
+        <EffectArray index="22" Value="6"/>
+        <EffectArray index="44" Value="7.5"/>
+        <EffectArray index="45" Value="7.5"/>
+        <EffectArray index="48" Value="15.5"/>
+        <EffectArray index="49" Value="15.5"/>
+        <EffectArray index="52" Value="16"/>
+        <EffectArray index="53" Value="16"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeMax" Value="9"/>
+        <EffectArray Reference="Unit,MercMedic,LifeStart" Value="9"/>
+        <EffectArray Operation="Set" Reference="Actor,MercMedic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranInfantryArmorLevel2">
+        <EffectArray index="21" Value="6"/>
+        <EffectArray index="22" Value="6"/>
+        <EffectArray index="44" Value="7.5"/>
+        <EffectArray index="45" Value="7.5"/>
+        <EffectArray index="48" Value="15.5"/>
+        <EffectArray index="49" Value="15.5"/>
+        <EffectArray index="52" Value="16"/>
+        <EffectArray index="53" Value="16"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeMax" Value="9"/>
+        <EffectArray Reference="Unit,MercMedic,LifeStart" Value="9"/>
+        <EffectArray Operation="Set" Reference="Actor,MercMedic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranInfantryArmorLevel3">
+        <EffectArray index="21" Value="6"/>
+        <EffectArray index="22" Value="6"/>
+        <EffectArray index="44" Value="7.5"/>
+        <EffectArray index="45" Value="7.5"/>
+        <EffectArray index="48" Value="15.5"/>
+        <EffectArray index="49" Value="15.5"/>
+        <EffectArray index="52" Value="16"/>
+        <EffectArray index="53" Value="16"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,MercMedic,LifeMax" Value="10"/>
+        <EffectArray Reference="Unit,MercMedic,LifeStart" Value="10"/>
+        <EffectArray Operation="Set" Reference="Actor,MercMedic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranVehicleAndShipPlatingLevel1">
+        <EffectArray index="107" Value="70"/>
+        <EffectArray index="108" Value="70"/>
+        <EffectArray index="123" Value="20"/>
+        <EffectArray index="124" Value="20"/>
+        <EffectArray index="128" Value="20"/>
+        <EffectArray index="129" Value="20"/>
+        <EffectArray index="133" Value="18"/>
+        <EffectArray index="134" Value="18"/>
+        <EffectArray index="138" Value="18"/>
+        <EffectArray index="139" Value="18"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranVehicleAndShipPlatingLevel2">
+        <EffectArray index="107" Value="70"/>
+        <EffectArray index="108" Value="70"/>
+        <EffectArray index="123" Value="20"/>
+        <EffectArray index="124" Value="20"/>
+        <EffectArray index="128" Value="20"/>
+        <EffectArray index="129" Value="20"/>
+        <EffectArray index="133" Value="18"/>
+        <EffectArray index="134" Value="18"/>
+        <EffectArray index="138" Value="18"/>
+        <EffectArray index="139" Value="18"/>
+    </CUpgrade>
+    <CUpgrade id="RaynorTalentedTerranVehicleAndShipPlatingLevel3">
+        <EffectArray index="107" Value="70"/>
+        <EffectArray index="108" Value="70"/>
+        <EffectArray index="123" Value="20"/>
+        <EffectArray index="124" Value="20"/>
+        <EffectArray index="128" Value="20"/>
+        <EffectArray index="129" Value="20"/>
+        <EffectArray index="133" Value="18"/>
+        <EffectArray index="134" Value="18"/>
+        <EffectArray index="138" Value="18"/>
+        <EffectArray index="139" Value="18"/>
     </CUpgrade>
     <CUpgrade id="SIBansheeIncubationChambers">
         <AffectedUnitArray value="StukovInfestedBanshee"/>
@@ -1048,6 +1180,13 @@
     </CUpgrade>
     <CUpgrade id="ScourgeGasCostReduction">
         <EffectArray index="0" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="ShieldWall">
+        <AffectedUnitArray value="WarPig"/>
+        <EffectArray Reference="Unit,WarPig,LifeMax" Value="10"/>
+        <EffectArray Reference="Unit,WarPig,LifeStart" Value="10"/>
+        <EffectArray Operation="Set" Reference="Actor,KelmorianMiner,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-terran-marine-mercenary-shield.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,KelmorianMiner,Wireframe.Image[0]" Value="Assets\Textures\wireframe-terran-marine-mercenary-shield.dds"/>
     </CUpgrade>
     <CUpgrade id="SignifierFade">
         <Flags index="UpgradeCheat" value="0"/>
