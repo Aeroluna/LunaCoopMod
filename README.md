@@ -500,6 +500,12 @@ If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy.
 
 Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens.
 
+- Buffed P2
+  - Increased bonus health regen for Aberrations from 3 to 6.
+  - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
+
+Fun fact: Due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
+
 ## Vorazun
 
 - Changed Vorazun to use custom Nerazim skinset.
