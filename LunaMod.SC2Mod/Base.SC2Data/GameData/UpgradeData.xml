@@ -563,6 +563,10 @@
         <EffectArray Operation="Set" Reference="Button,NovaSwitchStealthMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchStealthModeMelee"/>
         <EffectArray Operation="Set" Reference="Button,NovaSwitchAssaultMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchAssaultModeMelee"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeRaynorAir">
+        <EffectArray index="10" Value="12"/>
+        <EffectArray index="12" Value="12"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorMechAfterburners">
         <EffectArray Operation="Subtract" Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
         <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
@@ -1041,7 +1045,19 @@
         <EffectArray Reference="Effect,TwinGatlingCannons,AttributeBonus[Mechanical]" Value="8"/>
     </CUpgrade>
     <CUpgrade id="RaynorCommanderMechCostReduction">
+        <EffectArray index="2" Value="10"/>
+        <EffectArray index="3" Value="10"/>
         <EffectArray Operation="Subtract" Reference="Unit,Medivac,CostResource[Vespene]" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SiegeBreaker,CostResource[Vespene]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SiegeBreakerSieged,CostResource[Vespene]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HelsAngelFighter,CostResource[Vespene]" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HelsAngelAssault,CostResource[Vespene]" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DuskWing,CostResource[Vespene]" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DukesRevenge,CostResource[Vespene]" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HireMercBanshee,Cost[0].Resource[Vespene]" Value="40"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HireMercBattlecruiser,Cost[0].Resource[Vespene]" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HireMercSiegeTank,Cost[0].Resource[Vespene]" Value="50"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HireMercViking,Cost[0].Resource[Vespene]" Value="30"/>
     </CUpgrade>
     <CUpgrade id="RaynorCommanderTerranWeaponAttackSpeed">
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,RateMultiplier" Value="0.15"/>
@@ -1054,6 +1070,8 @@
         <EffectArray Reference="Weapon,WreckingCrewFighter,RateMultiplier" Value="0.15"/>
         <EffectArray Reference="Weapon,DRBattlecruiserA,RateMultiplier" Value="0.15"/>
         <EffectArray Reference="Weapon,DRBattlecruiserG,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserFakeA,RateMultiplier" Value="0.15"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserFakeG,RateMultiplier" Value="0.15"/>
         <EffectArray Reference="Weapon,DRCannonsA,RateMultiplier" Value="0.15"/>
         <EffectArray Reference="Weapon,DRCannonsG,RateMultiplier" Value="0.15"/>
         <EffectArray Reference="Weapon,MercSwitchLaserBattery,RateMultiplier" Value="0.15"/>
@@ -1289,6 +1307,33 @@
         <EffectArray Reference="Weapon,HellionTankMoving,Range" Value="1"/>
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Range" Value="1"/>
         <EffectArray Reference="Effect,HyperionVoidCoopSecondaryWeaponSearch,AreaArray[0].Radius" Value="1"/>
+        <EffectArray Reference="Weapon,SiegeBreaker,Range" Value="1"/>
+        <EffectArray Reference="Weapon,ArcliteShockCannon,Range" Value="1"/>
+        <EffectArray Reference="Weapon,WreckingCrewAssault,Range" Value="1"/>
+        <EffectArray Reference="Weapon,WreckingCrewFighter,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserA,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserG,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserFakeA,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserFakeG,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRCannonsA,Range" Value="1"/>
+        <EffectArray Reference="Weapon,DRCannonsG,Range" Value="1"/>
+        <EffectArray Reference="Weapon,MercSwitchLaserBattery,Range" Value="1"/>
+        <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,WraithADummy,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,WraithGDummy,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,WarbotAMoving,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,HellionTankMoving,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,HyperionVoidCoopDummy,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,SiegeBreaker,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,ArcliteShockCannon,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,WreckingCrewAssault,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,WreckingCrewFighter,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserA,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,DRBattlecruiserG,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,DRCannonsA,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,DRCannonsG,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,MercSwitchLaserBattery,MinScanRange" Value="1"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>

@@ -26,6 +26,32 @@
         <Remove Terms="ActorCreation; ValidateUnit BearclawNozzlesPurchased" Send="SetScale 2.250000,1.800000,1.000000"/>
         <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
     </CActorModel>
+    <CActorModel id="MercCompoundHireBeam">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
+        <On Terms="Effect.MercCompoundReset.Start" Send="Create"/>
+        <On Terms="Effect.HireMercMarine.Start" Send="SetTintColor 20,90,255 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercMarine.Start" Send="Create"/>
+        <On Terms="Effect.HireMercFirebat.Start" Send="SetTintColor 255,120,0 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercFirebat.Start" Send="Create"/>
+        <On Terms="Effect.HireMercMarauder.Start" Send="SetTintColor 100,20,20 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercMarauder.Start" Send="Create"/>
+        <On Terms="Effect.HireMercMedic.Start" Send="SetTintColor 0,255,150 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercMedic.Start" Send="Create"/>
+        <On Terms="Effect.HireMercSiegeTank.Start" Send="SetTintColor 0,234,255 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercSiegeTank.Start" Send="Create"/>
+        <On Terms="Effect.HireMercViking.Start" Send="SetTintColor 233,95,255 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercViking.Start" Send="Create"/>
+        <On Terms="Effect.HireMercBanshee.Start" Send="SetTintColor 133,32,203 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercBanshee.Start" Send="Create"/>
+        <On Terms="Effect.HireMercBattlecruiser.Start" Send="SetTintColor 255,0,0 0.000000 OneShot SquadTint"/>
+        <On Terms="Effect.HireMercBattlecruiser.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="$Birth FullMatch -1.000000 -1.000000 2.000000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="Create Heavens_COOP_GearDeliveryBeam_AS"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="Heavens_COOP_GearDeliveryBeam"/>
+    </CActorModel>
     <!--CActorUnit id="DukesRevenge">
         <On Terms="Abil.Yamato.SourcePrepStart" Send="$Spell 0 -1.000000 -1.000000 3.500000 AsDuration"/>
         <On Terms="Abil.Yamato.SourcePrepStop" Send="AnimClear Spell"/>
@@ -136,6 +162,12 @@
     <CActorModel id="NovaWeaponPsiStrikeImpact">
         <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>
     </CActorModel>
+    <CActorSound id="NydusCanalTransportUnloadSound">
+        <On Terms="Effect.SwarmLocusZerglingCU.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Nydus_ConstructionFinish">
+        <On Terms="Behavior.SwarmLocusTimeoutKill.On" Send="Create"/>
+    </CActorSound>
     <CActorModel id="StimPackDevice_Nova" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachHardPoint"/>
     </CActorModel>

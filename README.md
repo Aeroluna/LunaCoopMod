@@ -185,11 +185,21 @@ Potentially too OP having units perfectly stim, but if Nova's marines can have i
 
 Old Raynor nerfs reverted. Double MULEs in particular should help out P0 Raynor.
 
+- Added behavior to Calldown MULE, will try to search for nearby mineral field to gather if not ordered directly.
+
+Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
+
 - Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
 - Added +8 vs. Mechanical damage to Viking Gatling Cannons.
 - Added faster transformation speed to Phobos Weapons System.
 
 Some ground Viking buffs because why not.
+
+- Reduced cost of Viking from 150/75 to 150/50.
+  - Reduced from 150/60 to 150/40 with Raynor's level 1 perk.
+  - Reduced from 225/42 to 225/28 with P3.
+
+Due to MULEs, you end up floating WAY more minerals than gas. This price reduction makes it easier to mass Vikings.
 
 - Reworked Hyperion weapons.
   - AOE attack turned into a proper weapon and is affected by buffs like attack speed.
@@ -204,13 +214,26 @@ No longer have to queue a bunch of move commands to get value out of the Hyperio
 
 Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
 
-- Added behavior to Calldown MULE, will try to search for nearby mineral field to gather if not ordered directly.
-
-Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
-
 - Changed Vulture's Replenish Spider Mine ability to be autocast on intially.
 
 I don't see why you wouldn't want this autocasting.
+
+- Changed Dusk Wing's Cloaking Field to grant +2 range, similar to the Banshee's Cloaking Field.
+- Changed Hyperion to be affected Mech Attack Speed mastery.
+- Changed Dusk Wing to be affected Mech Attack Speed mastery.
+
+Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
+
+- Added P4: Mercenary Contractor
+  - Advantage: Gain access to the Merc Compound.
+    - A squad can be filled by hiring mercenaries. The squad can then be deployed, dropping all hired mercenaries at the rally point.
+    - Mercenaries cannot be controlled after being deployed.
+    - Mercenaries will wander the map with their squad, looking for enemies to fight.
+    - Mercenaries benefit from all researched upgrades, don't forget them!
+    - Dropped mercenaries benefit from drop pod haste mastery.
+  - Disadvantage: Hyperion and Banshee Airstrike are unavailable.
+
+Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! These mercenaries will run around and do their own thing, sometimes running into their doom. In return, you get stronger units that can be bought instantly and deployed where you want them. For the disadvantage, you lose access to your powerful topbar and have to be more careful with your trades.
 
 - Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed a bug where Raynor's Battlecruisers' turrets did not aim their turrets at their target.

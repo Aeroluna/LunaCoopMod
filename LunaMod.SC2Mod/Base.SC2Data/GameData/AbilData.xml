@@ -86,8 +86,30 @@
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="DukesRevengeYamato">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="TargetLifeGE200"/>
+        <PrepTime index="0" value="1.5"/>
+        <CmdButtonArray index="Execute" Requirements="UseBattlecruiserSpecializations"/>
+    </CAbilEffectTarget>
     <CAbilBehavior id="DuskWingBansheeCloakingField">
         <CmdButtonArray index="On" Requirements="UseMercCloakingField"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastToggleOnValidatorArray value="TacticalBansheeCloakThreatSearch"/>
+        <AutoCastToggleOffValidatorArray value="TacticalBansheeCloakThreatSearchEmpty"/>
     </CAbilBehavior>
     <CAbilEffectTarget id="EMPBlackOps">
         <Cost index="0">
@@ -199,6 +221,69 @@
         <AutoCastFilters value="-;Ally,Neutral,Enemy"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
+    <CAbilEffectInstant id="HireMercBattlecruiser">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="400"/>
+            <Resource index="Vespene" value="300"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBattlecruiser"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercMarauder">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="250"/>
+            <Resource index="Vespene" value="50"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMarauder"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercMedic">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="100"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMedic"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercMarine">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="200"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMarine"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercFirebat">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="50"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercFirebat"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercSiegeTank">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="250"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercSiegeTank"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercViking">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="450"/>
+            <Resource index="Vespene" value="150"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercViking"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HireMercBanshee">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="200"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBanshee"/>
+    </CAbilEffectInstant>
     <CAbilSpecialize id="MakeVultureSpiderMines">
         <InfoArray index="Specialize1">
             <Flags index="AutoCastOn" value="1"/>
@@ -218,6 +303,23 @@
         <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedivacHeal">
+        <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="MercCompoundReset">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MercCompoundReset"/>
+        <Cost>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="MercCompoundLaunch">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MercCompoundLaunch"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="NovaApolloCloak">
         <CmdButtonArray index="Execute" Requirements="HaveNovaStealthSuit"/>
     </CAbilEffectInstant>
@@ -268,6 +370,18 @@
     <CAbilEffectTarget id="QueenMPSpawnBroodlings">
         <TargetFilters index="0" value="-;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="SiegeBreakerSiege">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="TacticalSiegeTankSeige"/>
+        <AutoCastRange value="12"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="SiegeBreakerUnsiege">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="Snipe_BlackOps">
         <Cost index="0">
             <Cooldown TimeUse="10"/>
@@ -351,6 +465,8 @@
         </InfoArray>
     </CAbilBuild>
     <CAbilMorph id="WreckingCrewAssaultMode">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray index="0">
             <SectionArray index="Mover">
@@ -358,8 +474,14 @@
                 <DurationArray index="Duration" value="1.2"/>
             </SectionArray>
         </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Air,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="AutoVikingAssault"/>
+        <AutoCastRange value="8.5"/>
+        <AutoCastCountMin value="1"/>
     </CAbilMorph>
     <CAbilMorph id="WreckingCrewFighterMode">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="IgnoreUnitCost" value="0"/>
         <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray index="0">
@@ -728,10 +850,11 @@
         <AutoCastValidatorArray value="NotMaxHP"/>
         <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
         <AutoCastValidatorArray value="NotUnrepairable"/>
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Structure,Missile,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHealRaynorPlusMech" parent="MedivacHealRaynor">
         <Name value="Abil/Name/MedivacHeal"/>
-        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Dead,Hidden,Invulnerable"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="HaveStabilizerMedPacks"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="MedivacSpeedBoost">

@@ -145,6 +145,45 @@
     <CEffectEnumArea id="HHReaperKnockbackSearch">
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="HireMercBattlecruiser">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercMarauder">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercMedic">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercMarine">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="4"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercFirebat">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercSiegeTank">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercViking">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HireMercBanshee">
+        <ValidatorArray index="0" value="NotAtFullSupply"/>
+        <EditorCategories value=""/>
+        <Count value="2"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="KerriganMalignantCreepAttackSpeedDummy">
         <Amount value="0"/>
     </CEffectDamage>
@@ -189,6 +228,12 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="MercCompoundReset">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectDamage id="MercCompoundLaunch">
+        <EditorCategories value=""/>
+    </CEffectDamage>
     <CEffectSet id="MercGroundDropBehaviorSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
@@ -2022,10 +2067,6 @@
         <EffectArray value="SwarmLocusScourgeCP"/>
         <EffectArray value="SwarmLocusHunterKillerCP"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="SwarmLocusSeekDestroyAB">
-        <EditorCategories value="Race:Zerg"/>
-        <Behavior value="SwarmLocusUnitSeekDestroy"/>
-    </CEffectApplyBehavior>
     <CEffectSet id="SwarmLocusSeekDestroyTrigger">
         <EditorCategories value="Race:Zerg"/>
     </CEffectSet>
@@ -2049,7 +2090,7 @@
     <CEffectSet id="SwarmLocusUnitABSet">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="SwarmLocusUnitTimedLifeAB"/>
-        <EffectArray value="SwarmLocusSeekDestroyAB"/>
+        <EffectArray value="SwarmLocusSeekDestroyTrigger"/>
     </CEffectSet>
     <CEffectApplyBehavior id="SwarmLocusUnitTimedLifeAB">
         <EditorCategories value="Race:Zerg"/>
@@ -2244,8 +2285,16 @@
         <Count value="1"/>
     </CEffectRemoveBehavior>
     <CEffectDamage id="WreckingCrewAssault">
-        <AttributeBonus index="Mechanical" value="10"/>
+        <AttributeBonus index="Mechanical" value="12"/>
     </CEffectDamage>
+    <CEffectIssueOrder id="WreckingCrewFighterOrder">
+        <EditorCategories value=""/>
+        <Abil value="WreckingCrewFighterMode"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="SiegeBreakerUnsiegeOrder">
+        <EditorCategories value=""/>
+        <Abil value="SiegeBreakerUnsiege"/>
+    </CEffectIssueOrder>
     <CEffectApplyBehavior id="YoinkEnemyStun">
         <ValidatorArray value="IsAbathurCoopCommander"/>
     </CEffectApplyBehavior>
