@@ -237,6 +237,7 @@ Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! The
 
 - Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed a bug where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
+- Changed the alignment of Medic's Safeguard from neutral to positive.
 
 yeah.
 

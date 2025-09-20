@@ -398,6 +398,7 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
     point lv_currentRally;
     unitfilter lv_unitFilter;
     unit lv_attackingUnit;
+    unitgroup lv_validAttackTargets;
     fixed lv_safethinkperiod;
     point lv_attacktargetpoint;
     unit lv_bestattacktargetunit;
@@ -411,6 +412,9 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
     unit autoC7A5723B_var;
     unitgroup auto8D8224BF_g;
     int auto8D8224BF_u;
+    unitgroup auto4DA354CB_g;
+    int auto4DA354CB_u;
+    unit auto4DA354CB_var;
     unitgroup auto54763DC6_g;
     int auto54763DC6_u;
     unit auto54763DC6_var;
@@ -418,6 +422,7 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
 
     // Variable Initialization
     lv_unitFilter = UnitFilter(0, 0, 0, 0);
+    lv_validAttackTargets = UnitGroupEmpty();
     lv_safethinkperiod = MaxF(4.0, 0.5);
 
     // Implementation
@@ -461,6 +466,21 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             }
 
         }
+        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+            lv_validAttackTargets = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0);
+            auto4DA354CB_g = lv_validAttackTargets;
+            auto4DA354CB_u = UnitGroupCount(auto4DA354CB_g, c_unitCountAll);
+            for (;; auto4DA354CB_u -= 1) {
+                auto4DA354CB_var = UnitGroupUnitFromEnd(auto4DA354CB_g, auto4DA354CB_u);
+                if (auto4DA354CB_var == null) { break; }
+                if ((UnitCanAttackTarget(lv_attackingUnit, auto4DA354CB_var) == false)) {
+                    UnitGroupRemove(lv_validAttackTargets, auto4DA354CB_var);
+                }
+
+            }
+            lv_bestattacktargetunit = UnitGroupClosestToPoint(lv_validAttackTargets, UnitGetPosition(lv_attackingUnit));
+        }
+
         if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
             lv_bestattacktargetunit = UnitGroupClosestToPoint(UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0), UnitGetPosition(lv_attackingUnit));
         }
@@ -1733,7 +1753,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercGroundDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercFirebat") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercFirebat", 1);
@@ -1743,7 +1763,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercGroundDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercMarauder") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercMarauder", 1);
@@ -1753,7 +1773,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercGroundDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercMedic") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercMedic", 1);
@@ -1763,7 +1783,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercGroundDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercSiegeTank") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercSiegeTank", 1);
@@ -1773,7 +1793,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercGroundDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercViking") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercViking", 1);
@@ -1783,7 +1803,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercAirDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercBanshee") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercBanshee", 1);
@@ -1793,7 +1813,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercAirDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercBattlecruiser") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercBattlecruiser", 1);
@@ -1803,7 +1823,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
         UnitCreateEffectUnit(lv_compound, "MercAirDrop", UnitLastCreated());
         UnitGroupAdd(lv_patrol, UnitLastCreated());
-        Wait(0.2, c_timeGame);
+        Wait(0.1, c_timeGame);
     }
     lib74A68E34_gf_RaynorPrestigeMercenaryPatrol(lv_patrol);
     return true;

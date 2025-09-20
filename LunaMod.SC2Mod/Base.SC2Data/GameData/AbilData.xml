@@ -95,6 +95,7 @@
         </Cost>
         <TargetSorts>
             <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSPriority"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
@@ -105,9 +106,25 @@
         <CmdButtonArray index="Execute" Requirements="UseBattlecruiserSpecializations"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="DuskWingBansheeCloakingField">
-        <CmdButtonArray index="On" Requirements="UseMercCloakingField"/>
+        <CmdButtonArray index="On" Requirements="NotCommanderPrestigeRaynorMercenary"/>
+    </CAbilBehavior>
+    <CAbilBehavior id="DuskWingBansheeCloakingFieldPrestige">
+        <AbilSetId value="Clok"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="On" DefaultButtonFace="CloakOnBanshee" Requirements="UseMercCloakingField">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off" DefaultButtonFace="CloakOff">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <BehaviorArray value="DuskWingBansheeCloak"/>
         <AutoCastToggleOnValidatorArray value="TacticalBansheeCloakThreatSearch"/>
         <AutoCastToggleOffValidatorArray value="TacticalBansheeCloakThreatSearchEmpty"/>
     </CAbilBehavior>
@@ -837,9 +854,6 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="MedicRestoration">
             <Flags index="AllowMinimap" value="0"/>
         </CmdButtonArray>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="MedivacHeal">
-        <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHealRaynor" parent="MedivacHeal">
         <Name value="Abil/Name/MedivacHealRaynor"/>
