@@ -472,6 +472,8 @@
         <Race value="Zerg"/>
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Effect,LurkerU,Amount" Value="1"/>
+        <EffectArray Reference="Effect,LurkerU,AttributeBonus[Armored]" Value="1"/>
+        <EffectArray Reference="Effect,Talons,AttributeBonus[Armored]" Value="1"/>
         <AffectedUnitArray value="Lurker"/>
         <AffectedUnitArray value="LurkerBurrowed"/>
     </CUpgrade>
@@ -1042,7 +1044,7 @@
     </CUpgrade>
     <CUpgrade id="RaynorCommander">
         <EffectArray Operation="Subtract" Reference="Abil,StarportTrain,InfoArray[Train1].Time" Value="21.000000"/>
-        <EffectArray Reference="Effect,TwinGatlingCannons,AttributeBonus[Mechanical]" Value="8"/>
+        <EffectArray Operation="Set" Reference="Weapon,TwinGatlingCannon,Effect" Value="TwinGatlingCannonsRaynor"/>
     </CUpgrade>
     <CUpgrade id="RaynorCommanderMechCostReduction">
         <EffectArray index="2" Value="10"/>
@@ -1535,11 +1537,23 @@
         <EffectArray Operation="Set" Reference="Abil,UpgradeToHive,CmdButtonArray[Execute].Requirements" Value="HaveInfestationPit"/>
         <EffectArray Reference="Unit,RoachCorpser,Speed" Value="0.750000"/>
     </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel1">
+        <EffectArray index="51" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel2">
+        <EffectArray index="51" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel3">
+        <EffectArray index="51" Value="3"/>
+    </CUpgrade>
     <!-- EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ProtossAirWeaponsExtra">
         <EditorCategories value="Race:Protoss,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Weapon,MothershipArtanisBeam,Level" Value="1"/>
         <EffectArray Reference="Effect,MothershipArtanisBeamDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,VoidRayChargeBeamBounce1Damage,Amount" Value="0.333"/>
+        <EffectArray Reference="Effect,VoidRayChargeBeamBounce2Damage,Amount" Value="0.333"/>
+        <EffectArray Reference="Effect,VoidRayChargeBeamBounce3Damage,Amount" Value="0.333"/>
         <AffectedUnitArray value="MothershipArtanis"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsExtraLevel1" parent="ProtossAirWeaponsExtra">
@@ -1588,7 +1602,7 @@
         <EffectArray Reference="Effect,HighTemplarNerazimWeaponDamage,Amount" Value="1"/>
         <EffectArray Reference="Weapon,DarkArchonNerazimWeapon,Level" Value="1"/>
         <EffectArray Reference="Effect,DarkArchonNerazimWeaponDamage,Amount" Value="3"/>
-        <EffectArray Reference="Effect,DarkArchonNerazimWeaponDamage,AttributeBonus[Biological]" Value="1.000000"/>
+        <EffectArray Reference="Effect,DarkArchonNerazimWeaponDamage,AttributeBonus[Biological]" Value="1"/>
         <AffectedUnitArray value="HighTemplarShakuras"/>
         <AffectedUnitArray value="Dark Archon"/>
     </CUpgrade>
@@ -1606,6 +1620,8 @@
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtra">
         <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
+        <EffectArray Reference="Effect,TwinGatlingCannonsRaynor,Amount" Value="1"/>
+        <EffectArray Reference="Effect,TwinGatlingCannonsRaynor,AttributeBonus[Mechanical]" Value="1"/>
         <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,LanceMissileLaunchersMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,ThorsHammerMoving,Level" Value="1"/>
@@ -1614,6 +1630,7 @@
         <EffectArray Reference="Weapon,WarbotAMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,HellionTankMoving,Level" Value="1"/>
         <EffectArray Reference="Weapon,HyperionVoidCoopDummy,Level" Value="1"/>
+        <AffectedUnitArray value="VikingAssault"/>
         <AffectedUnitArray value="Thor"/>
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Wraith"/>
@@ -1622,7 +1639,7 @@
         <AffectedUnitArray value="HyperionVoidCoop"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel1" parent="TerranVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray index="9" Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,ThorsHammerMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithGDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
@@ -1632,7 +1649,7 @@
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel2" parent="TerranVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray index="9" Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,ThorsHammerMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithGDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
@@ -1642,7 +1659,7 @@
         <EffectArray Operation="Set" Reference="Weapon,HyperionVoidCoopDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel3" parent="TerranVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray index="9" Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,ThorsHammerMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,WraithGDummy,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
@@ -1653,19 +1670,21 @@
     </CUpgrade>
     <CUpgrade id="HHVehicleAndShipWeaponsExtra">
         <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
-        <EffectArray Reference="Effect,HHValkyrie2Damage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,HHValkyrie2Damage,Amount" Value="3"/>
         <EffectArray Reference="Weapon,HHValkyrie2,Level" Value="1"/>
         <EffectArray Reference="Weapon,HHOrdnanceTowerValkyrieDummy,Level" Value="1"/>
+        <EffectArray Reference="Effect,HHTwinGatlingCannons,AttributeBonus[Mechanical]" Value="1"/>
         <AffectedUnitArray value="HHValkyrie"/>
+        <AffectedUnitArray value="HHVikingAssault"/>
     </CUpgrade>
     <CUpgrade id="HHVehicleAndShipWeaponsExtraLevel1" parent="HHVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
+        <EffectArray index="3" Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
     </CUpgrade>
     <CUpgrade id="HHVehicleAndShipWeaponsExtraLevel2" parent="HHVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
+        <EffectArray index="3" Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
     </CUpgrade>
     <CUpgrade id="HHVehicleAndShipWeaponsExtraLevel3" parent="HHVehicleAndShipWeaponsExtra">
-        <EffectArray Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
+        <EffectArray index="3" Operation="Set" Reference="Weapon,HHValkyrie2,Icon" Value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
     </CUpgrade>
     <CUpgrade id="HHVehicleAndShipArmorsExtra">
         <EditorCategories value="Race:Protoss,UpgradeType:ArmorBonus"/>
@@ -1685,7 +1704,7 @@
     <CUpgrade id="SITerranVehicleWeaponsExtra">
         <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Effect,SILiberatorAGDamage,Amount" Value="5"/>
-        <EffectArray Reference="Effect,SILiberatorSprayTrackedDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,SILiberatorSprayTrackedDamage,Amount" Value="2"/>
         <EffectArray Reference="Weapon,SILiberatorAGWeapon,Level" Value="1"/>
         <EffectArray Reference="Weapon,SILiberatorAGWeapon2,Level" Value="1"/>
         <AffectedUnitArray value="SILiberatorAG"/>
@@ -1737,9 +1756,9 @@
     </CUpgrade>
     <CUpgrade id="ZagaraGroundAttacksExtra">
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
-        <EffectArray Reference="Effect,RoachCorpserAcidSalivaU,Amount" Value="2.000000"/>
-        <EffectArray Reference="Effect,RoachCorpserRoachUMelee,Amount" Value="2.000000"/>
-        <EffectArray Reference="Effect,RoachlingNeedleClawsDamage,Amount" Value="1.000000"/>
+        <EffectArray Reference="Effect,RoachCorpserAcidSalivaU,Amount" Value="2"/>
+        <EffectArray Reference="Effect,RoachCorpserRoachUMelee,Amount" Value="2"/>
+        <EffectArray Reference="Effect,RoachlingNeedleClawsDamage,Amount" Value="1"/>
         <EffectArray Reference="Weapon,RoachCorpserRoachMelee,Level" Value="1"/>
         <EffectArray Reference="Weapon,RoachCorpserAcidSaliva,Level" Value="1"/>
         <EffectArray Reference="Weapon,RoachlingNeedleClaws,Level" Value="1"/>

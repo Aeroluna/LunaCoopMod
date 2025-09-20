@@ -1249,7 +1249,6 @@
     <CEffectEnumArea id="SOAMothershipLineAttackSearch">
         <IncludeArray Effect="SOAMothershipLineAttackAutoOnCheck" Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <DebugTrace value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="SILiberatorAmmoRestockLMSet">
         <ValidatorArray value="TargetIsGround"/>
@@ -1428,6 +1427,18 @@
     <CEffectLaunchMissile id="TempestLaunchMissileGround">
         <ImpactEffect value="TempestImpactSetGround"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="TwinGatlingCannonsRaynor" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Mechanical" value="8"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <Amount value="12"/>
+        <AreaArray Radius="0.3" Fraction="1" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="0.6" Fraction="0.5" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="1.2" Fraction="0.25" Validator="HALORocketsResearched"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
     <CEffectDamage id="TwinGatlingCannonsMengsk">
         <AttributeBonus index="Mechanical" value="16"/>
         <Amount value="24"/>
@@ -2179,14 +2190,6 @@
             <Change value="0"/>
         </VitalArray>
     </CEffectModifyUnit>
-    <CEffectDamage id="TwinGatlingCannons">
-        <KindSplash value="Splash"/>
-        <AreaArray Radius="0.3" Fraction="1" Validator="HALORocketsResearched"/>
-        <AreaArray Radius="0.6" Fraction="0.5" Validator="HALORocketsResearched"/>
-        <AreaArray Radius="1.2" Fraction="0.25" Validator="HALORocketsResearched"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-    </CEffectDamage>
     <CEffectDamage id="VortexArtanis">
         <EditorCategories value=""/>
         <Amount value="2.5"/>

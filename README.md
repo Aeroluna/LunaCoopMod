@@ -190,7 +190,7 @@ Old Raynor nerfs reverted. Double MULEs in particular should help out P0 Raynor.
 Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
 
 - Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
-- Added +8 vs. Mechanical damage to Viking Gatling Cannons.
+- Increased Viking Gatling Cannon damage from 12 to 12 (+8 vs Mechanical).
 - Added faster transformation speed to Phobos Weapons System.
 
 Some ground Viking buffs because why not.
@@ -340,6 +340,7 @@ Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite us
   - Can use Planet Cracker every 360 seconds.
     - Briefly charges up before scorching the ground beneath the Mothership for 20 seconds, causing 1200 (1800 vs Armored) damage in an area below. Deals more damage closer to the beam.
     - Damage doubles with P1.
+  - Cloaks nearby friendly units
   - Provides a power field nearby.
 
 An iconic unit thats missing from co-op, is now back. Mass Recall should help with Artanis's mobility problems. Vortex no longer grants invulnerability to enemy units so Archon toilets are back on the menu. Planet Cracker is such an iconic ability, it had to be added. Projecting a constant power field stays in line with Artanis's design of quickly warping in reinforcements during combat.
@@ -657,7 +658,6 @@ Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create int
   - Reduced travel speed by 75% speed.
   - Cooldown increased from 1 to 2 seconds.
   - Damage increased from 10 to 100.
-  - Now visible as a weapon.
 - Renamed Mothership to Crimson Sovereign.
 
 Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 damage death laser. As compensation, the original Terminator Beam can only hit air units and Thermal Lance can only hit ground units (it seemed weird that hitting the ground under air units would damage them anyways). Mothership was renamed to be more distinct from other variants and be in line with other Tal'darim variant unit names.
@@ -665,6 +665,7 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 - Increased Destroyer supply cost from 3 to 6.
 - Increased Destroyer price from 125/75 to 250/150.
 - Increased Destroyer bounce damage by 1 for each charge level.
+- Changed Protoss Air Weapons upgrades to affect Destroyer bounce damage (+0.333).
 - Reworked Destroyer attacks to ignore armor.
 - Reworked Level 13 Burning Skies perk.
   - No longer increases the amount of Destroyers spawned.
