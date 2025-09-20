@@ -3145,6 +3145,10 @@ bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions
             return false;
         }
 
+        if (!((EventUnitDamageDeathCheck(c_deathTypeTimeout) == false))) {
+            return false;
+        }
+
         if (!((UnitTestState(EventUnit(), c_unitStateHallucination) == false))) {
             return false;
         }
@@ -3153,7 +3157,19 @@ bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions
             return false;
         }
 
-        if (!((((EventUnitDamageDeathCheck(c_deathTypeTimeout) == false) && (UnitFilterMatch(EventUnit(), 1, UnitFilter(0, (1 << (c_targetFilterSummoned - 32)), 0, 0)) != true) && (UnitHasBehavior2(EventUnit(), "NoScrapDrop") != true) && (libCOOC_gf_PlayerIsCommander(UnitGetOwner(EventUnit())) == true) && (libNtve_gf_KillingPlayer() != c_playerAny)) || ((UnitGetType(EventUnit()) == "Baneling") || (UnitGetType(EventUnit()) == "BanelingBurrowed") || (UnitGetType(EventUnit()) == "HotSSplitterlingBig") || (UnitGetType(EventUnit()) == "HotSSplitterlingBigBurrowed") || (UnitGetType(EventUnit()) == "Scourge") || (UnitGetType(EventUnit()) == "HHReaper") || (UnitGetType(EventUnit()) == "HHReaperFlying") || (UnitGetType(EventUnit()) == "HHHellion") || (UnitGetType(EventUnit()) == "HHHellionTank") || (UnitGetType(EventUnit()) == "HHWidowMine") || (UnitGetType(EventUnit()) == "HHWidowMineBurrowed") || (UnitGetType(EventUnit()) == "Supplicant"))))) {
+        if (!((UnitFilterMatch(EventUnit(), 1, UnitFilter(0, (1 << (c_targetFilterSummoned - 32)), 0, 0)) != true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "NoScrapDrop") != true))) {
+            return false;
+        }
+
+        if (!((libCOOC_gf_PlayerIsCommander(UnitGetOwner(EventUnit())) == true))) {
+            return false;
+        }
+
+        if (!(((libNtve_gf_KillingPlayer() != c_playerAny) || ((UnitGetType(EventUnit()) == "Baneling") || (UnitGetType(EventUnit()) == "BanelingBurrowed") || (UnitGetType(EventUnit()) == "HotSSplitterlingBig") || (UnitGetType(EventUnit()) == "HotSSplitterlingBigBurrowed") || (UnitGetType(EventUnit()) == "Scourge") || (UnitGetType(EventUnit()) == "HHReaper") || (UnitGetType(EventUnit()) == "HHReaperFlying") || (UnitGetType(EventUnit()) == "HHHellion") || (UnitGetType(EventUnit()) == "HHHellionTank") || (UnitGetType(EventUnit()) == "HHWidowMine") || (UnitGetType(EventUnit()) == "HHWidowMineBurrowed") || (UnitGetType(EventUnit()) == "Supplicant"))))) {
             return false;
         }
     }

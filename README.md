@@ -21,6 +21,10 @@ Not all commanders have a fourth prestige yet, but do try the ones that exist!
 
 Some console skins were missing for commanders. Many commander have corresponding voice packs, why not use them?
 
+- Added short descriptions for every commander on the commander selection screen.
+
+Taken from starcraft2coop.com
+
 - Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
 - Increased Shield Battery range by 2.
 
@@ -754,7 +758,7 @@ Fun fact: it was using the range for the Build Railgun Turret ability rather tha
 This increases the reliability of Ghosts getting the extra snipes off.
 
 - Added a new Aegis Plating passive to Hellbat Rangers.
-  - Reduced damage taken to a maximum of 15.
+  - Reduced damage taken to a maximum of 20.
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
 
