@@ -698,7 +698,7 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
-- Fixed Mothership using Aiur skin death ragdoll model instead of Tal'darim.
+- Fixed a bug where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Restored missing beam effect on Ascendant's Psionic Orb.
 
@@ -712,7 +712,7 @@ P2 was such a boring prestige. Stunning enemies at least grants a niche of dropp
 
 - Reworked Covert Banshee's Rocket Barrage ability.
   - Now does damage over time rather than instantly.
-  - Fixed bug where missiles would launch from the center of the model instead of the weapons.
+  - Fixed a bug where missiles would launch from the center of the model instead of the weapons.
   - Changed autocast to prioritize hitting multiple enemies, but can target fewer.
   - Reduced casting arc from 360 to 0 (Now has to face target location).
 
@@ -835,7 +835,7 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Added strafing movement to Infested Liberator Cloud Dispersal.
 - Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
 - Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
-- Fixed Infested Liberator being unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+- Fixed a bug where Infested Liberator were unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
 
 Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 
@@ -958,7 +958,7 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 
 - Added autocast to Widow Mine Burrow.
 - Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
-- Fixed bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
+- Fixed a bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
 - Added a visual red light on top after researching Black Market Launchers.
 
 These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
@@ -1104,7 +1104,7 @@ For an ultimate gear, 30 is a high minimum to reach. Reducing the minimum should
 
 Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.
 
-- Fixed Odin weapon tooltip showing wrong damage.
+- Fixed a bug where Odin's weapon tooltip showed the wrong damage.
 
 It was showing the damage numbers from the WOL campaign instead of the Co-op numbers.
 
@@ -1241,7 +1241,7 @@ Previously the status bar only showed hp.
 - Reworked Fatal Attraction to no longer make the units uncommandable.
   - No longer disables units attacks, abilities, and movement.
   - Pull strength increased by 20%.
-  - Fixed bug where Dehaka's Primal Impalers were pulled when burrowed.
+  - Fixed a bug where Dehaka's Primal Impalers were pulled when burrowed.
 
 The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
 

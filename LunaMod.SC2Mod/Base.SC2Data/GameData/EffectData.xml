@@ -1433,9 +1433,9 @@
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
         <Amount value="12"/>
-        <AreaArray Radius="0.3" Fraction="1" Validator="HALORocketsResearched"/>
-        <AreaArray Radius="0.6" Fraction="0.5" Validator="HALORocketsResearched"/>
-        <AreaArray Radius="1.2" Fraction="0.25" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="0.5" Fraction="1" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="0.75" Fraction="0.5" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="1.25" Fraction="0.25" Validator="HALORocketsResearched"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
@@ -1825,15 +1825,6 @@
         <AreaArray Radius="2.5" Effect="KerriganRazorSwarmAB"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
-    <CEffectApplyForce id="MutatorDeathPullForce">
-        <Amount value="-1.2"/>
-    </CEffectApplyForce>
-    <CEffectApplyForce id="MutatorDeathPullForceStrong">
-        <Amount value="-1.2"/>
-    </CEffectApplyForce>
-    <CEffectApplyForce id="MutatorDeathPullForceWeak">
-        <Amount value="-1.2"/>
-    </CEffectApplyForce>
     <CEffectSet id="NeedleSpinesImpactSet">
         <EffectArray value="KerriganEnvenomedSpinesAB"/>
     </CEffectSet>
@@ -2289,6 +2280,12 @@
     </CEffectRemoveBehavior>
     <CEffectDamage id="WreckingCrewAssault">
         <AttributeBonus index="Mechanical" value="12"/>
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="0.5" Fraction="1" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="0.75" Fraction="0.5" Validator="HALORocketsResearched"/>
+        <AreaArray Radius="1.25" Fraction="0.25" Validator="HALORocketsResearched"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectIssueOrder id="WreckingCrewFighterOrder">
         <EditorCategories value=""/>
