@@ -83,17 +83,38 @@ yeah.
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
 
+- Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
+
+Makes it much easier to see which units are irradiated.
+
+- Added an impact visual for Ravager's Corrosive Bile.
+
+Not the prettiest effect, but I tried!
+
+- Increased visual scale of Planetary Fortress's attack impact by 20%.
+- Increased volume of Planetary Fortress's attack.
+
+Weirdly quiet for how impactful this thing's weapon is.
+
 - Changed Void Rays to "look" at their targets.
 
 thanks Enoki.
 
-- Added targeting beam to Widow Mine attack (Affects Swann and Horner).
+- Added targeting beam to Widow Mine attack.
 - Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
-- Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched (Affects Fenix).
-- Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched (Affects Artanis and Karax).
-- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells (Affects Raynor, Nova, Tychus, and Mengsk).
-- Increased Zealot animation walk speed from 2.25 to 3. This makes Zealots visually bounce around less at high movement speeds (Affects Artanis, Vorazun, Karax, and Fenix).
-- Added turret tracking to Colossi (Affects Karax and Fenix).
+- Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched.
+- Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched.
+- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells.
+- Increased Zealot animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
+- Added turret tracking to Colossi.
+- Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
+- Changed town hall structures to automatically rally to a mineral field when built or landed.
+- Fixed a bug where Liberators couldn't designate an attack target while morphing from AA to AG.
+- Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
+- Fixed a bug where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
+- Added an AOE indicator to Disruptor's Purification Nova ability.
+- Fixed a bug where Protoss units were using an outdated AoE indicator.
+- Added pre-placement visual indicator and sound to Oracle's Stasis Ward ability.
 
 Copied from Versus.
 
@@ -108,6 +129,9 @@ Copied from Versus.
 - Reduced visual scale of High Templar's Psionic Storm ability.
 - Increased visual scale of Psionic Storm impact effect.
 - Added Disruptor tint when firing and when on cooldown.
+- Fixed a bug causing Liberators to first decelerate when ordered to siege within their range.
+- Removed Blinding/Disabling Cloud impact visual from Nexuses (They don't even have a weapon anymore!).
+- Increased visibility of Blinding/Disabling Cloud impact visual on Planetaries.
 
 thanks Common Sense Balance.
 
@@ -312,6 +336,10 @@ This allows the healing to scale with damage increase or damage reduction effect
 - Changed P3 voice lines.
 
 Now uses the pre-infested voice lines from Heart of the Swarm.
+
+- Fixed a bug where Kerrigan's Assimilation Aura would not affect invisible units (Cloaked and not detected).
+
+Little silly that you need to detect the unit to affect it with an *aura*.
 
 ## Artanis
 
@@ -868,6 +896,10 @@ Infested Marines were not worth investing into over Bunkers because they are tim
 
 Instead of creating huge waves, the Infested Colonist Compound now does many smaller waves. Each infestation upgrade still doubles the amount of infested spawned.
 
+- Buffed Infested Colonist Compound's Spawn Infested Civilian ability to now be affected by Chrono Boost.
+
+What's the worst that could happen?
+
 - Reworked P3.
   - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
 
@@ -1128,9 +1160,13 @@ Is likely an overall nerf as the radius is reduced and now you have to channel B
 
 ## Zeratul
 
-- Fixed Xel'naga Ambusher Predictive Blink autocast.
+- Fixed a bug where Xel'naga Ambusher Predictive Blink autocast would only use the first charge.
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
+
+- Fixed a bug where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
+
+yeah.
 
 - Changed to Ihan-rii skin set.
 - Added Xel'Naga Ambusher portrait.
@@ -1261,6 +1297,12 @@ Very crippling mutator so its cost has been increased. Unfortunately, doesn't he
 - Added Nuclear Mines to Brutal+ costing 3 points.
 
 Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
+
+- Nerfed Going Nuclear nuke effect to no longer reveal explosion area to Amon.
+- Nerfed Nuclear Mines nuke effect to no longer reveal explosion area to Amon.
+- Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
+
+No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
 
 - Added Infestation Station to Brutal+ costing 3 points.
 - Added Great Wall to Brutal+ costing 5 points.

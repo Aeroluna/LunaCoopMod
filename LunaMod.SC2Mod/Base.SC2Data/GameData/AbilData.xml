@@ -66,6 +66,20 @@
         <Flags index="AutoCastOn" value="1"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Enemy"/>
     </CAbilEffectTarget>
+    <CAbilMorphPlacement id="CommandCenterLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
+    <CAbilMorphPlacement id="CommandCenterMengskLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilEffectTarget id="CreateSymbiote">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="PrestigeCreateSymbioteAB"/>
@@ -83,6 +97,13 @@
             <Button Requirements="HaveDehakaBarracks"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilMorphPlacement id="DehakaHatcheryRoot">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilEffectTarget id="DisablingCloud">
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
@@ -95,7 +116,8 @@
         </Cost>
         <TargetSorts>
             <SortArray value="TSUnitsAndAttackingStructures"/>
-            <SortArray value="TSPriority"/>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSPriorityDesc"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
@@ -193,6 +215,13 @@
             <Button DefaultButtonFace="HHOrdnanceTowerTopBar" Requirements="HHMercCompound"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilMorphPlacement id="HHCommandCenterLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
     </CAbilEffectTarget>
@@ -301,6 +330,12 @@
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBanshee"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="LiberatorAGTarget">
+        <Flags index="AllowMovement" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LiberatorAG_BlackOpsTarget">
+        <Flags index="AllowMovement" value="1"/>
+    </CAbilEffectTarget>
     <CAbilSpecialize id="MakeVultureSpiderMines">
         <InfoArray index="Specialize1">
             <Flags index="AutoCastOn" value="1"/>
@@ -384,9 +419,29 @@
         <EffectArray index="Finish" value="OracleStasisTrapBuildBeamOff"/>
         <EffectArray index="Cancel" value="OracleStasisTrapBuildBeamOff"/>
     </CAbilBuild>
+    <CAbilMorphPlacement id="OrbitalCommandLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilEffectTarget id="QueenMPSpawnBroodlings">
         <TargetFilters index="0" value="-;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="RavagerCorrosiveBile">
+        <Effect index="0" value="RavagerCorrosiveBileLaunchSet"/>
+        <Cost index="1" removed="1"/>
+        <Range index="1" removed="1"/>
+        <CursorEffect index="1" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilMorphPlacement id="SICommandCenterLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilMorph id="SiegeBreakerSiege">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -464,6 +519,13 @@
             <Cooldown TimeUse="1.2"/>
         </Cost>
     </CAbilEffectInstant>
+    <CAbilMorphPlacement id="TychusCommandCenterLand">
+        <InfoArray index="0">
+            <SectionArray index="Stats">
+                <EffectArray index="Finish" value="CommandStructureAutoRally"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorphPlacement>
     <CAbilEffectTarget id="TychusMedivacDoubleHealPlusMech">
         <Flags index="PassengerAcquirePassengers" value="1"/>
     </CAbilEffectTarget>
@@ -669,6 +731,7 @@
         <Range value="9"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="LiberatorAGMode"/>
+        <Flags index="AllowMovement" value="1"/>
     </CAbilEffectTarget>
     <CAbilMorph id="SILiberatorMorphtoAA">
         <AbilSetId value="LiberatorAA"/>

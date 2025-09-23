@@ -21,6 +21,40 @@
             <MatchFlags index="Link" value="1"/>
         </Marker>
     </CEffectSet>
+    <CEffectSet id="CCCreateSet">
+        <EffectArray value="CommandStructureAutoRally"/>
+    </CEffectSet>
+    <CEffectEnumArea id="CommandStructureAutoRally">
+        <EditorCategories value=""/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="HarvestableResource;Self"/>
+        <TargetSorts>
+            <SortArray value="TSFarthestDistance"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="6.5" Effect="CommandStructureOrderAutoRally"/>
+        <AreaArray MaxCount="1" Radius="6.5" Effect="CommandStructureOrderAutoRally2"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="CommandStructureOrderAutoRally">
+        <ValidatorArray value="Minerals"/>
+        <ValidatorArray value="CasterIsNotHatchery"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="Rally"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="AutoQueued" value="1"/>
+        <Target Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="CommandStructureOrderAutoRally2">
+        <ValidatorArray value="Minerals"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="RallyHatchery"/>
+        <AbilCmdIndex value="1"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="AutoQueued" value="1"/>
+        <Target Value="TargetUnit"/>
+    </CEffectIssueOrder>
     <CEffectSet id="DevilDogSet">
         <EffectArray index="0" value="DevilDogACCP"/>
         <EffectArray index="1" value="DevilDogDamageSet"/>
@@ -145,6 +179,9 @@
     <CEffectEnumArea id="HHReaperKnockbackSearch">
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
+    <CEffectSet id="HatcheryCreateSet">
+        <EffectArray value="CommandStructureAutoRally"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="HireMercBattlecruiser">
         <ValidatorArray index="0" value="NotAtFullSupply"/>
         <EditorCategories value=""/>
@@ -184,6 +221,14 @@
         <EditorCategories value=""/>
         <Count value="2"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="HybridNukeDetonate">
+        <RevealRadius value="0"/>
+        <RevealFlags index="Unfog" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="HybridNukeDetonateSmall">
+        <RevealRadius value="0"/>
+        <RevealFlags index="Unfog" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="KerriganMalignantCreepAttackSpeedDummy">
         <Amount value="0"/>
     </CEffectDamage>
@@ -198,10 +243,23 @@
         <EditorCategories value=""/>
         <Amount value="1"/>
     </CEffectDamage>
+    <CEffectEnumArea id="KerriganVoidCoopEconDropSearch">
+        <SearchFilters value="-;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectDamage id="LanzerTorpedoesMengskDamage">
         <AttributeBonus index="Armored" value="0"/>
         <Amount value="28"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="LiberatorTargetMorphDelayPersistent">
+        <PeriodCount value="16"/>
+        <PeriodicEffectArray value="LiberatorTargetMorphSearchArea"/>
+        <PeriodicPeriodArray index="0" value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="Liberator_BlackOpsTargetMorphDelayPersistent">
+        <PeriodCount value="16"/>
+        <PeriodicEffectArray value="Liberator_BlackOpsTargetMorphSearchArea"/>
+        <PeriodicPeriodArray index="0" value="0.25"/>
+    </CEffectCreatePersistent>
     <CEffectSwitch id="MarauderMagrailMunitionsCCSwitch">
         <EditorCategories value=""/>
         <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="MarauderMagrailMunitionsSlowAB"/>
@@ -236,6 +294,13 @@
     </CEffectDamage>
     <CEffectSet id="MercGroundDropBehaviorSet">
         <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MutatatorNukeDetonate">
+        <RevealRadius value="0"/>
+        <RevealFlags index="Unfog" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="NexusCreateSet">
+        <EffectArray value="CommandStructureAutoRally"/>
     </CEffectSet>
     <CEffectApplyForce id="NovaDashAttackApplyForce">
         <WhichLocation Value="TargetPoint"/>
@@ -764,6 +829,9 @@
     <CEffectCreatePersistent id="SICivilianStructureSpawnCivilianGlobalTimerDummyCP">
         <InitialDelay value="0"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="SICommandCenterCreateSet">
+        <EffectArray value="CommandStructureAutoRally"/>
+    </CEffectSet>
     <CEffectSet id="SIInfestedTrooperInfestedRocketsPlaguedMunitionsSet">
         <EffectArray value="InfestedAcidSpines"/>
         <EffectArray value="SIInfestedTrooperMarinePlaguedMunitions"/>
@@ -794,9 +862,10 @@
     <CEffectCreatePersistent id="SILiberatorTargetMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="SILiberatorTargetMorphPersistent"/>
-        <PeriodCount value="1"/>
-        <PeriodicPeriodArray value="4"/>
+        <PeriodCount value="16"/>
+        <PeriodicPeriodArray value="0.25"/>
         <AINotifyEffect value="SILiberatorTargetMorphSearchArea"/>
+        <PeriodicEffectArray value="SILiberatorTargetMorphSearchArea"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="SILiberatorTargetMorphPersistent">
         <EditorCategories value="Race:Terran"/>
@@ -1738,6 +1807,10 @@
         <SearchFlags index="CenterAtLaunch" value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFlags index="OffsetAreaByAngle" value="0"/>
+        <TargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSPriorityDesc"/>
+        </TargetSorts>
     </CEffectEnumArea>
     <CEffectSet id="MothershipArtanisBeamSet">
         <EditorCategories value="Race:Protoss"/>
@@ -2313,6 +2386,9 @@
     <CEffectDamage id="ZagaraVoidCoopRangedSecondaryDamage">
         <Amount value="15"/>
     </CEffectDamage>
+    <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectIssueOrder id="ZeratulStalkerBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>

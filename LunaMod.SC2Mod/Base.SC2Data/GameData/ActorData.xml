@@ -22,9 +22,35 @@
         <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
         <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
     </CActorUnit>
+    <CActorModel id="BlindingCloudStructureModelAttachmentNexus">
+        <Remove Terms="Behavior.BlindingCloudStructure.On; ValidateUnit IsNexus" Send="Create"/>
+        <Remove Terms="Behavior.BlindingCloudStructure.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="BlindingCloudStructureModelAttachmentPlanetary">
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
+    </CActorModel>
     <CActorModel id="DevilDogAttackModel">
         <Remove Terms="ActorCreation; ValidateUnit BearclawNozzlesPurchased" Send="SetScale 2.250000,1.800000,1.000000"/>
         <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
+    </CActorModel>
+    <CActorModel id="DisruptionCloudStructureModelAttachmentNexus">
+        <Remove Terms="Behavior.DisruptionCloudStructure.On; ValidateUnit IsNexus" Send="Create"/>
+        <Remove Terms="Behavior.DisruptionCloudStructure.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="DisruptionCloudStructureModelAttachmentPlanetary">
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
+    </CActorModel>
+    <CActorModelMaterial id="GlazeIrradiate" parent="GlazeParent">
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <On Terms="Behavior.Irradiate.On" Send="Create"/>
+        <On Terms="Behavior.Irradiate.Off" Send="AnimBracketStop BSD"/>
+        <Model value="GlazeParasiticBomb"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModel id="GuardianShield">
+        <Inherits index="Visibility" value="0"/>
     </CActorModel>
     <CActorModel id="MercCompoundHireBeam">
         <Flags index="SuppressSaveLoad" value="1"/>
@@ -168,6 +194,23 @@
     <CActorSound id="Nydus_ConstructionFinish">
         <On Terms="Behavior.SwarmLocusTimeoutKill.On" Send="Create"/>
     </CActorSound>
+    <CActorAction id="PlanetaryFortressAttack">
+        <ImpactMap index="None" Scale="1.200000"/>
+        <DamageSiteOps Ops="SOpAttachHarness"/>
+        <DamageMap index="None" Model="SiegeTankSiegedAttackDamage"/>
+        <DamageModel value="SiegeTankAttackDamageModel"/>
+    </CActorAction>
+    <CActorModel id="RavagerTargetImpactFire" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.RavagerCorrosiveBileDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.RavagerCorrosiveBileAoeDamage.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,60,150 6.000000}"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpMoveDownByDot35"/>
+        <Model value="CorrosiveBileImpact"/>
+        <Scale value="0.600000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <AutoScaleFactor value="0.600000"/>
+    </CActorModel>
     <CActorModel id="StimPackDevice_Nova" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachHardPoint"/>
     </CActorModel>
@@ -181,6 +224,15 @@
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 6.250000 AsDuration"/>
         <On Terms="Effect.OdinNukeDamage.Start" Send="Destroy"/>
         <Remove Terms="Effect.OdinNukePersistent.Stop" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="StimpackEndImpact">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="Stimpack_BlackOpsEndImpact">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="SuperStimpackNovaEndImpact">
+        <Inherits index="Visibility" value="1"/>
     </CActorModel>
     <CActorModel id="TychusBunkerBuild" parent="TerranBuildingBuild">
         <Model value="Bunker_Tychus_Build"/>
@@ -567,9 +619,6 @@
         <ImpactPhysics Name="PunisherGrenadesImpact" MatchKeys="Basic" Physics="MarauderAttackDeathForce"/>
         <ImpactMap index="None" Model="MarauderUpgradedAttackImpact"/>
     </CActorAction>
-    <!--                                                                                         -->
-    <!-- Void Ray Hero (Dark Prelate Mohandas) ................................................. -->
-    <!--                                                                                         -->
     <CActorUnit id="Mohandar">
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
@@ -608,6 +657,16 @@
     <CActorModel id="NovaUnitLockdownTarget">
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.On" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaAirliftStun.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorUnit id="OracleStasisTrap">
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PlaceholderActorModel value="OracleStasisTrapPlaceholder"/>
+    </CActorUnit>
+    <CActorModel id="OracleStasisTrapPlaceholder" parent="PlacementModel">
+        <HostSiteOps Ops="SOpShadowAsyncPrecise" HoldPosition="1" HoldRotation="1"/>
+        <On index="0" Terms="ActorCreation" Send="SetLocalTintColor 201,175,175"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
     </CActorModel>
     <CActorRange id="OracleStasisTrapAbilityRange" parent="RangeAbil" abil="OracleStasisTrapBuild">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
@@ -668,6 +727,9 @@
     <CActorModel id="TychusFirebatShieldViz">
         <Remove Terms="Behavior.TychusFirebatShield.DamageHandled" Send="Create"/>
     </CActorModel>
+    <CActorModel id="TychusMarauderStimpackEndImpact">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
     <CActorAction id="TychusMarauderUpgradedAttack" parent="MarauderAttackBase" effectImpact="TychusPunisherGrenadesSwitch" effectLaunch="TychusPunisherGrenadesLM">
         <On Terms="Effect.TychusPunisherGrenadesLM.Start; At Caster; ValidateEffect HaveTychusMarauderAttackSplash" Send="Create"/>
         <LaunchAttachQuery Methods="AMPatternMarauder"/>
@@ -682,6 +744,7 @@
     </CActorMissile>
     <CActorUnit id="Ravager">
         <On index="78" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="AnimClear Spell"/>
         <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
         <On Terms="Abil.RavagerCorrosiveBile.SourceCastStart" Send="$Spell"/>
         <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
@@ -696,6 +759,7 @@
     </CActorUnit>
     <CActorUnit id="RavagerAbathur">
         <On index="78" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="AnimClear Spell"/>
         <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
         <On Terms="Abil.RavagerAbathurCorrosiveBile.SourceCastStart" Send="$Spell"/>
         <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
@@ -800,6 +864,10 @@
     <CActorSound id="TychusOdin_NukeLaunch_AS">
         <On index="1" Terms="Effect.OdinNukeDamage.Start"/>
     </CActorSound>
+    <CActorAction id="VikingAssaultAttack">
+        <On Terms="Effect.TwinGatlingCannonsRaynor.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.TwinGatlingCannonsRaynor.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+    </CActorAction>
     <CActorUnit id="VikingMengskAssault">
         <PortraitModel value="VikingMengskFighterPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskViking_StatusFrame"/>
@@ -1661,6 +1729,9 @@
     <CActorBeamSimple id="PhasingBeam">
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorBeamSimple>
+    <CActorSplat id="PurificationNovaCursorSplat" parent="ProtossCursorSplat" abil="PurificationNovaTargeted">
+        <Scale value="1.600000"/>
+    </CActorSplat>
     <CActorModel id="PurificationNovaRangeIndicator">
         <On Terms="Behavior.PurificationNovaTargettedTarget.On; ValidatePlayer IsKaraxCoopCommander" Send="SetScale 1.200000"/>
     </CActorModel>
@@ -1669,12 +1740,18 @@
         <On Terms="Behavior.PurificationNovaTargettedCaster.Off" Target="_Unit" Send="ClearTintColor 0.000000 DisruptorCaster"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {255,83,26 1.550000} 0.100000 Bounce DisruptorCaster"/>
         <On Terms="Behavior.PurificationNovaTargettedCaster.Off" Send="Destroy"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Target="_Unit" Send="ClearTintColor 0.000000 DisruptorCaster"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSimple id="DisruptorCooldownTint">
         <On Terms="Behavior.PurificationNovaCasterDarken.On" Send="Create"/>
         <On Terms="Behavior.PurificationNovaCasterDarken.Off" Target="_Unit" Send="ClearTintColor 0.500000 DisruptorCooldown"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {171,156,156 0.500000} 0.000000 OneShot DisruptorCooldown"/>
         <On Terms="Behavior.PurificationNovaCasterDarken.Off" Send="Destroy"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Target="_Unit" Send="ClearTintColor 0.500000 DisruptorCooldown"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>
@@ -2644,6 +2721,9 @@
             <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorModel id="ZeratulReflectionShield">
+        <Inherits index="Visibility" value="0"/>
+    </CActorModel>
     <CActorUnit id="ZeratulSummonVoidRay">
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
