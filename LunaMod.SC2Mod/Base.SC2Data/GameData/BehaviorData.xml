@@ -236,10 +236,10 @@
         <Period value="0.2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponHellfireShotgun">
-        <RemoveValidatorArray value="NotCommanderPrestigeNovaMelee"/>
+        <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponImprovedCanisterRifle">
-        <RemoveValidatorArray value="NotCommanderPrestigeNovaMelee"/>
+        <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryRefundUnnamed">
         <InfoFlags index="Hidden" value="1"/>
@@ -293,8 +293,34 @@
     <CBehaviorBuff id="RaynorMedicSafeguardMastery">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="TychusCalldownOdinExitStun">
+        <Duration value="0.1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TychusFirebatShield">
         <DamageResponse ClampMaximum="20" Minimum="21"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusHERCShield">
+        <InfoIcon value="Assets\Textures\btn-upgrade-tychus-herc-criticalsystem.dds"/>
+        <InitialEffect value="ArtanisResurgenceExplodeSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusHercRageDamageBuff">
+        <MaxStackCount value="10"/>
+        <Modification AttackSpeedMultiplier="1.06">
+            <DamageDealtUnscaled index="Melee" value="6"/>
+            <DamageDealtUnscaled index="Ranged" value="6"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusMarauderHealingWardTargetUpgrade">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusOdinEject">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NoCommanderPrestigeTychusOdin"/>
+        <DisableValidatorArray value="TychusNeverBuilt"/>
+        <DamageResponse Fatal="1" Handled="TychusOdinEjectCP">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="VikingMengskAirAttackDamage">
         <Duration value="10"/>

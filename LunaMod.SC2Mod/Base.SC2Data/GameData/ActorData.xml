@@ -711,6 +711,9 @@
         <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
     </CActorAction>
     <CActorMissile id="HHValkyrie2AttackMissile" parent="GenericAttackMissile" unitName="HHValkyrie2Weapon"/>
+    <CActorUnit id="TychusCoop">
+        <Remove Terms="Behavior.TychusCalldownOdinInsideOdinStun.Off" Send="AnimPlay Exit Spell,Land 0 0.000000"/>
+    </CActorUnit>
     <CActorAction id="TychusCoopAttack">
         <ContainerAssets Model="MarineBunkerAttackLaunch" Sound="TychusCoop_ChaingunAttackLaunch"/>
     </CActorAction>
@@ -861,8 +864,23 @@
         <Remove Terms="Abil.TychusOdinBarrage.TargetCastStart" Send="Create"/>
         <Remove Terms="Abil.TychusOdinBarrage.TargetChannelStop" Send="Destroy"/>
     </CActorModel>
+    <CActorSound id="TychusOdin_Eject" parent="SoundOneShot">
+        <On Terms="Effect.TychusOdinEjectLM.Start" Send="Create"/>
+        <Sound value="DropPod_BlowHatchDoorExplosion"/>
+    </CActorSound>
     <CActorSound id="TychusOdin_NukeLaunch_AS">
         <On index="1" Terms="Effect.OdinNukeDamage.Start"/>
+    </CActorSound>
+    <CActorSound id="TychusOdin_EjectVO" parent="SoundOneShot">
+        <On Terms="Effect.TychusOdinEjectCP.Start" Send="Create"/>
+    </CActorSound>
+    <CActorMissile id="TychusOdinEjectAttackMissile" parent="GenericAttackMissile" unitName="TychusOdinEjectMissile">
+        <EditorCategories value=""/>
+        <Model value="TychusEjectMissile"/>
+    </CActorMissile>
+    <CActorSound id="TychusHercShieldExplosionSound" parent="SoundContinuous">
+        <On Terms="Effect.TychusHERCShieldApply.Start; At Caster" Send="Create"/>
+        <Sound value="Artanis_ResurgenceExplode"/>
     </CActorSound>
     <CActorAction id="VikingAssaultAttack">
         <On Terms="Effect.TwinGatlingCannonsRaynor.Start; At Caster" Send="Create"/>

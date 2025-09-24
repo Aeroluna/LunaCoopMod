@@ -7,6 +7,9 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="ArtanisResurgenceEnemyImpactDamage">
+        <Kind value="Spell"/>
+    </CEffectDamage>
     <CEffectDamage id="Banshee_BlackOpsAirstrikeDamage">
         <Amount value="10.714"/>
         <Death value="Blast"/>
@@ -1523,12 +1526,34 @@
         <EffectArray index="4" value="TychusGhostConfusionSearch"/>
         <EffectArray index="5" removed="1"/>
     </CEffectSet>
+    <CEffectDamage id="TychusHERCWeaponDamage">
+        <Death value="Blast"/>
+        <AreaArray Arc="39.9792" Radius="2.1" Fraction="1"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="0"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="TychusOdinBarrageCP">
         <InitialEffect value="OdinNukePersistent"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="TychusOdinBarrageSearchArea">
         <AreaArray index="0" Radius="4"/>
     </CEffectEnumArea>
+    <CEffectLaunchMissile id="TychusOdinEjectLM">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourcePoint"/>
+        <ImpactOffset value="0,0,30"/>
+        <AmmoUnit value="TychusOdinEjectMissile"/>
+        <Movers Link="TychusOdinEjectMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="TychusOdinEjectCP">
+        <EditorCategories value=""/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="TychusOdinEjectLM"/>
+        <PeriodicPeriodArray value="1.5"/>
+        <PeriodicOffsetArray value="0,0,10"/>
+    </CEffectCreatePersistent>
     <CEffectLaunchMissile id="TychusPunisherGrenadesLM">
         <Movers index="0" Link="TychusPunisherGrenadesWeapon"/>
     </CEffectLaunchMissile>

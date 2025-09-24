@@ -182,7 +182,7 @@ Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann s
 Changed to be distinct from the Medivac portrait.
 
 - Added new Medic ability: Restoration.
-  - Removes any negative effects on target allied unit.
+  - Removes any negative debuffs on target allied unit.
   - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
@@ -246,9 +246,9 @@ Just because he's a commander now doesn't mean he forgot how to pilot the Hyperi
 
 I don't see why you wouldn't want this autocasting.
 
-- Changed Dusk Wing's Cloaking Field to grant +2 range, similar to the Banshee's Cloaking Field.
-- Changed Hyperion to be affected Mech Attack Speed mastery.
-- Changed Dusk Wing to be affected Mech Attack Speed mastery.
+- Buffed Dusk Wing's Cloaking Field to grant +2 range, similar to the Banshee's Cloaking Field.
+- Buffed Hyperion to be affected Mech Attack Speed mastery.
+- Buffed Dusk Wing to be affected Mech Attack Speed mastery.
 
 Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
 
@@ -278,11 +278,11 @@ yeah.
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
 
-- Changed Malignant Creep to affect structures and air units.
+- Buffed Malignant Creep to affect structures and air units.
 
 Isn't it funny that vanilla P1 Kerrigan's best unit is still Mutalisks? This should allow P1 to interact with more units.
 
-- Changed P2 to also hit structures.
+- Buffed P2 to also hit structures.
   - Will prioritize units and attacking structures.
 
 Now your damage isn't just nerfed against structures.
@@ -553,7 +553,7 @@ Vorazun is one of the most vespene limited commanders. Increasing her vespene ha
 
 This should help increase the survivability of all her other units. Pairs well with her level 7 perk for increased shield regeneration rate.
 
-- Changed Disruption Web to no longer require research.
+- Buffed Disruption Web to no longer require research.
 - Added Flux Vanes upgrade, which increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
@@ -704,7 +704,7 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 - Increased Destroyer supply cost from 3 to 6.
 - Increased Destroyer price from 125/75 to 250/150.
 - Increased Destroyer bounce damage by 1 for each charge level.
-- Changed Protoss Air Weapons upgrades to affect Destroyer bounce damage (+0.333).
+- Buffed Protoss Air Weapons upgrades to affect Destroyer bounce damage (+0.333).
 - Reworked Destroyer attacks to ignore armor.
 - Reworked Level 13 Burning Skies perk.
   - No longer increases the amount of Destroyers spawned.
@@ -825,7 +825,7 @@ These two simple changes make playing P2 infinitely smoother to play. It was kin
 
 These take super long to tech to before you can get any value from P2. Removing the tech requirements similar to P1 should streamline it.
 
-- Changed Rapid Hibernation to no longer require research.
+- Buffed Rapid Hibernation to no longer require research.
 - Removed deceleration from Infested Banshee's Burrow ability (no longer has to fully stop to cast).
 
 As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
@@ -905,7 +905,7 @@ What's the worst that could happen?
 
 This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
 
-- Changed Infested Infantry to be affected by commander buffs, i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.
+- Buffed Infested Infantry to be affected by commander buffs, i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.
 
 It might be a little strong making all of the temporary units have Guardian Shell, but hey it's co-op, whats the harm in being OP?
 
@@ -1099,6 +1099,7 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
   - Now possible to not have Tychus active at all.
   - Calldown Odin will only revive Tychus if Tychus is recruited.
   - Cannot recruit Tychus while Odin is deployed.
+  - Added silly Tychus ejecting animation when Odin dies.
 
 It's probably still better to take Tychus, but now atleast you have a choice.
 
@@ -1114,6 +1115,7 @@ Same change to Raynor's firebats.
 - Fixed a bug where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
 - Added a new AOE visual effect after purchasing Hammer Munitions.
 - Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
+- Fixed a bug where Rattlesnake's Revitalizer buff's alignment was neutral after being upgraded.
 
 yeah.
 
@@ -1157,6 +1159,25 @@ Barrage is kinda garbage for something you only get to use once per Odin. These 
 - Increased volume of nuke launch sound effect.
 
 Is likely an overall nerf as the radius is reduced and now you have to channel Barrage, but it just *feels* satisfying.
+
+- Removed the 2 second stun when Tychus exits the Odin.
+
+Why does this even exist.
+
+- Buffed Rob "Cannonball" Boswell's Critical Response System passive to additionally deal 100 damage and knockback nearby enemies when procced.
+- Added sound effect when Cannonball's Critical Response System passive procs.
+
+Just like Artanis's resurgence.
+
+- Buffed Cannonball's Redline Power Cells attack speed increase from 3% to 6% per stack.
+- Buffed Cannonball's Redline Power Cells attack damage increase from 3 to 6 per stack.
+- Reduced Cannonball's Redline Power Cells max stacks from 20 to 10.
+
+Cannonball is a menance when this gear is stacked, unfortunately he struggles to get there. This should make him more reliable.
+
+- Buffed Cannonball's weapon attack to deal cone splash damage in a small area.
+
+Makes it feel a little less bad when Cannonball crits a single zergling for 500 damage. Fun fact: all I did was uncomment some unused data.
 
 ## Zeratul
 
@@ -1312,6 +1333,10 @@ No more getting revealed for walking in a nuke's area. Especially noticeably whe
 - Added The Mist to Brutal+ costing 7 points.
 
 Added Maguro mutators to Brutal+ system.
+
+- Changed the alignment of Black Death from neutral to negative.
+
+Visual change only.
 
 ## Credits
 
