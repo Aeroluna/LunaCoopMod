@@ -613,6 +613,10 @@ Ever get annoyed when your Dark Templar would run in and automatically stasis Mi
 
 No more recalling Black Death straight into your mineral line.
 
+- Added visual effect to Dark Pylon's Recall ability.
+
+Copied from Versus.
+
 - Added autocast to Stalker Blink.
 
 Unsurprisingly, autocasting the shield restoring Blink when out of shields is strong.
@@ -729,6 +733,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 - Fixed a bug where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Restored missing beam effect on Ascendant's Psionic Orb.
+- Added a visual effect to Mothership's Mass Teleport ability.
 
 A few visual fixes/changes.
 
@@ -956,6 +961,10 @@ It seemed weird that these upgrades did not affect their champion counterpart. F
   - Disadvantage: All combat shell unit costs increased by 100%. Avenging Protocol is unavailable.
 
 Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
+
+- Added a visual effect to Fenix's Recall ability.
+
+Copied from Versus.
 
 ## Dehaka
 

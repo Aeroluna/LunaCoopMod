@@ -7,6 +7,12 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="ArbiterMPRecallInitialSet">
+        <EffectArray value="NexusMassRecallCastingAB"/>
+    </CEffectSet>
+    <CEffectSet id="ArbiterMPRecallSet">
+        <EffectArray value="NexusMassRecallCastingRB"/>
+    </CEffectSet>
     <CEffectDamage id="ArtanisResurgenceEnemyImpactDamage">
         <Kind value="Spell"/>
     </CEffectDamage>
@@ -58,6 +64,12 @@
         <CmdFlags index="AutoQueued" value="1"/>
         <Target Value="TargetUnit"/>
     </CEffectIssueOrder>
+    <CEffectSet id="DarkPylonRecallInitialSet">
+        <EffectArray value="NexusMassRecallCastingAB"/>
+    </CEffectSet>
+    <CEffectSet id="DarkPylonRecallSet">
+        <EffectArray value="NexusMassRecallCastingRB"/>
+    </CEffectSet>
     <CEffectSet id="DevilDogSet">
         <EffectArray index="0" value="DevilDogACCP"/>
         <EffectArray index="1" value="DevilDogDamageSet"/>
@@ -289,6 +301,16 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="MothershipMassRecallInitialSet">
+        <EffectArray value="MothershipMassRecallApplyBehavior"/>
+        <EffectArray value="NexusMassRecallCastingTargetAB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="MothershipMassRecallSearch">
+        <AreaArray index="0" Effect="MothershipMassRecallInitialSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MothershipMassRecallSet">
+        <EffectArray value="NexusMassRecallCastingTargetRB"/>
+    </CEffectSet>
     <CEffectDamage id="MercCompoundReset">
         <EditorCategories value=""/>
     </CEffectDamage>
@@ -298,6 +320,10 @@
     <CEffectSet id="MercGroundDropBehaviorSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
+    <CEffectTeleport id="MothershipMassRecallTeleport">
+        <PlacementAround Value="TargetUnit"/>
+        <TargetLocation Value="TargetUnit"/>
+    </CEffectTeleport>
     <CEffectCreatePersistent id="MutatatorNukeDetonate">
         <RevealRadius value="0"/>
         <RevealFlags index="Unfog" value="0"/>
@@ -305,6 +331,24 @@
     <CEffectSet id="NexusCreateSet">
         <EffectArray value="CommandStructureAutoRally"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="NexusMassRecallCastingAB">
+        <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="NexusMassRecallCastingRB">
+        <BehaviorLink value="NexusMassRecallCasting"/>
+        <WhichUnit Value="Caster"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="NexusMassRecallCastingTargetAB">
+        <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="MothershipMassRecallSearch"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="NexusMassRecallCastingTargetRB">
+        <BehaviorLink value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="MothershipMassRecallSearch"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyForce id="NovaDashAttackApplyForce">
         <WhichLocation Value="TargetPoint"/>
         <WhichUnit Value="Caster"/>

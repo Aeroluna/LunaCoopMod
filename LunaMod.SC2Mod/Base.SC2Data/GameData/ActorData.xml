@@ -96,6 +96,89 @@
         <AbilSoundArray AbilCmd="HealPlusMech,Execute" Sound="Medic_HealVO"/>
         <AbilSoundArray AbilCmd="MedicRestoration,Execute" Sound="Medic_HealVO"/>
     </CActorUnit>
+    <CActorModel id="NexusMassRecallWarping" parent="ModelAnimationStyleContinuous">
+        <!--On Terms="Behavior.NexusMassRecallWarpOut.On" Send="Create"/>
+        <On Terms="Behavior.NexusMassRecallWarpOut.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.MothershipStrategicWarpOut.On" Send="Create"/>
+        <On Terms="Behavior.MothershipStrategicWarpOut.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.NeuralParasite.On" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnit IsCarrier" Send="SetScale 0.750000"/-->
+        <On Terms="Behavior.ArbiterMPRecalling.On" Send="Create"/>
+        <On Terms="Behavior.ArbiterMPRecalling.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.MothershipRecalling.On" Send="Create"/>
+        <On Terms="Behavior.MothershipRecalling.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.DarkPylonRecalling.On" Send="Create"/>
+        <On Terms="Behavior.DarkPylonRecalling.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.500000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <!--CActorSimple id="NexusRecallOpacity">
+        <On Terms="Behavior.NexusMassRecallTargetPhased.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.600000 0.250000 MassRecallOpacity"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 100,100,255 0.250000 OneShot MassRecallTint"/>
+        <On Terms="Behavior.NexusMassRecallTargetPhased.Off" Target="_Unit" Send="ClearOpacity 0.250000 MassRecallOpacity"/>
+        <On Terms="Behavior.NexusMassRecallTargetPhased.Off" Target="_Unit" Send="ClearTintColor 0.250000 MassRecallTint"/>
+        <On Terms="Behavior.NexusMassRecallTargetPhased.Off" Send="Destroy"/>
+    </CActorSimple-->
+    <CActorModel id="NexusMassRecallNexusCasting" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.NexusMassRecallCasting.On" Send="Create"/>
+        <On Terms="Behavior.NexusMassRecallCasting.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSound id="NexusMassRecallNexusCastingSound" parent="SoundOneShot">
+        <!--On Terms="Effect.NexusMassRecallSearch.Start" Send="Create"/>
+        <On Terms="Effect.MothershipStrategicRecallSearch.Start" Send="Create"/-->
+        <On Terms="Effect.ArbiterMPRecallSearch.Start" Send="Create"/>
+        <On Terms="Effect.MassRecallSearch.Start" Send="Create"/>
+        <On Terms="Effect.DarkPylonSearch.Start" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Mothership_RecallStart"/>
+    </CActorSound>
+    <CActorModel id="NexusMassRecallWarpOutImpact" parent="ModelAnimationStyleOneShot">
+        <!--On Terms="Effect.NexusMassRecallPreTeleportDummy.Start; At Target" Send="Create"/-->
+        <On Terms="Effect.ArbiterMPRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldPosition="1" HoldRotation="1"/>
+        <!--AutoScaleFactor value="1.000000"/-->
+        <Model value="NexusMassRecallWarpOut"/>
+    </CActorModel>
+    <CActorModel id="NexusMassRecallWarpInImpact" parent="ModelAnimationStyleOneShot">
+        <!--On Terms="Effect.NexusMassRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipStrategicRecallTeleport.Start; At Target" Send="Create"/-->
+        <On Terms="Effect.ArbiterMPRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <!--AutoScaleFactor value="1.000000"/-->
+        <Model value="NexusMassRecallWarpIn"/>
+    </CActorModel>
+    <CActorSound id="NexusMassRecallWarpOutSound" parent="SoundOneShot">
+        <!--On Terms="Behavior.NexusMassRecallWarpOut.On" Send="Create"/>
+        <On Terms="Behavior.MothershipStrategicWarpOut.On" Send="Create"/-->
+        <On Terms="Behavior.ArbiterMPRecalling.On" Send="Create"/>
+        <On Terms="Behavior.MothershipRecalling.On" Send="Create"/>
+        <On Terms="Behavior.DarkPylonRecalling.On" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Mothership_RecallStart"/>
+    </CActorSound>
+    <CActorSound id="NexusMassRecallWarpInSound" parent="SoundOneShot">
+        <!--On Terms="Effect.NexusMassRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipStrategicRecallTeleport.Start; At Target" Send="Create"/-->
+        <On Terms="Effect.ArbiterMPRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Mothership_RecallEnd"/>
+    </CActorSound>
     <CActorModel id="NovaPsiStrikeModel">
         <On Terms="Behavior.NovaDashAttackSpeed.On" Send="Create"/>
         <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="AnimBracketStop BSD"/>
