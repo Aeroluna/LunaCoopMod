@@ -178,6 +178,17 @@ A leftover from granting detection to Vorazun's Oracles. Vorazun is unaffected.
 
 ## Raynor
 
+- Added P4: Mercenary Contractor
+  - Advantage: Gain access to the Merc Compound.
+    - A squad can be filled by hiring mercenaries. The squad can then be deployed, dropping all hired mercenaries at the rally point.
+    - Mercenaries cannot be controlled after being deployed.
+    - Mercenaries will wander the map with their squad, looking for enemies to fight.
+    - Mercenaries benefit from all researched upgrades, don't forget them!
+    - Dropped mercenaries benefit from drop pod haste mastery.
+  - Disadvantage: Hyperion and Banshee Airstrike are unavailable.
+
+Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! These mercenaries will run around and do their own thing, sometimes running into their doom. In return, you get stronger units that can be bought instantly and deployed where you want them. For the disadvantage, you lose access to your powerful topbar and have to be more careful with your trades.
+
 - Added Medivacs.
   - Heal more efficiently than Medics, but same heal speed.
   - Added Caduceus Reactor upgrade available at the Fusion Core, which doubles energy regen for Medivacs.
@@ -192,9 +203,14 @@ Medivacs are cool, what more needs to be said? The more efficient healing and in
 
 Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann so this might need to be revisited.
 
-- Changed Medic portrait.
+- Buffed Ignite Afterburners to additionally increase acceleration by 1000.
+- Added visual boost effect to Medivac and Banshee when using Ignite Afterburners.
+- Removed the random delay on Battlecruiser weapons.
+- Reworked P2.
+  - Removed Ignite Afterburners cooldown.
+  - Added autocast to Ignite Afterburners.
 
-Changed to be distinct from the Medivac portrait.
+Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
 
 - Added new Medic ability: Restoration.
   - Removes any negative debuffs on target allied unit.
@@ -206,14 +222,9 @@ Changed to be distinct from the Medivac portrait.
 
 Anyone who has played P1 knows how painful it is to get energy on these things.
 
-- Buffed Ignite Afterburners to additionally increase acceleration by 1000.
-- Added visual boost effect to Medivac and Banshee when using Ignite Afterburners.
-- Removed the random delay on Battlecruiser weapons.
-- Reworked P2.
-  - Removed Ignite Afterburners cooldown.
-  - Added autocast to Ignite Afterburners.
+- Changed Medic portrait.
 
-Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly working stimmed Battlecruisers just look comical.
+Changed to be distinct from the Medivac portrait.
 
 - Reduced Firebat weapon backswing and damage point.
 
@@ -267,17 +278,6 @@ I don't see why you wouldn't want this autocasting.
 
 Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
 
-- Added P4: Mercenary Contractor
-  - Advantage: Gain access to the Merc Compound.
-    - A squad can be filled by hiring mercenaries. The squad can then be deployed, dropping all hired mercenaries at the rally point.
-    - Mercenaries cannot be controlled after being deployed.
-    - Mercenaries will wander the map with their squad, looking for enemies to fight.
-    - Mercenaries benefit from all researched upgrades, don't forget them!
-    - Dropped mercenaries benefit from drop pod haste mastery.
-  - Disadvantage: Hyperion and Banshee Airstrike are unavailable.
-
-Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! These mercenaries will run around and do their own thing, sometimes running into their doom. In return, you get stronger units that can be bought instantly and deployed where you want them. For the disadvantage, you lose access to your powerful topbar and have to be more careful with your trades.
-
 - Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed a bug where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
 - Changed the alignment of Medic's Safeguard from neutral to positive.
@@ -285,22 +285,6 @@ Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! The
 yeah.
 
 ## Kerrigan
-
-- Fixed a bug where P1 and P3 used each other's icons.
-- Reworked P1.
-  - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
-  - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
-
-Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
-
-- Buffed Malignant Creep to affect structures and air units.
-
-Isn't it funny that vanilla P1 Kerrigan's best unit is still Mutalisks? This should allow P1 to interact with more units.
-
-- Buffed P2 to also hit structures.
-  - Will prioritize units and attacking structures.
-
-Now your damage isn't just nerfed against structures.
 
 - Added P4: Champion of the Brood War
   - Replaces Kerrigan with Brood War Kerrigan
@@ -344,6 +328,22 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
+- Fixed a bug where P1 and P3 used each other's icons.
+- Reworked P1.
+  - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
+  - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
+
+Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
+
+- Buffed Malignant Creep to affect structures and air units.
+
+Isn't it funny that vanilla P1 Kerrigan's best unit is still Mutalisks? This should allow P1 to interact with more units.
+
+- Buffed P2 to also hit structures.
+  - Will prioritize units and attacking structures.
+
+Now your damage isn't just nerfed against structures.
+
 - Changed Ultralisk Tissue Assimilation upgrade to increase leech by 40% instead of healing a flat amount.
 
 This allows the healing to scale with damage increase or damage reduction effects.
@@ -358,21 +358,11 @@ Little silly that you need to detect the unit to affect it with an *aura*.
 
 ## Artanis
 
-- Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
-- Reduced Phoenix price from 150/100 to 150/50.
+- Added P4: Reclaimer
+  - Advantage: Warped-in combat unit cost reduced by 40%.
+  - Disadvantage: Combat units are recalled after 60 seconds, refunding 50% of their cost.
 
-Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
-
-- Reduced duration of Disintegration from 20 seconds to 10 seconds (total damage unchanged).
-- Added Destabilizing Residuum upgrade at the Fleet Beacon.
-  - Causes Tempest attacks to leave an AOE field that does 20 damage over 5 seconds.
-  - Damage doubled by P2.
-
-These changes should make massing Tempests more viable. Faster Disintegration reduces Tempests wasting shots on disintegrating targets and allow easier chaining Disintegrations. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
-
-- Changed Tempest voice lines to Versus quotes.
-
-Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite using the Versus model.
+Makes units significantly cheaper at the cost of being unable to sustain an army. Units that die are *not* refunded. Pairs nicely with Artanis's warp haste mastery and increased High Templar starting energy upgrade. Be prepared to make *a lot* of gateways. Motherships and Observers are exempt from being recalled, use them to keep vision on the map for more warp-ins.
 
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
@@ -392,6 +382,26 @@ Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite us
   - Provides a power field nearby.
 
 An iconic unit thats missing from co-op, is now back. Mass Recall should help with Artanis's mobility problems. Vortex no longer grants invulnerability to enemy units so Archon toilets are back on the menu. Planet Cracker is such an iconic ability, it had to be added. Projecting a constant power field stays in line with Artanis's design of quickly warping in reinforcements during combat.
+
+- Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Reduced Phoenix price from 150/100 to 150/50.
+
+Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
+
+- Reduced duration of Tempest's Disintegration ability from 20 seconds to 10 seconds (total damage unchanged).
+- Reduced cooldown of Tempest's Disintegration ability from 90 seconds to 60 seconds.
+
+Disintegration buffs because this ability usually feels clunky. Cooldown reduced to match Yamato cooldown. Deals damage faster to keep up with the faster kill-time nature of co-op.
+
+- Added Destabilizing Residuum upgrade at the Fleet Beacon.
+  - Causes Tempest attacks to leave an AOE field that does 40 damage over 2 seconds.
+  - Damage doubled by P2.
+
+These changes should make massing Tempests more viable. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
+
+- Changed Tempest voice lines to Versus quotes.
+
+Fun fact: Artanis' Tempests used the campaign Purifier Tempest quotes despite using the Versus model.
 
 - Increased Guardian Shell Life and Shield Regeneration mastery from 0.5% per point to 1.5% per point, increasing max from 15% to 45%.
 
@@ -414,6 +424,12 @@ Should help actually affording the high tech units with abilities like High Temp
 yeah.
 
 ## Swann
+
+- Added P4: Rolling Thunder
+  - Advantage: Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade. Cyclones can use Lock On while moving. Only Thor anti-air weapons can attack while moving. Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.
+  - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
+
+Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
 - Added a launch sound effect when shooting High Impact Payload weapon.
@@ -476,44 +492,7 @@ P2 suspiciously improved all upgrades but this one.
 
 https://www.maguro.one/2017/10/upgrades-in-co-op.html
 
-- Added P4: Rolling Thunder
-  - Advantage: Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade. Cyclones can use Lock On while moving. Only Thor anti-air weapons can attack while moving. Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.
-  - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
-
-Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
-
 ## Zagara
-
-- Increased max supply from 100 to 150.
-
-One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
-
-- Added Defilers.
-  - Can use Dark Swarm for 100 energy.
-    - Creates a micro-organism cloud preventing all incoming ranged and splash damage for 30 seconds.
-  - Can use Plague for 150 energy.
-    - Infects all enemy units and buildings in the target area, inflicting 300 damage over 20 seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
-  - Can use Consume.
-    - Kills target friendly biological unit metabolizing it into 75 energy.
-  - Added Metasynaptic Node upgrade at the Infestation Pit.
-    - Adds 50 max energy and starts at full energy.
-
-Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units.
-
-- Reworked Bile Launchers.
-  - Can now target enemies automatically.
-  - Bombardment ability now uses smart casting.
-  - Bile Bomb projectiles now reveal a radius of 3 around them.
-
-Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
-
-- Reduced Scourge vespene cost by 25.
-- Removed Simplified Genome.
-- Added Dampening Membrane upgrade, which reduces the splash and spell damage dealt to Scourge by 75%.
-- Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
-- Buffed Corruptor's Corruption to allow targeting structures.
-
-Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
 
 - Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 - Added Swarm Networks.
@@ -530,7 +509,44 @@ If there is one think Stukov P3 has taught me, it's that throwing free units at 
 
 I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
 
-- Buffed Infested Drop Roaches to Corpser Roaches.
+- Added Defilers.
+  - Can use Dark Swarm for 100 energy.
+    - Creates a micro-organism cloud preventing all incoming ranged and splash damage for 30 seconds.
+  - Can use Plague for 150 energy.
+    - Infects all enemy units and buildings in the target area, inflicting 300 damage over 20 seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
+  - Can use Consume.
+    - Kills target friendly biological unit metabolizing it into 75 energy.
+  - Added Metasynaptic Node upgrade at the Infestation Pit.
+    - Adds 50 max energy and starts at full energy.
+
+Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units.
+
+- Increased max supply from 100 to 150.
+
+One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
+
+- Buffed P2
+  - Increased bonus health regen for Aberrations from 3 to 6.
+  - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
+
+Fun fact: Due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
+
+- Reworked Bile Launchers.
+  - Can now target enemies automatically.
+  - Bombardment ability now uses smart casting.
+  - Bile Bomb projectiles now reveal a radius of 3 around them.
+
+Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
+
+- Reduced Scourge vespene cost by 25.
+- Removed Simplified Genome.
+- Added Dampening Membrane upgrade, which reduces the splash and spell damage dealt to Scourge by 75%.
+- Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
+- Buffed Corruptor's Corruption to allow targeting structures.
+
+Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
+
+- Buffed Roaches to the Corpser strain.
 
 Corpser representation!
 
@@ -548,13 +564,22 @@ If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy.
 
 Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens.
 
-- Buffed P2
-  - Increased bonus health regen for Aberrations from 3 to 6.
-  - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
-
-Fun fact: Due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
-
 ## Vorazun
+
+- Added Signifiers, an astral-themed High Templar.
+  - Available after building a Templar Archives.
+  - Can use Aurora Veil for 50 energy.
+    - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
+  - Can use Astral Storm for 75 energy.
+    - Does less damage in a larger area than Psionic Storm for 7 seconds.
+    - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
+    - Applies P2, dealing massive damage.
+  - Can use Fading Star after researching at a Templar Archives.
+    - Grants super cloak, 50% increased movement speed, and ignores unit collision for 4 seconds.
+    - Can be autocast when damaged.
+  - Argus Crystal additionally grants Signifiers full energy.
+
+A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. Can also heal units after they use Emergency Recall.
 
 - Changed Vorazun to use custom Nerazim skinset.
 
@@ -572,21 +597,6 @@ This should help increase the survivability of all her other units. Pairs well w
 - Added Flux Vanes upgrade, which increases the movement speed and acceleration of Void Rays.
 
 Disruption Web research has been replaced with Flux Vanes. Baseline Disruption Web should help increase the value of the first few Corsairs while the Flux Vanes upgrade should help Void Rays feel better to kite with.
-
-- Added Signifiers, an astral-themed High Templar.
-  - Available after building a Templar Archives.
-  - Can use Aurora Veil for 50 energy.
-    - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
-  - Can use Astral Storm for 75 energy.
-    - Does less damage in a larger area than Psionic Storm for 7 seconds.
-    - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
-    - Applies P2, dealing massive damage.
-  - Can use Fading Star after researching at a Templar Archives.
-    - Grants super cloak, 50% increased movement speed, and ignores unit collision for 4 seconds.
-    - Can be autocast when damaged.
-  - Argus Crystal additionally grants Signifiers full energy.
-
-A cut unit from the LOTV campaign reimagined. Astral Storm provides detection outside of Oracles. Aurora Veil massively helps non-cloaked units like Stalkers, Centurions, Dark Archons, and Void Rays benefit from Vorazun's stealth perks and makes them viable. Can also heal units after they use Emergency Recall.
 
 - Dark Archon upgrades moved to Templar Archives.
 - Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
@@ -651,13 +661,8 @@ yeah.
 - Removed Combat Chrono Wave.
 - Removed the ability to Chrono Boost defensive structures.
 - Nerfed Improved Reconstruction to 120 seconds.
-- Changed Mirage weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
-
-- Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monlith by 100% instead of disabling them.
-
-Copied from CXL. Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with nuke-happy Ghosts.
 
 - Added Instigators.
   - A Purifier variant Stalker.
@@ -678,23 +683,22 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
+- Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monolith by 100% instead of disabling them.
+
+Copied from CXL. Keeps it unviable to use static defense aggressively without completely removing the option defensively. Especially useful for dealing with nuke-happy Ghosts.
+
+- Changed Mirage weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
+- Reduced cost of Mirage from 150/100 to 150/50.
+
+Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
+
 ## Abathur
 
-- Buffed Viper's Consumption ability to also target structures.
-- Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 1.
-- Buffed Biomass to additionally increase max energy by 1% per biomass.
-- Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
-- Buffed Abduct to allow abducting Heroic units (will pull but not stun).
+- Added P4: Symbiotic Hivemind.
+  - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
+  - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
 
-Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air against Devourers.
-
-- Added autocast to Corrosive Bile (initially off).
-
-Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range (sorry Alarak).
-
-- Buffed Swarm Host by upgrading to Creeper strain.
-
-Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
+Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. Highly effective with commanders who have few but important units such as hero commanders.
 
 - Added Spike Burst ability to Symbiote.
   - Deals 50 damage to nearby enemies every 10 seconds.
@@ -703,11 +707,21 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 
 Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?). Stab DPS slightly nerfed to compensate. Overall single target DPS is identical.
 
-- Added P4: Symbiotic Hivemind.
-  - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
-  - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
+- Buffed Viper's Consumption ability to also target structures.
+- Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 1.
+- Buffed Biomass to additionally increase max energy by 1% per biomass.
+- Buffed Biomass to additionally increase spell damage for casters (not Ravagers) by 1% per biomass.
+- Buffed Abduct to allow abducting Heroic units (will pull but not stun).
 
-Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. Highly effective with commanders who have few but important units such as hero commanders.
+Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air compared to Devourers.
+
+- Added autocast to Corrosive Bile (initially off).
+
+Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range (sorry Alarak).
+
+- Buffed Swarm Host to Creeper strain.
+
+Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
 
 ## Alarak
 
@@ -755,7 +769,29 @@ A few visual fixes/changes.
 
 ## Nova
 
-- Added P2 Advantage: Stuns enemy units in the drop off area for 4 seconds when unloading.
+- Changed Nova to visually change suits between Stealth Mode and Assault Mode.
+- Added P4: Covert Crusader.
+  - Has higher movement speed than normal Nova.
+  - Replaces gear in both modes.
+  - Stealth Mode:
+    - Blazefire Gunblade/Fury of One
+      - Fury of One attacks twice as fast from NCO.
+    - Apollo Infantry Suit
+      - Can be activated for 30 seconds of cloak. Increases max energy by 100.
+    - Flashbang Grenades
+      - Heroic units are immune.
+  - Assault Mode:
+    - Monomolecular Blade/Dash Attack
+      - Dash Attack reworked, should more reliably charge in target direction, but may get stuck on impassable terrain.
+      - Dash Attack also grants a brief amount of invulnerability.
+    - Turbojet Jumpsuit
+      - Allows cliff jumping. Increases max health by 250.
+    - Stim Infusion
+  - Operation Efficiency and Infernal Projectiles affect Fury of One and Dash Attack respectively.
+
+Shows some love for the unused gear. Makes Nova less effective at supporting her army but stronger individually.
+
+- Added P2 Advantage: Stuns enemy units in the drop off area for 8 seconds when unloading.
 
 P2 was such a boring prestige. Stunning enemies at least grants a niche of dropping right on top of enemies and bursting them down.
 
@@ -784,7 +820,7 @@ Copied from Versus.
   - Changed visual effect.
   - Changed damage from ranged to spell (ignores armor).
 
-Changes Magrail Munitions from a low-dps nuke to a CC ability to further reinforce the Marauder's role as a support frontliner.
+Changes Magrail Munitions from a nuke to a CC ability to further reinforce the Marauder's role as a support frontliner.
 
 - Reduced the cooldown of Covert Banshee's Rocket Barrage ability from 15 seconds to 10 seconds.
 - Reduced the cooldown of Spec Ops Ghost's Snipe ability from 30 seconds to 10 seconds.
@@ -811,29 +847,38 @@ This increases the reliability of Ghosts getting the extra snipes off.
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
 
-- Changed Nova to visually change suits between Stealth Mode and Assault Mode.
-- Added P4: Covert Crusader.
-  - Has higher movement speed than normal Nova.
-  - Replaces gear in both modes.
-  - Stealth Mode:
-    - Blazefire Gunblade/Fury of One
-      - Fury of One attacks twice as fast from NCO.
-    - Apollo Infantry Suit
-      - Can be activated for 30 seconds of cloak. Increases max energy by 100.
-    - Flashbang Grenades
-      - Heroic units are immune.
-  - Assault Mode:
-    - Monomolecular Blade/Dash Attack
-      - Dash Attack reworked, should more reliably charge in target direction, but may get stuck on impassable terrain.
-      - Dash Attack also grants a brief amount of invulnerability.
-    - Turbojet Jumpsuit
-      - Allows cliff jumping. Increases max health by 250.
-    - Stim Infusion
-  - Operation Efficiency and Infernal Projectiles affect Fury of One and Dash Attack respectively.
-
-Shows some love for the unused gear. Makes Nova less effective at supporting her army but stronger individually.
-
 ## Stukov
+
+- Increased duration of infested troopers from 30 to 60.
+
+Infested troopers were previously reliant on the infantry duration mastery. This should increase their consistency without the mastery.
+
+- Added Infested Rockets weapon from Versus to Infested Marines.
+
+Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
+
+- Reworked Infested Barracks
+  - Costs 1 supply.
+  - Automatically spawns free Infested Marines.
+  - Can pay 100/50 and 1 supply to increase level of Corruption up to 5 times, decreasing the cooldown of spawning Infested Marines.
+  - Can autocast Increase Corruption.
+- Changed Infested Siege Tanks to also consume Infested Marines.
+
+Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
+
+- Reduced the cooldown of Spawn Infested Civilians from 60 seconds to 15 seconds.
+- Reduced the amount of Infested Civilians created from 8 to 2.
+
+Instead of creating huge waves, the Infested Colonist Compound now does many smaller waves. Each infestation upgrade still doubles the amount of infested spawned.
+
+- Buffed Infested Colonist Compound's Spawn Infested Civilian ability to now be affected by Chrono Boost.
+
+What's the worst that could happen?
+
+- Reworked P3.
+  - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
+
+This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
 - Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton, which additionally increases Infested Banshee speed by 2.
@@ -895,37 +940,6 @@ Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, 
 
 Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens were explicitly left out by the P1 advantage.
 
-- Increased duration of infested troopers from 30 to 60.
-
-Infested troopers were previously reliant on the infantry duration mastery. This should increase their consistency without the mastery.
-
-- Added Infested Rockets weapon from Versus to Infested Marines.
-
-Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
-
-- Reworked Infested Barracks
-  - Costs 1 supply.
-  - Automatically spawns free Infested Marines.
-  - Can pay 100/50 and 1 supply to increase level of Corruption up to 5 times, decreasing the cooldown of spawning Infested Marines.
-  - Can autocast Increase Corruption.
-- Changed Infested Siege Tanks to also consume Infested Marines.
-
-Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
-
-- Reduced the cooldown of Spawn Infested Civilians from 60 seconds to 15 seconds.
-- Reduced the amount of Infested Civilians created from 8 to 2.
-
-Instead of creating huge waves, the Infested Colonist Compound now does many smaller waves. Each infestation upgrade still doubles the amount of infested spawned.
-
-- Buffed Infested Colonist Compound's Spawn Infested Civilian ability to now be affected by Chrono Boost.
-
-What's the worst that could happen?
-
-- Reworked P3.
-  - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
-
-This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
-
 - Changed Infested Missile Turrets to attack while uprooted.
 - Changed Infested Missile Turrets to provide detection while uprooted.
 - Added Biomass Coating passive to Infested Missile Turrets, increasing life regen while rooted.
@@ -952,13 +966,15 @@ Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
 - Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
 - Fixed a bug where you could not queue multiple upgrades on the Infested Command Center.
 
-A few fixes. The Siege Tank bug took way too long to figure out...
+yeah. The Siege Tank bug took way too long to figure out...
 
 ## Fenix
 
-- Remove Disruptors.
+- Added P4: Ascendant Chorus
+  - Advantage: The number of Champion A.I.s is no longer limited.
+  - Disadvantage: All combat shell unit costs increased by 100%. Avenging Protocol is unavailable.
 
-Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
+Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
 
 - Changed Kaldalis's Engage ability to require researching Charge at the Twilight Council.
 - Changed Talis's Psionic Projection ability to require researching at the Twilight Council.
@@ -968,11 +984,9 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *does* affect Mojo. Not sure why this was the exception.
 
-- Added P4: Ascendant Chorus
-  - Advantage: The number of Champion A.I.s is no longer limited.
-  - Disadvantage: All combat shell unit costs increased by 100%. Avenging Protocol is unavailable.
+- Remove Disruptors.
 
-Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
+Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
 
 - Added a visual effect to Fenix's Recall ability.
 
@@ -1009,12 +1023,39 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 
 ## Han & Horner
 
-- Added autocast to Widow Mine Burrow.
-- Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
-- Fixed a bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
-- Added a visual red light on top after researching Black Market Launchers.
+- Reworked P1:
+  - Removed Mag Mine improvements.
+  - Increases the production speed of Mira's units by 50%.
+  - Increases the Salvage rate from 40% to 60%.
+  - Added tooltips to death effect passives that were missing.
 
-These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
+Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
+
+- Reworked P3:
+  - Added advantage: Can research one exclusive Precision Strike upgrade.
+    - Thermal Cascade Payload: Napalm upgrade but spreads to a larger radius.
+    - Cluster Payload: Drops 2 additional bombs behind the target area.
+    - EMP Warhead Payload: Additionally deploys an EMP that has similar effects to Mengsk's EMP.
+  - Removed Strike Fighter Platform cost disadvantage.
+  - Added disadvantage: Salvage is unavailable.
+
+Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
+
+- Increased Strike Fighter hitpoints from 50 to 100.
+- Buffed Precision Strike to also hit air.
+- Added visual trail to Strike Fighter.
+- Adjusted Strike Fighter acceleration.
+
+Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
+
+- Added Ordnance Towers that can be built by SCVs.
+  - These are flying defensive structures with long-range attacks.
+  - Spawns up to 4 Valkyries that fly around and defend the area.
+    - Valkyries have 100 hp and their own long-range missile attack.
+  - Can use the Nano-Repair ability to heal mech units.
+  - Can detect cloaked units.
+
+Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
 
 - Increased visual scale of Assault Galleons by 20%.
 - Increased life of Assault Galleons from 500 to 750.
@@ -1029,17 +1070,16 @@ Assault Galleons are suppose to be mobile Starports that can turn into aircraft 
 
 Mira's units usually trade horribly, this should help mitigate that.
 
+- Added autocast to Widow Mine Burrow.
+- Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
+- Fixed a bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
+- Added a visual red light on top after researching Black Market Launchers.
+
+These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
+
 - Fixed a bug where Mag Mines would not play their entire animation when firing.
 
 The animation was too slow and only got around half way through. I bet no one would even notice this though.
-
-- Reworked P1:
-  - Removed Mag Mine improvements.
-  - Increases the production speed of Mira's units by 50%.
-  - Increases the Salvage rate from 40% to 60%.
-  - Added tooltips to death effect passives that were missing.
-
-Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
 
 - Increased projectile speed of Deimos Viking's W.I.L.D. Missiles by 100%.
 
@@ -1047,7 +1087,7 @@ Often, whatever these were shooting at would already be dead by the time the pro
 
 - Increased Deimos Viking's Gatling Cannon damage from 18 to 18 (+12 vs Mechanical).
 
-Copied bonus vs mechanical from Versus.
+Copied bonus vs. mechanical from Versus.
 
 - Increased range of Sovereign Battlecruiser's Mini Yamato Cannon from 6 to 8.
 
@@ -1061,23 +1101,6 @@ This should keep the Raven farther back and not randomly die as easily.
 - Added Covert-Ops portraits for Deimos Viking, Theia Raven, and Sovereign Battlecruiser.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
-
-- Increased Strike Fighter hitpoints from 50 to 100.
-- Buffed Precision Strike to also hit air.
-- Added visual trail to Strike Fighter.
-- Adjusted Strike Fighter acceleration.
-
-Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
-
-- Reworked P3:
-  - Added advantage: Can research one exclusive Precision Strike upgrade.
-    - Thermal Cascade Payload: Napalm upgrade but spreads to a larger radius.
-    - Cluster Payload: Drops 2 additional bombs behind the target area.
-    - EMP Warhead Payload: Additionally deploys an EMP that has similar effects to Mengsk's EMP.
-  - Removed Strike Fighter Platform cost disadvantage.
-  - Added disadvantage: Salvage is unavailable.
-
-Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
 
 - Fixed a bug where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
 - Fixed a bug where Call in the Fleet would launch at a different trajectory than intended.
@@ -1097,24 +1120,11 @@ Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the dama
 
 Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
-- Added Ordnance Towers that can be built by SCVs.
-  - These are flying defensive structures with long-range attacks.
-  - Spawns up to 4 Valkyries that fly around and defend the area.
-    - Valkyries have 100 hp and their own long-range missile attack.
-  - Can use the Nano-Repair ability to heal mech units.
-  - Can detect cloaked units.
-
-Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
-
 - Fixed a bug where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 
 yeah.
 
 ## Tychus
-
-- Added ability to reorder outlaws.
-
-https://www.maguro.one/2019/06/uiux-tweaks.html
 
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
   - Now possible to not have Tychus active at all.
@@ -1123,6 +1133,18 @@ https://www.maguro.one/2019/06/uiux-tweaks.html
   - Added silly Tychus ejecting animation when Odin dies.
 
 It's probably still better to take Tychus, but now atleast you have a choice.
+
+- Added ability to reorder outlaws.
+
+https://www.maguro.one/2019/06/uiux-tweaks.html
+
+- Reordered SCV building menu.
+- Added Fortified Bunker that can be built by SCVs.
+  - Can hold up to two outlaws.
+  - Increases range of units inside by +2.
+  - Fortified Bunker has extra armor and life.
+
+Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.
 
 - Reduced Crooked Sam's Demolition Charge visual explosion scale by 60%.
 
@@ -1150,14 +1172,6 @@ It looked silly having this giant unit shooting out tiny little attacks.
 - Reduced Blaze's XCMC-670 Combat Suit minimum from 30 to 20.
 
 For an ultimate gear, 30 is a high minimum to reach. Reducing the minimum should increase the reliability of the gear.
-
-- Reordered SCV building menu.
-- Added Fortified Bunker that can be built by SCVs.
-  - Can hold up to two outlaws.
-  - Increases range of units inside by +2.
-  - Fortified Bunker has extra armor and life.
-
-Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.
 
 - Fixed a bug where Odin's weapon tooltip showed the wrong damage.
 

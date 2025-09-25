@@ -1588,6 +1588,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_ArtanisPowerFieldPrestigePylon, true);
             }
 
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeArtanisWarp", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_ArtanisPrestigeWarpRefund, true);
+                TriggerEnable(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, true);
+            }
+
         }
         else if (auto560DABDD_val == "ZergKerrigan") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
@@ -2035,6 +2040,64 @@ void lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init () {
     lib74A68E34_gt_RaynorHyperionWeaponSwitch = TriggerCreate("lib74A68E34_gt_RaynorHyperionWeaponSwitch_Func");
     TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, false);
     TriggerAddEventUnitOrder(lib74A68E34_gt_RaynorHyperionWeaponSwitch, null, AbilityCommand("attack", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ArtanisPrestigeWarpTimedLife
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "Observer"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnitCreatedUnit(), "CommanderPrestigeArtanisWarpTimedLife", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Init () {
+    lib74A68E34_gt_ArtanisPrestigeWarpTimedLife = TriggerCreate("lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Func");
+    TriggerEnable(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, null, "WarpGateTrain", null);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, null, "StargateWarpTrain", null);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, null, "RoboticsFacilityWarpTrain", null);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ArtanisPrestigeWarpTimedLife, null, "ArchonWarp", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ArtanisPrestigeWarpRefund
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ArtanisPrestigeWarpRefund_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const fixed lv_refundRate = 0.3;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropMinerals, c_playerPropOperAdd, FixedToInt((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostMinerals) * lv_refundRate)));
+    PlayerModifyPropertyInt(UnitGetOwner(EventUnit()), c_playerPropVespene, c_playerPropOperAdd, FixedToInt((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostVespene) * lv_refundRate)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ArtanisPrestigeWarpRefund_Init () {
+    lib74A68E34_gt_ArtanisPrestigeWarpRefund = TriggerCreate("lib74A68E34_gt_ArtanisPrestigeWarpRefund_Func");
+    TriggerEnable(lib74A68E34_gt_ArtanisPrestigeWarpRefund, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_ArtanisPrestigeWarpRefund, null, "CommanderPrestigeArtanisWarpTimedLife", c_unitBehaviorChangeDestroy);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3584,6 +3647,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_RaynorStimpackAutocast_Init();
     lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
+    lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Init();
+    lib74A68E34_gt_ArtanisPrestigeWarpRefund_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();
     lib74A68E34_gt_ArtanisMothershipWarpHaste_Init();
     lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceCreate_Init();

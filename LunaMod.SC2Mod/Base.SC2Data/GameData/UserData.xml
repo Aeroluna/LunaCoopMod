@@ -1044,6 +1044,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]ProtossArtanis_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeArtanisWarp">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ProtossKarax">
             <Text Text="UserData/PlayerCommanders/[Override]ProtossKarax_Description">
@@ -1117,6 +1120,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]ProtossFenix_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeFenixChampion">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Fields index="35" Count="3"/>
     </CUser>
@@ -1281,6 +1287,11 @@
                 <Field Id="DisableAbil" Index="1"/>
             </AbilCmd>
             <GameLink GameLink="CommanderPrestigeRaynorMercenary">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="CommanderPrestigeArtanisWarp">
+            <GameLink GameLink="CommanderPrestigeArtanisWarp">
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
         </Instances>
@@ -1553,7 +1564,11 @@
                 <Field Id="Commander"/>
             </User>
         </Instances>
-        <Instances Id="[Override]SwarmHost"/>
+        <Instances Id="[Override]SwarmHost">
+            <User Type="PlayerCommanders" Instance="Bogus">
+                <Field Id="Commander"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]SwarmHostCreeper">
             <Int>
                 <Field Id="UnlocksExternal"/>
