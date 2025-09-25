@@ -293,6 +293,22 @@
     <CBehaviorBuff id="RaynorMedicSafeguardMastery">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ProtossTimedLifeExpire">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <FinalEffect value="SuicideRemove"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="TychusCalldownOdinExitStun">
         <Duration value="0.1"/>
     </CBehaviorBuff>
@@ -1076,5 +1092,9 @@
         <RemoveValidatorArray value="CasterNotAbducted"/>
         <MaxStackCount value="2"/>
         <Duration value="2.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulTopBarTimedLife">
+        <ExpireEffect value="ProtossTimedLifeExpireAB"/>
+        <Duration value="10"/>
     </CBehaviorBuff>
 </Catalog>

@@ -53,7 +53,7 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 - Fixed Protoss warp-in animations.
 
-For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take 16 seconds to warp in.
+For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
 - Removed Wait Until Stopped flag from Viking Assault Mode and Fighter Mode.
 
@@ -100,16 +100,16 @@ Weirdly quiet for how impactful this thing's weapon is.
 
 thanks Enoki.
 
-- Added targeting beam to Widow Mine attack.
+- Added targeting beam to Widow Mine (and variants) attack.
 - Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
-- Added a visual indicator to Colossus attacks when Extended Thermal Lance is researched.
-- Added a visual indicator to Phoenix attacks when Anion Pulse Crystals is researched.
-- Added a visual blue trail to Marauder attacks after upgrading Concussive Shells.
-- Increased Zealot animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
-- Added turret tracking to Colossi.
+- Added a visual indicator to Colossus (and variants) attacks when Extended Thermal Lance is researched.
+- Added a visual indicator to Phoenix (and variants) attacks when Anion Pulse Crystals is researched.
+- Added a visual blue trail to Marauder (and variants) attacks after upgrading Concussive Shells.
+- Increased Zealot (and variants) animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
+- Added turret tracking to Colossi (and variants).
 - Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
 - Changed town hall structures to automatically rally to a mineral field when built or landed.
-- Fixed a bug where Liberators couldn't designate an attack target while morphing from AA to AG.
+- Fixed a bug where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
 - Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
 - Fixed a bug where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
 - Added an AOE indicator to Disruptor's Purification Nova ability.
@@ -521,7 +521,7 @@ Corpser representation!
 
 - Increased visual scale of Hunter Killers by 20%
 
-When Hunter Killers were given the webby skin, their scale was accidently reset to the normal Hydralisk scale.
+When Hunter Killers were given the webby skin, their scale was accidentally reset to the normal Hydralisk scale.
 
 - Added wireframe and group icon to Zagara.
 
@@ -1185,6 +1185,15 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
 
+- Added warp-out animation when legion calldowns expire.
+
+No more watching all your Void Rays explode horribly at the end of their timed life.
+
+- Reduced the visual model scale of the Serdath Legion grunts by 20%.
+
+Matches the visual scale of other archons. Serdath himself gets to stay big.
+
+- Fixed a bug where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed a bug where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
 
 yeah.

@@ -211,6 +211,38 @@
         <ModelFlags index="AllowHitTest" value="0"/>
         <AutoScaleFactor value="0.600000"/>
     </CActorModel>
+    <CActorModel id="ProtossGenericWarpInOut">
+        <On index="3" Terms="Behavior.ProtossGenericWarpInOut.On; ValidateUnit SourceNotAir"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorModel id="ProtossGenericWarpInOutAir">
+        <On Terms="Behavior.ProtossGenericWarpInOut.On; ValidateUnit SourceIsAir" Send="Create"/>
+        <On Terms="Behavior.ProtossGenericWarpInOut.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveBackBy1 SOpProtossGenericWarpInOutAir"/>
+    </CActorModel>
+    <CActorModel id="ProtossTimedLifeExpireModelAir" parent="ModelAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 2.000000 AsDuration"/>
+        <On Terms="Behavior.ProtossTimedLifeExpire.On; ValidateUnit SourceIsAir" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.000000 2.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveBackBy1 SOpProtossGenericWarpInOutAir"/>
+        <Model value="ShadowGuardTeleportOut"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="ProtossTimedLifeExpireModel" parent="ModelAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 2.000000 AsDuration"/>
+        <On Terms="Behavior.ProtossTimedLifeExpire.On; ValidateUnit SourceNotAir" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.000000 2.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="ShadowGuardTeleportOut"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="ProtossTimedLifeExpireSound" parent="SoundOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.ProtossTimedLifeExpire.On" Send="Create"/>
+        <Sound value="FenixWarpOut"/>
+    </CActorSound>
     <CActorModel id="StimPackDevice_Nova" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachHardPoint"/>
     </CActorModel>
@@ -622,6 +654,7 @@
     <CActorUnit id="Mohandar">
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
+        <PlacementModel value="VoidRayShakurasPlacement"/>
     </CActorUnit>
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>
@@ -2739,6 +2772,9 @@
             <Image index="2" value="Assets\Textures\wireframe-protoss-darktemplar00-shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorUnit id="ZeratulHeroDarkArchon">
+        <PlacementModel value="DarkArchonPlacement"/>
+    </CActorUnit>
     <CActorModel id="ZeratulReflectionShield">
         <Inherits index="Visibility" value="0"/>
     </CActorModel>
@@ -2751,6 +2787,9 @@
     </CActorUnit>
     <CActorUnit id="ZeratulWarpPrismPhasing">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprismstationary-ihanrii.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulSummonZealot">
+        <WalkAnimMoveSpeed value="3"/>
     </CActorUnit>
     <CActorSound id="Zerg_BuildingMorphEndStetmann">
         <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
