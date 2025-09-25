@@ -2676,6 +2676,7 @@ bool lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func (bool testConds, bool run
     }
     else {
         UnitCreate(1, "AbathurSymbioteBrutalisk", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
+        UnitBehaviorAdd(UnitLastCreated(), "AllUnitBehaviorController", UnitLastCreated(), 1);
         if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
             UnitSetHeight(UnitLastCreated(), 3.0, 0.0);
         }

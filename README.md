@@ -96,6 +96,21 @@ Not the prettiest effect, but I tried!
 
 Weirdly quiet for how impactful this thing's weapon is.
 
+- Fixed a bug where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
+  - Fixed units:
+    - Spider Mine (Raynor/Nova)
+    - Broodling (Kerrigan/Zagara/Abathur/Stukov)
+    - Explosive Creeper (Dehaka)
+    - Locust (Abathur/Dehaka)
+    - Bio-Mechanical Repair Drone (Nova)
+    - Infested Civilian (Stukov)
+    - Infested Marine (Stukov)
+    - Volatile Infested (Stukov)
+    - Infested Trooper (Stukov)
+    - Mecha Broodling (Stetmann)
+
+It might be a little strong making all of the temporary units have Guardian Shell, but hey it's co-op, whats the harm in being OP?
+
 - Changed Void Rays to "look" at their targets.
 
 thanks Enoki.
@@ -658,7 +673,8 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
   - Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
   - Increased Purification Nova radius by 20%.
 - Reduced price of Cloaking Module from 100/100 to 50/50.
-- Reduced price of Purification Nova from 150/150 to 100/100.
+- Reduced price of Purification Echo from 150/150 to 100/100.
+- Fixed a bug where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
@@ -909,10 +925,6 @@ What's the worst that could happen?
   - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
 
 This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
-
-- Buffed Infested Infantry to be affected by commander buffs, i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.
-
-It might be a little strong making all of the temporary units have Guardian Shell, but hey it's co-op, whats the harm in being OP?
 
 - Changed Infested Missile Turrets to attack while uprooted.
 - Changed Infested Missile Turrets to provide detection while uprooted.
