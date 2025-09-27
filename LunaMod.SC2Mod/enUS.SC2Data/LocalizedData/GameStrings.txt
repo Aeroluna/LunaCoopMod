@@ -81,6 +81,7 @@ Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm a
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/MarauderMagrailMunitionsSlow=This unit's movement and attack speed are slowed.
 Behavior/Tooltip/MarauderMagrailMunitionsStun=This unit is stunned.
+Behavior/Tooltip/OracleRevelation=This unit or structure is providing vision for the caster and cannot detect.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*Effect,StukovSIBunkerCDRDummy,Amount"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
@@ -376,6 +377,7 @@ Button/Tooltip/NovaWeaponBlazefireBladeShadowFuryMelee=Rapidly jump to random en
 Button/Tooltip/NovaWeaponPsiBlade=Dashes forward and deals <d ref="Effect,NovaDashAttackDamage,Amount"/> damage to enemy ground units in a straight line.</n></n><c val ="#ColorAttackInfo">Does not damage friendly units.</c>
 Button/Tooltip/NovaWeaponPsiBladeImproved=Dashes forward and deals <d ref="Effect,NovaDashAttackDamage,Amount"/> damage to enemy ground units in a wide line.</n></n><c val ="#ColorAttackInfo">Does not damage friendly units.</c>
 Button/Tooltip/Oracle=Flying Caster. Can use Revelation and Stasis Ward.<n/><n/><c val="ffff8a">Can attack ground units.</c><n/><c val="FFE303">Detector</c>
+Button/Tooltip/OracleRevelation=Causes enemy units and structures within the target area to grant vision and be unable to detect for <d ref="Behavior,OracleRevelation,Duration"/> seconds. Reveals cloaked or burrowed units and structures.
 Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep and Calldown: Supplies. Cannot load SCVs.
 Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units unloaded from the Medivac gain <c val="FFFF8A"><d ref="Effect,MasteryRaynorDropPodHasteDisplayDummy,Amount"/></c>% increased attack speed, movement speed, cooldown reduction, and energy regeneration for <d ref="Behavior,DropPodHaste,Duration"/> seconds.
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
@@ -431,6 +433,7 @@ Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased a
 Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.</n></n>Each attack uses <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy every attack.
 Button/Tooltip/SIMissileTurretRegenerativePlating=Infested Missile Turrets regenerate life twice as fast while rooted.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
+Button/Tooltip/SOAStrikefromtheShadows=Increases the weapon damage of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanent,Modification.DamageDealtFraction[Melee]*100" player="current"/>%. Increases the energy regeneration of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanentEnergy,Modification.VitalRegenMultiplier[Energy]*100" player="current"/>%.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Ignores unit collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
 Button/Tooltip/StabilizerMedPacksMedivac=Increases the Medivac's healing speed and allows them to heal mechanical units. Units being healed by Medivacs take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.

@@ -176,6 +176,13 @@ Fun fact: Spawn Broodling was previously only casted on Siege Tanks. They explic
 
 A leftover from granting detection to Vorazun's Oracles. Vorazun is unaffected.
 
+- Reduced Liberator's Defender Mode range from 9 to 5.
+- Removed bonus sight radius from Defender Mode.
+- Reduced Liberator anti-air damage from 7 to 5.
+- Reduced Liberator anti-ground damge from 85 to 75.
+
+Amon is smelly and gets Versus Liberators. Hopefully makes Shadow Tech less oppressive.
+
 ## Raynor
 
 - Added P4: Mercenary Contractor
@@ -635,8 +642,9 @@ Should make massing Dark Archons more viable instead of watching them tickle uni
 The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
 
 - Added Revelation to Oracle.
+- Buffed Revelation to additionally suppress detection.
 
-That's their main gimmick, why did they remove it? Oracles are still detectors so using this ability is not necessary.
+That's their main gimmick, why did they remove it? Revelation has been given an additional effect to suppress detection to help cloaked units.
 
 - Increased Oracle's Stasis Ward duration from 15 seconds to 30 seconds.
 
@@ -677,6 +685,7 @@ Funny that this passive could *nerf* some units. This happened because the buff 
 - Fixed (mostly) a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
 - Fixed a bug where Shadow Guard's casting Shadow Fury did not play their attack animation.
 - Fixed a bug where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
+- Fixed a bug where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
 
 yeah.
 

@@ -55,7 +55,6 @@
     <CBehaviorBuff id="CommanderPrestigeKerriganCreepSuperCloak">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
-        <Requirements value="CommanderPrestigeKerriganCreepGrowth"/>
         <Modification>
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
@@ -274,6 +273,11 @@
         <MinimumRange value="2"/>
         <Range value="6"/>
     </CBehaviorWander>
+    <CBehaviorBuff id="OracleRevelation">
+        <Modification>
+            <StateFlags index="SuppressDetection" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PurificationNovaCasterDarken">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-arcshield.dds"/>
@@ -618,7 +622,6 @@
     <CBehaviorBuff id="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\talent-zagara-level08-incubatebroodlings.dds"/>
-        <Requirements value="HaveStukovInfestedCivilianSpawnBroodlingOnDeath"/>
         <Modification>
             <DeathResponse Chance="1" Effect="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath"/>
         </Modification>

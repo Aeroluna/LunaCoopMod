@@ -332,10 +332,51 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="LiberatorAGTarget">
         <Flags index="AllowMovement" value="1"/>
+        <Range index="0" value="5"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LiberatorAG_BlackOpsTarget">
         <Flags index="AllowMovement" value="1"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="LiberatorMorphtoAA">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="LiberatorMorphtoAG">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Liberator_BlackOpsMorphtoAA">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Liberator_BlackOpsMorphtoAG">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="0"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilEffectTarget id="LightningBomb">
         <Cost index="0">
             <Cooldown TimeUse="60"/>
@@ -757,18 +798,11 @@
         <Flags index="IgnoreFacing" value="1"/>
         <CancelUnit value="Liberator"/>
         <InfoArray Unit="SILiberator">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
             <SectionArray index="Actor">
                 <DurationArray index="Delay" value="0.5"/>
                 <DurationArray index="Duration" value="1.5417"/>
             </SectionArray>
-            <SectionArray index="Mover">
-                <DurationArray index="Duration" value="0.5"/>
-            </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0.5"/>
                 <DurationArray index="Duration" value="1.5417"/>
             </SectionArray>
         </InfoArray>
@@ -780,9 +814,6 @@
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray Unit="SILiberatorAG">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
             <SectionArray index="Actor">
                 <DurationArray index="Delay" value="0.5"/>
                 <DurationArray index="Duration" value="3.5417"/>
@@ -1472,7 +1503,6 @@
     </CAbilEffectInstant>
     <CAbilRevive id="VorazunRevive" parent="ReviveSelf">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <DataCollection value="##id##"/>
         <CmdButtonArray index="Revive1" DefaultButtonFace="KerriganRevive"/>
         <CmdButtonArray index="ReviveAtTarget1" DefaultButtonFace="KerriganRevivePlacement"/>
         <Flags index="UnitOrderQueue" value="1"/>

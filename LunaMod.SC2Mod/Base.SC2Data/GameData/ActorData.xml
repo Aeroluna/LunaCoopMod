@@ -32,6 +32,7 @@
     <CActorModel id="DarkTemplarShadowFuryImpact">
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
+    <CActorRange id="ShadowGuardShadowFuryRange" parent="RangeAbil" abil="ShadowGuardShadowFury"/>
     <CActorModel id="VorazunShadowFuryImpact" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
@@ -77,11 +78,14 @@
         <StatusBarFlags index="Magazine" value="0"/>
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarFlags index="Custom" value="0"/>
+        <On Terms="ActorCreation" Send="SetFilter Ally"/>
+        <On Terms="ActorCreation" Send="SetFilter Enemy"/>
     </CActorUnit>
     <CActorSound id="VorazunBlinkSound">
         <On Terms="Abil.VorazunBlinkReturn.TargetCastStart" Send="Create"/>
     </CActorSound>
     <CActorRange id="VorazunShadowFuryRange" parent="RangeAbil" abil="VorazunShadowFury"/>
+    <CActorRange id="VoidDarkTemplarShadowFuryRange" parent="RangeAbil" abil="DarkTemplarShadowFury"/>
     <CActorUnit id="ZeratulCoop">
         <On index="87" Send="AnimBracketStart Attack Stand,Work,Superior,Start Stand,Work,Superior Stand,Work,Superior,End FullMatch 1.400000 AsTimeScale"/>
     </CActorUnit>
