@@ -349,8 +349,9 @@ Now your damage isn't just nerfed against structures.
 This allows the healing to scale with damage increase or damage reduction effects.
 
 - Changed P3 voice lines.
+- Changed P3 minimap icons.
 
-Now uses the pre-infested voice lines from Heart of the Swarm.
+Now uses the pre-infested assets from Heart of the Swarm.
 
 - Fixed a bug where Kerrigan's Assimilation Aura would not affect invisible units (Cloaked and not detected).
 
@@ -566,6 +567,29 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
 
 ## Vorazun
 
+- Added P4: Shadow Hunter
+  - Advantage: Vorazun is available as a hero.
+    - Passive: Veil of Shadows
+      - Permanently cloaked.
+      - Shield regen greatly increased while undetected.
+    - Q: Reap (6 seconds)
+      - Deals 100 damage to nearby enemies.
+      - Identical to Zeratul's cleave but with half cooldown.
+    - W: Shadow Assault (15 seconds)
+      - Rapidly teleport to random enemies within 3 times, attacking each of them for 60 damage. A single target can be hit more than once.
+      - Can target air and ground units.
+      - Similar to Shadow Fury, but does not teleport Vorazun back to the cast location.
+    - E: Shadow Dash (10 seconds)
+      - Teleports Vorazun to the targeted location.
+      - For the next 8 seconds, the ability can be reactivated to return to the point where it was cast from.
+      - Allows for quickly blinking in and out.
+    - R: Void Sanctuary (100 seconds)
+      - Creates a large dome in which enemies are slowed to a standstill for 10 seconds.
+      - Also stops enemy projectiles.
+  - Disadvantage: Deploy Shadow Guard and Time Stop are unavailable.
+
+In case it wasn't obvious, I was heavily inspired by Heroes of the Storm Zeratul. The idea is to blink in, do a bunch of damage, then return and heal back up. Vorazun requires more micro than most heroes but can deal more damage to compensate. In return, you can't rely on Shadow Guard to carry your early game nor Time Stop to take free trades later.
+
 - Added Signifiers, an astral-themed High Templar.
   - Available after building a Templar Archives.
   - Can use Aurora Veil for 50 energy.
@@ -651,6 +675,8 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 Funny that this passive could *nerf* some units. This happened because the buff would multiply energy regeneration by 1.5 and abilities like Cloak cause your energy regeneration to be negative.
 
 - Fixed (mostly) a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+- Fixed a bug where Shadow Guard's casting Shadow Fury did not play their attack animation.
+- Fixed a bug where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
 
 yeah.
 
@@ -1227,6 +1253,15 @@ No more watching all your Void Rays explode horribly at the end of their timed l
 - Reduced the visual model scale of the Serdath Legion grunts by 20%.
 
 Matches the visual scale of other archons. Serdath himself gets to stay big.
+
+- Reduced Zeratul's Psionic Lightning weapon's damage point from 0.2 to 0.15.
+
+Matches Zeratul's ground weapon's damage point now. Should make stutter stepping slightly more consistent.
+
+- Increased visual scale of Shadow Cleave by 20%.
+- Changed Shadow Cleave impact visual to scale with the unit's scale.
+
+Increased Shadow Cleave visual to match its actual radius. Increased the impact visual so its easier to see on bigger units.
 
 - Fixed a bug where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed a bug where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).

@@ -7,6 +7,9 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="AllUnitBehaviorControllerSubset1">
+        <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
+    </CEffectSet>
     <CEffectSet id="ArbiterMPRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
     </CEffectSet>
@@ -70,6 +73,9 @@
     <CEffectSet id="DarkPylonRecallSet">
         <EffectArray value="NexusMassRecallCastingRB"/>
     </CEffectSet>
+    <CEffectDamage id="DarkTemplarChampionDamage">
+        <Amount value="100"/>
+    </CEffectDamage>
     <CEffectSet id="DevilDogSet">
         <EffectArray index="0" value="DevilDogACCP"/>
         <EffectArray index="1" value="DevilDogDamageSet"/>
@@ -1110,7 +1116,6 @@
         <EffectArray value="DehakaCoopClawAirCleave"/>
     </CEffectSet>
     <CEffectCreateHealer id="EnshroudHeal">
-        <ValidatorArray value="IsNotK5Kerrigan"/>
         <PeriodCount value="4"/>
         <PeriodicPeriod value="0.25"/>
         <RechargeVitalRate value="10"/>
@@ -1243,6 +1248,7 @@
         <ValidatorArray value="LiberatorAGTargets"/>
         <EditorCategories value=""/>
         <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
         <CreateFlags index="DropOff" value="0"/>
         <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
@@ -1639,8 +1645,84 @@
     <CEffectDamage id="VoidRayChargeBeamBounceDamageCharge3">
         <ArmorReduction value="0"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="VorazunBlinkInitialPersistent">
-        <InitialEffect value="VorazunBlinkIssueOrder"/>
+    <CEffectTeleport id="VorazunBlink">
+        <PlacementRange value="10"/>
+        <Range value="10"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="VorazunBlinkReturn">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <Range value="500"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="VorazunBlinkReturnAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="VorazunBlinkReturn"/>
+    </CEffectApplyBehavior>
+    <CEffectAddTrackedUnit id="VorazunBlinkReturnUT">
+        <EditorCategories value=""/>
+        <BehaviorLink value="VorazunBlinkReturnTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectCreateUnit id="VorazunBlinkReturnCU">
+        <EditorCategories value=""/>
+        <SpawnEffect value="VorazunBlinkReturnUT"/>
+        <SpawnUnit value="VorazunBlinkReturnDummy"/>
+        <WhichLocation Value="SourcePoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+    </CEffectCreateUnit>
+    <CEffectEnumTrackedUnits id="VorazunBlinkReturnETU">
+        <EditorCategories value=""/>
+        <BehaviorLink value="VorazunBlinkReturnTracker"/>
+        <Effect value="VorazunBlinkReturnSet"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectEnumTrackedUnits id="VorazunBlinkReturnETUClean">
+        <EditorCategories value=""/>
+        <BehaviorLink value="VorazunBlinkReturnTracker"/>
+        <Effect value="Kill"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectRemoveBehavior id="VorazunBlinkReturnRB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="VorazunBlinkReturn"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="VorazunBlinkReturnSet">
+        <EditorCategories value=""/>
+        <EffectArray value="VorazunBlinkReturn"/>
+        <EffectArray value="VorazunBlinkReturnRB"/>
+    </CEffectSet>
+    <CEffectSet id="VorazunBlinkSet">
+        <EffectArray index="0" value="VorazunBlinkReturnAB"/>
+        <EffectArray index="1" value="VorazunBlinkReturnCU"/>
+        <EffectArray value="VorazunBlink"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="VorazunCloakShieldRegenPermanentAB">
+        <ValidatorArray value="HaveVorazunCloakShieldRegen"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="VorazunCloakedShieldRegenPermanent"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="VorazunShadowFuryFinalDelayAB">
+        <Count value="0"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="VorazunShadowFuryPersistent">
+        <ValidatorArray index="0" value="VorazunShadowFuryTargetsInArea"/>
+        <ValidatorArray index="1" removed="1"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="VorazunShadowFurySearch">
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="2"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="VorazunStalkerBlinkInitialPersistent">
+        <InitialEffect value="VorazunStalkerBlinkIssueOrder"/>
         <InitialOffset value="0,100,0"/>
     </CEffectCreatePersistent>
     <CEffectIssueOrder id="KaraxBlinkIssueOrder">
@@ -1651,7 +1733,7 @@
         <Player Value="Caster"/>
         <Target Value="TargetPoint"/>
     </CEffectIssueOrder>
-    <CEffectIssueOrder id="VorazunBlinkIssueOrder">
+    <CEffectIssueOrder id="VorazunStalkerBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Abil value="BlinkShieldRestore"/>
@@ -1994,6 +2076,7 @@
     <CEffectApplyBehavior id="EnshroudApplyBuff">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="Enshroud"/>
+        <ValidatorArray value="NotUnrepairable"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="PsiStormNerazimApplyBehaviorCripple">
         <ValidatorArray index="0" value="PsiStormNerazimApplyBehaviorTargetFilters"/>
@@ -2034,9 +2117,8 @@
         <EditorCategories value="Race:Protoss"/>
         <AINotifyFlags index="HelpFriend" value="1"/>
         <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden,MapBoss"/>
+        <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Destructible,Stasis,Dead,Hidden"/>
         <AreaArray Radius="4" Effect="EnshroudApplyBuff"/>
-        <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="PsiStormNerazimSearchSet">
         <EditorCategories value="Race:Protoss"/>
@@ -2465,6 +2547,21 @@
     <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectDamage id="VorazunCleaveDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="VorazunCleaveSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="VorazunCleaveDamage"/>
+    </CEffectEnumArea>
+    <CEffectSet id="VorazunCleaveSet">
+        <EditorCategories value=""/>
+        <EffectArray value="VorazunCleaveSearch"/>
+        <EffectArray value="CommanderPrestigeZeratulTornadoesCU"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
     <CEffectIssueOrder id="ZeratulStalkerBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
@@ -2481,4 +2578,16 @@
         <InitialOffset value="0,100,0"/>
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="ZeratulVoidPrisonAiur01MissilesApplyBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="ZeratulVoidPrisonMissiles"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="ZeratulVoidPrisonAiur01MissileSearch">
+        <SearchFilters value="Missile;Player,Ally,Dead,Hidden,MapBoss"/>
+        <AreaArray index="0" Radius="4" Effect="ZeratulVoidPrisonAiur01MissilesApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ZeratulVoidPrisonAiur01Search">
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="4"/>
+    </CEffectEnumArea>
 </Catalog>

@@ -109,6 +109,28 @@
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SoACasterVorazun">
+        <CardLayouts index="0">
+            <LayoutButtons Face="CommanderPrestigeVorazunShadowGuardLocked" Type="Passive" Row="0" Column="2"/>
+            <LayoutButtons Face="CommanderPrestigeVorazunTimeStopLocked" Type="Passive" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="VorazunBlinkReturnDummy">
+        <Race value="Prot"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <Mover value="Fly"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionNerazim"/>
+        <Height value="0.5"/>
+    </CUnit>
     <CUnit id="DehakaCreeperFlying">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
@@ -1071,7 +1093,6 @@
         <Acceleration value="1000"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
-        <BehaviorArray Link="SILiberatorSprayDummyTracker"/>
         <MinimapRadius value="0"/>
         <EditorCategories value=""/>
     </CUnit>
@@ -2313,6 +2334,120 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" AbilCmd="ZagaraCorruption,Execute"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="VorazunCoop">
+        <DeathTime value="-1"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmor value="1"/>
+        <LifeRegenRate value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <ShieldsStart value="250"/>
+        <ShieldsMax value="250"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="3"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="12"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="VorazunShadowDash"/>
+        <AbilArray Link="VorazunBlinkReturn"/>
+        <AbilArray Link="VorazunCleave"/>
+        <AbilArray Link="WarpableAnywhere"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="ZeratulVoidPrisonTarget"/>
+        <AbilArray Link="VorazunShadowFury"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="HeroCCImmunity"/>
+        <BehaviorArray Link="VorazunBlinkReturnTracker"/>
+        <BehaviorArray Link="VorazunRegenShield"/>
+        <BehaviorArray Link="HeroDetectorRadar"/>
+        <WeaponArray Link="DarkTemplarChampionWeapon"/>
+        <WeaponArray Link="ZeratulCoopAA"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="VorazunCleave" Type="AbilCmd" AbilCmd="VorazunCleave,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="VorazunBlinkReturn" Type="AbilCmd" AbilCmd="VorazunBlinkReturn,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="VorazunBlink" Type="AbilCmd" AbilCmd="VorazunShadowDash,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons Face="DarkTemplarChampionPermanentlyCloaked" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="ZeratulVoidPrisonAiur01" Type="AbilCmd" AbilCmd="ZeratulVoidPrisonTarget,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="MohandarOmnislash" Type="AbilCmd" AbilCmd="VorazunShadowFury,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <CargoSize value="2"/>
+        <SubgroupPriority value="199"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:FactionNerazim"/>
+        <GlossaryCategory value="Unit/Category/ProtossUnits"/>
+        <GlossaryPriority value="300"/>
+        <GlossaryStrongArray value="Zergling"/>
+        <GlossaryStrongArray value="Roach"/>
+        <GlossaryStrongArray value="Hydralisk"/>
+        <GlossaryWeakArray value="Overseer"/>
+        <GlossaryWeakArray value="SporeCrawler"/>
+        <HotkeyCategory value="Unit/Category/ProtossZeratul"/>
+        <AlliedPushPriority value="11"/>
+    </CUnit>
+    <CUnit id="VorazunCoopReviveBeacon">
+        <Facing value="315"/>
+        <Race value="Prot"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <AbilArray Link="que1"/>
+        <AbilArray Link="VorazunRevive"/>
+        <AbilArray Link="RallyReviveBeacon"/>
+        <BehaviorArray Link="Unmoved"/>
+        <BehaviorArray Link="Unrepairable"/>
+        <BehaviorArray Link="DisableRallyFor1Second"/>
+        <BehaviorArray Link="SuppressCollision"/>
+        <BehaviorArray Link="ZeratulReviveDisable"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="RallyReviveBeacon,Rally1" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SubgroupPriority value="1"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:FactionNerazim"/>
+        <AIEvalFactor value="0"/>
+        <SelectAlias value="VorazunCoop"/>
+        <HotkeyCategory value="Unit/Category/ProtossNerazim"/>
     </CUnit>
     <CUnit id="Zergling">
         <BehaviorArray Link="KerriganCannibalize"/>

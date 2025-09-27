@@ -548,6 +548,16 @@
             <Button DefaultButtonFace="TychusBunker"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilEffectInstant id="VorazunBlinkReturn">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="VorazunBlinkReturnETU"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="VorazunBlinkReturn" Requirements="VorazunBlinkReturn"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="VorazunShadowFury">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Range index="0" value="8"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="WreckingCrewAssaultMode">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -1450,6 +1460,40 @@
     <CAbilEffectTarget id="Yoink">
         <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="VorazunCleave">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="VorazunCleaveSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="6"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="VorazunCleave"/>
+    </CAbilEffectInstant>
+    <CAbilRevive id="VorazunRevive" parent="ReviveSelf">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DataCollection value="##id##"/>
+        <CmdButtonArray index="Revive1" DefaultButtonFace="KerriganRevive"/>
+        <CmdButtonArray index="ReviveAtTarget1" DefaultButtonFace="KerriganRevivePlacement"/>
+        <Flags index="UnitOrderQueue" value="1"/>
+        <BaseInfo>
+            <Cooldown Location="Player" TimeUse="0.1"/>
+        </BaseInfo>
+        <Effect value="ZeratulReviveSet"/>
+        <Offset value="0,0"/>
+        <Range value="10"/>
+        <Alert value="KerriganReviveComplete"/>
+    </CAbilRevive>
+    <CAbilEffectTarget id="ZeratulVoidPrisonTarget">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="ZeratulVoidPrisonAiur01"/>
+        <Flags index="BestUnit" value="0"/>
+        <Range value="8"/>
+        <CursorEffect value="ZeratulVoidPrisonAiur01Search"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ZeratulVoidPrisonAiur01"/>
+        <Cost>
+            <Cooldown TimeUse="100"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
         <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">

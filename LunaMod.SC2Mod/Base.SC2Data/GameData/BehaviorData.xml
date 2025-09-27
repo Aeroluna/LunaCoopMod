@@ -315,6 +315,10 @@
             <AbilClassDisableArray index="CAbilAttack" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorUnitTracker id="VorazunBlinkReturnTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="TychusCalldownOdinExitStun">
         <Duration value="0.1"/>
     </CBehaviorBuff>
@@ -357,6 +361,14 @@
         <DamageResponse>
             <Chance value="0"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunBlinkReturn">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="8"/>
+        <FinalEffect value="VorazunBlinkReturnETUClean"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VorazunOracleDetector11" parent="Detector">
         <Alignment value="Positive"/>
@@ -660,12 +672,20 @@
             <VitalRegenMultiplier index="Energy" value="0.5"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunRegenShield">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-veilofshadowsvorazun.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunShadowFuryController">
+        <Duration value="0.6"/>
+        <PeriodCount value="2"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VorazunStalkerBlink">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="CasterShieldsLT1"/>
         <DisableValidatorArray value="HasShakurasBlinkAutocast"/>
-        <DamageResponse Handled="VorazunBlinkInitialPersistent">
+        <DamageResponse Handled="VorazunStalkerBlinkInitialPersistent">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -1099,6 +1119,26 @@
         <MaxStackCount value="2"/>
         <Duration value="2.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunInitialReviveTimer">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <BuffFlags index="Countdown" value="0"/>
+        <Duration value="240"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunReviveTimer">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <BuffFlags index="Countdown" value="0"/>
+        <Duration value="60"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulTopBarTimedLife">
         <ExpireEffect value="ProtossTimedLifeExpireAB"/>
     </CBehaviorBuff>
@@ -1106,5 +1146,27 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="60"/>
         <ExpireEffect value="ProtossTimedLifeExpireAB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulVoidPrisonAiur01">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-stormvoidprison.dds"/>
+        <Modification SightMaximum="0">
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulVoidPrisonMissiles">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-stormvoidprison.dds"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.25"/>
+        <ExpireEffect value="Kill"/>
+        <Modification SightMaximum="0" TimeScale="0.01">
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>

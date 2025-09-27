@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUser id="CampaignHeroes">
+        <Instances Id="Vorazun">
+            <Image Image="Assets\Textures\btn-hero-vorazun.dds">
+                <Field Id="Hero Icon"/>
+            </Image>
+            <Image>
+                <Field Id="Dead Hero Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Is Normal Protoss"/>
+            </Int>
+            <Unit Unit="VorazunCoop">
+                <Field Id="Unit Types"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Vorazun Revive Beacon">
+            <Image Image="Assets\Textures\btn-building-protoss-zeratulbeacon.dds">
+                <Field Id="Hero Icon"/>
+            </Image>
+            <Unit Unit="VorazunCoopReviveBeacon">
+                <Field Id="Unit Types"/>
+            </Unit>
+        </Instances>
+        <Instances Id="[Override]Alarak">
+            <Image Image="Assets\Textures\alarak_diff.dds">
+                <Field Id="Hero Icon"/>
+            </Image>
+            <Image>
+                <Field Id="Dead Hero Icon"/>
+            </Image>
+        </Instances>
+        <Instances Id="[Override]Zeratul">
+            <Int Int="1">
+                <Field Id="Is Normal Protoss"/>
+            </Int>
+        </Instances>
+    </CUser>
     <CUser id="CampaignPerk">
         <Instances Id="[Override]RaynorBarracksUpgrades">
             <AbilCmd Abil="BarracksTechLabResearch" Cmd="14">
@@ -384,6 +421,14 @@
             <Upgrade Upgrade="KerriganBroodCosmetic">
                 <Field Id="RequiredUpgrade"/>
             </Upgrade>
+        </Instances>
+        <Instances Id="VorazunCoop">
+            <Sound Sound="Vorazun_Ready">
+                <Field Id="HeroSound"/>
+            </Sound>
+            <Unit Unit="VorazunCoop">
+                <Field Id="HeroUnit"/>
+            </Unit>
         </Instances>
         <Instances Id="[Override]K5Kerrigan">
             <Upgrade Upgrade="KerriganInfestedCosmetic">
@@ -1057,6 +1102,9 @@
             </Upgrade>
         </Instances>
         <Instances Id="[Override]ProtossVorazun">
+            <AbilCmd Abil="VorazunRevive">
+                <Field Id="ReviveAbilityCommand"/>
+            </AbilCmd>
             <GameLink GameLink="VoicePackProtossVorazun">
                 <Field Id="DefaultVoicePack"/>
             </GameLink>
@@ -1069,8 +1117,32 @@
             <GameLink GameLink="VorazunCoop">
                 <Field Id="CommanderSkin"/>
             </GameLink>
+            <GameLink GameLink="VorazunCoopReviveBeacon">
+                <Field Id="HeroReviveUnit"/>
+            </GameLink>
+            <GameLink GameLink="VorazunInitialReviveTimer">
+                <Field Id="HeroUnitFirstReviveBehavior"/>
+            </GameLink>
+            <GameLink GameLink="VorazunReviveTimer">
+                <Field Id="HeroUnitNormalReviveBehavior"/>
+            </GameLink>
+            <String String="Abil/VorazunRevive">
+                <Field Id="HeroReviveLink"/>
+            </String>
             <Text Text="UserData/PlayerCommanders/[Override]ProtossVorazun_Description">
                 <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/PlayerCommanders/[Override]ProtossVorazun_HeroReviveMessages">
+                <Field Id="HeroReviveMessages"/>
+            </Text>
+            <Text Text="UserData/PlayerCommanders/[Override]ProtossVorazun_HeroReviveMessages_001">
+                <Field Id="HeroReviveMessages" Index="1"/>
+            </Text>
+            <Text Text="UserData/PlayerCommanders/[Override]ProtossVorazun_HeroReviveMessages_002">
+                <Field Id="HeroReviveMessages" Index="2"/>
+            </Text>
+            <Text Text="UserData/PlayerCommanders/[Override]ProtossVorazun_HeroReviveMessages_003">
+                <Field Id="HeroReviveMessages" Index="3"/>
             </Text>
             <Upgrade Upgrade="VorazunImprovedVespene">
                 <Field Id="DefaultUpgrades" Index="3"/>
@@ -1078,6 +1150,9 @@
             <Upgrade Upgrade="VorazunImprovedShields">
                 <Field Id="DefaultUpgrades" Index="4"/>
             </Upgrade>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeVorazunHero">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ProtossZeratul">
             <GameLink GameLink="VoicePackProtossZeratul">
@@ -1292,6 +1367,17 @@
         </Instances>
         <Instances Id="CommanderPrestigeArtanisWarp">
             <GameLink GameLink="CommanderPrestigeArtanisWarp">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="CommanderPrestigeVorazunHero">
+            <AbilCmd Abil="SOAShadowGuardCalldown">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <AbilCmd Abil="SOATimeFreeze">
+                <Field Id="DisableAbil" Index="1"/>
+            </AbilCmd>
+            <GameLink GameLink="CommanderPrestigeVorazunHero">
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
         </Instances>

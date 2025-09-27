@@ -29,6 +29,17 @@
     <CActorModel id="BlindingCloudStructureModelAttachmentPlanetary">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
     </CActorModel>
+    <CActorModel id="DarkTemplarShadowFuryImpact">
+        <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="VorazunShadowFuryImpact" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenterStationary SOp2DRotation"/>
+        <Model value="DarkTemplarShadowFuryImpact"/>
+        <Scale value="1.600000"/>
+    </CActorModel>
     <CActorModel id="DevilDogAttackModel">
         <Remove Terms="ActorCreation; ValidateUnit BearclawNozzlesPurchased" Send="SetScale 2.250000,1.800000,1.000000"/>
         <On Terms="ActorCreation" Send="SetScaleFromWeaponRange 0.000000,1.000000,0.000000"/>
@@ -40,6 +51,105 @@
     <CActorModel id="DisruptionCloudStructureModelAttachmentPlanetary">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
     </CActorModel>
+    <CActorModel id="NovaWeaponBlazefireBladeShadowFuryImpact">
+        <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="VorazunBlinkCloudSound">
+        <On Terms="Abil.VorazunBlinkReturn.TargetCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="VorazunBlinkIn">
+        <On Terms="Effect.VorazunBlinkReturn.Stop; At Source" Send="Create"/>
+        <On Terms="Effect.VorazunShadowFuryTeleport.Stop; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="VorazunBlinkOut">
+        <On Terms="Effect.VorazunBlinkReturn.Start; At Source" Send="Create"/>
+        <On Terms="Effect.VorazunShadowFuryTeleport.Start; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorUnit id="VorazunBlinkReturnDummy" parent="GenericUnitBase" unitName="VorazunBlinkReturnDummy">
+        <Macros value="RemoveFlyerHelperMacro"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
+    <CActorSound id="VorazunBlinkSound">
+        <On Terms="Abil.VorazunBlinkReturn.TargetCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorRange id="VorazunShadowFuryRange" parent="RangeAbil" abil="VorazunShadowFury"/>
+    <CActorUnit id="ZeratulCoop">
+        <On index="87" Send="AnimBracketStart Attack Stand,Work,Superior,Start Stand,Work,Superior Stand,Work,Superior,End FullMatch 1.400000 AsTimeScale"/>
+    </CActorUnit>
+    <CActorBeamSimple id="ZeratulCoopAAAttackBeam">
+        <On index="0" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce 2.000000 AsTimeScale"/>
+    </CActorBeamSimple>
+    <CActorUnit id="VorazunCoopReviveBeacon" parent="GenericUnitMorph" unitName="VorazunCoopReviveBeacon">
+        <On Terms="ActorCreation" Send="$Birth"/>
+        <On Terms="ActorCreation" Send="Create AlarakReviveBeacon_BirthSound"/>
+        <Model value="RespawnPad_Vorazun_COOP"/>
+        <BuildModel value="RespawnPad_Vorazun_COOP"/>
+        <PlacementModel value="RespawnPad_Vorazun_COOP"/>
+        <PortraitActor value="VorazunEx2Portrait"/>
+        <PortraitModel value="VorazunEx2Portrait"/>
+        <BarOffset value="80"/>
+        <BarWidth value="78"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-zeratulbeacon.dds"/>
+        <SoundArray index="Birth" value="AlarakReviveBeacon_Birth"/>
+        <SoundArray index="What" value="AlarakReviveBeacon_What"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-zeratulbeacon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="ZeratulShadowCleave">
+        <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="ZeratulShadowCleaveImpact">
+        <On Terms="Effect.VorazunCleaveDamage.Start; At Target" Send="Create"/>
+        <AutoScaleFactor value="0.800000"/>
+        <MaxScale value="0.800000"/>
+    </CActorModel>
+    <CActorSound id="ZeratulShadowCleaveImpactSound">
+        <On Terms="Effect.VorazunCleaveDamage.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="ZeratulShadowCleaveSound">
+        <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="ZeratulVoidPrisonCast" parent="ModelAnimationStyleOneShot">
+        <On Terms="Abil.ZeratulVoidPrisonTarget.SourceCastStart" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachWeaponLeft"/>
+    </CActorModel>
+    <CActorSiteOpForward id="SOpForwardMohandar">
+        <HostForward Subject="VorazunCoop"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpRotator id="SOpVorazunCleaveRotator">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="720.000000"/>
+    </CActorSiteOpRotator>
+    <CActorModel id="ZeratulVoidPrisonAiur01">
+        <FogVisibility value="Dimmed"/>
+    </CActorModel>
+    <CActorRange id="ZeratulVoidPrisonTargetRange" parent="RangeAbil" abil="ZeratulVoidPrisonTarget"/>
+    <CActorSplat id="ZeratulVoidPrisonTargetCursor" parent="ProtossCursorSplat" abil="ZeratulVoidPrisonTarget"/>
+    <CActorSimple id="ZeratulVoidPrisonTint">
+        <On Terms="Behavior.ZeratulVoidPrisonAiur01.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="::Main" Send="SetTintColor 140,140,140 0.125000 OneShot VoidPrison"/>
+        <On Terms="Behavior.ZeratulVoidPrisonAiur01.Off" Target="::Main" Send="ClearTintColor 0.125000 VoidPrison"/>
+        <On Terms="Behavior.ZeratulVoidPrisonAiur01.Off" Send="Destroy"/>
+        <On Terms="Behavior.ZeratulVoidPrisonMissiles.On" Send="Create"/>
+        <On Terms="Behavior.ZeratulVoidPrisonMissiles.Off" Target="::Main" Send="ClearTintColor 0.125000 VoidPrison"/>
+        <On Terms="Behavior.ZeratulVoidPrisonMissiles.Off" Send="Destroy"/>
+    </CActorSimple>
     <CActorModelMaterial id="GlazeIrradiate" parent="GlazeParent">
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
         <On Terms="AnimDone; AnimName Death" Send="ModelMaterialRemoveFrom ::Main"/>
@@ -183,6 +293,7 @@
         <On Terms="Behavior.NovaDashAttackSpeed.On" Send="Create"/>
         <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorRange id="NovaWeaponBlazefireBladeShadowFuryRange" parent="RangeAbil" abil="NovaWeaponBlazefireBladeShadowFury"/>
     <CActorModel id="NovaWeaponBlazefireBladeShadowFuryBlinkOriginModel" parent="ModelAnimationStyleOneShot">
         <InheritType value="OneShot"/>
         <Inherits index="BaseModelScale" value="1"/>
@@ -261,9 +372,11 @@
         <On Terms="Behavior.NovaCliffJump.LandUp" Send="AnimBracketStop Jump"/>
         <On Terms="UnitMovementUpdate.*.Walk; ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Send="Create Nova_TurbojetJumpsuit_Movement_ActorSound"/>
         <On Terms="UnitMovementUpdate.*.Stand; ValidatePlayer CommanderPrestigeNovaMelee; !ValidateUnit NotHaveNovaCombatSuit" Target="Nova_TurbojetJumpsuit_Movement_ActorSound" Send="Destroy"/>
-        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryDamage.Start" Send="AnimPlay Attack Attack DontResetOnUnhide -1.000000 -1.000000 0.200000 AsDuration"/>
-        <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
-        <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack 0 0.000000 0.000000 -1.000000 AsAutomatic 0.200000"/>
+        <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryFinal.Start" Send="AnimClear ShadowFury"/>
+        <!--On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
+        <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/-->
         <On Terms="Abil.NovaCoopDecoyTarget.SourceCastStart" Send="AnimPlay SpellE Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
         <Model value="NovaHeroBase"/>
         <BarOffset value="50"/>
@@ -2219,7 +2332,7 @@
         <On Terms="Behavior.Enshroud.On" Send="Create"/>
         <On Terms="Behavior.Enshroud.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft SOpPointSouthWorld" HoldRotation="1"/>
         <Model value="OracleEnvision"/>
         <Scale value="0.650000"/>
         <AutoScaleFactor value="1.000000"/>
@@ -2777,6 +2890,8 @@
     </CActorUnit>
     <CActorUnit id="VorazunShadowGuard">
         <On Terms="Abil.ShadowGuardVoidStasis" Send="AnimPlay Spell Attack"/>
+        <On Terms="Effect.DarkTemplarShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
+        <On Terms="Effect.DarkTemplarShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack,00 0 0.000000 0.000000 0.400000 AsDuration"/>
         <Model value="DarkTemplar_Golden"/>
         <DeathArray index="Normal" ModelLink="DarkTemplar_Golden_Death"/>
         <PortraitModel value="DarkTemplar_Golden_Portrait"/>
@@ -2841,6 +2956,80 @@
         <On Terms="Effect.WraithAPersistent.Start; At Caster" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="Effect.WraithGLaunchMissile.Start; At Caster" Send="AnimBracketStart Attack Attack"/>
     </CActorUnit>
+    <CActorUnit id="VorazunCoop" parent="GenericUnitStandard" unitName="VorazunCoop">
+        <On index="65" Terms="WeaponStart.DarkTemplarChampionWeapon.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStart.ZeratulCoopAA.AttackStart" Send="AnimBracketStart Attack Spell,C"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="Abil.ZeratulVoidPrisonTarget.SourceCastStart" Send="$Spell,C"/>
+        <On Terms="Abil.VorazunShadowDash.SourceCastStart" Send="Signal SpellABlend"/>
+        <On Terms="Abil.VorazunBlinkReturn.SourceCastStart" Send="Signal SpellABlend"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+        <On Terms="Behavior.ZeratulReviveWarpIn.On" Send="AnimBaselineStop"/>
+        <On Terms="Behavior.ZeratulReviveWarpIn.Off" Send="AnimPlay Attack Stand,00"/>
+        <On Terms="Behavior.ZeratulReviveWarpIn.Off" Send="AnimBaselineStart"/>
+        <!-- why do u keep getting deleted -->
+        <On Terms="Signal.*.SpellABlend" Send="TimerSet 0.100000 SpellAAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName SpellAAnimationSwitch" Send="$Spell,A DontResetOnUnhide 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Signal.*.SpellABlend" Send="$Spell,A"/>
+        <!-- cleave -->
+        <On Terms="Abil.VorazunCleave.SourceCastStart" Send="HostSiteOpsSet ::Host SOpVorazunCleaveRotator"/>
+        <On Terms="Abil.VorazunCleave.SourceCastStart" Send="TimerSet 0.500000 CleaveTime"/>
+        <On Terms="TimerExpired; TimerName CleaveTime" Send="HostSiteOpsSet ::Host"/>
+        <On Terms="Abil.VorazunCleave.SourceCastStart" Send="TimerSet 0.100000 CleaveAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName CleaveAnimationSwitch" Send="AnimPlay Spell Attack,02 VariationMatch 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.VorazunCleave.SourceCastStart" Send="AnimPlay Spell Attack,02 VariationMatch"/>
+        <On Terms="Abil.VorazunCleave.SourceCastStart" Send="TimerSet 1.000000 CleaveEnd"/>
+        <On Terms="TimerExpired; TimerName CleaveEnd" Send="AnimClear Spell 0.500000"/>
+        <!-- shadow fury -->
+        <On Terms="Effect.VorazunShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
+        <On Terms="Effect.VorazunShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack 0 0.000000 0.000000 -1.000000 AsAutomatic 0.200000"/>
+        <On Terms="Effect.VorazunShadowFuryFinalDelayAB.Start" Send="AnimClear ShadowFury"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="DarkTemplarWarpIn"/>
+        <DeathArray index="Normal" ModelLink="DarkTemplarChampionDeath" SoundLink="Vorazun_Death_Fx" VoiceLink="Vorazun_Death"/>
+        <PortraitModel value="VorazunEx2Portrait"/>
+        <WalkAnimMoveSpeed value="3"/>
+        <BarOffset value="50"/>
+        <BarWidth value="42"/>
+        <CustomUnitStatusFrame value="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-hero-vorazun.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_zeratul.dds"/>
+        <MinimapIconScale value="0.700000"/>
+        <MinimapRenderPriority value="Hero"/>
+        <MinimapUseSelfColor value="0"/>
+        <MinimapUseSelectionColor value="0"/>
+        <SoundArray index="Ready" value="Vorazun_Ready"/>
+        <SoundArray index="Help" value="Vorazun_Help"/>
+        <SoundArray index="What" value="Vorazun_What"/>
+        <SoundArray index="Yes" value="Vorazun_Yes"/>
+        <SoundArray index="Attack" value="Vorazun_Attack"/>
+        <SoundArray index="Pissed" value="Vorazun_Pissed"/>
+        <StatusBarOn index="Shields" value="1"/>
+        <StatusBarOn index="Life" value="1"/>
+        <StatusBarOn index="Energy" value="1"/>
+        <StatusBarOn index="Progress" value="1"/>
+        <StatusBarOn index="Duration" value="1"/>
+        <StatusBarOn index="Custom" value="1"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-vorazun.dds"/>
+        <UnitKillRank Text="UnitKillRank/Vorazun"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-vorazun-shield03.dds"/>
+        </WireframeShield>
+        <PortraitActor value="VorazunEx2Portrait"/>
+    </CActorUnit>
     <CActorUnit id="ZeratulDarkTemplar">
         <GroupIcon>
             <Image index="0" value="Assets\Textures\wireframe-protoss-darktemplar00.dds"/>
@@ -2865,6 +3054,17 @@
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
     </CActorUnit>
+    <CActorSound id="ZeratulVoidPrisonSoundImpact" parent="SoundOneShot">
+        <On Terms="Effect.ZeratulVoidPrisonAiur01.Start" Send="Create"/>
+        <Sound value="Storm_VoidPrison_Start"/>
+    </CActorSound>
+    <CActorSound id="ZeratulVoidPrisonSoundEnd" parent="SoundOneShot">
+        <On Terms="Effect.ZeratulVoidPrisonAiur01.Stop" Send="Create"/>
+        <Sound value="Storm_VoidPrison_End"/>
+    </CActorSound>
+    <CActorSound id="ZeratulVoidPrisonSoundLoop">
+        <Sound value="Storm_VoidPrison_Loop"/>
+    </CActorSound>
     <CActorUnit id="ZeratulWarpPrism">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-warpprism-ihanrii.dds"/>
     </CActorUnit>

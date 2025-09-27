@@ -371,26 +371,24 @@ bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport) {
     return false;
 }
 
-void lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure () {
+void lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure (int lp_player) {
     // Variable Declarations
-    int lv_indexPlayer;
     point lv_spawnPoint;
     point lv_mineralPoint;
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_indexPlayer = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("TerranRaynor", libCOOC_gf_CommanderPlayers());
 
     // Implementation
-    lv_mineralPoint = UnitGroupCenterOfGroup(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lv_indexPlayer)), 10.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    if ((UnitGroupCount(UnitGroup("ACHeroSpawnPlacement", lv_indexPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), c_unitCountAlive) > 0)) {
-        lv_spawnPoint = UnitGetPosition(UnitGroupUnit(UnitGroup("ACHeroSpawnPlacement", lv_indexPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), 1));
+    lv_mineralPoint = UnitGroupCenterOfGroup(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lp_player)), 10.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    if ((UnitGroupCount(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), c_unitCountAlive) > 0)) {
+        lv_spawnPoint = UnitGetPosition(UnitGroupUnit(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), 1));
     }
     else {
         TriggerDebugOutput(1, StringExternal("Param/Value/lib_74A68E34_06BC5908"), false);
-        lv_spawnPoint = libNtve_gf_PointOffsetTowardsPoint(lv_mineralPoint, 13.0, UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lv_indexPlayer)));
+        lv_spawnPoint = libNtve_gf_PointOffsetTowardsPoint(lv_mineralPoint, 13.0, UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lp_player)));
     }
-    UnitCreate(1, "MercCompound", 0, lv_indexPlayer, lv_spawnPoint, 225.0);
+    UnitCreate(1, "MercCompound", 0, lp_player, lv_spawnPoint, 225.0);
 }
 
 void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
@@ -679,6 +677,24 @@ void lib74A68E34_gf_ZagaraRoachCorpserMasteryHealth (int lp_player) {
     CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpser", "LifeStart", lp_player, IntToString(FixedToInt(lv_healthNew)));
     CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpserBurrowed", "LifeMax", lp_player, IntToString(FixedToInt(lv_healthNew)));
     CatalogFieldValueSet(c_gameCatalogUnit, "RoachCorpserBurrowed", "LifeStart", lp_player, IntToString(FixedToInt(lv_healthNew)));
+}
+
+void lib74A68E34_gf_VorazunPrestigeHeroSpawn (int lp_player) {
+    // Variable Declarations
+    point lv_spawnPoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_spawnPoint = UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lp_player));
+    UnitCreate(1, "VorazunCoop", 0, lp_player, lv_spawnPoint, 270.0);
+    libCOMI_gv_cM_HeroUnit[lp_player] = UnitLastCreated();
+    UnitGroupAdd(libCOMI_gv_cM_HeroUnitsOfAllCommanders, UnitLastCreated());
+    libCOUI_gf_SetHeroPanelUnit(1, UnitLastCreated(), lp_player);
+    UnitBehaviorAdd(libCOMI_gv_cM_HeroUnit[lp_player], "ZergGenericDeath", libCOMI_gv_cM_HeroUnit[lp_player], 1);
+    UnitSetPosition(libCOMI_gv_cM_HeroUnit[lp_player], Point(0.0, 0.0), false);
+    UnitKill(libCOMI_gv_cM_HeroUnit[lp_player]);
 }
 
 void lib74A68E34_gf_KaraxExtraUnitVitalMastery (int lp_player) {
@@ -1061,6 +1077,28 @@ bool lib74A68E34_gt_AllyImproved_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_AllyImproved_Init () {
     lib74A68E34_gt_AllyImproved = TriggerCreate("lib74A68E34_gt_AllyImproved_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_AllyImproved, c_playerAny, "-ally", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FourthPrestigeTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FourthPrestigeTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
+    TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
+    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FourthPrestigeTriggers_Init () {
+    lib74A68E34_gt_FourthPrestigeTriggers = TriggerCreate("lib74A68E34_gt_FourthPrestigeTriggers_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_FourthPrestigeTriggers);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1575,7 +1613,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_RaynorMULEMineralSearch, true);
             TriggerEnable(lib74A68E34_gt_RaynorHyperionWeaponSwitch, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeRaynorMercenary", c_techCountCompleteOnly) == 1)) {
-                lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure();
+                lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure(lv_player);
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryLaunch, true);
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryReset, true);
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, true);
@@ -1622,6 +1660,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ProtossVorazun") {
             TriggerEnable(lib74A68E34_gt_VorazunNegativeEnergyFix, true);
             TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeVorazunHero", c_techCountCompleteOnly) == 1)) {
+                lib74A68E34_gf_VorazunPrestigeHeroSpawn(lv_player);
+                TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight, true);
+                TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset, true);
+            }
+
         }
         else if (auto560DABDD_val == "ZergAbathur") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
@@ -2610,6 +2654,62 @@ void lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init () {
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior = TriggerCreate("lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func");
     TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior, false);
     TriggerAddEventUnitCreated(lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: VorazunPrestigeHeroShadowFuryHeight
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_nova;
+    unit lv_target;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_nova = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetHeight(lv_nova, UnitGetHeight(lv_target), 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Init () {
+    lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight = TriggerCreate("lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Func");
+    TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight, c_playerAny, "VorazunShadowFuryImpactSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: VorazunPrestigeHeroShadowFuryReset
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_nova;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_nova = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetHeight(lv_nova, 0.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Init () {
+    lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset = TriggerCreate("lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Func");
+    TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset, null, "VorazunShadowFuryController", c_unitBehaviorChangeDeactivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3626,6 +3726,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_AllyImproved_Init();
+    lib74A68E34_gt_FourthPrestigeTriggers_Init();
     lib74A68E34_gt_FourthPrestigeAlly_Init();
     lib74A68E34_gt_FourthAllyPrestigeChanged_Init();
     lib74A68E34_gt_MutatorListLoadBankInit_Init();
@@ -3662,6 +3763,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Init();
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
+    lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Init();
+    lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Init();
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
