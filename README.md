@@ -1177,6 +1177,11 @@ It's probably still better to take Tychus, but now atleast you have a choice.
 
 https://www.maguro.one/2019/06/uiux-tweaks.html
 
+- Reworked Tychus Attack Speed mastery into First Outlaw Attack Speed.
+- Reworked Tychus Shredder Grenade Cooldown mastery into First Outlaw Ability Cooldown.
+
+To go with the above changes, this mastery set now affects your first mastery instead of always buffing Tychus. If you change the Outlaw in the first slot using the UI reordering, the buff will be moved to that Outlaw instead.
+
 - Reordered SCV building menu.
 - Added Fortified Bunker that can be built by SCVs.
   - Can hold up to two outlaws.

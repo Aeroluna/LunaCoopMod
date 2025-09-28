@@ -3521,6 +3521,7 @@ bool lib74A68E34_gt_TychusReplaceResearchCenter_Func (bool testConds, bool runAc
         libCOUI_gf_CU_TychusSetBarUnit(libNtve_gf_LastReplacedUnit());
     }
     DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[0], PlayerGroupAll(), "TrainingState", "NotTraining");
+    UnitBehaviorAdd(lv_unit, "MasteryTychusFirstCommander", lv_unit, 1);
     return true;
 }
 
@@ -3626,6 +3627,11 @@ bool lib74A68E34_gt_TychusUIReorderButtonClicked_Func (bool testConds, bool runA
     UnitBehaviorAdd(lv_hero, "TychusHeroSubGroup", lv_hero, lv_squadindex);
     libCOUI_gv_cU_TychusSquadHeroes[lv_a] = lv_hero;
     libCOUI_gv_cU_TychusSquadHeroes[(lv_a + 1)] = lv_firsthero;
+    if ((lv_a == 0)) {
+        UnitBehaviorRemove(lv_firsthero, "MasteryTychusFirstCommander", 1);
+        UnitBehaviorAdd(lv_hero, "MasteryTychusFirstCommander", lv_hero, 1);
+    }
+
     if ((UnitIsAlive(lv_firsthero) == false)) {
         DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[(lv_a + 1)], PlayerGroupAll(), "DeathState", "Dead");
     }

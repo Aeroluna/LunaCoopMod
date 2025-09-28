@@ -1037,6 +1037,17 @@
         <EffectArray Reference="Behavior,SILiberatorSwarmFormPermanentDamageSearch,PeriodicEffectRateMultiplier" Value="0.01"/>
         <EffectArray Reference="Weapon,SILiberatorDummy,RateMultiplier" Value="0.01"/>
     </CUpgrade>
+    <CUpgrade id="MasteryTychusCommanderAttackSpeed">
+        <EffectArray index="1" Reference="Behavior,MasteryTychusFirstCommander,Modification.AttackSpeedMultiplier"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstCommanderPetBuff,Modification.AttackSpeedMultiplier" Value="0.01"/>
+        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstCommanderPetBuffAB,Chance" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryTychusGrenadeCooldown">
+        <EffectArray index="0" Value="1"/>
+        <EffectArray index="1" Operation="Add" Reference="Behavior,MasteryTychusFirstCommander,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstCommanderPetBuff,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
+        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstCommanderPetBuffAB,Chance" Value="1"/>
+    </CUpgrade>
     <CUpgrade id="MedicStartingEnergy">
         <Icon value="Assets\Textures\btn-upgrade-terran-moebiusreactor.dds"/>
         <EffectArray Reference="Unit,Medic,EnergyStart" Value="150"/>

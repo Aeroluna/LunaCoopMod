@@ -21,6 +21,11 @@
         <OperandArray value="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly"/>
         <OperandArray value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeMasteryTychusGrenadeCooldownCompleteOnly"/>
+        <OperandArray value="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="CountUpgradeMengskAcademyMissileCountCompleteOnly"/>
         <OperandArray value="LTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
@@ -80,6 +85,16 @@
         <OperandArray value="NotCountUpgradeTychusHeroMaxedCompleteOnly"/>
         <OperandArray value="NotCountUnitTychusCoopQueuedOrBetter"/>
     </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MasteryTychusFirstCommander" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MasteryTychusFirstCommanderPetBuff" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PopStun" State="CompleteOnly"/>
@@ -98,12 +113,10 @@
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorVorazunCounterCleaveCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="VorazunCounterCleave" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="VorazunShadowPhaseSuppressed" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
@@ -347,7 +360,6 @@
         <OperandArray index="0" value="CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
@@ -431,6 +443,11 @@
     <CRequirementOr id="Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit"/>
+        <OperandArray value="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixClolarionCarrierCompleteOnly0">
         <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>

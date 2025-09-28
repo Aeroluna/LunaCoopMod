@@ -313,6 +313,11 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MasteryTychusFirstCommanderPetBuffAB">
+        <EditorCategories value=""/>
+        <Chance value="0"/>
+        <Behavior value="MasteryTychusFirstCommanderPetBuff"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="MothershipMassRecallInitialSet">
         <EffectArray value="MothershipMassRecallApplyBehavior"/>
         <EffectArray value="NexusMassRecallCastingTargetAB"/>
@@ -1585,9 +1590,7 @@
         <Chance value="0"/>
     </CEffectTeleport>
     <CEffectSet id="TychusGhostDominateSet">
-        <EffectArray index="3" value="CommanderPrestigeTychusLoneWolfPetBuff"/>
-        <EffectArray index="4" value="TychusGhostConfusionSearch"/>
-        <EffectArray index="5" removed="1"/>
+        <EffectArray index="3" value="MasteryTychusFirstCommanderPetBuffAB"/>
     </CEffectSet>
     <CEffectDamage id="TychusHERCWeaponDamage">
         <Death value="Blast"/>
@@ -1623,6 +1626,9 @@
     <CEffectIssueOrder id="TychusResearchCenterIssueOrder">
         <WhichUnit Value="Unknown"/>
     </CEffectIssueOrder>
+    <CEffectSet id="TychusWarhoundAutoTurretSet">
+        <EffectArray value="MasteryTychusFirstCommanderPetBuffAB"/>
+    </CEffectSet>
     <CEffectDamage id="VikingMengskAirMassiveDamage">
         <Amount value="28"/>
     </CEffectDamage>
