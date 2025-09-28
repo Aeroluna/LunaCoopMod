@@ -2582,12 +2582,18 @@
     <CEffectSet id="VorazunCleaveSet">
         <EffectArray value="VorazunCleaveSearch"/>
         <EffectArray value="VorazunCleaveAB"/>
+        <EffectArray value="VorazunCounterCleaveCooldown"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectApplyBehavior id="VorazunCleaveAB">
         <WhichUnit Value="Caster"/>
         <Behavior value="VorazunCounterCleave"/>
     </CEffectApplyBehavior>
+    <CEffectModifyUnit id="VorazunCounterCleaveCooldown">
+        <EditorCategories value=""/>
+        <Cost Abil="VorazunCounterCleave,Execute" CooldownOperation="Set" CooldownTimeUse="1"/>
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
     <CEffectSet id="VorazunCounterCleaveSet">
         <EffectArray value="VorazunCounterCleaveSearch"/>
         <EffectArray value="VorazunCleaveRB"/>
