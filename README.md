@@ -579,6 +579,9 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
     - Passive: Veil of Shadows
       - Permanently cloaked.
       - Shield regen greatly increased while undetected.
+    - Passive: Shroud of Adun
+      - Upon Vorazun's shield breaking, negate excess damage and become immune to damage for 1 second.
+      - Cannot occur again until reaching max shields.
     - Q: Reap (6 seconds)
       - Deals 100 damage to nearby enemies.
       - Identical to Zeratul's cleave but with half cooldown.

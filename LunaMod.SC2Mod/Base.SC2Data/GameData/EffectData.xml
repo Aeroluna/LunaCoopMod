@@ -67,6 +67,9 @@
         <CmdFlags index="AutoQueued" value="1"/>
         <Target Value="TargetUnit"/>
     </CEffectIssueOrder>
+    <CEffectApplyBehavior id="DarkPylonCloakShieldRegenAB">
+        <ValidatorArray value="NotStructureTarget"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="DarkPylonRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
     </CEffectSet>
@@ -1727,6 +1730,19 @@
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
+    <CEffectSet id="VorazunShadowPhaseSet">
+        <EffectArray value="VorazunShadowPhaseAB"/>
+        <EffectArray value="VorazunShadowPhaseSuppressedAB"/>
+        <ValidatorArray value="CasterShieldsLT1"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="VorazunShadowPhaseAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="VorazunShadowPhased"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="VorazunShadowPhaseSuppressedAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="VorazunShadowPhaseSuppressed"/>
+    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="VorazunStalkerBlinkInitialPersistent">
         <InitialEffect value="VorazunStalkerBlinkIssueOrder"/>
         <InitialOffset value="0,100,0"/>

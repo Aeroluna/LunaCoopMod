@@ -2713,6 +2713,30 @@ void lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: VorazunPrestigeHeroShadowPhase
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while ((UnitHasBehavior2(EventUnit(), "VorazunShadowPhaseSuppressed") == true)) {
+        UnitModifyCooldown(EventUnit(), "Behavior/VorazunShadowPhaseSuppressed", 100.0, c_cooldownOperationSet);
+        UnitModifyCooldown(EventUnit(), "Behavior/VorazunShadowPhaseSuppressed", (UnitGetPropertyFixed(EventUnit(), c_unitPropShieldsPercent, c_unitPropCurrent) * -1.0), c_cooldownOperationAdd);
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Init () {
+    lib74A68E34_gt_VorazunPrestigeHeroShadowPhase = TriggerCreate("lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_VorazunPrestigeHeroShadowPhase, null, "VorazunShadowPhaseSuppressed", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: VorazunNegativeEnergyFix
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_VorazunNegativeEnergyFix_Func (bool testConds, bool runActions) {
@@ -2720,6 +2744,10 @@ bool lib74A68E34_gt_VorazunNegativeEnergyFix_Func (bool testConds, bool runActio
     // Conditions
     if (testConds) {
         if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "VorazunCloakDamageBoost", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "VorazunCloakDamageBoostPermanent") == true))) {
             return false;
         }
     }
@@ -3765,6 +3793,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
     lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Init();
     lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Init();
+    lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Init();
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();

@@ -55,6 +55,7 @@
     <CBehaviorBuff id="CommanderPrestigeKerriganCreepSuperCloak">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Requirements value="CommanderPrestigeKerriganCreepGrowth"/>
         <Modification>
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
@@ -374,6 +375,9 @@
         <Duration value="8"/>
         <FinalEffect value="VorazunBlinkReturnETUClean"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunCloakedShieldRegenPermanent">
+        <BehaviorFlags index="Permanent" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VorazunOracleDetector11" parent="Detector">
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -622,6 +626,7 @@
     <CBehaviorBuff id="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\talent-zagara-level08-incubatebroodlings.dds"/>
+        <Requirements value="HaveStukovInfestedCivilianSpawnBroodlingOnDeath"/>
         <Modification>
             <DeathResponse Chance="1" Effect="StukovInfestedCivilianSpawnBroodlingFlyingOnDeath"/>
         </Modification>
@@ -682,6 +687,18 @@
     <CBehaviorBuff id="VorazunShadowFuryController">
         <Duration value="0.6"/>
         <PeriodCount value="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunShadowPhaseSuppressed">
+        <Alignment value="Negative"/>
+        <Cost>
+            <Cooldown Location="Unit" TimeStart="100"/>
+        </Cost>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-signifier-cloakally.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <RemoveValidatorArray value="ShieldsNotFull"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="VorazunShadowPhaseController"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="VorazunStalkerBlink">
         <InfoFlags index="Hidden" value="1"/>
@@ -1141,6 +1158,25 @@
         <DisplayDuration index="Enemy" value="1"/>
         <BuffFlags index="Countdown" value="0"/>
         <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunShadowPhaseController">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <DamageResponse Handled="VorazunShadowPhaseSet">
+            <Ignore index="Life" value="1"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="VorazunShadowPhaseSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VorazunShadowPhased">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-signifier-cloakally.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Duration value="1"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+        </Modification>
+        <Alignment value="Positive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulTopBarTimedLife">
         <ExpireEffect value="ProtossTimedLifeExpireAB"/>

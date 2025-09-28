@@ -64,6 +64,8 @@ Behavior/Name/SILiberatorSprayPool=Acid
 Behavior/Name/SILiberatorVolatileFuel=Volatile Fuel
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
+Behavior/Name/VorazunShadowPhaseSuppressed=Recently Shrouded
+Behavior/Name/VorazunShadowPhased=Shrouded
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
 Behavior/Name/ZeratulVoidPrisonMissiles=Void Sanctuary Missiles
 Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote that attacks enemies and protects their host with a damage absorbing shell.
@@ -90,6 +92,8 @@ Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while un
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
 Behavior/Tooltip/VorazunCloakedShieldRegenPermanent=Shield Regeneration increased by <d ref="Behavior,VorazunCloakedShieldRegen,Modification.VitalRegenMultiplier[Shields] * 100"/>%.
 Behavior/Tooltip/VorazunRegenShield=This unit is undetected and rapidly regenerating shields.
+Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by Shroud of Adun and cannot be shrouded again.
+Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/Name/AegisPlating=Aegis Plating
 Button/Name/ApolloCloakOnNova=Apollo Infantry Suit
@@ -217,6 +221,7 @@ Button/Name/VoidStasisLocked=Void Prison
 Button/Name/VorazunBlinkReturn=Wormhole
 Button/Name/VorazunCleave=Reap
 Button/Name/VorazunImprovedVespene=Vespene Crystallization
+Button/Name/VorazunShadowPhase=Shroud of Adun
 Button/Name/VortexArtanis=Vortex
 Button/Name/XN51CloakTechnology=Phantom Drive
 Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
@@ -464,6 +469,7 @@ Button/Tooltip/VorazunCoop=Matriarch of the Nerazim. Powerful cloaked skirmisher
 Button/Tooltip/VorazunCoopReviveBeacon=Vorazun will warp in at this beacon's location.
 Button/Tooltip/VorazunImprovedVespene=Assimilators and Orbital Assimilators produce vespene gas 25% faster.
 Button/Tooltip/VorazunShadowFury=Rapidly teleport to random enemies within <d ref="Behavior,VorazunShadowFuryController,PeriodCount+1"/> times, attacking each of them for <d ref="Effect,VorazunShadowFuryDamage,Amount"/> damage. A single target can be hit more than once.
+Button/Tooltip/VorazunShadowPhase=Upon Vorazun's shield breaking, negate excess damage and become immune to damage for <d ref="Behavior,VorazunShadowPhased,Duration" precision="1"/> second. Cannot occur again until reaching max shields.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
 Button/Tooltip/XN51CloakTechnology=Covert Banshees are permanently cloaked and have increased movement speed.
 Button/Tooltip/ZagaraVoidCoopAttackUpgrade=Zagara's attacks deal 50% damage to three enemy units near her primary target.
@@ -691,7 +697,9 @@ Effect/Name/VorazunBlinkReturnUT=Vorazun Blink Return UT
 Effect/Name/VorazunCleaveDamage=VorazunCleaveDamage
 Effect/Name/VorazunCleaveSearch=VorazunCleaveSearch
 Effect/Name/VorazunCleaveSet=VorazunCleaveSet
-Effect/Name/VorazunCloakShieldRegenPermanentAB=VorazunCloakShieldRegenPermanentAB
+Effect/Name/VorazunShadowPhaseAB=VorazunShadowPhaseAB
+Effect/Name/VorazunShadowPhaseSet=VorazunShadowPhaseSet
+Effect/Name/VorazunShadowPhaseSuppressedAB=VorazunShadowPhaseSuppressedAB
 Effect/Name/VorazunStalkerBlinkInitialPersistent=Vorazun Stalker Blink Initial Persistent
 Effect/Name/VorazunStalkerBlinkIssueOrder=Vorazun Stalker Blink Issue Order
 Effect/Name/VortexArtanis=Vortex (Damage)

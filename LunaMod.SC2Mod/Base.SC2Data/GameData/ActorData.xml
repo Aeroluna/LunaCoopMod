@@ -128,6 +128,16 @@
     <CActorSound id="ZeratulShadowCleaveSound">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
     </CActorSound>
+    <CActorModelMaterial id="ZeratulShadowPhaseGlaze">
+        <On Terms="Behavior.VorazunShadowPhased.On" Send="Create"/>
+        <On Terms="Behavior.VorazunShadowPhased.Off" Send="Destroy"/>
+    </CActorModelMaterial>
+    <CActorSound id="ZeratulShadowPhaseOffSound">
+        <On Terms="Behavior.VorazunShadowPhased.Off" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="ZeratulShadowPhaseOnSound">
+        <On Terms="Behavior.VorazunShadowPhased.On" Send="Create"/>
+    </CActorSound>
     <CActorModel id="ZeratulVoidPrisonCast" parent="ModelAnimationStyleOneShot">
         <On Terms="Abil.ZeratulVoidPrisonTarget.SourceCastStart" Send="Create"/>
         <Host Subject="_Selectable"/>
