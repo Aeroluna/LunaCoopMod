@@ -33,6 +33,25 @@
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
     <CActorRange id="ShadowGuardShadowFuryRange" parent="RangeAbil" abil="ShadowGuardShadowFury"/>
+    <CActorModel id="TychusGhostPsychicSnare">
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="PsionicPulseStun"/>
+        <On index="5" Send="SetScale 1.400000 0.400000 Growth"/>
+    </CActorModel>
+    <CActorModel id="TychusGhostPsychicSnareAttackImpact" parent="GenericAttackImpactModel">
+        <On Terms="ActorCreation" Send="SetTintColor 255,50,255"/>
+        <HostSiteOps Ops="SOpPointSouthWorld" HoldRotation="1"/>
+    </CActorModel>
+    <CActorAction id="TychusGhostPsychicSnareAttack">
+        <LaunchAttachQuery Methods="Head 0" Fallback="Head"/>
+        <LaunchAssets Sound="Kerrigan_KineticBlast_AttackLaunch"/>
+        <ImpactModel value="TychusGhostPsychicSnareAttackImpact"/>
+    </CActorAction>
+    <CActorMissile id="TychusGhostPsychicSnareAttackMissile">
+        <Model value="KerriganVoidKineticBlastWeapon"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,255 0.200000"/>
+    </CActorMissile>
     <CActorModel id="VorazunShadowFuryImpact" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>

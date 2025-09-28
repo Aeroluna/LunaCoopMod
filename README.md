@@ -1203,6 +1203,8 @@ Same change to Raynor's firebats.
 - Added a new AOE visual effect after purchasing Hammer Munitions.
 - Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
 - Fixed a bug where Rattlesnake's Revitalizer buff's alignment was neutral after being upgraded.
+- Reworked Vega's Psi Projector visuals.
+- Fixed a bug where unit's affected by Psi Projector twice in a row would have their height visually reset.
 
 yeah.
 
