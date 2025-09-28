@@ -1664,6 +1664,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 lib74A68E34_gf_VorazunPrestigeHeroSpawn(lv_player);
                 TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight, true);
                 TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset, true);
+                TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowPhase, true);
             }
 
         }
@@ -2734,6 +2735,7 @@ bool lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Func (bool testConds, bool ru
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Init () {
     lib74A68E34_gt_VorazunPrestigeHeroShadowPhase = TriggerCreate("lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Func");
+    TriggerEnable(lib74A68E34_gt_VorazunPrestigeHeroShadowPhase, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_VorazunPrestigeHeroShadowPhase, null, "VorazunShadowPhaseSuppressed", c_unitBehaviorChangeCreate);
 }
 
