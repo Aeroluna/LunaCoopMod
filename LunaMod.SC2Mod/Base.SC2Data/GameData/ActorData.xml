@@ -89,6 +89,10 @@
     <CActorUnit id="ZeratulCoop">
         <On index="87" Send="AnimBracketStart Attack Stand,Work,Superior,Start Stand,Work,Superior Stand,Work,Superior,End FullMatch 1.400000 AsTimeScale"/>
     </CActorUnit>
+    <CActorAction id="ZeratulCoopAAAttack">
+        <On Terms="Effect.VorazunCoopAADamage.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.VorazunCoopAADamage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+    </CActorAction>
     <CActorBeamSimple id="ZeratulCoopAAAttackBeam">
         <On index="0" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce 2.000000 AsTimeScale"/>
     </CActorBeamSimple>
@@ -117,6 +121,11 @@
     <CActorModel id="ZeratulShadowCleave">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
     </CActorModel>
+    <CActorModel id="ZeratulShadowCleaveCounter" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <On Terms="Effect.VorazunCounterCleaveSearch.Start" Send="Create"/>
+        <HostForProps Subject="_Selectable"/>
+    </CActorModel>
     <CActorModel id="ZeratulShadowCleaveImpact">
         <On Terms="Effect.VorazunCleaveDamage.Start; At Target" Send="Create"/>
         <AutoScaleFactor value="0.800000"/>
@@ -127,6 +136,7 @@
     </CActorSound>
     <CActorSound id="ZeratulShadowCleaveSound">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
+        <On Terms="Effect.VorazunCounterCleaveSearch.Start" Send="Create"/>
     </CActorSound>
     <CActorModelMaterial id="ZeratulShadowPhaseGlaze">
         <On Terms="Behavior.VorazunShadowPhased.On" Send="Create"/>
@@ -149,6 +159,10 @@
     <CActorSiteOpRotator id="SOpVorazunCleaveRotator">
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="720.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpVorazunCounterCleaveRotator">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="-720.000000"/>
     </CActorSiteOpRotator>
     <CActorModel id="ZeratulVoidPrisonAiur01">
         <FogVisibility value="Dimmed"/>
@@ -2995,6 +3009,13 @@
         <On Terms="Abil.VorazunCleave.SourceCastStart" Send="AnimPlay Spell Attack,02 VariationMatch"/>
         <On Terms="Abil.VorazunCleave.SourceCastStart" Send="TimerSet 1.000000 CleaveEnd"/>
         <On Terms="TimerExpired; TimerName CleaveEnd" Send="AnimClear Spell 0.500000"/>
+        <!-- cleave2 -->
+        <On Terms="Abil.VorazunCounterCleave.SourceCastStart" Send="HostSiteOpsSet ::Host SOpVorazunCounterCleaveRotator"/>
+        <On Terms="Abil.VorazunCounterCleave.SourceCastStart" Send="TimerSet 0.500000 CleaveTime"/>
+        <On Terms="Abil.VorazunCounterCleave.SourceCastStart" Send="TimerSet 0.100000 CounterCleaveAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName CounterCleaveAnimationSwitch" Send="AnimPlay Spell Attack,01 VariationMatch 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.VorazunCounterCleave.SourceCastStart" Send="AnimPlay Spell Attack,01 VariationMatch"/>
+        <On Terms="Abil.VorazunCounterCleave.SourceCastStart" Send="TimerSet 1.000000 CleaveEnd"/>
         <!-- shadow fury -->
         <On Terms="Effect.VorazunShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
         <On Terms="Effect.VorazunShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack 0 0.000000 0.000000 -1.000000 AsAutomatic 0.200000"/>

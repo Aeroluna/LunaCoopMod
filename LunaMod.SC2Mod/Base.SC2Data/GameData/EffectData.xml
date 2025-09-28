@@ -76,9 +76,6 @@
     <CEffectSet id="DarkPylonRecallSet">
         <EffectArray value="NexusMassRecallCastingRB"/>
     </CEffectSet>
-    <CEffectDamage id="DarkTemplarChampionDamage">
-        <Amount value="100"/>
-    </CEffectDamage>
     <CEffectSet id="DevilDogSet">
         <EffectArray index="0" value="DevilDogACCP"/>
         <EffectArray index="1" value="DevilDogDamageSet"/>
@@ -2566,6 +2563,10 @@
     <CEffectDamage id="ZagaraVoidCoopRangedSecondaryDamage">
         <Amount value="15"/>
     </CEffectDamage>
+    <CEffectDamage id="VorazunCoopAADamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Amount value="85"/>
+    </CEffectDamage>
     <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -2575,15 +2576,32 @@
     </CEffectDamage>
     <CEffectEnumArea id="VorazunCleaveSearch">
         <EditorCategories value="Race:Protoss"/>
-        <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="3" Effect="VorazunCleaveDamage"/>
     </CEffectEnumArea>
     <CEffectSet id="VorazunCleaveSet">
-        <EditorCategories value=""/>
         <EffectArray value="VorazunCleaveSearch"/>
-        <EffectArray value="CommanderPrestigeZeratulTornadoesCU"/>
+        <EffectArray value="VorazunCleaveAB"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="VorazunCleaveAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="VorazunCounterCleave"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="VorazunCounterCleaveSet">
+        <EffectArray value="VorazunCounterCleaveSearch"/>
+        <EffectArray value="VorazunCleaveRB"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="VorazunCleaveRB">
+        <BehaviorLink value="VorazunCounterCleave"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="VorazunCounterCleaveSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="VorazunCleaveDamage"/>
+    </CEffectEnumArea>
     <CEffectIssueOrder id="ZeratulStalkerBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>

@@ -582,9 +582,10 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
     - Passive: Shroud of Adun
       - Upon Vorazun's shield breaking, negate excess damage and become immune to damage for 1 second.
       - Cannot occur again until reaching max shields.
-    - Q: Reap (6 seconds)
+    - Q: Reap (8 seconds)
       - Deals 100 damage to nearby enemies.
-      - Identical to Zeratul's cleave but with half cooldown.
+      - Can be reactivated to cleave again.
+      - Simimlar to Zeratul's cleave.
     - W: Shadow Assault (15 seconds)
       - Rapidly teleport to random enemies within 3 times, attacking each of them for 60 damage. A single target can be hit more than once.
       - Can target air and ground units.

@@ -594,6 +594,34 @@
         <Effect index="0" value="VorazunBlinkReturnETU"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="VorazunBlinkReturn" Requirements="VorazunBlinkReturn"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="VorazunCounterCleave">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="VorazunCounterCleaveSet"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="VorazunCounterCleave" Requirements="VorazunCounterCleave"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="VorazunCleave">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="VorazunCleaveSet"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="VorazunCleave"/>
+    </CAbilEffectInstant>
+    <CAbilRevive id="VorazunRevive" parent="ReviveSelf">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Revive1" DefaultButtonFace="KerriganRevive"/>
+        <CmdButtonArray index="ReviveAtTarget1" DefaultButtonFace="KerriganRevivePlacement"/>
+        <Flags index="UnitOrderQueue" value="1"/>
+        <BaseInfo>
+            <Cooldown Location="Player" TimeUse="0.1"/>
+        </BaseInfo>
+        <Effect value="ZeratulReviveSet"/>
+        <Offset value="0,0"/>
+        <Range value="10"/>
+        <Alert value="KerriganReviveComplete"/>
+    </CAbilRevive>
     <CAbilEffectTarget id="VorazunShadowFury">
         <Flags index="AutoCast" value="0"/>
         <Flags index="AutoCastOn" value="0"/>
@@ -1492,28 +1520,6 @@
         <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="VorazunCleave">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="VorazunCleaveSet"/>
-        <Flags index="Transient" value="1"/>
-        <Cost>
-            <Cooldown TimeUse="6"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="VorazunCleave"/>
-    </CAbilEffectInstant>
-    <CAbilRevive id="VorazunRevive" parent="ReviveSelf">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Revive1" DefaultButtonFace="KerriganRevive"/>
-        <CmdButtonArray index="ReviveAtTarget1" DefaultButtonFace="KerriganRevivePlacement"/>
-        <Flags index="UnitOrderQueue" value="1"/>
-        <BaseInfo>
-            <Cooldown Location="Player" TimeUse="0.1"/>
-        </BaseInfo>
-        <Effect value="ZeratulReviveSet"/>
-        <Offset value="0,0"/>
-        <Range value="10"/>
-        <Alert value="KerriganReviveComplete"/>
-    </CAbilRevive>
     <CAbilEffectTarget id="ZeratulVoidPrisonTarget">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="ZeratulVoidPrisonAiur01"/>
