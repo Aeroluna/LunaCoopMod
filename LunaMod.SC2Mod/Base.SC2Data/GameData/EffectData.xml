@@ -67,6 +67,30 @@
         <CmdFlags index="AutoQueued" value="1"/>
         <Target Value="TargetUnit"/>
     </CEffectIssueOrder>
+    <CEffectDamage id="CycloneAirWeaponDamage">
+        <ArmorReduction value="0"/>
+        <Kind value="Spell"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileLeft">
+        <ImpactEffect value="CycloneAirWeaponDamage"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileRight">
+        <ImpactEffect value="CycloneAirWeaponDamage"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="CycloneWeaponDamage">
+        <ArmorReduction value="0"/>
+        <Amount value="20"/>
+        <Kind value="Spell"/>
+    </CEffectDamage>
+    <CEffectSet id="CycloneWeaponLaunchMissileLeftSet">
+        <EffectArray index="0" value="CycloneWeaponLaunchMissileLeft"/>
+        <EffectArray index="1" value="CycloneAirWeaponLaunchMissileLeft"/>
+    </CEffectSet>
+    <CEffectSet id="CycloneWeaponLaunchMissileRightSet">
+        <EffectArray index="0" value="CycloneWeaponLaunchMissileRight"/>
+        <EffectArray index="1" value="CycloneAirWeaponLaunchMissileRight"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="DarkPylonCloakShieldRegenAB">
         <ValidatorArray value="NotStructureTarget"/>
     </CEffectApplyBehavior>
@@ -287,6 +311,22 @@
         <PeriodicEffectArray value="Liberator_BlackOpsTargetMorphSearchArea"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectSet id="LockOnInitialSet">
+        <EffectArray value="LockOnDummyWeaponAB"/>
+    </CEffectSet>
+    <CEffectSet id="LockOnClearSet">
+        <EffectArray value="LockOnDummyWeaponRB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="LockOnDummyWeaponAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="LockOnDummyWeapon"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="LockOnDummyWeaponRB">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="LockOnDummyWeapon"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
     <CEffectSwitch id="MarauderMagrailMunitionsCCSwitch">
         <EditorCategories value=""/>
         <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="MarauderMagrailMunitionsSlowAB"/>
@@ -1027,16 +1067,6 @@
     <CEffectEnumArea id="CommanderPrestigeArtanisPowerFieldSearch">
         <AreaArray index="0" Radius="7.8"/>
     </CEffectEnumArea>
-    <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileLeft">
-        <ImpactEffect value="CycloneWeaponDamage"/>
-    </CEffectLaunchMissile>
-    <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileRight">
-        <ImpactEffect value="CycloneWeaponDamage"/>
-    </CEffectLaunchMissile>
-    <CEffectDamage id="CycloneWeaponDamage">
-        <ArmorReduction value="0"/>
-        <Amount value="25"/>
-    </CEffectDamage>
     <CEffectDamage id="DarkArchonNerazimWeaponDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <AttributeBonus index="Biological" value="10"/>

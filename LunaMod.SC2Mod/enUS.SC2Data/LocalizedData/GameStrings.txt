@@ -65,6 +65,7 @@ Behavior/Name/SILiberatorSprayPool=Acid
 Behavior/Name/SILiberatorVolatileFuel=Volatile Fuel
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
+Behavior/Name/SupplyDrop=Supply Drop
 Behavior/Name/VorazunShadowPhaseSuppressed=Recently Shrouded
 Behavior/Name/VorazunShadowPhased=Shrouded
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
@@ -106,7 +107,7 @@ Button/Name/CommanderPrestigeAbathurSymbioteLocked=Symbiote
 Button/Name/CommanderPrestigeArtanisWarp=Reclaimer
 Button/Name/CommanderPrestigeFenixChampion=Ascendant Chorus
 Button/Name/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=Evolve Ability Efficiency
-Button/Name/CommanderPrestigeKerriganBrood=Champion of the Brood War
+Button/Name/CommanderPrestigeKerriganBrood=Brood War Sovereign
 Button/Name/CommanderPrestigeMengskZerg=Cerberus Director
 Button/Name/CommanderPrestigeNovaMelee=Covert Crusader
 Button/Name/CommanderPrestigeRaynorBansheeAirstrike=Banshee Airstrike
@@ -359,8 +360,8 @@ Button/Tooltip/KerriganRazorSwarm=Creates a razor swarm for <d ref="Effect,Kerri
 Button/Tooltip/KerriganRegenAura=Nearby friendly units gain rapid life and energy regeneration.
 Button/Tooltip/KerriganSunderingGlaive=Attacks deal +6 vs. armored targets on the first hit.
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
-Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3.
-Button/Tooltip/LockOnSwann=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
+Button/Tooltip/LockOn=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
+Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3 and increases Widow Mine and Cyclone sight radius by 3.
 Button/Tooltip/MarauderMagrailMunitions=Fires a rail gun at a target enemy unit, dealing <d ref="Effect,MarauderMagrailMunitionsDamage,Amount"/> damage and stunning for <d ref="Behavior,MarauderMagrailMunitionsStun,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are slowed.</c>
 Button/Tooltip/MarauderMengskShield=Grants the Aegis Guard a shield that absorbs <d ref="Behavior,MarauderMengskAbsorb,Modification.VitalMaxArray[Shields]"/> damage. When the shield takes fatal damage, it releases a pulse of energy that knocks back nearby ground units. This shield refreshes to full every <d ref="Behavior,MarauderMengskAbsorbReapplicator,Cost.Cooldown.TimeUse"/> seconds.
 Button/Tooltip/MasteryKerriganEnergyRegen=Increases the energy regeneration of Kerrigan and her Queens.
@@ -407,10 +408,11 @@ Button/Tooltip/ResearchHHBomberEMP=<c val="FFFF8A">Strike Fighter Platform</c> P
 Button/Tooltip/ResearchHHBomberNapalm=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberNapalmImproved=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm that spreads farther. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberTriple=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes drop two additional bombs behind the target area.
+Button/Tooltip/ResearchHellbatHellArmor=<c val="ffff8a">Hellions</c> and <c val="ffff8a">Hellbats</c> gain +2 armor and +40 hitpoints.
 Button/Tooltip/ResearchHellburstPayload=Increases the direct damage of <c val="ffff8a">Widow Mine</c> Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/ResearchInfestedBunkerArmor=<c val = "ffff8a">Infested Bunkers</c> and <c val = "ffff8a">Infested Missile Turrets</c> gain +3 armor.
 Button/Tooltip/ResearchInfestedBunkerLifeRegen=<c val="ffff8a">Infested Bunkers</c> and <c val="ffff8a">Infested Missile Turrets</c> regenerate life twice as fast while rooted.
-Button/Tooltip/ResearchLockOnRangeUpgrade=Increases <c val="ffff8a">Widow Mine</c> Sentinel Missile and <c val="ffff8a">Cyclone</c> Lock On initial and tracking range by 3.
+Button/Tooltip/ResearchLockOnRangeUpgrade=Increases <c val="ffff8a">Widow Mine</c> Sentinel Missile and <c val="ffff8a">Cyclone</c> Lock On initial and tracking range by 3 and increases <c val="ffff8a">Widow Mine</c> and <c val="ffff8a">Cyclone</c> sight radius by 3.
 Button/Tooltip/ResearchMarauderMagrailMunitions=Equips <c val="ffff8a">Marauder Commandos</c> with a rail gun that deals <d ref="Effect,MarauderMagrailMunitionsDamage,Amount"/> damage and stuns for <d ref="Behavior,MarauderMagrailMunitionsStun,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are slowed.</c>
 Button/Tooltip/ResearchMedicStartingEnergy=<c val="ffff8a">Medics</c> start with full energy.
 Button/Tooltip/ResearchMedivacEnergyUpgrade=Increases the <c val="ffff8a">Medivac</c>'s energy regeneration rate by 100%.
@@ -420,7 +422,7 @@ Button/Tooltip/ResearchNovaShotgunBlastRangeMelee=Increases the radius of <c val
 Button/Tooltip/ResearchNovaSnipeRefundMelee=Refunds 50% of Fury of One's energy cost when <c val ="ffff8a">Nova</c> uses it to kill an enemy unit.
 Button/Tooltip/ResearchOverdriveActuators=Increases the movement speed of all <c val="ffff8a">vehicles</c> by 20% and <c val="ffff8a">ships</c> by 10%.
 Button/Tooltip/ResearchPhobosClassWeaponsSystem=<c val="ffff8a">Viking</c> weapons system upgrade. Increases air attack range by 2 and ground attack range by 1. Allows <c val="ffff8a">Vikings</c> to transform quickly between combat modes.
-Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 20%.
+Button/Tooltip/ResearchPulseLoopCapacitors=Reduces the cooldown of all <c val="ffff8a">vehicles</c> and <c val="ffff8a">ships</c> abilities by 40%.
 Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c> missiles and gatling cannons to deal area damage.
 Button/Tooltip/ResearchSIBarracksCorruption=Increase the level of Corruption for this <c val="ffff8a">Infested Barracks</c>, reducing the cooldown of <c val="ffff8a">Spawn Infested Marines</c> by <d ref="Effect,StukovSIBunkerCDRDummy,Amount"/> seconds. Can have up to 5 levels of Corruption.
 Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
@@ -828,7 +830,6 @@ Upgrade/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
 Upgrade/Name/SignifierFade=Fade
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators
-Upgrade/Name/SwannVersusParity=Swann Versus Parity
 Upgrade/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Upgrade/Name/TychusACOwned=Tychus Findlay from Joeyray's Bar
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier

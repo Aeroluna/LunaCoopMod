@@ -52,6 +52,11 @@
     <CBehaviorBuff id="ChokedDisableAbils">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CloakDistortionField">
+        <DamageResponse>
+            <Chance value="0.3"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeKerriganCreepSuperCloak">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
@@ -180,6 +185,13 @@
         <MaxStackCount value="65535"/>
         <Modification Food="-3"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="LockOnDummyWeapon">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="LockOnTargetNotDeadNew"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Modification WeaponRange="2" WeaponScanBonus="1.5"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMagrailMunitionsStun">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-magrailmunitions.dds"/>
@@ -220,6 +232,9 @@
             <Kind index="NoProc" value="0"/>
             <Chance value="1"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorHouseHunters">
+        <RemoveValidatorArray value="MutatorHouseHuntersValidator"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NexusMassRecallCasting">
         <InfoFlags index="Hidden" value="1"/>
@@ -763,8 +778,8 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <DisableValidatorArray value="CasterIsMoving"/>
         <DisableValidatorArray value="LockOnAutoCast"/>
-        <DisableValidatorArray value="CommanderPrestigeSwannMoving"/>
-        <Period value="1"/>
+        <RemoveValidatorArray value="CommanderPrestigeSwannMoving"/>
+        <Period value="0.5"/>
         <PeriodicEffect value="MovingLockOnSearch"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="KerriganRazorSwarm">

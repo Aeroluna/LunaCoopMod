@@ -742,14 +742,19 @@
         <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Vespene]" Value="34"/>
     </CUpgrade>
     <CUpgrade id="CycloneLockOnDamageUpgrade">
-        <EffectArray index="0" Reference="Effect,CycloneWeaponDamage,Amount" Value="25"/>
-        <EffectArray index="1" removed="1"/>
+        <EffectArray index="0" Reference="Effect,CycloneWeaponDamage,Amount" Value="10"/>
+        <EffectArray index="1" Operation="Add" Reference="Effect,CycloneAirWeaponDamage,Amount" Value="10"/>
         <EffectArray index="2" removed="1"/>
         <EffectArray index="3" removed="1"/>
     </CUpgrade>
     <CUpgrade id="CycloneLockOnRangeUpgrade">
         <EffectArray Reference="Abil,WidowMineAttack,AutoCastRange" Value="3"/>
         <EffectArray Reference="Abil,WidowMineAttack,Range[0]" Value="3"/>
+        <EffectArray Reference="Unit,Cyclone,Sight" Value="3"/>
+        <EffectArray Reference="Unit,WidowMine,Sight" Value="3"/>
+        <EffectArray Reference="Unit,WidowMineBurrowed,Sight" Value="3"/>
+        <!--EffectArray Reference="Behavior,LockOnDummyWeapon,Modification.WeaponRange" Value="3"/>
+        <EffectArray Reference="Behavior,LockOnDummyWeapon,Modification.WeaponScanBonus" Value="3"/-->
     </CUpgrade>
     <CUpgrade id="DarkArchonFullStartingEnergy">
         <EffectArray Reference="Unit,HighTemplarShakuras,EnergyStart" Value="150"/>
@@ -1375,6 +1380,8 @@
         <EffectArray Reference="Weapon,MercSwitchLaserBattery,MinScanRange" Value="1"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleHealth">
+        <EffectArray index="30" Value="24"/>
+        <EffectArray index="31" Value="24"/>
         <EffectArray Reference="Unit,WidowMine,LifeMax" Value="18"/>
         <EffectArray Reference="Unit,WidowMine,LifeStart" Value="18"/>
         <EffectArray Reference="Unit,WidowMineBurrowed,LifeMax" Value="18"/>
@@ -1385,7 +1392,7 @@
     <CUpgrade id="SwannCommanderVehicleMovementSpeed">
         <Flags index="UpgradeCheat" value="0"/>
         <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
-        <EffectArray Reference="Unit,Cyclone,Speed" Value="0.562500"/>
+        <EffectArray Reference="Unit,Cyclone,Speed" Value="0.675700"/>
         <EffectArray Reference="Unit,Diamondback,Speed" Value="0.589800"/>
         <EffectArray Reference="Unit,Goliath,Speed" Value="0.539000"/>
         <EffectArray Reference="Unit,HellionTank,Speed" Value="0.449200"/>
@@ -1410,13 +1417,13 @@
     <CUpgrade id="SwannCommanderVehicleCooldown">
         <Flags index="UpgradeCheat" value="0"/>
         <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
-        <EffectArray Operation="Subtract" Reference="Abil,330mmBarrageCannons,Cost[0].Cooldown.TimeUse" Value="12.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Cooldown.TimeUse" Value="4.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,WidowMineAttack,Cost[0].Cooldown.TimeUse" Value="8.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,WidowMineMakeAttackCharges,InfoArray[Specialize1].Time" Value="8.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,LockOn,Cost[0].Cooldown.TimeUse" Value="1.200000"/>
-        <EffectArray Operation="Subtract" Reference="Effect,LockOnResetCooldown,Cost[0].CooldownTimeUse" Value="1.200000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,Hyperjump,Cost[0].Cooldown.TimeUse" Value="12.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,330mmBarrageCannons,Cost[0].Cooldown.TimeUse" Value="24.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Cooldown.TimeUse" Value="8.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineAttack,Cost[0].Cooldown.TimeUse" Value="16.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineMakeAttackCharges,InfoArray[Specialize1].Time" Value="16.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,LockOn,Cost[0].Cooldown.TimeUse" Value="2.400000"/>
+        <EffectArray Operation="Subtract" Reference="Effect,LockOnResetCooldown,Cost[0].CooldownTimeUse" Value="2.400000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Hyperjump,Cost[0].Cooldown.TimeUse" Value="24.000000"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="SwannKelMorianTurretUpgrades">
@@ -1428,19 +1435,6 @@
         <EffectArray Operation="Set" Reference="Unit,PlanetaryFortress,Name" Value="Unit/Name/PlanetaryFortressUpgraded"/>
         <EffectArray Reference="Effect,TwinIbiksCannon,Amount" Value="20"/>
         <AffectedUnitArray value="PlanetaryFortress"/>
-    </CUpgrade>
-    <CUpgrade id="SwannVersusParity">
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[0]" Value="CycloneWeaponLaunchMissileLeft"/>
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[1]" Value="CycloneAirWeaponLaunchMissileLeft"/>
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileLeftSet,EffectArray[2]" Value="CycloneWeaponLaunchMissileAlternateAB"/>
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileRightSet,EffectArray[0]" Value="CycloneWeaponLaunchMissileRight"/>
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileRightSet,EffectArray[1]" Value="CycloneAirWeaponLaunchMissileRight"/>
-        <EffectArray Operation="Set" Reference="Effect,CycloneWeaponLaunchMissileRightSet,EffectArray[2]" Value="CycloneWeaponLaunchMissileAlternateRB"/>
-        <EffectArray Operation="Set" Reference="Effect,LockOnCP,PeriodicPeriodArray[0]" Value="0.7"/>
-        <EffectArray Operation="Set" Reference="Button,LockOn,AlertTooltip" Value="Button/Tooltip/LockOnSwann"/>
-        <EffectArray Operation="Set" Reference="Button,LockOn,Tooltip" Value="Button/Tooltip/LockOnSwann"/>
-        <EditorCategories value="Race:Terran"/>
-        <LeaderAlias value=""/>
     </CUpgrade>
     <CUpgrade id="TempestDestabilizingResiduum">
         <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>

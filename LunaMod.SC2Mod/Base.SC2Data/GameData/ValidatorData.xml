@@ -22,9 +22,23 @@
     <CValidatorLocationEnumArea id="CommanderPrestigeTychusLoneWolf">
         <SearchFilters value="Heroic;Self,Ally,Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Destructible,Item,Dead"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitType id="IsAssaultGalleonConstruction">
+        <Value value="HHMercStarportNoArmy"/>
+        <Type value="SelectAlias"/>
+    </CValidatorUnitType>
     <CValidatorLocationCompareRange id="LiberatorAGNotOutOfRange">
         <Range value="10"/>
     </CValidatorLocationCompareRange>
+    <CValidatorUnitFilters id="LockOnTargetNotDeadNew">
+        <WhichUnit Effect="LockOnInitialSet"/>
+        <Filters value="-;Dead"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="MutatorHouseHuntersValidator">
+        <Type value="And"/>
+        <CombineArray value="IsAssaultGalleon"/>
+        <CombineArray value="IsAssaultGalleonConstruction"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="NoCommanderPrestigeTychusOdin">
         <Value value="CommanderPrestigeTychusOdin"/>
     </CValidatorPlayerRequirement>

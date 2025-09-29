@@ -96,6 +96,10 @@ Not the prettiest effect, but I tried!
 
 Weirdly quiet for how impactful this thing's weapon is.
 
+- Increased Wraith (and variants) sight radius from 8 to 10.
+
+I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
+
 - Fixed a bug where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Fixed units:
     - Spider Mine (Raynor/Nova)
@@ -116,10 +120,12 @@ It might be a little strong making all of the temporary units have Guardian Shel
 thanks Enoki.
 
 - Added targeting beam to Widow Mine (and variants) attack.
-- Increased visibility of targeting line and targeted unit (Targeted unit is tinted).
+- Increased visibility of Widow Mine attack targeting line and targeted unit (Targeted unit is tinted).
 - Added a visual indicator to Colossus (and variants) attacks when Extended Thermal Lance is researched.
 - Added a visual indicator to Phoenix (and variants) attacks when Anion Pulse Crystals is researched.
 - Added a visual blue trail to Marauder (and variants) attacks after upgrading Concussive Shells.
+- Added a visual red lazer sights when Mag-Field Accelerators is researched.
+- Changed Cyclone's Lock On ability visual missiles to the large missiles from Versus.
 - Increased Zealot (and variants) animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
 - Added turret tracking to Colossi (and variants).
 - Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
@@ -149,6 +155,17 @@ Copied from Versus.
 - Increased visibility of Blinding/Disabling Cloud impact visual on Planetaries.
 
 thanks Common Sense Balance.
+
+- Reduced health of Cyclone from 200 to 120.
+- Increased movement speed of Cyclone from 2.8125 to 3.375.
+- Reduced damage of Cyclone's Lock On missles from 25 to 20 (Total reduced from 500 to 400).
+- Reduced damage of Lock On with Mag-Field Accelerators missles from 40 to 30 (Total reduced from 1000 to 600).
+- Changed Lock On missle damage from ranged damage to spell damage (No longer affected by armor).
+- Changed Lock On to prioritize air units that threaten the Cyclone.
+- Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
+- Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
+
+Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much.
 
 ## Amon
 
@@ -293,7 +310,7 @@ yeah.
 
 ## Kerrigan
 
-- Added P4: Champion of the Brood War
+- Added P4: Brood War Sovereign
   - Replaces Kerrigan with Brood War Kerrigan
     - Uses Starcraft: Remastered themed skin.
     - Replaces Leaping Strike with Implosion.
@@ -434,7 +451,11 @@ yeah.
 ## Swann
 
 - Added P4: Rolling Thunder
-  - Advantage: Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade. Cyclones can use Lock On while moving. Only Thor anti-air weapons can attack while moving. Hellbat, Thor heavy air, and Goliath ground weapons can only fire in an arc in front of them while moving.
+  - Advantage: Combat units can attack while moving.
+    - Start with the Multi-Lock Weapons System upgrade.
+    - Cyclones can use Lock On while moving.
+    - Only Thor anti-air weapons can attack while moving.
+    - Hellbats and Thor heavy air ground weapons can only fire in an arc in front of them while moving.
   - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
 
 Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
@@ -451,11 +472,6 @@ These changes should make Thors much more competitive.
 
 Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
 
-- Changed Cyclones to visually have their red lazer sights with Mag-Field and large missiles when locking on from Versus.
-- Buffed Cyclone's Lock On to no longer be affected by armor.
-
-The little missile that was fired during Lock On was just sad, now Cyclones look as cool as they do in Versus. Also Lock On is a spell, and should not be affected by armor.
-
 - Added Widow Mines.
   - Added Hellburst Payload upgrade, which increases Sentinel Missile direct damage by 20 and splash damage by 80.
   - Adds a visual red light on top after researching Hellburst Payload.
@@ -465,7 +481,7 @@ Why not give the mech commander more mech? Widow Mines go well with Swann's defe
 
 - Added Smart Servos upgrade, which increases the morph rate of Hellions, Hellbats, Thors, Siege Tanks, and Widow Mines.
 - Added Overdrive Actuators upgrade at the Armory, which increases ground vehicle movement speed by 20% and ship movement speed by 10%.
-- Added Pulse-Loop Capacitors upgrade at the Armory, which decreases all unit cooldowns by 20%.
+- Added Pulse-Loop Capacitors upgrade at the Armory, which decreases all unit cooldowns by 40%.
 
 These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
 
@@ -483,11 +499,11 @@ An iconic defensive Terran structure for the defensive Terran commander.
 
 Should make Planetaries spend less time spinning around randomly when surrounded.
 
-- Added Commander Center Reactor.
+- Added Commander Center Reactor passive from WoL Campaign.
 
 It takes forever to eco up on Swann. Maybe now not so much.
 
-- Added Dual-Fusion Welders.
+- Added Dual-Fusion Welders passive from WoL Campaign.
 
 The turret/mech commander gets more improvements to sustaining turrets/mech.
 
@@ -495,6 +511,10 @@ The turret/mech commander gets more improvements to sustaining turrets/mech.
   - Upgrade Fire Suppression System heals structures to 100% health.
 
 P2 suspiciously improved all upgrades but this one.
+
+- Increased Wraith's Displacement Field evade chance from 20% to 30%.
+
+Even with this upgrade, Wraiths are fragile. This should help improve their survivability.
 
 - Changed Defense Matrix to no longer require research.
 
@@ -527,7 +547,7 @@ I added a whole new mechanic to Zagara and then created a whole prestige surroun
   - Added Metasynaptic Node upgrade at the Infestation Pit.
     - Adds 50 max energy and starts at full energy.
 
-Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units.
+Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units. Try not to consume your friends.
 
 - Increased max supply from 100 to 150.
 
@@ -537,7 +557,7 @@ One of Zagara's greatest weaknesses is the inability to hit a critical mass of u
   - Increased bonus health regen for Aberrations from 3 to 6.
   - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
 
-Fun fact: Due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
+Fun fact: due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
 
 - Reworked Bile Launchers.
   - Can now target enemies automatically.
@@ -549,10 +569,13 @@ Idea stolen from CXL, should make Bile Launchers more effectively than just on i
 - Reduced Scourge vespene cost by 25.
 - Removed Simplified Genome.
 - Added Dampening Membrane upgrade, which reduces the splash and spell damage dealt to Scourge by 75%.
+
+Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE.
+
 - Increased Corruptor damage from 14 (+14 vs Armored) to 28 (+14 vs Armored).
 - Buffed Corruptor's Corruption to allow targeting structures.
 
-Scourge were incredibly inefficient to morph before evolving Simplified Genome, so it has been made baseline. If you've ever felt the pain of watching your Scourge die to one storm, the new upgrade should help increase the reliability of Scourge against AOE. Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. These changes should improve Zagara's anti-air capabilities.
+Corruptor damage has also been buffed so they have actual DPS instead of just tickling air comps. This with the Scourge change should improve Zagara's anti-air capabilities.
 
 - Buffed Roaches to the Corpser strain.
 
@@ -564,13 +587,13 @@ When Hunter Killers were given the webby skin, their scale was accidentally rese
 
 - Added wireframe and group icon to Zagara.
 
-If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy. Zagara never had a wireframe set and just used her unit icon as a fallback.
+If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy. Zagara doesn't have a wireframe set and just used her unit icon as a fallback.
 
 - Increased speed of Zagara's Acid Spines projectile by 100%.
 - Reduced Zagara's Acid Spines attack period from 1.5 to 1 (+50% attack speed).
 - Increased Medusa Blade's damage 33% of attack damage to 50% attack damage.
 
-Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens.
+Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens. Should make the attack damage mastery competitive with the energy mastery.
 
 ## Vorazun
 
@@ -585,7 +608,7 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
     - Q: Reap (8 seconds)
       - Deals 100 damage to nearby enemies.
       - Can be reactivated to cleave again.
-      - Simimlar to Zeratul's cleave.
+      - Similar to Zeratul's cleave.
     - W: Shadow Assault (15 seconds)
       - Rapidly teleport to random enemies within 3 times, attacking each of them for 60 damage. A single target can be hit more than once.
       - Can target air and ground units.
@@ -737,7 +760,7 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
   - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
   - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
 
-Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. Highly effective with commanders who have few but important units such as hero commanders.
+Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. OP with commanders who have few but important units such as hero commanders.
 
 - Added Spike Burst ability to Symbiote.
   - Deals 50 damage to nearby enemies every 10 seconds.
@@ -933,7 +956,7 @@ These take super long to tech to before you can get any value from P2. Removing 
 - Buffed Rapid Hibernation to no longer require research.
 - Removed deceleration from Infested Banshee's Burrow ability (no longer has to fully stop to cast).
 
-As the Infested Banshee's defining trait, it seems odd that it requires research. The QOL change also helps quickly burrowing after moving.
+Rapid Hibernation made baseline to make way for a new upgrade. The QOL change also helps quickly burrowing after moving.
 
 - Added Incubation Chambers upgrade, which adds a Broodling escort to Infested Banshees, similar to Brood Lords.
   - Does not do impact damage on landing, unlike the Brood Lord.
@@ -985,7 +1008,7 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 - Changed Regenerative Plating upgrade to additionally affect Infested Missile Turrets.
 - Changed Calcified Armor upgrade to additionally affect Infested Missile Turrets.
 
-Bunkers can do it, why not the Missile Turret?
+Bunkers can do it, why not the Missile Turrets?
 
 - Reduced push priority of infantry to 9.
 - Increased push priority of uprooted buildings to 11.
@@ -1062,6 +1085,19 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 
 ## Han & Horner
 
+- Increased visual scale of Assault Galleons by 20%.
+- Increased life of Assault Galleons from 500 to 750.
+- Reduced Assault Galleon limit from 5 to 4.
+- Added the ability for Assault Galleons to produce 2 units at once.
+- Increased visual scale of Assault Drones by 20%.
+- Increased life of Assault Drones from 80 to 100.
+
+Assault Galleons are suppose to be mobile Starports that can turn into aircraft carriers, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
+
+- Increased Salvage rate from 20% to 40% for Han & Horner and from 10% to 20% for ally.
+
+Mira's units usually trade horribly, this should help mitigate that.
+
 - Reworked P1:
   - Removed Mag Mine improvements.
   - Increases the production speed of Mira's units by 50%.
@@ -1069,6 +1105,13 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
   - Added tooltips to death effect passives that were missing.
 
 Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
+
+- Increased Strike Fighter hitpoints from 50 to 100.
+- Buffed Precision Strike to also hit air.
+- Added visual trail to Strike Fighter.
+- Adjusted Strike Fighter acceleration.
+
+Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
 
 - Reworked P3:
   - Added advantage: Can research one exclusive Precision Strike upgrade.
@@ -1080,13 +1123,6 @@ Buffing a top bar ability feels kinda boring, instead P2 now improves how many M
 
 Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
 
-- Increased Strike Fighter hitpoints from 50 to 100.
-- Buffed Precision Strike to also hit air.
-- Added visual trail to Strike Fighter.
-- Adjusted Strike Fighter acceleration.
-
-Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
-
 - Added Ordnance Towers that can be built by SCVs.
   - These are flying defensive structures with long-range attacks.
   - Spawns up to 4 Valkyries that fly around and defend the area.
@@ -1095,19 +1131,6 @@ Why is this thing so easy to shoot down? The initial explosion can also now hit 
   - Can detect cloaked units.
 
 Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
-
-- Increased visual scale of Assault Galleons by 20%.
-- Increased life of Assault Galleons from 500 to 750.
-- Reduced Assault Galleon limit from 5 to 4.
-- Added the ability for the Assault Galleon to produce 2 units at once.
-- Increased visual scale of Assault Drones by 20%.
-- Increased life of Assault Drones from 80 to 100.
-
-Assault Galleons are suppose to be mobile Starports that can turn into aircraft carriers, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
-
-- Increased Salvage rate from 20% to 40% for Han & Horner and from 10% to 20% for ally.
-
-Mira's units usually trade horribly, this should help mitigate that.
 
 - Added autocast to Widow Mine Burrow.
 - Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
@@ -1139,7 +1162,7 @@ This should keep the Raven farther back and not randomly die as easily.
 - Removed Junker skins for Deimos Viking, Theia Raven, Sovereign Battlecruiser, and Strike Fighters.
 - Added Covert-Ops portraits for Deimos Viking, Theia Raven, and Sovereign Battlecruiser.
 
-Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. Plus, it felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
+Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. It also felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
 - Fixed a bug where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
 - Fixed a bug where Call in the Fleet would launch at a different trajectory than intended.
@@ -1232,7 +1255,7 @@ It was showing the damage numbers from the WOL campaign instead of the Co-op num
 Barrage is kinda garbage for something you only get to use once per Odin. These changes should make casting Barrage smoother, especiallly important for the Big Red Button rework.
 
 - Reduced radius of Big Red Button from 12 to 8.
-- Reduced Big Red Button damage falloff (Does more damage to targets far from the center).
+- Reduced Big Red Button damage falloff (Increased damage to targets far from the center).
 - Reworked Big Red Button upgrade.
   - No longer replaces Barrage ability.
   - Upgrades Barrage by adding a nuke to the end of the ability.
@@ -1248,7 +1271,7 @@ Why does this even exist.
 - Buffed Rob "Cannonball" Boswell's Critical Response System passive to additionally deal 100 damage and knockback nearby enemies when procced.
 - Added sound effect when Cannonball's Critical Response System passive procs.
 
-Just like Artanis's resurgence.
+Just like Artanis's Resurgence from the LotV campaign.
 
 - Buffed Cannonball's Redline Power Cells attack speed increase from 3% to 6% per stack.
 - Buffed Cannonball's Redline Power Cells attack damage increase from 3 to 6 per stack.
@@ -1266,7 +1289,7 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
 
-- Added warp-out animation when legion calldowns expire.
+- Added a warp-out animation when legion calldowns expire.
 
 No more watching all your Void Rays explode horribly at the end of their timed life.
 
@@ -1325,8 +1348,8 @@ Missile play is cool so lets make it more viable! Lower delay and bigger radius 
 
 It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
 
-- Removed cooldown from Emperor's Shadow's Pyrokinetic Immolation ability.
-- Removed cooldown from Emperor's Shadow's EMP Blast ability.
+- Reduced cooldown of Emperor's Shadow's Pyrokinetic Immolation ability from 5 seconds to 0 seconds.
+- Reduced cooldown of Emperor's Shadow's EMP Blast ability from 8 seconds to 0 seconds.
 
 Emperor's Shadows are limited by energy anyways, so why do they have cooldowns on their abilities?
 
@@ -1436,6 +1459,10 @@ Added Maguro mutators to Brutal+ system.
 - Changed the alignment of Black Death from neutral to negative.
 
 Visual change only.
+
+- Fixed a bug where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
+
+yeah.
 
 ## Credits
 
