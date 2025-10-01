@@ -151,6 +151,11 @@
         <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,255,255 0.200000"/>
     </CActorMissile>
+    <CActorAction id="VorazunCoopAttack" parent="GenericAttack" effectAttack="VorazunCoopDamage">
+        <LaunchAssets Sound="Zeratul_AttackLaunch"/>
+        <ImpactMap index="None" Sound="Zeratul_AttackImpact"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
     <CActorModel id="VorazunShadowFuryImpact" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
@@ -3151,7 +3156,7 @@
         <On Terms="Effect.WraithGLaunchMissile.Start; At Caster" Send="AnimBracketStart Attack Attack"/>
     </CActorUnit>
     <CActorUnit id="VorazunCoop" parent="GenericUnitStandard" unitName="VorazunCoop">
-        <On index="65" Terms="WeaponStart.DarkTemplarChampionWeapon.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On index="65" Terms="WeaponStart.VorazunCoopWeapon.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStart.VorazunCoopAA.AttackStart" Send="AnimBracketStart Attack Spell,C"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Zealot_Land"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>

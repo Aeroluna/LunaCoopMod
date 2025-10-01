@@ -736,6 +736,10 @@ Unsurprisingly, autocasting the shield restoring Blink when out of shields is st
 
 Funny that this passive could *nerf* some units. This happened because the buff would multiply energy regeneration by 1.5 and abilities like Cloak cause your energy regeneration to be negative.
 
+- Renamed Shadow Guard weapon from Shadow Scythe to Vorpal Blade.
+
+When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now that Vorazun is a proper hero and Shadow Guards no longer use scythes, this weapon has been renamed.
+
 - Fixed (mostly) a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
 - Fixed a bug where Shadow Guard's casting Shadow Fury did not play their attack animation.
 - Fixed a bug where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
