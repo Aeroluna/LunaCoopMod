@@ -82,6 +82,7 @@
         <ArmorReduction value="0"/>
         <Amount value="20"/>
         <Kind value="Spell"/>
+        <ValidatorArray value="DetectedORNotCloakedBuried"/>
     </CEffectDamage>
     <CEffectSet id="CycloneWeaponLaunchMissileLeftSet">
         <EffectArray index="0" value="CycloneWeaponLaunchMissileLeft"/>
@@ -383,6 +384,7 @@
     </CEffectCreatePersistent>
     <CEffectSet id="LockOnInitialSet">
         <EffectArray value="LockOnDummyWeaponAB"/>
+        <ValidatorArray value="TargetNotInvisibleDummyUnit"/>
     </CEffectSet>
     <CEffectSet id="LockOnClearSet">
         <EffectArray value="LockOnDummyWeaponRB"/>
@@ -989,6 +991,9 @@
         <CaseArray Validator="GroundUnitFilter" Effect="DRBattlecruiserGLM"/>
         <CaseDefault value="DRBattlecruiserALM"/>
     </CEffectSwitch>
+    <CEffectRemoveBehavior id="ReaperKD8KnockbackRB">
+        <ValidatorArray index="0" value="ReaperKD8KnockbackNotInMotion"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="SIBansheeBroodlingAB">
         <EditorCategories value=""/>
         <Behavior value="SIBansheeBroodling"/>

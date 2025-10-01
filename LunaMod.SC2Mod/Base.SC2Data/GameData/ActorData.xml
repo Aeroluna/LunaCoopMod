@@ -67,13 +67,68 @@
     <CActorModel id="BlindingCloudStructureModelAttachmentPlanetary">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
     </CActorModel>
+    <CActorSound id="DarkTemplarAttackLaunchSound">
+        <On Terms="WeaponStop.WarpBlades" Send="SoundSetMuted 1 0"/>
+        <On Terms="WeaponStop.WarpBlades" Send="Destroy"/>
+    </CActorSound>
     <CActorModel id="DarkTemplarShadowFuryImpact">
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
+    <CActorMissile id="HHReaper">
+        <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
+    </CActorMissile>
     <CActorMissile id="HammerSecurityAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
     </CActorMissile>
+    <CActorUnit id="MercHellion">
+        <On Terms="Effect.MercHellionInfernalFlameThrowerCP.Start" Send="AnimClear StandStart01"/>
+        <On Terms="Effect.MercHellionInfernalFlameThrowerCP.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
+        <HostSiteOps Ops="SOpBankerHellion"/>
+    </CActorUnit>
+    <CActorMissile id="MercReaper">
+        <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
+    </CActorMissile>
+    <CActorMissile id="Reaper">
+        <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
+    </CActorMissile>
+    <CActorModel id="ReaperHeal">
+        <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
+        <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
+    </CActorModel>
     <CActorRange id="ShadowGuardShadowFuryRange" parent="RangeAbil" abil="ShadowGuardShadowFury"/>
+    <CActorAction id="SiegeTankSiegedAttack">
+        <ImpactMap index="None" Model=""/>
+    </CActorAction>
+    <CActorAction id="SiegeTankSieged_BlackOpsAttack">
+        <ImpactMap index="None" Model=""/>
+    </CActorAction>
+    <CActorAction id="SiegeTankMengskSiegedAttack">
+        <ImpactMap index="None" Model=""/>
+    </CActorAction>
+    <CActorAction id="SiegeTankMengskSiegedImprovedAoEAttack">
+        <ImpactMap index="None" Model=""/>
+    </CActorAction>
+    <CActorModel id="SiegeTankedSiegedAttackImpactFix" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <On Terms="Effect.CrucioShockCannonBlast.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.SiegeTankSieged_BlackOpsBlast.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.SiegeTankMengskSiegedBlast.Start; At Effect" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpTargetPointStationary SOpTargetUnitZ" HoldPosition="1"/>
+        <Model value="SiegeTankSiegedAttackImpact"/>
+    </CActorModel>
+    <CActorModel id="SiegeTankedMengskSiegedImprovedAoEAttackImpactFix" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <On Terms="Effect.SiegeTankMengskSiegedImprovedAoEBlast.Start; At Effect" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpTargetPointStationary SOpTargetUnitZ" HoldPosition="1"/>
+        <Model value="SiegeTankSiegedAttackImpact"/>
+    </CActorModel>
+    <CActorModel id="SiegeTankSiegedTargetImpactFire">
+        <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
+        <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
+    </CActorModel>
     <CActorModel id="SupplyDropModel">
         <Macros index="0" removed="1"/>
     </CActorModel>
@@ -181,6 +236,10 @@
             <Image value="Assets\Textures\wireframe-protoss-vorazun.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorSound id="ZeratulDarkTemplarAttackLaunchSound">
+        <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="SoundSetMuted 1 0"/>
+        <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="Destroy"/>
+    </CActorSound>
     <CActorModel id="ZeratulShadowCleave">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
     </CActorModel>
@@ -223,6 +282,24 @@
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="720.000000"/>
     </CActorSiteOpRotator>
+    <CActorSiteOpBankerUnit id="SOpBankerReaper">
+        <RollMax value="10.000000"/>
+        <RollInActivationAngle value="7.500000"/>
+        <RollInArc value="55.000000"/>
+        <RollOutDuration value="0.300000"/>
+    </CActorSiteOpBankerUnit>
+    <CActorSiteOpBankerUnit id="SOpBankerCyclone">
+        <RollMax value="2.500000"/>
+        <RollInActivationAngle value="3.750000"/>
+        <RollInArc value="18.750000"/>
+        <RollOutDuration value="0.100000"/>
+    </CActorSiteOpBankerUnit>
+    <CActorSiteOpBankerUnit id="SOpBankerHellion">
+        <RollMax value="5.000000"/>
+        <RollInActivationAngle value="3.750000"/>
+        <RollInArc value="27.500000"/>
+        <RollOutDuration value="0.150000"/>
+    </CActorSiteOpBankerUnit>
     <CActorSiteOpRotator id="SOpVorazunCounterCleaveRotator">
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="-720.000000"/>
@@ -824,11 +901,13 @@
         <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimClear StandStart01"/>
         <On Terms="Effect.InfernalFlameThrowerCoop.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
+        <HostSiteOps Ops="SOpBankerHellion"/>
     </CActorUnit>
     <CActorUnit id="HellionBlackOps">
         <On Terms="Effect.HellionBlackOpsInfernalFlameThrowerCoop.Start" Send="AnimClear StandStart01"/>
         <On Terms="Effect.HellionBlackOpsInfernalFlameThrowerCoop.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketClear Attack Instant"/>
+        <HostSiteOps Ops="SOpBankerHellion"/>
     </CActorUnit>
     <CActorModel id="HighArchonPsiStormImpact">
         <On index="3" Terms="Behavior.HighArchonPsiStorm.On"/>
@@ -883,6 +962,7 @@
     </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeEx2">
         <On index="5" Send="TimerSet 0.860000 DelayDestroy"/>
+        <HostSiteOps Ops="SOpShadow SOpForwardCasterPoint SOp2DRotation LurkerMPSOpShadowSpine SOpRotVariancerUp15"/>
     </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeImpact">
         <Scale value="1.750000"/>
@@ -2218,6 +2298,7 @@
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Add" Send="Create CycloneUpgradeBeamRight"/>
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamLeft" Send="Destroy"/>
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamRight" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBankerCyclone"/>
     </CActorUnit>
     <CActorModel id="CycloneUpgradeBeamLeft" parent="ModelAnimationStyleContinuous">
         <Host Subject="_Selectable"/>
@@ -2445,6 +2526,28 @@
     <CActorModel id="HighTemplarTaldarimShadow">
         <On index="3" Send="SetTintColor 128,0,0 0.800000"/>
         <Model value="HighTemplarTaldarimShadow"/>
+    </CActorModel>
+    <CActorModel id="MothershipConstructionAnim" parent="ModelAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <On Terms="Abil.NexusTrainMothership.Start" Send="Create"/>
+        <On Terms="Abil.NexusTrainMothership.Stop" Send="Destroy"/>
+        <On Terms="Abil.NexusTrainMothershipArtanis.Start" Send="Create"/>
+        <On Terms="Abil.NexusTrainMothershipArtanis.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create MothershipCore_UpgradeToMothershipStart3"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="MothershipCoreMorphAddition"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="MothershipSourceFinish" parent="ModelAnimationStyleOneShot">
+        <On Terms="UnitBirth.Mothership" Send="Create"/>
+        <On Terms="UnitBirth.Mothership" Send="Create MothershipCore_UpgradeToMothershipEndHit"/>
+        <On Terms="UnitBirth.MothershipArtanis" Send="Create"/>
+        <On Terms="UnitBirth.MothershipArtanis" Send="Create MothershipCore_UpgradeToMothershipEndHit"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="MothershipTeleportIn"/>
     </CActorModel>
     <CActorModel id="MotherShipBeaconLight">
         <On Terms="Abil.NexusTrainMothershipArtanis.Start" Send="Create"/>

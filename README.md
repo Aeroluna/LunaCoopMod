@@ -134,18 +134,18 @@ thanks Enoki.
 - Added turret tracking to Colossi (and variants).
 - Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
 - Changed town hall structures to automatically rally to a mineral field when built or landed.
-- Fixed a bug where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
-- Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
-- Fixed a bug where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
 - Added an AOE indicator to Disruptor's Purification Nova ability.
 - Fixed a bug where Protoss units were using an outdated AoE indicator.
 - Added pre-placement visual indicator and sound to Oracle's Stasis Ward ability.
+- Added a very short cooldown to Stimpack to prevent rapid re-cast.
+- Fixed a bug where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
 
 Copied from Versus.
 
 - Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
+- Removed variance in Lurker spine visual positioning.
 - Fixed a bug where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
 - Changed Hi-Sec Auto Tracking to additionally visually increase the upgrade level on the unit info panel.
 - Changed Phoenix weapon attack priority to attempt to keep hitting the same target.
@@ -157,6 +157,17 @@ Copied from Versus.
 - Fixed a bug causing Liberators to first decelerate when ordered to siege within their range.
 - Removed Blinding/Disabling Cloud impact visual from Nexuses (They don't even have a weapon anymore!).
 - Increased visibility of Blinding/Disabling Cloud impact visual on Planetaries.
+- Fixed an impactful balance issue where Motherships were not playing their coolest available visual animation while constructing. This is intended to buff Protoss visually.
+- Added smooth visual turning animations to Reapers, Hellions, and Cyclones. Reapers also hover further off the ground.
+- Fixed a bug where Dark Templar attack sounds would complete regardless of whether a unit had been dealt damage.
+- Increased allied push priority for Thors and Siege Tanks. Intended to assist bulky units in pathfinding when surrounded by many small friendly units.
+- Fixed a bug where Reaper's rapid regeneration model would persist above its transport.
+- Fixed a bug where Siege Tank impact fire model would persist above its target's transport.
+- Fixed a bug where Siege Tank impact craters would disappear and reappear if the target was picked up/dropped out of a transport.
+- Fixed a bug where KD-8 Charge knockback animation would persist on units that were no longer being knocked back.
+- Fixed a bug where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
+- Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
+- Fixed a bug where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
 
 thanks Common Sense Balance.
 

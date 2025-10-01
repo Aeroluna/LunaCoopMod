@@ -546,4 +546,15 @@
         <AreaArray index="0" Radius="2"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitMover id="ReaperKD8KnockbackNotInMotion">
+        <Value value="UnitKnockbackMover3"/>
+    </CValidatorUnitMover>
+    <CValidatorUnitType id="TargetNotInvisibleDummyUnit">
+        <Value value="InvisibleTargetDummy"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="DetectedORNotCloakedBuried">
+        <CombineArray value="IsDetected"/>
+        <CombineArray value="NotCloakedAndNotBuried"/>
+    </CValidatorCombine>
 </Catalog>
