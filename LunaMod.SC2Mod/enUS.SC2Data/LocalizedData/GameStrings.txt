@@ -149,6 +149,7 @@ Button/Name/HireMercMedic=Skibi's Angel
 Button/Name/HireMercSiegeTank=Siege Breakers
 Button/Name/HireMercViking=Hel's Angels
 Button/Name/HydraliskBrood=Morph to Hunter Killer
+Button/Name/HyperjumpInstant=Tactical Jump
 Button/Name/KerriganBurialRites=Burial Rites
 Button/Name/KerriganCannibalize=Cannibalize
 Button/Name/KerriganEnvenomedSpines=Envenomed Spines
@@ -352,6 +353,8 @@ Button/Tooltip/HireMercSiegeTank=Request 2 Siege Breaker Mercenaries.<n/><n/>Eli
 Button/Tooltip/HireMercSiegeTankCharges=<d ref="$BehaviorStackCount:HireMercSiegeTank$"/>
 Button/Tooltip/HireMercViking=Request 3 Hel's Angels Mercenaries.<n/><n/>Pirate Vikings with exceptional aerial expertise.
 Button/Tooltip/HireMercVikingCharges=<d ref="$BehaviorStackCount:HireMercViking$"/>
+Button/Tooltip/Hyperjump=After <d time="6"/>, warps to the target location. Battlecruiser is invulnerable while warping.<n/><n/><c val="#ColorAttackInfo">Does not require vision.</c>
+Button/Tooltip/HyperjumpInstant=Warps to the target location. Battlecruiser is invulnerable while warping.
 Button/Tooltip/KerriganBurialRites=Increases the radius and size of each spine by 50%.
 Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 hitpoints.
 Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d ref="Behavior,KerriganEnvenomedSpines,Duration"/> seconds, dealing <d ref="Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second. This effect stacks up to <d ref="Behavior,KerriganEnvenomedSpines,MaxStackCount"/> times.
@@ -396,6 +399,7 @@ Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units 
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
+Button/Tooltip/Reaper=Raider. Can jump up and down cliffs. Regenerates life quickly while out of combat. Can use KD8 Charge.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
 Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds.
 Button/Tooltip/ResearchBanshee_BlackOpsAirstrike=Allows <c val="ffff8a">Covert Banshees</c> to use Rocket Barrage, which deals <d ref="Effect,Banshee_BlackOpsAirstrikeDamage,Amount*(Effect,Banshee_BlackOpsAirstrikeFakeShotCP,PeriodCount+1)"/> damage to enemy ground units in the target area.
@@ -728,6 +732,7 @@ Param/Expression/lib_74A68E34_6F69C080=+~A~
 Param/Expression/lib_74A68E34_A164617D=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/>
 Param/Expression/lib_74A68E34_E2739024=SetScale ~A~
 Param/Expression/lib_74A68E34_F34019F3=Found ~A~ nearby creep tumors.
+Param/Expression/lib_74A68E34_F75B6FAC=(Unfinished) ~A~
 Param/Value/lib_01833E95_4CBC5204=► Hello world!
 Param/Value/lib_74A68E34_06BC5908=Placement unit not found, falling back to spawn point based on player start!
 Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
@@ -839,6 +844,10 @@ UserData/MutationDifficultyLevels/Plus10_Name=Brutal+10
 UserData/MutationDifficultyLevels/Plus7_Name=Brutal+7
 UserData/MutationDifficultyLevels/Plus8_Name=Brutal+8
 UserData/MutationDifficultyLevels/Plus9_Name=Brutal+9
+UserData/Mutators/Harass_Description=Enemies will periodically harass your or your ally's mineral line.
+UserData/Mutators/Harass_Name=Harassment
+UserData/Mutators/Teeming_Description=Enemies begin with twice as many units.
+UserData/Mutators/Teeming_Name=Teeming
 UserData/PlayerCommanders/[Override]ProtossAlarak_Description=Uses the presence of his own army to improve the power of his own abilities. He has powerful army units that can deal large amounts of damage in a short period of time.
 UserData/PlayerCommanders/[Override]ProtossArtanis_Description=Artanis' army features the basic staples of any Protoss army, including Zealots and Immortals. However, combined with the Spear of Adun, his army can be resilient and powerful.
 UserData/PlayerCommanders/[Override]ProtossFenix_Description=Uses a variety of different suits, backed up with an army led by AI Champions to dominate the battlefield.

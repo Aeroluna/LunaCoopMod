@@ -143,9 +143,7 @@
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="Toggle" value="1"/>
         <Flags index="Transient" value="1"/>
-        <Cost>
-            <Vital index="Energy" value="25"/>
-        </Cost>
+        <Cost/>
         <BehaviorArray value="DuskWingBansheeCloak"/>
         <AutoCastToggleOnValidatorArray value="TacticalBansheeCloakThreatSearch"/>
         <AutoCastToggleOffValidatorArray value="TacticalBansheeCloakThreatSearchEmpty"/>
@@ -224,6 +222,9 @@
     </CAbilMorphPlacement>
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HHHyperjump">
+        <CmdButtonArray index="Execute" DefaultButtonFace="HyperjumpInstant"/>
     </CAbilEffectTarget>
     <CAbilArmMagazine id="HHOrdnanceTowerHangar">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -330,6 +331,25 @@
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBanshee"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="Hyperjump">
+        <Cost index="0">
+            <Vital index="Energy" value="125"/>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+        <ProgressButtonArray index="Prep" value="Hyperjump"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <Effect index="0" value="HyperjumpInitialCP"/>
+        <CastOutroTime index="0" value="1.4"/>
+        <FinishTime value="6"/>
+        <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander">
+            <Flags index="ToSelection" value="0"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HyperjumpNoVision">
+        <Effect index="0" value="HyperjumpCreatePrecursorInstant"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HyperjumpInstant" Requirements="HaveRaynorCommander"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="LiberatorAGTarget">
         <Flags index="AllowMovement" value="1"/>
         <Range index="0" value="5"/>

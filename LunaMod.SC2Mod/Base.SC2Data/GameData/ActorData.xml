@@ -19,9 +19,47 @@
         <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
         <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
         <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
+        <On Terms="Effect.HyperjumpTeleport" Send="CombatRevealClearTimers"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="SetOpacity"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Send="SetOpacity 1.000000"/>
+        <On Terms="Behavior.HyperjumpTeleportInstant.On" Send="Create BattleCruiserTacticalJump_Placement"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Target="BattleCruiserTacticalJump_Placement" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="Create HyperjumpLaunch"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.On" Send="Create HyperjumpImpact"/>
         <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
         <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
     </CActorUnit>
+    <CActorModelMaterial id="BattlecruiserTacticalJumpPowerup" parent="GlazeParent">
+        <Remove Terms="Behavior.ParasiticBomb.On" Send="Create"/>
+        <Remove Terms="Behavior.ParasiticBomb.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <On Terms="Abil.Hyperjump.SourceChannelStart" Send="Create"/>
+        <On Terms="Abil.Hyperjump.SourceChannelStop" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Model value="Glaze_Nova_Buff_Damage"/>
+    </CActorModelMaterial>
+    <CActorSound id="Battlecruiser_TacticalJumpCursorSound">
+        <On Terms="Abil.HyperjumpNoVision.TargetApproachStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Battlecruiser_TacticalJumpPowerup_Sound" parent="SoundOneShot">
+        <!--On Terms="Behavior.HyperjumpTeleportOut.On" Send="Create"/-->
+        <Sound value="Battlecruiser_DefensiveMatrixBirth"/>
+        <!-- should stay in the original Battlecruiser position and not hyperjump with it -->
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+        <On Terms="Abil.Hyperjump.SourcePrepStart" Send="Create"/>
+        <On Terms="Abil.Hyperjump.SourcePrepStop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="Battlecruiser_HyperJumpIn_Sound">
+        <Remove Terms="Behavior.HHHyperjumpTeleportOut.On" Send="Create"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="Create"/>
+        <On Terms="Behavior.HHHyperjumpTeleportIn.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Battlecruiser_HyperJumpOut_Sound">
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="Create"/>
+    </CActorSound>
     <CActorModel id="BlindingCloudStructureModelAttachmentNexus">
         <Remove Terms="Behavior.BlindingCloudStructure.On; ValidateUnit IsNexus" Send="Create"/>
         <Remove Terms="Behavior.BlindingCloudStructure.Off" Send="AnimBracketStop BSD"/>
@@ -32,6 +70,9 @@
     <CActorModel id="DarkTemplarShadowFuryImpact">
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
+    <CActorMissile id="HammerSecurityAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
+    </CActorMissile>
     <CActorRange id="ShadowGuardShadowFuryRange" parent="RangeAbil" abil="ShadowGuardShadowFury"/>
     <CActorModel id="SupplyDropModel">
         <Macros index="0" removed="1"/>

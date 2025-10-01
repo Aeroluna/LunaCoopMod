@@ -100,6 +100,10 @@ Weirdly quiet for how impactful this thing's weapon is.
 
 I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
 
+- Increased volume of Battlecruiser Tactical Jump ability.
+
+Not sure why this ability had its volume nerfed in co-op.
+
 - Fixed a bug where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Fixed units:
     - Spider Mine (Raynor/Nova)
@@ -199,6 +203,18 @@ A leftover from granting detection to Vorazun's Oracles. Vorazun is unaffected.
 - Reduced Liberator anti-ground damge from 85 to 75.
 
 Amon is smelly and gets Versus Liberators. Hopefully makes Shadow Tech less oppressive.
+
+- Reverted Battlecruiser Tactical Jump to Versus version.
+
+This includes adding a cast time, the 6 second wait, and some visual changes. This change pretty much only affects mind controlled Battlecruisers, but I needed it for my new Harassment mutator.
+
+- Removed Reaper's D-8 Charge weapon.
+- Reduced Reaper's P-45 Guass Pistol weapon damage from 4 (+5 vs Light) to 4.
+- Increased Reaper's hitpoints from 50 to 60.
+- Added Combat Drugs passive.
+- Added KD8 Charge ability.
+
+What the hell were Blizzard thinking giving Reapers their structure weapon back. Overall the Reaper does less DPS but now they get to be funny with their grenade. Get wrecked Shadow Tech.
 
 ## Raynor
 

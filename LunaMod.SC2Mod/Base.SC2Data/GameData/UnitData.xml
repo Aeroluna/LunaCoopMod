@@ -80,7 +80,10 @@
     </CUnit>
     <CUnit id="Battlecruiser">
         <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <AbilArray Link="Hyperjump"/>
         <CardLayouts index="0">
+            <LayoutButtons index="6" Face="HyperjumpInstant"/>
+            <LayoutButtons Face="Hyperjump" Type="AbilCmd" AbilCmd="Hyperjump,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersStimpack,Execute" Row="2" Column="2"/>
         </CardLayouts>
     </CUnit>
@@ -107,6 +110,11 @@
         <CardLayouts index="0">
             <LayoutButtons Face="CommanderPrestigeRaynorHyperionLocked" Type="Passive" Row="0" Column="0"/>
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HHBattlecruiser">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="HyperjumpInstant"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="HHWraith">
@@ -783,7 +791,18 @@
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
     </CUnit>
     <CUnit id="Reaper">
-        <AbilArray index="4" removed="1"/>
+        <AbilArray index="4" Link="KD8Charge"/>
+        <LifeStart value="60"/>
+        <LifeMax value="60"/>
+        <WeaponArray index="1" removed="1"/>
+        <LifeRegenDelay value="10"/>
+        <LifeRegenRate value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="KD8Charge" Type="AbilCmd" AbilCmd="KD8Charge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CombatDrugs" Type="Passive" Row="2" Column="2"/>
+        </CardLayouts>
+        <Speed value="3.75"/>
+        <TacticalAIThink value="AIThinkReaperLuna"/>
     </CUnit>
     <CUnit id="SIBarracks">
         <Food value="-1"/>

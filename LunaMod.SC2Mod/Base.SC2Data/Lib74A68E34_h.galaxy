@@ -7,6 +7,8 @@ include "LibA8FDA37D"
 const int lib74A68E34_gv_raynorPrestigeMercenaryRallyX = 12;
 const int lib74A68E34_gv_raynorPrestigeMercenaryRallyY = 13;
 const int lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked = 16;
+const int lib74A68E34_gv_mM_MUTATORMAXCOUNT = 92;
+const int lib74A68E34_gv_mM_MUTATORMINCOUNT = 1;
 
 // Structures
 struct lib74A68E34_gs_MorphUnitType {
@@ -24,6 +26,16 @@ int lib74A68E34_gv_mutatorListDialog;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
 int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
 unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
+int lib74A68E34_gv_mM_MutatorDialog;
+int lib74A68E34_gv_mM_MutatorPanel;
+int[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorItemPanels;
+int[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorNameLabels;
+int[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorDescriptionLabels;
+int[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorCheckboxes;
+int lib74A68E34_gv_mM_MutatorAcceptButton;
+int lib74A68E34_gv_mM_MutatorCancelButton;
+string[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorItems;
+unitgroup lib74A68E34_gv_mutatorTeemingUnits;
 
 // Function Declarations
 void lib74A68E34_gf_FourthChangeAllyPrestige ();
@@ -45,6 +57,20 @@ void lib74A68E34_gf_KaraxEnable20 (int lp_player);
 void lib74A68E34_gf_TychusHeroTechInit (int lp_player);
 void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p);
 void lib74A68E34_gf_TychusUIReorderEnable (int lp_player);
+void lib74A68E34_gf_MM_MutatorDisplay (int lp_player);
+void lib74A68E34_gf_MM_MutatorCreate ();
+void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player);
+void lib74A68E34_gf_MM_MutatorClose (int lp_player);
+void lib74A68E34_gf_MM_MutatorUpdateData ();
+void lib74A68E34_gf_MM_MutatorUpdate (int lp_player);
+point lib74A68E34_gf_VaryPosition (point lp_src, fixed lp_variance);
+point lib74A68E34_gf_GetCorner (point lp_source, point lp_target);
+void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
+void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
+void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
+void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
+void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
+void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
 
 // Trigger Declarations
 trigger lib74A68E34_gt_ExtraUpgrades;
@@ -116,6 +142,15 @@ trigger lib74A68E34_gt_TychusUIReorderButtonClicked;
 trigger lib74A68E34_gt_TychusUIReorderHeroPurchased;
 trigger lib74A68E34_gt_MengskPreserveAutocast;
 trigger lib74A68E34_gt_MengskPrestigeZergRefund;
+trigger lib74A68E34_gt_MutatorInit;
+trigger lib74A68E34_gt_MM_CommanderMutatorsClicked;
+trigger lib74A68E34_gt_MM_MutatorAcceptClicked;
+trigger lib74A68E34_gt_MM_MutatorCancelClicked;
+trigger lib74A68E34_gt_MutatorTeemingInit;
+trigger lib74A68E34_gt_MutatorTeemingShutdown;
+trigger lib74A68E34_gt_MutatorHarassInit;
+trigger lib74A68E34_gt_MutatorHarassSpawn;
+trigger lib74A68E34_gt_MutatorHarassShutdown;
 
 // Library Initialization
 void lib74A68E34_InitVariables ();

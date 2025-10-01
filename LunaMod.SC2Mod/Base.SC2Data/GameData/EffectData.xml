@@ -274,6 +274,76 @@
         <RevealRadius value="0"/>
         <RevealFlags index="Unfog" value="0"/>
     </CEffectCreatePersistent>
+    <CEffectCreateUnit id="HyperjumpCreatePrecursorInstant">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="HyperjumpTeleportInstantOutABSet"/>
+        <SpawnUnit value="Battlecruiser"/>
+        <SpawnRange value="0.1"/>
+    </CEffectCreateUnit>
+    <CEffectTeleport id="HyperjumpTeleportInstant">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <TargetLocation Effect="HyperjumpCreatePrecursorInstant" Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+        <PlacementRange value="15"/>
+        <PlacementAround Effect="HyperjumpCreatePrecursorInstant"/>
+    </CEffectTeleport>
+    <CEffectSet id="HyperjumpTeleportInstantSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HyperjumpTeleportInstant"/>
+        <EffectArray value="HyperjumpTeleportInstantAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HyperjumpTeleportInstantAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HyperjumpTeleportInstant"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HyperjumpTeleportInstantInAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HyperjumpTeleportInstantIn"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HyperjumpTeleportInstantOutAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HyperjumpTeleportInstantOut"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HyperjumpTeleportInstantOutABSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HyperjumpTeleportInstantOutAB"/>
+        <EffectArray value="HyperjumpTeleportOutTargetAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HyperjumpInitialCP">
+        <ValidatorArray value="CasterNotFungalGrowthed"/>
+        <ValidatorArray value="CasterIsNotYoinked"/>
+        <ValidatorArray value="CasterDoesNotHaveScramblerMissileBehavior"/>
+        <ValidatorArray value="BattlecruiserPlacementCheck"/>
+        <EditorCategories value=""/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="1.4"/>
+        <PeriodicEffectArray value="HyperjumpCreatePrecursor"/>
+        <InitialEffect value="HyperjumpInitialDelaySuppressWeaponAB"/>
+        <FinalEffect value="HyperjumpInitialDelaySuppressWeaponRB"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="HyperjumpInitialDelaySuppressWeaponAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HyperjumpInitialDelaySuppressWeapon"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HyperjumpInitialDelaySuppressWeaponRB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HyperjumpInitialDelaySuppressWeapon"/>
+    </CEffectRemoveBehavior>
     <CEffectDamage id="KerriganMalignantCreepAttackSpeedDummy">
         <Amount value="0"/>
     </CEffectDamage>
@@ -528,6 +598,9 @@
         <EffectArray value="OracleStasisTrapBuildBeamOn"/>
         <EffectArray value="OracleStasisTrapBuildDeceleration"/>
     </CEffectSet>
+    <CEffectDamage id="P38ScytheGuassPistol">
+        <AttributeBonus index="Light" value="0"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="PrestigeCreateSymbioteAB">
         <ValidatorArray index="0" value="NotHavePrestigeSymbiote"/>
         <ValidatorArray value="NotAtFullSupply"/>

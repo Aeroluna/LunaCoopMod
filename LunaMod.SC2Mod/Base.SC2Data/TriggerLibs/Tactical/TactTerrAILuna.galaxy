@@ -1,0 +1,39 @@
+//--------------------------------------------------------------------------------------------------
+//  *** REAPER ***
+//--------------------------------------------------------------------------------------------------
+
+fixed KD8ChargeCoolDown_Hard = 20;
+fixed KD8ChargeCoolDown_Brutal = 10;
+
+const int c_KD8ChargeCoolDown = c_tactTimerFirst;
+
+void AIThinkReaperLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    unitgroup targetGroup;
+    order ord;
+    marker mark = AIMarker(aiUnit, c_MK_KD8Charge);
+    fixed cooldown;
+    int diff = AIPlayerDifficulty(player);
+
+    if(AIPlayerDifficulty(player) <= c_campNormal) {
+        return;
+    }
+
+    //Abduct
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_KD8ChargeCoolDown)) {
+            targetGroup = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+            ord = AIOrderReapKD8Charge(player, aiUnit, targetGroup, mark);
+            if (ord != null) {
+                //AICast(aiUnit, ord, mark, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = KD8ChargeCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = KD8ChargeCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, mark, c_castHold, c_KD8ChargeCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+}

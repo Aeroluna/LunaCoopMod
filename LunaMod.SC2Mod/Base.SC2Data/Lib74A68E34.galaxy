@@ -26,6 +26,8 @@ void lib74A68E34_InitLibraries () {
 bool lib74A68E34_InitVariables_completed = false;
 
 void lib74A68E34_InitVariables () {
+    int init_i;
+
     if (lib74A68E34_InitVariables_completed) {
         return;
     }
@@ -36,6 +38,23 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_gv_mutatorListRandomizerPulldown = c_invalidDialogControlId;
     lib74A68E34_gv_mutatorListRandomizerRefreshButton = c_invalidDialogControlId;
     lib74A68E34_gv_mutatorListDialog = c_invalidDialogId;
+    lib74A68E34_gv_mM_MutatorDialog = c_invalidDialogId;
+    lib74A68E34_gv_mM_MutatorPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_mM_MutatorItemPanels[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_mM_MutatorNameLabels[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_mM_MutatorDescriptionLabels[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_mM_MutatorCheckboxes[init_i] = c_invalidDialogControlId;
+    }
+    lib74A68E34_gv_mM_MutatorAcceptButton = c_invalidDialogControlId;
+    lib74A68E34_gv_mM_MutatorCancelButton = c_invalidDialogControlId;
+    lib74A68E34_gv_mutatorTeemingUnits = UnitGroupEmpty();
 }
 
 // Custom Script
@@ -806,6 +825,634 @@ void lib74A68E34_gf_TychusUIReorderEnable (int lp_player) {
     TriggerExecute(lib74A68E34_gt_TychusUIReorderHeroPurchased, true, false);
 }
 
+void lib74A68E34_gf_MM_MutatorDisplay (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib74A68E34_gf_MM_MutatorCreate();
+    lib74A68E34_gf_MM_MutatorInitFromData(lp_player);
+    lib74A68E34_gf_MM_MutatorUpdate(lp_player);
+    DialogSetVisible(lib74A68E34_gv_mM_MutatorDialog, PlayerGroupSingle(lp_player), true);
+    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, true);
+    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, true);
+}
+
+void lib74A68E34_gf_MM_MutatorCreate () {
+    // Variable Declarations
+    int lv_mutatorIndex;
+    int lv_hookupFrame;
+
+    // Automatic Variable Declarations
+    const int auto2C77E0C7_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int auto2C77E0C7_ai = 1;
+
+    // Variable Initialization
+    lv_hookupFrame = c_invalidDialogControlId;
+
+    // Implementation
+    if ((lib74A68E34_gv_mM_MutatorDialog != c_invalidDialogId)) {
+        return ;
+    }
+
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    DialogSetFullscreen(DialogLastCreated(), true);
+    DialogSetRenderPriority(DialogLastCreated(), 1100);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lib74A68E34_gv_mM_MutatorDialog = DialogLastCreated();
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mM_MutatorDialog, c_triggerControlTypePanel, "Coop_MutatorSelection_EX/MutatorSelectionTemplate");
+    lib74A68E34_gv_mM_MutatorPanel = DialogControlLastCreated();
+    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypePanel, "ScrollableMutatorList");
+    lv_hookupFrame = DialogControlLastCreated();
+    DialogControlHookup(lv_hookupFrame, c_triggerControlTypePanel, "ContainerFrame");
+    lv_hookupFrame = DialogControlLastCreated();
+    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
+    for ( ; ( (auto2C77E0C7_ai >= 0 && lv_mutatorIndex <= auto2C77E0C7_ae) || (auto2C77E0C7_ai < 0 && lv_mutatorIndex >= auto2C77E0C7_ae) ) ; lv_mutatorIndex += auto2C77E0C7_ai ) {
+        DialogControlHookup(lv_hookupFrame, c_triggerControlTypePanel, "Item" + IntToString(lv_mutatorIndex));
+        lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "Number");
+        libNtve_gf_SetDialogItemText(DialogControlLastCreated(), IntToText(lv_mutatorIndex), PlayerGroupAll());
+        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeCheckBox, "ActiveCheckBox");
+        lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "NameLabel");
+        lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "DescriptionLabel");
+        lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex] = DialogControlLastCreated();
+    }
+    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypeButton, "AcceptButton");
+    lib74A68E34_gv_mM_MutatorAcceptButton = DialogControlLastCreated();
+    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypeButton, "CancelButton");
+    lib74A68E34_gv_mM_MutatorCancelButton = DialogControlLastCreated();
+}
+
+void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player) {
+    // Variable Declarations
+    string lv_indexMutator;
+    int lv_mutatorCount;
+    playergroup lv_updatePlayers;
+    int lv_vA;
+
+    // Automatic Variable Declarations
+    const int autoD1CFD900_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int autoD1CFD900_ai = 1;
+    int autoDC922A49_ai;
+    int autoDC922A49_ae;
+
+    // Variable Initialization
+    lv_updatePlayers = PlayerGroupEmpty();
+
+    // Implementation
+    lv_updatePlayers = PlayerGroupSingle(lp_player);
+    lv_vA = 0;
+    for ( ; ( (autoD1CFD900_ai >= 0 && lv_vA <= autoD1CFD900_ae) || (autoD1CFD900_ai < 0 && lv_vA >= autoD1CFD900_ae) ) ; lv_vA += autoD1CFD900_ai ) {
+        autoDC922A49_ai = 1;
+        autoDC922A49_ae = UserDataInstanceCount("Mutators")+1;
+        while (autoDC922A49_ai < autoDC922A49_ae) {
+            lv_indexMutator = UserDataInstance("Mutators", autoDC922A49_ai);
+            autoDC922A49_ai = autoDC922A49_ai+1;
+            if ((UserDataGetInt("Mutators", lv_indexMutator, "ListOrder", 1) == lv_vA)) {
+                lv_mutatorCount += 1;
+                lib74A68E34_gv_mM_MutatorItems[lv_mutatorCount] = lv_indexMutator;
+                if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
+                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorCount], true, lv_updatePlayers);
+                }
+                else {
+                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorCount], false, lv_updatePlayers);
+                }
+                break;
+            }
+
+        }
+    }
+}
+
+void lib74A68E34_gf_MM_MutatorClose (int lp_player) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto582C415C_g;
+
+    // Variable Initialization
+
+    // Implementation
+    DialogSetVisible(lib74A68E34_gv_mM_MutatorDialog, PlayerGroupSingle(lp_player), false);
+    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, false);
+    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, false);
+    if ((libCOUI_gv_cU_CommanderSelect_RefCount > 0)) {
+        auto582C415C_g = libCOOC_gf_HumanPlayers();
+        lv_indexPlayer = -1;
+        while (true) {
+            lv_indexPlayer = PlayerGroupNextPlayer(auto582C415C_g, lv_indexPlayer);
+            if (lv_indexPlayer < 0) { break; }
+            libCOUI_gf_CU_CommanderUpdate(lv_indexPlayer);
+        }
+    }
+
+}
+
+void lib74A68E34_gf_MM_MutatorUpdateData () {
+    // Variable Declarations
+    int lv_mutatorIndex;
+
+    // Automatic Variable Declarations
+    const int autoB56E098D_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int autoB56E098D_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
+    for ( ; ( (autoB56E098D_ai >= 0 && lv_mutatorIndex <= autoB56E098D_ae) || (autoB56E098D_ai < 0 && lv_mutatorIndex >= autoB56E098D_ae) ) ; lv_mutatorIndex += autoB56E098D_ai ) {
+        if ((lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex] == null)) {
+            continue;
+        }
+
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorIndex], 1) == true)) {
+            libCOMU_gf_EnableDisableMutator(true, lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]);
+        }
+        else {
+            libCOMU_gf_EnableDisableMutator(false, lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]);
+        }
+    }
+}
+
+void lib74A68E34_gf_MM_MutatorUpdate (int lp_player) {
+    // Variable Declarations
+    int lv_mutatorIndex;
+    playergroup lv_updatePlayers;
+    color lv_vUnfinishedColor;
+
+    // Automatic Variable Declarations
+    const int auto1A79352D_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int auto1A79352D_ai = 1;
+
+    // Variable Initialization
+    lv_updatePlayers = PlayerGroupEmpty();
+    lv_vUnfinishedColor = Color(41.57, 41.57, 41.57);
+
+    // Implementation
+    lv_updatePlayers = PlayerGroupSingle(lp_player);
+    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
+    for ( ; ( (auto1A79352D_ai >= 0 && lv_mutatorIndex <= auto1A79352D_ae) || (auto1A79352D_ai < 0 && lv_mutatorIndex >= auto1A79352D_ae) ) ; lv_mutatorIndex += auto1A79352D_ai ) {
+        if ((lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex] == null)) {
+            DialogControlSetVisible(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, false);
+        }
+        else {
+            DialogControlSetVisible(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, true);
+        }
+        libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorName(lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
+        libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorDescription(lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
+        if ((UserDataGetInt("Mutators", lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex], "Unfinished", 1) == 1)) {
+            TextExpressionSetToken("Param/Expression/lib_74A68E34_F75B6FAC", "A", UserDataGetText("Mutators", lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex], "Description", 1));
+            libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], TextExpressionAssemble("Param/Expression/lib_74A68E34_F75B6FAC"), lv_updatePlayers);
+            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
+            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
+        }
+
+    }
+}
+
+point lib74A68E34_gf_VaryPosition (point lp_src, fixed lp_variance) {
+    // Automatic Variable Declarations
+    // Implementation
+    return PointWithOffsetPolar(lp_src, RandomFixed(0.0, lp_variance), libNtve_gf_RandomAngle());
+}
+
+point lib74A68E34_gf_GetCorner (point lp_source, point lp_target) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((RandomInt(0, 1) == 1)) {
+        return Point(PointGetX(lp_source), PointGetY(lp_target));
+    }
+    else {
+        return Point(PointGetX(lp_target), PointGetY(lp_source));
+    }
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassMedivac_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassMedivac_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassMedivac_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassMedivac_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassMedivac_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassMedivac_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassMedivac_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassMedivac_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassMedivac_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassMedivac_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassMedivac_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassMedivac_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassMedivac_lp_dropCount;
+
+    // Variable Declarations
+    point lv_corner;
+    unitgroup lv_transportGroup;
+    unitgroup lv_attackGroup;
+    unitgroup lv_cargoGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int auto88FAC231_n;
+    int auto88FAC231_i;
+    fixed auto60887B8E_at;
+    unitgroup auto36BE8697_g;
+    int auto36BE8697_u;
+    unit auto36BE8697_var;
+
+    // Variable Initialization
+    lv_transportGroup = UnitGroupEmpty();
+    lv_attackGroup = UnitGroupEmpty();
+    lv_cargoGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    auto88FAC231_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.15, 0.25, 0.35, 0.0, 0.0)) + 1.0));
+    for (auto88FAC231_i = 1; auto88FAC231_i <= auto88FAC231_n; auto88FAC231_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Medivac", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_transportGroup, UnitLastCreated());
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+        UnitCargoCreate(UnitLastCreated(), "Marine", MinI(((lp_dropCount / 2) + 4), 8));
+        UnitGroupAddUnitGroup(lv_cargoGroup, UnitCargoLastCreatedGroup());
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_cargoGroup);
+    AISetGroupScriptControlled(lv_attackGroup, true);
+    AISetGroupScriptControlled(lv_cargoGroup, false);
+    AISetGroupSuicide(lv_cargoGroup, true);
+    Wait(1.0, c_timeAI);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("MedivacSpeedBoost", 0)), c_orderQueueAddToFront);
+    auto60887B8E_at = 0;
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto60887B8E_at <= 30.0) {
+        Wait(2.0, c_timeAI);
+        auto60887B8E_at = auto60887B8E_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("MedivacSpeedBoost", 0)), c_orderQueueAddToFront);
+    while ((UnitGroupCount(lv_transportGroup, c_unitCountAlive) > 0)) {
+        Wait(1.0, c_timeAI);
+        auto36BE8697_g = lv_attackGroup;
+        auto36BE8697_u = UnitGroupCount(auto36BE8697_g, c_unitCountAll);
+        for (;; auto36BE8697_u -= 1) {
+            auto36BE8697_var = UnitGroupUnitFromEnd(auto36BE8697_g, auto36BE8697_u);
+            if (auto36BE8697_var == null) { break; }
+            if ((DistanceBetweenPoints(UnitGetPosition(auto36BE8697_var), lp_target) < 12.0)) {
+                UnitIssueOrder(auto36BE8697_var, Order(AbilityCommand("MedivacSpeedBoost", 0)), c_orderQueueAddToFront);
+                UnitIssueOrder(auto36BE8697_var, OrderTargetingUnit(AbilityCommand("MedivacTransport", 2), auto36BE8697_var), c_orderQueueAddToFront);
+                UnitGroupRemove(lv_transportGroup, auto36BE8697_var);
+            }
+
+        }
+    }
+    AISetGroupScriptControlled(lv_attackGroup, false);
+    AISetGroupSuicide(lv_attackGroup, true);
+    return true;
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassBattlecruiser_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassBattlecruiser_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassBattlecruiser_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassBattlecruiser_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassBattlecruiser_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassBattlecruiser_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassBattlecruiser_lp_dropCount;
+
+    // Variable Declarations
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int autoDC538A59_n;
+    int autoDC538A59_i;
+    fixed auto98DCB563_at;
+
+    // Variable Initialization
+    lv_attackGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    Wait(20.0, c_timeAI);
+    autoDC538A59_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.0, 0.1, 0.2, 0.0, 0.0)) + 1.0));
+    for (autoDC538A59_i = 1; autoDC538A59_i <= autoDC538A59_n; autoDC538A59_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Battlecruiser", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergy, 140.0);
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("Hyperjump", 0), lp_target), c_orderQueueReplace);
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueAddToEnd);
+    auto98DCB563_at = 0;
+    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 10.0), 0), c_unitCountAlive))) && auto98DCB563_at <= 100.0) {
+        Wait(2.0, c_timeAI);
+        auto98DCB563_at = auto98DCB563_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    AISetGroupScriptControlled(lv_attackGroup, false);
+    AISetGroupSuicide(lv_attackGroup, true);
+    return true;
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassBanshee_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassBanshee_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassBanshee_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassBanshee_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassBanshee_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassBanshee_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassBanshee_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassBanshee_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassBanshee_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassBanshee_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassBanshee_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassBanshee_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassBanshee_lp_dropCount;
+
+    // Variable Declarations
+    point lv_corner;
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int autoEEBD849D_n;
+    int autoEEBD849D_i;
+    fixed auto87BDA378_at;
+    fixed autoD9BADC5E_at;
+
+    // Variable Initialization
+    lv_attackGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    autoEEBD849D_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.1, 0.2, 0.4, 0.0, 0.0)) + 1.0));
+    for (autoEEBD849D_i = 1; autoEEBD849D_i <= autoEEBD849D_n; autoEEBD849D_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Banshee", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    Wait(1.0, c_timeAI);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
+    auto87BDA378_at = 0;
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto87BDA378_at <= 30.0) {
+        Wait(2.0, c_timeAI);
+        auto87BDA378_at = auto87BDA378_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("BansheeCloak", 0)), c_orderQueueAddToFront);
+    autoD9BADC5E_at = 0;
+    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 4.0), 0), c_unitCountAlive))) && autoD9BADC5E_at <= 100.0) {
+        Wait(2.0, c_timeAI);
+        autoD9BADC5E_at = autoD9BADC5E_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    AISetGroupScriptControlled(lv_attackGroup, false);
+    AISetGroupSuicide(lv_attackGroup, true);
+    return true;
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassLiberator_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassLiberator_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassLiberator_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassLiberator_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassLiberator_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassLiberator_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassLiberator_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassLiberator_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassLiberator_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassLiberator_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassLiberator_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassLiberator_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassLiberator_lp_dropCount;
+
+    // Variable Declarations
+    point lv_corner;
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int autoFD4B06E0_n;
+    int autoFD4B06E0_i;
+    fixed auto007311E4_at;
+    unitgroup auto4B138233_g;
+    int auto4B138233_u;
+    unit auto4B138233_var;
+    fixed autoF0F34CCC_at;
+
+    // Variable Initialization
+    lv_attackGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    autoFD4B06E0_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.1, 0.2, 0.4, 0.0, 0.0)) + 1.0));
+    for (autoFD4B06E0_i = 1; autoFD4B06E0_i <= autoFD4B06E0_n; autoFD4B06E0_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Liberator", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    Wait(1.0, c_timeAI);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
+    auto007311E4_at = 0;
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto007311E4_at <= 30.0) {
+        Wait(2.0, c_timeAI);
+        auto007311E4_at = auto007311E4_at + 2.0;
+    }
+    auto4B138233_g = lv_attackGroup;
+    auto4B138233_u = UnitGroupCount(auto4B138233_g, c_unitCountAll);
+    for (;; auto4B138233_u -= 1) {
+        auto4B138233_var = UnitGroupUnitFromEnd(auto4B138233_g, auto4B138233_u);
+        if (auto4B138233_var == null) { break; }
+        UnitIssueOrder(auto4B138233_var, OrderTargetingPoint(AbilityCommand("LiberatorAGTarget", 0), lib74A68E34_gf_VaryPosition(lp_target, 2.0)), c_orderQueueReplace);
+    }
+    autoF0F34CCC_at = 0;
+    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 10.0), 0), c_unitCountAlive))) && autoF0F34CCC_at <= 100.0) {
+        Wait(2.0, c_timeAI);
+        autoF0F34CCC_at = autoF0F34CCC_at + 2.0;
+    }
+    return true;
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassHellion_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassHellion_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassHellion_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassHellion_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassHellion_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassHellion_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassHellion_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassHellion_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassHellion_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassHellion_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassHellion_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassHellion_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassHellion_lp_dropCount;
+
+    // Variable Declarations
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int autoD5FE4818_n;
+    int autoD5FE4818_i;
+    fixed autoA620CFDD_at;
+
+    // Variable Initialization
+    lv_attackGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    autoD5FE4818_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 0.8, 0.0, 0.0)) + 2.0));
+    for (autoD5FE4818_i = 1; autoD5FE4818_i <= autoD5FE4818_n; autoD5FE4818_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Hellion", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    Wait(1.0, c_timeAI);
+    if ((PointPathingIsConnected(UnitGetPosition(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive)), lp_target) == true)) {
+        UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
+    }
+    else {
+        UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("attack", 0), lp_target), c_orderQueueReplace);
+    }
+    autoA620CFDD_at = 0;
+    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 4.0), 0), c_unitCountAlive))) && autoA620CFDD_at <= 100.0) {
+        Wait(2.0, c_timeAI);
+        autoA620CFDD_at = autoA620CFDD_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    AISetGroupScriptControlled(lv_attackGroup, false);
+    AISetGroupSuicide(lv_attackGroup, true);
+    return true;
+}
+
+trigger auto_lib74A68E34_gf_MutatorHarassReaper_Trigger = null;
+point auto_lib74A68E34_gf_MutatorHarassReaper_lp_target;
+int auto_lib74A68E34_gf_MutatorHarassReaper_lp_targetPlayer;
+int auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropPlayer;
+int auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropCount;
+
+void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+    auto_lib74A68E34_gf_MutatorHarassReaper_lp_target = lp_target;
+    auto_lib74A68E34_gf_MutatorHarassReaper_lp_targetPlayer = lp_targetPlayer;
+    auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropPlayer = lp_dropPlayer;
+    auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropCount = lp_dropCount;
+
+    if (auto_lib74A68E34_gf_MutatorHarassReaper_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorHarassReaper_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassReaper_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorHarassReaper_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorHarassReaper_TriggerFunc (bool testConds, bool runActions) {
+    point lp_target = auto_lib74A68E34_gf_MutatorHarassReaper_lp_target;
+    int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassReaper_lp_targetPlayer;
+    int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropPlayer;
+    int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassReaper_lp_dropCount;
+
+    // Variable Declarations
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+
+    // Automatic Variable Declarations
+    int auto4F253D65_n;
+    int auto4F253D65_i;
+    fixed autoD10A1783_at;
+
+    // Variable Initialization
+    lv_attackGroup = UnitGroupEmpty();
+    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
+
+    // Implementation
+    auto4F253D65_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 0.8, 0.0, 0.0)) + 2.0));
+    for (auto4F253D65_i = 1; auto4F253D65_i <= auto4F253D65_n; auto4F253D65_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Reaper", 0, lp_dropPlayer, lp_target);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    Wait(1.0, c_timeAI);
+    if ((PointPathingIsConnected(UnitGetPosition(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive)), lp_target) == true)) {
+        UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
+    }
+    else {
+        UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("attack", 0), lp_target), c_orderQueueReplace);
+    }
+    autoD10A1783_at = 0;
+    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 4.0), 0), c_unitCountAlive))) && autoD10A1783_at <= 100.0) {
+        Wait(2.0, c_timeAI);
+        autoD10A1783_at = autoD10A1783_at + 2.0;
+    }
+    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    AISetGroupScriptControlled(lv_attackGroup, false);
+    AISetGroupSuicide(lv_attackGroup, true);
+    return true;
+}
+
 // Triggers
 //--------------------------------------------------------------------------------------------------
 // Trigger: ExtraUpgrades
@@ -976,6 +1623,7 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
     TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
     TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
+    TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
     return true;
 }
 
@@ -3757,6 +4405,319 @@ void lib74A68E34_gt_MengskPrestigeZergRefund_Init () {
     TriggerAddEventUnitAbility(lib74A68E34_gt_MengskPrestigeZergRefund, null, AbilityCommand("MengskZergCalldownLevel4", 0), c_unitAbilStageExecute, false);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gf_CT_RegisterMutator("Teeming", lib74A68E34_gt_MutatorTeemingInit, lib74A68E34_gt_MutatorTeemingShutdown);
+    libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorInit_Init () {
+    lib74A68E34_gt_MutatorInit = TriggerCreate("lib74A68E34_gt_MutatorInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_MutatorInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM_CommanderMutatorsClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MM_CommanderMutatorsClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == libCOUI_gv_cU_CommanderMutatorButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0, c_timeGame);
+    DialogSetVisible(libCOUI_gv_cU_MutatorDialog, PlayerGroupSingle(EventPlayer()), false);
+    lib74A68E34_gf_MM_MutatorDisplay(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MM_CommanderMutatorsClicked_Init () {
+    lib74A68E34_gt_MM_CommanderMutatorsClicked = TriggerCreate("lib74A68E34_gt_MM_CommanderMutatorsClicked_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MM_CommanderMutatorsClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM_MutatorAcceptClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MM_MutatorAcceptClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_mM_MutatorAcceptButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MM_MutatorUpdateData();
+    lib74A68E34_gf_MM_MutatorClose(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MM_MutatorAcceptClicked_Init () {
+    lib74A68E34_gt_MM_MutatorAcceptClicked = TriggerCreate("lib74A68E34_gt_MM_MutatorAcceptClicked_Func");
+    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_MM_MutatorAcceptClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MM_MutatorCancelClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MM_MutatorCancelClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_mM_MutatorCancelButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MM_MutatorClose(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MM_MutatorCancelClicked_Init () {
+    lib74A68E34_gt_MM_MutatorCancelClicked = TriggerCreate("lib74A68E34_gt_MM_MutatorCancelClicked_Func");
+    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_MM_MutatorCancelClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTeemingInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTeemingInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoB9C9CBEE_g;
+    int autoB9C9CBEE_u;
+    unit autoB9C9CBEE_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB9C9CBEE_g = libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterUser1) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32))), 0);
+    autoB9C9CBEE_u = UnitGroupCount(autoB9C9CBEE_g, c_unitCountAll);
+    for (;; autoB9C9CBEE_u -= 1) {
+        autoB9C9CBEE_var = UnitGroupUnitFromEnd(autoB9C9CBEE_g, autoB9C9CBEE_u);
+        if (autoB9C9CBEE_var == null) { break; }
+        UnitCreate(1, UnitGetType(autoB9C9CBEE_var), 0, UnitGetOwner(autoB9C9CBEE_var), UnitGetPosition(autoB9C9CBEE_var), UnitGetFacing(autoB9C9CBEE_var));
+        UnitGroupAdd(lib74A68E34_gv_mutatorTeemingUnits, UnitLastCreated());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTeemingInit_Init () {
+    lib74A68E34_gt_MutatorTeemingInit = TriggerCreate("lib74A68E34_gt_MutatorTeemingInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTeemingShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTeemingShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoE8C8164E_g;
+    int autoE8C8164E_u;
+    unit autoE8C8164E_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE8C8164E_g = lib74A68E34_gv_mutatorTeemingUnits;
+    autoE8C8164E_u = UnitGroupCount(autoE8C8164E_g, c_unitCountAll);
+    for (;; autoE8C8164E_u -= 1) {
+        autoE8C8164E_var = UnitGroupUnitFromEnd(autoE8C8164E_g, autoE8C8164E_u);
+        if (autoE8C8164E_var == null) { break; }
+        UnitRemove(autoE8C8164E_var);
+    }
+    UnitGroupClear(lib74A68E34_gv_mutatorTeemingUnits);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTeemingShutdown_Init () {
+    lib74A68E34_gt_MutatorTeemingShutdown = TriggerCreate("lib74A68E34_gt_MutatorTeemingShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorHarassInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorHarassInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(lib74A68E34_gt_MutatorHarassSpawn, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorHarassInit_Init () {
+    lib74A68E34_gt_MutatorHarassInit = TriggerCreate("lib74A68E34_gt_MutatorHarassInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorHarassSpawn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorHarassSpawn_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    timer[libCOOC_gv_cCC_MAXPLAYERS + 1] lv_dropPodTimers;
+    int lv_indexPlayer;
+    unitgroup lv_attackGroup;
+    point lv_dropLocation;
+    point lv_targetLocation;
+    int lv_dropPlayer;
+    int[libCOOC_gv_cCC_MAXPLAYERS + 1] lv_dropCount;
+    unitgroup lv_townHallGroup;
+    unit lv_pickedTownHall;
+    unitgroup lv_townHallMinerals;
+
+    // Automatic Variable Declarations
+    playergroup auto7B23ABAA_g;
+    playergroup auto935255A7_g;
+    unitgroup auto43C9ECFA_g;
+    int auto43C9ECFA_u;
+    unit auto43C9ECFA_var;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= libCOOC_gv_cCC_MAXPLAYERS; init_i += 1) {
+        lv_dropPodTimers[init_i] = TimerCreate();
+    }
+    lv_attackGroup = UnitGroupEmpty();
+    for (init_i = 0; init_i <= libCOOC_gv_cCC_MAXPLAYERS; init_i += 1) {
+        lv_dropCount[init_i] = 100;
+    }
+    lv_townHallGroup = UnitGroupEmpty();
+    lv_townHallMinerals = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7B23ABAA_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto7B23ABAA_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        TimerStart(lv_dropPodTimers[lv_indexPlayer], 5.0, false, c_timeAI);
+    }
+    while (true) {
+        Wait(10.0, c_timeAI);
+        auto935255A7_g = libCOOC_gf_HumanPlayers();
+        lv_indexPlayer = -1;
+        while (true) {
+            lv_indexPlayer = PlayerGroupNextPlayer(auto935255A7_g, lv_indexPlayer);
+            if (lv_indexPlayer < 0) { break; }
+            if ((libCOMU_gv_cT_DebugDropPodSpawnNow[lv_indexPlayer] == true)) {
+                libNtve_gf_StopTimer(lv_dropPodTimers[lv_indexPlayer]);
+                libCOMU_gv_cT_DebugDropPodSpawnNow[lv_indexPlayer] = false;
+            }
+
+            if ((TimerGetRemaining(lv_dropPodTimers[lv_indexPlayer]) <= 0.0)) {
+                lv_dropCount[lv_indexPlayer] += 1;
+                if ((lv_indexPlayer == 1)) {
+                    lv_dropPlayer = 3;
+                }
+                else {
+                    lv_dropPlayer = 4;
+                }
+                lv_townHallGroup = libCOOC_gf_CC_TownHallsForPlayer(lv_indexPlayer);
+                if ((UnitGroupCount(libCOOC_gf_CC_TownHallsForPlayer(lv_indexPlayer), c_unitCountAlive) >= 1)) {
+                    auto43C9ECFA_g = lv_townHallGroup;
+                    auto43C9ECFA_u = UnitGroupCount(auto43C9ECFA_g, c_unitCountAll);
+                    for (;; auto43C9ECFA_u -= 1) {
+                        auto43C9ECFA_var = UnitGroupUnitFromEnd(auto43C9ECFA_g, auto43C9ECFA_u);
+                        if (auto43C9ECFA_var == null) { break; }
+                        if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(auto43C9ECFA_var), 8.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 5)) {
+                            UnitGroupRemove(lv_townHallGroup, auto43C9ECFA_var);
+                        }
+
+                    }
+                }
+
+                lv_pickedTownHall = UnitGroupRandomUnit(lv_townHallGroup, c_unitCountAlive);
+                if ((lv_pickedTownHall == null)) {
+                    continue;
+                }
+
+                UnitGroupClear(lv_townHallMinerals);
+                UnitGroupAddUnitGroup(lv_townHallMinerals, UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_pickedTownHall), 8.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+                UnitGroupAdd(lv_townHallMinerals, lv_pickedTownHall);
+                lv_targetLocation = UnitGroupCenterOfGroup(lv_townHallMinerals);
+                lv_targetLocation = lib74A68E34_gf_VaryPosition(lv_targetLocation, 2.0);
+                libCOMI_gf_CreatePingCoop(PlayerGroupAll(), "PingAlert", lv_targetLocation, ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 4.0);
+                lib74A68E34_gf_MutatorHarassReaper(lv_targetLocation, lv_indexPlayer, lv_dropPlayer, lv_dropCount[lv_indexPlayer]);
+                TimerStart(lv_dropPodTimers[lv_indexPlayer], libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_indexPlayer), 240.0, 220.0, 160.0, 120.0, 0.0, 0.0), false, c_timeAI);
+            }
+
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorHarassSpawn_Init () {
+    lib74A68E34_gt_MutatorHarassSpawn = TriggerCreate("lib74A68E34_gt_MutatorHarassSpawn_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorHarassSpawn, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorHarassShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorHarassShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerStop(lib74A68E34_gt_MutatorHarassSpawn);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorHarassShutdown_Init () {
+    lib74A68E34_gt_MutatorHarassShutdown = TriggerCreate("lib74A68E34_gt_MutatorHarassShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_ApplyCommanderRewards_Init();
@@ -3827,6 +4788,15 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TychusUIReorderHeroPurchased_Init();
     lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
+    lib74A68E34_gt_MutatorInit_Init();
+    lib74A68E34_gt_MM_CommanderMutatorsClicked_Init();
+    lib74A68E34_gt_MM_MutatorAcceptClicked_Init();
+    lib74A68E34_gt_MM_MutatorCancelClicked_Init();
+    lib74A68E34_gt_MutatorTeemingInit_Init();
+    lib74A68E34_gt_MutatorTeemingShutdown_Init();
+    lib74A68E34_gt_MutatorHarassInit_Init();
+    lib74A68E34_gt_MutatorHarassSpawn_Init();
+    lib74A68E34_gt_MutatorHarassShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
