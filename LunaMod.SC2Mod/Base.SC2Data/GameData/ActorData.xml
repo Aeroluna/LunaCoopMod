@@ -95,6 +95,13 @@
     <CActorModel id="BlindingCloudStructureModelAttachmentPlanetary">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveUpBy1"/>
     </CActorModel>
+    <CActorUnit id="ChangelingZealot">
+        <WalkAnimMoveSpeed value="3"/>
+    </CActorUnit>
+    <CActorUnit id="CorruptorStetmann">
+        <On Terms="Effect.CorruptorStetmannCausticSprayBasePersistent.Start" Send="AnimBracketStart Spell Spell Spell Stand ContentForceLooping 0.500000 AsTimeScale"/>
+        <On Terms="Effect.CorruptorStetmannCausticSprayBasePersistent.Stop" Send="AnimBracketStop Spell"/>
+    </CActorUnit>
     <CActorSound id="DarkTemplarAttackLaunchSound">
         <On Terms="WeaponStop.WarpBlades" Send="SoundSetMuted 1 0"/>
         <On Terms="WeaponStop.WarpBlades" Send="Destroy"/>
@@ -114,6 +121,63 @@
     <CActorMissile id="HammerSecurityAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
     </CActorMissile>
+    <CActorUnit id="Hydralisk">
+        <On index="65" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="67" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="73" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="74" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
+    <CActorMissile id="HydraliskAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit HydraliskRangeUpgraded" Send="ModelSwap HydraliskMissile_Upgrade"/>
+    </CActorMissile>
+    <CActorUnit id="HydraliskImpaler">
+        <On index="65" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="67" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="73" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="74" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
+    <CActorUnit id="HydraliskLurker">
+        <On index="65" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="67" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="73" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="74" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
+    <CActorUnit id="HydraliskMengsk">
+        <On index="64" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="65" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="67" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="72" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="73" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
+    <CActorUnit id="HydraliskStetmann">
+        <On index="65" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="67" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="73" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="74" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaHydraliskLevel2">
+        <On index="65" Send="AnimBracketStart AttackSuperior Attack,Superior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="66" Send="AnimBracketStart AttackInferior Attack,Inferior {} {} 0 1.245509 AsTimeScale"/>
+        <On index="67" Send="AnimPlay AttackCover Attack,Cover 0 -1.000000 -1.000000 1.500000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Attack Attack {} {} 0 1.245509 AsTimeScale"/>
+        <On index="73" Send="TimerSet 0.267000 MeleeAttackLaunch"/>
+        <On index="74" Send="TimerSet 0.066700 MeleeAttackLaunch"/>
+        <WalkAnimMoveSpeed value="2.6484"/>
+    </CActorUnit>
     <CActorUnit id="InfestedTerransEgg">
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
     </CActorUnit>
@@ -126,6 +190,7 @@
     <CActorMissile id="MercReaper">
         <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
     </CActorMissile>
+    <CActorSound id="Mothership_Birth" parent="SoundOneShot"/>
     <CActorMissile id="Reaper">
         <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
     </CActorMissile>
@@ -2616,13 +2681,14 @@
         <On index="64" Terms="Abil.VortexArtanis.SourceCastStart"/>
         <On index="65" Terms="Abil.MothershipArtanisMassRecall.SourceCastStart"/>
         <On index="66" Terms="ActorCreation" Send="SetOpacity"/>
-        <On index="67" Terms="ActorCreation" Send="TimerSet 1.500000 Reveal"/>
+        <On index="67" Terms="ActorCreation" Send="TimerSet 3.000000 Reveal"/>
         <On index="68" Terms="TimerExpired; TimerName Reveal" Send="SetOpacity 1.000000"/>
         <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="TimerSet 0.250000 FadeOutScale"/>
         <On Terms="TimerExpired; TimerName FadeOutScale" Send="SetOpacity 0.000000 0.750000"/>
         <On Terms="ActorCreation" Send="Create MothershipArtanisStargateWarpIn"/>
         <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
         <On Terms="Behavior.MothershipArtanisPlanetCracker.Off" Send="AnimBracketStop Work"/>
+        <On Terms="ActorCreation" Send="Create Mothership_Birth"/>
         <PortraitActor value="SelendisEx2Portrait"/>
         <PortraitModel value="SelendisEx2Portrait"/>
         <SoundArray index="Ready" value="Selendis_Ready"/>
@@ -2637,8 +2703,8 @@
     </CActorBeamSimple>
     <CActorModel id="MothershipArtanisStargateWarpIn" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
-        <On index="0" Terms="ActorCreation" Send="$Spell"/>
-        <On index="1" Terms="ActorCreation" Send="TimerSet 1.500000 Kill"/>
+        <On index="0" Terms="ActorCreation" Send="$Spell 0 -1.000000 -1.000000 0.500000 AsTimeScale"/>
+        <On index="1" Terms="ActorCreation" Send="TimerSet 3.000000 Kill"/>
         <On index="2" Terms="TimerExpired; TimerName Kill" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachTurret"/>

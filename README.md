@@ -125,20 +125,24 @@ thanks Enoki.
 
 - Added targeting beam to Widow Mine (and variants) attack.
 - Increased visibility of Widow Mine attack targeting line and targeted unit (Targeted unit is tinted).
-- Added a visual indicator to Colossus (and variants) attacks when Extended Thermal Lance is researched.
-- Added a visual indicator to Phoenix (and variants) attacks when Anion Pulse Crystals is researched.
-- Added a visual blue trail to Marauder (and variants) attacks after upgrading Concussive Shells.
+- Added a visual indicator to Colossus (and variants) attacks after Extended Thermal Lance is researched.
+- Added a visual indicator to Phoenix (and variants) attacks after Anion Pulse Crystals is researched.
+- Added a visual blue trail to Marauder (and variants) attacks after Concussive Shells is researched.
+- Added a visual green effect to Hydralisk (and variants) attacks after Muscular Augments is researched.
 - Added a visual red lazer sights when Mag-Field Accelerators is researched.
 - Changed Cyclone's Lock On ability visual missiles to the large missiles from Versus.
 - Increased Zealot (and variants) animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
+- Increased Hydralisk (and variants) animation walk speed from 2.086 to 2.6484.
+- Increased Hydralisk (and variants) attack animation speed.
 - Added turret tracking to Colossi (and variants).
 - Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
 - Changed town hall structures to automatically rally to a mineral field when built or landed.
 - Added an AOE indicator to Disruptor's Purification Nova ability.
-- Fixed a bug where Protoss units were using an outdated AoE indicator.
+- Changed Protoss units AoE indicator to an updated version.
 - Added pre-placement visual indicator and sound to Oracle's Stasis Ward ability.
 - Added a very short cooldown to Stimpack to prevent rapid re-cast.
 - Fixed a bug where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
+- Fixed a bug where Guardian Shell would not affect units on a different cliff level.
 
 Copied from Versus.
 
@@ -1111,6 +1115,10 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 Copied from Versus.
 
+- Fixed a bug where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
+
+yeah.
+
 ## Dehaka
 
 - Reduced the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
@@ -1388,6 +1396,10 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 - Added Map Boss attribute to Stetellites.
 
 Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake.
+
+- Added animation for Mecha Corruptor's Terraclean Solvent ability.
+
+Copied from Versus.
 
 ## Mengsk
 
