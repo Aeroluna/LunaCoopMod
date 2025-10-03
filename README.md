@@ -573,10 +573,6 @@ P2 suspiciously improved all upgrades but this one.
 
 Even with this upgrade, Wraiths are fragile. This should help improve their survivability.
 
-- Changed Defense Matrix to no longer require research.
-
-https://www.maguro.one/2017/10/upgrades-in-co-op.html
-
 ## Zagara
 
 - Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
