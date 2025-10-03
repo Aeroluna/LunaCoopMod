@@ -874,6 +874,12 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 
 Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that end up doing 0.5 damage to a Zergling that has +1 armor. Reducing the amount of active Destroyers but making them more impactful should better match the visual intensity of their bouncing attack.
 
+- Buffed Havoc's Force Field ability to no longer be shattered by massive units.
+- Buffed Havoc's Force Field ability to start with 3 charges.
+- Renamed Havoc's Force Field ability into Subjugation Field.
+
+Some Force Field buffs to make it less niche and a new fancy name to make it distinct.
+
 - Increased Vanguard attack count from 8 to 16.
 - Reduced Vanguard range by 1.5.
 

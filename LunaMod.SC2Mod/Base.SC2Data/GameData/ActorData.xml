@@ -115,6 +115,23 @@
     <CActorModel id="FleetwideJumpTeleportOut">
         <On index="2" Terms="Behavior.FleetwideJumpTeleportOut.On; ValidateUnit SourceNotHHBattlecruiser"/>
     </CActorModel>
+    <CActorUnit id="ForceFieldTaldarim" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ForceFieldTaldarim">
+        <On Terms="ActorCreation" Send="Create SoundEmitter Sentry_ForceFieldLoop"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,16,16 3.000000}"/>
+        <Model value="ForceField"/>
+        <BuildModel value="ForceField"/>
+        <DeathArray index="Normal" ModelLink="ForceField" SoundLink="Sentry_ForceFieldDeath"/>
+        <PlacementModel value="Invisible"/>
+        <HeroIcon value="Assets\Textures\BTN-Ability-Terran-ScannerSweep.dds"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\BTN-Ability-Terran-ScannerSweep.dds"/>
+    </CActorUnit>
     <CActorMissile id="HHReaper">
         <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
     </CActorMissile>
