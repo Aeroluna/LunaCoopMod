@@ -124,9 +124,15 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HHOrdnanceTowerAttack">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="2"/>
+        <PeriodicEffect value="HHOrdnanceTowerAttackSearch"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="HHValkyrieCombatSpeed">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="EnemyInWeaponRange"/>
+        <DisableValidatorArray value="CasterIsAttacking"/>
         <Modification MoveSpeedBonus="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HHValkyrieRecall">

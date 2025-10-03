@@ -122,6 +122,31 @@
     <CEffectSet id="DarkPylonRecallSet">
         <EffectArray value="NexusMassRecallCastingRB"/>
     </CEffectSet>
+    <CEffectModifyUnit id="HHOrdnanceTowerAttackCooldown">
+        <Weapon Weapon="HHOrdnanceTower" CooldownFraction="1"/>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="HHOrdnanceTowerAttackSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="AirTarget"/>
+        </TargetSorts>
+        <AreaArray Radius="12" Effect="HHOrdnanceTowerAttackSet"/>
+        <MaxCount value="1"/>
+        <ValidatorArray value="CanUseAttack"/>
+        <ValidatorArray value="CasterNotAttacking"/>
+        <ValidatorArray value="CasterNotStunnedorStasised"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HHOrdnanceTowerAttackSet">
+        <EffectArray value="HHOrdnanceTowerAttackCooldown"/>
+        <EffectArray value="HHOrdnanceTowerLM"/>
+    </CEffectSet>
+    <CEffectSwitch id="HHBattlecruiserSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="GroundUnitFilter" Effect="HHATSLaserBatteryLM"/>
+        <CaseDefault value="HHATALaserBatteryLM"/>
+    </CEffectSwitch>
     <CEffectDamage id="VorazunCoopDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>

@@ -102,6 +102,12 @@
     <CActorModel id="DarkTemplarShadowFuryImpact">
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
+    <CActorModel id="FleetwideJumpTeleportIn">
+        <On index="2" Terms="Behavior.FleetwideJumpTeleportIn.On; ValidateUnit SourceNotHHBattlecruiser"/>
+    </CActorModel>
+    <CActorModel id="FleetwideJumpTeleportOut">
+        <On index="2" Terms="Behavior.FleetwideJumpTeleportOut.On; ValidateUnit SourceNotHHBattlecruiser"/>
+    </CActorModel>
     <CActorMissile id="HHReaper">
         <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
     </CActorMissile>
@@ -833,6 +839,17 @@
     </CActorUnit>
     <CActorUnit id="HHBattlecruiser">
         <PortraitModel value="BattleCruiser_CovertOps_Collection_Portrait"/>
+        <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
+        <Remove Terms="Abil.attack.ReadyStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
+        <On index="91" Terms="WeaponStart.HHATALaserBattery.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA"/>
+        <On index="92" Terms="WeaponStart.HHATALaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS"/>
+        <On Terms="Effect.FleetwideJumpTeleport" Send="CombatRevealClearTimers"/>
+        <On Terms="Behavior.FleetwideJumpTeleportOut.On" Send="SetOpacity"/>
+        <On Terms="Behavior.FleetwideJumpTeleportIn.Off" Send="SetOpacity 1.000000"/>
+        <On Terms="Behavior.FleetwideJumpTeleportOut.On" Send="Create HyperjumpLaunch"/>
+        <On Terms="Behavior.FleetwideJumpTeleportIn.On" Send="Create HyperjumpImpact"/>
+        <On Terms="WeaponStop.HHATALaserBattery.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
+        <On Terms="WeaponStop.HHATALaserBattery.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
     </CActorUnit>
     <CActorMissile id="HHBomber">
         <On Terms="UnitMovementUpdate.*.Walk" Send="Create HHBomberBoostModel"/>

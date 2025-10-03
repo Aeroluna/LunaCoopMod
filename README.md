@@ -169,7 +169,7 @@ Copied from Versus.
 - Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
 - Fixed a bug where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
 
-thanks Common Sense Balance.
+thanks OmniSkeptic.
 
 - Reduced health of Cyclone from 200 to 120.
 - Increased movement speed of Cyclone from 2.8125 to 3.375.
@@ -221,6 +221,7 @@ This includes adding a cast time, the 6 second wait, and some visual changes. Th
 
 - Removed Reaper's D-8 Charge weapon.
 - Reduced Reaper's P-45 Guass Pistol weapon damage from 4 (+5 vs Light) to 4.
+- Increased Reaper's P-45 Guass Pistol range from 4.5 to 5.
 - Increased Reaper's hitpoints from 50 to 60.
 - Added Combat Drugs passive.
 - Added KD8 Charge ability.
@@ -1236,9 +1237,18 @@ Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the dama
 
 - Removed random delay between shots from Sovereign Battlecruiser's weapon.
 
-Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
+Overall increases attack speed and allows the Sovereign Battlecruiser to be affected by attack speed buffs.
+
+- Reversed the Tactical Jump out animation.
+
+For some reason, it looked like ships were teleporting backwards from their destination.
+
+- Added Sovereign Battlecruiser Tactical Jump animation.
+
+The Sovereign Battlecruiser has a fully functional teleport animation, so let's use that instead of the generic stand-in.
 
 - Fixed a bug where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
+- Fixed a bug where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 
 yeah.
 
