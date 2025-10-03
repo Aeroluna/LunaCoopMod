@@ -725,6 +725,10 @@ Should make massing Dark Archons more viable instead of watching them tickle uni
 
 The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a skin in NCO), so instead, the Dark Archon is given a unique Nerazim themed skin. As a cool added bonus, using two Signifiers will create a female Dark Archon instead.
 
+- Changed Black Hole to original red model.
+
+Contradicting the previous change, Black Hole has been changed to red to keep it visually distinct from Vortex.
+
 - Added Revelation to Oracle.
 - Buffed Revelation to additionally suppress detection.
 

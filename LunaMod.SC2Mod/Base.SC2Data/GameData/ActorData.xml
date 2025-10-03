@@ -253,6 +253,12 @@
         <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,255,255 0.200000"/>
     </CActorMissile>
+    <CActorModel id="VoidSentryBlackHole">
+        <Remove Terms="AssetPreInit; !ValidatePlayer NoDarkProtoss" Send="ModelLinkCustomize BlackHoleNoTaldarim"/>
+    </CActorModel>
+    <CActorSplat id="VoidSentryBlackHoleCursorSplat">
+        <Remove Terms="AssetPreInit; !ValidatePlayer NoDarkProtoss" Send="ModelLinkCustomize VoidProtossAOECursorSplat"/>
+    </CActorSplat>
     <CActorAction id="VorazunCoopAttack" parent="GenericAttack" effectAttack="VorazunCoopDamage">
         <LaunchAssets Sound="Zeratul_AttackLaunch"/>
         <ImpactMap index="None" Sound="Zeratul_AttackImpact"/>
