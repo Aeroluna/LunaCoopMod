@@ -7,6 +7,26 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="AdeptDamage">
+        <AttributeBonus index="Light" value="12"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectSet id="AdeptLMSet">
+        <EffectArray index="0" value="AdeptPurifierLM"/>
+    </CEffectSet>
+    <CEffectDamage id="AdeptPurifierDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Light" value="6"/>
+        <Kind value="Ranged"/>
+        <Amount value="16"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="AdeptPurifierLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="AdeptPurifierDamage"/>
+        <AmmoUnit value="AdeptWeapon"/>
+        <Movers Link="AdeptWeapon"/>
+    </CEffectLaunchMissile>
     <CEffectSet id="AllUnitBehaviorControllerSubset1">
         <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
     </CEffectSet>
@@ -50,6 +70,7 @@
     <CEffectIssueOrder id="CommandStructureOrderAutoRally">
         <ValidatorArray value="Minerals"/>
         <ValidatorArray value="CasterIsNotHatchery"/>
+        <ValidatorArray value="CasterIsNotHatcheryStetmann"/>
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Abil value="Rally"/>
@@ -144,7 +165,7 @@
         <Behavior value="HHValkyrieRecall"/>
     </CEffectApplyBehavior>
     <CEffectIssueOrder id="HHValkyrieRecallIssueOrder">
-        <ValidatorArray value="CasterisGreaterThan10"/>
+        <ValidatorArray value="CasterisGreaterThan12"/>
         <EditorCategories value=""/>
         <Abil value="move"/>
         <Target Value="CasterPoint"/>

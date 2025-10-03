@@ -83,6 +83,19 @@
             </Upgrade>
         </Instances>
     </CUser>
+    <CUser id="CoopAIUpgrade">
+        <Instances Id="Resonating Glaives">
+            <Fixed Fixed="900">
+                <Field Id="TimePerDifficult" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="600">
+                <Field Id="TimePerDifficult" Index="3"/>
+            </Fixed>
+            <Upgrade Upgrade="AdeptPiercingAttack">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+    </CUser>
     <CUser id="ExtraUpgrades">
         <Fields Id="Source Upgrade" Type="Upgrade"/>
         <Fields Id="Target Upgrades" Type="Upgrade" Count="4"/>
@@ -683,86 +696,110 @@
         </Instances>
     </CUser>
     <CUser id="MutationAbominations">
-        <Instances index="29" Id="LavaBurst">
-            <User index="0" Instance="LavaBurst"/>
+        <Instances index="24" Id="Teeming">
+            <Int index="0" Int="2"/>
+            <User index="0" Instance="Teeming"/>
         </Instances>
-        <Instances index="30" Id="MissileCommand">
-            <User index="0" Instance="MissileBarrage"/>
+        <Instances index="25" Id="AggressiveDeployment">
+            <User index="0" Instance="DropPods"/>
         </Instances>
-        <Instances index="31" Id="Outbreak">
-            <User index="0" Instance="InfestedTerranSpawner"/>
+        <Instances index="26" Id="Diffusion">
+            <User index="0" Instance="DamageBounce"/>
         </Instances>
-        <Instances index="32" Id="SelfDestruction">
-            <User index="0" Instance="DeathAOE"/>
+        <Instances index="27" Id="DoubleEdged">
+            <User index="0" Instance="DamageReflect"/>
         </Instances>
-        <Instances index="33" Id="WeMoveUnseen">
-            <User index="0" Instance="AllEnemiesCloaked"/>
+        <Instances index="28" Id="FatalAttraction">
+            <User index="0" Instance="DeathPull"/>
         </Instances>
-        <Instances index="34" Id="InfestationStation">
+        <Instances index="29" Id="Fear">
+            <User index="0" Instance="Fear"/>
+        </Instances>
+        <Instances index="35" Id="InfestationStation">
+            <Int index="0" Int="3"/>
             <User index="0" Instance="InfestationStation"/>
         </Instances>
-        <Instances index="35" Id="NuclearMines">
+        <Instances index="36" Id="NuclearMines">
             <Int index="0" Int="3"/>
             <User index="0" Instance="NuclearMines"/>
         </Instances>
-        <Instances index="36" Id="RepulsiveField">
+        <Instances index="37" Id="RepulsiveField">
             <Int index="0" Int="3"/>
             <User index="0" Instance="RepulsiveField"/>
         </Instances>
-        <Instances index="37" Id="Magnificent">
+        <Instances index="38" Id="Magnificent">
             <Int index="0" Int="4"/>
             <User index="0" Instance="Magnificent"/>
         </Instances>
-        <Instances index="38" Id="Blizzard">
+        <Instances index="39" Id="Blizzard">
             <Int index="0" Int="4"/>
             <User index="0" Instance="Blizzard"/>
         </Instances>
-        <Instances index="39" Id="Avenger">
+        <Instances index="40" Id="Harassment">
+            <Int index="0" Int="4"/>
+            <User index="0" Instance="Harass"/>
+        </Instances>
+        <Instances index="41" Id="Avenger">
             <User index="0" Instance="Avenger"/>
         </Instances>
-        <Instances index="40" Id="MutuallyAssuredDestruction">
+        <Instances index="42" Id="MutuallyAssuredDestruction">
             <User index="0" Instance="HybridNuke"/>
         </Instances>
-        <Instances index="41" Id="PowerOverwhelming">
+        <Instances index="43" Id="PowerOverwhelming">
+            <Int index="0" Int="5"/>
             <User index="0" Instance="OopsAllCasters"/>
         </Instances>
-        <Instances index="43" Id="GreatWall">
+        <Instances index="44" Id="VoidReanimators">
+            <Int index="0" Int="5"/>
+            <User index="0" Instance="Reanimators"/>
+        </Instances>
+        <Instances index="45" Id="GreatWall">
             <Int index="0" Int="5"/>
             <User index="0" Instance="GreatWall"/>
         </Instances>
-        <Instances index="44" Id="RipField">
+        <Instances index="46" Id="RipField">
             <Int index="0" Int="5"/>
             <User index="0" Instance="RipFieldGenerators"/>
         </Instances>
-        <Instances index="45" Id="KillBots">
+        <Instances index="47" Id="KillBots">
             <Int index="0" Int="6"/>
             <User index="0" Instance="KillBots"/>
         </Instances>
-        <Instances index="46" Id="Minesweeper">
+        <Instances index="48" Id="Minesweeper">
             <Int index="0" Int="6"/>
             <User index="0" Instance="SpiderMines"/>
         </Instances>
-        <Instances index="47" Id="BlackDeath">
+        <Instances index="49" Id="BlackDeath">
+            <Int index="0" Int="7"/>
             <User index="0" Instance="Plague"/>
         </Instances>
-        <Instances index="48" Id="JustDie">
+        <Instances index="50" Id="JustDie">
+            <Int index="0" Int="7"/>
             <User index="0" Instance="JustDie"/>
         </Instances>
-        <Instances index="49" Id="Polarity">
+        <Instances index="51" Id="Polarity">
             <Int index="0" Int="7"/>
             <User index="0" Instance="Polarity"/>
         </Instances>
-        <Instances index="50" Id="Transmutation">
+        <Instances index="52" Id="Transmutation">
             <Int index="0" Int="7"/>
             <User index="0" Instance="Evolve"/>
         </Instances>
-        <Instances index="51" Id="Mothership">
-            <Int index="0" Int="7"/>
-            <User index="0" Instance="Mothership"/>
+        <Instances Id="Mothership">
+            <Int Int="7">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Mothership">
+                <Field Id="Mutator"/>
+            </User>
         </Instances>
-        <Instances index="52" Id="TheMist">
-            <Int index="0" Int="7"/>
-            <User index="0" Instance="TheMist"/>
+        <Instances Id="TheMist">
+            <Int Int="7">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="TheMist">
+                <Field Id="Mutator"/>
+            </User>
         </Instances>
         <Instances Id="Propagators">
             <Int Int="8">
@@ -809,7 +846,6 @@
                 <Field Id="Points"/>
             </Int>
         </Instances>
-        <Instances/>
     </CUser>
     <CUser id="MutationDifficultyLevels">
         <Instances Id="Plus7">
@@ -880,7 +916,7 @@
             <Image Image="Assets\Textures\btn-ability-spearofadun-massrecall.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int index="0" Int="1">
+            <Int Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="91">
@@ -897,7 +933,7 @@
             <Image Image="Assets\Textures\btn-ability-zerg-harvestcorpse.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int index="0" Int="1">
+            <Int Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="1">
@@ -905,9 +941,6 @@
             </Int>
             <Int Int="92">
                 <Field Id="ListOrder"/>
-            </Int>
-            <Int Int="1">
-                <Field Id="Unfinished"/>
             </Int>
             <Text Text="UserData/Mutators/Harass_Name">
                 <Field Id="Name"/>

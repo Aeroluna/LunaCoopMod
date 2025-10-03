@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorPlayerRequirement id="AdeptGlaivesUpgraded">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveAdeptPiercingAttack"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="AutoSiegeTankSiege">
         <CombineArray value="SiegeTankMinRangeHostileSearchEmpty"/>
     </CValidatorCombine>
@@ -18,6 +24,16 @@
         <Range value="3"/>
         <Unit value="Battlecruiser"/>
     </CValidatorLocationPlacement>
+    <CValidatorUnitType id="CasterIsNotHatchery">
+        <WhichUnit Value="Caster"/>
+        <Value value="Hatchery"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="CasterIsNotHatcheryStetmann">
+        <WhichUnit Value="Caster"/>
+        <Value value="HatcheryStetmann"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="CasterIsNotYoinked">
         <WhichUnit Value="Caster"/>
         <Behavior value="YoinkTentacle"/>
@@ -113,10 +129,10 @@
         <Compare value="GT"/>
         <Range value="6"/>
     </CValidatorLocationCompareRange>
-    <CValidatorLocationCompareRange id="CasterisGreaterThan10">
+    <CValidatorLocationCompareRange id="CasterisGreaterThan12">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="GT"/>
-        <Range value="10"/>
+        <Range value="12"/>
     </CValidatorLocationCompareRange>
     <CValidatorLocationCompareRange id="CasterisLessThan1">
         <WhichLocation Value="TargetUnit"/>

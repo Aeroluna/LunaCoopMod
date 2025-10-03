@@ -14,6 +14,34 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorUnit id="Adept">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-protoss-adept.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-adept.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-adept.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-adept-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-adept-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorAction id="AdeptPurifierAttack" parent="GenericAttack" effectImpact="AdeptPurifierDamage" effectLaunch="AdeptPurifierLM">
+        <LaunchAssets Sound="Adept_AttackLaunch"/>
+        <Missile value="AdeptAttackMissile"/>
+        <ImpactMap index="None" Model="AdeptImpact" Sound="Adept_AttackImpact"/>
+    </CActorAction>
+    <CActorModel id="AdeptAttackImpactModel" parent="GenericAttackModel">
+        <On Terms="ActorCreation; ValidateCreationEffect AdeptGlaivesUpgraded" Send="ModelSwap Adept_Missile_Impact_Upgrade"/>
+    </CActorModel>
+    <CActorMissile id="AdeptAttackMissile">
+        <On Terms="ActorCreation; ValidateUnit AdeptGlaivesUpgraded" Send="ModelSwap Adept_Missile_Upgrade"/>
+    </CActorMissile>
+    <CActorAction id="AdeptAttack">
+        <ImpactModel value="AdeptAttackImpactModel"/>
+    </CActorAction>
     <CActorUnit id="Battlecruiser">
         <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA" Send="LookAtEngage Continue"/>
         <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
@@ -80,6 +108,9 @@
     <CActorMissile id="HammerSecurityAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
     </CActorMissile>
+    <CActorUnit id="InfestedTerransEgg">
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+    </CActorUnit>
     <CActorUnit id="MercHellion">
         <On Terms="Effect.MercHellionInfernalFlameThrowerCP.Start" Send="AnimClear StandStart01"/>
         <On Terms="Effect.MercHellionInfernalFlameThrowerCP.Start" Send="AnimBracketStart Attack Attack {} Stand OpeningPlayForever 1.800000 AsTimeScale"/>

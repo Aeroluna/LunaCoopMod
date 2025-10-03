@@ -485,6 +485,7 @@ Button/Tooltip/VorazunImprovedVespene=Assimilators and Orbital Assimilators prod
 Button/Tooltip/VorazunShadowFury=Rapidly teleport to random enemies within <d ref="Behavior,VorazunShadowFuryController,PeriodCount+1"/> times, attacking each of them for <d ref="Effect,VorazunShadowFuryDamage,Amount"/> damage. A single target can be hit more than once.
 Button/Tooltip/VorazunShadowPhase=Upon Vorazun's shield breaking, negate excess damage and become immune to damage for <d ref="Behavior,VorazunShadowPhased,Duration" precision="1"/> second. Cannot occur again until reaching max shields.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.
+Button/Tooltip/WarpInAdept=Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/XN51CloakTechnology=Covert Banshees are permanently cloaked and have increased movement speed.
 Button/Tooltip/ZagaraVoidCoopAttackUpgrade=Zagara's attacks deal 50% damage to three enemy units near her primary target.
 Button/Tooltip/ZealotPurifierResearchReconstruction2=Reduce cooldown of <c val="ffff8a">Sentinels</c>' Reconstruction from 180 to 120 seconds.
@@ -492,6 +493,8 @@ Button/Tooltip/ZealotPurifierRevive3=Revives the Sentinel when killed. This effe
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
 DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/Name=LunaMod
+Effect/Name/AdeptPurifierDamage=Damage
+Effect/Name/AdeptPurifierLM=LM
 Effect/Name/BanelingDontExplodeSource=Suicide (Source) (Remove Buff)
 Effect/Name/CarrierRepairDroneIssueOrder=Carrier Repair Drone Issue Order
 Effect/Name/CarrierRepairDroneRecallAB=Carrier Repair Drone Recall AB
@@ -731,6 +734,7 @@ ImplosionCooldown=Cannot target units that have recently been affected by Implos
 Param/Expression/lib_74A68E34_2DFFF43D=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/><s val="Kicker_Gas">~Vespene~<img path="Assets\Textures\icon-gas.dds" height="28" width="28"/>
 Param/Expression/lib_74A68E34_6F69C080=+~A~
 Param/Expression/lib_74A68E34_A164617D=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/>
+Param/Expression/lib_74A68E34_C3DA116E=Sending harass [~A~]
 Param/Expression/lib_74A68E34_E2739024=SetScale ~A~
 Param/Expression/lib_74A68E34_F34019F3=Found ~A~ nearby creep tumors.
 Param/Expression/lib_74A68E34_F75B6FAC=(Unfinished) ~A~
@@ -845,7 +849,7 @@ UserData/MutationDifficultyLevels/Plus10_Name=Brutal+10
 UserData/MutationDifficultyLevels/Plus7_Name=Brutal+7
 UserData/MutationDifficultyLevels/Plus8_Name=Brutal+8
 UserData/MutationDifficultyLevels/Plus9_Name=Brutal+9
-UserData/Mutators/Harass_Description=Enemies will periodically harass your or your ally's mineral line.
+UserData/Mutators/Harass_Description=Enemies will periodically send units to harass player mineral lines.
 UserData/Mutators/Harass_Name=Harassment
 UserData/Mutators/Teeming_Description=Enemies begin with twice as many units.
 UserData/Mutators/Teeming_Name=Teeming
@@ -877,6 +881,8 @@ UserData/TechUnit/[Override]Defiler_Name=Defiler
 UserData/TechUnit/[Override]Defiler_Prefix=Zerg -
 UserData/TechUnit/[Override]HighTemplarShakuras_Name=Signifier
 VoidStasisCooldown=Cannot target units that have recently been affected by Void Prison
+Weapon/Name/Adept=Glaive Cannon
+Weapon/Name/AdeptPurifier=Purifier Glaive Cannon
 Weapon/Name/DarkArchonNerazimWeapon=Tenebris Lance
 Weapon/Name/DarkTemplarChampionWeapon=Vorpal Blade
 Weapon/Name/GoliathATargetingDummy=Hellfire Missiles

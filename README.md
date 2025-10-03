@@ -227,6 +227,31 @@ This includes adding a cast time, the 6 second wait, and some visual changes. Th
 
 What the hell were Blizzard thinking giving Reapers their structure weapon back. Overall the Reaper does less DPS but now they get to be funny with their grenade. Get wrecked Shadow Tech.
 
+- Reduced Phoenix's Graviton Beam ability cooldown from 30 seconds to 0 seconds.
+- Increased Phoenix's Graviton Beam ability energy cost from 0 to 50.
+
+Why do Amon's Phoenixes have energy if their one ability doesn't even cost energy? Now EMPing them actually stops them from lifting.
+
+- Changed Adept from Purifier model to Versus model.
+- Reduced Adept hitpoints from 90 to 70.
+- Reduced Adept shield from 90 to 70.
+- Reduced cost from 125/50 to 100/25.
+- Reduced Adept weapon range from 5 to 4.
+- Reworked Adept weapon to no longer hit air.
+- Changed Adept damage from 16 (+6 vs Light) to 10 (+12 vs Light).
+- Renamed Adept weapon from Purifier Glaive Cannon to Glaive Cannon.
+- Added Resonating Glaives upgrade for Adepts.
+  - Increases attack speed by 45%.
+  - Adept attacks will have orange projectiles after Resonating Glaives has been researched.
+  - Amon will gain this upgrade after 10 minutes on Brutal.
+- Reduced sight radius of Adept Shade from 9 to 4.
+
+Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
+
+- Fixed a bug where Infested Terran eggs used Stetmann's armor icon.
+
+yeah.
+
 ## Raynor
 
 - Added P4: Mercenary Contractor
@@ -1448,6 +1473,27 @@ Previously the status bar only showed hp.
 
 ## Mutators
 
+- Added new mutator: Teeming
+  - Enemies begin with twice as many units.
+  - Costs 2 points for Brutal+.
+
+Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
+
+- Added new mutator: Harassment
+  - Enemies will periodically send units to harass player mineral lines.
+  - Costs 4 points for Brutal+.
+
+Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
+
+- Added Infestation Station to Brutal+ costing 3 points.
+- Added Great Wall to Brutal+ costing 5 points.
+- Added Rip Field Generators to Brutal+ costing 5 points.
+- Added Repulsive Field to Brutal+ costing 3 points.
+- Added Mothership to Brutal+ costing 7 points.
+- Added The Mist to Brutal+ costing 7 points.
+
+Added Maguro mutators to Brutal+ system.
+
 - Reworked Fatal Attraction to no longer make the units uncommandable.
   - No longer disables units attacks, abilities, and movement.
   - Pull strength increased by 20%.
@@ -1477,15 +1523,6 @@ Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frust
 - Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
 
 No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
-
-- Added Infestation Station to Brutal+ costing 3 points.
-- Added Great Wall to Brutal+ costing 5 points.
-- Added Rip Field Generators to Brutal+ costing 5 points.
-- Added Repulsive Field to Brutal+ costing 3 points.
-- Added Mothership to Brutal+ costing 7 points.
-- Added The Mist to Brutal+ costing 7 points.
-
-Added Maguro mutators to Brutal+ system.
 
 - Changed the alignment of Black Death from neutral to negative.
 

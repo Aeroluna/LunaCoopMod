@@ -11,6 +11,9 @@
         <AffectedUnitArray value="SwarmHostSplitB"/>
         <AffectedUnitArray value="SwarmHostSplitBBurrowed"/>
     </CUpgrade>
+    <CUpgrade id="AdeptPiercingAttack">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
+    </CUpgrade>
     <CUpgrade id="AlarakImprovedDeathFleet">
         <EffectArray index="0" Reference="Actor,VoidRayTaldarim,Scale" Value="0.200000"/>
         <EffectArray Reference="Unit,VoidRayTaldarim,LifeMax" Value="150"/>
@@ -1327,6 +1330,9 @@
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,AlertTooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,Tooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
     </CUpgrade>
+    <CUpgrade id="StetmannCommander">
+        <EffectArray Operation="Set" Reference="Actor,InfestedTerransEgg,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-stetmann-mechagroundplating-level0.dds"/>
+    </CUpgrade>
     <CUpgrade id="StukovInfestedBansheeInfestedLife">
         <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="1.000000"/>
     </CUpgrade>
@@ -1634,20 +1640,28 @@
         <EffectArray Reference="Weapon,DarkArchonNerazimWeapon,Level" Value="1"/>
         <EffectArray Reference="Effect,DarkArchonNerazimWeaponDamage,Amount" Value="3"/>
         <EffectArray Reference="Effect,DarkArchonNerazimWeaponDamage,AttributeBonus[Biological]" Value="1"/>
+        <EffectArray Reference="Weapon,AdeptPurifier,Level" Value="1"/>
+        <EffectArray Reference="Effect,AdeptPurifierDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,AdeptDamage,Amount" Value="-1"/>
+        <EffectArray Reference="Effect,AdeptDamage,AttributeBonus[Light]" Value="1"/>
         <AffectedUnitArray value="HighTemplarShakuras"/>
-        <AffectedUnitArray value="Dark Archon"/>
+        <AffectedUnitArray value="DarkArchon"/>
+        <AffectedUnitArray value="AdeptFenix"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsExtraLevel1" parent="ProtossGroundWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,DarkArchonNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AdeptPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsExtraLevel2" parent="ProtossGroundWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,DarkArchonNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AdeptPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsExtraLevel3" parent="ProtossGroundWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,DarkArchonNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AdeptPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtra">
         <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>
@@ -1810,5 +1824,10 @@
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserAcidSaliva,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserRoachMelee,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,RoachlingNeedleClaws,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="overlordspeed">
+        <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="2.144500"/>
+        <AffectedUnitArray value="OverlordTransport"/>
+        <AffectedUnitArray value="OverseerSiegeMode"/>
     </CUpgrade>
 </Catalog>

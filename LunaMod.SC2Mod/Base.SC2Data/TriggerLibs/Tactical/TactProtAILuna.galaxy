@@ -1,0 +1,77 @@
+//--------------------------------------------------------------------------------------------------
+//  *** Phoenix ***
+//--------------------------------------------------------------------------------------------------
+
+order GravitonBeam (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    order ord;
+    unitgroup filterGroup;
+    unit unitToCheck;
+    int scanCount;
+    int friendlyPhoenixCount;
+    int gravitons;
+    aifilter filter;
+
+    ord = AICreateOrder(player, c_AB_GravitonBeam, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterSelf(filter, aiUnit);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    friendlyPhoenixCount = UnitGroupCount(AIGetFilterGroup(filter, AIFindUnits(player, "Phoenix", UnitGetPosition(aiUnit), 10.0, c_noMaxCount)), c_unitCountAlive);
+
+    filterGroup = UnitGroupEmpty();
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitHasBehavior(unitToCheck, "GravitonBeam")) {
+            gravitons += 1;
+            continue;
+        }
+
+        UnitGroupAdd(filterGroup,unitToCheck);
+    }
+
+    //  dont graviton if more than half of nearby phoenixes are gravitoning
+    if (friendlyPhoenixCount * 0.5 < gravitons) {
+      return null;
+    }
+
+    //  Return valid target order
+    //
+    return AIUnitGroupGetValidOrder(filterGroup, ord, aiUnit, c_forwards);
+}
+
+fixed GravitonBeamCoolDown_Hard = 10;
+fixed GravitonBeamCoolDown_Brutal = 5;
+
+const int c_GravitonBeamCoolDown = c_tactTimerFirst;
+
+void AIThinkPhoenixLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+    fixed cooldown;
+    int diff = AIPlayerDifficulty(player);
+
+    // Graviton Beam
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_GravitonBeamCoolDown)) {
+            mark = AIMarker(aiUnit, c_MK_GravitonBeam);
+            ord = GravitonBeam(player, aiUnit, scanGroup, mark);
+            if (ord != null) {
+                //AICast(aiUnit, ord, mark, c_castHold);
+                if (diff == c_campAdvanced) {
+                    cooldown = GravitonBeamCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = GravitonBeamCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, mark, c_castHold, c_GravitonBeamCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+}
