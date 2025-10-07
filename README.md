@@ -1,6 +1,6 @@
 # LunaMod
 
-A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode.
+A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.
 
 ## General
 
@@ -28,20 +28,16 @@ Taken from starcraft2coop.com
 - Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
 - Increased Shield Battery range by 2.
 
-Shield Batteries can help other Protoss commanders that rely on armies to defend rather than Photon Cannons.
+If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
 
 - Buffed mind control effects to keep upgrades of targeted unit.
-- Buffed Dark Archon Mind Control ability to no longer take up supply.
 
-Who cares if it's OP? If Zeratul exists, what does OP really mean anyways? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
+Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
 
 - Removed Armored attribute from Queens.
-
-No more getting obliterated by Immortals.
-
 - Added autocast for Queen's Transfusion.
 
-Won't cast efficiently but does help if you are overcapping energy anyways.
+Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
 
 - Reordered many command cards to match Versus.
 
@@ -55,31 +51,19 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
-- Removed Wait Until Stopped flag from Viking Assault Mode and Fighter Mode.
+- Removed Wait Until Stopped flag from Viking Assault Mode and Fighter Mode abilities.
 
-Makes Raynor and HH Viking feel smoother to land.
-
-- Added cosmetic flame jets to Vultures when moving.
-
-*Bring it on!*
-
-- Fixed a bug where all Zerg building construction sounds would use Stetmann's Mecha variants.
-
-Fun fact: this bug has existed as long as Stetmann has.
-
-- Fixed a bug where Viper Abduct would not unburrow most units.
-
-You are pulling them into the air after all.
+Makes Raynor/HH/Mengsk Viking feel smoother to land.
 
 - Fixed various commander-specific upgrades appearing on the command card.
-
-This includes upgrades like Virulent Microbes erroneously showing up on mind-controlled Vipers or Extended Thermal Lance missing from Fenix's Colossi.
-
+- Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
+- Fixed an issue where Viper Abduct would not unburrow most units.
 - Added a range indicator when using the Oracle's Stasis Ward ability.
+- Added cosmetic flame jets to Vultures when moving.
 
 yeah.
 
-- Fixed a bug where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
+- Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
 
@@ -92,7 +76,7 @@ Makes it much easier to see which units are irradiated.
 Not the prettiest effect, but I tried!
 
 - Increased visual scale of Planetary Fortress's attack impact by 20%.
-- Increased volume of Planetary Fortress's attack.
+- Increased sound volume of Planetary Fortress's attack.
 
 Weirdly quiet for how impactful this thing's weapon is.
 
@@ -100,12 +84,12 @@ Weirdly quiet for how impactful this thing's weapon is.
 
 I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
 
-- Increased volume of Battlecruiser Tactical Jump ability.
+- Increased sound volume of Battlecruiser Tactical Jump ability.
 
 Not sure why this ability had its volume nerfed in co-op.
 
-- Fixed a bug where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
-  - Fixed units:
+- Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
+  - Affected units:
     - Spider Mine (Raynor/Nova)
     - Broodling (Kerrigan/Zagara/Abathur/Stukov)
     - Explosive Creeper (Dehaka)
@@ -135,14 +119,14 @@ thanks Enoki.
 - Increased Hydralisk (and variants) animation walk speed from 2.086 to 2.6484.
 - Increased Hydralisk (and variants) attack animation speed.
 - Added turret tracking to Colossi (and variants).
-- Fixed a bug where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
+- Fixed an issue where burrowing a Ravager directly after casting Corrosive Bile would visually bug.
 - Changed town hall structures to automatically rally to a mineral field when built or landed.
 - Added an AOE indicator to Disruptor's Purification Nova ability.
 - Changed Protoss units AoE indicator to an updated version.
 - Added pre-placement visual indicator and sound to Oracle's Stasis Ward ability.
 - Added a very short cooldown to Stimpack to prevent rapid re-cast.
-- Fixed a bug where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
-- Fixed a bug where Guardian Shell would not affect units on a different cliff level.
+- Fixed an issue where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
+- Fixed an issue where Guardian Shell would not affect units on a different cliff level.
 
 Copied from Versus.
 
@@ -150,28 +134,28 @@ Copied from Versus.
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
 - Removed variance in Lurker spine visual positioning.
-- Fixed a bug where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
+- Fixed an issue where moving a Ravager directly after casting Corrosive Bile would visually keep the legs stationary and appear to glide.
 - Changed Hi-Sec Auto Tracking to additionally visually increase the upgrade level on the unit info panel.
 - Changed Phoenix weapon attack priority to attempt to keep hitting the same target.
 - Added turret tracking to Hellions.
-- Fixed a bug where Hellions would not play their attack animation.
+- Fixed an issue where Hellions would not play their attack animation.
 - Reduced visual scale of High Templar's Psionic Storm ability.
 - Increased visual scale of Psionic Storm impact effect.
 - Added Disruptor tint when firing and when on cooldown.
-- Fixed a bug causing Liberators to first decelerate when ordered to siege within their range.
+- Fixed an issue causing Liberators to first decelerate when ordered to siege within their range.
 - Removed Blinding/Disabling Cloud impact visual from Nexuses (They don't even have a weapon anymore!).
 - Increased visibility of Blinding/Disabling Cloud impact visual on Planetaries.
 - Fixed an impactful balance issue where Motherships were not playing their coolest available visual animation while constructing. This is intended to buff Protoss visually.
 - Added smooth visual turning animations to Reapers, Hellions, and Cyclones. Reapers also hover further off the ground.
-- Fixed a bug where Dark Templar attack sounds would complete regardless of whether a unit had been dealt damage.
+- Fixed an issue where Dark Templar attack sounds would complete regardless of whether a unit had been dealt damage.
 - Increased allied push priority for Thors and Siege Tanks. Intended to assist bulky units in pathfinding when surrounded by many small friendly units.
-- Fixed a bug where Reaper's rapid regeneration model would persist above its transport.
-- Fixed a bug where Siege Tank impact fire model would persist above its target's transport.
-- Fixed a bug where Siege Tank impact craters would disappear and reappear if the target was picked up/dropped out of a transport.
-- Fixed a bug where KD-8 Charge knockback animation would persist on units that were no longer being knocked back.
-- Fixed a bug where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
-- Fixed a bug where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
-- Fixed a bug where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
+- Fixed an issue where Reaper's rapid regeneration model would persist above its transport.
+- Fixed an issue where Siege Tank impact fire model would persist above its target's transport.
+- Fixed an issue where Siege Tank impact craters would disappear and reappear if the target was picked up/dropped out of a transport.
+- Fixed an issue where KD-8 Charge knockback animation would persist on units that were no longer being knocked back.
+- Fixed an issue where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
+- Fixed an issue where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
+- Fixed an issue where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
 
 thanks OmniSkeptic.
 
@@ -184,7 +168,7 @@ thanks OmniSkeptic.
 - Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
-Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much.
+Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
 
 ## Amon
 
@@ -230,7 +214,7 @@ This includes adding a cast time, the 6 second wait, and some visual changes. Th
 - Added Combat Drugs passive.
 - Added KD8 Charge ability.
 
-What the hell were Blizzard thinking giving Reapers their structure weapon back. Overall the Reaper does less DPS but now they get to be funny with their grenade. Get wrecked Shadow Tech.
+What the hell were Blizzard thinking giving Reapers their structure weapon back for Co-op. Overall the Reaper does less DPS but now they get to be funny with their grenade ability. Get wrecked Shadow Tech.
 
 - Reduced Phoenix's Graviton Beam ability cooldown from 30 seconds to 0 seconds.
 - Increased Phoenix's Graviton Beam ability energy cost from 0 to 50.
@@ -253,7 +237,7 @@ Why do Amon's Phoenixes have energy if their one ability doesn't even cost energ
 
 Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
 
-- Fixed a bug where Infested Terran eggs used Stetmann's armor icon.
+- Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
 yeah.
 
@@ -359,8 +343,8 @@ I don't see why you wouldn't want this autocasting.
 
 Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
 
-- Fixed a bug where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
-- Fixed a bug where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
+- Fixed an issue where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
+- Fixed an issue where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
 - Changed the alignment of Medic's Safeguard from neutral to positive.
 
 yeah.
@@ -409,7 +393,7 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
-- Fixed a bug where P1 and P3 used each other's icons.
+- Fixed an issue where P1 and P3 used each other's icons.
 - Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
@@ -418,12 +402,12 @@ Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The presti
 
 - Buffed Malignant Creep to affect structures and air units.
 
-Isn't it funny that vanilla P1 Kerrigan's best unit is still Mutalisks? This should allow P1 to interact with more units.
+Isn't it funny that vanilla P1 Kerrigan's best unit is Mutalisks? This should allow P1 to interact with more units.
 
 - Buffed P2 to also hit structures.
   - Will prioritize units and attacking structures.
 
-Now your damage isn't just nerfed against structures.
+Now P2 Kerrigan doesn't look so sad trying to kill structures.
 
 - Changed Ultralisk Tissue Assimilation upgrade to increase leech by 40% instead of healing a flat amount.
 
@@ -434,7 +418,7 @@ This allows the healing to scale with damage increase or damage reduction effect
 
 Now uses the pre-infested assets from Heart of the Swarm.
 
-- Fixed a bug where Kerrigan's Assimilation Aura would not affect invisible units (Cloaked and not detected).
+- Fixed an issue where Kerrigan's Assimilation Aura would not affect invisible units (Cloaked and not detected).
 
 Little silly that you need to detect the unit to affect it with an *aura*.
 
@@ -501,7 +485,7 @@ Buff an underperforming prestige.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
-- Fixed a bug where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
+- Fixed an issue where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
 
 yeah.
 
@@ -696,7 +680,7 @@ A cut unit from the LOTV campaign reimagined. Astral Storm provides detection ou
 
 Green warp ins! Dark Templar now use both variants and Shadow Guard use the Golden skinset. Centurions, Stalkers, Dark Templar, Dark Archons, Corsairs, and Void Rays are given a makeover. Also changes some icons.
 
-- Added Vespene Crystalization, increasing vespene harvest rate by 25%.
+- Added Vespene Crystalization passive to Assimilators, increasing vespene harvest rate by 25%.
 
 Vorazun is one of the most vespene limited commanders. Increasing her vespene harvest rate should help with the large amount of tech she needs and her extremely gas heavy army.
 
@@ -713,6 +697,7 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
 - Reworked Dark Archons to no longer be trained at a gateway, but instead from merging two Dark Templar or Signifiers.
 - Increased Dark Archon weapon damage from 18 to 25 (+10 vs Biological).
 - Increased Dark Archon Confusion radius from 2 to 3.
+- Buffed Dark Archon Mind Control ability to no longer take up supply.
 
 Should make massing Dark Archons more viable instead of watching them tickle units.
 
@@ -723,7 +708,7 @@ The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a
 
 - Changed Black Hole to original red model.
 
-Contradicting the previous change, Black Hole has been changed to red to keep it visually distinct from Vortex.
+Contrasting with the previous change, Black Hole has been changed to red to keep it visually distinct from Vortex.
 
 - Added Revelation to Oracle.
 - Buffed Revelation to additionally suppress detection.
@@ -754,15 +739,11 @@ Ever get annoyed when your Dark Templar would run in and automatically stasis Mi
 
 No more recalling Black Death straight into your mineral line.
 
-- Added visual effect to Dark Pylon's Recall ability.
-
-Copied from Versus.
-
 - Added autocast to Stalker Blink.
 
 Unsurprisingly, autocasting the shield restoring Blink when out of shields is strong.
 
-- Fixed a bug where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
+- Fixed an issue where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
 
 Funny that this passive could *nerf* some units. This happened because the buff would multiply energy regeneration by 1.5 and abilities like Cloak cause your energy regeneration to be negative.
 
@@ -770,10 +751,11 @@ Funny that this passive could *nerf* some units. This happened because the buff 
 
 When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now that Vorazun is a proper hero and Shadow Guards no longer use scythes, this weapon has been renamed.
 
-- Fixed (mostly) a bug where Corsair's Disruption Web ability would autocast on a single unit multiple times.
-- Fixed a bug where Shadow Guard's casting Shadow Fury did not play their attack animation.
-- Fixed a bug where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
-- Fixed a bug where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
+- Fixed (mostly) an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+- Fixed an issue where Shadow Guard's casting Shadow Fury did not play their attack animation.
+- Fixed an issue where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
+- Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
+- Added visual effect to Dark Pylon's Recall ability.
 
 yeah.
 
@@ -797,12 +779,12 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
 - Added Disruptors.
   - Has Fenix Disruptor upgrades.
   - Has regular controllable nova.
-  - Increased nova speed from 2.25 -> 3.25
-  - Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
-  - Increased Purification Nova radius by 20%.
+- Increased Purification Nova speed from 2.25 -> 3.25
+- Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
+- Increased Purification Nova radius by 20%.
 - Reduced price of Cloaking Module from 100/100 to 50/50.
 - Reduced price of Purification Echo from 150/150 to 100/100.
-- Fixed a bug where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
+- Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
@@ -840,7 +822,7 @@ Vipers rarely were worth mixing into your army, now they should be much more usa
 
 - Added autocast to Corrosive Bile (initially off).
 
-Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range (sorry Alarak).
+Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range.
 
 - Buffed Swarm Host to Creeper strain.
 
@@ -889,12 +871,12 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
-- Fixed a bug where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
+- Fixed an issue where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Restored missing beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
 
-A few visual fixes/changes.
+yeah.
 
 ## Nova
 
@@ -926,14 +908,14 @@ P2 was such a boring prestige. Stunning enemies at least grants a niche of dropp
 
 - Reworked Covert Banshee's Rocket Barrage ability.
   - Now does damage over time rather than instantly.
-  - Fixed a bug where missiles would launch from the center of the model instead of the weapons.
+  - Fixed an issue where missiles would launch from the center of the model instead of the weapons.
   - Changed autocast to prioritize hitting multiple enemies, but can target fewer.
   - Reduced casting arc from 360 to 0 (Now has to face target location).
 
-Looked silly dealing the damage instantly and afterwards the rockets land.
+Looked silly dealing the damage instantly and then afterwards the rockets land.
 
 - Reworked Covert Banshee's Advanced Cloaking Field upgrade into Phantom Drive upgrade.
-  - Still perma cloaks but additionally provides movement speed.
+  - Still perma-cloaks but additionally provides movement speed.
 
 Nobody likes slow Banshees.
 
@@ -963,7 +945,7 @@ Many of Nova's unit cooldowns are so long that they usually are used once at the
 
 Despite being an elite Raven, they actually end up dropping worse Auto-Turrets with lower DPS and the inability to hit air. Now the Railgun shoots twice as fast but the duration is reduced by half to compensate.
 
-- Fixed a bug where the attack range indicator for Railgun Turrets was larger than intended.
+- Fixed an issue where the attack range indicator for Railgun Turrets was larger than intended.
 
 Fun fact: it was using the range for the Build Railgun Turret ability rather than the weapon range.
 
@@ -978,14 +960,6 @@ Hellbats tend to not even be worth the mineral cost as they die too easily. Givi
 
 ## Stukov
 
-- Increased duration of infested troopers from 30 to 60.
-
-Infested troopers were previously reliant on the infantry duration mastery. This should increase their consistency without the mastery.
-
-- Added Infested Rockets weapon from Versus to Infested Marines.
-
-Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
-
 - Reworked Infested Barracks
   - Costs 1 supply.
   - Automatically spawns free Infested Marines.
@@ -995,7 +969,15 @@ Despite Infested Marines and Infested Troopers being different units, they are p
 
 Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
 
-- Reduced the cooldown of Spawn Infested Civilians from 60 seconds to 15 seconds.
+- Added Infested Rockets weapon from Versus to Infested Marines.
+
+Despite Infested Marines and Infested Troopers being different units, they are pretty much identical. This should give Infested Marines their own niche as a long-range anti-armor AA option, something Stukov doesn't have.
+
+- Increased duration of infested troopers from 30 to 60.
+
+Infested troopers were previously reliant on the infantry duration mastery. This should increase their consistency without the mastery.
+
+- Reduced the cooldown of Spawn Infested Civilians ability from 60 seconds to 15 seconds.
 - Reduced the amount of Infested Civilians created from 8 to 2.
 
 Instead of creating huge waves, the Infested Colonist Compound now does many smaller waves. Each infestation upgrade still doubles the amount of infested spawned.
@@ -1007,13 +989,13 @@ What's the worst that could happen?
 - Reworked P3.
   - Now increases spawn rate of Infested Bunker, Infested Barracks, and Infested Colonist Compound by 50%.
 
-This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase build diversity.
+This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase composition diversity.
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
 - Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton, which additionally increases Infested Banshee speed by 2.
   - Adds visual boosters to the Infested Banshee.
 
-These two simple changes make playing P2 infinitely smoother to play. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
+These two simple changes make playing P2 infinitely smoother to play. Seriously, being able to deploy infested while moving is night and day. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
 
 - Added advantage for P2:
   - Starports and Banshees no longer have tech requirements.
@@ -1058,9 +1040,9 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Added strafing movement to Infested Liberator Cloud Dispersal.
 - Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
 - Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
-- Fixed a bug where Infested Liberator were unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+- Fixed an issue where Infested Liberator were unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
 
-Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just plain looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
+Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 
 - Buffed P1 to also affect Brood Queens.
 - Removed prepare time from Ocular Symbiote and Spawn Broodlings.
@@ -1075,7 +1057,7 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 - Changed Regenerative Plating upgrade to additionally affect Infested Missile Turrets.
 - Changed Calcified Armor upgrade to additionally affect Infested Missile Turrets.
 
-Bunkers can do it, why not the Missile Turrets?
+Bunkers can do it, why not the Missile Turrets? Gives Stukov another funny form of detection.
 
 - Reduced push priority of infantry to 9.
 - Increased push priority of uprooted buildings to 11.
@@ -1089,11 +1071,11 @@ It can be frustrating trying to get into the fight when you have a P3 Stukov all
 - Changed Infested Civilian portrait.
 - Added Infested Trooper model and portrait.
 
-Blizzard got lazy and only reused portraits for Stukov, this adds new ones!
+Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 
-- Fixed a bug where if an Infested Civilian has jumped using Anaerobic Enhancement, and an Infested Siege Tank tried to eat it, the Infested Civilian would die without healing or gaining a charge.
-- Fixed a bug where the icon of the button for Mech Attack Speed mastery was not colored.
-- Fixed a bug where you could not queue multiple upgrades on the Infested Command Center.
+- Fixed an issue where if an Infested Civilian has jumped using Anaerobic Enhancement, and an Infested Siege Tank tried to eat it, the Infested Civilian would die without healing or gaining a charge.
+- Fixed an issue where the icon of the button for Mech Attack Speed mastery was not colored.
+- Fixed an issue where you could not queue multiple upgrades on the Infested Command Center.
 
 yeah. The Siege Tank bug took way too long to figure out...
 
@@ -1111,17 +1093,14 @@ Because each duplicate unit gives the same value now, it's possible to go compos
 - Changed Extended Thermal Lance to additionally affect Warbringer.
 - Changed Graviton Catapult to additionally affect Clolarion.
 
-It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *does* affect Mojo. Not sure why this was the exception.
+It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *did* affect Mojo. Not sure why this was the exception.
 
 - Remove Disruptors.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
 
+- Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.
-
-Copied from Versus.
-
-- Fixed a bug where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 
 yeah.
 
@@ -1134,7 +1113,7 @@ yeah.
 
 Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get instead of feeling like a damage nerf.
 
-- Fixed a bug where P2 did not increase the damage of Dakrun's Greater Spiked Hide.
+- Fixed an issue where P2 did not increase the damage of Dakrun's Greater Spiked Hide.
 - Increased Dakrun's Brutal Charge damage from 200 to 200 (+100 vs Structures).
 - Buffed Dakrun's Brutal Charge to affect invisible units.
 - Buffed Dakrun's Brutal Charge to affect structures.
@@ -1165,7 +1144,7 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 
 Assault Galleons are suppose to be mobile Starports that can turn into aircraft carriers, so lets make them visually match that fantasy. Overall increases the production rate of Han's units.
 
-- Increased Salvage rate from 20% to 40% for Han & Horner and from 10% to 20% for ally.
+- Increased Salvage rate from 20% to 40% for Han & Horner and from 10% to 20% for allies.
 
 Mira's units usually trade horribly, this should help mitigate that.
 
@@ -1173,7 +1152,7 @@ Mira's units usually trade horribly, this should help mitigate that.
   - Removed Mag Mine improvements.
   - Increases the production speed of Mira's units by 50%.
   - Increases the Salvage rate from 40% to 60%.
-  - Added tooltips to death effect passives that were missing.
+  - Fixed an issue where some death effect passives were missing the appended prestige tooltip.
 
 Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
 
@@ -1182,7 +1161,7 @@ Buffing a top bar ability feels kinda boring, instead P2 now improves how many M
 - Added visual trail to Strike Fighter.
 - Adjusted Strike Fighter acceleration.
 
-Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the napalm upgrade.
+Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the fire from the napalm upgrade.
 
 - Reworked P3:
   - Added advantage: Can research one exclusive Precision Strike upgrade.
@@ -1204,13 +1183,13 @@ Old P3 had an awkward design where it buffed how many platforms you could build 
 Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
 
 - Added autocast to Widow Mine Burrow.
-- Reworked Executioner Missiles to shoot a missile at a nearby enemy that splits into 5 missiles.
-- Fixed a bug where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
+- Reworked Executioner Missiles to shoot a missile at a nearby enemy that then splits into 5 missiles.
+- Fixed an issue where unburrowed Widow Mines showed a range indicator after researching Black Market Launchers (Fun Fact: It didn't even show the correct range).
 - Added a visual red light on top after researching Black Market Launchers.
 
 These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
 
-- Fixed a bug where Mag Mines would not play their entire animation when firing.
+- Fixed an issue where Mag Mines would not play their entire animation when firing.
 
 The animation was too slow and only got around half way through. I bet no one would even notice this though.
 
@@ -1220,7 +1199,7 @@ Often, whatever these were shooting at would already be dead by the time the pro
 
 - Increased Deimos Viking's Gatling Cannon damage from 18 to 18 (+12 vs Mechanical).
 
-Copied bonus vs. mechanical from Versus.
+Copied from Versus.
 
 - Increased range of Sovereign Battlecruiser's Mini Yamato Cannon from 6 to 8.
 
@@ -1235,12 +1214,12 @@ This should keep the Raven farther back and not randomly die as easily.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. It also felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
-- Fixed a bug where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
-- Fixed a bug where Call in the Fleet would launch at a different trajectory than intended.
+- Fixed an issue where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
+- Fixed an issue where Call in the Fleet would launch at a different trajectory than intended.
 
 Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
 
-- Fixed a bug where Reaper's death rattle grenades continued their ticking sound after exploding.
+- Fixed an issue where Reaper's death rattle grenades continued their ticking sound after exploding.
 - Added a ticking sound to Reaper's KD8 Charge ability.
 - Added a cursor splat to Reaper's KD8 Charge ability.
 - Increased KD8 Charge damage radius from 1.5 to 2.
@@ -1261,8 +1240,8 @@ For some reason, it looked like ships were teleporting backwards from their dest
 
 The Sovereign Battlecruiser has a fully functional teleport animation, so let's use that instead of the generic stand-in.
 
-- Fixed a bug where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
-- Fixed a bug where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
+- Fixed an issue where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
+- Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 
 yeah.
 
@@ -1302,12 +1281,12 @@ It looked like a massive explosion for a single target nuke.
 Same change to Raynor's firebats.
 
 - Added a cursor splat for Kev "Rattlesnake" West's Deploy Revitalizer.
-- Fixed a bug where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
+- Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
 - Added a new AOE visual effect after purchasing Hammer Munitions.
 - Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
-- Fixed a bug where Rattlesnake's Revitalizer buff's alignment was neutral after being upgraded.
+- Fixed an issue where Rattlesnake's Revitalizer buff's alignment was neutral after being upgraded.
 - Reworked Vega's Psi Projector visuals.
-- Fixed a bug where unit's affected by Psi Projector twice in a row would have their height visually reset.
+- Fixed an issue where unit's affected by Psi Projector twice in a row would have their height visually reset.
 
 yeah.
 
@@ -1322,11 +1301,11 @@ It looked silly having this giant unit shooting out tiny little attacks.
 
 For an ultimate gear, 30 is a high minimum to reach. Reducing the minimum should increase the reliability of the gear.
 
-- Fixed a bug where Odin's weapon tooltip showed the wrong damage.
+- Fixed an issue where Odin's weapon tooltip showed the wrong damage.
 
 It was showing the damage numbers from the WOL campaign instead of the Co-op numbers.
 
-- Fixed a bug where the Odin could attack while channeling Barrage.
+- Fixed an issue where the Odin could attack while channeling Barrage.
 - Added a launch sound effect when channeling Barrage.
 - Reduced cast start time of Barrage from 2 to 1.5.
 - Reduced cast finish time of Barrage from 2.5 to 2.
@@ -1365,7 +1344,7 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
 
 ## Zeratul
 
-- Fixed a bug where Xel'naga Ambusher Predictive Blink autocast would only use the first charge.
+- Fixed an issue where Xel'naga Ambusher Predictive Blink autocast would only use the first charge.
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
 
@@ -1386,16 +1365,16 @@ Matches Zeratul's ground weapon's damage point now. Should make stutter stepping
 
 Increased Shadow Cleave visual to match its actual radius. Increased the impact visual so its easier to see on bigger units.
 
-- Fixed a bug where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
-- Fixed a bug where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
-
-yeah.
-
 - Changed to Ihan-rii skin set.
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
 
 The Ihan-rii skin is basically a more complete version of Zeratul's skin so it used over his skin. Also added some more lore-accurate portraits.
+
+- Fixed an issue where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
+- Fixed an issue where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
+
+yeah.
 
 ## Stetmann
 
@@ -1416,7 +1395,7 @@ Copied from Versus.
 Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
 
 - Removed hit test from Imperial Witness's Amplified Airwaves hologram (Can no longer be clicked).
-- Fixed a bug where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
+- Fixed an issue where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
 
 It's happened to everyone, the hologram lifts off and then you accidentally a-move it and kill your own blimp. *Fun fact: this bug is caused by Blizzard attaching the hologram incorrectly, then offsetting the hologram to move it where it should be, then because it's not attached properly, it randomly applies that offset over and over again.*
 
@@ -1450,7 +1429,7 @@ It traveled so slow that often the unit is already dead by the time the ability 
 - Improved autocasting AI for Emperor's Shadows.
   - Autocasts Pyrokinetic Immolation if no enemies near target are immolated.
   - Autocasts EMP Blast if not stunned.
-- Fixed a bug where Pyrokinetic Imomlation and EMP Blast would have their autocast toggled off after leveling up.
+- Fixed an issue where Pyrokinetic Imomlation and EMP Blast would have their autocast toggled off after leveling up.
 - Changed Pyrokinetic Immolation to no longer allow casting on targets already immolated.
 
 Hopefully prevents dumping all their energy at once. Still probably more efficient to cast these yourself.
@@ -1481,11 +1460,6 @@ Increased duration should make it easier to get value from the buff. Increase at
 
 Sky Furies are super fragile until reaching Rank 3. Increased range should help them kite enemies, especially with the Viking speed upgrade.
 
-- Adjusted Labryinth Cloak tooltip to be more accurate.
-- Fixed a bug where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
-
-yeah.
-
 - Added Pride of Augustgrad portrait.
 - Added Sky Fury portrait.
 - Added Imperial Intercessor portrait.
@@ -1498,6 +1472,11 @@ Mengsk's infantry had custom portraits, but not his mech.
 - Improved Mengsk status bars to show energy/shield and be wider for Thors/Battlecruisers.
 
 Previously the status bar only showed hp.
+
+- Adjusted Labryinth Cloak tooltip to be more accurate.
+- Fixed an issue where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
+
+yeah.
 
 ## Mutators
 
@@ -1525,7 +1504,7 @@ Added Maguro mutators to Brutal+ system.
 - Reworked Fatal Attraction to no longer make the units uncommandable.
   - No longer disables units attacks, abilities, and movement.
   - Pull strength increased by 20%.
-  - Fixed a bug where Dehaka's Primal Impalers were pulled when burrowed.
+  - Fixed an issue where Dehaka's Primal Impalers were pulled when burrowed.
 
 The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
 
@@ -1556,7 +1535,7 @@ No more getting revealed for walking in a nuke's area. Especially noticeably whe
 
 Visual change only.
 
-- Fixed a bug where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
+- Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
 
 yeah.
 
@@ -1595,5 +1574,6 @@ yeah.
 - Better Mengsk Status Frames - Enoki
 - Common Sense Balance - OmniSkeptic
 - Data-Driven Turrets - Enoki
+- Tosh co-op commander icon pack - DaveSpectre
 
 DaveSpectre is the goat <3
