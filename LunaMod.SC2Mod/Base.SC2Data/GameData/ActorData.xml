@@ -109,6 +109,11 @@
     <CActorModel id="DarkTemplarShadowFuryImpact">
         <Remove Terms="Effect.VorazunShadowFuryDamage.Start; At Caster" Send="Create"/>
     </CActorModel>
+    <CActorModel id="FenixSentryGuardianZoneShieldPhasingMode">
+        <Inherits index="Visibility" value="0"/>
+        <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
+        <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
+    </CActorModel>
     <CActorModel id="FleetwideJumpTeleportIn">
         <On index="2" Terms="Behavior.FleetwideJumpTeleportIn.On; ValidateUnit SourceNotHHBattlecruiser"/>
     </CActorModel>
@@ -132,6 +137,15 @@
         <UnitFlags index="ShowBlobShadow" value="0"/>
         <UnitIcon value="Assets\Textures\BTN-Ability-Terran-ScannerSweep.dds"/>
     </CActorUnit>
+    <CActorAction id="GhostBlackOpsEMPAttack">
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+    <CActorAction id="GhostEMPAttack">
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+    <CActorAction id="GhostMengskEMPAttack">
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
     <CActorMissile id="HHReaper">
         <HostSiteOps Ops="SOpMoveUpByDot15 SOpBankerReaper"/>
     </CActorMissile>
@@ -372,6 +386,7 @@
     </CActorSound>
     <CActorModel id="ZeratulShadowCleave">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
+        <Inherits index="TimeScale" value="1"/>
     </CActorModel>
     <CActorModel id="ZeratulShadowCleaveCounter" parent="ModelAnimationStyleOneShot">
         <Flags index="SuppressSaveLoad" value="0"/>
@@ -411,6 +426,7 @@
     <CActorSiteOpRotator id="SOpVorazunCleaveRotator">
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="720.000000"/>
+        <Inherits index="TimeScale" value="1"/>
     </CActorSiteOpRotator>
     <CActorSiteOpBankerUnit id="SOpBankerReaper">
         <RollMax value="10.000000"/>
@@ -433,6 +449,7 @@
     <CActorSiteOpRotator id="SOpVorazunCounterCleaveRotator">
         <LocalAxis value="0.000000,0.000000,1.000000"/>
         <Rate value="-720.000000"/>
+        <Inherits index="TimeScale" value="1"/>
     </CActorSiteOpRotator>
     <CActorModel id="ZeratulVoidPrisonAiur01">
         <FogVisibility value="Dimmed"/>
@@ -459,6 +476,8 @@
     </CActorModelMaterial>
     <CActorModel id="GuardianShield">
         <Inherits index="Visibility" value="0"/>
+        <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
+        <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
     </CActorModel>
     <CActorModel id="MercCompoundHireBeam">
         <Flags index="SuppressSaveLoad" value="1"/>
@@ -1402,8 +1421,8 @@
         <Sound value="Thor_BarrageLaunch"/>
     </CActorSound>
     <CActorModel id="TychusOdinBarrageWarning">
-        <Remove Terms="Abil.TychusOdinBarrage.TargetCastStart" Send="Create"/>
-        <Remove Terms="Abil.TychusOdinBarrage.TargetChannelStop" Send="Destroy"/>
+        <On Terms="Abil.TychusOdinBarrage.TargetCastStop; ValidatePlayer HaveTychusBigRedButton" Send="Destroy"/>
+        <Scale value="4.000000"/>
     </CActorModel>
     <CActorSound id="TychusOdin_Eject" parent="SoundOneShot">
         <On Terms="Effect.TychusOdinEjectLM.Start" Send="Create"/>
@@ -3392,6 +3411,8 @@
     </CActorUnit>
     <CActorModel id="ZeratulReflectionShield">
         <Inherits index="Visibility" value="0"/>
+        <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
+        <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
     </CActorModel>
     <CActorUnit id="ZeratulSummonVoidRay">
         <Macros value="PhysicsDeathsVoidAir"/>

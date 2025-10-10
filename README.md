@@ -4,14 +4,6 @@ A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro
 
 ## General
 
-- Added Brutal+ system.
-  - Can select a Brutal+ level to randomize mutators.
-  - Can use refresh button to rerandomize.
-  - Can use +Retry option to retry previously played mutators.
-  - Added Brutal+ levels 7 - 10.
-
-Added Brutal+ system. See Mutators section for specific changes to mutators.
-
 - Added ability to select a fourth prestige.
 
 Not all commanders have a fourth prestige yet, but do try the ones that exist!
@@ -709,6 +701,10 @@ The Dark Archon skin has been used by Tal'darim (Both as Warchest skins and as a
 - Changed Black Hole to original red model.
 
 Contrasting with the previous change, Black Hole has been changed to red to keep it visually distinct from Vortex.
+
+- Buffed Black Hole to additionally suppress detection.
+
+Why should that Overseer be able to detect you while it's being crushed in a Black Hole?!
 
 - Added Revelation to Oracle.
 - Buffed Revelation to additionally suppress detection.
@@ -1479,6 +1475,29 @@ Previously the status bar only showed hp.
 yeah.
 
 ## Mutators
+
+- Added Brutal+ system.
+  - Can select a Brutal+ level to randomize mutators.
+  - Can use refresh button to rerandomize.
+  - Can use +Retry option to retry previously played mutators.
+  - Added Brutal+ levels 7 - 10.
+
+Added Brutal+ system.
+
+| Difficulty | Min. Points | Max. Points | Min. Mutators | Max. Mutators |
+| ---------- | ----------- | ----------- | ------------- | ------------- |
+| 1          | 4           | 6           | 2             | 3             |
+| 2          | 7           | 8           | 2             | 3             |
+| 3          | 9           | 10          | 2             | 3             |
+| 4          | 11          | 12          | 2             | 3             |
+| 5          | 15          | 16          | 2             | 4             |
+| 6          | 19          | 20          | 2             | 4             |
+| 7*         | 21          | 22          | 2             | 4             |
+| 8*         | 23          | 24          | 2             | 4             |
+| 9*         | 25          | 26          | 2             | 5             |
+| 10*        | 27          | 28          | 2             | 5             |
+
+\* New levels
 
 - Added new mutator: Teeming
   - Enemies begin with twice as many units.
