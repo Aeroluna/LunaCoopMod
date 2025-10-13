@@ -2918,7 +2918,7 @@
         <On index="64" Terms="Abil.VortexArtanis.SourceCastStart"/>
         <On index="65" Terms="Abil.MothershipArtanisMassRecall.SourceCastStart"/>
         <On index="66" Terms="ActorCreation" Send="SetOpacity"/>
-        <On index="67" Terms="ActorCreation" Send="TimerSet 3.000000 Reveal"/>
+        <On index="67" Terms="ActorCreation" Send="TimerSet 2.500000 Reveal"/>
         <On index="68" Terms="TimerExpired; TimerName Reveal" Send="SetOpacity 1.000000"/>
         <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="TimerSet 0.250000 FadeOutScale"/>
         <On Terms="TimerExpired; TimerName FadeOutScale" Send="SetOpacity 0.000000 0.750000"/>
@@ -2940,8 +2940,8 @@
     </CActorBeamSimple>
     <CActorModel id="MothershipArtanisStargateWarpIn" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
-        <On index="0" Terms="ActorCreation" Send="$Spell 0 -1.000000 -1.000000 0.500000 AsTimeScale"/>
-        <On index="1" Terms="ActorCreation" Send="TimerSet 3.000000 Kill"/>
+        <On index="0" Terms="ActorCreation" Send="$Spell 0 -1.000000 -1.000000 2.500000 AsDuration"/>
+        <On index="1" Terms="ActorCreation" Send="TimerSet 2.500000 Kill"/>
         <On index="2" Terms="TimerExpired; TimerName Kill" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachTurret"/>
@@ -2981,6 +2981,7 @@
     </CActorSound>
     <CActorModel id="MothershipArtanisTeleportOut" parent="ModelAnimationStyleOneShot">
         <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create MothershipCore_UpgradeToMothershipEnd2"/>
         <Host Subject="_Selectable"/>
         <Model value="ArtanisMothershipTeleportOut"/>
     </CActorModel>
