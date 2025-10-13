@@ -29,6 +29,7 @@ const int lib74A68E34_gv_cCC_MAXPLAYERS = 15;
 const int lib74A68E34_gv_raynorPrestigeMercenaryRallyX = 12;
 const int lib74A68E34_gv_raynorPrestigeMercenaryRallyY = 13;
 const int lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked = 16;
+const int lib74A68E34_gv_alarakMergeMax = 20;
 const int lib74A68E34_gv_mM_MUTATORMAXCOUNT = 92;
 const int lib74A68E34_gv_mM_MUTATORMINCOUNT = 1;
 const int lib74A68E34_gv_mutatorHarassCount = 18;
@@ -37,6 +38,11 @@ const int lib74A68E34_gv_mutatorHarassCount = 18;
 struct lib74A68E34_gs_MorphUnitType {
     string lv_sourceUnit;
     string lv_morphUnit;
+};
+
+struct lib74A68E34_gs_AlarakMergeTarget {
+    unit lv_target;
+    unit lv_self;
 };
 
 // Variable Declarations
@@ -49,6 +55,8 @@ int lib74A68E34_gv_mutatorListDialog;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
 int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
 unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
+int lib74A68E34_gv_alarakMergeCurrent;
+lib74A68E34_gs_AlarakMergeTarget[lib74A68E34_gv_alarakMergeMax + 1] lib74A68E34_gv_alarakMergeTargets;
 int lib74A68E34_gv_mM_MutatorDialog;
 int lib74A68E34_gv_mM_MutatorPanel;
 int[lib74A68E34_gv_mM_MUTATORMAXCOUNT + 1] lib74A68E34_gv_mM_MutatorItemPanels;
@@ -162,6 +170,11 @@ trigger lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast;
 trigger lib74A68E34_gt_AbathurPrestigeSymbioteCreate;
 trigger lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply;
 trigger lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply;
+trigger lib74A68E34_gt_AlarakArchonSacrificeScale;
+trigger lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale;
+trigger lib74A68E34_gt_AlarakArchonResurgenceCleanUp;
+trigger lib74A68E34_gt_AlarakMergeApplyBuff;
+trigger lib74A68E34_gt_AlarakMergeSetTarget;
 trigger lib74A68E34_gt_NovaPrestigeMeleeCliffJump;
 trigger lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight;
 trigger lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset;

@@ -752,6 +752,7 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Fixed an issue where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
 - Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
 - Added visual effect to Dark Pylon's Recall ability.
+- Fixed an issue where Dark Archons would try to path around Force Fields they could shatter.
 
 yeah.
 
@@ -826,12 +827,30 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 
 ## Alarak
 
+- Added Void Archon, merged from two Ascendants.
+  - Can use Maelstrom for 50 energy.
+    - Stuns enemies in an area for 8 seconds.
+  - Can use Sacrifice to refill energy.
+  - Has Power Overwhelming passive.
+    - The Void Archon permanently gains +25% damage, +100 shields, and +0.5 shield armor each time it uses Sacrifice.
+    - This effect stacks up to a maximum of 20.
+    - Inherits stacks from constituent Ascendants.
+  - Has Chain Reaction passive.
+    - Causes attacks to chain to two additional targets.
+    - Requires research at the Templar Archives.
+  - Has Supernova passive.
+    - Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After 5 seconds, the supernova detonates for damage equal to the Void Archon's max shields.
+    - The supernova's radius increases with Power Overwhelming stacks.
+
+A passive called Power Overwhelming deserves to go to an Archon unit! By accruing stacks on Ascendants and combining them, you can make a *super* archon with chain attacks that each do AOE damage. Inspired by the LotV cinematic, dying Void Archons go out with a bang, dealing massive damage in its range, though it still isn't worth losing your stacks.
+
 - Reworked Mothership Terminator Beam to only target air units.
 - Reworked Mothership Thermal Lance.
   - Only targets ground units instead of all units.
   - Reduced travel speed by 75% speed.
   - Cooldown increased from 1 to 2 seconds.
   - Damage increased from 10 to 100.
+- Added a dramatic sound effect when summoning a Mothership.
 - Renamed Mothership to Crimson Sovereign.
 
 Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 damage death laser. As compensation, the original Terminator Beam can only hit air units and Thermal Lance can only hit ground units (it seemed weird that hitting the ground under air units would damage them anyways). Mothership was renamed to be more distinct from other variants and be in line with other Tal'darim variant unit names.
@@ -1361,6 +1380,12 @@ Matches Zeratul's ground weapon's damage point now. Should make stutter stepping
 
 Increased Shadow Cleave visual to match its actual radius. Increased the impact visual so its easier to see on bigger units.
 
+- Reduced Dark Archon Maelstrom ability duration from 12 seconds to 8 seconds.
+- Fixed an issue where Dark Archon Maelstrom ability tooltip did not display the correct duration.
+- Increased radius of Maelstrom from 2 to 3.
+
+Makes this ability more consistent.
+
 - Changed to Ihan-rii skin set.
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
@@ -1594,5 +1619,6 @@ yeah.
 - Common Sense Balance - OmniSkeptic
 - Data-Driven Turrets - Enoki
 - Tosh co-op commander icon pack - DaveSpectre
+- Taldarim Iconpack - DaveSpectre
 
 DaveSpectre is the goat <3

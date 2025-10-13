@@ -22,7 +22,6 @@
         <OperandArray value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeMasteryTychusGrenadeCooldownCompleteOnly"/>
         <OperandArray value="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
     </CRequirementAnd>
@@ -87,12 +86,10 @@
     </CRequirementAnd>
     <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MasteryTychusFirstCommander" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="MasteryTychusFirstCommanderPetBuff" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
@@ -320,6 +317,15 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TychusOdinRedButton" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeVoidArchonChainReactionCompleteOnly742300976">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="VoidArchonChainReaction" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeVoidArchonChainReactionQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="VoidArchonChainReaction" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementEq id="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
@@ -428,6 +434,10 @@
     <CRequirementNot id="NotCountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
     <CRequirementNot id="NotCountUpgradeTychusACPiercingRoundsCompleteOnly"/>
     <CRequirementNot id="NotCountUpgradeTychusACRageGrenadesCompleteOnly"/>
+    <CRequirementNot id="NotCountUpgradeVoidArchonChainReactionQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeVoidArchonChainReactionQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
         <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementNot>
@@ -445,7 +455,6 @@
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit"/>
         <OperandArray value="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
     </CRequirementOr>

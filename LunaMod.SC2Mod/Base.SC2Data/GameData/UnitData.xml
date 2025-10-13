@@ -124,6 +124,108 @@
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="VoidArchonDummy">
+        <Race value="Prot"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <Mover value="FlyIgnoreAirPathingBlockers"/>
+        <AbilArray Link="VoidArchonVortex"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
+        <CardLayouts>
+            <LayoutButtons Face="Vortex" Type="AbilCmd" AbilCmd="VoidArchonVortex,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HighTemplarTaldarim">
+        <AbilArray Link="VoidArchonMerge"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="VoidArchonMergeSelection" Type="AbilCmd" AbilCmd="VoidArchonMerge,SelectedUnits" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="VoidArchon">
+        <Description value="Button/Tooltip/HighTemplarShakuras"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="350"/>
+        <ShieldsMax value="350"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.8125"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46"/>
+        <StationaryTurningRate value="999.8437"/>
+        <TurningRate value="999.8437"/>
+        <Sight value="9"/>
+        <Food value="-4"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="175"/>
+        <CostResource index="Vespene" value="275"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="DarkArchonMergeable"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="VoidArchonMaelstrom"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="AscendantSacrificeInstant"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <BehaviorArray Link="VoidArchonDeathExplode"/>
+        <WeaponArray Link="DarkArchonWeapon"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="ZeratulDarkArchonMaelstrom" Type="AbilCmd" AbilCmd="VoidArchonMaelstrom,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AscendantArchonSacrifice" Type="AbilCmd" AbilCmd="AscendantSacrificeInstant,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AlarakArchonImprovedSacrifice" Type="Passive" Requirements="HaveHighTemplarImprovedSacrifice" Row="1" Column="2"/>
+            <LayoutButtons Face="VoidArchonChainReaction" Type="Passive" Requirements="HaveVoidArchonChainReaction" Row="2" Column="1"/>
+            <LayoutButtons Face="VoidArchonVortex" Type="Passive" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="1"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
+        <CargoSize value="4"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="145"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
+        <GlossaryCategory value="Unit/Category/ProtossNerazim"/>
+        <GlossaryPriority value="90"/>
+        <GlossaryStrongArray value="Zealot"/>
+        <GlossaryStrongArray value="Mutalisk"/>
+        <GlossaryWeakArray value="Thor"/>
+        <GlossaryWeakArray value="Immortal"/>
+        <GlossaryWeakArray value="Ultralisk"/>
+        <HotkeyCategory value="Unit/Category/ProtossStory"/>
+    </CUnit>
     <CUnit id="ForceFieldTaldarim">
         <DeathRevealRadius value="0"/>
         <DeathRevealDuration value="0"/>
@@ -1028,6 +1130,7 @@
     </CUnit>
     <CUnit id="DarkArchon">
         <WeaponArray index="0" Link="DarkArchonNerazimWeapon"/>
+        <Collide index="ForceField" value="0"/>
     </CUnit>
     <CUnit id="DarkShrine">
         <CardLayouts index="0">
@@ -1183,7 +1286,7 @@
         <LifeStart value="100000"/>
         <LifeMax value="100000"/>
         <LifeRegenRate value="100000"/>
-        <Mover value="Fly"/>
+        <Mover value="FlyIgnoreAirPathingBlockers"/>
         <Speed value="3"/>
         <Acceleration value="1000"/>
         <AbilArray Link="stop"/>
@@ -1286,13 +1389,9 @@
             <LayoutButtons Face="HighTemplarPassive" Type="Passive" Requirements="HaveHighTemplar" Row="1" Column="0"/>
             <LayoutButtons Face="ResearchDarkArchonFullStartingEnergy" Type="AbilCmd" AbilCmd="TemplarArchivesResearch,Research12" Row="0" Column="1"/>
             <LayoutButtons Face="ResearchDarkArchonFullStartingEnergyLocked" Type="Passive" Requirements="VorazunLevel09" Row="0" Column="1"/>
-            <LayoutButtons Face="ResearchZeratulDarkTemplarShadowFury" Requirements="HaveZeratulArtifactTier3AndDarkShine" Row="0" Column="2"/>
-            <LayoutButtons Face="ResearchDarkArchonMindControl" Type="AbilCmd" AbilCmd="TemplarArchivesResearch,Research11" Row="0" Column="2"/>
-            <LayoutButtons Face="ResearchMindControlLocked" Type="Passive" Requirements="VorazunLevel09" Row="0" Column="2"/>
             <LayoutButtons Face="CommanderVorazunDarkArchonPassiveLocked" Type="Passive" Requirements="VorazunLevel05" Row="1" Column="1"/>
             <LayoutButtons Face="DarkArchonPassive2" Type="Passive" Requirements="HaveVorazunCommander" Row="1" Column="1"/>
-            <LayoutButtons Face="ZeratulDarkTemplarBlink" Requirements="HaveZeratulArtifactTier1AndDarkShine" Row="2" Column="0"/>
-            <LayoutButtons Face="ResearchZeratulZealotBlinkHeal" Requirements="HaveZeratulArtifactTier2AndDarkShine" Row="2" Column="0"/>
+            <LayoutButtons Face="VoidArchonChainReactionResearch" Type="AbilCmd" AbilCmd="TemplarArchivesResearch,Research14" Row="0" Column="3"/>
         </CardLayouts>
         <TechTreeUnlockedUnitArray value="HighTemplarShakuras"/>
     </CUnit>

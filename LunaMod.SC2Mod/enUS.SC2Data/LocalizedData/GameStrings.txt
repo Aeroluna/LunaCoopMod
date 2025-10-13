@@ -35,6 +35,9 @@ Abil/Name/SwarmNetworkBuildSwarmLocus=Build Swarm Locus
 Abil/Name/SymbioteCarapacePrestige=Symbiote Carapace
 Abil/Name/VehicleAfterburnersMedivac=Vehicle Afterburners
 Abil/Name/VehicleAfterburnersStimpack=Vehicle Afterburners
+Abil/Name/VoidArchonMaelstrom=Void Archon Maelstrom
+Abil/Name/VoidArchonMerge=Void Archon Merge
+Abil/Name/VoidArchonVortex=Void Archon Vortex
 Abil/Name/VorazunBlinkReturn=Wormhole
 Abil/Name/VorazunCleave=VorazunCleave
 Abil/Name/VorazunCounterCleave=VorazunCounterCleave
@@ -44,6 +47,8 @@ Abil/Name/ZagaraCorruption=Corruption
 Abil/Name/ZeratulVoidPrisonTarget=Zeratul Void Prison Target
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
 Behavior/Name/AbathurPrestigeSymbiote=Symbiote
+Behavior/Name/AscendantArchonDummySelfBuff=Power Overwhelming
+Behavior/Name/AscendantArchonSelfBuff=Power Overwhelming
 Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/CommanderPrestigeNovaAirliftStun=Lockdown
 Behavior/Name/DarkTemplarVoidStasis=Void Prison
@@ -71,6 +76,7 @@ Behavior/Name/VorazunShadowPhased=Shrouded
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
 Behavior/Name/ZeratulVoidPrisonMissiles=Void Sanctuary Missiles
 Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote that attacks enemies and protects their host with a damage absorbing shell.
+Behavior/Tooltip/AscendantArchonSelfBuff=This unit has increased shields and it deals increased damage.
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
 Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
 Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attack, or detect.
@@ -98,7 +104,9 @@ Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by
 Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/Name/AegisPlating=Aegis Plating
+Button/Name/AlarakArchonImprovedSacrifice=Power Overwhelming
 Button/Name/ApolloCloakOnNova=Apollo Infantry Suit
+Button/Name/AscendantArchonSacrifice=Sacrifice
 Button/Name/BlinkChargesUpgrade=Displacement Matrix
 Button/Name/BroodLordBrood=Morph to Primogenitor
 Button/Name/ChainReactionBrood=Psionic Cleave
@@ -222,6 +230,10 @@ Button/Name/TychusBunker=Build Fortified Bunker
 Button/Name/TychusOdinNuclearStrikePassive=Big Red Button
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
+Button/Name/VoidArchonChainReaction=Chain Reaction
+Button/Name/VoidArchonChainReactionResearch=Research Chain Reaction
+Button/Name/VoidArchonMergeSelection=Void Archon Merge
+Button/Name/VoidArchonVortex=Supernova
 Button/Name/VoidStasis=Void Prison
 Button/Name/VoidStasisLocked=Void Prison
 Button/Name/VorazunBlinkReturn=Wormhole
@@ -249,9 +261,12 @@ Button/Tooltip/ACZagaraInfestationPit=Contains upgrades for Defilers.</n></n><c 
 Button/Tooltip/AbathurBrutaliskLeviathanSymbiote=Gains a Symbiote with the following abilities:<n/><n/><c val="ffff00">Stab:</c> Attacks nearby enemies for <d ref="Effect,SymbioteStabDamage,Amount"/> damage every <d ref="Abil,SymbioteStab,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Spike Burst:</c> Deals <d ref="Effect,SymbioteSpikeBurstDamage,Amount"/> damage to nearby enemies every <d ref="Abil,SymbioteSpikeBurst,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Shield:</c> Absorbs <d ref="Behavior,SymbioteCarapace,Modification.VitalMaxArray[Shields]"/> damage for the host every <d ref="Abil,SymbioteCarapace,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.
 Button/Tooltip/AegisPlating=Reduces incoming damage to a maximum of <d ref="Behavior,HellbatHardenedShell,DamageResponse.ClampMaximum"/>.
 Button/Tooltip/AlarakACSummonDeathfleet=Warps in a Crimson Sovereign and <d ref="Effect,AlarakDestroyerCreationCP,PeriodCount" player="current"/> Destroyers that are controllable and will fight for <d ref="Behavior,AlarakDestroyerTimedLife,Duration"/> seconds.
+Button/Tooltip/AlarakArchonImprovedSacrifice=The Void Archon permanently gains +<d ref="Behavior,AscendantArchonSelfBuff,Modification.DamageDealtFraction[Spell]*100"/>% damage, +<d ref="Behavior,AscendantArchonSelfBuff,Modification.VitalMaxArray[Shields]"/> shields, and +<d ref="Behavior,AscendantArchonSelfBuff,Modification.ShieldArmorBonus" precision="1"/> shield armor each time it uses Sacrifice.<n/><n/>This effect stacks up to a maximum of <d ref="Behavior,AscendantArchonSelfBuff,MaxStackCount"/>.
+Button/Tooltip/AlarakArchonImprovedSacrificeCharges=<d ref="$BehaviorStackCount:AscendantArchonSelfBuff$"/>
 Button/Tooltip/AlarakHavocAbilityRange=Increases the radius of Squad Sight and the range of Target Lock and Subjugation Field.
 Button/Tooltip/ApolloCloakOnNova=Cloaks Nova for <d ref="Behavior,NovaApolloCloak,Duration"/> seconds, preventing enemy units from seeing or attacking her. A cloaked unit will only be revealed by detectors or effects.</n></n>Passively increases max energy by +100 and slightly increases movement speed.
 Button/Tooltip/AresClassWeaponsSystemviking=Increases air attack range by 2 and ground attack range by 1. Allows Vikings to transform quickly between combat modes.
+Button/Tooltip/AscendantArchonSacrifice=Sacrifices a Supplicant to fully restore the Void Archon's energy.<n/><n/><c val="#ColorAttackInfo">Can only target Supplicants.</c>
 Button/Tooltip/AutomatedAssimilatorTextKicker5=<s val="Kicker_Refinery">+5</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
 Button/Tooltip/Banshee_BlackOpsAirstrike=Deals <d ref="Effect,Banshee_BlackOpsAirstrikeDamage,Amount*(Effect,Banshee_BlackOpsAirstrikeFakeShotCP,PeriodCount+1)"/> damage to enemy ground units in the target area.
 Button/Tooltip/BiomassPassiveEnergy=Units gain <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Life]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% life, <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy, <d ref="Behavior,BiomassBuff100,Modification.AdditiveAttackSpeedFactor*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% attack speed, <d ref="Behavior,BiomassBuff100,Modification.VitalRegenMultiplier[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy regeneration, and <d ref="($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$"/>% spell damage.
@@ -405,6 +420,7 @@ Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
 Button/Tooltip/Reaper=Raider. Can jump up and down cliffs. Regenerates life quickly while out of combat. Can use KD8 Charge.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/RepairDrones=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
 Button/Tooltip/ResearchAlarakHavocAbilityRange=Increases the radius of the <c val="ffff8a">Havoc's</c> Squad Sight and the range of Target Lock and Subjugation Field.
+Button/Tooltip/ResearchAlarakHighTemplarImprovedSacrifice=<c val="ffff8a">Ascendants</c> and <c val="ffff8a">Void Archons</c> permanently gain damage and shields each time they use Sacrifice.
 Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds.
 Button/Tooltip/ResearchBanshee_BlackOpsAirstrike=Allows <c val="ffff8a">Covert Banshees</c> to use Rocket Barrage, which deals <d ref="Effect,Banshee_BlackOpsAirstrikeDamage,Amount*(Effect,Banshee_BlackOpsAirstrikeFakeShotCP,PeriodCount+1)"/> damage to enemy ground units in the target area.
 Button/Tooltip/ResearchBlinkCharges=<c val="ffff8a">Instigators</c> can now store up to 3 charges of Blink and the cooldown of Blink is reduced by 4 seconds.
@@ -478,6 +494,10 @@ Button/Tooltip/VikingMengskAttackDamage=After transforming, this unit gains <d r
 Button/Tooltip/VikingMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Deals bonus damage to Massive targets and gains +2 range.
 Button/Tooltip/VikingMengskRank1Preview=<n/><c val="777777">Rank 1: Deals bonus damage to Massive targets and gains +2 range.</c>
 Button/Tooltip/ViperImprovedCastRangePassive=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
+Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
+Button/Tooltip/VoidArchonChainReactionResearch=<c val="ffff8a">Void Archon</c> attacks jump to two additional nearby enemies.
+Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.
+Button/Tooltip/VoidArchonVortex=Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After <d ref="Effect,VoidArchonVortexCreatePersistent,PeriodCount*Effect,VoidArchonVortexCreatePersistent,PeriodicPeriodArray[0]"/> seconds, the supernova detonates for damage equal to the Void Archon's max shields. The supernova's radius increases with Power Overwhelming stacks.
 Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.
 Button/Tooltip/VoidVoidRayBeamBounce=Prismatic Beam splits and deals damage to additional nearby targets as the Destroyer continues to attack, up to a maximum of 3 additional targets. All attacks ignore armor.
 Button/Tooltip/VorazunBlink=Teleports Vorazun to the targeted location. For the next <d ref="Behavior,VorazunBlinkReturn,Duration"/> seconds, the ability can be reactivated to return to the point where it was cast from.
@@ -495,11 +515,14 @@ Button/Tooltip/XN51CloakTechnology=Covert Banshees are permanently cloaked and h
 Button/Tooltip/ZagaraVoidCoopAttackUpgrade=Zagara's attacks deal 50% damage to three enemy units near her primary target.
 Button/Tooltip/ZealotPurifierResearchReconstruction2=Reduce cooldown of <c val="ffff8a">Sentinels</c>' Reconstruction from 180 to 120 seconds.
 Button/Tooltip/ZealotPurifierRevive3=Revives the Sentinel when killed. This effect can only occur once every 120 seconds.
+Button/Tooltip/ZeratulDarkArchonMaelstrom=Temporarily stuns enemy units in an area of effect for <d ref="Behavior,ZeratulDarkArchonMaelstrom,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
 DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/Name=LunaMod
 Effect/Name/AdeptPurifierDamage=Damage
 Effect/Name/AdeptPurifierLM=LM
+Effect/Name/AscendantSacrificeSelfBuffArchonAB=AscendantSacrificeSelfBuffArchonAB
+Effect/Name/AscendantSacrificeSelfBuffSwitch=AscendantSacrificeSelfBuffSwitch
 Effect/Name/BanelingDontExplodeSource=Suicide (Source) (Remove Buff)
 Effect/Name/CarrierRepairDroneIssueOrder=Carrier Repair Drone Issue Order
 Effect/Name/CarrierRepairDroneRecallAB=Carrier Repair Drone Recall AB
@@ -709,6 +732,18 @@ Effect/Name/TempestDotSearchGround=Tempest Dot Search (Ground)
 Effect/Name/TempestImpactSet=Tempest Impact Set
 Effect/Name/TempestImpactSetGround=Tempest Impact Set (Ground)
 Effect/Name/TwinGatlingCannonsRaynor=Twin Gatling CannonRaynor (Damage)
+Effect/Name/VoidArchonDeathAB=Void Archon Death AB
+Effect/Name/VoidArchonDeathCU=Void Archon Death CU
+Effect/Name/VoidArchonDeathRB=Void Archon Death RB
+Effect/Name/VoidArchonDeathSet=Void Archon Death Set
+Effect/Name/VoidArchonResurgenceEnemyImpactDamage=Resurgence Enemy Impact Damage
+Effect/Name/VoidArchonResurgenceEnemyImpactKnockback=Resurgence Enemy Impact Knockback
+Effect/Name/VoidArchonResurgenceEnemyImpactSet=Resurgence Enemy Impact Set
+Effect/Name/VoidArchonResurgenceSearch=Resurgence Search
+Effect/Name/VoidArchonVortexEventHorizonSearchArea=Vortex Event Horizon Search Area
+Effect/Name/VoidArchonVortexForce=Vortex (Force)
+Effect/Name/VoidArchonVortexForceBehavior=Vortex (ForceBehavior)
+Effect/Name/VoidArchonVortexForceOffset=Vortex (Force Offset)
 Effect/Name/VorazunBlinkAB=Vorazun Blink AB
 Effect/Name/VorazunBlinkReturn=Vorazun Blink Return
 Effect/Name/VorazunBlinkReturnAB=Vorazun Blink Return AB
@@ -775,6 +810,7 @@ RequirementNode/Tooltip/CountUpgradeStukovInfestedBansheeInfestedLifeCompleteOnl
 RequirementNode/Tooltip/CountUpgradeTempestDestabilizingResiduumCompleteOnly3548369632=Research Destablizing Residuum at the Fleet Beacon
 RequirementNode/Tooltip/CountUpgradeTransformationServosCompleteOnly1133472468=Research Smart Servos at the Factory Tech Lab
 RequirementNode/Tooltip/CountUpgradeTychusOdinRedButtonCompleteOnly959547084=Research Big Red Button at the Engineering Bay
+RequirementNode/Tooltip/CountUpgradeVoidArchonChainReactionCompleteOnly742300976=Research Chain Reaction at the Templar Archives
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
 RequirementNode/Tooltip/LT1640478685CountUnitFenixClolarionBomberQueuedOrBetterAtUnit2=Clolarion must have fewer than 2 Interdictors
 RequirementNode/Tooltip/LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5=Can only have 5 levels of Corruption
@@ -824,6 +860,7 @@ Unit/Name/SwarmLocus=Swarm Locus
 Unit/Name/SwarmNetwork=Swarm Network
 Unit/Name/TychusBunker=Fortified Bunker
 Unit/Name/UltraliskBrood=Torrasque
+Unit/Name/VoidArchon=Void Archon
 Unit/Name/VorazunBlinkReturnDummy=Vorazun Blink Return Dummy
 Unit/Name/VorazunCoop=Vorazun
 Unit/Name/VorazunCoopReviveBeacon=Vorazun's Beacon
@@ -849,6 +886,7 @@ Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators
 Upgrade/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Upgrade/Name/TychusACOwned=Tychus Findlay from Joeyray's Bar
+Upgrade/Name/VoidArchonChainReaction=Void Archon Chain Reaction
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
 Upgrade/Name/VorazunImprovedShields=Vorazun Improved Shields
 Upgrade/Name/VorazunImprovedVespene=Vorazun Improved Vespene

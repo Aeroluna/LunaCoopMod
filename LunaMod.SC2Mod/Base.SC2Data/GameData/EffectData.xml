@@ -39,6 +39,65 @@
     <CEffectDamage id="ArtanisResurgenceEnemyImpactDamage">
         <Kind value="Spell"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="AscendantSacrificeSelfBuffArchonAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AscendantArchonSelfBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AscendantSacrificeSelfBuffSet">
+        <EffectArray index="4" value="AscendantSacrificeSelfBuffSwitch"/>
+    </CEffectSet>
+    <CEffectSwitch id="AscendantSacrificeSelfBuffSwitch">
+        <ValidatorArray value="HaveHighTemplarImprovedSacrifice"/>
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="CasterIsAscendant" Effect="AscendantSacrificeSelfBuffAB"/>
+        <CaseDefault value="AscendantSacrificeSelfBuffArchonAB"/>
+    </CEffectSwitch>
+    <CEffectDamage id="DarkArchonWeaponDamage">
+        <Amount value="25"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="VoidArchonDeathAB">
+        <Behavior value="AscendantArchonDummySelfBuff"/>
+        <Count value="0">
+            <AccumulatorArray value="AscendantArchonSelfBuff"/>
+        </Count>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="VoidArchonDeathCU">
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <WhichLocation Value="CasterPoint"/>
+        <SpawnUnit value="VoidArchonDummy"/>
+        <SpawnEffect value="VoidArchonDeathAB"/>
+        <SpawnRange value="0"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="VoidArchonResurgenceEnemyImpactDamage">
+        <Amount value="350">
+            <AccumulatorArray value="AscendantArchonDummySelfBuffArith"/>
+        </Amount>
+    </CEffectDamage>
+    <CEffectSwitch id="VoidArchonResurgenceEnemyImpactKnockback">
+        <CaseArray Validator="NotStructureTarget" Effect="UnitKnockbackBy4"/>
+    </CEffectSwitch>
+    <CEffectSet id="VoidArchonResurgenceEnemyImpactSet">
+        <EffectArray value="VoidArchonResurgenceEnemyImpactKnockback"/>
+        <EffectArray value="VoidArchonResurgenceEnemyImpactDamage"/>
+    </CEffectSet>
+    <CEffectEnumArea id="VoidArchonResurgenceSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="VoidArchonResurgenceEnemyImpactSet"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="AscendantArchonDummySelfBuff"/>
+            <AccumulatorArray value="AscendantArchonDummySelfBuffSearchFactor"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
     <CEffectDamage id="Banshee_BlackOpsAirstrikeDamage">
         <Amount value="10.714"/>
         <Death value="Blast"/>
@@ -113,6 +172,82 @@
         <EffectArray index="0" value="CycloneWeaponLaunchMissileRight"/>
         <EffectArray index="1" value="CycloneAirWeaponLaunchMissileRight"/>
     </CEffectSet>
+    <CEffectSet id="DarkArchonWeapon">
+        <EffectArray value="DarkArchonWeapon1Delay"/>
+        <Marker Link="DarkArchonWeapon">
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DarkArchonWeapon1Delay">
+        <Marker Link="DarkArchonWeapon"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="DarkArchonWeapon1SearchForNewTarget"/>
+        <ValidatorArray value="HaveVoidArchonChainReaction"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DarkArchonWeapon1SearchForNewTarget">
+        <ImpactLocation Effect="DarkArchonWeapon1Delay" Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="4" Effect="DarkArchonWeapon2"/>
+        <Marker Link="DarkArchonWeapon"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DarkArchonWeapon2">
+        <EffectArray value="DarkArchonWeapon2Delay"/>
+        <EffectArray value="DarkArchonWeapon2Damage"/>
+        <Marker Link="ChainReaction"/>
+        <ValidatorArray value="noMarkers"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="DarkArchonWeapon2Delay">
+        <Marker Link="DarkArchonWeapon"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ExpireDelay value="0.125"/>
+        <FinalEffect value="DarkArchonWeapon2SearchForNewTarget"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DarkArchonWeapon2SearchForNewTarget">
+        <ImpactLocation Effect="DarkArchonWeapon2Delay" Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="4" Effect="DarkArchonWeapon3"/>
+        <Marker Link="DarkArchonWeapon"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="DarkArchonWeapon2Damage" parent="DU_WEAP">
+        <Amount value="25"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="0.25" Fraction="1"/>
+        <AreaArray Radius="0.5" Fraction="0.5"/>
+        <AreaArray Radius="1" Fraction="0.25"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="OffsetByUnitRadius" value="0"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
+    <CEffectSet id="DarkArchonWeapon3">
+        <EffectArray value="DarkArchonWeapon3Damage"/>
+        <Marker Link="DarkArchonWeapon"/>
+        <ValidatorArray value="noMarkers"/>
+    </CEffectSet>
+    <CEffectDamage id="DarkArchonWeapon3Damage" parent="DU_WEAP">
+        <Amount value="25"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="0.25" Fraction="1"/>
+        <AreaArray Radius="0.5" Fraction="0.5"/>
+        <AreaArray Radius="1" Fraction="0.25"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="OffsetByUnitRadius" value="0"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="DarkPylonCloakShieldRegenAB">
         <ValidatorArray value="NotStructureTarget"/>
     </CEffectApplyBehavior>
@@ -169,6 +304,16 @@
         <CaseArray Validator="GroundUnitFilter" Effect="HHATSLaserBatteryLM"/>
         <CaseDefault value="HHATALaserBatteryLM"/>
     </CEffectSwitch>
+    <CEffectRemoveBehavior id="VoidArchonDeathRB">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="VoidArchonDeathExplode"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="VoidArchonDeathSet">
+        <EffectArray value="VoidArchonDeathCU"/>
+        <EffectArray value="VoidArchonDeathRB"/>
+        <EffectArray value="KillCaster"/>
+        <EffectArray value="GrantKillCreditDummy"/>
+    </CEffectSet>
     <CEffectDamage id="VorazunCoopDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>
@@ -2624,24 +2769,19 @@
         <Death value="Remove"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="VortexArtanisApplyDisableOther" parent="VortexApplyDisableOther">
-        <Marker Link="Effect/VortexArtanisApplyDisableOther"/>
         <Behavior value="VortexArtanisBehavior"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="VortexArtanisApplyDisableEnemy" parent="VortexApplyDisableEnemy">
-        <Marker Link="Effect/VortexArtanisApplyDisableEnemy"/>
         <Behavior value="VortexArtanisBehaviorEnemy"/>
     </CEffectApplyBehavior>
     <CEffectSwitch id="VortexArtanisApplyDisable" parent="VortexApplyDisable">
-        <Marker Link="Effect/VortexArtanisApplyDisable"/>
         <CaseArray index="0" Validator="TargetIsEnemy" Effect="VortexArtanisApplyDisableEnemy"/>
         <CaseDefault value="VortexArtanisApplyDisableOther"/>
     </CEffectSwitch>
     <CEffectCreatePersistent id="VortexArtanisCreatePersistent" parent="VortexCreatePersistent">
-        <Marker Link="Effect/VortexArtanisCreatePersistent"/>
         <PeriodicEffectArray index="0" value="VortexArtanisSearchArea"/>
     </CEffectCreatePersistent>
     <CEffectSet id="VortexArtanisEffect" parent="VortexEffect">
-        <Marker Link="Effect/VortexArtanisEffect"/>
         <EffectArray index="4" value="VortexArtanisApplyDisable"/>
         <EffectArray value="VortexArtanisForceOffset"/>
     </CEffectSet>
@@ -2655,12 +2795,10 @@
         <InitialOffset value="0.25,0.15,0"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="VortexArtanisSearchArea" parent="VortexSearchArea">
-        <Marker Link="Effect/VortexArtanisSearchArea"/>
         <SearchFilters value="-;Self,Structure,Missile,Item,Dead,Hidden,Unstoppable"/>
         <AreaArray index="0" Radius="3" Effect="VortexArtanisEffect"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="VortexArtanisCreatePersistentInitial" parent="VortexCreatePersistentInitial">
-        <Marker Link="Effect/VortexArtanisCreatePersistentInitial"/>
         <InitialEffect value="VortexArtanisCreatePersistent"/>
     </CEffectCreatePersistent>
     <CEffectApplyForce id="VortexArtanisForce">
@@ -2678,6 +2816,62 @@
     <CEffectApplyBehavior id="VortexArtanisExit">
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="VoidArchonVortexApplyDisableEnemy">
+        <Name value="Effect/Name/VortexApplyDisableEnemy"/>
+        <ValidatorArray index="0" value="IsNotWarpingIn"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="VoidArchonVortexBehaviorEnemy"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="VoidArchonVortexCreatePersistent">
+        <Name value="Effect/Name/VortexCreatePersistent"/>
+        <EditorCategories value="Race:Protoss"/>
+        <PeriodCount value="80"/>
+        <PeriodicEffectArray value="VoidArchonVortexSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <ExpireEffect value="VoidArchonResurgenceSearch"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="VoidArchonVortexCreatePersistentInitial">
+        <Name value="Effect/Name/VortexCreatePersistentInitial"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <InitialEffect value="VoidArchonVortexCreatePersistent"/>
+        <PeriodCount value="96"/>
+        <PeriodicEffectArray value="VoidArchonVortexEventHorizonSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <RevealRadius value="6"/>
+        <RevealFlags index="Unfog" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="VordArchonVortexEffect">
+        <Name value="Effect/Name/VortexEffect"/>
+        <ValidatorArray value="NoYoink"/>
+        <ValidatorArray value="IsNotMothershipCorePurifyNexus"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="VortexKillForceField"/>
+        <EffectArray value="VortexUnburrow"/>
+        <EffectArray value="VortexDummy"/>
+        <EffectArray value="VortexUnsiege"/>
+        <EffectArray value="VoidArchonVortexApplyDisableEnemy"/>
+        <EffectArray value="VoidArchonVortexForceOffset"/>
+    </CEffectSet>
+    <CEffectApplyForce id="VoidArchonVortexForce">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichUnit Effect="VordArchonVortexEffect"/>
+        <Amount value="-0.5"/>
+    </CEffectApplyForce>
+    <CEffectCreatePersistent id="VoidArchonVortexForceOffset">
+        <EditorCategories value="Race:Protoss"/>
+        <OffsetVectorStartLocation Effect="VoidArchonVortexSearchArea" Value="TargetPoint"/>
+        <InitialEffect value="VoidArchonVortexForce"/>
+        <InitialOffset value="0.25,0.15,0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyForce id="VoidArchonVortexForceBehavior">
+        <ValidatorArray value="IsNotWarpBubble"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Effect="VoidArchonVortexCreatePersistent" Value="TargetPoint"/>
+        <Amount value="-0.05"/>
+    </CEffectApplyForce>
     <CEffectCreateHealer id="MedivacRaynorHeal">
         <ValidatorArray value="noMarkers"/>
         <ValidatorArray value="NotWarpingIn"/>
@@ -2701,6 +2895,25 @@
         <InitialEffect value="KaraxBlinkIssueOrder"/>
         <InitialOffset value="0,100,0"/>
     </CEffectCreatePersistent>
+    <CEffectEnumArea id="VoidArchonVortexSearchArea">
+        <Name value="Effect/Name/VortexSearchArea"/>
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable,MapBoss"/>
+        <AreaArray Radius="3" Effect="VordArchonVortexEffect"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="AscendantArchonDummySelfBuff"/>
+            <AccumulatorArray value="AscendantArchonDummySelfBuffSearchFactor"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="VoidArchonVortexEventHorizonSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Unstoppable,MapBoss"/>
+        <AreaArray Radius="3" Effect="VortexEventHorizon"/>
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="AscendantArchonDummySelfBuff"/>
+            <AccumulatorArray value="AscendantArchonDummySelfBuffSearchFactor"/>
+        </ExtraRadiusBonus>
+    </CEffectEnumArea>
     <CEffectSwitch id="WraithMovingSwitch">
         <EditorCategories value="Race:Terran"/>
         <CaseArray Validator="TargetIsAirUnitFilter" Effect="WraithAPersistent"/>
@@ -2754,6 +2967,9 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>
     </CEffectDamage>
+    <CEffectEnumArea id="ZeratulDarkArchonMaelstromSearch">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>

@@ -95,6 +95,15 @@
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="CreateSymbiote" Requirements="CommanderPrestigeAbathurSymbiote"/>
     </CAbilEffectTarget>
+    <CAbilMerge id="VoidArchonMerge">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="VoidArchonMergeSelection" Requirements="NotHaveDarkArchonMindControl">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="VoidArchonMergeTarget"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <Info Unit="VoidArchon" Time="12"/>
+    </CAbilMerge>
     <CAbilBuild id="DehakaDroneMorph">
         <InfoArray index="Build6">
             <Button Requirements="HaveDehakaBarracks"/>
@@ -676,6 +685,23 @@
         <Flags index="AutoCastOn" value="0"/>
         <Range index="0" value="8"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="VoidArchonVortex">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="VoidArchonVortexCreatePersistentInitial"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Vortex"/>
+        <Cost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+        </Cost>
+        <AutoCastFilters value="-;-"/>
+        <AutoCastRange value="1"/>
+    </CAbilEffectInstant>
     <CAbilMorph id="WreckingCrewAssaultMode">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -945,6 +971,11 @@
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="ResearchSignifierFade" State="Restricted" Requirements="LearnSignifierFade"/>
+        </InfoArray>
+        <InfoArray index="Research14" Time="60" Upgrade="VoidArchonChainReaction">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="VoidArchonChainReactionResearch" State="Restricted" Requirements="LearnVoidArchonChainReaction"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilEffectTarget id="DarkTemplarVoidStasis">
@@ -1571,6 +1602,20 @@
     <CAbilEffectTarget id="Yoink">
         <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidArchonMaelstrom">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ZeratulDarkArchonMaelstromSearch"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="9"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CursorEffect value="ZeratulDarkArchonMaelstromSearch"/>
+        <AINotifyEffect value="ArtanisMaelstromDamage"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ZeratulDarkArchonMaelstrom"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ZeratulVoidPrisonTarget">
         <EditorCategories value="AbilityorEffectType:Units"/>

@@ -1515,6 +1515,7 @@
         <EffectArray Reference="Actor,DisablingCloud,Scale" Value="0.330000"/>
         <EffectArray Reference="Effect,ParasiticBombSecondarySearchEffect,AreaArray[0].Radius" Value="1"/>
     </CUpgrade>
+    <CUpgrade id="VoidArchonChainReaction"/>
     <CUpgrade id="VoidHighTemplarCloak">
         <EffectArray index="0" Value="Button/Name/HighTemplarNerazim"/>
         <EffectArray index="1" Value="Button/Tooltip/HighTemplarNerazim"/>
@@ -1642,16 +1643,22 @@
         <EditorCategories value="Race:Protoss,UpgradeType:ArmorBonus"/>
         <EffectArray Reference="Unit,MothershipArtanis,ShieldArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,MothershipArtanis,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,VoidArchon,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,VoidArchon,ShieldArmor" Value="1"/>
         <AffectedUnitArray value="MothershipArtanis"/>
+        <AffectedUnitArray value="VoidArchon"/>
     </CUpgrade>
     <CUpgrade id="ProtossShieldsExtraLevel1" parent="ProtossShieldsExtra">
         <EffectArray Operation="Set" Reference="Actor,MothershipArtanis,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
     </CUpgrade>
     <CUpgrade id="ProtossShieldsExtraLevel2" parent="ProtossShieldsExtra">
         <EffectArray Operation="Set" Reference="Actor,MothershipArtanis,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
     </CUpgrade>
     <CUpgrade id="ProtossShieldsExtraLevel3" parent="ProtossShieldsExtra">
         <EffectArray Operation="Set" Reference="Actor,MothershipArtanis,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsExtra">
         <Race value="Prot"/>
@@ -1665,9 +1672,13 @@
         <EffectArray Reference="Effect,AdeptPurifierDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,AdeptDamage,Amount" Value="-1"/>
         <EffectArray Reference="Effect,AdeptDamage,AttributeBonus[Light]" Value="1"/>
+        <EffectArray Reference="Effect,DarkArchonWeapon,Amount" Value="1"/>
+        <EffectArray Reference="Effect,DarkArchonWeapon2Damage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,DarkArchonWeapon3Damage,Amount" Value="3"/>
         <AffectedUnitArray value="HighTemplarShakuras"/>
         <AffectedUnitArray value="DarkArchon"/>
         <AffectedUnitArray value="AdeptFenix"/>
+        <AffectedUnitArray value="VoidArchon"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsExtraLevel1" parent="ProtossGroundWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
@@ -1683,6 +1694,21 @@
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,DarkArchonNerazimWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AdeptPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsExtra">
+        <EditorCategories value="Race:Protoss,UpgradeType:ArmorBonus"/>
+        <EffectArray Reference="Unit,VoidArchon,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,VoidArchon,LifeArmor" Value="1"/>
+        <AffectedUnitArray value="VoidArchon"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsExtraLevel1" parent="ProtossGroundArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsExtraLevel2" parent="ProtossGroundArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsExtraLevel3" parent="ProtossGroundArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,VoidArchon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtra">
         <EditorCategories value="Race:Terran,UpgradeType:AttackBonus"/>

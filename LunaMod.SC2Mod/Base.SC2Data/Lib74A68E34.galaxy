@@ -2905,6 +2905,13 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             }
 
         }
+        else if (auto560DABDD_val == "ProtossAlarak") {
+            TriggerEnable(lib74A68E34_gt_AlarakArchonSacrificeScale, true);
+            TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale, true);
+            TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceCleanUp, true);
+            TriggerEnable(lib74A68E34_gt_AlarakMergeApplyBuff, true);
+            TriggerEnable(lib74A68E34_gt_AlarakMergeSetTarget, true);
+        }
         else if (auto560DABDD_val == "TerranNova") {
             TriggerEnable(libCOMI_gt_CM_NovaPsiStrike, false);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeNovaMelee", c_techCountCompleteOnly) == 1)) {
@@ -4172,6 +4179,150 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AlarakArchonSacrificeScale
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakArchonSacrificeScale_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_sacrificCount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_sacrificCount = UnitBehaviorCount(EventUnit(), "AscendantArchonSelfBuff");
+    if ((lv_sacrificCount > 20)) {
+        lv_sacrificCount = 20;
+    }
+
+    libNtve_gf_SendActorMessageToUnit(EventUnit(), (("SetScale " + FixedToString(((0.025 * lv_sacrificCount) + 1.0), 3))));
+    ActorScopeSend(ActorScopeFromUnit(EventUnit()), libNtve_gf_Signal(IntToString((lv_sacrificCount / 2))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakArchonSacrificeScale_Init () {
+    lib74A68E34_gt_AlarakArchonSacrificeScale = TriggerCreate("lib74A68E34_gt_AlarakArchonSacrificeScale_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakArchonSacrificeScale, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AlarakArchonSacrificeScale, null, "AscendantArchonSelfBuff", c_unitBehaviorChangeIncrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakArchonResurgenceSacrificeScale
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_sacrificCount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_sacrificCount = UnitBehaviorCount(EventUnit(), "AscendantArchonDummySelfBuff");
+    if ((lv_sacrificCount > 20)) {
+        lv_sacrificCount = 20;
+    }
+
+    libNtve_gf_SendActorMessageToUnit(EventUnit(), (("SetScale " + FixedToString(((0.0333 * lv_sacrificCount) + 1.0), 3))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Init () {
+    lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale = TriggerCreate("lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale, null, "AscendantArchonDummySelfBuff", c_unitBehaviorChangeIncrease);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakArchonResurgenceCleanUp
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(4.0, c_timeGame);
+    UnitKill(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init () {
+    lib74A68E34_gt_AlarakArchonResurgenceCleanUp = TriggerCreate("lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceCleanUp, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AlarakArchonResurgenceCleanUp, c_playerAny, "VoidArchonResurgenceSearch");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakMergeApplyBuff
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakMergeApplyBuff_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto1D1E638A_ae = lib74A68E34_gv_alarakMergeMax;
+    int auto1D1E638A_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto1D1E638A_var = 0;
+    for ( ; auto1D1E638A_var <= auto1D1E638A_ae; auto1D1E638A_var += 1 ) {
+        if ((lib74A68E34_gv_alarakMergeTargets[auto1D1E638A_var].lv_target == EventUnit())) {
+            UnitBehaviorAdd(EventUnitCreatedUnit(), "AscendantArchonSelfBuff", EventUnit(), (UnitBehaviorCount(EventUnit(), "AscendantSacrificeSelfBuff") + UnitBehaviorCount(lib74A68E34_gv_alarakMergeTargets[auto1D1E638A_var].lv_self, "AscendantSacrificeSelfBuff")));
+            return true;
+        }
+
+    }
+    UnitBehaviorAdd(EventUnitCreatedUnit(), "AscendantArchonSelfBuff", EventUnit(), (UnitBehaviorCount(EventUnit(), "AscendantSacrificeSelfBuff") + 0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakMergeApplyBuff_Init () {
+    lib74A68E34_gt_AlarakMergeApplyBuff = TriggerCreate("lib74A68E34_gt_AlarakMergeApplyBuff_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakMergeApplyBuff, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_AlarakMergeApplyBuff, null, "VoidArchonMerge", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakMergeSetTarget
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakMergeSetTarget_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gv_alarakMergeTargets[lib74A68E34_gv_alarakMergeCurrent].lv_target = OrderGetTargetUnit(EventUnitOrder());
+    lib74A68E34_gv_alarakMergeTargets[lib74A68E34_gv_alarakMergeCurrent].lv_self = EventUnit();
+    lib74A68E34_gv_alarakMergeCurrent += 1;
+    if ((lib74A68E34_gv_alarakMergeCurrent > lib74A68E34_gv_alarakMergeMax)) {
+        lib74A68E34_gv_alarakMergeCurrent = 0;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakMergeSetTarget_Init () {
+    lib74A68E34_gt_AlarakMergeSetTarget = TriggerCreate("lib74A68E34_gt_AlarakMergeSetTarget_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakMergeSetTarget, false);
+    TriggerAddEventUnitOrder(lib74A68E34_gt_AlarakMergeSetTarget, null, AbilityCommand("VoidArchonMerge", 1));
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: NovaPrestigeMeleeCliffJump
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Func (bool testConds, bool runActions) {
@@ -5373,6 +5524,11 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
+    lib74A68E34_gt_AlarakArchonSacrificeScale_Init();
+    lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Init();
+    lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init();
+    lib74A68E34_gt_AlarakMergeApplyBuff_Init();
+    lib74A68E34_gt_AlarakMergeSetTarget_Init();
     lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init();
