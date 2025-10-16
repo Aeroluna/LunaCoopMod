@@ -80,6 +80,10 @@ I'm not sure why Blizzard made Wraiths have a sight radius lower than any other 
 
 Not sure why this ability had its volume nerfed in co-op.
 
+- Removed hit test from High Templar (and variants) trail (Can no longer be clicked).
+
+If you've ever wondered how you boxed that High Templar you didn't mean to, this is probably why.
+
 - Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Affected units:
     - Spider Mine (Raynor/Nova)
@@ -893,8 +897,14 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
+- Added red Tal'darim building warp-in skins.
+- Added red Tal'darim gateway unit warp-in skins.
+
+Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant and Stalker warp-in effects going from top to bottom instead of bottom to top. Seriously, were they drunk when UV mapping these?
+
 - Fixed an issue where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
+- Fixed an issue where Ascendant shadow trail model didn't scale with the Ascendant (noticeable with Power Overwhelming).
 - Restored missing beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
 
@@ -1628,5 +1638,9 @@ yeah.
 - Data-Driven Turrets - Enoki
 - Tosh co-op commander icon pack - DaveSpectre
 - Taldarim Iconpack - DaveSpectre
+- Taldarim Building Warp in Pack (Red) - herdal
+- Generic Taldarim Building Death (Red) - herdal
+- Taldarim Ground Units Warp in (Red) - herdal
+- ProtossBuildRed2345.m3 - ordinator
 
 DaveSpectre is the goat <3

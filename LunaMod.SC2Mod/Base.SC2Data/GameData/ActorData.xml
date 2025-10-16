@@ -51,6 +51,10 @@
     <CActorModel id="FleetwideJumpTeleportOut">
         <Model value="AirUnits_TeleportIn_COOP"/>
     </CActorModel>
+    <CActorModel id="HighTemplarShadow">
+        <Inherits index="Scale" value="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
     <CActorSound id="MattFleet_FleetwideJumpCursorSound">
         <On Terms="Behavior.OrdnanceFleetwideJumpTeleportOut.On" Send="Create"/>
     </CActorSound>
@@ -86,28 +90,28 @@
     <CActorRange id="VoidArchonMaelstromRange" parent="RangeAbil" abil="VoidArchonMaelstrom"/>
     <CActorModel id="AscendantArchonSacrificeEffect" parent="ModelAddition">
         <Macros value="GlobalLoopMacroMore"/>
-        <!--On Terms="ActorCreation" Send="SetTintColor {255,0,0 5.000000}"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.050000"/-->
-        <On Terms="ActorCreation" Send="SetTintColor {0,0,0 5.000000}"/>
-        <On Terms="Signal.*.2" Send="SetScale 1.150000"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,0,0 5.000000}"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.050000"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor {0,0,0 5.000000}"/-->
+        <On Terms="Signal.*.2" Send="SetScale 1.200000"/>
         <On Terms="Signal.*.2" Send="SetOpacity 0.050000"/>
-        <On Terms="Signal.*.3" Send="SetScale 1.300000"/>
+        <On Terms="Signal.*.3" Send="SetScale 1.400000"/>
         <On Terms="Signal.*.3" Send="SetOpacity 0.075000"/>
-        <On Terms="Signal.*.4" Send="SetScale 1.450000"/>
+        <On Terms="Signal.*.4" Send="SetScale 1.600000"/>
         <On Terms="Signal.*.4" Send="SetOpacity 0.100000"/>
-        <On Terms="Signal.*.5" Send="SetScale 1.600000"/>
+        <On Terms="Signal.*.5" Send="SetScale 1.800000"/>
         <On Terms="Signal.*.5" Send="SetOpacity 0.150000"/>
-        <On Terms="Signal.*.6" Send="SetScale 1.750000"/>
+        <On Terms="Signal.*.6" Send="SetScale 2.000000"/>
         <On Terms="Signal.*.6" Send="SetOpacity 0.250000"/>
-        <On Terms="Signal.*.7" Send="SetScale 1.900000"/>
+        <On Terms="Signal.*.7" Send="SetScale 2.200000"/>
         <On Terms="Signal.*.7" Send="SetOpacity 0.350000"/>
-        <On Terms="Signal.*.8" Send="SetScale 2.050000"/>
+        <On Terms="Signal.*.8" Send="SetScale 2.400000"/>
         <On Terms="Signal.*.8" Send="SetOpacity 0.450000"/>
-        <On Terms="Signal.*.9" Send="SetScale 2.200000"/>
+        <On Terms="Signal.*.9" Send="SetScale 2.600000"/>
         <On Terms="Signal.*.9" Send="SetOpacity 0.550000"/>
-        <On Terms="Signal.*.10" Send="SetScale 2.350000"/>
+        <On Terms="Signal.*.10" Send="SetScale 2.800000"/>
         <On Terms="Signal.*.10" Send="SetOpacity 1.000000"/>
-        <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1Dot25_GaryOrb"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1Dot5"/>
         <Model value="AscendantSacrificeEffect"/>
     </CActorModel>
     <CActorUnit id="Battlecruiser">
@@ -2934,6 +2938,8 @@
     <CActorModel id="HighTemplarTaldarimShadow">
         <On index="3" Send="SetTintColor 128,0,0 0.800000"/>
         <Model value="HighTemplarTaldarimShadow"/>
+        <Inherits index="Scale" value="1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
     <CActorModel id="MothershipConstructionAnim" parent="ModelAnimationStyleContinuous">
         <On Terms="ActorCreation" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
@@ -3415,6 +3421,8 @@
         <On index="7" removed="1"/>
         <ModelFlags index="AllowHitTest" value="0"/>
         <HostSiteOps Ops="SOpAttachOriginStationary SOp2DRotation SOpMoveDownByDot25"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Scale" value="1"/>
     </CActorModel>
     <CActorSound id="HighTemplar_Death">
         <On index="3" removed="1"/>
