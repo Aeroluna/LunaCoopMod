@@ -128,6 +128,49 @@
     <CBehaviorBuff id="FlashBangGrenade">
         <Duration value="5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HHValkyrieRandomDelay">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+        <Modification AttackSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrdnanceFleetwideJumpTeleport">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.0625"/>
+        <ExpireEffect value="OrdnanceFleetwideJumpTeleportInAB"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrdnanceFleetwideJumpTeleportIn">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.6"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrdnanceFleetwideJumpTeleportOut">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.6"/>
+        <ExpireEffect value="OrdnanceFleetwideJumpTeleportSet"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GhostMengskCloakBuff">
         <InfoIcon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -157,6 +200,48 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Period value="0.25"/>
         <PeriodicEffect value="HHValkyrieRecallIssueOrder"/>
+    </CBehaviorBuff>
+    <CBehaviorWander id="HHValkyrieWander">
+        <Leash value="1"/>
+        <MinimumRange value="4"/>
+        <Range value="10"/>
+    </CBehaviorWander>
+    <CBehaviorBuff id="HHValkyrieFleetwideJumpTeleport">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.0625"/>
+        <ExpireEffect value="HHValkyrieFleetwideJumpTeleportInAB"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHValkyrieFleetwideJumpTeleportIn">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.6"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHValkyrieFleetwideJumpTeleportOut">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="0.6"/>
+        <ExpireEffect value="HHValkyrieFleetwideJumpTeleportSet"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="HellbatHardenedShell">
         <InfoFlags index="Hidden" value="1"/>
@@ -392,11 +477,6 @@
         <Duration value="2"/>
         <Modification DecelerationMultiplier="2.25"/>
     </CBehaviorBuff>
-    <CBehaviorWander id="HHValkyrieWander">
-        <Leash value="1"/>
-        <MinimumRange value="2"/>
-        <Range value="8"/>
-    </CBehaviorWander>
     <CBehaviorBuff id="OracleRevelation">
         <Modification>
             <StateFlags index="SuppressDetection" value="1"/>

@@ -95,6 +95,58 @@
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="CreateSymbiote" Requirements="CommanderPrestigeAbathurSymbiote"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="HHOrdnanceTowerNanoRepair">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="NanoRepair"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="TransportAcquirePassengers" value="1"/>
+        <TargetFilters value="Mechanical,Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAlliancePassive"/>
+            <SortArray value="TSLifeFraction"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <SmartValidatorArray value="healSmartTargetFilters"/>
+        <SmartValidatorArray value="NotWarpingIn"/>
+        <SmartValidatorArray value="NotUnrepairable"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="-;Neutral,Enemy"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="healCasterMinEnergy"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="NotUnrepairable"/>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UseMarkerArray index="Prep" value="0"/>
+        <AINotifyEffect value="NanoRepair"/>
+        <DefaultError value="RequiresHealTarget"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Heal"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="OrdnanceFleetwideJump">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="OrdnanceFleetwideJumpSet"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <PrepTime value="0.0625"/>
+        <CastIntroTime value="0"/>
+        <CastOutroTime value="1.2624"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="Hyperjump"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FleetwideJump" Requirements="HaveHHTacticalJump">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <PlaceUnit value="HHOrdnanceTower"/>
+    </CAbilEffectTarget>
     <CAbilMerge id="VoidArchonMerge">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <CmdButtonArray index="SelectedUnits" DefaultButtonFace="VoidArchonMergeSelection" Requirements="NotHaveDarkArchonMindControl">
@@ -258,7 +310,7 @@
         <InfoArray index="Ammo1" Time="10" CountStart="4" Distance="2" Manage="Ignore" Unit="HHValkyrie">
             <Charge Link="Abil/##id##"/>
             <Cooldown Link="Abil/##id##"/>
-            <Button DefaultButtonFace="HHValkyrie" Requirements="ArmValkyrie4">
+            <Button DefaultButtonFace="HHValkyrie" Requirements="ArmValkyrie">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Flags index="AutoBuild" value="1"/>
@@ -268,7 +320,7 @@
         </InfoArray>
         <Alert value="NoAlert"/>
         <EffectArray index="Create" value="HHValkyrieRecallAB"/>
-        <MaxCount value="4"/>
+        <MaxCount value="6"/>
     </CAbilArmMagazine>
     <CAbilMorph id="HHOrdnanceTowerMorph">
         <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown"/>
@@ -728,6 +780,9 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="Yamato">
+        <PrepTime index="0" value="3"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="YoinkAmon">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="YoinkStartSwitch"/>

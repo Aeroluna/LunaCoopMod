@@ -56,6 +56,68 @@
     <CEffectDamage id="DarkArchonWeaponDamage">
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectLaunchMissile id="HHLaserBatteryLM">
+        <Movers Link="YamatoWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="HHOrdnanceTowerLM">
+        <Movers Link="PunisherGrenadesWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="OrdnanceFleetwideJumpSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="OrdnanceFleetwideJumpCreatePrecursor"/>
+        <EffectArray value="HHValkyrieFleetwideJump"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="OrdnanceFleetwideJumpCreatePrecursor">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="OrdnanceFleetwideJumpTeleportOutABSet"/>
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
+    <CEffectTeleport id="OrdnanceFleetwideJumpTeleport">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Effect="OrdnanceFleetwideJumpCreatePrecursor"/>
+        <PlacementRange value="15"/>
+        <TargetLocation Effect="OrdnanceFleetwideJumpCreatePrecursor" Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="OrdnanceFleetwideJumpTeleportAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OrdnanceFleetwideJumpTeleport"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OrdnanceFleetwideJumpTeleportInAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OrdnanceFleetwideJumpTeleportIn"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="OrdnanceFleetwideJumpTeleportOutAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OrdnanceFleetwideJumpTeleportOut"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="OrdnanceFleetwideJumpTeleportOutABSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="OrdnanceFleetwideJumpTeleportOutAB"/>
+        <EffectArray value="OrdnanceFleetwideJumpTeleportOutTargetAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="OrdnanceFleetwideJumpTeleportOutTargetAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="HyperjumpTeleportOutTargetSuppressCollision"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="OrdnanceFleetwideJumpTeleportSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="OrdnanceFleetwideJumpTeleport"/>
+        <EffectArray value="OrdnanceFleetwideJumpTeleportAB"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="VoidArchonDeathAB">
         <Behavior value="AscendantArchonDummySelfBuff"/>
         <Count value="0">
@@ -362,6 +424,41 @@
         <Abil value="move"/>
         <Target Value="CasterPoint"/>
     </CEffectIssueOrder>
+    <CEffectEnumMagazine id="HHValkyrieFleetwideJump">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectInternal value="HHValkyrieFleetwideJumpTeleportOutABSet"/>
+        <EffectExternal value="HHValkyrieFleetwideJumpTeleportOutABSet"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectEnumMagazine>
+    <CEffectApplyBehavior id="HHValkyrieFleetwideJumpTeleportAB">
+        <Behavior value="HHValkyrieFleetwideJumpTeleport"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HHValkyrieFleetwideJumpTeleportInAB">
+        <Behavior value="HHValkyrieFleetwideJumpTeleportIn"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HHValkyrieFleetwideJumpTeleportOutAB">
+        <Behavior value="HHValkyrieFleetwideJumpTeleportOut"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HHValkyrieFleetwideJumpTeleportOutABSet">
+        <EffectArray value="HHValkyrieFleetwideJumpTeleportOutAB"/>
+    </CEffectSet>
+    <CEffectTeleport id="HHValkyrieFleetwideJumpTeleport">
+        <TargetLocation Effect="OrdnanceFleetwideJumpSet" Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+        <SourceLocation Value="TargetUnit"/>
+    </CEffectTeleport>
+    <CEffectSet id="HHValkyrieFleetwideJumpTeleportSet">
+        <EffectArray value="HHValkyrieFleetwideJumpWanderRB"/>
+        <EffectArray value="HHValkyrieFleetwideJumpTeleport"/>
+        <EffectArray value="HHValkyrieFleetwideJumpTeleportAB"/>
+        <EffectArray value="HHValkyrieFleetwideJumpWanderAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HHValkyrieFleetwideJumpWanderAB">
+        <Behavior value="HHValkyrieWander"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HHValkyrieFleetwideJumpWanderRB">
+        <BehaviorLink value="HHValkyrieWander"/>
+    </CEffectRemoveBehavior>
     <CEffectEnumArea id="CommanderPrestigeKerriganAbilitiesStunSearch">
         <SearchFilters value="-;Player,Ally,Neutral,RawResource,Missile,Destructible,Item,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
@@ -1697,7 +1794,31 @@
         <EditorCategories value="Race:Terran"/>
         <ImpactEffect value="HHValkyrie2Damage"/>
         <AmmoUnit value="HHValkyrie2Weapon"/>
+        <ValidatorArray index="0" value="TargetInWeaponRange"/>
     </CEffectLaunchMissile>
+    <CEffectEnumArea id="HHValkyrie2Search">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="90" Radius="10" Effect="HHValkyrie2LM"/>
+        <MaxCount value="1"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <IncludeArray Value="Target"/>
+        <TargetSorts>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="HHValkyrie2DelayAB">
+        <Behavior value="HHValkyrieRandomDelay"/>
+        <Chance value="0.5"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HHValkyrie2Set">
+        <EffectArray value="HHValkyrie2DelayAB"/>
+        <EffectArray value="HHValkyrie2Search"/>
+    </CEffectSet>
     <CEffectDamage id="SOAMothershipLineAttackDamage">
         <Amount value="100"/>
         <ResponseFlags index="Acquire" value="1"/>

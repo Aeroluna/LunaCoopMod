@@ -2,6 +2,7 @@
 Abil/Name/DuskWingBansheeCloakingFieldPrestige=Cloaking Field
 Abil/Name/Enshroud=Enshroud
 Abil/Name/FenixClolarionCarrierDummyMorph=FenixClolarionCarrierDummyMorph
+Abil/Name/HHOrdnanceTowerNanoRepair=Nano Repair
 Abil/Name/HireMercBanshee=HireMercBanshee
 Abil/Name/HireMercBattlecruiser=HireMercBattlecruiser
 Abil/Name/HireMercFirebat=HireMercFirebat
@@ -22,6 +23,7 @@ Abil/Name/MothershipArtanisPlanetCracker=Planet Cracker
 Abil/Name/NexusTrainMothership2=Train Mothership Copy
 Abil/Name/NexusTrainMothershipArtanis2=Train Mothership
 Abil/Name/OracleStasisTrapBuildVorazun=Build Stasis Ward
+Abil/Name/OrdnanceFleetwideJump=Tactical Jump
 Abil/Name/PsiStormShakuras=Astral Storm
 Abil/Name/SIBansheeHangar=SIBanshee Hangar
 Abil/Name/SIBansheeQueue=SIBanshee Queue
@@ -355,6 +357,7 @@ Button/Tooltip/HealMedivac=Heals a friendly biological target.<n/><n/><c val="f0
 Button/Tooltip/HellArmor=Increases Hellbat and Hellion armor by 2 and hitpoints by 40.
 Button/Tooltip/HellburstPayload=Increases the direct damage of Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/HighTemplarNerazim=Potent psionic master. Can use Aurora Veil, Astral Storm, and Fading Star.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/HighTemplarShakuras=Powerful attack caster. Can Maelstrom enemies.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/HireMercBanshee=Request 2 Dusk Wing Mercenaries.<n/><n/>Dominion deserters piloting modified Banshees.
 Button/Tooltip/HireMercBansheeCharges=<d ref="$BehaviorStackCount:HireMercBanshee$"/>
 Button/Tooltip/HireMercBattlecruiser=Request the Jackson's Revenge Battlecruiser.<n/><n/>Pirate Battlecruiser from the earliest days of the Confederacy.
@@ -432,6 +435,7 @@ Button/Tooltip/ResearchHHBomberEMP=<c val="FFFF8A">Strike Fighter Platform</c> P
 Button/Tooltip/ResearchHHBomberNapalm=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberNapalmImproved=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm that spreads farther. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberTriple=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes drop two additional bombs behind the target area.
+Button/Tooltip/ResearchHHTacticalJumpCharges=<c val="FFFF8A">Wraiths</c>, <c val="FFFF8A">Vikings</c>, <c val="FFFF8A">Ravens</c>, and <c val="FFFF8A">Ordnance Towers</c> can use Tactical Jump, warping them to any visible location.
 Button/Tooltip/ResearchHellbatHellArmor=<c val="ffff8a">Hellions</c> and <c val="ffff8a">Hellbats</c> gain +2 armor and +40 hitpoints.
 Button/Tooltip/ResearchHellburstPayload=Increases the direct damage of <c val="ffff8a">Widow Mine</c> Sentinel Missiles by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeDirect,Amount$" player="0"/> and the splash damage by <d ref="$UpgradeEffectArrayValue:HellburstPayload:Effect,WidowMineExplodeSplash,Amount$" player="0"/>.
 Button/Tooltip/ResearchInfestedBunkerArmor=<c val = "ffff8a">Infested Bunkers</c> and <c val = "ffff8a">Infested Missile Turrets</c> gain +3 armor.
@@ -494,6 +498,7 @@ Button/Tooltip/VikingMengskAttackDamage=After transforming, this unit gains <d r
 Button/Tooltip/VikingMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Deals bonus damage to Massive targets and gains +2 range.
 Button/Tooltip/VikingMengskRank1Preview=<n/><c val="777777">Rank 1: Deals bonus damage to Massive targets and gains +2 range.</c>
 Button/Tooltip/ViperImprovedCastRangePassive=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
+Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonChainReactionResearch=<c val="ffff8a">Void Archon</c> attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.
@@ -814,8 +819,8 @@ RequirementNode/Tooltip/CountUpgradeVoidArchonChainReactionCompleteOnly742300976
 RequirementNode/Tooltip/Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0=No Mothership
 RequirementNode/Tooltip/LT1640478685CountUnitFenixClolarionBomberQueuedOrBetterAtUnit2=Clolarion must have fewer than 2 Interdictors
 RequirementNode/Tooltip/LT1885979198CountBehaviorSIBarracksCorruptionCompleteOnlyAtUnit5=Can only have 5 levels of Corruption
-RequirementNode/Tooltip/LT3630652323CountUnitHHValkyrieQueuedOrBetterAtUnit4=Ordnance Tower must have fewer than 4 Valkyries
 RequirementNode/Tooltip/LT3730171456CountUnitSwarmNetworkQueuedOrBetter4=Limit 4
+RequirementNode/Tooltip/LT795304586CountUnitHHValkyrieQueuedOrBetterAtUnit6=Ordnance Tower must have fewer than 6 Valkyries
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen.
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberNapalmImprovedQueuedOrBetterCountUpgradeHHBomberTripleQueuedOrBetter=Only one Precision Strike upgrade can be chosen.
 RequirementNode/Tooltip/Not569486901OrCountUpgradeHHBomberTripleQueuedOrBetterCountUpgradeHHBomberEMPQueuedOrBetter=Only one Precision Strike upgrade can be chosen.

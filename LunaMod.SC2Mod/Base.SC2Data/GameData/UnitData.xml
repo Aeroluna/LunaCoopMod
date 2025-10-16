@@ -45,6 +45,9 @@
         <Speed value="4"/>
         <Sight value="4"/>
     </CUnit>
+    <CUnit id="Archon">
+        <InnerRadius value="0.5625"/>
+    </CUnit>
     <CUnit id="Armory">
         <CardLayouts index="0">
             <LayoutButtons index="22" Face="ResearchOverdriveActuators" AbilCmd="ArmoryResearchVoidCoop,Research19" Row="2" Column="0"/>
@@ -118,11 +121,38 @@
             <LayoutButtons Face="CommanderPrestigeAbathurSymbioteLocked" Type="Passive" Requirements="CommanderPrestigeAbathurSymbiote" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
+        <InnerRadius value="0.5625"/>
+    </CUnit>
     <CUnit id="CoopCasterRaynor">
         <CardLayouts index="0">
             <LayoutButtons Face="CommanderPrestigeRaynorHyperionLocked" Type="Passive" Row="0" Column="0"/>
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaUltraliskLevel2">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="DehakaUltraliskLevel3">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="HotSNoxious">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="HotSTorrasque">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="PrimalUltralisk">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="Ultralisk">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="UltraliskMengsk">
+        <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="UltraliskStetmann">
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="VoidArchonDummy">
         <Race value="Prot"/>
@@ -150,7 +180,6 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="VoidArchon">
-        <Description value="Button/Tooltip/HighTemplarShakuras"/>
         <DeathRevealRadius value="3"/>
         <Race value="Prot"/>
         <Mob value="Multiplayer"/>
@@ -166,7 +195,7 @@
         <LifeStart value="10"/>
         <LifeMax value="10"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
-        <EnergyStart value="50"/>
+        <EnergyStart value="200"/>
         <EnergyMax value="200"/>
         <EnergyRegenRate value="0.5625"/>
         <ShieldsStart value="350"/>
@@ -211,7 +240,7 @@
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="0.75"/>
-        <InnerRadius value="0.75"/>
+        <InnerRadius value="0.5625"/>
         <CargoSize value="4"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="145"/>
@@ -225,6 +254,7 @@
         <GlossaryWeakArray value="Immortal"/>
         <GlossaryWeakArray value="Ultralisk"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="ForceFieldTaldarim">
         <DeathRevealRadius value="0"/>
@@ -780,14 +810,16 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="HHOrdnanceTowerHangar"/>
         <AbilArray Link="HangarQueue5"/>
-        <AbilArray Link="NanoRepair"/>
+        <AbilArray Link="HHOrdnanceTowerNanoRepair"/>
+        <AbilArray Link="OrdnanceFleetwideJump"/>
         <WeaponArray Link="HHOrdnanceTower" Turret="MissileTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="HHValkyrie" Type="AbilCmd" AbilCmd="HHOrdnanceTowerHangar,Ammo1" Row="2" Column="0"/>
-            <LayoutButtons Face="NanoRepair" Type="AbilCmd" AbilCmd="NanoRepair,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="NanoRepair" Type="AbilCmd" AbilCmd="HHOrdnanceTowerNanoRepair,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
+            <LayoutButtons Face="FleetwideJump" Type="AbilCmd" AbilCmd="OrdnanceFleetwideJump,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <Radius value="1.5"/>
         <SeparationRadius value="1.5"/>
@@ -802,6 +834,7 @@
         <BehaviorArray Link="Detector11"/>
         <BehaviorArray Link="HHOrdnanceTowerAttack"/>
         <EquipmentArray Weapon="HHOrdnanceTowerValkyrieDummy"/>
+        <PlacementFootprint value="Footprint3x3CreepNormalContour"/>
     </CUnit>
     <CUnit id="HHOrdnanceTowerConstruction" parent="HHOrdnanceTower">
         <PlaneArray index="Ground" value="1"/>
@@ -819,6 +852,7 @@
         <AbilArray index="3" removed="1"/>
         <AbilArray index="4" removed="1"/>
         <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
         <WeaponArray index="0" Link="" Turret="MissileTurret"/>
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="Cancel" Type="AbilCmd" AbilCmd="que5Passive,CancelLast" Row="2" Column="4"/>
@@ -826,9 +860,9 @@
             <LayoutButtons index="2" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="StarportTrain,Train5" Row="1" Column="3"/>
             <LayoutButtons index="3" Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons index="4" removed="1"/>
+            <LayoutButtons index="5" removed="1"/>
         </CardLayouts>
         <Footprint value="Footprint3x3CreepNormalContour"/>
-        <PlacementFootprint value="Footprint3x3CreepNormalContour"/>
         <BehaviorArray index="0" Link="UnderConstruction"/>
         <BehaviorArray index="1" removed="1"/>
         <EquipmentArray index="0" removed="1"/>
@@ -988,16 +1022,16 @@
         <EditorCategories value=""/>
     </CUnit>
     <CUnit id="SIBarracksFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="SICivilianStructureFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="SICommandCenter">
         <AbilArray index="6" Link="que5CancelToSelection"/>
     </CUnit>
     <CUnit id="SICommandCenterFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="SIEngineeringBay">
         <CardLayouts index="0">
@@ -1015,14 +1049,12 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIFactoryFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="SIInfestedBunker">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="SIInfestedBunkerSpawnInfestedMarine" AbilCmd="SIInfestedBunkerTrainMarine,Execute"/>
             <LayoutButtons index="1" Face="BunkerLoad" AbilCmd="SIInfestedBunkerTransport,Load"/>
-            <!--LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="StopRedirect,Execute" Row="0" Column="1"/-->
-            <!--LayoutButtons Face="AttackRedirect" Type="AbilCmd" AbilCmd="AttackRedirect,Execute" Row="0" Column="4"/-->
             <LayoutButtons index="3" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast" Column="4"/>
             <LayoutButtons index="4">
                 <Face value="CancelBuilding"/>
@@ -1066,7 +1098,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedBunkerUprooted">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
         <AbilArray Link="SIInfestedBunkerTrainMarine"/>
         <BehaviorArray Link="SIInfestedBunkerAutoSpawner"/>
         <CardLayouts index="0">
@@ -1077,14 +1109,14 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedCivilian">
-        <PushPriority value="9"/>
         <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
+        <AlliedPushPriority value="-1"/>
     </CUnit>
     <CUnit id="SIInfestedCivilianBurrowed">
         <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="SIInfestedTrooper">
-        <PushPriority value="9"/>
+        <AlliedPushPriority value="-1"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="SIInfestedTrooperBurrowed">
@@ -1131,6 +1163,7 @@
     <CUnit id="DarkArchon">
         <WeaponArray index="0" Link="DarkArchonNerazimWeapon"/>
         <Collide index="ForceField" value="0"/>
+        <InnerRadius value="0.5625"/>
     </CUnit>
     <CUnit id="DarkShrine">
         <CardLayouts index="0">
@@ -1302,7 +1335,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIMissileTurretFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
         <WeaponArray Link="SILongboltMissile" Turret="MissileTurret"/>
         <CardLayouts index="0">
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
@@ -1314,7 +1347,7 @@
         <BehaviorArray Link="Detector11"/>
     </CUnit>
     <CUnit id="SIStarportFlying">
-        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="SIStarportTechLab">
         <CardLayouts index="0">
@@ -1329,7 +1362,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIVolatileInfested">
-        <PushPriority value="9"/>
+        <AlliedPushPriority value="-1"/>
         <BehaviorArray index="2" Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
@@ -1341,7 +1374,7 @@
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionInfested"/>
     </CUnit>
     <CUnit id="StukovInfestBroodling">
-        <PushPriority value="9"/>
+        <AlliedPushPriority value="-1"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="StukovInfestedBanshee">
@@ -1839,7 +1872,7 @@
         <Food value="0"/>
         <WeaponArray index="0" Link="InfestedAcidSpines"/>
         <WeaponArray Link="SIInfestedMarine"/>
-        <PushPriority value="9"/>
+        <AlliedPushPriority value="-1"/>
         <CostResource index="Minerals" value="0"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
@@ -2565,6 +2598,12 @@
         <AIEvalFactor value="0"/>
         <SelectAlias value="VorazunCoop"/>
         <HotkeyCategory value="Unit/Category/ProtossNerazim"/>
+    </CUnit>
+    <CUnit id="ZeratulDarkArchon">
+        <InnerRadius value="0.5625"/>
+    </CUnit>
+    <CUnit id="ZeratulHeroDarkArchon">
+        <InnerRadius value="0.5625"/>
     </CUnit>
     <CUnit id="Zergling">
         <BehaviorArray Link="KerriganCannibalize"/>

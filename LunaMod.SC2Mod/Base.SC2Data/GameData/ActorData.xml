@@ -42,6 +42,47 @@
     <CActorAction id="AdeptAttack">
         <ImpactModel value="AdeptAttackImpactModel"/>
     </CActorAction>
+    <CActorSite id="HHValkyrieFleetwideJumpImpactSite">
+        <On Terms="Effect.OrdnanceFleetwideJumpSet.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSet ::global.FleetwideJump ::Self"/>
+        <On Terms="ActorCreation" Send="TimerSet 3.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+    </CActorSite>
+    <CActorModel id="FleetwideJumpTeleportOut">
+        <Model value="AirUnits_TeleportIn_COOP"/>
+    </CActorModel>
+    <CActorSound id="MattFleet_FleetwideJumpCursorSound">
+        <On Terms="Behavior.OrdnanceFleetwideJumpTeleportOut.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="MattFleet_FleetwideJumpIn_Sound">
+        <On Terms="Behavior.OrdnanceFleetwideJumpTeleportIn.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="MattFleet_FleetwideJumpOut_Sound">
+        <On Terms="Behavior.OrdnanceFleetwideJumpTeleportOut.On" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="MattFleet_FleetwideJumpWireframeSound">
+        <On Terms="Behavior.OrdnanceFleetwideJumpTeleport.On" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="OrdnanceFleetwideJumpTeleportIn" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Effect.OrdnanceFleetwideJumpTeleportInAB.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 1.000000 0.300000 HyperJump"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="ClearTintColor 0.300000 HyperJump"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Impact ::Self"/>
+        <Model value="AirUnits_TeleportOut_COOP"/>
+        <Scale value="1.400000,1.400000,3.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardScopeLaunch"/>
+    </CActorModel>
+    <CActorModel id="OrdnanceFleetwideJumpTeleportOut" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Effect.OrdnanceFleetwideJumpCreatePrecursor.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.000000 0.200000 HyperJump"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetTintColor {77,197,63 3.000000} 0.000000 OneShot HyperJump"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Launch ::Self"/>
+        <Model value="AirUnits_TeleportIn_COOP"/>
+        <Scale value="1.400000,1.400000,3.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardTargetPoint SOp2DRotation"/>
+    </CActorModel>
     <CActorRange id="VoidArchonMaelstromRange" parent="RangeAbil" abil="VoidArchonMaelstrom"/>
     <CActorModel id="AscendantArchonSacrificeEffect" parent="ModelAddition">
         <Macros value="GlobalLoopMacroMore"/>
@@ -251,12 +292,6 @@
         <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
         <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
     </CActorModel>
-    <CActorModel id="FleetwideJumpTeleportIn">
-        <On index="2" Terms="Behavior.FleetwideJumpTeleportIn.On; ValidateUnit SourceNotHHBattlecruiser"/>
-    </CActorModel>
-    <CActorModel id="FleetwideJumpTeleportOut">
-        <On index="2" Terms="Behavior.FleetwideJumpTeleportOut.On; ValidateUnit SourceNotHHBattlecruiser"/>
-    </CActorModel>
     <CActorUnit id="ForceFieldTaldarim" parent="GenericUnitStandardNoAutoSoundLinks" unitName="ForceFieldTaldarim">
         <On Terms="ActorCreation" Send="Create SoundEmitter Sentry_ForceFieldLoop"/>
         <On Terms="ActorCreation" Send="SetTintColor {255,16,16 3.000000}"/>
@@ -422,17 +457,20 @@
         <On Terms="ActorCreation" Send="SetTintColor 255,255,255 0.200000"/>
     </CActorMissile>
     <CActorModel id="VoidArchonArchonModel" parent="ModelAnimationStyleContinuous">
-        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Stand,Work,Start Stand,Work {} 0 4.000000 AsTimeScale"/>
+        <!--On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Stand,Work,Start Stand,Work {} 0 4.000000 AsTimeScale"/-->
         <On Terms="Effect.VoidArchonVortexCreatePersistent.Start" Send="Create"/>
         <On Terms="Effect.VoidArchonVortexCreatePersistent.Stop" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.800000"/>
+        <!--On Terms="ActorCreation" Send="SetOpacity 0.800000"/-->
         <!--On Terms="ActorCreation" Send="SetTintColor {0,0,0 5.000000}"/-->
-        <HostSiteOps Ops="SOpAttachOrigin SOpMoveDownByDot75"/>
-        <Model value="DarkArchon"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1"/>
+        <Model value="MonlythForceFieldStatueAura"/>
         <Scale value="1.400000"/>
         <Host Subject="_Selectable"/>
         <Inherits index="Scale" value="1"/>
     </CActorModel>
+    <CActorSiteOpForward id="SOpForwardHHValkyrie">
+        <HostForward Subject="::global.FleetwideJump" Actor="Find"/>
+    </CActorSiteOpForward>
     <CActorModel id="VoidSentryBlackHole">
         <Remove Terms="AssetPreInit; !ValidatePlayer NoDarkProtoss" Send="ModelLinkCustomize BlackHoleNoTaldarim"/>
     </CActorModel>
@@ -910,11 +948,11 @@
         <On Terms="Effect.RavagerCorrosiveBileAoeDamage.Start; At Target" Send="Create"/>
         <On Terms="ActorCreation" Send="SetTintColor {255,60,150 6.000000}"/>
         <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachOverhead SOpMoveDownByDot35"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="CorrosiveBileImpact"/>
         <Scale value="0.600000"/>
-        <ModelFlags index="AllowHitTest" value="0"/>
         <AutoScaleFactor value="0.600000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
     <CActorModel id="ProtossGenericWarpInOut">
         <On index="3" Terms="Behavior.ProtossGenericWarpInOut.On; ValidateUnit SourceNotAir"/>
@@ -1466,6 +1504,21 @@
     <CActorUnit id="TychusCoop">
         <Remove Terms="Behavior.TychusCalldownOdinInsideOdinStun.Off" Send="AnimPlay Exit Spell,Land 0 0.000000"/>
     </CActorUnit>
+    <CActorSimple id="HHValkyrieFleetwideJumpTeleportIn">
+        <On Terms="Effect.HHValkyrieFleetwideJumpTeleportInAB.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 1.000000 0.300000 HyperJump"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="ClearTintColor 0.300000 HyperJump"/>
+    </CActorSimple>
+    <CActorModel id="HHValkyrieFleetwideJumpTeleportOut" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Effect.HHValkyrieFleetwideJumpTeleportOutABSet.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.000000 0.200000 HyperJump"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetTintColor {77,197,63 3.000000} 0.000000 OneShot HyperJump"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Launch ::Self"/>
+        <Model value="AirUnits_TeleportIn_COOP"/>
+        <Scale value="0.600000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardHHValkyrie SOp2DRotation"/>
+    </CActorModel>
     <CActorAction id="TychusCoopAttack">
         <ContainerAssets Model="MarineBunkerAttackLaunch" Sound="TychusCoop_ChaingunAttackLaunch"/>
     </CActorAction>

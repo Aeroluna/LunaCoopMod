@@ -119,6 +119,8 @@ thanks Enoki.
 - Added a very short cooldown to Stimpack to prevent rapid re-cast.
 - Fixed an issue where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
 - Fixed an issue where Guardian Shell would not affect units on a different cliff level.
+- Increased Ultralisk (and variants) allied push priority from 0 to 1 (now pushes allied units out of the way when moving).
+- Reduced Archon (and variants) collision radius with structures from 0.75 to 0.56 (Does not affect collision with other units).
 
 Copied from Versus.
 
@@ -228,6 +230,10 @@ Why do Amon's Phoenixes have energy if their one ability doesn't even cost energ
 - Reduced sight radius of Adept Shade from 9 to 4.
 
 Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
+
+- Increased Battlecruiser Yamato Cannon prep time from 1.5 seconds to 3 seconds.
+
+For some reason Co-op halves this charge time, this returns it to normal for Amon.
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
@@ -425,15 +431,15 @@ Makes units significantly cheaper at the cost of being unable to sustain an army
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
   - Uses energy to cast abilities.
-  - Can use Mass Recall for 50 energy.
+  - Can use Mass Recall ability for 50 energy.
     - Identical effect to Alarak's Mass Teleport.
-  - Can use Vortex for 50 energy.
+  - Can use Vortex ability for 50 energy.
     - Similar to Wings of Liberty Vortex.
     - Enemy units no longer get invulnerability while leaving the vortex (Still stunned).
     - Friend units are no longer stunned while leaving the vortex (Still invulnerable).
     - Deals up to 100 damage to enemy units within the Vortex.
     - Damage doubles with P1.
-  - Can use Planet Cracker every 360 seconds.
+  - Can use Planet Cracker ability every 360 seconds.
     - Briefly charges up before scorching the ground beneath the Mothership for 20 seconds, causing 1200 (1800 vs Armored) damage in an area below. Deals more damage closer to the beam.
     - Damage doubles with P1.
   - Cloaks nearby friendly units
@@ -477,6 +483,7 @@ Buff an underperforming prestige.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
+- Changed Warp Stargate model slightly.
 - Fixed an issue where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
 
 yeah.
@@ -567,11 +574,11 @@ If there is one think Stukov P3 has taught me, it's that throwing free units at 
 I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
 
 - Added Defilers.
-  - Can use Dark Swarm for 100 energy.
+  - Can use Dark Swarm ability for 100 energy.
     - Creates a micro-organism cloud preventing all incoming ranged and splash damage for 30 seconds.
-  - Can use Plague for 150 energy.
+  - Can use Plague ability for 150 energy.
     - Infects all enemy units and buildings in the target area, inflicting 300 damage over 20 seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
-  - Can use Consume.
+  - Can use Consume ability.
     - Kills target friendly biological unit metabolizing it into 75 energy.
   - Added Metasynaptic Node upgrade at the Infestation Pit.
     - Adds 50 max energy and starts at full energy.
@@ -655,13 +662,13 @@ In case it wasn't obvious, I was heavily inspired by Heroes of the Storm Zeratul
 
 - Added Signifiers, an astral-themed High Templar.
   - Available after building a Templar Archives.
-  - Can use Aurora Veil for 50 energy.
+  - Can use Aurora Veil ability for 50 energy.
     - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
-  - Can use Astral Storm for 75 energy.
+  - Can use Astral Storm ability for 75 energy.
     - Does less damage in a larger area than Psionic Storm for 7 seconds.
     - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
     - Applies P2, dealing massive damage.
-  - Can use Fading Star after researching at a Templar Archives.
+  - Can use Fading Star ability after researching at a Templar Archives.
     - Grants super cloak, 50% increased movement speed, and ignores unit collision for 4 seconds.
     - Can be autocast when damaged.
   - Argus Crystal additionally grants Signifiers full energy.
@@ -828,9 +835,9 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 ## Alarak
 
 - Added Void Archon, merged from two Ascendants.
-  - Can use Maelstrom for 50 energy.
+  - Can use Maelstrom ability for 50 energy.
     - Stuns enemies in an area for 8 seconds.
-  - Can use Sacrifice to refill energy.
+  - Can use Sacrifice ability to refill energy.
   - Has Power Overwhelming passive.
     - The Void Archon permanently gains +25% damage, +100 shields, and +0.5 shield armor each time it uses Sacrifice.
     - This effect stacks up to a maximum of 20.
@@ -842,7 +849,7 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
     - Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After 5 seconds, the supernova detonates for damage equal to the Void Archon's max shields.
     - The supernova's radius increases with Power Overwhelming stacks.
 
-A passive called Power Overwhelming deserves to go to an Archon unit! By accruing stacks on Ascendants and combining them, you can make a *super* archon with chain attacks that each do AOE damage. Inspired by the LotV cinematic, dying Void Archons go out with a bang, dealing massive damage in its range, though it still isn't worth losing your stacks.
+A passive called Power Overwhelming deserves to go to an Archon unit! By accruing stacks on Ascendants and combining them, you can make a *super* archon with chain attacks that each do AOE damage. Inspired by the LotV cinematic, dying Void Archons go out with a bang, dealing massive damage in a nearby radius, though it still isn't worth sacrificing your Archons.
 
 - Reworked Mothership Terminator Beam to only target air units.
 - Reworked Mothership Thermal Lance.
@@ -1074,8 +1081,8 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 
 Bunkers can do it, why not the Missile Turrets? Gives Stukov another funny form of detection.
 
-- Reduced push priority of infantry to 9.
-- Increased push priority of uprooted buildings to 11.
+- Reduced allied push priority of infantry to -1.
+- Increased allied push priority of uprooted buildings to 1.
 
 It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other smaller units out of the way. This helps trying to push your bunker line up.
 
@@ -1192,8 +1199,9 @@ Old P3 had an awkward design where it buffed how many platforms you could build 
   - These are flying defensive structures with long-range attacks.
   - Spawns up to 4 Valkyries that fly around and defend the area.
     - Valkyries have 100 hp and their own long-range missile attack.
-  - Can use the Nano-Repair ability to heal mech units.
+  - Can use Nano-Repair ability to heal mech units.
   - Can detect cloaked units.
+  - Can use Tactical Jump ability to reposition.
 
 Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
 
