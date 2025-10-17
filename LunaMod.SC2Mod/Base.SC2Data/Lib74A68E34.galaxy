@@ -464,7 +464,7 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
         for (;; autoC7A5723B_u -= 1) {
             autoC7A5723B_var = UnitGroupUnitFromEnd(autoC7A5723B_g, autoC7A5723B_u);
             if (autoC7A5723B_var == null) { break; }
-            if ((UnitFilterMatch(autoC7A5723B_var, UnitGetOwner(autoC7A5723B_var), UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true)) {
+            if ((UnitFilterMatch(autoC7A5723B_var, UnitGetOwner(autoC7A5723B_var), UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true) && (UnitWeaponCount(autoC7A5723B_var) > 0)) {
                 lv_attackingUnit = autoC7A5723B_var;
                 break;
             }
@@ -474,7 +474,7 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             lv_attackingUnit = UnitGroupRandomUnit(lp_patrol, c_unitCountAlive);
         }
 
-        lv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
+        lv_unitFilter = UnitFilter((1 << c_targetFilterVisible), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
         auto8D8224BF_g = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lv_attackingUnit), 30.0), lv_unitFilter, 0);
         auto8D8224BF_u = UnitGroupCount(auto8D8224BF_g, c_unitCountAll);
         for (;; auto8D8224BF_u -= 1) {
@@ -512,11 +512,16 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             lv_bestattacktargetunit = UnitGroupClosestToPoint(UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0), UnitGetPosition(lv_attackingUnit));
         }
 
-        if ((PointPathingCost(lv_currentRally, UnitGetPosition(lv_bestattacktargetunit)) < 20)) {
-            lv_currentRally = UnitGetPosition(lv_bestattacktargetunit);
+        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+            lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lv_currentRally, RandomFixed(10.0, 20.0), libNtve_gf_RandomAngle()), lv_currentRally);
         }
         else {
-            lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(lv_currentRally, 20.0, UnitGetPosition(lv_bestattacktargetunit)), lv_currentRally);
+            if ((PointPathingCost(lv_currentRally, UnitGetPosition(lv_bestattacktargetunit)) < 20)) {
+                lv_currentRally = UnitGetPosition(lv_bestattacktargetunit);
+            }
+            else {
+                lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(lv_currentRally, 20.0, UnitGetPosition(lv_bestattacktargetunit)), lv_currentRally);
+            }
         }
         UnitGroupIssueOrder(lp_patrol, OrderTargetingPoint(AbilityCommand("attack", 0), lv_currentRally), c_orderQueueReplace);
         auto54763DC6_g = lp_patrol;
@@ -532,7 +537,18 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             Wait(1.0, c_timeGame);
             auto3C1BA565_at = auto3C1BA565_at + 1.0;
         }
-        Wait((lv_safethinkperiod + RandomFixed(-0.125, 0.125)), c_timeGame);
+        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+            lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lv_currentRally, RandomFixed(10.0, 20.0), libNtve_gf_RandomAngle()), lv_currentRally);
+        }
+        else {
+            if ((PointPathingCost(lv_currentRally, UnitGetPosition(lv_bestattacktargetunit)) < 20)) {
+                lv_currentRally = UnitGetPosition(lv_bestattacktargetunit);
+            }
+            else {
+                lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(lv_currentRally, 20.0, UnitGetPosition(lv_bestattacktargetunit)), lv_currentRally);
+            }
+        }
+        Wait((lv_safethinkperiod + RandomFixed(-1.0, 1.0)), c_timeGame);
     }
 }
 
@@ -561,7 +577,7 @@ bool auto_lib74A68E34_gf_RaynorPrestigeMercenaryPatrolPing_TriggerFunc (bool tes
     lv_patrolPing = c_invalidPingId;
 
     // Implementation
-    libCOMI_gf_CreatePingCoop(PlayerGroupAll(), "PingCircle", UnitGroupCenterOfGroup(lp_patrol), ColorWithAlpha(0.00, 39.22, 100.00, 0.00), 999.0);
+    libCOMI_gf_CreatePingCoop(PlayerGroupAll(), "PingCircle", UnitGroupCenterOfGroup(lp_patrol), ColorWithAlpha(0.00, 39.22, 100.00, 0.00), 0.0);
     PingSetScale(PingLastCreated(), 0.3);
     lv_patrolPing = PingLastCreated();
     while ((libNtve_gf_UnitGroupIsDead(lp_patrol) == false)) {
