@@ -38,6 +38,19 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="YoinkTentacle"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareVital id="CasterLifeGE30Delta">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="30"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeLTTargetPercent" parent="CasterLifePercent">
+        <OtherUnit Value="Target"/>
+        <Compare value="LT"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="CasterLifeNotFullandTargetisEnemyorIsAllyandLifeGreaterThan25andNotUltraliskStetmann">
+        <CombineArray index="2" removed="1"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="CasterMasteryTychusFirstCommander">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -61,6 +74,9 @@
     <CValidatorLocationCompareRange id="LiberatorAGNotOutOfRange">
         <Range value="10"/>
     </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareVital id="LifeGreaterThan25">
+        <Value value="15"/>
+    </CValidatorUnitCompareVital>
     <CValidatorUnitFilters id="LockOnTargetNotDeadNew">
         <WhichUnit Effect="LockOnInitialSet"/>
         <Filters value="-;Dead"/>
@@ -515,6 +531,10 @@
         <Type value="Delta"/>
         <Value value="100"/>
     </CValidatorUnitCompareVital>
+    <CValidatorCombine id="TargetIsAllyandLifeGreaterThan25">
+        <CombineArray value="CasterLifeLTTargetPercent"/>
+        <CombineArray value="CasterLifeGE30Delta"/>
+    </CValidatorCombine>
     <CValidatorCombine id="TargetStillAimedAtByCasterWidowMineCombine">
         <CombineArray value="TargetStillAimedAtByCasterWidowMine"/>
         <CombineArray value="TargetStillAimedAtByCasterHHWidowMine"/>

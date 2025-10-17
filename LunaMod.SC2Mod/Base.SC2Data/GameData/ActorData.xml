@@ -42,6 +42,12 @@
     <CActorAction id="AdeptAttack">
         <ImpactModel value="AdeptAttackImpactModel"/>
     </CActorAction>
+    <CActorUnit id="DehakaCreeperFlying">
+        <On index="66" Send="$Birth RandomStartOffset"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaLocustFlying">
+        <On index="67" Send="$Birth RandomStartOffset"/>
+    </CActorUnit>
     <CActorSite id="HHValkyrieFleetwideJumpImpactSite">
         <On Terms="Effect.OrdnanceFleetwideJumpSet.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="RefSet ::global.FleetwideJump ::Self"/>
@@ -55,6 +61,12 @@
         <Inherits index="Scale" value="1"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
+    <CActorUnit id="LocustFlying">
+        <On index="67" Send="$Birth RandomStartOffset 0.000000"/>
+    </CActorUnit>
+    <CActorUnit id="LocustMPFlying">
+        <On index="65" Send="$Birth RandomStartOffset"/>
+    </CActorUnit>
     <CActorSound id="MattFleet_FleetwideJumpCursorSound">
         <On Terms="Behavior.OrdnanceFleetwideJumpTeleportOut.On" Send="Create"/>
     </CActorSound>
@@ -86,6 +98,142 @@
         <Scale value="1.400000,1.400000,3.000000"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardTargetPoint SOp2DRotation"/>
+    </CActorModel>
+    <CActorUnit id="RavagerStetmann">
+        <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="AnimClear Spell"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.RavagerStetmannCorrosiveBile.SourceCastStart" Send="$Spell"/>
+    </CActorUnit>
+    <CActorUnit id="UltraliskStetmann">
+        <On index="83" Terms="WeaponStop.UltraliskKaiserBladesStetmann.AttackStop"/>
+        <!-- Burrow charge, campaign version -->
+        <On index="84" Terms="ActorCreation" Send="StatusSet BurrowCharging 0"/>
+        <On index="85" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="TimerSet 0.070000 BurrowChargeFX"/>
+        <On index="86" Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1; !ModelIsLowQuality" Send="Create UltraliskStetmannBurrowChargeModel"/>
+        <On index="87" Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1" Send="TimerSet 0.070000 BurrowChargeFX"/>
+        <On index="88" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="AnimClear Fidget"/>
+        <On index="89" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="AnimBaselineStop"/>
+        <On index="90" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="AnimPlay BurrowChargeDown Burrow"/>
+        <On index="91" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="AnimPlay Burrow Walk,Burrow PlayForever"/>
+        <On index="92" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="Create BurrowChargeDownSound"/>
+        <On index="93" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="TimerSet 0.500000 BurrowChargingState"/>
+        <On index="94" Terms="TimerExpired; TimerName BurrowChargingState" Send="StatusSet BurrowCharging 1"/>
+        <!-- Cast has a .5 second delay, if the ultra can no longer get to the target during this time it would stay underground -->
+        <On index="95" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="TimerSet 0.600000 ChargeFailTimer"/>
+        <On index="96" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="StatusSet ChargeFail 1"/>
+        <On index="97" Terms="Behavior.UltraliskStetmannBurrowCharging.On" Send="StatusSet ChargeFail 0"/>
+        <On index="98" Terms="TimerExpired; TimerName ChargeFailTimer; IsStatus ChargeFail 1" Send="AnimClear Burrow"/>
+        <On index="99" Terms="TimerExpired; TimerName ChargeFailTimer; IsStatus ChargeFail 1" Send="AnimClear BurrowChargeDown"/>
+        <On index="100" Terms="TimerExpired; TimerName ChargeFailTimer; IsStatus ChargeFail 1" Send="AnimPlay BurrowChargeUp Stand,Cover"/>
+        <On index="101" Terms="TimerExpired; TimerName ChargeFailTimer; IsStatus ChargeFail 1" Send="AnimBaselineStart"/>
+        <On index="102" Send="Create UltraliskStetmannChargeImpactSound"/>
+        <On index="103" Send="StatusSet BurrowCharging 0"/>
+        <On index="104" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="AnimClear Burrow"/>
+        <On index="105" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="AnimClear BurrowChargeDown"/>
+        <On index="106" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="AnimPlay BurrowChargeUp Spell,C"/>
+        <On index="107" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="AnimBaselineStart"/>
+        <On index="108" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="Create UltraliskStetmannChargeImpactSound"/>
+        <On index="109" Terms="Effect.UltraliskStetmannBurrowChargeTargetSearch.Start; At Caster" Send="StatusSet BurrowCharging 0"/>
+        <On index="110" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimClear Burrow"/>
+        <On index="111" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimClear BurrowChargeDown"/>
+        <On index="112" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimPlay BurrowChargeUp Spell,C"/>
+        <On index="113" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="AnimBaselineStart"/>
+        <On index="114" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="Create UltraliskStetmannChargeImpactSound"/>
+        <On index="115" Terms="Effect.UltraliskStetmannBurrowChargeStructureTargetSearch.Start; At Caster" Send="StatusSet BurrowCharging 0"/>
+        <On index="116" Terms="WeaponStart.UltraliskKaiserBladesStetmann.AttackStart" Send="AnimClear BurrowChargeUp"/>
+        <On index="117" Terms="UnitMovementUpdate.*.Walk" Send="AnimClear BurrowChargeUp"/>
+        <On index="118" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="StatusSet BurrowCharging 1"/>
+        <On index="119" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="Create UltraliskStetmannBurrowChargeSprintSound"/>
+        <On index="120" Terms="Abil.UltraliskStetmannBurrowCharge.SourceCastStart" Send="AnimClear Attack"/>
+        <On index="121" Terms="TimerExpired; TimerName ChargeFailTimer; IsStatus ChargeFail 1" Target="UltraliskStetmannBurrowChargeSprintSound" Send="Destroy"/>
+        <On index="122" Terms="ActorCreation; ValidateUnit HasUltraliskStetmannArmor" Send="AnimPlay Cover Spell,Custom PlayForever,NonLooping"/>
+        <On index="123" Terms="Upgrade.UltraliskStetmannArmor.Add" Send="AnimPlay Cover Spell,Custom PlayForever,NonLooping"/>
+        <On index="124" Terms="Upgrade.UltraliskStetmannArmor.Remove" Send="AnimClear Cover"/>
+        <On index="125" removed="1"/>
+        <On index="126" removed="1"/>
+        <On index="127" removed="1"/>
+        <On index="128" removed="1"/>
+        <On index="129" removed="1"/>
+        <On index="130" removed="1"/>
+        <On index="131" removed="1"/>
+        <On index="132" removed="1"/>
+        <On index="133" removed="1"/>
+        <On index="134" removed="1"/>
+        <On index="135" removed="1"/>
+        <On index="136" removed="1"/>
+        <On index="137" removed="1"/>
+        <On index="138" removed="1"/>
+        <On index="139" removed="1"/>
+        <On index="140" removed="1"/>
+        <On index="141" removed="1"/>
+        <On index="142" removed="1"/>
+        <On index="143" removed="1"/>
+        <On index="144" removed="1"/>
+        <On index="145" removed="1"/>
+        <On index="146" removed="1"/>
+        <On index="147" removed="1"/>
+        <On index="148" removed="1"/>
+        <On index="149" removed="1"/>
+        <On index="150" removed="1"/>
+        <On index="151" removed="1"/>
+        <On index="152" removed="1"/>
+        <On index="153" removed="1"/>
+        <On index="154" removed="1"/>
+        <On index="155" removed="1"/>
+        <On index="156" removed="1"/>
+        <On index="157" removed="1"/>
+        <On index="158" removed="1"/>
+        <On index="159" removed="1"/>
+        <On index="160" removed="1"/>
+        <On index="161" removed="1"/>
+        <On index="162" removed="1"/>
+        <On index="163" removed="1"/>
+        <On index="164" removed="1"/>
+        <On index="165" removed="1"/>
+        <On index="166" removed="1"/>
+        <On index="167" removed="1"/>
+        <On index="168" removed="1"/>
+        <On index="169" removed="1"/>
+        <On index="170" removed="1"/>
+        <On index="171" removed="1"/>
+        <On index="172" removed="1"/>
+        <On index="173" removed="1"/>
+        <On index="174" removed="1"/>
+        <On index="175" removed="1"/>
+        <On index="176" removed="1"/>
+        <On index="177" removed="1"/>
+        <On index="178" removed="1"/>
+        <On index="179" removed="1"/>
+        <On index="180" removed="1"/>
+        <On index="181" removed="1"/>
+        <On index="182" removed="1"/>
+        <On index="183" removed="1"/>
+        <On index="184" removed="1"/>
+        <On index="185" removed="1"/>
+        <On index="186" removed="1"/>
+        <On index="187" removed="1"/>
+        <On index="188" removed="1"/>
+        <On index="189" removed="1"/>
+        <On index="190" removed="1"/>
+        <On index="191" removed="1"/>
+        <On index="192" removed="1"/>
+        <On index="193" removed="1"/>
+        <On index="194" removed="1"/>
+        <On index="195" removed="1"/>
+        <On index="196" removed="1"/>
+        <On index="197" removed="1"/>
+        <On index="198" removed="1"/>
+        <On index="199" removed="1"/>
+        <On index="200" removed="1"/>
+        <On index="201" removed="1"/>
+        <On index="202" removed="1"/>
+    </CActorUnit>
+    <CActorModel id="Ultralisk_Stetmann_COOP_Stunned">
+        <Remove Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <Remove Terms="ActorCreation" Send="AnimBracketStart $BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpRotationRandomDisc"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorRange id="VoidArchonMaelstromRange" parent="RangeAbil" abil="VoidArchonMaelstrom"/>
     <CActorModel id="AscendantArchonSacrificeEffect" parent="ModelAddition">

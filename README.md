@@ -126,6 +126,8 @@ thanks Enoki.
 - Reduced Archon (and variants) collision radius with structures from 0.75 to 0.56 (Does not affect collision with other units).
 - Burrow and Unburrow have been separated into two separate buttons.
 - Burrowed and Unburrowed Zerg unit types will now be on the same tab-select, and both will be selected when double clicking on units.
+- Fixed an issue where Locusts spawned simultaneously would have perfectly synchronized animations rather than behaving like a swarm.
+- Changed Disruptor Purification Nova ability to be cancelled and deal no damage if the Disruptor is stunned.
 
 Copied from Versus.
 
@@ -1168,6 +1170,7 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 
 - Fixed an issue where Dehaka's units don't have reduced sight radius while burrowed (Impaler, Primal Host, and Creeper Host excluded).
 - Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
+- Fixed an issue where Creepers could not damage friendly units.
 
 yeah.
 
@@ -1427,9 +1430,35 @@ yeah.
 
 Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake.
 
+- Changed Mecha Ultralisk Mecha Mooch Module autocast to no longer prioritize own units over allies.
+- Changed Mecha Ultralisk Mecha Mooch Module autocast to prioritize friendly units with the most life.
+- Changed Mecha Ultralisk Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
+- Changed Mecha Ultralisk Mecha Mooch Module only autocast friendly units with a greater health percent.
+- Changed Mecha Ultralisk Mecha Mooch Module only autocast friendly units when missing 30 health.
+- Buffed Mecha Ultralisk Mecha Mooch Module to only deal half damage to friendly units, but still heal full.
+- Increased Mecha Ultralisk Mecha Mooch Module absorb amount from 25 to 30.
+- Reduced Mecha Ultralisk Mecha Mooch Module sound volume.
+
+Creates an interesting Spirit Link-like effect where all the Ultralisks are trying to equalize their health.
+
+- Fixed an issue where Mecha Ultralisks would not burrow for their Vectored Burrow Charge ability.
+- Fixed an issue where Mecha Ultralisk Vectored Burrow Charge ability did not play some FX.
+
+The Mecha Ultralisk actor xml is such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow animation.
+
+- Increased visual scale of Mecha Ultralisk Electrostatic Surprise! by 33%.
+- Changed Electrostatic Surprise! stun visual to auto scale with target model.
+- Fixed an issue where the Electrostatic Surprise! stun visual would play synchronously across all stunned targets.
+
+The visual explosion was weirdly small.
+
 - Added animation for Mecha Corruptor's Terraclean Solvent ability.
 
 Copied from Versus.
+
+- Fixed an issue where Mecha Ravagers had no spell animation when casting their Environmentally Unfriendly Eruption ability.
+
+yeah.
 
 ## Mengsk
 

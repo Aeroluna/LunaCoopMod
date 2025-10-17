@@ -56,6 +56,9 @@
     <CEffectDamage id="DarkArchonWeaponDamage">
         <Amount value="25"/>
     </CEffectDamage>
+    <CEffectEnumArea id="DehakaCreeperExplodeSearch">
+        <IncludeArray Value="Target"/>
+    </CEffectEnumArea>
     <CEffectLaunchMissile id="HHLaserBatteryLM">
         <Movers Link="YamatoWeapon"/>
     </CEffectLaunchMissile>
@@ -118,6 +121,19 @@
         <EffectArray value="OrdnanceFleetwideJumpTeleport"/>
         <EffectArray value="OrdnanceFleetwideJumpTeleportAB"/>
     </CEffectSet>
+    <CEffectDamage id="UltraliskMechanicalLifeLeechStetmannDamage">
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="UltraliskMechanicalLifeLeechStetmannModifySelf">
+        <VitalArray index="Life">
+            <Change value="30"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="UltraliskMechanicalLifeLeechStetmannModifyTarget">
+        <VitalArray index="Life">
+            <Change value="-15"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectApplyBehavior id="VoidArchonDeathAB">
         <Behavior value="AscendantArchonDummySelfBuff"/>
         <Count value="0">
