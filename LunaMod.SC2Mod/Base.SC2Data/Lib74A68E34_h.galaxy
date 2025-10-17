@@ -70,6 +70,7 @@ unitgroup lib74A68E34_gv_mutatorTeemingUnits;
 unit[lib74A68E34_gv_cCC_MAXPLAYERS + 1] lib74A68E34_gv_mutatorHarassSuperWarpGate;
 
 // Function Declarations
+void lib74A68E34_gf_SnowVisualApply (unit lp_unit);
 void lib74A68E34_gf_FourthChangeAllyPrestige ();
 void lib74A68E34_gf_MutatorListLoadBank (int lp_player);
 void lib74A68E34_gf_MutatorListRandomizerUpdate ();
@@ -119,9 +120,10 @@ void lib74A68E34_gf_MutatorHarassNydus (point lp_target, int lp_targetPlayer, in
 void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount);
 
 // Trigger Declarations
-trigger lib74A68E34_gt_ExtraUpgrades;
-trigger lib74A68E34_gt_ApplyCommanderRewards;
 trigger lib74A68E34_gt_ApplyMaguroChanges;
+trigger lib74A68E34_gt_ExtraUpgrades;
+trigger lib74A68E34_gt_SnowVisualEnable;
+trigger lib74A68E34_gt_SnowVisualNewUnit;
 trigger lib74A68E34_gt_TestCommand;
 trigger lib74A68E34_gt_AllyImproved;
 trigger lib74A68E34_gt_FourthPrestigeTriggers;
@@ -135,6 +137,7 @@ trigger lib74A68E34_gt_MutatorListUpdate;
 trigger lib74A68E34_gt_MutatorListFinish;
 trigger lib74A68E34_gt_MCDisableMindControlTriggers;
 trigger lib74A68E34_gt_MCAddCoopUnitBehavior;
+trigger lib74A68E34_gt_CommanderRewardsApply;
 trigger lib74A68E34_gt_LogDisableOriginal;
 trigger lib74A68E34_gt_LogDisplay;
 trigger lib74A68E34_gt_LogDamageLogging;

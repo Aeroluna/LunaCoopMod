@@ -88,6 +88,15 @@ void lib74A68E34_InitCustomScript () {
 
 // Presets
 // Functions
+void lib74A68E34_gf_SnowVisualApply (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "GlazeSnow") == false) && ((UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterMechanical), 0, 0, 0)) == true) || (UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterBiological), 0, 0, 0)) == true)) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)))) == true)) {
+        UnitBehaviorAddPlayer(lp_unit, "GlazeSnow", 1, 1);
+    }
+
+}
+
 void lib74A68E34_gf_FourthChangeAllyPrestige () {
     // Automatic Variable Declarations
     // Implementation
@@ -2034,6 +2043,36 @@ void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer,
 
 // Triggers
 //--------------------------------------------------------------------------------------------------
+// Trigger: ApplyMaguroChanges
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib01833E95_gt_AF_TopBarClicked, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseEntersTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_MouseExitsTopBar, true);
+    TriggerEnable(lib01833E95_gt_AF_UnloadHeroic, true);
+    TriggerEnable(lib01833E95_gt_K2_Karax20, false);
+    TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
+    TriggerEnable(libA8FDA37D_gt_UT_OldMengsk, false);
+    TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
+    TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
+    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
+    TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ApplyMaguroChanges_Init () {
+    lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ExtraUpgrades
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ExtraUpgrades_Func (bool testConds, bool runActions) {
@@ -2080,136 +2119,64 @@ void lib74A68E34_gt_ExtraUpgrades_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ApplyCommanderRewards
+// Trigger: SnowVisualEnable
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ApplyCommanderRewards_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_voicePackName;
-    int lv_index;
-    string lv_voicePack;
-    int lv_player;
-
+bool lib74A68E34_gt_SnowVisualEnable_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    playergroup autoFB1B9E07_g;
-    int auto39FD07A2_ae;
-    const int auto39FD07A2_ai = 1;
-    string auto48A45068_val;
+    unitgroup autoD4345183_g;
+    int autoD4345183_u;
+    unit autoD4345183_var;
 
-    // Variable Initialization
-    lv_voicePackName = "";
+    // Conditions
+    if (testConds) {
+        if (!((libCOOC_gf_CC_CurrentMap() == "AC_KaldirShuttle"))) {
+            return false;
+        }
+    }
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    autoFB1B9E07_g = libCOOC_gf_HumanPlayers();
-    lv_player = -1;
-    while (true) {
-        lv_player = PlayerGroupNextPlayer(autoFB1B9E07_g, lv_player);
-        if (lv_player < 0) { break; }
-        auto39FD07A2_ae = UserDataFieldValueCount("PlayerCommanders", "DefaultVoicePack");
-        lv_index = 1;
-        for ( ; ( (auto39FD07A2_ai >= 0 && lv_index <= auto39FD07A2_ae) || (auto39FD07A2_ai < 0 && lv_index >= auto39FD07A2_ae) ) ; lv_index += auto39FD07A2_ai ) {
-            lv_voicePack = UserDataGetGameLink("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lv_player), "DefaultVoicePack", lv_index);
-            lv_voicePackName = (lv_voicePack);
-            voicepack_apply(lv_voicePackName, lv_player);
-        }
-        auto48A45068_val = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
-        if (auto48A45068_val == "TerranRaynor") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Default");
-        }
-        else if (auto48A45068_val == "ZergKerrigan") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Default");
-        }
-        else if (auto48A45068_val == "ZergZagara") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Zagara");
-        }
-        else if (auto48A45068_val == "ProtossArtanis") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
-        }
-        else if (auto48A45068_val == "TerranSwann") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Swann");
-        }
-        else if (auto48A45068_val == "ZergAbathur") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Abathur");
-        }
-        else if (auto48A45068_val == "ProtossKarax") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
-        }
-        else if (auto48A45068_val == "ProtossAlarak") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Forged");
-        }
-        else if (auto48A45068_val == "ZergDehaka") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Dehaka");
-        }
-        else if (auto48A45068_val == "ProtossFenix") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Fenix");
-        }
-        else if (auto48A45068_val == "TerranHorner") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
-        }
-        else if (auto48A45068_val == "TerranNova") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Nova");
-        }
-        else if (auto48A45068_val == "ZergStukov") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
-        }
-        else if (auto48A45068_val == "TerranTychus") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
-        }
-        else if (auto48A45068_val == "ProtossVorazun") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Nerazim");
-        }
-        else if (auto48A45068_val == "ProtossZeratul") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Ihanrii");
-        }
-        else if (auto48A45068_val == "ZergStetmann") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
-        }
-        else if (auto48A45068_val == "TerranMengsk") {
-            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Imperial");
-        }
-        else {
-        }
+    autoD4345183_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    autoD4345183_u = UnitGroupCount(autoD4345183_g, c_unitCountAll);
+    for (;; autoD4345183_u -= 1) {
+        autoD4345183_var = UnitGroupUnitFromEnd(autoD4345183_g, autoD4345183_u);
+        if (autoD4345183_var == null) { break; }
+        lib74A68E34_gf_SnowVisualApply(autoD4345183_var);
     }
+    TriggerEnable(lib74A68E34_gt_SnowVisualNewUnit, true);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ApplyCommanderRewards_Init () {
-    lib74A68E34_gt_ApplyCommanderRewards = TriggerCreate("lib74A68E34_gt_ApplyCommanderRewards_Func");
-    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ApplyCommanderRewards);
+void lib74A68E34_gt_SnowVisualEnable_Init () {
+    lib74A68E34_gt_SnowVisualEnable = TriggerCreate("lib74A68E34_gt_SnowVisualEnable_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_SnowVisualEnable);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ApplyMaguroChanges
+// Trigger: SnowVisualNewUnit
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_SnowVisualNewUnit_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Actions
     if (!runActions) {
         return true;
     }
 
-    TriggerEnable(lib01833E95_gt_AF_TopBarClicked, true);
-    TriggerEnable(lib01833E95_gt_AF_MouseEntersTopBar, true);
-    TriggerEnable(lib01833E95_gt_AF_MouseExitsTopBar, true);
-    TriggerEnable(lib01833E95_gt_AF_UnloadHeroic, true);
-    TriggerEnable(lib01833E95_gt_K2_Karax20, false);
-    TriggerEnable(lib01833E95_gt_AF_BileLauncherBombardment, false);
-    TriggerEnable(libA8FDA37D_gt_UT_OldMengsk, false);
-    TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
-    TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
-    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
-    TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
+    lib74A68E34_gf_SnowVisualApply(EventUnitCreatedUnit());
+    lib74A68E34_gf_SnowVisualApply(EventUnit());
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ApplyMaguroChanges_Init () {
-    lib74A68E34_gt_ApplyMaguroChanges = TriggerCreate("lib74A68E34_gt_ApplyMaguroChanges_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_ApplyMaguroChanges);
+void lib74A68E34_gt_SnowVisualNewUnit_Init () {
+    lib74A68E34_gt_SnowVisualNewUnit = TriggerCreate("lib74A68E34_gt_SnowVisualNewUnit_Func");
+    TriggerEnable(lib74A68E34_gt_SnowVisualNewUnit, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_SnowVisualNewUnit, null, null, null);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_SnowVisualNewUnit, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2655,6 +2622,109 @@ void lib74A68E34_gt_MCAddCoopUnitBehavior_Init () {
     lib74A68E34_gt_MCAddCoopUnitBehavior = TriggerCreate("lib74A68E34_gt_MCAddCoopUnitBehavior_Func");
     TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MCAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeCreate);
     TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_MCAddCoopUnitBehavior, null, c_unitBehaviorFlagUser8, c_unitBehaviorChangeRefresh);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CommanderRewardsApply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CommanderRewardsApply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_voicePackName;
+    int lv_index;
+    string lv_voicePack;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup autoFB1B9E07_g;
+    int auto39FD07A2_ae;
+    const int auto39FD07A2_ai = 1;
+    string auto48A45068_val;
+
+    // Variable Initialization
+    lv_voicePackName = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoFB1B9E07_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoFB1B9E07_g, lv_player);
+        if (lv_player < 0) { break; }
+        auto39FD07A2_ae = UserDataFieldValueCount("PlayerCommanders", "DefaultVoicePack");
+        lv_index = 1;
+        for ( ; ( (auto39FD07A2_ai >= 0 && lv_index <= auto39FD07A2_ae) || (auto39FD07A2_ai < 0 && lv_index >= auto39FD07A2_ae) ) ; lv_index += auto39FD07A2_ai ) {
+            lv_voicePack = UserDataGetGameLink("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lv_player), "DefaultVoicePack", lv_index);
+            lv_voicePackName = (lv_voicePack);
+            voicepack_apply(lv_voicePackName, lv_player);
+        }
+        auto48A45068_val = libCOOC_gf_ActiveCommanderForPlayer(lv_player);
+        if (auto48A45068_val == "TerranRaynor") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Default");
+        }
+        else if (auto48A45068_val == "ZergKerrigan") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Default");
+        }
+        else if (auto48A45068_val == "ZergZagara") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Zagara");
+        }
+        else if (auto48A45068_val == "ProtossArtanis") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
+        }
+        else if (auto48A45068_val == "TerranSwann") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Swann");
+        }
+        else if (auto48A45068_val == "ZergAbathur") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Abathur");
+        }
+        else if (auto48A45068_val == "ProtossKarax") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Default");
+        }
+        else if (auto48A45068_val == "ProtossAlarak") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Forged");
+        }
+        else if (auto48A45068_val == "ZergDehaka") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Dehaka");
+        }
+        else if (auto48A45068_val == "ProtossFenix") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Fenix");
+        }
+        else if (auto48A45068_val == "TerranHorner") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
+        }
+        else if (auto48A45068_val == "TerranNova") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Nova");
+        }
+        else if (auto48A45068_val == "ZergStukov") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
+        }
+        else if (auto48A45068_val == "TerranTychus") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Horner");
+        }
+        else if (auto48A45068_val == "ProtossVorazun") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Nerazim");
+        }
+        else if (auto48A45068_val == "ProtossZeratul") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleProtoss_Ihanrii");
+        }
+        else if (auto48A45068_val == "ZergStetmann") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleZerg_Mecha");
+        }
+        else if (auto48A45068_val == "TerranMengsk") {
+            PlayerSetConsoleSkin(lv_player, "ConsoleTerran_Imperial");
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CommanderRewardsApply_Init () {
+    lib74A68E34_gt_CommanderRewardsApply = TriggerCreate("lib74A68E34_gt_CommanderRewardsApply_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_CommanderRewardsApply);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5473,9 +5543,10 @@ void lib74A68E34_gt_MutatorHarassShutdown_Init () {
 }
 
 void lib74A68E34_InitTriggers () {
-    lib74A68E34_gt_ExtraUpgrades_Init();
-    lib74A68E34_gt_ApplyCommanderRewards_Init();
     lib74A68E34_gt_ApplyMaguroChanges_Init();
+    lib74A68E34_gt_ExtraUpgrades_Init();
+    lib74A68E34_gt_SnowVisualEnable_Init();
+    lib74A68E34_gt_SnowVisualNewUnit_Init();
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_AllyImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
@@ -5489,6 +5560,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorListFinish_Init();
     lib74A68E34_gt_MCDisableMindControlTriggers_Init();
     lib74A68E34_gt_MCAddCoopUnitBehavior_Init();
+    lib74A68E34_gt_CommanderRewardsApply_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();

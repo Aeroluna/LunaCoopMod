@@ -47,25 +47,9 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 
 Makes Raynor/HH/Mengsk Viking feel smoother to land.
 
-- Fixed various commander-specific upgrades appearing on the command card.
-- Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
-- Fixed an issue where Viper Abduct would not unburrow most units.
-- Added a range indicator when using the Oracle's Stasis Ward ability.
-- Added cosmetic flame jets to Vultures when moving.
-
-yeah.
-
 - Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
-
-- Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
-
-Makes it much easier to see which units are irradiated.
-
-- Added an impact visual for Ravager's Corrosive Bile.
-
-Not the prettiest effect, but I tried!
 
 - Increased visual scale of Planetary Fortress's attack impact by 20%.
 - Increased sound volume of Planetary Fortress's attack.
@@ -83,6 +67,20 @@ Not sure why this ability had its volume nerfed in co-op.
 - Removed hit test from High Templar (and variants) trail (Can no longer be clicked).
 
 If you've ever wondered how you boxed that High Templar you didn't mean to, this is probably why.
+
+- Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
+- Added an impact visual for Ravager's Corrosive Bile.
+- Added visual Snow glaze effect to units on snowy maps (Void Launch).
+
+It just looks nice c:
+
+- Fixed various commander-specific upgrades appearing on the command card.
+- Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
+- Fixed an issue where Viper Abduct would not unburrow most units.
+- Added a range indicator when using the Oracle's Stasis Ward ability.
+- Added cosmetic flame jets to Vultures when moving.
+
+yeah.
 
 - Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Affected units:
@@ -124,6 +122,7 @@ thanks Enoki.
 - Fixed an issue where Cyclone Lock-On projectiles would damage targets even if the target had escaped detection before impact.
 - Fixed an issue where Guardian Shell would not affect units on a different cliff level.
 - Increased Ultralisk (and variants) allied push priority from 0 to 1 (now pushes allied units out of the way when moving).
+- Increased Mothership (and variants) allied push priority from 0 to 1.
 - Reduced Archon (and variants) collision radius with structures from 0.75 to 0.56 (Does not affect collision with other units).
 
 Copied from Versus.
