@@ -68,6 +68,32 @@
             <LayoutButtons Face="VorazunImprovedVespene" Type="Passive" Requirements="HaveVorazunCommander" Row="2" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Baneling">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowBanelingUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BanelingBurrowed">
+        <SubgroupAlias value="Baneling"/>
+        <SelectAlias value="Baneling"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowBanelingDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BanelingStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowBanelingUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BanelingStetmannBurrowed">
+        <SubgroupAlias value="BanelingStetmann"/>
+        <SelectAlias value="BanelingStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowBanelingDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Banshee">
         <AbilArray Link="VehicleAfterburnersStimpack"/>
         <CardLayouts index="0">
@@ -118,7 +144,17 @@
     </CUnit>
     <CUnit id="Brutalisk">
         <CardLayouts index="0">
+            <LayoutButtons index="5" Face="CommanderAbathurBrutaliskSymbiote" Type="Passive" AbilCmd="AbathurSymbioteHangerBrutalisk,Ammo1" Requirements="HaveBrutaliskgainsSymbioteUpgrade" Column="1"/>
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="9" Face="BrutaliskDeepTunnel" Type="AbilCmd" AbilCmd="BrutaliskDeepTunnel,Execute" Requirements=""/>
             <LayoutButtons Face="CommanderPrestigeAbathurSymbioteLocked" Type="Passive" Requirements="CommanderPrestigeAbathurSymbiote" Row="2" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowBrutaliskUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BrutaliskBurrowed">
+        <SubgroupAlias value="Brutalisk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowBrutaliskDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
@@ -130,17 +166,388 @@
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="DehakaDrone">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="11" Column="2"/>
+            <LayoutButtons index="12" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaDroneUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaDroneBurrowed">
+        <SubgroupAlias value="DehakaDrone"/>
+        <SelectAlias value="DehakaDrone"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaDroneDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaHydraliskLevel2">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons index="9" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaHydraliskLevel2Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaHydraliskLevel2Burrowed">
+        <SubgroupAlias value="DehakaHydraliskLevel2"/>
+        <SelectAlias value="DehakaHydraliskLevel2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaHydraliskLevel2Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="DehakaPrimalSwarmHost">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons Face="SwarmHostBurrowUp" Type="AbilCmd" AbilCmd="DehakaMorphToSwarmHost,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaPrimalSwarmHostBurrowed">
+        <SubgroupAlias value="DehakaPrimalSwarmHost"/>
+        <SelectAlias value="DehakaPrimalSwarmHost"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SwarmHostBurrowDown" Type="AbilCmd" AbilCmd="DehakaMorphToPrimalSwarmHostBurrowed,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaRavasaur">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaRavasaurUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaRavasaurBurrowed">
+        <SubgroupAlias value="DehakaRavasaur"/>
+        <SelectAlias value="DehakaRavasaur"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaRavasaurDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="DehakaRoachLevel2">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons index="9" Column="2"/>
+            <LayoutButtons index="10" Row="1"/>
+            <LayoutButtons index="11" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaRoachLevel2Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaRoachLevel2Burrowed">
+        <SubgroupAlias value="DehakaRoachLevel2"/>
+        <SelectAlias value="DehakaRoachLevel2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Row="1"/>
+            <LayoutButtons index="7" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaRoachLevel2Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="DehakaRoachLevel3">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaRoachLevel3Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaRoachLevel3Burrowed">
+        <SubgroupAlias value="DehakaRoachLevel3"/>
+        <SelectAlias value="DehakaRoachLevel3"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaRoachLevel3Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="DehakaSwarmHost">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons index="9" Column="2"/>
+            <LayoutButtons index="10" Column="2"/>
+            <LayoutButtons Face="SwarmHostBurrowUp" Type="AbilCmd" AbilCmd="DehakaMorphToSwarmHost,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaSwarmHostBurrowed">
+        <SubgroupAlias value="DehakaSwarmHost"/>
+        <SelectAlias value="DehakaSwarmHost"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SwarmHostBurrowDown" Type="AbilCmd" AbilCmd="DehakaMorphToSwarmHostBurrowed,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="DehakaUltraliskLevel2">
         <AlliedPushPriority value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="10" Column="2"/>
+            <LayoutButtons index="11" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel2Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaUltraliskLevel2Burrowed">
+        <SubgroupAlias value="DehakaUltraliskLevel2"/>
+        <SelectAlias value="DehakaUltraliskLevel2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="DehakaUltraliskBash" Requirements="HaveDehakaUltraliskBash"/>
+            <LayoutButtons index="4" Face="DehakaUltraliskRegen" Requirements="HaveDehakaUltraliskRegen" Column="1"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel2Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <SeparationRadius value="0"/>
     </CUnit>
     <CUnit id="DehakaUltraliskLevel3">
         <AlliedPushPriority value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="11" Face="DehakaUltraliskBash" Requirements="HaveDehakaUltraliskBash"/>
+            <LayoutButtons index="16" Face="DehakaUltraliskRegen" Requirements="HaveDehakaUltraliskRegen" Column="1"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel3Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaUltraliskLevel3Burrowed">
+        <SubgroupAlias value="DehakaUltraliskLevel3"/>
+        <SelectAlias value="DehakaUltraliskLevel3"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="DehakaUltraliskBash" Requirements="HaveDehakaUltraliskBash"/>
+            <LayoutButtons index="9" Face="DehakaUltraliskRegen" Requirements="HaveDehakaUltraliskRegen" Column="1"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel3Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="5"/>
+        <Radius value="1"/>
+        <SeparationRadius value="0"/>
+        <InnerRadius value="0.75"/>
+    </CUnit>
+    <CUnit id="DehakaZerglingLevel2">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="7" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaZerglingLevel2Up,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaZerglingLevel2Burrowed">
+        <SubgroupAlias value="DehakaZerglingLevel2"/>
+        <SelectAlias value="DehakaZerglingLevel2"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDehakaZerglingLevel2Down,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+        <Sight value="4"/>
+        <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="DroneBurrowed">
+        <SubgroupAlias value="Drone"/>
+        <SelectAlias value="Drone"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDroneDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DroneStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="9" Column="3"/>
+            <LayoutButtons index="12" Row="1" Column="2"/>
+            <LayoutButtons index="13" Row="1" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDroneUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DroneStetmannBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowDroneDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HotSNoxious">
         <AlliedPushPriority value="1"/>
     </CUnit>
+    <CUnit id="HotSSplitterlingBig">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSSplitterlingBigUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSSplitterlingBigBurrowed">
+        <SubgroupAlias value="HotSSplitterlingBig"/>
+        <SelectAlias value="HotSSplitterlingBig"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSSplitterlingBigDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSSplitterlingMedium">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSSplitterlingMediumUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSSplitterlingMediumBurrowed">
+        <SelectAlias value="HotSSplitterlingBig"/>
+        <SubgroupAlias value="HotSSplitterlingBig"/>
+        <!--SubgroupAlias value="HotSSplitterlingMedium"/>
+        <SelectAlias value="HotSSplitterlingMedium"/-->
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSSplitterlingMediumDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSSwarmling">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="12" Column="1"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSSwarmlingUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSSwarmlingBurrowed">
+        <SubgroupAlias value="HotSSwarmling"/>
+        <SelectAlias value="HotSSwarmling"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSSwarmlingDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="HotSTorrasque">
         <AlliedPushPriority value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
+            <LayoutButtons index="6" Row="1" Column="1"/>
+            <LayoutButtons index="10" Column="3"/>
+            <LayoutButtons index="11" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowTorrasqueUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HotSTorrasqueBurrowed">
+        <SubgroupAlias value="HotSTorrasque"/>
+        <SelectAlias value="HotSTorrasque"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Column="1"/>
+            <LayoutButtons index="2" Row="1" Column="1"/>
+            <LayoutButtons index="7" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowTorrasqueDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HunterKiller">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHunterKillerUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HunterKillerBurrowed">
+        <SubgroupAlias value="HunterKiller"/>
+        <SelectAlias value="HunterKiller"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHunterKillerDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HydraliskBurrowed">
+        <SubgroupAlias value="Hydralisk"/>
+        <SelectAlias value="Hydralisk"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Row="1" Column="1"/>
+            <LayoutButtons index="3" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHydraliskDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HydraliskLurkerBurrowed">
+        <SubgroupAlias value="HydraliskLurker"/>
+        <SelectAlias value="HydraliskLurker"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Row="1" Column="1"/>
+            <LayoutButtons index="3" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHydraliskLurkerDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HydraliskStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHydraliskUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HydraliskStetmannBurrowed">
+        <SubgroupAlias value="HydraliskStetmann"/>
+        <SelectAlias value="HydraliskStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHydraliskDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ImpalerDehaka">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="ImpalerBurrowUp" Type="AbilCmd" AbilCmd="BurrowImpalerDehakaUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestedAbomination">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestedAbominationUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestedAbominationBurrowed">
+        <SubgroupAlias value="InfestedAbomination"/>
+        <SelectAlias value="InfestedAbomination"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestedAbominationDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Infestor">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="10" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorBurrowed">
+        <SubgroupAlias value="Infestor"/>
+        <SelectAlias value="Infestor"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="9" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorStetmannBurrowed">
+        <SubgroupAlias value="InfestorStetmann"/>
+        <SelectAlias value="InfestorStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestorDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorTerran">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorTerranUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorTerranBurrowed">
+        <SubgroupAlias value="InfestorTerran"/>
+        <SelectAlias value="InfestorTerran"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestorTerranDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="LurkerMP">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="LurkerMPBurrowed">
+        <SubgroupAlias value="LurkerMP"/>
+        <SelectAlias value="LurkerMP"/>
+    </CUnit>
+    <CUnit id="LurkerStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="LurkerStetmannBurrowed">
+        <SubgroupAlias value="LurkerStetmann"/>
+        <SelectAlias value="LurkerStetmann"/>
     </CUnit>
     <CUnit id="Mothership">
         <AlliedPushPriority value="1"/>
@@ -151,17 +558,205 @@
     <CUnit id="PrimalUltralisk">
         <AlliedPushPriority value="1"/>
     </CUnit>
+    <CUnit id="Queen">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="10" Row="1" Column="4"/>
+            <LayoutButtons index="11" Row="1" Column="4"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowQueenUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="QueenBurrowed">
+        <SubgroupAlias value="Queen"/>
+        <SelectAlias value="Queen"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Row="1" Column="4"/>
+            <LayoutButtons index="6" Row="1" Column="4"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowQueenDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RavagerAbathurBurrowed">
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerAbathurDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RavagerBurrowed">
+        <SubgroupAlias value="Ravager"/>
+        <SelectAlias value="Ravager"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RavagerStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRavagerUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RavagerStetmannBurrowed">
+        <SubgroupAlias value="RavagerStetmann"/>
+        <SelectAlias value="RavagerStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Roach">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="9" Column="2"/>
+            <LayoutButtons index="10">
+                <Face value="BurrowUp"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BurrowRoachUp,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="15" Row="1" Column="4"/>
+            <LayoutButtons index="16" Row="1" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachBurrowed">
+        <SubgroupAlias value="Roach"/>
+        <SelectAlias value="Roach"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="1"/>
+            <LayoutButtons index="9" Column="3"/>
+            <LayoutButtons index="10" Column="2"/>
+            <LayoutButtons index="11">
+                <Face value="BurrowDown"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BurrowRoachDown,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="15" Row="1" Column="4"/>
+            <LayoutButtons index="16" Row="1" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachCorpser">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSCorpserUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachCorpserBurrowed">
+        <SubgroupAlias value="RoachCorpser"/>
+        <SelectAlias value="RoachCorpser"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSCorpserDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRoachUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachStetmannBurrowed">
+        <SubgroupAlias value="RoachStetmann"/>
+        <SelectAlias value="RoachStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRoachDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachVile">
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="3"/>
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons index="12">
+                <Face value="BurrowUp"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="HotSBurrowVileUp,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="17" Row="1" Column="4"/>
+            <LayoutButtons index="18" Row="1" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoachVileBurrowed">
+        <SubgroupAlias value="RoachVile"/>
+        <SelectAlias value="RoachVile"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="3"/>
+            <LayoutButtons index="8" Column="2"/>
+            <LayoutButtons index="12">
+                <Face value="BurrowDown"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="HotSBurrowVileDown,Execute"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="13" Row="1" Column="4"/>
+            <LayoutButtons index="14" Row="1" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SOAMothershipv4">
         <AlliedPushPriority value="1"/>
     </CUnit>
+    <CUnit id="SwarmHostBurrowedMP">
+        <SubgroupAlias value="SwarmHostMP"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SwarmHostBurrowDown" Type="AbilCmd" AbilCmd="MorphToSwarmHostBurrowedMP,Execute" Row="2" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SwarmHostMP">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons Face="SwarmHostBurrowUp" Type="AbilCmd" AbilCmd="MorphToSwarmHostMP,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Ultralisk">
         <AlliedPushPriority value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="9" Row="1" Column="1"/>
+            <LayoutButtons index="10" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowUltraliskUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="UltraliskBurrowed">
+        <SubgroupAlias value="Ultralisk"/>
+        <SelectAlias value="Ultralisk"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Column="1"/>
+            <LayoutButtons index="3" Row="1" Column="1"/>
+            <LayoutButtons index="4" Row="1" Column="0"/>
+            <LayoutButtons index="5" Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowUltraliskDown,Execute" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="UltraliskMengsk">
         <AlliedPushPriority value="1"/>
     </CUnit>
     <CUnit id="UltraliskStetmann">
         <AlliedPushPriority value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="8" Row="1" Column="0"/>
+            <LayoutButtons index="9" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowUltraliskUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="UltraliskStetmannBurrowed">
+        <SubgroupAlias value="UltraliskStetmann"/>
+        <SelectAlias value="UltraliskStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Row="3" Column="1"/>
+            <LayoutButtons index="3" Row="1" Column="0"/>
+            <LayoutButtons index="4" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowUltraliskDownStetmann,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="VoidArchonDummy">
         <Race value="Prot"/>
@@ -503,6 +1098,11 @@
     </CUnit>
     <CUnit id="SIVolatileInfestedBurrowed">
         <BehaviorArray index="2" Link="AllUnitBehaviorController"/>
+        <SubgroupAlias value="SIVolatileInfested"/>
+        <SelectAlias value="SIVolatileInfested"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIVolatileInfestedDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SiegeBreaker">
         <CardLayouts index="0">
@@ -995,9 +1595,17 @@
     </CUnit>
     <CUnit id="Ravager">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRavagerUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="RavagerAbathur">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRavagerAbathurUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Reaper">
         <AbilArray index="4" Link="KD8Charge"/>
@@ -1120,17 +1728,35 @@
     <CUnit id="SIInfestedCivilian">
         <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
         <AlliedPushPriority value="-1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowSIInfestedCivilianUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedCivilianBurrowed">
         <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
+        <SubgroupAlias value="SIInfestedCivilian"/>
+        <SelectAlias value="SIInfestedCivilian"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedCivilianDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedTrooper">
         <AlliedPushPriority value="-1"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowSIInfestedTrooperUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedTrooperBurrowed">
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
+        <SubgroupAlias value="SIInfestedTrooper"/>
+        <SelectAlias value="SIInfestedTrooper"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedTrooperDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
@@ -1373,6 +1999,10 @@
     <CUnit id="SIVolatileInfested">
         <AlliedPushPriority value="-1"/>
         <BehaviorArray index="2" Link="AllUnitBehaviorController"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="13" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowSIVolatileInfestedUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SOAMothershipLineAttackWeapon">
         <Mover value="SOAMothershipLineAttack"/>
@@ -1390,14 +2020,19 @@
         <AbilArray Link="SIBansheeHangar"/>
         <AbilArray Link="SIBansheeQueue"/>
         <CardLayouts index="0">
+            <LayoutButtons index="7" Column="3"/>
             <LayoutButtons index="8" Column="4"/>
+            <LayoutButtons index="11" Row="1" Column="2"/>
             <LayoutButtons Face="SIBansheeIncubationChambers" Type="Passive" Requirements="HaveSIBansheeIncubationChambers" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowStukovInfestedBansheeUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="StukovInfestedBansheeBurrowed">
+        <SubgroupAlias value="StukovInfestedBanshee"/>
         <CardLayouts index="0">
             <LayoutButtons index="2" Column="4"/>
             <LayoutButtons Face="SIBansheeIncubationChambers" Type="Passive" Requirements="HaveSIBansheeIncubationChambers" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowStukovInfestedBansheeDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="SIBansheeIncubationChambersBurrowed"/>
     </CUnit>
@@ -1452,13 +2087,20 @@
         <AbilArray index="9" removed="1"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Column="3"/>
             <LayoutButtons index="8" Face="DefilerMPConsume" AbilCmd="DefilerMPConsume,Execute" Column="2"/>
             <LayoutButtons index="9" Column="0"/>
             <LayoutButtons Face="DefilerMetasynapticNode" Type="Passive" Requirements="HaveDefilerMetasynapticNode" Row="1" Column="0"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="DefilerMPUnburrow,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="DefilerMPBurrowed">
         <Description value="Button/Tooltip/DefilerMP"/>
+        <SubgroupAlias value="DefilerMP"/>
+        <SelectAlias value="DefilerMP"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="DefilerMPBurrow,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="DisruptorPhased">
         <CardLayouts index="0">
@@ -1466,6 +2108,12 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Drone">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="12" Column="2"/>
+            <LayoutButtons index="13" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDroneUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
         <CardLayouts index="1">
             <LayoutButtons index="4" Column="3"/>
         </CardLayouts>
@@ -1682,23 +2330,46 @@
     <CUnit id="HotSRaptor">
         <BehaviorArray Link="KerriganCannibalize"/>
         <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="12" Column="1"/>
+            <LayoutButtons index="13" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSRaptorUp,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="KerriganCannibalize" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="HotSRaptorBurrowed">
         <BehaviorArray Link="KerriganCannibalize"/>
+        <SubgroupAlias value="HotSRaptor"/>
+        <SelectAlias value="HotSRaptor"/>
         <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSRaptorDown,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="KerriganCannibalize" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Hydralisk">
         <CardLayouts index="0">
-            <LayoutButtons Face="KerriganEnvenomedSpines" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Row="1" Column="1"/>
+            <LayoutButtons index="7" Row="1" Column="0"/>
+            <LayoutButtons index="8" Column="0"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons index="10" Column="1"/>
+            <LayoutButtons Face="KerriganEnvenomedSpines" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHydraliskUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="HydraliskLurker">
         <CardLayouts index="0">
-            <LayoutButtons Face="KerriganEnvenomedSpines" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="6" Column="1"/>
+            <LayoutButtons index="7" Row="1" Column="1"/>
+            <LayoutButtons index="8" Row="1" Column="0"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons index="10" Column="0"/>
+            <LayoutButtons Face="KerriganEnvenomedSpines" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHydraliskLurkerUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="HyperionVoidCoop">
@@ -1711,6 +2382,11 @@
     <CUnit id="ImpalerDehakaBurrowed">
         <Acceleration value="0"/>
         <LateralAcceleration value="0"/>
+        <SubgroupAlias value="ImpalerDehaka"/>
+        <SelectAlias value="ImpalerDehaka"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ImpalerBurrowDown" Type="AbilCmd" AbilCmd="BurrowImpalerDehakaDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="InfestedAcidSpinesWeapon" parent="MISSILE">
         <Race value="Zerg"/>
@@ -1794,10 +2470,13 @@
     </CUnit>
     <CUnit id="Lurker">
         <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
             <LayoutButtons Face="KerriganBurialRites" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="LurkerBurrowed">
+        <SubgroupAlias value="Lurker"/>
+        <SelectAlias value="Lurker"/>
         <CardLayouts index="0">
             <LayoutButtons Face="KerriganBurialRites" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
         </CardLayouts>
@@ -1887,12 +2566,21 @@
         <CostResource index="Minerals" value="0"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowSIInfestedMarineUp,Execute" Row="2" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedMarineBurrowed">
         <Food value="0"/>
         <CostResource index="Minerals" value="0"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
+        <SubgroupAlias value="SIInfestedMarine"/>
+        <SelectAlias value="SIInfestedMarine"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedMarineDown,Execute" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Scourge">
         <CostResource index="Vespene" value="12"/>
@@ -1914,24 +2602,18 @@
             <LayoutButtons index="7" Face="RapidIncubation" Requirements="HaveHotSRapidIncubation" Row="1" Column="1"/>
             <LayoutButtons index="8" Face="LocustSpeed" Requirements="HaveHotSLocustSpeed" Row="1" Column="1"/>
             <LayoutButtons index="9" Face="HotSPressurizedGlands" Requirements="HaveHotSPressurizedGlands" Row="1" Column="0"/>
-            <LayoutButtons index="10">
-                <Face value="SwarmHostRootBurrow"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="MorphToSwarmHostSplitBBurrowed,Execute"/>
-                <Requirements value=""/>
-                <Row value="2"/>
-                <Column value="4"/>
-            </LayoutButtons>
+            <LayoutButtons index="10" Face="SwarmHostRootBurrow" Type="AbilCmd" AbilCmd="MorphToSwarmHostSplitBBurrowed,Execute" Requirements="" Row="2"/>
             <LayoutButtons index="11" AbilCmd="AbathurDeepTunnel,Execute"/>
             <LayoutButtons index="12" Face="BrutaliskDeepTunnel" AbilCmd="AbathurDeepTunnelImproved,Execute" Column="1"/>
             <LayoutButtons index="13" Face="DeepTunnelLocked" Type="Passive" AbilCmd="" Requirements="AbathurLevel09" Column="1"/>
-            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="CommanderPrestigeAbathurBrutaliskLocked" Type="Passive" Requirements="CommanderPrestigeAbathurBiomass" Row="2" Column="2"/>
             <LayoutButtons Face="EvolveToBrutalisk" Type="AbilCmd" AbilCmd="EvolveToBrutaliskSwarmHost,Train1" Row="2" Column="2"/>
             <LayoutButtons Face="EvolveToBrutaliskLocked" Type="Passive" Requirements="AbathurLevel02" Row="2" Column="2"/>
             <LayoutButtons Face="LocustLaunch" Type="AbilCmd" AbilCmd="LocustLaunchCreeper,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="BiomassPassive" Type="Passive" Requirements="BiomassBuffVisible" Row="1" Column="4"/>
             <LayoutButtons Face="BiomassPassiveEmpty" Type="Passive" Requirements="BiomassBuffEmptyVisible" Row="1" Column="4"/>
+            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="1" Column="2"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="MorphToSwarmHostSplitB,Execute" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
@@ -1961,12 +2643,13 @@
             <LayoutButtons index="8" Face="CommanderPrestigeAbathurBrutaliskLocked" Type="Passive" AbilCmd="" Requirements="CommanderPrestigeAbathurBiomass" Column="2"/>
             <LayoutButtons index="9" Face="EvolveToBrutalisk" AbilCmd="EvolveToBrutaliskSwarmHost,Train1" Column="2"/>
             <LayoutButtons Face="EvolveToBrutaliskLocked" Type="Passive" Requirements="AbathurLevel02" Row="2" Column="2"/>
-            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="AbathurDeepTunnel" Type="AbilCmd" AbilCmd="AbathurDeepTunnel,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="BrutaliskDeepTunnel" Type="AbilCmd" AbilCmd="AbathurDeepTunnelImproved,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="DeepTunnelLocked" Type="Passive" Requirements="AbathurLevel09" Row="2" Column="1"/>
             <LayoutButtons Face="BiomassPassive" Type="Passive" Requirements="BiomassBuffVisible" Row="1" Column="4"/>
             <LayoutButtons Face="BiomassPassiveEmpty" Type="Passive" Requirements="BiomassBuffEmptyVisible" Row="1" Column="4"/>
+            <LayoutButtons Face="SwarmHostGenerateCreep" Type="Passive" Row="1" Column="2"/>
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="MorphToSwarmHostSplitBBurrowed,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <AbilArray Link="AbathurDeepTunnel"/>
         <AbilArray Link="AbathurDeepTunnelImproved"/>
@@ -2136,13 +2819,18 @@
     <CUnit id="QueenCoop">
         <BehaviorArray Link="KerriganRegenAuraSelf"/>
         <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowQueenUpCoop,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="KerriganRegenAura" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
         </CardLayouts>
         <Attributes index="Armored" value="0"/>
     </CUnit>
     <CUnit id="QueenCoopBurrowed">
         <BehaviorArray Link="KerriganRegenAuraSelf"/>
+        <SubgroupAlias value="QueenCoop"/>
+        <SelectAlias value="QueenCoop"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowQueenDownCoop,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="KerriganRegenAura" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
         </CardLayouts>
         <Attributes index="Armored" value="0"/>
@@ -2619,13 +3307,31 @@
     <CUnit id="Zergling">
         <BehaviorArray Link="KerriganCannibalize"/>
         <CardLayouts index="0">
+            <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowZerglingUp,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="KerriganCannibalize" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="ZerglingBurrowed">
         <BehaviorArray Link="KerriganCannibalize"/>
+        <SubgroupAlias value="Zergling"/>
+        <SelectAlias value="Zergling"/>
         <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowZerglingDown,Execute" Row="2" Column="3"/>
             <LayoutButtons Face="KerriganCannibalize" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ZerglingStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="3"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowZerglingUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ZerglingStetmannBurrowed">
+        <SubgroupAlias value="ZerglingStetmann"/>
+        <SelectAlias value="ZerglingStetmann"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowZerglingDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
 </Catalog>

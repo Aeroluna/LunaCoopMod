@@ -124,6 +124,8 @@ thanks Enoki.
 - Increased Ultralisk (and variants) allied push priority from 0 to 1 (now pushes allied units out of the way when moving).
 - Increased Mothership (and variants) allied push priority from 0 to 1.
 - Reduced Archon (and variants) collision radius with structures from 0.75 to 0.56 (Does not affect collision with other units).
+- Burrow and Unburrow have been separated into two separate buttons.
+- Burrowed and Unburrowed Zerg unit types will now be on the same tab-select, and both will be selected when double clicking on units.
 
 Copied from Versus.
 
@@ -1163,6 +1165,11 @@ This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?featu
 - Lowered tech requirement of Primal Wurms from requiring Glevig's Den to requiring a Primal Warden.
 
 Primal Wurms are Dehaka's only source of detection until evolving to level 5, making Dehaka extremely vulnerable to early stealth such as the We Move Unseen modifier. This buff should counteract that.
+
+- Fixed an issue where Dehaka's units don't have reduced sight radius while burrowed (Impaler, Primal Host, and Creeper Host excluded).
+- Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
+
+yeah.
 
 ## Han & Horner
 
