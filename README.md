@@ -902,7 +902,7 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
 - Added red Tal'darim building warp-in skins.
-- Added red Tal'darim gateway unit warp-in skins.
+- Added red Tal'darim unit warp-in skins.
 
 Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant and Stalker warp-in effects going from top to bottom instead of bottom to top. Seriously, were they drunk when UV mapping these?
 
@@ -912,6 +912,7 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Restored missing beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
 - Changed Mothership Mass Teleport ability to teleport to the unit's current location instead of its location when the ability was cast.
+- Fixed a bug where Alarak's Destruction Wave model would not face the direction it was cast in.
 
 yeah.
 
@@ -1698,6 +1699,8 @@ yeah.
 - Taldarim Building Warp in Pack (Red) - herdal
 - Generic Taldarim Building Death (Red) - herdal
 - Taldarim Ground Units Warp in (Red) - herdal
-- ProtossBuildRed2345.m3 - ordinator
+- ProtossBuildRed2345.m3 (It didnt have an actual release, give me a break!) - ordinator
+- Red Tal'darim Air Units Warp In Effects & Placements - DaveSpectre
+- Red Tal'darim Warp In Stargate Effects (+ Robotics facility Warp Ins) - DaveSpectre
 
 DaveSpectre is the goat <3

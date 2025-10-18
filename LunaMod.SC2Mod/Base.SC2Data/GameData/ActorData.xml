@@ -119,6 +119,9 @@
         <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
         <On Terms="Abil.RavagerStetmannCorrosiveBile.SourceCastStart" Send="$Spell"/>
     </CActorUnit>
+    <CActorSiteOpForward id="SOpForwardAlarak">
+        <HostForward Subject="AlarakCoop"/>
+    </CActorSiteOpForward>
     <CActorModel id="SalvageModel" parent="ModelAnimationStyleContinuous">
         <On Terms="Behavior.Salvage.On" Send="Create"/>
         <On Terms="Behavior.Salvage.Off" Send="Destroy"/>
@@ -666,6 +669,9 @@
     <CActorSiteOpForward id="SOpForwardHHValkyrie">
         <HostForward Subject="::global.FleetwideJump" Actor="Find"/>
     </CActorSiteOpForward>
+    <CActorModel id="VoidRayTaldarimTimeoutDeath">
+        <Remove Terms="ActorCreation" Send="SetTintColor 255,0,0 0.600000"/>
+    </CActorModel>
     <CActorModel id="VoidSentryBlackHole">
         <Remove Terms="AssetPreInit; !ValidatePlayer NoDarkProtoss" Send="ModelLinkCustomize BlackHoleNoTaldarim"/>
     </CActorModel>
