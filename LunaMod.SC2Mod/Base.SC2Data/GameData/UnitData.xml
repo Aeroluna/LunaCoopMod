@@ -1009,38 +1009,99 @@
     <CUnit id="HelsAngelFighter">
         <CostResource index="Vespene" value="50"/>
     </CUnit>
+    <CUnit id="HireMercBattlecruiser">
+        <Race value="Terr"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="400"/>
+        <CostResource index="Vespene" value="300"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercMarauder">
+        <Race value="Terr"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="250"/>
+        <CostResource index="Vespene" value="50"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercMedic">
+        <Race value="Terr"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="100"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercMarine">
+        <Race value="Terr"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="200"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercFirebat">
+        <Race value="Terr"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="50"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercSiegeTank">
+        <Race value="Terr"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="250"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercViking">
+        <Race value="Terr"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="450"/>
+        <CostResource index="Vespene" value="150"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
+    <CUnit id="HireMercBanshee">
+        <Race value="Terr"/>
+        <Food value="-6"/>
+        <CostResource index="Minerals" value="300"/>
+        <CostResource index="Vespene" value="200"/>
+        <EditorCategories value="ObjectFamily:FactionRaider"/>
+        <EffectArray index="Create" value="KillRemove"/>
+    </CUnit>
     <CUnit id="LocustFlying">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="MercCompound">
         <CardLayouts index="0">
-            <LayoutButtons index="0" Face="HireMercMarine" AbilCmd="HireMercMarine,Execute"/>
-            <LayoutButtons index="1" Face="HireMercBattlecruiser" AbilCmd="HireMercBattlecruiser,Execute" Row="1" Column="3"/>
+            <LayoutButtons index="0" Face="HireMercMarine" AbilCmd="HireMerc,Train1"/>
+            <LayoutButtons index="1" Face="HireMercBattlecruiser" AbilCmd="HireMerc,Train8" Row="1" Column="3"/>
             <LayoutButtons index="2" Face="Rally" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons index="3" Face="Halt" AbilCmd="BuildInProgress,Halt" Row="2"/>
             <LayoutButtons index="4" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
-            <LayoutButtons index="5" Face="HireMercFirebat" AbilCmd="HireMercFirebat,Execute" Row="0"/>
-            <LayoutButtons index="6" Face="HireMercMarauder" AbilCmd="HireMercMarauder,Execute" Row="0"/>
-            <LayoutButtons index="7" Face="HireMercMedic" AbilCmd="HireMercMedic,Execute" Row="0"/>
+            <LayoutButtons index="5" Face="HireMercFirebat" AbilCmd="HireMerc,Train2" Row="0"/>
+            <LayoutButtons index="6" Face="HireMercMarauder" AbilCmd="HireMerc,Train3" Row="0"/>
+            <LayoutButtons index="7" Face="HireMercMedic" AbilCmd="HireMerc,Train4" Row="0"/>
             <LayoutButtons index="8" Face="MercCompoundReset" Type="AbilCmd" AbilCmd="MercCompoundReset,Execute" Row="2" Column="1"/>
             <LayoutButtons index="9" Face="MercCompoundLaunch" AbilCmd="MercCompoundLaunch,Execute" Row="2" Column="0"/>
-            <LayoutButtons index="10" Face="HireMercSiegeTank" AbilCmd="HireMercSiegeTank,Execute" Row="1" Column="0"/>
-            <LayoutButtons index="11" Face="HireMercViking" AbilCmd="HireMercViking,Execute" Row="1" Column="1"/>
-            <LayoutButtons index="12" Face="HireMercBanshee" AbilCmd="HireMercBanshee,Execute" Row="1" Column="2"/>
+            <LayoutButtons index="10" Face="HireMercSiegeTank" AbilCmd="HireMerc,Train5" Row="1" Column="0"/>
+            <LayoutButtons index="11" Face="HireMercViking" AbilCmd="HireMerc,Train6" Row="1" Column="1"/>
+            <LayoutButtons index="12" Face="HireMercBanshee" AbilCmd="HireMerc,Train7" Row="1" Column="2"/>
             <LayoutButtons Face="SelectBuilder" Type="SelectBuilder" AbilCmd="255,255" Row="1" Column="3"/>
             <LayoutButtons Face="MercCompoundPassive" Type="Passive" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray index="1" Link="Rally"/>
         <AbilArray index="2" Link="MercCompoundLaunch"/>
         <AbilArray index="3" Link="MercCompoundReset"/>
-        <AbilArray index="4" Link="HireMercMarine"/>
-        <AbilArray index="5" Link="HireMercFirebat"/>
-        <AbilArray index="6" Link="HireMercMarauder"/>
-        <AbilArray index="7" Link="HireMercMedic"/>
-        <AbilArray index="8" Link="HireMercSiegeTank"/>
-        <AbilArray index="9" Link="HireMercViking"/>
-        <AbilArray Link="HireMercBanshee"/>
-        <AbilArray Link="HireMercBattlecruiser"/>
+        <AbilArray index="4" Link="HireMerc"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
+        <AbilArray index="9" removed="1"/>
     </CUnit>
     <CUnit id="MercMedic">
         <LifeStart value="90"/>
@@ -1637,6 +1698,7 @@
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="50"/>
         <EditorCategories value=""/>
+        <EffectArray index="Create" value="KillRemove"/>
     </CUnit>
     <CUnit id="SIBarracksFlying">
         <AlliedPushPriority value="1"/>
@@ -1742,7 +1804,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedTrooper">
-        <AlliedPushPriority value="-1"/>
+        <AlliedPushPriority value="-2"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="3"/>
@@ -2562,7 +2624,7 @@
         <Food value="0"/>
         <WeaponArray index="0" Link="InfestedAcidSpines"/>
         <WeaponArray Link="SIInfestedMarine"/>
-        <AlliedPushPriority value="-1"/>
+        <AlliedPushPriority value="-2"/>
         <CostResource index="Minerals" value="0"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>

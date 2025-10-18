@@ -1094,10 +1094,13 @@ Some QOL changes for a unit that nobody uses. Seemed weird that Brood Queens wer
 
 Bunkers can do it, why not the Missile Turrets? Gives Stukov another funny form of detection.
 
-- Reduced allied push priority of infantry to -1.
+- Reduced allied push priority of Infested Marine to -2.
+- Reduced allied push priority of Infested Trooper to -2.
+- Reduced allied push priority of Infested Civilian to -1.
+- Reduced allied push priority of Volatile Infested to -1.
 - Increased allied push priority of uprooted buildings to 1.
 
-It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other smaller units out of the way. This helps trying to push your bunker line up.
+It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other smaller units out of the way. This helps trying to push your bunker line up. Ranged infantry have a lower push priority so the melee infantry can push through.
 
 - Added Infested SCV portrait.
 - Added Infested Diamondback portrait.

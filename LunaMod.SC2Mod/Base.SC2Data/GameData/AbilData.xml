@@ -131,6 +131,49 @@
         <DefaultError value="RequiresHealTarget"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Heal"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="HireMerc">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <InfoArray index="Train1" Effect="HireMercMarine">
+            <Button DefaultButtonFace="HireMercMarine"/>
+            <Unit value="HireMercMarine"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2" Effect="HireMercFirebat">
+            <Button DefaultButtonFace="HireMercFirebat"/>
+            <Unit value="HireMercFirebat"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3" Effect="HireMercMarauder">
+            <Button DefaultButtonFace="HireMercMarauder"/>
+            <Unit value="HireMercMarauder"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4" Effect="HireMercMedic">
+            <Button DefaultButtonFace="HireMercMedic"/>
+            <Unit value="HireMercMedic"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5" Effect="HireMercSiegeTank">
+            <Button DefaultButtonFace="HireMercSiegeTank"/>
+            <Unit value="HireMercSiegeTank"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6" Effect="HireMercViking">
+            <Button DefaultButtonFace="HireMercViking"/>
+            <Unit value="HireMercViking"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7" Effect="HireMercBanshee">
+            <Button DefaultButtonFace="HireMercBanshee"/>
+            <Unit value="HireMercBanshee"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8" Effect="HireMercBattlecruiser">
+            <Button DefaultButtonFace="HireMercBattlecruiser"/>
+            <Unit value="HireMercBattlecruiser"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilEffectTarget id="OrdnanceFleetwideJump">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="OrdnanceFleetwideJumpSet"/>
@@ -357,69 +400,6 @@
         <AutoCastFilters value="-;Ally,Neutral,Enemy"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
-    <CAbilEffectInstant id="HireMercBattlecruiser">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="400"/>
-            <Resource index="Vespene" value="300"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBattlecruiser"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercMarauder">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="250"/>
-            <Resource index="Vespene" value="50"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMarauder"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercMedic">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="100"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMedic"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercMarine">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="200"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercMarine"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercFirebat">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="200"/>
-            <Resource index="Vespene" value="50"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercFirebat"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercSiegeTank">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="300"/>
-            <Resource index="Vespene" value="250"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercSiegeTank"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercViking">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="450"/>
-            <Resource index="Vespene" value="150"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercViking"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="HireMercBanshee">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Cost>
-            <Resource index="Minerals" value="300"/>
-            <Resource index="Vespene" value="200"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HireMercBanshee"/>
-    </CAbilEffectInstant>
     <CAbilEffectTarget id="Hyperjump">
         <Cost index="0">
             <Vital index="Energy" value="125"/>
@@ -934,10 +914,11 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <ErrorAlert value="Error"/>
         <Activity value="UI/Researching"/>
-        <InfoArray index="Train1" Time="40">
+        <InfoArray index="Train1" Time="40" Effect="SIBarracksCorruption">
             <Button DefaultButtonFace="ResearchSIBarracksCorruption" Requirements="SIBarracksCanIncreaseCorruption"/>
             <Unit value="SIBarracksCorruptionDummy"/>
             <Flags index="AutoCast" value="1"/>
+            <Flags index="IgnorePlacement" value="1"/>
         </InfoArray>
         <Alert value="ResearchComplete"/>
     </CAbilTrain>
