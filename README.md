@@ -125,10 +125,11 @@ thanks Enoki.
 - Increased Ultralisk (and variants) allied push priority from 0 to 1 (now pushes allied units out of the way when moving).
 - Increased Mothership (and variants) allied push priority from 0 to 1.
 - Reduced Archon (and variants) collision radius with structures from 0.75 to 0.56 (Does not affect collision with other units).
-- Burrow and Unburrow have been separated into two separate buttons.
-- Burrowed and Unburrowed Zerg unit types will now be on the same tab-select, and both will be selected when double clicking on units.
+- Changed Burrow and Unburrow to use two separate buttons.
+- Changed Burrowed and Unburrowed Zerg unit types to be on the same tab-select, and both will be selected when double clicking on units.
 - Fixed an issue where Locusts spawned simultaneously would have perfectly synchronized animations rather than behaving like a swarm.
 - Changed Disruptor Purification Nova ability to be cancelled and deal no damage if the Disruptor is stunned.
+- Changted Orbital Command Scanner Sweep visual to use team color.
 
 Copied from Versus.
 
