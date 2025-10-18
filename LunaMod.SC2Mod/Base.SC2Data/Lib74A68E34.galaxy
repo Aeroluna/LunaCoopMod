@@ -3008,7 +3008,6 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
         }
         else if (auto560DABDD_val == "ZergStukov") {
-            TriggerEnable(lib74A68E34_gt_StukovAddCorruption, true);
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
         }
         else if (auto560DABDD_val == "ProtossFenix") {
@@ -4499,35 +4498,6 @@ void lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: StukovAddCorruption
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_StukovAddCorruption_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libNtve_gf_TriggeringProgressUnitType() == "SIBarracksCorruptionDummy"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitRemove(EventUnitProgressUnit());
-    UnitBehaviorAdd(EventUnit(), "SIBarracksCorruption", EventUnit(), 1);
-    UnitIssueOrder(EventUnit(), Order(AbilityCommand("que1", 0)), c_orderQueueReplace);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_StukovAddCorruption_Init () {
-    lib74A68E34_gt_StukovAddCorruption = TriggerCreate("lib74A68E34_gt_StukovAddCorruption_Func");
-    TriggerEnable(lib74A68E34_gt_StukovAddCorruption, false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: StukovCorruptionSetCD
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_StukovCorruptionSetCD_Func (bool testConds, bool runActions) {
@@ -5619,7 +5589,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init();
-    lib74A68E34_gt_StukovAddCorruption_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();

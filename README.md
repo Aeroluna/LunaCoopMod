@@ -71,6 +71,7 @@ If you've ever wondered how you boxed that High Templar you didn't mean to, this
 - Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
 - Added an impact visual for Ravager's Corrosive Bile.
 - Added visual Snow glaze effect to units on snowy maps (Void Launch).
+- Added a visual effect and sound effect when Salvaging structures.
 
 It just looks nice c:
 
@@ -1429,9 +1430,14 @@ yeah.
 
 ## Stetmann
 
-- Added Map Boss attribute to Stetellites.
+- Added Salvage ability to Stetellites.
+  - Refunds Deploy Stetellite charges if possible.
 
-Grants immunity to certain mutators like Propagators. Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake.
+Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake. Now you can manually take down erroneous Stetellites.
+
+- Added building placement to Stetellites.
+
+Placing Stetellites will now use building placement, similar to building Creep Tumors. This makes placing Stetellites feel way smoother and is more visibly clear where you can and cannot place Stetellites. Unfortunately due to engine limitations, this makes it impossible to place Stetellites on no-build tiles, so you won't be able to place Stetellites on ramps anymore.
 
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to no longer prioritize own units over allies.
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to prioritize friendly units with the most life.
@@ -1460,6 +1466,10 @@ The visual explosion was weirdly small.
 Copied from Versus.
 
 - Fixed an issue where Mecha Ravagers had no spell animation when casting their Environmentally Unfriendly Eruption ability.
+- Added a visual effect to Gary's Semi-Stable Mass Transportation ability.
+- Increased Gary's model radius by 33% (Increases scale of certain model attachments like the recall effect).
+- Increased Super Gary's model radius by 60%.
+- Added flying helper splat when placing Stetellites.
 
 yeah.
 

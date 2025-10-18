@@ -59,6 +59,20 @@
     <CEffectEnumArea id="DehakaCreeperExplodeSearch">
         <IncludeArray Value="Target"/>
     </CEffectEnumArea>
+    <CEffectSet id="GaryStetmannRecallPrepare">
+        <EffectArray value="GaryStetmannMassRecallCastingAB"/>
+    </CEffectSet>
+    <CEffectSet id="GaryStetmannRecallSet">
+        <EffectArray value="GaryStetmannMassRecallCastingRB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GaryStetmannMassRecallCastingAB">
+        <Behavior value="NexusMassRecallCasting"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="GaryStetmannMassRecallCastingRB">
+        <BehaviorLink value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="GaryStetmannRecallSearch"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectLaunchMissile id="HHLaserBatteryLM">
         <Movers Link="YamatoWeapon"/>
     </CEffectLaunchMissile>
@@ -125,6 +139,28 @@
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="SalvageStetmannPowerTower">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SalvageStetmannPowerTowerRB"/>
+        <EffectArray value="SalvageDeath"/>
+        <EffectArray value="SalvageStetmannPowerTowerCooldown"/>
+    </CEffectSet>
+    <CEffectModifyPlayer id="SalvageStetmannPowerTowerCooldown">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichPlayer Value="Caster"/>
+        <Cost Abil="SalvageStetmannPowerTower">
+            <Charge>
+                <CountMax value="99"/>
+                <CountUse value="-1"/>
+                <Link value="Abil/DeployPowerTowerStetmann"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectRemoveBehavior id="SalvageStetmannPowerTowerRB">
+        <EditorCategories value="Race:Zerg"/>
+        <BehaviorLink value="PowerTowerDeathStetmann"/>
+    </CEffectRemoveBehavior>
     <CEffectDamage id="UltraliskMechanicalLifeLeechStetmannDamage">
         <Amount value="30"/>
     </CEffectDamage>
@@ -759,14 +795,23 @@
     </CEffectApplyBehavior>
     <CEffectSet id="MothershipMassRecallInitialSet">
         <EffectArray value="MothershipMassRecallApplyBehavior"/>
-        <EffectArray value="NexusMassRecallCastingTargetAB"/>
+        <EffectArray value="MothershipMassRecallCastingAB"/>
     </CEffectSet>
     <CEffectEnumArea id="MothershipMassRecallSearch">
         <AreaArray index="0" Effect="MothershipMassRecallInitialSet"/>
     </CEffectEnumArea>
     <CEffectSet id="MothershipMassRecallSet">
-        <EffectArray value="NexusMassRecallCastingTargetRB"/>
+        <EffectArray value="MothershipMassRecallCastingRB"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="MothershipMassRecallCastingAB">
+        <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="MothershipMassRecallSearch"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="MothershipMassRecallCastingRB">
+        <BehaviorLink value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="MothershipMassRecallSearch"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectDamage id="MercCompoundReset">
         <EditorCategories value=""/>
     </CEffectDamage>
@@ -794,15 +839,6 @@
     <CEffectRemoveBehavior id="NexusMassRecallCastingRB">
         <BehaviorLink value="NexusMassRecallCasting"/>
         <WhichUnit Value="Caster"/>
-        <Count value="1"/>
-    </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="NexusMassRecallCastingTargetAB">
-        <Behavior value="NexusMassRecallCasting"/>
-        <WhichUnit Effect="MothershipMassRecallSearch"/>
-    </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="NexusMassRecallCastingTargetRB">
-        <BehaviorLink value="NexusMassRecallCasting"/>
-        <WhichUnit Effect="MothershipMassRecallSearch"/>
         <Count value="1"/>
     </CEffectRemoveBehavior>
     <CEffectApplyForce id="NovaDashAttackApplyForce">
