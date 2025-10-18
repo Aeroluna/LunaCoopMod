@@ -27,6 +27,9 @@
         <AmmoUnit value="AdeptWeapon"/>
         <Movers Link="AdeptWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="AlarakMothershipMassRecallPrepare">
+        <EffectArray value="MothershipMassRecallCastingAB"/>
+    </CEffectSet>
     <CEffectSet id="AllUnitBehaviorControllerSubset1">
         <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
     </CEffectSet>
@@ -59,6 +62,18 @@
     <CEffectEnumArea id="DehakaCreeperExplodeSearch">
         <IncludeArray Value="Target"/>
     </CEffectEnumArea>
+    <CEffectSet id="DehakaCreeperExplodeAbilSet">
+        <EffectArray value="DehhakaCreeperLocustDehakaDeathExplodeRB"/>
+        <EffectArray value="DehakaCreeperExplodeSearch"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="DehakaCreeperFlyingSwoopAbilLM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="DehakaCreeperExplodeAbilSet"/>
+        <Movers Link="DehakaCreeperFlyingSwoop"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
     <CEffectSet id="GaryStetmannRecallPrepare">
         <EffectArray value="GaryStetmannMassRecallCastingAB"/>
     </CEffectSet>
@@ -79,6 +94,10 @@
     <CEffectLaunchMissile id="HHOrdnanceTowerLM">
         <Movers Link="PunisherGrenadesWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectTeleport id="MothershipMassRecallTeleport">
+        <PlacementAround Value="TargetUnitOrPoint"/>
+        <TargetLocation Value="TargetUnitOrPoint"/>
+    </CEffectTeleport>
     <CEffectSet id="OrdnanceFleetwideJumpSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="OrdnanceFleetwideJumpCreatePrecursor"/>
@@ -793,19 +812,11 @@
         <Chance value="0"/>
         <Behavior value="MasteryTychusFirstCommanderPetBuff"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="MothershipMassRecallInitialSet">
-        <EffectArray value="MothershipMassRecallApplyBehavior"/>
-        <EffectArray value="MothershipMassRecallCastingAB"/>
-    </CEffectSet>
-    <CEffectEnumArea id="MothershipMassRecallSearch">
-        <AreaArray index="0" Effect="MothershipMassRecallInitialSet"/>
-    </CEffectEnumArea>
     <CEffectSet id="MothershipMassRecallSet">
         <EffectArray value="MothershipMassRecallCastingRB"/>
     </CEffectSet>
     <CEffectApplyBehavior id="MothershipMassRecallCastingAB">
         <Behavior value="NexusMassRecallCasting"/>
-        <WhichUnit Effect="MothershipMassRecallSearch"/>
     </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="MothershipMassRecallCastingRB">
         <BehaviorLink value="NexusMassRecallCasting"/>
@@ -821,10 +832,6 @@
     <CEffectSet id="MercGroundDropBehaviorSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
-    <CEffectTeleport id="MothershipMassRecallTeleport">
-        <PlacementAround Value="TargetUnit"/>
-        <TargetLocation Value="TargetUnit"/>
-    </CEffectTeleport>
     <CEffectCreatePersistent id="MutatatorNukeDetonate">
         <RevealRadius value="0"/>
         <RevealFlags index="Unfog" value="0"/>

@@ -44,10 +44,22 @@
     </CActorAction>
     <CActorUnit id="DehakaCreeperFlying">
         <On index="66" Send="$Birth RandomStartOffset"/>
+        <On Terms="Abil.DehakaCreeperFlyingSwoop.SourceCastStart" Send="StatusSet DeathSuicide 1"/>
     </CActorUnit>
+    <CActorRange id="DehakaCreeperFlyingSwoopRange" parent="RangeAbil" abil="DehakaCreeperFlyingSwoop"/>
+    <CActorSplat id="DehakaCreeperFlyingSwoopCursorSplat" parent="ProtossCursorSplat" abil="DehakaCreeperFlyingSwoop">
+        <Model value="ZergAOECursorSplat"/>
+    </CActorSplat>
+    <CActorRange id="DehakaLocustFlyingSwoopRange" parent="RangeAbil" abil="DehakaLocustFlyingSwoop"/>
     <CActorUnit id="DehakaLocustFlying">
         <On index="67" Send="$Birth RandomStartOffset"/>
     </CActorUnit>
+    <CActorSound id="FlyingCreeper_SuicideSwoop_AS">
+        <On Terms="Abil.DehakaCreeperFlyingSwoop.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="FlyingLocustSwoopSound">
+        <On Terms="Effect.DehakaCreeperFlyingSwoopAbilLM.Start" Send="Create"/>
+    </CActorSound>
     <CActorSite id="HHValkyrieFleetwideJumpImpactSite">
         <On Terms="Effect.OrdnanceFleetwideJumpSet.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="RefSet ::global.FleetwideJump ::Self"/>

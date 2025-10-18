@@ -862,7 +862,7 @@ A passive called Power Overwhelming deserves to go to an Archon unit! By accruin
 - Reworked Mothership Terminator Beam to only target air units.
 - Reworked Mothership Thermal Lance.
   - Only targets ground units instead of all units.
-  - Reduced travel speed by 75% speed.
+  - Reduced travel speed by 50% speed.
   - Cooldown increased from 1 to 2 seconds.
   - Damage increased from 10 to 100.
 - Added a dramatic sound effect when summoning a Mothership.
@@ -911,6 +911,7 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Fixed an issue where Ascendant shadow trail model didn't scale with the Ascendant (noticeable with Power Overwhelming).
 - Restored missing beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
+- Changed Mothership Mass Teleport ability to teleport to the unit's current location instead of its location when the ability was cast.
 
 yeah.
 
@@ -1160,6 +1161,13 @@ Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gain
 
 Why did Dakrun slam his giant head into a building and do 0 damage? Also why did it not affect invisible units? Now Dakrun has a niche of smashing into buildings.
 
+- Added the Swoop ability to Primal Locust.
+  - Allows manually landing flying Primal Locusts at a target location.
+- Added the Swoop ability to Explosive Creeper.
+  - Allows manually exploding Explosive Creepers at a target location.
+
+Doesn't seem that useful but why not.
+
 - Changed Primal Impaler model.
 
 The unit previously used the Primal Lurker skin, now it uses a proper Impaler skin.
@@ -1175,6 +1183,7 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 - Fixed an issue where Dehaka's units don't have reduced sight radius while burrowed (Impaler, Primal Host, and Creeper Host excluded).
 - Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
 - Fixed an issue where Creepers could not damage friendly units.
+- Changed Explosive Creeper weapon icon.
 
 yeah.
 
