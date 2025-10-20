@@ -68,6 +68,14 @@ Not sure why this ability had its volume nerfed in co-op.
 
 If you've ever wondered how you boxed that High Templar you didn't mean to, this is probably why.
 
+- Changed alignment of all neutral buffs to either positive or negative.
+
+This changes causes all buffs to be tinted either green for positive buffs or red for negative buffs on the unit info panel. Previously many random buffs were set as neutral and weren't being tinted.
+
+- Fixed an issue where many stun/slow effects could still effect units with the Frenzy passive.
+
+It was very arbitrary which effects could or could not go through the Frenzy passive. Now it is more consistent.
+
 - Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
 - Added an impact visual for Ravager's Corrosive Bile.
 - Added visual Snow glaze effect to units on snowy maps (Void Launch).
@@ -352,7 +360,6 @@ Added parity with non-calldown variants. Those are proud mech units, let them be
 
 - Fixed an issue where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed an issue where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
-- Changed the alignment of Medic's Safeguard from neutral to positive.
 
 yeah.
 
@@ -755,7 +762,12 @@ No more recalling Black Death straight into your mineral line.
 
 Unsurprisingly, autocasting the shield restoring Blink when out of shields is strong.
 
-- Fixed an issue where Strike from the Shadows would increase the cost of abilities that use energy over time (i.e. Cloak).
+- Reworked Centurion's Darkcoil ability from an augment into an instant cast.
+- Fixed an issue where Darkcoil would not grant the Centurion shields if the stun fails to hit any enemies.
+
+Augments are so awkward, previously you needed to attack a target to trigger the Darkcoil. Now it is an instant cast, making it easier to activate when you want, e.g. trying to hit a cloaked unit.
+
+- Fixed an issue where Strike from the Shadows would increase the cost of abilities that use energy over time (e.g. Cloak).
 
 Funny that this passive could *nerf* some units. This happened because the buff would multiply energy regeneration by 1.5 and abilities like Cloak cause your energy regeneration to be negative.
 
@@ -769,6 +781,7 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
 - Added visual effect to Dark Pylon's Recall ability.
 - Fixed an issue where Dark Archons would try to path around Force Fields they could shatter.
+- Fixed an issue where targets immune to Black Hole's stun would not have their armor negated.
 
 yeah.
 
@@ -1102,6 +1115,7 @@ Bunkers can do it, why not the Missile Turrets? Gives Stukov another funny form 
 - Reduced allied push priority of Infested Trooper to -2.
 - Reduced allied push priority of Infested Civilian to -1.
 - Reduced allied push priority of Volatile Infested to -1.
+- Reduced allied push priority of Broodling to -3.
 - Increased allied push priority of uprooted buildings to 1.
 
 It can be frustrating trying to get into the fight when you have a P3 Stukov ally, now you can push all their troopers aside. It also made sense that giant walking buildings could push other smaller units out of the way. This helps trying to push your bunker line up. Ranged infantry have a lower push priority so the melee infantry can push through.
@@ -1341,7 +1355,6 @@ Same change to Raynor's firebats.
 - Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
 - Added a new AOE visual effect after purchasing Hammer Munitions.
 - Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
-- Fixed an issue where Rattlesnake's Revitalizer buff's alignment was neutral after being upgraded.
 - Reworked Vega's Psi Projector visuals.
 - Fixed an issue where unit's affected by Psi Projector twice in a row would have their height visually reset.
 
@@ -1651,10 +1664,6 @@ Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frust
 - Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
 
 No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
-
-- Changed the alignment of Black Death from neutral to negative.
-
-Visual change only.
 
 - Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
 

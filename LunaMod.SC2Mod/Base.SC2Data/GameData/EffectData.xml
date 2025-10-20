@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectSet id="330mmBarrageCannonsABSet">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
     <CEffectDamage id="330mmBarrageCannonsDamage">
         <Amount value="45"/>
     </CEffectDamage>
@@ -27,12 +30,21 @@
         <AmmoUnit value="AdeptWeapon"/>
         <Movers Link="AdeptWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="AlarakBaneBladesAoeSlowAB">
+        <ValidatorArray index="0" value="TargetMassiveOrHeroicOrUnstoppable"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AlarakBaneBladesDamageSlow">
+        <ValidatorArray value="TargetMassiveOrHeroicOrUnstoppable"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="AlarakMothershipMassRecallPrepare">
         <EffectArray value="MothershipMassRecallCastingAB"/>
     </CEffectSet>
     <CEffectSet id="AllUnitBehaviorControllerSubset1">
         <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="ApocaliskApplyBurrowChargeStun">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="ArbiterMPRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
     </CEffectSet>
@@ -56,6 +68,25 @@
         <CaseArray Validator="CasterIsAscendant" Effect="AscendantSacrificeSelfBuffAB"/>
         <CaseDefault value="AscendantSacrificeSelfBuffArchonAB"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="CommanderPrestigeKerriganAbilitiesStun">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CoopMurvarPukePuddleDisableMovementAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="CoopMurvarPukePuddleDisableMovement"/>
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="CoopMurvarPukePuddleBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="CoopMurvarPukePuddleDisableAB"/>
+        <EffectArray value="CoopMurvarPukePuddleDisableMovementAB"/>
+    </CEffectSet>
+    <CEffectEnumTransport id="CoopMurvarPukePuddleIterateTransport">
+        <Effect value="CoopMurvarPukePuddleBehavior"/>
+    </CEffectEnumTransport>
+    <CEffectSet id="CoopMurvarPukePuddleSet">
+        <EffectArray index="1" value="CoopMurvarPukePuddleBehavior"/>
+    </CEffectSet>
     <CEffectDamage id="DarkArchonWeaponDamage">
         <Amount value="25"/>
     </CEffectDamage>
@@ -74,6 +105,66 @@
         <Movers Link="DehakaCreeperFlyingSwoop"/>
         <DeathType value="Unknown"/>
     </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="DehakaIntimidatingRoarMovement">
+        <EditorCategories value="Race:PrimalZerg"/>
+        <Behavior value="DehakaIntimidatingRoar"/>
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DehakaIntimidatingRoarSet">
+        <EditorCategories value="Race:PrimalZerg"/>
+        <EffectArray value="DehakaIntimidatingRoarMovement"/>
+        <EffectArray value="DehakaIntimidatingRoar"/>
+    </CEffectSet>
+    <CEffectEnumArea id="DehakaIntimidatingRoarSearch">
+        <AreaArray index="0" Effect="DehakaIntimidatingRoarSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DehakaIntimidatingRoarSetLv2">
+        <EditorCategories value="Race:PrimalZerg"/>
+        <EffectArray value="DehakaIntimidatingRoarMovement"/>
+        <EffectArray value="DehakaIntimidatingRoar"/>
+    </CEffectSet>
+    <CEffectEnumArea id="DehakaIntimidatingRoarSearchLv2">
+        <AreaArray index="0" Effect="DehakaIntimidatingRoarSetLv2"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DehakaIntimidatingRoarSetLv3">
+        <EditorCategories value="Race:PrimalZerg"/>
+        <EffectArray value="DehakaIntimidatingRoarMovement"/>
+        <EffectArray value="DehakaIntimidatingRoar"/>
+    </CEffectSet>
+    <CEffectEnumArea id="DehakaIntimidatingRoarSearchLv3">
+        <AreaArray index="0" Effect="DehakaIntimidatingRoarSetLv3"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="DehakaUltraliskBashStunAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DisablingCloudBehaviorSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="DisablingCloudApplyBehavior"/>
+        <EffectArray value="DisablingCloudMovementApplyBehavior"/>
+    </CEffectSet>
+    <CEffectEnumTransport id="DisablingCloudIterateTransport">
+        <Effect value="DisablingCloudBehaviorSet"/>
+    </CEffectEnumTransport>
+    <CEffectApplyBehavior id="DisablingCloudMovementApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="DisablingCloudMovement"/>
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DisablingCloudSet">
+        <EffectArray index="0" value="DisablingCloudBehaviorSet"/>
+    </CEffectSet>
+    <CEffectSet id="DropPodStunSet">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
+    <CEffectEnumArea id="FenixArbiterStasisFieldSearch">
+        <AreaArray index="0" Radius="5"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="FenixMojoScoutAirDamageStunApplyBehavior">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="FenixThunderousChargeCoopStunSet">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
     <CEffectSet id="GaryStetmannRecallPrepare">
         <EffectArray value="GaryStetmannMassRecallCastingAB"/>
     </CEffectSet>
@@ -88,16 +179,51 @@
         <WhichUnit Effect="GaryStetmannRecallSearch"/>
         <Count value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectSwitch id="GhostMengskEMPStunSwitch">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="HHHellionBombSlowAB">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectLaunchMissile id="HHLaserBatteryLM">
         <Movers Link="YamatoWeapon"/>
     </CEffectLaunchMissile>
     <CEffectLaunchMissile id="HHOrdnanceTowerLM">
         <Movers Link="PunisherGrenadesWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="KerriganImplosionHeroicApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganImplosionHeroic"/>
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="KerriganImplosionFinalApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganImplosionFinal"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="KerriganImplosionDamageApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="KerriganImplosionDamage"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="KerriganImplosionHeroicSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="KerriganImplosionHeroicApplyBehavior"/>
+        <EffectArray value="KerriganImplosionDamageApplyBehavior"/>
+    </CEffectSet>
+    <CEffectSwitch id="KerriganImplosionNotHeroicSwitch">
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Validator="NotFrenzied" Effect="KerriganImplosionApplyBehavior"/>
+        <CaseArray Effect="KerriganImplosionDamageApplyBehavior" FallThrough="1"/>
+    </CEffectSwitch>
+    <CEffectDamage id="MedicRestoration">
+        <EditorCategories value="Race:Terran"/>
+    </CEffectDamage>
     <CEffectTeleport id="MothershipMassRecallTeleport">
         <PlacementAround Value="TargetUnitOrPoint"/>
         <TargetLocation Value="TargetUnitOrPoint"/>
     </CEffectTeleport>
+    <CEffectApplyBehavior id="NovaUnitLockdownAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="OrdnanceFleetwideJumpSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="OrdnanceFleetwideJumpCreatePrecursor"/>
@@ -154,6 +280,12 @@
         <EffectArray value="OrdnanceFleetwideJumpTeleport"/>
         <EffectArray value="OrdnanceFleetwideJumpTeleportAB"/>
     </CEffectSet>
+    <CEffectSwitch id="PsionicLiftControllerBehaviorSwitch">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSwitch>
+    <CEffectCreateUnit id="QueenStukovSpawnBroodlingsCreateUnit">
+        <SpawnUnit index="0" value="StukovInfestBroodling"/>
+    </CEffectCreateUnit>
     <CEffectApplyBehavior id="SIBarracksCorruption">
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>
@@ -180,6 +312,37 @@
         <EditorCategories value="Race:Zerg"/>
         <BehaviorLink value="PowerTowerDeathStetmann"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="StukovAleksanderAirStunAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ToxicNestVirulentNestSnareHeroicAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ToxicNestVirulentNestSnareNormalAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusFirebatApplyOilBombMovement">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="TychusFirebatOilBombedMovement"/>
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="TychusFirebatApplyOilBombSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="TychusFirebatApplyOilBombMovement"/>
+        <EffectArray value="TychusFirebatApplyOilBomb"/>
+    </CEffectSet>
+    <CEffectEnumArea id="TychusFirebatOilBombSearch">
+        <AreaArray index="0" Effect="TychusFirebatApplyOilBombSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="TychusGhostConfusionApply">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusShredderGrenadeSlowAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusShredderGrenadeStunAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="UltraliskMechanicalLifeLeechStetmannDamage">
         <Amount value="30"/>
     </CEffectDamage>
@@ -193,6 +356,15 @@
             <Change value="-15"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectApplyBehavior id="UltraliskStetmannApplyBurrowChargeMechanicalStun">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="UltraliskStetmannApplyBurrowChargeStun">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="VileAcidSlowAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="VoidArchonDeathAB">
         <Behavior value="AscendantArchonDummySelfBuff"/>
         <Count value="0">
@@ -450,6 +622,33 @@
         <EffectArray value="VoidArchonDeathRB"/>
         <EffectArray value="KillCaster"/>
         <EffectArray value="GrantKillCreditDummy"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="VoidSentryBlackHoleArmorAB">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="VoidSentryBlackHoleArmor"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="VoidSentryBlackHoleImpactSet">
+        <ValidatorArray value="NotStructureTarget"/>
+        <ValidatorArray value="TargetIsNotUnstoppable"/>
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
+    <CEffectEnumArea id="VoidSentryBlackHoleSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Effect="VoidSentryBlackHoleSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="VoidSentryBlackHoleSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="VoidSentryBlackHoleImpactSet"/>
+        <EffectArray value="VoidSentryBlackHoleArmorAB"/>
+    </CEffectSet>
+    <CEffectSet id="VoidZealotShadowChargeInitialSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="VoidZealotShadowChargeSearch"/>
+        <EffectArray value="VoidZealotShadowChargeSelfBuff"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="VoidZealotShadowChargeSearchImpactSet">
+        <EffectArray index="1" removed="1"/>
     </CEffectSet>
     <CEffectDamage id="VorazunCoopDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
@@ -785,6 +984,7 @@
         <EditorCategories value=""/>
         <CaseArray Validator="TargetMassiveOrHeroicOrUnstoppable" Effect="MarauderMagrailMunitionsSlowAB"/>
         <CaseDefault value="MarauderMagrailMunitionsStunAB"/>
+        <ValidatorArray value="NotFrenzied"/>
     </CEffectSwitch>
     <CEffectDamage id="MarauderMagrailMunitionsDamage">
         <ArmorReduction value="0"/>
@@ -907,6 +1107,7 @@
     <CEffectApplyBehavior id="CommanderPrestigeNovaAirliftAB">
         <EditorCategories value=""/>
         <Behavior value="CommanderPrestigeNovaAirliftStun"/>
+        <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="CommanderPrestigeNovaAirliftSearch">
         <ValidatorArray value="CommanderPrestigeNovaAirlift"/>
@@ -1086,6 +1287,7 @@
     <CEffectApplyBehavior id="HHBomberAreaBombEMPStunAB">
         <ValidatorArray index="0" value="NotHeroic"/>
         <ValidatorArray value="IsMechanical"/>
+        <ValidatorArray value="NotFrenzied"/>
         <EditorCategories value=""/>
         <Behavior value="GhostMengskEMPStun"/>
         <Flags index="UseDuration" value="1"/>
@@ -2273,40 +2475,10 @@
         <Amount value="4"/>
         <Death value="Disintegrate"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="KerriganImplosionCreatePersistentHeroic">
-        <EditorCategories value="Race:Zerg"/>
-        <WhichLocation Value="TargetUnit"/>
-        <InitialEffect value="KerriganImplosionSetHeroic"/>
-        <ExpireDelay value="0.25"/>
-        <FinalEffect value="KerriganImplosionEndSet"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="KerriganImplosionDrop"/>
-        <PeriodicPeriodArray value="1"/>
-    </CEffectCreatePersistent>
-    <CEffectModifyUnit id="KerriganImplosionDrop">
-        <EditorCategories value="Race:Zerg"/>
-        <Height value="-2.5"/>
-        <HeightTime value="0.25"/>
-    </CEffectModifyUnit>
-    <CEffectModifyUnit id="KerriganImplosionHeightMod">
-        <EditorCategories value="Race:Zerg"/>
-        <Height value="2.5"/>
-        <HeightTime value="2"/>
-    </CEffectModifyUnit>
     <CEffectApplyBehavior id="KerriganImplosionApplyBehavior">
         <EditorCategories value="Race:Zerg"/>
-        <Behavior value="KerriganImplosionTempBuff"/>
+        <Behavior value="KerriganImplosion"/>
     </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="KerriganImplosionCreatePersistent">
-        <EditorCategories value="Race:Zerg"/>
-        <WhichLocation Value="TargetUnit"/>
-        <InitialEffect value="KerriganImplosionSet"/>
-        <ExpireDelay value="0.25"/>
-        <FinalEffect value="KerriganImplosionEndSet"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="KerriganImplosionDrop"/>
-        <PeriodicPeriodArray value="3"/>
-    </CEffectCreatePersistent>
     <CEffectDamage id="KerriganImplosionDamage">
         <EditorCategories value="Race:Zerg"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -2316,26 +2488,6 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <Death value="Blast"/>
     </CEffectDamage>
-    <CEffectSet id="KerriganImplosionEndSet">
-        <EditorCategories value="Race:Zerg"/>
-        <EffectArray value="KerriganImplosionRemoveBehavior"/>
-        <EffectArray value="KerriganImplosionDamage"/>
-    </CEffectSet>
-    <CEffectModifyUnit id="KerriganImplosionHeightModHeroic">
-        <EditorCategories value="Race:Zerg"/>
-        <Height value="2.5"/>
-        <HeightTime value="1"/>
-    </CEffectModifyUnit>
-    <CEffectRemoveBehavior id="KerriganImplosionRemoveBehavior">
-        <EditorCategories value="Race:Zerg"/>
-        <BehaviorLink value="KerriganImplosionTempBuff"/>
-    </CEffectRemoveBehavior>
-    <CEffectSet id="KerriganImplosionSet">
-        <ValidatorArray value="KerriganImplosionNotActive"/>
-        <EditorCategories value="Race:Zerg"/>
-        <EffectArray value="KerriganImplosionApplyBehavior"/>
-        <EffectArray value="KerriganImplosionHeightMod"/>
-    </CEffectSet>
     <CEffectDamage id="KerriganBroodRazorTalonsDamage" parent="DU_WEAP">
         <ValidatorArray value="NotHasChainLightningUpgrade"/>
         <EditorCategories value="Race:Zerg"/>
@@ -2354,18 +2506,11 @@
         <AreaArray Radius="1.25" Fraction="0.25"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectSet id="KerriganImplosionSetHeroic">
-        <ValidatorArray value="KerriganImplosionNotActive"/>
-        <EditorCategories value="Race:Zerg"/>
-        <EffectArray value="KerriganImplosionApplyBehavior"/>
-        <EffectArray value="KerriganImplosionHeightModHeroic"/>
-    </CEffectSet>
     <CEffectSwitch id="KerriganImplosionSwitch">
-        <ValidatorArray value="KerriganImplosionNotActive"/>
-        <ValidatorArray value="NotFrenzied"/>
+        <ValidatorArray value="KerriganImplosionCombineNotActive"/>
         <EditorCategories value="Race:Zerg"/>
-        <CaseArray Validator="IsHeroic" Effect="KerriganImplosionCreatePersistentHeroic"/>
-        <CaseArray Effect="KerriganImplosionCreatePersistent" FallThrough="1"/>
+        <CaseArray Validator="IsHeroic" Effect="KerriganImplosionHeroicSet"/>
+        <CaseArray Effect="KerriganImplosionNotHeroicSwitch" FallThrough="1"/>
     </CEffectSwitch>
     <CEffectSet id="KerriganPsiBlastSet">
         <EditorCategories value="Race:Zerg"/>
@@ -2430,13 +2575,11 @@
         <BehaviorClass value="CBehaviorBuff"/>
         <BehaviorCategories index="Restorable" value="1"/>
     </CEffectRemoveBehavior>
-    <CEffectEnumArea id="MedicRestorationSearch">
-        <EditorCategories value="Race:Terran"/>
-    </CEffectEnumArea>
     <CEffectSet id="MedicRestorationSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="MedicRestorationAB"/>
-        <EffectArray value="MedicRestorationRB"/>
+        <!--EffectArray value="MedicRestorationRB"/-->
+        <EffectArray value="MedicRestoration"/>
     </CEffectSet>
     <CEffectEnumArea id="MedivacHealACSearch">
         <SearchFilters value="Biological,Structure,Visible;Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -3143,9 +3286,15 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="ZeratulDarkArchonMaelstromApply">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="ZeratulDarkArchonMaelstromSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectSet id="ZeratulKhaydarinMonolithStunSet">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
     <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -3203,6 +3352,9 @@
         <InitialOffset value="0,100,0"/>
         <FinalEffect value=""/>
     </CEffectCreatePersistent>
+    <CEffectSet id="ZeratulSuppressionCrystalSuppressionAuraSearchImpact">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="ZeratulVoidPrisonAiur01MissilesApplyBehavior">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="ZeratulVoidPrisonMissiles"/>
@@ -3215,4 +3367,7 @@
         <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="4"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="ZeratulXelNagaConstructDevolveHeroicAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
 </Catalog>

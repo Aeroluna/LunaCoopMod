@@ -95,6 +95,19 @@
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="CreateSymbiote" Requirements="CommanderPrestigeAbathurSymbiote"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="Darkcoil">
+        <CmdButtonArray index="Execute" DefaultButtonFace="VoidZealotShadowChargeStun" Requirements="HaveResearchShadowStun"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="VoidZealotShadowChargeInitialSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <AutoCastRange value="1.5"/>
+        <AutoCastValidatorArray value="DarkCoilEnemiesNearby"/>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="DehakaCreeperFlyingSwoop">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
@@ -1126,7 +1139,7 @@
         <Cost>
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters value="Visible;Player,Ally,Neutral,Structure,Worker,Invulnerable,Unstoppable"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Structure,Invulnerable"/>
         <Range value="9"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="KerriganImplosion" State="Restricted"/>
     </CAbilEffectTarget>

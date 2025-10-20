@@ -1,4 +1,5 @@
 ﻿Abil/Name/CreateSymbiote=Create Symbiote
+Abil/Name/Darkcoil=Darkcoil
 Abil/Name/DuskWingBansheeCloakingFieldPrestige=Cloaking Field
 Abil/Name/Enshroud=Enshroud
 Abil/Name/FenixClolarionCarrierDummyMorph=FenixClolarionCarrierDummyMorph
@@ -50,10 +51,13 @@ Behavior/Name/CommanderPrestigeNovaAirliftStun=Lockdown
 Behavior/Name/DarkTemplarVoidStasis=Void Prison
 Behavior/Name/DarkTemplarVoidStasisCooldown=Recently Void Prisoned
 Behavior/Name/Enshroud=Aurora Veil
+Behavior/Name/FenixThunderousChargeCoopSlow=Slowed
+Behavior/Name/FenixThunderousChargeCoopStun=Stunned
 Behavior/Name/GhostMengskCloakBuff=Shadow of the Dominion
 Behavior/Name/GhostMengskEMPStun=Shock and Awe
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
-Behavior/Name/KerriganImplosionTempBuff=Implosion
+Behavior/Name/KerriganImplosion=Implosion
+Behavior/Name/KerriganImplosionDamage=Implosion
 Behavior/Name/KerriganRazorSwarm=Razor Swarm
 Behavior/Name/KerriganRegenAuraTarget=Protective Brood
 Behavior/Name/MarauderMagrailMunitionsSlow=Slowed
@@ -64,9 +68,12 @@ Behavior/Name/SIBarracksCorruption=Corruption
 Behavior/Name/SILiberatorSprayDummyValidate=SILiberator Spray Dummy Validate
 Behavior/Name/SILiberatorSprayPool=Acid
 Behavior/Name/SILiberatorVolatileFuel=Volatile Fuel
+Behavior/Name/SiegeTankMengskSlowHeroic=Shock and Awe
+Behavior/Name/SiegeTankMengskStun=Shock and Awe
 Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
 Behavior/Name/SupplyDrop=Supply Drop
+Behavior/Name/VoidSentryBlackHoleArmor=Black Hole
 Behavior/Name/VorazunShadowPhaseSuppressed=Recently Shrouded
 Behavior/Name/VorazunShadowPhased=Shrouded
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
@@ -80,9 +87,15 @@ Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affec
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
 Behavior/Tooltip/DuskWingBansheeCloak=This unit is cloaked and will only be revealed by detectors or effects. Its weapon range is also increased by 2.
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
+Behavior/Tooltip/FenixThunderousChargeCoopSlow=This unit's attack speed and movement speed are slowed.
+Behavior/Tooltip/FenixThunderousChargeCoopStun=This unit is stunned.
 Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneration and movement speed while cloaked.
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
+Behavior/Tooltip/GhostMengskSuperCloak=This unit is undetectable.
+Behavior/Tooltip/Irradiate=Irradiated unit. Enemy Biological units in or near the radiation field will take damage.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
+Behavior/Tooltip/KerriganImplosion=This unit is stunned and about to take damage.
+Behavior/Tooltip/KerriganImplosionDamage=This unit is slowed and about to take damage.
 Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm and will take massive damage while in this area of effect.
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/MarauderMagrailMunitionsSlow=This unit's movement and attack speed are slowed.
@@ -92,6 +105,7 @@ Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm an
 Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*Effect,StukovSIBunkerCDRDummy,Amount"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
 Behavior/Tooltip/SILiberatorVolatileFuel=This unit is expending energy to gain 50% increased attack and movement speed.
+Behavior/Tooltip/SiegeTankMengskStun=This unit is stunned.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
 Behavior/Tooltip/VorazunCloakedShieldRegenPermanent=Shield Regeneration increased by <d ref="Behavior,VorazunCloakedShieldRegen,Modification.VitalRegenMultiplier[Shields] * 100"/>%.
@@ -340,6 +354,7 @@ Button/Tooltip/EvolveScourgeGasCostReduction=Reduces the splash and spell damage
 Button/Tooltip/EvolveViperImprovedCastRange=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
 Button/Tooltip/FaceEmbrace=Pulls target unit to the Viper. Enemy units are stunned for <d ref="Behavior,YoinkEnemyStun,Duration"/> <lang rule="plural">second,seconds</lang>.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune to the stun.</c>
 Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
+Button/Tooltip/FenixThunderousChargeCoop=Fenix charges at the target location, dealing <d ref="Effect,FenixThunderousChargeCoopDamage,Amount"/> damage and stunning all enemy units for <d ref="Behavior,FenixThunderousChargeCoopStun,Duration"/> seconds.</n></n><c val="#ColorAttackInfo">Heroic units are slowed.</c>
 Button/Tooltip/ForceFieldTaldarim=Barrier that lasts <d time="15"/> and impedes movement of ground units.
 Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds.
 Button/Tooltip/HHBomberEMP=Precision Strikes additionally deploy an EMP warhead. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
@@ -377,7 +392,7 @@ Button/Tooltip/HyperjumpInstant=Warps to the target location. Battlecruiser is i
 Button/Tooltip/KerriganBurialRites=Increases the radius and size of each spine by 50%.
 Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 hitpoints.
 Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d ref="Behavior,KerriganEnvenomedSpines,Duration"/> seconds, dealing <d ref="Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second. This effect stacks up to <d ref="Behavior,KerriganEnvenomedSpines,MaxStackCount"/> times.
-Button/Tooltip/KerriganImplosion=Kerrigan lifts a target, stunning them for <d ref="Effect,KerriganImplosionCreatePersistent,PeriodicPeriodArray[0]"/> seconds before dropping them, dealing <d ref="Effect,KerriganImplosionDamage,Amount"/> damage to target unit.<n/><n/><c val="ffff8a">Heroic units are stunned for <d ref="Effect,KerriganImplosionCreatePersistentHeroic,PeriodicPeriodArray[0]"/> second instead.</c>
+Button/Tooltip/KerriganImplosion=Kerrigan lifts a target, stunning them for <d ref="Behavior,KerriganImplosion,Duration"/> seconds before dropping them, dealing <d ref="Effect,KerriganImplosionDamage,Amount"/> damage to target unit.<n/><n/><c val="ffff8a">Heroic units are slowed.</c>
 Button/Tooltip/KerriganRazorSwarm=Creates a razor swarm for <d ref="Effect,KerriganRazorSwarmCreatePersistent,PeriodCount*Effect,KerriganRazorSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,KerriganRazorSwarmDamage,Amount*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> (+<d ref="Effect,KerriganRazorSwarmDamage,AttributeBonus[Structure]*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> vs Structures) damage to all enemy units in the target area.
 Button/Tooltip/KerriganRegenAura=Nearby friendly units gain rapid life and energy regeneration.
 Button/Tooltip/KerriganSunderingGlaive=Attacks deal +6 vs. armored targets on the first hit.
@@ -541,6 +556,9 @@ Effect/Name/CarrierRepairDroneSet=Carrier Repair Drone Set
 Effect/Name/CommanderPrestigeNovaAirliftAB=CommanderPrestigeNovaAirliftAB
 Effect/Name/CommanderPrestigeNovaAirliftSearch=CommanderPrestigeNovaAirliftSearch
 Effect/Name/DarkArchonNerazimWeaponDamage=Dark Archon Nerazim Weapon Damage
+Effect/Name/DehakaIntimidatingRoarMovement=DehakaIntimidatingRoarMovement
+Effect/Name/DisablingCloudBehaviorSet=Disabling Cloud Behavior Set
+Effect/Name/DisablingCloudMovementApplyBehavior=Disabling Cloud Movement Apply Behavior
 Effect/Name/DukesRevengeSwitch=DukesRevengeSwitch
 Effect/Name/EnshroudApplyBuff=Enshroud (Apply Buff)
 Effect/Name/EnshroudHeal=Enshroud (Heal)
@@ -582,16 +600,12 @@ Effect/Name/KerriganCannibalizeSearch=Cannibalize Search
 Effect/Name/KerriganEnvenomedSpinesAB=Envenomed Spines (AB)
 Effect/Name/KerriganEnvenomedSpinesDamage=Envenomed Spines (Damage)
 Effect/Name/KerriganImplosionApplyBehavior=Implosion (Apply Behavior)
-Effect/Name/KerriganImplosionCreatePersistent=Implosion (Create Persistent)
-Effect/Name/KerriganImplosionCreatePersistentHeroic=Implosion (Create Persistent) (Heroic)
 Effect/Name/KerriganImplosionDamage=Implosion (Damage)
-Effect/Name/KerriganImplosionDrop=Implosion (Drop)
-Effect/Name/KerriganImplosionEndSet=Implosion (End Set)
-Effect/Name/KerriganImplosionHeightMod=Implosion (Height Mod)
-Effect/Name/KerriganImplosionHeightModHeroic=Implosion (Height Mod) (Heroic)
-Effect/Name/KerriganImplosionRemoveBehavior=Implosion (Remove Behavior)
-Effect/Name/KerriganImplosionSet=Implosion (Set)
-Effect/Name/KerriganImplosionSetHeroic=Implosion (Set) (Heroic)
+Effect/Name/KerriganImplosionDamageApplyBehavior=Implosion (Damage Apply Behavior)
+Effect/Name/KerriganImplosionFinalApplyBehavior=Implosion (Final Apply Behavior)
+Effect/Name/KerriganImplosionHeroicApplyBehavior=Implosion (Heroic Apply Behavior)
+Effect/Name/KerriganImplosionHeroicSet=Implosion
+Effect/Name/KerriganImplosionNotHeroicSwitch=Implosion (Not Heroic Switch)
 Effect/Name/KerriganImplosionSwitch=Implosion (Switch)
 Effect/Name/KerriganPsiBlastSet=Psi Blast (Set)
 Effect/Name/KerriganRazorSwarmAB=Razor Swarm (Apply Buff)
@@ -603,9 +617,9 @@ Effect/Name/KerriganRegenAuraSearch=Regeneration Aura (Search)
 Effect/Name/KerriganRegenAuraTarget=Regeneration Aura (Target)
 Effect/Name/MarauderMengskAbsorbMU=MarauderMengskAbsorbMU
 Effect/Name/MarauderMengskAbsorbSet=MarauderMengskAbsorbSet
+Effect/Name/MedicRestoration=Restoration
 Effect/Name/MedicRestorationAB=Restoration AB
 Effect/Name/MedicRestorationRB=Restoration RB
-Effect/Name/MedicRestorationSearch=Restoration Search
 Effect/Name/MedicRestorationSet=Restoration Set
 Effect/Name/MedivacHealACSearch=Medivac Heal AC Search
 Effect/Name/MedivacHealACSwitch=Medivac Heal AC Switch
@@ -750,6 +764,9 @@ Effect/Name/VoidArchonVortexEventHorizonSearchArea=Vortex Event Horizon Search A
 Effect/Name/VoidArchonVortexForce=Vortex (Force)
 Effect/Name/VoidArchonVortexForceBehavior=Vortex (ForceBehavior)
 Effect/Name/VoidArchonVortexForceOffset=Vortex (Force Offset)
+Effect/Name/VoidSentryBlackHoleArmorAB=Void Sentry Black Hole Armor AB
+Effect/Name/VoidSentryBlackHoleSet=Void Sentry Black Hole Set
+Effect/Name/VoidZealotShadowChargeInitialSet=Void Zealot Shadow Charge Initial Set
 Effect/Name/VorazunBlinkAB=Vorazun Blink AB
 Effect/Name/VorazunBlinkReturn=Vorazun Blink Return
 Effect/Name/VorazunBlinkReturnAB=Vorazun Blink Return AB

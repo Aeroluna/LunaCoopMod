@@ -63,6 +63,13 @@
         <WhichUnit Value="Caster"/>
         <Value value="HighTemplarTaldarim"/>
     </CValidatorUnitType>
+    <CValidatorCombine id="DarkCoilValidTarget">
+        <CombineArray value="TargetNotShadowStunnedAndNotShadowSlowed"/>
+        <CombineArray value="VoidZealotShadowStunRange"/>
+        <CombineArray value="VoidZealotNotShadowCharging"/>
+        <CombineArray value="TargetNonUnstoppableWithoutVorazunStasisPrestige"/>
+        <Type value="And"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="HaveVoidArchonChainReaction">
         <Find value="1"/>
         <Value value="HaveVoidArchonChainReaction"/>
@@ -81,6 +88,9 @@
         <WhichUnit Effect="LockOnInitialSet"/>
         <Filters value="-;Dead"/>
     </CValidatorUnitFilters>
+    <CValidatorCombine id="MonitorTargetLockChecks">
+        <CombineArray value="TargetNotHaveRestoration"/>
+    </CValidatorCombine>
     <CValidatorCombine id="MutatorHouseHuntersValidator">
         <Type value="And"/>
         <CombineArray value="IsAssaultGalleon"/>
@@ -271,6 +281,18 @@
     <CValidatorPlayerRequirement id="NoCommanderPrestigeNovaMelee">
         <Value value="CommanderPrestigeNovaMelee"/>
     </CValidatorPlayerRequirement>
+    <CValidatorLocationEnumArea id="DarkCoilEnemiesNearby">
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="1.5"/>
+            <Validator value="DarkCoilValidTarget"/>
+        </AreaArray>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="RavenAnalyzeChecks">
+        <CombineArray value="TargetNotHaveRestoration"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="SourceNotHHBattlecruiser">
         <WhichUnit Value="Source"/>
         <Value value="HHBattlecruiser"/>
@@ -434,9 +456,17 @@
         <WhichUnit Value="Source"/>
         <Value value="Scourge"/>
     </CValidatorUnitType>
-    <CValidatorUnitCompareBehaviorCount id="KerriganImplosionNotActive">
+    <CValidatorCombine id="KerriganImplosionCombineNotActive">
         <ResultFailed value="CantTargetUnitsInAStasisField,ImplosionCooldown"/>
-        <Behavior value="KerriganImplosionTempBuff"/>
+        <Type value="And"/>
+        <CombineArray value="KerriganImplosionNotActive"/>
+        <CombineArray value="KerriganImplosionDamageNotActive"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="KerriganImplosionDamageNotActive">
+        <Behavior value="KerriganImplosionDamage"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="KerriganImplosionNotActive">
+        <Behavior value="KerriganImplosion"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="LockOnGroundAirPeriodicValidators">
         <CombineArray value="TargetNotHaveRestoration"/>
@@ -596,6 +626,9 @@
         <ResultFailed value="CantTargetUnitsInAStasisField,VoidStasisCooldown"/>
         <Behavior value="DarkTemplarVoidStasis"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderTargetRange id="VoidZealotShadowStunRange">
+        <Value value="1.5"/>
+    </CValidatorUnitCompareOrderTargetRange>
     <CValidatorLocationEnumArea id="VorazunShadowFuryTargetsInArea">
         <AreaArray index="0" Radius="2"/>
         <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>

@@ -3058,6 +3058,44 @@ void lib74A68E34_gt_ActivateCommanderTriggers_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: RestorationRemoveBehaviors
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RestorationRemoveBehaviors_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_target;
+    string lv_behavior;
+
+    // Automatic Variable Declarations
+    unit auto3C6F4975_u;
+    int auto3C6F4975_i;
+
+    // Variable Initialization
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto3C6F4975_u = lv_target;
+    auto3C6F4975_i = 1;
+    for ( ; auto3C6F4975_i <= UnitBehaviorCountAll(auto3C6F4975_u) ; auto3C6F4975_i += BoolToInt(lv_behavior == UnitBehaviorGet(auto3C6F4975_u, auto3C6F4975_i)) ) {
+        lv_behavior = UnitBehaviorGet(auto3C6F4975_u, auto3C6F4975_i);
+        if ((UnitBehaviorHasFlag(lv_behavior, c_unitBehaviorFlagRestorable) == true) && (libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), UnitBehaviorEffectPlayer(lv_target, lv_behavior, c_effectPlayerCaster, 0), libNtve_ge_PlayerRelation_Enemy) == true)) {
+            UnitBehaviorRemove(lv_target, lv_behavior, 65535);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RestorationRemoveBehaviors_Init () {
+    lib74A68E34_gt_RestorationRemoveBehaviors = TriggerCreate("lib74A68E34_gt_RestorationRemoveBehaviors_Func");
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_RestorationRemoveBehaviors, c_playerAny, "MedicRestoration");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: GeneralNydusUnloadHero
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_GeneralNydusUnloadHero_Func (bool testConds, bool runActions) {
@@ -5550,6 +5588,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
+    lib74A68E34_gt_RestorationRemoveBehaviors_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();
     lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Init();
     lib74A68E34_gt_RaynorPrestigeMercenaryReset_Init();

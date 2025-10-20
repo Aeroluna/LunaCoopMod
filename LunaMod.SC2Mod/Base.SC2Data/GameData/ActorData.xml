@@ -782,6 +782,10 @@
         <Inherits index="Scale" value="1"/>
         <Host Subject="_Selectable"/>
     </CActorModel>
+    <CActorModel id="ZenithStonePsiStormImpact">
+        <Scale value="1.200000"/>
+        <AutoScaleFactor value="1.200000"/>
+    </CActorModel>
     <CActorUnit id="ZeratulCoop">
         <On index="87" Send="AnimBracketStart Attack Stand,Work,Superior,Start Stand,Work,Superior Stand,Work,Superior,End FullMatch 1.400000 AsTimeScale"/>
     </CActorUnit>
@@ -1517,14 +1521,14 @@
     <CActorModel id="HighArchonPsiStormImpact">
         <On index="3" Terms="Behavior.HighArchonPsiStorm.On"/>
         <Scale value="1.200000"/>
-        <AutoScaleFactor value="1.000000"/>
+        <AutoScaleFactor value="1.200000"/>
     </CActorModel>
     <CActorModel id="HighArchonPsiStormModel">
         <Scale value="1.100000"/>
     </CActorModel>
     <CActorModel id="HighTemplarPsiStormImpact">
         <Scale value="1.200000"/>
-        <AutoScaleFactor value="1.000000"/>
+        <AutoScaleFactor value="1.200000"/>
     </CActorModel>
     <CActorModel id="HighTemplarPsiStormModel">
         <Scale value="1.100000"/>
@@ -2535,8 +2539,11 @@
         <Inherits index="Scale" value="1"/>
         <On Terms="ActorCreation" Send="SetTintColor 60,0,120"/>
         <On Terms="ActorCreation" Send="Create ImplosionSound"/>
-        <On Terms="Behavior.KerriganImplosionTempBuff.On" Send="Create"/>
-        <On Terms="Behavior.KerriganImplosionTempBuff.Off" Send="Destroy"/>
+        <On Terms="Behavior.KerriganImplosion.On" Send="Create"/>
+        <On Terms="Behavior.KerriganImplosionFinal.Off" Send="Destroy"/>
+        <On Terms="Behavior.KerriganImplosionDamage.On" Send="Create"/>
+        <On Terms="Behavior.KerriganImplosionDamage.Off" Send="Destroy"/>
+        <On Terms="Behavior.MedicRestoration.Off" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="Implosion"/>
@@ -2553,7 +2560,8 @@
         <On Terms="Behavior.KerriganRazorSwarm.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
-        <AutoScaleFactor value="0.750000"/>
+        <AutoScaleFactor value="1.200000"/>
+        <Scale value="1.200000"/>
     </CActorModel>
     <CActorModel id="K5KerriganFuryBuff">
         <On Terms="ActorCreation; ValidatePlayer HaveKerriganBroodCosmetic" Send="SetTintColor {255,200,100 2.000000}"/>
@@ -3582,7 +3590,7 @@
         <On Terms="Behavior.PsiStormNerazim.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
-        <AutoScaleFactor value="1.000000"/>
+        <AutoScaleFactor value="1.200000"/>
         <Scale value="1.200000"/>
     </CActorModel>
     <CActorModel id="HighTemplarNerazimPsiStormModel" parent="ModelAnimationStyleContinuous">

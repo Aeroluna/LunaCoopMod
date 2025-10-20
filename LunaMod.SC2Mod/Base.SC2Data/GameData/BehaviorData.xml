@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="AbathurMendPeriodicHeal">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AdeptPhaseShift">
         <Modification MoveSpeedBonus="0"/>
     </CBehaviorBuff>
@@ -8,10 +11,23 @@
             <StateFlags index="SuppressPassenger" value="0"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPsionicTransferDamageDebuff">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlarakBaneBladesSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlarakBaneBladesStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisField">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisFieldTimedLife">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArtilleryMengskCloudSickness">
+        <Alignment value="Negative"/>
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AscendantArchonSelfBuff">
@@ -26,11 +42,15 @@
             <DamageDealtFraction index="Splash" value="0.25"/>
             <VitalMaxArray index="Shields" value="100"/>
         </Modification>
+        <Alignment value="Positive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AscendantArchonDummySelfBuff">
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <MaxStackCount value="65535"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AscendantSacrificeSelfBuff">
+        <Alignment value="Positive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AssaultGalleonReactor">
         <InfoFlags index="Hidden" value="1"/>
@@ -60,6 +80,10 @@
         <InfoIcon value="Assets\Textures\btn-unit-zerg-brutaliskgainssymbiote.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="NotHidden"/>
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Burning">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CarapaceDamageResponse">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -94,6 +118,7 @@
     <CBehaviorBuff id="CommanderPrestigeNovaAirliftStun">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="Stun" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="8"/>
@@ -102,10 +127,28 @@
             <StateFlags index="Stun" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeStetmannCombatBuff">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CoopMurvarPukePuddleDisable">
+        <Modification MoveSpeedMultiplier="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CoopMurvarPukePuddleDisableMovement">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-slivan-disablingcloud.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="0.625"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CorrosiveAcidSpell">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Corruption">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DarkArchonConfusion">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkArchonMindControl">
@@ -115,6 +158,9 @@
         <Modification>
             <StateFlags index="Stasis" value="0"/>
         </Modification>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <FinalEffect value="VoidStasisCooldownAB"/>
+        <ExpireEffect value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkTemplarVoidStasisCooldown">
         <Alignment value="Negative"/>
@@ -122,22 +168,272 @@
     <CBehaviorBuff id="DefilerMPPlague">
         <Duration value="20"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaGuardianRage1">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaGuardianRage2">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaGuardianRage3">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaGuardianRage4">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaGuardianRage5">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaIntimidatingRoar">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0"/>
+            <AdditiveAttackSpeedFactor value="0"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaIntimidatingRoarMovement">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\fear_coop.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="Race:PrimalZerg,AbilityorEffectType:Units"/>
+        <Duration value="15"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="-0.75"/>
+            <AdditiveAttackSpeedFactor value="-0.25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaIntimidatingRoarLv2">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0"/>
+            <AdditiveAttackSpeedFactor value="0"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaIntimidatingRoarLv3">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0"/>
+            <AdditiveAttackSpeedFactor value="0"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaMutaliskDamageReduction">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaTyrannozorArmorAuraTarget">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaUltraliskBashStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisablingCloud">
+        <Modification MoveSpeedMultiplier="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisablingCloudMovement">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-blindingcloud.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="0.625"/>
+        <Modification MoveSpeedMultiplier="0.5"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DropPodHaste">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DropPodSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DropPodStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DuskWingBansheeCloak">
         <Modification WeaponRange="2" WeaponScanBonus="2"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="EMPDecloak">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EMPMengskDecloak">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FASTOverloadStetmann">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FenixArbiterStasisField">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FenixArbiterStasisFieldTimedLife">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FenixMojoScoutAirStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FenixThunderousChargeCoopSlow">
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-slow.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FenixThunderousChargeCoopStun">
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-protoss-alarak-stunnonheroicenemies.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="FlashBangGrenade">
         <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GhostMengskIrradiate">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GlazeSnow">
         <BehaviorFlags index="Permanent" value="1"/>
         <DisableValidatorArray value="NotUnderConstruction"/>
         <DisableValidatorArray value="NotHidden"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="GravitonBeamHeightVoidCampaign">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GravitonBeamVoidCampaign">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHHellionBombSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHHellionDoT">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HHHellionTankFear">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="HHValkyrieRandomDelay">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="3"/>
         <Modification AttackSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HUGSOverloadStetmann">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HellbatLeapStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ImpalerDehakaTenderize">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ImprovedPhasingArmor">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestorStetmannInfestBuilding">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JUICEOverloadStetmann">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganImplosionHeroic">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-mengsk-marauder-selfabsorbshield.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="3"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganImplosionFinal">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.25"/>
+        <ExpireEffect value="KerriganImplosionDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganImplosionDamage">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-mengsk-marauder-selfabsorbshield.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="3"/>
+        <ExpireEffect value="KerriganImplosionDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganPrimalRage1">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganPrimalRage2">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganPrimalRage3">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganPrimalRage4">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="KerriganPrimalRage5">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MarauderMengskShrapnelSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Medivac_BlackOpsHealCloak">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAmonDehakaDragStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAmonDehakaHealBig">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAmonDehakaHealSmall">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAmonDehakaLeapStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAmonDehakaRegenAuraTarget">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorAvenger">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorGiftHealing">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorHardenedWill">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorInfestedTurkeyTerrifyingGobble">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorInspiration">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorPermanentlyCloaked">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorPlagueBehaviorVisual">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorStormCloudSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaUnitLockdown">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ObserverSquadSight">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ObserverTargetLock">
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OracleStasisTrapStunTarget">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrbitalStrikeSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OrbitalStrikeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OrdnanceFleetwideJumpTeleport">
         <InfoFlags index="Hidden" value="1"/>
@@ -382,6 +678,7 @@
     <CBehaviorBuff id="MarauderMagrailMunitionsStun">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-magrailmunitions.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="Stun" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="5"/>
@@ -393,6 +690,7 @@
     <CBehaviorBuff id="MarauderMagrailMunitionsSlow">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-magrailmunitions.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="Slow" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="5"/>
@@ -487,6 +785,24 @@
             <StateFlags index="SuppressDetection" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="PsionicLift">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PsionicLiftController">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <FinalEffect value="PsionicLiftControllerFinalStartSet"/>
+        <ExpireEffect value=""/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PsionicLiftFlier">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PsionicLiftRaise">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="PurificationNovaCasterDarken">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-arcshield.dds"/>
@@ -535,8 +851,100 @@
         <Period value="0.125"/>
         <PeriodicEffect value="ReaperKD8KnockbackRB"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="RoachCorpser">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SOASuperShield">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SOATimeFreeze">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="SalvageStetmannPowerTower" parent="Salvage">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SiegeTankMengskSlowHeroic">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SiegeTankMengskStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuperGaryStetmannTheBestOil">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SymbioteCarapace">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ToxicNestVirulentNestSnareHeroic">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ToxicNestVirulentNestSnareNormal">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusACArmorDebuff">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusFirebatOilBombed">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusFirebatOilBombedMovement">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-tychus-firebat-oilspill.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="13"/>
+        <Modification MoveSpeedMultiplier="0.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusFirebatOilFire">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusGhostConfusion">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusGhostPsychicSnare">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusHercGrappleImpactStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusReaperBomb">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusReaperBombStunUpgrade">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusShredderGrenadeSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusShredderGrenadeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusWarhoundFear">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UltraliskBurrowChargeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <RemoveValidatorArray value="NotFrenzied"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UltraliskStetmannBurrowChargeMechanicalStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UltraliskStetmannBurrowChargeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VileAcidSlowFlatAmount">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VileAcidSlowFlatAmountHeroic">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VileAcidSlowFlatAmountStructure">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VoidArchonDeathExplode">
         <InfoFlags index="Hidden" value="1"/>
@@ -549,10 +957,30 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VoidPhoenixPhasingArmorBuff">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VoidSentryBlackHole">
         <Modification>
             <StateFlags index="SuppressDetection" value="1"/>
         </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidSentryBlackHoleArmor">
+        <Tooltip value="Behavior/Tooltip/VoidSentryBlackHole"/>
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-blackhole.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.125"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidZealotShadowChargeSelfBuff">
+        <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidZealotShadowChargeSlow">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoidZealotShadowChargeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorUnitTracker id="VorazunBlinkReturnTracker">
         <InfoFlags index="Hidden" value="1"/>
@@ -649,6 +1077,7 @@
         <Modification>
             <ModifyFlags index="DisableAbils" value="1"/>
         </Modification>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonPrison">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -671,6 +1100,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HybridPnPStasisField">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Alignment value="Negative"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HyperionVoidCoopWeaponSwitch">
         <InfoFlags index="Hidden" value="1"/>
@@ -687,6 +1117,7 @@
     <CBehaviorBuff id="LightningBomb">
         <Duration value="10"/>
         <Period value="0.2"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMengskAbsorb">
         <Modification>
@@ -730,6 +1161,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="QueenStukovSpawnBroodling">
         <DamageResponse Handled="QueenStukovSpawnBroodlingsSwitch"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SIBansheeBroodling">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -960,17 +1392,26 @@
         <Period value="1"/>
         <PeriodicEffect value="KerriganEnvenomedSpinesDamage"/>
         <PeriodicDisplayEffect value="KerriganEnvenomedSpinesDamage"/>
+        <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="User15" value="1"/>
+        <Alignment value="Negative"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="KerriganImplosionTempBuff">
+    <CBehaviorBuff id="KerriganImplosion">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-mengsk-marauder-selfabsorbshield.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Modification>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="3"/>
+        <ExpireEffect value="KerriganImplosionFinalApplyBehavior"/>
+        <Modification Height="2.5">
             <ModifyFlags index="DisableAbils" value="1"/>
             <ModifyFlags index="SuppressMoving" value="1"/>
             <ModifyFlags index="SuppressTurning" value="1"/>
             <StateFlags index="Stun" value="1"/>
+            <HeightTime index="Start" value="2"/>
+            <HeightTime index="Stop" value="0.25"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="LeapHunterlingStun">
@@ -1018,6 +1459,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorPlagueBehavior">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Alignment value="Negative"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="OracleStasisTrapTarget">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -1089,7 +1531,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="AstralStormCripple">
         <Alignment value="Negative"/>
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-psistorm.dds"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-yagdra-firewave.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <BuffFlags index="RefreshStack" value="1"/>
         <MaxStackCount value="4"/>
@@ -1100,9 +1542,11 @@
         </Modification>
         <TechAliasArray value="Alias_VorazunStasis"/>
         <InitialEffect value="CommanderPrestigeVorazunStasisDoT"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="QueenMPEnsnare">
         <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
     </CBehaviorBuff>
     <CBehaviorPowerSource id="SOAPylonPowerPrestigeAlly">
         <InfoFlags index="Hidden" value="1"/>
@@ -1377,6 +1821,12 @@
         <Period value="1"/>
         <PeriodicEffect value="SiegeBreakerUnsiegeOrder"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="Yoink">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="YoinkEnemyStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ZagaraVoidCoopInfestedPodsTimedLife">
         <ExpireEffect value="SwarmLocusUnitTimedLifeExpireAB"/>
     </CBehaviorBuff>
@@ -1385,6 +1835,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulDarkArchonMaelstrom">
         <Duration value="8"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulDarkArchonMindControl">
         <Player Value="Caster"/>
@@ -1449,6 +1900,13 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulKhaydarinMonolithStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulMapWideStasis">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulTopBarTimedLife">
         <ExpireEffect value="ProtossTimedLifeExpireAB"/>
     </CBehaviorBuff>
@@ -1478,5 +1936,13 @@
             <StateFlags index="Stun" value="1"/>
             <StateFlags index="SuppressDetection" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulXelNagaConstructDevolveHeroic">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZerglingArmorShredTarget">
+        <Alignment value="Negative"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
 </Catalog>
