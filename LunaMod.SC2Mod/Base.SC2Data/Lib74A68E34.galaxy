@@ -55,6 +55,9 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_gv_mM_MutatorAcceptButton = c_invalidDialogControlId;
     lib74A68E34_gv_mM_MutatorCancelButton = c_invalidDialogControlId;
     lib74A68E34_gv_mutatorTeemingUnits = UnitGroupEmpty();
+    for (init_i = 0; init_i <= lib74A68E34_gv_mutatorWhiteoutTrackedPingMax; init_i += 1) {
+        lib74A68E34_gv_mutatorWhiteoutTrackedPings[init_i] = c_invalidPingId;
+    }
 }
 
 // Custom Script
@@ -88,10 +91,27 @@ void lib74A68E34_InitCustomScript () {
 
 // Presets
 // Functions
+void lib74A68E34_gf_SnowVisualEnable () {
+    // Automatic Variable Declarations
+    unitgroup autoA2BD1934_g;
+    int autoA2BD1934_u;
+    unit autoA2BD1934_var;
+
+    // Implementation
+    autoA2BD1934_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    autoA2BD1934_u = UnitGroupCount(autoA2BD1934_g, c_unitCountAll);
+    for (;; autoA2BD1934_u -= 1) {
+        autoA2BD1934_var = UnitGroupUnitFromEnd(autoA2BD1934_g, autoA2BD1934_u);
+        if (autoA2BD1934_var == null) { break; }
+        lib74A68E34_gf_SnowVisualApply(autoA2BD1934_var);
+    }
+    TriggerEnable(lib74A68E34_gt_SnowVisualNewUnit, true);
+}
+
 void lib74A68E34_gf_SnowVisualApply (unit lp_unit) {
     // Automatic Variable Declarations
     // Implementation
-    if ((UnitHasBehavior2(lp_unit, "GlazeSnow") == false) && ((UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterMechanical), 0, 0, 0)) == true) || (UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterBiological), 0, 0, 0)) == true)) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)))) == true)) {
+    if ((UnitHasBehavior2(lp_unit, "GlazeSnow") == false) && ((UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterMechanical), 0, 0, 0)) == true) || (UnitFilterMatch(lp_unit, 1, UnitFilter((1 << c_targetFilterBiological), 0, 0, 0)) == true)) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)))) == true)) {
         UnitBehaviorAddPlayer(lp_unit, "GlazeSnow", 1, 1);
     }
 
@@ -2057,6 +2077,41 @@ void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer,
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
+void lib74A68E34_gf_MutatorWhiteoutHidePings (bool lp_hide) {
+    // Automatic Variable Declarations
+    const int auto5B3C2FF1_ae = lib74A68E34_gv_mutatorWhiteoutTrackedPingMax;
+    int auto5B3C2FF1_var;
+    const int autoDE009E90_ae = lib74A68E34_gv_mutatorWhiteoutTrackedPingMax;
+    int autoDE009E90_var;
+
+    // Implementation
+    lib74A68E34_gv_mutatorWhiteoutHideNewPing = lp_hide;
+    if ((lp_hide == true)) {
+        autoDE009E90_var = 0;
+        for ( ; autoDE009E90_var <= autoDE009E90_ae; autoDE009E90_var += 1 ) {
+            PingSetUsePlayerVision(lib74A68E34_gv_mutatorWhiteoutTrackedPings[autoDE009E90_var], true);
+        }
+    }
+    else {
+        auto5B3C2FF1_var = 0;
+        for ( ; auto5B3C2FF1_var <= auto5B3C2FF1_ae; auto5B3C2FF1_var += 1 ) {
+            if ((!(((libCOMU_gf_MutatorIsEnabled("BlackFog") == true) || (libCOMU_gf_MutatorIsEnabled("UberDarkness") == true))))) {
+                PingSetUsePlayerVision(lib74A68E34_gv_mutatorWhiteoutTrackedPings[auto5B3C2FF1_var], false);
+            }
+
+        }
+    }
+}
+
+void lib74A68E34_gf_MutatorWhiteoutApply (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "MutatorWhiteout") == false) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)))) == true)) {
+        UnitBehaviorAddPlayer(lp_unit, "MutatorWhiteout", 1, 1);
+    }
+
+}
+
 // Triggers
 //--------------------------------------------------------------------------------------------------
 // Trigger: ApplyMaguroChanges
@@ -2135,13 +2190,12 @@ void lib74A68E34_gt_ExtraUpgrades_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: SnowVisualEnable
+// Trigger: SnowVisualMapInit
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_SnowVisualEnable_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_SnowVisualMapInit_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    unitgroup autoD4345183_g;
-    int autoD4345183_u;
-    unit autoD4345183_var;
+    playergroup auto6EA4CFF2_g;
+    int auto6EA4CFF2_var;
 
     // Conditions
     if (testConds) {
@@ -2155,21 +2209,21 @@ bool lib74A68E34_gt_SnowVisualEnable_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    autoD4345183_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
-    autoD4345183_u = UnitGroupCount(autoD4345183_g, c_unitCountAll);
-    for (;; autoD4345183_u -= 1) {
-        autoD4345183_var = UnitGroupUnitFromEnd(autoD4345183_g, autoD4345183_u);
-        if (autoD4345183_var == null) { break; }
-        lib74A68E34_gf_SnowVisualApply(autoD4345183_var);
+    auto6EA4CFF2_g = PlayerGroupAll();
+    auto6EA4CFF2_var = -1;
+    while (true) {
+        auto6EA4CFF2_var = PlayerGroupNextPlayer(auto6EA4CFF2_g, auto6EA4CFF2_var);
+        if (auto6EA4CFF2_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto6EA4CFF2_var, "SnowVisual", 1);
     }
-    TriggerEnable(lib74A68E34_gt_SnowVisualNewUnit, true);
+    lib74A68E34_gf_SnowVisualEnable();
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_SnowVisualEnable_Init () {
-    lib74A68E34_gt_SnowVisualEnable = TriggerCreate("lib74A68E34_gt_SnowVisualEnable_Func");
-    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_SnowVisualEnable);
+void lib74A68E34_gt_SnowVisualMapInit_Init () {
+    lib74A68E34_gt_SnowVisualMapInit = TriggerCreate("lib74A68E34_gt_SnowVisualMapInit_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_SnowVisualMapInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5236,6 +5290,7 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
 
     libCOMU_gf_CT_RegisterMutator("Teeming", lib74A68E34_gt_MutatorTeemingInit, lib74A68E34_gt_MutatorTeemingShutdown);
     libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
+    libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
     return true;
 }
 
@@ -5565,10 +5620,314 @@ void lib74A68E34_gt_MutatorHarassShutdown_Init () {
     lib74A68E34_gt_MutatorHarassShutdown = TriggerCreate("lib74A68E34_gt_MutatorHarassShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutTrackPings
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutTrackPings_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_ping;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_ping = libCOMI_gv_cM_CreatedPing;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gv_mutatorWhiteoutTrackedPings[lib74A68E34_gv_mutatorWhiteoutTrackedPingIndex] = lv_ping;
+    lib74A68E34_gv_mutatorWhiteoutTrackedPingIndex += 1;
+    if ((lib74A68E34_gv_mutatorWhiteoutTrackedPingIndex > lib74A68E34_gv_mutatorWhiteoutTrackedPingMax)) {
+        lib74A68E34_gv_mutatorWhiteoutTrackedPingIndex = 0;
+    }
+
+    if ((lib74A68E34_gv_mutatorWhiteoutHideNewPing == true)) {
+        PingSetUsePlayerVision(lv_ping, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutTrackPings_Init () {
+    lib74A68E34_gt_MutatorWhiteoutTrackPings = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutTrackPings_Func");
+    libCOMI_gf_CM_PingCreated(lib74A68E34_gt_MutatorWhiteoutTrackPings);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutNewUnit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutNewUnit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MutatorWhiteoutApply(EventUnitCreatedUnit());
+    lib74A68E34_gf_MutatorWhiteoutApply(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutNewUnit_Init () {
+    lib74A68E34_gt_MutatorWhiteoutNewUnit = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutNewUnit_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutNewUnit, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_MutatorWhiteoutNewUnit, null, null, null);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_MutatorWhiteoutNewUnit, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoD4CBB4B8_g;
+    int autoD4CBB4B8_u;
+    unit autoD4CBB4B8_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_SnowVisualEnable();
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, Point(0.0, 0.0));
+    lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
+    autoD4CBB4B8_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    autoD4CBB4B8_u = UnitGroupCount(autoD4CBB4B8_g, c_unitCountAll);
+    for (;; autoD4CBB4B8_u -= 1) {
+        autoD4CBB4B8_var = UnitGroupUnitFromEnd(autoD4CBB4B8_g, autoD4CBB4B8_u);
+        if (autoD4CBB4B8_var == null) { break; }
+        lib74A68E34_gf_MutatorWhiteoutApply(autoD4CBB4B8_var);
+    }
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutNewUnit, true);
+    TriggerExecute(lib74A68E34_gt_MutatorWhiteoutSpawn, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutInit_Init () {
+    lib74A68E34_gt_MutatorWhiteoutInit = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutSpawn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutSpawn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    timer lv_whiteoutTimer;
+    fixed lv_time;
+    int lv_player;
+    int lv_player2;
+
+    // Automatic Variable Declarations
+    playergroup auto55D88B47_g;
+    playergroup autoC2D45695_g;
+    int autoC2D45695_var;
+    const int autoB99BF757_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int autoB99BF757_ai = 1;
+    const int auto2D847B43_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int auto2D847B43_ai = 1;
+    playergroup auto2ECDB212_g;
+    playergroup autoF4CCCAA5_g;
+    playergroup auto871CFD8C_g;
+    int auto871CFD8C_var;
+    const int auto4AB94B99_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int auto4AB94B99_ai = 1;
+    const int auto5A52D10D_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int auto5A52D10D_ai = 1;
+    playergroup auto0C39C36C_g;
+    playergroup auto01E15BBB_g;
+
+    // Variable Initialization
+    lv_whiteoutTimer = TimerCreate();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto55D88B47_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(auto55D88B47_g, lv_player);
+        if (lv_player < 0) { break; }
+        lv_time += libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_player), RandomFixed(240.0, 280.0), RandomFixed(220.0, 260.0), RandomFixed(160.0, 200.0), RandomFixed(120.0, 160.0), 0.0, 0.0);
+    }
+    TimerStart(lv_whiteoutTimer, (lv_time / PlayerGroupCount(libCOOC_gf_HumanPlayers())), false, c_timeAI);
+    while (true) {
+        Wait(2.0, c_timeAI);
+        if ((TimerGetRemaining(lv_whiteoutTimer) <= 0.0)) {
+            UnitKill(lib74A68E34_gv_mutatorWhiteoutEffect);
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffectBlizzard", 0, 1, Point(0.0, 0.0));
+            lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
+            SoundPlayForPlayer(SoundLink("Ambience_Kaldir_FlashFreeze", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+            Wait(2.0, c_timeGame);
+            autoC2D45695_g = PlayerGroupAll();
+            autoC2D45695_var = -1;
+            while (true) {
+                autoC2D45695_var = PlayerGroupNextPlayer(autoC2D45695_g, autoC2D45695_var);
+                if (autoC2D45695_var < 0) { break; }
+                libNtve_gf_SetUpgradeLevelForPlayer(autoC2D45695_var, "MutatorWhiteout", 1);
+            }
+            lib74A68E34_gv_mutatorWhiteoutAmbience = SoundLastPlayed();
+            lv_player = 1;
+            for ( ; ( (autoB99BF757_ai >= 0 && lv_player <= autoB99BF757_ae) || (autoB99BF757_ai < 0 && lv_player >= autoB99BF757_ae) ) ; lv_player += autoB99BF757_ai ) {
+                lv_player2 = 1;
+                for ( ; ( (auto2D847B43_ai >= 0 && lv_player2 <= auto2D847B43_ae) || (auto2D847B43_ai < 0 && lv_player2 >= auto2D847B43_ae) ) ; lv_player2 += auto2D847B43_ai ) {
+                    if ((lv_player != lv_player2) && (PlayerGetAlliance(lv_player, c_allianceIdVision, lv_player2) == true)) {
+                        lib74A68E34_gv_mutatorWhiteoutAllianceVision[lv_player][lv_player2] = true;
+                        libCOMI_gf_SetAllianceAspectCoop(lv_player, c_allianceIdVision, lv_player2, false);
+                    }
+                    else {
+                        lib74A68E34_gv_mutatorWhiteoutAllianceVision[lv_player][lv_player2] = false;
+                    }
+                }
+            }
+            libCOMI_gf_CM_VisionShareEnable(false);
+            libCOMI_gf_CM_RevealersEnableDisable(false);
+            lib74A68E34_gf_MutatorWhiteoutHidePings(true);
+            auto2ECDB212_g = libCOOC_gf_HumanPlayers();
+            lv_player = -1;
+            while (true) {
+                lv_player = PlayerGroupNextPlayer(auto2ECDB212_g, lv_player);
+                if (lv_player < 0) { break; }
+                VisSetFoWAlpha(lv_player, 80.0);
+            }
+            lv_time = 0.0;
+            autoF4CCCAA5_g = libCOOC_gf_HumanPlayers();
+            lv_player = -1;
+            while (true) {
+                lv_player = PlayerGroupNextPlayer(autoF4CCCAA5_g, lv_player);
+                if (lv_player < 0) { break; }
+                lv_time += libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_player), RandomFixed(100.0, 140.0), RandomFixed(140.0, 180.0), RandomFixed(200.0, 240.0), RandomFixed(220.0, 260.0), 0.0, 0.0);
+            }
+            TimerStart(lv_whiteoutTimer, (lv_time / PlayerGroupCount(libCOOC_gf_HumanPlayers())), false, c_timeAI);
+            while (!((TimerGetRemaining(lv_whiteoutTimer) <= 0.0))) {
+                Wait(2.0, c_timeAI);
+            }
+            UnitKill(lib74A68E34_gv_mutatorWhiteoutEffect);
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, Point(0.0, 0.0));
+            lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
+            SoundStop(lib74A68E34_gv_mutatorWhiteoutAmbience, true);
+            Wait(2.0, c_timeGame);
+            auto871CFD8C_g = PlayerGroupAll();
+            auto871CFD8C_var = -1;
+            while (true) {
+                auto871CFD8C_var = PlayerGroupNextPlayer(auto871CFD8C_g, auto871CFD8C_var);
+                if (auto871CFD8C_var < 0) { break; }
+                libNtve_gf_SetUpgradeLevelForPlayer(auto871CFD8C_var, "MutatorWhiteout", 0);
+            }
+            lv_player = 1;
+            for ( ; ( (auto4AB94B99_ai >= 0 && lv_player <= auto4AB94B99_ae) || (auto4AB94B99_ai < 0 && lv_player >= auto4AB94B99_ae) ) ; lv_player += auto4AB94B99_ai ) {
+                lv_player2 = 1;
+                for ( ; ( (auto5A52D10D_ai >= 0 && lv_player2 <= auto5A52D10D_ae) || (auto5A52D10D_ai < 0 && lv_player2 >= auto5A52D10D_ae) ) ; lv_player2 += auto5A52D10D_ai ) {
+                    if ((lib74A68E34_gv_mutatorWhiteoutAllianceVision[lv_player][lv_player2] == true)) {
+                        libCOMI_gf_SetAllianceAspectCoop(lv_player, c_allianceIdVision, lv_player2, true);
+                    }
+
+                }
+            }
+            libCOMI_gf_CM_VisionShareEnable(true);
+            libCOMI_gf_CM_RevealersEnableDisable(true);
+            lib74A68E34_gf_MutatorWhiteoutHidePings(false);
+            auto0C39C36C_g = libCOOC_gf_HumanPlayers();
+            lv_player = -1;
+            while (true) {
+                lv_player = PlayerGroupNextPlayer(auto0C39C36C_g, lv_player);
+                if (lv_player < 0) { break; }
+                VisResetFoWAlpha(lv_player);
+            }
+            lv_time = 0.0;
+            auto01E15BBB_g = libCOOC_gf_HumanPlayers();
+            lv_player = -1;
+            while (true) {
+                lv_player = PlayerGroupNextPlayer(auto01E15BBB_g, lv_player);
+                if (lv_player < 0) { break; }
+                lv_time += libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_player), RandomFixed(240.0, 280.0), RandomFixed(220.0, 260.0), RandomFixed(160.0, 200.0), RandomFixed(120.0, 160.0), 0.0, 0.0);
+            }
+            TimerStart(lv_whiteoutTimer, (lv_time / PlayerGroupCount(libCOOC_gf_HumanPlayers())), false, c_timeAI);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutSpawn_Init () {
+    lib74A68E34_gt_MutatorWhiteoutSpawn = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutSpawn_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutSpawn, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutShutdown_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_player2;
+
+    // Automatic Variable Declarations
+    playergroup auto99F7997E_g;
+    int auto99F7997E_var;
+    const int auto403DB054_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int auto403DB054_ai = 1;
+    const int autoCBC8E09B_ae = lib74A68E34_gv_cCC_MAXPLAYERS;
+    const int autoCBC8E09B_ai = 1;
+    playergroup auto371B6D70_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitKill(lib74A68E34_gv_mutatorWhiteoutEffect);
+    SoundStop(lib74A68E34_gv_mutatorWhiteoutAmbience, true);
+    Wait(2.0, c_timeGame);
+    auto99F7997E_g = PlayerGroupAll();
+    auto99F7997E_var = -1;
+    while (true) {
+        auto99F7997E_var = PlayerGroupNextPlayer(auto99F7997E_g, auto99F7997E_var);
+        if (auto99F7997E_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto99F7997E_var, "MutatorWhiteout", 0);
+    }
+    lv_player = 1;
+    for ( ; ( (auto403DB054_ai >= 0 && lv_player <= auto403DB054_ae) || (auto403DB054_ai < 0 && lv_player >= auto403DB054_ae) ) ; lv_player += auto403DB054_ai ) {
+        lv_player2 = 1;
+        for ( ; ( (autoCBC8E09B_ai >= 0 && lv_player2 <= autoCBC8E09B_ae) || (autoCBC8E09B_ai < 0 && lv_player2 >= autoCBC8E09B_ae) ) ; lv_player2 += autoCBC8E09B_ai ) {
+            if ((lib74A68E34_gv_mutatorWhiteoutAllianceVision[lv_player][lv_player2] == true)) {
+                libCOMI_gf_SetAllianceAspectCoop(lv_player, c_allianceIdVision, lv_player2, true);
+            }
+
+        }
+    }
+    libCOMI_gf_CM_VisionShareEnable(true);
+    libCOMI_gf_CM_RevealersEnableDisable(true);
+    lib74A68E34_gf_MutatorWhiteoutHidePings(false);
+    auto371B6D70_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(auto371B6D70_g, lv_player);
+        if (lv_player < 0) { break; }
+        VisResetFoWAlpha(lv_player);
+    }
+    TriggerStop(lib74A68E34_gt_MutatorWhiteoutSpawn);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutShutdown_Init () {
+    lib74A68E34_gt_MutatorWhiteoutShutdown = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
-    lib74A68E34_gt_SnowVisualEnable_Init();
+    lib74A68E34_gt_SnowVisualMapInit_Init();
     lib74A68E34_gt_SnowVisualNewUnit_Init();
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_AllyImproved_Init();
@@ -5652,6 +6011,11 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorHarassInit_Init();
     lib74A68E34_gt_MutatorHarassSpawn_Init();
     lib74A68E34_gt_MutatorHarassShutdown_Init();
+    lib74A68E34_gt_MutatorWhiteoutTrackPings_Init();
+    lib74A68E34_gt_MutatorWhiteoutNewUnit_Init();
+    lib74A68E34_gt_MutatorWhiteoutInit_Init();
+    lib74A68E34_gt_MutatorWhiteoutSpawn_Init();
+    lib74A68E34_gt_MutatorWhiteoutShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

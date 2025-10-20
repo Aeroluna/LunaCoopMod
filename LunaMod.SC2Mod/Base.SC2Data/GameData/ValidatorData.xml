@@ -70,6 +70,10 @@
         <CombineArray value="TargetNonUnstoppableWithoutVorazunStasisPrestige"/>
         <Type value="And"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="HaveSnowVisual">
+        <Find value="1"/>
+        <Value value="HaveSnowVisual"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="HaveVoidArchonChainReaction">
         <Find value="1"/>
         <Value value="HaveVoidArchonChainReaction"/>
@@ -97,6 +101,10 @@
         <CombineArray value="IsAssaultGalleonConstruction"/>
         <Negate value="1"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="MutatorWhiteout">
+        <Find value="1"/>
+        <Value value="MutatorWhiteout"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="NoCommanderPrestigeTychusOdin">
         <Value value="CommanderPrestigeTychusOdin"/>
     </CValidatorPlayerRequirement>
@@ -292,6 +300,10 @@
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="RavenAnalyzeChecks">
         <CombineArray value="TargetNotHaveRestoration"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="EnableSnowVisual">
+        <CombineArray value="HaveSnowVisual"/>
+        <CombineArray value="MutatorWhiteout"/>
     </CValidatorCombine>
     <CValidatorUnitType id="SourceNotHHBattlecruiser">
         <WhichUnit Value="Source"/>

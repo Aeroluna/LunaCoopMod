@@ -42,6 +42,9 @@
     <CActorAction id="AdeptAttack">
         <ImpactModel value="AdeptAttackImpactModel"/>
     </CActorAction>
+    <CActorModelMaterial id="AlarakStructureOverchargeShieldGlaze">
+        <On index="6" Terms="Behavior.AlarakStructureOverchargeShield.On; ValidateUnit NotUnderConstruction"/>
+    </CActorModelMaterial>
     <CActorUnit id="DehakaCreeperFlying">
         <On index="66" Send="$Birth RandomStartOffset"/>
         <On Terms="Abil.DehakaCreeperFlyingSwoop.SourceCastStart" Send="StatusSet DeathSuicide 1"/>
@@ -781,6 +784,99 @@
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Inherits index="Scale" value="1"/>
         <Host Subject="_Selectable"/>
+    </CActorModel>
+    <CActorUnit id="MutatorWhiteoutEffectBlizzard" parent="GenericUnitStandard" unitName="MutatorWhiteoutEffectBlizzard">
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension1"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension2"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension3"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension4"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension5"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension6"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension7"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardExtension8"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectBlizzardFogExtension"/>
+        <HostSiteOps Ops="SOpCursor"/>
+        <Model value="SnowBlizzard"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <FogVisibility value="Visible"/>
+    </CActorUnit>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardFogExtension" parent="ModelAddition">
+        <On Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <Model value="SnowBase_Fog_Mountain_Lower"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <FogVisibility value="Visible"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension" parent="ModelAddition">
+        <Model value="SnowBlizzard"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <FogVisibility value="Visible"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension1" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset1"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension2" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset2"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension3" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset3"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension4" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset4"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension5" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset5"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension6" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset6"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension7" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset7"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectBlizzardExtension8" parent="MutatorWhiteoutEffectBlizzardExtension">
+        <HostSiteOps Ops="SOpWeatherOffset8"/>
+    </CActorModel>
+    <CActorUnit id="MutatorWhiteoutEffect" parent="GenericUnitStandard" unitName="MutatorWhiteoutEffect">
+        <HostSiteOps Ops="SOpCursor"/>
+        <Model value="SnowLight"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension1"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension2"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension3"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension4"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension5"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension6"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension7"/>
+        <On Terms="ActorCreation" Send="Create MutatorWhiteoutEffectExtension8"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.400000"/>
+        <FogVisibility value="Visible"/>
+    </CActorUnit>
+    <CActorModel id="MutatorWhiteoutEffectExtension" parent="ModelAddition">
+        <Model value="SnowLight"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension1" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset1"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension2" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset2"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension3" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset3"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension4" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset4"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension5" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset5"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension6" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset6"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension7" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset7"/>
+    </CActorModel>
+    <CActorModel id="MutatorWhiteoutEffectExtension8" parent="MutatorWhiteoutEffectExtension">
+        <HostSiteOps Ops="SOpWeatherOffset8"/>
     </CActorModel>
     <CActorModel id="ZenithStonePsiStormImpact">
         <Scale value="1.200000"/>
@@ -1834,6 +1930,30 @@
     </CActorUnit>
     <CActorSiteOpLocalOffset id="SOpMoveDownBy2Dot5">
         <LocalOffset value="0.000000,0.000000,-2.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset1">
+        <LocalOffset value="25.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset2">
+        <LocalOffset value="-25.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset3">
+        <LocalOffset value="25.000000,25.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset4">
+        <LocalOffset value="-25.000000,25.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset5">
+        <LocalOffset value="25.000000,-25.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset6">
+        <LocalOffset value="-25.000000,-25.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset7">
+        <LocalOffset value="0.000000,25.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpWeatherOffset8">
+        <LocalOffset value="0.000000,-25.000000,0.000000"/>
     </CActorSiteOpLocalOffset>
     <CActorModel id="SymbioteSpikedBurst">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy2Dot5"/>

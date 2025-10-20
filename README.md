@@ -1616,7 +1616,7 @@ Added Brutal+ system.
 
 - Added new mutator: Teeming
   - Enemies begin with twice as many units.
-  - Costs 2 points for Brutal+.
+  - Costs 1 points for Brutal+.
 
 Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
 
@@ -1625,6 +1625,17 @@ Makes defensive positions more well defended. Unfortunately not very impactful o
   - Costs 4 points for Brutal+.
 
 Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
+
+- Added new mutator: Whiteout
+  - Adds snowy weather.
+  - Occasional whiteouts obscure the battlefield.
+  - Slows all units movement speed by 20%.
+  - Caps all unit sight radius to 6.
+  - Disables shared vision with ally.
+  - Disables minimap objective pings.
+  - Costs 3 points for Brutal+.
+
+It's like the Darkness mutator but cooler!
 
 - Added Infestation Station to Brutal+ costing 3 points.
 - Added Great Wall to Brutal+ costing 5 points.
