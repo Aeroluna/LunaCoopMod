@@ -42,6 +42,24 @@
     <CActorAction id="AdeptAttack">
         <ImpactModel value="AdeptAttackImpactModel"/>
     </CActorAction>
+    <CActorUnit id="AlarakCoop">
+        <!-- this is horrible and ugly but it works -->
+        <Remove Terms="Abil.AlarakKnockback.SourceCastStart; AnimPlayingName Spell" Send="AnimClear Spell"/>
+        <On index="77" Send="$Spell,A DontResetOnUnhide -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 1000"/>
+        <On index="92" Send="AnimPlay SpellAttack Spell,B 0 -1.000000 -1.000000 -1.000000 AsAutomatic 0.000000 1000"/>
+        <On Terms="Abil.AlarakACDeadlyCharge.SourceCastStart" Send="AnimClear Spell"/>
+        <On Terms="Abil.AlarakKnockback.SourceCastStart" Send="AnimClear SpellAttack"/>
+        <On Terms="Abil.AlarakKnockback.SourceCastStart" Send="TimerSet 0.100000 WaveAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName WaveAnimationSwitch" Send="$Spell,A DontResetOnUnhide 3.000000 2.000000 1.000000 AsTimeScale 0.000000 2000"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName WaveAnimationSwitch" Send="TimerSet 1.000000 SpellDelay"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName SpellDelay" Send="AnimClear Spell"/>
+        <On Terms="Behavior.AlarakACDeadlyChargeFinish.Off" Send="TimerSet 1.500000 ChargeDelay"/>
+        <On Terms="TimerExpired; TimerName ChargeDelay" Send="AnimClear SpellAttack"/>
+    </CActorUnit>
+    <CActorModel id="AlarakDeadlyChargeImpact">
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveBy1Dot5" HoldPosition="1" HoldRotation="1"/>
+        <Host Subject="_Selectable"/>
+    </CActorModel>
     <CActorModelMaterial id="AlarakStructureOverchargeShieldGlaze">
         <On index="6" Terms="Behavior.AlarakStructureOverchargeShield.On; ValidateUnit NotUnderConstruction"/>
     </CActorModelMaterial>
@@ -2903,6 +2921,8 @@
     </CActorSplat>
     <CActorModel id="PurificationNovaRangeIndicator">
         <On Terms="Behavior.PurificationNovaTargettedTarget.On; ValidatePlayer IsKaraxCoopCommander" Send="SetScale 1.200000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
     </CActorModel>
     <CActorSimple id="DisruptorCasterTint">
         <On Terms="Behavior.PurificationNovaTargettedCaster.On" Send="Create"/>

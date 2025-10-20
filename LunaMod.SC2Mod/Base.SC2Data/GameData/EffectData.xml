@@ -30,12 +30,33 @@
         <AmmoUnit value="AdeptWeapon"/>
         <Movers Link="AdeptWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="AlarakACDeadlyChargeImpactSet">
+        <EffectArray value="AlarakACDeadlyChargeFinish"/>
+    </CEffectSet>
+    <CEffectSet id="AlarakACDeadlyChargePointSearchImpactSet">
+        <EffectArray value="AlarakACDeadlyChargeFinish"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="AlarakBaneBladesAoeSlowAB">
         <ValidatorArray index="0" value="TargetMassiveOrHeroicOrUnstoppable"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AlarakBaneBladesDamageSlow">
         <ValidatorArray value="TargetMassiveOrHeroicOrUnstoppable"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AlarakACDeadlyChargeFinish">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AlarakLightningStrikesSacrificeAB">
+        <ValidatorArray index="0" value="HaveAlarakLightningStrikes"/>
+        <ValidatorArray value="IsAlarakCoop"/>
+        <Behavior value="AlarakLightningStrikes"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="AlarakLightningStrikesApplySearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,Missile,Item,Dead,Hidden"/>
+        <AreaArray Radius="15" Effect="AlarakLightningStrikesSacrificeAB"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
     <CEffectSet id="AlarakMothershipMassRecallPrepare">
         <EffectArray value="MothershipMassRecallCastingAB"/>
     </CEffectSet>
@@ -61,6 +82,7 @@
     </CEffectApplyBehavior>
     <CEffectSet id="AscendantSacrificeSelfBuffSet">
         <EffectArray index="4" value="AscendantSacrificeSelfBuffSwitch"/>
+        <EffectArray value="AlarakLightningStrikesApplySearch"/>
     </CEffectSet>
     <CEffectSwitch id="AscendantSacrificeSelfBuffSwitch">
         <ValidatorArray value="HaveHighTemplarImprovedSacrifice"/>

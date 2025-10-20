@@ -88,6 +88,7 @@ It just looks nice c:
 - Fixed an issue where Viper Abduct would not unburrow most units.
 - Added a range indicator when using the Oracle's Stasis Ward ability.
 - Added cosmetic flame jets to Vultures when moving.
+- Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 
 yeah.
 
@@ -137,7 +138,9 @@ thanks Enoki.
 - Changed Burrowed and Unburrowed Zerg unit types to be on the same tab-select, and both will be selected when double clicking on units.
 - Fixed an issue where Locusts spawned simultaneously would have perfectly synchronized animations rather than behaving like a swarm.
 - Changed Disruptor Purification Nova ability to be cancelled and deal no damage if the Disruptor is stunned.
-- Changted Orbital Command Scanner Sweep visual to use team color.
+- Changed Orbital Command Scanner Sweep visual to use team color.
+- Changed the name of the Disruptor Purification Nova unit from "Disruptor" to "Purifier Orb".
+- Fixed an issue where Disruptor Purification Novas would show life and shield in the unit info despite being invulnerable.
 
 Copied from Versus.
 
@@ -810,7 +813,6 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
 - Increased Purification Nova radius by 20%.
 - Reduced price of Cloaking Module from 100/100 to 50/50.
 - Reduced price of Purification Echo from 150/150 to 100/100.
-- Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
@@ -927,6 +929,10 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Added a visual effect to Mothership's Mass Teleport ability.
 - Changed Mothership Mass Teleport ability to teleport to the unit's current location instead of its location when the ability was cast.
 - Fixed a bug where Alarak's Destruction Wave model would not face the direction it was cast in.
+- Fixed an issue where Alarak's Destruction Wave cast animation would not play while moving.
+- Fixed an issue where Alarak's Deadly Charge cast animation would not play while moving.
+- Improved Alarak's Deadly Charge visual impact animation.
+- Fixed an issue where Alarak would not gain Lightning Surge after an Ascendant sacrifices a Supplicant.
 
 yeah.
 
