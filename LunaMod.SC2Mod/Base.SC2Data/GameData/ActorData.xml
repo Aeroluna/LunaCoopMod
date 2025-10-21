@@ -75,6 +75,9 @@
     <CActorUnit id="DehakaLocustFlying">
         <On index="67" Send="$Birth RandomStartOffset"/>
     </CActorUnit>
+    <CActorModel id="FenixPurificationSecondNova">
+        <Remove Terms="ActorCreation" Send="Create FenixPurificationSecondNova_PhaseMode"/>
+    </CActorModel>
     <CActorSound id="FlyingCreeper_SuicideSwoop_AS">
         <On Terms="Abil.DehakaCreeperFlyingSwoop.SourceCastStart" Send="Create"/>
     </CActorSound>
@@ -2938,9 +2941,6 @@
         <On Terms="Behavior.PurificationNovaCasterDarken.Off" Target="_Unit" Send="ClearTintColor 0.500000 DisruptorCooldown"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {171,156,156 0.500000} 0.000000 OneShot DisruptorCooldown"/>
         <On Terms="Behavior.PurificationNovaCasterDarken.Off" Send="Destroy"/>
-        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create"/>
-        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Target="_Unit" Send="ClearTintColor 0.500000 DisruptorCooldown"/>
-        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="RazorSwarmSound" parent="SoundContinuous">
         <On Terms="Effect.KerriganRazorSwarmCreatePersistent.Start" Send="Create"/>

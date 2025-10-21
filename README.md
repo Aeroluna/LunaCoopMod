@@ -1555,7 +1555,7 @@ Hopefully prevents dumping all their energy at once. Still probably more efficie
 
 Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
-- Added 50% spell reduction to all Royal Guards.
+- Added passive to all Royal Guards that reduced spell damage taken by 50%.
 
 Nobody likes having their elite units Yamato'd to death, this should help their survivability against unpreventable bursts of damage.
 
