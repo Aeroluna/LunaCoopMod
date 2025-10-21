@@ -3320,6 +3320,18 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>
     </CEffectDamage>
+    <CEffectSet id="ZealotPurifierReviveSet">
+        <EffectArray index="0" value="ZealotPurifierReviveSupressedSwitch"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ZealotPurifierReviveSupressedApplyBehavior2">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="ZealotPurifierReviveSupressed2"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="ZealotPurifierReviveSupressedSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="HaveZealotPurifierReconstruction2" Effect="ZealotPurifierReviveSupressedApplyBehavior2"/>
+        <CaseDefault value="ZealotPurifierReviveSupressedApplyBehavior"/>
+    </CEffectSwitch>
     <CEffectApplyBehavior id="ZeratulDarkArchonMaelstromApply">
         <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>

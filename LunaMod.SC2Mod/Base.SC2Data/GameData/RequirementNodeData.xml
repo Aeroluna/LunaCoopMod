@@ -21,6 +21,19 @@
         <OperandArray value="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly"/>
         <OperandArray value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeKaraxCommanderCompleteOnlyLTE4CountUpgradeCommanderLevelCompleteOnlyCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeKaraxCommanderCompleteOnly"/>
+        <OperandArray value="LTE4CountUpgradeCommanderLevelCompleteOnly"/>
+        <OperandArray value="CountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeKaraxCommanderCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnitLTE4CountUpgradeCommanderLevelCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeKaraxCommanderCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnit"/>
+        <OperandArray value="LTE4CountUpgradeCommanderLevelCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
         <OperandArray value="CountUpgradeMasteryTychusGrenadeCooldownCompleteOnly"/>
         <OperandArray value="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
@@ -116,6 +129,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="VorazunShadowPhaseSuppressed" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="ZealotPurifierReviveSupressed2" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitArmoryMengskCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="ArmoryMengsk" State="CompleteOnly"/>
@@ -142,6 +160,10 @@
     <CRequirementCountUpgrade id="CountUpgradeBansheePermaCloakCompleteOnly314643618">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BansheePermaCloak" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeCarrierRepairDronesCompleteOnly3239020716">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="CarrierRepairDrones" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -235,6 +257,18 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="HellburstPayload" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeImprovedReclamationCompleteOnly472509326">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ImprovedReclamation" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeImprovedReconstructionCompleteOnly2772949418">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ImprovedReconstruction" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeImprovedShadowCannonCompleteOnly3182049596">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ImprovedShadowCannon" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeInfestedBansheeSpeedUpgradeQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="InfestedBansheeSpeedUpgrade" State="QueuedOrBetter"/>
@@ -299,6 +333,10 @@
         <Count Link="SignifierFade" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeSnowVisualCompleteOnly"/>
+    <CRequirementCountUpgrade id="CountUpgradeStalkerResearchBlinkChargesCompleteOnly1910735067">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StalkerResearchBlinkCharges" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeStukovInfestedBansheeInfestedLifeCompleteOnly4081429596">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="StukovInfestedBansheeInfestedLife" State="CompleteOnly"/>
@@ -376,6 +414,10 @@
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUnitNukeMengskQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountUnitNukeMengskQueuedOrBetterAtUnit"/>

@@ -91,6 +91,11 @@
         <Find value="1"/>
         <Value value="HaveVoidArchonChainReaction"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="HaveZealotPurifierReconstruction2">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveZealotPurifierReconstruction2"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitType id="IsAssaultGalleonConstruction">
         <Value value="HHMercStarportNoArmy"/>
         <Type value="SelectAlias"/>
@@ -311,6 +316,14 @@
         </AreaArray>
         <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveZealotPurifierReconstructionSupressed2">
+        <WhichUnit Value="Source"/>
+        <Behavior value="ZealotPurifierReviveSupressed2"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="OnDeathKaraxReconstruction">
+        <CombineArray index="1" value="NotHaveZealotPurifierReconstructionSupressed2"/>
+        <CombineArray value="NotHaveZealotPurifierReconstructionSupressed"/>
+    </CValidatorCombine>
     <CValidatorCombine id="RavenAnalyzeChecks">
         <CombineArray value="TargetNotHaveRestoration"/>
     </CValidatorCombine>

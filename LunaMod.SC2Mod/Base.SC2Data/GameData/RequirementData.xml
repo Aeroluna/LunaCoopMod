@@ -11,14 +11,34 @@
     <CRequirement id="CommanderPrestigeMengskZerg">
         <NodeArray index="Show" Link="CountUpgradeCommanderPrestigeMengskZergCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="HaveCarrierRepairDrones">
+        <NodeArray index="Use" Link="CountUpgradeCarrierRepairDronesCompleteOnly3239020716"/>
+    </CRequirement>
+    <CRequirement id="HaveEnergizerReclamation2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedReclamationCompleteOnly472509326"/>
+    </CRequirement>
     <CRequirement id="HaveMasteryTychusGrenadeCooldown">
         <NodeArray index="Show" Link="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HaveResearchBlinkCharges">
+        <NodeArray index="Use" Link="CountUpgradeStalkerResearchBlinkChargesCompleteOnly1910735067"/>
+    </CRequirement>
+    <CRequirement id="HaveShadowCannon2">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedShadowCannonCompleteOnly3182049596"/>
+        <NodeArray index="Show" Link="CountUpgradeKaraxCommanderCompleteOnly"/>
     </CRequirement>
     <CRequirement id="HaveSnowVisual">
         <NodeArray index="Show" Link="CountUpgradeSnowVisualCompleteOnly"/>
     </CRequirement>
     <CRequirement id="HaveVoidArchonChainReaction">
         <NodeArray index="Use" Link="CountUpgradeVoidArchonChainReactionCompleteOnly742300976"/>
+    </CRequirement>
+    <CRequirement id="HaveZealotPurifierReconstruction2">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedReconstructionCompleteOnly2772949418"/>
+        <NodeArray index="Show" Link="CountUpgradeKaraxCommanderCompleteOnly"/>
     </CRequirement>
     <CRequirement id="LearnVoidArchonChainReaction">
         <NodeArray index="Show" Link="NotCountUpgradeVoidArchonChainReactionQueuedOrBetter"/>
@@ -333,5 +353,11 @@
     </CRequirement>
     <CRequirement id="VorazunBlinkReturn">
         <NodeArray index="Show" Link="CountBehaviorVorazunBlinkReturnCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ZealotPurifierReviveKaraxHide">
+        <NodeArray index="Show" Link="AndCountUpgradeKaraxCommanderCompleteOnlyLTE4CountUpgradeCommanderLevelCompleteOnlyCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ZealotPurifierReviveOffCooldown">
+        <NodeArray index="Show" Link="AndCountUpgradeKaraxCommanderCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnitLTE4CountUpgradeCommanderLevelCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
     </CRequirement>
 </Catalog>

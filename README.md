@@ -795,13 +795,18 @@ yeah.
 - Reworked Carrier Repair Drone behavior to vanilla version, but with improved autocasting to no longer require stopping.
 - Removed Combat Chrono Wave.
 - Removed the ability to Chrono Boost defensive structures.
-- Nerfed Improved Reconstruction to 120 seconds.
+- Increased Reconstruction cooldown to 240 seconds.
+- Increased Improved Reconstruction cooldown to 120 seconds.
+- Renamed Improved Reconstruction to Revitalization Matrix.
+- Renamed Improved Reclamation to Prolonged Integration Protocols.
+- Renamed Improved Shadow Cannon to Photon Reservoirs.
+- Renamed Carrier Capacity to Hangar Expansion.
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
 
 - Added Instigators.
   - A Purifier variant Stalker.
-  - Added Displacement Matrix upgrade, which lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
+  - Added Displacement Core upgrade, which lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
   - Blink can be set to autocast to automatically blink when the hull takes damage.
 
 Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway unit helps greatly with that. The Adept is already used by Fenix, so why not add the unused Purifier unit, the Instigator? Having up to three low-cooldown Blinks on autocast lets these units skirmish effectively and can get pretty chaotic.
@@ -810,7 +815,7 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
   - Has Fenix Disruptor upgrades.
   - Has regular controllable nova.
 - Increased Purification Nova speed from 2.25 -> 3.25
-- Reduced cooldown of Purification Nova from 30 seconds to 10 seconds.
+- Reduced cooldown of Purification Nova from 30 seconds to 20 seconds.
 - Increased Purification Nova radius by 20%.
 - Reduced price of Cloaking Module from 100/100 to 50/50.
 - Reduced price of Purification Echo from 150/150 to 100/100.

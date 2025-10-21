@@ -84,6 +84,11 @@
     <CActorSound id="FlyingLocustSwoopSound">
         <On Terms="Effect.DehakaCreeperFlyingSwoopAbilLM.Start" Send="Create"/>
     </CActorSound>
+    <CActorModelMaterial id="GlazeSentinelRepair">
+        <On Terms="Behavior.ZealotPurifierReviveSupressed2.On" Send="Create"/>
+        <On Terms="Behavior.ZealotPurifierReviveSupressed2.Off" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="Behavior.ZealotPurifierReviveSupressed2.Off" Send="Destroy"/>
+    </CActorModelMaterial>
     <CActorSite id="HHValkyrieFleetwideJumpImpactSite">
         <On Terms="Effect.OrdnanceFleetwideJumpSet.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="RefSet ::global.FleetwideJump ::Self"/>
@@ -2919,9 +2924,7 @@
     <CActorBeamSimple id="PhasingBeam">
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorBeamSimple>
-    <CActorSplat id="PurificationNovaCursorSplat" parent="ProtossCursorSplat" abil="PurificationNovaTargeted">
-        <Scale value="1.600000"/>
-    </CActorSplat>
+    <CActorSplat id="PurificationNovaCursorSplat" parent="ProtossCursorSplat" abil="PurificationNovaTargeted"/>
     <CActorModel id="PurificationNovaRangeIndicator">
         <On Terms="Behavior.PurificationNovaTargettedTarget.On; ValidatePlayer IsKaraxCoopCommander" Send="SetScale 1.200000"/>
         <Host Subject="_Unit"/>

@@ -5693,7 +5693,7 @@ bool lib74A68E34_gt_MutatorWhiteoutInit_Func (bool testConds, bool runActions) {
     }
 
     lib74A68E34_gf_SnowVisualEnable();
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, Point(0.0, 0.0));
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, PlayerStartLocation(1));
     lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
     autoD4CBB4B8_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
     autoD4CBB4B8_u = UnitGroupCount(autoD4CBB4B8_g, c_unitCountAll);
@@ -5761,7 +5761,7 @@ bool lib74A68E34_gt_MutatorWhiteoutSpawn_Func (bool testConds, bool runActions) 
         Wait(2.0, c_timeAI);
         if ((TimerGetRemaining(lv_whiteoutTimer) <= 0.0)) {
             UnitKill(lib74A68E34_gv_mutatorWhiteoutEffect);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffectBlizzard", 0, 1, Point(0.0, 0.0));
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffectBlizzard", 0, 1, PlayerStartLocation(1));
             lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
             SoundPlayForPlayer(SoundLink("Ambience_Kaldir_FlashFreeze", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
             Wait(2.0, c_timeGame);
@@ -5809,7 +5809,7 @@ bool lib74A68E34_gt_MutatorWhiteoutSpawn_Func (bool testConds, bool runActions) 
                 Wait(2.0, c_timeAI);
             }
             UnitKill(lib74A68E34_gv_mutatorWhiteoutEffect);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, Point(0.0, 0.0));
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorWhiteoutEffect", 0, 1, PlayerStartLocation(1));
             lib74A68E34_gv_mutatorWhiteoutEffect = UnitLastCreated();
             SoundStop(lib74A68E34_gv_mutatorWhiteoutAmbience, true);
             Wait(2.0, c_timeGame);
