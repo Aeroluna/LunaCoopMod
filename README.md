@@ -43,7 +43,7 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
-- Removed Wait Until Stopped flag from Viking Assault Mode and Fighter Mode abilities.
+- Removed Wait Until Stopped flag from Viking (and variants) Assault Mode and Fighter Mode abilities.
 
 Makes Raynor/HH/Mengsk Viking feel smoother to land.
 
@@ -175,10 +175,10 @@ thanks OmniSkeptic.
 
 - Reduced health of Cyclone from 200 to 120.
 - Increased movement speed of Cyclone from 2.8125 to 3.375.
-- Reduced damage of Cyclone's Lock On missles from 25 to 20 (Total reduced from 500 to 400).
+- Reduced damage of Cyclone's Lock On missiles from 25 to 20 (Total reduced from 500 to 400).
 - Reduced damage of Lock On with Mag-Field Accelerators missles from 40 to 30 (Total reduced from 1000 to 600).
-- Changed Lock On missle damage from ranged damage to spell damage (No longer affected by armor).
-- Changed Lock On to prioritize air units that threaten the Cyclone.
+- Changed Lock On missile damage from ranged damage to spell damage (No longer affected by armor).
+- Changed Lock On autocast to prioritize air units that threaten the Cyclone.
 - Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
@@ -411,6 +411,7 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
 - Fixed an issue where P1 and P3 used each other's icons.
+- Added missing tooltip to Malignant Creep when P1 is used.
 - Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
@@ -961,6 +962,7 @@ yeah.
 Shows some love for the unused gear. Makes Nova less effective at supporting her army but stronger individually.
 
 - Added P2 Advantage: Stuns enemy units in the drop off area for 8 seconds when unloading.
+- Added missing prestige tooltip for Tactical Airlift and Griffon Airstrike when using P2.
 
 P2 was such a boring prestige. Stunning enemies at least grants a niche of dropping right on top of enemies and bursting them down.
 
@@ -1397,7 +1399,7 @@ Barrage is kinda garbage for something you only get to use once per Odin. These 
 - Changed Big Red Button to play audio sting when nuke lands instead of when it launches.
 - Increased volume of nuke launch sound effect.
 
-Is likely an overall nerf as the radius is reduced and now you have to channel Barrage, but it just *feels* satisfying.
+Is an overall nerf as the radius is reduced and now you have to channel Barrage, but it just *feels* satisfying.
 
 - Removed the 2 second stun when Tychus exits the Odin.
 

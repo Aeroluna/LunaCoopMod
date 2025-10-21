@@ -456,11 +456,13 @@
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="6.5" Effect="CommandStructureOrderAutoRally"/>
         <AreaArray MaxCount="1" Radius="6.5" Effect="CommandStructureOrderAutoRally2"/>
+        <AreaArray MaxCount="1" Radius="6.5" Effect="CommandStructureOrderAutoRallyMengsk"/>
     </CEffectEnumArea>
     <CEffectIssueOrder id="CommandStructureOrderAutoRally">
         <ValidatorArray value="Minerals"/>
         <ValidatorArray value="CasterIsNotHatchery"/>
         <ValidatorArray value="CasterIsNotHatcheryStetmann"/>
+        <ValidatorArray value="CasterIsNotCommandCenterMengsk"/>
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Abil value="Rally"/>
@@ -473,6 +475,16 @@
         <EditorCategories value="Race:Zerg"/>
         <WhichUnit Value="Caster"/>
         <Abil value="RallyHatchery"/>
+        <AbilCmdIndex value="1"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="AutoQueued" value="1"/>
+        <Target Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="CommandStructureOrderAutoRallyMengsk">
+        <ValidatorArray value="Minerals"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="RallyMengsk"/>
         <AbilCmdIndex value="1"/>
         <CmdFlags index="Preempt" value="1"/>
         <CmdFlags index="AutoQueued" value="1"/>
