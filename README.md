@@ -1635,7 +1635,7 @@ Makes defensive positions more well defended. Unfortunately not very impactful o
 
 - Added new mutator: Harassment
   - Enemies will periodically send units to harass player mineral lines.
-  - Costs 4 points for Brutal+.
+  - Costs 7 points for Brutal+.
 
 Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
 

@@ -5,6 +5,7 @@ include "LibCOUI"
 include "LibCOMU"
 include "LibA8FDA37D"
 include "Lib01833E95"
+include "Lib860A1A1F"
 
 include "Lib74A68E34_h"
 
@@ -20,6 +21,7 @@ void lib74A68E34_InitLibraries () {
     libCOMU_InitVariables();
     libA8FDA37D_InitVariables();
     lib01833E95_InitVariables();
+    lib860A1A1F_InitVariables();
 }
 
 // Variable Initialization
@@ -1064,17 +1066,30 @@ point lib74A68E34_gf_VaryPosition (point lp_src, fixed lp_variance) {
 }
 
 point lib74A68E34_gf_GetCorner (point lp_source, point lp_target) {
+    // Variable Declarations
+    point lv_point;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Implementation
     if ((RandomInt(0, 1) == 1)) {
-        return Point(PointGetX(lp_source), PointGetY(lp_target));
+        lv_point = Point(PointGetX(lp_source), PointGetY(lp_target));
     }
     else {
-        return Point(PointGetX(lp_target), PointGetY(lp_source));
+        lv_point = Point(PointGetX(lp_target), PointGetY(lp_source));
     }
+    if ((AbsF((PointGetX(lp_source) - PointGetX(lp_target))) < AbsF((PointGetY(lp_source) - PointGetY(lp_target))))) {
+        lv_point = Point((PointGetX(lv_point) + RandomFixed(-100.0, 100.0)), PointGetY(lv_point));
+    }
+    else {
+        lv_point = Point(PointGetX(lv_point), (PointGetY(lv_point) + RandomFixed(-100.0, 100.0)));
+    }
+    lv_point = lib860A1A1F_gf_MM_FitPointToMap(lv_point);
+    return lv_point;
 }
 
-void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     int[lib74A68E34_gv_mutatorHarassCount + 1] lv_weights;
     int lv_total;
@@ -1141,7 +1156,7 @@ void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlaye
     for ( ; auto8410F857_var <= auto8410F857_ae; auto8410F857_var += 1 ) {
         lv_cursor += lv_weights[auto8410F857_var];
         if ((lv_cursor >= lv_random) && (lv_weights[auto8410F857_var] > 0)) {
-            lib74A68E34_gf_MutatorHarassSwitch(auto8410F857_var, lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+            lib74A68E34_gf_MutatorHarassSwitch(auto8410F857_var, lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
             return ;
         }
 
@@ -1154,13 +1169,15 @@ point auto_lib74A68E34_gf_MutatorHarassSwitch_lp_target;
 int auto_lib74A68E34_gf_MutatorHarassSwitch_lp_targetPlayer;
 int auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropPlayer;
 int auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropCount;
+point auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropLocation;
 
-void lib74A68E34_gf_MutatorHarassSwitch (int lp_option, point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassSwitch (int lp_option, point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     auto_lib74A68E34_gf_MutatorHarassSwitch_lp_option = lp_option;
     auto_lib74A68E34_gf_MutatorHarassSwitch_lp_target = lp_target;
     auto_lib74A68E34_gf_MutatorHarassSwitch_lp_targetPlayer = lp_targetPlayer;
     auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropPlayer = lp_dropPlayer;
     auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropCount = lp_dropCount;
+    auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropLocation = lp_dropLocation;
 
     if (auto_lib74A68E34_gf_MutatorHarassSwitch_Trigger == null) {
         auto_lib74A68E34_gf_MutatorHarassSwitch_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorHarassSwitch_TriggerFunc");
@@ -1175,6 +1192,7 @@ bool auto_lib74A68E34_gf_MutatorHarassSwitch_TriggerFunc (bool testConds, bool r
     int lp_targetPlayer = auto_lib74A68E34_gf_MutatorHarassSwitch_lp_targetPlayer;
     int lp_dropPlayer = auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropPlayer;
     int lp_dropCount = auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropCount;
+    point lp_dropLocation = auto_lib74A68E34_gf_MutatorHarassSwitch_lp_dropLocation;
 
     // Automatic Variable Declarations
     int autoC21EEDDA_val;
@@ -1182,68 +1200,67 @@ bool auto_lib74A68E34_gf_MutatorHarassSwitch_TriggerFunc (bool testConds, bool r
     // Implementation
     autoC21EEDDA_val = lp_option;
     if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Medivac)) {
-        lib74A68E34_gf_MutatorHarassMedivac(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassMedivac(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Battlecruiser)) {
-        lib74A68E34_gf_MutatorHarassBattlecruiser(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassBattlecruiser(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Banshee)) {
-        lib74A68E34_gf_MutatorHarassBanshee(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassBanshee(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Liberator)) {
-        lib74A68E34_gf_MutatorHarassLiberator(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassLiberator(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Hellion)) {
-        lib74A68E34_gf_MutatorHarassHellion(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassHellion(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Reaper)) {
-        lib74A68E34_gf_MutatorHarassReaper(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassReaper(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Adept)) {
-        lib74A68E34_gf_MutatorHarassAdept(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassAdept(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Oracle)) {
-        lib74A68E34_gf_MutatorHarassOracle(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassOracle(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_DarkTemplar)) {
-        lib74A68E34_gf_MutatorHarassDarkTemplar(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassDarkTemplar(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Zealot)) {
-        lib74A68E34_gf_MutatorHarassZealot(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassZealot(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Phoenix)) {
-        lib74A68E34_gf_MutatorHarassPhoenix(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassPhoenix(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_WarpPrism)) {
-        lib74A68E34_gf_MutatorHarassWarpPrism(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassWarpPrism(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Zergling)) {
-        lib74A68E34_gf_MutatorHarassZergling(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassZergling(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Roach)) {
-        lib74A68E34_gf_MutatorHarassRoach(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassRoach(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Mutalisk)) {
-        lib74A68E34_gf_MutatorHarassMutalisk(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassMutalisk(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Overlord)) {
-        lib74A68E34_gf_MutatorHarassOverlord(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassOverlord(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Nydus)) {
         lib74A68E34_gf_MutatorHarassNydus(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
     }
     else if (autoC21EEDDA_val == (lib74A68E34_ge_MutatorHarassOption_Infestor)) {
-        lib74A68E34_gf_MutatorHarassInfestor(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount);
+        lib74A68E34_gf_MutatorHarassInfestor(lp_target, lp_targetPlayer, lp_dropPlayer, lp_dropCount, lp_dropLocation);
     }
     else {
     }
     return true;
 }
 
-void lib74A68E34_gf_MutatorHarassAdept (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassAdept (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
     int lv_timeout;
 
     // Automatic Variable Declarations
@@ -1252,15 +1269,14 @@ void lib74A68E34_gf_MutatorHarassAdept (point lp_target, int lp_targetPlayer, in
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     autoA51FEDA7_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 0.8, 0.0, 0.0)) + 2.0));
     for (autoA51FEDA7_i = 1; autoA51FEDA7_i <= autoA51FEDA7_n; autoA51FEDA7_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Adept", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Adept", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1279,11 +1295,10 @@ void lib74A68E34_gf_MutatorHarassAdept (point lp_target, int lp_targetPlayer, in
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassOracle (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassOracle (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto4B69E5EA_n;
@@ -1295,22 +1310,21 @@ void lib74A68E34_gf_MutatorHarassOracle (point lp_target, int lp_targetPlayer, i
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto4B69E5EA_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.4, 0.6, 0.0, 0.0)) + 1.0));
     for (auto4B69E5EA_i = 1; auto4B69E5EA_i <= auto4B69E5EA_n; auto4B69E5EA_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Oracle", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Oracle", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 40.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     auto684A101F_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto684A101F_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto684A101F_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto684A101F_at = auto684A101F_at + 2.0;
     }
@@ -1333,10 +1347,9 @@ void lib74A68E34_gf_MutatorHarassOracle (point lp_target, int lp_targetPlayer, i
     }
 }
 
-void lib74A68E34_gf_MutatorHarassDarkTemplar (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassDarkTemplar (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto552DF6A1_n;
@@ -1345,15 +1358,14 @@ void lib74A68E34_gf_MutatorHarassDarkTemplar (point lp_target, int lp_targetPlay
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto552DF6A1_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.1, 0.2, 0.4, 0.0, 0.0)) + 1.0));
     for (auto552DF6A1_i = 1; auto552DF6A1_i <= auto552DF6A1_n; auto552DF6A1_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DarkTemplar", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DarkTemplar", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1372,10 +1384,9 @@ void lib74A68E34_gf_MutatorHarassDarkTemplar (point lp_target, int lp_targetPlay
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassZealot (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassZealot (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto4D2E500B_n;
@@ -1384,15 +1395,14 @@ void lib74A68E34_gf_MutatorHarassZealot (point lp_target, int lp_targetPlayer, i
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto4D2E500B_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 0.8, 0.0, 0.0)) + 2.0));
     for (auto4D2E500B_i = 1; auto4D2E500B_i <= auto4D2E500B_n; auto4D2E500B_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zealot", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zealot", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1411,11 +1421,10 @@ void lib74A68E34_gf_MutatorHarassZealot (point lp_target, int lp_targetPlayer, i
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassPhoenix (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassPhoenix (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int autoBD2B5540_n;
@@ -1425,22 +1434,21 @@ void lib74A68E34_gf_MutatorHarassPhoenix (point lp_target, int lp_targetPlayer, 
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     autoBD2B5540_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.4, 0.6, 0.0, 0.0)) + 1.0));
     for (autoBD2B5540_i = 1; autoBD2B5540_i <= autoBD2B5540_n; autoBD2B5540_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Phoenix", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Phoenix", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 80.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     autoB75A5E9C_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && autoB75A5E9C_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && autoB75A5E9C_at <= 60.0) {
         Wait(2.0, c_timeAI);
         autoB75A5E9C_at = autoB75A5E9C_at + 2.0;
     }
@@ -1455,24 +1463,28 @@ void lib74A68E34_gf_MutatorHarassPhoenix (point lp_target, int lp_targetPlayer, 
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassWarpPrism (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassWarpPrism (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
     point lv_warpLocation;
     point lv_phaseLocation;
 
     // Automatic Variable Declarations
+    int auto423BD573_n;
+    int auto423BD573_i;
     fixed auto052CA428_at;
     fixed autoF96B89B6_at;
+    unitgroup auto20901D72_g;
+    int auto20901D72_u;
+    unit auto20901D72_var;
+    fixed auto9C37D5FD_at;
     int auto60542A8C_n;
     int auto60542A8C_i;
     int autoC64FC1BC_val;
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     if ((lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer] == null)) {
@@ -1483,53 +1495,70 @@ void lib74A68E34_gf_MutatorHarassWarpPrism (point lp_target, int lp_targetPlayer
         TriggerEnable(lib74A68E34_gt_MutatorHarassSuperWarpGateAI, true);
     }
 
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, lp_dropPlayer, lv_dropLocation);
-    AISetUnitScriptControlled(UnitLastCreated(), true);
-    UnitGroupAdd(lv_attackGroup, UnitLastCreated());
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    auto423BD573_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.05, 0.1, 0.15, 0.0, 0.0)) + 1.0));
+    for (auto423BD573_i = 1; auto423BD573_i <= auto423BD573_n; auto423BD573_i += 1) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, lp_dropPlayer, lp_dropLocation);
+        AISetUnitScriptControlled(UnitLastCreated(), true);
+        UnitGroupAdd(lv_attackGroup, UnitLastCreated());
+    }
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     auto052CA428_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto052CA428_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto052CA428_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto052CA428_at = auto052CA428_at + 2.0;
     }
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
     autoF96B89B6_at = 0;
-    while (!((UnitGroupCount(lv_attackGroup, c_unitCountAlive) == UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 12.0), 0), c_unitCountAlive))) && autoF96B89B6_at <= 100.0) {
+    while (!((0 < UnitGroupCount(UnitGroupFilterRegion(lv_attackGroup, RegionCircle(lp_target, 30.0), 0), c_unitCountAlive))) && autoF96B89B6_at <= 100.0) {
         Wait(1.0, c_timeAI);
         autoF96B89B6_at = autoF96B89B6_at + 1.0;
     }
-    lv_phaseLocation = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lp_target, 6.0, AngleBetweenPoints(lp_target, UnitGroupCenterOfGroup(lv_attackGroup))), lp_target);
-    UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_phaseLocation), c_orderQueueReplace);
-    UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("PhasingMode", 0)), c_orderQueueAddToEnd);
-    Wait(4.0, c_timeAI);
-    auto60542A8C_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 1.0, 0.0, 0.0)) + 2.0));
-    for (auto60542A8C_i = 1; auto60542A8C_i <= auto60542A8C_n; auto60542A8C_i += 1) {
-        lv_warpLocation = lib74A68E34_gf_VaryPosition(UnitGroupCenterOfGroup(lv_attackGroup), 3.75);
-        autoC64FC1BC_val = RandomInt(0, 2);
-        if (autoC64FC1BC_val == 1) {
-            UnitIssueOrder(lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer], OrderTargetingPoint(AbilityCommand("SuperWarpGateTrainVoid", 11), lv_warpLocation), c_orderQueueAddToEnd);
-        }
-        else {
-            UnitIssueOrder(lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer], OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 0), lv_warpLocation), c_orderQueueAddToEnd);
-        }
-        Wait(0.5, c_timeAI);
+    lv_phaseLocation = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lp_target, RandomFixed(4.0, 20.0), AngleBetweenPoints(lp_target, UnitGroupCenterOfGroup(lv_attackGroup))), lp_target);
+    auto20901D72_g = lv_attackGroup;
+    auto20901D72_u = UnitGroupCount(auto20901D72_g, c_unitCountAll);
+    for (;; auto20901D72_u -= 1) {
+        auto20901D72_var = UnitGroupUnitFromEnd(auto20901D72_g, auto20901D72_u);
+        if (auto20901D72_var == null) { break; }
+        UnitIssueOrder(auto20901D72_var, OrderTargetingPoint(AbilityCommand("move", 0), lib74A68E34_gf_VaryPosition(lv_phaseLocation, 4.0)), c_orderQueueReplace);
+        UnitIssueOrder(auto20901D72_var, Order(AbilityCommand("PhasingMode", 0)), c_orderQueueAddToEnd);
     }
-    Wait(10.0, c_timeAI);
-    AISetGroupScriptControlled(lv_attackGroup, false);
-    AISetGroupSuicide(lv_attackGroup, true);
+    auto9C37D5FD_at = 0;
+    while (!((UnitGetType(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive)) == "WarpPrismPhasing")) && auto9C37D5FD_at <= 20.0) {
+        Wait(1.0, c_timeAI);
+        auto9C37D5FD_at = auto9C37D5FD_at + 1.0;
+    }
+    while ((libNtve_gf_UnitGroupIsDead(lv_attackGroup) == false)) {
+        auto60542A8C_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 1.0, 0.0, 0.0)) + 2.0));
+        for (auto60542A8C_i = 1; auto60542A8C_i <= auto60542A8C_n; auto60542A8C_i += 1) {
+            lv_warpLocation = lib74A68E34_gf_VaryPosition(UnitGetPosition(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive)), 3.75);
+            if ((RandomInt(0, 10) == 1) && (lp_dropCount > 4)) {
+                UnitIssueOrder(lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer], OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 4), lv_warpLocation), c_orderQueueAddToEnd);
+            }
+            else {
+                autoC64FC1BC_val = RandomInt(0, 2);
+                if (autoC64FC1BC_val == 1) {
+                    UnitIssueOrder(lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer], OrderTargetingPoint(AbilityCommand("SuperWarpGateTrainVoid", 11), lv_warpLocation), c_orderQueueAddToEnd);
+                }
+                else {
+                    UnitIssueOrder(lib74A68E34_gv_mutatorHarassSuperWarpGate[lp_dropPlayer], OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 0), lv_warpLocation), c_orderQueueAddToEnd);
+                }
+            }
+            Wait(0.5, c_timeAI);
+        }
+        Wait(30.0, c_timeAI);
+    }
 }
 
-void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_transportGroup;
     unitgroup lv_attackGroup;
     unitgroup lv_cargoGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto88FAC231_n;
@@ -1543,29 +1572,28 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
     lv_transportGroup = UnitGroupEmpty();
     lv_attackGroup = UnitGroupEmpty();
     lv_cargoGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto88FAC231_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.15, 0.25, 0.35, 0.0, 0.0)) + 1.0));
     for (auto88FAC231_i = 1; auto88FAC231_i <= auto88FAC231_n; auto88FAC231_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Medivac", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Medivac", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_transportGroup, UnitLastCreated());
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitCargoCreate(UnitLastCreated(), "Marine", MinI(((lp_dropCount / 2) + 4), 8));
         UnitGroupAddUnitGroup(lv_cargoGroup, UnitCargoLastCreatedGroup());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_cargoGroup);
     AISetGroupScriptControlled(lv_attackGroup, true);
     AISetGroupScriptControlled(lv_cargoGroup, false);
     AISetGroupSuicide(lv_cargoGroup, true);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     UnitGroupIssueOrder(lv_attackGroup, Order(AbilityCommand("MedivacSpeedBoost", 0)), c_orderQueueAddToFront);
     auto60887B8E_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto60887B8E_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto60887B8E_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto60887B8E_at = auto60887B8E_at + 2.0;
     }
@@ -1590,10 +1618,9 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int autoDC538A59_n;
@@ -1602,17 +1629,16 @@ void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPl
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     Wait(10.0, c_timeAI);
     autoDC538A59_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.1, 0.15, 0.3, 0.0, 0.0)) + 1.0));
     for (autoDC538A59_i = 1; autoDC538A59_i <= autoDC538A59_n; autoDC538A59_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Battlecruiser", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Battlecruiser", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergy, 140.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(10.0, c_timeAI);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("Hyperjump", 0), lp_target), c_orderQueueReplace);
@@ -1627,11 +1653,10 @@ void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPl
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int autoEEBD849D_n;
@@ -1641,22 +1666,21 @@ void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, 
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     autoEEBD849D_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.4, 0.6, 0.0, 0.0)) + 1.0));
     for (autoEEBD849D_i = 1; autoEEBD849D_i <= autoEEBD849D_n; autoEEBD849D_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Banshee", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Banshee", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 80.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     auto87BDA378_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto87BDA378_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto87BDA378_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto87BDA378_at = auto87BDA378_at + 2.0;
     }
@@ -1672,11 +1696,10 @@ void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, 
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int autoFD4B06E0_n;
@@ -1689,21 +1712,20 @@ void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     autoFD4B06E0_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.1, 0.2, 0.4, 0.0, 0.0)) + 1.0));
     for (autoFD4B06E0_i = 1; autoFD4B06E0_i <= autoFD4B06E0_n; autoFD4B06E0_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Liberator", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Liberator", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     auto007311E4_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto007311E4_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto007311E4_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto007311E4_at = auto007311E4_at + 2.0;
     }
@@ -1721,10 +1743,9 @@ void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer
     }
 }
 
-void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int autoD5FE4818_n;
@@ -1733,15 +1754,14 @@ void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, 
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     autoD5FE4818_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.3, 0.4, 0.0, 0.0)) + 2.0));
     for (autoD5FE4818_i = 1; autoD5FE4818_i <= autoD5FE4818_n; autoD5FE4818_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Hellion", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Hellion", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1760,10 +1780,9 @@ void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, 
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto4F253D65_n;
@@ -1772,15 +1791,14 @@ void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, i
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto4F253D65_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.2, 0.4, 0.6, 0.8, 0.0, 0.0)) + 2.0));
     for (auto4F253D65_i = 1; auto4F253D65_i <= auto4F253D65_n; auto4F253D65_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Reaper", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Reaper", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1799,10 +1817,9 @@ void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, i
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassZergling (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassZergling (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto51BDBDFF_n;
@@ -1811,15 +1828,14 @@ void lib74A68E34_gf_MutatorHarassZergling (point lp_target, int lp_targetPlayer,
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto51BDBDFF_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.4, 0.8, 1.6, 2.0, 0.0, 0.0)) + 4.0));
     for (auto51BDBDFF_i = 1; auto51BDBDFF_i <= auto51BDBDFF_n; auto51BDBDFF_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zergling", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zergling", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1838,10 +1854,9 @@ void lib74A68E34_gf_MutatorHarassZergling (point lp_target, int lp_targetPlayer,
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassRoach (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassRoach (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
     int lv_timeout;
 
     // Automatic Variable Declarations
@@ -1851,16 +1866,15 @@ void lib74A68E34_gf_MutatorHarassRoach (point lp_target, int lp_targetPlayer, in
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_dropPlayer, "TunnelingClaws", 1);
     auto7FE1CC6E_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.4, 0.8, 0.0, 0.0)) + 2.0));
     for (auto7FE1CC6E_i = 1; auto7FE1CC6E_i <= auto7FE1CC6E_n; auto7FE1CC6E_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Roach", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Roach", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -1880,11 +1894,10 @@ void lib74A68E34_gf_MutatorHarassRoach (point lp_target, int lp_targetPlayer, in
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassMutalisk (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassMutalisk (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto32CA3A1F_n;
@@ -1894,21 +1907,20 @@ void lib74A68E34_gf_MutatorHarassMutalisk (point lp_target, int lp_targetPlayer,
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto32CA3A1F_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.1, 0.2, 0.4, 0.8, 0.0, 0.0)) + 2.0));
     for (auto32CA3A1F_i = 1; auto32CA3A1F_i <= auto32CA3A1F_n; auto32CA3A1F_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Mutalisk", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Mutalisk", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     auto69C2D7F6_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto69C2D7F6_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && auto69C2D7F6_at <= 60.0) {
         Wait(2.0, c_timeAI);
         auto69C2D7F6_at = auto69C2D7F6_at + 2.0;
     }
@@ -1923,13 +1935,12 @@ void lib74A68E34_gf_MutatorHarassMutalisk (point lp_target, int lp_targetPlayer,
     AISetGroupSuicide(lv_attackGroup, true);
 }
 
-void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     point lv_corner;
     unitgroup lv_transportGroup;
     unitgroup lv_attackGroup;
     unitgroup lv_cargoGroup;
-    point lv_dropLocation;
 
     // Automatic Variable Declarations
     int auto090CA91A_n;
@@ -1943,30 +1954,29 @@ void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer,
     lv_transportGroup = UnitGroupEmpty();
     lv_attackGroup = UnitGroupEmpty();
     lv_cargoGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_dropPlayer, "overlordtransport", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_dropPlayer, "overlordspeed", 1);
     auto090CA91A_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.1, 0.15, 0.2, 0.0, 0.0)) + 1.0));
     for (auto090CA91A_i = 1; auto090CA91A_i <= auto090CA91A_n; auto090CA91A_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "OverlordTransport", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "OverlordTransport", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_transportGroup, UnitLastCreated());
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitCargoCreate(UnitLastCreated(), "Hydralisk", MinI(((lp_dropCount / 3) + 1), 4));
         UnitGroupAddUnitGroup(lv_cargoGroup, UnitCargoLastCreatedGroup());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_cargoGroup);
     AISetGroupScriptControlled(lv_attackGroup, true);
     AISetGroupScriptControlled(lv_cargoGroup, false);
     AISetGroupSuicide(lv_cargoGroup, true);
     Wait(1.0, c_timeAI);
-    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lv_dropLocation, lp_target), 8.0);
+    lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
     autoF7109EB4_at = 0;
-    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && autoF7109EB4_at <= 30.0) {
+    while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_attackGroup), lv_corner) < 6.0)) && autoF7109EB4_at <= 60.0) {
         Wait(2.0, c_timeAI);
         autoF7109EB4_at = autoF7109EB4_at + 2.0;
     }
@@ -1995,6 +2005,7 @@ void lib74A68E34_gf_MutatorHarassNydus (point lp_target, int lp_targetPlayer, in
     unitgroup lv_attackGroup;
     point lv_phaseLocation;
     unitgroup lv_worms;
+    unitgroup lv_totalGroup;
 
     // Automatic Variable Declarations
     unitgroup auto2CA54692_g;
@@ -2004,42 +2015,50 @@ void lib74A68E34_gf_MutatorHarassNydus (point lp_target, int lp_targetPlayer, in
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
     lv_worms = UnitGroupEmpty();
+    lv_totalGroup = UnitGroupEmpty();
 
     // Implementation
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "NydusNetwork", c_unitCreateIgnorePlacement, lp_dropPlayer, Point(0.0, 0.0));
     UnitSetState(UnitLastCreated(), c_unitStateSelectable, false);
     UnitSetState(UnitLastCreated(), c_unitStateInvulnerable, true);
     lv_network = UnitLastCreated();
-    UnitCargoCreate(UnitLastCreated(), "QueenCoop", FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.05, 0.1, 0.2, 0.0, 0.0)) + 1.0)));
-    UnitGroupAddUnitGroup(lv_attackGroup, UnitCargoLastCreatedGroup());
-    UnitCargoCreate(UnitLastCreated(), "Zergling", FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.6, 0.8, 1.0, 1.2, 0.0, 0.0)) + 4.0)));
-    UnitGroupAddUnitGroup(lv_attackGroup, UnitCargoLastCreatedGroup());
-    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
-    AISetGroupScriptControlled(lv_attackGroup, false);
-    AISetGroupSuicide(lv_attackGroup, true);
-    lv_phaseLocation = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lp_target, 8.0, libNtve_gf_RandomAngle()), lp_target);
+    lv_phaseLocation = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lp_target, RandomFixed(4.0, 20.0), libNtve_gf_RandomAngle()), lp_target);
     lv_phaseLocation = UnitTypePlacementFromPoint("NydusCanal", lp_dropPlayer, lv_phaseLocation, 6.0);
     VisRevealArea(lp_dropPlayer, RegionCircle(lv_phaseLocation, 2.0), 3.0, false);
     Wait(1.0, c_timeAI);
     UnitIssueOrder(lv_network, OrderTargetingPoint(AbilityCommand("BuildNydusCanal", 0), lv_phaseLocation), c_orderQueueReplace);
-    Wait(22.0, c_timeAI);
+    Wait(24.0, c_timeAI);
     lv_worms = libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition("NydusCanal", "", "", lp_dropPlayer, -1, RegionCircle(lv_phaseLocation, 4.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupIssueOrder(lv_worms, Order(AbilityCommand("NydusWormTransport", 1)), c_orderQueueAddToEnd);
-    Wait(10.0, c_timeAI);
+    while ((libNtve_gf_UnitGroupIsDead(lv_worms) == false)) {
+        UnitCargoCreate(lv_network, "QueenCoop", FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.05, 0.1, 0.2, 0.0, 0.0)) + 1.0)));
+        UnitGroupAddUnitGroup(lv_attackGroup, UnitCargoLastCreatedGroup());
+        UnitCargoCreate(lv_network, "Roach", FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.0, 0.05, 0.1, 0.15, 0.0, 0.0)) + 0.0)));
+        UnitGroupAddUnitGroup(lv_attackGroup, UnitCargoLastCreatedGroup());
+        UnitCargoCreate(lv_network, "Zergling", FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.5, 0.7, 0.9, 1.1, 0.0, 0.0)) + 4.0)));
+        UnitGroupAddUnitGroup(lv_attackGroup, UnitCargoLastCreatedGroup());
+        libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+        AISetGroupScriptControlled(lv_attackGroup, false);
+        AISetGroupSuicide(lv_attackGroup, true);
+        UnitGroupAddUnitGroup(lv_totalGroup, lv_attackGroup);
+        UnitGroupIssueOrder(lv_worms, Order(AbilityCommand("NydusWormTransport", 1)), c_orderQueueAddToEnd);
+        Wait(30.0, c_timeAI);
+    }
     auto2CA54692_g = UnitCargoGroup(lv_network);
     auto2CA54692_u = UnitGroupCount(auto2CA54692_g, c_unitCountAll);
     for (;; auto2CA54692_u -= 1) {
         auto2CA54692_var = UnitGroupUnitFromEnd(auto2CA54692_g, auto2CA54692_u);
         if (auto2CA54692_var == null) { break; }
-        UnitRemove(auto2CA54692_var);
+        if ((UnitGroupHasUnit(lv_totalGroup, auto2CA54692_var) == true)) {
+            UnitRemove(auto2CA54692_var);
+        }
+
     }
     UnitRemove(lv_network);
 }
 
-void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {
+void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
     // Variable Declarations
     unitgroup lv_attackGroup;
-    point lv_dropLocation;
     int lv_timeout;
 
     // Automatic Variable Declarations
@@ -2049,16 +2068,15 @@ void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer,
 
     // Variable Initialization
     lv_attackGroup = UnitGroupEmpty();
-    lv_dropLocation = PlayerStartLocation(lp_dropPlayer);
 
     // Implementation
     auto80E4E982_n = FixedToInt(((MinI(lp_dropCount, 10) * libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lp_targetPlayer), 0.05, 0.1, 0.2, 0.4, 0.0, 0.0)) + 1.0));
     for (auto80E4E982_i = 1; auto80E4E982_i <= auto80E4E982_n; auto80E4E982_i += 1) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Infestor", 0, lp_dropPlayer, lv_dropLocation);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "Infestor", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 40.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lv_dropLocation);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
@@ -5505,6 +5523,7 @@ bool lib74A68E34_gt_MutatorHarassSpawn_Func (bool testConds, bool runActions) {
     unitgroup lv_townHallGroup;
     unit lv_pickedTownHall;
     unitgroup lv_townHallMinerals;
+    fixed lv_time;
 
     // Automatic Variable Declarations
     playergroup auto60B1B299_g;
@@ -5542,11 +5561,11 @@ bool lib74A68E34_gt_MutatorHarassSpawn_Func (bool testConds, bool runActions) {
         while (true) {
             lv_indexPlayer = PlayerGroupNextPlayer(auto7B23ABAA_g, lv_indexPlayer);
             if (lv_indexPlayer < 0) { break; }
-            TimerStart(lv_dropPodTimers[lv_indexPlayer], libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_indexPlayer), RandomFixed(200.0, 260.0), RandomFixed(170.0, 230.0), RandomFixed(150.0, 210.0), RandomFixed(120.0, 180.0), 0.0, 0.0), false, c_timeAI);
+            TimerStart(lv_dropPodTimers[lv_indexPlayer], libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_indexPlayer), RandomFixed(220.0, 260.0), RandomFixed(190.0, 230.0), RandomFixed(170.0, 210.0), RandomFixed(140.0, 180.0), 0.0, 0.0), false, c_timeAI);
         }
     }
     while (true) {
-        Wait(10.0, c_timeAI);
+        Wait(5.0, c_timeAI);
         auto935255A7_g = libCOOC_gf_HumanPlayers();
         lv_indexPlayer = -1;
         while (true) {
@@ -5584,10 +5603,10 @@ bool lib74A68E34_gt_MutatorHarassSpawn_Func (bool testConds, bool runActions) {
                 UnitGroupAdd(lv_townHallMinerals, lv_pickedTownHall);
                 lv_targetLocation = UnitGroupCenterOfGroup(lv_townHallMinerals);
                 lv_targetLocation = lib74A68E34_gf_VaryPosition(lv_targetLocation, 2.0);
-                TextExpressionSetToken("Param/Expression/lib_74A68E34_C3DA116E", "A", IntToText(lv_dropCount[lv_indexPlayer]));
-                UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_74A68E34_C3DA116E"));
-                lib74A68E34_gf_MutatorHarassPickOption(lv_targetLocation, lv_indexPlayer, lv_dropPlayer, lv_dropCount[lv_indexPlayer]);
-                TimerStart(lv_dropPodTimers[lv_indexPlayer], libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_indexPlayer), RandomFixed(140.0, 240.0), RandomFixed(120.0, 220.0), RandomFixed(80.0, 160.0), RandomFixed(40.0, 120.0), 0.0, 0.0), false, c_timeAI);
+                lib74A68E34_gf_MutatorHarassPickOption(lv_targetLocation, lv_indexPlayer, lv_dropPlayer, lv_dropCount[lv_indexPlayer], PlayerStartLocation(RandomInt(3, 4)));
+                lv_time = libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_indexPlayer), RandomFixed(160.0, 240.0), RandomFixed(140.0, 220.0), RandomFixed(100.0, 160.0), RandomFixed(60.0, 120.0), 0.0, 0.0);
+                lv_time = (lv_time * (0.6 + (0.05 * (10.0 - MaxF(lv_dropCount[lv_indexPlayer], 10.0)))));
+                TimerStart(lv_dropPodTimers[lv_indexPlayer], lv_time, false, c_timeAI);
             }
 
         }
