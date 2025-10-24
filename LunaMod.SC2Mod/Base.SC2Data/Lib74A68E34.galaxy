@@ -2816,6 +2816,107 @@ void lib74A68E34_gt_CommanderRewardsApply_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ChronoDisableTriggers
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ChronoDisableTriggers_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libCOMI_gt_ChronoAnimSpeedOn, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ChronoDisableTriggers_Init () {
+    lib74A68E34_gt_ChronoDisableTriggers = TriggerCreate("lib74A68E34_gt_ChronoDisableTriggers_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_ChronoDisableTriggers);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ChronoAnimSpeedOn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ChronoAnimSpeedOn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_buff;
+    unit lv_unit;
+    fixed lv_scale;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_buff = EventUnitBehavior();
+    lv_unit = EventUnit();
+    lv_scale = StringToFixed(CatalogFieldValueGet(c_gameCatalogBehavior, lv_buff, "Modification.RateMultiplierArray[" + IntToString(0) + "]", UnitBehaviorEffectPlayer(lv_unit, lv_buff, c_effectPlayerCaster, 0)));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(lv_unit) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SendActorMessageToUnit(lv_unit, (("AnimSetTimeScaleGlobal " + FixedToString(lv_scale, c_fixedPrecisionAny) + " " + (lv_buff))));
+    libNtve_gf_SendActorMessageToUnit(lv_unit, (("AnimSetTimeScaleGlobal " + FixedToString(lv_scale, c_fixedPrecisionAny) + " " + (lv_buff))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ChronoAnimSpeedOn_Init () {
+    lib74A68E34_gt_ChronoAnimSpeedOn = TriggerCreate("lib74A68E34_gt_ChronoAnimSpeedOn_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_ChronoAnimSpeedOn, null, "SOAMapWideChronoPassiveTarget", c_unitBehaviorChangeActivate);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_ChronoAnimSpeedOn, null, "SOAMapWideChrono", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ChronoAnimSpeedChronoBoostOn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_buff;
+    unit lv_unit;
+    fixed lv_scale;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_buff = EventUnitBehavior();
+    lv_unit = EventUnit();
+    lv_scale = StringToFixed(CatalogFieldValueGet(c_gameCatalogBehavior, lv_buff, "Modification.RateMultiplierArray[" + IntToString(0) + "]", UnitBehaviorEffectPlayer(lv_unit, lv_buff, c_effectPlayerCaster, 0)));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(lv_unit) == true))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(UnitBehaviorEffectPlayer(lv_unit, lv_buff, c_effectPlayerCaster, 0), "CommanderPrestigeKaraxChrono", c_techCountCompleteOnly) == 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SendActorMessageToUnit(lv_unit, (("AnimSetTimeScaleGlobal " + FixedToString(lv_scale, c_fixedPrecisionAny) + " " + (lv_buff))));
+    libNtve_gf_SendActorMessageToUnit(lv_unit, (("AnimSetTimeScaleGlobal " + FixedToString(lv_scale, c_fixedPrecisionAny) + " " + (lv_buff))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn_Init () {
+    lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn = TriggerCreate("lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn, null, "TimeWarpProduction", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: LogDisableOriginal
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_LogDisableOriginal_Func (bool testConds, bool runActions) {
@@ -3041,6 +3142,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ProtossKarax") {
             lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);
             lib74A68E34_gf_KaraxEnable20(lv_player);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeKaraxChrono", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, true);
+            }
+
         }
         else if (auto560DABDD_val == "ProtossVorazun") {
             TriggerEnable(lib74A68E34_gt_VorazunNegativeEnergyFix, true);
@@ -4235,6 +4340,27 @@ void lib74A68E34_gt_VorazunShadowArchonGender_Init () {
     lib74A68E34_gt_VorazunShadowArchonGender = TriggerCreate("lib74A68E34_gt_VorazunShadowArchonGender_Func");
     TriggerEnable(lib74A68E34_gt_VorazunShadowArchonGender, false);
     TriggerAddEventUnitCreated(lib74A68E34_gt_VorazunShadowArchonGender, null, "DarkArchonMerge", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: KaraxPrestigeUnitChronoRevive
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectUnit(EventUnit(), "CommanderPrestigeKaraxChronoTarget", EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init () {
+    lib74A68E34_gt_KaraxPrestigeUnitChronoRevive = TriggerCreate("lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Func");
+    TriggerEnable(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, false);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5962,6 +6088,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MCDisableMindControlTriggers_Init();
     lib74A68E34_gt_MCAddCoopUnitBehavior_Init();
     lib74A68E34_gt_CommanderRewardsApply_Init();
+    lib74A68E34_gt_ChronoDisableTriggers_Init();
+    lib74A68E34_gt_ChronoAnimSpeedOn_Init();
+    lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();
@@ -5994,6 +6123,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Init();
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
+    lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();

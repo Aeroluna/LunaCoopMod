@@ -804,6 +804,12 @@ yeah.
 
 Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
 
+- Added P4: Chronosmith
+  - Advantage: Chrono Boost, Chrono Wave, and Chrono Field affect units, increasing their rate of attack, movement speed, and cooldown reduction.
+  - Disadvantage: Chrono Boost, Chrono Wave, and Chrono Field no longer affect structures.
+
+Unsurprisingly really strong when used with an ally.
+
 - Added Instigators.
   - A Purifier variant Stalker.
   - Added Displacement Core upgrade, which lowers the cooldown of Blink to 4 seconds and allows up to 3 charges.
@@ -821,6 +827,10 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
 - Reduced price of Purification Echo from 150/150 to 100/100.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
+
+- Fixed an issue where P1 Chrono Field would not affect ally structures.
+
+Chrono Boost and Chrono Wave affected ally structures, but not Chrono Field.
 
 - Reworked Karax P2 disadvantage to increase the price of Photon Canon and Khaydarin Monolith by 100% instead of disabling them.
 

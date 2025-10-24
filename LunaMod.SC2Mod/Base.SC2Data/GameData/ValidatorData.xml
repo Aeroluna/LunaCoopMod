@@ -61,6 +61,28 @@
         <Compare value="GT"/>
         <Behavior value="MasteryTychusFirstCommander"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="CommanderPrestigeKaraxUnitChrono">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeKaraxUnitChrono"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="IsStructureAndNotCommanderPrestigeKaraxUnitChrono">
+        <Type value="And"/>
+        <CombineArray value="IsStructure"/>
+        <CombineArray value="NoCommanderPrestigeKaraxUnitChrono"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="StructureCheckCommanderPrestigeKaraxUnitChrono">
+        <ResultFailed value="MustTargetStructures"/>
+        <CombineArray value="IsNotStructureAndCommanderPrestigeKaraxUnitChrono"/>
+        <CombineArray value="IsStructureAndNotCommanderPrestigeKaraxUnitChrono"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsNotStructureAndCommanderPrestigeKaraxUnitChrono">
+        <Type value="And"/>
+        <CombineArray value="NotStructureTarget"/>
+        <CombineArray value="CommanderPrestigeKaraxUnitChrono"/>
+    </CValidatorCombine>
+    <CValidatorPlayerRequirement id="NoCommanderPrestigeKaraxUnitChrono">
+        <Value value="CommanderPrestigeKaraxUnitChrono"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="CommanderPrestigeKerriganCreep">
         <Find value="1"/>
         <Value value="CommanderPrestigeKerriganCreep"/>

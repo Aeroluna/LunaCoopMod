@@ -120,6 +120,30 @@
     <CActorSound id="MattFleet_FleetwideJumpWireframeSound">
         <On Terms="Behavior.OrdnanceFleetwideJumpTeleport.On" Send="Create"/>
     </CActorSound>
+    <CActorModel id="ObeliskEffect">
+        <On Terms="ActorCreation; ValidateUnit NotStructure" Send="Destroy Immediate"/>
+    </CActorModel>
+    <CActorModel id="ObeliskEffectUnit" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="ActorCreation" Send="SetScale 0.400000"/>
+        <On Terms="Behavior.TimeWarpProduction.On" Send="Create"/>
+        <On Terms="Behavior.TimeWarpResearch.On" Send="Create"/>
+        <On Terms="BehaviorLevel.TimeWarpProduction.Start" Send="Create ObeliskEffect"/>
+        <On Terms="BehaviorLevel.TimeWarpResearch.Start" Send="Create ObeliskEffect"/>
+        <On Terms="BehaviorLevel.TimeWarpProduction.Start" Send="Destroy"/>
+        <On Terms="BehaviorLevel.TimeWarpResearch.Start" Send="Destroy"/>
+        <On Terms="Behavior.TimeWarpProduction.Off" Send="Destroy"/>
+        <On Terms="Behavior.TimeWarpResearch.Off" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnit IsStructure" Send="Destroy Immediate"/>
+        <On Terms="ActorCreation; ValidateUnit IsK5Kerrigan" Send="SetScale 0.200000"/>
+        <Host Subject="_Unit"/>
+        <Model value="TimeWarp"/>
+        <AutoScaleFactor value="0.750000"/>
+        <HostSiteOps Ops="SOpAttachCenter SOp2DRotation SOpMoveDownByDot5"/>
+    </CActorModel>
     <CActorModel id="OrdnanceFleetwideJumpTeleportIn" parent="ModelAnimationStyleOneShotNoOrphan">
         <On Terms="Effect.OrdnanceFleetwideJumpTeleportInAB.Start; At Source" Send="Create"/>
         <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 1.000000 0.300000 HyperJump"/>

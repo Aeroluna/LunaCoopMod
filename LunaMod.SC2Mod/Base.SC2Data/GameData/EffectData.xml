@@ -90,6 +90,11 @@
         <CaseArray Validator="CasterIsAscendant" Effect="AscendantSacrificeSelfBuffAB"/>
         <CaseDefault value="AscendantSacrificeSelfBuffArchonAB"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="CommanderPrestigeKaraxChronoTarget">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ChronoBoostTarget"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="CommanderPrestigeKerriganAbilitiesStun">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
@@ -312,6 +317,9 @@
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SOAMapWideChronoAB">
+        <ValidatorArray index="1" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="SalvageStetmannPowerTower">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="SalvageStetmannPowerTowerRB"/>
@@ -337,6 +345,9 @@
     <CEffectApplyBehavior id="StukovAleksanderAirStunAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TimeWarpCP">
+        <ValidatorArray index="2" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="ToxicNestVirulentNestSnareHeroicAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>

@@ -1278,6 +1278,9 @@
             <Upgrade Upgrade="Karax20Base">
                 <Field Id="DefaultUpgrades" Index="4"/>
             </Upgrade>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeKaraxUnitChrono">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ProtossVorazun">
             <AbilCmd Abil="VorazunRevive">
@@ -1559,6 +1562,20 @@
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
         </Instances>
+        <Instances Id="CommanderPrestigeKaraxUnitChrono">
+            <GameLink GameLink="CommanderPrestigeKaraxChrono">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <GameLink GameLink="CommanderPrestigeKaraxUnitChronoShared">
+                <Field Id="SecondaryUpgradesShared"/>
+            </GameLink>
+            <User Type="PlayerResponse" Instance="CommanderPrestigeKaraxUnitChronoBoostTarget">
+                <Field Id="PlayerResponses"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="KaraxStructures3">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
                 <Field Id="UpgradeSupplements"/>
@@ -1574,6 +1591,11 @@
             <Unit Unit="Bogus">
                 <Field Id="DisableUnit" Index="1"/>
             </Unit>
+        </Instances>
+        <Instances Id="[Override]CommanderPrestigeKaraxStructures">
+            <GameLink GameLink="CommanderPrestigeKaraxStructuresShared">
+                <Field Id="SecondaryUpgradesShared"/>
+            </GameLink>
         </Instances>
         <Instances Id="[Override]CommanderPrestigeKerriganCreep">
             <AbilCmd Abil="evolutionchamberresearch" Cmd="19">
@@ -1776,6 +1798,16 @@
             <GameLink GameLink="HHMiraBuildResearchTimeReduction">
                 <Field Id="Upgrade"/>
             </GameLink>
+        </Instances>
+    </CUser>
+    <CUser id="PlayerResponse">
+        <Instances Id="CommanderPrestigeKaraxUnitChronoBoostTarget">
+            <GameLink GameLink="CommanderPrestigeKaraxUnitChronoBoostTarget">
+                <Field Id="Response"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Ally"/>
+            </Int>
         </Instances>
     </CUser>
     <CUser id="SharedUpgrades">

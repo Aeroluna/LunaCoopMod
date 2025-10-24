@@ -172,6 +172,23 @@
         <EffectArray Operation="Subtract" Reference="Unit,Disruptor,CostResource[Minerals]" Value="78"/>
         <EffectArray Operation="Subtract" Reference="Unit,Disruptor,CostResource[Vespene]" Value="78"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKaraxChrono" parent="CommanderPrestige">
+        <EffectArray Reference="Behavior,TimeWarpProduction,Modification.AttackSpeedMultiplier" Value="0.225"/>
+        <EffectArray Reference="Behavior,SOAMapWideChrono,Modification.AttackSpeedMultiplier" Value="4"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKaraxUnitChronoShared" parent="CommanderPrestige">
+        <EffectArray Reference="Behavior,SOAMapWideChronoPassiveTarget,Modification.AttackSpeedMultiplier" Value="0.15"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKaraxStructures">
+        <EffectArray index="3" Operation="Add" Reference="Behavior,TimeWarpProduction,Modification.AttackSpeedMultiplier" Value="0.225"/>
+        <EffectArray index="4" Reference="Behavior,SOAMapWideChrono,Modification.AttackSpeedMultiplier" Value="4"/>
+        <EffectArray index="5" removed="1"/>
+        <EffectArray index="6" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKaraxStructuresShared" parent="CommanderPrestige">
+        <EffectArray Operation="Subtract" Reference="Behavior,KaraxUnitSpawnBarrierDisabled,Duration" Value="180"/>
+        <EffectArray Reference="Behavior,SOAMapWideChronoPassiveTarget,Modification.AttackSpeedMultiplier" Value="0.15"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeKerriganCreep">
         <EffectArray index="0" Operation="Set" Reference="Effect,KerriganMalignantCreepAttackSpeedRealDummy,Amount"/>
         <EffectArray index="1" Operation="Set" Reference="Effect,KerriganMalignantCreepLifeRegenRealDummy,Amount"/>
