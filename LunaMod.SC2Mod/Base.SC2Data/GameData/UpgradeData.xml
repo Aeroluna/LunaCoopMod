@@ -14,6 +14,11 @@
     <CUpgrade id="AdeptPiercingAttack">
         <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
     </CUpgrade>
+    <CUpgrade id="AlarakDestructionWaveDistance">
+        <EffectArray Operation="Subtract" Reference="Behavior,JinaraChains,Modification.AttackSpeedMultiplier" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,JinaraChains,Modification.MoveSpeedMultiplier" Value="0.25"/>
+        <EffectArray Operation="Set" Reference="Behavior,JinaraChains,Modification.StateFlags[SuppressEnergy]" Value="1"/>
+    </CUpgrade>
     <CUpgrade id="AlarakImprovedDeathFleet">
         <EffectArray index="0" Reference="Actor,VoidRayTaldarim,Scale" Value="0.200000"/>
         <EffectArray Reference="Unit,VoidRayTaldarim,LifeMax" Value="150"/>
@@ -79,6 +84,17 @@
     <CUpgrade id="CommanderPrestigeAbathurSymbioteSupply">
         <EffectArray Reference="Unit,CoopCasterAbathur,Food" Value="-6"/>
         <MaxLevel value="40"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeAlarakJinara" parent="CommanderPrestige">
+        <EffectArray Operation="Set" Reference="Button,AlarakAttackStun,Tooltip" Value="Button/Tooltip/AlarakAttackStunJinara"/>
+        <EffectArray Operation="Set" Reference="Button,AlarakDestructionWaveDistance,Tooltip" Value="Button/Tooltip/AlarakDestructionWaveDistanceJinara"/>
+        <EffectArray Operation="Set" Reference="Button,AlarakDestructionWaveDistance,Icon" Value="Assets\Textures\btn-ability-protoss-mindblast-red.dds"/>
+        <EffectArray Operation="Set" Reference="Button,AlarakDestructionWaveDistance,Name" Value="Button/Name/AlarakDestructionWaveDistanceJinara"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchAlarakDestructionWaveDistance,Name" Value="Button/Name/ResearchAlarakDestructionWaveDistanceJinara"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchAlarakDestructionWaveDistance,Icon" Value="Assets\Textures\btn-ability-protoss-mindblast-red.dds"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchAlarakDestructionWaveDistance,Tooltip" Value="Button/Tooltip/ResearchAlarakDestructionWaveDistanceJinara"/>
+        <EffectArray Operation="Set" Reference="Button,AlarakEmpower,Tooltip" Value="Button/Tooltip/AlarakEmpowerJinara"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchAlarakAttackStun,Tooltip" Value="Button/Tooltip/ResearchAlarakAttackStunJinara"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeArtanisCombatAbilities">
         <EffectArray index="14" Reference="Unit,HighTemplar,CostResource[Minerals]"/>
@@ -1028,6 +1044,10 @@
     </CUpgrade>
     <CUpgrade id="MasteryAbathurSymbioteCarapace">
         <EffectArray Reference="Effect,SymbioteSpikeBurstDamage,Amount" Value="1.6665"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryAlarakAutoAttackDamage">
+        <EffectArray Reference="Effect,JinaraCoopDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,JinaraCoopLightningDamage,Amount" Value="1"/>
     </CUpgrade>
     <CUpgrade id="MasteryHornerBomberRadius">
         <EffectArray Reference="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius" Value="0.04"/>

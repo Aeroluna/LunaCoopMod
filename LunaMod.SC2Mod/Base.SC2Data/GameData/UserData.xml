@@ -23,6 +23,28 @@
                 <Field Id="Unit Types"/>
             </Unit>
         </Instances>
+        <Instances Id="Ji&apos;nara">
+            <Image>
+                <Field Id="Dead Hero Icon"/>
+            </Image>
+            <Image Image="Assets\Textures\btn-hero-jinara.dds">
+                <Field Id="Hero Icon"/>
+            </Image>
+            <Int Int="1">
+                <Field Id="Is Normal Protoss"/>
+            </Int>
+            <Unit Unit="JinaraCoop">
+                <Field Id="Unit Types"/>
+            </Unit>
+        </Instances>
+        <Instances Id="Ji&apos;nara Revive Beacon">
+            <Image Image="Assets\Textures\btn-unit-protoss-alarak-taldarim-respawnbase.dds">
+                <Field Id="Hero Icon"/>
+            </Image>
+            <Unit Unit="AlarakReviveBeaconJinara">
+                <Field Id="Unit Types"/>
+            </Unit>
+        </Instances>
         <Instances Id="[Override]Zeratul">
             <Int Int="1">
                 <Field Id="Is Normal Protoss"/>
@@ -451,6 +473,14 @@
                 <Field Id="HeroSound"/>
             </Sound>
             <Unit Unit="VorazunCoop">
+                <Field Id="HeroUnit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="JinaraCoop">
+            <Sound Sound="Jinara_Ready">
+                <Field Id="HeroSound"/>
+            </Sound>
+            <Unit Unit="JinaraCoop">
                 <Field Id="HeroUnit"/>
             </Unit>
         </Instances>
@@ -1362,6 +1392,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]ProtossAlarak_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeAlarakJinara">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ProtossFenix">
             <GameLink GameLink="VoicePackProtossFenix">
@@ -1380,7 +1413,13 @@
                 <Field Id="Prestige" Index="3"/>
             </User>
         </Instances>
+        <Fields index="15">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
         <Fields index="35" Count="3"/>
+        <Fields index="40">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
     </CUser>
     <CUser id="PlayerPrestige">
         <Instances Id="CommanderPrestigeSwannMoving">
@@ -1575,6 +1614,14 @@
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="KaraxStructures3">
                 <Field Id="UpgradeSupplements"/>
             </User>
+        </Instances>
+        <Instances Id="CommanderPrestigeAlarakJinara">
+            <GameLink GameLink="CommanderPrestigeAlarakJinara">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="SuppressHero"/>
+            </Int>
         </Instances>
         <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">

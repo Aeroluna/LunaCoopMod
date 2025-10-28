@@ -31,6 +31,12 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraLightningStrikes">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\BTN-Upgrade-Protoss-Alarak-SupplicantSacrifice-LightingStrike.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="30"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisField">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
@@ -301,6 +307,29 @@
         <DisableValidatorArray value="NotUnderConstruction"/>
         <DisableValidatorArray value="NotHidden"/>
         <DisableValidatorArray value="EnableSnowVisual"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraChains">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-stormchains.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="8"/>
+        <Period value="1"/>
+        <PeriodicEffect value="JinaraChainsDamage"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <DamageResponse Handled="JinaraChainsSearch">
+            <ExcludeEffectArray value="JinaraChainsDamage"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraChainsMarker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraSoulAbsorptionShadeDebuff" parent="TimedLife">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="20"/>
+        <FinalEffect value="JinaraSoulAbsorptionLM"/>
+        <RemoveValidatorArray value="NotDead"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
@@ -905,6 +934,21 @@
     <CBehaviorBuff id="SiegeTankMengskStun">
         <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraSoulAbsorption">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="1"/>
+        <PeriodicEffect value="JinaraSoulAbsorptionSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraSoulAbsorptionDebuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <DamageResponse Fatal="1" Handled="SoulAbsorptionCU">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="SuperGaryStetmannTheBestOil">
         <Alignment value="Positive"/>

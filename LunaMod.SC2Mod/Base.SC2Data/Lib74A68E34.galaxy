@@ -789,6 +789,30 @@ void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
     TriggerEnable(lib01833E95_gt_K2_StructureArmorUpgrade, true);
 }
 
+void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
+    // Variable Declarations
+    unit lv_alarak;
+    point lv_spawnPoint;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    UserDataSetText("PlayerCommanders", "ProtossAlarak", "HeroReviveMessages", 1, StringExternal("Param/Value/lib_74A68E34_221B6613"));
+    UserDataSetText("PlayerCommanders", "ProtossAlarak", "HeroReviveMessages", 2, StringExternal("Param/Value/lib_74A68E34_74181A69"));
+    UserDataSetText("PlayerCommanders", "ProtossAlarak", "HeroReviveMessages", 3, StringExternal("Param/Value/lib_74A68E34_E2513EF5"));
+    UserDataSetText("PlayerCommanders", "ProtossAlarak", "HeroReviveMessages", 4, StringExternal("Param/Value/lib_74A68E34_DE5FF9F5"));
+    UserDataSetGameLink("PlayerCommanders", "ProtossAlarak", "HeroReviveUnit", 1, "AlarakReviveBeaconJinara");
+    lv_spawnPoint = UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lp_player));
+    UnitCreate(1, "JinaraCoop", 0, lp_player, lv_spawnPoint, 270.0);
+    libCOMI_gv_cM_HeroUnit[lp_player] = UnitLastCreated();
+    UnitGroupAdd(libCOMI_gv_cM_HeroUnitsOfAllCommanders, UnitLastCreated());
+    libCOUI_gf_SetHeroPanelUnit(1, UnitLastCreated(), lp_player);
+    UnitBehaviorAdd(libCOMI_gv_cM_HeroUnit[lp_player], "ZergGenericDeath", libCOMI_gv_cM_HeroUnit[lp_player], 1);
+    UnitSetPosition(libCOMI_gv_cM_HeroUnit[lp_player], Point(0.0, 0.0), false);
+    UnitKill(libCOMI_gv_cM_HeroUnit[lp_player]);
+}
+
 void lib74A68E34_gf_TychusHeroTechInit (int lp_player) {
     // Variable Declarations
     int lv_i;
@@ -3169,6 +3193,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
         }
         else if (auto560DABDD_val == "ProtossAlarak") {
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAlarakJinara", c_techCountCompleteOnly) == 1)) {
+                lib74A68E34_gf_AlarakPrestigeJinaraSpawn(lv_player);
+                TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch, true);
+                TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, true);
+            }
+
             TriggerEnable(lib74A68E34_gt_AlarakArchonSacrificeScale, true);
             TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale, true);
             TriggerEnable(lib74A68E34_gt_AlarakArchonResurgenceCleanUp, true);
@@ -4497,6 +4527,66 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func");
     TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPrestigeJinaraSoulAbsorptionLaunch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_missile;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_missile = EventPlayerEffectUsedUnit(c_effectUnitSource);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetCustomValue(lv_missile, 63, UnitGetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitTarget), 63));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init () {
+    lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch, c_playerAny, "JinaraSoulAbsorptionLaunchDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPrestigeJinaraShadeHealth
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_source;
+    unit lv_target;
+    fixed lv_vitality;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_source = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_vitality = UnitTypeGetProperty(UnitGetType(lv_source), c_unitPropVitality);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetCustomValue(lv_target, 63, (UnitTypeGetProperty(UnitGetType(lv_source), c_unitPropSuppliesUsed) * libCOMI_gv_cM_Alarak_SoulAbsorption_FoodFactor));
+    UnitSetPropertyFixed(lv_target, c_unitPropLifeMax, (lv_vitality * 0.5));
+    UnitSetPropertyFixed(lv_target, c_unitPropShieldsMax, (lv_vitality * 0.5));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init () {
+    lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, c_playerAny, "JinaraSoulAbsorptionTimedLife");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6128,6 +6218,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
+    lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
+    lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
     lib74A68E34_gt_AlarakArchonSacrificeScale_Init();
     lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Init();
     lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init();

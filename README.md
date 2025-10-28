@@ -874,6 +874,39 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 
 ## Alarak
 
+- Added P4: First Ascendant
+  - Advantage: Ji'nara is available as a hero.
+    - Passive: Soul Resurrection
+      - When a nearby unit dies, Ji'nara converts its soul into a Soul Shade that lasts 20 seconds.
+      - Soul Shades act as Supplicant equivalents.
+      - Upon dying, the Soul Shade heals Ji'nara for 20 life and 20 shields per the original unit's supply.
+      - Ji'nara steals life from nearby units you control to heal herself when she is near death. This ability has no cooldown.
+    - Passive: Forked Lightning
+      - When Ji'nara sacrifices a Supplicant or Soul Shade, her next basic attack will deal weapon damage + 30 to 4 enemy units.
+    - Q: Chaotic Torrent (100 energy)
+      - Unleash a torrent of chaos, dealing 60 damage to enemy units in the target area.
+    - W: Chains of Wrath (100 energy)
+      - Launch chains at a target enemy unit, slowing their attack and movement speed by 50% for 8 seconds.
+      - While chained, enemies will take up to 80 damage.
+      - Upon taking damage, chained targets will launch additional chains at nearby enemies.
+    - E: Ritual Sacrifice
+      - Sacrifices a Supplicant or Soul Shade to fully restore Ji'nara's energy.
+      - Can only target Supplicants or Soul Shades.
+      - No cooldown.
+    - R: Empower Me (100 seconds)
+      - Ji'nara gains increased attack and ability damage for each nearby friendly unit.
+      - Alarak's Mechanical units grant her double the power.
+      - This effect lasts for 20 seconds.
+    - Upgrade: Imposing Presence
+      - Ji'naras attacks stun enemy units for 2 seconds.
+      - Massive units are slowed.
+    - Upgrade: Weight of Sin
+      - Wrath of Chains slow increased by 50%.
+      - Wrath of Chains suppresses energy-based ability usage.
+  - Disadvantage: Alarak is unavailable.
+
+Replaces Alarak with Ji'nara, a hero who focuses on Sacrifice usage to continue fueling spells. Ji'naras Soul Shade passive allows her to sustain Sacrifice usage during fights and can also benefit Ascendants. Honestly, this hero just exists because I though it would be cool to add Ji'nara as an Adept hero.
+
 - Added Void Archon, merged from two Ascendants.
   - Can use Maelstrom ability for 50 energy.
     - Stuns enemies in an area for 8 seconds.
@@ -917,6 +950,10 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
   - Warp in Destroyer charges max reduced by 50%.
 
 Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that end up doing 0.5 damage to a Zergling that has +1 armor. Reducing the amount of active Destroyers but making them more impactful should better match the visual intensity of their bouncing attack.
+
+- Buffed Alarak's Soul Absorption passive to additionally proc when friendly units die.
+
+Friendly units shouldn't be dying anyways, so why not get some value when it happens?
 
 - Buffed Havoc's Force Field ability to no longer be shattered by massive units.
 - Buffed Havoc's Force Field ability to start with 3 charges.
@@ -1746,5 +1783,7 @@ yeah.
 - ProtossBuildRed2345.m3 (It didnt have an actual release, give me a break!) - ordinator
 - Red Tal'darim Air Units Warp In Effects & Placements - DaveSpectre
 - Red Tal'darim Warp In Stargate Effects (+ Robotics facility Warp Ins) - DaveSpectre
+- Tal'darim Stalker (Slayer) blink model. - DaveSpectre
+- Tal'darim Heroes Extras - DaveSpectre
 
 DaveSpectre is the goat <3

@@ -6,6 +6,10 @@
         <Value value="HaveAdeptPiercingAttack"/>
         <WhichPlayer Value="Caster"/>
     </CValidatorPlayerRequirement>
+    <CValidatorLocationEnumArea id="AlarakTheStrongestSurviveDeathPreventValidator">
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,MapBoss"/>
+        <AreaArray index="0" Validator="TargetIsNotUnstoppable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="AutoSiegeTankSiege">
         <CombineArray value="SiegeTankMinRangeHostileSearchEmpty"/>
     </CValidatorCombine>
@@ -24,6 +28,10 @@
         <Range value="3"/>
         <Unit value="Battlecruiser"/>
     </CValidatorLocationPlacement>
+    <CValidatorUnitType id="CasterIsVoidArchon">
+        <WhichUnit Value="Caster"/>
+        <Value value="VoidArchon"/>
+    </CValidatorUnitType>
     <CValidatorUnitType id="CasterIsNotHatchery">
         <WhichUnit Value="Caster"/>
         <Value value="Hatchery"/>
@@ -65,11 +73,50 @@
         <Find value="1"/>
         <Value value="CommanderPrestigeKaraxUnitChrono"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="HaveJinaraLightningStrikesBehavior">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="JinaraLightningStrikes"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsAlarakHero">
+        <CombineArray value="IsAlarakCoop"/>
+        <CombineArray value="IsJinaraCoop"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsJinaraCoop">
+        <Value value="JinaraCoop"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsJinaraCoopShade">
+        <Value value="JinaraCoopShade"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="IsStructureAndNotCommanderPrestigeKaraxUnitChrono">
         <Type value="And"/>
         <CombineArray value="IsStructure"/>
         <CombineArray value="NoCommanderPrestigeKaraxUnitChrono"/>
     </CValidatorCombine>
+    <CValidatorUnitType id="CasterIsSupplicant">
+        <WhichUnit Value="Caster"/>
+        <ResultNoUnit value="CantTargetThatUnit,Error/NeedSupplicant"/>
+        <Value value="Supplicant"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="IsSupplicantLike">
+        <CombineArray value="IsSupplicant"/>
+        <CombineArray value="IsJinaraCoopShade"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NoJinaraChainsMarker">
+        <Behavior value="JinaraChainsMarker"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="OnDeathAlarakTheStrongestSurvive">
+        <CombineArray index="0" value="IsAlarakHero"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SourceIsAlarakHero">
+        <CombineArray value="SourceIsAlarakCoop"/>
+        <CombineArray value="SourceIsJinaraCoop"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="SourceIsJinaraCoop">
+        <WhichUnit Value="Source"/>
+        <Value value="JinaraCoop"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="StructureCheckCommanderPrestigeKaraxUnitChrono">
         <ResultFailed value="MustTargetStructures"/>
         <CombineArray value="IsNotStructureAndCommanderPrestigeKaraxUnitChrono"/>

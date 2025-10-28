@@ -45,21 +45,198 @@
     <CEffectApplyBehavior id="AlarakACDeadlyChargeFinish">
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AlarakLightningStrikesAB">
+        <ValidatorArray index="0" removed="1"/>
+        <ValidatorArray index="1" removed="1"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="AlarakLightningStrikesSwitch">
+        <ValidatorArray value="HaveAlarakLightningStrikes"/>
+        <ValidatorArray value="IsSupplicantLike"/>
+        <CaseArray Validator="IsCasterAlarakCoop" Effect="AlarakLightningStrikesAB"/>
+        <CaseDefault value="JinaraLightningStrikesAB"/>
+    </CEffectSwitch>
+    <CEffectDamage id="AscendantSacrificeKillSupplicant">
+        <Flags index="Kill" value="0"/>
+        <Flags index="NoKillCredit" value="0"/>
+        <VitalFractionCurrent index="Life" value="2"/>
+        <VitalFractionCurrent index="Shields" value="2"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="AscendantSacrificeSearch">
+        <TargetSorts>
+            <SortArray value="HighestUnitLevel"/>
+            <SortArray value="TSJinaraCoopShadeDuration"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectDamage id="JinaraCoopLightningDamage">
+        <EditorCategories value=""/>
+        <Amount value="60"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="JinaraCoopLightningSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Arc="59.9963" Radius="8" Effect="JinaraCoopLightningSet"/>
+        <MaxCount value="3"/>
+    </CEffectEnumArea>
+    <CEffectSet id="JinaraCoopLightningSet">
+        <EffectArray value="JinaraCoopLightningDamage"/>
+        <EffectArray value="AlarakBaneBladesDamageSlow"/>
+        <EffectArray value="AlarakBaneBladesDamageStun"/>
+    </CEffectSet>
+    <CEffectSet id="JinaraCoopLightningInitSet">
+        <EffectArray value="JinaraCoopLightningSearch"/>
+        <EffectArray value="JinaraCoopLightningSet"/>
+        <EffectArray value="JinaraLightningStrikesRB"/>
+    </CEffectSet>
+    <CEffectSet id="JinaraCoopSet">
+        <EditorCategories value=""/>
+        <EffectArray value="JinaraCoopDamage"/>
+        <EffectArray value="AlarakBaneBladesDamageSlow"/>
+        <EffectArray value="AlarakBaneBladesDamageStun"/>
+    </CEffectSet>
+    <CEffectSwitch id="JinaraCoopSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="HaveJinaraLightningStrikesBehavior" Effect="JinaraCoopLightningInitSet"/>
+        <CaseDefault value="JinaraCoopLM"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="JinaraLightningStrikesAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="JinaraLightningStrikes"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AlarakLightningStrikesSacrificeAB">
-        <ValidatorArray index="0" value="HaveAlarakLightningStrikes"/>
-        <ValidatorArray value="IsAlarakCoop"/>
+        <ValidatorArray index="0" value="IsAlarakCoop"/>
         <Behavior value="AlarakLightningStrikes"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="AlarakLightningStrikesApplySearch">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,Missile,Item,Dead,Hidden"/>
-        <AreaArray Radius="15" Effect="AlarakLightningStrikesSacrificeAB"/>
+        <AreaArray Radius="15" Effect="AlarakLightningStrikesApplySet"/>
         <MinCount value="1"/>
         <MaxCount value="1"/>
+        <IncludeArray/>
     </CEffectEnumArea>
+    <CEffectSet id="AlarakLightningStrikesApplySet">
+        <EffectArray value="AlarakLightningStrikesSacrificeAB"/>
+        <EffectArray value="JinaraLightningStrikesSacrificeAB"/>
+        <ValidatorArray value="HaveAlarakLightningStrikes"/>
+        <ValidatorArray value="IsAlarakHero"/>
+    </CEffectSet>
     <CEffectSet id="AlarakMothershipMassRecallPrepare">
         <EffectArray value="MothershipMassRecallCastingAB"/>
     </CEffectSet>
+    <CEffectSet id="AlarakTheStrongestSurviveSearchImpact">
+        <EffectArray index="3" value="AlarakLightningStrikesSwitch"/>
+        <ValidatorArray index="0" value="TargetIsNotUnstoppable"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Banshee_BlackOpsAirstrikeSearch">
+        <ImpactLocation Effect="Banshee_BlackOpsAirstrikeSet" Value="TargetPoint"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="JinaraBarrageCP">
+        <EditorCategories value=""/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="8"/>
+        <PeriodicEffectArray value="JinaraBarrageOffset"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <InitialDelay value="0.15"/>
+        <PeriodicOffsetArray value="0,0,0.25"/>
+        <PeriodicOffsetArray value="0,0,0.5"/>
+        <PeriodicOffsetArray value="0,0,0.75"/>
+        <PeriodicOffsetArray value="0,0,1"/>
+        <PeriodicOffsetArray value="0,0,1.25"/>
+        <PeriodicOffsetArray value="0,0,1.5"/>
+        <PeriodicOffsetArray value="0,0,1.75"/>
+        <PeriodicOffsetArray value="0,0,2"/>
+        <Flags index="RandomOffset" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="JinaraBarrageDamage">
+        <EditorCategories value=""/>
+        <Amount value="7.5"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="JinaraBarrageLM">
+        <EditorCategories value=""/>
+        <ImpactEffect value="JinaraBarrageSearch"/>
+        <AmmoUnit value="JinaraBarrageWeapon"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <Movers Link="LiberatorMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectRandomPointInCircle id="JinaraBarrageOffset">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="JinaraBarrageLM"/>
+        <Radius value="2.5"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="JinaraBarrageSearch">
+        <EditorCategories value=""/>
+        <AreaArray Radius="3" Effect="JinaraBarrageDamage"/>
+        <ImpactLocation Effect="JinaraBarrageCP" Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="JinaraChainsAB">
+        <EditorCategories value=""/>
+        <Behavior value="JinaraChains"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="JinaraChainsCU">
+        <EditorCategories value=""/>
+        <WhichLocation Value="CasterUnit"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="JinaraChainsOrder"/>
+        <SpawnUnit value="JinaraChainsDummy"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="JinaraChainsDamage">
+        <EditorCategories value=""/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <Amount value="10"/>
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="JinaraChainsLM">
+        <EditorCategories value=""/>
+        <ImpactEffect value="JinaraChainsAB"/>
+        <AmmoUnit value="JinaraChainsWeapon"/>
+        <Movers Link="MissileDefault"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="JinaraChainsMarkerAB">
+        <EditorCategories value=""/>
+        <Behavior value="JinaraChainsMarker"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="JinaraChainsOrder">
+        <EditorCategories value=""/>
+        <Abil value="JinaraChainsDummy"/>
+        <Target Effect="JinaraChainsCU" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="JinaraChainsSearch">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="4" Effect="JinaraChainsSet"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ExcludeArray Value="Source"/>
+    </CEffectEnumArea>
+    <CEffectSet id="JinaraChainsSet">
+        <EditorCategories value=""/>
+        <EffectArray value="JinaraChainsLM"/>
+        <EffectArray value="JinaraChainsMarkerAB"/>
+        <ValidatorArray value="NoJinaraChainsMarker"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="JinaraLightningStrikesRB">
+        <EditorCategories value=""/>
+        <BehaviorLink value="JinaraLightningStrikes"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="JinaraLightningStrikesSacrificeAB">
+        <ValidatorArray index="0" value="IsJinaraCoop"/>
+        <Behavior value="JinaraLightningStrikes"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="JinaraSoulAbsorptionLaunchDummy"/>
     <CEffectSet id="AllUnitBehaviorControllerSubset1">
         <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
     </CEffectSet>
@@ -81,14 +258,17 @@
         <Behavior value="AscendantArchonSelfBuff"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AscendantSacrificeSelfBuffSet">
-        <EffectArray index="4" value="AscendantSacrificeSelfBuffSwitch"/>
+        <EffectArray index="1" value="OnDeathControllerDeathPreventRBTarget"/>
+        <EffectArray index="4" value="AscendantSacrificeKillSupplicant"/>
+        <EffectArray value="AscendantSacrificeSelfBuffSwitch"/>
         <EffectArray value="AlarakLightningStrikesApplySearch"/>
+        <ValidatorArray index="1" value="IsSupplicantLike"/>
     </CEffectSet>
     <CEffectSwitch id="AscendantSacrificeSelfBuffSwitch">
         <ValidatorArray value="HaveHighTemplarImprovedSacrifice"/>
         <EditorCategories value="Race:Protoss"/>
         <CaseArray Validator="CasterIsAscendant" Effect="AscendantSacrificeSelfBuffAB"/>
-        <CaseDefault value="AscendantSacrificeSelfBuffArchonAB"/>
+        <CaseArray Validator="CasterIsVoidArchon" Effect="AscendantSacrificeSelfBuffArchonAB"/>
     </CEffectSwitch>
     <CEffectApplyBehavior id="CommanderPrestigeKaraxChronoTarget">
         <EditorCategories value=""/>
@@ -189,6 +369,18 @@
     <CEffectApplyBehavior id="FenixMojoScoutAirDamageStunApplyBehavior">
         <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="JinaraCoopDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="30"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="JinaraCoopLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="JinaraCoopSet"/>
+        <AmmoUnit value="FenixTalisAdeptWeapon2"/>
+        <Movers Link="JinaraCoopWeapon"/>
+    </CEffectLaunchMissile>
     <CEffectSet id="FenixThunderousChargeCoopStunSet">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
@@ -218,6 +410,10 @@
     <CEffectLaunchMissile id="HHOrdnanceTowerLM">
         <Movers Link="PunisherGrenadesWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="JinaraSoulAbsorptionTimedLife">
+        <EditorCategories value=""/>
+        <Behavior value="JinaraSoulAbsorptionShadeDebuff"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="KerriganImplosionHeroicApplyBehavior">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="KerriganImplosionHeroic"/>
@@ -251,6 +447,9 @@
     <CEffectApplyBehavior id="NovaUnitLockdownAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="OnDeathControllerDeathPreventRBTarget">
+        <BehaviorLink value="OnDeathControllerDeathPrevent"/>
+    </CEffectRemoveBehavior>
     <CEffectSet id="OrdnanceFleetwideJumpSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="OrdnanceFleetwideJumpCreatePrecursor"/>
@@ -342,6 +541,38 @@
         <EditorCategories value="Race:Zerg"/>
         <BehaviorLink value="PowerTowerDeathStetmann"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="JinaraSoulAbsorptionAB">
+        <ValidatorArray index="0" value="TargetHasFoodLT0"/>
+        <ValidatorArray value="TargetIsNotUnstoppable"/>
+        <EditorCategories value=""/>
+        <Behavior value="JinaraSoulAbsorptionDebuff"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="SoulAbsorptionCU">
+        <EditorCategories value=""/>
+        <SpawnUnit value="JinaraCoopShade"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Origin Value="SourceUnit"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="JinaraSoulAbsorptionTimedLife"/>
+    </CEffectCreateUnit>
+    <CEffectLaunchMissile id="JinaraSoulAbsorptionLM">
+        <EditorCategories value="Race:Undead"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <LaunchEffect value="JinaraSoulAbsorptionLaunchDummy"/>
+        <ImpactEffect value="SoulAbsorptionMU"/>
+        <FinishEffect value="AlarakSoulAbsorptionImpactDummy"/>
+        <AmmoUnit value="SoulAbsorptionMissle"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="SoulAbsorptionSearch">
+        <SearchFilters value="-;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="JinaraSoulAbsorptionSearch">
+        <EditorCategories value=""/>
+        <SearchFilters value="-;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="15" Effect="JinaraSoulAbsorptionAB"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="StukovAleksanderAirStunAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
@@ -2775,6 +3006,7 @@
         <EffectArray value="KerriganEnvenomedSpinesAB"/>
     </CEffectSet>
     <CEffectSwitch id="OnDeathControllerDeathPrevent">
+        <CaseArray index="3" Validator="SourceIsAlarakHero"/>
         <CaseArray Validator="OnDeathMothershipDeath" Effect="MothershipTimedLifeExpireAB"/>
     </CEffectSwitch>
     <CEffectApplyBehavior id="KerriganRazorSwarmAB">

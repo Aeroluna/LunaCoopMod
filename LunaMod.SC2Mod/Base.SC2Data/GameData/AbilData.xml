@@ -20,6 +20,14 @@
             <Charge CountMax="4" CountStart="4" TimeUse="40"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilEffectInstant id="JinaraSacrificeInstant">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Effect index="0" value="AscendantSacrificeSearch"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="JinaraSacrifice"/>
+    </CAbilEffectInstant>
     <CAbilMorph id="AssaultMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
@@ -205,6 +213,36 @@
             <Flags index="IgnorePlacement" value="1"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="JinaraBarrage">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="JinaraBarrageCP"/>
+        <Range value="8"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="JinaraBarrage"/>
+        <!--PrepTime value="0"/>
+        <CastIntroTime value="0"/>
+        <CastOutroTime value="0.4"/>
+        <UninterruptibleArray index="Channel" value="1"/-->
+        <CursorEffect value="JinaraBarrageSearch"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="JinaraChains">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="JinaraChainsCU"/>
+        <TargetFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="8"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="JinaraChains"/>
+        <Cost>
+            <Vital index="Energy" value="100"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="JinaraChainsDummy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="JinaraChainsSet"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="OrdnanceFleetwideJump">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="OrdnanceFleetwideJumpSet"/>

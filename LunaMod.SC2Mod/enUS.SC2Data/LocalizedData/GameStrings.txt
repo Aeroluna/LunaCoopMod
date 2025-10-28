@@ -5,6 +5,10 @@ Abil/Name/Enshroud=Enshroud
 Abil/Name/FenixClolarionCarrierDummyMorph=FenixClolarionCarrierDummyMorph
 Abil/Name/HHOrdnanceTowerNanoRepair=Nano Repair
 Abil/Name/HireMerc=HireMerc
+Abil/Name/JinaraBarrage=JinaraBarrage
+Abil/Name/JinaraChains=JinaraChains
+Abil/Name/JinaraChainsDummy=JinaraChainsDummy
+Abil/Name/JinaraSacrificeInstant=JinaraSacrificeInstant
 Abil/Name/KerriganImplosion=Implosion
 Abil/Name/KerriganRazorSwarm=Razor Swarm
 Abil/Name/MedicRestoration=Restoration
@@ -55,6 +59,8 @@ Behavior/Name/FenixThunderousChargeCoopSlow=Slowed
 Behavior/Name/FenixThunderousChargeCoopStun=Stunned
 Behavior/Name/GhostMengskCloakBuff=Shadow of the Dominion
 Behavior/Name/GhostMengskEMPStun=Shock and Awe
+Behavior/Name/JinaraChains=Chains of Wrath
+Behavior/Name/JinaraLightningStrikes=Forked Lightning
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosion=Implosion
 Behavior/Name/KerriganImplosionDamage=Implosion
@@ -95,6 +101,8 @@ Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneratio
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/GhostMengskSuperCloak=This unit is undetectable.
 Behavior/Tooltip/Irradiate=Irradiated unit. Enemy Biological units in or near the radiation field will take damage.
+Behavior/Tooltip/JinaraChains=This unit's attack and movement speed are slowed. If this unit takes damage, it will spread chains to more units.
+Behavior/Tooltip/JinaraLightningStrikes=Ji'naras's next basic attack deals <d ref="Effect,JinaraCoopLightningDamage,Amount"/> damage to <d ref="Effect,JinaraCoopLightningSearch,MaxCount + 1"/> enemy units.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
 Behavior/Tooltip/KerriganImplosion=This unit is stunned and about to take damage.
 Behavior/Tooltip/KerriganImplosionDamage=This unit is slowed and about to take damage.
@@ -118,7 +126,9 @@ Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Behavior/Tooltip/ZealotPurifierReviveSupressed2=This unit has been recently reconstructed and cannot be revived again.
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/Name/AegisPlating=Aegis Plating
+Button/Name/AlarakACMyLifefortheHighlord2=Eternal Servitude
 Button/Name/AlarakArchonImprovedSacrifice=Power Overwhelming
+Button/Name/AlarakDestructionWaveDistanceJinara=Weight of Sin
 Button/Name/ApolloCloakOnNova=Apollo Infantry Suit
 Button/Name/AscendantArchonSacrifice=Sacrifice
 Button/Name/BlinkChargesUpgrade=Displacement Core
@@ -126,6 +136,7 @@ Button/Name/BroodLordBrood=Morph to Primogenitor
 Button/Name/ChainReactionBrood=Psionic Cleave
 Button/Name/CommanderPrestigeAbathurSymbiote=Symbiotic Hivemind
 Button/Name/CommanderPrestigeAbathurSymbioteLocked=Symbiote
+Button/Name/CommanderPrestigeAlarakJinara=First Ascendant
 Button/Name/CommanderPrestigeArtanisWarp=Reclaimer
 Button/Name/CommanderPrestigeFenixChampion=Ascendant Chorus
 Button/Name/CommanderPrestigeKaraxUnitChrono=Chronosmith
@@ -176,6 +187,11 @@ Button/Name/HireMercViking=Hel's Angels
 Button/Name/HydraliskBrood=Morph to Hunter Killer
 Button/Name/HyperjumpInstant=Tactical Jump
 Button/Name/ImmortalShakurasShadowCannon2=Photon Reservoirs
+Button/Name/JinaraBarrage=Chaotic Torrent
+Button/Name/JinaraChains=Chains of Wrath
+Button/Name/JinaraLightningStrikes=Forked Lightning
+Button/Name/JinaraSacrifice=Ritual Sacrifice
+Button/Name/JinaraSoulAbsorption=Soul Resurrection
 Button/Name/KerriganBurialRites=Burial Rites
 Button/Name/KerriganCannibalize=Cannibalize
 Button/Name/KerriganEnvenomedSpines=Envenomed Spines
@@ -203,6 +219,7 @@ Button/Name/OrbitalDropPodsMedivacPassive=Hot Drop
 Button/Name/PlanetCrackerArtanis=Planet Cracker
 Button/Name/QueenBrood=Birth Brood Matron
 Button/Name/RepairDrones2=Hangar Expansion
+Button/Name/ResearchAlarakDestructionWaveDistanceJinara=Research Weight of Sin
 Button/Name/ResearchBlinkCharges=Research Displacement Core
 Button/Name/ResearchCarrierCapacity=Hangar Expansion
 Button/Name/ResearchEnergizerReclamation2=Research Prolonged Integration Protocols
@@ -285,10 +302,15 @@ Button/Tooltip/ACVorazunTemplarArchiveUpgraded=Contains upgrades for Signifiers 
 Button/Tooltip/ACZagaraInfestationPit=Contains upgrades for Defilers.</n></n><c val="ffff8a">Enables:</c><n/>- Defilers from Larvae
 Button/Tooltip/AbathurBrutaliskLeviathanSymbiote=Gains a Symbiote with the following abilities:<n/><n/><c val="ffff00">Stab:</c> Attacks nearby enemies for <d ref="Effect,SymbioteStabDamage,Amount"/> damage every <d ref="Abil,SymbioteStab,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Spike Burst:</c> Deals <d ref="Effect,SymbioteSpikeBurstDamage,Amount"/> damage to nearby enemies every <d ref="Abil,SymbioteSpikeBurst,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Shield:</c> Absorbs <d ref="Behavior,SymbioteCarapace,Modification.VitalMaxArray[Shields]"/> damage for the host every <d ref="Abil,SymbioteCarapace,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.
 Button/Tooltip/AegisPlating=Reduces incoming damage to a maximum of <d ref="Behavior,HellbatHardenedShell,DamageResponse.ClampMaximum"/>.
+Button/Tooltip/AlarakACMyLifefortheHighlord2=Soul Shades are the first units sacrificed to heal Ji'nara when she is near death.
 Button/Tooltip/AlarakACSummonDeathfleet=Warps in a Crimson Sovereign and <d ref="Effect,AlarakDestroyerCreationCP,PeriodCount" player="current"/> Destroyers that are controllable and will fight for <d ref="Behavior,AlarakDestroyerTimedLife,Duration"/> seconds.
 Button/Tooltip/AlarakArchonImprovedSacrifice=The Void Archon permanently gains +<d ref="Behavior,AscendantArchonSelfBuff,Modification.DamageDealtFraction[Spell]*100"/>% damage, +<d ref="Behavior,AscendantArchonSelfBuff,Modification.VitalMaxArray[Shields]"/> shields, and +<d ref="Behavior,AscendantArchonSelfBuff,Modification.ShieldArmorBonus" precision="1"/> shield armor each time it uses Sacrifice.<n/><n/>This effect stacks up to a maximum of <d ref="Behavior,AscendantArchonSelfBuff,MaxStackCount"/>.
 Button/Tooltip/AlarakArchonImprovedSacrificeCharges=<d ref="$BehaviorStackCount:AscendantArchonSelfBuff$"/>
+Button/Tooltip/AlarakAttackStunJinara=Ji'nara's attacks stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic units are slowed.</c>
+Button/Tooltip/AlarakDestructionWaveDistanceJinara=Increases Chains of Wrath slow amount by 50% and suppresses energy-based ability usage.
+Button/Tooltip/AlarakEmpowerJinara=Ji'nara gains increased attack and ability damage for each nearby friendly unit. Alarak's Mechanical units grant her double the power. This effect lasts for <d ref="Behavior,AlarakEmpowerCaster,Duration" precision="1"/> seconds.
 Button/Tooltip/AlarakHavocAbilityRange=Increases the radius of Squad Sight and the range of Target Lock and Subjugation Field.
+Button/Tooltip/AlarakReviveBeaconJinara=Ji'nara will warp in at this beacon's location.
 Button/Tooltip/ApolloCloakOnNova=Cloaks Nova for <d ref="Behavior,NovaApolloCloak,Duration"/> seconds, preventing enemy units from seeing or attacking her. A cloaked unit will only be revealed by detectors or effects.</n></n>Passively increases max energy by +100 and slightly increases movement speed.
 Button/Tooltip/AresClassWeaponsSystemviking=Increases air attack range by 2 and ground attack range by 1. Allows Vikings to transform quickly between combat modes.
 Button/Tooltip/AscendantArchonSacrifice=Sacrifices a Supplicant to fully restore the Void Archon's energy.<n/><n/><c val="#ColorAttackInfo">Can only target Supplicants.</c>
@@ -304,6 +326,7 @@ Button/Tooltip/CommanderPrestigeAbathurSymbiote=<s val="Coop_Prestige_Advantage"
 Button/Tooltip/CommanderPrestigeAbathurSymbioteCreate=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Can create on any friendly unit.
 Button/Tooltip/CommanderPrestigeAbathurSymbioteLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/CommanderPrestigeAlarakDeathFleet=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Summon Death Fleet has no duration or initial cooldown. The Crimson Sovereign may construct Destroyers.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Destroyers are no longer summoned with the Crimson Sovereign. The Crimson Sovereign and Destroyers have resource and supply costs. Mass Teleport now has a 60 second cooldown and no longer teleports allied units.
+Button/Tooltip/CommanderPrestigeAlarakJinara=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Ji'nara is available as a hero.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Alarak is unavailable.
 Button/Tooltip/CommanderPrestigeArtanisCombatAbilities=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Increase the effectiveness of all active combat unit abilities by 100%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units cost 30% more minerals.
 Button/Tooltip/CommanderPrestigeArtanisWarp=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Warped-in combat unit cost reduced by 40%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Warped-in combat units are recalled after 60 seconds, refunding 50% of their cost.
 Button/Tooltip/CommanderPrestigeFenixChampion=<s val="Coop_Prestige_Advantage">Advantage</s><n/>The number of Champion A.I.s is no longer limited.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>All combat unit costs increased by 100%. Avenging Protocol is unavailable.
@@ -410,6 +433,13 @@ Button/Tooltip/HireMercVikingCharges=<d ref="$BehaviorStackCount:HireMercViking$
 Button/Tooltip/Hyperjump=After <d time="6"/>, warps to the target location. Battlecruiser is invulnerable while warping.<n/><n/><c val="#ColorAttackInfo">Does not require vision.</c>
 Button/Tooltip/HyperjumpInstant=Warps to the target location. Battlecruiser is invulnerable while warping.
 Button/Tooltip/ImmortalShakurasShadowCannon2=Shadow Cannon gains an additional charge.
+Button/Tooltip/JinaraBarrage=Unleash a torrent of chaos, dealing <d ref="Effect,JinaraBarrageDamage,Amount*Effect,JinaraBarrageCP,PeriodCount"/> damage to enemy units in the target area.
+Button/Tooltip/JinaraChains=Launch chains at a target enemy unit, slowing their attack and movement speed by <d ref="(1-Behavior,JinaraChains,Modification.AttackSpeedMultiplier)*100"/>% for <d ref="Behavior,JinaraChains,Duration"/> seconds. While chained, enemies will take up to <d ref="Effect,JinaraChainsDamage,Amount*(Behavior,JinaraChains,Duration/Behavior,JinaraChains,PeriodicPeriodArray[0])"/> damage.<n/><n/>Upon taking damage, chained targets will launch additional chains at nearby enemies.
+Button/Tooltip/JinaraCoop=First Ascendant of the Tal'darim. Powerful psionic ranged specialist.
+Button/Tooltip/JinaraCoopShade=Resurrected short range warrior. Sacrifices itself to heal Ji'nara when she is near death.<n/></n><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/JinaraLightningStrikes=When Ji'nara sacrifices a Supplicant or Soul Shade, her next basic attack will deal <d ref="Effect,JinaraCoopLightningDamage,Amount"/> damage to <d ref="Effect,JinaraCoopLightningSearch,MaxCount + 1"/> enemy units.
+Button/Tooltip/JinaraSacrifice=Sacrifices a Supplicant or Soul Shade to fully restore Ji'nara's energy.<n/><n/><c val="#ColorAttackInfo">Can only target Supplicants or Soul Shades.</c>
+Button/Tooltip/JinaraSoulAbsorption=When a nearby unit dies, Ji'nara converts its soul into a Soul Shade that lasts <d ref="Behavior,JinaraSoulAbsorptionShadeDebuff,Duration"/> seconds. Upon dying, the Soul Shade heals Ji'nara for 20 life and 20 shields per the original unit's supply.<n/><n/>Ji'nara steals life from nearby units you control to heal herself when she is near death. This ability has no cooldown.
 Button/Tooltip/KerriganBurialRites=Increases the radius and size of each spine by 50%.
 Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 hitpoints.
 Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d ref="Behavior,KerriganEnvenomedSpines,Duration"/> seconds, dealing <d ref="Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second. This effect stacks up to <d ref="Behavior,KerriganEnvenomedSpines,MaxStackCount"/> times.
@@ -457,6 +487,8 @@ Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
 Button/Tooltip/Reaper=Raider. Can jump up and down cliffs. Regenerates life quickly while out of combat. Can use KD8 Charge.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/RepairDrones=Repair drones automatically heal friendly mechanical units near the Carrier.
 Button/Tooltip/RepairDrones2=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
+Button/Tooltip/ResearchAlarakAttackStunJinara=Allows <c val="ffff8a">Ji'nara's</c> attacks to stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic units are slowed.</c>
+Button/Tooltip/ResearchAlarakDestructionWaveDistanceJinara=Increases the slow of <c val="ffff8a">Ji'nara's</c> Chains of Wrath by 50% and suppresses energy-based ability usage.
 Button/Tooltip/ResearchAlarakHavocAbilityRange=Increases the radius of the <c val="ffff8a">Havoc's</c> Squad Sight and the range of Target Lock and Subjugation Field.
 Button/Tooltip/ResearchAlarakHighTemplarImprovedSacrifice=<c val="ffff8a">Ascendants</c> and <c val="ffff8a">Void Archons</c> permanently gain damage and shields each time they use Sacrifice.
 Button/Tooltip/ResearchAutoCreateInfestedCivilianAmmo=<c val="ffff8a">Infested Siege Tanks</c> automatically spawn 1 round of Volatile Biomass every <d ref="Behavior,InfestedSiegeTankAmmoAuto,Period"/> seconds.
@@ -519,6 +551,7 @@ Button/Tooltip/SalvageStetmann=Salvages the Stetellite, removing it and returnin
 Button/Tooltip/SentryTaldarimForceField=Creates a solid barrier that lasts for <d ref="Behavior,ForceFieldFate,Duration"/> seconds and impedes movement of ground units.<n/><n/><c val="#ColorAttackInfo">Subjugation Fields cannot be shattered.</c>
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Ignores unit collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
+Button/Tooltip/SoulAbsorption=When a nearby unit dies, Alarak heals himself for 20 life and 20 shields per the unit's supply.<n/><n/>Alarak steals life from nearby units you control to heal himself when he is near death. This ability has no cooldown.
 Button/Tooltip/StabilizerMedPacksMedivac=Increases the Medivac's healing speed and allows them to heal mechanical units. Units being healed by Medivacs take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/StalkerBlinkMultiple=Teleports the Instigator to a nearby target location. Ability regains a charge every <d ref="Abil,BlinkMultiple,Cost[0].Charge.TimeUse"/> seconds. Can store a maximum of 3 charges.
 Button/Tooltip/StalkerPurifier=Ranged support strider. Can store multiple Blink charges.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -570,6 +603,8 @@ DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/Name=LunaMod
 Effect/Name/AdeptPurifierDamage=Damage
 Effect/Name/AdeptPurifierLM=LM
+Effect/Name/AlarakLightningStrikesApplySet=AlarakLightningStrikesApplySet
+Effect/Name/AlarakLightningStrikesSwitch=AlarakLightningStrikesSwitch
 Effect/Name/AscendantSacrificeSelfBuffArchonAB=AscendantSacrificeSelfBuffArchonAB
 Effect/Name/AscendantSacrificeSelfBuffSwitch=AscendantSacrificeSelfBuffSwitch
 Effect/Name/BanelingDontExplodeSource=Suicide (Source) (Remove Buff)
@@ -617,6 +652,35 @@ Effect/Name/HireMercMarine2=HireMercMarine
 Effect/Name/HireMercMedic=HireMercMedic
 Effect/Name/HireMercSiegeTank=HireMercSiegeTank
 Effect/Name/HireMercViking=HireMercViking
+Effect/Name/JinaraBarrageCP=JinaraBarrageCP
+Effect/Name/JinaraBarrageDamage=JinaraBarrageDamage
+Effect/Name/JinaraBarrageLM=JinaraBarrageLM
+Effect/Name/JinaraBarrageOffset=JinaraBarrageOffset
+Effect/Name/JinaraBarrageSearch=JinaraBarrageSearch
+Effect/Name/JinaraChainsAB=JinaraChainsAB
+Effect/Name/JinaraChainsCU=JinaraChainsCU
+Effect/Name/JinaraChainsDamage=JinaraChainsDamage
+Effect/Name/JinaraChainsLM=JinaraChainsLM
+Effect/Name/JinaraChainsMarkerAB=JinaraChainsMarkerAB
+Effect/Name/JinaraChainsOrder=JinaraChainsOrder
+Effect/Name/JinaraChainsSearch=JinaraChainsSearch
+Effect/Name/JinaraChainsSet=JinaraChainsSet
+Effect/Name/JinaraCoopDamage=JinaraCoopDamage
+Effect/Name/JinaraCoopLM=JinaraCoopLM
+Effect/Name/JinaraCoopLightningDamage=JinaraCoopLightningDamage
+Effect/Name/JinaraCoopLightningInitSet=JinaraCoopLightningInitSet
+Effect/Name/JinaraCoopLightningSearch=JinaraCoopLightningSearch
+Effect/Name/JinaraCoopLightningSet=JinaraCoopLightningSet
+Effect/Name/JinaraCoopSet=JinaraCoopSet
+Effect/Name/JinaraCoopSwitch=JinaraCoopSwitch
+Effect/Name/JinaraLightningStrikesAB=JinaraLightningStrikesAB
+Effect/Name/JinaraLightningStrikesRB=JinaraLightningStrikesRB
+Effect/Name/JinaraLightningStrikesSacrificeAB=JinaraLightningStrikesSacrificeAB
+Effect/Name/JinaraSoulAbsorptionAB=Soul Absorption AB
+Effect/Name/JinaraSoulAbsorptionLM=Soul Absorption LM
+Effect/Name/JinaraSoulAbsorptionLaunchDummy=Soul Absorption Launch Dummy
+Effect/Name/JinaraSoulAbsorptionSearch=Soul Absorption Search
+Effect/Name/JinaraSoulAbsorptionTimedLife=Soul Absorption Timed Life
 Effect/Name/KaraxBlinkInitialPersistent=Karax Blink Initial Persistent
 Effect/Name/KaraxBlinkIssueOrder=Karax Blink Issue Order
 Effect/Name/KerriganBroodPsiBlastDamage=Psi Blast (Damage)
@@ -673,6 +737,7 @@ Effect/Name/MothershipTimedLifeExpireAB=Mothership Timed Life Expire AB
 Effect/Name/MovingLockOnIssueOrder=Moving Lock On Issue Order
 Effect/Name/MovingLockOnSearch=Moving Lock On Search
 Effect/Name/NovaGriffinTransportUnloadUnitsSet=NovaGriffinTransportUnloadUnitsSet
+Effect/Name/OnDeathControllerDeathPreventRBTarget=OnDeathControllerDeathPreventRBTarget
 Effect/Name/OracleStasisTrapBuildDeceleration=Oracle Stasis Ward Build Deceleration
 Effect/Name/OracleStasisTrapBuildStartSet=Oracle Stasis Ward Build Start Set
 Effect/Name/PrestigeCreateSymbioteAB=PrestigeCreateSymbioteAB
@@ -744,6 +809,7 @@ Effect/Name/SOARecallOnDeathCleanseRB=SOARecall On Death Cleanse RB
 Effect/Name/SeekerMissileLaunchRestoreCheck=Seeker Missile Launch Restore Check
 Effect/Name/SiegeBreakerUnsiegeOrder=SiegeBreakerUnsiegeOrder
 Effect/Name/SignifierFade=Fade (Apply Buff)
+Effect/Name/SoulAbsorptionCU=Soul Absorption CU
 Effect/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Stukov Infested Civilian Spawn Broodling Flying On Death
 Effect/Name/StukovSIBunkerCDRDummy=StukovSIBunkerCDRDummy
 Effect/Name/SwarmLocusBanelingCP=Swarm Locus Baneling CP
@@ -837,12 +903,16 @@ Param/Value/lib_01833E95_4CBC5204=► Hello world!
 Param/Value/lib_74A68E34_06BC5908=Placement unit not found, falling back to spawn point based on player start!
 Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
 Param/Value/lib_74A68E34_10B8F288=<c val="FF0000">player 2 is playing!</c>
+Param/Value/lib_74A68E34_221B6613=<c val="FF9800">Ji'nara has been revived at your Nexus.</c>
 Param/Value/lib_74A68E34_57C032DF=<c val="FF8000">Ally control acquired</c>
+Param/Value/lib_74A68E34_74181A69=<c val="FF9800">Ji'nara is ready for battle.</c>
 Param/Value/lib_74A68E34_770DBAA1=Switch Outlaws
 Param/Value/lib_74A68E34_B71F489D=+0
 Param/Value/lib_74A68E34_C80C6639=<c val="FF8000">Ally control lost</c>
 Param/Value/lib_74A68E34_CD6B2610=+Retry
 Param/Value/lib_74A68E34_D3F4D90E=<c val="FF0000">Damage caching overflow</c>
+Param/Value/lib_74A68E34_DE5FF9F5=<c val="FF9800">Ji'nara has died. She will be revived at the Nexus in %dur% seconds.</c>
+Param/Value/lib_74A68E34_E2513EF5=<c val="FF9800">Ji'nara has died. You must warp in a Nexus to revive her.</c>
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
 RequirementNode/Tooltip/CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992=Construction complete
 RequirementNode/Tooltip/CountUpgradeBansheeCloakCompleteOnly758801471TechTreeCheat=Research Cloaking Field at the Starport Tech Lab
@@ -886,11 +956,13 @@ Skin/Name/KerriganBroodCoop=KerriganBroodCoop
 Skin/Name/KerriganPrestigeBroodCoop=KerriganPrestigeBroodCoop
 Skin/Name/VorazunCoop=VorazunCoop
 Unit/Category/ProtossNerazim=Protoss - Nerazim
+Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor
 Unit/Name/BroodlingBrood=Scion
 Unit/Name/CreepTumorQueenNoCreep=Creep Tumor
 Unit/Name/DisruptorPhased=Purifier Orb
 Unit/Name/FenixCarrierMorphDummy=CarrierMorphDummy
+Unit/Name/FenixTalisAdeptWeapon2=JinaraCoopWeapon
 Unit/Name/ForceFieldTaldarim=Force Field
 Unit/Name/HHOrdnanceTower=Ordnance Tower
 Unit/Name/HHOrdnanceTowerConstruction=Ordnance Tower
@@ -907,6 +979,11 @@ Unit/Name/HireMercMedic=HireMercMedic
 Unit/Name/HireMercSiegeTank=HireMercSiegeTank
 Unit/Name/HireMercViking=HireMercViking
 Unit/Name/HydraliskBrood=Hunter Killer
+Unit/Name/Jinara=Ji'nara
+Unit/Name/JinaraBarrageWeapon=JinaraBarrageWeapon
+Unit/Name/JinaraChainsWeapon=JinaraChainsWeapon
+Unit/Name/JinaraCoop=Ji'nara
+Unit/Name/JinaraCoopShade=Soul Shade
 Unit/Name/KerriganBroodWeapon=Psi Blast
 Unit/Name/LurkerBrood=Grave Splitter
 Unit/Name/MothershipArtanis=Mothership
@@ -938,7 +1015,9 @@ Unit/Name/VorazunCoopReviveBeacon=Vorazun's Beacon
 Unit/Name/ZerglingBrood=Devouring One
 Unit/ShieldArmorName/MarauderMengskShield=Aegis Barrier
 Unit/ShieldArmorName/ScatterVeil=Scatter Veil
+UnitKillRank/Jinara=First Ascendant
 UnitKillRank/Vorazun=Matriarch
+Upgrade/Name/CommanderPrestigeAlarakJinara=CommanderPrestigeAlarakJinara
 Upgrade/Name/CommanderPrestigeKaraxChrono=CommanderPrestigeKaraxUnitChrono
 Upgrade/Name/CommanderPrestigeKaraxStructuresShared=CommanderPrestigeKaraxStructuresShared
 Upgrade/Name/CommanderPrestigeKaraxUnitChronoShared=CommanderPrestigeKaraxUnitChronoShared
@@ -1015,6 +1094,7 @@ Weapon/Name/HellionTankMoving=Napalm Spray
 Weapon/Name/HyperionVoidCoopDummy=ATX Laser Battery
 Weapon/Name/InfestedAcidSpines=Infested Rockets
 Weapon/Name/JavelinMissileLaunchersMoving=Javelin Missile LaunchersMoving
+Weapon/Name/JinaraCoop=Terminator Glaive Cannon
 Weapon/Name/KerriganBroodPsiBlast=Psi Blast
 Weapon/Name/KerriganBroodRazorTalons=Razor Talons
 Weapon/Name/LanceMissileLaunchers=250mm Punisher Cannons

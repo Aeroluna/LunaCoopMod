@@ -12,6 +12,82 @@
     <CModel id="AdeptWarpIn">
         <Model value="Assets\Effects\Protoss\Adept_WarpIn\Adept_WarpIn.m3"/>
     </CModel>
+    <CModel id="JinaraBarrageWeaponLaunch" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\AdeptSoulMissileImpact\AdeptSoulMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="Jinara_COOP_RespawnBase" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Jinara_Adept\Jinara_Adept_RespawnBase.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AlarakReviveBeacon_RingExplosion2"/>
+            <Type value="Sound"/>
+            <Time value="0.125000"/>
+            <Payload value="AlarakReviveBeacon_RingExplosion2"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AlarakReviveBeacon_RingExplosion"/>
+            <Type value="Sound"/>
+            <Time value="3.998000"/>
+            <Payload value="AlarakReviveBeacon_RingExplosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="AlarakReviveBeacon_NearCompletion"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+            <Payload value="AlarakReviveBeacon_NearCompletion"/>
+        </Events>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="JinaraBarrageWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_AgonizingBlast\HighTemplarTaldarim_AgonizingBlast.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="JinaraChainsWeaponImpact" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Storm_Chain\storm_fx_kelthuzad_base_chain_impact_b.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="JinaraChainsWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\Storm_Chain\storm_fx_kelthuzad_base_chain_missile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+    </CModel>
+    <CModel id="JinaraBarrageWeaponImpact" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\ColossusTaldarim_Beam_Impact\ColossusTaldarim_Beam_Impact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="JinaraChainsModel">
+        <Model value="Assets\Effects\Protoss\Storm_Chain\storm_fx_kelthuzad_base_chain_impact.m3"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+    </CModel>
+    <CModel id="Jinara_COOP_Death" parent="AdeptDeathBase">
+        <Model value="Assets\Units\Protoss\Jinara_Adept\Jinara_Adept_Death.m3"/>
+    </CModel>
+    <CModel id="Jinara_COOP" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Protoss\Jinara_Adept\Jinara_Adept.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraHigher09"/>
+        <Radius value="0.675000"/>
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+        <ShadowRadius value="1.093700"/>
+        <TechPurchaseCamera value="Star2CameraHigher09"/>
+        <UnitGlossaryCamera value="Star2CameraHigher09"/>
+    </CModel>
+    <CModel id="Alarak_COOP_RespawnBase">
+        <Model value="Assets\Units\Protoss\Alarak_Ex2_COOP_RespawnBase_Red\Alarak_Ex2_COOP_RespawnBase_Red.m3"/>
+    </CModel>
     <CModel id="ArchonNerazim2" parent="ArchonBase">
         <Model value="Assets\Units\Protoss\ShadowArchon\Shadow_Archon_01.m3"/>
         <LowQualityModel value=""/>
@@ -44,6 +120,11 @@
     </CModel>
     <CModel id="Assimilator_Taldarim_WarpIn">
         <Model value="Assets\Buildings\Protoss\Assimilator_Taldarim\Assimilator_Taldarim_Warpin.m3"/>
+    </CModel>
+    <CModel id="BlinkTaldarimStopModel" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Protoss\Stalker_Taldarim\Taldarim_Stalker_BlinkIn.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <RadiusLoose value="1.200000"/>
     </CModel>
     <CModel id="CyberneticsCoreTaldarimBuild" parent="CyberneticsCoreBuildBase">
         <Model value="Assets\Effects\Protoss\Taldarim\ProtossBuildRed.m3"/>
@@ -174,6 +255,9 @@
     </CModel>
     <CModel id="ShieldBatteryTaldarimBirth">
         <Model value="Assets\Buildings\Protoss\ShieldBattery_Taldarim\ShieldBattery_Taldarim_WarpIn.m3"/>
+    </CModel>
+    <CModel id="Stalker_Taldarim_BlinkOut">
+        <Model value="Assets\Units\Protoss\Stalker_Taldarim\Taldarim_Stalker_BlinkOut.m3"/>
     </CModel>
     <CModel id="Supplicant_WarpIn">
         <Model value="Assets\Units\Protoss\Supplicant\Supplicant_WarpIn.m3"/>
