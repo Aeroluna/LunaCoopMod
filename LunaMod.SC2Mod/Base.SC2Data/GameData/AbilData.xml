@@ -27,6 +27,9 @@
         <Flags index="Transient" value="1"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="JinaraSacrifice"/>
+        <Cost>
+            <Cooldown TimeUse="8"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilMorph id="AssaultMode">
         <Flags index="WaitUntilStopped" value="0"/>
@@ -229,19 +232,13 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="JinaraChains">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Effect index="0" value="JinaraChainsCU"/>
+        <Effect index="0" value="JinaraChainsInitSet"/>
         <TargetFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="8"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="JinaraChains"/>
         <Cost>
             <Vital index="Energy" value="100"/>
         </Cost>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="JinaraChainsDummy">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Effect index="0" value="JinaraChainsSet"/>
-        <Range value="500"/>
-        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OrdnanceFleetwideJump">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -262,6 +259,15 @@
         </CmdButtonArray>
         <PlaceUnit value="HHOrdnanceTower"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="PitAlarakJinaraMorph">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Baneling" Requirements="PitAlarak"/>
+        <Flags index="Automatic" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray Unit="PitAlarak2" CollideRange="0"/>
+        <AutoCastFilters value="-;Ally,Neutral,Enemy"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
     <CAbilEffectInstant id="PowerDischarge">
         <CmdButtonArray index="Execute" State="Available"/>
     </CAbilEffectInstant>

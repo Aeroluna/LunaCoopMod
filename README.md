@@ -880,6 +880,7 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
       - When a nearby unit dies, Ji'nara converts its soul into a Soul Shade that lasts 20 seconds.
       - Soul Shades act as Supplicant equivalents.
       - Upon dying, the Soul Shade heals Ji'nara for 20 life and 20 shields per the original unit's supply.
+      - Only 10 Soul Shades can exist at a time.
       - Ji'nara steals life from nearby units you control to heal herself when she is near death. This ability has no cooldown.
     - Passive: Forked Lightning
       - When Ji'nara sacrifices a Supplicant or Soul Shade, her next basic attack will deal weapon damage + 30 to 4 enemy units.
@@ -887,15 +888,15 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
       - Unleash a torrent of chaos, dealing 60 damage to enemy units in the target area.
     - W: Chains of Wrath (100 energy)
       - Launch chains at a target enemy unit, slowing their attack and movement speed by 50% for 8 seconds.
-      - While chained, enemies will take up to 80 damage.
+      - While chained, enemies will take up to 40 damage.
       - Upon taking damage, chained targets will launch additional chains at nearby enemies.
-    - E: Ritual Sacrifice
+    - E: Ritual Sacrifice (8 seconds)
       - Sacrifices a Supplicant or Soul Shade to fully restore Ji'nara's energy.
       - Can only target Supplicants or Soul Shades.
-      - No cooldown.
     - R: Empower Me (100 seconds)
       - Ji'nara gains increased attack and ability damage for each nearby friendly unit.
       - Alarak's Mechanical units grant her double the power.
+      - Ritual Sacrifice has no cooldown while active.
       - This effect lasts for 20 seconds.
     - Upgrade: Imposing Presence
       - Ji'naras attacks stun enemy units for 2 seconds.
@@ -903,6 +904,7 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
     - Upgrade: Weight of Sin
       - Wrath of Chains slow increased by 50%.
       - Wrath of Chains suppresses energy-based ability usage.
+    - Alarak will take Ji'nara's place on Chain of Ascension.
   - Disadvantage: Alarak is unavailable.
 
 Replaces Alarak with Ji'nara, a hero who focuses on Sacrifice usage to continue fueling spells. Ji'naras Soul Shade passive allows her to sustain Sacrifice usage during fights and can also benefit Ascendants. Honestly, this hero just exists because I though it would be cool to add Ji'nara as an Adept hero.

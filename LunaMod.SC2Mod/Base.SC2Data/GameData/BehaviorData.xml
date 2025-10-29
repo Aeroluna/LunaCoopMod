@@ -31,6 +31,9 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorUnitTracker id="JinaraChainsTracker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="JinaraLightningStrikes">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\BTN-Upgrade-Protoss-Alarak-SupplicantSacrifice-LightingStrike.dds"/>
@@ -321,16 +324,19 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
-    <CBehaviorBuff id="JinaraChainsMarker">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="JinaraSoulAbsorptionShadeDebuff" parent="TimedLife">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="20"/>
         <FinalEffect value="JinaraSoulAbsorptionLM"/>
         <RemoveValidatorArray value="NotDead"/>
     </CBehaviorBuff>
+    <CBehaviorUnitTracker id="JinaraSoulAbsorptionTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxTrackedUnits value="10"/>
+        <UnitAddedAtMaxRule value="ReplaceOldest"/>
+        <ReplacedEffect value="Kill"/>
+    </CBehaviorUnitTracker>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
         <BehaviorFlags index="Permanent" value="1"/>

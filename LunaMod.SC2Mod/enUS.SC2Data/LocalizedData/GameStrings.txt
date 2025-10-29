@@ -7,7 +7,6 @@ Abil/Name/HHOrdnanceTowerNanoRepair=Nano Repair
 Abil/Name/HireMerc=HireMerc
 Abil/Name/JinaraBarrage=JinaraBarrage
 Abil/Name/JinaraChains=JinaraChains
-Abil/Name/JinaraChainsDummy=JinaraChainsDummy
 Abil/Name/JinaraSacrificeInstant=JinaraSacrificeInstant
 Abil/Name/KerriganImplosion=Implosion
 Abil/Name/KerriganRazorSwarm=Razor Swarm
@@ -22,6 +21,7 @@ Abil/Name/NexusTrainMothership2=Train Mothership Copy
 Abil/Name/NexusTrainMothershipArtanis2=Train Mothership
 Abil/Name/OracleStasisTrapBuildVorazun=Build Stasis Ward
 Abil/Name/OrdnanceFleetwideJump=Tactical Jump
+Abil/Name/PitAlarakJinaraMorph=Pit Alarak Jinara Morph
 Abil/Name/PsiStormShakuras=Astral Storm
 Abil/Name/SIBansheeHangar=SIBanshee Hangar
 Abil/Name/SIBansheeQueue=SIBanshee Queue
@@ -60,6 +60,7 @@ Behavior/Name/FenixThunderousChargeCoopStun=Stunned
 Behavior/Name/GhostMengskCloakBuff=Shadow of the Dominion
 Behavior/Name/GhostMengskEMPStun=Shock and Awe
 Behavior/Name/JinaraChains=Chains of Wrath
+Behavior/Name/JinaraChainsTracker=JinaraChainsTracker
 Behavior/Name/JinaraLightningStrikes=Forked Lightning
 Behavior/Name/KerriganEnvenomedSpines=Envenomed Spines
 Behavior/Name/KerriganImplosion=Implosion
@@ -308,7 +309,7 @@ Button/Tooltip/AlarakArchonImprovedSacrifice=The Void Archon permanently gains +
 Button/Tooltip/AlarakArchonImprovedSacrificeCharges=<d ref="$BehaviorStackCount:AscendantArchonSelfBuff$"/>
 Button/Tooltip/AlarakAttackStunJinara=Ji'nara's attacks stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic units are slowed.</c>
 Button/Tooltip/AlarakDestructionWaveDistanceJinara=Increases Chains of Wrath slow amount by 50% and suppresses energy-based ability usage.
-Button/Tooltip/AlarakEmpowerJinara=Ji'nara gains increased attack and ability damage for each nearby friendly unit. Alarak's Mechanical units grant her double the power. This effect lasts for <d ref="Behavior,AlarakEmpowerCaster,Duration" precision="1"/> seconds.
+Button/Tooltip/AlarakEmpowerJinara=Ji'nara gains increased attack and ability damage for each nearby friendly unit. Alarak's Mechanical units grant her double the power. This effect lasts for <d ref="Behavior,AlarakEmpowerCaster,Duration" precision="1"/> seconds.<n/><n/><c val="ffff8a">Ritual Sacrifice has no cooldown while active.</c>
 Button/Tooltip/AlarakHavocAbilityRange=Increases the radius of Squad Sight and the range of Target Lock and Subjugation Field.
 Button/Tooltip/AlarakReviveBeaconJinara=Ji'nara will warp in at this beacon's location.
 Button/Tooltip/ApolloCloakOnNova=Cloaks Nova for <d ref="Behavior,NovaApolloCloak,Duration"/> seconds, preventing enemy units from seeing or attacking her. A cloaked unit will only be revealed by detectors or effects.</n></n>Passively increases max energy by +100 and slightly increases movement speed.
@@ -439,7 +440,7 @@ Button/Tooltip/JinaraCoop=First Ascendant of the Tal'darim. Powerful psionic ran
 Button/Tooltip/JinaraCoopShade=Resurrected short range warrior. Sacrifices itself to heal Ji'nara when she is near death.<n/></n><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/JinaraLightningStrikes=When Ji'nara sacrifices a Supplicant or Soul Shade, her next basic attack will deal <d ref="Effect,JinaraCoopLightningDamage,Amount"/> damage to <d ref="Effect,JinaraCoopLightningSearch,MaxCount + 1"/> enemy units.
 Button/Tooltip/JinaraSacrifice=Sacrifices a Supplicant or Soul Shade to fully restore Ji'nara's energy.<n/><n/><c val="#ColorAttackInfo">Can only target Supplicants or Soul Shades.</c>
-Button/Tooltip/JinaraSoulAbsorption=When a nearby unit dies, Ji'nara converts its soul into a Soul Shade that lasts <d ref="Behavior,JinaraSoulAbsorptionShadeDebuff,Duration"/> seconds. Upon dying, the Soul Shade heals Ji'nara for 20 life and 20 shields per the original unit's supply.<n/><n/>Ji'nara steals life from nearby units you control to heal herself when she is near death. This ability has no cooldown.
+Button/Tooltip/JinaraSoulAbsorption=When a nearby unit dies, Ji'nara converts its soul into a Soul Shade that lasts <d ref="Behavior,JinaraSoulAbsorptionShadeDebuff,Duration"/> seconds. Upon dying, the Soul Shade heals Ji'nara for 20 life and 20 shields per the original unit's supply.<n/><n/>Only <d ref="Behavior,JinaraSoulAbsorptionTracker,MaxTrackedUnits"/> Soul Shades can exist at a time.<n/><n/>Ji'nara steals life from nearby units you control to heal herself when she is near death. This ability has no cooldown.
 Button/Tooltip/KerriganBurialRites=Increases the radius and size of each spine by 50%.
 Button/Tooltip/KerriganCannibalize=When a nearby biological unit dies, this unit heals itself for 20 hitpoints.
 Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d ref="Behavior,KerriganEnvenomedSpines,Duration"/> seconds, dealing <d ref="Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second. This effect stacks up to <d ref="Behavior,KerriganEnvenomedSpines,MaxStackCount"/> times.
@@ -481,6 +482,7 @@ Button/Tooltip/Oracle=Flying Caster. Can use Revelation and Stasis Ward.<n/><n/>
 Button/Tooltip/OracleRevelation=Causes enemy units and structures within the target area to grant vision and be unable to detect for <d ref="Behavior,OracleRevelation,Duration"/> seconds. Reveals cloaked or burrowed units and structures.
 Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command, unlocking Scanner Sweep and Calldown: Supplies. Cannot load SCVs.
 Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units unloaded from the Medivac gain <c val="FFFF8A"><d ref="Effect,MasteryRaynorDropPodHasteDisplayDummy,Amount"/></c>% increased attack speed, movement speed, cooldown reduction, and energy regeneration for <d ref="Behavior,DropPodHaste,Duration"/> seconds.
+Button/Tooltip/PitAlarak2=Highlord of the Tal'darim. A ruthless psionic warrior who seeks vengeance against Amon.
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
 Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
@@ -658,11 +660,14 @@ Effect/Name/JinaraBarrageLM=JinaraBarrageLM
 Effect/Name/JinaraBarrageOffset=JinaraBarrageOffset
 Effect/Name/JinaraBarrageSearch=JinaraBarrageSearch
 Effect/Name/JinaraChainsAB=JinaraChainsAB
+Effect/Name/JinaraChainsATU=JinaraChainsATU
 Effect/Name/JinaraChainsCU=JinaraChainsCU
 Effect/Name/JinaraChainsDamage=JinaraChainsDamage
+Effect/Name/JinaraChainsDummySet=JinaraChainsDummySet
+Effect/Name/JinaraChainsInitATU=JinaraChainsInitATU
+Effect/Name/JinaraChainsInitLM=JinaraChainsInitLM
+Effect/Name/JinaraChainsInitSet=JinaraChainsInitSet
 Effect/Name/JinaraChainsLM=JinaraChainsLM
-Effect/Name/JinaraChainsMarkerAB=JinaraChainsMarkerAB
-Effect/Name/JinaraChainsOrder=JinaraChainsOrder
 Effect/Name/JinaraChainsSearch=JinaraChainsSearch
 Effect/Name/JinaraChainsSet=JinaraChainsSet
 Effect/Name/JinaraCoopDamage=JinaraCoopDamage
@@ -676,7 +681,9 @@ Effect/Name/JinaraCoopSwitch=JinaraCoopSwitch
 Effect/Name/JinaraLightningStrikesAB=JinaraLightningStrikesAB
 Effect/Name/JinaraLightningStrikesRB=JinaraLightningStrikesRB
 Effect/Name/JinaraLightningStrikesSacrificeAB=JinaraLightningStrikesSacrificeAB
+Effect/Name/JinaraSoulAbsoprtionATU=Soul Absoprtion ATU
 Effect/Name/JinaraSoulAbsorptionAB=Soul Absorption AB
+Effect/Name/JinaraSoulAbsorptionCreateSet=Soul Absorption Create Set
 Effect/Name/JinaraSoulAbsorptionLM=Soul Absorption LM
 Effect/Name/JinaraSoulAbsorptionLaunchDummy=Soul Absorption Launch Dummy
 Effect/Name/JinaraSoulAbsorptionSearch=Soul Absorption Search
@@ -905,6 +912,7 @@ Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
 Param/Value/lib_74A68E34_10B8F288=<c val="FF0000">player 2 is playing!</c>
 Param/Value/lib_74A68E34_221B6613=<c val="FF9800">Ji'nara has been revived at your Nexus.</c>
 Param/Value/lib_74A68E34_57C032DF=<c val="FF8000">Ally control acquired</c>
+Param/Value/lib_74A68E34_69530F93=Alarak
 Param/Value/lib_74A68E34_74181A69=<c val="FF9800">Ji'nara is ready for battle.</c>
 Param/Value/lib_74A68E34_770DBAA1=Switch Outlaws
 Param/Value/lib_74A68E34_B71F489D=+0
@@ -993,6 +1001,7 @@ Unit/Name/MutatorWhiteoutEffectBlizzard=MutatorWhiteoutEffectBlizzard
 Unit/Name/PhaseCannon=Phasing Photon Cannon
 Unit/Name/PhaseMonolithDummy=Phasing Khaydarin Monolith
 Unit/Name/PhaseShieldBatteryDummy=Phasing Shield Battery
+Unit/Name/PitAlarak2=Alarak
 Unit/Name/PlanetaryFortressUpgraded=Big Bertha
 Unit/Name/QueenBrood=Brood Matron
 Unit/Name/SIBarracksCorruptionDummy=SIBarracks Corruption Dummy
@@ -1015,6 +1024,7 @@ Unit/Name/VorazunCoopReviveBeacon=Vorazun's Beacon
 Unit/Name/ZerglingBrood=Devouring One
 Unit/ShieldArmorName/MarauderMengskShield=Aegis Barrier
 Unit/ShieldArmorName/ScatterVeil=Scatter Veil
+UnitKillRank/AlarakRakShir2=Highlord
 UnitKillRank/Jinara=First Ascendant
 UnitKillRank/Vorazun=Matriarch
 Upgrade/Name/CommanderPrestigeAlarakJinara=CommanderPrestigeAlarakJinara
@@ -1030,6 +1040,7 @@ Upgrade/Name/K5TwoDronesKerrigan=K5 Two Drones
 Upgrade/Name/KerriganBroodCosmetic=Cosmetic
 Upgrade/Name/MedicStartingEnergy=Cellular Reactor
 Upgrade/Name/MengskAcademyMissileCount=Ordnance Depot Retrofit
+Upgrade/Name/PitAlarak=PitAlarak
 Upgrade/Name/RaynorDoubleMULE=Raynor Double MULE
 Upgrade/Name/SIBansheeIncubationChambers=Incubation Chambers
 Upgrade/Name/SIBarracksCorruption=SIBarracks Corruption

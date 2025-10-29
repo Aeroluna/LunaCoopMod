@@ -102,10 +102,11 @@
         <CombineArray value="IsSupplicant"/>
         <CombineArray value="IsJinaraCoopShade"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="NoJinaraChainsMarker">
-        <Behavior value="JinaraChainsMarker"/>
-        <RequireCasterUnit Value="Caster"/>
-    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorIsUnitTracked id="NoJinaraChainsTracked">
+        <BehaviorLink value="JinaraChainsTracker"/>
+        <TrackerUnit Effect="JinaraChainsDummySet" Value="Target"/>
+        <TrackedUnit Value="Target"/>
+    </CValidatorIsUnitTracked>
     <CValidatorCombine id="OnDeathAlarakTheStrongestSurvive">
         <CombineArray index="0" value="IsAlarakHero"/>
     </CValidatorCombine>
@@ -117,6 +118,9 @@
         <WhichUnit Value="Source"/>
         <Value value="JinaraCoop"/>
     </CValidatorUnitType>
+    <CValidatorPlayerRequirement id="NotHavePitAlarak">
+        <Value value="PitAlarak"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="StructureCheckCommanderPrestigeKaraxUnitChrono">
         <ResultFailed value="MustTargetStructures"/>
         <CombineArray value="IsNotStructureAndCommanderPrestigeKaraxUnitChrono"/>

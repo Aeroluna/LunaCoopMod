@@ -67,6 +67,35 @@
             <SortArray value="TSJinaraCoopShadeDuration"/>
         </TargetSorts>
     </CEffectEnumArea>
+    <CEffectAddTrackedUnit id="JinaraChainsATU">
+        <EditorCategories value=""/>
+        <BehaviorLink value="JinaraChainsTracker"/>
+        <TrackerUnit Effect="JinaraChainsDummySet" Value="Target"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectAddTrackedUnit id="JinaraChainsInitATU">
+        <EditorCategories value=""/>
+        <BehaviorLink value="JinaraChainsTracker"/>
+        <TrackerUnit Effect="JinaraChainsDummySet" Value="Target"/>
+        <TrackedUnit Effect="JinaraChainsInitSet" Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectSet id="JinaraChainsDummySet">
+        <EditorCategories value=""/>
+        <EffectArray value="JinaraChainsInitLM"/>
+        <EffectArray value="JinaraChainsInitATU"/>
+    </CEffectSet>
+    <CEffectSet id="JinaraChainsInitSet">
+        <EditorCategories value=""/>
+        <EffectArray value="JinaraChainsCU"/>
+        <!--EffectArray value="JinaraChainsSet"/-->
+    </CEffectSet>
+    <CEffectLaunchMissile id="JinaraChainsInitLM">
+        <EditorCategories value=""/>
+        <ImpactLocation Effect="JinaraChainsInitSet"/>
+        <ImpactEffect value="JinaraChainsAB"/>
+        <AmmoUnit value="JinaraChainsWeapon"/>
+        <Movers Link="MissileDefault"/>
+    </CEffectLaunchMissile>
     <CEffectDamage id="JinaraCoopLightningDamage">
         <EditorCategories value=""/>
         <Amount value="60"/>
@@ -75,9 +104,12 @@
         <EditorCategories value=""/>
         <ImpactLocation Value="SourceUnit"/>
         <ExcludeArray Value="Target"/>
-        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Arc="59.9963" Radius="8" Effect="JinaraCoopLightningSet"/>
         <MaxCount value="3"/>
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
     </CEffectEnumArea>
     <CEffectSet id="JinaraCoopLightningSet">
         <EffectArray value="JinaraCoopLightningDamage"/>
@@ -188,14 +220,14 @@
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
         <CreateFlags index="NormalizeSpawnOffset" value="0"/>
-        <SpawnEffect value="JinaraChainsOrder"/>
+        <SpawnEffect value="JinaraChainsDummySet"/>
         <SpawnUnit value="JinaraChainsDummy"/>
     </CEffectCreateUnit>
     <CEffectDamage id="JinaraChainsDamage">
         <EditorCategories value=""/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
-        <Amount value="10"/>
+        <Amount value="5"/>
         <LaunchLocation Value="CasterUnit"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="JinaraChainsLM">
@@ -204,15 +236,6 @@
         <AmmoUnit value="JinaraChainsWeapon"/>
         <Movers Link="MissileDefault"/>
     </CEffectLaunchMissile>
-    <CEffectApplyBehavior id="JinaraChainsMarkerAB">
-        <EditorCategories value=""/>
-        <Behavior value="JinaraChainsMarker"/>
-    </CEffectApplyBehavior>
-    <CEffectIssueOrder id="JinaraChainsOrder">
-        <EditorCategories value=""/>
-        <Abil value="JinaraChainsDummy"/>
-        <Target Effect="JinaraChainsCU" Value="TargetUnit"/>
-    </CEffectIssueOrder>
     <CEffectEnumArea id="JinaraChainsSearch">
         <EditorCategories value=""/>
         <ImpactLocation Value="SourceUnit"/>
@@ -224,8 +247,8 @@
     <CEffectSet id="JinaraChainsSet">
         <EditorCategories value=""/>
         <EffectArray value="JinaraChainsLM"/>
-        <EffectArray value="JinaraChainsMarkerAB"/>
-        <ValidatorArray value="NoJinaraChainsMarker"/>
+        <EffectArray value="JinaraChainsATU"/>
+        <ValidatorArray value="NoJinaraChainsTracked"/>
     </CEffectSet>
     <CEffectRemoveBehavior id="JinaraLightningStrikesRB">
         <EditorCategories value=""/>
@@ -236,6 +259,10 @@
         <ValidatorArray index="0" value="IsJinaraCoop"/>
         <Behavior value="JinaraLightningStrikes"/>
     </CEffectApplyBehavior>
+    <CEffectAddTrackedUnit id="JinaraSoulAbsoprtionATU">
+        <BehaviorLink value="JinaraSoulAbsorptionTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
     <CEffectSet id="JinaraSoulAbsorptionLaunchDummy"/>
     <CEffectSet id="AllUnitBehaviorControllerSubset1">
         <EffectArray value="VorazunCloakShieldRegenPermanentAB"/>
@@ -555,7 +582,7 @@
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="JinaraSoulAbsorptionTimedLife"/>
+        <SpawnEffect value="JinaraSoulAbsorptionCreateSet"/>
     </CEffectCreateUnit>
     <CEffectLaunchMissile id="JinaraSoulAbsorptionLM">
         <EditorCategories value="Race:Undead"/>
@@ -565,6 +592,10 @@
         <FinishEffect value="AlarakSoulAbsorptionImpactDummy"/>
         <AmmoUnit value="SoulAbsorptionMissle"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="JinaraSoulAbsorptionCreateSet">
+        <EffectArray value="JinaraSoulAbsorptionTimedLife"/>
+        <EffectArray value="JinaraSoulAbsoprtionATU"/>
+    </CEffectSet>
     <CEffectEnumArea id="SoulAbsorptionSearch">
         <SearchFilters value="-;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>

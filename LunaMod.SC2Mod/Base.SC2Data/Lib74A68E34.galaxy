@@ -795,6 +795,9 @@ void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
     point lv_spawnPoint;
 
     // Automatic Variable Declarations
+    playergroup auto3EA4D050_g;
+    int auto3EA4D050_var;
+
     // Variable Initialization
 
     // Implementation
@@ -811,6 +814,13 @@ void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
     UnitBehaviorAdd(libCOMI_gv_cM_HeroUnit[lp_player], "ZergGenericDeath", libCOMI_gv_cM_HeroUnit[lp_player], 1);
     UnitSetPosition(libCOMI_gv_cM_HeroUnit[lp_player], Point(0.0, 0.0), false);
     UnitKill(libCOMI_gv_cM_HeroUnit[lp_player]);
+    auto3EA4D050_g = PlayerGroupAll();
+    auto3EA4D050_var = -1;
+    while (true) {
+        auto3EA4D050_var = PlayerGroupNextPlayer(auto3EA4D050_g, auto3EA4D050_var);
+        if (auto3EA4D050_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto3EA4D050_var, "PitAlarak", 1);
+    }
 }
 
 void lib74A68E34_gf_TychusHeroTechInit (int lp_player) {
@@ -3194,9 +3204,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ProtossAlarak") {
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAlarakJinara", c_techCountCompleteOnly) == 1)) {
-                lib74A68E34_gf_AlarakPrestigeJinaraSpawn(lv_player);
                 TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch, true);
                 TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, true);
+                TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip, true);
+                lib74A68E34_gf_AlarakPrestigeJinaraSpawn(lv_player);
+                TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn, true);
+                TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff, true);
             }
 
             TriggerEnable(lib74A68E34_gt_AlarakArchonSacrificeScale, true);
@@ -4587,6 +4600,70 @@ void lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init () {
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Func");
     TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth, c_playerAny, "JinaraSoulAbsorptionTimedLife");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPrestigeJinaraPitTooltip
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_SetUnitInfoTextCampaign(EventUnit(), null, StringExternal("Param/Value/lib_74A68E34_69530F93"), null);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init () {
+    lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip, null, AbilityCommand("PitAlarakJinaraMorph", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPrestigeJinaraEmpowerCDOn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_UnitAbilityRemoveCooldown(EventUnit(), "JinaraSacrificeInstant", "Abil/JinaraSacrificeInstant");
+    CatalogFieldValueSet(c_gameCatalogAbil, "JinaraSacrificeInstant", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", EventPlayer(), "0");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn_Init () {
+    lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn, null, "AlarakEmpowerCaster", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPrestigeJinaraEmpowerCDOff
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "JinaraSacrificeInstant", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", EventPlayer(), 1.0, c_upgradeOperationMultiply);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff_Init () {
+    lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff = TriggerCreate("lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff_Func");
+    TriggerEnable(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff, null, "AlarakEmpowerCaster", c_unitBehaviorChangeDeactivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6220,6 +6297,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
+    lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init();
+    lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOn_Init();
+    lib74A68E34_gt_AlarakPrestigeJinaraEmpowerCDOff_Init();
     lib74A68E34_gt_AlarakArchonSacrificeScale_Init();
     lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Init();
     lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init();

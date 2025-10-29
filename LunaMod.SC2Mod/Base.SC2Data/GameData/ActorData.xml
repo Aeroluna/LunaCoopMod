@@ -80,7 +80,7 @@
         <On Terms="ActorCreation" Send="SetTintColor 255,100,100"/>
     </CActorModel>
     <CActorMissile id="JinaraChainsAttackMissile" parent="GenericAttackMissile" unitName="JinaraChainsWeapon">
-        <On Terms="ActorCreation" Send="SetTintColor 255,100,100"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,50,50"/>
     </CActorMissile>
     <CActorSplat id="JinaraBarrageCursorSplat" parent="ProtossCursorSplat" abil="JinaraBarrage"/>
     <CActorRange id="JinaraBarrageRange" parent="RangeAbil" abil="JinaraBarrage"/>
@@ -246,7 +246,7 @@
         <SoundArray index="Pissed" value="Jinara_Pissed"/>
         <StatusBarOn index="Custom" value="1"/>
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
-        <UnitIcon value="Assets\Textures\btn-unit-protoss-jinara-taldarim.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-adept-taldarim.dds"/>
         <UnitKillRank Text="UnitKillRank/Jinara"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-collection-taldarim-adept.dds"/>
@@ -390,6 +390,96 @@
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardTargetPoint SOp2DRotation"/>
     </CActorModel>
+    <CActorUnit id="PitAlarak">
+        <On Terms="AbilMorph.*.Start; MorphFrom PitAlarak" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="PitAlarak2" parent="GenericUnitStandard" unitName="PitAlarak2">
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="DarkArchonChampionWarpIn"/>
+        <On Terms="Behavior.PitMalashFightLMKillAB.On" Send="AnimClear Hover"/>
+        <On Terms="Behavior.PitMalashFightLMKillAB.On" Send="AnimPlay Hover Hover,End PlayForever"/>
+        <On Terms="Behavior.PitMalashFightLMKillAB.On" Send="Create Alarak_Death_Fx"/>
+        <On Terms="Behavior.PitMalashFightLMKillAB.On" Send="Create PitAlarak_FallToDeathSound"/>
+        <On Terms="UnitBirth" Send="AnimPlay Hover Hover PlayForever"/>
+        <On Terms="Abil.PitAlarakPsiOrb.SourceCastStart" Send="AnimPlay Spell Attack NonLooping 0.500000 0.500000 0.500000 AsDuration"/>
+        <On Terms="Abil.PitAlarakSuperMove.SourceChannelStart" Send="AnimPlay SpellChannel Spell,Channel PlayForever"/>
+        <On Terms="Abil.PitAlarakSuperMove.SourceChannelStop" Send="AnimClear SpellChannel"/>
+        <On Terms="Abil.PitAlarakTerrazineTeleport.SourceChannelStart" Send="AnimPlay SpellChannel Spell,Channel PlayForever"/>
+        <On Terms="Abil.PitAlarakTerrazineTeleport.SourceChannelStop" Send="AnimClear SpellChannel"/>
+        <On Terms="Behavior.PitAlarakChargeUp.On" Send="AnimPlay Channel Spell,Channel PlayForever"/>
+        <On Terms="Behavior.PitAlarakChargeUp.Off" Send="AnimClear Channel"/>
+        <On Terms="Effect.PitAlarakPsiShiftLM.Launch" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Effect.PitAlarakPsiShiftImpactDummy.Start" Send="AnimBracketStop Work"/>
+        <On Terms="Abil.PitAlarakFightDummyAbility.SourceCastStart" Send="AnimPlay Superior Hover,Superior PlayForever,RandomStartOffset 0.300000 0.300000"/>
+        <On Terms="Abil.PitAlarakFightDummyAbilityCancel.SourceCastStart" Send="AnimClear Superior 0.400000"/>
+        <On Terms="Effect.PitMalashFightLM.Start" Send="AnimPlay Inferior Hover,Inferior PlayForever,RandomStartOffset 0.300000 0.300000"/>
+        <On Terms="Behavior.PitMalashDummyInferiorBehavior.Off" Send="TimerSet 0.300000,0.100000 InferiorAlarakDelay"/>
+        <On Terms="TimerExpired; TimerName InferiorAlarakDelay" Send="AnimClear Inferior 0.400000"/>
+        <On Terms="Abil.PitAlarakKillMalash.SourcePrepStart" Send="AnimPlay KillMalash Hover,Victory"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo PitAlarak2" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo PitAlarak2" Send="AnimPlay Hover Hover PlayForever"/>
+        <PortraitModel value="AlarakEx2Portrait"/>
+        <PortraitActor value="AlarakEx2Portrait"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-alarak.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-alarak-shield03.dds"/>
+        </WireframeShield>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-alarak.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak.dds"/>
+        <SoundArray index="Birth" value="Swarm_Silent"/>
+        <SoundArray index="Ready" value="Swarm_Silent"/>
+        <SoundArray index="Help" value="Swarm_Silent"/>
+        <SoundArray index="What" value="Swarm_Silent"/>
+        <SoundArray index="Yes" value="Swarm_Silent"/>
+        <SoundArray index="Attack" value="Swarm_Silent"/>
+        <SoundArray index="Pissed" value="Swarm_Silent"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+        <CustomUnitStatusFrame value="LotV_UnitStatus/HeroUnitStatusFrameTemplate"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitKillRank Text="UnitKillRank/AlarakRakShir2"/>
+        <Aliases value="_UnitMedium"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
+    <CActorBeamSimple id="PitAlarak_Fight_Beam">
+        <On index="4" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
+        <On index="6" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
+        <On index="8" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="PitAlarak_Fight_Beam2" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create"/>
+        <On Terms="Behavior.PitAlarakDummyInferiorBehavior.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create PitAlarakFightBeamLoopSound"/>
+        <On Terms="Behavior.PitAlarakDummyInferiorBehavior.Off" Target="PitAlarakFightBeamLoopSound" Send="Destroy"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create PitAlarakFightBeamLaunchSound"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostLaunch Subject="_Unit" Scope="Caster"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon01"/>
+        <HostImpact Subject="_Unit" Scope="Target"/>
+        <HostImpactSiteOps Ops="SOpAttachTarget"/>
+        <Model value="PitAlarak_Fight_Beam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="PitAlarak_Strong_Beam">
+        <On index="4" Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; ValidateUnit NotHavePitAlarak"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="PitAlarak_Strong_Beam2" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; !ValidateUnit NotHavePitAlarak" Send="Create"/>
+        <On Terms="Effect.PitAlarakStrongBeamKillPersistent.Stop" Send="AnimBracketStop BSD"/>
+        <HostLaunch Subject="_Unit" Scope="Caster"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon01"/>
+        <HostImpact Subject="_Unit" Scope="Target"/>
+        <HostImpactSiteOps Ops="SOpAttachTarget"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Model value="PitAlarak_Strong_Beam"/>
+    </CActorBeamSimple>
     <CActorModel id="PowerTowerStetmannPlacementModel">
         <On Terms="ActorCreation" Send="Create FlyerHelperSplat"/>
     </CActorModel>
