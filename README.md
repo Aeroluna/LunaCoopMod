@@ -144,6 +144,7 @@ thanks Enoki.
 
 Copied from Versus.
 
+- Fixed an issue where Phoenixs would not face their Graviton Beam target if they were attacking a unit when Graviton launched.
 - Increased the arc of Phoenix Graviton Beam from 0 to 360 for commanders.
 - Increased Lurker attack spine animation speed by 75%.
 - Increased Lurker attack impact model scale by 75%.
@@ -410,7 +411,6 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
-- Fixed an issue where P1 and P3 used each other's icons.
 - Added missing tooltip to Malignant Creep when P1 is used.
 - Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
@@ -850,11 +850,10 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
 Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. OP with commanders who have few but important units such as hero commanders.
 
 - Added Spike Burst ability to Symbiote.
-  - Deals 50 damage to nearby enemies every 10 seconds.
-- Increased Symbiote's Stab cooldown from 1 second to 1.2 seconds.
+  - Deals 20 damage to nearby enemies every 10 seconds.
 - Changed Stab to prioritize units and attacking structures.
 
-Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?). Stab DPS slightly nerfed to compensate. Overall single target DPS is identical.
+Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?).
 
 - Buffed Viper's Consumption ability to also target structures.
 - Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 1.
@@ -1219,10 +1218,19 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 - Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.
+- Fixed an issue where Talis's Ricochet Glaive impact visual would move/rotate with the unit.
 
 yeah.
 
 ## Dehaka
+
+- Added P4: Essence Splitter
+  - Advantage:
+    - Both units survive and evolve when Primal Combat is used.
+    - Gene mutation chance increased to 40%.
+  - Disadvantage: Dehaka is unavailable.
+
+All-in on army units. Double evolved units makes maxing much easier and increased mutation chance plus mastery makes it pretty much impossible to not have a mutation.
 
 - Reduced the damage from using Consume on a psionic unit from 2x weapon damage to 1x weapon damage.
 - Added a cleave to Dehaka's Claws weapon.
@@ -1230,6 +1238,11 @@ yeah.
 - Increased the damage of Dehaka's Mammoth Beam by 50%.
 
 Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gains a frontal cone cleave to his Claws and splash damage to his Mammoth Beam to compensate. Also increased the damage of the Mammoth Beam so it feels more desireable to get instead of feeling like a damage nerf.
+
+- Buffed Ravasaur weapon to deal splash damage.
+- Changed Ravasaur weapon to no longer track targets (can miss).
+
+Ravasaurs can be scary in the campaign with their splash damage, so why does Dehaka get a nerfed boring version?
 
 - Fixed an issue where P2 did not increase the damage of Dakrun's Greater Spiked Hide.
 - Increased Dakrun's Brutal Charge damage from 200 to 200 (+100 vs Structures).
@@ -1262,6 +1275,7 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
 - Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
 - Fixed an issue where Creepers could not damage friendly units.
 - Changed Explosive Creeper weapon icon.
+- Changed Greater Primal Wurms to visually burrow away instead of exploding when expiring.
 
 yeah.
 

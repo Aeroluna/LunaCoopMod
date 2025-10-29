@@ -67,6 +67,36 @@
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOn" Send="Create"/>
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
+    <CActorUnit id="DehakaNydusDestroyerTimedNoFood">
+        <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create YagdraBurrowDownEffects"/>
+        <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create BurrowDownUltralisk"/>
+        <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Target="DehakaNydusDestroyerBase" Send="Signal Burrowing"/>
+    </CActorUnit>
+    <CActorAction id="FenixTalisAdeptBounceShot1">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot2">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot3">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot4">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot5">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot6">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot7">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisAdeptBounceShot8">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
     <CActorModel id="JinaraBarrageAttackLaunchModel" parent="GenericAttackLaunchModel">
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
     </CActorModel>

@@ -31,6 +31,16 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeDehakaArmySupply">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+        <Duration value="8"/>
+        <Modification Food="-1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaTopBarPrimalWurmSummonTimedLife">
+        <ExpireEffect value="DehakaTopBarPrimalWurmSummonTimedLifeExpire"/>
+    </CBehaviorBuff>
     <CBehaviorUnitTracker id="JinaraChainsTracker">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorUnitTracker>
@@ -958,6 +968,23 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SuperGaryStetmannTheBestOil">
         <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DehakaTopBarPrimalWurmSummonTimedLifeExpire">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Duration value="4"/>
+        <FinalEffect value="SuicideRemove"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="SymbioteCarapace">
         <Alignment value="Positive"/>

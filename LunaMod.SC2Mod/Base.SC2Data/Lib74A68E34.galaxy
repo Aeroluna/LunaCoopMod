@@ -3239,6 +3239,13 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             }
 
         }
+        else if (auto560DABDD_val == "ZergDehaka") {
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeDehakaArmy", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(libCOMI_gt_CM_Dehaka_EssenceDrop, false);
+                TriggerEnable(lib74A68E34_gt_DehakaPrestigeArmy, true);
+            }
+
+        }
         else if (auto560DABDD_val == "TerranHorner") {
             TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
             TriggerEnable(libCOMI_gt_BanelingScourgeDeathrattleScrapDeaths, false);
@@ -5028,6 +5035,68 @@ void lib74A68E34_gt_FenixPrestigeChampionMorphed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DehakaPrestigeArmy
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaPrestigeArmy_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto79CA2346_val;
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitGetType(EventUnitCreatedUnit()) == "DehakaRavasaur") || (UnitGetType(EventUnitCreatedUnit()) == "DehakaRoachLevel3") || (UnitGetType(EventUnitCreatedUnit()) == "DehakaGuardianFightMorph") || (UnitGetType(EventUnitCreatedUnit()) == "DehakaMutaliskLevel3FightMorph") || (UnitGetType(EventUnitCreatedUnit()) == "ImpalerDehaka") || (UnitGetType(EventUnitCreatedUnit()) == "DehakaPrimalSwarmHost") || (UnitGetType(EventUnitCreatedUnit()) == "DehakaUltraliskLevel3")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAddPlayer(EventUnitCreatedUnit(), "CommanderPrestigeDehakaArmySupply", EventPlayer(), (UnitGetPropertyInt(EventUnitCreatedUnit(), c_unitPropSuppliesUsed, c_unitPropNormal) * 1));
+    Wait(8.0, c_timeGame);
+    if ((UnitIsAlive(EventUnitCreatedUnit()) == false)) {
+        return true;
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, UnitGetType(EventUnitCreatedUnit()), c_unitCreateIgnorePlacement | c_unitCreateIgnoreBirth, EventPlayer(), UnitGetPosition(EventUnitCreatedUnit()));
+    auto79CA2346_val = UnitGetType(EventUnitCreatedUnit());
+    if (auto79CA2346_val == "DehakaRavasaur") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneRavasaurMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "DehakaRoachLevel3") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneFireRoachMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "DehakaGuardianFightMorph") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneGuardianMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "DehakaMutaliskLevel3FightMorph") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneMutaliskMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "ImpalerDehaka") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneImpalerMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "DehakaPrimalSwarmHost") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneCreeperHostMorphSet", UnitLastCreated());
+    }
+    else if (auto79CA2346_val == "DehakaUltraliskLevel3") {
+        UnitCreateEffectUnit(EventUnit(), "DehakaGeneTyrannosaurMorphSet", UnitLastCreated());
+    }
+    else {
+        return true;
+    }
+    libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "AnimPlay Birth Unburrow 0 0.000000");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaPrestigeArmy_Init () {
+    lib74A68E34_gt_DehakaPrestigeArmy = TriggerCreate("lib74A68E34_gt_DehakaPrestigeArmy_Func");
+    TriggerEnable(lib74A68E34_gt_DehakaPrestigeArmy, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeArmy, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: HornerBomberPlatformImproved
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_HornerBomberPlatformImproved_Func (bool testConds, bool runActions) {
@@ -6312,6 +6381,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
+    lib74A68E34_gt_DehakaPrestigeArmy_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();
