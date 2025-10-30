@@ -1302,6 +1302,10 @@ This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?featu
 
 Primal Wurms are Dehaka's only source of detection until evolving to level 5, making Dehaka extremely vulnerable to early stealth such as the We Move Unseen modifier. This buff should counteract that.
 
+- Changed Primal Igniter weapon attack sounds.
+
+It very clearly sounded like a hellion.
+
 - Fixed an issue where Dehaka's units don't have reduced sight radius while burrowed (Impaler, Primal Host, and Creeper Host excluded).
 - Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
 - Fixed an issue where Creepers could not damage friendly units.
