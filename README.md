@@ -2,6 +2,35 @@
 
 A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.
 
+### Table of Contents
+<details>
+<summary>Details</summary>
+
+- [General](#general)
+- [Commanders](#commanders)
+  - [Amon](#amon)
+  - [Raynor](#raynor)
+  - [Kerrigan](#kerrigan)
+  - [Artanis](#artanis)
+  - [Swann](#swann)
+  - [Zagara](#zagara)
+  - [Vorazun](#vorazun)
+  - [Karax](#karax)
+  - [Abathur](#abathur)
+  - [Alarak](#alarak)
+  - [Nova](#nova)
+  - [Stukov](#stukov)
+  - [Dehaka](#dehaka)
+  - [Han & Horner](#han--horner)
+  - [Tychus](#tychus)
+  - [Zeratul](#zeratul)
+  - [Stetmann](#stetmann)
+  - [Mengsk](#mengsk)
+- [Mutators](#mutators)
+- [Credits](#credits)
+
+</details>
+
 ## General
 
 - Added ability to select a fourth prestige.
@@ -184,6 +213,8 @@ thanks OmniSkeptic.
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
 Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
+
+# Commanders
 
 ## Amon
 
@@ -1688,7 +1719,7 @@ Added Brutal+ system.
 | 9*         | 25          | 26          | 2             | 5             |
 | 10*        | 27          | 28          | 2             | 5             |
 
-\* New levels
+\* New difficulties
 
 - Added new mutator: Teeming
   - Enemies begin with twice as many units.
