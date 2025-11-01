@@ -38,6 +38,14 @@
         <Duration value="8"/>
         <Modification Food="-1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeStukovNeuralDebuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse Fatal="1" Handled="CommanderPrestigeStukovNeuralSet" ModifyFraction="0">
+            <ValidatorArray value="CommanderPrestigeStukovNeuralValidator"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DehakaTopBarPrimalWurmSummonTimedLife">
         <ExpireEffect value="DehakaTopBarPrimalWurmSummonTimedLifeExpire"/>
     </CBehaviorBuff>
@@ -931,6 +939,10 @@
     <CBehaviorBuff id="RoachCorpser">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SIInfestedTrooperMarinePlaguedMunitions">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="SOAMapWideChronoPassive">
         <RemoveValidatorArray value="NoCommanderPrestigeKaraxUnitChrono"/>
     </CBehaviorBuff>
@@ -942,6 +954,43 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SalvageStetmannPowerTower" parent="Salvage">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeStukovNeuralTarget">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-neuralparasite.dds"/>
+        <BehaviorCategories index="User8" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Duration value="120"/>
+        <ExpireEffect value="Suicide"/>
+        <Player Value="Caster"/>
+        <Modification>
+            <StateFlags index="SuppressFoodMade" value="1"/>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+            <StateFlags index="SuppressRequirements" value="1"/>
+            <AbilClassDisableArray index="CAbilBuild" value="1"/>
+            <AbilClassDisableArray index="CAbilMerge" value="1"/>
+            <AbilClassDisableArray index="CAbilResearch" value="1"/>
+            <AbilClassDisableArray index="CAbilTrain" value="1"/>
+            <AbilClassDisableArray index="CAbilWarpTrain" value="1"/>
+            <AbilLinkDisableArray value="SpectreNuke"/>
+            <AbilLinkDisableArray value="HallucinationArchon"/>
+            <AbilLinkDisableArray value="HallucinationColossus"/>
+            <AbilLinkDisableArray value="HallucinationHighTemplar"/>
+            <AbilLinkDisableArray value="HallucinationImmortal"/>
+            <AbilLinkDisableArray value="HallucinationPhoenix"/>
+            <AbilLinkDisableArray value="HallucinationProbe"/>
+            <AbilLinkDisableArray value="HallucinationStalker"/>
+            <AbilLinkDisableArray value="HallucinationVoidRay"/>
+            <AbilLinkDisableArray value="HallucinationWarpPrism"/>
+            <AbilLinkDisableArray value="HallucinationZealot"/>
+            <AbilLinkDisableArray value="HallucinationAdept"/>
+            <AbilLinkDisableArray value="HallucinationOracle"/>
+            <AbilLinkDisableArray value="HallucinationDisruptor"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="SiegeTankMengskSlowHeroic">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -965,6 +1014,18 @@
         <DamageResponse Fatal="1" Handled="SoulAbsorptionCU">
             <Chance value="1"/>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovAleksanderAirDamage">
+        <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovAleksanderAirMindControl">
+        <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovAleksanderAirMindControlDamage">
+        <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StukovAleksanderAirStun">
+        <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SuperGaryStetmannTheBestOil">
         <Alignment value="Positive"/>
@@ -1302,6 +1363,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="5"/>
         <Modification Food="-1"/>
+        <Alignment value="Positive"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SICivilianStructureSpawnCivilianGlobalTimer">
         <Duration value="15"/>

@@ -609,14 +609,14 @@ Even with this upgrade, Wraiths are fragile. This should help improve their surv
 
 ## Zagara
 
-- Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 - Added Swarm Networks.
   - Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
   - Temporary zerg last 60 seconds, are uncontrollable, and attack closest enemies.
   - Queen will try to place Creep Tumor if no other Creep Tumors nearby.
   - Limited to 4.
+- Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 
-If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking. These act as a sort of top bar ability that Zagara is missing.
+If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
 
 - Added P4: Subterranean Tide
   - Advantage: Swarm Networks are no longer limited, cost 25% less, and spawn 50% more units.
@@ -1104,6 +1104,12 @@ Hellbats tend to not even be worth the mineral cost as they die too easily. Givi
 
 ## Stukov
 
+- Added P4: Neural Dominator
+  - Advantage: Stukov gains control of units he kills for 120 seconds.
+  - Disadvantage: Max supply reduced by 100.
+
+*All your unit are belong to us.* Heroic units are obviously immune. It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball insanely hard. And yes, you can in fact kill your allies units to steal all their units (pls don't be mean).
+
 - Reworked Infested Barracks
   - Costs 1 supply.
   - Automatically spawns free Infested Marines.
@@ -1246,6 +1252,10 @@ It seemed weird that these upgrades did not affect their champion counterpart. F
 - Remove Disruptors.
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
+
+- Increased Fenix's (Arbiter) Stasis Field ability radius from 1.5 to 5.
+
+Why was the radius nerfed so hard? Increased the match the campaign Arbiter's stasis radius.
 
 - Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.

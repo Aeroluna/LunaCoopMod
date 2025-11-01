@@ -823,6 +823,33 @@ void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
     }
 }
 
+void lib74A68E34_gf_StukovPrestigeNeuralEnable (int lp_player) {
+    // Automatic Variable Declarations
+    unitgroup auto1C61E62B_g;
+    int auto1C61E62B_u;
+    unit auto1C61E62B_var;
+
+    // Implementation
+    lib74A68E34_gv_stukovPrestigeNeuralPlayer = lp_player;
+    auto1C61E62B_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    auto1C61E62B_u = UnitGroupCount(auto1C61E62B_g, c_unitCountAll);
+    for (;; auto1C61E62B_u -= 1) {
+        auto1C61E62B_var = UnitGroupUnitFromEnd(auto1C61E62B_g, auto1C61E62B_u);
+        if (auto1C61E62B_var == null) { break; }
+        lib74A68E34_gf_StukovPrestigeNeuralApply(auto1C61E62B_var);
+    }
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, true);
+}
+
+void lib74A68E34_gf_StukovPrestigeNeuralApply (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitHasBehavior2(lp_unit, "CommanderPrestigeStukovNeuralDebuff") == false) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32)))) == true) && (UnitTypeTestFlag(UnitGetType(lp_unit), c_unitFlagUnselectable) == false)) {
+        UnitBehaviorAddPlayer(lp_unit, "CommanderPrestigeStukovNeuralDebuff", lib74A68E34_gv_stukovPrestigeNeuralPlayer, 1);
+    }
+
+}
+
 void lib74A68E34_gf_TychusHeroTechInit (int lp_player) {
     // Variable Declarations
     int lv_i;
@@ -3229,6 +3256,13 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergStukov") {
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeStukovNeural", c_techCountCompleteOnly) == 1)) {
+                lib74A68E34_gf_StukovPrestigeNeuralEnable(lv_player);
+                TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, true);
+                TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralRally, true);
+                TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, true);
+            }
+
         }
         else if (auto560DABDD_val == "ProtossFenix") {
             TriggerEnable(lib74A68E34_gt_FenixAddHeroCarrierMorph, true);
@@ -4908,6 +4942,85 @@ void lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: StukovPrestigeNeuralNewUnit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_StukovPrestigeNeuralApply(EventUnitCreatedUnit());
+    lib74A68E34_gf_StukovPrestigeNeuralApply(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Init () {
+    lib74A68E34_gt_StukovPrestigeNeuralNewUnit = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Func");
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, null, null, null);
+    TriggerAddEventUnitRevive(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: StukovPrestigeNeuralRally
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovPrestigeNeuralRally_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_CM_Stukov_SingleUnitGoToRally(EventUnit(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovPrestigeNeuralRally_Init () {
+    lib74A68E34_gt_StukovPrestigeNeuralRally = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralRally_Func");
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralRally, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_StukovPrestigeNeuralRally, null, "CommanderPrestigeStukovNeuralTarget", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: StukovPrestigeNeuralAleksanderFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_stukov;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_stukov = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergStukov", libCOOC_gf_CommanderPlayers());
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitBehaviorEnabled(EventUnit(), "CommanderPrestigeStukovNeuralTarget") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "CommanderPrestigeStukovNeuralTarget", 1);
+    UnitBehaviorAddPlayer(EventUnit(), "CommanderPrestigeStukovNeuralTarget", lv_stukov, 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init () {
+    lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Func");
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, null, "StukovAleksanderAirMindControl", c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: StukovCorruptionSetCD
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_StukovCorruptionSetCD_Func (bool testConds, bool runActions) {
@@ -6377,6 +6490,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init();
+    lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Init();
+    lib74A68E34_gt_StukovPrestigeNeuralRally_Init();
+    lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init();
     lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();

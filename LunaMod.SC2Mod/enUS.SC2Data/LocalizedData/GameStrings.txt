@@ -52,6 +52,7 @@ Behavior/Name/AscendantArchonDummySelfBuff=Power Overwhelming
 Behavior/Name/AscendantArchonSelfBuff=Power Overwhelming
 Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/CommanderPrestigeNovaAirliftStun=Lockdown
+Behavior/Name/CommanderPrestigeStukovNeuralTarget=Neural Infestation
 Behavior/Name/DarkTemplarVoidStasis=Void Prison
 Behavior/Name/DarkTemplarVoidStasisCooldown=Recently Void Prisoned
 Behavior/Name/Enshroud=Aurora Veil
@@ -91,6 +92,7 @@ Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote tha
 Behavior/Tooltip/AscendantArchonSelfBuff=This unit has increased shields and it deals increased damage.
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
 Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
+Behavior/Tooltip/CommanderPrestigeStukovNeuralTarget=This unit is temporarily under Stukov's control. It will die once this effect expires.
 Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attack, or detect.
 Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affected by Void Prison and cannot be targeted again.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
@@ -149,6 +151,7 @@ Button/Name/CommanderPrestigeNovaMelee=Covert Crusader
 Button/Name/CommanderPrestigeRaynorBansheeAirstrike=Banshee Airstrike
 Button/Name/CommanderPrestigeRaynorHyperionLocked=Hyperion
 Button/Name/CommanderPrestigeRaynorMercenary=Mercenary Contractor
+Button/Name/CommanderPrestigeStukovNeural=Neural Dominator
 Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
 Button/Name/CommanderPrestigeSwannMoving=Rolling Thunder
 Button/Name/CommanderPrestigeVorazunHero=Shadow Hunter
@@ -370,6 +373,7 @@ Button/Tooltip/CommanderPrestigeStukovBunkersUpgrade=<n/><n/><s val="Coop_Presti
 Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less.</n></n>Automated Mitosis and Necroplasmic Synthesis are 200% more effective.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
 Button/Tooltip/CommanderPrestigeStukovMechAutoAmmo=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% faster.
 Button/Tooltip/CommanderPrestigeStukovMechEnergyLeech=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% more energy.
+Button/Tooltip/CommanderPrestigeStukovNeural=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Stukov gains control of units he kills for <d time="120"/>. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Max supply reduced by 100.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CommanderPrestigeVorazunCrowdControlDamage=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Void Stasis, Confusion, Stasis Ward, Disruption Web, Darkcoil, and Astral Storm may affect heroic units and cause enemies to lose 20 life per second. This effect cannot kill.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units deal 25% reduced damage. Stasis Ward duration reduced by 50%.
 Button/Tooltip/CommanderPrestigeVorazunHero=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Vorazun is available as a hero.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Deploy Shadow Guard and Time Stop are unavailable.
@@ -632,8 +636,13 @@ Effect/Name/CarrierRepairDroneSet=Carrier Repair Drone Set
 Effect/Name/CommanderPrestigeKaraxChronoTarget=CommanderPrestigeKaraxUnitChronoBoostTarget
 Effect/Name/CommanderPrestigeNovaAirliftAB=CommanderPrestigeNovaAirliftAB
 Effect/Name/CommanderPrestigeNovaAirliftSearch=CommanderPrestigeNovaAirliftSearch
+Effect/Name/CommanderPrestigeStukovNeuralAB=CommanderPrestigeStukovNeuralAB
+Effect/Name/CommanderPrestigeStukovNeuralDebuffRB=CommanderPrestigeStukovNeuralDebuffRB
+Effect/Name/CommanderPrestigeStukovNeuralMU=CommanderPrestigeStukovNeuralMU
+Effect/Name/CommanderPrestigeStukovNeuralSet=CommanderPrestigeStukovNeuralSet
 Effect/Name/DarkArchonNerazimWeaponDamage=Dark Archon Nerazim Weapon Damage
 Effect/Name/DehakaIntimidatingRoarMovement=DehakaIntimidatingRoarMovement
+Effect/Name/DehakaTopBarPrimalWurmSummonTimedLifeExpire=DehakaTopBarPrimalWurmSummonTimedLifeExpire
 Effect/Name/DisablingCloudBehaviorSet=Disabling Cloud Behavior Set
 Effect/Name/DisablingCloudMovementApplyBehavior=Disabling Cloud Movement Apply Behavior
 Effect/Name/DukesRevengeSwitch=DukesRevengeSwitch
@@ -1043,6 +1052,7 @@ Upgrade/Name/CommanderPrestigeDehakaArmy=CommanderPrestigeDehakaArmy
 Upgrade/Name/CommanderPrestigeKaraxChrono=CommanderPrestigeKaraxUnitChrono
 Upgrade/Name/CommanderPrestigeKaraxStructuresShared=CommanderPrestigeKaraxStructuresShared
 Upgrade/Name/CommanderPrestigeKaraxUnitChronoShared=CommanderPrestigeKaraxUnitChronoShared
+Upgrade/Name/CommanderPrestigeStukovNeural=CommanderPrestigeStukovNeural
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
 Upgrade/Name/HHBomberEMP=EMP
 Upgrade/Name/HHBomberNapalmImproved=Napalm Improved

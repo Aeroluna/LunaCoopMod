@@ -85,6 +85,27 @@
         <Find value="1"/>
         <Value value="CommanderPrestigeKaraxUnitChrono"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="CommanderPrestigeStukovNeural">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeStukovNeural"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="CommanderPrestigeStukovNeuralTarget">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="CommanderPrestigeStukovNeural"/>
+        <WhichUnit Value="Target"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="CommanderPrestigeStukovNeuralValidator">
+        <CombineArray value="HasCommanderPrestigeStukovNeural"/>
+        <CombineArray value="CommanderPrestigeStukovNeuralTarget"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="HasCommanderPrestigeStukovNeural">
+        <Compare value="GT"/>
+        <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeStukovNeural">
+        <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HaveJinaraLightningStrikesBehavior">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>

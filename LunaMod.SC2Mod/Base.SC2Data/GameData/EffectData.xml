@@ -67,6 +67,35 @@
             <SortArray value="TSJinaraCoopShadeDuration"/>
         </TargetSorts>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="CommanderPrestigeStukovNeuralAB">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="CommanderPrestigeStukovNeuralMU">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="CommanderPrestigeStukovNeuralDebuffRB">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <BehaviorLink value="CommanderPrestigeStukovNeuralDebuff"/>
+        <WhichUnit Value="Source"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="CommanderPrestigeStukovNeuralSet">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <EffectArray value="CommanderPrestigeStukovNeuralAB"/>
+        <EffectArray value="CommanderPrestigeStukovNeuralMU"/>
+        <EffectArray value="CommanderPrestigeStukovNeuralDebuffRB"/>
+    </CEffectSet>
     <CEffectDamage id="DehakaRavasaurDamage">
         <KindSplash value="Splash"/>
         <AreaArray Radius="1.5" Fraction="1"/>

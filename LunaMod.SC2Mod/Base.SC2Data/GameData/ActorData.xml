@@ -103,6 +103,10 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorUnit id="Immortal">
+        <SoundArray index="Yes" value="Immortal_Yes"/>
+        <SoundArray index="Pissed" value="Immortal_Pissed"/>
+    </CActorUnit>
     <CActorModel id="JinaraBarrageAttackLaunchModel" parent="GenericAttackLaunchModel">
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
     </CActorModel>
@@ -382,6 +386,15 @@
     <CActorSound id="MattFleet_FleetwideJumpWireframeSound">
         <On Terms="Behavior.OrdnanceFleetwideJumpTeleport.On" Send="Create"/>
     </CActorSound>
+    <CActorModel id="CommanderPrestigeStukovNeuralModel" parent="ModelAddition">
+        <On Terms="Behavior.CommanderPrestigeStukovNeuralTarget.On" Send="Create"/>
+        <On Terms="Behavior.CommanderPrestigeStukovNeuralTarget.On" Target="::Main" Send="SetSoundSuffix _NP"/>
+        <On Terms="Behavior.CommanderPrestigeStukovNeuralTarget.On; PassChance 25.000000" Target="::Main" Send="PlayUnitSound Ready"/>
+        <On Terms="Behavior.CommanderPrestigeStukovNeuralTarget.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.CommanderPrestigeStukovNeuralTarget.Off; ValidateUnit SourceNotDead" Target="::Main" Send="SetSoundSuffix"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+        <Model value="NeuralParasiteModel"/>
+    </CActorModel>
     <CActorModel id="ObeliskEffect">
         <On Terms="ActorCreation; ValidateUnit NotStructure" Send="Destroy Immediate"/>
     </CActorModel>
@@ -1289,6 +1302,9 @@
     <CActorModel id="MutatorWhiteoutEffectExtension8" parent="MutatorWhiteoutEffectExtension">
         <HostSiteOps Ops="SOpWeatherOffset8"/>
     </CActorModel>
+    <CActorUnit id="Zealot">
+        <SoundArray index="What" value="Zealot_What"/>
+    </CActorUnit>
     <CActorModel id="ZenithStonePsiStormImpact">
         <Scale value="1.200000"/>
         <AutoScaleFactor value="1.200000"/>
