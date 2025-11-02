@@ -67,6 +67,21 @@
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOn" Send="Create"/>
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
+    <CActorUnit id="BrutaliskCocoon">
+        <On Terms="ActorCreation" Send="Create RavagerCocoonBirthSound"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonRoach" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonRoachVile" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonQueen" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonSwarmhost" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonRavager" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonDefiler" Send="Destroy"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-lurkeregg.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-lurkeregg.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorUnit id="DehakaNydusDestroyerTimedNoFood">
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create YagdraBurrowDownEffects"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create BurrowDownUltralisk"/>
@@ -376,6 +391,14 @@
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
         <Model value="Void_Kerrigan_Energy_Attack"/>
     </CActorBeamSimple>
+    <CActorUnit id="LeviathanCocoon">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-broodlordegg.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-broodlordegg.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorUnit id="LocustFlying">
         <On index="67" Send="$Birth RandomStartOffset 0.000000"/>
     </CActorUnit>

@@ -3221,6 +3221,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergAbathur") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+            TriggerEnable(lib74A68E34_gt_AbathurMorphAutoCastFix, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAbathurSymbiote", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, true);
@@ -4449,6 +4450,28 @@ void lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init () {
     lib74A68E34_gt_KaraxPrestigeUnitChronoRevive = TriggerCreate("lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Func");
     TriggerEnable(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, false);
     TriggerAddEventUnitRevive(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurMorphAutoCastFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurMorphAutoCastFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnit(), OrderSetAutoCast(EventUnitAbility(), false), c_orderQueueAddToFront);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurMorphAutoCastFix_Init () {
+    lib74A68E34_gt_AbathurMorphAutoCastFix = TriggerCreate("lib74A68E34_gt_AbathurMorphAutoCastFix_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurMorphAutoCastFix, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_AbathurMorphAutoCastFix, null, AbilityCommand("EvolveToBrutalisk", 0), c_unitAbilStageCancel, true);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_AbathurMorphAutoCastFix, null, AbilityCommand("EvolveToLeviathan", 0), c_unitAbilStageCancel, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6518,6 +6541,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init();
+    lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();

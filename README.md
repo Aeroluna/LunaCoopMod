@@ -911,6 +911,24 @@ Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict 
 
 Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
 
+- Fixed an issue where canceling Morph to Brutalisk did not destroy the cocoon model.
+- Fixed an issue where Morph to Brutalisk did not play a sound when morphing into a cocoon.
+- Increased visual scale of Brutalisk Cocoons by 30%.
+- Fixed an issue where Morph to Leviathan ability did not share a set id.
+- Fixed an issue where Brutalisk Cocoons used the wrong wireframe image.
+- Fixed an issue where Leviathan Cocoons used the wrong wireframe image.
+- Fixed an issue where Brutalisk Cocoons did not have the Cancel button on the command card.
+- Fixed an issue where Leviathan Cocoons did not have the Cancel button on the command card.
+- Changed Morph to Brutalisk to disable autocast when canceled.
+- Changed Morph to Leviathan to disable autocast when canceled.
+
+Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel button was removed from the command card but you could still stop the morph by canceling it from the queue. Cancel was likely removed because it would immediately start the morph again if you had autocast on. A little change to disable autocast when you cancel should fix that, no more accidentally turning your Vipers into Leviathans!.
+
+- Fixed an issue where Mutalisk's Sundering Glaive passive tooltip highlighted unit names.
+- Fixed an issue where Viper's Virulent Microbes passive tooltip highlighted unit names.
+
+Only the research tooltips should highlight unit names, not passives.
+
 ## Alarak
 
 - Added P4: First Ascendant
@@ -1453,7 +1471,7 @@ For some reason, it looked like ships were teleporting backwards from their dest
 
 The Sovereign Battlecruiser has a fully functional teleport animation, so let's use that instead of the generic stand-in.
 
-- Fixed an issue where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
+- Fixed an issue where canceling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 - Fixed an issue where Call in the Fleet targeting reticles would visually bank with the targeted unit.
 
