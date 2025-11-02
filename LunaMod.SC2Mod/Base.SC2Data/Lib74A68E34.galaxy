@@ -3286,6 +3286,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, true);
             TriggerEnable(libCOMI_gt_CM_Horner_BomberPlatform_Individual_TargetSelected, false);
             TriggerEnable(lib74A68E34_gt_HornerBomberPlatformImproved, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeHornerDefense", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch, true);
+            }
+
         }
         else if (auto560DABDD_val == "TerranTychus") {
             TriggerEnable(libCOMI_gt_CM_TychusReplaceResearchCenter, false);
@@ -5210,6 +5214,47 @@ void lib74A68E34_gt_DehakaPrestigeArmy_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: HornerPrestigeDefenseBomberLaunch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_pickedUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gv_cM_Horner_BomberPlatforms_ReadyCount[EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin)] >= 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_pickedUnit = UnitGroupRandomUnit(libCOMI_gv_cM_Horner_BomberPlatforms_Ready[EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin)], c_unitCountAlive);
+    if ((EventPlayerEffectUsedUnit(c_effectUnitTarget) != null)) {
+        UnitIssueOrder(lv_pickedUnit, OrderTargetingUnit(AbilityCommand("HHBomberPlatformAreaBombOrder", 0), EventPlayerEffectUsedUnit(c_effectUnitTarget)), c_orderQueueReplace);
+        UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "CommanderPrestigeHornerDefenseCooldownCP", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    }
+    else {
+        UnitIssueOrder(lv_pickedUnit, OrderTargetingPoint(AbilityCommand("HHBomberPlatformAreaBombOrder", 0), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint)), c_orderQueueReplace);
+        UnitCreateEffectPoint(EventPlayerEffectUsedUnit(c_effectUnitCaster), "CommanderPrestigeHornerDefenseCooldownCP", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init () {
+    lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch = TriggerCreate("lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Func");
+    TriggerEnable(lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch, c_playerAny, "CommanderPrestigeHornerDefenseLaunchDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: HornerBomberPlatformImproved
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_HornerBomberPlatformImproved_Func (bool testConds, bool runActions) {
@@ -6498,6 +6543,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
     lib74A68E34_gt_DehakaPrestigeArmy_Init();
+    lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();

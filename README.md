@@ -287,6 +287,15 @@ Nerfed Adept from its Campaign version to its Versus version, but in return it g
 
 For some reason Co-op halves this charge time, this returns it to normal for Amon.
 
+- Reduced Raven's Point Defense Drone duration from 180 seconds to 20 seconds.
+- Reduced Raven's Auto-Turret duration from 180 seconds to 11 seconds.
+- Reduced range of Raven's Build Auto-Turret from 3 to 2.
+- Increased damage of Auto-Turret's 12mm Gauss Cannon from 8 to 18.
+- Reduced Auto-Turret health from 150 to 100.
+- Reduced Auto-Turret armor from 1 to 0.
+
+Copied from Versus. Duration of Raven's summons massively, and in return increase the auto-turret damage. It was a common problem that a Raven from an attack wave would place an Auto-Turret or Point Defense Drone and the map ping would not disappear until the unit timed out 3 minutes later.
+
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
 yeah.
@@ -1018,6 +1027,8 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Fixed an issue where Alarak's Deadly Charge cast animation would not play while moving.
 - Improved Alarak's Deadly Charge visual impact animation.
 - Fixed an issue where Alarak would not gain Lightning Surge after an Ascendant sacrifices a Supplicant.
+- Fixed an issue where Alarak's status bar would float much higher than other heroes.
+- Fixed an issue where warping in Supplicant were missing the void warp-in beam.
 
 yeah.
 
@@ -1326,6 +1337,26 @@ yeah.
 
 ## Han & Horner
 
+- Added Ordnance Towers that can be built by SCVs.
+  - These are flying defensive structures with long-range attacks.
+  - Spawns up to 4 Valkyries that fly around and defend the area.
+    - Valkyries have 100 hp and their own long-range missile attack.
+  - Can use Nano-Repair ability to heal mech units.
+  - Can detect cloaked units.
+  - Can use Tactical Jump ability to reposition.
+
+Han & Horner are missing a defensive structure to deal with ground, so why not make it something cool like the scrapped Ordnance Tower? These are very expensive but can defend a large area.
+
+- Added P4: Sky Sovereigns
+  - Advantage:
+   - Precision Strike cooldown reduced by 50%.
+   - Call in the Fleet duration increased by 100%.
+  - Disadvantage:
+    - Precision Strikes can not be manually targeted, instead automatically targeting enemies near Ordnance Towers and Call in the Fleet.
+    - Call in the Fleet attack speed reduced by 50%.
+
+Defensive prestige! This prestige lets Precision Strikes be spammed defensively but in return, they can't be easily be used offensively.
+
 - Increased visual scale of Assault Galleons by 20%.
 - Increased life of Assault Galleons from 500 to 750.
 - Reduced Assault Galleon limit from 5 to 4.
@@ -1363,16 +1394,6 @@ Why is this thing so easy to shoot down? The initial explosion can also now hit 
   - Added disadvantage: Salvage is unavailable.
 
 Old P3 had an awkward design where it buffed how many platforms you could build and then made them so expensive that you could never hit the limit anyways. New P3 leans into the Precision Strikes harder by buffing them further and adds a more interesting disadvantage of weakening the ability to trade with an army. These changes incentivize using the Precision Strikes more aggresively to ensure efficient trades.
-
-- Added Ordnance Towers that can be built by SCVs.
-  - These are flying defensive structures with long-range attacks.
-  - Spawns up to 4 Valkyries that fly around and defend the area.
-    - Valkyries have 100 hp and their own long-range missile attack.
-  - Can use Nano-Repair ability to heal mech units.
-  - Can detect cloaked units.
-  - Can use Tactical Jump ability to reposition.
-
-Han & Horner are missing a defensive structure to deal with ground, so why not make it something interesting like the scrapped Ordnance Tower? These are very expensive but can defend a large area. It's also cool to have a structure that focuses more on Horner's side than Han's.
 
 - Added autocast to Widow Mine Burrow.
 - Reworked Executioner Missiles to shoot a missile at a nearby enemy that then splits into 5 missiles.
@@ -1434,6 +1455,7 @@ The Sovereign Battlecruiser has a fully functional teleport animation, so let's 
 
 - Fixed an issue where cancelling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
+- Fixed an issue where Call in the Fleet targeting reticles would visually bank with the targeted unit.
 
 yeah.
 
@@ -1570,6 +1592,7 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 
 - Fixed an issue where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed an issue where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
+- Fixed an issue where warping in Legions were missing the void warp-in beam.
 
 yeah.
 

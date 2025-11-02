@@ -1171,6 +1171,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]TerranHorner_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeHornerDefense">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]TerranTychus">
             <GameLink GameLink="VoicePackProtossTychus">
@@ -1656,6 +1659,20 @@
                 <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>
+        <Instances Id="CommanderPrestigeHornerDefense">
+            <AbilCmd Abil="HHBomberPlatformAreaBombTopBarOrder">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <AbilCmd Abil="HHBomberPlatformAreaBombTopBarDummyTimer">
+                <Field Id="DisableAbil" Index="1"/>
+            </AbilCmd>
+            <GameLink GameLink="CommanderPrestigeHornerDefense">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="HornerDefense1">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeKaraxArmy">
             <AbilCmd Abil="Bogus">
                 <Field Id="DisableAbil"/>
@@ -1871,6 +1888,14 @@
                 <Field Id="Supplement"/>
             </GameLink>
             <GameLink GameLink="HHMiraBuildResearchTimeReduction">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="HornerDefense1">
+            <GameLink GameLink="CommanderPrestigeHornerDefenseFleetMastery">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="MasteryHornerAirStrikeDistance">
                 <Field Id="Upgrade"/>
             </GameLink>
         </Instances>

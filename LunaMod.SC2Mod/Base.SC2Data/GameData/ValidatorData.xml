@@ -10,6 +10,10 @@
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,MapBoss"/>
         <AreaArray index="0" Validator="TargetIsNotUnstoppable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorCombine id="AttackingOrEnemyInRange">
+        <CombineArray value="CasterIsAttacking"/>
+        <CombineArray value="EnemyInWeaponRange"/>
+    </CValidatorCombine>
     <CValidatorCombine id="AutoSiegeTankSiege">
         <CombineArray value="SiegeTankMinRangeHostileSearchEmpty"/>
     </CValidatorCombine>
@@ -81,6 +85,10 @@
         <Find value="1"/>
         <Value value="CommanderPrestigeFenixChampion"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="CommanderPrestigeHornerDefense">
+        <Find value="1"/>
+        <Value value="CommanderPrestigeHornerDefense"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="CommanderPrestigeKaraxUnitChrono">
         <Find value="1"/>
         <Value value="CommanderPrestigeKaraxUnitChrono"/>
@@ -102,6 +110,9 @@
     <CValidatorUnitCompareBehaviorCount id="HasCommanderPrestigeStukovNeural">
         <Compare value="GT"/>
         <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeHornerDefenseCooldown">
+        <Behavior value="CommanderPrestigeHornerDefenseCooldown"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeStukovNeural">
         <Behavior value="CommanderPrestigeStukovNeuralTarget"/>

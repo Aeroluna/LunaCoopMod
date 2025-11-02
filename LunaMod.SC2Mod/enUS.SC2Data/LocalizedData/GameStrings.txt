@@ -127,6 +127,7 @@ Behavior/Tooltip/VorazunRegenShield=This unit is undetected and rapidly regenera
 Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by Shroud of Adun and cannot be shrouded again.
 Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Behavior/Tooltip/ZealotPurifierReviveSupressed2=This unit has been recently reconstructed and cannot be revived again.
+Button/ChargeText/CommanderPrestigeHornerDefensePassiveCharges=<d ref="$AbilChargeCount:HHBomberPlatformAreaBombTopBarOrderDummy,0$"/>
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/Name/AegisPlating=Aegis Plating
 Button/Name/AlarakACMyLifefortheHighlord2=Eternal Servitude
@@ -143,6 +144,9 @@ Button/Name/CommanderPrestigeAlarakJinara=First Ascendant
 Button/Name/CommanderPrestigeArtanisWarp=Reclaimer
 Button/Name/CommanderPrestigeDehakaArmy=Essence Splitter
 Button/Name/CommanderPrestigeFenixChampion=Ascendant Chorus
+Button/Name/CommanderPrestigeHornerDefense=Sky Sovereigns
+Button/Name/CommanderPrestigeHornerDefenseBomberLocked=Precision Strike
+Button/Name/CommanderPrestigeHornerDefensePassive=Air Supremacy
 Button/Name/CommanderPrestigeKaraxUnitChrono=Chronosmith
 Button/Name/CommanderPrestigeKerriganAbilityEfficiencyResearchLocked=Evolve Ability Efficiency
 Button/Name/CommanderPrestigeKerriganBrood=Brood War Sovereign
@@ -340,6 +344,10 @@ Button/Tooltip/CommanderPrestigeDehakaArmyUpgrade=<n/><n/><s val="Coop_Prestige_
 Button/Tooltip/CommanderPrestigeFenixChampion=<s val="Coop_Prestige_Advantage">Advantage</s><n/>The number of active Champion A.I.s is no longer limited.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>All combat unit costs increased by 100%. Avenging Protocol is unavailable.
 Button/Tooltip/CommanderPrestigeFenixChampionUpgrade=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> The number of active Champion A.I.s is no longer limited.
 Button/Tooltip/CommanderPrestigeHornerBombingPlatforms=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Bombing Platforms are no longer capped. One exclusive Precision Strike upgrade may be researched.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Salvage is no longer available.
+Button/Tooltip/CommanderPrestigeHornerDefense=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Precision Strike cooldown reduced by 50%. Call in the Fleet duration increased by 100%.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Precision Strikes can not be manually targeted, instead automatically targeting enemies near Ordnance Towers and Call in the Fleet. Call in the Fleet attack speed reduced by 50%.
+Button/Tooltip/CommanderPrestigeHornerDefenseDisasble=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Can not be targeted manually.
+Button/Tooltip/CommanderPrestigeHornerDefenseFleet=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Enemies within range will automatically be targeted by Precision Strike. Duration increased by <s val="Coop_Prestige_Tooltip">100</s>%. Attack speed decreased by <s val="Coop_Prestige_Tooltip">50</s>%.
+Button/Tooltip/CommanderPrestigeHornerDefensePassive=Enemies within range will automatically be targeted by Precision Strike.
 Button/Tooltip/CommanderPrestigeHornerMagMines=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Mira's units are produced 50% faster and their on-death effects are 100% more effective. Salvage gives 50% more resources.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Horner's units cost 30% more.
 Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDamage=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect damage increased.
 Button/Tooltip/CommanderPrestigeHornerMagMinesDeathEffectDuration=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Death effect duration increased.
@@ -414,7 +422,7 @@ Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
 Button/Tooltip/FenixThunderousChargeCoop=Fenix charges at the target location, dealing <d ref="Effect,FenixThunderousChargeCoopDamage,Amount"/> damage and stunning all enemy units for <d ref="Behavior,FenixThunderousChargeCoopStun,Duration"/> seconds.</n></n><c val="#ColorAttackInfo">Heroic units are slowed.</c>
 Button/Tooltip/ForceFieldTaldarim=Barrier that lasts <d time="15"/> and impedes movement of ground units.
 Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds.
-Button/Tooltip/HHBomberEMP=Precision Strikes additionally deploy an EMP warhead. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
+Button/Tooltip/HHBomberEMP=Precision Strikes additionally deploy an EMP warhead. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/HHBomberNapalm=Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/HHBomberNapalmImproved=Precision Strikes ignite the target location with napalm that spreads farther. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/HHBomberTriple=Precision Strikes drop two additional bombs behind the target area.
@@ -497,7 +505,6 @@ Button/Tooltip/OrbitalCommandSwann=Upgrades Command Center to an Orbital Command
 Button/Tooltip/OrbitalDropPodsMedivacPassive=<c val="FFFF8A">Mastery:</c> Units unloaded from the Medivac gain <c val="FFFF8A"><d ref="Effect,MasteryRaynorDropPodHasteDisplayDummy,Amount"/></c>% increased attack speed, movement speed, cooldown reduction, and energy regeneration for <d ref="Behavior,DropPodHaste,Duration"/> seconds.
 Button/Tooltip/PitAlarak2=Highlord of the Tal'darim. A ruthless psionic warrior who seeks vengeance against Amon.
 Button/Tooltip/PlanetCrackerArtanis=Briefly charges up before scorching the ground beneath the Mothership for <d ref="Behavior,MothershipArtanisPlanetCracker,Duration"/> seconds, causing <d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> (<d ref="Effect,MothershipArtanisPlanetCrackerDamage,Amount+Effect,MothershipArtanisPlanetCrackerDamage,AttributeBonus[1]*Behavior,MothershipArtanisPlanetCracker,Duration/Behavior,MothershipArtanisPlanetCracker,Period"/> vs Armored) damage in an area below. Deals more damage closer to the beam.
-Button/Tooltip/PrestigeAbilLocked=This ability is locked by your Commander Prestige.
 Button/Tooltip/PrestigeHornerMagMinesDeathEffectEffective=
 Button/Tooltip/Reaper=Raider. Can jump up and down cliffs. Regenerates life quickly while out of combat. Can use KD8 Charge.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/RepairDrones=Repair drones automatically heal friendly mechanical units near the Carrier.
@@ -515,7 +522,7 @@ Button/Tooltip/ResearchCycloneLockOnDamageUpgrade=Increases <c val="ffff8a">Cycl
 Button/Tooltip/ResearchDarkArchonFullStartingEnergy=<c val="ffff8a">Dark Archons</c> and <c val="ffff8a">Signifiers</c> start with full energy.
 Button/Tooltip/ResearchEnergizerReclamation2=<c val="ffff8a">Energizers</c>' Reclamation duration is increased by <d time="120"/>.
 Button/Tooltip/ResearchFireSuppressionSystemsPrestige=All structure fires are automatically extinguished and all structures automatically repair themselves to 100% of their maximum life.
-Button/Tooltip/ResearchHHBomberEMP=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes additionally deploy an EMP warhead. Radius increased by <d ref="Effect,HHBomberAreaBombEMPSearch,AreaArray[0].Radius/Effect,HHBomberAreaBombSearchArea,AreaArray[0].Radius*100"/>%. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
+Button/Tooltip/ResearchHHBomberEMP=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes additionally deploy an EMP warhead. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/ResearchHHBomberNapalm=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberNapalmImproved=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes ignite the target location with napalm that spreads farther. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/ResearchHHBomberTriple=<c val="FFFF8A">Strike Fighter Platform</c> Precision Strikes drop two additional bombs behind the target area.
@@ -633,6 +640,12 @@ Effect/Name/CarrierRepairDroneRecallSwitch=Carrier Repair Drone Recall Switch
 Effect/Name/CarrierRepairDroneSearch=Carrier Repair Drone Search
 Effect/Name/CarrierRepairDroneSearchSwitch=Carrier Repair Drone Search Switch
 Effect/Name/CarrierRepairDroneSet=Carrier Repair Drone Set
+Effect/Name/CommanderPrestigeHornerDefenseCooldownAB=CommanderPrestigeHornerDefenseCooldownAB
+Effect/Name/CommanderPrestigeHornerDefenseCooldownCP=CommanderPrestigeHornerDefenseCooldownCP
+Effect/Name/CommanderPrestigeHornerDefenseCooldownSearch=CommanderPrestigeHornerDefenseCooldownSearch
+Effect/Name/CommanderPrestigeHornerDefenseLaunchDummy=CommanderPrestigeHornerDefenseLaunchDummy
+Effect/Name/CommanderPrestigeHornerDefenseSearch=CommanderPrestigeHornerDefenseSearch
+Effect/Name/CommanderPrestigeHornerDefenseSet=CommanderPrestigeHornerDefenseSet
 Effect/Name/CommanderPrestigeKaraxChronoTarget=CommanderPrestigeKaraxUnitChronoBoostTarget
 Effect/Name/CommanderPrestigeNovaAirliftAB=CommanderPrestigeNovaAirliftAB
 Effect/Name/CommanderPrestigeNovaAirliftSearch=CommanderPrestigeNovaAirliftSearch
@@ -1049,6 +1062,8 @@ UnitKillRank/Jinara=First Ascendant
 UnitKillRank/Vorazun=Matriarch
 Upgrade/Name/CommanderPrestigeAlarakJinara=CommanderPrestigeAlarakJinara
 Upgrade/Name/CommanderPrestigeDehakaArmy=CommanderPrestigeDehakaArmy
+Upgrade/Name/CommanderPrestigeHornerDefense=CommanderPrestigeHornerDefense
+Upgrade/Name/CommanderPrestigeHornerDefenseFleetMastery=CommanderPrestigeHornerDefenseFleetMastery
 Upgrade/Name/CommanderPrestigeKaraxChrono=CommanderPrestigeKaraxUnitChrono
 Upgrade/Name/CommanderPrestigeKaraxStructuresShared=CommanderPrestigeKaraxStructuresShared
 Upgrade/Name/CommanderPrestigeKaraxUnitChronoShared=CommanderPrestigeKaraxUnitChronoShared

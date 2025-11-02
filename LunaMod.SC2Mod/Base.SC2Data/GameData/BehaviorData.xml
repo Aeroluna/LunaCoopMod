@@ -31,12 +31,36 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AutoTurretTimedLife">
+        <Duration value="11"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeDehakaArmySupply">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <MaxStackCount value="65535"/>
         <Duration value="8"/>
         <Modification Food="-1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeHornerDefenseCooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeHornerDefenseDisableBomber">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CommanderPrestigeHornerDefense"/>
+        <Modification>
+            <StateFlags index="Uncommandable" value="1"/>
+        </Modification>
+        <!--AbilLinkDisableArray value="HHBomberPlatformAreaBombOrder"/-->
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeHornerDefenseSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="1"/>
+        <PeriodicEffect value="CommanderPrestigeHornerDefenseSet"/>
+        <RemoveValidatorArray value="CommanderPrestigeHornerDefense"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeStukovNeuralDebuff">
         <InfoFlags index="Hidden" value="1"/>
@@ -568,7 +592,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="HHValkyrieCombatSpeed">
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="CasterIsAttacking"/>
+        <DisableValidatorArray value="AttackingOrEnemyInRange"/>
         <Modification MoveSpeedBonus="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HHValkyrieRecall">
@@ -862,6 +886,9 @@
     <CBehaviorBuff id="Phasing">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-protoss-phasecannon.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PointDefenseDroneTimedLife">
+        <Duration value="20"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerDischarge">
         <BehaviorCategories index="Restorable" value="1"/>

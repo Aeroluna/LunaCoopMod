@@ -103,6 +103,12 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorModel id="HornerAirFleetMissileAttackTargetingUI">
+        <HostSiteOps Ops="SOpShadow SOp2DRotation" HoldRotation="1"/>
+    </CActorModel>
+    <CActorModel id="HornerAirFleetMissileAttackTargetingUIViking">
+        <HostSiteOps Ops="SOpShadow SOp2DRotation" HoldRotation="1"/>
+    </CActorModel>
     <CActorUnit id="Immortal">
         <SoundArray index="Yes" value="Immortal_Yes"/>
         <SoundArray index="Pissed" value="Immortal_Pissed"/>
@@ -232,6 +238,7 @@
         <On Terms="TimerExpired; UnitWalking; TimerName SpellDelay" Send="AnimClear Spell"/>
         <On Terms="Behavior.AlarakACDeadlyChargeFinish.Off" Send="TimerSet 1.500000 ChargeDelay"/>
         <On Terms="TimerExpired; TimerName ChargeDelay" Send="AnimClear SpellAttack"/>
+        <BarOffset value="50"/>
     </CActorUnit>
     <CActorAction id="JinaraCoopAttack" parent="GenericAttack" effectImpact="JinaraCoopDamage" effectLaunch="JinaraCoopLM">
         <LaunchAssets Sound="Adept_AttackLaunch"/>
@@ -297,6 +304,7 @@
             <Image value="Assets\Textures\wireframe-collection-taldarim-adept-shield03.dds"/>
         </WireframeShield>
         <DeathArray index="Normal" ModelLink="Jinara_COOP_Death" SoundLink="Alarak_Death_Fx" VoiceLink="Jinara_Death"/>
+        <BarOffset value="50"/>
     </CActorUnit>
     <CActorUnit id="JinaraChainsDummy" parent="GenericUnitBase" unitName="JinaraChainsDummy">
         <Macros value="RemoveFlyerHelperMacro"/>
@@ -1302,6 +1310,12 @@
     <CActorModel id="MutatorWhiteoutEffectExtension8" parent="MutatorWhiteoutEffectExtension">
         <HostSiteOps Ops="SOpWeatherOffset8"/>
     </CActorModel>
+    <CActorModel id="WarpInVoid">
+        <On Terms="Abil.WarpGateTrainSupplicantTrue.TargetStart" Send="Create"/>
+        <On Terms="Abil.WarpGateTrainSupplicantTrue.TargetStop" Send="AnimBracketStop BSD"/>
+        <On Terms="Abil.ZeratulTopBarWarpTrain.TargetStart" Send="Create"/>
+        <On Terms="Abil.ZeratulTopBarWarpTrain.TargetStop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorUnit id="Zealot">
         <SoundArray index="What" value="Zealot_What"/>
     </CActorUnit>
@@ -1957,6 +1971,7 @@
         <BarOffset value="100"/>
         <BarWidth value="140"/>
         <NameOffset value="100"/>
+        <PortraitModel value="AdjutantPortrait"/>
     </CActorUnit>
     <CActorUnit id="HHOrdnanceTowerConstruction" parent="TerranBuilding" unitName="HHOrdnanceTowerConstruction">
         <On Terms="AbilMorph.*.Start; MorphFrom HHOrdnanceTowerConstruction" Send="Destroy"/>

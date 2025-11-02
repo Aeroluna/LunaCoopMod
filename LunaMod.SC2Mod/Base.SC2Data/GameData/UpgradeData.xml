@@ -160,6 +160,16 @@
         <EffectArray index="0" removed="1"/>
         <EffectArray index="1" removed="1"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeHornerDefense">
+        <EffectArray Operation="Set" Reference="Effect,HornerAirFleetLM,Movers[0].Link" Value="HornerAirFleetMoverDefense"/>
+        <EffectArray Reference="Effect,HornerAirFleetUpgradedPersistent,PeriodicPeriodArray[0]" Value="0.125"/>
+        <EffectArray Reference="Effect,HornerAirFleetUpgradedPersistent,PeriodicPeriodArray[1]" Value="0.125"/>
+        <EffectArray Reference="Behavior,HornerAirFleetSearch,Period" Value="0.167"/>
+        <EffectArray Reference="Behavior,HornerAirFleetSearchYamato,Period" Value="3"/>
+        <EffectArray Reference="Behavior,HornerAirFleetUpgraded,Period" Value="0.25"/>
+        <EffectArray Reference="Behavior,HornerAirFleetDespawn,Duration" Value="20.000000"/>
+        <EffectArray Operation="Subtract" Reference="Behavior,HHBomberDockCooldown,Duration" Value="30.000000"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeHornerMagMines">
         <EffectArray index="0" Value="0.000000"/>
         <EffectArray index="1" Value="0.000000"/>
@@ -182,6 +192,10 @@
     <CUpgrade id="CommanderPrestigeHornerMagMinesMastery">
         <EffectArray index="0" Value="0.000000"/>
         <EffectArray index="1" Value="0.000000"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeHornerDefenseFleetMastery" parent="CommanderPrestige">
+        <EffectArray Reference="Behavior,HornerAirFleetDespawn,Duration" Value="0.400000"/>
+        <MaxLevel value="30"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeHornerStarport">
         <EffectArray index="8" Value="2"/>
@@ -1069,6 +1083,7 @@
         <EffectArray Reference="Effect,HHBomberAreaBombFireExpandCP,PeriodicOffsetArray[5]" Value="-0.021000,-0.021000,0.000000"/>
         <EffectArray Reference="Effect,HHBomberAreaBombFireExpandCP,PeriodicOffsetArray[6]" Value="-0.030000,0.000000,0.000000"/>
         <EffectArray Reference="Effect,HHBomberAreaBombFireExpandCP,PeriodicOffsetArray[7]" Value="-0.021000,0.021000,0.000000"/>
+        <EffectArray Reference="Effect,CommanderPrestigeHornerDefenseCooldownSearch,AreaArray[0].Radius" Value="0.015"/>
     </CUpgrade>
     <CUpgrade id="MasteryKerriganAutoAttackDamage">
         <EffectArray Reference="Effect,KerriganBroodPsiBlastDamage,Amount" Value="1"/>

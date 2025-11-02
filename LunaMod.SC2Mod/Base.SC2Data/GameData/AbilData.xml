@@ -20,6 +20,23 @@
             <Charge CountMax="4" CountStart="4" TimeUse="40"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilEffectTarget id="BuildAutoTurret">
+        <Range index="0" value="2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HHBomberPlatformAreaBombTopBarOrderDummy">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Charge>
+                <CountMax value="1000"/>
+                <CountUse value="1"/>
+                <Link value="Abil/HHBomberPlatformAreaBombTopBarOrder"/>
+                <Location value="Player"/>
+            </Charge>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HHBomberAreaBomb">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="JinaraSacrificeInstant">
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <Effect index="0" value="AscendantSacrificeSearch"/>

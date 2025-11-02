@@ -98,6 +98,16 @@
         <AIEvalFactor value="0"/>
         <HotkeyCategory value="Unit/Category/ProtossTaldarim"/>
     </CUnit>
+    <CUnit id="AutoTurret">
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmor value="0"/>
+    </CUnit>
+    <CUnit id="CoopCasterHorner">
+        <CardLayouts index="0">
+            <LayoutButtons Face="CommanderPrestigeHornerDefenseBomberLocked" Type="Passive" Requirements="CommanderPrestigeHornerDefense" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
@@ -246,7 +256,7 @@
         <AlliedPushPriority value="11"/>
         <EnergyStart value="200"/>
         <EnergyMax value="200"/>
-        <EnergyRegenRate value="10"/>
+        <EnergyRegenRate value="5"/>
     </CUnit>
     <CUnit id="JinaraChainsDummy">
         <Race value="Prot"/>
@@ -269,7 +279,7 @@
             <LayoutButtons Face="Vortex" Type="AbilCmd" AbilCmd="JinaraChainsDummy,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Height value="1"/>
-        <BehaviorArray Link="AutoTurretTimedLife"/>
+        <BehaviorArray Link="Changeling"/>
         <BehaviorArray Link="JinaraChainsTracker"/>
     </CUnit>
     <CUnit id="Archon">
@@ -1660,9 +1670,6 @@
     <CUnit id="Guardian">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
     </CUnit>
-    <!--                                                                                         -->
-    <!-- Guardian .............................................................................. -->
-    <!--                                                                                         -->
     <CUnit id="GuardianMP">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
     </CUnit>
@@ -1684,6 +1691,7 @@
             <LayoutButtons Face="HHBomberTriple" Type="Passive" Requirements="HaveHHBomberTriple" Row="1" Column="1"/>
             <LayoutButtons Face="HHBomberEMP" Type="Passive" Requirements="HaveHHBomberEMP" Row="1" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="CommanderPrestigeHornerDefenseDisableBomber"/>
     </CUnit>
     <CUnit id="HHGriffon">
         <LifeStart value="100"/>
@@ -1811,6 +1819,7 @@
     </CUnit>
     <CUnit id="HornerAirFleetStrafer">
         <Mover value="FlyIgnoreAirPathingBlockers"/>
+        <BehaviorArray Link="CommanderPrestigeHornerDefenseSearch"/>
     </CUnit>
     <CUnit id="HornerAirFleetTargeter">
         <Mover value="FlyIgnoreAirPathingBlockers"/>
@@ -1857,6 +1866,7 @@
         <AbilArray Link="HangarQueue5"/>
         <AbilArray Link="HHOrdnanceTowerNanoRepair"/>
         <AbilArray Link="OrdnanceFleetwideJump"/>
+        <AbilArray Link="HHBomberPlatformAreaBombTopBarOrderDummy"/>
         <WeaponArray Link="HHOrdnanceTower" Turret="MissileTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -1865,6 +1875,7 @@
             <LayoutButtons Face="NanoRepair" Type="AbilCmd" AbilCmd="HHOrdnanceTowerNanoRepair,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
             <LayoutButtons Face="FleetwideJump" Type="AbilCmd" AbilCmd="OrdnanceFleetwideJump,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="CommanderPrestigeHornerDefensePassive" Type="Passive" Requirements="CommanderPrestigeHornerDefense" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.5"/>
         <SeparationRadius value="1.5"/>
@@ -1878,6 +1889,7 @@
         <GlossaryWeakArray value="SJHyperion"/>
         <BehaviorArray Link="Detector11"/>
         <BehaviorArray Link="HHOrdnanceTowerAttack"/>
+        <BehaviorArray Link="CommanderPrestigeHornerDefenseSearch"/>
         <EquipmentArray Weapon="HHOrdnanceTowerValkyrieDummy"/>
         <PlacementFootprint value="Footprint3x3CreepNormalContour"/>
     </CUnit>
@@ -1898,6 +1910,7 @@
         <AbilArray index="4" removed="1"/>
         <AbilArray index="5" removed="1"/>
         <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
         <WeaponArray index="0" Link="" Turret="MissileTurret"/>
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="Cancel" Type="AbilCmd" AbilCmd="que5Passive,CancelLast" Row="2" Column="4"/>
@@ -1906,10 +1919,12 @@
             <LayoutButtons index="3" Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons index="4" removed="1"/>
             <LayoutButtons index="5" removed="1"/>
+            <LayoutButtons index="6" removed="1"/>
         </CardLayouts>
         <Footprint value="Footprint3x3CreepNormalContour"/>
         <BehaviorArray index="0" Link="UnderConstruction"/>
         <BehaviorArray index="1" removed="1"/>
+        <BehaviorArray index="2" removed="1"/>
         <EquipmentArray index="0" removed="1"/>
         <Sight value="11"/>
     </CUnit>
