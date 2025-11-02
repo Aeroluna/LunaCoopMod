@@ -118,6 +118,7 @@ It just looks nice c:
 - Added a range indicator when using the Oracle's Stasis Ward ability.
 - Added cosmetic flame jets to Vultures when moving.
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
+- Fixed an issue where Observer's Observation Mode did not play any sounds.
 
 yeah.
 
@@ -170,6 +171,9 @@ thanks Enoki.
 - Changed Orbital Command Scanner Sweep visual to use team color.
 - Changed the name of the Disruptor Purification Nova unit from "Disruptor" to "Purifier Orb".
 - Fixed an issue where Disruptor Purification Novas would show life and shield in the unit info despite being invulnerable.
+- Changed morphing to Overseer (and variants) to no longer require decelerating to cast.
+- Changed Overseer (and variants) Oversight ability to no longer require decelerating to cast.
+- Changed Observer (and variants) Surveillance Mode ability to no longer require decelerating to cast.
 
 Copied from Versus.
 
@@ -903,9 +907,9 @@ Spike Burst is cool and was pretty much already finished but unused (can you tel
 
 Vipers rarely were worth mixing into your army, now they should be much more usable and be competitive in anti-air compared to Devourers.
 
-- Added autocast to Corrosive Bile (initially off).
+- Added autocast to Corrosive Bile.
 
-Should help keeping Corrosive Bile on CD with the Biomass CDR. It won't predict so it might be better to leave this off in some circumstances. Will try to break force fields if no other enemies in range.
+Should help keeping Corrosive Bile on CD with the Biomass CDR. Will try to break force fields if no other enemies in range.
 
 - Buffed Swarm Host to Creeper strain.
 
@@ -1474,6 +1478,8 @@ The Sovereign Battlecruiser has a fully functional teleport animation, so let's 
 - Fixed an issue where canceling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 - Fixed an issue where Call in the Fleet targeting reticles would visually bank with the targeted unit.
+- Changed Theia Raven Silent Mode ability to no longer require decelerating to cast.
+- Added unique visual effect for Theia Raven Silent Mode instead of reusing the Overseer's.
 
 yeah.
 

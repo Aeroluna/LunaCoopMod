@@ -52,6 +52,9 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
+    <CAbilMorph id="HHRavenMorphtoHHRavenSiege">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilEffectInstant id="JinaraSacrificeInstant">
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <Effect index="0" value="AscendantSacrificeSearch"/>
@@ -272,6 +275,16 @@
             <Vital index="Energy" value="100"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilMorph id="MorphToOverseer">
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToOverseerStetmann">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilMorph id="ObserverMorphtoObserverSiege">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="OrdnanceFleetwideJump">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="OrdnanceFleetwideJumpSet"/>
@@ -291,6 +304,12 @@
         </CmdButtonArray>
         <PlaceUnit value="HHOrdnanceTower"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="OverseerMorphtoOverseerSiege">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilMorph id="OverseerMorphtoOverseerSiegeStetmann">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilMorph id="PitAlarakJinaraMorph">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Baneling" Requirements="PitAlarak"/>
@@ -309,6 +328,10 @@
     <CAbilEffectTarget id="PurificationNovaTargeted">
         <CursorEffect value="PurificationNovaTargettedSearch"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="SIMorphToOverseer">
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilBehavior id="SalvageStetmannPowerTower">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <CmdButtonArray index="On" DefaultButtonFace="SalvageStetmann">
@@ -1505,8 +1528,10 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="RavagerAbathurCorrosiveBile">
         <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <TargetSorts>
             <SortArray value="TSNotForceField"/>
+            <SortArray value="TSThreatensCyclone"/>
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden"/>
@@ -1788,6 +1813,9 @@
         <AINotifyEffect value="ArtanisMaelstromDamage"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ZeratulDarkArchonMaelstrom"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="ZeratulObserverMorphtoZeratulObserverSiege">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="ZeratulVoidPrisonTarget">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="ZeratulVoidPrisonAiur01"/>
