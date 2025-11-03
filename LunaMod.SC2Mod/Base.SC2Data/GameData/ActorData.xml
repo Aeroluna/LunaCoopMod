@@ -632,6 +632,14 @@
         <Missile value="SupplicantAttackMissile"/>
         <ImpactMap index="None" Model="SupplicantImpact" Sound="Supplicant_AttackImpact"/>
     </CActorAction>
+    <CActorUnit id="TychusMarauder">
+        <On Terms="Abil.TychusMarauderBuildHealingWard.SourceCastStart" Send="AnimPlay Spell Attack,Right"/>
+    </CActorUnit>
+    <CActorUnit id="TychusWarhound">
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimBracketClear Spell"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketClear Spell"/>
+        <On Terms="Abil.TychusWarhoundBuildAutoTurret.SourceCastStart" Send="$Spell,A"/>
+    </CActorUnit>
     <CActorUnit id="UltraliskStetmann">
         <On index="83" Terms="WeaponStop.UltraliskKaiserBladesStetmann.AttackStop"/>
         <!-- Burrow charge, campaign version -->

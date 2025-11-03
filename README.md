@@ -1485,22 +1485,29 @@ yeah.
 
 ## Tychus
 
+- Added P4: Hell's Kingpin
+  - Advantage: Outlaws are uncapped.
+  - Disadvantage: Medivac Platforms are unavailable.
+- Added `-itsabouttime` cheat that uncaps Outlaws.
+
+The biggest pain the ass was obviously trying to get the UI to accommodate having 9 Outlaws instead of 5. Second to that is trying to get 9 abilities to fit on one shared command card. The end result ended up looking cool as hell with all 9 Outlaws. An additional cheat command was added in case you want to try it with other prestiges.
+
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
-  - Now possible to not have Tychus active at all.
+  - It's possible to not have Tychus active at all.
   - Calldown Odin will only revive Tychus if Tychus is recruited.
   - Cannot recruit Tychus while Odin is deployed.
   - Added silly Tychus ejecting animation when Odin dies.
 
-It's probably still better to take Tychus, but now atleast you have a choice.
+It's probably still optimal to recruit Tychus, but now at least you have a choice.
 
 - Added ability to reorder outlaws.
 
-https://www.maguro.one/2019/06/uiux-tweaks.html
+[Made by Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html). Some additional tweaks were made to make it compatible with the previous changes.
 
 - Reworked Tychus Attack Speed mastery into First Outlaw Attack Speed.
 - Reworked Tychus Shredder Grenade Cooldown mastery into First Outlaw Ability Cooldown.
 
-To go with the above changes, this mastery set now affects your first mastery instead of always buffing Tychus. If you change the Outlaw in the first slot using the UI reordering, the buff will be moved to that Outlaw instead.
+To go with the first outlaw change, this mastery set now affects your first outlaw instead of always buffing Tychus. If you change the Outlaw in the first slot using the UI reordering, the buff will be moved to that Outlaw instead.
 
 - Reordered SCV building menu.
 - Added Fortified Bunker that can be built by SCVs.
@@ -1517,15 +1524,6 @@ It looked like a massive explosion for a single target nuke.
 - Reduced Miles "Blaze" Lewis weapon backswing and damage point.
 
 Same change to Raynor's firebats.
-
-- Added a cursor splat for Kev "Rattlesnake" West's Deploy Revitalizer.
-- Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
-- Added a new AOE visual effect after purchasing Hammer Munitions.
-- Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
-- Reworked Vega's Psi Projector visuals.
-- Fixed an issue where unit's affected by Psi Projector twice in a row would have their height visually reset.
-
-yeah.
 
 - Increased the visual scale of Rattlesnake's projectiles by 45%.
 - Increased the speed of Rattlesnake's projectiles by 45%.
@@ -1548,7 +1546,7 @@ It was showing the damage numbers from the WOL campaign instead of the Co-op num
 - Reduced cast finish time of Barrage from 2.5 to 2.
 - Increased radius of Barrage from 3 to 4.
 
-Barrage is kinda garbage for something you only get to use once per Odin. These changes should make casting Barrage smoother, especiallly important for the Big Red Button rework.
+Barrage is kinda garbage for something you only get to use once per Odin. These changes should make casting Barrage smoother, especially important for the Big Red Button rework.
 
 - Reduced radius of Big Red Button from 12 to 8.
 - Reduced Big Red Button damage falloff (Increased damage to targets far from the center).
@@ -1564,7 +1562,7 @@ Is an overall nerf as the radius is reduced and now you have to channel Barrage,
 
 Why does this even exist.
 
-- Buffed Rob "Cannonball" Boswell's Critical Response System passive to additionally deal 100 damage and knockback nearby enemies when procced.
+- Buffed Cannonball's Critical Response System passive to additionally deal 100 damage and knockback nearby enemies when procced.
 - Added sound effect when Cannonball's Critical Response System passive procs.
 
 Just like Artanis's Resurgence from the LotV campaign.
@@ -1578,6 +1576,17 @@ Cannonball is a menance when this gear is stacked, unfortunately he struggles to
 - Buffed Cannonball's weapon attack to deal cone splash damage in a small area.
 
 Makes it feel a little less bad when Cannonball crits a single zergling for 500 damage. Fun fact: all I did was uncomment some unused data.
+
+- Added a cursor splat for Rattlesnake's Deploy Revitalizer.
+- Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
+- Added a new AOE visual effect after purchasing Hammer Munitions.
+- Added blue trail to Rattlesnake's projectiles after purchasing Hammer Munitions.
+- Reworked Vega's Psi Projector visuals.
+- Fixed an issue where unit's affected by Psi Projector twice in a row would have their height visually reset.
+- Added a cast animation for Rattlesnake's Deploy Revitalizer ability.
+- Added a cast animation for Sirius's Deploy Warhound Turret ability.
+
+yeah.
 
 ## Zeratul
 

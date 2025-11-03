@@ -1188,6 +1188,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]TerranTychus_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeTychusOutlaws">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]TerranMengsk">
             <GameLink GameLink="VoicePackProtossMengsk">
@@ -1670,6 +1673,25 @@
                 <Field Id="PrimaryUpgrade"/>
             </GameLink>
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="HornerDefense1">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+        </Instances>
+        <Instances Id="CommanderPrestigeTychusOutlaws">
+            <GameLink GameLink="CommanderPrestigeTychusOutlaws">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <GameLink GameLink="TychusHeroExpanded">
+                <Field Id="SecondaryUpgradesSelf"/>
+            </GameLink>
+            <Int Int="50">
+                <Field Id="SuppliesMax"/>
+            </Int>
+            <Unit Unit="TychusMedivacPlatform">
+                <Field Id="DisableUnit"/>
+            </Unit>
+        </Instances>
+        <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
                 <Field Id="UpgradeSupplements"/>
             </User>
         </Instances>

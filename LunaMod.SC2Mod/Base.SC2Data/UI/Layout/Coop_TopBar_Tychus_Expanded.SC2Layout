@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!--
+    ==========================
+    Tychus Top Bar Template
+    ==========================
+    -->
+
+    <Frame type="Frame" name="TychusTopBarTemplate">
+        <Anchor relative="$parent"/>
+        <RenderPriority val="500"/>
+
+        <Frame type="ProgressBar" name="BarTrainingProgress">
+            <Anchor relative="$parent"/>
+            <MaxValue val="100"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="PlateBackdrop">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="-32"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-32"/>
+            <Width val="1168"/>
+            <Height val="160"/>
+            <Texture val="Assets/Textures/UI_InGame_Coop_TopBar_Tychus_MainBar_BackSection_Expanded.dds"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusFrame" name="TychusHero0" template="Coop_TopBar_Tychus/TychusHeroTemplate">
+            <Frame type="Image" name="Background">
+                <Anchor side="Left" relative="$parent/$parent/PlateBackdrop" pos="Min" offset="241"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="UnitStatusFrame" name="TychusHero1" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero2" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero3" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero4" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero5" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero6" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero7" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+        <Frame type="UnitStatusFrame" name="TychusHero8" template="Coop_TopBar_Tychus/TychusHeroTemplate"/>
+
+        <Frame type="Image" name="ShadowOverlay">
+            <Anchor relative="$parent/PlateBackdrop"/>
+            <Texture val="Assets/Textures/UI_InGame_Coop_TopBar_Tychus_MainBar_ShadowOverlay_Expanded.dds"/>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer0" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero0/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero0" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero0" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer1" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero1/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero1" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero1" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer2" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero2/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero2" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero2" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer3" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero3/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero3" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero3" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer4" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero4/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero4" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero4" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer5" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero5/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero5" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero5" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer6" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero6/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero6" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero6" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer7" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero7/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero7" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero7" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="SpotlightContainer8" template="Coop_TopBar_Tychus/SpotlightContainerTemplate">
+            <Frame type="Frame" name="AnchorFrame">
+                <Anchor relative="$parent/$parent/TychusHero8/Background"/>
+            </Frame>
+
+            <StateGroup name="SpotlightState">
+                <DefaultState val="Hidden"/>
+
+                <State name="Dead">
+                    <When type="StateGroup" frame="$parent/TychusHero8" UnitPortraitState="Dead"/>
+                </State>
+
+                <State name="Available">
+                    <When type="StateGroup" frame="$parent/TychusHero8" UnitPortraitState="Available"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <!-- TO DO: Spotlights -->
+
+        <Frame type="Image" name="PlateForeground">
+            <Anchor relative="$parent/PlateBackdrop"/>
+            <Texture val="Assets/Textures/UI_InGame_Coop_TopBar_Tychus_MainBar_TopSection_Expanded.dds"/>
+        </Frame>
+
+        <Frame type="CommandPanel" name="TychusGlobalCommandPanel" template="Coop_TopBar_Tychus/TychusGlobalCommandPanelTemplate"/>
+
+        <Frame type="Frame" name="ChargeIndicatorsContainer" template="Coop_TopBar_Tychus/ChargeIndicatorsContainerTemplate"/>
+
+        <Animation name="DropDown">
+            <Event event="OnShown" frame="PlateBackdrop" action="Reset,Play"/>
+
+            <Controller type="Anchor" frame="PlateBackdrop" end="Pause" side="Top" relative="false">
+                <Key type="Curve" time="0" value="-160" inout="Linear"/>
+                <Key type="Curve" time="1" value="-160" inout="Linear"/>
+                <Key type="Curve" time="1.75" value="-10" inout="Smooth"/>
+                <Key type="Curve" time="2" value="0" inout="Linear"/>
+            </Controller>
+        </Animation>
+    </Frame>
+</Desc>

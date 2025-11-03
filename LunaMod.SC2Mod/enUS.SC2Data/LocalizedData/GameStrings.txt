@@ -158,6 +158,9 @@ Button/Name/CommanderPrestigeRaynorMercenary=Mercenary Contractor
 Button/Name/CommanderPrestigeStukovNeural=Neural Dominator
 Button/Name/CommanderPrestigeSwannHerculesLocked=Build Hercules
 Button/Name/CommanderPrestigeSwannMoving=Rolling Thunder
+Button/Name/CommanderPrestigeTychusOutlaws=Hell's Kingpin
+Button/Name/CommanderPrestigeTychusOutlawsMedivac=Medivac Pickup
+Button/Name/CommanderPrestigeTychusOutlawsPlatform=Medivac Platform
 Button/Name/CommanderPrestigeVorazunHero=Shadow Hunter
 Button/Name/CommanderPrestigeVorazunShadowGuardLocked=Deploy Shadow Guard
 Button/Name/CommanderPrestigeVorazunTimeStopLocked=Time Stop
@@ -276,6 +279,10 @@ Button/Name/SwarmNetwork=Mutate into Swarm Network
 Button/Name/SwarmNetworkSwarmLocus=Summon Swarm Locus
 Button/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Button/Name/TychusBunker=Build Fortified Bunker
+Button/Name/TychusHeroCommonAbil6=Tychus Outlaw Common Ability 6
+Button/Name/TychusHeroCommonAbil7=Tychus Outlaw Common Ability 7
+Button/Name/TychusHeroCommonAbil8=Tychus Outlaw Common Ability 8
+Button/Name/TychusHeroCommonAbil9=Tychus Outlaw Common Ability 9
 Button/Name/TychusOdinNuclearStrikePassive=Big Red Button
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
@@ -384,6 +391,9 @@ Button/Tooltip/CommanderPrestigeStukovMechAutoAmmo=<n/><n/><s val="Coop_Prestige
 Button/Tooltip/CommanderPrestigeStukovMechEnergyLeech=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% more energy.
 Button/Tooltip/CommanderPrestigeStukovNeural=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Stukov gains control of units he kills for <d time="120"/>. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Max supply reduced by 100.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
+Button/Tooltip/CommanderPrestigeTychusOutlaws=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Outlaws are uncapped.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Medivac Platforms are unavailable.
+Button/Tooltip/CommanderPrestigeTychusOutlawsMedivac=This ability is locked by your Commander Prestige.
+Button/Tooltip/CommanderPrestigeTychusOutlawsPlatform=This unit is locked by your Commander Prestige.
 Button/Tooltip/CommanderPrestigeVorazunCrowdControlDamage=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Void Stasis, Confusion, Stasis Ward, Disruption Web, Darkcoil, and Astral Storm may affect heroic units and cause enemies to lose 20 life per second. This effect cannot kill.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Combat units deal 25% reduced damage. Stasis Ward duration reduced by 50%.
 Button/Tooltip/CommanderPrestigeVorazunHero=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Vorazun is available as a hero.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Deploy Shadow Guard and Time Stop are unavailable.
 Button/Tooltip/CommanderPrestigeVorazunShadowGuardLocked=This ability is locked by your Commander Prestige.
@@ -590,6 +600,12 @@ Button/Tooltip/SwarmNetworkSwarmLocus=Summons a Swarm Locus at the target locati
 Button/Tooltip/TempestDestabilizingResiduum=Tempest attacks leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
 Button/Tooltip/TychusBunker=Defensive structure. <n/>Outlaws fight from inside. <n/><n/><c val="#ColorAttackInfo">Bonus: +2 range to units inside.</c>
 Button/Tooltip/TychusGhostConcentrationHelmet=Increases the duration of Dominate by <d ref="$UpgradeEffectArrayValue:TychusGhostConcentrationHelmet:Behavior,TychusGhostDominateUpgraded,Duration$/Behavior,TychusGhostDominateUpgraded,Duration*100" player="0"/>%.
+Button/Tooltip/TychusHercGrappleArmor=Allows <c val="ffff8a">Cannonball</c> to become immune to damage for <d ref="Behavior,TychusHERCShield,Duration"/> seconds and restores all his life when he takes fatal damage. Also releases a large blast of energy that knocks back and deals <d ref="Effect,ArtanisResurgenceEnemyImpactDamage,Amount"/> damage to all nearby enemies. Cannot occur more than once every <d ref="Behavior,TychusHERCShieldWeakness,Duration"/> seconds.
+Button/Tooltip/TychusHercGrappleArmorLv1=When Cannonball takes fatal damage, he becomes immune to damage for <d ref="Behavior,TychusHERCShield,Duration"/> seconds and restores all his life. Also releases a large blast of energy that knocks back and deals <d ref="Effect,ArtanisResurgenceEnemyImpactDamage,Amount"/> damage to all nearby enemies. Cannot occur more than once every <d ref="Behavior,TychusHERCShieldWeakness,Duration"/> seconds.
+Button/Tooltip/TychusHeroCommonAbil6=</sp>
+Button/Tooltip/TychusHeroCommonAbil7=</sp>
+Button/Tooltip/TychusHeroCommonAbil8=</sp>
+Button/Tooltip/TychusHeroCommonAbil9=</sp>
 Button/Tooltip/TychusOdinNuclearStrikePassive=Barrage additionally launches a nuke at the target location. Nukes take <d ref="Effect,OdinNukePersistent,InitialDelay+Effect,OdinNukePersistent,ExpireDelay+Effect,OdinNukeDetonate,InitialDelay" precision="1"/> seconds to land, but they deal up to <d ref="Effect,OdinNukeDamage,Amount"/> damage in a large area.
 Button/Tooltip/TychusUpgradeOdinRedButton=Upgrades the <c val="ffff8a">Odin's</c> Barrage ability to additionally drop a nuke at the target location.
 Button/Tooltip/UltraliskStetmannMechanicalLifeLeech=Absorbs <d ref="Effect,UltraliskMechanicalLifeLeechStetmannDamage,Amount"/> health from a nearby enemy or friendly mechanical unit, healing for that amount. Deals half damage to friendly units but still heals the full amount.
@@ -947,6 +963,7 @@ Param/Value/lib_74A68E34_06BC5908=Placement unit not found, falling back to spaw
 Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
 Param/Value/lib_74A68E34_10B8F288=<c val="FF0000">player 2 is playing!</c>
 Param/Value/lib_74A68E34_221B6613=<c val="FF9800">Ji'nara has been revived at your Nexus.</c>
+Param/Value/lib_74A68E34_23CF3289=<c val="FF8000">Tychus Outlaw count unlocked</c>
 Param/Value/lib_74A68E34_57C032DF=<c val="FF8000">Ally control acquired</c>
 Param/Value/lib_74A68E34_69530F93=Alarak
 Param/Value/lib_74A68E34_74181A69=<c val="FF9800">Ji'nara is ready for battle.</c>
@@ -957,6 +974,7 @@ Param/Value/lib_74A68E34_CD6B2610=+Retry
 Param/Value/lib_74A68E34_D3F4D90E=<c val="FF0000">Damage caching overflow</c>
 Param/Value/lib_74A68E34_DE5FF9F5=<c val="FF9800">Ji'nara has died. She will be revived at the Nexus in %dur% seconds.</c>
 Param/Value/lib_74A68E34_E2513EF5=<c val="FF9800">Ji'nara has died. You must warp in a Nexus to revive her.</c>
+Param/Value/lib_74A68E34_E63C1D40=Cheat Error - Cheat must be used at commander select screen
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
 RequirementNode/Tooltip/CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992=Construction complete
 RequirementNode/Tooltip/CountUpgradeBansheeCloakCompleteOnly758801471TechTreeCheat=Research Cloaking Field at the Starport Tech Lab
@@ -1071,6 +1089,7 @@ Upgrade/Name/CommanderPrestigeKaraxChrono=CommanderPrestigeKaraxUnitChrono
 Upgrade/Name/CommanderPrestigeKaraxStructuresShared=CommanderPrestigeKaraxStructuresShared
 Upgrade/Name/CommanderPrestigeKaraxUnitChronoShared=CommanderPrestigeKaraxUnitChronoShared
 Upgrade/Name/CommanderPrestigeStukovNeural=CommanderPrestigeStukovNeural
+Upgrade/Name/CommanderPrestigeTychusOutlaws=CommanderPrestigeTychusOutlaws
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
 Upgrade/Name/HHBomberEMP=EMP
 Upgrade/Name/HHBomberNapalmImproved=Napalm Improved
@@ -1090,6 +1109,7 @@ Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors
 Upgrade/Name/SwannCommanderVehicleMovementSpeed=Overdrive Actuators
 Upgrade/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Upgrade/Name/TychusACOwned=Tychus Findlay from Joeyray's Bar
+Upgrade/Name/TychusHeroExpanded=More Heroes
 Upgrade/Name/VoidArchonChainReaction=Void Archon Chain Reaction
 Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
 Upgrade/Name/VorazunImprovedShields=Vorazun Improved Shields

@@ -29,6 +29,9 @@
     <CRequirement id="CommanderPrestigeStukovNeural">
         <NodeArray index="Show" Link="CountUpgradeCommanderPrestigeStukovNeuralCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="CommanderPrestigeTychusOutlaws">
+        <NodeArray index="Show" Link="CountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly"/>
+    </CRequirement>
     <CRequirement id="HaveCarrierRepairDrones">
         <NodeArray index="Use" Link="CountUpgradeCarrierRepairDronesCompleteOnly3239020716"/>
     </CRequirement>
@@ -38,6 +41,9 @@
     </CRequirement>
     <CRequirement id="HaveMasteryTychusGrenadeCooldown">
         <NodeArray index="Show" Link="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HaveMedivacPlatformGlobal">
+        <NodeArray index="Show" Link="AndNotCountUnitTychusMedivacPlatformCompleteOnlyNotCountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly"/>
     </CRequirement>
     <CRequirement id="HaveResearchBlinkCharges">
         <NodeArray index="Use" Link="CountUpgradeStalkerResearchBlinkChargesCompleteOnly1910735067"/>
@@ -380,5 +386,365 @@
     </CRequirement>
     <CRequirement id="ZealotPurifierReviveOffCooldown">
         <NodeArray index="Show" Link="AndCountUpgradeKaraxCommanderCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnitLTE4CountUpgradeCommanderLevelCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryWarhoundTurretUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundTurretUpgradeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryWarhoundFearUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundFearCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryWarhoundHaywireMissiles">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundHaywireMissilesCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryWarhoundDeathExplosionUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundDeathExplosionCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMedicDefensiveMatrix">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicDefensiveMatrixCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMedicSuperHealing">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicSuperHealingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMedicAdvancedHealingSpray">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicAdvancedHealingSprayCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMedicDoubleBeam">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicDoubleBeamCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryFirebatPremiumPetroleum">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatPremiumPetroleumCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryFirebatBlueFlameOil">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatBlueFlameOilCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryFirebatIncendiaryPetroleum">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatIncendiaryPetroleumCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryFirebatShield">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatShieldCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMarauderAttackSplash">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderAttackSplashCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMarauderSuperStimUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderSuperStimCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMarauderHealingWardBuffUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderHealingWardBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryMarauderHealingWardSpeedBuffUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderHealingWardSpeedBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryHercGrappleImpacts">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercGrappleStunCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryHercGrappleArmor">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercGrappleArmorCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryHercRage">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercRageCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryHercCrit">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercCritCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryGhostConfusingDomination">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostDominatingDominationCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryGhostDominateBuff">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostDominateBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryGhostPsychicSnare">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostPsychicSnareCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryGhostConcentrationHelmet">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostConcentrationHelmetCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimarySpectreSuperUltrasonicPulse">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreSuperUltrasonicPulseCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimarySpectreExtendedPulseGun">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreExtendedPulseGunCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimarySpectreVisionSuit">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreVisionSuitCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimarySpectreBrillianceAura">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreBrillianceAuraCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryReaperBombDamage">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombDamageCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryReaperBombCharges">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombChargesCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryReaperBombStun">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombStunCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryReaperSuperCloak">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperEvasionBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryACImplosionGrenades">
+        <NodeArray index="Use" Link="CountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryACPiercingRounds">
+        <NodeArray index="Use" Link="CountUpgradeTychusACPiercingRoundsCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryACRageGrenades">
+        <NodeArray index="Use" Link="CountUpgradeTychusACRageGrenadesCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusPrimaryACBandofBrothers">
+        <NodeArray index="Use" Link="CountUpgradeTychusACBandofBrothersCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryWarhoundTurretUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundTurretUpgradeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryWarhoundFearUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundFearCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryWarhoundHaywireMissiles">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundHaywireMissilesCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryWarhoundDeathExplosionUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusWarhoundDeathExplosionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMedicDefensiveMatrix">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicDefensiveMatrixCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMedicSuperHealing">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicSuperHealingCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMedicAdvancedHealingSpray">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicAdvancedHealingSprayCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMedicDoubleBeam">
+        <NodeArray index="Use" Link="CountUpgradeTychusMedicDoubleBeamCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryFirebatPremiumPetroleum">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatPremiumPetroleumCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryFirebatBlueFlameOil">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatBlueFlameOilCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryFirebatIncendiaryPetroleum">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatIncendiaryPetroleumCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryFirebatShield">
+        <NodeArray index="Use" Link="CountUpgradeTychusFirebatShieldCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMarauderAttackSplash">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderAttackSplashCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMarauderSuperStimUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderSuperStimCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMarauderHealingWardBuffUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderHealingWardBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryMarauderHealingWardSpeedBuffUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTychusMarauderHealingWardSpeedBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryHercGrappleImpacts">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercGrappleStunCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryHercGrappleArmor">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercGrappleArmorCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryHercRage">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercRageCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryHercCrit">
+        <NodeArray index="Use" Link="CountUpgradeTychusHercCritCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryGhostConfusingDomination">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostDominatingDominationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryGhostDominateBuff">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostDominateBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryGhostPsychicSnare">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostPsychicSnareCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryGhostConcentrationHelmet">
+        <NodeArray index="Use" Link="CountUpgradeTychusGhostConcentrationHelmetCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondarySpectreSuperUltrasonicPulse">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreSuperUltrasonicPulseCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondarySpectreExtendedPulseGun">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreExtendedPulseGunCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondarySpectreVisionSuit">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreVisionSuitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondarySpectreBrillianceAura">
+        <NodeArray index="Use" Link="CountUpgradeTychusSpectreBrillianceAuraCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryReaperBombDamage">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombDamageCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryReaperBombCharges">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombChargesCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryReaperBombStun">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperBombStunCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryReaperSuperCloak">
+        <NodeArray index="Use" Link="CountUpgradeTychusReaperEvasionBuffCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryACImplosionGrenades">
+        <NodeArray index="Use" Link="CountUpgradeTychusACImplosionGrenadesCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryACPiercingRounds">
+        <NodeArray index="Use" Link="CountUpgradeTychusACPiercingRoundsCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryACRageGrenades">
+        <NodeArray index="Use" Link="CountUpgradeTychusACRageGrenadesCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="HaveTychusSecondaryACBandofBrothers">
+        <NodeArray index="Use" Link="CountUpgradeTychusACBandofBrothersCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
+        <EditorCategories value="Race:Terran"/>
     </CRequirement>
 </Catalog>

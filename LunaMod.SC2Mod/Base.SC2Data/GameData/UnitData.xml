@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUnit default="1" id="TychusHero">
+        <CardLayouts index="0">
+            <LayoutButtons Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Row="1" Column="2"/>
+            <LayoutButtons Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Row="1" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="AbathurSymbioteBrutalisk">
         <Attributes index="Biological" value="1"/>
         <Attributes index="Mechanical" value="0"/>
@@ -150,11 +158,21 @@
             <LayoutButtons Face="CommanderPrestigeHornerDefenseBomberLocked" Type="Passive" Requirements="CommanderPrestigeHornerDefense" Row="0" Column="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="CoopCasterTychus">
+        <CardLayouts index="0">
+            <LayoutButtons Face="CommanderPrestigeTychusOutlawsMedivac" Type="Passive" Requirements="CommanderPrestigeTychusOutlaws" Row="0" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="FenixTalisAdeptPhaseShift">
         <BehaviorArray Link="AllUnitBehaviorController"/>
+    </CUnit>
+    <CUnit id="Ghost">
+        <CardLayouts index="0">
+            <LayoutButtons index="13" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="JinaraBarrageWeapon" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>
@@ -1985,27 +2003,415 @@
     <CUnit id="TychusOdinEjectMissile" parent="MISSILE"/>
     <CUnit id="TychusFirebat">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusFirebatUltLocked" AbilCmd="" Requirements="TychusLevel12"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusFirebatShield"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatShield,Off"/>
+                <Requirements value="HaveTychusPrimaryFirebatShield"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatBlueFlameOil"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatBlueFlameOil,Off"/>
+                <Requirements value="HaveTychusPrimaryFirebatBlueFlameOil"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatIncendiaryPetroleum"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatIncendiaryPetroleum,Off"/>
+                <Requirements value="HaveTychusPrimaryFirebatIncendiaryPetroleum"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatPremiumPetroleum"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatPremiumPetroleum,Off"/>
+                <Requirements value="HaveTychusPrimaryFirebatPremiumPetroleum"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatShield"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatShield,Off"/>
+                <Requirements value="HaveTychusSecondaryFirebatShield"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatBlueFlameOil"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatBlueFlameOil,Off"/>
+                <Requirements value="HaveTychusSecondaryFirebatBlueFlameOil"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatIncendiaryPetroleum"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatIncendiaryPetroleum,Off"/>
+                <Requirements value="HaveTychusSecondaryFirebatIncendiaryPetroleum"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusFirebatPremiumPetroleum"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusFirebatPremiumPetroleum,Off"/>
+                <Requirements value="HaveTychusSecondaryFirebatPremiumPetroleum"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusGhost">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil8" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusGhostUltLocked" AbilCmd="" Requirements="TychusLevel14"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusGhostConcentrationHelmet"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostSnipe,255"/>
+                <Requirements value="HaveTychusPrimaryGhostConcentrationHelmet"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostConfusingDomination"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostDominatingDomination,Off"/>
+                <Requirements value="HaveTychusPrimaryGhostConfusingDomination"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostPsychicSnare"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusGhostPsychicSnare,Execute"/>
+                <Requirements value="HaveTychusPrimaryGhostPsychicSnare"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostDominateBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostDominateBuff,Off"/>
+                <Requirements value="HaveTychusPrimaryGhostDominateBuff"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostConcentrationHelmet"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostSnipe,255"/>
+                <Requirements value="HaveTychusSecondaryGhostConcentrationHelmet"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostConfusingDomination"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostDominatingDomination,Off"/>
+                <Requirements value="HaveTychusSecondaryGhostConfusingDomination"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostPsychicSnare"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusGhostPsychicSnare,Execute"/>
+                <Requirements value="HaveTychusSecondaryGhostPsychicSnare"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusGhostDominateBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusGhostDominateBuff,Off"/>
+                <Requirements value="HaveTychusSecondaryGhostDominateBuff"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusHERC">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Behavior=""/>
+            <LayoutButtons index="16" Face="TychusHERCUltLocked" AbilCmd="" Requirements="TychusLevel14"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusHercGrappleImpactsLevels"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercGrappleStun,Off"/>
+                <Requirements value="HaveTychusSecondaryHercGrappleImpacts"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercGrappleArmorLevels"/>
+                <Type value="Passive"/>
+                <Behavior value="TychusHERCShieldCooldownDisplay"/>
+                <Requirements value="HaveTychusSecondaryHercGrappleArmor"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercRage"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercRage,Off"/>
+                <Requirements value="HaveTychusSecondaryHercRage"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercCritLevels"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercCrit,Off"/>
+                <Requirements value="HaveTychusSecondaryHercCrit"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercCritLevels"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercCrit,Off"/>
+                <Requirements value="HaveTychusPrimaryHercCrit"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercRage"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercRage,Off"/>
+                <Requirements value="HaveTychusPrimaryHercRage"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercGrappleArmorLevels"/>
+                <Type value="Passive"/>
+                <Behavior value="TychusHERCShieldCooldownDisplay"/>
+                <Requirements value="HaveTychusPrimaryHercGrappleArmor"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusHercGrappleImpactsLevels"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusHercGrappleStun,Off"/>
+                <Requirements value="HaveTychusPrimaryHercGrappleImpacts"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusMarauder">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil8" AbilCmd="TychusHeroCommonAbil8,Execute"/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusMarauderUltLocked" AbilCmd="" Requirements="TychusLevel14"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusMarauderAttackSplash"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderAttackSplash,Off"/>
+                <Requirements value="HaveTychusPrimaryMarauderAttackSplash"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderSuperStim"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusMarauderSuperStimpack,Execute"/>
+                <Requirements value="HaveTychusPrimaryMarauderSuperStimUpgrade"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderHealingWardSpeedBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderHealingWardSpeedBuff,Off"/>
+                <Requirements value="HaveTychusPrimaryMarauderHealingWardSpeedBuffUpgrade"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderHealingWardBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderHealingWardBuff,Off"/>
+                <Requirements value="HaveTychusPrimaryMarauderHealingWardBuffUpgrade"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderAttackSplash"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderAttackSplash,Off"/>
+                <Requirements value="HaveTychusSecondaryMarauderAttackSplash"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderSuperStim"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusMarauderSuperStimpack,Execute"/>
+                <Requirements value="HaveTychusSecondaryMarauderSuperStimUpgrade"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderHealingWardSpeedBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderHealingWardSpeedBuff,Off"/>
+                <Requirements value="HaveTychusSecondaryMarauderHealingWardSpeedBuffUpgrade"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusMarauderHealingWardBuff"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusMarauderHealingWardBuff,Off"/>
+                <Requirements value="HaveTychusSecondaryMarauderHealingWardBuffUpgrade"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusMedic">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="18" Face="TychusMedicUltLocked" Type="Passive" AbilCmd="" Requirements="TychusLevel12"/>
+            <LayoutButtons>
+                <Face value="TychusMedicDefensiveMatrix"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusMedicDefensiveMatrix,Execute"/>
+                <Requirements value="HaveTychusPrimaryMedicDefensiveMatrix"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons Face="TychusMedicHealingSprayUpgradePassive" Type="Passive" Requirements="HaveTychusPrimaryMedicAdvancedHealingSpray" Row="1" Column="0"/>
+            <LayoutButtons Face="TychusMedicHealUpgradeLevels" Type="Passive" Requirements="HaveTychusPrimaryMedicSuperHealing" Row="1" Column="1"/>
+            <LayoutButtons Face="TychusMedicDoubleHeal" Type="Passive" Requirements="HaveTychusPrimaryMedicDoubleBeam" Row="1" Column="2"/>
+            <LayoutButtons>
+                <Face value="TychusMedicDefensiveMatrix"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusMedicDefensiveMatrix,Execute"/>
+                <Requirements value="HaveTychusSecondaryMedicDefensiveMatrix"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons Face="TychusMedicHealingSprayUpgradePassive" Type="Passive" Requirements="HaveTychusSecondaryMedicAdvancedHealingSpray" Row="2" Column="0"/>
+            <LayoutButtons Face="TychusMedicHealUpgradeLevels" Type="Passive" Requirements="HaveTychusSecondaryMedicSuperHealing" Row="2" Column="1"/>
+            <LayoutButtons Face="TychusMedicDoubleHeal" Type="Passive" Requirements="HaveTychusSecondaryMedicDoubleBeam" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusOdin">
         <CardLayouts index="0">
+            <LayoutButtons Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Row="1" Column="0"/>
             <LayoutButtons Face="TychusOdinNuclearStrikePassive" Type="Passive" Requirements="HaveTychusOdinRedButton" Row="1" Column="0"/>
+            <LayoutButtons Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Row="1" Column="2"/>
+            <LayoutButtons Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Row="1" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="TychusOdinEject"/>
     </CUnit>
     <CUnit id="TychusReaper">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="12" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="13" Face="TychusReaperUltLocked" AbilCmd="" Requirements="TychusLevel12"/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusHeroCommonAbil8" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusReaperBombCharges"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombCharges,Off"/>
+                <Requirements value="HaveTychusPrimaryReaperBombCharges"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperBombStun"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombStun,Off"/>
+                <Requirements value="HaveTychusPrimaryReaperBombStun"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperEvasionBuff"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusReaperSuperCloak,Execute"/>
+                <Requirements value="HaveTychusPrimaryReaperSuperCloak"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperBombDamage"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombDamage,Off"/>
+                <Requirements value="HaveTychusPrimaryReaperBombDamage"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperBombCharges"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombCharges,Off"/>
+                <Requirements value="HaveTychusSecondaryReaperBombCharges"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperBombStun"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombStun,Off"/>
+                <Requirements value="HaveTychusSecondaryReaperBombStun"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperEvasionBuff"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusReaperSuperCloak,Execute"/>
+                <Requirements value="HaveTychusSecondaryReaperSuperCloak"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusReaperBombDamage"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusReaperBombDamage,Off"/>
+                <Requirements value="HaveTychusSecondaryReaperBombDamage"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusSCV">
         <CardLayouts index="0">
@@ -2023,6 +2429,7 @@
         <CardLayouts CardId="TBl2">
             <LayoutButtons Face="TychusGhostAcademy" Type="AbilCmd" AbilCmd="TychusTerranBuild,Build17" Row="2" Column="0"/>
             <LayoutButtons Face="BuildTychusMedivacPlatform" Type="AbilCmd" AbilCmd="TychusTerranBuild,Build14" Row="1" Column="1"/>
+            <LayoutButtons Face="CommanderPrestigeTychusOutlawsPlatform" Type="Passive" Requirements="CommanderPrestigeTychusOutlaws" Row="1" Column="1"/>
             <LayoutButtons Face="TychusArmory" Type="AbilCmd" AbilCmd="TychusTerranBuild,Build16" Row="1" Column="0"/>
             <LayoutButtons Face="TychusMercCompound" Type="AbilCmd" AbilCmd="TychusTerranBuild,Build18" Row="0" Column="0"/>
             <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
@@ -2030,9 +2437,109 @@
     </CUnit>
     <CUnit id="TychusSpectre">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusSpectreUltLocked" AbilCmd="" Requirements="TychusLevel12"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusSpectreBrillianceAura"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreBrillianceAura,Off"/>
+                <Requirements value="HaveTychusPrimarySpectreBrillianceAura"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreVisionSuit"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreVisionSuit,Off"/>
+                <Requirements value="HaveTychusPrimarySpectreVisionSuit"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreExtendedPulseGun"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreExtendedPulseGun,Off"/>
+                <Requirements value="HaveTychusPrimarySpectreExtendedPulseGun"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreSuperUltrasonicPulse"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreSuperUltrasonicPulse,Off"/>
+                <Requirements value="HaveTychusPrimarySpectreSuperUltrasonicPulse"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreBrillianceAura"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreBrillianceAura,Off"/>
+                <Requirements value="HaveTychusSecondarySpectreBrillianceAura"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreVisionSuit"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreVisionSuit,Off"/>
+                <Requirements value="HaveTychusSecondarySpectreVisionSuit"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreExtendedPulseGun"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreExtendedPulseGun,Off"/>
+                <Requirements value="HaveTychusSecondarySpectreExtendedPulseGun"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusSpectreSuperUltrasonicPulse"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusSpectreSuperUltrasonicPulse,Off"/>
+                <Requirements value="HaveTychusSecondarySpectreSuperUltrasonicPulse"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="TychusWarhound">
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusWarhoundUltLocked" Requirements="TychusLevel14"/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" AbilCmd="TychusHeroCommonAbil6,Execute"/>
+            <LayoutButtons Face="TychusWarhoundTurretUpgradePassive" Type="Passive" Requirements="HaveTychusPrimaryWarhoundTurretUpgrade" Row="1" Column="3"/>
+            <LayoutButtons Face="TychusWarhoundFearUpgradePassive" Type="Passive" Requirements="HaveTychusPrimaryWarhoundFearUpgrade" Row="1" Column="1"/>
+            <LayoutButtons Face="TychusWarhoundDeathExplosionUpgradePassive" Type="Passive" Requirements="HaveTychusPrimaryWarhoundDeathExplosionUpgrade" Row="1" Column="2"/>
+            <LayoutButtons>
+                <Face value="TychusWarhoundHaywireMissiles"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusWarhoundTornadoSprayMissile,Execute"/>
+                <Requirements value="HaveTychusPrimaryWarhoundHaywireMissiles"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons Face="TychusWarhoundTurretUpgradePassive" Type="Passive" Requirements="HaveTychusSecondaryWarhoundTurretUpgrade" Row="2" Column="3"/>
+            <LayoutButtons Face="TychusWarhoundFearUpgradePassive" Type="Passive" Requirements="HaveTychusSecondaryWarhoundFearUpgrade" Row="2" Column="1"/>
+            <LayoutButtons Face="TychusWarhoundDeathExplosionUpgradePassive" Type="Passive" Requirements="HaveTychusSecondaryWarhoundDeathExplosionUpgrade" Row="2" Column="2"/>
+            <LayoutButtons>
+                <Face value="TychusWarhoundHaywireMissiles"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TychusWarhoundTornadoSprayMissile,Execute"/>
+                <Requirements value="HaveTychusSecondaryWarhoundHaywireMissiles"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="VikingMengskAssault">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
@@ -3592,6 +4099,77 @@
         <CostResource index="Minerals" value="500"/>
         <CostResource index="Vespene" value="100"/>
         <CargoSize value="2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="11" Face="TychusHeroCommonAbil9" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil9,Execute" Requirements=""/>
+            <LayoutButtons index="14" Face="TychusCoopUltLocked" AbilCmd="" Requirements="TychusLevel12"/>
+            <LayoutButtons index="15" Face="TychusHeroCommonAbil7" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil7,Execute" Requirements=""/>
+            <LayoutButtons index="16" Face="TychusHeroCommonAbil8" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil8,Execute" Requirements=""/>
+            <LayoutButtons index="17" Face="TychusHeroCommonAbil6" Type="AbilCmd" AbilCmd="TychusHeroCommonAbil6,Execute" Requirements=""/>
+            <LayoutButtons>
+                <Face value="TychusACBandofBrothers"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACBandofBrothers,Off"/>
+                <Requirements value="HaveTychusPrimaryACBandofBrothers"/>
+                <Row value="1"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACRageGrenades"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACRageGrenades,Off"/>
+                <Requirements value="HaveTychusPrimaryACRageGrenades"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACPiercingRounds"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACPiercingRounds,Off"/>
+                <Requirements value="HaveTychusPrimaryACPiercingRounds"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACImplosionGrenades"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACImplosionGrenades,Off"/>
+                <Requirements value="HaveTychusPrimaryACImplosionGrenades"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACBandofBrothers"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACBandofBrothers,Off"/>
+                <Requirements value="HaveTychusSecondaryACBandofBrothers"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACRageGrenades"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACRageGrenades,Off"/>
+                <Requirements value="HaveTychusSecondaryACRageGrenades"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACPiercingRounds"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACPiercingRounds,Off"/>
+                <Requirements value="HaveTychusSecondaryACPiercingRounds"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="TychusACImplosionGrenades"/>
+                <Type value="Passive"/>
+                <AbilCmd value="TychusACImplosionGrenades,Off"/>
+                <Requirements value="HaveTychusSecondaryACImplosionGrenades"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="VikingAssault">
         <AbilArray Link="VehicleAfterburnersStimpack"/>
