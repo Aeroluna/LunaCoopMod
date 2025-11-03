@@ -1025,7 +1025,7 @@ Friendly units shouldn't be dying anyways, so why not get some value when it hap
 Some Force Field buffs to make it less niche and a new fancy name to make it distinct.
 
 - Increased Vanguard attack count from 8 to 16.
-- Reduced Vanguard range by 1.5.
+- Reduced Vanguard range by 1.
 
 Copied from LOTV Nightmare. The nerf from campaign to co-op made building these feel sad. To compensate for unnerfing the damage, the range has been reduced. The reduced range also helps them live up to their name.
 
@@ -1051,6 +1051,7 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Fixed an issue where Alarak would not gain Lightning Surge after an Ascendant sacrifices a Supplicant.
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
 - Fixed an issue where warping in Supplicant were missing the void warp-in beam.
+- Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to a Ascendant/Void Archon/mech unit.
 
 yeah.
 

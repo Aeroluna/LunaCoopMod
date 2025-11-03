@@ -4981,6 +4981,70 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPowerOverwhelmingCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_count;
+
+    // Automatic Variable Declarations
+    unitgroup autoEF31A773_g;
+    int autoEF31A773_u;
+    unit autoEF31A773_var;
+    string auto912BFC61_val;
+    int auto830A049E_n;
+    int auto830A049E_i;
+
+    // Variable Initialization
+    lv_count = 20;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringWord(EventChatMessage(false), 2) != "")) {
+        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
+    }
+
+    autoEF31A773_g = UnitGroupSelected(EventPlayer());
+    autoEF31A773_u = UnitGroupCount(autoEF31A773_g, c_unitCountAll);
+    for (;; autoEF31A773_u -= 1) {
+        autoEF31A773_var = UnitGroupUnitFromEnd(autoEF31A773_g, autoEF31A773_u);
+        if (autoEF31A773_var == null) { break; }
+        auto912BFC61_val = UnitGetType(autoEF31A773_var);
+        if (auto912BFC61_val == "HighTemplarTaldarim") {
+            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantSacrificeSelfBuff", EventPlayer(), lv_count);
+        }
+        else if (auto912BFC61_val == "VoidArchon") {
+            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantArchonSelfBuff", EventPlayer(), lv_count);
+        }
+        else {
+            auto830A049E_n = lv_count;
+            for (auto830A049E_i = 1; auto830A049E_i <= auto830A049E_n; auto830A049E_i += 1) {
+                PlayerCreateEffectUnit(EventPlayer(), "AlarakTheStrongestSurvivePrestigeMechBuffTrigger", autoEF31A773_var);
+            }
+        }
+    }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_3FA95D56"));
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init () {
+    lib74A68E34_gt_AlarakPowerOverwhelmingCheat = TriggerCreate("lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_AlarakPowerOverwhelmingCheat, c_playerAny, "-poweroverwhelming", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AlarakPrestigeJinaraSoulAbsorptionLaunch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Func (bool testConds, bool runActions) {
@@ -5156,7 +5220,7 @@ bool lib74A68E34_gt_AlarakArchonResurgenceSacrificeScale_Func (bool testConds, b
         lv_sacrificCount = 20;
     }
 
-    libNtve_gf_SendActorMessageToUnit(EventUnit(), (("SetScale " + FixedToString(((0.0333 * lv_sacrificCount) + 1.0), 3))));
+    libNtve_gf_SendActorMessageToUnit(EventUnit(), (("SetScale " + FixedToString(((0.0666 * lv_sacrificCount) + 1.0), 3))));
     return true;
 }
 
@@ -7396,6 +7460,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
+    lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init();

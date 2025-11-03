@@ -33,6 +33,13 @@
     <CAccumulatorBehavior id="AscendantArchonDummySelfBuff">
         <Behavior value="AscendantArchonDummySelfBuff"/>
     </CAccumulatorBehavior>
+    <CAccumulatorArithmetic id="AscendantArchonDummySelfBuffCount">
+        <Parameters value="3"/>
+        <Parameters value="0">
+            <AccumulatorArray value="AscendantArchonDummySelfBuff"/>
+        </Parameters>
+        <Operation value="Multiply"/>
+    </CAccumulatorArithmetic>
     <CAccumulatorBehavior id="AscendantArchonSelfBuff">
         <Behavior value="AscendantArchonSelfBuff"/>
     </CAccumulatorBehavior>
@@ -45,7 +52,7 @@
     </CAccumulatorArithmetic>
     <CAccumulatorConstant id="AscendantArchonDummySelfBuffSearchFactor">
         <ApplicationRule value="Multiply"/>
-        <Amount value="0.1"/>
+        <Amount value="0.2"/>
     </CAccumulatorConstant>
     <CAccumulatorConstant id="DehakaLevelCleaveDamageFactor">
         <ApplicationRule value="Multiply"/>
