@@ -118,6 +118,32 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorModel id="KarassPsiStormImpact">
+        <Scale value="1.200000"/>
+        <AutoScaleFactor value="1.200000"/>
+        <On index="3" Terms="Behavior.KarassPsiStorm.On"/>
+    </CActorModel>
+    <CActorModel id="VoidRayEnhancementAddition01">
+        <On index="9" Terms="Behavior.VoidRayChargeBeamRangeCounter.On; ValidateUnit IsNotMohandar"/>
+    </CActorModel>
+    <CActorModel id="VoidRayEnhancementAddition02">
+        <On index="11" Terms="Behavior.VoidRayChargeBeamRangePhase2.On; ValidateUnit IsNotMohandar"/>
+        <On index="13" Terms="Behavior.VoidRayChargeBeamRangePhase3.On; ValidateUnit IsNotMohandar"/>
+    </CActorModel>
+    <CActorModel id="VoidRayEnhancementAddition03">
+        <On index="9" Terms="Behavior.VoidRayChargeBeamRangePhase3.On; ValidateUnit IsNotMohandar"/>
+    </CActorModel>
+    <CActorModel id="ZeratulConstructPsionicGaleImpact" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Behavior.ZeratulXelNagaConstructPsiStorm.On" Send="Create"/>
+        <On Terms="Behavior.ZeratulXelNagaConstructPsiStorm.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HighTemplarPsiStormImpact"/>
+        <Scale value="1.200000"/>
+        <AutoScaleFactor value="1.200000"/>
+    </CActorModel>
     <CActorModel id="HornerAirFleetMissileAttackTargetingUI">
         <HostSiteOps Ops="SOpShadow SOp2DRotation" HoldRotation="1"/>
     </CActorModel>
@@ -1404,6 +1430,14 @@
         </Wireframe>
     </CActorUnit>
     <CActorSplat id="VoidArchonMaelstromCursorSplat" parent="ProtossCursorSplat" abil="VoidArchonMaelstrom"/>
+    <CActorUnit id="ZeratulDarkArchon">
+        <SoundArray index="Ready" value="DarkArchon_Ready"/>
+        <SoundArray index="Help" value="DarkArchon_Help"/>
+        <SoundArray index="What" value="DarkArchon_What"/>
+        <SoundArray index="Yes" value="DarkArchon_Yes"/>
+        <SoundArray index="Attack" value="DarkArchon_Attack"/>
+        <SoundArray index="Pissed" value="DarkArchon_Pissed"/>
+    </CActorUnit>
     <CActorSound id="ZeratulDarkArchonMaelstromLaunchSound">
         <On Terms="Abil.VoidArchonMaelstrom.SourceCastStart" Send="Create"/>
     </CActorSound>
@@ -1411,6 +1445,10 @@
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="SoundSetMuted 1 0"/>
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="Destroy"/>
     </CActorSound>
+    <CActorAction id="ZeratulKarassAttack">
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
+        <ImpactPhysics Name="HighTemplarPsiBlastImpact" MatchKeys="Basic" Physics="HighTemplarPsiBlastDeathImpactForce"/>
+    </CActorAction>
     <CActorModel id="ZeratulShadowCleave">
         <On Terms="Effect.VorazunCleaveSearch.Start" Send="Create"/>
         <Inherits index="TimeScale" value="1"/>
@@ -1442,6 +1480,23 @@
     <CActorSound id="ZeratulShadowPhaseOnSound">
         <On Terms="Behavior.VorazunShadowPhased.On" Send="Create"/>
     </CActorSound>
+    <CActorUnit id="ZeratulSummonKarass">
+        <GroupSoundArray index="What" value="ZeratulSummonKarass_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="ZeratulSummonKarass_GroupYes"/>
+        <GroupSoundArray index="Attack" value="ZeratulSummonKarass_GroupAttack"/>
+        <GroupSoundArray index="Board" value="ZeratulSummonKarass_GroupBoard"/>
+        <SoundArray index="Ready" value="Karass_Ready"/>
+        <SoundArray index="Help" value="Karass_Help"/>
+        <SoundArray index="What" value="Karass_What"/>
+        <SoundArray index="Yes" value="Karass_Yes"/>
+        <SoundArray index="Attack" value="Karass_Attack"/>
+        <SoundArray index="Pissed" value="Karass_Pissed"/>
+        <AbilSoundArray AbilCmd="RallyZeratulTopBar,Rally1" Sound="Swarm_Silent"/>
+        <On Terms="Abil.KarassFeedback.SourceCastStart" Send="AnimPlay B B"/>
+        <On Terms="WeaponStart.ZeratulSummonKarassPsiDischarge.AttackStart" Send="$Spell,A"/>
+        <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Spell"/>
+        <Remove Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+    </CActorUnit>
     <CActorModel id="ZeratulVoidPrisonCast" parent="ModelAnimationStyleOneShot">
         <On Terms="Abil.ZeratulVoidPrisonTarget.SourceCastStart" Send="Create"/>
         <Host Subject="_Selectable"/>
@@ -2221,6 +2276,13 @@
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
         <PlacementModel value="VoidRayShakurasPlacement"/>
+        <SoundArray index="Ready" value="Oracle_ReadyAlt"/>
+        <SoundArray index="Help" value="Oracle_Help"/>
+        <SoundArray index="What" value="Oracle_What"/>
+        <SoundArray index="Yes" value="Oracle_Yes"/>
+        <SoundArray index="Attack" value="Oracle_Attack"/>
+        <SoundArray index="Pissed" value="Oracle_Pissed"/>
+        <AbilSoundArray AbilCmd="RallyZeratulTopBar,Rally1" Sound="Swarm_Silent"/>
     </CActorUnit>
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>
@@ -4113,6 +4175,14 @@
     </CActorAction>
     <CActorUnit id="VoidRay">
         <Macros value="VoidRayGimbalMacro"/>
+        <Remove index="0" Send="Create VoidRayVoidCenterBeam"/>
+        <Remove index="1" Terms="WeaponStop.*.AttackStop" Target="VoidRayVoidCenterBeam" Send="Destroy"/>
+        <Remove index="2" Terms="Signal.*.UnitRemoved" Target="VoidRayVoidCenterBeam" Send="Destroy Immediate"/>
+        <Remove index="3" Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
+        <Remove index="4" Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
+        <Remove index="5" removed="1"/>
+        <Remove index="6" removed="1"/>
+        <Remove index="7" removed="1"/>
     </CActorUnit>
     <CActorUnit id="VoidRayTaldarim">
         <Macros value="PhysicsDeathsSwarmAir"/>
@@ -4495,6 +4565,14 @@
     </CActorUnit>
     <CActorUnit id="ZeratulHeroDarkArchon">
         <PlacementModel value="DarkArchonPlacement"/>
+        <SoundArray index="Ready" value="Mohandar_Ready"/>
+        <SoundArray index="Help" value="Mohandar_Help"/>
+        <SoundArray index="What" value="Mohandar_What"/>
+        <SoundArray index="Yes" value="Mohandar_Yes"/>
+        <SoundArray index="Attack" value="Mohandar_Attack"/>
+        <SoundArray index="Pissed" value="Mohandar_Pissed"/>
+        <BuildModel value="ZeratulTopBarWarpIn"/>
+        <AbilSoundArray AbilCmd="RallyZeratulTopBar,Rally1" Sound="Swarm_Silent"/>
     </CActorUnit>
     <CActorModel id="ZeratulReflectionShield">
         <Inherits index="Visibility" value="0"/>
@@ -4504,6 +4582,20 @@
     <CActorUnit id="ZeratulSummonVoidRay">
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
+        <SoundArray index="Ready" value="VoidRay_Ready"/>
+        <SoundArray index="Help" value="VoidRay_Help"/>
+        <SoundArray index="What" value="VoidRay_What"/>
+        <SoundArray index="Yes" value="VoidRay_Yes"/>
+        <SoundArray index="Attack" value="VoidRay_Attack"/>
+        <SoundArray index="Pissed" value="VoidRay_Pissed"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-voidray.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-voidray-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-voidray-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-voidray-shield03.dds"/>
+        </WireframeShield>
     </CActorUnit>
     <CActorSound id="ZeratulVoidPrisonSoundImpact" parent="SoundOneShot">
         <On Terms="Effect.ZeratulVoidPrisonAiur01.Start" Send="Create"/>
@@ -4524,6 +4616,12 @@
     </CActorUnit>
     <CActorUnit id="ZeratulSummonZealot">
         <WalkAnimMoveSpeed value="3"/>
+        <SoundArray index="Ready" value="Zealot_Ready"/>
+        <SoundArray index="Help" value="Zealot_Help"/>
+        <SoundArray index="What" value="Zealot_What"/>
+        <SoundArray index="Yes" value="Zealot_Yes"/>
+        <SoundArray index="Attack" value="Zealot_Attack"/>
+        <SoundArray index="Pissed" value="Zealot_Pissed"/>
     </CActorUnit>
     <CActorSound id="Zerg_BuildingMorphEndStetmann">
         <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
@@ -4546,6 +4644,9 @@
         <Remove Terms="Abil.SIBasicBuild.BuiltStart" Send="Create"/>
         <Remove Terms="Abil.ZagaraVoidCoopCreepMaster.BuiltStart" Send="Create"/>
         <Remove Terms="Abil.DehakaDroneMorph.BuiltStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="awrpSound">
+        <On Terms="Abil.VoidArchonMerge.Start" Send="Create"/>
     </CActorSound>
     <!-- IMPORTED -->
     <CActorEventMacro id="GimbalZMacro">
@@ -4673,7 +4774,4 @@
         <AcceptedHostedPropTransfers index="WarpGroup" value="0"/>
         <Supporter Subject="_Unit"/>
     </CActorModel>
-    <CActorSound id="awrpSound">
-        <On Terms="Abil.VoidArchonMerge.Start" Send="Create"/>
-    </CActorSound>
 </Catalog>

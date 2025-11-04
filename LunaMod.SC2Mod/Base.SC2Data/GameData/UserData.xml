@@ -99,6 +99,11 @@
                 <Field Id="Upgrade"/>
             </Upgrade>
         </Instances>
+        <Instances Id="[Override]ZeratulPHLevel10">
+            <Upgrade Upgrade="Bogus">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
     </CUser>
     <CUser id="CoopAIUpgrade">
         <Instances Id="Resonating Glaives">
@@ -491,8 +496,15 @@
         </Instances>
     </CUser>
     <CUser id="MasteryUpgrades">
-        <Instances index="32">
-            <Fixed index="0" Fixed="1.5"/>
+        <Instances Id="[Override]ArtanisMastery2">
+            <Fixed Fixed="1.5">
+                <Field Id="PointIncrement"/>
+            </Fixed>
+        </Instances>
+        <Instances Id="[Override]ZeratulMastery6">
+            <Fixed Fixed="1.3298">
+                <Field Id="PointIncrement"/>
+            </Fixed>
         </Instances>
     </CUser>
     <CUser id="MorphUnits">
@@ -1390,6 +1402,9 @@
             <Text Text="UserData/PlayerCommanders/[Override]ProtossZeratul_Description">
                 <Field Id="Description"/>
             </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeZeratulTopBar">
+                <Field Id="Prestige" Index="3"/>
+            </User>
         </Instances>
         <Instances Id="[Override]ProtossAlarak">
             <GameLink GameLink="VoicePackProtossAlarak">
@@ -1690,6 +1705,17 @@
                 <Field Id="DisableUnit"/>
             </Unit>
         </Instances>
+        <Instances Id="CommanderPrestigeZeratulTopBar">
+            <GameLink GameLink="CommanderPrestigeZeratulTopBar">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="ZeratulTopBar1">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="ZeratulTopBar2">
+                <Field Id="UpgradeSupplements" Index="1"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
                 <Field Id="UpgradeSupplements"/>
@@ -1919,6 +1945,22 @@
             </GameLink>
             <GameLink GameLink="MasteryHornerAirStrikeDistance">
                 <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="ZeratulTopBar1">
+            <GameLink GameLink="MasteryZeratulSupportCalldownCooldownReduction">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <GameLink GameLink="CommanderPrestigeZeratulTopBarSupportCalldownMastery">
+                <Field Id="Supplement"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="ZeratulTopBar2">
+            <GameLink GameLink="MasteryZeratulAvatarCooldown">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <GameLink GameLink="CommanderPrestigeZeratulTopBarAvatarMastery">
+                <Field Id="Supplement"/>
             </GameLink>
         </Instances>
     </CUser>

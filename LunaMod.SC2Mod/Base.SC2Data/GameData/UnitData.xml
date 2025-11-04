@@ -163,6 +163,17 @@
             <LayoutButtons Face="CommanderPrestigeTychusOutlawsMedivac" Type="Passive" Requirements="CommanderPrestigeTychusOutlaws" Row="0" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="CoopCasterZeratul">
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Face="ZeratulAllPassive" Requirements="HaveZeratulArtifactUpgradeAllPassive"/>
+            <LayoutButtons index="9" Face="ZeratulArtifactUpgradeTier2A" Requirements="HaveZeratulArtifactUpgradeTier2A"/>
+            <LayoutButtons index="10" Face="ZeratulArtifactUpgradeTier2B" Requirements="HaveZeratulArtifactUpgradeTier2B"/>
+            <LayoutButtons index="11" Face="ZeratulStructureBarrierChose" Requirements="HaveZeratulArtifactUpgradeTier2C" Column="2"/>
+            <LayoutButtons index="12" Face="FinalArtifactPowerLocked" Type="Passive" AbilCmd="" Requirements="ZeratulLevel02"/>
+            <LayoutButtons index="13" Face="ZeratulArtifactUpgradeTier3A" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train2"/>
+            <LayoutButtons Face="ZeratulArtifactUpgradeTier3B" Type="AbilCmd" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train1" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
@@ -173,6 +184,12 @@
         <CardLayouts index="0">
             <LayoutButtons index="13" removed="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="HHReaper">
+        <Speed value="3.75"/>
+    </CUnit>
+    <CUnit id="HHReaperFlying">
+        <Speed value="3.75"/>
     </CUnit>
     <CUnit id="JinaraBarrageWeapon" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>
@@ -879,6 +896,10 @@
         <SubgroupAlias value="LurkerStetmann"/>
         <SelectAlias value="LurkerStetmann"/>
     </CUnit>
+    <CUnit id="Mohandar">
+        <FlagArray index="ArmySelect" value="1"/>
+        <SubgroupPriority value="17"/>
+    </CUnit>
     <CUnit id="Mothership">
         <AlliedPushPriority value="1"/>
     </CUnit>
@@ -1368,6 +1389,20 @@
     </CUnit>
     <CUnit id="TychusGhostPsychicSnareAttackMissile">
         <Mover value="MindBoltWeapon"/>
+    </CUnit>
+    <CUnit id="VoidRay">
+        <AbilArray Link="VoidRaySwarmDamageBoostCancel"/>
+        <AbilArray Link="VoidRaySwarmDamageBoost"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="VoidRaySwarmDamageBoost" Type="AbilCmd"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="VoidRaySwarmDamageBoostCancel,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <!--EquipmentArray Weapon="VoidRaySwarmDisplayDummy"/-->
+        <WeaponArray index="0" Link="VoidRaySwarm"/>
+        <Speed value="2.75"/>
+    </CUnit>
+    <CUnit id="VoidRayShakuras">
+        <Speed value="2.75"/>
     </CUnit>
     <CUnit id="VorazunBlinkReturnDummy">
         <Race value="Prot"/>
@@ -2413,6 +2448,7 @@
                 <Column value="0"/>
             </LayoutButtons>
         </CardLayouts>
+        <Speed value="3.75"/>
     </CUnit>
     <CUnit id="TychusSCV">
         <CardLayouts index="0">
@@ -3544,7 +3580,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="Nexus">
-        <AbilArray Link="NexusTrainMothershipArtanis"/>
+        <AbilArray index="12" Link="NexusTrainMothershipArtanis"/>
         <CardLayouts index="0">
             <LayoutButtons Face="MothershipArtanis" Type="AbilCmd" AbilCmd="NexusTrainMothershipArtanis,Train1" Row="0" Column="1"/>
         </CardLayouts>
@@ -3819,7 +3855,14 @@
             <LayoutButtons index="10" Row="1"/>
             <LayoutButtons index="16" Face="BuildKhaydarinMonolithLocked" Requirements="KaraxLevel05" Row="1" Column="2"/>
             <LayoutButtons index="17" Face="ShieldBattery" Type="AbilCmd" AbilCmd="ProtossBuild,Build22" Requirements=""/>
-            <LayoutButtons index="18" removed="1"/>
+            <LayoutButtons index="18">
+                <Face value="AutomatedAssimilatorZeratul"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="ZeratulBuild,Build8"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
             <LayoutButtons index="19" removed="1"/>
         </CardLayouts>
     </CUnit>
@@ -4205,6 +4248,7 @@
         <Food value="-6"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+        <Speed value="2.75"/>
     </CUnit>
     <CUnit id="VorazunShadowGuard">
         <CardLayouts index="0">
@@ -4397,9 +4441,30 @@
     </CUnit>
     <CUnit id="ZeratulDarkArchon">
         <InnerRadius value="0.5625"/>
+        <FlagArray index="ArmySelect" value="1"/>
     </CUnit>
     <CUnit id="ZeratulHeroDarkArchon">
         <InnerRadius value="0.5625"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <SubgroupPriority value="46"/>
+    </CUnit>
+    <CUnit id="ZeratulKhaydarinMonolithProjection">
+        <CardLayouts index="0">
+            <LayoutButtons Face="ZeratulStaggeringBlast" Type="Passive" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ZeratulSummonKarass">
+        <FlagArray index="ArmySelect" value="1"/>
+    </CUnit>
+    <CUnit id="ZeratulSummonVoidRay">
+        <FlagArray index="ArmySelect" value="1"/>
+        <Speed value="2.75"/>
+    </CUnit>
+    <CUnit id="ZeratulSummonZealot">
+        <FlagArray index="ArmySelect" value="1"/>
+    </CUnit>
+    <CUnit id="ZeratulXelNagaChargedCrystalCyan">
+        <FlagArray index="ArmySelect" value="1"/>
     </CUnit>
     <CUnit id="Zergling">
         <BehaviorArray Link="KerriganCannibalize"/>

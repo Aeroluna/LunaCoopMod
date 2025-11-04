@@ -33,6 +33,9 @@
     <CEffectSet id="AlarakACDeadlyChargeImpactSet">
         <EffectArray value="AlarakACDeadlyChargeFinish"/>
     </CEffectSet>
+    <CEffectEnumArea id="AlarakACDeadlyChargePointSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSet id="AlarakACDeadlyChargePointSearchImpactSet">
         <EffectArray value="AlarakACDeadlyChargeFinish"/>
     </CEffectSet>
@@ -618,6 +621,9 @@
         <EffectArray value="OrdnanceFleetwideJumpTeleport"/>
         <EffectArray value="OrdnanceFleetwideJumpTeleportAB"/>
     </CEffectSet>
+    <CEffectEnumArea id="PrimalSlashPointSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSwitch id="PsionicLiftControllerBehaviorSwitch">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSwitch>
@@ -1018,6 +1024,9 @@
         <EffectArray value="KillCaster"/>
         <EffectArray value="GrantKillCreditDummy"/>
     </CEffectSet>
+    <CEffectRemoveBehavior id="VoidRaySwarmDamageBoostCancel">
+        <BehaviorLink value="VoidRaySwarmDamageBoost"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="VoidSentryBlackHoleArmorAB">
         <EditorCategories value="Race:Protoss"/>
         <Behavior value="VoidSentryBlackHoleArmor"/>

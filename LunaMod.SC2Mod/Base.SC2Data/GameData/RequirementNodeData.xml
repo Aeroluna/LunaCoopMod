@@ -67,6 +67,16 @@
         <OperandArray value="CountUpgradeVorazunCommanderCompleteOnly"/>
         <OperandArray value="LTE12CountUpgradeCommanderLevelCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeZeratulArtifactTier2CompleteOnlyCountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeZeratulArtifactTier2CompleteOnly"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndGTCountUnitAlias_ZeratulLegionQueuedOrBetter0NotCountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="GTCountUnitAlias_ZeratulLegionQueuedOrBetter0"/>
+        <OperandArray value="NotCountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndGTECountUpgradeCommanderLevelCompleteOnly6CountUpgradeZeratulCommanderCompleteOnly">
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly6"/>
         <OperandArray value="CountUpgradeZeratulCommanderCompleteOnly"/>
@@ -80,7 +90,6 @@
         <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUnitTychusMedivacPlatformCompleteOnlyNotCountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="NotCountUnitTychusMedivacPlatformCompleteOnly"/>
         <OperandArray value="NotCountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly"/>
     </CRequirementAnd>
@@ -118,12 +127,16 @@
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusHeroExpanded" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UnderConstruction" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorVoidRaySwarmDamageBoostCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="VoidRaySwarmDamageBoost" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorVorazunBlinkReturnCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -226,12 +239,16 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CommanderPrestigeTychusOutlaws" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeZagaraSwarmCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeZagaraSwarm" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="CommanderPrestigeZeratulTopBar" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCycloneLockOnDamageUpgradeCompleteOnly114637382">
         <Flags index="TechTreeCheat" value="0"/>
@@ -445,7 +462,6 @@
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorTychusHeroExpandedCompleteOnlyAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992">
@@ -474,8 +490,11 @@
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeRaynorMercenaryCompleteOnly"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeCommanderPrestigeTychusOutlawsCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeCommanderPrestigeZeratulTopBarCompleteOnly"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeDefilerMetasynapticNodeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeDefilerMetasynapticNodeQueuedOrBetter"/>

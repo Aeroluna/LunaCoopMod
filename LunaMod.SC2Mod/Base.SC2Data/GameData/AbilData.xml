@@ -23,6 +23,11 @@
     <CAbilEffectTarget id="BuildAutoTurret">
         <Range index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="DefensiveMatrixTarget">
+        <Cost index="0">
+            <Vital index="Energy" value="100"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilTrain id="EvolveToLeviathan">
         <AbilSetId value="EvLe"/>
     </CAbilTrain>
@@ -55,6 +60,11 @@
     <CAbilMorph id="HHRavenMorphtoHHRavenSiege">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="Irradiate">
+        <Cost index="0">
+            <Vital index="Energy" value="75"/>
+        </Cost>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="JinaraSacrificeInstant">
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
         <Effect index="0" value="AscendantSacrificeSearch"/>
@@ -855,6 +865,11 @@
             <Button DefaultButtonFace="TychusBunker"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilEffectInstant id="VoidRaySwarmDamageBoostCancel">
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Cancel" Requirements="VoidRayPrismaticAlligned"/>
+        <DataCollection value="##id##"/>
+    </CAbilEffectInstant>
     <CAbilEffectInstant id="VorazunBlinkReturn">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="VorazunBlinkReturnETU"/>
@@ -1837,9 +1852,48 @@
         <AINotifyEffect value="ArtanisMaelstromDamage"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ZeratulDarkArchonMaelstrom"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="ZeratulBuild">
+        <InfoArray index="Build8" Unit="AutomatedAssimilatorZeratul" Time="30">
+            <Button DefaultButtonFace="AutomatedAssimilatorZeratul" State="Available"/>
+        </InfoArray>
+    </CAbilBuild>
+    <CAbilEffectTarget id="ZeratulMapWideStasis">
+        <Cost index="0">
+            <Cooldown TimeUse="45"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ZeratulMapWideStasisIssueOrder">
+        <Cost index="0">
+            <Cooldown TimeUse="45"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilMorph id="ZeratulObserverMorphtoZeratulObserverSiege">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilBuild id="ZeratulTopBarBuild">
+        <InfoArray index="Build1">
+            <Charge Location="Unit"/>
+        </InfoArray>
+    </CAbilBuild>
+    <!--CAbilWarpTrain id="ZeratulTopBarUltimateWarpTrain">
+        <InfoArray index="Train1">
+            <Cooldown Link="Abil/ZeratulEssence"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Cooldown Link="Abil/ZeratulForm"/>
+        </InfoArray>
+    </CAbilWarpTrain>
+    <CAbilWarpTrain id="ZeratulTopBarWarpTrain">
+        <InfoArray index="Train1">
+            <Cooldown Link="Abil/ZeratulTelbrus"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Cooldown Link="Abil/ZeratulZoraya"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Cooldown Link="Abil/ZeratulSerdath"/>
+        </InfoArray>
+    </CAbilWarpTrain-->
     <CAbilEffectTarget id="ZeratulVoidPrisonTarget">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="ZeratulVoidPrisonAiur01"/>

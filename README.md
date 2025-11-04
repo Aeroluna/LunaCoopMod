@@ -7,6 +7,7 @@ A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro
 <summary>Details</summary>
 
 - [General](#general)
+  - [Mutators](#mutators)
 - [Commanders](#commanders)
   - [Amon](#amon)
   - [Raynor](#raynor)
@@ -26,7 +27,6 @@ A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro
   - [Zeratul](#zeratul)
   - [Stetmann](#stetmann)
   - [Mengsk](#mengsk)
-- [Mutators](#mutators)
 - [Credits](#credits)
 
 </details>
@@ -174,6 +174,8 @@ thanks Enoki.
 - Changed morphing to Overseer (and variants) to no longer require decelerating to cast.
 - Changed Overseer (and variants) Oversight ability to no longer require decelerating to cast.
 - Changed Observer (and variants) Surveillance Mode ability to no longer require decelerating to cast.
+- Increased Void Ray (and variants) movement speed from 2.25 to 2.75.
+- Increased Reaper (and variants) movement speed from 2.9531 to 3.75.
 
 Copied from Versus.
 
@@ -218,9 +220,108 @@ thanks OmniSkeptic.
 
 Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
 
-# Commanders
+- Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
+- Added `-maxsupply` cheat, which maxes out supply.
+- Fixed an issue where `-ally` cheat did not allow spending resources for the ally.
+- Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
+- Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
 
-## Amon
+Some debug cheats.
+
+### Mutators
+
+- Added Brutal+ system.
+  - Can select a Brutal+ level to randomize mutators.
+  - Can use refresh button to rerandomize.
+  - Can use +Retry option to retry previously played mutators.
+  - Added Brutal+ levels 7 - 10.
+
+Added Brutal+ system.
+
+| Difficulty | Min. Points | Max. Points | Min. Mutators | Max. Mutators |
+| ---------- | ----------- | ----------- | ------------- | ------------- |
+| 1          | 4           | 6           | 2             | 3             |
+| 2          | 7           | 8           | 2             | 3             |
+| 3          | 9           | 10          | 2             | 3             |
+| 4          | 11          | 12          | 2             | 3             |
+| 5          | 15          | 16          | 2             | 4             |
+| 6          | 19          | 20          | 2             | 4             |
+| 7*         | 21          | 22          | 2             | 4             |
+| 8*         | 23          | 24          | 2             | 4             |
+| 9*         | 25          | 26          | 2             | 5             |
+| 10*        | 27          | 28          | 2             | 5             |
+
+\* New difficulties
+
+- Added new mutator: Teeming
+  - Enemies begin with twice as many units.
+  - Costs 1 points for Brutal+.
+
+Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
+
+- Added new mutator: Harassment
+  - Enemies will periodically send units to harass player mineral lines.
+  - Costs 7 points for Brutal+.
+
+Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
+
+- Added new mutator: Whiteout
+  - Adds snowy weather.
+  - Occasional whiteouts obscure the battlefield.
+  - Slows all units movement speed by 20%.
+  - Caps all unit sight radius to 6.
+  - Disables shared vision with ally.
+  - Disables minimap objective pings.
+  - Costs 3 points for Brutal+.
+
+It's like the Darkness mutator but cooler!
+
+- Added Infestation Station to Brutal+ costing 3 points.
+- Added Great Wall to Brutal+ costing 5 points.
+- Added Rip Field Generators to Brutal+ costing 5 points.
+- Added Repulsive Field to Brutal+ costing 3 points.
+- Added Mothership to Brutal+ costing 7 points.
+- Added The Mist to Brutal+ costing 7 points.
+
+Added Maguro mutators to Brutal+ system.
+
+- Reworked Fatal Attraction to no longer make the units uncommandable.
+  - No longer disables units attacks, abilities, and movement.
+  - Pull strength increased by 20%.
+  - Fixed an issue where Dehaka's Primal Impalers were pulled when burrowed.
+
+The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
+
+- Removed Micro Transaction from Brutal+.
+
+Not even a hard mutation, just SUPER unfun.
+
+- Increased Slim Pickings points from 5 to 10.
+
+Very crippling mutator so its cost has been increased. Unfortunately, doesn't help the fact that hero commanders are kinda unaffected.
+
+- Removed invulnerability from unburrowed Spider Mines from the Minersweeper mutation.
+
+ Raynor lost his invulnerable Spider Mines, but Minesweeper was overlooked.
+
+- Removed Going Nuclear from Brutal+.
+- Added Nuclear Mines to Brutal+ costing 3 points.
+
+Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
+
+- Nerfed Going Nuclear nuke effect to no longer reveal explosion area to Amon.
+- Nerfed Nuclear Mines nuke effect to no longer reveal explosion area to Amon.
+- Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
+
+No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
+
+- Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
+
+yeah.
+
+## Commanders
+
+### Amon
 
 - Removed Viper Disabling Cloud ability.
 - Added Viper Blinding Cloud ability.
@@ -300,11 +401,22 @@ For some reason Co-op halves this charge time, this returns it to normal for Amo
 
 Copied from Versus. Duration of Raven's summons massively, and in return increase the auto-turret damage. It was a common problem that a Raven from an attack wave would place an Auto-Turret or Point Defense Drone and the map ping would not disappear until the unit timed out 3 minutes later.
 
+- Increased Science Vessel Irradiate cost from 25 energy to 75 energy.
+- Increased Science Vessel Defensive Matrix cost from 50 energy to 100 energy.
+
+A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave will spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost should make it less obnoxious fighting Terran with a bio army.
+
+- Add Prismatic Alignment ability to Void Rays.
+  - Increases damage vs. armored units by +6 for 20 seconds.
+  - Reduces movement speed by 25% while active.
+
+Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks?
+
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
 yeah.
 
-## Raynor
+### Raynor
 
 - Added P4: Mercenary Contractor
   - Advantage: Gain access to the Merc Compound.
@@ -411,7 +523,7 @@ Added parity with non-calldown variants. Those are proud mech units, let them be
 
 yeah.
 
-## Kerrigan
+### Kerrigan
 
 - Added P4: Brood War Sovereign
   - Replaces Kerrigan with Brood War Kerrigan
@@ -484,7 +596,11 @@ Now uses the pre-infested assets from Heart of the Swarm.
 
 Little silly that you need to detect the unit to affect it with an *aura*.
 
-## Artanis
+- Buffed Kerrigan's Leaping Strike ability to hit cloaked units.
+
+Not sure why this was nerfed to not hit invisible units at some point.
+
+### Artanis
 
 - Added P4: Reclaimer
   - Advantage: Warped-in combat unit cost reduced by 40%.
@@ -552,7 +668,7 @@ Should help actually affording the high tech units with abilities like High Temp
 
 yeah.
 
-## Swann
+### Swann
 
 - Added P4: Rolling Thunder
   - Advantage: Combat units can attack while moving.
@@ -620,7 +736,7 @@ P2 suspiciously improved all upgrades but this one.
 
 Even with this upgrade, Wraiths are fragile. This should help improve their survivability.
 
-## Zagara
+### Zagara
 
 - Added Swarm Networks.
   - Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
@@ -695,7 +811,7 @@ If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy.
 
 Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens. Should make the attack damage mastery competitive with the energy mastery.
 
-## Vorazun
+### Vorazun
 
 - Added P4: Shadow Hunter
   - Advantage: Vorazun is available as a hero.
@@ -830,10 +946,11 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Added visual effect to Dark Pylon's Recall ability.
 - Fixed an issue where Dark Archons would try to path around Force Fields they could shatter.
 - Fixed an issue where targets immune to Black Hole's stun would not have their armor negated.
+- Fixed an issue where Void Rays did not get beam attachments when charging up until Prismatic Range was upgraded.
 
 yeah.
 
-## Karax
+### Karax
 
 - Implemented [Maguro's Karax 2.0](https://www.maguro.one/p/karax.html) with some changes listed below.
 - Reworked Carrier Repair Drone behavior to vanilla version, but with improved autocasting to no longer require stopping.
@@ -885,7 +1002,7 @@ Copied from CXL. Keeps it unviable to use static defense aggressively without co
 
 Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
 
-## Abathur
+### Abathur
 
 - Added P4: Symbiotic Hivemind.
   - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
@@ -933,7 +1050,7 @@ Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel bu
 
 Only the research tooltips should highlight unit names, not passives.
 
-## Alarak
+### Alarak
 
 - Added P4: First Ascendant
   - Advantage: Ji'nara is available as a hero.
@@ -969,6 +1086,11 @@ Only the research tooltips should highlight unit names, not passives.
   - Disadvantage: Alarak is unavailable.
 
 Replaces Alarak with Ji'nara, a hero who focuses on Sacrifice usage to continue fueling spells. Ji'naras Soul Shade passive allows her to sustain Sacrifice usage during fights and can also benefit Ascendants. Honestly, this hero just exists because I though it would be cool to add Ji'nara as an Adept hero.
+
+- Added red Tal'darim building warp-in skins.
+- Added red Tal'darim unit warp-in skins.
+
+Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant and Stalker warp-in effects going from top to bottom instead of bottom to top. Seriously, were they drunk when UV mapping these?
 
 - Added Void Archon, merged from two Ascendants.
   - Can use Maelstrom ability for 50 energy.
@@ -1033,10 +1155,9 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
-- Added red Tal'darim building warp-in skins.
-- Added red Tal'darim unit warp-in skins.
+- Buffed Alarak's Deadly Charge ability to hit cloaked units.
 
-Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant and Stalker warp-in effects going from top to bottom instead of bottom to top. Seriously, were they drunk when UV mapping these?
+Not sure why this was nerfed to not hit invisible units at some point.
 
 - Fixed an issue where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
@@ -1051,11 +1172,10 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 - Fixed an issue where Alarak would not gain Lightning Surge after an Ascendant sacrifices a Supplicant.
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
 - Fixed an issue where warping in Supplicant were missing the void warp-in beam.
-- Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to a Ascendant/Void Archon/mech unit.
 
 yeah.
 
-## Nova
+### Nova
 
 - Changed Nova to visually change suits between Stealth Mode and Assault Mode.
 - Added P4: Covert Crusader.
@@ -1136,7 +1256,7 @@ This increases the reliability of Ghosts getting the extra snipes off.
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
 
-## Stukov
+### Stukov
 
 - Added P4: Neural Dominator
   - Advantage: Stukov gains control of units he kills for 120 seconds.
@@ -1267,7 +1387,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 
 yeah. The Siege Tank bug took way too long to figure out...
 
-## Fenix
+### Fenix
 
 - Added P4: Ascendant Chorus
   - Advantage: The number of Champion A.I.s is no longer limited.
@@ -1297,7 +1417,7 @@ Why was the radius nerfed so hard? Increased the match the campaign Arbiter's st
 
 yeah.
 
-## Dehaka
+### Dehaka
 
 - Added P4: Essence Splitter
   - Advantage:
@@ -1358,7 +1478,7 @@ It very clearly sounded like a hellion.
 
 yeah.
 
-## Han & Horner
+### Han & Horner
 
 - Added Ordnance Towers that can be built by SCVs.
   - These are flying defensive structures with long-range attacks.
@@ -1484,14 +1604,13 @@ The Sovereign Battlecruiser has a fully functional teleport animation, so let's 
 
 yeah.
 
-## Tychus
+### Tychus
 
 - Added P4: Hell's Kingpin
   - Advantage: Outlaws are uncapped.
   - Disadvantage: Medivac Platforms are unavailable.
-- Added `-itsabouttime` cheat that uncaps Outlaws.
 
-The biggest pain the ass was obviously trying to get the UI to accommodate having 9 Outlaws instead of 5. Second to that is trying to get 9 abilities to fit on one shared command card. The end result ended up looking cool as hell with all 9 Outlaws. An additional cheat command was added in case you want to try it with other prestiges.
+The biggest pain the ass was obviously trying to get the UI to accommodate having 4 more Outlaws. Second to that is trying to get 9 abilities to fit on one shared command card. This prestige trades a weaker early/mid game without Medivacs for an overpowered late game, though it is very expensive getting gear for 9 Outlaws.
 
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
   - It's possible to not have Tychus active at all.
@@ -1589,19 +1708,44 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
 
 yeah.
 
-## Zeratul
+### Zeratul
 
-- Fixed an issue where Xel'naga Ambusher Predictive Blink autocast would only use the first charge.
+- Added P4: Hand of the Xel'Naga
+  - Advantage:
+    - Using an Artifact ability replaces it with the next choice.
+    - Each choice has its own cooldown.
+    - All passives are combined into one.
+    - Legions can be directly controlled.
+  - Disadvantage:
+    - Legion and Support calldowns cooldown increased by 200%.
+    - Avatar calldowns cooldown increased by 100%.
+
+This prestige allows for dumping all your cooldowns at once but causes a longer dry spell in-between cooldown usage.
+
+- Changed Avatar Cooldown mastery from -4 seconds per point to -1.33% per point.
+
+Changed from seconds to percent to interact with the new P4 properly.
+
+- Nerfed P2 to additionally increase the cost of Tesseract Cannons from 300 to 375.
+
+It is kinda stupid you can ignore the disadvantage entirely by building Cannons instead.
+
+- Removed the ability for Ancient Nexus to build Ancient Assimilators.
+- Added Ancient Assimilators to Xel'Naga Precursor's build menu.
+
+Zeratul already has ridiciously simple macro, let's at least make the Probes have to warp in Assmilators themselves.
+
+- Reduced the cooldown of Stasis Beam from 90 seconds to 45 seconds.
+
+Stasis Beam is the worst calldown out of the three, so the cooldown has been halved to make it more competitive with the other options.
+
+- Fixed an issue where Xel'Naga Ambusher Predictive Blink autocast would only use the first charge.
 
 For some reason, Predictive Blink would autocast once and then kinda just chill out for a while, now they will use up all charges when taking damage.
 
 - Added a warp-out animation when legion calldowns expire.
 
 No more watching all your Void Rays explode horribly at the end of their timed life.
-
-- Reduced the visual model scale of the Serdath Legion grunts by 20%.
-
-Matches the visual scale of other archons. Serdath himself gets to stay big.
 
 - Reduced Zeratul's Psionic Lightning weapon's damage point from 0.2 to 0.15.
 
@@ -1618,6 +1762,19 @@ Increased Shadow Cleave visual to match its actual radius. Increased the impact 
 
 Makes this ability more consistent.
 
+- Reduced the visual model scale of the Serdath Legion Dark Archons by 20%.
+
+Matches the visual scale of other archons. Serdath himself gets to stay big.
+
+- Added VO sounds to Telbrus.
+- Added VO sounds to Telbrus Legion's Zealots.
+- Added VO sounds to Zoraya.
+- Added VO sounds to Zoraya Legion's Void Rays.
+- Added VO sounds to Serdath.
+- Added VO sounds to Serdath Legion's Dark Archons.
+
+Not sure why these guys are dead quiet but now they have a soundset for when you summon/select them.
+
 - Changed to Ihan-rii skin set.
 - Added Xel'Naga Ambusher portrait.
 - Added Xel'Naga Enforcer portrait.
@@ -1627,10 +1784,18 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 - Fixed an issue where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed an issue where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
 - Fixed an issue where warping in Legions were missing the void warp-in beam.
+- Fixed an issue where Telbrus's Psionic Storm did not have a visual impact effect.
+- Fixed an issue where Zoraya had blue beam attachments when charged.
+- Fixed an issue where Construct of Form's Psionic Gale did not have a visual impact effect.
+- Added a cast animation for Telbrus's Feedback ability.
+- Fixed an issue where Telbrus's basic attacks used the wrong animation.
+- Fixed an issue where Zoraya Legion's Void Rays used Zoraya's wireframe image.
+- Fixed an issue where Tesseract Monoliths were missing the Staggering Blast button from their command card.
+- Fixed an issue where Zoraya's Prismatic Beam passive tooltip incorrectly says it increases damage against massive targets.
 
 yeah.
 
-## Stetmann
+### Stetmann
 
 - Added Salvage ability to Stetellites.
   - Refunds Deploy Stetellite charges if possible.
@@ -1675,7 +1840,7 @@ Copied from Versus.
 
 yeah.
 
-## Mengsk
+### Mengsk
 
 - Added P4: Cerberus Director
   - Advantage: Dogs of War refunds 50% of energy cost and has 100% reduced cooldown.
@@ -1764,97 +1929,6 @@ Previously the status bar only showed hp.
 
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed an issue where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
-
-yeah.
-
-## Mutators
-
-- Added Brutal+ system.
-  - Can select a Brutal+ level to randomize mutators.
-  - Can use refresh button to rerandomize.
-  - Can use +Retry option to retry previously played mutators.
-  - Added Brutal+ levels 7 - 10.
-
-Added Brutal+ system.
-
-| Difficulty | Min. Points | Max. Points | Min. Mutators | Max. Mutators |
-| ---------- | ----------- | ----------- | ------------- | ------------- |
-| 1          | 4           | 6           | 2             | 3             |
-| 2          | 7           | 8           | 2             | 3             |
-| 3          | 9           | 10          | 2             | 3             |
-| 4          | 11          | 12          | 2             | 3             |
-| 5          | 15          | 16          | 2             | 4             |
-| 6          | 19          | 20          | 2             | 4             |
-| 7*         | 21          | 22          | 2             | 4             |
-| 8*         | 23          | 24          | 2             | 4             |
-| 9*         | 25          | 26          | 2             | 5             |
-| 10*        | 27          | 28          | 2             | 5             |
-
-\* New difficulties
-
-- Added new mutator: Teeming
-  - Enemies begin with twice as many units.
-  - Costs 1 points for Brutal+.
-
-Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
-
-- Added new mutator: Harassment
-  - Enemies will periodically send units to harass player mineral lines.
-  - Costs 7 points for Brutal+.
-
-Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
-
-- Added new mutator: Whiteout
-  - Adds snowy weather.
-  - Occasional whiteouts obscure the battlefield.
-  - Slows all units movement speed by 20%.
-  - Caps all unit sight radius to 6.
-  - Disables shared vision with ally.
-  - Disables minimap objective pings.
-  - Costs 3 points for Brutal+.
-
-It's like the Darkness mutator but cooler!
-
-- Added Infestation Station to Brutal+ costing 3 points.
-- Added Great Wall to Brutal+ costing 5 points.
-- Added Rip Field Generators to Brutal+ costing 5 points.
-- Added Repulsive Field to Brutal+ costing 3 points.
-- Added Mothership to Brutal+ costing 7 points.
-- Added The Mist to Brutal+ costing 7 points.
-
-Added Maguro mutators to Brutal+ system.
-
-- Reworked Fatal Attraction to no longer make the units uncommandable.
-  - No longer disables units attacks, abilities, and movement.
-  - Pull strength increased by 20%.
-  - Fixed an issue where Dehaka's Primal Impalers were pulled when burrowed.
-
-The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
-
-- Removed Micro Transaction from Brutal+.
-
-Not even a hard mutation, just SUPER unfun.
-
-- Increased Slim Pickings points from 5 to 10.
-
-Very crippling mutator so its cost has been increased. Unfortunately, doesn't help the fact that hero commanders are kinda unaffected.
-
-- Removed invulnerability from unburrowed Spider Mines from the Minersweeper mutation.
-
- Raynor lost his invulnerable Spider Mines, but Minesweeper was overlooked.
-
-- Removed Going Nuclear from Brutal+.
-- Added Nuclear Mines to Brutal+ costing 3 points.
-
-Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
-
-- Nerfed Going Nuclear nuke effect to no longer reveal explosion area to Amon.
-- Nerfed Nuclear Mines nuke effect to no longer reveal explosion area to Amon.
-- Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
-
-No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
-
-- Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
 
 yeah.
 

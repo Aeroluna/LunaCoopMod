@@ -120,7 +120,7 @@
         <EffectArray index="0" Value="10"/>
         <EffectArray Reference="Actor,SOAPylonPowerCursorSplat,Scale" Value="2.000000"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeArtanisWarp">
+    <CUpgrade id="CommanderPrestigeArtanisWarp" parent="CommanderPrestige">
         <EffectArray Operation="Subtract" Reference="Unit,ZealotAiur,CostResource[Minerals]" Value="40"/>
         <EffectArray Operation="Subtract" Reference="Unit,Dragoon,CostResource[Minerals]" Value="50"/>
         <EffectArray Operation="Subtract" Reference="Unit,Dragoon,CostResource[Vespene]" Value="20"/>
@@ -146,7 +146,7 @@
     <CUpgrade id="CommanderPrestigeDehakaPackLeaders">
         <EffectArray Reference="Effect,DehakaDakrunThornsDamage,Amount" Value="10"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeFenixChampion">
+    <CUpgrade id="CommanderPrestigeFenixChampion" parent="CommanderPrestige">
         <EffectArray Reference="Unit,ZealotPurifier,CostResource[Minerals]" Value="100"/>
         <EffectArray Reference="Unit,AdeptFenix,CostResource[Minerals]" Value="100"/>
         <EffectArray Reference="Unit,AdeptFenix,CostResource[Vespene]" Value="40"/>
@@ -163,7 +163,7 @@
         <EffectArray index="0" removed="1"/>
         <EffectArray index="1" removed="1"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeHornerDefense">
+    <CUpgrade id="CommanderPrestigeHornerDefense" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Effect,HornerAirFleetLM,Movers[0].Link" Value="HornerAirFleetMoverDefense"/>
         <EffectArray Reference="Effect,HornerAirFleetUpgradedPersistent,PeriodicPeriodArray[0]" Value="0.125"/>
         <EffectArray Reference="Effect,HornerAirFleetUpgradedPersistent,PeriodicPeriodArray[1]" Value="0.125"/>
@@ -272,7 +272,7 @@
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeStart" Value="40"/>
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="40"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganCreepZerglingHealth">
+    <CUpgrade id="CommanderPrestigeKerriganCreepZerglingHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,Zergling,LifeMax" Value="5"/>
         <EffectArray Reference="Unit,HotSRaptor,LifeMax" Value="5"/>
         <EffectArray Reference="Unit,ZerglingBurrowed,LifeMax" Value="5"/>
@@ -286,7 +286,7 @@
         <AffectedUnitArray value="HotSRaptor"/>
         <AffectedUnitArray value="HotSRaptorBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganCreepHydraliskHealth">
+    <CUpgrade id="CommanderPrestigeKerriganCreepHydraliskHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,Hydralisk,LifeMax" Value="10"/>
         <EffectArray Reference="Unit,Hydralisk,LifeStart" Value="10"/>
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="10"/>
@@ -300,7 +300,7 @@
         <AffectedUnitArray value="HydraliskLurker"/>
         <AffectedUnitArray value="HydraliskLurkerBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganCreepBroodlordHealth">
+    <CUpgrade id="CommanderPrestigeKerriganCreepBroodlordHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,BroodLord,LifeMax" Value="50"/>
         <EffectArray Reference="Unit,BroodLord,LifeStart" Value="50"/>
         <AffectedUnitArray value="BroodLord"/>
@@ -324,7 +324,7 @@
         <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,Name" Value="Button/Name/EvolveK5ChainLightningBrood"/>
         <EffectArray Operation="Set" Reference="Button,EvolveK5ChainLightning,AlertName" Value="Button/Name/EvolveK5ChainLightningBrood"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZerg">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZerg" parent="CommanderPrestige">
         <EffectArray Reference="Unit,QueenCoop,CostResource[Minerals]" Value="300"/>
         <EffectArray Reference="Unit,QueenCoopBurrowed,CostResource[Minerals]" Value="300"/>
         <EffectArray Reference="Unit,Zergling,CostResource[Minerals]" Value="50"/>
@@ -469,7 +469,7 @@
         <AffectedUnitArray value="BroodLord"/>
         <AffectedUnitArray value="Broodling"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZergCosmetic">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZergCosmetic" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Button,Hydralisk,AlertIcon" Value="Assets\Textures\btn-unit-zerg-hydralisk-remastered.dds"/>
         <EffectArray Operation="Set" Reference="Button,Hydralisk,AlertName" Value="Button/Name/HydraliskBrood"/>
         <EffectArray Operation="Set" Reference="Button,Hydralisk,Icon" Value="Assets\Textures\btn-unit-zerg-hydralisk-remastered.dds"/>
@@ -535,7 +535,7 @@
         <EffectArray Operation="Set" Reference="Unit,QueenCoopBurrowed,Name" Value="Unit/Name/QueenBrood"/>
         <EffectArray Operation="Set" Reference="Unit,Broodling,Name" Value="Unit/Name/BroodlingBrood"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZergMeleeWeapons">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZergMeleeWeapons" parent="CommanderPrestige">
         <Race value="Zerg"/>
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Effect,HotSUltraliskKaiserBladesDamage,Amount" Value="2"/>
@@ -544,7 +544,7 @@
         <AffectedUnitArray value="HotSTorrasque"/>
         <AffectedUnitArray value="HotSTorrasqueBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZergMissileWeapons">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZergMissileWeapons" parent="CommanderPrestige">
         <Race value="Zerg"/>
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Effect,LurkerU,Amount" Value="1"/>
@@ -553,7 +553,7 @@
         <AffectedUnitArray value="Lurker"/>
         <AffectedUnitArray value="LurkerBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZergFlyerWeapons">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZergFlyerWeapons" parent="CommanderPrestige">
         <Race value="Zerg"/>
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
         <EffectArray Reference="Effect,BroodlingEscortDamage,Amount" Value="1"/>
@@ -569,7 +569,7 @@
     <CUpgrade id="CommanderPrestigeKerriganBroodZergFlyerWeaponsLevel1" parent="CommanderPrestigeKerriganBroodZergFlyerWeapons"/>
     <CUpgrade id="CommanderPrestigeKerriganBroodZergFlyerWeaponsLevel2" parent="CommanderPrestigeKerriganBroodZergFlyerWeapons"/>
     <CUpgrade id="CommanderPrestigeKerriganBroodZergFlyerWeaponsLevel3" parent="CommanderPrestigeKerriganBroodZergFlyerWeapons"/>
-    <CUpgrade id="CommanderPrestigeKerriganBroodZerglingHealth">
+    <CUpgrade id="CommanderPrestigeKerriganBroodZerglingHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,Zergling,LifeMax" Value="10"/>
         <EffectArray Reference="Unit,HotSRaptor,LifeMax" Value="10"/>
         <EffectArray Reference="Unit,ZerglingBurrowed,LifeMax" Value="10"/>
@@ -583,7 +583,7 @@
         <AffectedUnitArray value="HotSRaptor"/>
         <AffectedUnitArray value="HotSRaptorBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodHydraliskHealth">
+    <CUpgrade id="CommanderPrestigeKerriganBroodHydraliskHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,Hydralisk,LifeMax" Value="20"/>
         <EffectArray Reference="Unit,Hydralisk,LifeStart" Value="20"/>
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="20"/>
@@ -597,12 +597,12 @@
         <AffectedUnitArray value="HydraliskLurker"/>
         <AffectedUnitArray value="HydraliskLurkerBurrowed"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodBroodlordHealth">
+    <CUpgrade id="CommanderPrestigeKerriganBroodBroodlordHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,BroodLord,LifeMax" Value="100"/>
         <EffectArray Reference="Unit,BroodLord,LifeStart" Value="100"/>
         <AffectedUnitArray value="BroodLord"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeKerriganBroodMutaliskSeveringGlaves">
+    <CUpgrade id="CommanderPrestigeKerriganBroodMutaliskSeveringGlaves" parent="CommanderPrestige">
         <EffectArray Reference="Effect,CoopGlaiveWurmU2,Amount" Value="4"/>
         <EffectArray Reference="Effect,CoopGlaiveWurmU3,Amount" Value="4"/>
         <EffectArray Reference="Effect,CoopGlaiveWurmU4,Amount" Value="4"/>
@@ -610,7 +610,7 @@
         <EffectArray Reference="Effect,CoopGlaiveWurmU6,Amount" Value="4"/>
         <AffectedUnitArray value="MutaliskBroodlord"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeMengskZerg">
+    <CUpgrade id="CommanderPrestigeMengskZerg" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Abil,MengskZergCalldownLevel1,Cost[0].Cooldown.TimeUse" Value="0.000000"/>
         <EffectArray Operation="Set" Reference="Abil,MengskZergCalldownLevel2,Cost[0].Cooldown.TimeUse" Value="0.000000"/>
         <EffectArray Operation="Set" Reference="Abil,MengskZergCalldownLevel3,Cost[0].Cooldown.TimeUse" Value="0.000000"/>
@@ -623,7 +623,7 @@
         <EffectArray Reference="Unit,TrooperMengskFlamethrower,CostResource[Minerals]" Value="160"/>
         <EffectArray Reference="Unit,TrooperMengskAA,CostResource[Minerals]" Value="160"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeNovaMelee">
+    <CUpgrade id="CommanderPrestigeNovaMelee" parent="CommanderPrestige">
         <EffectArray Reference="Unit,NovaCoop,Speed" Value="0.500000"/>
         <EffectArray Reference="Behavior,NovaCombatSuit,Modification.VitalMaxArray[Life]" Value="250"/>
         <EffectArray Operation="Set" Reference="Behavior,NovaPermanentlyCloaked,Modification.StateFlags[Cloak]" Value="0"/>
@@ -649,7 +649,7 @@
         <EffectArray Operation="Subtract" Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Cooldown.TimeUse" Value="20.000000"/>
         <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeRaynorMercenary"/>
+    <CUpgrade id="CommanderPrestigeRaynorMercenary" parent="CommanderPrestige"/>
     <CUpgrade id="CommanderPrestigeStukovBanshees">
         <EffectArray Operation="Set" Reference="Abil,SIAdvancedBuild,InfoArray[Build12].Button.Requirements"/>
         <EffectArray Operation="Set" Reference="Abil,SIStarportTrain,InfoArray[Train1].Button.Requirements"/>
@@ -683,7 +683,7 @@
         <EffectArray Reference="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Spell]" Value="0.05"/>
         <EffectArray Reference="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Splash]" Value="0.05"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeStukovNeural"/>
+    <CUpgrade id="CommanderPrestigeStukovNeural" parent="CommanderPrestige"/>
     <CUpgrade id="CommanderPrestigeSwannMoving" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireAtAttackOrderTarget]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,InfernalFlameThrower,Options[OnlyFireWhileInAttackOrder]" Value="0"/>
@@ -813,6 +813,45 @@
         <EffectArray Reference="Unit,DefilerMP,CostResource[Vespene]" Value="34"/>
         <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Minerals]" Value="11"/>
         <EffectArray Reference="Unit,DefilerMPBurrowed,CostResource[Vespene]" Value="34"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZeratulArtifactFragments">
+        <EffectArray Reference="Unit,ZeratulPhotonCannon,CostResource[Minerals]" Value="75"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZeratulTopBar" parent="CommanderPrestige">
+        <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train1].Cooldown.Link" Value="Abil/ZeratulTelbrus"/>
+        <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train2].Cooldown.Link" Value="Abil/ZeratulZoraya"/>
+        <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train3].Cooldown.Link" Value="Abil/ZeratulSerdath"/>
+        <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train1].Cooldown.Link" Value="Abil/ZeratulEssence"/>
+        <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train2].Cooldown.Link" Value="Abil/ZeratulForm"/>
+        <EffectArray Operation="Set" Reference="Behavior,ZeratulTopBarTimedLife,Modification.StateFlags[Uncommandable]" Value="0"/>
+        <EffectArray Operation="Set" Reference="Behavior,ZeratulTopBarTimedLife,Modification.StateFlags[SuppressArmySelect]" Value="0"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train1].Cooldown.TimeUse" Value="240.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train2].Cooldown.TimeUse" Value="240.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train3].Cooldown.TimeUse" Value="240.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train1].Cooldown.TimeUse" Value="300.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train2].Cooldown.TimeUse" Value="300.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train4].Charge.TimeStart" Value="360.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train4].Charge.TimeUse" Value="360.000000"/>
+        <EffectArray Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train8].Cooldown.TimeUse" Value="360.000000"/>
+        <EffectArray Reference="Abil,ZeratulMapWideStasis,Cost[0].Cooldown.TimeUse" Value="90.000000"/>
+        <EffectArray Reference="Abil,ZeratulMapWideStasisIssueOrder,Cost[0].Cooldown.TimeUse" Value="90.000000"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZeratulTopBarSupportCalldownMastery" parent="CommanderPrestige">
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train8].Cooldown.TimeUse" Value="3.600000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulMapWideStasis,Cost[0].Cooldown.TimeUse" Value="0.900000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulMapWideStasisIssueOrder,Cost[0].Cooldown.TimeUse" Value="0.900000"/>
+        <EffectArray Reference="Effect,MasteryZeratulTesseractMonolithCooldownDisplayDummy,Amount" Value="3.6"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulTopBarBuild,InfoArray[Build1].Charge.TimeUse" Value="3.600000"/>
+        <EffectArray Reference="Effect,MasteryZeratulVoidSuppressionCrystalCooldownDisplayDummy,Amount" Value="3.6"/>
+        <EffectArray Reference="Effect,MasteryZeratulStasisBeamCooldownDisplayDummy,Amount" Value="1.8"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulTopBarBuild,InfoArray[Build1].Charge.TimeStart" Value="3.600000"/>
+        <MaxLevel value="30"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZeratulTopBarAvatarMastery" parent="CommanderPrestige">
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train1].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulTopBarUltimateWarpTrain,InfoArray[Train2].Cooldown.TimeUse" Value="4.000000"/>
+        <EffectArray Reference="Effect,MasteryZeratulAvatarCooldownDisplayDummy,Amount" Value="4"/>
+        <MaxLevel value="30"/>
     </CUpgrade>
     <CUpgrade id="CycloneLockOnDamageUpgrade">
         <EffectArray index="0" Reference="Effect,CycloneWeaponDamage,Amount" Value="10"/>
@@ -1160,6 +1199,11 @@
         <EffectArray Reference="Behavior,MasteryTychusFirstCommanderPetBuff,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
         <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstCommanderPetBuffAB,Chance" Value="1"/>
     </CUpgrade>
+    <CUpgrade id="MasteryZeratulSupportCalldownCooldownReduction">
+        <EffectArray index="1" Value="0.450000"/>
+        <EffectArray index="2" Value="0.450000"/>
+        <EffectArray index="6" Value="0.45"/>
+    </CUpgrade>
     <CUpgrade id="MedicStartingEnergy">
         <Icon value="Assets\Textures\btn-upgrade-terran-moebiusreactor.dds"/>
         <EffectArray Reference="Unit,Medic,EnergyStart" Value="150"/>
@@ -1448,6 +1492,8 @@
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,AlertTooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
         <EffectArray Operation="Set" Reference="Button,OrbitalCommand,Tooltip" Value="Button/Tooltip/OrbitalCommandSwann"/>
         <EffectArray Operation="Subtract" Reference="Abil,FactoryTrain,InfoArray[Train25].Time" Value="8"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Vital[Energy]" Value="50"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Irradiate,Cost[0].Vital[Energy]" Value="50"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleAttackSpeed">
         <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,RateMultiplier" Value="0.2"/>
@@ -1618,10 +1664,18 @@
         <!--EffectArray Operation="Set" Reference="Abil,GatewayTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/>
         <EffectArray Operation="Set" Reference="Abil,WarpGateTrain,InfoArray[Train4].Button.Requirements" Value="HaveDarkShrine"/-->
     </CUpgrade>
+    <CUpgrade id="VoidRayPrismaticRange">
+        <EffectArray Reference="Behavior,VoidRayChargeBeamRangePhase2,Modification.WeaponRange" Value="1.5"/>
+        <EffectArray Reference="Behavior,VoidRayChargeBeamRangePhase3,Modification.WeaponRange" Value="3"/>
+    </CUpgrade>
     <CUpgrade id="VoidRaySpeedUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-protoss-fluxvanes-green.dds"/>
-        <EffectArray Reference="Unit,VoidRayShakuras,Speed" Value="1"/>
-        <EffectArray Reference="Unit,VoidRayShakuras,Acceleration" Value="1"/>
+        <EffectArray index="0" Operation="Set" Value="3.320300"/>
+        <EffectArray index="1" Operation="Set" Value="2.687500"/>
+        <EffectArray Operation="Set" Reference="Behavior,VoidRaySwarmDamageBoost,Modification.MoveSpeedMultiplier" Value="0.621"/>
+        <EffectArray Operation="Set" Reference="Behavior,VoidRaySwarmDamageBoost,Modification.AccelerationMultiplier" Value="0.7441"/>
+        <EffectArray Operation="Set" Reference="Unit,VoidRayShakuras,Speed" Value="3.320300"/>
+        <EffectArray Operation="Set" Reference="Unit,VoidRayShakuras,Acceleration" Value="2.687500"/>
         <AffectedUnitArray value="VoidRayShakuras"/>
     </CUpgrade>
     <CUpgrade id="VoidStalkerBlinkCharges">
