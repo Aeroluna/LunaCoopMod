@@ -4175,12 +4175,8 @@
     </CActorAction>
     <CActorUnit id="VoidRay">
         <Macros value="VoidRayGimbalMacro"/>
-        <Remove index="0" Send="Create VoidRayVoidCenterBeam"/>
-        <Remove index="1" Terms="WeaponStop.*.AttackStop" Target="VoidRayVoidCenterBeam" Send="Destroy"/>
-        <Remove index="2" Terms="Signal.*.UnitRemoved" Target="VoidRayVoidCenterBeam" Send="Destroy Immediate"/>
-        <Remove index="3" Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
-        <Remove index="4" Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
-        <Remove index="5" removed="1"/>
+        <Remove index="4" Terms="WeaponStart.*.AttackStart" Send="Create VoidRayVoidCenterBeam"/>
+        <Remove index="5" Terms="WeaponStop.*.AttackStop" Target="VoidRayVoidCenterBeam" Send="Destroy"/>
         <Remove index="6" removed="1"/>
         <Remove index="7" removed="1"/>
     </CActorUnit>
@@ -4188,6 +4184,10 @@
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
+        <Remove Terms="AnimDone; AnimName Spell" Send="ModelSwap VoidRayTaldarim"/>
+        <Remove Terms="AnimDone; AnimName Spell" Send="AnimClear Spell"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="ModelSwap VoidRayTaldarim"/>
+        <On Terms="Behavior.WarpInEffect.Off; IsStatus WeaponAnim 1" Send="AnimBracketStart Powered Attack Stand,Channel Attack,End"/>
     </CActorUnit>
     <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>

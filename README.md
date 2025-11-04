@@ -406,11 +406,11 @@ Copied from Versus. Duration of Raven's summons massively, and in return increas
 
 A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave will spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost should make it less obnoxious fighting Terran with a bio army.
 
-- Add Prismatic Alignment ability to Void Rays.
+- Added Prismatic Alignment ability to Void Rays.
   - Increases damage vs. armored units by +6 for 20 seconds.
   - Reduces movement speed by 25% while active.
 
-Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks?
+Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
@@ -1140,6 +1140,14 @@ Typically when using the Death Fleet or playing P3, you would end up with a lot 
 
 Friendly units shouldn't be dying anyways, so why not get some value when it happens?
 
+- Buffed Alarak's Deadly Charge ability to hit cloaked units.
+
+Not sure why this was nerfed to not hit invisible units at some point.
+
+- Buffed Alarak's Lightning Surge to also proc when Supplicants are sacrificed by Ascendants.
+
+Seems weird there isn't a way to get Lightning Surge without killing Alarak.
+
 - Buffed Havoc's Force Field ability to no longer be shattered by massive units.
 - Buffed Havoc's Force Field ability to start with 3 charges.
 - Renamed Havoc's Force Field ability into Subjugation Field.
@@ -1155,10 +1163,6 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made building these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
-- Buffed Alarak's Deadly Charge ability to hit cloaked units.
-
-Not sure why this was nerfed to not hit invisible units at some point.
-
 - Fixed an issue where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Fixed an issue where Ascendant shadow trail model didn't scale with the Ascendant (noticeable with Power Overwhelming).
@@ -1169,9 +1173,9 @@ Not sure why this was nerfed to not hit invisible units at some point.
 - Fixed an issue where Alarak's Destruction Wave cast animation would not play while moving.
 - Fixed an issue where Alarak's Deadly Charge cast animation would not play while moving.
 - Improved Alarak's Deadly Charge visual impact animation.
-- Fixed an issue where Alarak would not gain Lightning Surge after an Ascendant sacrifices a Supplicant.
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
 - Fixed an issue where warping in Supplicant were missing the void warp-in beam.
+- Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
 
 yeah.
 

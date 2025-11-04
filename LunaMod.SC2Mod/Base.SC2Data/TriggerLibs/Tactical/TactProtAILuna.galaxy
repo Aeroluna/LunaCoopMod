@@ -75,3 +75,95 @@ void AIThinkPhoenixLuna (int player, unit aiUnit, unitgroup scanGroup) {
         }
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** VOIDRAY ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_voidRayDamageBoostTimeoutValue = 24;
+const fixed c_voidRayDamageBoostTimeout = 4;
+const string c_AB_VoidRayDamageCancel = "VoidRaySwarmDamageBoostCancel";
+
+bool VoidRayTargetIsArmored (unit aiUnit) {
+    order curOrder;
+    unit targetUnit;
+
+    curOrder = UnitOrder(aiUnit, 0);
+    if (curOrder == null || !AIIsAttackOrder(curOrder)) {
+        return false;  // doing something other than attacking
+    }
+    targetUnit = OrderGetTargetUnit(curOrder);
+    if ((targetUnit == null) || (UnitTypeTestAttribute(UnitGetType(targetUnit), c_unitAttributeArmored) == false)) {
+        return false;  // damage boost is only useful versus armored
+    }
+
+    return true;
+}
+
+bool VoidRayArmoredTargetNear (int player, unit aiUnit) {
+    unitgroup nearbyTargets;
+    aifilter filter;
+
+    filter = AIFilter(player);
+    AISetFilterSelf(filter, aiUnit);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterBits(filter, UnitFilter((1 << c_targetFilterArmored), 0, 0, 0));
+
+    nearbyTargets = AIFindUnits(player, null, UnitGetPosition(aiUnit), UnitWeaponRange(aiUnit, 0), c_noMaxCount);
+    nearbyTargets = AIGetFilterGroup(filter, nearbyTargets);
+    return nearbyTargets != null && UnitGroupCount(nearbyTargets, c_unitCountAlive) > 0;
+}
+
+order VoidRayDamageBoostLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    fixed castTime;
+    bool armoredTarget;
+
+    // Check UnitAbilityExists to prevent warnings in liberty/swarm
+    if (!UnitAbilityExists(aiUnit, c_AB_VoidRayDamage)) {
+        return null;
+    }
+
+    if (UnitHasBehavior2(aiUnit, c_AB_VoidRayDamage)) {
+        castTime = UnitGetCustomValue(aiUnit, c_voidRayDamageBoostTimeoutValue);
+        if (castTime > 0 &&
+            (AIGetTime() - castTime) > c_voidRayDamageBoostTimeout) {
+            ord = AICreateOrder(player, c_AB_VoidRayDamageCancel, 0);
+            if (!UnitOrderIsValid(aiUnit, ord)) {
+                return null;
+            }
+            return ord;
+        }
+    }
+
+    armoredTarget = VoidRayTargetIsArmored(aiUnit);
+
+    if (armoredTarget || VoidRayArmoredTargetNear(player, aiUnit)) {
+        UnitSetCustomValue(aiUnit, c_voidRayDamageBoostTimeoutValue, AIGetTime());
+    }
+
+    if (!armoredTarget) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_AB_VoidRayDamage, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//---------------------------------------------------------------------------------------------
+void AIThinkVoidRayLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+
+    int diff = AIPlayerDifficulty(player);
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        ord = VoidRayDamageBoostLuna(player, aiUnit, scanGroup);
+        if (ord != null) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return;
+        }
+    }
+}
