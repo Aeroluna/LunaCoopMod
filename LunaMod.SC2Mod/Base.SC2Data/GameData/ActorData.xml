@@ -128,6 +128,9 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorAction id="KD8ChargeAction">
+        <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
+    </CActorAction>
     <CActorModel id="KarassPsiStormImpact">
         <Scale value="1.200000"/>
         <AutoScaleFactor value="1.200000"/>
@@ -3581,6 +3584,10 @@
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="Banshee">
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveBansheeSpeed" Send="Create BansheeBoostModel"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create BansheeBoostModel"/>
         <On Terms="Behavior.VehicleAfterburners.Off" Target="BansheeBoostModel" Send="Destroy"/>
         <On Terms="Behavior.VehicleAfterburners.On" Send="Create ActorSound_Banshee_MovementBoost"/>

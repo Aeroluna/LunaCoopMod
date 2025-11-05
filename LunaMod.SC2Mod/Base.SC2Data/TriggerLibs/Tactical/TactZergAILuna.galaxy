@@ -289,3 +289,68 @@ void AIThinkQueenClassicLuna (int player, unit aiUnit, unitgroup scanGroup) {
     //    return;
     //}
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** SIEGETANK ***
+//--------------------------------------------------------------------------------------------------
+
+const string c_AB_NovaInfestedSiegeMode = "NovaInfestedSiegeTankRoot";
+const string c_AB_NovaInfestedSiegeUnmode = "NovaInfestedSiegeTankUproot";
+
+void AIThinkNovaInfestedSiegeTank (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unitgroup validTargets;
+    // wave unitWave;
+    // wavetarget unitWaveTarget;
+    // unitgroup waveEscortGroup;
+    // unit waveEscortUnit;
+
+    // unitWave = AIUnitGetWave(aiUnit);
+    // unitWaveTarget = AIWaveGetTarget(unitWave);
+
+    // waveEscortGroup = AIWaveTargetGetUnitGroup(unitWaveTarget);
+    // waveEscortUnit = AIWaveTargetGetUnit(unitWaveTarget);
+
+    // // If we are not escorting something use tactical function
+    // if (waveEscortGroup == null && waveEscortUnit == null) {
+    //     AIEvalTacticalData(aiUnit, null);
+    //     return;
+    // }
+
+    validTargets = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+    if (UnitGroupCount(validTargets, c_unitCountAlive) > 0) {
+        ord = AICreateOrder(player, c_AB_NovaInfestedSiegeMode, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+        }
+    }
+}
+
+void AIThinkNovaInfestedSiegeTankSieged (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unitgroup validTargets;
+    // wave unitWave;
+    // wavetarget unitWaveTarget;
+    // unitgroup waveEscortGroup;
+    // unit waveEscortUnit;
+
+    // unitWave = AIUnitGetWave(aiUnit);
+    // unitWaveTarget = AIWaveGetTarget(unitWave);
+
+    // waveEscortGroup = AIWaveTargetGetUnitGroup(unitWaveTarget);
+    // waveEscortUnit = AIWaveTargetGetUnit(unitWaveTarget);
+
+    // // If we are not escorting something use tactical function
+    // if (waveEscortGroup == null && waveEscortUnit == null) {
+    //     AIEvalTacticalData(aiUnit, null);
+    //     return;
+    // }
+
+    validTargets = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+    if (UnitGroupCount(validTargets, c_unitCountAlive) == 0) {
+        ord = AICreateOrder(player, c_AB_NovaInfestedSiegeUnmode, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+        }
+    }
+}

@@ -225,6 +225,7 @@ Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so m
 - Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
 - Fixed an issue where `-ally` cheat did not allow spending resources for the ally.
+- Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
 
@@ -358,7 +359,7 @@ Amon is smelly and gets Versus Liberators. Hopefully makes Shadow Tech less oppr
 
 - Reverted Battlecruiser Tactical Jump to Versus version.
 
-This includes adding a cast time, the 6 second wait, and some visual changes. This change pretty much only affects mind controlled Battlecruisers, but I needed it for my new Harassment mutator.
+This includes adding a cast time, the 6 second wait, and some visual changes. This change pretty much only affects mind controlled Battlecruisers, but I needed it for the new Harassment mutator.
 
 - Removed Reaper's D-8 Charge weapon.
 - Reduced Reaper's P-45 Guass Pistol weapon damage from 4 (+5 vs Light) to 4.
@@ -419,12 +420,42 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
 
+- Added Hyperflight Rotors upgrade for Banshees.
+  - Increases movement speed from 2.75 to 3.75.
+  - Banshees will have a boost visual after Hyperflight Rotors have been researched.
+  - Amon will gain this upgrade after 15 minutes on Brutal.
+
+fast banshees go nyoom.
+
 - Removed Science Vessels from the Raiding Party (BioMechStar) composition.
 - Added Medivacs to the Raiding Party (BioMechStar) composition.
 - Increased Marauder/Marine count in the Raiding Party (BioMechStar) composition.
 - Reduced Siege Tank count in the Raiding Party (BioMechStar) composition.
 
 Raiding Party might as well be the Siege Tank composition with how many Siege Tanks and Science Vessels there are. Reducing Siege Tanks and adding more Medivacs/Marines/Marauders should make it more distinct from the Classic Infantry composition as the "SC2 Bio" composition.
+
+- Lowered Science Vessel count in T7 Machines of War (MechStarport) composition.
+- Added Widow Mines to T7 Machines of War (MechStarport) composition.
+- Added Hellbats to T7 Machines of War (MechStarport) composition.
+
+Throw in some Hellbats/Widow Mines for some extra SC2 flavor for the mech composition. Also lower Science Vessel count cause they smell.
+
+- Added new Terran composition: "Battle Mech"
+  - Comprised of the fastest mech Terran has to offer, this force specializes in quick blitz attacks, capable of catching any unsuspecting victim off guard.
+  - Key Units:
+    - Hellion
+    - Vulture
+    - Cyclone
+    - Banshee
+- Added new Zerg composition: "Night of the Living"
+  - In a twisted mix of Zerg and Terran, this force features the unfortunate victims of the Zerg Hyper-Evolutionary Virus.
+  - Key Units:
+    - Infested Marine
+    - Infested Siege Tank
+    - Special Infested (Kaboomer, Hunterling, Choker, Spotter)
+    - Infestor (Hard+)
+
+New compositions, new fights! Protoss has 8 compositions while Terran and Zerg only have 6 and 5 respectively, so more have been added.
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
@@ -1018,7 +1049,7 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
 
 ### Abathur
 
-- Added P4: Symbiotic Hivemind.
+- Added P4: Symbiotic Hivemind
   - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
   - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
 
@@ -1196,7 +1227,7 @@ yeah.
 ### Nova
 
 - Changed Nova to visually change suits between Stealth Mode and Assault Mode.
-- Added P4: Covert Crusader.
+- Added P4: Covert Crusader
   - Has higher movement speed than normal Nova.
   - Replaces gear in both modes.
   - Stealth Mode:

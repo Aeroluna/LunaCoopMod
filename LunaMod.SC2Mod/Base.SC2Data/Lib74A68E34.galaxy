@@ -2826,6 +2826,52 @@ void lib74A68E34_gt_MaxSupplyCommand_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: EnemyUpgradeCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_EnemyUpgradeCommand_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    const int auto9C4DD64A_ae = 4;
+    const int auto9C4DD64A_ai = 1;
+    int autoD43127F7_ae;
+    const int autoD43127F7_ai = 1;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_player = 3;
+    for ( ; ( (auto9C4DD64A_ai >= 0 && lv_player <= auto9C4DD64A_ae) || (auto9C4DD64A_ai < 0 && lv_player >= auto9C4DD64A_ae) ) ; lv_player += auto9C4DD64A_ai ) {
+        autoD43127F7_ae = UserDataInstanceCount("CoopAIUpgrade");
+        lv_index = 1;
+        for ( ; ( (autoD43127F7_ai >= 0 && lv_index <= autoD43127F7_ae) || (autoD43127F7_ai < 0 && lv_index >= autoD43127F7_ae) ) ; lv_index += autoD43127F7_ai ) {
+            TechTreeUpgradeAddLevel(lv_player, UserDataGetUpgrade("CoopAIUpgrade", UserDataInstance("CoopAIUpgrade", lv_index), "Upgrade", 1), 1);
+        }
+    }
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_EnemyUpgradeCommand_Init () {
+    lib74A68E34_gt_EnemyUpgradeCommand = TriggerCreate("lib74A68E34_gt_EnemyUpgradeCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_EnemyUpgradeCommand, c_playerAny, "-aitech", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: CooldownImproved
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_CooldownImproved_Func (bool testConds, bool runActions) {
@@ -7797,6 +7843,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_SnowVisualNewUnit_Init();
     lib74A68E34_gt_TestCommand_Init();
     lib74A68E34_gt_MaxSupplyCommand_Init();
+    lib74A68E34_gt_EnemyUpgradeCommand_Init();
     lib74A68E34_gt_CooldownImproved_Init();
     lib74A68E34_gt_AllyImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
