@@ -2,6 +2,8 @@
 
 A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.
 
+NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip says 10 seconds, that corresponds to ~7.14 real time seconds on Brutal/Faster.
+
 ### Table of Contents
 <details>
 <summary>Details</summary>
@@ -403,6 +405,11 @@ Copied from Versus. Duration of Raven's summons massively, and in return increas
 
 - Increased Science Vessel Irradiate cost from 25 energy to 75 energy.
 - Increased Science Vessel Defensive Matrix cost from 50 energy to 100 energy.
+- Added a limit to how many Science Vessels can spawn per wave.
+  - Casual: 0
+  - Normal: 2
+  - Hard: 4
+  - Brutal: 6
 
 A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave will spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost should make it less obnoxious fighting Terran with a bio army.
 
@@ -411,6 +418,13 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
   - Reduces movement speed by 25% while active.
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
+
+- Removed Science Vessels from the Raiding Party (BioMechStar) composition.
+- Added Medivacs to the Raiding Party (BioMechStar) composition.
+- Increased Marauder/Marine count in the Raiding Party (BioMechStar) composition.
+- Reduced Siege Tank count in the Raiding Party (BioMechStar) composition.
+
+Raiding Party might as well be the Siege Tank composition with how many Siege Tanks and Science Vessels there are. Reducing Siege Tanks and adding more Medivacs/Marines/Marauders should make it more distinct from the Classic Infantry composition as the "SC2 Bio" composition.
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 
@@ -1549,9 +1563,9 @@ Old P3 had an awkward design where it buffed how many platforms you could build 
 
 These changes should make Widow Mines more viable at pushing into enemy bases. Autocasting burrow particularly helps when training Widow Mines at the front lines.
 
-- Fixed an issue where Mag Mines would not play their entire animation when firing.
+- Buffed Hellbat's Wildfire Explosives to additionally apply Immolation Fluid if researched.
 
-The animation was too slow and only got around half way through. I bet no one would even notice this though.
+It was very odd to see enemies on fire running in fear and taking no damage.
 
 - Increased projectile speed of Deimos Viking's W.I.L.D. Missiles by 100%.
 
@@ -1574,11 +1588,6 @@ This should keep the Raven farther back and not randomly die as easily.
 
 Despite being called Han & Horner, once you got all the upgrades, it just turned into "Oops! All Han!". Now you get to keep some of that "elite Dominion" aesthestic in your army. It also felt really silly that upgrading a Battlecruiser with Yamatos would strap two giant knives to its side.
 
-- Fixed an issue where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
-- Fixed an issue where Call in the Fleet would launch at a different trajectory than intended.
-
-Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
-
 - Fixed an issue where Reaper's death rattle grenades continued their ticking sound after exploding.
 - Added a ticking sound to Reaper's KD8 Charge ability.
 - Added a cursor splat to Reaper's KD8 Charge ability.
@@ -1592,7 +1601,7 @@ Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the dama
 
 Overall increases attack speed and allows the Sovereign Battlecruiser to be affected by attack speed buffs.
 
-- Reversed the Tactical Jump out animation.
+- Changed the Tactical Jump out animation to be reversed.
 
 For some reason, it looked like ships were teleporting backwards from their destination.
 
@@ -1600,11 +1609,18 @@ For some reason, it looked like ships were teleporting backwards from their dest
 
 The Sovereign Battlecruiser has a fully functional teleport animation, so let's use that instead of the generic stand-in.
 
+- Fixed an issue where Call in the Fleet's initial targeting position would be offset when casted over flying pathing blockers.
+- Fixed an issue where Call in the Fleet would launch at a different trajectory than intended.
+
+Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
+
 - Fixed an issue where canceling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 - Fixed an issue where Call in the Fleet targeting reticles would visually bank with the targeted unit.
 - Changed Theia Raven Silent Mode ability to no longer require decelerating to cast.
 - Added unique visual effect for Theia Raven Silent Mode instead of reusing the Overseer's.
+- Fixed an issue where Hellbat's Wildfire Explosives fear effect would stop the AI of affected units.
+- Fixed an issue where Mag Mines would not play their entire animation when firing.
 
 yeah.
 
@@ -1709,6 +1725,8 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
 - Fixed an issue where unit's affected by Psi Projector twice in a row would have their height visually reset.
 - Added a cast animation for Rattlesnake's Deploy Revitalizer ability.
 - Added a cast animation for Sirius's Deploy Warhound Turret ability.
+- Fixed an issue where Sirius's Moebius M34 Terror Rounds fear buff used Han & Horner's fear icon.
+- Fixed an issue where Sirius's Moebius M34 Terror Rounds fear effect would stop the AI of affected units.
 
 yeah.
 
@@ -1824,7 +1842,7 @@ Creates an interesting Spirit Link-like effect where all the Ultralisks are tryi
 - Fixed an issue where Mecha Ultralisks would not burrow for their Vectored Burrow Charge ability.
 - Fixed an issue where Mecha Ultralisk Vectored Burrow Charge ability did not play some FX.
 
-The Mecha Ultralisk actor xml is such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow animation.
+The Mecha Ultralisk actor xml is such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow charge animation.
 
 - Increased visual scale of Mecha Ultralisk Electrostatic Surprise! by 33%.
 - Changed Electrostatic Surprise! stun visual to auto scale with target model.
@@ -1933,6 +1951,8 @@ Previously the status bar only showed hp.
 
 - Adjusted Labryinth Cloak tooltip to be more accurate.
 - Fixed an issue where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
+- Fixed an issue where Contaminated Strike's fear effect would stop the AI of affected units.
+- Added a warning splat for 2 seconds after casting Contaminated Strike.
 
 yeah.
 

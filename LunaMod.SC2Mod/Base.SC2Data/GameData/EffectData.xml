@@ -519,6 +519,25 @@
     <CEffectApplyBehavior id="HHHellionBombSlowAB">
         <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HHHellionTankDeathFearDoTAB">
+        <Behavior value="HHHellionDoT"/>
+        <ValidatorArray value="HaveHHHellionAttackDoT"/>
+        <ValidatorArray value="NotMapBossOrHeroic"/>
+        <ValidatorArray value="NotStructure"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HHHellionTankDeathFearImpactSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HHHellionTankDeathFearAB"/>
+        <EffectArray value="HHHellionTankDeathFearDoTAB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="HHHellionTankDeathFearSearch">
+        <AreaArray index="0" Effect="HHHellionTankDeathFearImpactSet"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="HHHellionTankDeathFearSearchUpgrade">
+        <AreaArray index="0" Effect="HHHellionTankDeathFearImpactSet"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
     <CEffectLaunchMissile id="HHLaserBatteryLM">
         <Movers Link="YamatoWeapon"/>
     </CEffectLaunchMissile>

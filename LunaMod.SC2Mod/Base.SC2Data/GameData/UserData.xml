@@ -105,6 +105,57 @@
             </Upgrade>
         </Instances>
     </CUser>
+    <CUser id="CoopAIAttackWaveUnitLimits">
+        <Instances Id="Science Vessel">
+            <Int>
+                <Field Id="LimitPerDifficulty"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="LimitPerDifficulty" Index="1"/>
+            </Int>
+            <Int Int="2">
+                <Field Id="LimitPerDifficulty" Index="2"/>
+            </Int>
+            <Int Int="3">
+                <Field Id="LimitPerDifficulty" Index="3"/>
+            </Int>
+            <Unit Unit="ScienceVessel">
+                <Field Id="UnitToLimit"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="CoopAICommanderTiers">
+        <Instances Id="[Override]TerrBuildBioMechStar Tier05">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+        </Instances>
+        <Instances Id="[Override]TerrBuildBioMechStar Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Unit Unit="Medivac">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="[Override]TerrBuildBioMechStar Tier07">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="5"/>
+            </Fixed>
+            <Unit Unit="Medivac">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="5"/>
+            </Unit>
+        </Instances>
+    </CUser>
     <CUser id="CoopAIUpgrade">
         <Instances Id="Resonating Glaives">
             <Fixed Fixed="900">

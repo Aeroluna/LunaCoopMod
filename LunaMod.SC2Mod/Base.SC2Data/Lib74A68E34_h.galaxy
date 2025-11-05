@@ -54,6 +54,7 @@ int lib74A68E34_gv_mutatorListRandomizerDialog;
 int lib74A68E34_gv_mutatorListRandomizerPulldown;
 int lib74A68E34_gv_mutatorListRandomizerRefreshButton;
 int lib74A68E34_gv_mutatorListDialog;
+unitgroup lib74A68E34_gv_fearUnits;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
 int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
 unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
@@ -89,6 +90,8 @@ sound lib74A68E34_gv_mutatorWhiteoutAmbience;
 unit lib74A68E34_gv_mutatorWhiteoutEffect;
 
 // Function Declarations
+bool lib74A68E34_gf_UnitHasBehaviorFlag (unit lp_unit, int lp_flag);
+void lib74A68E34_gf_IssueOrderWithoutScriptControl (unit lp_unit, order lp_order, int lp_queue);
 void lib74A68E34_gf_SnowVisualEnable ();
 void lib74A68E34_gf_SnowVisualApply (unit lp_unit);
 void lib74A68E34_gf_Cooldown (int lp_pPlayer);
@@ -177,6 +180,9 @@ trigger lib74A68E34_gt_CommanderRewardsApply;
 trigger lib74A68E34_gt_ChronoDisableTriggers;
 trigger lib74A68E34_gt_ChronoAnimSpeedOn;
 trigger lib74A68E34_gt_ChronoAnimSpeedChronoBoostOn;
+trigger lib74A68E34_gt_FearDisableTriggers;
+trigger lib74A68E34_gt_FearApply;
+trigger lib74A68E34_gt_FearRemove;
 trigger lib74A68E34_gt_LogDisableOriginal;
 trigger lib74A68E34_gt_LogDisplay;
 trigger lib74A68E34_gt_LogDamageLogging;

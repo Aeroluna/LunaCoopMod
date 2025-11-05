@@ -61,6 +61,16 @@
     <CActorAction id="AlarakSoulAbsorptionDummyAttack">
         <On Terms="Effect.JinaraSoulAbsorptionLM.Start; At Caster" Send="Create"/>
     </CActorAction>
+    <CActorModel id="ArtilleryMengskGlobalExperimentalStrikeWarning">
+        <FogVisibility value="Visible"/>
+        <On Terms="Abil.ArtilleryMengskGlobalExperimentalStrike.TargetCastStart" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.000000 DeathDelay"/>
+        <On Terms="TimerExpired; TimerName DeathDelay" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <ScopeBearingsTracking value="ForceOff"/>
+        <Scale value="2.000000"/>
+    </CActorModel>
     <CActorRange id="AscendantSacrificeInstantRange">
         <On Terms="Abil.JinaraSacrificeInstant.TargetOn" Send="Create"/>
         <On Terms="Abil.JinaraSacrificeInstant.TargetOff" Send="Destroy"/>
