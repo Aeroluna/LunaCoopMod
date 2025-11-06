@@ -15,6 +15,7 @@ Abil/Name/MedivacHealPlusMech=Heal
 Abil/Name/MedivacHealRaynor=Heal
 Abil/Name/MercCompoundLaunch=Launch
 Abil/Name/MercCompoundReset=Reset
+Abil/Name/MorphToPowerTowerCancelStetmann=Cancel Morph
 Abil/Name/MothershipArtanisMassRecall=Mass Recall
 Abil/Name/MothershipArtanisPlanetCracker=Planet Cracker
 Abil/Name/NexusTrainMothership2=Train Mothership Copy
@@ -100,6 +101,7 @@ Behavior/Tooltip/DuskWingBansheeCloak=This unit is cloaked and will only be reve
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/FenixThunderousChargeCoopSlow=This unit's attack speed and movement speed are slowed.
 Behavior/Tooltip/FenixThunderousChargeCoopStun=This unit is stunned.
+Behavior/Tooltip/FungalGrowth=Target is affected by Fungal Growth. Target is detected and has restricted movement.
 Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneration and movement speed while cloaked.
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/GhostMengskSuperCloak=This unit is undetectable.
@@ -223,6 +225,7 @@ Button/Name/MercCompoundLaunch=Deploy
 Button/Name/MercCompoundPassive=Mercenary Squads
 Button/Name/MercCompoundReset=Cancel
 Button/Name/MohandarOmnislash=Shadow Assault
+Button/Name/MorphToPowerTowerCancelStetmann=Cancel
 Button/Name/MothershipArtanis=Warp In Mothership
 Button/Name/MothershipArtanisMassTeleport=Mass Recall
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
@@ -436,6 +439,7 @@ Button/Tooltip/FaceEmbrace=Pulls target unit to the Viper. Enemy units are stunn
 Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
 Button/Tooltip/FenixThunderousChargeCoop=Fenix charges at the target location, dealing <d ref="Effect,FenixThunderousChargeCoopDamage,Amount"/> damage and stunning all enemy units for <d ref="Behavior,FenixThunderousChargeCoopStun,Duration"/> seconds.</n></n><c val="#ColorAttackInfo">Heroic units are slowed.</c>
 Button/Tooltip/ForceFieldTaldarim=Barrier that lasts <d time="15"/> and impedes movement of ground units.
+Button/Tooltip/FungalGrowth=Target units take <d ref="(Behavior,FungalGrowth,Duration / Behavior,FungalGrowth,Period) * Effect,FungalGrowthDamage,Amount"/> damage over <d time="4"/> and have movement speed reduced by <d ref="(1-Behavior,FungalGrowthSlowMovement,Modification.MoveSpeedMultiplier)*100"/>%. Reveals cloaked and burrowed units. Affected units cannot Blink or load into transports or buildings.
 Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds.
 Button/Tooltip/HHBomberEMP=Precision Strikes additionally deploy an EMP warhead. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/HHBomberNapalm=Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
@@ -470,6 +474,7 @@ Button/Tooltip/HireMercVikingCharges=<d ref="$BehaviorStackCount:HireMercViking$
 Button/Tooltip/Hyperjump=After <d time="6"/>, warps to the target location. Battlecruiser is invulnerable while warping.<n/><n/><c val="#ColorAttackInfo">Does not require vision.</c>
 Button/Tooltip/HyperjumpInstant=Warps to the target location. Battlecruiser is invulnerable while warping.
 Button/Tooltip/ImmortalShakurasShadowCannon2=Shadow Cannon gains an additional charge.
+Button/Tooltip/InfestedTerrans=Spawn an Infested Terran. Infested Terrans last <d ref="Behavior,InfestedTerranTimedLife,Duration"/> seconds.<n/><n/><c val="ffff8a">Can cast while burrowed.</c>
 Button/Tooltip/JinaraBarrage=Unleash a torrent of chaos, dealing <d ref="Effect,JinaraBarrageDamage,Amount*Effect,JinaraBarrageCP,PeriodCount"/> damage to enemy units in the target area.
 Button/Tooltip/JinaraChains=Launch chains at a target enemy unit, slowing their attack and movement speed by <d ref="(1-Behavior,JinaraChains,Modification.AttackSpeedMultiplier)*100"/>% for <d ref="Behavior,JinaraChains,Duration"/> seconds. While chained, enemies will take up to <d ref="Effect,JinaraChainsDamage,Amount*(Behavior,JinaraChains,Duration/Behavior,JinaraChains,PeriodicPeriodArray[0])"/> damage.<n/><n/>Upon taking damage, chained targets will launch additional chains at nearby enemies.
 Button/Tooltip/JinaraCoop=First Ascendant of the Tal'darim. Powerful psionic ranged specialist.
@@ -503,10 +508,12 @@ Button/Tooltip/MercCompoundLaunch=Deploy a squad with all currently hired mercen
 Button/Tooltip/MercCompoundPassive=A squad can be filled by hiring mercenaries. The squad can then be deployed, dropping all hired mercenaries at the rally point.<n/><n/>Mercenaries cannot be controlled after being deployed. They will wander the map with their squad, looking for enemies to fight.
 Button/Tooltip/MercCompoundReset=Cancel your current mercenary selection, refunding the cost of undeployed mercenaries.
 Button/Tooltip/MercCompoundResetCharges=<d ref="$BehaviorStackCount:HireMercMarine$*4"/>
+Button/Tooltip/MorphToPowerTowerCancelStetmann=Stops rebuilding, permanently destroying the Stetellite instantly.
 Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Recall, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all nearby units you control to target friendly unit or structure's location.</n></n><c val="#ColorAttackInfo">Can only target friendly units or structures.</c>
 Button/Tooltip/MothershipPassive=Fleet Beacon enables you to warp in Motherships.
 Button/Tooltip/MultiLockTargetingSystemThor=The Thor can target ground and air units simultaneously.
+Button/Tooltip/NeuralParasite=Target unit is controlled by the Infestor for <d ref="Behavior,NeuralParasite,Duration"/> seconds. The Infestor cannot take any other action while controlling an enemy unit.<n/><n/><c val="ffff8a">Channeled ability. Can cast while burrowed.</c><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/NovaArmorJumpSuit=Advanced mobility gear with a jet pack that allows for cliff jumping. Passively increases life by +250 and greatly increases movement speed.
 Button/Tooltip/NovaGadgetFlashBangGrenades=Stuns and disables the <c val="FFE303">Detection</c> of enemy ground and air units in the target area for <d ref="Behavior,FlashBangGrenade,Duration" precision="1"/> seconds.</n></n><c val ="#ColorAttackInfo">Heroic units and friendly units are immune.</c>
 Button/Tooltip/NovaSwitchAssaultModeMelee=Increases Nova's mobility and allows her to use Dash Attack and Stim Infusion.</n></n><c val="#ColorAttackInfo">Equips Nova to attack ground units.</c>
@@ -647,6 +654,7 @@ Button/Tooltip/ZealotPurifierRevive3=Revives the Sentinel when killed. This effe
 Button/Tooltip/ZeratulAllPassive=<c val="FFFF8A">Steadfast Reinforcements:</c> Increases the duration of Zeratul's Legion and Avatar calldowns by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2B:Behavior,ZeratulXelNagaConstructTimedLife,Duration$/Behavior,ZeratulTopBarTimedLife,Duration*100" player="0"/>%.<n/><n/><c val="FFFF8A">Tesseract Matrix:</c> Decreases the cooldown of Shade Projection by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse$/Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse*100" player="0"/>%. Increases the damage absorbed by Shade Barrier by <d ref="($UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit$/Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit)*100" player="0"/>%.<n/><n/><c val="FFFF8A">Void Blink:</c> Reduces the cooldown of Zeratul and his units' Blink abilities by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2A:Abil,ZeratulBlink,Cost[0].Charge.TimeUse$/Abil,ZeratulBlink,Cost[0].Charge.TimeUse*100" player="0"/>%.
 Button/Tooltip/ZeratulDarkArchonMaelstrom=Temporarily stuns enemy units in an area of effect for <d ref="Behavior,ZeratulDarkArchonMaelstrom,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
+Button/Tooltip/ZerglingBurrowMoveAbathur=Can move at full speed while burrowed. Burrowed regeneration rate increased by 100%.
 DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/Name=LunaMod
 Effect/Name/AdeptPurifierDamage=Damage
@@ -789,6 +797,7 @@ Effect/Name/MengskZergRefundLevel3=MengskZergRefundLevel3
 Effect/Name/MengskZergRefundLevel4=MengskZergRefundLevel4
 Effect/Name/MercCompoundLaunch=Launch
 Effect/Name/MercCompoundReset=Reset
+Effect/Name/MorphToPowerTowerCancelStetmann=MorphToPowerTowerCancelStetmann
 Effect/Name/MothershipArtanisPlanetCracker=Planet Cracker
 Effect/Name/MothershipArtanisPlanetCrackerCharge=Planet Cracker Charge
 Effect/Name/MothershipArtanisPlanetCrackerDamage=Planet Cracker Damage
@@ -1023,6 +1032,7 @@ RequirementNode/Tooltip/Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAn
 Skin/Name/KerriganBroodCoop=KerriganBroodCoop
 Skin/Name/KerriganPrestigeBroodCoop=KerriganPrestigeBroodCoop
 Skin/Name/VorazunCoop=VorazunCoop
+UI/MorphingStetellite=Rebuilding
 Unit/Category/ProtossNerazim=Protoss - Nerazim
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor

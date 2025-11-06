@@ -858,10 +858,18 @@
     </CUnit>
     <CUnit id="Infestor">
         <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
             <LayoutButtons index="8" Column="3"/>
-            <LayoutButtons index="10" Column="2"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons index="10" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="2"/>
+            <LayoutButtons index="11" Face="InfestorConsumption" AbilCmd="InfestorConsumption,Execute" Column="2"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorUp,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="1" Column="2"/>
         </CardLayouts>
+        <EnergyStart value="75"/>
+        <Radius value="0.625"/>
+        <TacticalAIThink value="AIThinkInfestorLuna"/>
     </CUnit>
     <CUnit id="InfestorBurrowed">
         <SubgroupAlias value="Infestor"/>
@@ -869,7 +877,14 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="3"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="1" Column="2"/>
+            <LayoutButtons Face="NeuralParasite" Type="AbilCmd" AbilCmd="NeuralParasite,Execute" Row="2" Column="2"/>
         </CardLayouts>
+        <EnergyStart value="75"/>
+        <Sight value="8"/>
+        <AbilArray Link="NeuralParasite"/>
+        <TacticalAIThink value="AIThinkInfestorBurrowedLuna"/>
     </CUnit>
     <CUnit id="InfestorStetmann">
         <CardLayouts index="0">
@@ -1040,6 +1055,13 @@
             <LayoutButtons Face="SalvageStetmann" Type="AbilCmd" AbilCmd="SalvageStetmannPowerTower,On" Row="2" Column="0"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="PowerTowerStetmannDeactivated">
+        <FlagArray index="Unselectable" value="0"/>
+        <AbilArray Link="MorphToPowerTowerCancelStetmann"/>
+        <CardLayouts>
+            <LayoutButtons Face="MorphToPowerTowerCancelStetmann" Type="AbilCmd" AbilCmd="MorphToPowerTowerCancelStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="PrimalUltralisk">
         <AlliedPushPriority value="1"/>
     </CUnit>
@@ -1091,16 +1113,10 @@
             <LayoutButtons index="7" Column="1"/>
             <LayoutButtons index="8" Column="3"/>
             <LayoutButtons index="9" Column="2"/>
-            <LayoutButtons index="10">
-                <Face value="BurrowUp"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="BurrowRoachUp,Execute"/>
-                <Requirements value=""/>
-                <Row value="2"/>
-                <Column value="4"/>
-            </LayoutButtons>
+            <LayoutButtons index="10" Column="2"/>
             <LayoutButtons index="15" Row="1" Column="4"/>
             <LayoutButtons index="16" Row="1" Column="4"/>
+            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowRoachUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="RoachBurrowed">
@@ -1125,6 +1141,7 @@
     <CUnit id="RoachCorpser">
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="7" Face="ZerglingBurrowMove"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowHotSCorpserUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
@@ -1132,6 +1149,7 @@
         <SubgroupAlias value="RoachCorpser"/>
         <SelectAlias value="RoachCorpser"/>
         <CardLayouts index="0">
+            <LayoutButtons index="7" Face="ZerglingBurrowMove"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHotSCorpserDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>

@@ -128,6 +128,32 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorModel id="FungalGrowthStopMovement" parent="ModelAnimationStyleContinuous">
+        <AutoScaleFactor value="1.000000"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <On Terms="Behavior.FungalGrowthMovement.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart $BSD"/>
+        <On Terms="Behavior.FungalGrowthMovement.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,0,0 4.000000}"/>
+        <Host Subject="_Selectable"/>
+    </CActorModel>
+    <CActorUnit id="Infestor">
+        <On Terms="ActorCreation" Send="ModelAnimateInvisible 1"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+    </CActorUnit>
+    <CActorSplat id="InfestorBurrowedNeuralParasiteGroundSplat" parent="BurrowedSplat" unitName="InfestorBurrowed">
+        <On Terms="Abil.NeuralParasite.SourceCastStart; ValidateUnit IsInfestorBurrowed" Send="Create"/>
+        <On Terms="Abil.NeuralParasite.SourceFinishStop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachHarnessSoft" HoldRotation="1"/>
+        <Model value="InfestorBurrowedNeuralParasiteGroundSplat"/>
+        <HostForProps Subject="NeuralParasiteTentacle"/>
+    </CActorSplat>
+    <CActorSplat id="InfestorBurrowedSplat">
+        <HostSiteOps Ops="SOpAttachHarnessSoft" HoldRotation="1"/>
+    </CActorSplat>
+    <CActorUnit id="InfestorStetmann">
+        <WalkAnimMoveSpeed value="2.25"/>
+    </CActorUnit>
     <CActorAction id="KD8ChargeAction">
         <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
     </CActorAction>
@@ -136,6 +162,9 @@
         <AutoScaleFactor value="1.200000"/>
         <On index="3" Terms="Behavior.KarassPsiStorm.On"/>
     </CActorModel>
+    <CActorUnit id="PowerTowerStetmannDeactivated">
+        <DeathArray index="Normal" ModelLink="PowerSatellite_Stetmann_COOP_Death"/>
+    </CActorUnit>
     <CActorModel id="VoidRayEnhancementAddition01">
         <On index="9" Terms="Behavior.VoidRayChargeBeamRangeCounter.On; ValidateUnit IsNotMohandar"/>
     </CActorModel>
@@ -4640,6 +4669,20 @@
         <SoundArray index="Attack" value="Zealot_Attack"/>
         <SoundArray index="Pissed" value="Zealot_Pissed"/>
     </CActorUnit>
+    <CActorEventMacro id="ZergBurrowMobileAnimMacro">
+        <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowMoveEffectExtra"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Target="BurrowMoveEffectExtra" Send="AnimPlay Main Stand PlayForever"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Target="BurrowMoveEffectExtra" Send="AnimPlay Main Walk PlayForever"/>
+    </CActorEventMacro>
+    <CActorModel id="BurrowMoveEffectExtra" parent="ModelAdditionNoAnims">
+        <On Terms="ActorCreation" Send="AnimPlay Main Stand PlayForever"/>
+        <On Terms="AbilMorph.*.Start; AbilKey BurrowUp" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnitType IsInfestor" Send="SetScale 1.250000"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+    </CActorModel>
     <CActorSound id="Zerg_BuildingMorphEndStetmann">
         <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
         <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 2" Send="Create"/>

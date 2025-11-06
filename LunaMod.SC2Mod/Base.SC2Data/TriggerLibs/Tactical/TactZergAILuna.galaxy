@@ -354,3 +354,190 @@ void AIThinkNovaInfestedSiegeTankSieged (int player, unit aiUnit, unitgroup scan
         }
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** INFESTOR ***
+//--------------------------------------------------------------------------------------------------
+
+bool FungalGrowthTest (int player, unit aiUnit, marker mark, marker gameMark, unitgroup scanGroup) {
+    aifilter filter;
+    unitgroup enemyGroup;
+    point loc;
+
+    if (!AITactCooldownAllow(aiUnit, c_fungalGrowthCooldown)) {
+        return false;
+    }
+
+    //  Cast on strongest enemy that can attack our allies
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BF_FungalGrowth);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, gameMark);
+    enemyGroup = AIGetFilterGroup(filter, scanGroup);
+
+    loc = AIBestTargetPoint(
+        AIEffectGroup(player, c_EF_FungalGrowthSearch, enemyGroup),
+        5, // min hits
+        30, // damage base
+        3.5, // min score
+        AIEffectFixed(player, c_EF_FungalGrowthSearch, c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        AIUnitFixed(player, c_ZU_Infestor, c_fieldSightRange),
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return false;
+    }
+    return true;
+}
+
+//---------------------------------------------------------------------------------------------
+
+void AIThinkInfestorLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    //  **Infestor disease in TargetFindData.xml** Currently not in the game.
+    marker mark;
+    marker gameMark;
+    order ord;
+    bool lowVitality;
+    fixed cooldown;
+
+    // burrow
+    // if (AIEvalTacticalData(aiUnit, null)) {
+    //     return;
+    // }
+
+    // fungal growth
+    if (AIPlayerDifficulty(player) > c_campNormal) {
+        gameMark = AIMarker(aiUnit, c_MK_GameFungalGrowth);
+        mark = AIMarker(aiUnit, c_MK_FungalGrowth);
+        ord = FungalGrowth(player, aiUnit, mark, gameMark, scanGroup);
+        if (ord != null) {
+            if (AIPlayerDifficulty(player) < c_campExpert) {
+                cooldown = 15.0;
+            }
+            else {
+                cooldown = 5.0;
+            }
+            AICastCooldown(aiUnit, ord, mark, c_castHold, c_fungalGrowthCooldown, cooldown);
+            return;
+        }
+    }
+
+    lowVitality = (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) < infestorLowVitalityPercent);
+
+    // neural parasite
+    mark = AIMarker(aiUnit, c_MK_NeuralParasite);
+    gameMark = AIMarker(aiUnit, c_MK_GameNeuralParasite);
+    ord = NeuralParasite(player, aiUnit, scanGroup, mark, gameMark, lowVitality);
+    if (ord != null) {
+        AICast(aiUnit, ord, mark, c_castHold);
+        return;
+    }
+
+    // infested terrans
+    ord = InfestedTerrans(player, aiUnit, scanGroup, lowVitality);
+    if (ord != null) {
+        if (AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 1.0;
+        }
+        else {
+            cooldown = 0.0;
+        }
+
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_infestedTerransCooldown, cooldown);
+        return;
+    }
+
+    //
+    //// frenzy
+    //mark = AIMarker(aiUnit, c_MK_Frenzy);
+    //ord = Frenzy(player, aiUnit, scanGroup, mark, lowVitality);
+    //if (ord != null) {
+    //    AICast(aiUnit, ord, mark, c_castHold);
+    //    return;
+    //}
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        return;
+    }
+
+    if (AIPathingCostUnit (aiUnit, AIWaveGoal(AIUnitGetWave(aiUnit)), true) < 0) {
+        return;
+    }
+
+    ord = AICreateOrder(player, c_AB_BurrowInfestorDown, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    if (UnitGroupCount(scanGroup, c_unitCountAlive) > 0) {
+        return;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+//---------------------------------------------------------------------------------------------
+
+void AIThinkInfestorBurrowedLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    //  **Infestor disease in TargetFindData.xml** Currently not in the game.
+    marker mark;
+    marker gameMark;
+    order ord;
+    bool lowVitality;
+    fixed cooldown;
+
+    // burrow
+    // if (AIEvalTacticalData(aiUnit, null)) {
+    //     return;
+    // }
+
+    // fungal growth
+    if (AIPlayerDifficulty(player) > c_campNormal) {
+        gameMark = AIMarker(aiUnit, c_MK_GameFungalGrowth);
+        mark = AIMarker(aiUnit, c_MK_FungalGrowth);
+        if (FungalGrowthTest(player, aiUnit, mark, gameMark, scanGroup)) {
+            // if we want to fungal, unburrow
+            ord = AICreateOrder(player, c_AB_BurrowInfestorUp, 0);
+            if (!UnitOrderIsValid(aiUnit, ord)) {
+                return;
+            }
+
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return;
+        }
+    }
+
+    lowVitality = (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) < infestorLowVitalityPercent);
+
+    // neural parasite
+    mark = AIMarker(aiUnit, c_MK_NeuralParasite);
+    gameMark = AIMarker(aiUnit, c_MK_GameNeuralParasite);
+    ord = NeuralParasite(player, aiUnit, scanGroup, mark, gameMark, lowVitality);
+    if (ord != null) {
+        AICast(aiUnit, ord, mark, c_castHold);
+        return;
+    }
+
+    // infested terrans
+    ord = InfestedTerrans(player, aiUnit, scanGroup, lowVitality);
+    if (ord != null) {
+        if (AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 1.0;
+        }
+        else {
+            cooldown = 0.0;
+        }
+
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_infestedTerransCooldown, cooldown);
+        return;
+    }
+
+    //
+    //// frenzy
+    //mark = AIMarker(aiUnit, c_MK_Frenzy);
+    //ord = Frenzy(player, aiUnit, scanGroup, mark, lowVitality);
+    //if (ord != null) {
+    //    AICast(aiUnit, ord, mark, c_castHold);
+    //    return;
+    //}
+}

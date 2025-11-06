@@ -77,6 +77,9 @@
     <CBehaviorBuff id="DehakaTopBarPrimalWurmSummonTimedLife">
         <ExpireEffect value="DehakaTopBarPrimalWurmSummonTimedLifeExpire"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HeroCCImmunity">
+        <Modification SnareMultiplier="1"/>
+    </CBehaviorBuff>
     <CBehaviorUnitTracker id="JinaraChainsTracker">
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorUnitTracker>
@@ -519,6 +522,30 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorStormCloudSlow">
         <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NeuralParasite">
+        <Modification>
+            <StateFlags index="SuppressRequirements" value="1"/>
+            <AbilClassDisableArray index="CAbilBuild" value="1"/>
+            <AbilClassDisableArray index="CAbilMerge" value="1"/>
+            <AbilClassDisableArray index="CAbilResearch" value="1"/>
+            <AbilClassDisableArray index="CAbilTrain" value="1"/>
+            <AbilClassDisableArray index="CAbilWarpTrain" value="1"/>
+            <AbilLinkDisableArray value="SpectreNuke"/>
+            <AbilLinkDisableArray value="HallucinationArchon"/>
+            <AbilLinkDisableArray value="HallucinationColossus"/>
+            <AbilLinkDisableArray value="HallucinationHighTemplar"/>
+            <AbilLinkDisableArray value="HallucinationImmortal"/>
+            <AbilLinkDisableArray value="HallucinationPhoenix"/>
+            <AbilLinkDisableArray value="HallucinationProbe"/>
+            <AbilLinkDisableArray value="HallucinationStalker"/>
+            <AbilLinkDisableArray value="HallucinationVoidRay"/>
+            <AbilLinkDisableArray value="HallucinationWarpPrism"/>
+            <AbilLinkDisableArray value="HallucinationZealot"/>
+            <AbilLinkDisableArray value="HallucinationAdept"/>
+            <AbilLinkDisableArray value="HallucinationOracle"/>
+            <AbilLinkDisableArray value="HallucinationDisruptor"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaUnitLockdown">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -1308,9 +1335,29 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FungalGrowth">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Duration value="4"/>
+        <Period value="0.25"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FungalGrowthMovement">
         <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FungalGrowthSlowMovement">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-fungalgrowth.dds"/>
+        <Duration value="4"/>
+        <Modification MoveSpeedMultiplier="0.25">
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <AbilCategoriesDisable index="User1" value="1"/>
+        </Modification>
+        <DisableValidatorArray value="BattlecruiserNotJumping"/>
+        <RemoveValidatorArray value="NotFrenzied"/>
+        <RemoveValidatorArray value="TargetIsNotUnstoppable"/>
+        <RemoveValidatorArray value="NoPurificationNova"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GhostMengskEMPStun">
         <Modification>

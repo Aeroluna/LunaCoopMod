@@ -152,6 +152,22 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="FungalGrowthSet">
+        <EffectArray index="1" value="FungalGrowthSlowMovementApplyBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FungalGrowthSlowMovementApplyBehavior">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="FungalGrowthSlowMovement"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="FungalGrowthDamage">
+        <Amount value="1.5625"/>
+    </CEffectDamage>
+    <CEffectSet id="FungalGrowthInitialSet">
+        <EffectArray index="0" value=""/>
+    </CEffectSet>
+    <CEffectEnumArea id="FungalGrowthSearch">
+        <AreaArray index="0" Radius="2.25"/>
+    </CEffectEnumArea>
     <CEffectDamage id="HHOrdnanceTowerDamage">
         <Death value="Blast"/>
     </CEffectDamage>
@@ -574,6 +590,11 @@
     <CEffectDamage id="MedicRestoration">
         <EditorCategories value="Race:Terran"/>
     </CEffectDamage>
+    <CEffectSet id="MorphToPowerTowerCancelStetmann">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SalvageStetmannPowerTowerRB"/>
+        <EffectArray value="SalvageDeath"/>
+    </CEffectSet>
     <CEffectTeleport id="MothershipMassRecallTeleport">
         <PlacementAround Value="TargetUnitOrPoint"/>
         <TargetLocation Value="TargetUnitOrPoint"/>
@@ -584,6 +605,15 @@
     <CEffectRemoveBehavior id="OnDeathControllerDeathPreventRBTarget">
         <BehaviorLink value="OnDeathControllerDeathPrevent"/>
     </CEffectRemoveBehavior>
+    <CEffectDamage id="OnDeathVorazunRecallOnDeath1HP">
+        <ImpactLocation Value="TargetUnit"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="OnDeathVorazunRecallOnDeathSearch">
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectEnumArea>
+    <CEffectTeleport id="OnDeathVorazunRecallOnDeathTeleport">
+        <SourceLocation Value="SourceUnit"/>
+    </CEffectTeleport>
     <CEffectSet id="OrdnanceFleetwideJumpSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="OrdnanceFleetwideJumpCreatePrecursor"/>
@@ -744,6 +774,12 @@
     </CEffectEnumArea>
     <CEffectApplyBehavior id="TychusGhostConfusionApply">
         <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusMedicTransportAirUnitsAB">
+        <ValidatorArray value="PassengerNotSuppressed"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusMedicTransportUnitsLoadGroundUnitsAB">
+        <ValidatorArray value="PassengerNotSuppressed"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="TychusShredderGrenadeSlowAB">
         <ValidatorArray value="NotFrenzied"/>

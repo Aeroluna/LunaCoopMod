@@ -3287,7 +3287,7 @@ bool lib74A68E34_gt_MCAddCoopUnitBehavior_Func (bool testConds, bool runActions)
     }
 
     if ((UnitHasBehavior2(lv_mindcontrolunit, "OnDeathControllerDeathPrevent") == false)) {
-        UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", lv_mindcontrolunit, 1);
+        UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0), 1);
     }
 
     return true;

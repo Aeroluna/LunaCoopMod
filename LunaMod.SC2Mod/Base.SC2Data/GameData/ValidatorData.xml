@@ -155,9 +155,15 @@
         <TrackerUnit Effect="JinaraChainsDummySet" Value="Target"/>
         <TrackedUnit Value="Target"/>
     </CValidatorIsUnitTracked>
+    <CValidatorCombine id="NotLarvaAndNotEncasedAndDominatedOrPlayerOwned">
+        <CombineArray value="PassengerNotSuppressed"/>
+    </CValidatorCombine>
     <CValidatorCombine id="OnDeathAlarakTheStrongestSurvive">
         <CombineArray index="0" value="IsAlarakHero"/>
     </CValidatorCombine>
+    <CValidatorUnitBehaviorState id="PassengerNotSuppressed">
+        <BehaviorState value="SuppressPassenger"/>
+    </CValidatorUnitBehaviorState>
     <CValidatorCombine id="SourceIsAlarakHero">
         <CombineArray value="SourceIsAlarakCoop"/>
         <CombineArray value="SourceIsJinaraCoop"/>
@@ -795,7 +801,7 @@
     </CValidatorUnitCompareOrderTargetRange>
     <CValidatorLocationEnumArea id="VorazunShadowFuryTargetsInArea">
         <AreaArray index="0" Radius="2"/>
-        <SearchFilters value="-;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitMover id="ReaperKD8KnockbackNotInMotion">
         <Value value="UnitKnockbackMover3"/>

@@ -48,19 +48,9 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 Taken from starcraft2coop.com
 
-- Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
-- Increased Shield Battery range by 2.
-
-If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
-
 - Buffed mind control effects to keep upgrades of targeted unit.
 
 Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
-
-- Removed Armored attribute from Queens.
-- Added autocast for Queen's Transfusion.
-
-Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
 
 - Reordered many command cards to match Versus.
 
@@ -74,55 +64,17 @@ Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this f
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
-- Removed Wait Until Stopped flag from Viking (and variants) Assault Mode and Fighter Mode abilities.
-
-Makes Raynor/HH/Mengsk Viking feel smoother to land.
-
-- Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
-
-Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
-
-- Increased visual scale of Planetary Fortress's attack impact by 20%.
-- Increased sound volume of Planetary Fortress's attack.
-
-Weirdly quiet for how impactful this thing's weapon is.
-
-- Increased Wraith (and variants) sight radius from 8 to 10.
-
-I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
-
-- Increased sound volume of Battlecruiser Tactical Jump ability.
-
-Not sure why this ability had its volume nerfed in co-op.
-
-- Removed hit test from High Templar (and variants) trail (Can no longer be clicked).
-
-If you've ever wondered how you boxed that High Templar you didn't mean to, this is probably why.
-
 - Changed alignment of all neutral buffs to either positive or negative.
 
 This changes causes all buffs to be tinted either green for positive buffs or red for negative buffs on the unit info panel. Previously many random buffs were set as neutral and weren't being tinted.
 
-- Fixed an issue where many stun/slow effects could still effect units with the Frenzy passive.
+- Fixed an issue where many stun/slow effects could still affect units with the Frenzy passive.
 
 It was very arbitrary which effects could or could not go through the Frenzy passive. Now it is more consistent.
 
-- Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
-- Added an impact visual for Ravager's Corrosive Bile.
-- Added visual Snow glaze effect to units on snowy maps (Void Launch).
-- Added a visual effect and sound effect when Salvaging structures.
+- Removed snare immunity from commander Heroes.
 
-It just looks nice c:
-
-- Fixed various commander-specific upgrades appearing on the command card.
-- Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
-- Fixed an issue where Viper Abduct would not unburrow most units.
-- Added a range indicator when using the Oracle's Stasis Ward ability.
-- Added cosmetic flame jets to Vultures when moving.
-- Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
-- Fixed an issue where Observer's Observation Mode did not play any sounds.
-
-yeah.
+This was applied weirdly where some heroes go it and others didn't. Heroes are OP anyways so who cares if they don't get slow immunity!
 
 - Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Affected units:
@@ -152,6 +104,7 @@ thanks Enoki.
 - Added a visual red lazer sights when Mag-Field Accelerators is researched.
 - Changed Cyclone's Lock On ability visual missiles to the large missiles from Versus.
 - Increased Zealot (and variants) animation walk speed from 2.25 to 3 (Makes Zealots visually bounce around less at high movement speeds).
+- Increased Infestor (and variants) animation walk speed from 1.875 to 2.25.
 - Increased Hydralisk (and variants) animation walk speed from 2.086 to 2.6484.
 - Increased Hydralisk (and variants) attack animation speed.
 - Added turret tracking to Colossi (and variants).
@@ -178,6 +131,7 @@ thanks Enoki.
 - Changed Observer (and variants) Surveillance Mode ability to no longer require decelerating to cast.
 - Increased Void Ray (and variants) movement speed from 2.25 to 2.75.
 - Increased Reaper (and variants) movement speed from 2.9531 to 3.75.
+- Changed undetected burrow move visual effects to be more visible.
 
 Copied from Versus.
 
@@ -211,6 +165,13 @@ Copied from Versus.
 
 thanks OmniSkeptic.
 
+- Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
+- Added an impact visual for Ravager's Corrosive Bile.
+- Added visual Snow glaze effect to units on snowy maps (Void Launch).
+- Added a visual effect and sound effect when Salvaging structures.
+
+It just looks nice c:
+
 - Reduced health of Cyclone from 200 to 120.
 - Increased movement speed of Cyclone from 2.8125 to 3.375.
 - Reduced damage of Cyclone's Lock On missiles from 25 to 20 (Total reduced from 500 to 400).
@@ -221,6 +182,58 @@ thanks OmniSkeptic.
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
 Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
+
+- Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
+- Increased Shield Battery range by 2.
+
+If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
+
+- Removed Armored attribute from Queens.
+- Added autocast for Queen's Transfusion.
+
+Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
+
+- Removed Wait Until Stopped flag from Viking (and variants) Assault Mode and Fighter Mode abilities.
+
+Makes Raynor/HH/Mengsk Viking feel smoother to land.
+
+- Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
+
+Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
+
+- Increased visual scale of Planetary Fortress's attack impact by 20%.
+- Increased sound volume of Planetary Fortress's attack.
+
+Weirdly quiet for how impactful this thing's weapon is.
+
+- Increased Wraith (and variants) sight radius from 8 to 10.
+
+I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
+
+- Increased sound volume of Battlecruiser Tactical Jump ability.
+
+Not sure why this ability had its volume nerfed in co-op.
+
+- Removed hit test from High Templar (and variants) trail (Can no longer be clicked).
+
+If you've ever wondered how you boxed that High Templar you didn't mean to, this is probably why.
+
+- Removed model scale variance from Zerglings.
+- Removed model scale variance from Roaches.
+- Removed model scale variance from Banelings.
+- Removed model scale variance from Mutalisks.
+
+Fun fact: the WOL campaign randomizes these model scales for some reason.
+
+- Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
+- Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
+- Fixed an issue where Viper Abduct would not unburrow most units.
+- Added a range indicator when using the Oracle's Stasis Ward ability.
+- Added cosmetic flame jets to Vultures when moving.
+- Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
+- Fixed an issue where Observer's Observation Mode did not play any sounds.
+
+yeah.
 
 - Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
@@ -344,7 +357,7 @@ Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and 
   - Added a 30 second cooldown.
   - Only targets units with less than 100 max hitpoints.
 
-Fun fact: Spawn Broodling was previously only casted on Siege Tanks. They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter.
+They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter. Fun fact: Spawn Broodling was previously only casted on Siege Tanks (Only Swann/Raynor).
 
 - Removed Detector from Oracles.
 
@@ -368,7 +381,7 @@ This includes adding a cast time, the 6 second wait, and some visual changes. Th
 - Added Combat Drugs passive.
 - Added KD8 Charge ability.
 
-What the hell were Blizzard thinking giving Reapers their structure weapon back for Co-op. Overall the Reaper does less DPS but now they get to be funny with their grenade ability. Get wrecked Shadow Tech.
+What the hell were Blizzard thinking giving Reapers their structure weapon back for Co-op? Overall the Reaper does less DPS but now they get to be funny with their grenade ability. Get wrecked Shadow Tech.
 
 - Reduced Phoenix's Graviton Beam ability cooldown from 30 seconds to 0 seconds.
 - Increased Phoenix's Graviton Beam ability energy cost from 0 to 50.
@@ -393,7 +406,7 @@ Nerfed Adept from its Campaign version to its Versus version, but in return it g
 
 - Increased Battlecruiser Yamato Cannon prep time from 1.5 seconds to 3 seconds.
 
-For some reason Co-op halves this charge time, this returns it to normal for Amon.
+For some reason Co-op halves this charge time, this change returns it to normal for Amon.
 
 - Reduced Raven's Point Defense Drone duration from 180 seconds to 20 seconds.
 - Reduced Raven's Auto-Turret duration from 180 seconds to 11 seconds.
@@ -402,7 +415,7 @@ For some reason Co-op halves this charge time, this returns it to normal for Amo
 - Reduced Auto-Turret health from 150 to 100.
 - Reduced Auto-Turret armor from 1 to 0.
 
-Copied from Versus. Duration of Raven's summons massively, and in return increase the auto-turret damage. It was a common problem that a Raven from an attack wave would place an Auto-Turret or Point Defense Drone and the map ping would not disappear until the unit timed out 3 minutes later.
+Copied from Versus. Duration of Raven's summons massively reduced, and in return, auto-turret damage is greatly increased. It was a common problem that a Raven from an attack wave would place an Auto-Turret or Point Defense Drone and the map ping would not disappear until the unit timed out 3 minutes later.
 
 - Increased Science Vessel Irradiate cost from 25 energy to 75 energy.
 - Increased Science Vessel Defensive Matrix cost from 50 energy to 100 energy.
@@ -412,7 +425,7 @@ Copied from Versus. Duration of Raven's summons massively, and in return increas
   - Hard: 4
   - Brutal: 6
 
-A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave will spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost should make it less obnoxious fighting Terran with a bio army.
+A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave would spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost and limiting Science Vessels should make it less obnoxious fighting Terran with a bio army.
 
 - Added Prismatic Alignment ability to Void Rays.
   - Increases damage vs. armored units by +6 for 20 seconds.
@@ -427,12 +440,40 @@ Copied from Versus. Did you know Amon's Void Rays didn't even have a working pas
 
 fast banshees go nyoom.
 
+- Reduced Infestor radius from 0.75 to 0.625.
+- Reduced Infestor model scale from 0.85 to 0.75.
+- Reduced cast range of Infestor's Infested Terran ability from 9 to 8.
+- Nerfed Infestor's Fungal Growth from a root to a 75% slow.
+- Increased Infestor's Fungal Growth radius from 2 to 2.5.
+- Reduced Infestor's Fungal Growth damage from 30 to 25.
+- Buffed Infestor's Fungal Growth to no longer allow affects units to use Blink, Tactical Jump, or load into transports and buildings.
+  - Blocks casting Blink effects for units like Stalkers, Dark Templar, and Zeratul.
+  - Blocks casting Tactical Jump effects for units like Battlecruisers, Hercules, and Hyperion.
+  - Blocks loading into transport, including Tychus's Medivacs.
+- Increased Infestor starting energy from 50 to 75.
+- Reduced Burrowed Infestor sight range from 10 to 8.
+- Increased Infestor unburrow time from 0.357 - 0.714 seconds to 0.625 - 0.714 seconds.
+- Added Neural Parasite ability to Infestor.
+  - Amon will never cast this, but mind controlled Infestors can.
+- Removed Consumption ability from the infestor.
+- Added Burrow Move passive icon to the Infestor's command card.
+- Added burrowing AI.
+  - Infestors in attack waves will attempt to burrow.
+  - Will spawn Infested Terrans while burrowed.
+  - Will unburrow to cast Fungal Growths.
+
+Copied from Versus. Transforms Infestors into the sneaky burrowing spellcasters they were always meant to be.
+
+- Reduced Tunnel Claws speed bonus from 2.25 to 1.4.
+
+Copied from Versus.
+
 - Removed Science Vessels from the Raiding Party (BioMechStar) composition.
 - Added Medivacs to the Raiding Party (BioMechStar) composition.
 - Increased Marauder/Marine count in the Raiding Party (BioMechStar) composition.
 - Reduced Siege Tank count in the Raiding Party (BioMechStar) composition.
 
-Raiding Party might as well be the Siege Tank composition with how many Siege Tanks and Science Vessels there are. Reducing Siege Tanks and adding more Medivacs/Marines/Marauders should make it more distinct from the Classic Infantry composition as the "SC2 Bio" composition.
+Raiding Party is strikingly similar to Classic Infantry with how many Siege Tanks and Science Vessels there are. Reducing Siege Tanks, removing Science Vessels, and adding more Medivacs/Marines/Marauders should make it more distinct from the Classic Infantry composition as the "SC2 Bio" composition.
 
 - Lowered Science Vessel count in T7 Machines of War (MechStarport) composition.
 - Added Widow Mines to T7 Machines of War (MechStarport) composition.
@@ -458,6 +499,7 @@ Throw in some Hellbats/Widow Mines for some extra SC2 flavor for the mech compos
 New compositions, new fights! Protoss has 8 compositions while Terran and Zerg only have 6 and 5 respectively, so more have been added.
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
+- Fixed an issue where Roaches created after Tunneling Claws was researched did not have the visual change.
 
 yeah.
 
@@ -1852,12 +1894,10 @@ yeah.
 
 - Added Salvage ability to Stetellites.
   - Refunds Deploy Stetellite charges if possible.
+- Changed Deactivated Stetellites to be selectable.
+- Added ability to Cancel rebuilding Stetellites, killing it permanently.
 
 Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake. Now you can manually take down erroneous Stetellites.
-
-- Added building placement to Stetellites.
-
-Placing Stetellites will now use building placement, similar to building Creep Tumors. This makes placing Stetellites feel way smoother and is more visibly clear where you can and cannot place Stetellites. Unfortunately due to engine limitations, this makes it impossible to place Stetellites on no-build tiles, so you won't be able to place Stetellites on ramps anymore.
 
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to no longer prioritize own units over allies.
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to prioritize friendly units with the most life.
