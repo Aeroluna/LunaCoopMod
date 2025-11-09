@@ -162,6 +162,17 @@
         <AutoScaleFactor value="1.200000"/>
         <On index="3" Terms="Behavior.KarassPsiStorm.On"/>
     </CActorModel>
+    <CActorUnit id="LurkerStetmann">
+        <On Terms="Behavior.LurkerStetmannTunnelingBurst.On" Send="TimerSet 0.080000 BurrowChargeFX"/>
+        <On Terms="Behavior.LurkerStetmannTunnelingBurst.On" Send="StatusSet BurrowCharging 1"/>
+        <On Terms="Behavior.LurkerStetmannTunnelingBurst.Off" Send="StatusSet BurrowCharging 0"/>
+        <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1; !ModelIsLowQuality" Send="Create UltraliskStetmannBurrowChargeModel"/>
+        <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1" Send="TimerSet 0.080000 BurrowChargeFX"/>
+    </CActorUnit>
+    <CActorUnit id="PowerTowerStetmann">
+        <On index="86" Terms="UnitConstruction.*.Start; !ValidateUnit CommanderPrestigeStetmannStetellites"/>
+        <On Terms="UnitConstruction.*.Start; ValidateUnit CommanderPrestigeStetmannStetellites" Send="$Birth 0 -1.000000 -1.000000 2.000000 AsTimeScale"/>
+    </CActorUnit>
     <CActorUnit id="PowerTowerStetmannDeactivated">
         <DeathArray index="Normal" ModelLink="PowerSatellite_Stetmann_COOP_Death"/>
     </CActorUnit>

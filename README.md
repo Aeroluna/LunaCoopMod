@@ -309,6 +309,7 @@ Added Maguro mutators to Brutal+ system.
 The most infurating mutator because it can permastun your units as well as interrupt all their orders. The obnoxious stun has been removed and given stronger pull stength as compensation.
 
 - Removed Micro Transaction from Brutal+.
+- Removed Micro Transaction from Chaos Studios.
 
 Not even a hard mutation, just SUPER unfun.
 
@@ -1899,6 +1900,10 @@ yeah.
 
 Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake. Now you can manually take down erroneous Stetellites.
 
+- Added P1 Advantage: Stetellites deploy 100% faster.
+
+This makes it easier to expend charges Stetellites quickly.
+
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to no longer prioritize own units over allies.
 - Changed Mecha Ultralisk Mecha Mooch Module autocast to prioritize friendly units with the most life.
 - Changed Mecha Ultralisk Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
@@ -1921,6 +1926,14 @@ The Mecha Ultralisk actor xml is such a disaster, things were just copy and past
 
 The visual explosion was weirdly small.
 
+- Changed Recycle Zergling button to show remnants collected instead of charges available.
+- Changed Recycle Hydralisk button to show remnants collected instead of charges available.
+- Changed Recycle Infestor button to show remnants collected instead of charges available.
+- Changed Recycle Corruptor button to show remnants collected instead of charges available.
+- Changed Recycle Ultralisk button to show remnants collected instead of charges available.
+
+Previously the number showed how many times you can spawn the unit, which isn't very useful because its autocast most of the time anyways. Now it shows how many remnants you have collected so you know how many more you need for the next respawn.
+
 - Added animation for Mecha Corruptor's Terraclean Solvent ability.
 
 Copied from Versus.
@@ -1930,6 +1943,8 @@ Copied from Versus.
 - Increased Gary's model radius by 33% (Increases scale of certain model attachments like the recall effect).
 - Increased Super Gary's model radius by 60%.
 - Added flying helper splat when placing Stetellites.
+- Added burrow FX to the Mecha Lurker Tunnel of TERROR Algorithm ability.
+- Fixed a bug where Mecha Lurker burrow used the wrong tooltip.
 
 yeah.
 

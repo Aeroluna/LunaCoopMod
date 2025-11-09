@@ -73,6 +73,16 @@
     <CEffectDamage id="AutoTurret">
         <Amount value="18"/>
     </CEffectDamage>
+    <CEffectModifyPlayer id="BanelingStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-2"/>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="BroodLordStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-2"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectSet id="CommanderPrestigeHornerDefenseLaunchDummy">
         <EditorCategories value=""/>
         <ValidatorArray value="NotHaveCommanderPrestigeHornerDefenseCooldown"/>
@@ -139,6 +149,11 @@
         <EffectArray value="CommanderPrestigeStukovNeuralMU"/>
         <EffectArray value="CommanderPrestigeStukovNeuralDebuffRB"/>
     </CEffectSet>
+    <CEffectModifyPlayer id="CorruptorStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-1"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectDamage id="DehakaRavasaurDamage">
         <KindSplash value="Splash"/>
         <AreaArray Radius="1.5" Fraction="1"/>
@@ -171,6 +186,16 @@
     <CEffectDamage id="HHOrdnanceTowerDamage">
         <Death value="Blast"/>
     </CEffectDamage>
+    <CEffectModifyPlayer id="HydraliskStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-1"/>
+        </Cost>
+    </CEffectModifyPlayer>
+    <CEffectModifyPlayer id="InfestorStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-1"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectAddTrackedUnit id="JinaraChainsATU">
         <EditorCategories value=""/>
         <BehaviorLink value="JinaraChainsTracker"/>
@@ -587,6 +612,11 @@
         <CaseArray Validator="NotFrenzied" Effect="KerriganImplosionApplyBehavior"/>
         <CaseArray Effect="KerriganImplosionDamageApplyBehavior" FallThrough="1"/>
     </CEffectSwitch>
+    <CEffectModifyPlayer id="LurkerStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-2"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectDamage id="MedicRestoration">
         <EditorCategories value="Race:Terran"/>
     </CEffectDamage>
@@ -806,6 +836,11 @@
     <CEffectApplyBehavior id="UltraliskStetmannApplyBurrowChargeStun">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="UltraliskStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-1"/>
+        </Cost>
+    </CEffectModifyPlayer>
     <CEffectSet id="VileAcidSlowAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
@@ -3846,4 +3881,9 @@
     <CEffectApplyBehavior id="ZeratulXelNagaConstructDevolveHeroicAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectModifyPlayer id="ZerglingStetmannDeathRespawnAddCharge">
+        <Cost>
+            <Charge CountUse="-1"/>
+        </Cost>
+    </CEffectModifyPlayer>
 </Catalog>
