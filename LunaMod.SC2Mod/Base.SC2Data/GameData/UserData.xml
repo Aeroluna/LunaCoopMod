@@ -1178,6 +1178,30 @@
                 <Field Id="Target Upgrades"/>
             </Upgrade>
         </Instances>
+        <Instances Id="StetmannAirWeaponsExtraLevel1">
+            <Upgrade Upgrade="StetmannAirWeaponsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="StetmannAirWeaponsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="StetmannAirWeaponsExtraLevel2">
+            <Upgrade Upgrade="StetmannAirWeaponsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="StetmannAirWeaponsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="StetmannAirWeaponsExtraLevel3">
+            <Upgrade Upgrade="StetmannAirWeaponsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="StetmannAirWeaponsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
         <Instances Id="KaraxEnhancedTargetingImp">
             <Upgrade Upgrade="KaraxTurretRange">
                 <Field Id="Source Upgrade"/>
@@ -2083,6 +2107,9 @@
             </GameLink>
             <Text Text="UserData/PlayerCommanders/[Override]ZergStetmann_Description">
                 <Field Id="Description"/>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeStetmannRespawn">
+                <Field Id="Prestige" Index="3"/>
+            </User>
             </Text>
         </Instances>
         <Instances Id="[Override]ProtossArtanis">
@@ -2493,6 +2520,14 @@
                 <Field Id="UpgradeSupplements" Index="1"/>
             </User>
         </Instances>
+        <Instances Id="CommanderPrestigeStetmannRespawn">
+            <GameLink GameLink="CommanderPrestigeStetmannRespawn">
+                <Field Id="PrimaryUpgrade"/>
+            </GameLink>
+            <User Type="PlayerPrestigeUpgradeSupplements" Instance="StetmannRespawn1">
+                <Field Id="UpgradeSupplements"/>
+            </User>
+        </Instances>
         <Instances Id="[Override]CommanderPrestigeAlarakDeathFleet">
             <User Type="PlayerPrestigeUpgradeSupplements" Instance="Bogus">
                 <Field Id="UpgradeSupplements"/>
@@ -2567,6 +2602,14 @@
             </AbilCmd>
             <AbilCmd Abil="VehicleAfterburnersStimpack">
                 <Field Id="EnableAbil"/>
+            </AbilCmd>
+        </Instances>
+        <Instances Id="[Override]CommanderPrestigeStetmannCombatBuff">
+            <AbilCmd Abil="Bogus">
+                <Field Id="DisableAbil"/>
+            </AbilCmd>
+            <AbilCmd Abil="Bogus">
+                <Field Id="DisableAbil" Index="1"/>
             </AbilCmd>
         </Instances>
         <Fields index="4" Count="13"/>
@@ -2738,6 +2781,14 @@
             </GameLink>
             <GameLink GameLink="CommanderPrestigeZeratulTopBarAvatarMastery">
                 <Field Id="Supplement"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="StetmannRespawn1">
+            <GameLink GameLink="CommanderPrestigeStetmannRespawnBonus">
+                <Field Id="Supplement"/>
+            </GameLink>
+            <GameLink GameLink="MechaZerglingRemnantReclaimationBonus">
+                <Field Id="Upgrade"/>
             </GameLink>
         </Instances>
     </CUser>

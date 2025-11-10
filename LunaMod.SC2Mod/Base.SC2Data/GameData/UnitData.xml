@@ -111,6 +111,11 @@
         <LifeMax value="100"/>
         <LifeArmor value="0"/>
     </CUnit>
+    <CUnit id="BroodLordStetmann">
+        <WeaponArray Link="BroodLordStetmannAirDummy"/>
+        <BehaviorArray Link="BroodLordStetmannDisableInterceptor"/>
+        <EquipmentArray index="0" Weapon="InterceptorStetmannBeamDummy"/>
+    </CUnit>
     <CUnit id="BrutaliskCocoon">
         <CardLayouts index="0">
             <LayoutButtons Face="CancelCocoonMorph" Type="AbilCmd" AbilCmd="que1,CancelLast" Row="2" Column="4"/>
@@ -198,6 +203,38 @@
     <CUnit id="Hunterling">
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
+    </CUnit>
+    <CUnit id="InfestationPitStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="InfestorStetmannPassive" Requirements=""/>
+            <LayoutButtons index="3" Face="RallyStetmannBuilding" Type="AbilCmd" AbilCmd="RallyBuildingStetmann,Rally1" Column="4"/>
+            <LayoutButtons index="4">
+                <Face value="DualQueueLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="StetmannLevel15"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="5" Face="StetmannDualQueue" Requirements=""/>
+            <LayoutButtons index="6" Face="ResearchRechargeLocked" Requirements="StetmannLevel10" Row="0" Column="0"/>
+            <LayoutButtons index="7" Face="InfestorStetmannRecharge" Type="AbilCmd" AbilCmd="InfestationPitStetmannResearch2,Research2" Requirements=""/>
+            <LayoutButtons index="8" Face="ResearchBonusRavagerLocked" Column="1"/>
+            <LayoutButtons index="9" Face="InfestorStetmannBonusRavager" AbilCmd="InfestationPitStetmannResearch2,Research1" Column="1"/>
+            <LayoutButtons index="10">
+                <Face value="InfestorStetmannRespawn"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="InfestorStetmannRespawn,Train1"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" Face="InfestorStetmannRespawnLocked" Requirements="StetmannLevel09" Row="2" Column="0"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="InfestedCivilian">
         <CostResource index="Minerals" value="15"/>
@@ -894,7 +931,9 @@
             <LayoutButtons index="11" Column="2"/>
             <LayoutButtons index="12" Column="1"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorUpStetmann,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
+        <Radius value="0.625"/>
     </CUnit>
     <CUnit id="InfestorStetmannBurrowed">
         <SubgroupAlias value="InfestorStetmann"/>
@@ -905,7 +944,9 @@
             <LayoutButtons index="10" Column="2"/>
             <LayoutButtons index="12" Column="1"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowInfestorDownStetmann,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
+        <Radius value="0.625"/>
     </CUnit>
     <CUnit id="InfestorTerran">
         <CardLayouts index="0">
@@ -926,6 +967,12 @@
     <CUnit id="Kaboomer">
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
+    </CUnit>
+    <CUnit id="LarvaStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Face="InfestorStetmann" Type="AbilCmd" AbilCmd="LarvaTrainStetmann,Train7" Requirements=""/>
+            <LayoutButtons index="8" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="LeviathanCocoon">
         <CardLayouts index="0">

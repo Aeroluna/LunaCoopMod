@@ -37,7 +37,7 @@ NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip
 
 - Added ability to select a fourth prestige.
 
-Not all commanders have a fourth prestige yet, but do try the ones that exist!
+All commanders have an added fourth prestige, check their individual sections to see them. Some are very much overpowered, try them out!
 
 - Added console skins for all commanders.
 - Added voice packs for all commanders.
@@ -129,9 +129,15 @@ thanks Enoki.
 - Changed morphing to Overseer (and variants) to no longer require decelerating to cast.
 - Changed Overseer (and variants) Oversight ability to no longer require decelerating to cast.
 - Changed Observer (and variants) Surveillance Mode ability to no longer require decelerating to cast.
+- Changed Viking (and variants) Assault Mode ability to no longer require decelerating to cast.
+- Changed morphing to Brood Lord (and variants) to no longer require decelerating to cast.
 - Increased Void Ray (and variants) movement speed from 2.25 to 2.75.
 - Increased Reaper (and variants) movement speed from 2.9531 to 3.75.
 - Changed undetected burrow move visual effects to be more visible.
+- Changed Infested Swarm Egg model to an updated version.
+- Reduced Infestor (and variants) radius from 0.75 to 0.625.
+- Reduced Infestor (and variants) model scale from 0.85 to 0.75.
+- Added Burrow Move passive icon to the Infestor's (and variants) command card.
 
 Copied from Versus.
 
@@ -193,10 +199,6 @@ If it's good enough for Versus, it's good enough for all the Commanders! Karax's
 
 Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
 
-- Removed Wait Until Stopped flag from Viking (and variants) Assault Mode and Fighter Mode abilities.
-
-Makes Raynor/HH/Mengsk Viking feel smoother to land.
-
 - Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
@@ -227,6 +229,7 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 
 - Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
 - Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
+- Fixed an issue where the Infested Swarm Eggs "popping" animation was not playing.
 - Fixed an issue where Viper Abduct would not unburrow most units.
 - Added a range indicator when using the Oracle's Stasis Ward ability.
 - Added cosmetic flame jets to Vultures when moving.
@@ -441,8 +444,6 @@ Copied from Versus. Did you know Amon's Void Rays didn't even have a working pas
 
 fast banshees go nyoom.
 
-- Reduced Infestor radius from 0.75 to 0.625.
-- Reduced Infestor model scale from 0.85 to 0.75.
 - Reduced cast range of Infestor's Infested Terran ability from 9 to 8.
 - Nerfed Infestor's Fungal Growth from a root to a 75% slow.
 - Increased Infestor's Fungal Growth radius from 2 to 2.5.
@@ -457,7 +458,6 @@ fast banshees go nyoom.
 - Added Neural Parasite ability to Infestor.
   - Amon will never cast this, but mind controlled Infestors can.
 - Removed Consumption ability from the infestor.
-- Added Burrow Move passive icon to the Infestor's command card.
 - Added burrowing AI.
   - Infestors in attack waves will attempt to burrow.
   - Will spawn Infested Terrans while burrowed.
@@ -1893,6 +1893,20 @@ yeah.
 
 ### Stetmann
 
+- Added P4: Friend 'Til the End
+  - Advantage:
+    - Recycled units are spawned on Gary.
+    - Lovable Little Rascals affects all recyclable units and triples the amount of remnant dropped.
+  - Disadvantage:
+    - Recyclable units life reduced by 30%.
+    - Recycling units has a cooldown.
+
+Units constantly get recycled back to the frontline, but in return, they die a lot easier.
+
+- Buffed P3 to no longer make Mecha Infestors unavailable.
+
+Felt very arbitrary to make Infestors unavailable. Why were Mecha Infestors specifically targeted?
+
 - Added Salvage ability to Stetellites.
   - Refunds Deploy Stetellite charges if possible.
 - Changed Deactivated Stetellites to be selectable.
@@ -1904,23 +1918,30 @@ Previously, if you put a Stetellite too far forward, a Propagator could just fea
 
 This makes it easier to expend charges Stetellites quickly.
 
-- Changed Mecha Ultralisk Mecha Mooch Module autocast to no longer prioritize own units over allies.
-- Changed Mecha Ultralisk Mecha Mooch Module autocast to prioritize friendly units with the most life.
-- Changed Mecha Ultralisk Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
-- Changed Mecha Ultralisk Mecha Mooch Module only autocast friendly units with a greater health percent.
-- Changed Mecha Ultralisk Mecha Mooch Module only autocast friendly units when missing 30 health.
-- Buffed Mecha Ultralisk Mecha Mooch Module to only deal half damage to friendly units, but still heal full.
-- Increased Mecha Ultralisk Mecha Mooch Module absorb amount from 25 to 30.
-- Reduced Mecha Ultralisk Mecha Mooch Module sound volume.
+- Changed Mecha Ultralisk's Mecha Mooch Module autocast to no longer prioritize own units over allies.
+- Changed Mecha Ultralisk's Mecha Mooch Module autocast to prioritize friendly units with the most life.
+- Changed Mecha Ultralisk's Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
+- Changed Mecha Ultralisk's Mecha Mooch Module only autocast friendly units with a greater health percent.
+- Changed Mecha Ultralisk's Mecha Mooch Module only autocast friendly units when missing 30 health.
+- Buffed Mecha Ultralisk's Mecha Mooch Module to only deal half damage to friendly units, but still heal full.
+- Increased Mecha Ultralisk's Mecha Mooch Module absorb amount from 25 to 30.
+- Reduced Mecha Ultralisk's Mecha Mooch Module sound volume.
 
 Creates an interesting Spirit Link-like effect where all the Ultralisks are trying to equalize their health.
 
+- Reduced cost of Mecha Battlecarrier Lord's Ready Mecha Broodling ability from 5 to 2 energy.
+- Reduced cost of Mecha Battlecarrier Lord's Build Mecha Locusceptor ability from 50 to 25 energy.
+- Buffed Mecha Locusceptors to hit air units.
+
+Mecha Battlecarrier Lords use a ridiculous amount of energy just to attack, there no opportunity to swap out of JUICE configuration. Lowering their energy costs should make them stronger in attrition battles.
+
 - Fixed an issue where Mecha Ultralisks would not burrow for their Vectored Burrow Charge ability.
-- Fixed an issue where Mecha Ultralisk Vectored Burrow Charge ability did not play some FX.
+- Fixed an issue where Mecha Ultralisk's Vectored Burrow Charge ability did not play some FX.
 
-The Mecha Ultralisk actor xml is such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow charge animation.
+The actor xml for Stetmann's units are such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow charge animation.
 
-- Increased visual scale of Mecha Ultralisk Electrostatic Surprise! by 33%.
+- Buffed Mecha Ultralisk's Electrostatic Surprise! to additionally affect air units.
+- Increased visual scale of Mecha Ultralisk's Electrostatic Surprise! by 33%.
 - Changed Electrostatic Surprise! stun visual to auto scale with target model.
 - Fixed an issue where the Electrostatic Surprise! stun visual would play synchronously across all stunned targets.
 
@@ -1944,7 +1965,15 @@ Copied from Versus.
 - Increased Super Gary's model radius by 60%.
 - Added flying helper splat when placing Stetellites.
 - Added burrow FX to the Mecha Lurker Tunnel of TERROR Algorithm ability.
-- Fixed a bug where Mecha Lurker burrow used the wrong tooltip.
+- Fixed an issue where Mecha Lurker burrow used the wrong tooltip.
+- Changed Mecha Ravager's Environmentally Unfriendly Eruption autocast to target forcefields.
+- Fixed an issue where Mecha Ravager Eggs used the normal zerg death model instead of the mecha one.
+- Fixed an issue where Mecha Roach Eggs used the normal zerg death model instead of the mecha one.
+- Fixed an issue where Mecha Ravager Eggs used the Infested Terran wireframe.
+- Fixed an issue where Mecha Roach Eggs used the Infested Terran wireframe.
+- Fixed an issue where Mecha Ravager Eggs did not have a "popping" animation.
+- Fixed an issue where Mecha Roach Eggs did not have a "popping" animation.
+- Fixed an issue where Mecha Zergling's Synthetic Adrenal Pumps passive did not drain energy.
 
 yeah.
 

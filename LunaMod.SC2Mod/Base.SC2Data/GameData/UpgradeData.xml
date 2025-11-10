@@ -84,6 +84,9 @@
     <CUpgrade id="BileLauncherIncreasedRange">
         <EffectArray Reference="Abil,AdvancedBombardment,Range[0]" Value="10"/>
     </CUpgrade>
+    <CUpgrade id="BroodLordStetmannBombers">
+        <EffectArray Operation="Set" Reference="Weapon,InterceptorStetmannBeamDummy,Options[Disabled]" Value="0"/>
+    </CUpgrade>
     <CUpgrade id="CarrierLaunchSpeedUpgrade">
         <EffectArray Operation="Set" Reference="Weapon,FenixClolarionInterceptorLaunch,Effect" Value="FenixClolarionInterceptorLaunchUpgradedPersistent"/>
     </CUpgrade>
@@ -657,6 +660,7 @@
         <EffectArray Operation="Set" Reference="Button,NovaSwitchAssaultMode,Tooltip" Value="Button/Tooltip/NovaSwitchAssaultModeMelee"/>
         <EffectArray Operation="Set" Reference="Button,NovaSwitchStealthMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchStealthModeMelee"/>
         <EffectArray Operation="Set" Reference="Button,NovaSwitchAssaultMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchAssaultModeMelee"/>
+        <EffectArray Reference="Behavior,NovaCombatSuit,Modification.MoveSpeedBonus" Value="0.300000"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorAir">
         <EffectArray index="10" Value="12"/>
@@ -667,6 +671,45 @@
         <EffectArray Reference="Abil,VehicleAfterburnersMedivac,Cost[0].Vital[Life]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorMercenary" parent="CommanderPrestige"/>
+    <CUpgrade id="CommanderPrestigeStetmannCombatBuff">
+        <UnitDisallowed index="0" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeStetmannRespawn" parent="CommanderPrestige">
+        <EffectArray Reference="Abil,ZerglingStetmannRespawn,InfoArray[Train1].Cooldown.TimeUse" Value="1.200000"/>
+        <EffectArray Reference="Abil,UltraliskStetmannRespawn,InfoArray[Train1].Cooldown.TimeUse" Value="5.500000"/>
+        <EffectArray Reference="Abil,HydraliskStetmannRespawn,InfoArray[Train1].Cooldown.TimeUse" Value="3.300000"/>
+        <EffectArray Reference="Abil,CorruptorStetmannRespawn,InfoArray[Train1].Cooldown.TimeUse" Value="3.300000"/>
+        <EffectArray Reference="Abil,InfestorStetmannRespawn,InfoArray[Train1].Cooldown.TimeUse" Value="5.000000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,BanelingStetmann,LifeMax" Value="9"/>
+        <EffectArray Operation="Subtract" Reference="Unit,CorruptorStetmann,LifeMax" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HydraliskStetmann,LifeMax" Value="24"/>
+        <EffectArray Operation="Subtract" Reference="Unit,InfestorStetmann,LifeMax" Value="27"/>
+        <EffectArray Operation="Subtract" Reference="Unit,LurkerStetmann,LifeMax" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Unit,UltraliskStetmann,LifeMax" Value="150"/>
+        <EffectArray Operation="Subtract" Reference="Unit,ZerglingStetmann,LifeMax" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Unit,BanelingStetmann,LifeStart" Value="9"/>
+        <EffectArray Operation="Subtract" Reference="Unit,CorruptorStetmann,LifeStart" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HydraliskStetmann,LifeStart" Value="24"/>
+        <EffectArray Operation="Subtract" Reference="Unit,InfestorStetmann,LifeStart" Value="27"/>
+        <EffectArray Operation="Subtract" Reference="Unit,LurkerStetmann,LifeStart" Value="60"/>
+        <EffectArray Operation="Subtract" Reference="Unit,UltraliskStetmann,LifeStart" Value="150"/>
+        <EffectArray Operation="Subtract" Reference="Unit,ZerglingStetmann,LifeStart" Value="10"/>
+        <!--EffectArray Operation="Subtract" Reference="Abil,ZerglingStetmannRespawn,InfoArray[Train1].Charge.CountUse" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskStetmannRespawn,InfoArray[Train1].Charge.CountUse" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,InfestorStetmannRespawn,InfoArray[Train1].Charge.CountUse" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskStetmannRespawn,InfoArray[Train1].Charge.CountUse" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,CorruptorStetmannRespawn,InfoArray[Train1].Charge.CountUse" Value="2"/-->
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeStetmannRespawnBonus" parent="CommanderPrestige">
+        <EffectArray Reference="Effect,ZerglingStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-1"/>
+        <EffectArray Reference="Effect,BanelingStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-2"/>
+        <EffectArray Reference="Effect,HydraliskStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-2"/>
+        <EffectArray Reference="Effect,LurkerStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-4"/>
+        <EffectArray Reference="Effect,CorruptorStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-2"/>
+        <EffectArray Reference="Effect,BroodLordStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-4"/>
+        <EffectArray Reference="Effect,UltraliskStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-2"/>
+        <EffectArray Reference="Effect,InfestorStetmannDeathRespawnAddCharge,Cost.Charge.CountUse" Value="-2"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeStetmannStetellites">
         <EffectArray Operation="Subtract" Reference="Abil,DeployPowerTowerStetmann,InfoArray[Build1].Time" Value="1.000000"/>
     </CUpgrade>
@@ -1225,8 +1268,8 @@
         <EffectArray index="6" Value="0.45"/>
     </CUpgrade>
     <CUpgrade id="MechaZerglingRemnantReclaimationBonus">
-        <EffectArray index="0" Value="-2"/>
-        <EffectArray index="1" Value="-4"/>
+        <EffectArray index="0" Operation="Add" Value="-1"/>
+        <EffectArray index="1" Operation="Add" Value="-2"/>
     </CUpgrade>
     <CUpgrade id="MedicStartingEnergy">
         <Icon value="Assets\Textures\btn-upgrade-terran-moebiusreactor.dds"/>
@@ -1506,9 +1549,6 @@
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,AlertTooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,Tooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
     </CUpgrade>
-    <CUpgrade id="StetmannCommander">
-        <EffectArray Operation="Set" Reference="Actor,InfestedTerransEgg,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-stetmann-mechagroundplating-level0.dds"/>
-    </CUpgrade>
     <CUpgrade id="StukovInfestedBansheeInfestedLife">
         <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="1.000000"/>
     </CUpgrade>
@@ -1779,6 +1819,11 @@
     <CUpgrade id="ZergFlyerWeaponsLevel3">
         <EffectArray index="51" Value="3"/>
     </CUpgrade>
+    <CUpgrade id="overlordspeed">
+        <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="2.144500"/>
+        <AffectedUnitArray value="OverlordTransport"/>
+        <AffectedUnitArray value="OverseerSiegeMode"/>
+    </CUpgrade>
     <!-- EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ProtossAirWeaponsExtra">
         <EditorCategories value="Race:Protoss,UpgradeType:AttackBonus"/>
@@ -2046,9 +2091,13 @@
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserRoachMelee,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,RoachlingNeedleClaws,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
     </CUpgrade>
-    <CUpgrade id="overlordspeed">
-        <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="2.144500"/>
-        <AffectedUnitArray value="OverlordTransport"/>
-        <AffectedUnitArray value="OverseerSiegeMode"/>
+    <CUpgrade id="StetmannAirWeaponsExtra">
+        <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
+        <EffectArray Operation="Set" Reference="Weapon,InterceptorStetmannBeamDummy,Icon" Value="##icon##"/>
+        <EffectArray Reference="Weapon,InterceptorStetmannBeamDummy,Level" Value="1"/>
+        <AffectedUnitArray value="BroodLordStetmann"/>
     </CUpgrade>
+    <CUpgrade id="StetmannAirWeaponsExtraLevel1" parent="StetmannAirWeaponsExtra"/>
+    <CUpgrade id="StetmannAirWeaponsExtraLevel2" parent="StetmannAirWeaponsExtra" icon="Assets\Textures\btn-upgrade-stetmann-mechaflyerattacks-level2.dds"/>
+    <CUpgrade id="StetmannAirWeaponsExtraLevel3" parent="StetmannAirWeaponsExtra" icon="Assets\Textures\btn-upgrade-stetmann-mechaflyerattacks-level3.dds"/>
 </Catalog>

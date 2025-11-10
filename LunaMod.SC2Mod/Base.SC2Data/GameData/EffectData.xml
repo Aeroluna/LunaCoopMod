@@ -78,6 +78,13 @@
             <Charge CountUse="-2"/>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectCreatePersistent id="BroodLordStetmannBomberLaunchCP">
+        <ValidatorArray value="BroodLordStetmannLaunchBomber"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="BroodLordStetmannBroodlingStrike">
+        <EditorCategories value=""/>
+        <EffectArray value="BroodLordStetmannBomberLaunchCP"/>
+    </CEffectSet>
     <CEffectModifyPlayer id="BroodLordStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-2"/>
@@ -120,6 +127,39 @@
         <EditorCategories value=""/>
         <EffectArray value="CommanderPrestigeHornerDefenseSearch"/>
     </CEffectSet>
+    <CEffectTeleport id="CommanderPrestigeStetmannRespawnTeleport">
+        <ValidatorArray value="IsGaryStetmannOrSuperGaryStetmann"/>
+        <SourceLocation Effect="CommanderPrestigeStetmannRespawnSearch" Value="TargetUnit"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <WhichUnit Effect="CommanderPrestigeStetmannRespawnSearch"/>
+        <MinDistance value="0"/>
+        <PlacementRange value="8"/>
+        <TeleportEffect value="CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch"/>
+    </CEffectTeleport>
+    <CEffectEnumArea id="CommanderPrestigeStetmannRespawnSearch">
+        <ValidatorArray value="CommanderPrestigeStetmannRespawn"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="500" Effect="CommanderPrestigeStetmannRespawnTeleport"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="CommanderPrestigeStetmannRespawnAttacking" Effect="CommanderPrestigeStetmannRespawnTeleportOrderQueue"/>
+        <CaseDefault value="CommanderPrestigeStetmannRespawnTeleportOrderQueueMoveAB"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="CommanderPrestigeStetmannRespawnTeleportOrderQueueMoveAB">
+        <Behavior value="CommanderPrestigeStetmannRespawnTeleportOrderQueueMove"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="CommanderPrestigeStetmannRespawnTeleportOrderQueueMove">
+        <Abil value="move"/>
+        <Target Effect="CommanderPrestigeStetmannRespawnTeleport" Value="TargetUnit"/>
+        <Player Value="Origin"/>
+    </CEffectIssueOrder>
+    <CEffectModifyUnit id="CommanderPrestigeStetmannRespawnTeleportOrderQueue">
+        <LaunchUnit Effect="CommanderPrestigeStetmannRespawnTeleport" Value="Target"/>
+        <CopyOrderCount value="32"/>
+    </CEffectModifyUnit>
     <CEffectApplyBehavior id="CommanderPrestigeStukovNeuralAB">
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Source"/>
@@ -836,6 +876,9 @@
     <CEffectApplyBehavior id="UltraliskStetmannApplyBurrowChargeStun">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectEnumArea id="UltraliskStetmannBurrowChargeMechanicalStunTargetSearch">
+        <SearchFilters value="Mechanical,Visible;Self,Player,Ally,Neutral,Structure,User1,Missile,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+    </CEffectEnumArea>
     <CEffectModifyPlayer id="UltraliskStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-1"/>
@@ -3881,6 +3924,13 @@
     <CEffectApplyBehavior id="ZeratulXelNagaConstructDevolveHeroicAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectModifyUnit id="ZerglingAttackSpeedStetmannMU">
+        <EditorCategories value=""/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Energy">
+            <Change value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectModifyPlayer id="ZerglingStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-1"/>

@@ -66,6 +66,13 @@
         <PeriodicEffect value="CommanderPrestigeHornerDefenseSet"/>
         <RemoveValidatorArray value="CommanderPrestigeHornerDefense"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeStetmannRespawnTeleportOrderQueueMove">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Period value="0.125"/>
+        <PeriodicEffect value="CommanderPrestigeStetmannRespawnTeleportOrderQueueMove"/>
+        <RemoveValidatorArray value="TargetHasNoOrders"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeStukovNeuralDebuff">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -549,6 +556,9 @@
             <AbilLinkDisableArray value="HallucinationOracle"/>
             <AbilLinkDisableArray value="HallucinationDisruptor"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaCombatSuit">
+        <Modification MoveSpeedBonus="0.7" MoveSpeedMultiplier="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaUnitLockdown">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -2272,5 +2282,16 @@
     <CBehaviorBuff id="ZerglingArmorShredTarget">
         <Alignment value="Negative"/>
         <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZerglingAttackSpeedStetmann">
+        <DamageResponse Handled="ZerglingAttackSpeedStetmannMU">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Cost>
+                <Vital index="Energy" value="0"/>
+            </Cost>
+        </DamageResponse>
     </CBehaviorBuff>
 </Catalog>

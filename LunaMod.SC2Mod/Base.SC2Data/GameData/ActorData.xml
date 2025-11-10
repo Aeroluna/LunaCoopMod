@@ -77,6 +77,23 @@
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOn" Send="Create"/>
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
+    <CActorModel id="CommanderPrestigeStetmannRespawnTeleportModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch.Stop; At Target" Send="Create"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor {255,10,0 4.000000}"/-->
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+        <Model value="RavenScramblerMissileImpact"/>
+        <AutoScaleFactor value="1.000000"/>
+        <Scale value="1.200000"/>
+    </CActorModel>
+    <CActorSound id="CommanderPrestigeStetmannRespawnTeleportSound" parent="SoundOneShot">
+        <On Terms="Effect.CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch.Stop; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="SkyTank_Barrage_Missile"/>
+    </CActorSound>
     <CActorUnit id="BrutaliskCocoon">
         <On Terms="ActorCreation" Send="Create RavagerCocoonBirthSound"/>
         <On Terms="AbilMorph.*.Start; MorphFrom BrutaliskCocoonRoach" Send="Destroy"/>
@@ -137,6 +154,12 @@
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 4.000000}"/>
         <Host Subject="_Selectable"/>
     </CActorModel>
+    <CActorModel id="InfestedTerranEggDeathModel">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <Model value="InfestedTerranEggDeath"/>
+    </CActorModel>
     <CActorUnit id="Infestor">
         <On Terms="ActorCreation" Send="ModelAnimateInvisible 1"/>
         <WalkAnimMoveSpeed value="2.25"/>
@@ -153,6 +176,9 @@
     </CActorSplat>
     <CActorUnit id="InfestorStetmann">
         <WalkAnimMoveSpeed value="2.25"/>
+    </CActorUnit>
+    <CActorUnit id="InfestorTerran">
+        <On index="72" Send="Create InfestedTerranEggDeathModel"/>
     </CActorUnit>
     <CActorAction id="KD8ChargeAction">
         <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
@@ -175,6 +201,39 @@
     </CActorUnit>
     <CActorUnit id="PowerTowerStetmannDeactivated">
         <DeathArray index="Normal" ModelLink="PowerSatellite_Stetmann_COOP_Death"/>
+    </CActorUnit>
+    <CActorUnit id="RavagerStetmannEgg">
+        <DeathArray index="Normal" ModelLink="ZergSmallUnitDeathStetmann"/>
+        <GroupIcon>
+            <Image index="1" removed="1"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="1" removed="1"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="RavagerStetmannEggDeath">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <Model value="RavagerStetmannEgg"/>
+    </CActorModel>
+    <CActorUnit id="RoachStetmann">
+        <On Terms="AbilMorph.*.Finish; MorphTo RoachStetmann; MorphFrom RoachStetmannEgg" Send="Create RoachStetmannEggDeath"/>
+    </CActorUnit>
+    <CActorModel id="RoachStetmannEggDeath">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <Model value="RoachStetmannEgg"/>
+    </CActorModel>
+    <CActorUnit id="RoachStetmannEgg">
+        <DeathArray index="Normal" ModelLink="ZergSmallUnitDeathStetmann"/>
+        <GroupIcon>
+            <Image index="1" removed="1"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="1" removed="1"/>
+        </Wireframe>
     </CActorUnit>
     <CActorModel id="VoidRayEnhancementAddition01">
         <On index="9" Terms="Behavior.VoidRayChargeBeamRangeCounter.On; ValidateUnit IsNotMohandar"/>
@@ -663,6 +722,7 @@
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="AnimClear Spell"/>
         <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
         <On Terms="Abil.RavagerStetmannCorrosiveBile.SourceCastStart" Send="$Spell"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo RavagerStetmann; MorphFrom RavagerStetmannEgg" Send="Create RavagerStetmannEggDeath"/>
     </CActorUnit>
     <CActorSiteOpForward id="SOpForwardAlarak">
         <HostForward Subject="AlarakCoop"/>
@@ -1834,6 +1894,7 @@
         <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
         <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack 0 0.000000 0.000000 -1.000000 AsAutomatic 0.200000"/>
         <On Terms="Effect.NovaWeaponBlazefireBladeShadowFuryFinal.Start" Send="AnimClear ShadowFury"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying ShadowFury" Send="AnimClear ShadowFury"/>
         <!--On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
         <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/-->
         <On Terms="Abil.NovaCoopDecoyTarget.SourceCastStart" Send="AnimPlay SpellE Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
@@ -1842,6 +1903,7 @@
     </CActorMissile>
     <CActorModel id="NovaWeaponPsiStrikeImpact">
         <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>
+        <AutoScaleFactor value="1.000000"/>
     </CActorModel>
     <CActorSound id="NydusCanalTransportUnloadSound">
         <On Terms="Effect.SwarmLocusZerglingCU.Start" Send="Create"/>

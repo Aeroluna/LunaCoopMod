@@ -38,6 +38,16 @@
     <CAbilEffectTarget id="BlinkSlayer">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
+    <CAbilArmMagazine id="BroodLordStetmannBomberMagazine">
+        <InfoArray index="Ammo1">
+            <Vital index="Energy" value="25"/>
+        </InfoArray>
+    </CAbilArmMagazine>
+    <CAbilEffectInstant id="BroodLordStetmannBroodlingEscortArm">
+        <Cost index="0">
+            <Vital index="Energy" value="2"/>
+        </Cost>
+    </CAbilEffectInstant>
     <CAbilEffectTarget id="BrutaliskDeepTunnel">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
@@ -61,7 +71,7 @@
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
     <CAbilTrain id="CorruptorStetmannRespawn">
-        <InfoArray index="Train1">
+        <InfoArray index="Train1" Effect="CommanderPrestigeStetmannRespawnSearch">
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
@@ -97,6 +107,9 @@
     <CAbilEffectTarget id="FleetwideJump">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="HHAssaultMode">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="HHBattlecruiserHyperjump">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
@@ -118,7 +131,7 @@
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
     <CAbilTrain id="HydraliskStetmannRespawn">
-        <InfoArray index="Train1">
+        <InfoArray index="Train1" Effect="CommanderPrestigeStetmannRespawnSearch">
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
@@ -129,7 +142,7 @@
         <Range index="0" value="8"/>
     </CAbilEffectTarget>
     <CAbilTrain id="InfestorStetmannRespawn">
-        <InfoArray index="Train1">
+        <InfoArray index="Train1" Effect="CommanderPrestigeStetmannRespawnSearch">
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
@@ -360,6 +373,12 @@
             <Vital index="Energy" value="100"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilMorph id="MorphToBroodLord">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCBroodLordStetmann">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
     <CAbilMorph id="MorphToOverseer">
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
@@ -436,6 +455,15 @@
     <CAbilEffectTarget id="PurificationNovaTargeted">
         <CursorEffect value="PurificationNovaTargettedSearch"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="RavagerStetmannCorrosiveBile">
+        <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden"/>
+        <AutoCastValidatorArray value="IsForceFieldOrNotInvulnerabe"/>
+        <TargetSorts>
+            <SortArray value="TSNotForceField"/>
+            <SortArray value="TSThreatensCyclone"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
     <CAbilMorph id="SIMorphToOverseer">
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
@@ -492,7 +520,7 @@
         </TargetSorts>
     </CAbilEffectTarget>
     <CAbilTrain id="UltraliskStetmannRespawn">
-        <InfoArray index="Train1">
+        <InfoArray index="Train1" Effect="CommanderPrestigeStetmannRespawnSearch">
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
@@ -1067,7 +1095,6 @@
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="IgnoreUnitCost" value="0"/>
-        <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray index="0">
             <SectionArray index="Mover">
                 <DurationArray index="Duration" value="0.85"/>
@@ -1201,9 +1228,6 @@
         <CmdButtonArray index="Execute" Requirements=""/>
         <AutoCastValidatorArray value="noMarkers"/>
     </CAbilEffectTarget>
-    <CAbilMorph id="FighterMode">
-        <Flags index="WaitUntilStopped" value="0"/>
-    </CAbilMorph>
     <CAbilEffectTarget id="QueenClassicParasite">
         <Flags index="NoDeceleration" value="1"/>
         <PrepTime index="0" value="0"/>
@@ -2040,7 +2064,7 @@
         </InfoArray>
     </CAbilBuild>
     <CAbilTrain id="ZerglingStetmannRespawn">
-        <InfoArray index="Train1">
+        <InfoArray index="Train1" Effect="CommanderPrestigeStetmannRespawnSearch">
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
