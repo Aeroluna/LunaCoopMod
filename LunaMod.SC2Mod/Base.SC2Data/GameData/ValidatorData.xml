@@ -125,6 +125,11 @@
         <Value value="Mohandar"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareField id="IsPrimalZerg">
+        <ResultFailed value="CantTargetThatUnit,Error/CantTargetNonZerg"/>
+        <Field value="Race"/>
+        <Value value="PZrg"/>
+    </CValidatorUnitCompareField>
     <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeHornerDefenseCooldown">
         <Behavior value="CommanderPrestigeHornerDefenseCooldown"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -174,6 +179,12 @@
     <CValidatorUnitBehaviorState id="PassengerNotSuppressed">
         <BehaviorState value="SuppressPassenger"/>
     </CValidatorUnitBehaviorState>
+    <CValidatorCombine id="ShieldFizzleValidator">
+        <CombineArray value="IsZerg"/>
+        <CombineArray value="IsPrimalZerg"/>
+        <Negate value="1"/>
+        <Type value="And"/>
+    </CValidatorCombine>
     <CValidatorCombine id="SourceIsAlarakHero">
         <CombineArray value="SourceIsAlarakCoop"/>
         <CombineArray value="SourceIsJinaraCoop"/>

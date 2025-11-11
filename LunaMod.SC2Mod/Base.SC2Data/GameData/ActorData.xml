@@ -251,6 +251,9 @@
             <Image index="1" removed="1"/>
         </Wireframe>
     </CActorUnit>
+    <CActorModel id="ShieldFizzleModel">
+        <On index="2" Terms="UnitDamaged.*.Fizzle; ValidateUnit ShieldFizzleValidator"/>
+    </CActorModel>
     <CActorModel id="VoidRayEnhancementAddition01">
         <On index="9" Terms="Behavior.VoidRayChargeBeamRangeCounter.On; ValidateUnit IsNotMohandar"/>
     </CActorModel>
@@ -3355,7 +3358,7 @@
         <On Terms="Behavior.KerriganImplosionDamage.Off" Send="Destroy"/>
         <On Terms="Behavior.MedicRestoration.Off" Send="Destroy"/>
         <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachCenter"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
         <Model value="Implosion"/>
         <AutoScaleFactor value="0.750000"/>
     </CActorModel>
@@ -4207,7 +4210,7 @@
         <EventDataSound Name="KerriganAttackImpact" Actor="UnitSound" Sound="QueenOfBladesAttackImpact"/>
         <Baselines index="Stand" AnimProps="Stand,00"/>
         <BuildModel value="InfestedKerriganBrood"/>
-        <DeathArray index="Normal" ModelLink="InfestedKerriganBrood" SoundLink="Kerrigan_Death"/>
+        <DeathArray index="Normal" ModelLink="InfestedKerriganBrood" VoiceLink="Kerrigan_Death"/>
         <PlacementModel value="InfestedKerriganBrood"/>
         <PortraitModel value="KerriganBroodPortrait"/>
         <WalkAnimMoveSpeed value="1.1992"/>

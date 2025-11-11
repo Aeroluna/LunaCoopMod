@@ -236,6 +236,7 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 - Added cosmetic flame jets to Vultures when moving.
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 - Fixed an issue where Observer's Observation Mode did not play any sounds.
+- Fixed an issue where the shield fizzle animation played on zerg units with shields.
 
 yeah.
 
@@ -246,6 +247,7 @@ yeah.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
 - Fixed an issue where `-fastbuild` cheat did not affect research in the second queue slot.
+- Fixed an issue where `-fastbuild` cheat did not affect Lurker Den morph time.
 
 Some debug cheats.
 
