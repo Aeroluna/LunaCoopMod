@@ -916,6 +916,14 @@
         <EffectArray Reference="Effect,MasteryZeratulAvatarCooldownDisplayDummy,Amount" Value="4"/>
         <MaxLevel value="30"/>
     </CUpgrade>
+    <CUpgrade id="CorruptorStetmannBiggerAoE">
+        <EffectArray Reference="Effect,HurricaneMissileStetmann,PeriodCount" Value="10"/>
+        <EffectArray Reference="Effect,HurricaneMissileLeftCircleStetmann,Radius" Value="1.5"/>
+        <EffectArray Reference="Effect,HurricaneMissileRightCircleStetmann,Radius" Value="1.5"/>
+        <EffectArray Operation="Subtract" Reference="Effect,HurricaneMissileDamageStetmann,Amount" Value="2.5"/>
+        <EffectArray Operation="Subtract" Reference="Effect,HurricaneMissileDamageStetmann,AttributeBonus[Light]" Value="1.5"/>
+        <EffectArray Operation="Subtract" Reference="Effect,HurricaneMissileStetmann,PeriodicPeriodArray[0]" Value="0.05"/>
+    </CUpgrade>
     <CUpgrade id="CycloneLockOnDamageUpgrade">
         <EffectArray index="0" Reference="Effect,CycloneWeaponDamage,Amount" Value="10"/>
         <EffectArray index="1" Operation="Add" Reference="Effect,CycloneAirWeaponDamage,Amount" Value="10"/>
@@ -2093,11 +2101,10 @@
     </CUpgrade>
     <CUpgrade id="StetmannAirWeaponsExtra">
         <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
-        <EffectArray Operation="Set" Reference="Weapon,InterceptorStetmannBeamDummy,Icon" Value="##icon##"/>
         <EffectArray Reference="Weapon,InterceptorStetmannBeamDummy,Level" Value="1"/>
         <AffectedUnitArray value="BroodLordStetmann"/>
     </CUpgrade>
     <CUpgrade id="StetmannAirWeaponsExtraLevel1" parent="StetmannAirWeaponsExtra"/>
-    <CUpgrade id="StetmannAirWeaponsExtraLevel2" parent="StetmannAirWeaponsExtra" icon="Assets\Textures\btn-upgrade-stetmann-mechaflyerattacks-level2.dds"/>
-    <CUpgrade id="StetmannAirWeaponsExtraLevel3" parent="StetmannAirWeaponsExtra" icon="Assets\Textures\btn-upgrade-stetmann-mechaflyerattacks-level3.dds"/>
+    <CUpgrade id="StetmannAirWeaponsExtraLevel2" parent="StetmannAirWeaponsExtra"/>
+    <CUpgrade id="StetmannAirWeaponsExtraLevel3" parent="StetmannAirWeaponsExtra"/>
 </Catalog>

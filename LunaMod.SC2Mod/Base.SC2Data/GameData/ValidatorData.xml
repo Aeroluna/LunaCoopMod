@@ -70,7 +70,9 @@
         <Compare value="LT"/>
     </CValidatorUnitCompareVital>
     <CValidatorCombine id="CasterLifeNotFullandTargetisEnemyorIsAllyandLifeGreaterThan25andNotUltraliskStetmann">
+        <CombineArray index="0" value="TargetIsEnemyOrNeutral"/>
         <CombineArray index="2" removed="1"/>
+        <Type value="Or"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="CasterMasteryTychusFirstCommander">
         <WhichUnit Value="Caster"/>
@@ -779,6 +781,10 @@
         <AbilLink value="move"/>
         <AbilCmdIndex value="2"/>
     </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="TargetisEnemyorIsAllyandLifeGreaterThan25">
+        <Type value="And"/>
+        <CombineArray index="0" value="CasterLifeNotFull"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareAttackPriority id="ThreatensBattlecruiser" parent="ThreatensUnit" unitLink="Hydralisk">
         <AttackerAlternateType value="Battlecruiser"/>
     </CValidatorUnitCompareAttackPriority>

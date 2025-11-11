@@ -226,6 +226,58 @@
     <CEffectDamage id="HHOrdnanceTowerDamage">
         <Death value="Blast"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="HurricaneMissileBurstPersistentStetmann">
+        <Flags index="Channeled" value="0"/>
+        <Flags index="RandomOffset" value="0"/>
+        <PeriodicEffectArray index="0" value="HurricaneMissileLeftCircleStetmann"/>
+        <PeriodicEffectArray index="1" value="HurricaneMissileRightCircleStetmann"/>
+        <PeriodicOffsetArray index="0" removed="1"/>
+        <PeriodicOffsetArray index="1" removed="1"/>
+        <PeriodicOffsetArray index="2" removed="1"/>
+        <PeriodicOffsetArray index="3" removed="1"/>
+        <PeriodicOffsetArray index="4" removed="1"/>
+        <PeriodicOffsetArray index="5" removed="1"/>
+        <PeriodicOffsetArray index="6" removed="1"/>
+        <PeriodicOffsetArray index="7" removed="1"/>
+        <PeriodicOffsetArray index="8" removed="1"/>
+        <PeriodicOffsetArray index="9" removed="1"/>
+        <PeriodicOffsetArray index="10" removed="1"/>
+        <PeriodicOffsetArray index="11" removed="1"/>
+        <PeriodicOffsetArray index="12" removed="1"/>
+        <PeriodicOffsetArray index="13" removed="1"/>
+        <PeriodicOffsetArray index="14" removed="1"/>
+        <PeriodicOffsetArray index="15" removed="1"/>
+        <PeriodicOffsetArray index="16" removed="1"/>
+        <PeriodicOffsetArray index="17" removed="1"/>
+        <PeriodicOffsetArray index="18" removed="1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="HurricaneMissileDamageStetmann">
+        <ImpactLocation Effect="HurricaneMissileBurstPersistentStetmann" Value="TargetPoint"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectRandomPointInCircle id="HurricaneMissileLeftCircleStetmann">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="HurricaneMissileLeftLMStetmann"/>
+        <Radius value="1.5"/>
+    </CEffectRandomPointInCircle>
+    <CEffectLaunchMissile id="HurricaneMissileLeftLMStetmann">
+        <ImpactEffect value="HurricaneMissileDamageStetmann"/>
+    </CEffectLaunchMissile>
+    <CEffectRandomPointInCircle id="HurricaneMissileRightCircleStetmann">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="HurricaneMissileRightLMStetmann"/>
+        <Radius value="1.5"/>
+    </CEffectRandomPointInCircle>
+    <CEffectCreatePersistent id="HurricaneMissileStetmann">
+        <Flags index="Channeled" value="0"/>
+        <InitialEffect value=""/>
+        <PeriodicOffsetArray index="0" removed="1"/>
+        <PeriodicOffsetArray index="1" removed="1"/>
+        <PeriodicOffsetArray index="2" removed="1"/>
+        <PeriodicOffsetArray index="3" removed="1"/>
+    </CEffectCreatePersistent>
     <CEffectModifyPlayer id="HydraliskStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-1"/>
@@ -877,7 +929,7 @@
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="UltraliskStetmannBurrowChargeMechanicalStunTargetSearch">
-        <SearchFilters value="Mechanical,Visible;Self,Player,Ally,Neutral,Structure,User1,Missile,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+        <SearchFilters value="Mechanical,Visible;Self,Player,Ally,Neutral,User1,Missile,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
     </CEffectEnumArea>
     <CEffectModifyPlayer id="UltraliskStetmannDeathRespawnAddCharge">
         <Cost>

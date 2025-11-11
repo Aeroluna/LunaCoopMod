@@ -87,7 +87,7 @@
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
         <Model value="RavenScramblerMissileImpact"/>
         <AutoScaleFactor value="1.000000"/>
-        <Scale value="1.200000"/>
+        <Scale value="2.000000"/>
     </CActorModel>
     <CActorSound id="CommanderPrestigeStetmannRespawnTeleportSound" parent="SoundOneShot">
         <On Terms="Effect.CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch.Stop; At Target" Send="Create"/>
@@ -109,6 +109,22 @@
             <Image index="0" value="Assets\Textures\wireframe-zerg-lurkeregg.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorAction id="CorruptorHurricaneLeftAttackStetmann" effectImpact="HurricaneMissileDamageStetmann">
+        <On index="1" Terms="Effect.HurricaneMissileDamageStetmann.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.HurricaneMissileDamageStetmann.Stop; FromEffectTreeDescendant"/>
+        <LaunchAssets Model="CycloneMissileLaunch"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+    </CActorAction>
+    <CActorAction id="CorruptorHurricaneRightAttackStetmann">
+        <LaunchAssets Model="CycloneMissileLaunch"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
+    </CActorAction>
+    <CActorAction id="CycloneAttackLeft">
+        <LaunchAssets Model="CycloneMissileLaunch"/>
+    </CActorAction>
+    <CActorAction id="CycloneAttackRight">
+        <LaunchAssets Model="CycloneMissileLaunch"/>
+    </CActorAction>
     <CActorUnit id="DehakaNydusDestroyerTimedNoFood">
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create YagdraBurrowDownEffects"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create BurrowDownUltralisk"/>
@@ -997,6 +1013,9 @@
         <On Terms="Effect.CorruptorStetmannCausticSprayBasePersistent.Start" Send="AnimBracketStart Spell Spell Spell Stand ContentForceLooping 0.500000 AsTimeScale"/>
         <On Terms="Effect.CorruptorStetmannCausticSprayBasePersistent.Stop" Send="AnimBracketStop Spell"/>
     </CActorUnit>
+    <CActorModel id="CorruptorMissilePodsCursorModelStetmann" parent="TerranCursorModel" abil="CorruptorStetmannMissilePods">
+        <Scale value="0.800000"/>
+    </CActorModel>
     <CActorUnit id="VoidArchonDummy" parent="GenericUnitBase" unitName="VoidArchonDummy">
         <Macros value="RemoveFlyerHelperMacro"/>
         <Model value="Invisible"/>

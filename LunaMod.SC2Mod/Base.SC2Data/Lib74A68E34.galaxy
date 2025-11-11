@@ -2640,6 +2640,7 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
     TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
     TriggerEnable(libA8FDA37D_gt_UT_Cooldown, false);
+    TriggerEnable(libA8FDA37D_gt_UT_FastBuild, false);
     return true;
 }
 
@@ -2772,7 +2773,7 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerExecute(libA8FDA37D_gt_UT_FastBuild, false, false);
+    TriggerExecute(lib74A68E34_gt_FastBuildImproved, false, false);
     TriggerExecute(lib74A68E34_gt_CooldownImproved, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
     TriggerExecute(lib74A68E34_gt_AllyImproved, false, false);
@@ -2947,6 +2948,88 @@ bool lib74A68E34_gt_AllyImproved_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_AllyImproved_Init () {
     lib74A68E34_gt_AllyImproved = TriggerCreate("lib74A68E34_gt_AllyImproved_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_AllyImproved, c_playerAny, "-ally", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FastResearch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FastResearch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gv_uT_FastBuildCheat == true))) {
+            return false;
+        }
+
+        if (!(((UnitGetOwner(EventUnit()) == 1) || (UnitGetOwner(EventUnit()) == 2)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetProgressComplete(EventUnit(), 1, 99);
+    UnitSetProgressComplete(EventUnit(), 2, 99);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FastResearch_Init () {
+    lib74A68E34_gt_FastResearch = TriggerCreate("lib74A68E34_gt_FastResearch_Func");
+    TriggerEnable(lib74A68E34_gt_FastResearch, false);
+    TriggerAddEventUnitResearchProgress(lib74A68E34_gt_FastResearch, null, c_unitProgressStageStart);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FastBuildImproved
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FastBuildImproved_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libA8FDA37D_gv_uT_FastBuildCheat == false)) {
+        libA8FDA37D_gv_uT_FastBuildCheat = true;
+        TechTreeUpgradeAddLevel(1, "FastBuild", 1);
+        TechTreeUpgradeAddLevel(2, "FastBuild", 1);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_972DA1D6"));
+        TriggerEnable(libA8FDA37D_gt_UT_FastArrm, true);
+        TriggerEnable(libA8FDA37D_gt_UT_FastConstruction, true);
+        TriggerEnable(lib74A68E34_gt_FastResearch, true);
+        TriggerEnable(libA8FDA37D_gt_UT_FastRevive, true);
+        TriggerEnable(libA8FDA37D_gt_UT_FastTrain, true);
+    }
+    else {
+        libA8FDA37D_gv_uT_FastBuildCheat = false;
+        libNtve_gf_SetUpgradeLevelForPlayer(1, "FastBuild", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(2, "FastBuild", 0);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_E872212B"));
+        TriggerEnable(libA8FDA37D_gt_UT_FastArrm, false);
+        TriggerEnable(libA8FDA37D_gt_UT_FastConstruction, false);
+        TriggerEnable(lib74A68E34_gt_FastResearch, false);
+        TriggerEnable(libA8FDA37D_gt_UT_FastRevive, false);
+        TriggerEnable(libA8FDA37D_gt_UT_FastTrain, false);
+    }
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FastBuildImproved_Init () {
+    lib74A68E34_gt_FastBuildImproved = TriggerCreate("lib74A68E34_gt_FastBuildImproved_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_FastBuildImproved, c_playerAny, "-fastbuild", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7846,6 +7929,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_EnemyUpgradeCommand_Init();
     lib74A68E34_gt_CooldownImproved_Init();
     lib74A68E34_gt_AllyImproved_Init();
+    lib74A68E34_gt_FastResearch_Init();
+    lib74A68E34_gt_FastBuildImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
     lib74A68E34_gt_FourthPrestigeAlly_Init();
     lib74A68E34_gt_FourthAllyPrestigeChanged_Init();

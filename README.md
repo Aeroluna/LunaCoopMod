@@ -138,6 +138,7 @@ thanks Enoki.
 - Reduced Infestor (and variants) radius from 0.75 to 0.625.
 - Reduced Infestor (and variants) model scale from 0.85 to 0.75.
 - Added Burrow Move passive icon to the Infestor's (and variants) command card.
+- Increased visual scale of Cyclone's weapon missile by 100%.
 
 Copied from Versus.
 
@@ -244,6 +245,7 @@ yeah.
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
+- Fixed an issue where `-fastbuild` cheat did not affect research in the second queue slot.
 
 Some debug cheats.
 
@@ -1918,6 +1920,22 @@ Previously, if you put a Stetellite too far forward, a Propagator could just fea
 
 This makes it easier to expend charges Stetellites quickly.
 
+- Buffed Mecha Corruptor's Cluster Busters ability to no longer be a channel.
+- Fixed an issue where Mecha Corruptor's Cluster Busters ability dealt damage before the missiles landed.
+- Fixed an issue where Mecha Corruptor's Cluster Busters ability launched missiles from the center of the model instead of the launchers on the side.
+- Added a launch visual effect to the Mecha Corruptor's Cluster Busters ability.
+- Added a 3D cursor model to the Mecha Corruptor's Cluster Busters ability.
+- Adjusted Mecha Corruptor's Cluster Busters ability missile movement.
+- Fixed an issue where Mecha Corruptor's Wide Area Cluster Busters did not visually increase the radius of the missiles.
+
+Some Cluster Busters improvements.
+
+- Reduced Mecha Corruptor's Cluster Busters ability cooldown from 10 seconds to 4 seconds.
+- Reduced Mecha Corruptor's Terraclean Solvent ability cooldown from 20 seconds to 4 seconds.
+
+Energy-based abilities should have a low cooldown!
+
+- Changed Mecha Ultralisk's Mecha Mooch Module autocast to cast on enemies even when at full health.
 - Changed Mecha Ultralisk's Mecha Mooch Module autocast to no longer prioritize own units over allies.
 - Changed Mecha Ultralisk's Mecha Mooch Module autocast to prioritize friendly units with the most life.
 - Changed Mecha Ultralisk's Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
@@ -1932,6 +1950,7 @@ Creates an interesting Spirit Link-like effect where all the Ultralisks are tryi
 - Reduced cost of Mecha Battlecarrier Lord's Ready Mecha Broodling ability from 5 to 2 energy.
 - Reduced cost of Mecha Battlecarrier Lord's Build Mecha Locusceptor ability from 50 to 25 energy.
 - Buffed Mecha Locusceptors to hit air units.
+- Changed Mecha Battlecarrier Lord's Mecha Locusceptor weapon icon.
 
 Mecha Battlecarrier Lords use a ridiculous amount of energy just to attack, there no opportunity to swap out of JUICE configuration. Lowering their energy costs should make them stronger in attrition battles.
 
@@ -1940,12 +1959,16 @@ Mecha Battlecarrier Lords use a ridiculous amount of energy just to attack, ther
 
 The actor xml for Stetmann's units are such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow charge animation.
 
-- Buffed Mecha Ultralisk's Electrostatic Surprise! to additionally affect air units.
 - Increased visual scale of Mecha Ultralisk's Electrostatic Surprise! by 33%.
 - Changed Electrostatic Surprise! stun visual to auto scale with target model.
 - Fixed an issue where the Electrostatic Surprise! stun visual would play synchronously across all stunned targets.
 
 The visual explosion was weirdly small.
+
+- Buffed Mecha Ultralisk's Electrostatic Surprise! to additionally affect air units.
+- Buffed Mecha Ultralisk's Electrostatic Surprise! to additionally affect structures.
+
+It's a big lightning explosion, why not hit air and structures?
 
 - Changed Recycle Zergling button to show remnants collected instead of charges available.
 - Changed Recycle Hydralisk button to show remnants collected instead of charges available.
