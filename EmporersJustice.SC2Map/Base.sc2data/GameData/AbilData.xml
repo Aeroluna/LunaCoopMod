@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectInstant id="NovaLeviathanSpawnBroodLord">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SpawnBroodLordPersistentForRandomOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="3" CountUse="1" TimeUse="37">
+                <Flags index="RestoreAllChargesOnCooldown" value="1"/>
+            </Charge>
+            <Cooldown TimeStart="24" TimeUse="0.4"/>
+        </Cost>
+        <AutoCastRange value="1"/>
+        <ProducedUnitArray value="BroodLord"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SpawnBroodLord"/>
+        <AutoCastValidatorArray value="NovaBossAddTargetInRange"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="NovaLeviathanSpawnMutalisk">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SpawnMutaliskPersistentForRandomOffset"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge CountMax="6" CountUse="1" TimeUse="24">
+                <Flags index="RestoreAllChargesOnCooldown" value="1"/>
+            </Charge>
+            <Cooldown TimeStart="20" TimeUse="0.4"/>
+        </Cost>
+        <AutoCastRange value="1"/>
+        <ProducedUnitArray value="Mutalisk"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="LeviathanSpawnMutalisk"/>
+        <AutoCastValidatorArray value="NovaBossAddTargetInRange"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="NovaGorgonApocalypse">
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Apocalypse"/>
+        <!--UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="Apocalypse"/>
+        <CastOutroTime value="5"/-->
+        <Effect index="0" value="NovaGorgonApocalypsePersistent"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="10"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="NovaGorgonTrainOrder">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="NovaGorgonTrainOrderTrigger"/>
+        <Cost>
+            <Cooldown TimeStart="20" TimeUse="40"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastRange value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SuperiorWarpGates"/>
+        <AutoCastValidatorArray value="NovaBossAddTargetInRange"/>
+    </CAbilEffectInstant>
+    <CAbilTrain id="BarracksTrain">
+        <InfoArray index="Train8" Time="5">
+            <Button DefaultButtonFace="Separatist" State="Restricted"/>
+            <Unit value="Separatist"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="NovaLeviathanBioStasis">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Range value="10"/>
+        <Arc value="360"/>
+        <CursorEffect value="NovaLeviathanBioStasisSearchArea"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BioStasis"/>
+        <Effect index="0" value="NovaLeviathanBioStasisPersistent"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastRange value="10"/>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="NovaMothershipInterceptorHangar">
+        <AbilSetId value="CarrierHanger"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="12"/>
+        <InfoArray index="Ammo1" Time="10" CountStart="16" Manage="Recall" Unit="Interceptor">
+            <Charge Link="CarrierInterceptor" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="Interceptor">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="LeashRetarget" value="1"/>
+        </InfoArray>
+        <EffectArray index="Create" value="NovaMothershipInterceptor"/>
+        <EffectArray index="Death" value="InterceptorFate"/>
+        <MaxCount value="16"/>
+    </CAbilArmMagazine>
+    <CAbilEffectInstant id="NovaMothershipWarpOrder">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="NovaMothershipWarpOrderTrigger"/>
+        <Cost>
+            <Cooldown TimeStart="20" TimeUse="40"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <AutoCastRange value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SuperiorWarpGates"/>
+        <AutoCastValidatorArray value="NovaBossAddTargetInRange"/>
+    </CAbilEffectInstant>
+    <CAbilTransport id="NovaSubwayTransport">
+        <AbilSetId value="ULdS"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <SharedFlags index="TargetCursorHiddenForInvalidTargets" value="1"/>
+        <CmdButtonArray index="Load" DefaultButtonFace="NydusCanalLoad"/>
+        <CmdButtonArray index="UnloadAll" DefaultButtonFace="NydusCanalUnloadAll">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadAt">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadUnit">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="LoadAll">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <Flags index="CargoDeath" value="1"/>
+        <Flags index="IgnoreBlockers" value="1"/>
+        <Flags index="PlayerHold" value="1"/>
+        <Flags index="ShowCargoSize" value="0"/>
+        <Flags index="ShowStatus" value="0"/>
+        <Range value="0"/>
+        <MaxUnloadRange value="10"/>
+        <MaxCargoCount value="500"/>
+        <MaxCargoSize value="8"/>
+        <TotalCargoSpace value="500"/>
+        <InitialUnloadDelay value="0.5"/>
+        <LoadPeriod value="0.05"/>
+        <UnloadPeriod value="0.05"/>
+        <LoadValidatorArray value="NotSpawnling"/>
+    </CAbilTransport>
+    <CAbilEffectTarget id="SOAMothershipLineAttackV2">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SOAMothershipLineAttackV2Initial"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Range value="12"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SOAMothershipLineAttack"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="12"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="SubwayEntrancePower">
+        <BehaviorArray value="SubwayEntrancePowerOff"/>
+    </CAbilBehavior>
+</Catalog>

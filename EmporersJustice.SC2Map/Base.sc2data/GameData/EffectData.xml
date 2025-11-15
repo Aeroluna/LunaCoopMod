@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectEnumArea id="Apocalypse">
+        <AreaArray index="0" Radius="4"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="ApocalypseDamage">
+        <AttributeBonus index="Structure" value="200"/>
+    </CEffectDamage>
+    <CEffectSet id="ApplyTriggerAISuicide"/>
+    <CEffectDamage id="GorgonCruiserGroundDamage">
+        <AttributeBonus index="Structure" value="0"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="GorgonCruiserGroundLaunchMissile">
+        <Movers Link="ATSLaserBatteryLMWeapon"/>
+        <ValidatorArray index="0" value="TargetInWeaponRange"/>
+        <ValidatorArray index="1" removed="1"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="NovaLeviathanBioStasisApplyBehavior">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="NovaLeviathanBioStasis"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="NovaLeviathanBioStasisLaunchMissile">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="NovaLeviathanBioStasisSearchArea"/>
+        <AmmoUnit value="NovaLeviathanBioStasisMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="NovaLeviathanBioStasisSearchArea">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="NovaLeviathanBioStasisApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="NovaLeviathanBioStasisPersistent">
+        <EditorCategories value="Race:Terran"/>
+        <ExpireEffect value="NovaLeviathanBioStasisLaunchMissile"/>
+        <ExpireDelay value="2"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="NovaLeviathanGroundWeaponSearch">
+        <EditorCategories value="Race:Terran"/>
+        <IncludeArray Value="Target"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="10" Effect="NovaLeviathanWeaponGroundSwitch"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="NovaLeviathanAirAttackCreatePersistent">
+        <EditorCategories value="Race:Zerg"/>
+        <PeriodCount value="4"/>
+        <PeriodicEffectArray value="NovaLeviathanAirWeaponSearch"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="NovaLeviathanAirAttackLaunchMissile">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="NovaLeviathanAirAttackDamage"/>
+        <AmmoUnit value="NovaLeviathanScourgeMissile"/>
+        <ValidatorArray index="0" value=""/>
+        <Flags index="Retarget" value="1"/>
+        <RetargetFilters value="Air,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <RetargetRange value="4"/>
+        <Movers Link="ScourgeMissileLeftRear" IfRangeLTE="500"/>
+        <Movers Link="ScourgeMissileLeftForward" IfRangeLTE="500"/>
+        <Movers Link="ScourgeMissileRightForward" IfRangeLTE="500"/>
+        <Movers Link="ScourgeMissileRightRear" IfRangeLTE="500"/>
+        <MoverExecuteJump value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="NovaLeviathanAirAttackDamage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="8"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="NovaLeviathanAirWeaponSearch">
+        <EditorCategories value="Race:Terran"/>
+        <IncludeArray Value="Target"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Air,Visible;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="10" Effect="NovaLeviathanAirAttackLaunchMissile"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="InterceptorTaldarimLaunchPersistent">
+        <Flags index="Channeled" value="0"/>
+        <PeriodCount value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="NovaLeviathanGroundAttackCreatePersistent">
+        <EditorCategories value="Race:Zerg"/>
+        <PeriodCount value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="RandomEffect" value="1"/>
+        <PeriodicEffectArray value="NovaLeviathanGroundAttackLaunchMissileA"/>
+        <PeriodicEffectArray value="NovaLeviathanGroundAttackLaunchMissileB"/>
+        <PeriodicEffectArray value="NovaLeviathanGroundAttackLaunchMissileC"/>
+        <PeriodicEffectArray value="NovaLeviathanGroundAttackLaunchMissileD"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="NovaLeviathanWeaponGroundSwitch">
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Validator="HaveHotSLeviathanWeapon1" Effect="NovaLeviathanWeaponGround1"/>
+        <CaseArray Validator="HaveHotSLeviathanWeapon2" Effect="NovaLeviathanWeaponGround2"/>
+        <CaseArray Validator="HaveHotSLeviathanWeapon3" Effect="NovaLeviathanWeaponGround3"/>
+        <CaseArray Validator="HaveHotSLeviathanWeapon4" Effect="NovaLeviathanWeaponGround4"/>
+        <ValidatorArray value="TargetInWeaponRange"/>
+    </CEffectSwitch>
+    <CEffectSet id="NovaLeviathanWeaponGround1">
+        <EffectArray value="HotSLeviathanWeapon1RB"/>
+        <EffectArray value="HotSLeviathanWeapon2AB"/>
+        <EffectArray value="NovaLeviathanGroundAttackLaunchMissileA"/>
+    </CEffectSet>
+    <CEffectSet id="NovaLeviathanWeaponGround2">
+        <EffectArray value="HotSLeviathanWeapon2RB"/>
+        <EffectArray value="HotSLeviathanWeapon3AB"/>
+        <EffectArray value="NovaLeviathanGroundAttackLaunchMissileB"/>
+    </CEffectSet>
+    <CEffectSet id="NovaLeviathanWeaponGround3">
+        <EffectArray value="HotSLeviathanWeapon3RB"/>
+        <EffectArray value="HotSLeviathanWeapon4AB"/>
+        <EffectArray value="NovaLeviathanGroundAttackLaunchMissileC"/>
+    </CEffectSet>
+    <CEffectSet id="NovaLeviathanWeaponGround4">
+        <EffectArray value="HotSLeviathanWeapon4RB"/>
+        <EffectArray value="HotSLeviathanWeapon1AB"/>
+        <EffectArray value="NovaLeviathanGroundAttackLaunchMissileD"/>
+    </CEffectSet>
+    <CEffectDamage id="NovaLeviathanGroundAttackDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="20"/>
+        <Death value="Eviscerate"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="NovaLeviathanGroundAttackLaunchMissileA">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactEffect value="NovaLeviathanGroundAttackDamage"/>
+        <AmmoUnit value="NovaLeviathanTentacleAMissile"/>
+        <Flags index="Return" value="1"/>
+        <ReturnDelay value="0.25"/>
+        <ReturnMovers Link="SpineCrawlerTentacleRetractLong" IfRangeLTE="500"/>
+        <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="500"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="NovaLeviathanGroundAttackLaunchMissileB">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactEffect value="NovaLeviathanGroundAttackDamage"/>
+        <Flags index="Return" value="1"/>
+        <AmmoUnit value="NovaLeviathanTentacleBMissile"/>
+        <ReturnDelay value="0.25"/>
+        <ReturnMovers Link="SpineCrawlerTentacleRetractLong" IfRangeLTE="500"/>
+        <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="500"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="NovaLeviathanGroundAttackLaunchMissileC">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactEffect value="NovaLeviathanGroundAttackDamage"/>
+        <Flags index="Return" value="1"/>
+        <AmmoUnit value="NovaLeviathanTentacleCMissile"/>
+        <ReturnDelay value="0.25"/>
+        <ReturnMovers Link="SpineCrawlerTentacleRetractLong" IfRangeLTE="500"/>
+        <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="500"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="NovaLeviathanGroundAttackLaunchMissileD">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <LaunchLocation Value="CasterUnit"/>
+        <ImpactEffect value="NovaLeviathanGroundAttackDamage"/>
+        <Flags index="Return" value="1"/>
+        <AmmoUnit value="NovaLeviathanTentacleDMissile"/>
+        <ReturnDelay value="0.25"/>
+        <ReturnMovers Link="SpineCrawlerTentacleRetractLong" IfRangeLTE="500"/>
+        <Movers Link="SpineCrawlerTentacleExtendLong" IfRangeLTE="500"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="NovaGorgonCruiserWeaponSearch">
+        <EditorCategories value="Race:Terran"/>
+        <IncludeArray Value="Target"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <ImpactLocation Value="CasterUnit"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="10" Effect="GorgonCruiserGroundLaunchMissile"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NovaGorgonTrainOrderTrigger">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectSet id="NovaMothershipBeamAttack">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NovaMothershipBeamSet"/>
+        <EffectArray value="NovaMothershipBeamSearch"/>
+    </CEffectSet>
+    <CEffectDamage id="NovaMothershipBeamDamage" parent="DU_WEAP_MISSILE">
+        <ValidatorArray value="NovaMothershipRangeCheck"/>
+        <ValidatorArray value="NotHidden"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Visibility value="Visible"/>
+        <Amount value="8"/>
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="NovaMothershipBeamDummy">
+        <ValidatorArray value="NovaMothershipRangeCheck"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="NovaMothershipBeamPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialEffect value="NovaMothershipBeamDummy"/>
+        <PeriodCount value="3"/>
+        <PeriodicValidator value="NovaMothershipRangeCheckCombine"/>
+        <PeriodicEffectArray value="NovaMothershipBeamDamage"/>
+        <PeriodicPeriodArray value="0.375"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="NovaMothershipBeamSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSPriorityDesc"/>
+        </TargetSorts>
+        <AreaArray MaxCount="3" Radius="8.5" Effect="NovaMothershipBeamSet"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="CenterAtLaunch" value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="0"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NovaMothershipBeamSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NovaMothershipBeamPersistent"/>
+        <EffectArray value="NovaMothershipSecondaryBeamPersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="NovaMothershipSecondaryBeamPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <InitialDelay value="0.25"/>
+        <InitialEffect value="NovaMothershipBeamDummy"/>
+        <PeriodCount value="3"/>
+        <PeriodicValidator value="NovaMothershipRangeCheckCombine"/>
+        <PeriodicEffectArray value="NovaMothershipBeamDamage"/>
+        <PeriodicPeriodArray value="0.375"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="NovaMothershipInterceptor"/>
+    <CEffectSet id="NovaMothershipWarpOrderTrigger">
+        <EditorCategories value=""/>
+    </CEffectSet>
+    <CEffectDamage id="Separatist" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="6"/>
+    </CEffectDamage>
+    <CEffectSet id="SOAMothershipLineAttackV2CasterImpactDummy"/>
+    <CEffectSet id="SOAMothershipLineAttackV2CasterPreviewImpactDummy"/>
+    <CEffectLaunchMissile id="SOAMothershipLineAttackV2CasterPreview">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="SOAMothershipLineAttackV2PreviewCP"/>
+        <ImpactEffect value="SOAMothershipLineAttackV2CasterPreviewImpactDummy"/>
+        <Flags index="2D" value="1"/>
+        <AmmoUnit value="InvisiblePreviewerMissile"/>
+        <LaunchLocation Value="OriginPoint"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="SOAMothershipLineAttackV2Caster">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <LaunchEffect value="SOAMothershipLineAttackV2Scan"/>
+        <ImpactEffect value="SOAMothershipLineAttackV2CasterImpactDummy"/>
+        <Flags index="2D" value="1"/>
+        <AmmoUnit value="SOAMothershipLineAttackV2Weapon"/>
+        <LaunchLocation Value="OriginPoint"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="SOAMothershipLineAttackV2Damage">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="200"/>
+        <Death value="Fire"/>
+        <AttributeBonus index="Structure" value="100"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="SOAMothershipLineAttackV2Initial">
+        <WhichLocation Value="CasterPoint"/>
+        <!--InitialEffect value="SOAMothershipLineAttackV2CasterPreview"/-->
+        <InitialOffset value="0,-15,0"/>
+        <ExpireEffect value="SOAMothershipLineAttackV2Delay"/>
+        <ExpireOffset value="0,-15,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SOAMothershipLineAttackV2Delay">
+        <ExpireDelay value="2"/>
+        <ExpireEffect value="SOAMothershipLineAttackV2Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SOAMothershipLineAttackV2Scan">
+        <EditorCategories value="Race:Protoss"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <WhichLocation Value="SourceUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="45"/>
+        <PeriodicEffectArray value="SOAMothershipLineAttackV2Search"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="SOAMothershipLineAttackV2PeriodicValidator"/>
+        <FinalEffect value="KillSource"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="SOAMothershipLineAttackV2Search">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1" Effect="SOAMothershipLineAttackV2Damage"/>
+        <RevealerParams Duration="1" ShapeExpansion="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectLaunchMissile id="NovaGorgonApocalypseMissile">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Apocalypse"/>
+        <AmmoUnit value="NovaGorgonApocalypseWeapon"/>
+        <ValidatorArray index="0" value="CasterNotDead"/>
+    </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="NovaGorgonApocalypsePersistent">
+        <EditorCategories value="Race:Terran"/>
+        <ExpireEffect value="NovaGorgonApocalypseMissile"/>
+        <ExpireDelay value="5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="SpawnBroodLordCreateBroodLord">
+        <SpawnEffect value="ApplyTriggerAISuicide"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="SpawnMutaliskCreateMutalisk">
+        <SpawnEffect value="ApplyTriggerAISuicide"/>
+    </CEffectCreateUnit>
+    <CEffectCreatePersistent id="SpawnMutaliskPersistentForRandomOffset">
+        <OffsetRandMode value="RandomNoRepeat"/>
+    </CEffectCreatePersistent>
+</Catalog>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorLocationEnumArea id="NovaBossAddTargetInRange">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <WhichLocation Value="SourceUnit"/>
+        <AreaArray Compare="GE" Count="1" Radius="14"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Structure,Missile,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationCompareRange id="NovaMothershipRangeCheck">
+        <Compare value="LE"/>
+        <Range value="10"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="NovaMothershipRangeCheckCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="NovaMothershipRangeCheck"/>
+        <CombineArray value="NotInvulnerable"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SOAMothershipLineAttackV2PeriodicValidator">
+        <Type value="And"/>
+        <CombineArray value="SourceNotDead"/>
+        <CombineArray value="CasterNotDead"/>
+    </CValidatorCombine>
+</Catalog>

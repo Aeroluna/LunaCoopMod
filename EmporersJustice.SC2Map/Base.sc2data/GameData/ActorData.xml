@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorModel id="KerriganApocalypseExplosion">
+        <Remove Terms="Effect.Apocalypse.Start; At Effect" Send="Create"/>
+    </CActorModel>
+    <CActorUnit id="NovaLeviathan" parent="GenericUnitStandard" unitName="NovaLeviathan">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="ActorCreation" Send="Create HotSLeviathanTentacleA"/>
+        <On Terms="ActorCreation" Send="Create HotSLeviathanTentacleB"/>
+        <On Terms="ActorCreation" Send="Create HotSLeviathanTentacleC"/>
+        <On Terms="ActorCreation" Send="Create HotSLeviathanTentacleD"/>
+        <On Terms="Abil.BioPlasmidDischarge.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.BioPlasmidDischarge.SourceCastStart" Send="Create BioPlasmidDischargeChargeLaunchBurstSound"/>
+        <On Terms="Effect.NovaLeviathanBioStasisLaunchMissile.Start" Send="$Spell"/>
+        <AnimBlendTime value="0.300000"/>
+        <DeathArray index="Normal" ModelLink="LeviathanDeath" SoundLink="Leviathan_Explode"/>
+        <PortraitModel value="LeviathanPortrait"/>
+        <BarOffset value="180"/>
+        <BarWidth value="216"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-zerg-leviathan.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-leviathan.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
+        <NameOffset value="120"/>
+        <SoundArray index="Ready" value="Leviathan_Ready"/>
+        <SoundArray index="What" value="Leviathan_What"/>
+        <SoundArray index="Yes" value="Leviathan_Yes"/>
+        <SoundArray index="Attack" value="Leviathan_Attack"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-leviathan.dds"/>
+        <UnitKillRank Text="UnitKillRank/NovaLeviathan"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-zerg-leviathan.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorMissile id="NovaLeviathanAirAttackMissile" parent="GenericAttackMissile" unitName="NovaLeviathanScourgeMissile">
+        <On Terms="ActorCreation" Send="Create Leviathan_AirAttackLaunchSound"/>
+        <Model value="LeviathanScourgeMissile"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanAirAttack" parent="GenericAttack" effectImpact="NovaLeviathanAirAttackDamage" effectLaunch="NovaLeviathanAirAttackLaunchMissile">
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMPatternNovaLeviathanAir"/>
+        <LaunchAssets Model="HotSLeviathanWeaponLaunch" Sound="Nova_SniperRifleTail_Dummy"/>
+        <LaunchSound value="Leviathan_AirAttackSound"/>
+        <ImpactMap index="None" Sound="Leviathan_AirAttackImpact"/>
+    </CActorAction>
+    <CActorMissile id="NovaLeviathanBioStasisMissile" parent="GenericAttackMissile" unitName="NovaLeviathanBioStasisMissile">
+        <Model value="HotSBioStasisMissile"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanBioStasis" parent="GenericAttack" effectImpact="NovaLeviathanBioStasisSearchArea" effectLaunch="NovaLeviathanBioStasisLaunchMissile">
+        <LaunchAttachQuery Methods="Weapon 1"/>
+        <LaunchAssets Sound="Leviathan_BioStasisLaunch"/>
+        <ImpactMap index="None" Model="HotSBioStasisImpact" Sound="Leviathan_BioStasisImpact"/>
+    </CActorAction>
+    <CActorModel id="NovaLeviathanBioStasisBlob" parent="ModelAddition">
+        <On Terms="Behavior.NovaLeviathanBioStasis.On" Send="Create"/>
+        <On Terms="Behavior.NovaLeviathanBioStasis.Off" Send="AnimBracketStop BSD"/>
+        <AutoScaleFactor value="0.750000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpRotationRandomDisc"/>
+        <Model value="BioStasisBlob"/>
+    </CActorModel>
+    <CActorModel id="NovaLeviathanBioStasisWarning">
+        <FogVisibility value="Visible"/>
+        <On Terms="Effect.NovaLeviathanBioStasisPersistent.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand"/>
+        <On Terms="Effect.NovaLeviathanBioStasisPersistent.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <ScopeBearingsTracking value="ForceOff"/>
+        <Scale value="0.500000"/>
+    </CActorModel>
+    <CActorMissile id="NovaLeviathanTentacleAAttackMissile" parent="GenericTentacleMissile" unitName="NovaLeviathanTentacleAMissile">
+        <Model value="Invisible"/>
+        <Supporter>
+            <Subject value="HotSLeviathanTentacleA"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileA"/>
+        </Supporter>
+        <HostReturn>
+            <Subject value="HotSLeviathanTentacleA"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileA"/>
+        </HostReturn>
+        <HostReturnSiteOps Ops="SOpAttachHardPoint"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="Signal Attack"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSet TentacleAttack ::Self"/>
+        <On Terms="ActorDestruction" Target="::Supporter" Send="Signal TentacleRetracted"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanTentacleAAttack" parent="GenericAttack" effectImpact="NovaLeviathanGroundAttackDamage" effectLaunch="NovaLeviathanGroundAttackLaunchMissileA">
+        <LaunchSite value="HotSLeviathanTentacleALaunchSite"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <ImpactAttachQuery Methods="AMFilterTarget AMProximityAll"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactSiteOpsReaction Ops="SOp2DRotation SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ImpactMap index="None" Model="HotSLeviathanGroundAttackImpact" Sound="Leviathan_GroundAttackImpact"/>
+        <LaunchAssets Sound="Leviathan_GroundAttackLaunch"/>
+        <ImpactPhysics Name="ImpalerTentacleImpact" MatchKeys="Basic" Physics="SpineCrawlerAttackDeathForce"/>
+    </CActorAction>
+    <CActorMissile id="NovaLeviathanTentacleBAttackMissile" parent="GenericTentacleMissile" unitName="NovaLeviathanTentacleBMissile">
+        <Model value="Invisible"/>
+        <Supporter>
+            <Subject value="HotSLeviathanTentacleB"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileB"/>
+        </Supporter>
+        <HostReturn>
+            <Subject value="HotSLeviathanTentacleB"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileB"/>
+        </HostReturn>
+        <HostReturnSiteOps Ops="SOpAttachHardPoint"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="Signal Attack"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSet TentacleAttack ::Self"/>
+        <On Terms="ActorDestruction" Target="::Supporter" Send="Signal TentacleRetracted"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanTentacleBAttack" parent="GenericAttack" effectImpact="NovaLeviathanGroundAttackDamage" effectLaunch="NovaLeviathanGroundAttackLaunchMissileB">
+        <LaunchSite value="HotSLeviathanTentacleBLaunchSite"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <ImpactAttachQuery Methods="AMFilterTarget AMProximityAll"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactSiteOpsReaction Ops="SOp2DRotation SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ImpactMap index="None" Model="HotSLeviathanGroundAttackImpact" Sound="Leviathan_GroundAttackImpact"/>
+        <LaunchAssets Sound="Leviathan_GroundAttackLaunch"/>
+        <ImpactPhysics Name="ImpalerTentacleImpact" MatchKeys="Basic" Physics="SpineCrawlerAttackDeathForce"/>
+    </CActorAction>
+    <CActorMissile id="NovaLeviathanTentacleCAttackMissile" parent="GenericTentacleMissile" unitName="NovaLeviathanTentacleCMissile">
+        <Model value="Invisible"/>
+        <Supporter>
+            <Subject value="HotSLeviathanTentacleC"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileC"/>
+        </Supporter>
+        <HostReturn>
+            <Subject value="HotSLeviathanTentacleC"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileC"/>
+        </HostReturn>
+        <HostReturnSiteOps Ops="SOpAttachHardPoint"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="Signal Attack"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSet TentacleAttack ::Self"/>
+        <On Terms="ActorDestruction" Target="::Supporter" Send="Signal TentacleRetracted"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanTentacleCAttack" parent="GenericAttack" effectImpact="NovaLeviathanGroundAttackDamage" effectLaunch="NovaLeviathanGroundAttackLaunchMissileC">
+        <LaunchSite value="HotSLeviathanTentacleCLaunchSite"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <ImpactAttachQuery Methods="AMFilterTarget AMProximityAll"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactSiteOpsReaction Ops="SOp2DRotation SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ImpactMap index="None" Model="HotSLeviathanGroundAttackImpact" Sound="Leviathan_GroundAttackImpact"/>
+        <LaunchAssets Sound="Leviathan_GroundAttackLaunch"/>
+        <ImpactPhysics Name="ImpalerTentacleImpact" MatchKeys="Basic" Physics="SpineCrawlerAttackDeathForce"/>
+    </CActorAction>
+    <CActorMissile id="NovaLeviathanTentacleDAttackMissile" parent="GenericTentacleMissile" unitName="NovaLeviathanTentacleDMissile">
+        <Model value="Invisible"/>
+        <Supporter>
+            <Subject value="HotSLeviathanTentacleD"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileD"/>
+        </Supporter>
+        <HostReturn>
+            <Subject value="HotSLeviathanTentacleD"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <Effect value="NovaLeviathanGroundAttackLaunchMissileD"/>
+        </HostReturn>
+        <HostReturnSiteOps Ops="SOpAttachHardPoint"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="Signal Attack"/>
+        <On Terms="MotionPhaseStart; MotionPhase" Target="::Supporter" Send="RefSet TentacleAttack ::Self"/>
+        <On Terms="ActorDestruction" Target="::Supporter" Send="Signal TentacleRetracted"/>
+    </CActorMissile>
+    <CActorAction id="NovaLeviathanTentacleDAttack" parent="GenericAttack" effectImpact="NovaLeviathanGroundAttackDamage" effectLaunch="NovaLeviathanGroundAttackLaunchMissileD">
+        <LaunchSite value="HotSLeviathanTentacleDLaunchSite"/>
+        <LaunchAttachQuery Methods="Weapon"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <ImpactAttachQuery Methods="AMFilterTarget AMProximityAll"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
+        <ImpactSiteOpsReaction Ops="SOp2DRotation SOp180" HoldPosition="1" HoldRotation="1"/>
+        <ImpactMap index="None" Model="HotSLeviathanGroundAttackImpact" Sound="Leviathan_GroundAttackImpact"/>
+        <LaunchAssets Sound="Leviathan_GroundAttackLaunch"/>
+        <ImpactPhysics Name="ImpalerTentacleImpact" MatchKeys="Basic" Physics="SpineCrawlerAttackDeathForce"/>
+    </CActorAction>
+    <CActorAction id="NovaGorgonApocalypseAttack" parent="GenericAttack" effectImpact="Apocalypse" effectLaunch="NovaGorgonApocalypseMissile">
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA2"/>
+        <LaunchAssets Sound="Battlecruiser_YamatoAttackLaunch"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
+    </CActorAction>
+    <CActorMissile id="NovaGorgonApocalypseAttackMissile" parent="GenericAttackMissile" unitName="NovaGorgonApocalypseWeapon">
+        <TerrainSquibs MovementDistance="0.500000" RangeDown="5.000000" RangeDownFade="1.000000">
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="YamatoTerrainSquibHarnessOneShot" ModelLink="WaterSplashMassive">
+                <Flags index="OneShot" value="1"/>
+            </Visuals>
+        </TerrainSquibs>
+    </CActorMissile>
+    <CActorModel id="NovaGorgonApocalypseAttackChargeModel" parent="ModelAddition">
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveBy1"/>
+    </CActorModel>
+    <CActorSound id="NovaGorgonApocalypseAttackChargeSound" parent="SoundContinuous">
+        <Host Subject="NovaGorgonApocalypseAttackChargeModel"/>
+        <Sound value="Battlecruiser_YamatoAttackChargeUp"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="NovaGorgonApocalypseChargeSound" parent="SoundContinuous">
+        <On Terms="ActorCreation" Send="SoundSetPitch Linear -12.000000@0.000000,18.000000@4000.000000"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Stop" Send="Destroy"/>
+        <Sound value="KerriganApocalypseChargeSound"/>
+    </CActorSound>
+    <CActorModel id="NovaGorgonApocalypseExplosion" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Apocalypse.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
+        <FogVisibility value="Visible"/>
+    </CActorModel>
+    <CActorSound id="NovaGorgonApocalypseLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.NovaGorgonApocalypseMissile.Start; At Caster" Send="Create"/>
+        <Sound value="KerriganApocalypseLaunchSound"/>
+    </CActorSound>
+    <CActorModel id="NovaGorgonApocalypseWarning">
+        <FogVisibility value="Visible"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand"/>
+        <On Terms="Effect.NovaGorgonApocalypsePersistent.Stop" Send="Destroy"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <ScopeBearingsTracking value="ForceOff"/>
+        <Scale value="1.250000"/>
+    </CActorModel>
+    <CActorAction id="GorgonCruiserAttack">
+        <LaunchAssets Model="NovaGorgonAttackLaunch"/>
+        <ImpactMap index="None" Model="NovaGorgonAttackImpact" Sound="Wraith_GroundAttackImpact"/>
+    </CActorAction>
+    <CActorMissile id="GorgonCruiserAttackMissile">
+        <Model value="NovaGorgonAttack"/>
+        <!-- missiles spawn with the same facing as the unit -->
+        <!-- so we wait a tiny delay for the mover to fix the facing before revealing -->
+        <On Terms="ActorCreation" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.010000 delay"/>
+        <On Terms="TimerExpired; TimerName delay" Send="SetVisibility 1"/>
+    </CActorMissile>
+    <CActorUnit id="HerculesLander">
+        <On Terms="Signal.*.JumpIn" Send="SetOpacity"/>
+        <On Terms="Signal.*.JumpIn" Send="Create HerculesTacticalJumpPlacement"/>
+        <On Terms="Signal.*.JumpIn" Send="TimerSet 4.000000 JumpDelay"/>
+        <On Terms="TimerExpired; TimerName JumpDelay" Send="Create HerculesHyperjumpImpact"/>
+        <On Terms="TimerExpired; TimerName JumpDelay" Send="TimerSet 0.600000 JumpInFinish"/>
+        <On Terms="TimerExpired; TimerName JumpDelay" Send="Create Battlecruiser_HyperJumpIn_Sound"/>
+        <On Terms="TimerExpired; TimerName JumpInFinish" Target="HerculesTacticalJumpPlacement" Send="AnimBracketStop BSD"/>
+        <On Terms="TimerExpired; TimerName JumpInFinish" Send="SetOpacity 1.000000"/>
+        <On Terms="Signal.*.JumpOut" Send="SetOpacity"/>
+        <On Terms="Signal.*.JumpOut" Send="Create HerculesHyperjumpLaunch"/>
+        <On Terms="Signal.*.JumpOut" Send="Create Battlecruiser_HyperJumpOut_Sound"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
+    <CActorUnit id="Interceptor">
+        <On Terms="Behavior.NovaMothershipInterceptor.On" Send="StatusSet Dark 1"/>
+        <On Terms="Behavior.NovaMothershipInterceptor.On" Send="ModelSwap DarkInterceptor"/>
+        <On Terms="Behavior.NovaMothershipInterceptor.On" Send="DeathCustomsEnablePhysics 0"/>
+        <On Terms="UnitDeathCustomize; HasStatus Dark" Send="DeathCustomize DarkProtoss"/>
+    </CActorUnit>
+    <CActorAction id="NovaMothershipAttack" parent="GenericAttackBase">
+        <On Terms="Effect.NovaMothershipBeamPersistent.Start" Send="Create"/>
+        <On Terms="Effect.NovaMothershipBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.NovaMothershipBeamPersistent.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternNovaMothershipBeam"/>
+        <LaunchAssets Sound="MothershipVoid_AttackLaunch"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <Lifetime value="-1.000000"/>
+        <ImpactMap index="None" Sound="MothershipVoid_AttackImpact"/>
+    </CActorAction>
+    <CActorSound id="NovaMothershipAttackImpact" parent="SoundContinuous">
+        <On Terms="Effect.NovaMothershipBeamDamage.Start; EffectExecuteIndex 1" Send="Create"/>
+        <On Terms="Effect.NovaMothershipBeamPersistent.Stop" Send="Destroy"/>
+        <Sound value="MothershipVoid_AttackImpactLoop"/>
+    </CActorSound>
+    <CActorBeamSimple id="NovaMothershipAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Macros value="ActionTargetTeleportDestroy"/>
+        <On Terms="Effect.NovaMothershipBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
+        <Model value="SOAMothershipv4AttackBeam"/>
+        <Scale value="2.000000"/>
+    </CActorBeamSimple>
+    <CActorAction id="NovaMothershipSecondaryAttack" parent="GenericAttackBase">
+        <On Terms="Effect.NovaMothershipSecondaryBeamPersistent.Start" Send="Create"/>
+        <On Terms="Effect.NovaMothershipBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.NovaMothershipBeamPersistent.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternNovaMothershipBeam"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <Lifetime value="-1.000000"/>
+        <ImpactMap index="None" Model="SOAMothershipv4AttackImpact"/>
+    </CActorAction>
+    <CActorBeamSimple id="NovaMothershipSecondaryAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Macros value="ActionTargetTeleportDestroy"/>
+        <On Terms="Effect.NovaMothershipSecondaryBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
+        <Model value="SOAMothershipv4AttackBeam"/>
+        <Scale value="2.000000"/>
+    </CActorBeamSimple>
+    <CActorUnit id="GehennaCruiser">
+        <On index="65" Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <On index="66" Terms="Abil.NovaGorgonApocalypse.SourcePrepStart" Send="$Spell"/>
+        <On index="67" Terms="AnimDone; AnimName Spell" Send="AnimPlay SpellEnd Spell,End"/>
+        <On index="68" removed="1"/>
+        <On index="69" removed="1"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+        <MinimapIcon value=""/>
+        <HostSiteOps Ops="SOpBankerNovaGorgon"/>
+    </CActorUnit>
+    <CActorUnit id="NovaMothership" parent="GenericUnitBase" unitName="NovaMothership">
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="Abil.VoidSentryBlackHole.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.NovaMothershipMassRecall.SourceCastStart" Send="$Spell"/>
+        <On Terms="Effect.NovaMothershipMassRecallTeleport.Start" Send="CombatRevealClearTimers"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Mothership_Land"/>
+        <On Terms="Abil.NovaMothershipWarpOut.SourceCastStart" Send="SetOpacity 0.000000 1.000000 WarpOut"/>
+        <On Terms="Abil.NovaMothershipWarpOut.SourceFinishStop" Send="SetVisibility"/>
+        <On Terms="Abil.NovaMothershipWarpIn.SourceCastStart" Send="SetVisibility 1"/>
+        <On Terms="Abil.NovaMothershipWarpIn.SourceCastStart" Send="SetOpacity 0.000000 0.000000 WarpOut"/>
+        <BuildModel value="MotherShipTaldarimWarpIn"/>
+        <DeathArray index="Normal" ModelLink="NovaMothershipDeath" SoundLink="Mothership_Explode" VoiceLink=""/>
+        <DeathCustoms>
+            <ActorModel value="MothershipDeathRagdoll"/>
+            <ModelLink value="Mothership_Taldarim_DeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="BasicHeavy" Model="ProtossLargeRobotSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathActorModel value="TaldarimMothershipDeathModel"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PlacementModel value="MothershipTaldarimPlacement"/>
+        <PortraitModel value="MothershipTaldarimPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive3"/>
+        </TerrainSquibs>
+        <BarOffset value="180"/>
+        <BarWidth value="216"/>
+        <GlossaryAnim value="GLstand"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="What" value="Mothership_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="Mothership_GroupYes"/>
+        <GroupSoundArray index="Attack" value="Mothership_GroupAttack"/>
+        <GroupSoundArray index="Board" value="Mothership_GroupBoard"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-mothership-taldarim.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <NameOffset value="130"/>
+        <SoundArray index="Ready" value="MothershipVoid_Ready"/>
+        <SoundArray index="Help" value="MothershipVoid_Help"/>
+        <SoundArray index="What" value="MothershipVoid_What"/>
+        <SoundArray index="Yes" value="MothershipVoid_Yes"/>
+        <SoundArray index="Attack" value="MothershipVoid_Attack"/>
+        <SoundArray index="Pissed" value="MothershipVoid_Pissed"/>
+        <SoundArray index="Movement" value="MothershipVoid_MoveStart"/>
+        <SoundArray index="Turning" value="Mothership_Turning"/>
+        <SoundArray index="Board" value="Mothership_Board"/>
+        <SoundArray index="Click" value="Mothership_Click"/>
+        <SoundArray index="ClickError" value="Mothership_ClickError"/>
+        <SoundArray index="Highlight" value="Mothership_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-mothership-taldarim.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-mothership-taldarim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield03.dds"/>
+        </WireframeShield>
+        <StatusBarOn index="Progress" value="1"/>
+        <UnitKillRank Text="UnitKillRank/NovaMothership"/>
+    </CActorUnit>
+    <CActorUnit id="NovaScienceFacility" parent="GenericUnitStandardNoAutoSoundLinks" unitName="NovaScienceFacility">
+        <On Terms="ActorCreation" Send="Create SoundEmitter ScienceFacility_SteamLoop"/>
+        <DeathActorModel value="UnitDeathModelPersistent"/>
+        <DeathActorModelLow value="UnitDeathModelPersistent"/>
+        <BarOffset value="125"/>
+        <BarWidth value="138"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\WireFrame-NovaEx3-ScienceFacility.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <NameOffset value="125"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\BTN-Building-Nova-ScienceFacility.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\WireFrame-NovaEx3-ScienceFacility.dds"/>
+        </Wireframe>
+        <DeathArray index="Normal" ModelLink="NovaScienceFacilityDeath" SoundLink="ScienceFacility_Explode"/>
+    </CActorUnit>
+    <CActorSiteOpBankerUnit id="SOpBankerNovaGorgon">
+        <RollMax value="10.000000,3.000000"/>
+        <RollInActivationAngle value="5.000000"/>
+        <RollInArc value="105.000000,30.000000"/>
+        <RollOutDuration value="5.000000,1.000000"/>
+    </CActorSiteOpBankerUnit>
+    <CActorModel id="SeparatistDeathRagdoll" parent="UnitDeathRagdollBloodPrevent"/>
+    <CActorUnit id="Separatist" parent="GenericUnitBase" unitName="Separatist">
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply Fast"/>
+        <On Terms="Behavior.WalkSlow.On" Send="AnimGroupRemove Fast"/>
+        <On Terms="Behavior.WalkSlow.Off" Send="AnimGroupApply Fast"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On Terms="AnimDone; AnimName Cheer" Target="SeparatistCheerSquib" Send="Destroy"/>
+        <On Terms="AnimDone; AnimName Cheer" Target="SeparatistCheerSquibSound" Send="Destroy"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Separatist_Land"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionGround"/>
+        <DeathCustoms ActorModel="SeparatistDeathRagdoll" ModelLink="SeparatistDeath_Ragdoll" Name="RagdollBasic">
+            <!-- Reducing blood on Terran units, for now... -->
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollBloodPrevent" ModelLink="SeparatistDeath_Ragdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ModelLink="TerranSmallBiologicalUnitDeathLow" Name="AntiGravTerran"/>
+        <DeathArray index="Normal" ModelLink="SeparatistDeath" SoundLink="Marine_DeathFXBloodSpray"/>
+        <DeathArray index="Eviscerate" ModelLink="SeparatistDeath_Eviscerate" SoundLink="Uni_DeathFXEviscerate" VoiceLink="DxFx_ManDeath_Exerts"/>
+        <DeathArray index="Fire" ModelLink="SeparatistDeath_Fire"/>
+        <DeathArray index="Silentkill" SoundLink="Nova_Q_NeckBreak" VoiceLink="DxFx_ManDeath_Exerts"/>
+        <PortraitModel value="SeparatistPortrait"/>
+        <StandAnimTurnTime value="4"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSmall"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <SoundArray index="Ready" value="Trooper_Ready"/>
+        <SoundArray index="Help" value="Trooper_Help"/>
+        <SoundArray index="What" value="Trooper_What"/>
+        <SoundArray index="Yes" value="Trooper_Yes"/>
+        <SoundArray index="Attack" value="Trooper_Attack"/>
+        <SoundArray index="Pissed" value="Trooper_Pissed"/>
+        <AbilSoundArray AbilCmd="Stimpack,Execute" Sound="Trooper_Yes"/>
+        <BarOffset value="40"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-unit-terran-marine.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-dom-grunt.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-dom-grunt.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-dom-grunt.dds"/>
+        </Wireframe>
+        <Aliases value="_UnitSmall"/>
+    </CActorUnit>
+    <CActorSound id="Separatist_Land" parent="SoundOneShot"/>
+    <CActorAction id="SeparatistAttack" parent="GenericAttack" effectAttack="Separatist">
+        <LaunchAssets Sound="Raven_AutoTurretAttackLaunch"/>
+        <ImpactMap index="None" Sound="Raven_AutoTurretAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="SOAMothershipLineAttackV2" parent="GenericAttack" effectImpact="SOAMothershipLineAttackCasterImpactDummy" effectLaunch="SOAMothershipLineAttackV2Caster">
+        <LaunchSiteOps Ops="SOpOriginPoint SOpShadow"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpShadow"/>
+        <ImpactMap index="None" Model="SOAMothershipLineAttackImpact"/>
+    </CActorAction>
+    <CActorModel id="SOAMothershipLineAttackV2GroundFire" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.SOAMothershipLineAttackV2Search.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="SOAMothershipLineAttackGroundFire"/>
+    </CActorModel>
+    <CActorQuad id="SOAMothershipLineAttackV2Guide" parent="ZergGuideVisualQuadDown" abil="SOAMothershipLineAttackV2">
+        <LaunchActor value="ProtossGuideVisualQuadRedLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadRedCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadRedImpact"/>
+        <Height value="11.000000"/>
+        <Width value="2.000000"/>
+        <Decoration Actor="ProtossGuideVisualQuadRedDecoration" SpawnInterval="0.500000" TravelSpeed="10.000000">
+            <Flags index="UseLaunchActorScale" value="1"/>
+        </Decoration>
+    </CActorQuad>
+    <CActorSound id="SOAMothershipLineAttackV2Launch" parent="SoundOneShot"/>
+    <CActorSound id="SOAMothershipLineAttackV2Loop" parent="SoundContinuous">
+        <Sound value="ColossusTaldarim_Beam_Loop"/>
+        <Layers Sound="AC_FireWave_Loop">
+            <Chance value="100"/>
+            <Pitch value="2.000000,2.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="6.000000,6.000000"/>
+        </Layers>
+    </CActorSound>
+    <CActorQuad id="SOAMothershipLineAttackV2Preview">
+        <Aliases value="_GuideVisual"/>
+        <Aliases value="_Scalable"/>
+        <LaunchActor value="ProtossGuideVisualQuadRedLaunch"/>
+        <CenterActor value="ProtossGuideVisualQuadRedCenter"/>
+        <ImpactActor value="ProtossGuideVisualQuadRedImpact"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpForwardTargetPoint SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="ActorDestruction" Target="_GuideRegion" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="_GuideQuadSegment" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Effect.SOAMothershipLineAttackV2Delay.Start" Send="Create"/>
+        <On Terms="Effect.SOAMothershipLineAttackV2Delay.Stop" Send="Destroy"/>
+        <Quad value="-0.500000,-1.000000,0.500000,0.000000"/>
+        <Height value="16.000000"/>
+        <Width value="2.000000"/>
+        <Decoration Actor="ProtossGuideVisualQuadRedDecoration" SpawnInterval="0.500000" TravelSpeed="10.000000">
+            <Flags index="UseLaunchActorScale" value="1"/>
+        </Decoration>
+    </CActorQuad>
+    <CActorModel id="SOAMothershipLineAttackV2Impact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.SOAMothershipLineAttackV2Damage.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="SOAMothershipLineAttackImpact"/>
+        <AutoScaleFactor value="1.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorMissile id="SOAMothershipLineAttackV2Missile" parent="GenericAttackMissile" unitName="SOAMothershipLineAttackV2Weapon">
+        <On Terms="ActorCreation" Send="Create SOAMothershipLineAttackV2MissileBeam"/>
+        <On Terms="ActorDestruction" Target="SOAMothershipLineAttackV2MissileBeam" Send="Destroy"/>
+        <Model value="SOAMothershipLineAttackWeapon"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorMissile>
+    <CActorBeamSimple id="SOAMothershipLineAttackV2MissileBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="Create SOAMothershipLineAttackV2Launch"/>
+        <On Terms="ActorCreation" Send="Create SOAMothershipLineAttackV2Loop"/>
+        <On Terms="ActorDestruction" Target="SOAMothershipLineAttackV2Loop" Send="Destroy"/>
+        <On Terms="ActorDestruction" Send="Create VoidMothership_ThermalLance_BeamDeathSound"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpact Subject="_Missile"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+        <Model value="SOAMothershipLineAttackMissileBeam"/>
+        <Scale value="1.200000"/>
+    </CActorBeamSimple>
+    <CActorModel id="SOAMothershipLineAttackV2PowerUpModel" parent="ModelAnimationStyleOneShot">
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <On Terms="Effect.SOAMothershipLineAttackV2Initial.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="SOAMothershipLineAttackV2PowerUpSound" parent="SoundOneShot">
+        <Host Subject="_Unit" Scope="Target"/>
+        <Sound value="SOAMothershipLineAttackV2PowerUp"/>
+        <Layers Sound="VoidShard_UnstableEnergy_LaunchElectricRip">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="-20.000000,-20.000000"/>
+        </Layers>
+        <On Terms="Effect.SOAMothershipLineAttackV2Initial.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorUnit id="SubwayEntranceSW" parent="TerranBuilding" unitName="SubwayEntranceSW">
+        <Macros value="RemoveFlyerHelperMacro"/>
+        <Model value="PortCity_SubwayEntrance"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Medium"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <On Terms="Behavior.SubwayEntrancePowerOff.On" Send="AnimGroupRemove Work"/>
+        <On Terms="Behavior.SubwayEntrancePowerOff.Off" Send="AnimGroupApply Work Work,Start Work,End"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-novaex3-subwayentrance.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-novaex3-subwayentrance.dds"/>
+        </Wireframe>
+        <SoundArray index="What" value="SubwayEntrance_What"/>
+    </CActorUnit>
+    <CActorUnit id="Wraith">
+        <On Terms="Behavior.MercAirDropB.Create" Send="Create WraithReentryB"/>
+        <On Terms="Behavior.MercAirDropB.Create" Send="Create AC_HHWraith_AirDrop_AS"/>
+    </CActorUnit>
+</Catalog>
