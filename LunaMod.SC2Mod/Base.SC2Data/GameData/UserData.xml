@@ -329,10 +329,10 @@
             <Fixed Fixed="1">
                 <Field Id="PercentOfWaveRandom" Index="1"/>
             </Fixed>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
         </Instances>
@@ -355,13 +355,13 @@
             <Fixed Fixed="0.4">
                 <Field Id="PercentOfWaveRandom" Index="2"/>
             </Fixed>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
         </Instances>
@@ -387,13 +387,13 @@
             <Fixed Fixed="0.4">
                 <Field Id="PercentOfWaveRandom" Index="2"/>
             </Fixed>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
             <Unit Unit="InfestedAbomination">
@@ -428,13 +428,13 @@
             <Int Int="3">
                 <Field Id="minDifficulty" Index="4"/>
             </Int>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
             <Unit Unit="InfestedAbomination">
@@ -496,22 +496,22 @@
             <Fixed Fixed="0.2">
                 <Field Id="PhaseUnitsAlternateChance" Index="3"/>
             </Fixed>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="3"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="4"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="5"/>
             </Unit>
             <Unit Unit="InfestedAbomination">
@@ -585,19 +585,19 @@
             <Int Int="3">
                 <Field Id="minDifficulty" Index="6"/>
             </Int>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="3"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="4"/>
             </Unit>
             <Unit Unit="InfestedAbomination">
@@ -677,19 +677,19 @@
             <Int Int="3">
                 <Field Id="minDifficulty" Index="6"/>
             </Int>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits"/>
             </Unit>
-            <Unit Unit="InfestedExploder">
+            <Unit Unit="InfestedExploderAC">
                 <Field Id="PhaseUnits" Index="1"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="2"/>
             </Unit>
-            <Unit Unit="InfestedCivilian">
+            <Unit Unit="InfestedCivilianAC">
                 <Field Id="PhaseUnits" Index="3"/>
             </Unit>
-            <Unit Unit="InfestedTerranCampaign">
+            <Unit Unit="InfestedMarineAC">
                 <Field Id="PhaseUnits" Index="4"/>
             </Unit>
             <Unit Unit="InfestedAbomination">
@@ -1031,6 +1031,78 @@
                 <Field Id="Source Upgrade"/>
             </Upgrade>
             <Upgrade Upgrade="TerranVehicleAndShipWeaponsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergGroundArmorsExtraLevel1">
+            <Upgrade Upgrade="ZergGroundArmorsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergGroundArmorsExtraLevel2">
+            <Upgrade Upgrade="ZergGroundArmorsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergGroundArmorsExtraLevel3">
+            <Upgrade Upgrade="ZergGroundArmorsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMeleeWeaponsExtraLevel1">
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMeleeWeaponsExtraLevel2">
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMeleeWeaponsExtraLevel3">
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMissileWeaponsExtraLevel1">
+            <Upgrade Upgrade="ZergMissileWeaponsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMissileWeaponsExtraLevel2">
+            <Upgrade Upgrade="ZergMissileWeaponsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergMissileWeaponsExtraLevel3">
+            <Upgrade Upgrade="ZergMissileWeaponsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsExtraLevel3">
                 <Field Id="Target Upgrades"/>
             </Upgrade>
         </Instances>

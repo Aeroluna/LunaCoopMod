@@ -139,6 +139,7 @@ thanks Enoki.
 - Reduced Infestor (and variants) model scale from 0.85 to 0.75.
 - Added Burrow Move passive icon to the Infestor's (and variants) command card.
 - Increased visual scale of Cyclone's weapon missile by 100%.
+- Changed mineral field/vespene geyser footprint to match Versus.
 
 Copied from Versus.
 
@@ -179,16 +180,22 @@ thanks OmniSkeptic.
 
 It just looks nice c:
 
-- Reduced health of Cyclone from 200 to 120.
+- Reduced Cyclone life from 200 to 120.
 - Increased movement speed of Cyclone from 2.8125 to 3.375.
-- Reduced damage of Cyclone's Lock On missiles from 25 to 20 (Total reduced from 500 to 400).
-- Reduced damage of Lock On with Mag-Field Accelerators missles from 40 to 30 (Total reduced from 1000 to 600).
+- Reduced Cyclone's Lock On missile damage from 25 to 20 (Total reduced from 500 to 400).
+- Reduced Lock On with Mag-Field Accelerators missle damage from 40 to 30 (Total reduced from 1000 to 600).
 - Changed Lock On missile damage from ranged damage to spell damage (No longer affected by armor).
 - Changed Lock On autocast to prioritize air units that threaten the Cyclone.
 - Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
 Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
+
+- Increased Infested Swarm Egg life from 70 to 75.
+- Added Biological tag to Infested Swarm Egg.
+- Changed Infested Swarm Egg to be selected with Select Army Units.
+
+Copied from Versus. Biological added and a slight health increase to compensate.
 
 - Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
 - Increased Shield Battery range by 2.
@@ -237,6 +244,8 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 - Fixed an issue where Observer's Observation Mode did not play any sounds.
 - Fixed an issue where the shield fizzle animation played on zerg units with shields.
+- Fixed an issue where Banelings/Volatile Infested would show a buff for a moment before exploding.
+- Fixed an issue where Void Shards/Void Slivers had the attack priority of attacking structures.
 
 yeah.
 
@@ -420,7 +429,7 @@ For some reason Co-op halves this charge time, this change returns it to normal 
 - Reduced Raven's Auto-Turret duration from 180 seconds to 11 seconds.
 - Reduced range of Raven's Build Auto-Turret from 3 to 2.
 - Increased damage of Auto-Turret's 12mm Gauss Cannon from 8 to 18.
-- Reduced Auto-Turret health from 150 to 100.
+- Reduced Auto-Turret life from 150 to 100.
 - Reduced Auto-Turret armor from 1 to 0.
 
 Copied from Versus. Duration of Raven's summons massively reduced, and in return, auto-turret damage is greatly increased. It was a common problem that a Raven from an attack wave would place an Auto-Turret or Point Defense Drone and the map ping would not disappear until the unit timed out 3 minutes later.
@@ -631,7 +640,7 @@ yeah.
       - Uses melee animation at short range.
     - Replaces Chain Reaction with Psionic Cleave.
       - Grants AOE damage to weapon attacks.
-  - Replaces all combat units with elite Brood War variants that have 200% more health and 50% more weapon damage but cost 200% more resources and supply.
+  - Replaces all combat units with elite Brood War variants that have 200% more life and 50% more weapon damage but cost 200% more resources and supply.
   - Replaces Zergling with Devouring One.
     - Gains Cannibalize passive.
       - Heals for 40 life when a biological unit dies nearby.
@@ -662,7 +671,7 @@ Elite Zerglings are my personal favorite, their Cannibalize passive fits their n
 - Added missing tooltip to Malignant Creep when P1 is used.
 - Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
-  - Advantage additionally increases combat unit health by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
+  - Advantage additionally increases combat unit life by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
 
 Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
 
@@ -780,9 +789,9 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
 
 These changes should make Thors much more competitive.
 
-- Buffed Infernal Plating upgrade to additionally increase Hellbat/Hellion hp by 40.
+- Buffed Infernal Plating upgrade to additionally increase Hellbat/Hellion life by 40.
 
-Increased Hellion/Hellbat health should make mineral dumping into them more efficient and make them more viable as a frontline.
+Increased Hellion/Hellbat life should make mineral dumping into them more efficient and make them more viable as a frontline.
 
 - Added Widow Mines.
   - Added Hellburst Payload upgrade, which increases Sentinel Missile direct damage by 20 and splash damage by 80.
@@ -820,7 +829,7 @@ It takes forever to eco up on Swann. Maybe now not so much.
 The turret/mech commander gets more improvements to sustaining turrets/mech.
 
 - Buffed P2.
-  - Upgrade Fire Suppression System heals structures to 100% health.
+  - Upgrade Fire Suppression System heals structures to 100% life.
 
 P2 suspiciously improved all upgrades but this one.
 
@@ -862,10 +871,10 @@ Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking fa
 One of Zagara's greatest weaknesses is the inability to hit a critical mass of units to trade efficiently.
 
 - Buffed P2
-  - Increased bonus health regen for Aberrations from 3 to 6.
+  - Increased bonus life regen for Aberrations from 3 to 6.
   - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
 
-Fun fact: due to an oversight, the Corruptor bonus health regen is applied twice, effectively increasing their health regen by 6. The Aberration's health regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
+Fun fact: due to an oversight, the Corruptor bonus life regen is applied twice, effectively increasing their life regen by 6. The Aberration's life regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
 
 - Reworked Bile Launchers.
   - Can now target enemies automatically.
@@ -1142,6 +1151,10 @@ Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel bu
 
 Only the research tooltips should highlight unit names, not passives.
 
+- Fixed an issue where Leviathan's air attack projectiles were all launched from one point.
+
+Leviathan's have four holes, use them all! This bug was caused by using the original WoL Leviathan's attach method instead of one for Abathur's Leviathan.
+
 ### Alarak
 
 - Added P4: First Ascendant
@@ -1228,6 +1241,10 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 
 Typically when using the Death Fleet or playing P3, you would end up with a lot of visual clutter of bouncing beams that end up doing 0.5 damage to a Zergling that has +1 armor. Reducing the amount of active Destroyers but making them more impactful should better match the visual intensity of their bouncing attack.
 
+- Increased Destroyer warp-in time from 2 seconds to 5 seconds.
+
+Destroyers having such a low warp-in time made the warp-in finish before the animation, looking buggy.
+
 - Buffed Alarak's Soul Absorption passive to additionally proc when friendly units die.
 
 Friendly units shouldn't be dying anyways, so why not get some value when it happens?
@@ -1289,7 +1306,7 @@ yeah.
       - Dash Attack reworked, should more reliably charge in target direction, but may get stuck on impassable terrain.
       - Dash Attack also grants a brief amount of invulnerability.
     - Turbojet Jumpsuit
-      - Allows cliff jumping. Increases max health by 250.
+      - Allows cliff jumping. Increases max life by 250.
     - Stim Infusion
   - Operation Efficiency and Infernal Projectiles affect Fury of One and Dash Attack respectively.
 
@@ -1578,8 +1595,8 @@ yeah.
 
 - Added Ordnance Towers that can be built by SCVs.
   - These are flying defensive structures with long-range attacks.
-  - Spawns up to 4 Valkyries that fly around and defend the area.
-    - Valkyries have 100 hp and their own long-range missile attack.
+  - Spawns up to 6 Valkyries that fly around and defend the area.
+    - Valkyries have 100 life and their own long-range missile attack.
   - Can use Nano-Repair ability to heal mech units.
   - Can detect cloaked units.
   - Can use Tactical Jump ability to reposition.
@@ -1692,13 +1709,19 @@ The Sovereign Battlecruiser has a fully functional teleport animation, so let's 
 
 Fun fact: the second bug was caused by trying to launch the missile to a position 500 units away, which would cause strange clamping issues out of bounds.
 
+- Changed Wraith reentry sound effect.
+
+It used the Banshee reentry sound effect, which had a distinct helicopter sound. It's been swapped to the Vikign reentry sound.
+
 - Fixed an issue where canceling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.
 - Fixed an issue where Call in the Fleet targeting reticles would visually bank with the targeted unit.
 - Changed Theia Raven Silent Mode ability to no longer require decelerating to cast.
 - Added unique visual effect for Theia Raven Silent Mode instead of reusing the Overseer's.
 - Fixed an issue where Hellbat's Wildfire Explosives fear effect would stop the AI of affected units.
+- Fixed an issue where Hellbat's Wildfire Explosives would affect invulnerable units.
 - Fixed an issue where Mag Mines would not play their entire animation when firing.
+- Fixed an issue where killing a Strike Fighter Platform while the Strike Fighter is deployed would cause a mysterious Strike Fighter model to show up.
 
 yeah.
 
@@ -1942,7 +1965,7 @@ Energy-based abilities should have a low cooldown!
 - Changed Mecha Ultralisk's Mecha Mooch Module autocast to prioritize friendly units with the most life.
 - Changed Mecha Ultralisk's Mecha Mooch Module to allow autocasting on other Mecha Ultralisks.
 - Changed Mecha Ultralisk's Mecha Mooch Module only autocast friendly units with a greater health percent.
-- Changed Mecha Ultralisk's Mecha Mooch Module only autocast friendly units when missing 30 health.
+- Changed Mecha Ultralisk's Mecha Mooch Module only autocast friendly units when missing 30 life.
 - Buffed Mecha Ultralisk's Mecha Mooch Module to only deal half damage to friendly units, but still heal full.
 - Increased Mecha Ultralisk's Mecha Mooch Module absorb amount from 25 to 30.
 - Reduced Mecha Ultralisk's Mecha Mooch Module sound volume.
@@ -2034,9 +2057,9 @@ Emperor's Shadows are limited by energy anyways, so why do they have cooldowns o
 
 - Reduced cooldown of Emperor's Shadow's Labryinth Cloak ability from 30 seconds to 20 seconds.
 - Added Shadow of the Dominion passive to Emperor's Shadows.
-  - While cloaked, gain health regen and 30% move speed.
+  - While cloaked, gain life regen and 30% move speed.
 
-With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labryinth Cloak. Now cloak has increased uptime and grants health regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
+With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labryinth Cloak. Now cloak has increased uptime and grants life regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
 
 - Changed Emperor's Shadow's Pyrokinetic Immolation ability to apply instantly rather with a projectile (Projectile is purely visual).
 

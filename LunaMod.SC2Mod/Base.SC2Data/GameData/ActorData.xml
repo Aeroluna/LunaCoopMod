@@ -4,6 +4,9 @@
         <On Terms="Effect.330mmBarrageCannonsSearch.Impact; At Caster" Send="Create"/>
         <Sound value="Thor_BarrageLaunch"/>
     </CActorSound>
+    <CActorSound id="AC_HHWraith_AirDrop_AS">
+        <Sound value="HH_Viking_AirDrop"/>
+    </CActorSound>
     <!--CActorUnit id="AbathurSymbioteBrutalisk">
         <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper All" Send="Create FlyerHelperSplat"/>
         <Remove Terms="StatusOn.*.FlyerHelper; FlyerHelper Selected" Send="Create FlyerHelperSplat"/>
@@ -170,6 +173,198 @@
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 4.000000}"/>
         <Host Subject="_Selectable"/>
     </CActorModel>
+    <CActorUnit id="HHBomberPlatform">
+        <On index="96" Terms="Behavior.HHBomberPlatformAreaBombDisabler.Off; ValidateUnit SourceNotDead"/>
+    </CActorUnit>
+    <CActorUnit id="Hercules">
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="SetOpacity"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Send="SetOpacity 1.000000"/>
+        <On Terms="Behavior.HyperjumpTeleportInstant.On" Send="Create HerculesTacticalJumpPlacement"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Target="HerculesTacticalJumpPlacement" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="Create HerculesHyperjumpLaunch"/>
+        <On Terms="Behavior.HyperjumpTeleportInstantIn.On" Send="Create HerculesHyperjumpImpact"/>
+    </CActorUnit>
+    <CActorAction id="HotSLeviathanAirAttack">
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMPatternHotSLeviathanAir"/>
+    </CActorAction>
+    <CActorUnit id="InfestedCivilianAC" parent="GenericBurrowerStandard" unitName="InfestedCivilianAC">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <On Terms="ActorCreation" Send="TextureSelectBySlot main {RequireAll diffuse}"/>
+        <On Terms="ActorCreation" Send="TextureSelectByMatch main.specular main"/>
+        <On Terms="ActorCreation" Send="Create InfestedCivilian_Moan"/>
+        <On Terms="AbilMorph.MorphToInfestedCivilian.Finish; MorphTo InfestedCivilian" Send="Create"/>
+        <On Terms="AbilMorph.MorphToInfestedCivilian.Finish; MorphTo InfestedCivilian" Send="$Birth 0 0.000000"/>
+        <On Terms="ActorCreation" Send="Create InfestedCivilian_BirthVoxSound"/>
+        <Model value="InfestedCivilian"/>
+        <BuildModel value="InfestedCivilian"/>
+        <DeathArray index="Normal" ModelLink="InfestedCivilianDeath" SoundLink="InfestedCivilian_Explode"/>
+        <DeathArray index="Fire" ModelLink="InfestedCivilianDeathFire" SoundLink="Uni_DeathFXFire"/>
+        <DeathCustoms ActorModel="InfestedCivilianDeathRagdoll" ModelLink="InfestedCivilianDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="BloodReduced"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollBloodPrevent" ModelLink="InfestedCivilianDeathRagdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <DeathActorModel value="InfestedCivilianDeath"/>
+        <PlacementModel value="InfestedCivilian"/>
+        <PortraitModel value="InfestedColonistPortrait"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarOffset value="45"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="Birth" value="InfestedTerranBirth"/>
+        <GroupSoundArray index="Ready" value="InfestedTerranReady"/>
+        <GroupSoundArray index="Help" value="InfestedTerranHelp"/>
+        <GroupSoundArray index="What" value="InfestedTerranWhat"/>
+        <GroupSoundArray index="Yes" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Attack" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="Birth" value="InfestedTerranBirth"/>
+        <SoundArray index="Ready" value="InfestedTerranReady"/>
+        <SoundArray index="Help" value="InfestedTerranHelp"/>
+        <SoundArray index="What" value="InfestedTerranWhat"/>
+        <SoundArray index="Yes" value="InfestedTerranYes"/>
+        <SoundArray index="Attack" value="InfestedTerranYes"/>
+        <SoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <SoundArray index="Movement" value="InfestedTerranMovement"/>
+        <SoundArray index="Turning" value="InfestedTerranCampaignTurning"/>
+        <SoundArray index="Board" value="InfestedTerranCampaignBoard"/>
+        <SoundArray index="Click" value="InfestedTerranCampaignClick"/>
+        <SoundArray index="ClickError" value="InfestedTerranCampaignClickError"/>
+        <SoundArray index="Highlight" value="InfestedTerranCampaignHighlight"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorUnit id="InfestedExploderAC" parent="GenericBurrowerStandard" unitSound="InfestedCivilian" unitName="InfestedExploderAC">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="UnloadDropAnim"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+        <Model value="InfestedFatBomber_Civilian"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="InfestedFatBomber_Civilian"/>
+        <DeathArray index="Normal" ModelLink="InfestedFatBomber_Civilian_Death" SoundLink="InfestedCivilian_Explode"/>
+        <PlacementModel value="InfestedFatBomber_Civilian"/>
+        <PortraitModel value="InfestedExploderPortrait"/>
+        <WalkAnimMoveSpeed value="1.8007"/>
+        <BarOffset value="45"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="Birth" value="InfestedTerranBirth"/>
+        <GroupSoundArray index="Ready" value="InfestedTerranReady"/>
+        <GroupSoundArray index="Help" value="InfestedTerranHelp"/>
+        <GroupSoundArray index="What" value="InfestedTerranWhat"/>
+        <GroupSoundArray index="Yes" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Attack" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <GroupSoundArray index="Board" value="InfestedCivilian_GroupBoard"/>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <SoundArray index="Birth" value="InfestedTerranBirth"/>
+        <SoundArray index="Ready" value="InfestedTerranReady"/>
+        <SoundArray index="Help" value="InfestedTerranHelp"/>
+        <SoundArray index="What" value="InfestedTerranWhat"/>
+        <SoundArray index="Yes" value="InfestedTerranYes"/>
+        <SoundArray index="Attack" value="InfestedTerranYes"/>
+        <SoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <SoundArray index="Movement" value="InfestedTerranMovement"/>
+        <SoundArray index="Turning" value="InfestedTerranCampaignTurning"/>
+        <SoundArray index="Board" value="InfestedTerranCampaignBoard"/>
+        <SoundArray index="Click" value="InfestedTerranCampaignClick"/>
+        <SoundArray index="ClickError" value="InfestedTerranCampaignClickError"/>
+        <SoundArray index="Highlight" value="InfestedTerranCampaignHighlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="InfestedMarineAC" parent="GenericBurrowerStandard" unitName="InfestedMarineAC">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="ZergBurrowStandardAnimMacro"/>
+        <Macros value="ZergSmallBurrowEffects"/>
+        <On Terms="ActorCreation" Send="Create InfestedCivilian_Moan"/>
+        <On Terms="ActorCreation" Send="Create InfestedTerran_BirthVoxSound"/>
+        <Model value="InfestedTerranCampaign"/>
+        <BuildModel value="InfestedTerranCampaign"/>
+        <DeathArray index="Normal" ModelLink="InfestedMarineDeath" SoundLink="InfestedTerran_Explode"/>
+        <DeathArray index="Disintegrate" ModelLink="InfestedMarineDeathAcid" SoundLink="Uni_DeathFXAcid"/>
+        <DeathArray index="Fire" ModelLink="InfestedMarineDeathFire" SoundLink="Uni_DeathFXFire"/>
+        <DeathArray index="Timeout" ModelLink="InfestedMarineDeathTimeout" SoundLink="InfestedTerran_Explode"/>
+        <PlacementModel value="InfestedTerranCampaign"/>
+        <PortraitModel value="InfestedTerranPortrait"/>
+        <WalkAnimMoveSpeed value="1.5976"/>
+        <BarOffset value="45"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="Birth" value="InfestedTerranBirth"/>
+        <GroupSoundArray index="Ready" value="InfestedTerranReady"/>
+        <GroupSoundArray index="Help" value="InfestedTerranHelp"/>
+        <GroupSoundArray index="What" value="InfestedTerranWhat"/>
+        <GroupSoundArray index="Yes" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Attack" value="InfestedTerranYes"/>
+        <GroupSoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="Birth" value="InfestedTerranBirth"/>
+        <SoundArray index="Ready" value="InfestedTerranReady"/>
+        <SoundArray index="Help" value="InfestedTerranHelp"/>
+        <SoundArray index="What" value="InfestedTerranWhat"/>
+        <SoundArray index="Yes" value="InfestedTerranYes"/>
+        <SoundArray index="Attack" value="InfestedTerranYes"/>
+        <SoundArray index="Pissed" value="InfestedTerranPissed"/>
+        <SoundArray index="Movement" value="InfestedTerranMovement"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedmarine.dds"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-InfestedMarine.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
     <CActorModel id="InfestedTerranEggDeathModel">
         <Flags index="SuppressSaveLoad" value="1"/>
         <On Terms="ActorCreation" Send="$Death"/>
@@ -2213,6 +2408,11 @@
         <NameOffset value="100"/>
         <PortraitModel value="AdjutantPortrait"/>
     </CActorUnit>
+    <CActorUnit id="HHOrdnanceTowerPlacement" parent="TerranBuilding" unitName="HHOrdnanceTowerPlacement">
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <PlacementModel value="HHOrdnanceTower_Placement"/>
+        <PlacementActorModel value="HHOrdnanceTowerPlacementModel"/>
+    </CActorUnit>
     <CActorUnit id="HHOrdnanceTowerConstruction" parent="TerranBuilding" unitName="HHOrdnanceTowerConstruction">
         <On Terms="AbilMorph.*.Start; MorphFrom HHOrdnanceTowerConstruction" Send="Destroy"/>
         <Model value="HHOrdnanceTower"/>
@@ -3425,6 +3625,12 @@
         <Model value="ArtanisAstralWindImpactModel"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorModel id="MedivacReentry" parent="ModelAdditionNoAnims">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSDb Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSDb" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create AC_HHViking_AirDrop_AS"/>
+        <!-- positions funny in the surround speakers -->
+    </CActorModel>
     <CActorUnit id="Medivac">
         <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
         <On Terms="Behavior.VehicleAfterburners.On" Send="StatusSet Turbo 1"/>
@@ -3436,6 +3642,7 @@
         <On Terms="AbilTransport.MedivacTransport.TransportLoad; AbilTransport SiegeTankSieged" Send="Create SiegeTankSiegedTransit"/>
         <On Terms="Signal.*.TankTransit" Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
         <On Terms="AbilTransport.MedivacTransport.PassengerKilled; AbilTransport SiegeTankSieged" Target="::actor.Thor" Send="Signal Dead"/>
+        <On Terms="Behavior.MercAirDropB.Create" Send="Create MedivacReentry"/>
     </CActorUnit>
     <CActorBeamSimple id="MedivacHealBeamRev1">
         <On Terms="Effect.MedivacRaynorHeal.TargetStart" Send="Create"/>
@@ -4102,6 +4309,7 @@
     </CActorSound>
     <CActorProgress id="ProtossWarpIn">
         <On index="5" Send="$Birth 0 0.000000 0.000000"/>
+        <On index="6" Send="$Birth 0 0.000000 0.000000"/>
     </CActorProgress>
     <CActorModel id="PurifierPlanetCrackerImpact">
         <On Terms="Effect.MothershipArtanisPlanetCrackerDamage.Start; At Target" Send="Create"/>
@@ -4325,9 +4533,9 @@
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
         <Macros value="VoidRayGimbalMacro"/>
-        <Remove Terms="AnimDone; AnimName Spell" Send="ModelSwap VoidRayTaldarim"/>
+        <!--Remove Terms="AnimDone; AnimName Spell" Send="ModelSwap VoidRayTaldarim"/>
         <Remove Terms="AnimDone; AnimName Spell" Send="AnimClear Spell"/>
-        <On Terms="Behavior.WarpInEffect.Off" Send="ModelSwap VoidRayTaldarim"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="ModelSwap VoidRayTaldarim"/-->
         <On Terms="Behavior.WarpInEffect.Off; IsStatus WeaponAnim 1" Send="AnimBracketStart Powered Attack Stand,Channel Attack,End"/>
     </CActorUnit>
     <CActorRange id="VortexArtanisRange" parent="RangeAbil" abil="VortexArtanis">
@@ -4915,7 +5123,7 @@
         <On Terms="Signal.*.GimbalSetUp" Target="::Main" Send="HostSiteOpsSet ::Host SOpAttachTarget"/>
         <On Terms="Signal.*.GimbalSetUp" Send="RefSet ::HostForProps _Unit"/>
         <HostForProps Subject="_Unit"/>
-        <Model value="PhotonCannon"/>
+        <Model value="StrippedCannon"/>
         <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
         <AcceptedHostedPropTransfers index="CastShadows" value="0"/>
         <AcceptedHostedPropTransfers index="CloakEffect" value="0"/>
@@ -4928,5 +5136,6 @@
         <AcceptedHostedPropTransfers index="TintColor" value="0"/>
         <AcceptedHostedPropTransfers index="WarpGroup" value="0"/>
         <Supporter Subject="_Unit"/>
+        <HostSiteOps Ops="SOpBankerVoidRay"/>
     </CActorModel>
 </Catalog>

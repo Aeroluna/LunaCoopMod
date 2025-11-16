@@ -130,6 +130,9 @@
         <Field value="Race"/>
         <Value value="PZrg"/>
     </CValidatorUnitCompareField>
+    <CValidatorUnitFilters id="LockOnCasterFilters">
+        <Filters value="-;Stasis,Dead,Hidden,Stunned,Silenced"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeHornerDefenseCooldown">
         <Behavior value="CommanderPrestigeHornerDefenseCooldown"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -720,6 +723,10 @@
         <CombineArray value="LockOnAutoCastCheckB"/>
         <Negate value="1"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveCycloneLockOnCooldownBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="CycloneLockOnCooldown"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitOrder id="LockOnAutoCastCheckB">
         <AbilLink value="LockOn"/>
         <CmdFlags index="SetAutoCast" value="1"/>

@@ -104,6 +104,7 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="12" Effect="CommanderPrestigeHornerDefenseLaunchDummy"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="CommanderPrestigeHornerDefenseCooldownCP">
         <EditorCategories value=""/>
@@ -283,6 +284,22 @@
             <Charge CountUse="-1"/>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectDamage id="InfestedCivilianAC">
+        <EditorCategories value="Race:Zerg"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Kind value="Melee"/>
+        <Amount value="8"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="InfestedMarineAC" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="5"/>
+    </CEffectDamage>
     <CEffectModifyPlayer id="InfestorStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-1"/>
@@ -665,11 +682,11 @@
     </CEffectSet>
     <CEffectEnumArea id="HHHellionTankDeathFearSearch">
         <AreaArray index="0" Effect="HHHellionTankDeathFearImpactSet"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="HHHellionTankDeathFearSearchUpgrade">
         <AreaArray index="0" Effect="HHHellionTankDeathFearImpactSet"/>
-        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectLaunchMissile id="HHLaserBatteryLM">
         <Movers Link="YamatoWeapon"/>
@@ -758,8 +775,8 @@
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <ClearQueuedOrders value="0"/>
-        <PlacementAround Effect="OrdnanceFleetwideJumpCreatePrecursor"/>
-        <PlacementRange value="15"/>
+        <!--PlacementAround Effect="OrdnanceFleetwideJumpCreatePrecursor"/>
+        <PlacementRange value="15"/-->
         <TargetLocation Effect="OrdnanceFleetwideJumpCreatePrecursor" Value="TargetPoint"/>
         <TeleportFlags index="TestFog" value="0"/>
     </CEffectTeleport>
@@ -1053,6 +1070,16 @@
     <CEffectLaunchMissile id="CycloneAirWeaponLaunchMissileRight">
         <ImpactEffect value="CycloneAirWeaponDamage"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="CycloneAttackWeaponLaunchMissileLeftSet">
+        <EffectArray value="CycloneCooldownAB"/>
+    </CEffectSet>
+    <CEffectSet id="CycloneAttackWeaponLaunchMissileRightSet">
+        <EffectArray value="CycloneCooldownAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="CycloneCooldownAB">
+        <WhichUnit Value="Source"/>
+        <Behavior value="CycloneLockOnCooldown"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="CycloneWeaponDamage">
         <ArmorReduction value="0"/>
         <Amount value="20"/>
@@ -1067,6 +1094,30 @@
         <EffectArray index="0" value="CycloneWeaponLaunchMissileRight"/>
         <EffectArray index="1" value="CycloneAirWeaponLaunchMissileRight"/>
     </CEffectSet>
+    <CEffectSet id="CycloneWeaponLaunchSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="CycloneWeaponLaunchMissileSwitch"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="CycloneWeaponLaunchMissileLeft">
+        <ValidatorArray index="0" value="CycloneWeaponLaunchMissileLeftTargetFilters"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="CycloneWeaponLaunchMissileLeftSetNew">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="CycloneWeaponLaunchMissileLeft"/>
+        <EffectArray value="CycloneWeaponLaunchMissileAlternateAB"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="CycloneWeaponLaunchMissileRight">
+        <ValidatorArray index="0" value="CycloneWeaponLaunchMissileRightTargetFilters"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="CycloneWeaponLaunchMissileRightSetNew">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="CycloneWeaponLaunchMissileRight"/>
+        <EffectArray value="CycloneWeaponLaunchMissileAlternateRB"/>
+    </CEffectSet>
+    <CEffectSwitch id="CycloneWeaponLaunchMissileSwitch">
+        <CaseArray index="0" Effect="CycloneWeaponLaunchMissileRightSetNew"/>
+        <CaseDefault value="CycloneWeaponLaunchMissileLeftSetNew"/>
+    </CEffectSwitch>
     <CEffectSet id="DarkArchonWeapon">
         <EffectArray value="DarkArchonWeapon1Delay"/>
         <Marker Link="DarkArchonWeapon">
@@ -1552,9 +1603,12 @@
         <PeriodicEffectArray value="Liberator_BlackOpsTargetMorphSearchArea"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
-    <CEffectSet id="LockOnInitialSet">
-        <EffectArray value="LockOnDummyWeaponAB"/>
+    <CEffectSet id="LockOnInitialSetNew">
         <ValidatorArray value="TargetNotInvisibleDummyUnit"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="LockOnTurretStart"/>
+        <EffectArray value="LockOnResetCooldownInitial"/>
+        <EffectArray value="LockOnDummyWeaponAB"/>
     </CEffectSet>
     <CEffectSet id="LockOnClearSet">
         <EffectArray value="LockOnDummyWeaponRB"/>
@@ -1566,8 +1620,8 @@
     </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="LockOnDummyWeaponRB">
         <EditorCategories value="Race:Terran"/>
-        <BehaviorLink value="LockOnDummyWeapon"/>
         <WhichUnit Value="Caster"/>
+        <BehaviorLink value="LockOnDummyWeapon"/>
     </CEffectRemoveBehavior>
     <CEffectSwitch id="MarauderMagrailMunitionsCCSwitch">
         <EditorCategories value=""/>
@@ -1767,6 +1821,7 @@
         <ValidatorArray index="0" value="NotHavePrestigeSymbiote"/>
         <ValidatorArray value="NotAtFullSupply"/>
         <ValidatorArray value="NotUnderConstruction"/>
+        <ValidatorArray value="TargetIsNotNonCommanderAlly"/>
         <Behavior value="AbathurPrestigeSymbiote"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AdvancedBombardmentSet">
@@ -2424,7 +2479,6 @@
     <CEffectEnumArea id="HyperionVoidCoopSecondaryWeaponSearch">
         <IncludeArray Value="Target"/>
         <AreaArray index="0" Radius="6.5"/>
-        <SearchFlags index="OffsetByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="ImmortalTaldarimWeaponRandomLarge">
         <PeriodCount value="8"/>

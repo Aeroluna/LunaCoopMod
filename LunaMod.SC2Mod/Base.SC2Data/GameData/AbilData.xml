@@ -22,7 +22,7 @@
         <CmdButtonArray index="Execute" State="Available"/>
     </CAbilEffectTarget>
     <CAbilWarpTrain id="AlarakMothershipWarpTrain">
-        <InfoArray index="Train15">
+        <InfoArray index="Train15" Time="5">
             <Charge CountMax="4" CountStart="4" TimeUse="40"/>
         </InfoArray>
     </CAbilWarpTrain>
@@ -440,7 +440,7 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="FleetwideJump" Requirements="HaveHHTacticalJump">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <PlaceUnit value="HHOrdnanceTower"/>
+        <PlaceUnit value="HHOrdnanceTowerPlacement"/>
     </CAbilEffectTarget>
     <CAbilMorph id="OverseerMorphtoOverseerSiege">
         <Flags index="WaitUntilStopped" value="0"/>
@@ -752,7 +752,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HyperjumpNoVision">
         <Effect index="0" value="HyperjumpCreatePrecursorInstant"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="HyperjumpInstant" Requirements="HaveRaynorCommander"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HyperjumpInstant" Requirements="UseTacticalJumpNoVision"/>
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LiberatorAGTarget">
@@ -808,6 +808,9 @@
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LockOn">
+        <Effect index="0" value="LockOnInitialSetNew"/>
+        <AutoCastValidatorArray value="CasterIsNotHidden"/>
+        <AutoCastValidatorArray value="NotLarvaEgg"/>
         <TargetSorts>
             <SortArray value="TSThreatensCyclone"/>
             <SortArray value="AirTarget"/>

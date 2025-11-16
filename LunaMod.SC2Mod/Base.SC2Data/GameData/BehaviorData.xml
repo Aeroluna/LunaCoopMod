@@ -38,6 +38,9 @@
     <CBehaviorBuff id="AutoTurretTimedLife">
         <Duration value="11"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BanelingExplodeDelay">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeDehakaArmySupply">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -180,6 +183,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ChokedDisableAbils">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <StateFlags index="Silence" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="CloakDistortionField">
         <DamageResponse>
@@ -396,6 +402,20 @@
         <UnitAddedAtMaxRule value="ReplaceOldest"/>
         <ReplacedEffect value="Kill"/>
     </CBehaviorUnitTracker>
+    <CBehaviorBuff id="LeapStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LeapStunShort">
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -442,6 +462,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="InfestorStetmannInfestBuilding">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="JUICEOverloadStetmann">
         <Alignment value="Positive"/>
@@ -768,7 +791,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="0.0625"/>
-        <ExpireEffect value="HyperjumpTeleportInAB"/>
+        <ExpireEffect value="HyperjumpTeleportInstantInAB"/>
         <Modification>
             <StateFlags index="Invulnerable" value="1"/>
             <StateFlags index="SuppressAttack" value="1"/>
@@ -1017,6 +1040,16 @@
     <CBehaviorBuff id="SIInfestedTrooperMarinePlaguedMunitions">
         <BehaviorCategories index="Restorable" value="1"/>
         <RemoveValidatorArray value="NotHaveCommanderPrestigeStukovNeural"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SIStukovInfestStructureEnemyDisable">
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SIStukovInfestStructureEnemyTarget">
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="SOAMapWideChronoPassive">
         <RemoveValidatorArray value="NoCommanderPrestigeKaraxUnitChrono"/>
@@ -1725,6 +1758,18 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Duration value="0.1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="LockOnDisableAttack">
+        <Modification>
+            <WeaponArray index="0" removed="1"/>
+            <WeaponArray index="1" removed="1"/>
+        </Modification>
+        <RemoveValidatorArray index="0" value="LockOnTargetNotDead"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CycloneLockOnCooldown">
+        <InfoFlags index="Hidden" value="1"/>
+        <TimeScaleSource Value="Caster"/>
+        <Duration value="0.812"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MovingLockOn">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -1759,6 +1804,13 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorMomentOfSilence">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="0"/>
+            <ModifyFlags index="DisableWeapons" value="0"/>
+            <ModifyFlags index="EnableMove" value="0"/>
+            <StateFlags index="Silence" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorPlagueBehavior">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -2051,6 +2103,7 @@
         <Modification MoveSpeedMinimum="2">
             <ModifyFlags index="DisableAbils" value="1"/>
             <ModifyFlags index="Detected" value="1"/>
+            <StateFlags index="Stun" value="1"/>
             <StateFlags index="SuppressAttack" value="1"/>
             <StateFlags index="SuppressCloak" value="1"/>
             <StateFlags index="SuppressCollision" value="1"/>
