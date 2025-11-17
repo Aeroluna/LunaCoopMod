@@ -540,7 +540,7 @@ Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! The
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying Medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
 
-- Increased Siege Tank (Sieged) cargo size to 8.
+- Increased Siege Tank (Sieged) cargo size from 4 to 8.
 
 Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann so this might need to be revisited.
 
@@ -562,10 +562,6 @@ Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly worki
 - Added Cellular Reactor upgrade, which gives Medics full starting energy.
 
 Anyone who has played P1 knows how painful it is to get energy on these things.
-
-- Changed Medic portrait.
-
-Changed to be distinct from the Medivac portrait.
 
 - Reduced Firebat weapon backswing and damage point.
 
@@ -2135,7 +2131,6 @@ yeah.
 - Female Nerazim Shadow Archon - DaveSpectre
 - Mothership Placement & Warp In - DaveSpectre
 - Nerazim Probe - DaveSpectre
-- Alternate Medic & Medivac Portraits - miazmatic
 - SC: Evolution Complete for Creators - SC: Evolution Complete Team
 - Infested Kerrigan - StarCraft: Remastered look - DaveSpectre
 - Brood Queen / SC1 Queen Portrait + Leviathan Brood Version - DaveSpectre
