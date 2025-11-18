@@ -285,28 +285,46 @@ Added Brutal+ system.
 
 \* New difficulties
 
-- Added new mutator: Teeming
+- Added Mutator alignments.
+  - Mutators can either be Negative, Neutral, or Positive.
+  - Can roll up to two Neutral or Positive mutators (if enabled).
+
+What if there were mutators that helped you or mutators that changed the way you played without strictly buffing Amon? Now it's possible to roll some helpful mutators!
+
+- Added new negative mutator: Teeming
   - Enemies begin with twice as many units.
   - Costs 1 points for Brutal+.
 
 Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
 
-- Added new mutator: Harassment
+- Added new negative mutator: Harassment
   - Enemies will periodically send units to harass player mineral lines.
   - Costs 7 points for Brutal+.
 
 Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
 
-- Added new mutator: Whiteout
+- Added new neutral mutator: Whiteout
   - Adds snowy weather.
   - Occasional whiteouts obscure the battlefield.
   - Slows all units movement speed by 20%.
   - Caps all unit sight radius to 6.
   - Disables shared vision with ally.
   - Disables minimap objective pings.
-  - Costs 3 points for Brutal+.
+  - Costs 1 point for Brutal+.
 
 It's like the Darkness mutator but cooler!
+
+- Added new neutral mutator: Ethereal
+  - All spell damage is increased by 100%.
+  - Non-spell damage is reduced by 50%.
+
+Get your High Templar ready.
+
+- Added positive mutator: Lucky Envelopes.
+  - Costs -1 point for Brutal+.
+- Added neutral mutator: Gift Exchange.
+
+Some holiday-exclusive mutators have been added to Brutal+ using the new alignment system.
 
 - Added Infestation Station to Brutal+ costing 3 points.
 - Added Great Wall to Brutal+ costing 5 points.

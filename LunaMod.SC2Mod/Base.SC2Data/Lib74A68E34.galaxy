@@ -37,10 +37,6 @@ void lib74A68E34_InitVariables () {
 
     lib74A68E34_InitVariables_completed = true;
 
-    lib74A68E34_gv_mutatorListRandomizerDialog = c_invalidDialogId;
-    lib74A68E34_gv_mutatorListRandomizerPulldown = c_invalidDialogControlId;
-    lib74A68E34_gv_mutatorListRandomizerRefreshButton = c_invalidDialogControlId;
-    lib74A68E34_gv_mutatorListDialog = c_invalidDialogId;
     lib74A68E34_gv_fearUnits = UnitGroupEmpty();
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
@@ -68,6 +64,13 @@ void lib74A68E34_InitVariables () {
             lib74A68E34_gv_tychusUIReorderIcons[init_i][init_j] = c_invalidDialogControlId;
         }
     }
+    lib74A68E34_gv_mutatorRandomizerDialog = c_invalidDialogId;
+    lib74A68E34_gv_mutatorRandomizerPulldown = c_invalidDialogControlId;
+    lib74A68E34_gv_mutatorRandomizerRefreshButton = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        lib74A68E34_gv_mutatorRandomizerCheckBoxes[init_i] = c_invalidDialogControlId;
+    }
+    lib74A68E34_gv_mutatorListCommanderSelectDialog = c_invalidDialogId;
     lib74A68E34_gv_mM_MutatorDialog = c_invalidDialogId;
     lib74A68E34_gv_mM_MutatorPanel = c_invalidDialogControlId;
     for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
@@ -225,204 +228,6 @@ void lib74A68E34_gf_FourthChangeAllyPrestige () {
     }
     else {
         UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_10B8F288"));
-    }
-}
-
-trigger auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = null;
-int auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
-
-void lib74A68E34_gf_MutatorListLoadBank (int lp_player) {
-    auto_lib74A68E34_gf_MutatorListLoadBank_lp_player = lp_player;
-
-    if (auto_lib74A68E34_gf_MutatorListLoadBank_Trigger == null) {
-        auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc");
-    }
-
-    TriggerExecute(auto_lib74A68E34_gf_MutatorListLoadBank_Trigger, false, false);
-}
-
-bool auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
-
-    // Variable Declarations
-    string lv_mutatorName;
-    string lv_previousMutators;
-    int lv_mutatorIndex;
-    int lv_substringIndex;
-    string lv_indexMutator;
-
-    // Automatic Variable Declarations
-    const int autoB8B96F7D_ae = 99;
-    int autoB8B96F7D_var;
-    int auto3D1D01F4_ai;
-    int auto3D1D01F4_ae;
-    int autoEC119FAF_ai;
-    int autoEC119FAF_ae;
-
-    // Variable Initialization
-    lv_mutatorName = "";
-    lv_previousMutators = "";
-
-    // Implementation
-    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
-        Wait(1.0, c_timeGame);
-    }
-    lib74A68E34_gv_mutatorListBank[lp_player] = libCOOC_gv_cC_CoopBank[lp_player];
-    lv_previousMutators = BankValueGetAsString(lib74A68E34_gv_mutatorListBank[lp_player], "LunaCoopMod", "PreviousMutators");
-    autoB8B96F7D_var = 1;
-    for ( ; autoB8B96F7D_var <= autoB8B96F7D_ae; autoB8B96F7D_var += 1 ) {
-        lv_substringIndex = StringFind(lv_previousMutators, ",", c_stringNoCase);
-        lv_mutatorIndex += 1;
-        if ((lv_substringIndex != -1)) {
-            lv_mutatorName = StringSub(lv_previousMutators, 1, (lv_substringIndex - 1));
-            autoEC119FAF_ai = 1;
-            autoEC119FAF_ae = UserDataInstanceCount("Mutators")+1;
-            while (autoEC119FAF_ai < autoEC119FAF_ae) {
-                lv_indexMutator = UserDataInstance("Mutators", autoEC119FAF_ai);
-                autoEC119FAF_ai = autoEC119FAF_ai+1;
-                if (((lv_indexMutator) == lv_mutatorName)) {
-                    lib74A68E34_gv_mutatorsListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
-                }
-
-            }
-            lv_previousMutators = StringSub(lv_previousMutators, (lv_substringIndex + 1), StringLength(lv_previousMutators));
-        }
-        else {
-            lv_mutatorName = lv_previousMutators;
-            auto3D1D01F4_ai = 1;
-            auto3D1D01F4_ae = UserDataInstanceCount("Mutators")+1;
-            while (auto3D1D01F4_ai < auto3D1D01F4_ae) {
-                lv_indexMutator = UserDataInstance("Mutators", auto3D1D01F4_ai);
-                auto3D1D01F4_ai = auto3D1D01F4_ai+1;
-                if (((lv_indexMutator) == lv_mutatorName)) {
-                    lib74A68E34_gv_mutatorsListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
-                }
-
-            }
-            break;
-        }
-    }
-    return true;
-}
-
-void lib74A68E34_gf_MutatorListRandomizerUpdate () {
-    // Variable Declarations
-    int lv_selectedItem;
-    string lv_indexMutator;
-    int lv_indexPlayer;
-    int lv_mutatorcount;
-
-    // Automatic Variable Declarations
-    int auto4506CB45_ai;
-    int auto4506CB45_ae;
-    const int autoC2EC3EAA_ae = 99;
-    int autoC2EC3EAA_var;
-    int autoB748BC2B_ai;
-    int autoB748BC2B_ae;
-    playergroup auto3266967C_g;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_selectedItem = DialogControlGetSelectedItem(lib74A68E34_gv_mutatorListRandomizerPulldown, EventPlayer());
-    DialogControlSelectItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), lv_selectedItem);
-    if ((lv_selectedItem <= 2)) {
-        DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), false);
-        auto4506CB45_ai = 1;
-        auto4506CB45_ae = UserDataInstanceCount("Mutators")+1;
-        while (auto4506CB45_ai < auto4506CB45_ae) {
-            lv_indexMutator = UserDataInstance("Mutators", auto4506CB45_ai);
-            auto4506CB45_ai = auto4506CB45_ai+1;
-            libCOMU_gf_EnableDisableMutator(false, lv_indexMutator);
-        }
-        if ((lv_selectedItem <= 1)) {
-            autoC2EC3EAA_var = 1;
-            for ( ; autoC2EC3EAA_var <= autoC2EC3EAA_ae; autoC2EC3EAA_var += 1 ) {
-                if ((lib74A68E34_gv_mutatorsListPreviousMutators[autoC2EC3EAA_var][EventPlayer()] != null)) {
-                    autoB748BC2B_ai = 1;
-                    autoB748BC2B_ae = UserDataInstanceCount("Mutators")+1;
-                    while (autoB748BC2B_ai < autoB748BC2B_ae) {
-                        lv_indexMutator = UserDataInstance("Mutators", autoB748BC2B_ai);
-                        autoB748BC2B_ai = autoB748BC2B_ai+1;
-                        if (((lib74A68E34_gv_mutatorsListPreviousMutators[autoC2EC3EAA_var][EventPlayer()]) == (lv_indexMutator))) {
-                            libCOMU_gf_EnableDisableMutator(true, lv_indexMutator);
-                        }
-
-                    }
-                }
-                else {
-                    break;
-                }
-            }
-        }
-
-    }
-    else {
-        DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), true);
-        libCOMU_gf_CT_SetMutationDifficultyLevel(UserDataInstance("MutationDifficultyLevels", (lv_selectedItem - 2)));
-        lv_mutatorcount = libCOMU_gf_CT_GetRandomMutatorCount();
-        libCOMU_gf_CreateMutationAbominationProbabilities(lv_mutatorcount, lv_mutatorcount, UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1));
-    }
-    auto3266967C_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto3266967C_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        libCOUI_gf_CU_CommanderUpdate(lv_indexPlayer);
-    }
-    lib74A68E34_gf_MutatorListInit();
-}
-
-void lib74A68E34_gf_MutatorListInit () {
-    // Automatic Variable Declarations
-    // Implementation
-    lib74A68E34_gf_MutatorListCreate();
-    if ((libCOMU_gf_CT_MutatorEnabledCount() > libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_SMALL)) {
-        libCOUI_gf_CU_MutatorListInitLarge();
-    }
-    else {
-        libCOUI_gf_CU_MutatorListInitSmall();
-    }
-}
-
-void lib74A68E34_gf_MutatorListCreate () {
-    // Variable Declarations
-    int lv_mutatorIndex;
-
-    // Automatic Variable Declarations
-    const int auto02FE28AD_ae = libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_SMALL;
-    const int auto02FE28AD_ai = 1;
-    const int autoDEE1F8B0_ae = libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_LARGE;
-    const int autoDEE1F8B0_ai = 1;
-
-    // Variable Initialization
-
-    // Implementation
-    if ((libCOUI_gv_cU_MutatorListSmallPanel != c_invalidDialogControlId)) {
-        return ;
-    }
-
-    DialogCreate(130, 650, c_anchorBottom, 470, 40, true);
-    DialogSetImageVisible(DialogLastCreated(), false);
-    lib74A68E34_gv_mutatorListDialog = DialogLastCreated();
-    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorSmallListTemplate");
-    libCOUI_gv_cU_MutatorListSmallPanel = DialogControlLastCreated();
-    lv_mutatorIndex = 1;
-    for ( ; ( (auto02FE28AD_ai >= 0 && lv_mutatorIndex <= auto02FE28AD_ae) || (auto02FE28AD_ai < 0 && lv_mutatorIndex >= auto02FE28AD_ae) ) ; lv_mutatorIndex += auto02FE28AD_ai ) {
-        DialogControlHookup(libCOUI_gv_cU_MutatorListSmallPanel, c_triggerControlTypePanel, "MutatorItem" + IntToString(lv_mutatorIndex));
-        libCOUI_gv_cU_MutatorListSmallItems[lv_mutatorIndex] = DialogControlLastCreated();
-        DialogControlHookup(libCOUI_gv_cU_MutatorListSmallItems[lv_mutatorIndex], c_triggerControlTypeImage, "MutatorIcon");
-        libCOUI_gv_cU_MutatorListSmallIcon[lv_mutatorIndex] = DialogControlLastCreated();
-    }
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorLargeListTemplate");
-    libCOUI_gv_cU_MutatorListLargePanel = DialogControlLastCreated();
-    lv_mutatorIndex = 1;
-    for ( ; ( (autoDEE1F8B0_ai >= 0 && lv_mutatorIndex <= autoDEE1F8B0_ae) || (autoDEE1F8B0_ai < 0 && lv_mutatorIndex >= autoDEE1F8B0_ae) ) ; lv_mutatorIndex += autoDEE1F8B0_ai ) {
-        DialogControlHookup(libCOUI_gv_cU_MutatorListLargePanel, c_triggerControlTypePanel, "MutatorItem" + IntToString(lv_mutatorIndex));
-        libCOUI_gv_cU_MutatorListLargeItems[lv_mutatorIndex] = DialogControlLastCreated();
-        DialogControlHookup(libCOUI_gv_cU_MutatorListLargeItems[lv_mutatorIndex], c_triggerControlTypeImage, "MutatorIcon");
-        libCOUI_gv_cU_MutatorListLargeIcon[lv_mutatorIndex] = DialogControlLastCreated();
     }
 }
 
@@ -1375,6 +1180,409 @@ void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p) {
     }
     else if (true) {
         libCOMI_gf_CM_Tychus_SetHeroCostMultiply(lp_p, 1.0, 1.0);
+    }
+}
+
+void lib74A68E34_gf_MutatorRandomizerUpdate () {
+    // Variable Declarations
+    int lv_selectedItem;
+    string lv_indexMutator;
+    int lv_indexPlayer;
+    int lv_mutatorcount;
+    int lv_neutralcount;
+    int lv_positivecount;
+
+    // Automatic Variable Declarations
+    int auto4506CB45_ai;
+    int auto4506CB45_ae;
+    const int autoC2EC3EAA_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    int autoC2EC3EAA_var;
+    int autoB748BC2B_ai;
+    int autoB748BC2B_ae;
+    playergroup auto3266967C_g;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_selectedItem = DialogControlGetSelectedItem(lib74A68E34_gv_mutatorRandomizerPulldown, EventPlayer());
+    DialogControlSelectItem(lib74A68E34_gv_mutatorRandomizerPulldown, PlayerGroupAll(), lv_selectedItem);
+    if ((lv_selectedItem <= 2)) {
+        DialogControlSetVisible(lib74A68E34_gv_mutatorRandomizerRefreshButton, PlayerGroupAll(), false);
+        auto4506CB45_ai = 1;
+        auto4506CB45_ae = UserDataInstanceCount("Mutators")+1;
+        while (auto4506CB45_ai < auto4506CB45_ae) {
+            lv_indexMutator = UserDataInstance("Mutators", auto4506CB45_ai);
+            auto4506CB45_ai = auto4506CB45_ai+1;
+            libCOMU_gf_EnableDisableMutator(false, lv_indexMutator);
+        }
+        if ((lv_selectedItem <= 1)) {
+            autoC2EC3EAA_var = 1;
+            for ( ; autoC2EC3EAA_var <= autoC2EC3EAA_ae; autoC2EC3EAA_var += 1 ) {
+                if ((lib74A68E34_gv_mutatorListPreviousMutators[autoC2EC3EAA_var][EventPlayer()] != null)) {
+                    autoB748BC2B_ai = 1;
+                    autoB748BC2B_ae = UserDataInstanceCount("Mutators")+1;
+                    while (autoB748BC2B_ai < autoB748BC2B_ae) {
+                        lv_indexMutator = UserDataInstance("Mutators", autoB748BC2B_ai);
+                        autoB748BC2B_ai = autoB748BC2B_ai+1;
+                        if (((lib74A68E34_gv_mutatorListPreviousMutators[autoC2EC3EAA_var][EventPlayer()]) == (lv_indexMutator))) {
+                            libCOMU_gf_EnableDisableMutator(true, lv_indexMutator);
+                        }
+
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
+    }
+    else {
+        DialogControlSetVisible(lib74A68E34_gv_mutatorRandomizerRefreshButton, PlayerGroupAll(), true);
+        libCOMU_gf_CT_SetMutationDifficultyLevel(UserDataInstance("MutationDifficultyLevels", (lv_selectedItem - 2)));
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_mutatorRandomizerCheckBoxes[0], EventPlayer()) == true)) {
+            lv_mutatorcount = libCOMU_gf_CT_GetRandomMutatorCount();
+        }
+        else {
+            lv_mutatorcount = 0;
+        }
+        lv_neutralcount = 0;
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_mutatorRandomizerCheckBoxes[1], EventPlayer()) == true)) {
+            if ((RandomInt(0, 100) < 25)) {
+                lv_neutralcount += 1;
+                if ((RandomInt(0, 100) < 25)) {
+                    lv_neutralcount += 1;
+                }
+
+            }
+
+        }
+
+        lv_positivecount = 0;
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_mutatorRandomizerCheckBoxes[2], EventPlayer()) == true)) {
+            if ((RandomInt(0, 100) < 25)) {
+                lv_positivecount += 1;
+                if ((RandomInt(0, 100) < 25)) {
+                    lv_positivecount += 1;
+                }
+
+            }
+
+        }
+        else {
+            lv_positivecount = 0;
+        }
+        lib74A68E34_gf_CreateMutationAbomination(lv_mutatorcount, lv_mutatorcount, UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1), lv_neutralcount, lv_neutralcount, lv_positivecount, lv_positivecount);
+    }
+    auto3266967C_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto3266967C_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        libCOUI_gf_CU_CommanderUpdate(lv_indexPlayer);
+    }
+    lib74A68E34_gf_MutatorListCommanderSelectInit();
+}
+
+void lib74A68E34_gf_MutatorAbominationShuffleArray () {
+    // Variable Declarations
+    int lv_randomIndex;
+    int lv_currentIndex;
+    int lv_currentValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_currentIndex = (lib74A68E34_gv_mutatorAbominationArrayIndicesCount - 1);
+    while ((lv_currentIndex != 0)) {
+        lv_randomIndex = RandomInt(0, lv_currentIndex);
+        lv_currentIndex -= 1;
+        lv_currentValue = lib74A68E34_gv_mutatorAbominationArrayIndices[lv_currentIndex];
+        lib74A68E34_gv_mutatorAbominationArrayIndices[lv_currentIndex] = lib74A68E34_gv_mutatorAbominationArrayIndices[lv_randomIndex];
+        lib74A68E34_gv_mutatorAbominationArrayIndices[lv_randomIndex] = lv_currentValue;
+    }
+}
+
+void lib74A68E34_gf_CreateMutationAbomination (int lp_minMutators, int lp_maxMutators, int lp_minPointValue, int lp_maxPointValue, int lp_minMutators2, int lp_minMutators3, int lp_minMutators4, int lp_minMutators5) {
+    // Variable Declarations
+    string lv_mutationabominationinstance;
+    string lv_neutralmutationabominationinstance;
+    string lv_positivemutationabominationinstance;
+    int lv_pointindexiter;
+    int lv_pointvalueindexiter;
+    int lv_mutatorindexiter;
+    int lv_mutatorsconsideredcount;
+    int lv_player;
+    string lv_mutatoriter;
+    int lv_mutatorindex;
+    int lv_neutralcount;
+    int lv_positivecount;
+
+    // Automatic Variable Declarations
+    int autoA8011BFF_ai;
+    int autoA8011BFF_ae;
+    int auto2242A792_ae;
+    const int auto2242A792_ai = 1;
+    int autoF778C8B4_ae;
+    int autoF778C8B4_var;
+    int auto261C89BC_ae;
+    const int auto261C89BC_ai = 1;
+    int autoEB2F86DD_ae;
+    int autoEB2F86DD_var;
+    const int autoFCB71BAC_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int autoFCB71BAC_ai = 1;
+    string autoB8FEA29E_userType;
+    int autoB8FEA29E_i;
+    const int auto54458478_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int auto54458478_ai = 1;
+    int auto5ADF2307_n;
+    int auto5ADF2307_i;
+    string auto0ACF39D1_userType;
+    int auto0ACF39D1_i;
+    int auto3A4C1FE4_ae;
+    const int auto3A4C1FE4_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    libCOMU_gv_cT_MAbomination_MinMutators = lp_minMutators;
+    libCOMU_gv_cT_MAbomination_MaxMutators = lp_maxMutators;
+    libCOMU_gv_cT_MAbomination_MinPoints = lp_minPointValue;
+    libCOMU_gv_cT_MAbomination_MaxPoints = lp_maxPointValue;
+    libCOMU_gv_cT_MAbomination_MutatorsCount = 0;
+    libCOMU_gv_cT_MAbomination_CombosCounted = 0;
+    lib74A68E34_gv_cT_MAbomination_MinMutators = lp_minMutators2;
+    lib74A68E34_gv_cT_MAbomination_MinMutators2 = lp_minMutators3;
+    lib74A68E34_gv_cT_MAbomination_MinMutators3 = lp_minMutators4;
+    lib74A68E34_gv_cT_MAbomination_MinMutators4 = lp_minMutators5;
+    autoA8011BFF_ai = 1;
+    autoA8011BFF_ae = UserDataInstanceCount("Mutators")+1;
+    while (autoA8011BFF_ai < autoA8011BFF_ae) {
+        lv_mutatoriter = UserDataInstance("Mutators", autoA8011BFF_ai);
+        autoA8011BFF_ai = autoA8011BFF_ai+1;
+        libCOMU_gf_EnableDisableMutator(false, lv_mutatoriter);
+    }
+    lv_neutralcount = RandomInt(lp_minMutators2, lp_minMutators3);
+    if ((lv_neutralcount > 0)) {
+        lib74A68E34_gv_mutatorAbominationArrayIndicesCount = 0;
+        auto2242A792_ae = UserDataInstanceCount("MutationAbominationsNeutral");
+        lv_mutatorindex = 1;
+        for ( ; ( (auto2242A792_ai >= 0 && lv_mutatorindex <= auto2242A792_ae) || (auto2242A792_ai < 0 && lv_mutatorindex >= auto2242A792_ae) ) ; lv_mutatorindex += auto2242A792_ai ) {
+            lib74A68E34_gv_mutatorAbominationArrayIndices[(lv_mutatorindex - 1)] = lv_mutatorindex;
+            lib74A68E34_gv_mutatorAbominationArrayIndicesCount += 1;
+        }
+        lib74A68E34_gf_MutatorAbominationShuffleArray();
+        autoF778C8B4_ae = (lv_neutralcount - 1);
+        autoF778C8B4_var = 0;
+        for ( ; autoF778C8B4_var <= autoF778C8B4_ae; autoF778C8B4_var += 1 ) {
+            if ((autoF778C8B4_var >= lib74A68E34_gv_mutatorAbominationArrayIndicesCount)) {
+                continue;
+            }
+
+            lv_neutralmutationabominationinstance = UserDataInstance("MutationAbominationsNeutral", lib74A68E34_gv_mutatorAbominationArrayIndices[autoF778C8B4_var]);
+            libCOMU_gf_EnableDisableMutator(true, UserDataGetUserInstance("MutationAbominationsNeutral", lv_neutralmutationabominationinstance, "Mutator", 1));
+            libCOMU_gv_cT_MAbomination_MinPoints -= UserDataGetInt("MutationAbominationsNeutral", lv_neutralmutationabominationinstance, "Points", 1);
+            libCOMU_gv_cT_MAbomination_MaxPoints -= UserDataGetInt("MutationAbominationsNeutral", lv_neutralmutationabominationinstance, "Points", 1);
+        }
+    }
+
+    lv_positivecount = RandomInt(lp_minMutators4, lp_minMutators5);
+    if ((lv_positivecount > 0)) {
+        lib74A68E34_gv_mutatorAbominationArrayIndicesCount = 0;
+        auto261C89BC_ae = UserDataInstanceCount("MutationAbominationsPositive");
+        lv_mutatorindex = 1;
+        for ( ; ( (auto261C89BC_ai >= 0 && lv_mutatorindex <= auto261C89BC_ae) || (auto261C89BC_ai < 0 && lv_mutatorindex >= auto261C89BC_ae) ) ; lv_mutatorindex += auto261C89BC_ai ) {
+            lib74A68E34_gv_mutatorAbominationArrayIndices[(lv_mutatorindex - 1)] = lv_mutatorindex;
+            lib74A68E34_gv_mutatorAbominationArrayIndicesCount += 1;
+        }
+        lib74A68E34_gf_MutatorAbominationShuffleArray();
+        autoEB2F86DD_ae = (lv_positivecount - 1);
+        autoEB2F86DD_var = 0;
+        for ( ; autoEB2F86DD_var <= autoEB2F86DD_ae; autoEB2F86DD_var += 1 ) {
+            if ((autoEB2F86DD_var >= lib74A68E34_gv_mutatorAbominationArrayIndicesCount)) {
+                continue;
+            }
+
+            lv_positivemutationabominationinstance = UserDataInstance("MutationAbominationsPositive", lib74A68E34_gv_mutatorAbominationArrayIndices[autoEB2F86DD_var]);
+            libCOMU_gf_EnableDisableMutator(true, UserDataGetUserInstance("MutationAbominationsPositive", lv_positivemutationabominationinstance, "Mutator", 1));
+            libCOMU_gv_cT_MAbomination_MinPoints -= UserDataGetInt("MutationAbominationsPositive", lv_positivemutationabominationinstance, "Points", 1);
+            libCOMU_gv_cT_MAbomination_MaxPoints -= UserDataGetInt("MutationAbominationsPositive", lv_positivemutationabominationinstance, "Points", 1);
+        }
+    }
+
+    if ((lp_maxMutators > 0)) {
+        lv_pointindexiter = 1;
+        for ( ; ( (autoFCB71BAC_ai >= 0 && lv_pointindexiter <= autoFCB71BAC_ae) || (autoFCB71BAC_ai < 0 && lv_pointindexiter >= autoFCB71BAC_ae) ) ; lv_pointindexiter += autoFCB71BAC_ai ) {
+            libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[lv_pointindexiter] = 0;
+        }
+        autoB8FEA29E_userType = "MutationAbominations";
+        autoB8FEA29E_i = 1;
+        for ( ; autoB8FEA29E_i <= UserDataInstanceCount(autoB8FEA29E_userType) ; autoB8FEA29E_i += 1 ) {
+            lv_mutationabominationinstance = UserDataInstance(autoB8FEA29E_userType, autoB8FEA29E_i);
+            libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1)] += 1;
+        }
+        libCOMU_gf_TraverseMutationAbominationPointIndex(1, 0, 0, true);
+        lv_mutatorindexiter = 1;
+        lv_pointindexiter = 1;
+        for ( ; ( (auto54458478_ai >= 0 && lv_pointindexiter <= auto54458478_ae) || (auto54458478_ai < 0 && lv_pointindexiter >= auto54458478_ae) ) ; lv_pointindexiter += auto54458478_ai ) {
+            auto5ADF2307_n = libCOMU_gv_cT_MAbomination_MutatorPointTemplate[lv_pointindexiter];
+            for (auto5ADF2307_i = 1; auto5ADF2307_i <= auto5ADF2307_n; auto5ADF2307_i += 1) {
+                lv_mutatorsconsideredcount = 0;
+                auto0ACF39D1_userType = "MutationAbominations";
+                auto0ACF39D1_i = 1;
+                for ( ; auto0ACF39D1_i <= UserDataInstanceCount(auto0ACF39D1_userType) ; auto0ACF39D1_i += 1 ) {
+                    lv_mutationabominationinstance = UserDataInstance(auto0ACF39D1_userType, auto0ACF39D1_i);
+                    if ((UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1) == lv_pointindexiter) && (libCOMU_gf_MutatorIsEnabled(UserDataGetUserInstance("MutationAbominations", lv_mutationabominationinstance, "Mutator", 1)) == false)) {
+                        lv_mutatorsconsideredcount += 1;
+                        if ((RandomInt(1, lv_mutatorsconsideredcount) == lv_mutatorsconsideredcount)) {
+                            libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindexiter] = UserDataGetUserInstance("MutationAbominations", lv_mutationabominationinstance, "Mutator", 1);
+                        }
+
+                    }
+
+                }
+                libCOMU_gf_EnableDisableMutator(true, libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindexiter]);
+                lv_mutatorindexiter += 1;
+            }
+        }
+        auto3A4C1FE4_ae = libCOMU_gv_cT_MAbomination_MutatorsCount;
+        lv_mutatorindex = 1;
+        for ( ; ( (auto3A4C1FE4_ai >= 0 && lv_mutatorindex <= auto3A4C1FE4_ae) || (auto3A4C1FE4_ai < 0 && lv_mutatorindex >= auto3A4C1FE4_ae) ) ; lv_mutatorindex += auto3A4C1FE4_ai ) {
+            libCOMU_gf_EnableDisableMutator(true, libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindex]);
+        }
+    }
+
+    libCOMU_gf_CT_StoreMutatorScoreValues();
+}
+
+trigger auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
+
+void lib74A68E34_gf_MutatorListLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_MutatorListLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_MutatorListLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorListLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorListLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_MutatorListLoadBank_lp_player;
+
+    // Variable Declarations
+    string lv_mutatorName;
+    string lv_previousMutators;
+    int lv_mutatorIndex;
+    int lv_substringIndex;
+    string lv_indexMutator;
+
+    // Automatic Variable Declarations
+    const int autoB8B96F7D_ae = 99;
+    int autoB8B96F7D_var;
+    int auto3D1D01F4_ai;
+    int auto3D1D01F4_ae;
+    int autoEC119FAF_ai;
+    int autoEC119FAF_ae;
+
+    // Variable Initialization
+    lv_mutatorName = "";
+    lv_previousMutators = "";
+
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    lib74A68E34_gv_mutatorListBank[lp_player] = libCOOC_gv_cC_CoopBank[lp_player];
+    lv_previousMutators = BankValueGetAsString(lib74A68E34_gv_mutatorListBank[lp_player], "LunaCoopMod", "PreviousMutators");
+    autoB8B96F7D_var = 1;
+    for ( ; autoB8B96F7D_var <= autoB8B96F7D_ae; autoB8B96F7D_var += 1 ) {
+        lv_substringIndex = StringFind(lv_previousMutators, ",", c_stringNoCase);
+        lv_mutatorIndex += 1;
+        if ((lv_substringIndex != -1)) {
+            lv_mutatorName = StringSub(lv_previousMutators, 1, (lv_substringIndex - 1));
+            autoEC119FAF_ai = 1;
+            autoEC119FAF_ae = UserDataInstanceCount("Mutators")+1;
+            while (autoEC119FAF_ai < autoEC119FAF_ae) {
+                lv_indexMutator = UserDataInstance("Mutators", autoEC119FAF_ai);
+                autoEC119FAF_ai = autoEC119FAF_ai+1;
+                if (((lv_indexMutator) == lv_mutatorName)) {
+                    lib74A68E34_gv_mutatorListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
+                }
+
+            }
+            lv_previousMutators = StringSub(lv_previousMutators, (lv_substringIndex + 1), StringLength(lv_previousMutators));
+        }
+        else {
+            lv_mutatorName = lv_previousMutators;
+            auto3D1D01F4_ai = 1;
+            auto3D1D01F4_ae = UserDataInstanceCount("Mutators")+1;
+            while (auto3D1D01F4_ai < auto3D1D01F4_ae) {
+                lv_indexMutator = UserDataInstance("Mutators", auto3D1D01F4_ai);
+                auto3D1D01F4_ai = auto3D1D01F4_ai+1;
+                if (((lv_indexMutator) == lv_mutatorName)) {
+                    lib74A68E34_gv_mutatorListPreviousMutators[lv_mutatorIndex][lp_player] = lv_indexMutator;
+                }
+
+            }
+            break;
+        }
+    }
+    return true;
+}
+
+void lib74A68E34_gf_MutatorListCommanderSelectInit () {
+    // Automatic Variable Declarations
+    // Implementation
+    lib74A68E34_gf_MutatorListCommanderSelectCreate();
+    if ((libCOMU_gf_CT_MutatorEnabledCount() > libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_SMALL)) {
+        libCOUI_gf_CU_MutatorListInitLarge();
+    }
+    else {
+        libCOUI_gf_CU_MutatorListInitSmall();
+    }
+}
+
+void lib74A68E34_gf_MutatorListCommanderSelectCreate () {
+    // Variable Declarations
+    int lv_mutatorIndex;
+
+    // Automatic Variable Declarations
+    const int auto02FE28AD_ae = libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_SMALL;
+    const int auto02FE28AD_ai = 1;
+    const int autoDEE1F8B0_ae = libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_LARGE;
+    const int autoDEE1F8B0_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libCOUI_gv_cU_MutatorListSmallPanel != c_invalidDialogControlId)) {
+        return ;
+    }
+
+    DialogCreate(130, 650, c_anchorBottom, 470, 40, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lib74A68E34_gv_mutatorListCommanderSelectDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListCommanderSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorSmallListTemplate");
+    libCOUI_gv_cU_MutatorListSmallPanel = DialogControlLastCreated();
+    lv_mutatorIndex = 1;
+    for ( ; ( (auto02FE28AD_ai >= 0 && lv_mutatorIndex <= auto02FE28AD_ae) || (auto02FE28AD_ai < 0 && lv_mutatorIndex >= auto02FE28AD_ae) ) ; lv_mutatorIndex += auto02FE28AD_ai ) {
+        DialogControlHookup(libCOUI_gv_cU_MutatorListSmallPanel, c_triggerControlTypePanel, "MutatorItem" + IntToString(lv_mutatorIndex));
+        libCOUI_gv_cU_MutatorListSmallItems[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(libCOUI_gv_cU_MutatorListSmallItems[lv_mutatorIndex], c_triggerControlTypeImage, "MutatorIcon");
+        libCOUI_gv_cU_MutatorListSmallIcon[lv_mutatorIndex] = DialogControlLastCreated();
+    }
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListCommanderSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorLargeListTemplate");
+    libCOUI_gv_cU_MutatorListLargePanel = DialogControlLastCreated();
+    lv_mutatorIndex = 1;
+    for ( ; ( (autoDEE1F8B0_ai >= 0 && lv_mutatorIndex <= autoDEE1F8B0_ae) || (autoDEE1F8B0_ai < 0 && lv_mutatorIndex >= autoDEE1F8B0_ae) ) ; lv_mutatorIndex += autoDEE1F8B0_ai ) {
+        DialogControlHookup(libCOUI_gv_cU_MutatorListLargePanel, c_triggerControlTypePanel, "MutatorItem" + IntToString(lv_mutatorIndex));
+        libCOUI_gv_cU_MutatorListLargeItems[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(libCOUI_gv_cU_MutatorListLargeItems[lv_mutatorIndex], c_triggerControlTypeImage, "MutatorIcon");
+        libCOUI_gv_cU_MutatorListLargeIcon[lv_mutatorIndex] = DialogControlLastCreated();
     }
 }
 
@@ -2969,6 +3177,33 @@ void lib74A68E34_gt_AllyImproved_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: RandomMutationCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RandomMutationCommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOUI_gf_CU_RandomMutationSelectDisplay(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RandomMutationCommand_Init () {
+    lib74A68E34_gt_RandomMutationCommand = TriggerCreate("lib74A68E34_gt_RandomMutationCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_RandomMutationCommand, c_playerAny, "-mutatorabomination", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: FastResearch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_FastResearch_Func (bool testConds, bool runActions) {
@@ -3124,227 +3359,6 @@ bool lib74A68E34_gt_FourthAllyPrestigeChanged_Func (bool testConds, bool runActi
 void lib74A68E34_gt_FourthAllyPrestigeChanged_Init () {
     lib74A68E34_gt_FourthAllyPrestigeChanged = TriggerCreate("lib74A68E34_gt_FourthAllyPrestigeChanged_Func");
     TriggerAddEventDialogControl(lib74A68E34_gt_FourthAllyPrestigeChanged, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListLoadBankInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListLoadBankInit_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup auto79E4DF7D_g;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    auto79E4DF7D_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto79E4DF7D_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        lib74A68E34_gf_MutatorListLoadBank(lv_indexPlayer);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListLoadBankInit_Init () {
-    lib74A68E34_gt_MutatorListLoadBankInit = TriggerCreate("lib74A68E34_gt_MutatorListLoadBankInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_MutatorListLoadBankInit);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListRandomizerCreate
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListRandomizerCreate_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_panel;
-    int lv_index;
-
-    // Automatic Variable Declarations
-    int autoF01CDD37_ae;
-    const int autoF01CDD37_ai = 1;
-
-    // Variable Initialization
-    lv_panel = c_invalidDialogControlId;
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    DialogCreate(220, 100, c_anchorBottom, 200, 160, true);
-    DialogSetImageVisible(DialogLastCreated(), false);
-    lib74A68E34_gv_mutatorListRandomizerDialog = DialogLastCreated();
-    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListRandomizerDialog, c_triggerControlTypePanel, "Coop_MutatorRandomizer/MutatorRandomizer");
-    lv_panel = DialogControlLastCreated();
-    DialogControlHookup(lv_panel, c_triggerControlTypePulldown, "MutatorRandomizerPulldown");
-    lib74A68E34_gv_mutatorListRandomizerPulldown = DialogControlLastCreated();
-    DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_CD6B2610"));
-    DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_B71F489D"));
-    autoF01CDD37_ae = UserDataInstanceCount("MutationDifficultyLevels");
-    lv_index = 1;
-    for ( ; ( (autoF01CDD37_ai >= 0 && lv_index <= autoF01CDD37_ae) || (autoF01CDD37_ai < 0 && lv_index >= autoF01CDD37_ae) ) ; lv_index += autoF01CDD37_ai ) {
-        TextExpressionSetToken("Param/Expression/lib_74A68E34_6F69C080", "A", IntToText(lv_index));
-        DialogControlAddItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), TextExpressionAssemble("Param/Expression/lib_74A68E34_6F69C080"));
-    }
-    DialogControlSelectItem(lib74A68E34_gv_mutatorListRandomizerPulldown, PlayerGroupAll(), 2);
-    DialogControlHookup(lv_panel, c_triggerControlTypeButton, "RefreshButton");
-    lib74A68E34_gv_mutatorListRandomizerRefreshButton = DialogControlLastCreated();
-    DialogControlSetVisible(lib74A68E34_gv_mutatorListRandomizerRefreshButton, PlayerGroupAll(), false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListRandomizerCreate_Init () {
-    lib74A68E34_gt_MutatorListRandomizerCreate = TriggerCreate("lib74A68E34_gt_MutatorListRandomizerCreate_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_MutatorListRandomizerCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListRandomizerSelected
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListRandomizerSelected_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_mutatorListRandomizerPulldown))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lib74A68E34_gf_MutatorListRandomizerUpdate();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListRandomizerSelected_Init () {
-    lib74A68E34_gt_MutatorListRandomizerSelected = TriggerCreate("lib74A68E34_gt_MutatorListRandomizerSelected_Func");
-    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListRandomizerSelected, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeSelectionChanged);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListRandomizerRefresh
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListRandomizerRefresh_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_mutatorListRandomizerRefreshButton))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lib74A68E34_gf_MutatorListRandomizerUpdate();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListRandomizerRefresh_Init () {
-    lib74A68E34_gt_MutatorListRandomizerRefresh = TriggerCreate("lib74A68E34_gt_MutatorListRandomizerRefresh_Func");
-    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListRandomizerRefresh, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListUpdate
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListUpdate_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    lib74A68E34_gf_MutatorListInit();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListUpdate_Init () {
-    lib74A68E34_gt_MutatorListUpdate = TriggerCreate("lib74A68E34_gt_MutatorListUpdate_Func");
-    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListUpdate, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListFinish
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListFinish_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_previousMutators;
-    string lv_indexMutator;
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup auto4E59C304_g;
-    int autoC9F48251_ai;
-    int autoC9F48251_ae;
-
-    // Variable Initialization
-    lv_previousMutators = "";
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(lib74A68E34_gt_MutatorListUpdate, false);
-    DialogDestroy(lib74A68E34_gv_mutatorListDialog);
-    libCOUI_gv_cU_MutatorListSmallPanel = c_invalidDialogControlId;
-    libCOUI_gf_CU_MutatorListInit();
-    TriggerEnable(lib74A68E34_gt_MutatorListRandomizerSelected, false);
-    TriggerEnable(lib74A68E34_gt_MutatorListRandomizerRefresh, false);
-    DialogDestroy(lib74A68E34_gv_mutatorListRandomizerDialog);
-    auto4E59C304_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto4E59C304_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        BankKeyRemove(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators");
-        autoC9F48251_ai = 1;
-        autoC9F48251_ae = UserDataInstanceCount("Mutators")+1;
-        while (autoC9F48251_ai < autoC9F48251_ae) {
-            lv_indexMutator = UserDataInstance("Mutators", autoC9F48251_ai);
-            autoC9F48251_ai = autoC9F48251_ai+1;
-            if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
-                if ((lv_previousMutators == "")) {
-                    lv_previousMutators = (lv_indexMutator);
-                }
-                else {
-                    lv_previousMutators = (lv_previousMutators + "," + (lv_indexMutator));
-                }
-            }
-
-        }
-        BankValueSetFromString(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators", lv_previousMutators);
-        BankSave(lib74A68E34_gv_mutatorListBank[lv_indexPlayer]);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListFinish_Init () {
-    lib74A68E34_gt_MutatorListFinish = TriggerCreate("lib74A68E34_gt_MutatorListFinish_Func");
-    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_MutatorListFinish);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7294,15 +7308,51 @@ void lib74A68E34_gt_MengskPrestigeZergRefund_Init () {
 // Trigger: MutatorInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_instance;
+    text lv_description;
+    int lv_i;
+
     // Automatic Variable Declarations
+    int auto4CEFE2E2_ae;
+    const int auto4CEFE2E2_ai = 1;
+    int autoED7DD84F_val;
+
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
     }
 
+    UserDataSetInt("Mutators", "GiftFight", "Alignment", 1, 1);
+    UserDataSetInt("Mutators", "RedEnvelopes", "Alignment", 1, 2);
+    UserDataSetInt("Mutators", "SharedSupply", "Alignment", 1, 1);
+    auto4CEFE2E2_ae = UserDataInstanceCount("Mutators");
+    lv_i = 1;
+    for ( ; ( (auto4CEFE2E2_ai >= 0 && lv_i <= auto4CEFE2E2_ae) || (auto4CEFE2E2_ai < 0 && lv_i >= auto4CEFE2E2_ae) ) ; lv_i += auto4CEFE2E2_ai ) {
+        lv_instance = UserDataInstance("Mutators", lv_i);
+        lv_description = UserDataGetText("Mutators", lv_instance, "Description", 1);
+        autoED7DD84F_val = UserDataGetInt("Mutators", lv_instance, "Alignment", 1);
+        if (autoED7DD84F_val == 0) {
+            TextExpressionSetToken("Param/Expression/lib_74A68E34_DF2B82C6", "A", lv_description);
+            UserDataSetText("Mutators", lv_instance, "Description", 1, TextExpressionAssemble("Param/Expression/lib_74A68E34_DF2B82C6"));
+        }
+        else if (autoED7DD84F_val == 1) {
+            TextExpressionSetToken("Param/Expression/lib_74A68E34_F44267B4", "A", lv_description);
+            UserDataSetText("Mutators", lv_instance, "Description", 1, TextExpressionAssemble("Param/Expression/lib_74A68E34_F44267B4"));
+        }
+        else if (autoED7DD84F_val == 2) {
+            TextExpressionSetToken("Param/Expression/lib_74A68E34_806DB3EB", "A", lv_description);
+            UserDataSetText("Mutators", lv_instance, "Description", 1, TextExpressionAssemble("Param/Expression/lib_74A68E34_806DB3EB"));
+        }
+        else {
+        }
+    }
     libCOMU_gf_CT_RegisterMutator("Teeming", lib74A68E34_gt_MutatorTeemingInit, lib74A68E34_gt_MutatorTeemingShutdown);
     libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
     libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
+    libCOMU_gf_CT_RegisterMutator("SpellDamage", lib74A68E34_gt_MutatorSpellDamageInit, lib74A68E34_gt_MutatorSpellDamageShutdown);
     return true;
 }
 
@@ -7310,6 +7360,236 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_MutatorInit_Init () {
     lib74A68E34_gt_MutatorInit = TriggerCreate("lib74A68E34_gt_MutatorInit_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_MutatorInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorRandomizerCreate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorRandomizerCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_panel;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    int autoF01CDD37_ae;
+    const int autoF01CDD37_ai = 1;
+    const int autoAD61096E_ae = 2;
+    int autoAD61096E_var;
+
+    // Variable Initialization
+    lv_panel = c_invalidDialogControlId;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    DialogCreate(360, 100, c_anchorBottom, 200, 160, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lib74A68E34_gv_mutatorRandomizerDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorRandomizerDialog, c_triggerControlTypePanel, "Coop_MutatorRandomizer/MutatorRandomizer");
+    lv_panel = DialogControlLastCreated();
+    DialogControlHookup(lv_panel, c_triggerControlTypePulldown, "MutatorRandomizerPulldown");
+    lib74A68E34_gv_mutatorRandomizerPulldown = DialogControlLastCreated();
+    DialogControlAddItem(lib74A68E34_gv_mutatorRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_CD6B2610"));
+    DialogControlAddItem(lib74A68E34_gv_mutatorRandomizerPulldown, PlayerGroupAll(), StringExternal("Param/Value/lib_74A68E34_B71F489D"));
+    autoF01CDD37_ae = UserDataInstanceCount("MutationDifficultyLevels");
+    lv_index = 1;
+    for ( ; ( (autoF01CDD37_ai >= 0 && lv_index <= autoF01CDD37_ae) || (autoF01CDD37_ai < 0 && lv_index >= autoF01CDD37_ae) ) ; lv_index += autoF01CDD37_ai ) {
+        TextExpressionSetToken("Param/Expression/lib_74A68E34_6F69C080", "A", IntToText(lv_index));
+        DialogControlAddItem(lib74A68E34_gv_mutatorRandomizerPulldown, PlayerGroupAll(), TextExpressionAssemble("Param/Expression/lib_74A68E34_6F69C080"));
+    }
+    DialogControlSelectItem(lib74A68E34_gv_mutatorRandomizerPulldown, PlayerGroupAll(), 2);
+    DialogControlHookup(lv_panel, c_triggerControlTypeButton, "RefreshButton");
+    lib74A68E34_gv_mutatorRandomizerRefreshButton = DialogControlLastCreated();
+    DialogControlSetVisible(lib74A68E34_gv_mutatorRandomizerRefreshButton, PlayerGroupAll(), false);
+    autoAD61096E_var = 0;
+    for ( ; autoAD61096E_var <= autoAD61096E_ae; autoAD61096E_var += 1 ) {
+        DialogControlHookup(lv_panel, c_triggerControlTypeCheckBox, libNtve_gf_ConvertStringToUILayoutFrameName(("MutatorRandomizerSettings/RandomizerBox" + IntToString(autoAD61096E_var))));
+        libNtve_gf_SetDialogItemChecked(DialogControlLastCreated(), false, PlayerGroupAll());
+        lib74A68E34_gv_mutatorRandomizerCheckBoxes[autoAD61096E_var] = DialogControlLastCreated();
+    }
+    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_mutatorRandomizerCheckBoxes[0], true, PlayerGroupAll());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorRandomizerCreate_Init () {
+    lib74A68E34_gt_MutatorRandomizerCreate = TriggerCreate("lib74A68E34_gt_MutatorRandomizerCreate_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_MutatorRandomizerCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorRandomizerSelected
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorRandomizerSelected_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_mutatorRandomizerPulldown))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MutatorRandomizerUpdate();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorRandomizerSelected_Init () {
+    lib74A68E34_gt_MutatorRandomizerSelected = TriggerCreate("lib74A68E34_gt_MutatorRandomizerSelected_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorRandomizerSelected, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeSelectionChanged);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorRandomizerRefresh
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorRandomizerRefresh_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_mutatorRandomizerRefreshButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MutatorRandomizerUpdate();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorRandomizerRefresh_Init () {
+    lib74A68E34_gt_MutatorRandomizerRefresh = TriggerCreate("lib74A68E34_gt_MutatorRandomizerRefresh_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorRandomizerRefresh, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorListLoadBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorListLoadBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto79E4DF7D_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto79E4DF7D_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto79E4DF7D_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_MutatorListLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorListLoadBankInit_Init () {
+    lib74A68E34_gt_MutatorListLoadBankInit = TriggerCreate("lib74A68E34_gt_MutatorListLoadBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_MutatorListLoadBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorListCommanderSelectUpdate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorListCommanderSelectUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    lib74A68E34_gf_MutatorListCommanderSelectInit();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init () {
+    lib74A68E34_gt_MutatorListCommanderSelectUpdate = TriggerCreate("lib74A68E34_gt_MutatorListCommanderSelectUpdate_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListCommanderSelectUpdate, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorListCommanderSelectFinish
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorListCommanderSelectFinish_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_previousMutators;
+    string lv_indexMutator;
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto4E59C304_g;
+    int autoC9F48251_ai;
+    int autoC9F48251_ae;
+
+    // Variable Initialization
+    lv_previousMutators = "";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorListCommanderSelectUpdate, false);
+    DialogDestroy(lib74A68E34_gv_mutatorListCommanderSelectDialog);
+    libCOUI_gv_cU_MutatorListSmallPanel = c_invalidDialogControlId;
+    libCOUI_gf_CU_MutatorListInit();
+    TriggerEnable(lib74A68E34_gt_MutatorRandomizerSelected, false);
+    TriggerEnable(lib74A68E34_gt_MutatorRandomizerRefresh, false);
+    DialogDestroy(lib74A68E34_gv_mutatorRandomizerDialog);
+    auto4E59C304_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto4E59C304_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        BankKeyRemove(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators");
+        autoC9F48251_ai = 1;
+        autoC9F48251_ae = UserDataInstanceCount("Mutators")+1;
+        while (autoC9F48251_ai < autoC9F48251_ae) {
+            lv_indexMutator = UserDataInstance("Mutators", autoC9F48251_ai);
+            autoC9F48251_ai = autoC9F48251_ai+1;
+            if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
+                if ((lv_previousMutators == "")) {
+                    lv_previousMutators = (lv_indexMutator);
+                }
+                else {
+                    lv_previousMutators = (lv_previousMutators + "," + (lv_indexMutator));
+                }
+            }
+
+        }
+        BankValueSetFromString(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], "LunaCoopMod", "PreviousMutators", lv_previousMutators);
+        BankSave(lib74A68E34_gv_mutatorListBank[lv_indexPlayer]);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorListCommanderSelectFinish_Init () {
+    lib74A68E34_gt_MutatorListCommanderSelectFinish = TriggerCreate("lib74A68E34_gt_MutatorListCommanderSelectFinish_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_MutatorListCommanderSelectFinish);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7937,6 +8217,64 @@ void lib74A68E34_gt_MutatorWhiteoutShutdown_Init () {
     lib74A68E34_gt_MutatorWhiteoutShutdown = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorSpellDamageInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorSpellDamageInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto481D9F9E_g;
+    int auto481D9F9E_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto481D9F9E_g = PlayerGroupAll();
+    auto481D9F9E_var = -1;
+    while (true) {
+        auto481D9F9E_var = PlayerGroupNextPlayer(auto481D9F9E_g, auto481D9F9E_var);
+        if (auto481D9F9E_var < 0) { break; }
+        PlayerAddResponse(auto481D9F9E_var, "MutatorSpellDamage");
+        PlayerAddResponse(auto481D9F9E_var, "MutatorSpellDamageReduction");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorSpellDamageInit_Init () {
+    lib74A68E34_gt_MutatorSpellDamageInit = TriggerCreate("lib74A68E34_gt_MutatorSpellDamageInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorSpellDamageShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorSpellDamageShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto42319FFB_g;
+    int auto42319FFB_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto42319FFB_g = PlayerGroupAll();
+    auto42319FFB_var = -1;
+    while (true) {
+        auto42319FFB_var = PlayerGroupNextPlayer(auto42319FFB_g, auto42319FFB_var);
+        if (auto42319FFB_var < 0) { break; }
+        PlayerRemoveResponse(auto42319FFB_var, "MutatorSpellDamage");
+        PlayerRemoveResponse(auto42319FFB_var, "MutatorSpellDamageReduction");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorSpellDamageShutdown_Init () {
+    lib74A68E34_gt_MutatorSpellDamageShutdown = TriggerCreate("lib74A68E34_gt_MutatorSpellDamageShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -7947,17 +8285,12 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_EnemyUpgradeCommand_Init();
     lib74A68E34_gt_CooldownImproved_Init();
     lib74A68E34_gt_AllyImproved_Init();
+    lib74A68E34_gt_RandomMutationCommand_Init();
     lib74A68E34_gt_FastResearch_Init();
     lib74A68E34_gt_FastBuildImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
     lib74A68E34_gt_FourthPrestigeAlly_Init();
     lib74A68E34_gt_FourthAllyPrestigeChanged_Init();
-    lib74A68E34_gt_MutatorListLoadBankInit_Init();
-    lib74A68E34_gt_MutatorListRandomizerCreate_Init();
-    lib74A68E34_gt_MutatorListRandomizerSelected_Init();
-    lib74A68E34_gt_MutatorListRandomizerRefresh_Init();
-    lib74A68E34_gt_MutatorListUpdate_Init();
-    lib74A68E34_gt_MutatorListFinish_Init();
     lib74A68E34_gt_MCDisableMindControlTriggers_Init();
     lib74A68E34_gt_MCAddCoopUnitBehavior_Init();
     lib74A68E34_gt_CommanderRewardsApply_Init();
@@ -8053,6 +8386,12 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
     lib74A68E34_gt_MutatorInit_Init();
+    lib74A68E34_gt_MutatorRandomizerCreate_Init();
+    lib74A68E34_gt_MutatorRandomizerSelected_Init();
+    lib74A68E34_gt_MutatorRandomizerRefresh_Init();
+    lib74A68E34_gt_MutatorListLoadBankInit_Init();
+    lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init();
+    lib74A68E34_gt_MutatorListCommanderSelectFinish_Init();
     lib74A68E34_gt_MM_CommanderMutatorsClicked_Init();
     lib74A68E34_gt_MM_MutatorAcceptClicked_Init();
     lib74A68E34_gt_MM_MutatorCancelClicked_Init();
@@ -8067,6 +8406,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorWhiteoutInit_Init();
     lib74A68E34_gt_MutatorWhiteoutSpawn_Init();
     lib74A68E34_gt_MutatorWhiteoutShutdown_Init();
+    lib74A68E34_gt_MutatorSpellDamageInit_Init();
+    lib74A68E34_gt_MutatorSpellDamageShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -10,4 +10,21 @@
     <CPlayerResponseUnitBirth id="CommanderPrestigeKaraxStructuresUnityBarrier">
         <CasterFilters value="Structure;Neutral,Enemy,Missile,Destructible,Item,Dead,Hidden"/>
     </CPlayerResponseUnitBirth>
+    <CPlayerResponseUnitDamage id="MutatorSpellDamage">
+        <Location value="Attacker"/>
+        <CasterFilters value="-;Ally,Neutral,Enemy,Missile,Destructible,Hidden"/>
+        <TargetFilters value="-;-"/>
+        <Kind index="Melee" value="0"/>
+        <Kind index="Ranged" value="0"/>
+        <Kind index="Splash" value="0"/>
+        <Kind index="NoProc" value="0"/>
+        <ModifyFraction value="2"/>
+    </CPlayerResponseUnitDamage>
+    <CPlayerResponseUnitDamage id="MutatorSpellDamageReduction">
+        <Location value="Attacker"/>
+        <CasterFilters value="-;Ally,Neutral,Enemy,Missile,Destructible,Hidden"/>
+        <TargetFilters value="-;-"/>
+        <Kind index="Spell" value="0"/>
+        <ModifyFraction value="0.5"/>
+    </CPlayerResponseUnitDamage>
 </Catalog>

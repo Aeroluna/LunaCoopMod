@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Desc>
+    <Frame type="CheckBox" name="MutatorRandomizerCheckBoxTemplate" template="StandardTemplates/StandardCheckBoxLabelTemplate">
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$sibling-1" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <Height val="30"/>
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Button" pos="Max" offset="0"/>
+            <Style val="StandardLabel"/>
+            <AcceptsMouseTooltip val="true"/>
+        </Frame>
+    </Frame>
+
     <Frame type="Frame" name="MutatorRandomizer">
         <Height val="100"/>
-        <Width val="220"/>
+        <Width val="360"/>
 
         <Frame type="Pulldown" name="MutatorRandomizerPulldown" template="StandardTemplates/StandardPulldownTemplate">
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-            <Anchor side="Right" relative="$parent" pos="Max" offset="-60"/>
+            <Anchor side="Right" relative="$parent/RefreshButton" pos="Min" offset="0"/>
             <Width val="160"/>
         </Frame>
 
@@ -19,22 +33,52 @@
             <Style val="Coop_CommanderMutatorRandomizerLabel"/>
         </Frame>
 
+        <Frame type="Frame" name="MutatorRandomizerSettings">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/MutatorRandomizerPulldown" pos="Min" offset="0"/>
+
+            <Frame type="CheckBox" name="RandomizerBox0" template="Coop_MutatorRandomizer/MutatorRandomizerCheckBoxTemplate">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Checked val="true"/>
+                <Frame type="Label" name="Label">
+                    <Text val="Negative"/>
+                    <Tooltip val="Allow negative mutators to be rolled."/>
+                </Frame>
+            </Frame>
+
+            <Frame type="CheckBox" name="RandomizerBox1" template="Coop_MutatorRandomizer/MutatorRandomizerCheckBoxTemplate">
+                <Frame type="Label" name="Label">
+                    <Text val="Neutral"/>
+                    <Tooltip val="Allow neutral mutators to be rolled."/>
+                </Frame>
+            </Frame>
+
+            <Frame type="CheckBox" name="RandomizerBox2" template="Coop_MutatorRandomizer/MutatorRandomizerCheckBoxTemplate">
+                <Frame type="Label" name="Label">
+                    <Text val="Positive"/>
+                    <Tooltip val="Allow positive mutators to be rolled."/>
+                </Frame>
+            </Frame>
+        </Frame>
+
         <Frame type="Button" name="RefreshButton">
             <Width val="70"/>
             <Height val="70"/>
             <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
             <ClickSound val="@UI_ActionButtonSelect"/>
-            
+
             <NormalImage val="NormalImage"/>
             <HoverImage val="HoverImage"/>
-        
+
             <Frame type="Image" name="NormalImage">
                 <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
                 <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
                 <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
                 <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-                <Texture val="Assets\Textures\ui_techpurchase_techbutton_hired_normalpressed.dds"/>    
+                <Texture val="Assets\Textures\ui_techpurchase_techbutton_hired_normalpressed.dds"/>
                 <Color val="80,180,255"/>
                 <TextureType val="Border"/>
                 <StateCount val="2"/>
@@ -54,7 +98,7 @@
                 <DesaturateOnDisable val="false"/>
                 <Alpha val="255"/>
             </Frame>
-            
+
             <Frame type="Image" name="Icon">
                 <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
                 <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
