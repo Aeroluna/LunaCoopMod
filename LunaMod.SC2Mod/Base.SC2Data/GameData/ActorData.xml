@@ -150,6 +150,10 @@
         <HeightOffset value="3.500000"/>
         <Text value="Button/Tooltip/AutomatedRefineryTextKicker6"/>
     </CActorText>
+    <CActorModel id="BunkerPlacementModel">
+        <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; ModelIsLowQuality" Send="ModelSwap BunkerUpgrade"/>
+        <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; !ModelIsLowQuality" Send="ModelSwap BunkerUpgradePlacement"/>
+    </CActorModel>
     <CActorUnit id="CommandCenter">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>

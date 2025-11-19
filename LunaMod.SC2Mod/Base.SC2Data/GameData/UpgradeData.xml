@@ -215,6 +215,16 @@
     <CUpgrade id="ProtossGroundArmorsExtraLevel3" parent="ProtossGroundArmorsExtra">
         <EffectArray Operation="Set" Reference="Actor,VoidArchon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
     </CUpgrade>
+    <CUpgrade id="TerranBuildingArmor">
+        <EffectArray Reference="Abil,BunkerTransport,MaxCargoCount" Value="2"/>
+        <EffectArray Reference="Abil,BunkerTransport,TotalCargoSpace" Value="2"/>
+        <EffectArray Reference="Abil,CommandCenterTransport,MaxCargoCount" Value="5"/>
+        <EffectArray Reference="Abil,CommandCenterTransport,TotalCargoSpace" Value="5"/>
+        <EffectArray Operation="Set" Reference="Actor,Bunker,Wireframe.Image[0]" Value="Assets\Textures\wireframe-terran-bunker-shriketurret.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Bunker,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-terran-bunker-shriketurret.dds"/>
+        <EffectArray Operation="Set" Reference="Button,BunkerFortified,AlertIcon" Value="Assets\Textures\btn-building-terran-bunkerneosteelshriketurret.dds"/>
+        <EffectArray Operation="Set" Reference="Button,BunkerFortified,Icon" Value="Assets\Textures\btn-building-terran-bunkerneosteelshriketurret.dds"/>
+    </CUpgrade>
     <CUpgrade id="TerranVehicleAndShipWeaponsExtraLevel1" parent="TerranVehicleAndShipWeaponsExtra">
         <EffectArray index="9" Operation="Set" Reference="Weapon,JavelinMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,LanceMissileLaunchersMoving,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
@@ -1320,6 +1330,10 @@
         <EffectArray Operation="Divide" Reference="Abil,UpgradeToLurkerDen,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="100.000000"/>
         <EffectArray Operation="Divide" Reference="Abil,UpgradeToLurkerDen,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="100.000000"/>
         <EffectArray Operation="Divide" Reference="Abil,UpgradeToLurkerDen,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="100.000000"/>
+        <EffectArray Operation="Divide" Reference="Abil,UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="100"/>
+        <EffectArray Operation="Divide" Reference="Abil,UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="100"/>
+        <EffectArray Operation="Divide" Reference="Abil,UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="100"/>
+        <EffectArray Operation="Divide" Reference="Abil,UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="100"/>
     </CUpgrade>
     <CUpgrade id="FirebatJuggernautPlating">
         <EffectArray Reference="Unit,DevilDog,LifeMax" Value="100"/>
@@ -1377,6 +1391,10 @@
         <EffectArray Reference="Weapon,KelMorianRocketTurretWeapon,Level" Value="1"/>
         <EffectArray Reference="Weapon,KelMorianHailstormMissilePods,Level" Value="1"/>
         <EffectArray Reference="Weapon,LaserTurret,Level" Value="1"/>
+        <EffectArray Reference="Weapon,ShrikeTurret,Range" Value="1"/>
+        <EffectArray Reference="Weapon,ShrikeTurret,Level" Value="1"/>
+        <EffectArray Reference="Weapon,HyperionPointDefenseLaser,Range" Value="1"/>
+        <EffectArray Reference="Weapon,HyperionPointDefenseLaser,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="HotSPressurizedGlands">
         <EffectArray index="11" Value="Button/Tooltip/SwarmHostAbathurPressurizedGlands"/>
@@ -1650,10 +1668,6 @@
         <EffectArray index="0" Reference="Unit,Medivac,EnergyRegenRate" Value="0.5625"/>
     </CUpgrade>
     <CUpgrade id="MutatorWhiteout"/>
-    <CUpgrade id="NeosteelFrame">
-        <EffectArray Operation="Set" Reference="Button,BunkerFortified,AlertIcon" Value="Assets\Textures\btn-building-terran-bunkerfortified.dds"/>
-        <EffectArray Operation="Set" Reference="Button,BunkerFortified,Icon" Value="Assets\Textures\btn-building-terran-bunkerfortified.dds"/>
-    </CUpgrade>
     <CUpgrade id="NovaShotgunBlastRange">
         <EffectArray Reference="Effect,NovaDashAttackSearch,AreaArray[0].Radius" Value="1"/>
         <EffectArray Reference="Actor,NovaPsiStrikeGuide,Width" Value="2.500000"/>
@@ -1678,6 +1692,10 @@
         <EffectArray Operation="Set" Reference="Weapon,TwinGatlingCannon,Effect" Value="TwinGatlingCannonsRaynor"/>
         <EffectArray Operation="Set" Reference="Weapon,TwinGatlingCannon,DisplayEffect" Value="TwinGatlingCannonsRaynor"/>
         <EffectArray Operation="Set" Reference="Abil,Yamato,PrepTime[0]" Value="1.500000"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,AlertTooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingRaynor"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,Tooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingRaynor"/>
+        <EffectArray Operation="Set" Reference="Button,UpgradeBuildingArmorLevel1,AlertTooltip" Value="Button/Tooltip/UpgradeBuildingArmorLevel1Raynor"/>
+        <EffectArray Operation="Set" Reference="Button,UpgradeBuildingArmorLevel1,Tooltip" Value="Button/Tooltip/UpgradeBuildingArmorLevel1Raynor"/>
     </CUpgrade>
     <CUpgrade id="RaynorCommanderMechCostReduction">
         <EffectArray index="2" Value="10"/>
@@ -1928,6 +1946,10 @@
         <EffectArray Operation="Subtract" Reference="Abil,FactoryTrain,InfoArray[Train25].Time" Value="8"/>
         <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Vital[Energy]" Value="50"/>
         <EffectArray Operation="Subtract" Reference="Abil,Irradiate,Cost[0].Vital[Energy]" Value="50"/>
+        <EffectArray Operation="Set" Reference="Button,UpgradeBuildingArmorLevel1,AlertTooltip" Value="Button/Tooltip/UpgradeBuildingArmorLevel1Swann"/>
+        <EffectArray Operation="Set" Reference="Button,UpgradeBuildingArmorLevel1,Tooltip" Value="Button/Tooltip/UpgradeBuildingArmorLevel1Swann"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,AlertTooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingSwann"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,Tooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingSwann"/>
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleAttackSpeed">
         <EffectArray Reference="Weapon,JavelinMissileLaunchersMoving,RateMultiplier" Value="0.2"/>
@@ -2028,6 +2050,8 @@
         <EffectArray Operation="Set" Reference="Button,UpgradeToPlanetaryFortress,Name" Value="Button/Name/UpgradeToPlanetaryFortressUpgraded"/>
         <EffectArray Operation="Set" Reference="Unit,PlanetaryFortress,Name" Value="Unit/Name/PlanetaryFortressUpgraded"/>
         <EffectArray Reference="Effect,TwinIbiksCannon,Amount" Value="20"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,AlertTooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingSwannUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,ResearchHiSecAutoTracking,Tooltip" Value="Button/Tooltip/ResearchHiSecAutoTrackingSwannUpgraded"/>
         <AffectedUnitArray value="PlanetaryFortress"/>
     </CUpgrade>
     <CUpgrade id="TempestDestabilizingResiduum">

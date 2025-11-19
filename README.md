@@ -246,6 +246,7 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 - Fixed an issue where the shield fizzle animation played on zerg units with shields.
 - Fixed an issue where Banelings/Volatile Infested would show a buff for a moment before exploding.
 - Fixed an issue where Void Shards/Void Slivers had the attack priority of attacking structures.
+- Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
 
 yeah.
 
@@ -255,8 +256,7 @@ yeah.
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
-- Fixed an issue where `-fastbuild` cheat did not affect research in the second queue slot.
-- Fixed an issue where `-fastbuild` cheat did not affect Lurker Den morph time.
+- Fixed an issue where `-fastbuild` cheat did not affect certain research/upgrades.
 
 Some debug cheats.
 
@@ -595,6 +595,7 @@ Anyone who has played P1 knows how painful it is to get energy on these things.
 Small change to make stutter-stepping with Firebats feel smoother. What mod doesn't do this?
 
 - Added autocast to Stimpack.
+  - Will autocast in Bunkers
 
 Potentially too OP having units perfectly stim, but if Nova's marines can have it, why not Raynor?
 
@@ -642,8 +643,17 @@ I don't see why you wouldn't want this autocasting.
 
 Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
 
-- Fixed an issue where Raynor's bunkers used the Neosteel icon before upgrading Neosteel.
+- Merged Neosteel frame and Structure armor into Neosteel Armor.
+  - Upgrades the armor of structures by 2. Increases the cargo space of Bunkers by 2. Also provides extra cargo space for Command Centers.
+- Added Hi-Sec Auto Tracking upgrade.
+  - Adds +1 range to Shrike Turrets, Missile Turrets, and Point Defense Drones.
+
+Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
+
 - Fixed an issue where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
+- Fixed an issue where Bunkers did not have Shrike Turrets in their icons.
+- Fixed an issue where Bunkers used the Neosteel icon before upgrading Neosteel.
+- Fixed an issue where the placement model for Bunkers did not change with the Neosteel upgrade.
 
 yeah.
 
@@ -859,6 +869,16 @@ P2 suspiciously improved all upgrades but this one.
 - Increased Wraith's Displacement Field evade chance from 20% to 30%.
 
 Even with this upgrade, Wraiths are fragile. This should help improve their survivability.
+
+- Merged Neosteel frame and Structure armor into Neosteel Armor.
+  - Upgrades the armor of structures by 2. Also provides extra cargo space for Command Centers and Planetary Fortresses.
+
+Copied from Versus.
+
+- Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listing wrong structures.
+- Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
+
+yeah.
 
 ### Zagara
 

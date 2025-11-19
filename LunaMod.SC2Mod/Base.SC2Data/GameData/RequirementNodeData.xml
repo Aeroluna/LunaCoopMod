@@ -426,6 +426,15 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TempestDestabilizingResiduum" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranBuildingArmorCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="TerranBuildingArmor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranBuildingArmorCompleteOnly2025896153">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="TerranBuildingArmor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeTransformationServosCompleteOnly1133472468">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TransformationServos" State="CompleteOnly"/>
@@ -575,6 +584,10 @@
     <CRequirementNot id="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
         <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementNot>
+    <CRequirementNot id="NotOrCountUpgradeNeosteelFrameCompleteOnlyCountUpgradeTerranBuildingArmorCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="OrCountUpgradeNeosteelFrameCompleteOnlyCountUpgradeTerranBuildingArmorCompleteOnly"/>
+    </CRequirementNot>
     <CRequirementOr id="Or1394776239TechTreeCheatCountUpgradeClusterWarheadsCompleteOnlyNotCountUpgradeCommanderPrestigeRaynorMercenaryCompleteOnly">
         <Flags index="TechTreeCheat" value="1"/>
         <OperandArray value="CountUpgradeClusterWarheadsCompleteOnly"/>
@@ -635,8 +648,12 @@
         <OperandArray value="CountUpgradeHHBomberTripleQueuedOrBetter"/>
         <OperandArray value="CountUpgradeHHBomberEMPQueuedOrBetter"/>
     </CRequirementOr>
-    <CRequirementOr id="OrCountUpgradeRaynorCommanderCompleteOnlyCountUpgradeSwannCommanderCompleteOnly">
+    <CRequirementOr id="OrCountUpgradeNeosteelFrameCompleteOnlyCountUpgradeTerranBuildingArmorCompleteOnly">
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeNeosteelFrameCompleteOnly"/>
+        <OperandArray value="CountUpgradeTerranBuildingArmorCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUpgradeRaynorCommanderCompleteOnlyCountUpgradeSwannCommanderCompleteOnly">
         <OperandArray value="CountUpgradeRaynorCommanderCompleteOnly"/>
         <OperandArray value="CountUpgradeSwannCommanderCompleteOnly"/>
     </CRequirementOr>
