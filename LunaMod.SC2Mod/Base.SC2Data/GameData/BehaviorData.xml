@@ -35,6 +35,25 @@
         <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="User4" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AutoHarvestVespeneProtossRich">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AutoHarvesterHarvestProtoss"/>
+        <DisableValidatorArray value="HaveCinematicModeDisabled"/>
+        <RemoveValidatorArray value="AutoHarvesterFinish"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="AutoHarvestVespeneRich"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AutoHarvestVespeneRich">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AutoHarvesterHarvest"/>
+        <RemoveValidatorArray value="AutoHarvesterFinish"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Period value="2"/>
+        <PeriodicEffect value="AutoHarvestVespeneRich"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AutoTurretTimedLife">
         <Duration value="11"/>
     </CBehaviorBuff>
@@ -1890,7 +1909,7 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <BuffFlags index="RefreshStack" value="1"/>
         <MaxStackCount value="4"/>
-        <Duration value="2"/>
+        <Duration value="4"/>
         <Modification MoveSpeedMultiplier="0.8">
             <StateFlags index="SuppressCloak" value="1"/>
             <LifeArmorBonus value="-1"/>

@@ -70,9 +70,35 @@
             <SortArray value="TSJinaraCoopShadeDuration"/>
         </TargetSorts>
     </CEffectEnumArea>
+    <CEffectModifyUnit id="AutoHarvestVespeneRich">
+        <EditorCategories value=""/>
+        <Resources value="-6"/>
+        <ResourcesHarvestedFraction value="1"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="AutoTurret">
         <Amount value="18"/>
     </CEffectDamage>
+    <CEffectRemoveBehavior id="OrbitalAssimilatorRichRB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AutoHarvestVespeneProtoss"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="OrbitalAssimilatorRichSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="RawResource;-"/>
+        <AreaArray Radius="0.5" Effect="OrbitalAssimilatorRichSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="OrbitalAssimilatorRichSet">
+        <ValidatorArray value="RichVespeneGeyser"/>
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="OrbitalAssimilatorRichAB"/>
+        <EffectArray value="OrbitalAssimilatorRichRB"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="AutomatedRefineryRichZergRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AutoHarvestVespeneZerg"/>
+    </CEffectRemoveBehavior>
     <CEffectModifyPlayer id="BanelingStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-2"/>
@@ -818,6 +844,33 @@
     <CEffectCreateUnit id="QueenStukovSpawnBroodlingsCreateUnit">
         <SpawnUnit index="0" value="StukovInfestBroodling"/>
     </CEffectCreateUnit>
+    <CEffectApplyBehavior id="OrbitalAssimilatorRichAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoHarvestVespeneProtossRich"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AutomatedRefineryRichAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoHarvestVespeneRich"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AutomatedRefineryRichRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AutoHarvestVespene"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="AutomatedRefineryRichSearch">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="RawResource;-"/>
+        <AreaArray Radius="0.5" Effect="AutomatedRefineryRichSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AutomatedRefineryRichSet">
+        <ValidatorArray value="RichVespeneGeyser"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AutomatedRefineryRichAB"/>
+        <EffectArray value="AutomatedRefineryRichRB"/>
+        <EffectArray value="AutomatedRefineryRichZergRB"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="SIBarracksCorruption">
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>

@@ -111,6 +111,12 @@
         <LifeMax value="100"/>
         <LifeArmor value="0"/>
     </CUnit>
+    <CUnit id="AutomatedAssimilatorZeratul">
+        <EffectArray index="Create" value="OrbitalAssimilatorRichSearch"/>
+    </CUnit>
+    <CUnit id="AutomatedRefinery">
+        <EffectArray index="Create" value="AutomatedRefineryRichSearch"/>
+    </CUnit>
     <CUnit id="BroodLordStetmann">
         <WeaponArray Link="BroodLordStetmannAirDummy"/>
         <BehaviorArray Link="BroodLordStetmannDisableInterceptor"/>
@@ -182,6 +188,12 @@
             <LayoutButtons index="13" Face="ZeratulArtifactUpgradeTier3A" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train2"/>
             <LayoutButtons Face="ZeratulArtifactUpgradeTier3B" Type="AbilCmd" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train1" Row="0" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Extractor">
+        <EffectArray index="Create" value="ExtractorRichSearch"/>
+    </CUnit>
+    <CUnit id="ExtractorStetmann">
+        <EffectArray index="Create" value="ExtractorRichSearch"/>
     </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
@@ -616,11 +628,13 @@
         <CardLayouts index="0">
             <LayoutButtons Face="VorazunImprovedVespene" Type="Passive" Requirements="HaveVorazunCommander" Row="2" Column="1"/>
         </CardLayouts>
+        <EffectArray index="Create" value="AssimilatorRichSearch"/>
     </CUnit>
     <CUnit id="AutomatedAssimilator">
         <CardLayouts index="0">
             <LayoutButtons Face="VorazunImprovedVespene" Type="Passive" Requirements="HaveVorazunCommander" Row="2" Column="1"/>
         </CardLayouts>
+        <EffectArray index="Create" value="OrbitalAssimilatorRichSearch"/>
     </CUnit>
     <CUnit id="Baneling">
         <CardLayouts index="0">
@@ -1444,6 +1458,9 @@
             <LayoutButtons index="13" Row="1" Column="4"/>
             <LayoutButtons index="14" Row="1" Column="4"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="SIRefinery">
+        <EffectArray index="Create" value="RefineryRichSearch"/>
     </CUnit>
     <CUnit id="SOAMothershipv4">
         <AlliedPushPriority value="1"/>
@@ -3860,6 +3877,7 @@
             <LayoutButtons index="8" AbilCmd="255,255"/>
             <LayoutButtons Face="MedicRestoration" Type="AbilCmd" AbilCmd="MedicRestoration,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <SubgroupPriority value="110"/>
     </CUnit>
     <CUnit id="Medivac">
         <AbilArray index="5" Link="WarpableNova"/>

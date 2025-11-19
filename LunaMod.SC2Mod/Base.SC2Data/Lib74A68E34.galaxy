@@ -91,6 +91,7 @@ void lib74A68E34_InitVariables () {
     for (init_i = 0; init_i <= lib74A68E34_gv_mutatorWhiteoutTrackedPingMax; init_i += 1) {
         lib74A68E34_gv_mutatorWhiteoutTrackedPings[init_i] = c_invalidPingId;
     }
+    lib74A68E34_gv_mutatorStartingResourcesUnits = UnitGroupEmpty();
 }
 
 // Custom Script
@@ -2841,6 +2842,58 @@ void lib74A68E34_gf_MutatorWhiteoutApply (unit lp_unit) {
         UnitBehaviorAddPlayer(lp_unit, "MutatorWhiteout", 1, 1);
     }
 
+}
+
+trigger auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_Trigger = null;
+unit auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_gas;
+int auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_before;
+
+void lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters (unit lp_gas, int lp_before) {
+    auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_gas = lp_gas;
+    auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_before = lp_before;
+
+    if (auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_gas = auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_gas;
+    int lp_before = auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_lp_before;
+
+    // Variable Declarations
+    unit lv_gas;
+    int lv_iter;
+
+    // Automatic Variable Declarations
+    unitgroup auto82C384E9_g;
+    int auto82C384E9_u;
+    unit auto82C384E9_var;
+
+    // Variable Initialization
+    lv_gas = lp_gas;
+
+    // Implementation
+    Wait(4.0, c_timeGame);
+    lv_iter = (lp_before - UnitCurrentWorkerCount(lv_gas));
+    auto82C384E9_g = UnitGroupIdle(UnitGetOwner(lv_gas), true);
+    auto82C384E9_u = UnitGroupCount(auto82C384E9_g, c_unitCountAll);
+    for (;; auto82C384E9_u -= 1) {
+        auto82C384E9_var = UnitGroupUnitFromEnd(auto82C384E9_g, auto82C384E9_u);
+        if (auto82C384E9_var == null) { break; }
+        if ((lv_iter == 0)) {
+            break;
+        }
+
+        if ((DistanceBetweenPoints(UnitGetPosition(lv_gas), UnitGetPosition(auto82C384E9_var)) < 8.0)) {
+            UnitIssueOrder(auto82C384E9_var, OrderTargetingUnit(null, lv_gas), c_orderQueueReplace);
+            lv_iter -= 1;
+        }
+
+    }
+    return true;
 }
 
 // Triggers
@@ -7353,6 +7406,7 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
     libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
     libCOMU_gf_CT_RegisterMutator("SpellDamage", lib74A68E34_gt_MutatorSpellDamageInit, lib74A68E34_gt_MutatorSpellDamageShutdown);
+    libCOMU_gf_CT_RegisterMutator("StartingResources", lib74A68E34_gt_MutatorStartingResourcesInit, lib74A68E34_gt_MutatorStartingResourcesShutdown);
     return true;
 }
 
@@ -8275,6 +8329,179 @@ void lib74A68E34_gt_MutatorSpellDamageShutdown_Init () {
     lib74A68E34_gt_MutatorSpellDamageShutdown = TriggerCreate("lib74A68E34_gt_MutatorSpellDamageShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorStartingResourcesInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorStartingResourcesInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_resources;
+
+    // Automatic Variable Declarations
+    playergroup auto7395E601_g;
+    int auto7395E601_var;
+    unitgroup auto20C755BA_g;
+    int auto20C755BA_u;
+    unit auto20C755BA_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7395E601_g = libCOOC_gf_HumanPlayers();
+    auto7395E601_var = -1;
+    while (true) {
+        auto7395E601_var = PlayerGroupNextPlayer(auto7395E601_g, auto7395E601_var);
+        if (auto7395E601_var < 0) { break; }
+        auto20C755BA_g = UnitGroup(null, 0, RegionCircle(PlayerStartLocation(auto7395E601_var), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto20C755BA_u = UnitGroupCount(auto20C755BA_g, c_unitCountAll);
+        for (;; auto20C755BA_u -= 1) {
+            auto20C755BA_var = UnitGroupUnitFromEnd(auto20C755BA_g, auto20C755BA_u);
+            if (auto20C755BA_var == null) { break; }
+            if ((UnitHasBehavior2(auto20C755BA_var, "MineralFieldMinerals") == true)) {
+                libNtve_gf_ShowHideUnit(auto20C755BA_var, false);
+                UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, auto20C755BA_var);
+                UnitCreate(1, "RichMineralField", c_unitCreateIgnorePlacement | c_unitCreateIgnoreBirth, 0, UnitGetPosition(auto20C755BA_var), UnitGetFacing(auto20C755BA_var));
+                UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, UnitLastCreated());
+            }
+            else if ((UnitHasBehavior2(auto20C755BA_var, "RawVespeneGeyserGas") == true)) {
+                lv_resources = UnitGetPropertyFixed(auto20C755BA_var, c_unitPropResources, c_unitPropCurrent);
+                UnitBehaviorRemove(auto20C755BA_var, "RawVespeneGeyserGas", 1);
+                UnitBehaviorAddPlayer(auto20C755BA_var, "RawRichVespeneGeyserGas", 0, 1);
+                UnitSetPropertyFixed(auto20C755BA_var, c_unitPropResources, lv_resources);
+                libNtve_gf_SendActorMessageToUnit(auto20C755BA_var, "Signal Rich");
+                UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, auto20C755BA_var);
+            }
+        }
+    }
+    TriggerEnable(lib74A68E34_gt_MutatorStartingResourcesStart, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorStartingResourcesInit_Init () {
+    lib74A68E34_gt_MutatorStartingResourcesInit = TriggerCreate("lib74A68E34_gt_MutatorStartingResourcesInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorStartingResourcesStart
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorStartingResourcesStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((AIGetTime() > (60.0 * 10.0)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(lib74A68E34_gt_MutatorStartingResourcesShutdown, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorStartingResourcesStart_Init () {
+    lib74A68E34_gt_MutatorStartingResourcesStart = TriggerCreate("lib74A68E34_gt_MutatorStartingResourcesStart_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorStartingResourcesStart, false);
+    TriggerAddEventTimePeriodic(lib74A68E34_gt_MutatorStartingResourcesStart, 10.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorStartingResourcesShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorStartingResourcesShutdown_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_resources;
+    unit lv_gas;
+    int lv_harvester;
+
+    // Automatic Variable Declarations
+    unitgroup autoC4DD0322_g;
+    int autoC4DD0322_u;
+    unit autoC4DD0322_var;
+    unitgroup auto776495F4_g;
+    int auto776495F4_u;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorStartingResourcesStart, false);
+    autoC4DD0322_g = lib74A68E34_gv_mutatorStartingResourcesUnits;
+    autoC4DD0322_u = UnitGroupCount(autoC4DD0322_g, c_unitCountAll);
+    for (;; autoC4DD0322_u -= 1) {
+        autoC4DD0322_var = UnitGroupUnitFromEnd(autoC4DD0322_g, autoC4DD0322_u);
+        if (autoC4DD0322_var == null) { break; }
+        if ((UnitHasBehavior2(autoC4DD0322_var, "MineralFieldMinerals") == true)) {
+            libNtve_gf_ShowHideUnit(autoC4DD0322_var, true);
+        }
+        else if ((UnitHasBehavior2(autoC4DD0322_var, "RawRichVespeneGeyserGas") == true)) {
+            lv_resources = UnitGetPropertyFixed(autoC4DD0322_var, c_unitPropResources, c_unitPropCurrent);
+            UnitBehaviorRemove(autoC4DD0322_var, "RawRichVespeneGeyserGas", 1);
+            UnitBehaviorAddPlayer(autoC4DD0322_var, "RawVespeneGeyserGas", 0, 1);
+            UnitSetPropertyFixed(autoC4DD0322_var, c_unitPropResources, lv_resources);
+            auto776495F4_g = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(autoC4DD0322_var), 0.5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            auto776495F4_u = UnitGroupCount(auto776495F4_g, c_unitCountAll);
+            for (;; auto776495F4_u -= 1) {
+                lv_gas = UnitGroupUnitFromEnd(auto776495F4_g, auto776495F4_u);
+                if (lv_gas == null) { break; }
+                if ((UnitHasBehavior2(lv_gas, "AutoHarvestVespeneProtossRich") == true)) {
+                    UnitBehaviorRemove(lv_gas, "AutoHarvestVespeneProtossRich", 1);
+                    UnitBehaviorAdd(lv_gas, "AutoHarvestVespeneProtoss", lv_gas, 1);
+                }
+                else if ((UnitHasBehavior2(lv_gas, "AutoHarvestVespeneRich") == true)) {
+                    UnitBehaviorRemove(lv_gas, "AutoHarvestVespeneRich", 1);
+                    UnitBehaviorAdd(lv_gas, "AutoHarvestVespene", lv_gas, 1);
+                }
+                else if ((UnitHasBehavior2(lv_gas, "HarvestableRichVespeneGeyserGas") == true)) {
+                    lv_harvester = UnitCurrentWorkerCount(lv_gas);
+                    lv_resources = UnitGetPropertyFixed(lv_gas, c_unitPropResources, c_unitPropCurrent);
+                    UnitBehaviorRemove(lv_gas, "HarvestableRichVespeneGeyserGas", 1);
+                    UnitBehaviorAdd(lv_gas, "HarvestableVespeneGeyserGas", lv_gas, 1);
+                    UnitSetPropertyFixed(lv_gas, c_unitPropResources, lv_resources);
+                    lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters(lv_gas, lv_harvester);
+                }
+                else if ((UnitHasBehavior2(lv_gas, "HarvestableRichVespeneGeyserGasProtoss") == true)) {
+                    lv_harvester = UnitCurrentWorkerCount(lv_gas);
+                    lv_resources = UnitGetPropertyFixed(lv_gas, c_unitPropResources, c_unitPropCurrent);
+                    UnitBehaviorRemove(lv_gas, "HarvestableRichVespeneGeyserGasProtoss", 1);
+                    UnitBehaviorAdd(lv_gas, "HarvestableVespeneGeyserGasProtoss", lv_gas, 1);
+                    UnitSetPropertyFixed(lv_gas, c_unitPropResources, lv_resources);
+                    lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters(lv_gas, lv_harvester);
+                }
+                else if ((UnitHasBehavior2(lv_gas, "HarvestableRichVespeneGeyserGasZerg") == true)) {
+                    lv_harvester = UnitCurrentWorkerCount(lv_gas);
+                    lv_resources = UnitGetPropertyFixed(lv_gas, c_unitPropResources, c_unitPropCurrent);
+                    UnitBehaviorRemove(lv_gas, "HarvestableRichVespeneGeyserGasZerg", 1);
+                    UnitBehaviorAdd(lv_gas, "HarvestableVespeneGeyserGasZerg", lv_gas, 1);
+                    UnitSetPropertyFixed(lv_gas, c_unitPropResources, lv_resources);
+                    lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters(lv_gas, lv_harvester);
+                }
+            }
+        }
+        else if (true) {
+            UnitRemove(autoC4DD0322_var);
+        }
+        UnitGroupRemove(lib74A68E34_gv_mutatorStartingResourcesUnits, autoC4DD0322_var);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorStartingResourcesShutdown_Init () {
+    lib74A68E34_gt_MutatorStartingResourcesShutdown = TriggerCreate("lib74A68E34_gt_MutatorStartingResourcesShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -8408,6 +8635,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorWhiteoutShutdown_Init();
     lib74A68E34_gt_MutatorSpellDamageInit_Init();
     lib74A68E34_gt_MutatorSpellDamageShutdown_Init();
+    lib74A68E34_gt_MutatorStartingResourcesInit_Init();
+    lib74A68E34_gt_MutatorStartingResourcesStart_Init();
+    lib74A68E34_gt_MutatorStartingResourcesShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

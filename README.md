@@ -287,9 +287,10 @@ Added Brutal+ system.
 
 - Added Mutator alignments.
   - Mutators can either be Negative, Neutral, or Positive.
-  - Can roll up to two Neutral or Positive mutators (if enabled).
+  - Negative mutators use regular Brutal+ system.
+  - Can roll up to two Neutral or two Positive mutators (if enabled).
 
-What if there were mutators that helped you or mutators that changed the way you played without strictly buffing Amon? Now it's possible to roll some helpful mutators!
+Now it's possible to roll some helpful mutators! Neutral mutators change the way you play without directly buffing Amon, typically these mutators will buff/debuff you and Amon equally. Positive mutators are straight buffs for you, but in return, they cost negative points, increasing the difficulty of rolled negative mutators.
 
 - Added new negative mutator: Teeming
   - Enemies begin with twice as many units.
@@ -320,9 +321,16 @@ It's like the Darkness mutator but cooler!
 
 Get your High Templar ready.
 
-- Added positive mutator: Lucky Envelopes.
-  - Costs -1 point for Brutal+.
-- Added neutral mutator: Gift Exchange.
+- Added new positive mutator: Gold Rush
+  - Player starting resources are enriched for the first 10 minutes.
+  - Minerals Fields are replaced with Rich Mineral Fields. (+5 per trip -> +7 per trip)
+  - Vespene Geysers are replaced with Rich Vespene Geysers. (+4 per trip -> +6 per trip)
+  - Costs -4 points for Brutal+.
+
+Grants an initial boost to your starting economy.
+
+- Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
+- Added Gift Exchange to Brutal+ as a neutral mutator costing 0 points.
 
 Some holiday-exclusive mutators have been added to Brutal+ using the new alignment system.
 
@@ -574,6 +582,7 @@ Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly worki
 - Added new Medic ability: Restoration.
   - Removes any negative debuffs on target allied unit.
   - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
+- Increased Medic subgroup priority from 104 to 110.
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
@@ -993,7 +1002,7 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
 - Increased Dark Archon Confusion radius from 2 to 3.
 - Buffed Dark Archon Mind Control ability to no longer take up supply.
 
-Should make massing Dark Archons more viable instead of watching them tickle units.
+Should make massing Dark Archons more viable. Why can High Archons exist as Archons with Storm while Dark Archons just tickle?
 
 - Changed Dark Archon skin.
   - Visually green instead of red.
@@ -1011,7 +1020,7 @@ Why should that Overseer be able to detect you while it's being crushed in a Bla
 - Added Revelation to Oracle.
 - Buffed Revelation to additionally suppress detection.
 
-That's their main gimmick, why did they remove it? Revelation has been given an additional effect to suppress detection to help cloaked units.
+That's their main gimmick, why did they remove it? Revelation has been given an additional effect to suppress detection to make it more appealing outside of Versus.
 
 - Increased Oracle's Stasis Ward duration from 15 seconds to 30 seconds.
 
@@ -1033,7 +1042,7 @@ Makes casting much smoother.
 
 Ever get annoyed when your Dark Templar would run in and automatically stasis Missile Turrets you were trying to snipe? Removing the invulnerability makes it much easier to snipe detection while fighting. Being able to stasis air units additionally makes Dark Templar much sneakier against flying detectors like Overseers.
 
-- Buffed Emergency Recall to cleanse negative debuffs.
+- Buffed Emergency Recall to remove negative debuffs.
 
 No more recalling Black Death straight into your mineral line.
 
@@ -2177,5 +2186,6 @@ yeah.
 - Red Tal'darim Warp In Stargate Effects (+ Robotics facility Warp Ins) - DaveSpectre
 - Tal'darim Stalker (Slayer) blink model. - DaveSpectre
 - Tal'darim Heroes Extras - DaveSpectre
+- Terrazine Refinery Pack V2 - SheeldWall
 
 DaveSpectre is the goat <3

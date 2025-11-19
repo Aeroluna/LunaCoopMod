@@ -31,7 +31,7 @@ const int lib74A68E34_gv_raynorPrestigeMercenaryRallyY = 13;
 const int lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked = 16;
 const int lib74A68E34_gv_alarakMergeMax = 20;
 const int lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE = 9;
-const int lib74A68E34_gv_mM_MUTATORMAXCOUNT = 94;
+const int lib74A68E34_gv_mM_MUTATORMAXCOUNT = 95;
 const int lib74A68E34_gv_mM_MUTATORMINCOUNT = 1;
 const int lib74A68E34_gv_mutatorHarassCount = 18;
 const int lib74A68E34_gv_mutatorWhiteoutTrackedPingMax = 50;
@@ -95,6 +95,7 @@ bool lib74A68E34_gv_mutatorWhiteoutHideNewPing;
 bool[lib74A68E34_gv_cCC_MAXPLAYERS + 1][lib74A68E34_gv_cCC_MAXPLAYERS + 1] lib74A68E34_gv_mutatorWhiteoutAllianceVision;
 sound lib74A68E34_gv_mutatorWhiteoutAmbience;
 unit lib74A68E34_gv_mutatorWhiteoutEffect;
+unitgroup lib74A68E34_gv_mutatorStartingResourcesUnits;
 
 // Function Declarations
 bool lib74A68E34_gf_UnitHasBehaviorFlag (unit lp_unit, int lp_flag);
@@ -164,6 +165,7 @@ void lib74A68E34_gf_MutatorHarassNydus (point lp_target, int lp_targetPlayer, in
 void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation);
 void lib74A68E34_gf_MutatorWhiteoutHidePings (bool lp_hide);
 void lib74A68E34_gf_MutatorWhiteoutApply (unit lp_unit);
+void lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters (unit lp_gas, int lp_before);
 
 // Trigger Declarations
 trigger lib74A68E34_gt_ApplyMaguroChanges;
@@ -298,6 +300,9 @@ trigger lib74A68E34_gt_MutatorWhiteoutSpawn;
 trigger lib74A68E34_gt_MutatorWhiteoutShutdown;
 trigger lib74A68E34_gt_MutatorSpellDamageInit;
 trigger lib74A68E34_gt_MutatorSpellDamageShutdown;
+trigger lib74A68E34_gt_MutatorStartingResourcesInit;
+trigger lib74A68E34_gt_MutatorStartingResourcesStart;
+trigger lib74A68E34_gt_MutatorStartingResourcesShutdown;
 
 // Library Initialization
 void lib74A68E34_InitVariables ();

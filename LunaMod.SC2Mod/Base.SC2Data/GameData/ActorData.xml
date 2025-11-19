@@ -80,6 +80,82 @@
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOn" Send="Create"/>
         <On Terms="Abil.JinaraSacrificeInstant.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
+    <CActorUnit id="Assimilator">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGasProtoss.Destroy" Send="ModelSwap Assimilator"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGasProtoss" Send="ModelSwap AssimilatorRich"/>
+    </CActorUnit>
+    <CActorUnit id="AutomatedAssimilator">
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerKill Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerSet 5.000000 Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimPlay Work Stand,Work"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupRemove B"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupApply D"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="StatusSet Mining 1"/>
+        <On Terms="Behavior.AutoHarvestVespeneProtossRich.On" Send="SetTintColor 255,255,255"/>
+        <On Terms="Behavior.AutoHarvestVespeneProtossRich.Off" Send="SetTintColor 255,170,170"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="Create AutomatedAssimilatorTextKicker6"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="Create SOAVespeneBeamVespene"/>
+    </CActorUnit>
+    <CActorText id="AutomatedAssimilatorTextKicker6">
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 StartMover"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.000000 Die"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 2.000000"/>
+        <On Terms="TimerExpired; TimerName StartMover" Send="Create AutomatedAssimilatorTextMover"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <FixedSize value="28"/>
+        <AlignV value="Bottom"/>
+        <HeightOffset value="3.500000"/>
+        <Text value="Button/Tooltip/AutomatedAssimilatorTextKicker6"/>
+    </CActorText>
+    <CActorUnit id="AutomatedAssimilatorZeratul">
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerKill Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerSet 5.000000 Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimPlay Work Stand,Work"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupRemove B"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupApply D"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="StatusSet Mining 1"/>
+        <On Terms="Behavior.AutoHarvestVespeneProtossRich.On" Send="SetTintColor 255,255,255"/>
+        <On Terms="Behavior.AutoHarvestVespeneProtossRich.Off" Send="SetTintColor 255,170,170"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="Create AutomatedAssimilatorTextKicker6"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="Create SOAVespeneBeamVespene"/>
+        <On Terms="Behavior.AutoHarvestVespeneProtossRich.Destroy" Send="ModelSwap Assimilator_Zeratul_COOP"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit AutoHarvestVespeneProtossRich" Send="ModelSwap AssimilatorRich_Zeratul_COOP"/>
+    </CActorUnit>
+    <CActorUnit id="AutomatedRefinery">
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerKill Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="TimerSet 5.000000 Stopped"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimPlay Work Stand,Work"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupRemove B"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="AnimGroupApply A"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start; IsStatus Mining 0" Send="StatusSet Mining 1"/>
+        <On Terms="Behavior.AutoHarvestVespeneRich.On" Send="SetTintColor 255,255,255"/>
+        <On Terms="Behavior.AutoHarvestVespeneRich.Off" Send="SetTintColor 255,170,170"/>
+        <On Terms="Effect.AutoHarvestVespeneRich.Start" Send="Create AutomatedRefineryTextKicker6"/>
+        <On Terms="Behavior.AutoHarvestVespeneRich.Destroy" Send="ModelSwap AutomatedRefinery"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit AutoHarvestVespeneRich" Send="ModelSwap RefineryAutomatedRich_BlackOps_COOP"/>
+    </CActorUnit>
+    <CActorText id="AutomatedRefineryTextKicker6">
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 StartMover"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.000000 Die"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 2.000000"/>
+        <On Terms="TimerExpired; TimerName StartMover" Send="Create AutomatedRefineryTextMover"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <FixedSize value="28"/>
+        <AlignV value="Bottom"/>
+        <HeightOffset value="3.500000"/>
+        <Text value="Button/Tooltip/AutomatedRefineryTextKicker6"/>
+    </CActorText>
+    <CActorUnit id="CommandCenter">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="CommandCenterMengsk">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
     <CActorModel id="CommanderPrestigeStetmannRespawnTeleportModel" parent="ModelAnimationStyleOneShot">
         <InheritType value="OneShot"/>
         <Inherits index="BaseModelScale" value="1"/>
@@ -128,6 +204,9 @@
     <CActorAction id="CycloneAttackRight">
         <LaunchAssets Model="CycloneMissileLaunch"/>
     </CActorAction>
+    <CActorUnit id="DehakaHatchery">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
     <CActorUnit id="DehakaNydusDestroyerTimedNoFood">
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create YagdraBurrowDownEffects"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create BurrowDownUltralisk"/>
@@ -140,6 +219,16 @@
     <CActorSound id="DehakaRoachConeAttackLaunchSound">
         <Sound value="HH_Hellbat_WildfireExplosion"/>
     </CActorSound>
+    <CActorUnit id="Extractor">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGasZerg.Destroy" Send="ModelSwap Extractor"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGasZerg" Send="ModelSwap ExtractorRich"/>
+    </CActorUnit>
+    <CActorUnit id="ExtractorStetmann">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGasZerg.Destroy" Send="ModelSwap ExtractorStetmann"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGasZerg" Send="ModelSwap Extractor_Mecha_HighYield"/>
+    </CActorUnit>
     <CActorAction id="FenixTalisAdeptBounceShot1">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -176,6 +265,15 @@
     <CActorUnit id="HHBomberPlatform">
         <On index="96" Terms="Behavior.HHBomberPlatformAreaBombDisabler.Off; ValidateUnit SourceNotDead"/>
     </CActorUnit>
+    <CActorUnit id="HHCommandCenter">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="Hatchery">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="HatcheryStetmann">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
     <CActorUnit id="Hercules">
         <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="SetOpacity"/>
         <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Send="SetOpacity 1.000000"/>
@@ -183,6 +281,12 @@
         <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Target="HerculesTacticalJumpPlacement" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="Create HerculesHyperjumpLaunch"/>
         <On Terms="Behavior.HyperjumpTeleportInstantIn.On" Send="Create HerculesHyperjumpImpact"/>
+    </CActorUnit>
+    <CActorUnit id="Hive">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="HiveStetmann">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
     <CActorAction id="HotSLeviathanAirAttack">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMPatternHotSLeviathanAir"/>
@@ -399,12 +503,27 @@
         <AutoScaleFactor value="1.200000"/>
         <On index="3" Terms="Behavior.KarassPsiStorm.On"/>
     </CActorModel>
+    <CActorUnit id="Lair">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="LairStetmann">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
     <CActorUnit id="LurkerStetmann">
         <On Terms="Behavior.LurkerStetmannTunnelingBurst.On" Send="TimerSet 0.080000 BurrowChargeFX"/>
         <On Terms="Behavior.LurkerStetmannTunnelingBurst.On" Send="StatusSet BurrowCharging 1"/>
         <On Terms="Behavior.LurkerStetmannTunnelingBurst.Off" Send="StatusSet BurrowCharging 0"/>
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1; !ModelIsLowQuality" Send="Create UltraliskStetmannBurrowChargeModel"/>
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1" Send="TimerSet 0.080000 BurrowChargeFX"/>
+    </CActorUnit>
+    <CActorUnit id="Nexus">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommand">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortress">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
     <CActorUnit id="PowerTowerStetmann">
         <On index="86" Terms="UnitConstruction.*.Start; !ValidateUnit CommanderPrestigeStetmannStetellites"/>
@@ -428,6 +547,16 @@
         <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
         <Model value="RavagerStetmannEgg"/>
     </CActorModel>
+    <CActorUnit id="Refinery">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGas.Destroy" Send="ModelSwap Refinery"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGas" Send="ModelSwap RefineryRich"/>
+    </CActorUnit>
+    <CActorUnit id="RefineryMengsk">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGas.Destroy" Send="ModelSwap RefineryMengsk"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGas" Send="ModelSwap RefineryRich"/>
+    </CActorUnit>
     <CActorUnit id="RoachStetmann">
         <On Terms="AbilMorph.*.Finish; MorphTo RoachStetmann; MorphFrom RoachStetmannEgg" Send="Create RoachStetmannEggDeath"/>
     </CActorUnit>
@@ -446,9 +575,82 @@
             <Image index="1" removed="1"/>
         </Wireframe>
     </CActorUnit>
+    <CActorUnit id="SICommandCenter">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="SIRefinery">
+        <On Terms="Behavior.HarvestableRichVespeneGeyserGas.Destroy" Send="ModelSwap Refinery_Stukov_COOP"/>
+        <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
+        <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGas" Send="ModelSwap RefineryRich_Stukov_COOP"/>
+    </CActorUnit>
     <CActorModel id="ShieldFizzleModel">
         <On index="2" Terms="UnitDamaged.*.Fizzle; ValidateUnit ShieldFizzleValidator"/>
     </CActorModel>
+    <CActorUnit id="PurifierVespeneGeyser">
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="AnimPlay CoverStart Cover,Start 0 0.000000 0.300000 30.200001 AsDuration"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostFinish" Send="TimerSet 0.130000 GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="TimerKill GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear CoverStart"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear Cover"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupApply D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupRemove D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupApply B"/>
+        <On Terms="Signal.*.Rich" Send="ModelSwap RichVespeneGeyser"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Destroy" Send="ModelSwap PurifierVespeneGeyser"/>
+    </CActorUnit>
+    <CActorUnit id="ProtossVespeneGeyser">
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="AnimPlay CoverStart Cover,Start 0 0.000000 0.300000 30.200001 AsDuration"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostFinish" Send="TimerSet 0.130000 GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="TimerKill GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear CoverStart"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear Cover"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupApply D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupRemove D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupApply B"/>
+        <On Terms="Signal.*.Rich" Send="ModelSwap RichVespeneGeyser"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Destroy" Send="ModelSwap ProtossVespeneGeyser"/>
+    </CActorUnit>
+    <CActorUnit id="SpacePlatformGeyser">
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="AnimPlay CoverStart Cover,Start 0 0.000000 0.300000 30.200001 AsDuration"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostFinish" Send="TimerSet 0.130000 GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="TimerKill GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear CoverStart"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear Cover"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupApply D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupRemove D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupApply B"/>
+        <On Terms="Signal.*.Rich" Send="ModelSwap RichVespeneGeyser"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Destroy" Send="ModelSwap SpacePlatformGeyser"/>
+    </CActorUnit>
+    <CActorUnit id="TychusCommandCenter">
+        <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
+    </CActorUnit>
+    <CActorUnit id="VespeneGeyser">
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="AnimPlay CoverStart Cover,Start 0 0.000000 0.300000 30.200001 AsDuration"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostFinish" Send="TimerSet 0.130000 GeyserHostFinish"/>
+        <On Terms="TimerExpired; TimerName GeyserHostFinish" Send="AnimClear CoverStart"/>
+        <On Terms="TimerExpired; TimerName GeyserHostFinish" Send="AnimPlay Cover Cover PlayForever 0.000000 0.300000"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="TimerKill GeyserHostFinish"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear CoverStart"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="AnimClear Cover"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupRemove B"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Deplete" Send="AnimGroupApply D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupRemove D"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Restore" Send="AnimGroupApply B"/>
+        <On Terms="Signal.*.Rich" Send="ModelSwap RichVespeneGeyser"/>
+        <On Terms="Behavior.RawRichVespeneGeyserGas.Destroy" Send="ModelSwap VespeneGeyser"/>
+    </CActorUnit>
     <CActorModel id="VoidRayEnhancementAddition01">
         <On index="9" Terms="Behavior.VoidRayChargeBeamRangeCounter.On; ValidateUnit IsNotMohandar"/>
     </CActorModel>
