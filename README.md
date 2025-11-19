@@ -1,6 +1,8 @@
 # LunaMod
 
-A set of changes, additions, and bug fixes to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.
+A collection of changes and additions to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.
+
+Changes include new prestiges, new units, new enemies, new maps, new mutators, balance changes, quality-of-life changes, and a huge amount of bug fixes.
 
 NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip says 10 seconds, that corresponds to ~7.14 real time seconds on Brutal/Faster.
 
@@ -366,7 +368,7 @@ Very crippling mutator so its cost has been increased. Unfortunately, doesn't he
 - Removed Going Nuclear from Brutal+.
 - Added Nuclear Mines to Brutal+ costing 3 points.
 
-Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating losing your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
+Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frustrating causing you to lose your entire army because you looked away for 2 seconds. Nuclear Mines keeps the scary nuclear explosions without needing constant attention.
 
 - Nerfed Going Nuclear nuke effect to no longer reveal explosion area to Amon.
 - Nerfed Nuclear Mines nuke effect to no longer reveal explosion area to Amon.
@@ -377,6 +379,17 @@ No more getting revealed for walking in a nuke's area. Especially noticeably whe
 - Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
 
 yeah.
+
+### Maps
+
+- Added new map: Emperor's Justice
+  - The Dominion Core World of Verdonna is under relentless siege. Link up with the Dominion Fleet and help Emporer Valerian defend the city's center.
+  - Based on Nova08 "Dark Skies".
+  - AI Terran ally will help defend.
+  - Occasionally Amon will send a massive capital ship boss.
+  - Amon will send periodic waves that get stronger over time.
+
+It's like Temple of the Past but cooler. You can chose to either defend the low ground for the bonus objective or fall back to the high ground for a better position. The AI ally will constantly reinforce the defenses, but can't defend alone. Eventually you'll have to fight a capital ship boss to end the map.
 
 ## Commanders
 
@@ -424,7 +437,7 @@ This includes adding a cast time, the 6 second wait, and some visual changes. Th
 - Added Combat Drugs passive.
 - Added KD8 Charge ability.
 
-What the hell were Blizzard thinking giving Reapers their structure weapon back for Co-op? Overall the Reaper does less DPS but now they get to be funny with their grenade ability. Get wrecked Shadow Tech.
+What the hell was Blizzard thinking giving Reapers their structure weapon back for Co-op? Overall the Reaper does less DPS but now they get to be funny with their grenade ability. Get wrecked Shadow Tech.
 
 - Reduced Phoenix's Graviton Beam ability cooldown from 30 seconds to 0 seconds.
 - Increased Phoenix's Graviton Beam ability energy cost from 0 to 50.
@@ -650,7 +663,7 @@ Added parity with non-calldown variants. Those are proud mech units, let them be
 
 Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
 
-- Fixed an issue where Raynor's Battlecruisers' turrets did not aim their turrets at their target.
+- Fixed an issue where Raynor's Battlecruisers did not visually aim their turrets at their target.
 - Fixed an issue where Bunkers did not have Shrike Turrets in their icons.
 - Fixed an issue where Bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed an issue where the placement model for Bunkers did not change with the Neosteel upgrade.
@@ -679,7 +692,7 @@ yeah.
       - Heals for 40 life when a biological unit dies nearby.
   - Replaces Queen with Brood Matron.
     - Gains Protective Brood passive.
-      - Grants 3 life regeneration and 0.5625 energy regeneration to nearby friendly units.
+      - Grants 3 life and energy regeneration to nearby friendly units.
   - Replaces Hydralisk with Hunter Killer.
     - Gains Envenomed Spines passive.
       - Attacks against units apply venom for 6 seconds, dealing 4 damage per second. This effect stacks up to 5 times.
@@ -701,7 +714,7 @@ What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasqu
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
 
-- Added missing tooltip to Malignant Creep when P1 is used.
+- Added prestige tooltip to Malignant Creep when P1 is used.
 - Reworked P1.
   - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
   - Advantage additionally increases combat unit life by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
@@ -710,7 +723,7 @@ Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The presti
 
 - Buffed Malignant Creep to affect structures and air units.
 
-Isn't it funny that vanilla P1 Kerrigan's best unit is Mutalisks? This should allow P1 to interact with more units.
+Isn't it funny that vanilla P1 Kerrigan's best unit was Mutalisks? This should allow P1 to interact with more units.
 
 - Buffed P2 to also hit structures.
   - Will prioritize units and attacking structures.
@@ -812,7 +825,7 @@ yeah.
     - Hellbats and Thor heavy air ground weapons can only fire in an arc in front of them while moving.
   - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
 
-Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes. The disadvantage is probably not powerful enough to warrent how strong the advantage is.
+Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes.
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
 - Added a launch sound effect when shooting High Impact Payload weapon.
@@ -862,7 +875,7 @@ It takes forever to eco up on Swann. Maybe now not so much.
 The turret/mech commander gets more improvements to sustaining turrets/mech.
 
 - Buffed P2.
-  - Upgrade Fire Suppression System heals structures to 100% life.
+  - Upgrades Fire Suppression System to heal structures to 100% life.
 
 P2 suspiciously improved all upgrades but this one.
 
@@ -1083,7 +1096,7 @@ Funny that this passive could *nerf* some units. This happened because the buff 
 
 When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now that Vorazun is a proper hero and Shadow Guards no longer use scythes, this weapon has been renamed.
 
-- Fixed (mostly) an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+- Fixed (tried to anyways) an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
 - Fixed an issue where Shadow Guard's casting Shadow Fury did not play their attack animation.
 - Fixed an issue where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
 - Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
@@ -1107,7 +1120,7 @@ yeah.
 - Renamed Improved Shadow Cannon to Photon Reservoirs.
 - Renamed Carrier Capacity to Hangar Expansion.
 
-Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways.
+Karax 2.0 has great quality of life changes for Karax, so lets use them. Chrono Boosting defensive structures removed to not step on P1's toes. Nerfed Improved Reconstruction because Sentinels are pretty much unkillable anyways. The upgrades were given more interesting names.
 
 - Added P4: Chronosmith
   - Advantage: Chrono Boost, Chrono Wave, and Chrono Field affect units, increasing their rate of attack, movement speed, and cooldown reduction.
@@ -1152,13 +1165,18 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
   - Advantage: Hatcheries, Lairs, and Hives can create a Symbiote on a friendly unit.
   - Disadvantage: Leviathans and Brutalisks no longer start with a Symbiote. Symbiotes now cost resources and supply.
 
-Ever wonder how cool it would be to slap a Symbiote on Dehaka? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. OP with commanders who have few but important units such as hero commanders.
+Ever wonder how cool it would be to slap a Symbiote on Dehaka or Nova? Should create interesting combinations with your ally. Each Symbiote is now very expensive in return. Very overpowered with commanders who have few but important units such as hero commanders.
 
 - Added Spike Burst ability to Symbiote.
   - Deals 20 damage to nearby enemies every 10 seconds.
 - Changed Stab to prioritize units and attacking structures.
 
 Spike Burst is cool and was pretty much already finished but unused (can you tell I've been playing HotS?).
+
+- Increased additional Biomass from P1 from 25 to 50. (Total 150 Biomass).
+- Improved prestige tooltip description.
+
+It's generally not worth losing Ultimate Evolutions for this prestige, so let's give it a little extra oomph.
 
 - Buffed Viper's Consumption ability to also target structures.
 - Buffed Virulent Microbes upgrade to additionally increase the radius of Viper abilities by 1.
@@ -1191,8 +1209,10 @@ Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel bu
 
 - Fixed an issue where Mutalisk's Sundering Glaive passive tooltip highlighted unit names.
 - Fixed an issue where Viper's Virulent Microbes passive tooltip highlighted unit names.
+- Fixed an issue where Infestation Pit's Evolve Pressurized Glands tooltip did not highlight unit names.
+- Fixed an issue where Locust's Pressurized Glands passive used the Infestation Pit's research button.
 
-Only the research tooltips should highlight unit names, not passives.
+Some tooltip fixes. Only the research tooltips should highlight unit names, not passives.
 
 - Fixed an issue where Leviathan's air attack projectiles were all launched from one point.
 
@@ -1272,7 +1292,7 @@ Changes the Thermal Lance from a 10 damage tickle beam to a slow moving 100 dama
 - Increased Destroyer price from 125/75 to 250/150.
 - Increased Destroyer bounce damage by 1 for each charge level.
 - Buffed Protoss Air Weapons upgrades to affect Destroyer bounce damage (+0.333).
-- Reworked Destroyer attacks to ignore armor.
+- Reworked Destroyer weapon attacks to ignore armor.
 - Reworked Level 13 Burning Skies perk.
   - No longer increases the amount of Destroyers spawned.
   - Increases visual scale of Destroyers by 20%.
@@ -1309,7 +1329,7 @@ Some Force Field buffs to make it less niche and a new fancy name to make it dis
 - Increased Vanguard attack count from 8 to 16.
 - Reduced Vanguard range by 1.
 
-Copied from LOTV Nightmare. The nerf from campaign to co-op made building these feel sad. To compensate for unnerfing the damage, the range has been reduced. The reduced range also helps them live up to their name.
+Copied from LOTV Nightmare. The nerf from campaign to co-op made training these feel sad. To compensate for unnerfing the damage, the range has been reduced. The reduced range also helps them live up to their name.
 
 - Reworked Wrathwalker attack to hitscan instead of a projectile.
 
@@ -1326,7 +1346,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 - Fixed an issue where Alarak's Deadly Charge cast animation would not play while moving.
 - Improved Alarak's Deadly Charge visual impact animation.
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
-- Fixed an issue where warping in Supplicant were missing the void warp-in beam.
+- Fixed an issue where warping-in Supplicants were missing the void warp-in beam.
 - Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
 
 yeah.
@@ -1366,7 +1386,7 @@ P2 was such a boring prestige. Stunning enemies at least grants a niche of dropp
   - Changed autocast to prioritize hitting multiple enemies, but can target fewer.
   - Reduced casting arc from 360 to 0 (Now has to face target location).
 
-Looked silly dealing the damage instantly and then afterwards the rockets land.
+Looked silly dealing the damage instantly and *then* afterwards the rockets land.
 
 - Reworked Covert Banshee's Advanced Cloaking Field upgrade into Phantom Drive upgrade.
   - Still perma-cloaks but additionally provides movement speed.
@@ -1381,6 +1401,7 @@ Copied from Versus.
   - Added 5 second stun (Heroic and Massive units get slowed instead).
   - Reduced damage from 90 to 50.
   - Changed to an ability instead of an attack augment, allowing it to target enemies separate from basic attacking.
+  - Changed to be able to hit air units.
   - Changed autocast to prioritize non-stunned units.
   - Changed visual effect.
   - Changed damage from ranged to spell (ignores armor).
@@ -1405,7 +1426,7 @@ Fun fact: it was using the range for the Build Railgun Turret ability rather tha
 
 - Increased the range of Spec Ops Ghost's Triple Tap upgrade from 3 to 5.
 
-This increases the reliability of Ghosts getting the extra snipes off.
+This increases the reliability of Ghosts getting the extra snipes off. This is the range of after sniping the first target and looking for a nearby target to hit with an extra snipe.
 
 - Added a new Aegis Plating passive to Hellbat Rangers.
   - Reduced damage taken to a maximum of 20.
@@ -1559,9 +1580,9 @@ Because each duplicate unit gives the same value now, it's possible to go compos
 
 It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *did* affect Mojo. Not sure why this was the exception.
 
-- Remove Disruptors.
+- Removed Disruptors.
 
-Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
+Disruptors are never used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
 
 - Increased Fenix's (Arbiter) Stasis Field ability radius from 1.5 to 5.
 
