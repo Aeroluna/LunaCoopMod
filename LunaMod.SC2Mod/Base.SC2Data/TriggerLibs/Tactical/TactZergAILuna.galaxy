@@ -234,7 +234,7 @@ order QueenMPSpawnBroodlingsLuna (int player, unit aiUnit, unitgroup scanGroup, 
             continue; // Ignore heroic and massive units
         }
 
-        if (UnitGetPropertyFixed(unitToCheck, c_unitPropLifeMax, c_unitPropCurrent) <= 100) {
+        if (UnitGetPropertyFixed(unitToCheck, c_unitPropVitality, c_unitPropCurrent) <= 100) {
             UnitGroupAdd(filterGroup, unitToCheck);
         }
     }

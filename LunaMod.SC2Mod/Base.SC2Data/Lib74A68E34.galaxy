@@ -4554,7 +4554,7 @@ void lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Init () {
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ArtanisPrestigeWarpRefund_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    const fixed lv_refundRate = 0.3;
+    const fixed lv_refundRate = 0.25;
 
     // Automatic Variable Declarations
     // Variable Initialization
@@ -7144,7 +7144,7 @@ bool lib74A68E34_gt_ZeratulPrestigeTopBarAllPassives_Func (bool testConds, bool 
 
     // Conditions
     if (testConds) {
-        if (!((2 == libCOMI_gv_cM_ZeratulProphecyArtifactNumber))) {
+        if (!((libCOMI_gf_CM_ZeratulProphecyEventGetArtifactNumber() == 2))) {
             return false;
         }
     }
@@ -7154,10 +7154,11 @@ bool lib74A68E34_gt_ZeratulPrestigeTopBarAllPassives_Func (bool testConds, bool 
         return true;
     }
 
-    DialogControlSetAnimationState(libCOUI_gv_cU_ZeratulSelectionButtonContainers[2], PlayerGroupAll(), "ArtifactState", "Used");
     libNtve_gf_SetUpgradeLevelForPlayer(lv_zeratul, "ZeratulArtifactUpgradeTier2A", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(lv_zeratul, "ZeratulArtifactUpgradeTier2B", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(lv_zeratul, "ZeratulArtifactUpgradeTier2C", 1);
+    Wait(0.1, c_timeGame);
+    DialogControlSetAnimationState(libCOUI_gv_cU_ZeratulSelectionButtonContainers[2], PlayerGroupAll(), "ArtifactState", "Used");
     return true;
 }
 

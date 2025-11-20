@@ -19142,7 +19142,7 @@
             <Value Type="Param" Library="74A68E34" Id="D1C742CB"/>
         </Element>
         <Element Type="Param" Id="D1C742CB">
-            <Value>0.3</Value>
+            <Value>0.25</Value>
             <ValueType Type="fixed"/>
         </Element>
         <Element Type="FunctionCall" Id="F66208D9">
@@ -45693,10 +45693,11 @@
             <Variable Type="Variable" Library="74A68E34" Id="CB1E3EC9"/>
             <Event Type="FunctionCall" Library="74A68E34" Id="5BF8C2ED"/>
             <Condition Type="FunctionCall" Library="74A68E34" Id="01D3E06E"/>
-            <Action Type="FunctionCall" Library="74A68E34" Id="1FEF38EF"/>
             <Action Type="FunctionCall" Library="74A68E34" Id="DD0CE14A"/>
             <Action Type="FunctionCall" Library="74A68E34" Id="1D79F442"/>
             <Action Type="FunctionCall" Library="74A68E34" Id="89950633"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="0030F154"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="1FEF38EF"/>
         </Element>
         <Element Type="Variable" Id="CB1E3EC9">
             <VariableType>
@@ -45741,8 +45742,10 @@
         </Element>
         <Element Type="Param" Id="91209BB8">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-            <Value>2</Value>
-            <ValueType Type="int"/>
+            <CustomType Type="int"/>
+            <ScriptCode>
+                libCOMI_gf_CM_ZeratulProphecyEventGetArtifactNumber()
+            </ScriptCode>
         </Element>
         <Element Type="Param" Id="D81B865D">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
@@ -45750,43 +45753,8 @@
         </Element>
         <Element Type="Param" Id="3413E4A6">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-            <CustomType Type="int"/>
-            <ScriptCode>
-                libCOMI_gv_cM_ZeratulProphecyArtifactNumber
-            </ScriptCode>
-        </Element>
-        <Element Type="FunctionCall" Id="1FEF38EF">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5708FBB9"/>
-            <Parameter Type="Param" Library="74A68E34" Id="24ADA9E8"/>
-            <Parameter Type="Param" Library="74A68E34" Id="FFD72C38"/>
-            <Parameter Type="Param" Library="74A68E34" Id="78D06FE8"/>
-            <Parameter Type="Param" Library="74A68E34" Id="43114D14"/>
-        </Element>
-        <Element Type="Param" Id="24ADA9E8">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="CB261C6C"/>
-            <Variable Type="Variable" Library="COUI" Id="95F6C88A"/>
-            <Array Type="Param" Library="74A68E34" Id="963EEF35"/>
-        </Element>
-        <Element Type="Param" Id="963EEF35">
             <Value>2</Value>
             <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="FFD72C38">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="66F78606"/>
-            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="4C1D1083"/>
-        </Element>
-        <Element Type="FunctionCall" Id="4C1D1083">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
-        </Element>
-        <Element Type="Param" Id="78D06FE8">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1F1EF2D8"/>
-            <Value>ArtifactState</Value>
-            <ValueType Type="string"/>
-        </Element>
-        <Element Type="Param" Id="43114D14">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="8CF50F97"/>
-            <Value>Used</Value>
-            <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="DD0CE14A">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="9F8EF8FB"/>
@@ -45850,6 +45818,53 @@
             <Value>ZeratulArtifactUpgradeTier2C</Value>
             <ValueType Type="gamelink"/>
             <ValueGameType Type="Upgrade"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0030F154">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000242"/>
+            <Parameter Type="Param" Library="74A68E34" Id="42060C1B"/>
+            <Parameter Type="Param" Library="74A68E34" Id="74DD247F"/>
+        </Element>
+        <Element Type="Param" Id="42060C1B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000419"/>
+            <Value>0.1</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="74DD247F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000420"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000013"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1FEF38EF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5708FBB9"/>
+            <Parameter Type="Param" Library="74A68E34" Id="24ADA9E8"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FFD72C38"/>
+            <Parameter Type="Param" Library="74A68E34" Id="78D06FE8"/>
+            <Parameter Type="Param" Library="74A68E34" Id="43114D14"/>
+        </Element>
+        <Element Type="Param" Id="24ADA9E8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="CB261C6C"/>
+            <Variable Type="Variable" Library="COUI" Id="95F6C88A"/>
+            <Array Type="Param" Library="74A68E34" Id="963EEF35"/>
+        </Element>
+        <Element Type="Param" Id="963EEF35">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FFD72C38">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="66F78606"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="4C1D1083"/>
+        </Element>
+        <Element Type="FunctionCall" Id="4C1D1083">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000192"/>
+        </Element>
+        <Element Type="Param" Id="78D06FE8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1F1EF2D8"/>
+            <Value>ArtifactState</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="43114D14">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="8CF50F97"/>
+            <Value>Used</Value>
+            <ValueType Type="string"/>
         </Element>
         <Element Type="Trigger" Id="D9D5D22A">
             <InitOff/>

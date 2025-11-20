@@ -12,6 +12,7 @@ NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip
 
 - [General](#general)
   - [Mutators](#mutators)
+  - [Maps](#maps)
 - [Commanders](#commanders)
   - [Amon](#amon)
   - [Raynor](#raynor)
@@ -240,7 +241,7 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 - Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
 - Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
 - Fixed an issue where the Infested Swarm Eggs "popping" animation was not playing.
-- Fixed an issue where Viper Abduct would not unburrow most units.
+- Fixed an issue where unburrowing effects (e.g. Viper Abduct, Phoenix Graviton Beam) would not unburrow most units.
 - Added a range indicator when using the Oracle's Stasis Ward ability.
 - Added cosmetic flame jets to Vultures when moving.
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
@@ -553,6 +554,8 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 
 - Fixed an issue where Infested Terran eggs used Stetmann's armor icon.
 - Fixed an issue where Roaches created after Tunneling Claws was researched did not have the visual change.
+- Fixed an issue where Hybrid Destroyer's Graviton Prison could target warping-in units.
+- Fixed an issue where Hybrid Destroyer's Graviton Prison did not unburrow units.
 
 yeah.
 
@@ -750,7 +753,7 @@ Not sure why this was nerfed to not hit invisible units at some point.
 ### Artanis
 
 - Added P4: Reclaimer
-  - Advantage: Warped-in combat unit cost reduced by 40%.
+  - Advantage: Warped-in combat unit cost reduced by 50%.
   - Disadvantage: Combat units are recalled after 60 seconds, refunding 50% of their cost.
 
 Makes units significantly cheaper at the cost of being unable to sustain an army. Units that die are *not* refunded. Pairs nicely with Artanis's warp haste mastery and increased High Templar starting energy upgrade. Be prepared to make *a lot* of gateways. Motherships and Observers are exempt from being recalled, use them to keep vision on the map for more warp-ins.
@@ -812,6 +815,9 @@ Should help actually affording the high tech units with abilities like High Temp
 
 - Changed Warp Stargate model slightly.
 - Fixed an issue where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
+- Fixed an issue where Shield Overcharge mastery listed its value as `+X Percent` instead of `+X%`.
+- Fixed an issue where Feedback/Psionic Storm would only be casted by the selected subgroup when selecting both High Templar and Archons.
+- Fixed an issue where Psionic Storms could stack after researching Plasma Surge.
 
 yeah.
 
@@ -905,7 +911,7 @@ yeah.
 If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
 
 - Added P4: Subterranean Tide
-  - Advantage: Swarm Networks are no longer limited, cost 25% less, and spawn 50% more units.
+  - Advantage: Swarm Networks are no longer capped, cost 25% less, and spawn 50% more units.
   - Disadvantage: Combat units cost 25% more. Swarm Networks cost 100 more minerals for every one built.
 
 I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
@@ -1792,7 +1798,7 @@ yeah.
 ### Tychus
 
 - Added P4: Hell's Kingpin
-  - Advantage: Outlaws are uncapped.
+  - Advantage: Outlaws are no longer capped.
   - Disadvantage: Medivac Platforms are unavailable.
 
 The biggest pain the ass was obviously trying to get the UI to accommodate having 4 more Outlaws. Second to that is trying to get 9 abilities to fit on one shared command card. This prestige trades a weaker early/mid game without Medivacs for an overpowered late game, though it is very expensive getting gear for 9 Outlaws.
@@ -2180,6 +2186,9 @@ Previously the status bar only showed hp.
 - Fixed an issue where after researching Scatter Veil, Imperial Intercessor's shield icon tooltip would say "Unknown".
 - Fixed an issue where Contaminated Strike's fear effect would stop the AI of affected units.
 - Added a warning splat for 2 seconds after casting Contaminated Strike.
+- Fixed an issue where Enthralled Mutalisks used Zerg Ground Carapace instead of Zerg Flyer Carapace.
+- Fixed an issue where Enthralled Mutalisks used Dehaka's flyer weapon icon instead of the Zerg flyer weapon icon.
+- Fixed an issue where Enthralled Zerg weapons/armor did not change icon with weapon/armor upgrades.
 
 yeah.
 

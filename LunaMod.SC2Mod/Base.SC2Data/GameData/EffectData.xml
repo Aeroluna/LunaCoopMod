@@ -78,6 +78,27 @@
     <CEffectDamage id="AutoTurret">
         <Amount value="18"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="GravitonPrisonCreatePersistent">
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="NoReaperKD8Knockback"/>
+        <ValidatorArray value="GravitonBeamValidators"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="IsNotISInfestedBunkerUprooted"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="GravitonPrisonSet">
+        <EffectArray index="0" value="InstantUnburrow"/>
+        <EffectArray index="1" value="GravitonPrisonApplyBehavior"/>
+        <EffectArray index="2" value="GravitonPrisonDamageCreatePersistent2"/>
+        <EffectArray value="GravitonPrisonRaise"/>
+    </CEffectSet>
+    <CEffectSet id="HybridDominatorVoidGravitonPrisonSet">
+        <ValidatorArray value="NoPreventKnockback"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="NoReaperKD8Knockback"/>
+        <ValidatorArray value="GravitonBeamValidators"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="IsNotISInfestedBunkerUprooted"/>
+    </CEffectSet>
     <CEffectRemoveBehavior id="OrbitalAssimilatorRichRB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -741,6 +762,11 @@
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="KerriganImplosionHeroicApplyBehavior"/>
         <EffectArray value="KerriganImplosionDamageApplyBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="KerriganImplosionNotHeroicSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="KerriganImplosionNotHeroicSwitch"/>
     </CEffectSet>
     <CEffectSwitch id="KerriganImplosionNotHeroicSwitch">
         <EditorCategories value="Race:Zerg"/>
@@ -3212,7 +3238,7 @@
         <ValidatorArray value="KerriganImplosionCombineNotActive"/>
         <EditorCategories value="Race:Zerg"/>
         <CaseArray Validator="IsHeroic" Effect="KerriganImplosionHeroicSet"/>
-        <CaseArray Effect="KerriganImplosionNotHeroicSwitch" FallThrough="1"/>
+        <CaseArray Effect="KerriganImplosionNotHeroicSet" FallThrough="1"/>
     </CEffectSwitch>
     <CEffectSet id="KerriganPsiBlastSet">
         <EditorCategories value="Race:Zerg"/>
