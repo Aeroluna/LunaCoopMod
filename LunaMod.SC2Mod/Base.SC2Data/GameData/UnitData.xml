@@ -168,6 +168,10 @@
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
     </CUnit>
+    <CUnit id="ColossusTaldarim">
+        <Level value="0"/>
+        <PawnItemReduction value="11"/>
+    </CUnit>
     <CUnit id="CoopCasterHorner">
         <CardLayouts index="0">
             <LayoutButtons Face="CommanderPrestigeHornerDefenseBomberLocked" Type="Passive" Requirements="CommanderPrestigeHornerDefense" Row="0" Column="1"/>
@@ -188,6 +192,12 @@
             <LayoutButtons index="13" Face="ZeratulArtifactUpgradeTier3A" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train2"/>
             <LayoutButtons Face="ZeratulArtifactUpgradeTier3B" Type="AbilCmd" AbilCmd="ZeratulTopBarUltimateWarpTrain,Train1" Row="0" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaGlevig">
+        <Attributes index="MapBoss" value="0"/>
+    </CUnit>
+    <CUnit id="DehakaMurvar">
+        <Attributes index="MapBoss" value="0"/>
     </CUnit>
     <CUnit id="Extractor">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
@@ -227,6 +237,22 @@
     </CUnit>
     <CUnit id="HurricaneMissileRightStetmann">
         <Mover value="HurricaneMissileStetmann"/>
+    </CUnit>
+    <CUnit id="ImmortalShakuras">
+        <AbilArray Link="ImmortalBarrierBase"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Column="1"/>
+            <LayoutButtons Face="ShadowCannonLocked" Type="Passive" Requirements="KaraxLevel09" Row="2" Column="1"/>
+            <LayoutButtons Face="ImmortalBarrierBase" Type="AbilCmd" AbilCmd="ImmortalBarrierBase,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ImmortalShakurasShadowCannon2" Type="Passive" Requirements="HaveShadowCannon2" Row="2" Column="2"/>
+        </CardLayouts>
+        <Description value="Button/Tooltip/ImmortalAiurKarax"/>
+        <WeaponArray Link="PhaseDisruptorsLookAt" Turret="Immortal"/>
+        <SubgroupPriority value="108"/>
+    </CUnit>
+    <CUnit id="ImmortalTaldarim">
+        <Level value="0"/>
+        <PawnItemReduction value="14"/>
     </CUnit>
     <CUnit id="InfestationPitStetmann">
         <CardLayouts index="0">
@@ -496,11 +522,11 @@
         <EditorCategories value="ObjectType:Unit,ObjectFamily:FactionTaldarim"/>
         <KillDisplay value="Never"/>
         <RankDisplay value="Never"/>
-        <Level value="22"/>
         <ShieldsStart value="50"/>
         <ShieldsMax value="50"/>
         <DeathTime value="5"/>
         <Food value="-1"/>
+        <PawnItemReduction value="22"/>
     </CUnit>
     <CUnit id="FenixTalisAdeptWeapon2" parent="MISSILE">
         <Race value="Prot"/>
@@ -1068,11 +1094,6 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHydraliskDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
-    <CUnit id="ImmortalAiur">
-        <CardLayouts index="0">
-            <LayoutButtons Face="ImmortalShakurasShadowCannon2" Type="Passive" Requirements="HaveShadowCannon2" Row="2" Column="2"/>
-        </CardLayouts>
-    </CUnit>
     <CUnit id="ImpalerDehaka">
         <CardLayouts index="0">
             <LayoutButtons index="5" Column="3"/>
@@ -1201,6 +1222,10 @@
         <FlagArray index="ArmySelect" value="1"/>
         <SubgroupPriority value="17"/>
         <Speed value="2.75"/>
+    </CUnit>
+    <CUnit id="Monitor">
+        <Level value="0"/>
+        <PawnItemReduction value="12"/>
     </CUnit>
     <CUnit id="Mothership">
         <AlliedPushPriority value="1"/>
@@ -1468,6 +1493,8 @@
     </CUnit>
     <CUnit id="SOAMothershipv4">
         <AlliedPushPriority value="1"/>
+        <Level value="0"/>
+        <PawnItemReduction value="9"/>
     </CUnit>
     <CUnit id="MutatorWhiteoutEffect">
         <FlagArray index="Unselectable" value="1"/>
@@ -1492,10 +1519,19 @@
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
     </CUnit>
+    <CUnit id="Stalker">
+        <Level value="0"/>
+        <PawnItemReduction value="18"/>
+        <!--BehaviorArray Link="WarpInAttackSpeedBehavior"/-->
+    </CUnit>
     <CUnit id="StarportMengsk">
         <CardLayouts index="0">
             <LayoutButtons index="12" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="Supplicant">
+        <Level value="0"/>
+        <PawnItemReduction value="20"/>
     </CUnit>
     <CUnit id="SwarmHostBurrowedMP">
         <SubgroupAlias value="SwarmHostMP"/>
@@ -1576,6 +1612,8 @@
         <CardLayouts index="0">
             <LayoutButtons Face="VoidArchonMergeSelection" Type="AbilCmd" AbilCmd="VoidArchonMerge,SelectedUnits" Row="2" Column="3"/>
         </CardLayouts>
+        <Level value="0"/>
+        <PawnItemReduction value="15"/>
     </CUnit>
     <CUnit id="VoidArchon">
         <DeathRevealRadius value="3"/>
@@ -1585,6 +1623,7 @@
         <FlagArray index="UseLineOfSight" value="1"/>
         <FlagArray index="ArmySelect" value="1"/>
         <PlaneArray index="Ground" value="1"/>
+        <PushPriority value="11"/>
         <Collide index="Ground" value="1"/>
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
@@ -1611,6 +1650,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="175"/>
         <CostResource index="Vespene" value="275"/>
+        <PawnItemReduction value="10"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
@@ -1653,7 +1693,6 @@
         <GlossaryWeakArray value="Ultralisk"/>
         <HotkeyCategory value="Unit/Category/ProtossStory"/>
         <AlliedPushPriority value="1"/>
-        <PushPriority value="11"/>
     </CUnit>
     <CUnit id="ForceFieldTaldarim">
         <DeathRevealRadius value="0"/>
@@ -2097,6 +2136,7 @@
     </CUnit>
     <CUnit id="DehakaDakrun">
         <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
+        <Attributes index="MapBoss" value="0"/>
     </CUnit>
     <CUnit id="Devourer">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
@@ -4601,6 +4641,8 @@
         <CostResource index="Vespene" value="150"/>
         <Speed value="2.75"/>
         <EffectArray index="Birth" value=""/>
+        <Level value="0"/>
+        <PawnItemReduction value="19"/>
     </CUnit>
     <CUnit id="VorazunShadowGuard">
         <CardLayouts index="0">
@@ -4638,6 +4680,14 @@
         <FlagArray index="Invulnerable" value="1"/>
         <FogVisibility value="Visible"/>
         <MinimapRadius value="0"/>
+    </CUnit>
+    <CUnit id="WarpPrismPhasingTaldarim">
+        <Level value="0"/>
+        <PawnItemReduction value="16"/>
+    </CUnit>
+    <CUnit id="WarpPrismTaldarim">
+        <Level value="0"/>
+        <PawnItemReduction value="17"/>
     </CUnit>
     <CUnit id="WidowMine">
         <CardLayouts index="0">

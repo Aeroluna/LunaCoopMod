@@ -295,6 +295,12 @@
     <CActorAction id="HotSLeviathanAirAttack">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMPatternHotSLeviathanAir"/>
     </CActorAction>
+    <CActorUnit id="ImmortalShakuras">
+        <On Terms="Behavior.ImmortalBarrierBase.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.ImmortalBarrierBase.On" Send="Create Immortal_Barrier_OnSound"/>
+        <On Terms="Behavior.ImmortalBarrierBase.Off" Send="AnimBracketStop Cover"/>
+        <On Terms="Behavior.ImmortalBarrierBase.Off" Send="Create Immortal_Void_BarrierOffSound"/>
+    </CActorUnit>
     <CActorUnit id="InfestedCivilianAC" parent="GenericBurrowerStandard" unitName="InfestedCivilianAC">
         <Aliases value="_UnitSmall"/>
         <Macros value="ZergBurrowStandardAnimMacro"/>

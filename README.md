@@ -1152,6 +1152,11 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
 
 Disruptors are rarely used with Fenix because it benefits from none of Fenix's Champion AI perks. Hopefully they are a better fit for Karax along with some extra buffs to make it more appealing.
 
+- Replaced Immortals with Annihilators.
+  - Only a visual change.
+
+Karax stole Shadow Cannon and gave it to his Aiur Immortals. Karax already stole Khaydarin Monoliths so why not steal Annihilators too to be more distinct from Artanis's.
+
 - Fixed an issue where P1 Chrono Field would not affect ally structures.
 
 Chrono Boost and Chrono Wave affected ally structures, but not Chrono Field.
@@ -1354,6 +1359,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
 - Fixed an issue where warping-in Supplicants were missing the void warp-in beam.
 - Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
+- Fixed an issue where combat units would have a level in their tooltip.
 
 yeah.
 
@@ -1658,6 +1664,7 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Creepers could not damage friendly units.
 - Changed Explosive Creeper weapon icon.
 - Changed Greater Primal Wurms to visually burrow away instead of exploding when expiring.
+- Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
 
 yeah.
 

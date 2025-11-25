@@ -99,6 +99,11 @@
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="IsNotISInfestedBunkerUprooted"/>
     </CEffectSet>
+    <CEffectSet id="JinaraChainsImpactSet">
+        <EditorCategories value=""/>
+        <EffectArray value="JinaraChainsAB"/>
+        <EffectArray value="JinaraChainsSlowAB"/>
+    </CEffectSet>
     <CEffectRemoveBehavior id="OrbitalAssimilatorRichRB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -377,7 +382,7 @@
     <CEffectLaunchMissile id="JinaraChainsInitLM">
         <EditorCategories value=""/>
         <ImpactLocation Effect="JinaraChainsInitSet"/>
-        <ImpactEffect value="JinaraChainsAB"/>
+        <ImpactEffect value="JinaraChainsImpactSet"/>
         <AmmoUnit value="JinaraChainsWeapon"/>
         <Movers Link="MissileDefault"/>
     </CEffectLaunchMissile>
@@ -496,6 +501,11 @@
         <EditorCategories value=""/>
         <Behavior value="JinaraChains"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="JinaraChainsSlowAB">
+        <EditorCategories value=""/>
+        <Behavior value="JinaraChainsSlow"/>
+        <ValidatorArray index="0" value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectCreateUnit id="JinaraChainsCU">
         <EditorCategories value=""/>
         <WhichLocation Value="CasterUnit"/>
@@ -517,7 +527,7 @@
     </CEffectDamage>
     <CEffectLaunchMissile id="JinaraChainsLM">
         <EditorCategories value=""/>
-        <ImpactEffect value="JinaraChainsAB"/>
+        <ImpactEffect value="JinaraChainsImpactSet"/>
         <AmmoUnit value="JinaraChainsWeapon"/>
         <Movers Link="MissileDefault"/>
     </CEffectLaunchMissile>

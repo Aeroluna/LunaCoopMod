@@ -405,11 +405,19 @@
         <Duration value="8"/>
         <Period value="1"/>
         <PeriodicEffect value="JinaraChainsDamage"/>
-        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
         <DamageResponse Handled="JinaraChainsSearch">
             <ExcludeEffectArray value="JinaraChainsDamage"/>
             <Chance value="1"/>
         </DamageResponse>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="JinaraChainsSlow">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="8"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="JinaraSoulAbsorptionShadeDebuff" parent="TimedLife">
         <EditorCategories value="AbilityorEffectType:Units"/>

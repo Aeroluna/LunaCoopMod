@@ -158,6 +158,12 @@
         <AffectedUnitArray value="InfestedMarineAC"/>
         <AffectedUnitArray value="NovaInfestedSiegeTank"/>
     </CUpgrade>
+    <CUpgrade id="ImmortalResearchShadowCannon">
+        <EffectArray Reference="Unit,ImmortalShakuras,SubgroupPriorityDelta" Value="18"/>
+    </CUpgrade>
+    <CUpgrade id="ImprovedShadowCannon">
+        <EffectArray index="5" removed="1"/>
+    </CUpgrade>
     <CUpgrade id="MengskTrooperArmorsLevel1">
         <EffectArray Operation="Set" Reference="Actor,HydraliskMengsk,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,ZerglingMengsk,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
@@ -627,6 +633,8 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeKaraxArmy">
         <EffectArray index="12" Value="26"/>
+        <EffectArray Operation="Subtract" Reference="Unit,ImmortalShakuras,CostResource[Minerals]" Value="130"/>
+        <EffectArray Operation="Subtract" Reference="Unit,ImmortalShakuras,CostResource[Vespene]" Value="52"/>
         <EffectArray Reference="Unit,PhotonCannon,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Minerals]" Value="300"/>
         <EffectArray Reference="Unit,KhaydarinMonolith,CostResource[Vespene]" Value="100"/>
@@ -1575,6 +1583,10 @@
         <EffectArray Reference="Unit,Disruptor,LifeStart" Value="50"/>
         <EffectArray Reference="Unit,Disruptor,CostResource[Minerals]" Value="45"/>
         <EffectArray Reference="Unit,Disruptor,CostResource[Vespene]" Value="45"/>
+        <EffectArray Reference="Unit,ImmortalShakuras,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,ImmortalShakuras,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,ImmortalShakuras,CostResource[Minerals]" Value="75"/>
+        <EffectArray Reference="Unit,ImmortalShakuras,CostResource[Vespene]" Value="30"/>
         <EffectArray Operation="Set" Reference="Weapon,DisruptorPsiBlast,Options[Hidden]" Value="0"/>
         <EffectArray Operation="Set" Reference="Weapon,DisruptorPsiBlast,Options[Disabled]" Value="0"/>
         <EffectArray Reference="Effect,PurificationNovaTargettedSearch,AreaArray[0].Radius" Value="0.3"/>
