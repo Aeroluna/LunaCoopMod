@@ -253,6 +253,11 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 
 yeah.
 
+- Added `-slim` persistence.
+  - If enabled, will be saved and automatically reenabled when playing again.
+
+Banks!
+
 - Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
 - Fixed an issue where `-ally` cheat did not allow spending resources for the ally.
@@ -719,10 +724,14 @@ Elite Zerglings are my personal favorite, their Cannibalize passive fits their n
 
 - Added prestige tooltip to Malignant Creep when P1 is used.
 - Reworked P1.
-  - Disadvantage makes Kerrigan unavailable instead of removing Nydus Networks.
-  - Advantage additionally increases combat unit life by 50% and grants the Twin Drones upgrade. Creep Tumors gain Super Cloak when burrowed.
+  - Advantage: Malignant Creep effectiveness increased by 100%. Creep Tumors gain Super Cloak when burrowed.
+    - Queens can no longer place tumors off-creep.
+    - Queens no longer move full speed off-creep.
+  - Disadvantage: Combat unit off-creep movement speed reduced by 50%.
+    - Affects air units.
+    - Nydus and Omega Networks no longer unavailable.
 
-Malevolent Matriach was kinda boring, so lets turn the dial up to 11. The prestige is now strictly focused on Kerrigan's army. The Twin Drones upgrade is added to help ease the massive nerf to Kerrigan's early game.
+Losing Omega Networks nerfed Kerrigan too hard. The new disadvantage and the lack of off-creep Queen buffs should be offset by having Omega Networks back. Additionally Creep Tumors were given Super Cloak to make them easier to manage.
 
 - Buffed Malignant Creep to affect structures and air units.
 
@@ -749,6 +758,10 @@ Little silly that you need to detect the unit to affect it with an *aura*.
 - Buffed Kerrigan's Leaping Strike ability to hit cloaked units.
 
 Not sure why this was nerfed to not hit invisible units at some point.
+
+- Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
+
+yeah.
 
 ### Artanis
 

@@ -232,6 +232,71 @@ void lib74A68E34_gf_FourthChangeAllyPrestige () {
     }
 }
 
+trigger auto_lib74A68E34_gf_SlimLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_SlimLoadBank_lp_player;
+
+void lib74A68E34_gf_SlimLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_SlimLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_SlimLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_SlimLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_SlimLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_SlimLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_SlimLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_SlimLoadBank_lp_player;
+
+    // Automatic Variable Declarations
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], "LunaCoopMod", "SlimUI") == true)) {
+        lib74A68E34_gf_SlimUIToggle(lp_player);
+    }
+
+    return true;
+}
+
+void lib74A68E34_gf_SlimUIToggle (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((GameIsMissionTimePaused() == true)) {
+        if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player) == false)) {
+            PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+            TriggerEnable(lib01833E95_gt_AF_SlimUI_Delayed, true);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_F43F2DA9"));
+        }
+        else {
+            PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+            TriggerEnable(lib01833E95_gt_AF_SlimUI_Delayed, false);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C25A0548"));
+        }
+    }
+    else {
+        if ((GameGetMissionTime() < 5.0)) {
+            PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_CB43A38A"));
+            TriggerExecute(lib01833E95_gt_AF_SlimUI_Delayed, true, false);
+        }
+        else {
+            DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer");
+            if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+                UISetFrameVisible(PlayerGroupSingle(lp_player), c_syncFrameTypeConsolePanel, false);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_On");
+            }
+            else {
+                PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+                UISetFrameVisible(PlayerGroupSingle(EventPlayer()), c_syncFrameTypeConsolePanel, true);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_Off");
+            }
+        }
+    }
+}
+
 string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType) {
     // Variable Declarations
     string lv_result;
@@ -2921,6 +2986,7 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
     TriggerEnable(libA8FDA37D_gt_UT_Cooldown, false);
     TriggerEnable(libA8FDA37D_gt_UT_FastBuild, false);
+    TriggerEnable(lib01833E95_gt_AF_SlimUI, false);
     return true;
 }
 
@@ -3768,6 +3834,62 @@ bool lib74A68E34_gt_FearRemove_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_FearRemove_Init () {
     lib74A68E34_gt_FearRemove = TriggerCreate("lib74A68E34_gt_FearRemove_Func");
     TriggerAddEventUnitBehaviorChangeFromCategory(lib74A68E34_gt_FearRemove, null, c_unitBehaviorFlagUser4, c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SlimLoadBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_SlimLoadBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto10896B95_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto10896B95_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto10896B95_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_SlimLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_SlimLoadBankInit_Init () {
+    lib74A68E34_gt_SlimLoadBankInit = TriggerCreate("lib74A68E34_gt_SlimLoadBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_SlimLoadBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: SlimUICommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_SlimUICommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_SlimUIToggle(EventPlayer());
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], "LunaCoopMod", "SlimUI", PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_SlimUICommand_Init () {
+    lib74A68E34_gt_SlimUICommand = TriggerCreate("lib74A68E34_gt_SlimUICommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_SlimUICommand, c_playerAny, "-slim", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8529,6 +8651,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FearDisableTriggers_Init();
     lib74A68E34_gt_FearApply_Init();
     lib74A68E34_gt_FearRemove_Init();
+    lib74A68E34_gt_SlimLoadBankInit_Init();
+    lib74A68E34_gt_SlimUICommand_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();

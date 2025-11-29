@@ -663,9 +663,40 @@
     <CUpgrade id="CommanderPrestigeKerriganCreep">
         <EffectArray index="0" Operation="Set" Reference="Effect,KerriganMalignantCreepAttackSpeedRealDummy,Amount"/>
         <EffectArray index="1" Operation="Set" Reference="Effect,KerriganMalignantCreepLifeRegenRealDummy,Amount"/>
-        <EffectArray Reference="Unit,QueenCoop,LifeMax" Value="87"/>
+        <EffectArray index="2" Operation="Add" Reference="Unit,Broodling,SpeedBonusCreep" Value="1.918000"/>
+        <EffectArray index="3" Operation="Subtract" Reference="Unit,Broodling,Speed" Value="1.918000"/>
+        <EffectArray index="4" Operation="Add" Reference="Unit,Broodling,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,HotSRaptor,SpeedBonusCreep" Value="1.476500"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HotSRaptor,Speed" Value="1.476500"/>
+        <EffectArray Reference="Unit,HotSRaptor,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,Lurker,SpeedBonusCreep" Value="1.476500"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Lurker,Speed" Value="1.476500"/>
+        <EffectArray Reference="Unit,Lurker,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,BroodLord,SpeedBonusCreep" Value="0.941400"/>
+        <EffectArray Operation="Subtract" Reference="Unit,BroodLord,Speed" Value="0.941400"/>
+        <EffectArray Reference="Unit,MutaliskBroodlord,SpeedBonusCreep" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,MutaliskBroodlord,Speed" Value="2.000000"/>
+        <EffectArray Reference="Unit,HotSTorrasque,SpeedBonusCreep" Value="1.476500"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HotSTorrasque,Speed" Value="1.476500"/>
+        <EffectArray Reference="Unit,HotSTorrasque,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,HydraliskLurker,SpeedBonusCreep" Value="1.125000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HydraliskLurker,Speed" Value="1.125000"/>
+        <EffectArray Reference="Unit,HydraliskLurker,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,Ultralisk,SpeedBonusCreep" Value="1.476500"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Ultralisk,Speed" Value="1.476500"/>
+        <EffectArray Reference="Unit,Ultralisk,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,Zergling,SpeedBonusCreep" Value="1.476500"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Zergling,Speed" Value="1.476500"/>
+        <EffectArray Reference="Unit,Zergling,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,Hydralisk,SpeedBonusCreep" Value="1.125000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Hydralisk,Speed" Value="1.125000"/>
+        <EffectArray Reference="Unit,Hydralisk,SpeedMultiplierCreep" Value="0.3"/>
+        <EffectArray Reference="Unit,K5Kerrigan,SpeedBonusCreep" Value="1.475000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,K5Kerrigan,Speed" Value="1.475000"/>
+        <EffectArray Reference="Unit,K5Kerrigan,SpeedMultiplierCreep" Value="0.3"/>
+        <!--EffectArray Reference="Unit,QueenCoop,LifeMax" Value="87"/>
         <EffectArray Reference="Unit,QueenCoop,LifeStart" Value="87"/>
-        <EffectArray Reference="Unit,QueenCoopBurrowed,LifeStart" Value="87"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenCoopBurrowed,LifeStart" Value="87"/>
         <EffectArray Reference="Unit,QueenCoopBurrowed,LifeMax" Value="87"/>
         <EffectArray Reference="Unit,Broodling,LifeMax" Value="15"/>
         <EffectArray Reference="Unit,Broodling,LifeStart" Value="15"/>
@@ -700,7 +731,7 @@
         <EffectArray Reference="Unit,Hydralisk,LifeMax" Value="40"/>
         <EffectArray Reference="Unit,Hydralisk,LifeStart" Value="40"/>
         <EffectArray Reference="Unit,HydraliskBurrowed,LifeStart" Value="40"/>
-        <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="40"/>
+        <EffectArray Reference="Unit,HydraliskBurrowed,LifeMax" Value="40"/-->
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeKerriganCreepZerglingHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,Zergling,LifeMax" Value="5"/>
@@ -733,6 +764,29 @@
     <CUpgrade id="CommanderPrestigeKerriganCreepBroodlordHealth" parent="CommanderPrestige">
         <EffectArray Reference="Unit,BroodLord,LifeMax" Value="50"/>
         <EffectArray Reference="Unit,BroodLord,LifeStart" Value="50"/>
+        <AffectedUnitArray value="BroodLord"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKerriganCreepZerglingSpeed" parent="CommanderPrestige">
+        <EffectArray Reference="Unit,Zergling,SpeedBonusCreep" Value="0.873"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Zergling,Speed" Value="0.873"/>
+        <EffectArray Reference="Unit,HotSRaptor,SpeedBonusCreep" Value="0.873"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HotSRaptor,Speed" Value="0.873"/>
+        <AffectedUnitArray value="Zergling"/>
+        <AffectedUnitArray value="HotSRaptor"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKerriganCreepHydraliskSpeed" parent="CommanderPrestige">
+        <EffectArray Reference="Unit,Hydralisk,SpeedBonusCreep" Value="0.28125"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Hydralisk,Speed" Value="0.28125"/>
+        <EffectArray Reference="Unit,HydraliskLurker,SpeedBonusCreep" Value="0.28125"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HydraliskLurker,Speed" Value="0.28125"/>
+        <EffectArray Reference="Unit,Hydralisk,SpeedMultiplierCreep" Value="0.2"/>
+        <EffectArray Reference="Unit,HydraliskLurker,SpeedMultiplierCreep" Value="0.2"/>
+        <AffectedUnitArray value="Hydralisk"/>
+        <AffectedUnitArray value="HydraliskLurker"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeKerriganCreepBroodlordSpeed" parent="CommanderPrestige">
+        <EffectArray Reference="Unit,BroodLord,SpeedBonusCreep" Value="0.7031"/>
+        <EffectArray Operation="Subtract" Reference="Unit,BroodLord,Speed" Value="0.7031"/>
         <AffectedUnitArray value="BroodLord"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeKerriganBrood" parent="CommanderPrestige">
