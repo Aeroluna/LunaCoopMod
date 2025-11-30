@@ -250,6 +250,7 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 - Fixed an issue where Banelings/Volatile Infested would show a buff for a moment before exploding.
 - Fixed an issue where Void Shards/Void Slivers had the attack priority of attacking structures.
 - Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
+- Fixed an issue where Corsair's Disruption Web affected invulnerable targets.
 
 yeah.
 
@@ -339,6 +340,7 @@ Grants an initial boost to your starting economy.
 
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
 - Added Gift Exchange to Brutal+ as a neutral mutator costing 0 points.
+- Added Fireworks to Brutal+ as a negative mtuator costing 5 points.
 
 Some holiday-exclusive mutators have been added to Brutal+ using the new alignment system.
 
