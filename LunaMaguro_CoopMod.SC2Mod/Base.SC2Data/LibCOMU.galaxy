@@ -323,11 +323,30 @@ void libCOMU_gf_CT_ToggleTrigger (int lp_triggerType, bool lp_onOff) {
 
 }
 
+void libCOMU_gf_CT_RegisterMutatorsTrigger (trigger lp_trigger) {
+    // Automatic Variable Declarations
+    const int auto8E30CD95_ae = 10;
+    int auto8E30CD95_var;
+
+    // Implementation
+    auto8E30CD95_var = 0;
+    for ( ; auto8E30CD95_var <= auto8E30CD95_ae; auto8E30CD95_var += 1 ) {
+        if ((libCOMU_gv_cT_MutatorsRegisteredTriggers[auto8E30CD95_var] == null)) {
+            libCOMU_gv_cT_MutatorsRegisteredTriggers[auto8E30CD95_var] = lp_trigger;
+            return ;
+        }
+
+    }
+    TriggerDebugOutput(1, StringExternal("Param/Value/lib_COMU_FE66BECA"), true);
+}
+
 void libCOMU_gf_CT_InitializeAll () {
     // Variable Declarations
     string lv_indexMutator;
 
     // Automatic Variable Declarations
+    const int auto238A70E1_ae = 10;
+    int auto238A70E1_var;
     int autoDB60F8F0_ai;
     int autoDB60F8F0_ae;
 
@@ -402,6 +421,13 @@ void libCOMU_gf_CT_InitializeAll () {
     libCOMU_gf_CT_RegisterMutator("KillBots", libCOMU_gt_CT_InitializeKillBots, libCOMU_gt_CT_ShutdownKillBots);
     libCOMU_gf_CT_RegisterMutator("MomentOfSilence", libCOMU_gt_CT_InitializeMomentOfSilence, libCOMU_gt_CT_ShutdownMomentOfSilence);
     libCOMU_gf_CT_RegisterMutator("BoomBots", libCOMU_gt_CT_InitializeBoomBots, libCOMU_gt_CT_ShutdownBoomBots);
+    auto238A70E1_var = 0;
+    for ( ; auto238A70E1_var <= auto238A70E1_ae; auto238A70E1_var += 1 ) {
+        if ((libCOMU_gv_cT_MutatorsRegisteredTriggers[auto238A70E1_var] != null)) {
+            TriggerExecute(libCOMU_gv_cT_MutatorsRegisteredTriggers[auto238A70E1_var], true, true);
+        }
+
+    }
     if ((libCOMU_gf_MutatorIsEnabled("CycleRandom") == true)) {
         TriggerExecute(libCOMU_gf_CT_MutatorInitTrigger("CycleRandom"), true, false);
     }
@@ -13567,7 +13593,7 @@ bool libCOMU_gt_CT_TempDamageReflectHealing_Func (bool testConds, bool runAction
     unit lv_indexUnit;
     fixed lv_healAmount;
     fixed lv_healTotal;
-    fixed lv_bmgumhxfaexxywjo;
+    fixed lv_xvcylgebxnvjudho;
 
     // Automatic Variable Declarations
     unitgroup autoE434077F_g;
@@ -13581,9 +13607,9 @@ bool libCOMU_gt_CT_TempDamageReflectHealing_Func (bool testConds, bool runAction
     }
 
     while (true) {
-        lv_bmgumhxfaexxywjo = GameGetMissionTime();
+        lv_xvcylgebxnvjudho = GameGetMissionTime();
         Wait(0.1, c_timeGame);
-        lv_bmgumhxfaexxywjo = (GameGetMissionTime() - lv_bmgumhxfaexxywjo);
+        lv_xvcylgebxnvjudho = (GameGetMissionTime() - lv_xvcylgebxnvjudho);
         autoE434077F_g = libCOMU_gv_cT_TempDamageReflectUnits;
         autoE434077F_u = UnitGroupCount(autoE434077F_g, c_unitCountAll);
         for (;; autoE434077F_u -= 1) {
@@ -13594,7 +13620,7 @@ bool libCOMU_gt_CT_TempDamageReflectHealing_Func (bool testConds, bool runAction
                 continue;
             }
 
-            lv_healRemaining = (10.0 * lv_bmgumhxfaexxywjo);
+            lv_healRemaining = (10.0 * lv_xvcylgebxnvjudho);
             lv_healTotal = lv_healRemaining;
             lv_healRemaining = MinF(lv_healRemaining, UnitGetCustomValue(lv_indexUnit, libCOMU_gv_cTC_TempDamageCustomIndex));
             lv_healAmount = MinF((UnitGetPropertyFixed(lv_indexUnit, c_unitPropLifeMax, c_unitPropCurrent) - UnitGetPropertyFixed(lv_indexUnit, c_unitPropLife, c_unitPropCurrent)), lv_healRemaining);

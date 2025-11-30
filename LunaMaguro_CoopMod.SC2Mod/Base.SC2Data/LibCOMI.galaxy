@@ -36,6 +36,7 @@ void libCOMI_InitVariables () {
     libCOMI_gv_mM_AddToAttackWave = UnitGroupEmpty();
     libCOMI_gv_mM_PlayerX = 14;
     libCOMI_gv_mM_DM_TargetPlayer = 2;
+    libCOMI_gv_cM_CreatedPing = c_invalidPingId;
     libCOMI_gv_cM_DebugAITargetSpawners = true;
     for (init_i = 0; init_i <= libCOOC_gv_cCC_MAXPLAYERS; init_i += 1) {
         libCOMI_gv_cM_ScreenMode[init_i] = c_uiModeConsole;
@@ -1518,6 +1519,12 @@ unitgroup libCOMI_gf_CreateCommanderAttackGroupatPoint_TEMPLATE (int lp_player, 
     return lv_returnUnitGroup;
 }
 
+void libCOMI_gf_CM_PingCreated (trigger t) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventGeneric(t, libCOMI_gv_cMC_PingCreatedEvent);
+}
+
 int libCOMI_gf_PingTypeFromObjectiveType (bool lp_objectiveType) {
     // Automatic Variable Declarations
     // Implementation
@@ -1683,6 +1690,8 @@ void libCOMI_gf_CreatePingFacingAngleCoop (playergroup lp_players, point lp_posi
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_CreatePingFacingAngle(lp_players, lp_model, lp_position, lp_color, lp_duration, lp_angle);
+    libCOMI_gv_cM_CreatedPing = PingLastCreated();
+    TriggerSendEvent(libCOMI_gv_cMC_PingCreatedEvent);
     if (((libCOMU_gf_MutatorIsEnabled("BlackFog") == true) || (libCOMU_gf_MutatorIsEnabled("UberDarkness") == true))) {
         PingSetUsePlayerVision(PingLastCreated(), true);
     }
@@ -1693,6 +1702,8 @@ void libCOMI_gf_CreatePingWithPointFacingCoop (playergroup lp_players, string lp
     // Automatic Variable Declarations
     // Implementation
     PingCreateWithPlayerId(lp_players, lp_model, lp_position, lp_color, lp_duration, lp_playerId);
+    libCOMI_gv_cM_CreatedPing = PingLastCreated();
+    TriggerSendEvent(libCOMI_gv_cMC_PingCreatedEvent);
     if (((libCOMU_gf_MutatorIsEnabled("BlackFog") == true) || (libCOMU_gf_MutatorIsEnabled("UberDarkness") == true))) {
         PingSetUsePlayerVision(PingLastCreated(), true);
     }
@@ -5464,7 +5475,7 @@ void libCOMI_gf_CM_MasteryResearchCostReduction (int lp_player, string lp_master
     }
 }
 
-void libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges (string lp_unitType, unit lp_dhfktxfbmgjpxtbw, int lp_novaPlayer) {
+void libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges (string lp_unitType, unit lp_bvngutnwvdueqwym, int lp_novaPlayer) {
     // Automatic Variable Declarations
     string auto03923738_val;
 
@@ -5485,9 +5496,9 @@ void libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges (string lp_unitType, unit 
     }
     else {
     }
-    UnitSetState(lp_dhfktxfbmgjpxtbw, c_unitStateSilenced, true);
+    UnitSetState(lp_bvngutnwvdueqwym, c_unitStateSilenced, true);
     Wait(0.0625, c_timeGame);
-    UnitSetState(lp_dhfktxfbmgjpxtbw, c_unitStateSilenced, false);
+    UnitSetState(lp_bvngutnwvdueqwym, c_unitStateSilenced, false);
 }
 
 void libCOMI_gf_CM_PrestigeRaynor_AirSupplySetBonus (int lp_raynorPlayer) {
@@ -9169,141 +9180,62 @@ bool auto_libCOMI_gf_CM_HeroHandleDeath_TriggerFunc (bool testConds, bool runAct
 }
 
 text libCOMI_gf_CM_HeroNormalReviveMsgPending (int lp_player, fixed lp_duration) {
+    // Variable Declarations
+    text lv_msg;
+
     // Automatic Variable Declarations
-    string auto8E21667C_val;
+    string auto3772D298_val;
+
+    // Variable Initialization
 
     // Implementation
-    auto8E21667C_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
-    if (auto8E21667C_val == "ZergKerrigan") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_D7AD3E1A", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_D7AD3E1A");
-    }
-    else if (auto8E21667C_val == "ZergZagara") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_11BCBA90", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_11BCBA90");
-    }
-    else if (auto8E21667C_val == "TerranNova") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_F90FD3F3", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_F90FD3F3");
-    }
-    else if (auto8E21667C_val == "ProtossAlarak") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_C759BEF1", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_C759BEF1");
-    }
-    else if (auto8E21667C_val == "ZergDehaka") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_EFA4A2E6", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_EFA4A2E6");
-    }
-    else if (auto8E21667C_val == "ProtossZeratul") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_22C1F924", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_22C1F924");
-    }
-    else if (auto8E21667C_val == "ZergStetmann") {
-        TextExpressionSetToken("Param/Expression/lib_COMI_2B90ACF7", "Duration", FixedToText(lp_duration, 0));
-        return TextExpressionAssemble("Param/Expression/lib_COMI_2B90ACF7");
+    auto3772D298_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
+    if (auto3772D298_val == "ZergStetmann") {
+        TextExpressionSetToken("Param/Expression/lib_COMI_1B28384E", "Duration", FixedToText(lp_duration, 0));
+        return TextExpressionAssemble("Param/Expression/lib_COMI_1B28384E");
     }
     else {
     }
-    return TextExpressionAssemble("Param/Expression/lib_COMI_0C0853FD");
+    lv_msg = UserDataGetText("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lp_player), "HeroReviveMessages", 4);
+    return TextReplaceWord(lv_msg, StringExternal("Param/Value/lib_COMI_5C5E981A"), FixedToText(lp_duration, 0), c_stringReplaceAll, c_stringCase);
 }
 
 text libCOMI_gf_CM_HeroReviveMsgNoTownHall (int lp_player) {
     // Automatic Variable Declarations
-    string auto79E1ED1E_val;
+    string auto345663DB_val;
 
     // Implementation
-    auto79E1ED1E_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
-    if (auto79E1ED1E_val == "ZergKerrigan") {
-        return StringExternal("Param/Value/lib_COMI_95EFD188");
-    }
-    else if (auto79E1ED1E_val == "ZergZagara") {
-        return StringExternal("Param/Value/lib_COMI_261331FE");
-    }
-    else if (auto79E1ED1E_val == "ProtossAlarak") {
-        return StringExternal("Param/Value/lib_COMI_1E4D119E");
-    }
-    else if (auto79E1ED1E_val == "TerranNova") {
-        return StringExternal("Param/Value/lib_COMI_93FA8BC9");
-    }
-    else if (auto79E1ED1E_val == "ZergDehaka") {
-        return StringExternal("Param/Value/lib_COMI_920F3CCB");
-    }
-    else if (auto79E1ED1E_val == "ProtossZeratul") {
-        return StringExternal("Param/Value/lib_COMI_17E9CA21");
-    }
-    else if (auto79E1ED1E_val == "ZergStetmann") {
-        return StringExternal("Param/Value/lib_COMI_0DA02017");
+    auto345663DB_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
+    if (auto345663DB_val == "ZergStetmann") {
+        return StringExternal("Param/Value/lib_COMI_94D863D0");
     }
     else {
     }
-    return TextExpressionAssemble("Param/Expression/lib_COMI_9902A686");
+    return UserDataGetText("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lp_player), "HeroReviveMessages", 3);
 }
 
 text libCOMI_gf_CM_HeroReviveMsgComplete (int lp_player) {
     // Automatic Variable Declarations
-    string auto4AF238FC_val;
+    string autoC1CE6647_val;
 
     // Implementation
-    auto4AF238FC_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
-    if (auto4AF238FC_val == "ZergKerrigan") {
+    autoC1CE6647_val = libCOOC_gf_ActiveCommanderForPlayer(lp_player);
+    if (autoC1CE6647_val == "ZergStetmann") {
         if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_10C0B343");
+            return StringExternal("Param/Value/lib_COMI_4693F933");
         }
         else {
-            return StringExternal("Param/Value/lib_COMI_84DABCBC");
-        }
-    }
-    else if (auto4AF238FC_val == "ZergZagara") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_BAEB7C3F");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_DC380D10");
-        }
-    }
-    else if (auto4AF238FC_val == "TerranNova") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_1769E792");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_11150123");
-        }
-    }
-    else if (auto4AF238FC_val == "ProtossAlarak") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_325425B9");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_8E0E31E2");
-        }
-    }
-    else if (auto4AF238FC_val == "ZergDehaka") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_12A8AB36");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_86B95DEF");
-        }
-    }
-    else if (auto4AF238FC_val == "ProtossZeratul") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_001302B2");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_5BBB9DBA");
-        }
-    }
-    else if (auto4AF238FC_val == "ZergStetmann") {
-        if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
-            return StringExternal("Param/Value/lib_COMI_0E34DDD6");
-        }
-        else {
-            return StringExternal("Param/Value/lib_COMI_187AF952");
+            return StringExternal("Param/Value/lib_COMI_F5D77CF1");
         }
     }
     else {
     }
-    return TextExpressionAssemble("Param/Expression/lib_COMI_5386C966");
+    if ((libCOMI_gv_cM_HeroDeathCount[lp_player] > 0)) {
+        return UserDataGetText("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lp_player), "HeroReviveMessages", 1);
+    }
+    else {
+        return UserDataGetText("PlayerCommanders", libCOOC_gf_ActiveCommanderForPlayer(lp_player), "HeroReviveMessages", 2);
+    }
 }
 
 trigger auto_libCOMI_gf_CM_HeroWaitForRevive_Trigger = null;
@@ -24622,14 +24554,14 @@ void libCOMI_gt_CM_NovaPsiStrike_Init () {
 bool libCOMI_gt_CM_Nova_BuildingCompletedTrigger_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_player;
-    unit lv_vthvqqfgntlswpcr;
-    string lv_vryhxlxchjdlqqmp;
+    unit lv_wqqjbymecltqqeta;
+    string lv_vovnifduhamktdbg;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_player = UnitGetOwner(EventUnitProgressUnit());
-    lv_vthvqqfgntlswpcr = EventUnitProgressUnit();
-    lv_vryhxlxchjdlqqmp = UnitGetType(EventUnitProgressUnit());
+    lv_wqqjbymecltqqeta = EventUnitProgressUnit();
+    lv_vovnifduhamktdbg = UnitGetType(EventUnitProgressUnit());
 
     // Conditions
     if (testConds) {
@@ -24643,24 +24575,24 @@ bool libCOMI_gt_CM_Nova_BuildingCompletedTrigger_Func (bool testConds, bool runA
         return true;
     }
 
-    if (((lv_vryhxlxchjdlqqmp == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vryhxlxchjdlqqmp, lv_vthvqqfgntlswpcr, lv_player);
+    if (((lv_vovnifduhamktdbg == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vovnifduhamktdbg, lv_wqqjbymecltqqeta, lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "BarracksTrainNovaMarine", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "BarracksTrainMarauderNova", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "BarracksTrainGhostNova", lv_player);
         libCOMI_gv_novaBarrackBuilt[lv_player] = 1;
     }
 
-    if (((lv_vryhxlxchjdlqqmp == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vryhxlxchjdlqqmp, lv_vthvqqfgntlswpcr, lv_player);
+    if (((lv_vovnifduhamktdbg == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vovnifduhamktdbg, lv_wqqjbymecltqqeta, lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "FactoryTrainGoliathNova", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "FactoryTrainSiegeTankNova", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "FactoryTrainHellbatNova", lv_player);
         libCOMI_gv_novaFactoryBuilt[lv_player] = 1;
     }
 
-    if (((lv_vryhxlxchjdlqqmp == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vryhxlxchjdlqqmp, lv_vthvqqfgntlswpcr, lv_player);
+    if (((lv_vovnifduhamktdbg == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_vovnifduhamktdbg, lv_wqqjbymecltqqeta, lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "StarportTrainBansheeNova", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "StarportTrainRavenNova", lv_player);
         libCOMI_gf_CM_ModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "StarportTrainLiberatorNova", lv_player);
