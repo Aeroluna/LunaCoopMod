@@ -7526,11 +7526,7 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
         else {
         }
     }
-    libCOMU_gf_CT_RegisterMutator("Teeming", lib74A68E34_gt_MutatorTeemingInit, lib74A68E34_gt_MutatorTeemingShutdown);
-    libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
-    libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
-    libCOMU_gf_CT_RegisterMutator("SpellDamage", lib74A68E34_gt_MutatorSpellDamageInit, lib74A68E34_gt_MutatorSpellDamageShutdown);
-    libCOMU_gf_CT_RegisterMutator("StartingResources", lib74A68E34_gt_MutatorStartingResourcesInit, lib74A68E34_gt_MutatorStartingResourcesShutdown);
+    libCOMU_gf_CT_RegisterMutatorsTrigger(lib74A68E34_gt_MutatorRegister);
     return true;
 }
 
@@ -7538,6 +7534,30 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_MutatorInit_Init () {
     lib74A68E34_gt_MutatorInit = TriggerCreate("lib74A68E34_gt_MutatorInit_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_MutatorInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorRegister
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gf_CT_RegisterMutator("Teeming", lib74A68E34_gt_MutatorTeemingInit, lib74A68E34_gt_MutatorTeemingShutdown);
+    libCOMU_gf_CT_RegisterMutator("Harass", lib74A68E34_gt_MutatorHarassInit, lib74A68E34_gt_MutatorHarassShutdown);
+    libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
+    libCOMU_gf_CT_RegisterMutator("SpellDamage", lib74A68E34_gt_MutatorSpellDamageInit, lib74A68E34_gt_MutatorSpellDamageShutdown);
+    libCOMU_gf_CT_RegisterMutator("StartingResources", lib74A68E34_gt_MutatorStartingResourcesInit, lib74A68E34_gt_MutatorStartingResourcesShutdown);
+    libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorRegister_Init () {
+    lib74A68E34_gt_MutatorRegister = TriggerCreate("lib74A68E34_gt_MutatorRegister_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8484,15 +8504,25 @@ bool lib74A68E34_gt_MutatorStartingResourcesInit_Func (bool testConds, bool runA
         for (;; auto20C755BA_u -= 1) {
             auto20C755BA_var = UnitGroupUnitFromEnd(auto20C755BA_g, auto20C755BA_u);
             if (auto20C755BA_var == null) { break; }
-            if ((UnitHasBehavior2(auto20C755BA_var, "MineralFieldMinerals") == true)) {
+            if (((UnitHasBehavior2(auto20C755BA_var, "MineralFieldMinerals") == true) || (UnitHasBehavior2(auto20C755BA_var, "MutatorMineralsLowYield") == true))) {
                 libNtve_gf_ShowHideUnit(auto20C755BA_var, false);
                 UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, auto20C755BA_var);
                 UnitCreate(1, "RichMineralField", c_unitCreateIgnorePlacement | c_unitCreateIgnoreBirth, 0, UnitGetPosition(auto20C755BA_var), UnitGetFacing(auto20C755BA_var));
                 UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, UnitLastCreated());
             }
             else if ((UnitHasBehavior2(auto20C755BA_var, "RawVespeneGeyserGas") == true)) {
+                DataTableSetString(true, ("Mutator_StartingResources_ResType_" + IntToString(UnitGetTag(auto20C755BA_var))), ("RawVespeneGeyserGas"));
                 lv_resources = UnitGetPropertyFixed(auto20C755BA_var, c_unitPropResources, c_unitPropCurrent);
                 UnitBehaviorRemove(auto20C755BA_var, "RawVespeneGeyserGas", 1);
+                UnitBehaviorAddPlayer(auto20C755BA_var, "RawRichVespeneGeyserGas", 0, 1);
+                UnitSetPropertyFixed(auto20C755BA_var, c_unitPropResources, lv_resources);
+                libNtve_gf_SendActorMessageToUnit(auto20C755BA_var, "Signal Rich");
+                UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, auto20C755BA_var);
+            }
+            else if ((UnitHasBehavior2(auto20C755BA_var, "MutatorVespeneRawLowYield") == true)) {
+                DataTableSetString(true, ("Mutator_StartingResources_ResType_" + IntToString(UnitGetTag(auto20C755BA_var))), ("MutatorVespeneRawLowYield"));
+                lv_resources = UnitGetPropertyFixed(auto20C755BA_var, c_unitPropResources, c_unitPropCurrent);
+                UnitBehaviorRemove(auto20C755BA_var, "MutatorVespeneRawLowYield", 1);
                 UnitBehaviorAddPlayer(auto20C755BA_var, "RawRichVespeneGeyserGas", 0, 1);
                 UnitSetPropertyFixed(auto20C755BA_var, c_unitPropResources, lv_resources);
                 libNtve_gf_SendActorMessageToUnit(auto20C755BA_var, "Signal Rich");
@@ -8566,13 +8596,13 @@ bool lib74A68E34_gt_MutatorStartingResourcesShutdown_Func (bool testConds, bool 
     for (;; autoC4DD0322_u -= 1) {
         autoC4DD0322_var = UnitGroupUnitFromEnd(autoC4DD0322_g, autoC4DD0322_u);
         if (autoC4DD0322_var == null) { break; }
-        if ((UnitHasBehavior2(autoC4DD0322_var, "MineralFieldMinerals") == true)) {
+        if (((UnitHasBehavior2(autoC4DD0322_var, "MineralFieldMinerals") == true) || (UnitHasBehavior2(autoC4DD0322_var, "MutatorMineralsLowYield") == true))) {
             libNtve_gf_ShowHideUnit(autoC4DD0322_var, true);
         }
         else if ((UnitHasBehavior2(autoC4DD0322_var, "RawRichVespeneGeyserGas") == true)) {
             lv_resources = UnitGetPropertyFixed(autoC4DD0322_var, c_unitPropResources, c_unitPropCurrent);
             UnitBehaviorRemove(autoC4DD0322_var, "RawRichVespeneGeyserGas", 1);
-            UnitBehaviorAddPlayer(autoC4DD0322_var, "RawVespeneGeyserGas", 0, 1);
+            UnitBehaviorAddPlayer(autoC4DD0322_var, (DataTableGetString(true, ("Mutator_StartingResources_" + IntToString(UnitGetTag(autoC4DD0322_var))))), 0, 1);
             UnitSetPropertyFixed(autoC4DD0322_var, c_unitPropResources, lv_resources);
             auto776495F4_g = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(autoC4DD0322_var), 0.5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
             auto776495F4_u = UnitGroupCount(auto776495F4_g, c_unitCountAll);
@@ -8624,6 +8654,177 @@ bool lib74A68E34_gt_MutatorStartingResourcesShutdown_Func (bool testConds, bool 
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_MutatorStartingResourcesShutdown_Init () {
     lib74A68E34_gt_MutatorStartingResourcesShutdown = TriggerCreate("lib74A68E34_gt_MutatorStartingResourcesShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorMinedOutInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorMinedOutInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+    unit lv_indexResource;
+    unitgroup lv_resourceNodes;
+    int lv_resourceAmount;
+
+    // Automatic Variable Declarations
+    unitgroup auto88EC286B_g;
+    int auto88EC286B_u;
+
+    // Variable Initialization
+    lv_resourceNodes = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_resourceNodes = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    UnitGroupAddUnitGroup(lv_resourceNodes, UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    auto88EC286B_g = lv_resourceNodes;
+    auto88EC286B_u = UnitGroupCount(auto88EC286B_g, c_unitCountAll);
+    for (;; auto88EC286B_u -= 1) {
+        lv_indexResource = UnitGroupUnitFromEnd(auto88EC286B_g, auto88EC286B_u);
+        if (lv_indexResource == null) { break; }
+        if ((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lv_indexResource), "ResourceType", c_playerAny) == "Minerals")) {
+            lv_resourceAmount = libNtve_gf_UnitGetPropertyResources(lv_indexResource, c_unitPropCurrent);
+            if ((UnitHasBehavior2(lv_indexResource, "MineralFieldMinerals") == true)) {
+                DataTableSetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))), ("MineralFieldMinerals"));
+                UnitBehaviorRemove(lv_indexResource, "MineralFieldMinerals", 1);
+            }
+            else if ((UnitHasBehavior2(lv_indexResource, "MineralFieldMinerals750") == true)) {
+                DataTableSetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))), ("MineralFieldMinerals750"));
+                UnitBehaviorRemove(lv_indexResource, "MineralFieldMinerals750", 1);
+            }
+            else if ((UnitHasBehavior2(lv_indexResource, "HighYieldMineralFieldMinerals") == true)) {
+                DataTableSetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))), ("HighYieldMineralFieldMinerals"));
+                UnitBehaviorRemove(lv_indexResource, "HighYieldMineralFieldMinerals", 1);
+            }
+            else if ((UnitHasBehavior2(lv_indexResource, "HighYieldMineralFieldMinerals750") == true)) {
+                DataTableSetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))), ("HighYieldMineralFieldMinerals750"));
+                UnitBehaviorRemove(lv_indexResource, "HighYieldMineralFieldMinerals750", 1);
+            }
+            else if ((UnitHasBehavior2(lv_indexResource, "MineralFieldMineralsNoRemove") == true)) {
+                DataTableSetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))), ("MineralFieldMineralsNoRemove"));
+                UnitBehaviorRemove(lv_indexResource, "MineralFieldMineralsNoRemove", 1);
+            }
+            UnitBehaviorAddPlayer(lv_indexResource, "MutatorMineralsLowYield", 0, 1);
+            UnitSetPropertyFixed(lv_indexResource, c_unitPropResources, lv_resourceAmount);
+            libNtve_gf_SendActorMessageToUnit(lv_indexResource, "Signal MutatorLowYield");
+        }
+        else if ((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lv_indexResource), "ResourceType", c_playerAny) == "Vespene") && (UnitFilterMatch(lv_indexResource, 1, UnitFilter((1 << c_targetFilterRawResource), 0, 0, 0)) == true)) {
+            if ((UnitHasBehavior2(lv_indexResource, "RawVespeneGeyserGas") == true)) {
+                lv_resourceAmount = libNtve_gf_UnitGetPropertyResources(lv_indexResource, c_unitPropCurrent);
+                UnitBehaviorRemove(lv_indexResource, "RawVespeneGeyserGas", 1);
+                UnitBehaviorAddPlayer(lv_indexResource, "MutatorVespeneRawLowYield", 0, 1);
+                UnitSetPropertyFixed(lv_indexResource, c_unitPropResources, lv_resourceAmount);
+                libNtve_gf_SendActorMessageToUnit(lv_indexResource, "Signal MutatorLowYield");
+            }
+
+        }
+    }
+    TriggerExecute(libCOMU_gt_CT_ResourceSpawns, true, false);
+    CatalogFieldValueSet(c_gameCatalogAbil, "MULEGather", "ResourceAmountMultiplier[" + IntToString(0) + "]", 1, "0.033333333333333333");
+    CatalogFieldValueSet(c_gameCatalogAbil, "MULEGather", "ResourceAmountMultiplier[" + IntToString(0) + "]", 2, "0.033333333333333333");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 1, "-1");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 2, "-1");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 1, "Button/Tooltip/AutomatedAssimilatorTextKicker1");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 2, "Button/Tooltip/AutomatedAssimilatorTextKicker1");
+    CatalogFieldValueSet(c_gameCatalogEffect, "VespeneDroneGrantResourcesTrigger", "Resources[" + IntToString(1) + "]", 1, "1");
+    CatalogFieldValueSet(c_gameCatalogEffect, "VespeneDroneGrantResourcesTrigger", "Resources[" + IntToString(1) + "]", 1, "1");
+    CatalogFieldValueSet(c_gameCatalogActor, "VespeneDronePickupText", "Text", 1, "Button/Tooltip/VespeneDronePickupTextMinedOut");
+    CatalogFieldValueSet(c_gameCatalogActor, "VespeneDronePickupText", "Text", 2, "Button/Tooltip/VespeneDronePickupTextMinedOut");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene", "Resources", 1, "-1");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene", "Resources", 2, "-1");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedRefineryTextKicker4", "Text", 1, "Button/Tooltip/AutomatedRefineryTextKicker1");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedRefineryTextKicker4", "Text", 2, "Button/Tooltip/AutomatedRefineryTextKicker1");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorMinedOutInit_Init () {
+    lib74A68E34_gt_MutatorMinedOutInit = TriggerCreate("lib74A68E34_gt_MutatorMinedOutInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorMinedOutShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorMinedOutShutdown_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+    unit lv_indexResource;
+    unitgroup lv_resourceNodes;
+    int lv_resourceAmount;
+
+    // Automatic Variable Declarations
+    unitgroup autoF6EA7E62_g;
+    int autoF6EA7E62_u;
+
+    // Variable Initialization
+    lv_resourceNodes = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerStop(libCOMU_gt_CT_ResourceSpawns);
+    lv_resourceNodes = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    UnitGroupAddUnitGroup(lv_resourceNodes, UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    autoF6EA7E62_g = lv_resourceNodes;
+    autoF6EA7E62_u = UnitGroupCount(autoF6EA7E62_g, c_unitCountAll);
+    for (;; autoF6EA7E62_u -= 1) {
+        lv_indexResource = UnitGroupUnitFromEnd(autoF6EA7E62_g, autoF6EA7E62_u);
+        if (lv_indexResource == null) { break; }
+        if ((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lv_indexResource), "ResourceType", c_playerAny) == "Minerals")) {
+            lv_resourceAmount = libNtve_gf_UnitGetPropertyResources(lv_indexResource, c_unitPropCurrent);
+            UnitBehaviorRemove(lv_indexResource, "MutatorMineralsLowYield", 1);
+            UnitBehaviorAddPlayer(lv_indexResource, (DataTableGetString(true, ("CT_ResType_" + IntToString(UnitGetTag(lv_indexResource))))), 0, 1);
+            libNtve_gf_SendActorMessageToUnit(lv_indexResource, "Signal MutatorNormalYield");
+            UnitSetPropertyFixed(lv_indexResource, c_unitPropResources, lv_resourceAmount);
+        }
+        else if ((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lv_indexResource), "ResourceType", c_playerAny) == "Vespene") && (UnitFilterMatch(lv_indexResource, 1, UnitFilter((1 << c_targetFilterRawResource), 0, 0, 0)) == true)) {
+            if ((UnitHasBehavior2(lv_indexResource, "MutatorVespeneRawLowYield") == true)) {
+                lv_resourceAmount = libNtve_gf_UnitGetPropertyResources(lv_indexResource, c_unitPropCurrent);
+                UnitBehaviorAddPlayer(lv_indexResource, "RawVespeneGeyserGas", 0, 1);
+                UnitBehaviorRemove(lv_indexResource, "MutatorVespeneRawLowYield", 1);
+                UnitSetPropertyFixed(lv_indexResource, c_unitPropResources, lv_resourceAmount);
+                libNtve_gf_SendActorMessageToUnit(lv_indexResource, "Signal MutatorNormalYield");
+            }
+
+        }
+    }
+    CatalogFieldValueSet(c_gameCatalogAbil, "MULEGather", "ResourceAmountMultiplier[" + IntToString(0) + "]", 1, "1.0");
+    CatalogFieldValueSet(c_gameCatalogAbil, "MULEGather", "ResourceAmountMultiplier[" + IntToString(0) + "]", 2, "1.0");
+    if ((TechTreeUpgradeCount(1, "VorazunImprovedVespene", c_techCountCompleteOnly) > 0)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 1, "-5");
+        CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 1, "Button/Tooltip/AutomatedAssimilatorTextKicker5");
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 1, "-4");
+        CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 1, "Button/Tooltip/AutomatedAssimilatorTextKicker4");
+    }
+    if ((TechTreeUpgradeCount(2, "VorazunImprovedVespene", c_techCountCompleteOnly) > 0)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 2, "-5");
+        CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 2, "Button/Tooltip/AutomatedAssimilatorTextKicker5");
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene4", "Resources", 2, "-4");
+        CatalogFieldValueSet(c_gameCatalogActor, "AutomatedAssimilatorTextKicker4", "Text", 2, "Button/Tooltip/AutomatedAssimilatorTextKicker4");
+    }
+    CatalogFieldValueSet(c_gameCatalogEffect, "VespeneDroneGrantResourcesTrigger", "Resources[" + IntToString(1) + "]", 1, "2");
+    CatalogFieldValueSet(c_gameCatalogEffect, "VespeneDroneGrantResourcesTrigger", "Resources[" + IntToString(1) + "]", 1, "2");
+    CatalogFieldValueSet(c_gameCatalogActor, "VespeneDronePickupText", "Text", 1, "Button/Tooltip/VespeneDronePickupText");
+    CatalogFieldValueSet(c_gameCatalogActor, "VespeneDronePickupText", "Text", 2, "Button/Tooltip/VespeneDronePickupText");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene", "Resources", 1, "-4");
+    CatalogFieldValueSet(c_gameCatalogEffect, "AutoHarvestVespene", "Resources", 2, "-4");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedRefineryTextKicker4", "Text", 1, "Button/Tooltip/AutomatedRefineryTextKicker4");
+    CatalogFieldValueSet(c_gameCatalogActor, "AutomatedRefineryTextKicker4", "Text", 2, "Button/Tooltip/AutomatedRefineryTextKicker4");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorMinedOutShutdown_Init () {
+    lib74A68E34_gt_MutatorMinedOutShutdown = TriggerCreate("lib74A68E34_gt_MutatorMinedOutShutdown_Func");
 }
 
 void lib74A68E34_InitTriggers () {
@@ -8739,6 +8940,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
     lib74A68E34_gt_MutatorInit_Init();
+    lib74A68E34_gt_MutatorRegister_Init();
     lib74A68E34_gt_MutatorRandomizerCreate_Init();
     lib74A68E34_gt_MutatorRandomizerSelected_Init();
     lib74A68E34_gt_MutatorRandomizerRefresh_Init();
@@ -8764,6 +8966,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorStartingResourcesInit_Init();
     lib74A68E34_gt_MutatorStartingResourcesStart_Init();
     lib74A68E34_gt_MutatorStartingResourcesShutdown_Init();
+    lib74A68E34_gt_MutatorMinedOutInit_Init();
+    lib74A68E34_gt_MutatorMinedOutShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
