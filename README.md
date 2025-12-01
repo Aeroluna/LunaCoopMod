@@ -1460,6 +1460,20 @@ This increases the reliability of Ghosts getting the extra snipes off. This is t
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
 
+- Reduced Railgun Turret life from 400 to 375.
+- Reduced life multiplier from Nova's level 1 perk from 2 to 1.5.
+- Buffed Nova's level 1 perk to affect Missile Turrets.
+- Added Hi-Sec Auto Tracking upgrade.
+  - Adds +1 range to Railgun Turrets, Missile Turrets, Defensive Drones, and Bio-Mechanical Repair Drones.
+
+Showing some love for Nova's static defense. Nova's structure life perk was ridiculous, so its value was reduced. In return, Missile Turrets benefit from it now.
+
+- Fixed an issue where Triple Tap could target undetected units.
+- Fixed an issue where Railgun Turret placement models were smaller than their actual model.
+- Added a buff/debuff for structures affected by P1.
+
+yeah.
+
 ### Stukov
 
 - Added P4: Neural Dominator
