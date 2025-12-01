@@ -4642,6 +4642,38 @@ void lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: RaynorShrikeTurretWireframe
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RaynorShrikeTurretWireframe_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventUpgradeName() == "TerranBuildingArmor"))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(EventPlayer(), "ShrikeTurret", c_techCountCompleteOnly) > 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CatalogFieldValueSet(c_gameCatalogActor, "Bunker", "Wireframe.Image[" + IntToString(0) + "]", EventPlayer(), "Assets\\Textures\\wireframe-terran-bunker-shriketurret.dds");
+    CatalogFieldValueSet(c_gameCatalogActor, "Bunker", "GroupIcon.Image[" + IntToString(0) + "]", EventPlayer(), "Assets\\Textures\\wireframe-terran-bunker-shriketurret.dds");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RaynorShrikeTurretWireframe_Init () {
+    lib74A68E34_gt_RaynorShrikeTurretWireframe = TriggerCreate("lib74A68E34_gt_RaynorShrikeTurretWireframe_Func");
+    TriggerAddEventUpgradeLevelChanged(lib74A68E34_gt_RaynorShrikeTurretWireframe, c_playerAny);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ArtanisPrestigeWarpTimedLife
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Func (bool testConds, bool runActions) {
@@ -8866,6 +8898,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_RaynorStimpackAutocast_Init();
     lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();
+    lib74A68E34_gt_RaynorShrikeTurretWireframe_Init();
     lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Init();
     lib74A68E34_gt_ArtanisPrestigeWarpRefund_Init();
     lib74A68E34_gt_ArtanisPowerFieldPrestigePylon_Init();

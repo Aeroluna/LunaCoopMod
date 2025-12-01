@@ -9,6 +9,7 @@ include "TriggerLibs/NativeLib"
 include "TriggerLibs/LibertyLib"
 include "LibCOOC"
 include "LibCOMI"
+include "Lib74A68E34"
 include "ai14F812AA"
 
 //--------------------------------------------------------------------------------------------------
@@ -19,6 +20,7 @@ void InitLibs () {
     libLbty_InitLib();
     libCOOC_InitLib();
     libCOMI_InitLib();
+    lib74A68E34_InitLib();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -35,48 +37,18 @@ const int gv_pLAYER_10_DEFENDERS_LEFT = 10;
 const int gv_pLAYER_11_DEFENDERS_RIGHT = 11;
 
 //--------------------------------------------------------------------------------------------------
-// Global Structures
-//--------------------------------------------------------------------------------------------------
-struct gs_RECORD_GorgonDialog {
-    int lv_dialog;
-    int lv_gorgon1;
-    int lv_gorgon2;
-    int lv_gorgon3;
-    int lv_button1;
-    int lv_button2;
-    int lv_button3;
-    int lv_timeLabel1;
-    int lv_timeLabel2;
-    int lv_timeLabel3;
-    timer lv_gorgonTimer1;
-    timer lv_gorgonTimer2;
-    timer lv_gorgonTimer3;
-};
-
-struct gs_RECORD_ObserverBully {
-    unit lv_obvserver;
-    point lv_homePoint;
-    region lv_spawnRegion;
-    timer lv_respawnTimer;
-    timer lv_aggroTimer;
-    bool lv_alive;
-};
-
-//--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
 string gv_mapMusicTrack;
 string gv_mapMusicTrack2;
 playergroup gv_aLLY_GROUP;
 playergroup gv_eNEMY_GROUP;
-gs_RECORD_GorgonDialog gv_gorgonDialog;
+int gv_vikingStock;
+int gv_aliveOuterBases;
 timer gv_battlecruiser1Timer;
 timer gv_battlecruiser2Timer;
 int gv_scienceFacilityPing;
 int[32] gv_trackedArrowPings;
-gs_RECORD_ObserverBully[32] gv_observerBullies;
-int gv_observerBullyCount;
-unitgroup gv_observerWave;
 int gv_deathFleetLeaderboard;
 int gv_enemyUnitsRemaining;
 int gv_currentEnemyUnits;
@@ -89,6 +61,7 @@ point gv_victoryPan;
 bool gv_nightmare;
 string gv_hybridMinor;
 string gv_hybridMajor;
+unitgroup gv_bossAdds;
 point[11] gv_waveTarget;
 unit gv_bonusHercules;
 int gv_objectiveScienceFacilityProgress;
@@ -98,41 +71,23 @@ void InitGlobals () {
 
     gv_aLLY_GROUP = PlayerGroupEmpty();
     gv_eNEMY_GROUP = PlayerGroupEmpty();
-    gv_gorgonDialog.lv_dialog = c_invalidDialogId;
-    gv_gorgonDialog.lv_gorgon1 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_gorgon2 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_gorgon3 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_button1 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_button2 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_button3 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_timeLabel1 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_timeLabel2 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_timeLabel3 = c_invalidDialogControlId;
-    gv_gorgonDialog.lv_gorgonTimer1 = TimerCreate();
-    gv_gorgonDialog.lv_gorgonTimer2 = TimerCreate();
-    gv_gorgonDialog.lv_gorgonTimer3 = TimerCreate();
+    gv_aliveOuterBases = 3;
     gv_battlecruiser1Timer = TimerCreate();
     gv_battlecruiser2Timer = TimerCreate();
     gv_scienceFacilityPing = c_invalidPingId;
     for (init_i = 0; init_i <= 31; init_i += 1) {
         gv_trackedArrowPings[init_i] = c_invalidPingId;
     }
-    for (init_i = 0; init_i <= 31; init_i += 1) {
-        gv_observerBullies[init_i].lv_respawnTimer = TimerCreate();
-        gv_observerBullies[init_i].lv_aggroTimer = TimerCreate();
-        gv_observerBullies[init_i].lv_alive = true;
-    }
-    gv_observerWave = UnitGroupEmpty();
     gv_deathFleetLeaderboard = c_boardNone;
     for (init_i = 0; init_i <= 3; init_i += 1) {
         gv_enemyGroups[init_i] = UnitGroupEmpty();
     }
+    gv_bossAdds = UnitGroupEmpty();
 }
 
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
-void gf_GorgonHyperjump (unit lp_gorgon, point lp_target);
 void gf_CreateArrowPings (int lp_lane, fixed lp_delay, fixed lp_direction);
 region gf_SpawnRegionforPosition (point lp_position);
 void gf_TrackUnitforLeaderboard (unit lp_unit, int lp_lane);
@@ -142,6 +97,7 @@ unitgroup gf_SpawnAmbientUnit (int lp_amount, string lp_unittype, int lp_lane);
 void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLevel, int lp_hybridMinor, int lp_hybridMajor);
 void gf_JinaraPing (text lp_tooltip, unit lp_unit);
 void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, int lp_hybridMinor, int lp_hybridMajor);
+void gf_JinaraVikingWaves (unit lp_boss, int lp_vikingcount);
 void gf_BonusEvacuate ();
 
 //--------------------------------------------------------------------------------------------------
@@ -160,10 +116,12 @@ trigger gt_DebugMother;
 trigger gt_DebugMother2;
 trigger gt_DebugNightmare;
 trigger gt_StartGameQ;
+trigger gt_DominionStock;
 trigger gt_DefenderSideBasesOnlineQ;
 trigger gt_DefenderBasesMaintainDefenseQ;
 trigger gt_BattlecruisersOnlineQ;
 trigger gt_MoreBattlecruisersOnlineQ;
+trigger gt_DominionPlanetaryDies;
 trigger gt_SCVDespawn;
 trigger gt_BarracksConstruction;
 trigger gt_ScienceFacilityDiesQ;
@@ -182,6 +140,7 @@ trigger gt_VictorySequence;
 trigger gt_VictoryFanfareQ;
 trigger gt_Victory;
 trigger gt_Defeat;
+trigger gt_LeviathanAddDies;
 trigger gt_BossAddSuicideEffect;
 trigger gt_BossAddSuicideWarp;
 trigger gt_MothershipAdds;
@@ -350,43 +309,6 @@ void cai_runall () {
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
-void gf_GorgonHyperjump (unit lp_gorgon, point lp_target) {
-    // Variable Declarations
-    actor lv_jumpEffect;
-    actor lv_impactEffect;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Implementation
-    UnitIssueOrder(lp_gorgon, Order(AbilityCommand("move", 2)), c_orderQueueReplace);
-    libNtve_gf_PauseUnit(lp_gorgon, true);
-    UnitSetState(lp_gorgon, c_unitStateInvulnerable, true);
-    SoundPlayAtPointForPlayer(SoundLink("Nova_HyperionJumpOut_Far", -1), c_maxPlayers, PlayerGroupAll(), UnitGetPosition(lp_gorgon), 0.0, 100.0, 0.0);
-    libNtve_gf_SendActorMessageToUnit(lp_gorgon, "SetOpacity 0.000000 0.330000");
-    libNtve_gf_AttachModelToUnit(lp_gorgon, "HyperjumpLaunch", "Ref_Center");
-    lv_jumpEffect = libNtve_gf_ActorLastCreated();
-    ActorSend(lv_jumpEffect, "SetScale 1.550000,2.370000,1.000000");
-    Wait(0.67, c_timeGame);
-    libNtve_gf_KillModel(lv_jumpEffect);
-    if ((UnitIsAlive(lp_gorgon) == false)) {
-        return ;
-    }
-
-    UnitSetPosition(lp_gorgon, lp_target, false);
-    SoundPlayAtPointForPlayer(SoundLink("Nova_HyperionJumpIn_Far", -1), c_maxPlayers, PlayerGroupAll(), lp_target, 0.0, 100.0, 0.0);
-    libNtve_gf_AttachModelToUnit(lp_gorgon, "HyperjumpImpact", "Ref_Center");
-    lv_impactEffect = libNtve_gf_ActorLastCreated();
-    ActorSend(lv_impactEffect, "SetScale 1.550000,2.370000,1.000000");
-    Wait(0.33, c_timeGame);
-    libNtve_gf_SendActorMessageToUnit(lp_gorgon, "SetOpacity 1.000000 0.340000");
-    ActorSend(lv_impactEffect, "SetOpacity 0.000000 0.340000");
-    Wait(0.34, c_timeGame);
-    libNtve_gf_KillModel(lv_impactEffect);
-    libNtve_gf_PauseUnit(lp_gorgon, false);
-    UnitSetState(lp_gorgon, c_unitStateInvulnerable, false);
-}
-
 trigger auto_gf_CreateArrowPings_Trigger = null;
 int auto_gf_CreateArrowPings_lp_lane;
 fixed auto_gf_CreateArrowPings_lp_delay;
@@ -849,14 +771,12 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
     for (autoE6E32C7B_i = 1; autoE6E32C7B_i <= autoE6E32C7B_n; autoE6E32C7B_i += 1) {
         lv_player = RandomInt(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY);
         libNtve_gf_CreateUnitsWithDefaultFacing(1, gv_hybridMinor, 0, lv_player, lv_gather);
-        AIAttackWaveUseUnit(lv_player, UnitLastCreated());
         UnitGroupAdd(lv_currentWave, UnitLastCreated());
     }
     auto25DC9C2C_n = lp_hybridMajor;
     for (auto25DC9C2C_i = 1; auto25DC9C2C_i <= auto25DC9C2C_n; auto25DC9C2C_i += 1) {
         lv_player = RandomInt(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY);
         libNtve_gf_CreateUnitsWithDefaultFacing(1, gv_hybridMajor, 0, lv_player, lv_gather);
-        AIAttackWaveUseUnit(lv_player, UnitLastCreated());
         UnitGroupAdd(lv_currentWave, UnitLastCreated());
     }
     auto72590308_g = lv_currentWave;
@@ -884,6 +804,59 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
         }
         AIAttackWaveSend(autoBCDF73B4_var, 0, true);
     }
+}
+
+trigger auto_gf_JinaraVikingWaves_Trigger = null;
+unit auto_gf_JinaraVikingWaves_lp_boss;
+int auto_gf_JinaraVikingWaves_lp_vikingcount;
+
+void gf_JinaraVikingWaves (unit lp_boss, int lp_vikingcount) {
+    auto_gf_JinaraVikingWaves_lp_boss = lp_boss;
+    auto_gf_JinaraVikingWaves_lp_vikingcount = lp_vikingcount;
+
+    if (auto_gf_JinaraVikingWaves_Trigger == null) {
+        auto_gf_JinaraVikingWaves_Trigger = TriggerCreate("auto_gf_JinaraVikingWaves_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_JinaraVikingWaves_Trigger, false, false);
+}
+
+bool auto_gf_JinaraVikingWaves_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_boss = auto_gf_JinaraVikingWaves_lp_boss;
+    int lp_vikingcount = auto_gf_JinaraVikingWaves_lp_vikingcount;
+
+    // Automatic Variable Declarations
+    fixed autoAD7776EC_at;
+    unitgroup auto01CDE4A6_g;
+    int auto01CDE4A6_u;
+    unit auto01CDE4A6_var;
+
+    // Implementation
+    Wait(20.0, c_timeAI);
+    gv_vikingStock = (lp_vikingcount * 2);
+    TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("AssaultMode", 0), false);
+    while ((UnitIsAlive(lp_boss) == true)) {
+        AIAttackWaveSetGatherPoint(gv_pLAYER_08_DOMINION, PlayerStartLocation(gv_pLAYER_08_DOMINION));
+        AIAttackWaveSetTargetUnit(gv_pLAYER_08_DOMINION, lp_boss);
+        libCOMI_gf_AddAttackWaveUnitType(lp_vikingcount, "VikingFighter");
+        AIAttackWaveSend(gv_pLAYER_08_DOMINION, 30, false);
+        autoAD7776EC_at = 0;
+        while (!((UnitIsAlive(lp_boss) == false)) && autoAD7776EC_at <= 30.0) {
+            Wait(1.0, c_timeAI);
+            autoAD7776EC_at = autoAD7776EC_at + 1.0;
+        }
+    }
+    gv_vikingStock = 0;
+    TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("AssaultMode", 0), true);
+    Wait(30.0, c_timeAI);
+    auto01CDE4A6_g = UnitGroup("VikingFighter", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto01CDE4A6_u = UnitGroupCount(auto01CDE4A6_g, c_unitCountAll);
+    for (;; auto01CDE4A6_u -= 1) {
+        auto01CDE4A6_var = UnitGroupUnitFromEnd(auto01CDE4A6_g, auto01CDE4A6_u);
+        if (auto01CDE4A6_var == null) { break; }
+        AISetUnitSuicide(auto01CDE4A6_var, true);
+    }
+    return true;
 }
 
 void gf_BonusEvacuate () {
@@ -1105,7 +1078,6 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranInfantryWeaponsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranBuildingArmor", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "NeosteelFrame", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_09_DEFENDERS_MID, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_09_DEFENDERS_MID, "550");
     TechTreeUpgradeAddLevel(gv_pLAYER_10_DEFENDERS_LEFT, "DOM", 1);
@@ -1115,7 +1087,6 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranInfantryWeaponsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranBuildingArmor", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "NeosteelFrame", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_10_DEFENDERS_LEFT, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_10_DEFENDERS_LEFT, "550");
     CatalogFieldValueSet(c_gameCatalogAbil, "BarracksAddOns", "InfoArray[" + IntToString(1) + "].Time", gv_pLAYER_10_DEFENDERS_LEFT, "15");
@@ -1126,13 +1097,11 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranInfantryWeaponsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranBuildingArmor", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "NeosteelFrame", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
     CatalogFieldValueSet(c_gameCatalogAbil, "BarracksAddOns", "InfoArray[" + IntToString(1) + "].Time", gv_pLAYER_11_DEFENDERS_RIGHT, "15");
     TechTreeUpgradeAddLevel(gv_pLAYER_08_DOMINION, "Dominion", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "NeoSteelFrame", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "FortifiedBunkerCarapace", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "CombatShield", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "StabilizerMedPacks", 1);
@@ -1142,7 +1111,10 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranVehicleAndShipArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranBuildingArmor", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "HiSecAutoTracking", 1);
-    CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(3) + "].Time", gv_pLAYER_09_DEFENDERS_MID, "30");
+    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TechReactorAI", 1);
+    CatalogFieldValueSet(c_gameCatalogAbil, "TerranBuild", "InfoArray[" + IntToString(0) + "].Time", gv_pLAYER_08_DOMINION, "60");
+    CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(4) + "].Time", gv_pLAYER_08_DOMINION, "30");
+    CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(3) + "].Time", gv_pLAYER_08_DOMINION, "30");
     return true;
 }
 
@@ -1165,6 +1137,8 @@ bool gt_Init05Units_Func (bool testConds, bool runActions) {
     unitgroup auto6865111F_g;
     int auto6865111F_u;
     unit auto6865111F_var;
+    const int auto1C3EF65A_n = 6;
+    int auto1C3EF65A_i;
     unitgroup auto04953FBD_g;
     int auto04953FBD_u;
     unit auto04953FBD_var;
@@ -1190,6 +1164,9 @@ bool gt_Init05Units_Func (bool testConds, bool runActions) {
     for (;; auto6865111F_u -= 1) {
         auto6865111F_var = UnitGroupUnitFromEnd(auto6865111F_g, auto6865111F_u);
         if (auto6865111F_var == null) { break; }
+        for (auto1C3EF65A_i = 1; auto1C3EF65A_i <= auto1C3EF65A_n; auto1C3EF65A_i += 1) {
+            AIAddBully(gv_pLAYER_08_DOMINION, "Marine", UnitGetPosition(auto6865111F_var), -1);
+        }
         UnitCargoCreate(auto6865111F_var, "Marine", 6);
     }
     libCOMI_gf_SetUnitInfoTextCampaign(UnitFromId(2044729735), null, StringExternal("Param/Value/89336E30"), null);
@@ -1535,6 +1512,37 @@ void gt_StartGameQ_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Dominion Stock
+//--------------------------------------------------------------------------------------------------
+bool gt_DominionStock_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_scv = 10;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    AIClearStock(gv_pLAYER_08_DOMINION);
+    if ((gv_vikingStock > 0)) {
+        AISetStock(gv_pLAYER_08_DOMINION, gv_vikingStock, "VikingFighter");
+    }
+
+    AISetStock(gv_pLAYER_08_DOMINION, lv_scv, "SCV");
+    AIEnableStock(gv_pLAYER_08_DOMINION);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DominionStock_Init () {
+    gt_DominionStock = TriggerCreate("gt_DominionStock_Func");
+    TriggerAddEventTimePeriodic(gt_DominionStock, 5.0, c_timeAI);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Defender Side Bases Online Q
 //--------------------------------------------------------------------------------------------------
 bool gt_DefenderSideBasesOnlineQ_Func (bool testConds, bool runActions) {
@@ -1650,7 +1658,7 @@ bool gt_BattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((UnitIsAlive(UnitFromId(182)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(22), true);
     }
@@ -1665,7 +1673,7 @@ bool gt_BattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(10), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(171)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(24), true);
     }
@@ -1685,7 +1693,7 @@ bool gt_BattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(16), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(193)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(26), true);
     }
@@ -1741,7 +1749,7 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((UnitIsAlive(UnitFromId(182)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(23), true);
     }
@@ -1756,7 +1764,7 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(11), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(171)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(25), true);
     }
@@ -1776,7 +1784,7 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(17), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(193)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(27), true);
     }
@@ -1793,17 +1801,17 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
 
     AISetStock(gv_pLAYER_08_DOMINION, 3, "FusionCore");
     AIEnableStock(gv_pLAYER_08_DOMINION);
-    if ((UnitIsAlive(UnitFromId(193)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(86), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(171)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(85), true);
     }
 
-    if ((UnitIsAlive(UnitFromId(182)) == true)) {
+    if (true) {
         lv_spotValid = true;
         AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(87), true);
     }
@@ -1827,6 +1835,44 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
 void gt_MoreBattlecruisersOnlineQ_Init () {
     gt_MoreBattlecruisersOnlineQ = TriggerCreate("gt_MoreBattlecruisersOnlineQ_Func");
     TriggerAddEventTimer(gt_MoreBattlecruisersOnlineQ, gv_battlecruiser2Timer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Dominion Planetary Dies
+//--------------------------------------------------------------------------------------------------
+bool gt_DominionPlanetaryDies_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_point = UnitGetPosition(EventUnit());
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetOwner(EventUnit()) == gv_pLAYER_08_DOMINION))) {
+            return false;
+        }
+
+        if (!(((UnitGetType(EventUnit()) == "PlanetaryFortress") || (UnitGetType(EventUnit()) == "CommandCenter")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(5.0, c_timeAI);
+    libNtve_gf_AICast(UnitGroupClosestToPoint(UnitGroup("SCV", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), lv_point), OrderTargetingPoint(AbilityCommand("TerranBuild", 0), lv_point));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DominionPlanetaryDies_Init () {
+    gt_DominionPlanetaryDies = TriggerCreate("gt_DominionPlanetaryDies_Func");
+    TriggerAddEventUnitDied(gt_DominionPlanetaryDies, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1926,6 +1972,7 @@ bool gt_BarracksConstruction_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    gv_aliveOuterBases += 1;
     lv_barracks = EventUnitProgressUnit();
     if ((libNtve_gf_UnitInRegion(lv_barracks, RegionFromId(1)) == true)) {
         lv_region = RegionFromId(1);
@@ -1982,6 +2029,7 @@ bool gt_BarracksConstruction_Func (bool testConds, bool runActions) {
         }
 
         if ((UnitIsAlive(lv_barracks) == false)) {
+            gv_aliveOuterBases -= 1;
             autoE2F66629_val = lv_region;
             if (autoE2F66629_val == RegionFromId(1)) {
                 AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(2), false);
@@ -2136,6 +2184,7 @@ bool gt_Mid1BaseKilled_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    gv_aliveOuterBases -= 1;
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(3), false);
     AIToggleBulliesInRegion(gv_pLAYER_10_DEFENDERS_LEFT, RegionFromId(3), false);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(3), true);
@@ -2159,6 +2208,7 @@ bool gt_Mid2BaseKilled_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    gv_aliveOuterBases -= 1;
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(4), false);
     AIToggleBulliesInRegion(gv_pLAYER_10_DEFENDERS_LEFT, RegionFromId(4), false);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(4), true);
@@ -2182,6 +2232,7 @@ bool gt_Mid3BaseKilled_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    gv_aliveOuterBases -= 1;
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(5), false);
     AIToggleBulliesInRegion(gv_pLAYER_10_DEFENDERS_LEFT, RegionFromId(5), false);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(5), true);
@@ -2635,10 +2686,6 @@ bool gt_VictorySequence_Func (bool testConds, bool runActions) {
 
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gf_GameOver(libCOMI_ge_CampaignMissionGameResultType_Victory);
-    if ((gv_gorgonDialog.lv_dialog != c_invalidDialogId)) {
-        DialogSetVisible(gv_gorgonDialog.lv_dialog, PlayerGroupAll(), false);
-    }
-
     libNtve_gf_ShowHideLeaderboard(gv_deathFleetLeaderboard, false, PlayerGroupAll());
     TriggerQueueEnter();
     if ((UnitIsAlive(gv_jinaraMothership1) == true)) {
@@ -2689,7 +2736,7 @@ bool gt_VictoryFanfareQ_Func (bool testConds, bool runActions) {
         autoC1F1C9B1_var = UnitGroupUnitFromEnd(autoC1F1C9B1_g, autoC1F1C9B1_u);
         if (autoC1F1C9B1_var == null) { break; }
         if ((PlayerGroupHasPlayer(gv_aLLY_GROUP, UnitGetOwner(autoC1F1C9B1_var)) == true)) {
-            UnitSetState(autoC1F1C9B1_var, c_unitStateInvulnerable, true);
+            libNtve_gf_ChangeUnitDamage(autoC1F1C9B1_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
         }
 
     }
@@ -2777,6 +2824,38 @@ void gt_Defeat_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Leviathan Add Dies
+//--------------------------------------------------------------------------------------------------
+bool gt_LeviathanAddDies_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(gv_bossAdds, EventUnit()) == true))) {
+            return false;
+        }
+
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnMutalisk", 0), true);
+    TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnBroodLord", 0), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_LeviathanAddDies_Init () {
+    gt_LeviathanAddDies = TriggerCreate("gt_LeviathanAddDies_Func");
+    TriggerAddEventUnitDied(gt_LeviathanAddDies, null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Boss Add Suicide Effect
 //--------------------------------------------------------------------------------------------------
 bool gt_BossAddSuicideEffect_Func (bool testConds, bool runActions) {
@@ -2786,7 +2865,13 @@ bool gt_BossAddSuicideEffect_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    UnitGroupAdd(gv_bossAdds, EventPlayerEffectUsedUnit(c_effectUnitTarget));
     AISetUnitSuicide(EventPlayerEffectUsedUnit(c_effectUnitTarget), true);
+    if ((UnitGroupCount(gv_bossAdds, c_unitCountAlive) >= 12)) {
+        TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnMutalisk", 0), false);
+        TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnBroodLord", 0), false);
+    }
+
     return true;
 }
 
@@ -2834,6 +2919,13 @@ bool gt_MothershipAdds_Func (bool testConds, bool runActions) {
     // Variable Initialization
     lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
 
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -2855,11 +2947,13 @@ bool gt_MothershipAdds_Func (bool testConds, bool runActions) {
     auto0F5D4521_n = RandomInt(6, 8);
     for (auto0F5D4521_i = 1; auto0F5D4521_i <= auto0F5D4521_n; auto0F5D4521_i += 1) {
         UnitIssueOrder(lv_warpgate, OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 7), PointWithOffsetPolar(UnitGetPosition(lv_caster), RandomFixed(4.0, 6.0), libNtve_gf_RandomAngle())), c_orderQueueAddToEnd);
+        UnitGroupAdd(gv_bossAdds, UnitLastCreated());
         Wait(0.1, c_timeGame);
     }
     autoC0F72F7C_n = RandomInt(2, 4);
     for (autoC0F72F7C_i = 1; autoC0F72F7C_i <= autoC0F72F7C_n; autoC0F72F7C_i += 1) {
         UnitIssueOrder(lv_warpgate, OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 8), PointWithOffsetPolar(UnitGetPosition(lv_caster), RandomFixed(2.0, 4.0), libNtve_gf_RandomAngle())), c_orderQueueAddToEnd);
+        UnitGroupAdd(gv_bossAdds, UnitLastCreated());
         Wait(0.1, c_timeGame);
     }
     return true;
@@ -2885,6 +2979,13 @@ bool gt_BattlecruiserAdds_Func (bool testConds, bool runActions) {
     // Variable Initialization
     lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
 
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -2893,6 +2994,7 @@ bool gt_BattlecruiserAdds_Func (bool testConds, bool runActions) {
     auto28C9BF62_n = RandomInt(8, 10);
     for (auto28C9BF62_i = 1; auto28C9BF62_i <= auto28C9BF62_n; auto28C9BF62_i += 1) {
         UnitCreate(1, "Wraith", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin), PointWithOffsetPolar(UnitGetPosition(lv_caster), RandomFixed(4.0, 6.0), libNtve_gf_RandomAngle()), libNtve_gf_RandomAngle());
+        UnitGroupAdd(gv_bossAdds, UnitLastCreated());
         UnitAbilityEnable(UnitLastCreated(), "WraithCloak", false);
         PlayerCreateEffectUnit(EventPlayerEffectUsedUnitOwner(c_effectPlayerOrigin), "MercAirDrop", UnitLastCreated());
         AISetUnitSuicide(UnitLastCreated(), true);
@@ -2924,13 +3026,15 @@ bool gt_StartAI_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    PlayerSetDifficulty(gv_pLAYER_10_DEFENDERS_LEFT, 4);
+    PlayerSetDifficulty(gv_pLAYER_11_DEFENDERS_RIGHT, 4);
+    PlayerSetDifficulty(gv_pLAYER_09_DEFENDERS_MID, 4);
     AICampaignStart(gv_pLAYER_10_DEFENDERS_LEFT);
     AICampaignStart(gv_pLAYER_11_DEFENDERS_RIGHT);
     AICampaignStart(gv_pLAYER_09_DEFENDERS_MID);
+    PlayerSetDifficulty(gv_pLAYER_08_DOMINION, 4);
     AICampaignStart(gv_pLAYER_08_DOMINION);
-    AISetStock(gv_pLAYER_08_DOMINION, 10, "SCV");
-    AIEnableStock(gv_pLAYER_08_DOMINION);
-    AISetDifficulty(gv_pLAYER_08_DOMINION, c_diffRepairDamage, true);
+    AIReqAddSpecialMaker("Bunker", "SCV", "TerranBuild", 22);
     libCOMI_gf_StartCoopAI(gv_pLAYER_03_ENEMY, gv_pLAYER_01_USER);
     libCOMI_gf_SetCoopAIGatherPoint(gv_pLAYER_03_ENEMY, PlayerStartLocation(gv_pLAYER_03_ENEMY));
     libCOMI_gf_StartCoopAI(gv_pLAYER_04_ENEMY, gv_pLAYER_02_USER);
@@ -3063,6 +3167,9 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     int auto51D956DF_i;
     const int auto8151F7A0_n = 16;
     int auto8151F7A0_i;
+    unitgroup auto0D527347_g;
+    int auto0D527347_u;
+    unit auto0D527347_var;
 
     // Variable Initialization
     lv_unitgroup = UnitGroupEmpty();
@@ -3092,6 +3199,7 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(26), false);
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(27), false);
     TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "Factory", false);
+    TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("CommandCenterTransport", 4), false);
     Wait(379.0, c_timeAI);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(1), false);
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(1), false);
@@ -3103,14 +3211,17 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(7), false);
     for (auto51D956DF_i = 1; auto51D956DF_i <= auto51D956DF_n; auto51D956DF_i += 1) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, gv_pLAYER_10_DEFENDERS_LEFT, PointFromId(1855620408));
+        libNtve_gf_ChangeUnitDamage(UnitLastCreated(), libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
         UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(1))), c_orderQueueReplace);
-        AISetGroupScriptControlled(UnitLastCreatedGroup(), false);
+        UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, gv_pLAYER_11_DEFENDERS_RIGHT, PointFromId(6083815));
+        libNtve_gf_ChangeUnitDamage(UnitLastCreated(), libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
         UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(6))), c_orderQueueReplace);
-        AISetGroupScriptControlled(UnitLastCreatedGroup(), false);
+        UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
         Wait(0.5, c_timeGame);
     }
     Wait(10.0, c_timeAI);
+    AISetGroupScriptControlled(lv_unitgroup, false);
     libNtve_gf_CreateUnitsWithDefaultFacing(3, "SCV", 0, gv_pLAYER_10_DEFENDERS_LEFT, PointFromId(1855620408));
     libNtve_gf_CreateUnitsWithDefaultFacing(3, "SCV", 0, gv_pLAYER_11_DEFENDERS_RIGHT, PointFromId(6083815));
     AINearestTownBullyRebuild(gv_pLAYER_10_DEFENDERS_LEFT, true);
@@ -3126,19 +3237,29 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     Wait(20.0, c_timeAI);
     for (auto8151F7A0_i = 1; auto8151F7A0_i <= auto8151F7A0_n; auto8151F7A0_i += 1) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, gv_pLAYER_10_DEFENDERS_LEFT, PointFromId(1855620408));
+        libNtve_gf_ChangeUnitDamage(UnitLastCreated(), libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
         UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(2))), c_orderQueueReplace);
         UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Separatist", 0, gv_pLAYER_11_DEFENDERS_RIGHT, PointFromId(6083815));
+        libNtve_gf_ChangeUnitDamage(UnitLastCreated(), libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
         UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(7))), c_orderQueueReplace);
         UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
         Wait(0.5, c_timeGame);
     }
     Wait(25.0, c_timeAI);
+    AISetGroupScriptControlled(lv_unitgroup, false);
     AIToggleBulliesInRegion(gv_pLAYER_10_DEFENDERS_LEFT, RegionFromId(2), true);
     AIToggleBulliesInRegion(gv_pLAYER_10_DEFENDERS_LEFT, RegionFromId(71), false);
     AIToggleBulliesInRegion(gv_pLAYER_11_DEFENDERS_RIGHT, RegionFromId(7), true);
     AIToggleBulliesInRegion(gv_pLAYER_11_DEFENDERS_RIGHT, RegionFromId(75), false);
-    AISetGroupScriptControlled(lv_unitgroup, false);
+    Wait(30.0, c_timeAI);
+    auto0D527347_g = lv_unitgroup;
+    auto0D527347_u = UnitGroupCount(auto0D527347_g, c_unitCountAll);
+    for (;; auto0D527347_u -= 1) {
+        auto0D527347_var = UnitGroupUnitFromEnd(auto0D527347_g, auto0D527347_u);
+        if (auto0D527347_var == null) { break; }
+        libNtve_gf_ChangeUnitDamage(auto0D527347_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Full);
+    }
     return true;
 }
 
@@ -3219,7 +3340,7 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
     lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
     Wait(40.0, c_timeAI);
     while ((true == true)) {
-        if ((AIGetTime() > 1020.0)) {
+        if ((AIGetTime() > 1020.0) && (gv_aliveOuterBases < 2)) {
             Wait(libNtve_gf_DifficultyValueInt(35, 35, 35, 30), c_timeAI);
         }
         else {
@@ -4514,6 +4635,7 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
+    gf_JinaraVikingWaves(gv_jinaraMothership1, 6);
     autoC6E507EE_val = PlayerRace(lv_player);
     if (autoC6E507EE_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipProtN08", true, -1);
@@ -4775,6 +4897,7 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
+    gf_JinaraVikingWaves(gv_jinaraMothership2, 10);
     auto995D6A61_val = PlayerRace(lv_player);
     if (auto995D6A61_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipSecondProtN08", true, -1);
@@ -5072,10 +5195,12 @@ void InitTriggers () {
     gt_DebugMother2_Init();
     gt_DebugNightmare_Init();
     gt_StartGameQ_Init();
+    gt_DominionStock_Init();
     gt_DefenderSideBasesOnlineQ_Init();
     gt_DefenderBasesMaintainDefenseQ_Init();
     gt_BattlecruisersOnlineQ_Init();
     gt_MoreBattlecruisersOnlineQ_Init();
+    gt_DominionPlanetaryDies_Init();
     gt_SCVDespawn_Init();
     gt_BarracksConstruction_Init();
     gt_ScienceFacilityDiesQ_Init();
@@ -5094,6 +5219,7 @@ void InitTriggers () {
     gt_VictoryFanfareQ_Init();
     gt_Victory_Init();
     gt_Defeat_Init();
+    gt_LeviathanAddDies_Init();
     gt_BossAddSuicideEffect_Init();
     gt_BossAddSuicideWarp_Init();
     gt_MothershipAdds_Init();

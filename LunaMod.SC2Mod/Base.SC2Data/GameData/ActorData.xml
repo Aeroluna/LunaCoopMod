@@ -384,6 +384,10 @@
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
     </CActorUnit>
+    <CActorAction id="InfestedCivilianACAttack" parent="GenericAttack" effectAttack="InfestedCivilianAC">
+        <LaunchAssets Sound="InfestedCivilianAttackLaunch"/>
+        <ImpactMap index="None" Sound="InfestedCivilian_AttackImpact"/>
+    </CActorAction>
     <CActorUnit id="InfestedExploderAC" parent="GenericBurrowerStandard" unitSound="InfestedCivilian" unitName="InfestedExploderAC">
         <Aliases value="_UnitSmall"/>
         <Macros value="UnloadDropAnim"/>
@@ -479,6 +483,12 @@
         </Wireframe>
         <WireframeShieldColor value="255,0,128,0"/>
     </CActorUnit>
+    <CActorAction id="InfestedMarineACAttack" parent="GenericAttack" effectAttack="InfestedMarineAC">
+        <LaunchAssets Model="InfestedTerranCampaignAttackLaunch" Sound="InfestedTerran_AttackLaunch"/>
+        <ContainerAssets Model="MarineBunkerAttackLaunch" Sound="Marine_BunkerAttackLaunch"/>
+        <ImpactMap index="None" Model="InfestedTerranCampaignAttackImpact" Sound="InfestedMarine_AttackImpact"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
     <CActorModel id="InfestedTerranEggDeathModel">
         <Flags index="SuppressSaveLoad" value="1"/>
         <On Terms="ActorCreation" Send="$Death"/>
@@ -1204,8 +1214,8 @@
         <On Terms="Abil.TychusMarauderBuildHealingWard.SourceCastStart" Send="AnimPlay Spell Attack,Right"/>
     </CActorUnit>
     <CActorUnit id="TychusWarhound">
-        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimBracketClear Spell"/>
-        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketClear Spell"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Spell"/>
         <On Terms="Abil.TychusWarhoundBuildAutoTurret.SourceCastStart" Send="$Spell,A"/>
     </CActorUnit>
     <CActorUnit id="UltraliskStetmann">

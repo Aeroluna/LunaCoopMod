@@ -9,12 +9,20 @@
     <CEffectSet id="ApplyTriggerAISuicide"/>
     <CEffectDamage id="GorgonCruiserGroundDamage">
         <AttributeBonus index="Structure" value="0"/>
+        <Amount value="12"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="GorgonCruiserGroundLaunchMissile">
         <Movers Link="ATSLaserBatteryLMWeapon"/>
         <ValidatorArray index="0" value="TargetInWeaponRange"/>
         <ValidatorArray index="1" removed="1"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="NovaLeviathanBioStasisDamage">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="20"/>
+        <Death value="Disintegrate"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="NovaLeviathanBioStasisApplyBehavior">
         <ValidatorArray index="0" value="NotFrenzied"/>
         <EditorCategories value="Race:Zerg"/>
