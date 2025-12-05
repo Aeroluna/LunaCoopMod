@@ -154,6 +154,10 @@
         <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; ModelIsLowQuality" Send="ModelSwap BunkerUpgrade"/>
         <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; !ModelIsLowQuality" Send="ModelSwap BunkerUpgradePlacement"/>
     </CActorModel>
+    <CActorEventMacro id="BunkerTransportAnim">
+        <On Terms="Abil.TychusBunkerTransport.TransportOccupy" Send="AnimGroupApply Work Work,Start Work,End"/>
+        <On Terms="Abil.TychusBunkerTransport.TransportEmpty" Send="AnimGroupRemove Work"/>
+    </CActorEventMacro>
     <CActorUnit id="CommandCenter">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
@@ -536,6 +540,12 @@
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1; !ModelIsLowQuality" Send="Create UltraliskStetmannBurrowChargeModel"/>
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1" Send="TimerSet 0.080000 BurrowChargeFX"/>
     </CActorUnit>
+    <CActorSound id="MedivacTransportLoadSound">
+        <On Terms="AbilTransport.TychusBunkerTransport.TransportLoad" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="MedivacTransportUnloadSound">
+        <On Terms="AbilTransport.TychusBunkerTransport.TransportUnload" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="MutaliskMengsk">
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
     </CActorUnit>
@@ -657,6 +667,77 @@
     <CActorUnit id="TychusCommandCenter">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
+    <CActorRange id="TychusFirebatOilBomb">
+        <On Terms="Abil.TychusFirebatOilBombBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusFirebatOilBombBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusFirebatOilBombBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusFirebatOilBombBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorSplat id="TychusFirebatOilBombCursorSplat">
+        <On Terms="Abil.TychusFirebatOilBombBunker.Cursor" Send="Create"/>
+    </CActorSplat>
+    <CActorRange id="TychusGhostDominateRange">
+        <On Terms="Abil.TychusGhostDominateBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusGhostDominateBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusGhostDominateBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusGhostDominateBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorRange id="TychusMarauderBuildHealingWardRange">
+        <On Terms="Abil.TychusMarauderBuildHealingWardBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusMarauderBuildHealingWardBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusMarauderBuildHealingWardBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusMarauderBuildHealingWardBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorModel id="TychusMedicAoE">
+        <HostSiteOps Ops="SOpCasterPoint SOpShadow" HoldPosition="1"/>
+    </CActorModel>
+    <CActorRange id="TychusMedicAoERange">
+        <On Terms="Abil.TychusMedicAoEBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusMedicAoEBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorSound id="TychusMedicAoE_AS">
+        <On Terms="Abil.TychusMedicAoEBunker.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorBeamSimple id="TychusMedicHealBeam">
+        <Inherits index="Visibility" value="0"/>
+    </CActorBeamSimple>
+    <CActorRange id="TychusReaperBombRange">
+        <On Terms="Abil.TychusReaperBombBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusReaperBombBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusReaperBombBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusReaperBombBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorSplat id="TychusShredderGrenadeCursorSplat">
+        <On Terms="Abil.TychusShredderGrenadeBunker.Cursor" Send="Create"/>
+    </CActorSplat>
+    <CActorRange id="TychusShredderGrenadeRange">
+        <On Terms="Abil.TychusShredderGrenadeBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusShredderGrenadeBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusShredderGrenadeBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusShredderGrenadeBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorSplat id="TychusSpectreUltrasonicPulseCursor">
+        <On Terms="Abil.TychusSpectreUltrasonicPulseBunker.Cursor" Send="Create"/>
+    </CActorSplat>
+    <CActorRange id="TychusSpectreUltrasonicPulseRange">
+        <On Terms="Abil.TychusSpectreUltrasonicPulseBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusSpectreUltrasonicPulseBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusSpectreUltrasonicPulseBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusSpectreUltrasonicPulseBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorAction id="TychusWarhoundAttack">
+        <ContainerAssets Sound="TychusWarhound_AttackLaunch"/>
+    </CActorAction>
+    <CActorRange id="TychusWarhoundAutoTurretRange">
+        <On Terms="Abil.TychusWarhoundBuildAutoTurretBunker.TargetOn" Send="Create"/>
+        <On Terms="Abil.TychusWarhoundBuildAutoTurretBunker.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.TychusWarhoundBuildAutoTurretBunker.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.TychusWarhoundBuildAutoTurretBunker.ButtonHoverOff" Send="Destroy"/>
+    </CActorRange>
+    <CActorBeamSimple id="TychusWarhoundBeam">
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+    </CActorBeamSimple>
     <CActorUnit id="VespeneGeyser">
         <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
         <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
@@ -2457,6 +2538,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
         </Wireframe>
+        <PortraitModel value="AdjutantPortrait"/>
     </CActorUnit>
     <CActorModel id="DehakaConsumeImpactModel" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
@@ -3110,7 +3192,9 @@
         <LaunchAssets Scale="1.450000"/>
         <ImpactMap index="None" Scale="1.450000"/>
     </CActorAction>
-    <CActorSplat id="TychusMauraderHealingWardSplat" parent="TerranCursorSplat" abil="TychusMarauderBuildHealingWard"/>
+    <CActorSplat id="TychusMauraderHealingWardSplat" parent="TerranCursorSplat" abil="TychusMarauderBuildHealingWard">
+        <On Terms="Abil.TychusMarauderBuildHealingWardBunker.Cursor" Send="Create"/>
+    </CActorSplat>
     <CActorUnit id="TychusOdin">
         <On index="71" Send="AnimPlay Morph Morph 0 -1.000000 -1.000000 1.400000 AsTimeScale"/>
         <On index="80" Send="AnimPlay Morph Morph,End 0 -1.000000 -1.000000 1.200000 AsTimeScale"/>

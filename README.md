@@ -1860,6 +1860,7 @@ To go with the first outlaw change, this mastery set now affects your first outl
 - Added Fortified Bunker that can be built by SCVs.
   - Can hold up to two outlaws.
   - Increases range of units inside by +2.
+  - Outlaws inside can autocast abilities.
   - Fortified Bunker has extra armor and life.
 
 Tychus's static defense is super boring, literally just an auto-turret. Hopefully this is more interesting.

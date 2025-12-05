@@ -35,6 +35,10 @@ Abil/Name/SalvageStetmannPowerTower=SalvageStetmannPowerTower
 Abil/Name/SignifierFade=Fade
 Abil/Name/SwarmNetworkBuildSwarmLocus=Build Swarm Locus
 Abil/Name/SymbioteCarapacePrestige=Symbiote Carapace
+Abil/Name/TychusBunkerTransport=Load-Unload (Bunker)
+Abil/Name/TychusReaperBombBunker=Demolition Charge Bunker
+Abil/Name/TychusShredderGrenadeBunker=Shredder Grenade Bunker
+Abil/Name/TychusSpectreUltrasonicPulseBunker=Ultrasonic Pulse Bunker
 Abil/Name/VehicleAfterburnersMedivac=Vehicle Afterburners
 Abil/Name/VehicleAfterburnersStimpack=Vehicle Afterburners
 Abil/Name/VoidArchonMaelstrom=Void Archon Maelstrom
@@ -294,10 +298,13 @@ Button/Name/SwarmNetwork=Mutate into Swarm Network
 Button/Name/SwarmNetworkSwarmLocus=Summon Swarm Locus
 Button/Name/TempestDestabilizingResiduum=Destabilizing Residuum
 Button/Name/TychusBunker=Build Fortified Bunker
+Button/Name/TychusBunkerAutoCastPassive=Garrison Combat Interface
 Button/Name/TychusHeroCommonAbil6=Tychus Outlaw Common Ability 6
 Button/Name/TychusHeroCommonAbil7=Tychus Outlaw Common Ability 7
 Button/Name/TychusHeroCommonAbil8=Tychus Outlaw Common Ability 8
 Button/Name/TychusHeroCommonAbil9=Tychus Outlaw Common Ability 9
+Button/Name/TychusHeroCommonRedirect1=Tychus Outlaw Common Redirect 1
+Button/Name/TychusHeroCommonRedirect2=Tychus Outlaw Common Redirect 2
 Button/Name/TychusOdinNuclearStrikePassive=Big Red Button
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeBuildingArmorLevel1=Upgrade Neosteel Armor
@@ -654,6 +661,7 @@ Button/Tooltip/SwarmNetwork=Can summon Swarm Locus at a targeted location that w
 Button/Tooltip/SwarmNetworkSwarmLocus=Summons a Swarm Locus at the target location that unloads uncontrollable zerg that last 60 seconds. The summoned zerg seek out and attack the nearest enemy.
 Button/Tooltip/TempestDestabilizingResiduum=Tempest attacks leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
 Button/Tooltip/TychusBunker=Defensive structure. <n/>Outlaws fight from inside. <n/><n/><c val="#ColorAttackInfo">Bonus: +2 range to units inside.</c>
+Button/Tooltip/TychusBunkerAutoCastPassive=Outlaws within Fortified Bunkers can use their abilities and enable autocasting.
 Button/Tooltip/TychusGhostConcentrationHelmet=Increases the duration of Dominate by <d ref="$UpgradeEffectArrayValue:TychusGhostConcentrationHelmet:Behavior,TychusGhostDominateUpgraded,Duration$/Behavior,TychusGhostDominateUpgraded,Duration*100" player="0"/>%.
 Button/Tooltip/TychusHercGrappleArmor=Allows <c val="ffff8a">Cannonball</c> to become immune to damage for <d ref="Behavior,TychusHERCShield,Duration"/> seconds and restores all his life when he takes fatal damage. Also releases a large blast of energy that knocks back and deals <d ref="Effect,ArtanisResurgenceEnemyImpactDamage,Amount"/> damage to all nearby enemies. Cannot occur more than once every <d ref="Behavior,TychusHERCShieldWeakness,Duration"/> seconds.
 Button/Tooltip/TychusHercGrappleArmorLv1=When Cannonball takes fatal damage, he becomes immune to damage for <d ref="Behavior,TychusHERCShield,Duration"/> seconds and restores all his life. Also releases a large blast of energy that knocks back and deals <d ref="Effect,ArtanisResurgenceEnemyImpactDamage,Amount"/> damage to all nearby enemies. Cannot occur more than once every <d ref="Behavior,TychusHERCShieldWeakness,Duration"/> seconds.
@@ -666,7 +674,6 @@ Button/Tooltip/TychusUpgradeOdinRedButton=Upgrades the <c val="ffff8a">Odin's</c
 Button/Tooltip/UltraliskStetmannMechanicalLifeLeech=Absorbs <d ref="Effect,UltraliskMechanicalLifeLeechStetmannDamage,Amount"/> health from a nearby enemy or friendly mechanical unit, healing for that amount. Deals half damage to friendly units but still heals the full amount.
 Button/Tooltip/UltraliskStetmannRespawn=For every <d ref="Abil,UltraliskStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Ultralisk Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Ultralisk</c> will respawn here at no cost.
 Button/Tooltip/UltraliskStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,UltraliskStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Ultralisk Remnant,Mecha Ultralisk Remnants</lang></c>.
-Button/Tooltip/UpgradeBuildingArmorLevel1=Upgrades the armor of <c val="ffff8a">structures</c> by 2. Increases the cargo space of <c val="ffff8a">Bunkers</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c> and <c val="ffff8a">Planetary Fortresses</c>.
 Button/Tooltip/UpgradeBuildingArmorLevel1Nova=Upgrades the armor of <c val="ffff8a">structures</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c>.
 Button/Tooltip/UpgradeBuildingArmorLevel1Prestige=Upgrades the armor of <c val="ffff8a">all Turrets</c> by 4 and <c val="ffff8a">all other structures</c> by 2. Increases the cargo space of <c val="ffff8a">Bunkers</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c> and <c val="ffff8a">Planetary Fortresses</c>.
 Button/Tooltip/UpgradeBuildingArmorLevel1Raynor=Upgrades the armor of <c val="ffff8a">structures</c> by 2. Increases the cargo space of <c val="ffff8a">Bunkers</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c>.

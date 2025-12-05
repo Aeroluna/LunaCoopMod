@@ -4208,6 +4208,14 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
         }
         else if (auto560DABDD_val == "TerranTychus") {
+            TriggerEnable(lib74A68E34_gt_TychusBunkerFirebatOilBomb, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerGhostDominate, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerMarauderHealingWard, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerMedicAoE, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerReaperBomb, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerShredderGrenade, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerSpectreUltrasonic, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerWarhoundAutoTurret, true);
             if ((TechTreeUpgradeCount(lv_player, "TychusHeroExpanded", c_techCountCompleteOnly) == 1)) {
                 lib74A68E34_gf_ExpandedTychusGPInit(lv_player);
             }
@@ -6535,6 +6543,286 @@ void lib74A68E34_gt_HornerScrapDropChanged_Init () {
     lib74A68E34_gt_HornerScrapDropChanged = TriggerCreate("lib74A68E34_gt_HornerScrapDropChanged_Func");
     TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, false);
     TriggerAddEventUnitDied(lib74A68E34_gt_HornerScrapDropChanged, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerShredderGrenade
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerShredderGrenade_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoE0A95271_g;
+    int autoE0A95271_u;
+    unit autoE0A95271_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoE0A95271_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    autoE0A95271_u = UnitGroupCount(autoE0A95271_g, c_unitCountAll);
+    for (;; autoE0A95271_u -= 1) {
+        autoE0A95271_var = UnitGroupUnitFromEnd(autoE0A95271_g, autoE0A95271_u);
+        if (autoE0A95271_var == null) { break; }
+        if ((UnitGetType(autoE0A95271_var) == "TychusCoop")) {
+            UnitCreateEffectPoint(autoE0A95271_var, "BonesTossGrenadeDelay", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerShredderGrenade_Init () {
+    lib74A68E34_gt_TychusBunkerShredderGrenade = TriggerCreate("lib74A68E34_gt_TychusBunkerShredderGrenade_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerShredderGrenade, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerShredderGrenade, c_playerAny, "TychusShredderGrenadeBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerReaperBomb
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerReaperBomb_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto59E81AE7_g;
+    int auto59E81AE7_u;
+    unit auto59E81AE7_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto59E81AE7_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    auto59E81AE7_u = UnitGroupCount(auto59E81AE7_g, c_unitCountAll);
+    for (;; auto59E81AE7_u -= 1) {
+        auto59E81AE7_var = UnitGroupUnitFromEnd(auto59E81AE7_g, auto59E81AE7_u);
+        if (auto59E81AE7_var == null) { break; }
+        if ((UnitGetType(auto59E81AE7_var) == "TychusReaper")) {
+            UnitCreateEffectUnit(auto59E81AE7_var, "TychusReaperBombDamageLM", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerReaperBomb_Init () {
+    lib74A68E34_gt_TychusBunkerReaperBomb = TriggerCreate("lib74A68E34_gt_TychusBunkerReaperBomb_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerReaperBomb, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerReaperBomb, c_playerAny, "TychusReaperBombBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerWarhoundAutoTurret
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerWarhoundAutoTurret_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoC98267B0_g;
+    int autoC98267B0_u;
+    unit autoC98267B0_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoC98267B0_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    autoC98267B0_u = UnitGroupCount(autoC98267B0_g, c_unitCountAll);
+    for (;; autoC98267B0_u -= 1) {
+        autoC98267B0_var = UnitGroupUnitFromEnd(autoC98267B0_g, autoC98267B0_u);
+        if (autoC98267B0_var == null) { break; }
+        if ((UnitGetType(autoC98267B0_var) == "TychusWarhound")) {
+            UnitCreateEffectPoint(autoC98267B0_var, "TychusWarhoundAutoTurretReleaseBunker", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerWarhoundAutoTurret_Init () {
+    lib74A68E34_gt_TychusBunkerWarhoundAutoTurret = TriggerCreate("lib74A68E34_gt_TychusBunkerWarhoundAutoTurret_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerWarhoundAutoTurret, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerWarhoundAutoTurret, c_playerAny, "TychusWarhoundBuildAutoTurretBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerFirebatOilBomb
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerFirebatOilBomb_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto920F2F8E_g;
+    int auto920F2F8E_u;
+    unit auto920F2F8E_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto920F2F8E_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    auto920F2F8E_u = UnitGroupCount(auto920F2F8E_g, c_unitCountAll);
+    for (;; auto920F2F8E_u -= 1) {
+        auto920F2F8E_var = UnitGroupUnitFromEnd(auto920F2F8E_g, auto920F2F8E_u);
+        if (auto920F2F8E_var == null) { break; }
+        if ((UnitGetType(auto920F2F8E_var) == "TychusFirebat")) {
+            UnitCreateEffectPoint(auto920F2F8E_var, "TychusFirebatOilBombLM", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerFirebatOilBomb_Init () {
+    lib74A68E34_gt_TychusBunkerFirebatOilBomb = TriggerCreate("lib74A68E34_gt_TychusBunkerFirebatOilBomb_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerFirebatOilBomb, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerFirebatOilBomb, c_playerAny, "TychusFirebatOilBombBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerMarauderHealingWard
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerMarauderHealingWard_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoB1D117E5_g;
+    int autoB1D117E5_u;
+    unit autoB1D117E5_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB1D117E5_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    autoB1D117E5_u = UnitGroupCount(autoB1D117E5_g, c_unitCountAll);
+    for (;; autoB1D117E5_u -= 1) {
+        autoB1D117E5_var = UnitGroupUnitFromEnd(autoB1D117E5_g, autoB1D117E5_u);
+        if (autoB1D117E5_var == null) { break; }
+        if ((UnitGetType(autoB1D117E5_var) == "TychusMarauder")) {
+            UnitCreateEffectPoint(autoB1D117E5_var, "TychusMarauderHealingWardRelease", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerMarauderHealingWard_Init () {
+    lib74A68E34_gt_TychusBunkerMarauderHealingWard = TriggerCreate("lib74A68E34_gt_TychusBunkerMarauderHealingWard_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerMarauderHealingWard, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerMarauderHealingWard, c_playerAny, "TychusMarauderBuildHealingWardBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerGhostDominate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerGhostDominate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto40E5E8D0_g;
+    int auto40E5E8D0_u;
+    unit auto40E5E8D0_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto40E5E8D0_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    auto40E5E8D0_u = UnitGroupCount(auto40E5E8D0_g, c_unitCountAll);
+    for (;; auto40E5E8D0_u -= 1) {
+        auto40E5E8D0_var = UnitGroupUnitFromEnd(auto40E5E8D0_g, auto40E5E8D0_u);
+        if (auto40E5E8D0_var == null) { break; }
+        if ((UnitGetType(auto40E5E8D0_var) == "TychusGhost")) {
+            UnitCreateEffectUnit(auto40E5E8D0_var, "TychusGhostDominateSet", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerGhostDominate_Init () {
+    lib74A68E34_gt_TychusBunkerGhostDominate = TriggerCreate("lib74A68E34_gt_TychusBunkerGhostDominate_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerGhostDominate, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerGhostDominate, c_playerAny, "TychusGhostDominateBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerSpectreUltrasonic
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto72BA895E_g;
+    int auto72BA895E_u;
+    unit auto72BA895E_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto72BA895E_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    auto72BA895E_u = UnitGroupCount(auto72BA895E_g, c_unitCountAll);
+    for (;; auto72BA895E_u -= 1) {
+        auto72BA895E_var = UnitGroupUnitFromEnd(auto72BA895E_g, auto72BA895E_u);
+        if (auto72BA895E_var == null) { break; }
+        if ((UnitGetType(auto72BA895E_var) == "TychusSpectre")) {
+            UnitCreateEffectPoint(auto72BA895E_var, "TychusSpectreUltrasonicPulseCPLv1", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Init () {
+    lib74A68E34_gt_TychusBunkerSpectreUltrasonic = TriggerCreate("lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerSpectreUltrasonic, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerSpectreUltrasonic, c_playerAny, "TychusSpectreUltrasonicPulseBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerMedicAoE
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerMedicAoE_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoF362F612_g;
+    int autoF362F612_u;
+    unit autoF362F612_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoF362F612_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    autoF362F612_u = UnitGroupCount(autoF362F612_g, c_unitCountAll);
+    for (;; autoF362F612_u -= 1) {
+        autoF362F612_var = UnitGroupUnitFromEnd(autoF362F612_g, autoF362F612_u);
+        if (autoF362F612_var == null) { break; }
+        if ((UnitGetType(autoF362F612_var) == "TychusMedic")) {
+            UnitCreateEffectUnit(autoF362F612_var, "TychusMedicAoESearch", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerMedicAoE_Init () {
+    lib74A68E34_gt_TychusBunkerMedicAoE = TriggerCreate("lib74A68E34_gt_TychusBunkerMedicAoE_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerMedicAoE, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerMedicAoE, c_playerAny, "TychusMedicAoEBunker");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8950,6 +9238,14 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
+    lib74A68E34_gt_TychusBunkerShredderGrenade_Init();
+    lib74A68E34_gt_TychusBunkerReaperBomb_Init();
+    lib74A68E34_gt_TychusBunkerWarhoundAutoTurret_Init();
+    lib74A68E34_gt_TychusBunkerFirebatOilBomb_Init();
+    lib74A68E34_gt_TychusBunkerMarauderHealingWard_Init();
+    lib74A68E34_gt_TychusBunkerGhostDominate_Init();
+    lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Init();
+    lib74A68E34_gt_TychusBunkerMedicAoE_Init();
     lib74A68E34_gt_TychusExpandedCheat_Init();
     lib74A68E34_gt_Expanded_TychusSquadMemberTrained_Init();
     lib74A68E34_gt_Expanded_TychusSquadMemberReviveQueued_Init();

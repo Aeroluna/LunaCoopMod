@@ -40,6 +40,10 @@
         <Range value="3"/>
         <Unit value="Battlecruiser"/>
     </CValidatorLocationPlacement>
+    <CValidatorCombine id="BiologicalOrTychusWarhound">
+        <CombineArray value="IsBiological"/>
+        <CombineArray value="IsTychusWarhound"/>
+    </CValidatorCombine>
     <CValidatorUnitOrderQueue id="CommanderPrestigeStetmannRespawnAttacking">
         <WhichUnit Effect="CommanderPrestigeStetmannRespawnTeleport" Value="Target"/>
         <AbilLink value="attack"/>
@@ -831,6 +835,12 @@
     <CValidatorUnitCompareAttackPriority id="ThreatensCyclone" parent="ThreatensUnit" unitLink="Baneling">
         <AttackerAlternateType value="Cyclone"/>
     </CValidatorUnitCompareAttackPriority>
+    <CValidatorUnitCompareBehaviorCount id="NotTychusMarauderHealingWardTarget">
+        <Behavior value="TychusMarauderHealingWardTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotTychusMarauderHealingWardTargetUpgraded">
+        <Behavior value="TychusMarauderHealingWardTargetUpgrade"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="ValidChronoBoostTarget2">
         <CombineArray index="2" removed="1"/>
     </CValidatorCombine>
