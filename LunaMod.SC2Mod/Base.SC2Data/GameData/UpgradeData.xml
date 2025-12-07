@@ -158,6 +158,10 @@
         <AffectedUnitArray value="InfestedMarineAC"/>
         <AffectedUnitArray value="NovaInfestedSiegeTank"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeTychusSquadAbilitiesMasteryGrenadeCooldown">
+        <EffectArray index="0" Value="0"/>
+        <EffectArray index="1" Value="0.000000"/>
+    </CUpgrade>
     <CUpgrade id="ImmortalResearchShadowCannon">
         <EffectArray Reference="Unit,ImmortalShakuras,SubgroupPriorityDelta" Value="18"/>
     </CUpgrade>
@@ -435,6 +439,15 @@
     </CUpgrade>
     <CUpgrade id="SITerranInfantryWeaponsExtraLevel3" parent="SITerranInfantryWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,InfestedAcidSpines,Icon" Value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="TychusHercGrappleStun">
+        <EffectArray Reference="Actor,TychusHercGrappleBunkerRange,Range" Value="1.500000"/>
+    </CUpgrade>
+    <CUpgrade id="TychusSpectreExtendedPulseGun">
+        <EffectArray index="0" Value="10"/>
+    </CUpgrade>
+    <CUpgrade id="TychusSpectreSuperUltrasonicPulse">
+        <EffectArray index="0" Value="5"/>
     </CUpgrade>
     <CUpgrade id="ZagaraGroundAttacksExtraLevel1" parent="ZagaraGroundAttacksExtra">
         <EffectArray Operation="Set" Reference="Weapon,RoachCorpserAcidSaliva,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level1.dds"/>
@@ -1841,15 +1854,17 @@
         <EffectArray Reference="Weapon,SILiberatorDummy,RateMultiplier" Value="0.01"/>
     </CUpgrade>
     <CUpgrade id="MasteryTychusCommanderAttackSpeed">
-        <EffectArray index="1" Reference="Behavior,MasteryTychusFirstCommander,Modification.AttackSpeedMultiplier"/>
-        <EffectArray Reference="Behavior,MasteryTychusFirstCommanderPetBuff,Modification.AttackSpeedMultiplier" Value="0.01"/>
-        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstCommanderPetBuffAB,Chance" Value="1"/>
+        <EffectArray index="1" Reference="Behavior,MasteryTychusFirstHero,Modification.AttackSpeedMultiplier"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstHeroPetBuff,Modification.AttackSpeedMultiplier" Value="0.01"/>
+        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstHeroPetBuffAB,Chance" Value="1"/>
     </CUpgrade>
     <CUpgrade id="MasteryTychusGrenadeCooldown">
         <EffectArray index="0" Value="1"/>
-        <EffectArray index="1" Operation="Add" Reference="Behavior,MasteryTychusFirstCommander,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
-        <EffectArray Reference="Behavior,MasteryTychusFirstCommanderPetBuff,Modification.RateMultiplierArray[Cooldown]" Value="0.01"/>
-        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstCommanderPetBuffAB,Chance" Value="1"/>
+        <EffectArray index="1" Operation="Add" Reference="Behavior,MasteryTychusFirstHero,Modification.RateMultiplierArray[Cooldown]" Value="0.014"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstHeroPetBuff,Modification.RateMultiplierArray[Cooldown]" Value="0.014"/>
+        <EffectArray Operation="Set" Reference="Effect,MasteryTychusFirstHeroPetBuffAB,Chance" Value="1"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstHero,Modification.RateMultiplierArray[Charge]" Value="0.014"/>
+        <EffectArray Reference="Behavior,MasteryTychusFirstHeroPetBuff,Modification.RateMultiplierArray[Charge]" Value="0.014"/>
     </CUpgrade>
     <CUpgrade id="MasteryZeratulSupportCalldownCooldownReduction">
         <EffectArray index="1" Value="0.450000"/>

@@ -1012,12 +1012,24 @@
     <CEffectApplyBehavior id="TychusGhostConfusionApply">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TychusGhostDominateCP">
+        <InitialDelay value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="TychusHercGrappleLaunchCasterSlowAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="TychusHercGrappleLaunchCasterStunAB">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="TychusMedicAoEBunker">
         <EditorCategories value="Race:Terran"/>
     </CEffectSet>
     <CEffectSet id="TychusFirebatOilBombBunker">
         <EditorCategories value="Race:Terran"/>
         <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="TychusHercGrappleBunker">
+        <EditorCategories value="Race:Terran"/>
     </CEffectSet>
     <CEffectSet id="TychusGhostDominateBunker">
         <EditorCategories value="Race:Terran"/>
@@ -1033,16 +1045,29 @@
     <CEffectSet id="TychusReaperBombBunker">
         <EditorCategories value="Race:Terran"/>
     </CEffectSet>
+    <CEffectDamage id="TychusSpectreUltrasonicDamageLv1">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="TychusSpectreUltrasonicPulseAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="TychusSpectreUltrasonicPulse"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="TychusSpectreUltrasonicPulseBunker">
         <EditorCategories value="Race:Terran"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectCreatePersistent id="TychusSpectreUltrasonicPulseCPLv1">
-        <Marker Duration="1.2" Link="Abil/TychusSpectreUltrasonicPulse">
+        <Marker Duration="0.6" Link="Abil/TychusSpectreUltrasonicPulse">
             <MatchFlags index="Link" value="1"/>
             <MatchFlags index="CasterPlayer" value="1"/>
         </Marker>
+        <PeriodCount value="8"/>
+        <PeriodicPeriodArray index="0" value="0.5"/>
     </CEffectCreatePersistent>
+    <!-- Tychus Spectre Ultrasonic -->
+    <CEffectEnumArea id="TychusSpectreUltrasonicSearchLv1">
+        <AreaArray index="0" Effect="TychusSpectreUltrasonicPulseAB"/>
+    </CEffectEnumArea>
     <CEffectSet id="TychusWarhoundBuildAutoTurretBunker">
         <EditorCategories value="Race:Terran"/>
         <TargetLocationType value="Point"/>
@@ -1808,10 +1833,10 @@
     <CEffectApplyBehavior id="MarauderMagrailMunitionsSlowAB">
         <Behavior value="MarauderMagrailMunitionsSlow"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="MasteryTychusFirstCommanderPetBuffAB">
+    <CEffectApplyBehavior id="MasteryTychusFirstHeroPetBuffAB">
         <EditorCategories value=""/>
         <Chance value="0"/>
-        <Behavior value="MasteryTychusFirstCommanderPetBuff"/>
+        <Behavior value="MasteryTychusFirstHeroPetBuff"/>
     </CEffectApplyBehavior>
     <CEffectSet id="MothershipMassRecallSet">
         <EffectArray value="MothershipMassRecallCastingRB"/>
@@ -3097,11 +3122,16 @@
         <Chance value="0"/>
     </CEffectTeleport>
     <CEffectSet id="TychusGhostDominateSet">
-        <EffectArray index="3" value="MasteryTychusFirstCommanderPetBuffAB"/>
+        <EffectArray index="3" value="MasteryTychusFirstHeroPetBuffAB"/>
     </CEffectSet>
     <CEffectDamage id="TychusHERCWeaponDamage">
         <Death value="Blast"/>
-        <AreaArray Arc="39.9792" Radius="2.1" Fraction="1"/>
+        <AreaArray>
+            <Arc value="39.9792"/>
+            <Radius value="10"/>
+            <Fraction value="1"/>
+            <Validator value="WeaponInRange"/>
+        </AreaArray>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="CenterAtLaunch" value="1"/>
@@ -3134,7 +3164,7 @@
         <WhichUnit Value="Unknown"/>
     </CEffectIssueOrder>
     <CEffectSet id="TychusWarhoundAutoTurretSet">
-        <EffectArray value="MasteryTychusFirstCommanderPetBuffAB"/>
+        <EffectArray value="MasteryTychusFirstHeroPetBuffAB"/>
     </CEffectSet>
     <CEffectDamage id="VikingMengskAirMassiveDamage">
         <Amount value="28"/>

@@ -1925,6 +1925,13 @@ Cannonball is a menance when this gear is stacked, unfortunately he struggles to
 
 Makes it feel a little less bad when Cannonball crits a single zergling for 500 damage. Fun fact: all I did was uncomment some unused data.
 
+- Reworked Nux's Ultrasonic Pulse ability to apply a damaging debuff.
+  - Works like Psionic Storm now.
+  - No longer stacks.
+- Added an impact visual to Nux's Ultrasonic Pulse ability.
+
+For an ability that's basically a Psionic Storm, the ability is set up weirdly different.
+
 - Added a cursor splat for Rattlesnake's Deploy Revitalizer.
 - Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
 - Added a new AOE visual effect after purchasing Hammer Munitions.

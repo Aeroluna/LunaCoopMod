@@ -37,9 +37,10 @@
         <OperandArray value="LTE4CountUpgradeCommanderLevelCompleteOnly"/>
         <OperandArray value="NotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
+    <CRequirementAnd id="AndCountUpgradeMasteryTychusGrenadeCooldownCompleteOnlyOrCountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeMasteryTychusGrenadeCooldownCompleteOnly"/>
-        <OperandArray value="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
+        <OperandArray value="OrCountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2">
         <OperandArray value="CountUpgradeMengskAcademyMissileCountCompleteOnly"/>
@@ -67,6 +68,11 @@
     <CRequirementAnd id="AndCountUpgradeTychusACOwnedCompleteOnlyNotCountUnitTychusCoopQueuedOrBetter">
         <OperandArray value="CountUpgradeTychusACOwnedCompleteOnly"/>
         <OperandArray value="NotCountUnitTychusCoopQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeTychusSquadDetectionCompleteOnlyOrCountUnitTychusGhostCompleteOnlyAtUnitCountUnitTychusSpectreCompleteOnlyAtUnitCountUnitTychusMedicCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeTychusSquadDetectionCompleteOnly"/>
+        <OperandArray value="OrCountUnitTychusGhostCompleteOnlyAtUnitCountUnitTychusSpectreCompleteOnlyAtUnitCountUnitTychusMedicCompleteOnlyAtUnit"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeVorazunCommanderCompleteOnlyLTE12CountUpgradeCommanderLevelCompleteOnly">
         <OperandArray value="CountUpgradeVorazunCommanderCompleteOnly"/>
@@ -112,13 +118,15 @@
         <OperandArray value="NotCountUpgradeTychusHeroMaxedCompleteOnly"/>
         <OperandArray value="NotCountUnitTychusCoopQueuedOrBetter"/>
     </CRequirementAnd>
-    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit">
+    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="MasteryTychusFirstCommander" State="CompleteOnlyAtUnit"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MasteryTychusFirstHero" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
+    <CRequirementCountBehavior id="CountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="MasteryTychusFirstCommanderPetBuff" State="CompleteOnlyAtUnit"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MasteryTychusFirstHeroPetBuff" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -174,27 +182,22 @@
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusCoopCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusCoop" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusFirebatCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusFirebat" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusGhostCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusGhost" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusHERCCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusHERC" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusMarauderCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusMarauder" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusMedicCompleteOnlyAtUnit">
@@ -207,17 +210,14 @@
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusReaperCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusReaper" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusSpectreCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusSpectre" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUnit id="CountUnitTychusWarhoundCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="TychusWarhound" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
     <CRequirementCountUpgrade id="CountUpgradeBansheeCloakCompleteOnly758801471TechTreeCheat">
@@ -655,9 +655,16 @@
         <OperandArray value="NotCountUnitNukeMengskQueuedOrBetterAtUnit"/>
         <OperandArray value="AndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2"/>
     </CRequirementOr>
-    <CRequirementOr id="OrCountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit">
-        <OperandArray value="CountBehaviorMasteryTychusFirstCommanderCompleteOnlyAtUnit"/>
-        <OperandArray value="CountBehaviorMasteryTychusFirstCommanderPetBuffCompleteOnlyAtUnit"/>
+    <CRequirementOr id="OrCountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnit"/>
+        <OperandArray value="CountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountUnitTychusGhostCompleteOnlyAtUnitCountUnitTychusSpectreCompleteOnlyAtUnitCountUnitTychusMedicCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUnitTychusGhostCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitTychusSpectreCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitTychusMedicCompleteOnlyAtUnit"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeCommanderPrestigeFenixChampionCompleteOnlyEqCountUnitFenixClolarionCarrierCompleteOnly0">
         <OperandArray value="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly"/>

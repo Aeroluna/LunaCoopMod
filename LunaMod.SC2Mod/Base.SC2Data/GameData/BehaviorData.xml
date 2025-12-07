@@ -938,16 +938,16 @@
         <Duration value="5"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="MasteryTychusFirstCommander">
+    <CBehaviorBuff id="MasteryTychusFirstHero">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="MasteryTychusFirstCommanderPetBuff">
+    <CBehaviorBuff id="MasteryTychusFirstHeroPetBuff">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="CasterMasteryTychusFirstCommander"/>
+        <DisableValidatorArray value="CasterMasteryTychusFirstHero"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MengskGuardSpellReduction">
         <InfoFlags index="Hidden" value="1"/>
@@ -1042,6 +1042,16 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerTowerOverchargeStetmann">
         <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusSpectreUltrasonicPulse">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-tychus-spectre-ultrasonicpulse.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.6665"/>
+        <Period value="0.5"/>
+        <InitialEffect value="TychusSpectreUltrasonicDamageLv1"/>
+        <PeriodicEffect value="TychusSpectreUltrasonicDamageLv1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PsiStrikeWalkSpeed">
         <Modification MoveSpeedMaximum="8.8515" MoveSpeedMinimum="8.8515"/>
@@ -1288,6 +1298,15 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="TychusShredderGrenadeStun">
         <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TychusSquadDetectorBunker" parent="Detector">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Requirements value="HaveTychusSquadDetectionBunker"/>
+        <DisableValidatorArray value="ResearchedTychusSquadDetection"/>
+        <Modification Detect="10"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TychusWarhoundFear">
         <BehaviorCategories index="Restorable" value="1"/>

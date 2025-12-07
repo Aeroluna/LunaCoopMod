@@ -86,10 +86,10 @@
         <CombineArray index="2" removed="1"/>
         <Type value="Or"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="CasterMasteryTychusFirstCommander">
+    <CValidatorUnitCompareBehaviorCount id="CasterMasteryTychusFirstHero">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
-        <Behavior value="MasteryTychusFirstCommander"/>
+        <Behavior value="MasteryTychusFirstHero"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="CommanderPrestigeArtanisWarp">
         <Find value="1"/>
@@ -246,6 +246,7 @@
     </CValidatorPlayerRequirement>
     <CValidatorLocationEnumArea id="CommanderPrestigeTychusLoneWolf">
         <SearchFilters value="Heroic;Self,Ally,Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Destructible,Item,Dead"/>
+        <ExcludeArray index="0" Value="Source"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitType id="CasterIsAscendant">
         <WhichUnit Value="Caster"/>
@@ -841,6 +842,19 @@
     <CValidatorUnitCompareBehaviorCount id="NotTychusMarauderHealingWardTargetUpgraded">
         <Behavior value="TychusMarauderHealingWardTargetUpgrade"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="TychusHercGrappleImpacts">
+        <Find value="1"/>
+        <Value value="HaveTychusHercGrappleImpacts"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorLocationEnumArea id="TychusHercGrappleEnemiesInRange">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray Radius="0.2"/>
+        <AreaArray Radius="1.7" Validator="TychusHercGrappleImpacts"/>
+        <Compare value="GE"/>
+        <Count value="2"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="ValidChronoBoostTarget2">
         <CombineArray index="2" removed="1"/>
     </CValidatorCombine>

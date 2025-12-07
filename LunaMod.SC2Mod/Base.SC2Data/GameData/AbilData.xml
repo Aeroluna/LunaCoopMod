@@ -71,9 +71,9 @@
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
         <Range value="0"/>
-        <MaxCargoCount value="4"/>
-        <MaxCargoSize value="2"/>
-        <TotalCargoSpace value="4"/>
+        <MaxCargoCount value="2"/>
+        <MaxCargoSize value="1"/>
+        <TotalCargoSpace value="2"/>
         <LoadCargoBehavior value="BunkerWeaponRangeBonus"/>
         <TargetFilters value="Visible;Ally,Neutral,Enemy,Dead,Hidden"/>
         <LoadValidatorArray value="IsTerranorInfestedMarine"/>
@@ -568,6 +568,7 @@
         <Arc value="360"/>
         <CursorEffect value="TychusFirebatOilBombSearch"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusFirebatOilBombBunker2" parent="TychusFirebatOilBombBunker"/>
     <CAbilEffectTarget id="TychusGhostDominate">
         <Cost index="0">
             <Charge Location="Player"/>
@@ -606,6 +607,31 @@
         <AutoCastValidatorArray value="TargetLifeMaxGE100"/>
         <Arc value="360"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusGhostDominateBunker2" parent="TychusGhostDominateBunker"/>
+    <CAbilEffectTarget id="TychusHercGrapple">
+        <Cost index="0">
+            <Cooldown Location="Player"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TychusHercGrappleBunker">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown Link="Abil/TychusHercGrapple" Location="Player" TimeUse="15"/>
+        </Cost>
+        <Range value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TychusHercGrapple" Requirements="TychusHercBunker">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Arc value="360"/>
+        <AutoCastRange value="2"/>
+        <AutoCastValidatorArray value="TychusHercGrappleEnemiesInRange"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TychusHercGrappleBunker2" parent="TychusHercGrappleBunker"/>
     <CAbilEffectInstant id="TychusHeroCommonAbil6">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TychusHeroCommonAbil6">
@@ -647,7 +673,7 @@
                 <TimeStart value="30"/>
                 <TimeUse value="30"/>
             </Charge>
-            <Cooldown TimeUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="8"/>
         <ErrorAlert value="Error"/>
@@ -662,6 +688,7 @@
         <Arc value="360"/>
         <CursorEffect value="TychusMarauderHealingWardSearch"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusMarauderBuildHealingWardBunker2" parent="TychusMarauderBuildHealingWardBunker"/>
     <CAbilEffectInstant id="TychusMedicAoE">
         <Cost index="0">
             <Cooldown Location="Player"/>
@@ -685,6 +712,7 @@
         <AutoCastValidatorArray value="TargetLifeNotFull"/>
         <Arc value="360"/>
     </CAbilEffectInstant>
+    <CAbilEffectInstant id="TychusMedicAoEBunker2" parent="TychusMedicAoEBunker"/>
     <CAbilEffectTarget id="TychusMedicDefensiveMatrix">
         <Flags index="PassengerAcquireExternal" value="1"/>
     </CAbilEffectTarget>
@@ -723,6 +751,7 @@
         </CmdButtonArray>
         <Arc value="360"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusReaperBombBunker2" parent="TychusReaperBombBunker"/>
     <CAbilEffectTarget id="TychusShredderGrenade">
         <Cost index="0">
             <Cooldown Location="Player"/>
@@ -746,6 +775,7 @@
         <Arc value="360"/>
         <CursorEffect value="TychusShredderGrenadeSearch"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusShredderGrenadeBunker2" parent="TychusShredderGrenadeBunker"/>
     <CAbilEffectTarget id="TychusSpectreUltrasonicPulse">
         <Cost index="0">
             <Charge Location="Player"/>
@@ -764,7 +794,7 @@
                 <TimeStart value="30"/>
                 <TimeUse value="30"/>
             </Charge>
-            <Cooldown Link="Abil/TychusSpectreUltrasonicPulse" TimeUse="1"/>
+            <Cooldown Link="Abil/TychusSpectreUltrasonicPulse" Location="Unit" TimeUse="1"/>
         </Cost>
         <Range value="10"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TychusSpectreUltrasonicPulse" Requirements="TychusSpectreBunker">
@@ -783,9 +813,10 @@
         <Arc value="360"/>
         <CursorEffect value="TychusSpectreUltrasonicSearchLv1"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusSpectreUltrasonicPulseBunker2" parent="TychusSpectreUltrasonicPulseBunker"/>
     <CAbilEffectTarget id="TychusWarhoundBuildAutoTurret">
         <Cost index="0">
-            <Cooldown Location="Player"/>
+            <Charge Location="Player"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusWarhoundBuildAutoTurretBunker">
@@ -818,6 +849,7 @@
         <Placeholder value="TychusWarhoundAutoTurret"/>
         <PlaceUnit value="TychusWarhoundAutoTurret"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="TychusWarhoundBuildAutoTurretBunker2" parent="TychusWarhoundBuildAutoTurretBunker"/>
     <CAbilEffectInstant id="TychusWarhoundTornadoSprayMissile">
         <Flags index="PassengerAcquireExternal" value="1"/>
     </CAbilEffectInstant>

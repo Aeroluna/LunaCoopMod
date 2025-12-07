@@ -203,6 +203,15 @@ void lib74A68E34_gf_Cooldown (int lp_pPlayer) {
     libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/ZeratulEssence");
     libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/ZeratulForm");
     libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/AlarakMothershipWarpTrain");
+    libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusReaperBomb");
+    libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/TychusShredderGrenade");
+    libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusSpectreUltrasonicPulse");
+    libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/TychusFirebatOilBomb");
+    libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusGhostDominate");
+    libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/TychusHercGrapple");
+    libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusMarauderBuildHealingWard");
+    libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/TychusMedicAoE");
+    libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusWarhoundBuildAutoTurret");
     auto2A7337C9_g = UnitGroup(null, lp_pPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     auto2A7337C9_u = UnitGroupCount(auto2A7337C9_g, c_unitCountAll);
     for (;; auto2A7337C9_u -= 1) {
@@ -4208,14 +4217,19 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
         }
         else if (auto560DABDD_val == "TerranTychus") {
+            TriggerEnable(lib74A68E34_gt_TychusBunkerAbilitySwap, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerFirebatOilBomb, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerGhostDominate, true);
+            TriggerEnable(lib74A68E34_gt_TychusBunkerHercGrapple, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerMarauderHealingWard, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerMedicAoE, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerReaperBomb, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerShredderGrenade, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerSpectreUltrasonic, true);
             TriggerEnable(lib74A68E34_gt_TychusBunkerWarhoundAutoTurret, true);
+            TriggerEnable(lib74A68E34_gt_TychusHeroCooldownReduction, true);
+            TriggerEnable(libCOMI_gt_CM_TychusSpecialistTrainingAuraOn, true);
+            TriggerEnable(libCOMI_gt_CM_TychusSpecialistTrainingAuraOff, true);
             if ((TechTreeUpgradeCount(lv_player, "TychusHeroExpanded", c_techCountCompleteOnly) == 1)) {
                 lib74A68E34_gf_ExpandedTychusGPInit(lv_player);
             }
@@ -6546,6 +6560,128 @@ void lib74A68E34_gt_HornerScrapDropChanged_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerAbilitySwap
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerAbilitySwap_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto5E3AA16B_g;
+    int auto5E3AA16B_u;
+    unit auto5E3AA16B_var;
+    string auto81A64605_val;
+    string auto41CF6E2E_val;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "TychusBunker"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAbilityShow(EventUnit(), "TychusReaperBombBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusReaperBombBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusShredderGrenadeBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusShredderGrenadeBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusSpectreUltrasonicPulseBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusSpectreUltrasonicPulseBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusFirebatOilBombBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusFirebatOilBombBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusGhostDominateBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusGhostDominateBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusHercGrappleBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusHercGrappleBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusMarauderBuildHealingWardBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusMarauderBuildHealingWardBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusMedicAoEBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusMedicAoEBunker2", false);
+    UnitAbilityShow(EventUnit(), "TychusWarhoundBuildAutoTurretBunker", false);
+    UnitAbilityShow(EventUnit(), "TychusWarhoundBuildAutoTurretBunker2", false);
+    auto5E3AA16B_g = UnitCargoGroup(EventUnit());
+    auto5E3AA16B_u = UnitGroupCount(auto5E3AA16B_g, c_unitCountAll);
+    for (;; auto5E3AA16B_u -= 1) {
+        auto5E3AA16B_var = UnitGroupUnitFromEnd(auto5E3AA16B_g, auto5E3AA16B_u);
+        if (auto5E3AA16B_var == null) { break; }
+        if ((UnitCargoValue(auto5E3AA16B_var, c_unitCargoPosition) == 1)) {
+            auto41CF6E2E_val = UnitGetType(auto5E3AA16B_var);
+            if (auto41CF6E2E_val == "TychusCoop") {
+                UnitAbilityShow(EventUnit(), "TychusShredderGrenadeBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusReaper") {
+                UnitAbilityShow(EventUnit(), "TychusReaperBombBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusSpectre") {
+                UnitAbilityShow(EventUnit(), "TychusSpectreUltrasonicPulseBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusFirebat") {
+                UnitAbilityShow(EventUnit(), "TychusFirebatOilBombBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusGhost") {
+                UnitAbilityShow(EventUnit(), "TychusGhostDominateBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusHERC") {
+                UnitAbilityShow(EventUnit(), "TychusHercGrappleBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusMarauder") {
+                UnitAbilityShow(EventUnit(), "TychusMarauderBuildHealingWardBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusMedic") {
+                UnitAbilityShow(EventUnit(), "TychusMedicAoEBunker", true);
+            }
+            else if (auto41CF6E2E_val == "TychusWarhound") {
+                UnitAbilityShow(EventUnit(), "TychusWarhoundBuildAutoTurretBunker", true);
+            }
+            else {
+            }
+        }
+        else {
+            auto81A64605_val = UnitGetType(auto5E3AA16B_var);
+            if (auto81A64605_val == "TychusCoop") {
+                UnitAbilityShow(EventUnit(), "TychusShredderGrenadeBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusReaper") {
+                UnitAbilityShow(EventUnit(), "TychusReaperBombBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusSpectre") {
+                UnitAbilityShow(EventUnit(), "TychusSpectreUltrasonicPulseBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusFirebat") {
+                UnitAbilityShow(EventUnit(), "TychusFirebatOilBombBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusGhost") {
+                UnitAbilityShow(EventUnit(), "TychusGhostDominateBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusHERC") {
+                UnitAbilityShow(EventUnit(), "TychusHercGrappleBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusMarauder") {
+                UnitAbilityShow(EventUnit(), "TychusMarauderBuildHealingWardBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusMedic") {
+                UnitAbilityShow(EventUnit(), "TychusMedicAoEBunker2", true);
+            }
+            else if (auto81A64605_val == "TychusWarhound") {
+                UnitAbilityShow(EventUnit(), "TychusWarhoundBuildAutoTurretBunker2", true);
+            }
+            else {
+            }
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerAbilitySwap_Init () {
+    lib74A68E34_gt_TychusBunkerAbilitySwap = TriggerCreate("lib74A68E34_gt_TychusBunkerAbilitySwap_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerAbilitySwap, false);
+    TriggerAddEventUnitCargo(lib74A68E34_gt_TychusBunkerAbilitySwap, null, true);
+    TriggerAddEventUnitCargo(lib74A68E34_gt_TychusBunkerAbilitySwap, null, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: TychusBunkerShredderGrenade
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_TychusBunkerShredderGrenade_Func (bool testConds, bool runActions) {
@@ -6683,6 +6819,41 @@ void lib74A68E34_gt_TychusBunkerFirebatOilBomb_Init () {
     lib74A68E34_gt_TychusBunkerFirebatOilBomb = TriggerCreate("lib74A68E34_gt_TychusBunkerFirebatOilBomb_Func");
     TriggerEnable(lib74A68E34_gt_TychusBunkerFirebatOilBomb, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerFirebatOilBomb, c_playerAny, "TychusFirebatOilBombBunker");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusBunkerHercGrapple
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusBunkerHercGrapple_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoBE8A6589_g;
+    int autoBE8A6589_u;
+    unit autoBE8A6589_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoBE8A6589_g = UnitCargoGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    autoBE8A6589_u = UnitGroupCount(autoBE8A6589_g, c_unitCountAll);
+    for (;; autoBE8A6589_u -= 1) {
+        autoBE8A6589_var = UnitGroupUnitFromEnd(autoBE8A6589_g, autoBE8A6589_u);
+        if (autoBE8A6589_var == null) { break; }
+        if ((UnitGetType(autoBE8A6589_var) == "TychusHERC")) {
+            UnitCreateEffectUnit(autoBE8A6589_var, "TychusHercGrappleLaunchCasterImpactSearch", autoBE8A6589_var);
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusBunkerHercGrapple_Init () {
+    lib74A68E34_gt_TychusBunkerHercGrapple = TriggerCreate("lib74A68E34_gt_TychusBunkerHercGrapple_Func");
+    TriggerEnable(lib74A68E34_gt_TychusBunkerHercGrapple, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerHercGrapple, c_playerAny, "TychusHercGrappleBunker");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7351,8 +7522,8 @@ bool lib74A68E34_gt_TychusUIReorderButtonClicked_Func (bool testConds, bool runA
         libCOUI_gv_cU_TychusSquadHeroes[(lv_a + 1)] = lv_firsthero;
     }
     if ((lv_a == 0)) {
-        UnitBehaviorRemove(lv_firsthero, "MasteryTychusFirstCommander", 1);
-        UnitBehaviorAdd(lv_hero, "MasteryTychusFirstCommander", lv_hero, 1);
+        UnitBehaviorRemove(lv_firsthero, "MasteryTychusFirstHero", 1);
+        UnitBehaviorAdd(lv_hero, "MasteryTychusFirstHero", lv_hero, 1);
     }
 
     if ((lib74A68E34_gv_expanded_Tychus == true)) {
@@ -7428,6 +7599,99 @@ void lib74A68E34_gt_TychusUIReorderHeroPurchased_Init () {
     lib74A68E34_gt_TychusUIReorderHeroPurchased = TriggerCreate("lib74A68E34_gt_TychusUIReorderHeroPurchased_Func");
     TriggerEnable(lib74A68E34_gt_TychusUIReorderHeroPurchased, false);
     libCOMI_gf_TychusHeroEvent(lib74A68E34_gt_TychusUIReorderHeroPurchased, "Event_TychusHeroCreate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusHeroCooldownReduction
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusHeroCooldownReduction_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    fixed lv_factor;
+
+    // Automatic Variable Declarations
+    string auto3DEBD4D2_val;
+
+    // Variable Initialization
+    lv_player = UnitGetOwner(EventUnit());
+    lv_factor = 1.0;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitBehaviorEnabled(EventUnit(), "MasteryTychusFirstHero") == true)) {
+        lv_factor *= (1.0 - (TechTreeUpgradeCount(lv_player, "MasteryTychusGrenadeCooldown", c_techCountCompleteOnly) * 0.01));
+    }
+
+    if ((UnitBehaviorEnabled(EventUnit(), "TychusSpectreBrillianceAuraBuffLv1") == true)) {
+        lv_factor *= 0.8;
+    }
+
+    if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeTychusSquadAbilities", c_techCountCompleteOnly) == 1)) {
+        lv_factor *= 0.65;
+    }
+
+    auto3DEBD4D2_val = UnitGetType(EventUnit());
+    if (auto3DEBD4D2_val == "TychusCoop") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusShredderGrenade", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusShredderGrenadeBunker", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusShredderGrenadeBunker2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusReaper") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusReaperBomb", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusReaperBombBunker", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusReaperBombBunker2", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusSpectre") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusSpectreUltrasonicPulse", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusSpectreUltrasonicPulseBunker", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusSpectreUltrasonicPulseBunker2", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusFirebat") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusFirebatOilBomb", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusFirebatOilBombBunker", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusFirebatOilBombBunker2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusGhost") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusGhostDominate", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusGhostDominateBunker", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusGhostDominateBunker2", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusHERC") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusHercGrapple", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusHercGrappleBunker", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusHercGrappleBunker2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusMarauder") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMarauderBuildHealingWard", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMarauderBuildHealingWardBunker", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMarauderBuildHealingWardBunker2", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusMedic") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMedicAoE", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMedicAoEBunker", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusMedicAoEBunker2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else if (auto3DEBD4D2_val == "TychusWarhound") {
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusWarhoundBuildAutoTurret", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusWarhoundBuildAutoTurretBunker", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+        libNtve_gf_CatalogFieldValueModifyBasedOnDefaultValue(c_gameCatalogAbil, "TychusWarhoundBuildAutoTurretBunker2", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, lv_factor, c_upgradeOperationMultiply);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusHeroCooldownReduction_Init () {
+    lib74A68E34_gt_TychusHeroCooldownReduction = TriggerCreate("lib74A68E34_gt_TychusHeroCooldownReduction_Func");
+    TriggerEnable(lib74A68E34_gt_TychusHeroCooldownReduction, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_TychusHeroCooldownReduction, null, "MasteryTychusFirstHero", c_unitBehaviorChangeActivate);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_TychusHeroCooldownReduction, null, "MasteryTychusFirstHero", c_unitBehaviorChangeDeactivate);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_TychusHeroCooldownReduction, null, "TychusSpectreBrillianceAuraBuffLv1", c_unitBehaviorChangeActivate);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_TychusHeroCooldownReduction, null, "TychusSpectreBrillianceAuraBuffLv1", c_unitBehaviorChangeDeactivate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7525,7 +7789,7 @@ bool lib74A68E34_gt_TychusReplaceResearchCenter_Func (bool testConds, bool runAc
         libCOUI_gf_CU_TychusSetBarUnit(libNtve_gf_LastReplacedUnit());
     }
     DialogControlSetAnimationState(libCOUI_gv_cU_TychusSquadUnitFrames[0], PlayerGroupAll(), "TrainingState", "NotTraining");
-    UnitBehaviorAdd(lv_unit, "MasteryTychusFirstCommander", lv_unit, 1);
+    UnitBehaviorAdd(lv_unit, "MasteryTychusFirstHero", lv_unit, 1);
     return true;
 }
 
@@ -9238,10 +9502,12 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();
+    lib74A68E34_gt_TychusBunkerAbilitySwap_Init();
     lib74A68E34_gt_TychusBunkerShredderGrenade_Init();
     lib74A68E34_gt_TychusBunkerReaperBomb_Init();
     lib74A68E34_gt_TychusBunkerWarhoundAutoTurret_Init();
     lib74A68E34_gt_TychusBunkerFirebatOilBomb_Init();
+    lib74A68E34_gt_TychusBunkerHercGrapple_Init();
     lib74A68E34_gt_TychusBunkerMarauderHealingWard_Init();
     lib74A68E34_gt_TychusBunkerGhostDominate_Init();
     lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Init();
@@ -9258,6 +9524,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_Expanded_TychusEquipmentUpgraded_Init();
     lib74A68E34_gt_TychusUIReorderButtonClicked_Init();
     lib74A68E34_gt_TychusUIReorderHeroPurchased_Init();
+    lib74A68E34_gt_TychusHeroCooldownReduction_Init();
     lib74A68E34_gt_TychusHeroQueueChanged_Init();
     lib74A68E34_gt_TychusHeroCancelChanged_Init();
     lib74A68E34_gt_TychusReplaceResearchCenter_Init();
