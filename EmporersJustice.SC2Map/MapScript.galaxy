@@ -9,6 +9,7 @@ include "TriggerLibs/NativeLib"
 include "TriggerLibs/LibertyLib"
 include "LibCOOC"
 include "LibCOMI"
+include "Lib01833E95"
 include "Lib74A68E34"
 include "ai14F812AA"
 
@@ -20,6 +21,7 @@ void InitLibs () {
     libLbty_InitLib();
     libCOOC_InitLib();
     libCOMI_InitLib();
+    lib01833E95_InitLib();
     lib74A68E34_InitLib();
 }
 
@@ -103,6 +105,8 @@ void gf_BonusEvacuate ();
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
+trigger gt_TW_Main_Thread_Player01_Template;
+trigger gt_TW_Main_Thread_Player02_Template;
 trigger gt_Init01LoadData;
 trigger gt_Init02Players;
 trigger gt_Init03LoadingComplete;
@@ -934,6 +938,90 @@ void gf_BonusEvacuate () {
         TriggerQueueExit();
     }
 
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TW_Main_Thread_Player01_Template
+//--------------------------------------------------------------------------------------------------
+bool gt_TW_Main_Thread_Player01_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 1);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player01_Template_Init () {
+    gt_TW_Main_Thread_Player01_Template = TriggerCreate("gt_TW_Main_Thread_Player01_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player01_Template);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TW_Main_Thread_Player02_Template
+//--------------------------------------------------------------------------------------------------
+bool gt_TW_Main_Thread_Player02_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 2);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player02_Template_Init () {
+    gt_TW_Main_Thread_Player02_Template = TriggerCreate("gt_TW_Main_Thread_Player02_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player02_Template);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5182,6 +5270,8 @@ void gt_ObjectiveScienceFacilityFailed_Init () {
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
+    gt_TW_Main_Thread_Player01_Template_Init();
+    gt_TW_Main_Thread_Player02_Template_Init();
     gt_Init01LoadData_Init();
     gt_Init02Players_Init();
     gt_Init03LoadingComplete_Init();

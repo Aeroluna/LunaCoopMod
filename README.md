@@ -399,6 +399,14 @@ yeah.
 
 It's like Temple of the Past but cooler. You can chose to either defend the low ground for the bonus objective or fall back to the high ground for a better position. The AI ally will constantly reinforce the defenses, but can't defend alone. Eventually you'll have to fight a capital ship boss to end the map.
 
+- Added new map: Primal Ascension
+  - Amon has corrupted the Primal Pack Ascendants of Zerus. They seek to drain Dehaka's eggs to become the new Primal Pack Leaders. Protect the eggs and slay the Primal Pack Ascendants.
+  - Made by OutsiderXE.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
+Boss fights!
+
 ## Commanders
 
 ### Amon
