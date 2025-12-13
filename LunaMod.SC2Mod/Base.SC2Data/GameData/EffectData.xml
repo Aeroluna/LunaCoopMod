@@ -3981,6 +3981,7 @@
     <CEffectSet id="VortexArtanisEffect" parent="VortexEffect">
         <EffectArray index="4" value="VortexArtanisApplyDisable"/>
         <EffectArray value="VortexArtanisForceOffset"/>
+        <ValidatorArray value="NotHeroicFriend"/>
     </CEffectSet>
     <CEffectApplyBehavior id="VortexArtanisExitEnemy">
         <EditorCategories value="Race:Protoss"/>
@@ -4115,6 +4116,9 @@
             <AccumulatorArray value="AscendantArchonDummySelfBuffSearchFactor"/>
         </ExtraRadiusBonus>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="VortexEventHorizon">
+        <ValidatorArray value="NotHeroicFriend"/>
+    </CEffectApplyBehavior>
     <CEffectSwitch id="WraithMovingSwitch">
         <EditorCategories value="Race:Terran"/>
         <CaseArray Validator="TargetIsAirUnitFilter" Effect="WraithAPersistent"/>

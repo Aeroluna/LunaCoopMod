@@ -197,6 +197,13 @@
         <TrackerUnit Effect="JinaraChainsDummySet" Value="Target"/>
         <TrackedUnit Value="Target"/>
     </CValidatorIsUnitTracked>
+    <CValidatorUnitFilters id="HeroicFriend">
+        <Filters value="Heroic;Neutral,Enemy"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="NotHeroicFriend">
+        <CombineArray value="HeroicFriend"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
     <CValidatorCombine id="NotLarvaAndNotEncasedAndDominatedOrPlayerOwned">
         <CombineArray value="PassengerNotSuppressed"/>
     </CValidatorCombine>

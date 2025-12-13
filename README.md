@@ -238,6 +238,10 @@ If you've ever wondered how you boxed that High Templar you didn't mean to, this
 
 Fun fact: the WOL campaign randomizes these model scales for some reason.
 
+- Added 4 second duplicate wait for hero Yes/Attack lines.
+
+This is how long after a sound is played before another is allowed to play. Can be nice for commonly selected heroes so that they don't spam their voice lines too much. This already existed on some heroes like Alarak/Kerrigan.
+
 - Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
 - Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
 - Fixed an issue where the Infested Swarm Eggs "popping" animation was not playing.
@@ -664,6 +668,12 @@ No longer have to queue a bunch of move commands to get value out of the Hyperio
 
 Just because he's a commander now doesn't mean he forgot how to pilot the Hyperion!
 
+- Swapped Hyperion command card placement of Yamato Cannon and Hyperjump.
+- Changed Hyperion Hyperjump hotkey from Q to T.
+- Added hotkey alias for Hyperion Yamato Cannon and Hyperjump to Battlecruiser Yamato Cannon and Tactical Jump respectively.
+
+Changed Hyperion buttons to match Battlecruisers.
+
 - Changed Vulture's Replenish Spider Mine ability to be autocast on intially.
 
 I don't see why you wouldn't want this autocasting.
@@ -791,6 +801,7 @@ Makes units significantly cheaper at the cost of being unable to sustain an army
     - Similar to Wings of Liberty Vortex.
     - Enemy units no longer get invulnerability while leaving the vortex (Still stunned).
     - Friend units are no longer stunned while leaving the vortex (Still invulnerable).
+    - Friendly heroic units are immune.
     - Deals up to 100 damage to enemy units within the Vortex.
     - Damage doubles with P1.
   - Can use Planet Cracker ability every 360 seconds.

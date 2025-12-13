@@ -4981,13 +4981,13 @@
     </CActorSound>
     <CActorSimple id="VortexExitOpacity">
         <On Terms="Behavior.VortexArtanisExitEnemy.On" Send="Create"/>
-        <On Terms="Behavior.VortexArtanisExitEnemy; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
-        <On Terms="Behavior.VortexArtanisExitEnemy" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
-        <On Terms="Behavior.VortexArtanisExitEnemy" Send="Destroy"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy.Off; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy.Off" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
+        <On Terms="Behavior.VortexArtanisExitEnemy.Off" Send="Destroy"/>
         <On Terms="Behavior.VortexArtanisExit.On" Send="Create"/>
-        <On Terms="Behavior.VortexArtanisExit; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
-        <On Terms="Behavior.VortexArtanisExit" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
-        <On Terms="Behavior.VortexArtanisExit" Send="Destroy"/>
+        <On Terms="Behavior.VortexArtanisExit.Off; !Option Shader Low" Target="_Unit" Send="ClearOpacity 0.250000 VortexExitOpacity"/>
+        <On Terms="Behavior.VortexArtanisExit.Off" Target="_Unit" Send="ClearTintColor 0.250000 VortexExitTint"/>
+        <On Terms="Behavior.VortexArtanisExit.Off" Send="Destroy"/>
     </CActorSimple>
     <CActorSound id="VortexLoopSound">
         <On Terms="Effect.VortexArtanisCreatePersistent.Start" Send="Create"/>
