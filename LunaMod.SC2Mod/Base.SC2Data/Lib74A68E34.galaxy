@@ -218,6 +218,8 @@ void lib74A68E34_gf_Cooldown (int lp_pPlayer) {
         auto2A7337C9_var = UnitGroupUnitFromEnd(auto2A7337C9_g, auto2A7337C9_u);
         if (auto2A7337C9_var == null) { break; }
         UnitAbilityReset(auto2A7337C9_var, AbilityCommand("ZeratulTopBarBuild", 0), c_spendLocationAll);
+        UnitAbilityReset(auto2A7337C9_var, AbilityCommand("BattlecruiserMengskYamatoTwoCharges", 0), c_spendLocationAll);
+        UnitAbilityReset(auto2A7337C9_var, AbilityCommand("BattlecruiserMengskHyperjumpTwoCharges", 0), c_spendLocationAll);
     }
 }
 
@@ -3333,6 +3335,163 @@ void lib74A68E34_gt_RandomMutationCommand_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MengskVeterancyCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MengskVeterancyCheat_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_count;
+
+    // Automatic Variable Declarations
+    unitgroup auto841C79FC_g;
+    int auto841C79FC_u;
+    unit auto841C79FC_var;
+
+    // Variable Initialization
+    lv_count = 99999.0;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringWord(EventChatMessage(false), 2) != "")) {
+        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
+    }
+
+    auto841C79FC_g = UnitGroupSelected(EventPlayer());
+    auto841C79FC_u = UnitGroupCount(auto841C79FC_g, c_unitCountAll);
+    for (;; auto841C79FC_u -= 1) {
+        auto841C79FC_var = UnitGroupUnitFromEnd(auto841C79FC_g, auto841C79FC_u);
+        if (auto841C79FC_var == null) { break; }
+        UnitXPAddXP(auto841C79FC_var, null, lv_count);
+    }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_1F3F06F2"));
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MengskVeterancyCheat_Init () {
+    lib74A68E34_gt_MengskVeterancyCheat = TriggerCreate("lib74A68E34_gt_MengskVeterancyCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_MengskVeterancyCheat, c_playerAny, "-veterancy", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AlarakPowerOverwhelmingCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_count;
+
+    // Automatic Variable Declarations
+    unitgroup autoEF31A773_g;
+    int autoEF31A773_u;
+    unit autoEF31A773_var;
+    string auto912BFC61_val;
+    int auto830A049E_n;
+    int auto830A049E_i;
+
+    // Variable Initialization
+    lv_count = 20;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringWord(EventChatMessage(false), 2) != "")) {
+        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
+    }
+
+    autoEF31A773_g = UnitGroupSelected(EventPlayer());
+    autoEF31A773_u = UnitGroupCount(autoEF31A773_g, c_unitCountAll);
+    for (;; autoEF31A773_u -= 1) {
+        autoEF31A773_var = UnitGroupUnitFromEnd(autoEF31A773_g, autoEF31A773_u);
+        if (autoEF31A773_var == null) { break; }
+        auto912BFC61_val = UnitGetType(autoEF31A773_var);
+        if (auto912BFC61_val == "HighTemplarTaldarim") {
+            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantSacrificeSelfBuff", EventPlayer(), lv_count);
+        }
+        else if (auto912BFC61_val == "VoidArchon") {
+            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantArchonSelfBuff", EventPlayer(), lv_count);
+        }
+        else {
+            auto830A049E_n = lv_count;
+            for (auto830A049E_i = 1; auto830A049E_i <= auto830A049E_n; auto830A049E_i += 1) {
+                PlayerCreateEffectUnit(EventPlayer(), "AlarakTheStrongestSurvivePrestigeMechBuffTrigger", autoEF31A773_var);
+            }
+        }
+    }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_3FA95D56"));
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init () {
+    lib74A68E34_gt_AlarakPowerOverwhelmingCheat = TriggerCreate("lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_AlarakPowerOverwhelmingCheat, c_playerAny, "-poweroverwhelming", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TychusExpandedCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_TychusExpandedCheat_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoC19BBD71_g;
+    int autoC19BBD71_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    if ((GameGetMissionTime() > 0.0)) {
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_E63C1D40"));
+        return true;
+    }
+
+    autoC19BBD71_g = libCOOC_gf_CommanderPlayers();
+    autoC19BBD71_var = -1;
+    while (true) {
+        autoC19BBD71_var = PlayerGroupNextPlayer(autoC19BBD71_g, autoC19BBD71_var);
+        if (autoC19BBD71_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(autoC19BBD71_var, "TychusHeroExpanded", 1);
+    }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_23CF3289"));
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_TychusExpandedCheat_Init () {
+    lib74A68E34_gt_TychusExpandedCheat = TriggerCreate("lib74A68E34_gt_TychusExpandedCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_TychusExpandedCheat, c_playerAny, "-itsabouttime", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: FastResearch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_FastResearch_Func (bool testConds, bool runActions) {
@@ -5595,70 +5754,6 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AlarakPowerOverwhelmingCheat
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_count;
-
-    // Automatic Variable Declarations
-    unitgroup autoEF31A773_g;
-    int autoEF31A773_u;
-    unit autoEF31A773_var;
-    string auto912BFC61_val;
-    int auto830A049E_n;
-    int auto830A049E_i;
-
-    // Variable Initialization
-    lv_count = 20;
-
-    // Conditions
-    if (testConds) {
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((StringWord(EventChatMessage(false), 2) != "")) {
-        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
-    }
-
-    autoEF31A773_g = UnitGroupSelected(EventPlayer());
-    autoEF31A773_u = UnitGroupCount(autoEF31A773_g, c_unitCountAll);
-    for (;; autoEF31A773_u -= 1) {
-        autoEF31A773_var = UnitGroupUnitFromEnd(autoEF31A773_g, autoEF31A773_u);
-        if (autoEF31A773_var == null) { break; }
-        auto912BFC61_val = UnitGetType(autoEF31A773_var);
-        if (auto912BFC61_val == "HighTemplarTaldarim") {
-            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantSacrificeSelfBuff", EventPlayer(), lv_count);
-        }
-        else if (auto912BFC61_val == "VoidArchon") {
-            UnitBehaviorAddPlayer(autoEF31A773_var, "AscendantArchonSelfBuff", EventPlayer(), lv_count);
-        }
-        else {
-            auto830A049E_n = lv_count;
-            for (auto830A049E_i = 1; auto830A049E_i <= auto830A049E_n; auto830A049E_i += 1) {
-                PlayerCreateEffectUnit(EventPlayer(), "AlarakTheStrongestSurvivePrestigeMechBuffTrigger", autoEF31A773_var);
-            }
-        }
-    }
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_3FA95D56"));
-    libA8FDA37D_gf_UT_Cheat();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init () {
-    lib74A68E34_gt_AlarakPowerOverwhelmingCheat = TriggerCreate("lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_AlarakPowerOverwhelmingCheat, c_playerAny, "-poweroverwhelming", false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: AlarakPrestigeJinaraSoulAbsorptionLaunch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Func (bool testConds, bool runActions) {
@@ -6994,50 +7089,6 @@ void lib74A68E34_gt_TychusBunkerMedicAoE_Init () {
     lib74A68E34_gt_TychusBunkerMedicAoE = TriggerCreate("lib74A68E34_gt_TychusBunkerMedicAoE_Func");
     TriggerEnable(lib74A68E34_gt_TychusBunkerMedicAoE, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_TychusBunkerMedicAoE, c_playerAny, "TychusMedicAoEBunker");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: TychusExpandedCheat
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_TychusExpandedCheat_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    playergroup autoC19BBD71_g;
-    int autoC19BBD71_var;
-
-    // Conditions
-    if (testConds) {
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(TriggerGetCurrent(), false);
-    if ((GameGetMissionTime() > 0.0)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_E63C1D40"));
-        return true;
-    }
-
-    autoC19BBD71_g = libCOOC_gf_CommanderPlayers();
-    autoC19BBD71_var = -1;
-    while (true) {
-        autoC19BBD71_var = PlayerGroupNextPlayer(autoC19BBD71_g, autoC19BBD71_var);
-        if (autoC19BBD71_var < 0) { break; }
-        libNtve_gf_SetUpgradeLevelForPlayer(autoC19BBD71_var, "TychusHeroExpanded", 1);
-    }
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_23CF3289"));
-    libA8FDA37D_gf_UT_Cheat();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_TychusExpandedCheat_Init () {
-    lib74A68E34_gt_TychusExpandedCheat = TriggerCreate("lib74A68E34_gt_TychusExpandedCheat_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_TychusExpandedCheat, c_playerAny, "-itsabouttime", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9422,6 +9473,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_CooldownImproved_Init();
     lib74A68E34_gt_AllyImproved_Init();
     lib74A68E34_gt_RandomMutationCommand_Init();
+    lib74A68E34_gt_MengskVeterancyCheat_Init();
+    lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
+    lib74A68E34_gt_TychusExpandedCheat_Init();
     lib74A68E34_gt_FastResearch_Init();
     lib74A68E34_gt_FastBuildImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
@@ -9477,7 +9531,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
-    lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init();
@@ -9512,7 +9565,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_TychusBunkerGhostDominate_Init();
     lib74A68E34_gt_TychusBunkerSpectreUltrasonic_Init();
     lib74A68E34_gt_TychusBunkerMedicAoE_Init();
-    lib74A68E34_gt_TychusExpandedCheat_Init();
     lib74A68E34_gt_Expanded_TychusSquadMemberTrained_Init();
     lib74A68E34_gt_Expanded_TychusSquadMemberReviveQueued_Init();
     lib74A68E34_gt_Expanded_TychusSquadMemberReviveCancelled_Init();

@@ -671,6 +671,7 @@ I don't see why you wouldn't want this autocasting.
 - Buffed Dusk Wing's Cloaking Field to grant +2 range, similar to the Banshee's Cloaking Field.
 - Buffed Hyperion to be affected Mech Attack Speed mastery.
 - Buffed Dusk Wing to be affected Mech Attack Speed mastery.
+- Added Ignite Afterburners ability to Dusk Wings.
 
 Added parity with non-calldown variants. Those are proud mech units, let them be buffed by mech attack speed!
 
@@ -961,10 +962,9 @@ One of Zagara's greatest weaknesses is the inability to hit a critical mass of u
 
 Fun fact: due to an oversight, the Corruptor bonus life regen is applied twice, effectively increasing their life regen by 6. The Aberration's life regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
 
-- Reworked Bile Launchers.
-  - Can now target enemies automatically.
-  - Bombardment ability now uses smart casting.
-  - Bile Bomb projectiles now reveal a radius of 3 around them.
+- Changed Bile Launcher to target enemies automatically.
+- Changed Bile Launcher Bombardment ability to use smart casting.
+- Changed Bile Launcher projectiles to reveal a radius of 3 around them.
 
 Idea stolen from CXL, should make Bile Launchers more effectively than just on infested maps.
 
@@ -2155,6 +2155,17 @@ yeah.
 
 Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
 
+- Reduced Earthsplitter Ordnance Bombardment damage from 100 to 80.
+- Added 30% attack and movement speed slow for 5 seconds to Earthsplitter Ordnance Bombardment.
+- Changed Earthsplitter Ordnance to target enemies automatically.
+- Added visual effect of a missile dropping to the Eathsplitter Ordnance Bombardment.
+
+Earthsplitter Ordnance are in a position where you either build exclusively them and cheese every objective or you build none. Lowering their damage but giving them crowd control and making them easier to micro should lower the ability to cheese objectives with them (which isn't exactly fun for your ally) while improving their ability to support your army.
+
+- Added repair ability to Dominion Trooper (and variants).
+
+When using mech in your army, it can be annoying having to order your troopers to build a bunker, switch to laborer, finally repair, and then switch back. If troopers can build structures, why not repair?
+
 - Removed hit test from Imperial Witness's Amplified Airwaves hologram (Can no longer be clicked).
 - Fixed an issue where Imperial Witness's Amplified Airwaves hologram would start rising unexpectedly.
 
@@ -2167,10 +2178,6 @@ It's happened to everyone, the hologram lifts off and then you accidentally a-mo
   - Allows Royal Academies to arm and store 1 additional missile at a time.
 
 Missile play is cool so lets make it more viable! Lower delay and bigger radius should make missiles more consistent. Storing additional missiles should lower the footprint of building enough academies to constantly be nuking.
-
-- Removed fake heal from Imperial Intercessors.
-
-It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
 
 - Reduced cooldown of Emperor's Shadow's Pyrokinetic Immolation ability from 5 seconds to 0 seconds.
 - Reduced cooldown of Emperor's Shadow's EMP Blast ability from 8 seconds to 0 seconds.
@@ -2214,12 +2221,25 @@ Sky Furies have bad damage against non-massive targets, and still do less damage
 
 - Increased duration of Sky Fury's Tactical Realignment from 5 seconds to 10 seconds.
 - Reworked Sky Fury's Tactical Realignment to increase attack speed by 50% instead of attack damage.
+- Removed Sky Fury's Tactical Realignment cooldown.
 
-Increased duration should make it easier to get value from the buff. Increase attack speed instead of attack damage to help mitigate overkill.
+This passive sucked. Increasing the duration and removing the cooldown should make this actually usable. Increase attack speed instead of attack damage to help mitigate overkill.
 
-- Changed Sky Fury's Rank 1 to additionally increase weapon range by +2.
+- Changed Aesir Turbines effect to additionally increase movement speed of Assault Mode Sky Furies by 25%.
+
+The original passive never even explicitly stated it only affects Fighter Mode!
+
+- Added additional effect to Sky Fury's Rank 1 that increases weapon range by +2.
 
 Sky Furies are super fragile until reaching Rank 3. Increased range should help them kite enemies, especially with the Viking speed upgrade.
+
+- Reduced Pride of Augustgrad Yamato Cannon cooldown from 120 seconds to 100 seconds.
+
+They had a longer cooldown than Versus Battlecruisers!
+
+- Removed fake heal from Imperial Intercessors.
+
+It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
 
 - Added Pride of Augustgrad portrait.
 - Added Sky Fury portrait.
@@ -2241,6 +2261,12 @@ Previously the status bar only showed hp.
 - Fixed an issue where Enthralled Mutalisks used Zerg Ground Carapace instead of Zerg Flyer Carapace.
 - Fixed an issue where Enthralled Mutalisks used Dehaka's flyer weapon icon instead of the Zerg flyer weapon icon.
 - Fixed an issue where Enthralled Zerg weapons/armor did not change icon with weapon/armor upgrades.
+- Fixed an issue where Earthsplitter Ordnance would sometimes use the green visual launch effect when using Bombardment.
+- Fixed an issue where most structures did not have a visual burn effect when burning down.
+- Added a visible debuff when Sky Fury's Phoenix Protocol is on cooldown.
+- Fixed an issue where Sky Fury's Phoenix Protocol did not show the cooldown on the command card.
+- Fixed an issue where Aegis Guard's Incapacitor Shells tooltip incorrectly states massive units are immune.
+- Improved Aegis Guard's Incapacitor Shells debuff tooltip.
 
 yeah.
 

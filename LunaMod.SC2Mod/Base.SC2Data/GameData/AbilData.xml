@@ -26,11 +26,26 @@
             <Charge CountMax="4" CountStart="4" TimeUse="40"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilAttack id="ArtilleryMengskAttack">
+        <CmdButtonArray index="Execute">
+            <Flags index="IgnoreUser" value="0"/>
+        </CmdButtonArray>
+    </CAbilAttack>
     <CAbilEffectTarget id="BattlecruiserMengskHyperjump">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="BattlecruiserMengskHyperjumpTwoCharges">
         <AbilityCategories index="User1" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BattlecruiserMengskYamato">
+        <Cost index="0">
+            <Charge TimeUse="100"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BattlecruiserMengskYamatoTwoCharges">
+        <Cost index="0">
+            <Charge TimeUse="100"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Blink">
         <AbilityCategories index="User1" value="1"/>
@@ -53,6 +68,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="BuildAutoTurret">
         <Range index="0" value="2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair">
+        <Flags index="AutoCastOn" value="0"/>
     </CAbilEffectTarget>
     <CAbilTransport id="TychusBunkerTransport">
         <AbilSetId value="ULdS"/>

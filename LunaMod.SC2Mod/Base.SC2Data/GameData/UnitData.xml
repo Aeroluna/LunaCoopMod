@@ -106,6 +106,11 @@
         <AIEvalFactor value="0"/>
         <HotkeyCategory value="Unit/Category/ProtossTaldarim"/>
     </CUnit>
+    <CUnit id="ArtilleryMengsk">
+        <CardLayouts index="0">
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="ArtilleryMengskAttack,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="AutoTurret">
         <LifeStart value="100"/>
         <LifeMax value="100"/>
@@ -1552,6 +1557,30 @@
             <LayoutButtons Face="SwarmHostBurrowUp" Type="AbilCmd" AbilCmd="MorphToSwarmHostMP,Execute" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="TrooperMengsk">
+        <AbilArray Link="RepairTrooperMengsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="RepairTrooperMengsk,Execute" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TrooperMengskAA">
+        <AbilArray Link="RepairTrooperMengsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="RepairTrooperMengsk,Execute" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TrooperMengskFlamethrower">
+        <AbilArray Link="RepairTrooperMengsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="RepairTrooperMengsk,Execute" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TrooperMengskImproved">
+        <AbilArray Link="RepairTrooperMengsk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="RepairTrooperMengsk,Execute" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Ultralisk">
         <AlliedPushPriority value="1"/>
         <CardLayouts index="0">
@@ -1831,9 +1860,12 @@
         <Speed value="1.875"/>
         <AbilArray index="4" Link="que1"/>
         <AbilArray index="5" Link="HyperjumpNoVision"/>
+        <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <AbilArray Link="VehicleAfterburners"/>
         <CardLayouts index="0">
-            <LayoutButtons index="6" removed="1"/>
-            <LayoutButtons index="7" removed="1"/>
+            <LayoutButtons index="6" Face="IgniteAfterburners" AbilCmd="VehicleAfterburners,Execute" Column="2"/>
+            <LayoutButtons index="7" Face="IgniteAfterburners" AbilCmd="VehicleAfterburnersStimpack,Execute"/>
+            <LayoutButtons Face="AfterburnersLocked" Type="Passive" Requirements="RaynorLevel11" Row="2" Column="2"/>
         </CardLayouts>
         <WeaponArray index="0" Link="DRCannonsG"/>
         <WeaponArray index="1" Link="DRCannonsA"/>
@@ -1843,11 +1875,16 @@
     <CUnit id="DuskWing">
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="CloakOnBanshee_Raynor"/>
-            <LayoutButtons index="7" Requirements="MercClusterWarheadsResearched"/>
+            <LayoutButtons index="7" Requirements="MercClusterWarheadsResearched" Column="3"/>
             <LayoutButtons Face="CloakOnBanshee_Raynor" Type="AbilCmd" AbilCmd="DuskWingBansheeCloakingFieldPrestige,On" Row="2" Column="0"/>
             <LayoutButtons Face="CloakOff" Type="AbilCmd" AbilCmd="DuskWingBansheeCloakingFieldPrestige,Off" Row="2" Column="1"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersStimpack,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AfterburnersLocked" Type="Passive" Requirements="RaynorLevel11" Row="2" Column="2"/>
         </CardLayouts>
         <AbilArray Link="DuskWingBansheeCloakingFieldPrestige"/>
+        <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <AbilArray Link="VehicleAfterburners"/>
     </CUnit>
     <CUnit id="FenixTalisAdept">
         <CardLayouts index="0">
@@ -1875,9 +1912,25 @@
     <CUnit id="HelsAngelAssault">
         <BehaviorArray Link="WreckingCrewAutoFighter"/>
         <CostResource index="Vespene" value="50"/>
+        <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <AbilArray Link="VehicleAfterburners"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="4"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersStimpack,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AfterburnersLocked" Type="Passive" Requirements="RaynorLevel11" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HelsAngelFighter">
         <CostResource index="Vespene" value="50"/>
+        <AbilArray Link="VehicleAfterburnersStimpack"/>
+        <AbilArray Link="VehicleAfterburners"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="4"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburners,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersStimpack,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AfterburnersLocked" Type="Passive" Requirements="RaynorLevel11" Row="2" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HireMercBattlecruiser">
         <Race value="Terr"/>
@@ -3006,6 +3059,12 @@
     </CUnit>
     <CUnit id="VikingMengskAssault">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="8" Behavior="VikingMengskCheatDeathCooldown" Requirements="HaveVikingMengskCheatDeathCooldown"/>
+            <LayoutButtons index="9" Behavior="" Requirements="HaveMengskVeterancyVikingMengskLevel4"/>
+            <LayoutButtons Face="VikingMengskSpeedLocked" Type="Passive" Requirements="MengskLevel08" Row="1" Column="4"/>
+            <LayoutButtons Face="VikingMengskSpeedAssault" Type="Passive" Requirements="HaveVikingMengskSpeed" Row="1" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="VikingMengskFighter">
         <BehaviorArray Link="MengskGuardSpellReduction"/>

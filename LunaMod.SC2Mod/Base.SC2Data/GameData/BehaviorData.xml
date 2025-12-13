@@ -31,6 +31,13 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ArtilleryMengskBombardmentSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMultiplier="0.7" AttackSpeedMultiplier="0.7"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArtilleryMengskFear">
         <BehaviorCategories index="Restorable" value="1"/>
         <BehaviorCategories index="User4" value="1"/>
@@ -491,6 +498,12 @@
         <Modification>
             <StateFlags index="Stun" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MarauderMengskAbsorb">
+        <Modification>
+            <VitalMaxArray index="Shields" value="300"/>
+        </Modification>
+        <DamageResponse ModifyFraction="1" ModifyLimit="0" ModifyMinimumDamage="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
@@ -1324,6 +1337,10 @@
     <CBehaviorBuff id="UltraliskStetmannBurrowChargeStun">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="VikingMengskCheatDeathCooldown">
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-ability-mengsk-viking-cheatdeath.dds"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="VileAcidSlowFlatAmount">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
@@ -1435,6 +1452,7 @@
         <DamageResponse>
             <Chance value="0"/>
         </DamageResponse>
+        <InitialEffect value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VikingMengskGroundAttackDamage">
         <Duration value="10"/>
@@ -1442,6 +1460,7 @@
         <DamageResponse>
             <Chance value="0"/>
         </DamageResponse>
+        <InitialEffect value=""/>
     </CBehaviorBuff>
     <CBehaviorBuff id="VorazunBlinkReturn">
         <InfoFlags index="Hidden" value="1"/>
@@ -1552,12 +1571,6 @@
         <Duration value="10"/>
         <Period value="0.2"/>
         <BehaviorCategories index="Restorable" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="MarauderMengskAbsorb">
-        <Modification>
-            <VitalMaxArray index="Shields" value="300"/>
-        </Modification>
-        <DamageResponse ModifyFraction="1" ModifyLimit="0" ModifyMinimumDamage="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMengskAbsorbReapplicator">
         <ExpireEffect value="MarauderMengskAbsorbSet"/>

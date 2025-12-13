@@ -53,6 +53,7 @@ Abil/Name/ZagaraCorruption=Corruption
 Abil/Name/ZeratulVoidPrisonTarget=Zeratul Void Prison Target
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
 Behavior/Name/AbathurPrestigeSymbiote=Symbiote
+Behavior/Name/ArtilleryMengskBombardmentSlow=Shell Shocked
 Behavior/Name/AscendantArchonDummySelfBuff=Power Overwhelming
 Behavior/Name/AscendantArchonSelfBuff=Power Overwhelming
 Behavior/Name/AstralStormCripple=Astral Smolder
@@ -94,6 +95,7 @@ Behavior/Name/SignifierFade=Fading Star
 Behavior/Name/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=Broodling Gestation Flying
 Behavior/Name/SupplyDrop=Supply Drop
 Behavior/Name/TychusSpectreUltrasonicPulse=Ultrasonic Pulse
+Behavior/Name/VikingMengskCheatDeathCooldown=Recently Protected
 Behavior/Name/VoidSentryBlackHoleArmor=Black Hole
 Behavior/Name/VorazunShadowPhaseSuppressed=Recently Shrouded
 Behavior/Name/VorazunShadowPhased=Shrouded
@@ -101,6 +103,7 @@ Behavior/Name/ZealotPurifierReviveSupressed2=Recently Reconstructed
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
 Behavior/Name/ZeratulVoidPrisonMissiles=Void Sanctuary Missiles
 Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote that attacks enemies and protects their host with a damage absorbing shell.
+Behavior/Tooltip/ArtilleryMengskBombardmentSlow=This unit's attack and movement speed is slowed.
 Behavior/Tooltip/AscendantArchonSelfBuff=This unit has increased shields and it deals increased damage.
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
 Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
@@ -128,6 +131,8 @@ Behavior/Tooltip/KerriganRazorSwarm=Target is under the effects of Razor Swarm a
 Behavior/Tooltip/KerriganRegenAuraTarget=Life and energy regeneration increased.
 Behavior/Tooltip/MarauderMagrailMunitionsSlow=This unit's movement and attack speed are slowed.
 Behavior/Tooltip/MarauderMagrailMunitionsStun=This unit is stunned.
+Behavior/Tooltip/MarauderMengskAbsorb=When active, this Aegis Barrier blocks all incoming damage, up to a maximum of <d ref="Behavior,MarauderMengskAbsorb,Modification.VitalMaxArray[Shields]"/>.
+Behavior/Tooltip/MarauderMengskShrapnelSlow=Target's movement speed is reduced for a short period of time.
 Behavior/Tooltip/MutatorWhiteout=It's a whiteout! This unit's movement speed and vision are reduced.
 Behavior/Tooltip/OracleRevelation=This unit or structure is providing vision for the caster and cannot detect.
 Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
@@ -138,6 +143,9 @@ Behavior/Tooltip/SiegeTankMengskStun=This unit is stunned.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
 Behavior/Tooltip/TychusSpectreUltrasonicPulse=Target is under the effects of Ultrasonic Pulse and will take massive damage while in this area of effect.
+Behavior/Tooltip/VikingMengskAirAttackDamage=This unit has increased attack speed.
+Behavior/Tooltip/VikingMengskCheatDeathCooldown=This unit cannot be affected by Phoenix Protocol
+Behavior/Tooltip/VikingMengskGroundAttackDamage=This unit has increased attack speed.
 Behavior/Tooltip/VorazunCloakedShieldRegenPermanent=Shield Regeneration increased by <d ref="Behavior,VorazunCloakedShieldRegen,Modification.VitalRegenMultiplier[Shields] * 100"/>%.
 Behavior/Tooltip/VorazunRegenShield=This unit is undetected and rapidly regenerating shields.
 Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by Shroud of Adun and cannot be shrouded again.
@@ -311,6 +319,7 @@ Button/Name/TychusOdinNuclearStrikePassive=Big Red Button
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeBuildingArmorLevel1=Upgrade Neosteel Armor
 Button/Name/UpgradeToPlanetaryFortressUpgraded=Upgrade to Big Bertha
+Button/Name/VikingMengskSpeedAssault=Aesir Turbines
 Button/Name/VoidArchonChainReaction=Chain Reaction
 Button/Name/VoidArchonChainReactionResearch=Research Chain Reaction
 Button/Name/VoidArchonMergeSelection=Void Archon Merge
@@ -356,6 +365,7 @@ Button/Tooltip/AlarakHavocAbilityRange=Increases the radius of Squad Sight and t
 Button/Tooltip/AlarakReviveBeaconJinara=Ji'nara will warp in at this beacon's location.
 Button/Tooltip/ApolloCloakOnNova=Cloaks Nova for <d ref="Behavior,NovaApolloCloak,Duration"/> seconds, preventing enemy units from seeing or attacking her. A cloaked unit will only be revealed by detectors or effects.</n></n>Passively increases max energy by +100 and slightly increases movement speed.
 Button/Tooltip/AresClassWeaponsSystemviking=Increases air attack range by 2 and ground attack range by 1. Allows Vikings to transform quickly between combat modes.
+Button/Tooltip/ArtilleryMengskBombardment=Bombards a target location, randomly delivering payloads near that location, which hit enemy ground units, dealing <d ref="Effect,ArtilleryMengskBombardmentDamage,Amount"/> damage and slowing attack and movement speed by <d ref="(1-Behavior,ArtilleryMengskBombardmentSlow,Modification.MoveSpeedMultiplier)*100"/>%.
 Button/Tooltip/AscendantArchonSacrifice=Sacrifices a Supplicant to fully restore the Void Archon's energy.<n/><n/><c val="#ColorAttackInfo">Can only target Supplicants.</c>
 Button/Tooltip/AutomatedAssimilatorTextKicker1=<s val="Kicker_Refinery">+1</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
 Button/Tooltip/AutomatedAssimilatorTextKicker6=<s val="Kicker_Refinery">+6</s><IMG path="Assets\Textures\icon-gas-protoss.dds" height="28" width="28"/>
@@ -633,6 +643,7 @@ Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an abi
 Button/Tooltip/ResearchXN51CloakTechnology=Allows <c val="ffff8a">Covert Banshees</c> to remain permanently cloaked and have increased movement speed.
 Button/Tooltip/ReserachUltraliskStetmannMechanicalLifeLeech=Grants the <c val="ffff8a">Mecha Ultralisk</c> the ability to absorb <d ref="Effect,UltraliskMechanicalLifeLeechStetmannDamage,Amount"/> life from nearby enemy or friendly mechanical units, healing for that amount. Deals half damage to friendly units but still heals the full amount.
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
+Button/Tooltip/RoyalGuardMengsk=Killing enemy units grants experience to nearby <c val="ffff8a">Royal Guards</c>. If there are no nearby Royal Guards when an enemy is killed, the experience is instead split between all Royal Guards in the mission. Experience allows this unit to gain <c val="ffff8a">Rank</c>, which improves its damage, armor, and health. Royal Guards additionally have <d ref="(1-Behavior,MengskGuardSpellReduction,DamageResponse.ModifyFraction)*100"/>% spell damage reduction.
 Button/Tooltip/SIBansheeIncubationChambers=Infested Banshees spawns a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds. A Broodling is a small creature that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/SIBansheeResearchIncubationChambers=Allows <c val="ffff8a">Infested Banshees</c> to spawn a Broodling every <d ref="Abil,SIBansheeHangar,InfoArray[Ammo1].Time" precision="1"/> seconds.
 Button/Tooltip/SIInfestedMissileTurretViralBioSteel=Infested Missile Turrets regenerate life while rooted.
@@ -683,9 +694,11 @@ Button/Tooltip/UpgradeBuildingArmorLevel1Nova=Upgrades the armor of <c val="ffff
 Button/Tooltip/UpgradeBuildingArmorLevel1Prestige=Upgrades the armor of <c val="ffff8a">all Turrets</c> by 4 and <c val="ffff8a">all other structures</c> by 2. Increases the cargo space of <c val="ffff8a">Bunkers</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c> and <c val="ffff8a">Planetary Fortresses</c>.
 Button/Tooltip/UpgradeBuildingArmorLevel1Raynor=Upgrades the armor of <c val="ffff8a">structures</c> by 2. Increases the cargo space of <c val="ffff8a">Bunkers</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c>.
 Button/Tooltip/UpgradeBuildingArmorLevel1Swann=Upgrades the armor of <c val="ffff8a">structures</c> by 2. Also provides extra cargo space for <c val="ffff8a">Command Centers</c> and <c val="ffff8a">Planetary Fortresses</c>.
-Button/Tooltip/VikingMengskAttackDamage=After transforming, this unit gains <d ref="(Behavior,VikingMengskAirAttackDamage,Modification.AttackSpeedMultiplier-1)*100"/>% increased attack speed for <d ref="Behavior,VikingMengskAirAttackDamage,Duration"/> seconds. Cannot occur more than once every <d ref="Behavior,VikingMengskAttackDamageCooldown,Cost.Cooldown.TimeUse"/> seconds.
+Button/Tooltip/VikingMengskAttackDamage=After transforming, this unit gains <d ref="(Behavior,VikingMengskAirAttackDamage,Modification.AttackSpeedMultiplier-1)*100"/>% increased attack speed for <d ref="Behavior,VikingMengskAirAttackDamage,Duration"/> seconds.
 Button/Tooltip/VikingMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Deals bonus damage to Massive targets and gains +2 range.
 Button/Tooltip/VikingMengskRank1Preview=<n/><c val="777777">Rank 1: Deals bonus damage to Massive targets and gains +2 range.</c>
+Button/Tooltip/VikingMengskSpeedAssault=Movement speed increased by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskAssault,Speed$/Unit,VikingMengskAssault,Speed*100" player="0"/>%.
+Button/Tooltip/VikingMengskSpeedResearch=Increases the movement speed of <c val="ffff8a">Sky Furies</c> in Fighter Mode by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskFighter,Speed$/Unit,VikingMengskFighter,Speed*100" player="0"/>% and Assault Mode by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskAssault,Speed$/Unit,VikingMengskAssault,Speed*100" player="0"/>%.
 Button/Tooltip/ViperImprovedCastRangePassive=All Viper abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
 Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
@@ -726,6 +739,9 @@ Effect/Name/AdeptPurifierDamage=Damage
 Effect/Name/AdeptPurifierLM=LM
 Effect/Name/AlarakLightningStrikesApplySet=AlarakLightningStrikesApplySet
 Effect/Name/AlarakLightningStrikesSwitch=AlarakLightningStrikesSwitch
+Effect/Name/ArtilleryMengskBombardmentAB=ArtilleryMengskBombardmentAB
+Effect/Name/ArtilleryMengskBombardmentDropDelayCP2=ArtilleryMengskBombardmentDropDelayCP2
+Effect/Name/ArtilleryMengskBombardmentSet=ArtilleryMengskBombardmentSet
 Effect/Name/AscendantSacrificeSelfBuffArchonAB=AscendantSacrificeSelfBuffArchonAB
 Effect/Name/AscendantSacrificeSelfBuffSwitch=AscendantSacrificeSelfBuffSwitch
 Effect/Name/AutoHarvestVespeneRich=Auto Harvest Vespene Rich
@@ -1068,6 +1084,7 @@ Param/Value/lib_01833E95_4CBC5204=► All commanders have an added fourth presti
 Param/Value/lib_74A68E34_06BC5908=Placement unit not found, falling back to spawn point based on player start!
 Param/Value/lib_74A68E34_07197534=<c val="FF0000">Damage logging overflow</c>
 Param/Value/lib_74A68E34_10B8F288=<c val="FF0000">player 2 is playing!</c>
+Param/Value/lib_74A68E34_1F3F06F2=<c val="FF8000">Veterancy XP added</c>
 Param/Value/lib_74A68E34_221B6613=<c val="FF9800">Ji'nara has been revived at your Nexus.</c>
 Param/Value/lib_74A68E34_23CF3289=<c val="FF8000">Tychus Outlaw count unlocked</c>
 Param/Value/lib_74A68E34_3FA95D56=<c val="FF8000">Power Overwhelming stacks added</c>
