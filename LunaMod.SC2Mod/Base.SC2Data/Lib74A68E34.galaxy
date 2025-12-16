@@ -38,6 +38,7 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_InitVariables_completed = true;
 
     lib74A68E34_gv_fearUnits = UnitGroupEmpty();
+    lib74A68E34_gv_productionPanel_PlayerGroup = PlayerGroupEmpty();
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
     }
@@ -299,13 +300,59 @@ void lib74A68E34_gf_SlimUIToggle (int lp_player) {
                 PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
                 UISetFrameVisible(PlayerGroupSingle(lp_player), c_syncFrameTypeConsolePanel, false);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_On");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_24A79B5F"));
             }
             else {
                 PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
-                UISetFrameVisible(PlayerGroupSingle(EventPlayer()), c_syncFrameTypeConsolePanel, true);
+                UISetFrameVisible(PlayerGroupSingle(lp_player), c_syncFrameTypeConsolePanel, true);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_Off");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_35E50223"));
             }
         }
+    }
+}
+
+trigger auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player;
+
+void lib74A68E34_gf_ProductionPanelLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_ProductionPanelLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_ProductionPanelLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player;
+
+    // Automatic Variable Declarations
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], "LunaCoopMod", "ProductionPanel") == true)) {
+        lib74A68E34_gf_ProductionPanelToggle(lp_player);
+    }
+
+    return true;
+}
+
+void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanel");
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
+        PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+        DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_On");
+        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C938312F"));
+    }
+    else {
+        PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+        DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_Off");
+        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D41123C6"));
     }
 }
 
@@ -4059,6 +4106,87 @@ bool lib74A68E34_gt_SlimUICommand_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_SlimUICommand_Init () {
     lib74A68E34_gt_SlimUICommand = TriggerCreate("lib74A68E34_gt_SlimUICommand_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_SlimUICommand, c_playerAny, "-slim", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ProductionPanelBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ProductionPanelBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto1E4705B5_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto1E4705B5_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto1E4705B5_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_ProductionPanelLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ProductionPanelBankInit_Init () {
+    lib74A68E34_gt_ProductionPanelBankInit = TriggerCreate("lib74A68E34_gt_ProductionPanelBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_ProductionPanelBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ProductionPanel
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ProductionPanel_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_ProductionPanelToggle(EventPlayer());
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], "LunaCoopMod", "ProductionPanel", PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ProductionPanel_Init () {
+    lib74A68E34_gt_ProductionPanel = TriggerCreate("lib74A68E34_gt_ProductionPanel_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_ProductionPanel, c_playerAny, "-production", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ProductionPanel_Delayed
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ProductionPanel_Delayed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (!((GameGetMissionTime() >= 5.0))) {
+        Wait(0.5, c_timeGame);
+    }
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanel");
+    DialogControlSendAnimationEvent(DialogControlLastCreated(), lib74A68E34_gv_productionPanel_PlayerGroup, "ProductionPanel_On");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ProductionPanel_Delayed_Init () {
+    lib74A68E34_gt_ProductionPanel_Delayed = TriggerCreate("lib74A68E34_gt_ProductionPanel_Delayed_Func");
+    TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, false);
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ProductionPanel_Delayed);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9493,6 +9621,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FearRemove_Init();
     lib74A68E34_gt_SlimLoadBankInit_Init();
     lib74A68E34_gt_SlimUICommand_Init();
+    lib74A68E34_gt_ProductionPanelBankInit_Init();
+    lib74A68E34_gt_ProductionPanel_Init();
+    lib74A68E34_gt_ProductionPanel_Delayed_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();

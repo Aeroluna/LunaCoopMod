@@ -260,8 +260,12 @@ yeah.
 
 - Added `-slim` persistence.
   - If enabled, will be saved and automatically reenabled when playing again.
+- Added `-production` command to enable the production panel.
+  - Made by Kit.
+  - Shows progress of current research/upgrades/buildings in production.
+  - Has persistence.
 
-Banks!
+UI customization!
 
 - Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
@@ -520,7 +524,7 @@ fast banshees go nyoom.
 - Nerfed Infestor's Fungal Growth from a root to a 75% slow.
 - Increased Infestor's Fungal Growth radius from 2 to 2.5.
 - Reduced Infestor's Fungal Growth damage from 30 to 25.
-- Buffed Infestor's Fungal Growth to no longer allow affects units to use Blink, Tactical Jump, or load into transports and buildings.
+- Buffed Infestor's Fungal Growth to no longer allow affected units to use Blink, Tactical Jump, or load into transports and buildings.
   - Blocks casting Blink effects for units like Stalkers, Dark Templar, and Zeratul.
   - Blocks casting Tactical Jump effects for units like Battlecruisers, Hercules, and Hyperion.
   - Blocks loading into transport, including Tychus's Medivacs.
@@ -863,7 +867,7 @@ yeah.
     - Start with the Multi-Lock Weapons System upgrade.
     - Cyclones can use Lock On while moving.
     - Only Thor anti-air weapons can attack while moving.
-    - Hellbats and Thor heavy air ground weapons can only fire in an arc in front of them while moving.
+    - Hellbats and Thor heavy air/ground weapons can only fire in an arc in front of them while moving.
   - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
 
 Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes.
@@ -929,7 +933,7 @@ Even with this upgrade, Wraiths are fragile. This should help improve their surv
 
 Copied from Versus.
 
-- Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listing wrong structures.
+- Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listed wrong structures.
 - Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
 
 yeah.
@@ -957,7 +961,7 @@ I added a whole new mechanic to Zagara and then created a whole prestige surroun
   - Can use Plague ability for 150 energy.
     - Infects all enemy units and buildings in the target area, inflicting 300 damage over 20 seconds. Cannot reduce units or buildings below 1 life. Ignores shields. Reveals infected cloaked units.
   - Can use Consume ability.
-    - Kills target friendly biological unit metabolizing it into 75 energy.
+    - Kills target friendly non-heroic biological unit metabolizing it into 75 energy.
   - Added Metasynaptic Node upgrade at the Infestation Pit.
     - Adds 50 max energy and starts at full energy.
 
