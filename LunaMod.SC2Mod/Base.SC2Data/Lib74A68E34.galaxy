@@ -4760,6 +4760,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_DehakaPrestigeArmy, true);
             }
 
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeDehakaClone", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, true);
+            }
+
         }
         else if (auto560DABDD_val == "TerranHorner") {
             TriggerEnable(libCOMI_gt_CM_Horner_ScrapDrop, false);
@@ -6774,6 +6778,44 @@ void lib74A68E34_gt_DehakaPrestigeArmy_Init () {
     lib74A68E34_gt_DehakaPrestigeArmy = TriggerCreate("lib74A68E34_gt_DehakaPrestigeArmy_Func");
     TriggerEnable(lib74A68E34_gt_DehakaPrestigeArmy, false);
     TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeArmy, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DehakaPrestigeCloneTooltipFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_created;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((UnitGetType(lv_created) == "DehakaCoopClone"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    UnitSetState(lv_created, c_unitStateTooltipable, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init () {
+    lib74A68E34_gt_DehakaPrestigeCloneTooltipFix = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func");
+    TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9957,6 +9999,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
     lib74A68E34_gt_DehakaPrestigeArmy_Init();
+    lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init();
     lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();

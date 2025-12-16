@@ -254,7 +254,8 @@ This is how long after a sound is played before another is allowed to play. Can 
 - Fixed an issue where Banelings/Volatile Infested would show a buff for a moment before exploding.
 - Fixed an issue where Void Shards/Void Slivers had the attack priority of attacking structures.
 - Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
-- Fixed an issue where Corsair's Disruption Web affected invulnerable targets.
+- Fixed an issue where Corsair's Disruption Web ability affected invulnerable targets.
+- Fixed an issue where Baneling's Explode ability tooltip showed a level.
 
 yeah.
 
@@ -1722,6 +1723,7 @@ It very clearly sounded like a hellion.
 - Changed Explosive Creeper weapon icon.
 - Changed Greater Primal Wurms to visually burrow away instead of exploding when expiring.
 - Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
+- Fixed an issue where Zweihaka had a highlight tooltip.
 
 yeah.
 
