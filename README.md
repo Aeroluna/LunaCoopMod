@@ -264,6 +264,11 @@ yeah.
   - Made by Kit.
   - Shows progress of current research/upgrades/buildings in production.
   - Has persistence.
+- Added `-hotscd` command to enable the cursor cooldown notification from Heroes of the Storm.
+  - Made by Parasite.
+  - Has persistence.
+- Added `-cdtext` command to enable the cooldown text on buttons.
+  - Has persistence.
 
 UI customization!
 

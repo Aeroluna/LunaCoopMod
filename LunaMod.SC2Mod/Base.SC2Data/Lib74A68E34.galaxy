@@ -39,6 +39,8 @@ void lib74A68E34_InitVariables () {
 
     lib74A68E34_gv_fearUnits = UnitGroupEmpty();
     lib74A68E34_gv_productionPanel_PlayerGroup = PlayerGroupEmpty();
+    lib74A68E34_gv_hotsCD_PlayerGroup = PlayerGroupEmpty();
+    lib74A68E34_gv_cDText_PlayerGroup = PlayerGroupEmpty();
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
     }
@@ -100,6 +102,7 @@ void lib74A68E34_InitVariables () {
 // Custom Script: Imports
 //--------------------------------------------------------------------------------------------------
 include "TriggerLibs/Tactical/TacticalAILuna"
+include "TriggerLibs/cursor_cooldown"
 
 //--------------------------------------------------------------------------------------------------
 // Custom Script: ApplyVoicePack
@@ -122,6 +125,7 @@ void voicepack_apply(string reward_id, int player)
 }
 
 void lib74A68E34_InitCustomScript () {
+    cursorCD_main();
 }
 
 // Presets
@@ -353,6 +357,122 @@ void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
         PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
         DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_Off");
         UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D41123C6"));
+    }
+}
+
+trigger auto_lib74A68E34_gf_HotsCDLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_HotsCDLoadBank_lp_player;
+
+void lib74A68E34_gf_HotsCDLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_HotsCDLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_HotsCDLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_HotsCDLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_HotsCDLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_HotsCDLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_HotsCDLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_HotsCDLoadBank_lp_player;
+
+    // Automatic Variable Declarations
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], "LunaCoopMod", "HotsCD") == true)) {
+        lib74A68E34_gf_HotsCDToggle(lp_player);
+    }
+
+    return true;
+}
+
+void lib74A68E34_gf_HotsCDToggle (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player) == false)) {
+        PlayerGroupAdd(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player);
+        cursorCD_ShowHideCursor(lp_player, true);
+        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_10A69BB9"));
+    }
+    else {
+        PlayerGroupRemove(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player);
+        cursorCD_ShowHideCursor(lp_player, false);
+        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_43B5A483"));
+    }
+}
+
+trigger auto_lib74A68E34_gf_CDTextLoadBank_Trigger = null;
+int auto_lib74A68E34_gf_CDTextLoadBank_lp_player;
+
+void lib74A68E34_gf_CDTextLoadBank (int lp_player) {
+    auto_lib74A68E34_gf_CDTextLoadBank_lp_player = lp_player;
+
+    if (auto_lib74A68E34_gf_CDTextLoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_CDTextLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_CDTextLoadBank_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_CDTextLoadBank_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_CDTextLoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_CDTextLoadBank_lp_player;
+
+    // Automatic Variable Declarations
+    // Implementation
+    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], "LunaCoopMod", "CDText") == true)) {
+        lib74A68E34_gf_CDTextToggle(lp_player);
+    }
+
+    return true;
+}
+
+void lib74A68E34_gf_CDTextToggle (int lp_player) {
+    // Variable Declarations
+    int lv_commandpanel;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_commandpanel = c_invalidDialogControlId;
+
+    // Implementation
+    if ((GameIsMissionTimePaused() == true)) {
+        if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
+            PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+            TriggerEnable(lib74A68E34_gt_CDText_Delayed, true);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_F8B1955E"));
+        }
+        else {
+            PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+            TriggerEnable(lib74A68E34_gt_CDText_Delayed, false);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_23075EB9"));
+        }
+    }
+    else {
+        if ((GameGetMissionTime() < 5.0)) {
+            PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_B39B208C"));
+            TriggerExecute(lib74A68E34_gt_CDText_Delayed, true, false);
+        }
+        else {
+            DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/CommandPanel");
+            if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "CooldownText_On");
+                DialogControlSendAnimationEvent(libCOUI_gv_cU_GPPanelHolder, PlayerGroupSingle(lp_player), "CooldownText_On");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_DE3E811E"));
+            }
+            else {
+                PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "CooldownText_Off");
+                DialogControlSendAnimationEvent(libCOUI_gv_cU_GPPanelHolder, PlayerGroupSingle(lp_player), "CooldownText_Off");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D1E22A8A"));
+            }
+        }
     }
 }
 
@@ -3102,6 +3222,36 @@ void lib74A68E34_gt_ExtraUpgrades_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: HideACHeroSpawnPlacement
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HideACHeroSpawnPlacement_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto8AD72BE5_g;
+    int auto8AD72BE5_u;
+    unit auto8AD72BE5_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto8AD72BE5_g = UnitGroup("ACHeroSpawnPlacement", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0);
+    auto8AD72BE5_u = UnitGroupCount(auto8AD72BE5_g, c_unitCountAll);
+    for (;; auto8AD72BE5_u -= 1) {
+        auto8AD72BE5_var = UnitGroupUnitFromEnd(auto8AD72BE5_g, auto8AD72BE5_u);
+        if (auto8AD72BE5_var == null) { break; }
+        libNtve_gf_ShowHideUnit(auto8AD72BE5_var, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HideACHeroSpawnPlacement_Init () {
+    lib74A68E34_gt_HideACHeroSpawnPlacement = TriggerCreate("lib74A68E34_gt_HideACHeroSpawnPlacement_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_HideACHeroSpawnPlacement);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: SnowVisualMapInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_SnowVisualMapInit_Func (bool testConds, bool runActions) {
@@ -4165,10 +4315,105 @@ void lib74A68E34_gt_ProductionPanel_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: ProductionPanel_Delayed
+// Trigger: HotsCDBankInit
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ProductionPanel_Delayed_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_HotsCDBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
     // Automatic Variable Declarations
+    playergroup autoB5C622F7_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    autoB5C622F7_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoB5C622F7_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_HotsCDLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HotsCDBankInit_Init () {
+    lib74A68E34_gt_HotsCDBankInit = TriggerCreate("lib74A68E34_gt_HotsCDBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_HotsCDBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HotsCD
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HotsCD_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_HotsCDToggle(EventPlayer());
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], "LunaCoopMod", "HotsCD", PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HotsCD_Init () {
+    lib74A68E34_gt_HotsCD = TriggerCreate("lib74A68E34_gt_HotsCD_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_HotsCD, c_playerAny, "-hotscd", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CDTextBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CDTextBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto4C856DBC_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto4C856DBC_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto4C856DBC_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_CDTextLoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CDTextBankInit_Init () {
+    lib74A68E34_gt_CDTextBankInit = TriggerCreate("lib74A68E34_gt_CDTextBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_CDTextBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CDText_Delayed
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CDText_Delayed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
@@ -4177,16 +4422,39 @@ bool lib74A68E34_gt_ProductionPanel_Delayed_Func (bool testConds, bool runAction
     while (!((GameGetMissionTime() >= 5.0))) {
         Wait(0.5, c_timeGame);
     }
-    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanel");
-    DialogControlSendAnimationEvent(DialogControlLastCreated(), lib74A68E34_gv_productionPanel_PlayerGroup, "ProductionPanel_On");
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/CommandPanel");
+    DialogControlSendAnimationEvent(DialogControlLastCreated(), lib74A68E34_gv_cDText_PlayerGroup, "CooldownText_On");
+    DialogControlSendAnimationEvent(libCOUI_gv_cU_GPPanelHolder, lib74A68E34_gv_cDText_PlayerGroup, "CooldownText_On");
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ProductionPanel_Delayed_Init () {
-    lib74A68E34_gt_ProductionPanel_Delayed = TriggerCreate("lib74A68E34_gt_ProductionPanel_Delayed_Func");
-    TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, false);
-    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ProductionPanel_Delayed);
+void lib74A68E34_gt_CDText_Delayed_Init () {
+    lib74A68E34_gt_CDText_Delayed = TriggerCreate("lib74A68E34_gt_CDText_Delayed_Func");
+    TriggerEnable(lib74A68E34_gt_CDText_Delayed, false);
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_CDText_Delayed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CDText
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CDText_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_CDTextToggle(EventPlayer());
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], "LunaCoopMod", "CDText", PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CDText_Init () {
+    lib74A68E34_gt_CDText = TriggerCreate("lib74A68E34_gt_CDText_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_CDText, c_playerAny, "-cdtext", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9594,6 +9862,7 @@ void lib74A68E34_gt_MutatorMinedOutShutdown_Init () {
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
+    lib74A68E34_gt_HideACHeroSpawnPlacement_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();
     lib74A68E34_gt_SnowVisualNewUnit_Init();
     lib74A68E34_gt_TestCommand_Init();
@@ -9623,7 +9892,11 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_SlimUICommand_Init();
     lib74A68E34_gt_ProductionPanelBankInit_Init();
     lib74A68E34_gt_ProductionPanel_Init();
-    lib74A68E34_gt_ProductionPanel_Delayed_Init();
+    lib74A68E34_gt_HotsCDBankInit_Init();
+    lib74A68E34_gt_HotsCD_Init();
+    lib74A68E34_gt_CDTextBankInit_Init();
+    lib74A68E34_gt_CDText_Delayed_Init();
+    lib74A68E34_gt_CDText_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();

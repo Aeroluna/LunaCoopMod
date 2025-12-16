@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+  <Constant name="CooldownProgressBarMinDisplayValue" val="1" />
+
+  <Frame type="Frame" name="CooldownNotificationTemplate">
+    <Visible val="False" />
+    <Width val="72" />
+    <Height val="72" />
+    <Alpha val="255" />
+    <Anchor relative="$parent" />
+
+    <Frame type="Image" name="BackgroundImage">
+      <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+      <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+      <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+      <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+      <Width val="60" />
+      <Height val="64" />
+      <Texture val="Assets\Textures\Storm_UI_InGame_CooldownNotification_Background.dds" />
+    </Frame>
+    <Frame type="Label" name="Label">
+      <Anchor side="Bottom" relative="$parent/BackgroundImage" pos="Mid" offset="1" />
+      <Anchor side="Left" relative="$parent/BackgroundImage" pos="Mid" offset="1" />
+      <Anchor side="Right" relative="$parent/BackgroundImage" pos="Mid" offset="1" />
+      <Anchor side="Top" relative="$parent/BackgroundImage" pos="Mid" offset="1" />
+      <Style val="CooldownNotification" />
+    </Frame>
+    <Frame type="ProgressBar" name="ProgressBar">
+      <Anchor relative="$parent/BackgroundImage" />
+      <Width val="60" />
+      <Height val="64" />
+      <Circular val="True" />
+      <InvertFill val="True" />
+      <MaxValue val="1" />
+      <Value val="0" />
+      <Frame type="Frame" name="FillImageContainer">
+        <Anchor relative="$parent" />
+        <Frame type="Image" name="FillImage">
+          <Anchor relative="$parent" />
+          <TextureType val="Circular" />
+          <Texture val="Assets\Textures\Storm_UI_InGame_CooldownNotification_ProgressBar.dds" />
+        </Frame>
+      </Frame>
+    </Frame>
+
+    <Animation name="Init">
+      <Event event="Notify" action="Reset,Play" frame="$this" />
+      <Controller type="Visibility" end="Pause" frame="$this">
+        <Key type="Bool" time="0.0" value="True" />
+        <Key type="Bool" time="0.71" value="False" />
+      </Controller>
+      <Controller type="Fade" end="Pause" frame="$this">
+        <Key type="Curve" time="0.0" value="255" inout="Linear,Slow" />
+        <Key type="Curve" time="0.7" value="0" inout="Fast,Linear" />
+      </Controller>
+    </Animation>
+  </Frame>
+</Desc>

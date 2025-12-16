@@ -50,6 +50,8 @@ struct lib74A68E34_gs_AlarakMergeTarget {
 // Variable Declarations
 unitgroup lib74A68E34_gv_fearUnits;
 playergroup lib74A68E34_gv_productionPanel_PlayerGroup;
+playergroup lib74A68E34_gv_hotsCD_PlayerGroup;
+playergroup lib74A68E34_gv_cDText_PlayerGroup;
 lib74A68E34_gs_MorphUnitType[libA8FDA37D_gv_uT_DL_MaxUnits + 1] lib74A68E34_gv_cachedMorphUnits;
 int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
 unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
@@ -109,6 +111,10 @@ void lib74A68E34_gf_SlimLoadBank (int lp_player);
 void lib74A68E34_gf_SlimUIToggle (int lp_player);
 void lib74A68E34_gf_ProductionPanelLoadBank (int lp_player);
 void lib74A68E34_gf_ProductionPanelToggle (int lp_player);
+void lib74A68E34_gf_HotsCDLoadBank (int lp_player);
+void lib74A68E34_gf_HotsCDToggle (int lp_player);
+void lib74A68E34_gf_CDTextLoadBank (int lp_player);
+void lib74A68E34_gf_CDTextToggle (int lp_player);
 string lib74A68E34_gf_LogGetSourceUnit (string lp_unitType);
 bool lib74A68E34_gf_GeneralTransportHasHeroic (unit lp_transport);
 void lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure (int lp_player);
@@ -175,6 +181,7 @@ void lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters (unit lp_gas, int 
 // Trigger Declarations
 trigger lib74A68E34_gt_ApplyMaguroChanges;
 trigger lib74A68E34_gt_ExtraUpgrades;
+trigger lib74A68E34_gt_HideACHeroSpawnPlacement;
 trigger lib74A68E34_gt_SnowVisualMapInit;
 trigger lib74A68E34_gt_SnowVisualNewUnit;
 trigger lib74A68E34_gt_TestCommand;
@@ -204,7 +211,11 @@ trigger lib74A68E34_gt_SlimLoadBankInit;
 trigger lib74A68E34_gt_SlimUICommand;
 trigger lib74A68E34_gt_ProductionPanelBankInit;
 trigger lib74A68E34_gt_ProductionPanel;
-trigger lib74A68E34_gt_ProductionPanel_Delayed;
+trigger lib74A68E34_gt_HotsCDBankInit;
+trigger lib74A68E34_gt_HotsCD;
+trigger lib74A68E34_gt_CDTextBankInit;
+trigger lib74A68E34_gt_CDText_Delayed;
+trigger lib74A68E34_gt_CDText;
 trigger lib74A68E34_gt_LogDisableOriginal;
 trigger lib74A68E34_gt_LogDisplay;
 trigger lib74A68E34_gt_LogDamageLogging;

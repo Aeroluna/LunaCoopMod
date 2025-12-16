@@ -1,0 +1,270 @@
+include "TriggerLibs/NativeLib"
+
+struct gs_CursorCooldownd_t
+{
+    unit dummy;
+    int dialog;
+    int frame;
+    int label;
+    int progress;
+    string abil;
+    int index;
+    bool outOfCharges;
+};
+
+struct CooldownStruct_t
+{
+    fixed max;
+    fixed current;
+};
+
+gs_CursorCooldownd_t[16] cursorCD_gs_CursorCdUI;
+int cursorCD_gv_Precision;
+playergroup cursorCD_gv_Players;
+
+int cursorCD_gv_ErrorPanel;
+
+trigger cursorCD_gt_UpdateLoop;
+trigger cursorCD_gt_CmdCooldownError5;
+trigger cursorCD_gt_CmdCooldownError20;
+
+void cursorCD_main();
+void cursorCD_InitCursorFrame();
+void cursorCD_Enable(int precision);
+unit cursorCD_GetSelectedUnit(int player);
+string cursorCD_GetCdLocation(string abil, unit u, int player);
+string cursorCD_GetAbilCdLink(string abil, unit u, int player);
+fixed cursorCD_GetAbilCdMax(string abil, unit u, int player);
+string cursorCD_GetChargeLocation(string abil, unit u, int player);
+string cursorCD_GetChargeCdLink(string abil, unit u, int player);
+void cursorCD_GetAbilCd(string abil, unit u, string chargeLoc, int p, structref<CooldownStruct_t> ref);
+void cursorCD_GetChargeCd(string abil, unit u, string chargeLoc, int p, structref<CooldownStruct_t> ref);
+
+void cursorCD_main()
+{
+    cursorCD_gv_Players = PlayerGroupEmpty();
+
+    cursorCD_gv_ErrorPanel = DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/ErrorDisplay");
+
+    cursorCD_gt_UpdateLoop = TriggerCreate("cursorCD_gt_UpdateLoop_Func");
+    TriggerEnable(cursorCD_gt_UpdateLoop, false);
+    TriggerAddEventTimePeriodic(cursorCD_gt_UpdateLoop, 0.0625, c_timeGame);
+
+    cursorCD_gt_CmdCooldownError5 = TriggerCreate("cursorCD_gt_CmdCooldownError_Func");
+    TriggerEnable(cursorCD_gt_CmdCooldownError5, false);
+    TriggerAddEventCommandError(cursorCD_gt_CmdCooldownError5, c_playerAny, 5, null);
+
+    cursorCD_gt_CmdCooldownError20 = TriggerCreate("cursorCD_gt_CmdCooldownError_Func");
+    TriggerEnable(cursorCD_gt_CmdCooldownError20, false);
+    TriggerAddEventCommandError(cursorCD_gt_CmdCooldownError20, c_playerAny, 20, null);
+}
+
+void cursorCD_ShowHideErrorPanel(bool show)
+{
+    DialogControlSetVisible(cursorCD_gv_ErrorPanel, PlayerGroupAll(), show);
+}
+
+bool cursorCD_gt_CmdCooldownError_Func(bool a, bool runActions)
+{
+    int p = EventPlayer();
+
+    if (!runActions) {
+        return true;
+    }
+
+    if (!PlayerGroupHasPlayer(cursorCD_gv_Players, p)) {
+        return true;
+    }
+
+    if(EventCommandErrorValue() == 20) { cursorCD_gs_CursorCdUI[p].outOfCharges = true; }
+    else { cursorCD_gs_CursorCdUI[p].outOfCharges = false; }
+    cursorCD_gs_CursorCdUI[p].abil = AbilityCommandGetAbility(EventCommandErrorAbilCmd());
+    cursorCD_gs_CursorCdUI[p].index = AbilityCommandGetCommand(EventCommandErrorAbilCmd());
+    Wait(0.0625, c_timeGame);
+    Wait(0.0, c_timeGame);
+    DialogControlSendAnimationEvent(cursorCD_gs_CursorCdUI[p].frame, PlayerGroupSingle(p), "Notify");
+    ActorSend(libNtve_gf_MainActorofUnit(cursorCD_gs_CursorCdUI[p].dummy), "Signal On");
+    return true;
+}
+
+void cursorCD_ShowHideCursor(int player, bool show)
+{
+    playergroup pg = PlayerGroupActive();
+
+    if (show) {
+        if (cursorCD_gs_CursorCdUI[player].dummy == null) {
+            if(!PlayerGroupHasPlayer(pg, player)) { return; }
+            if(PlayerType(player) != c_playerTypeUser) { return; }
+
+            cursorCD_Enable(1);
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "CursorUnit", 0, 0, RegionGetCenter(RegionPlayableMap()));
+            cursorCD_gs_CursorCdUI[player].dummy = UnitLastCreated();
+            cursorCD_gs_CursorCdUI[player].dialog = DialogCreate(75, 75, c_anchorTopLeft, 0, 0, true);
+            DialogSetImageVisible(DialogLastCreated(), false);
+            DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), false);
+            DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(player), true);
+            cursorCD_gs_CursorCdUI[player].frame = DialogControlCreateFromTemplate(DialogLastCreated(), c_triggerControlTypePanel, "CooldownNotification/CooldownNotificationTemplate");
+            cursorCD_gs_CursorCdUI[player].label = DialogControlHookup(cursorCD_gs_CursorCdUI[player].frame, c_triggerControlTypeLabel, "Label");
+            cursorCD_gs_CursorCdUI[player].progress = DialogControlHookup(cursorCD_gs_CursorCdUI[player].frame, c_triggerControlTypeProgressBar, "ProgressBar");
+            DialogSetPositionRelativeToUnit(DialogLastCreated(), UnitLastCreated(), "Ref_Center", 0, 0);
+            libNtve_gf_ShowHideUnit(UnitLastCreated(), false);
+        }
+
+        PlayerGroupAdd(cursorCD_gv_Players, player);
+    }
+    else {
+        PlayerGroupRemove(cursorCD_gv_Players, player);
+    }
+}
+
+void cursorCD_Enable(int precision)
+{
+    cursorCD_gv_Precision = precision;
+    TriggerEnable(cursorCD_gt_UpdateLoop, true);
+    TriggerEnable(cursorCD_gt_CmdCooldownError5, true);
+    TriggerEnable(cursorCD_gt_CmdCooldownError20, true);
+}
+
+unit cursorCD_GetSelectedUnit(int player)
+{
+    return UnitGroupUnit(UnitSubgroupSelected(player), 1);
+}
+
+string cursorCD_GetCdLocation(string abil, unit u, int player)
+{
+    int index = MinI(CatalogFieldValueCount(c_gameCatalogAbil, abil, "Cost", player) - 1, UnitAbilityGetLevel(u, abil));
+    return CatalogFieldValueGet(c_gameCatalogAbil, abil, "Cost[" + IntToString(index) + "].Cooldown.Location", player);
+}
+
+string cursorCD_GetAbilCdLink(string abil, unit u, int player)
+{
+    int index = MinI(CatalogFieldValueCount(c_gameCatalogAbil, abil, "Cost", player) - 1, UnitAbilityGetLevel(u, abil));
+    return CatalogFieldValueGet(c_gameCatalogAbil, abil, "Cost[" + IntToString(index) + "].Cooldown.Link", player);
+}
+
+fixed cursorCD_GetAbilCdMax(string abil, unit u, int player)
+{
+    int index = MinI(CatalogFieldValueCount(c_gameCatalogAbil, abil, "Cost", player) - 1, UnitAbilityGetLevel(u, abil));
+    return libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, abil, "Cost[" + IntToString(index) + "].Cooldown.TimeUse", player);
+}
+
+string cursorCD_GetChargeLocation(string abil, unit u, int player)
+{
+    int index = MinI(CatalogFieldValueCount(c_gameCatalogAbil, abil, "Cost", player) - 1, UnitAbilityGetLevel(u, abil));
+    return CatalogFieldValueGet(c_gameCatalogAbil, abil, "Cost[" + IntToString(index) + "].Charge.Location", player);
+}
+
+string cursorCD_GetChargeCdLink(string abil, unit u, int player)
+{
+    int index = MinI(CatalogFieldValueCount(c_gameCatalogAbil, abil, "Cost", player) - 1, UnitAbilityGetLevel(u, abil));
+    return CatalogFieldValueGet(c_gameCatalogAbil, abil, "Cost[" + IntToString(index) + "].Charge.Link", player);
+}
+
+void cursorCD_GetChargeCd(string abil, unit u, string chargeLoc, int p, structref<CooldownStruct_t> ref)
+{
+    string chargeLink = cursorCD_GetChargeCdLink(abil, u, p);
+    if(chargeLoc == "Abil")
+    {
+        ref.max = UnitAbilityGetChargeRegenFull(u, abil, chargeLink, false);
+        ref.current = UnitAbilityGetChargeRegen(u, abil, chargeLink);
+    }
+    else if(chargeLoc == "Unit")
+    {
+        ref.max = UnitGetChargeRegenFull(u, chargeLink, false);
+        ref.current = UnitGetChargeRegen(u, chargeLink);
+    }
+    else if(chargeLoc == "Behavior")
+    {
+        ref.max = UnitBehaviorGetChargeRegenFull(u, abil, chargeLink, false);
+        ref.current = UnitBehaviorGetChargeRegen(u, abil, chargeLink);
+    }
+    else if(chargeLoc == "Player")
+    {
+        ref.max = PlayerGetChargeRegenFull(p, chargeLink, false);
+        ref.current = PlayerGetChargeRegen(p, chargeLink);
+    }
+    else if(chargeLoc == "Global")
+    {
+        ref.max = GameGetChargeRegenFull(chargeLink, false);
+        ref.current = GameGetChargeRegen(chargeLink);
+    }
+}
+
+void cursorCD_GetAbilCd(string abil, unit u, string chargeLoc, int p, structref<CooldownStruct_t> ref)
+{
+    ref.max = cursorCD_GetAbilCdMax(abil, u, p);
+    if(chargeLoc == "Abil")
+    {
+        ref.current = UnitAbilityGetCooldown(u, abil, cursorCD_GetAbilCdLink(abil, u, p));
+    }
+    else if(chargeLoc == "Unit")
+    {
+        ref.current = UnitGetCooldown(u, cursorCD_GetAbilCdLink(abil, u, p));
+    }
+    else if(chargeLoc == "Behavior")
+    {
+        ref.current = UnitBehaviorGetCooldown(u, cursorCD_GetAbilCdLink(abil, u, p), cursorCD_GetAbilCdLink(abil, u, p));
+    }
+    else if(chargeLoc == "Player")
+    {
+        ref.current = PlayerGetCooldown(p, cursorCD_GetAbilCdLink(abil, u, p));
+    }
+    else if(chargeLoc == "Global")
+    {
+        ref.current = GameGetCooldown(cursorCD_GetAbilCdLink(abil, u, p));
+    }
+}
+
+bool cursorCD_gt_UpdateLoop_Func(bool a, bool runActions)
+{
+    int p;
+    int i;
+    unit u;
+    string loc;
+    CooldownStruct_t ref;
+
+    if (!runActions) {
+        return true;
+    }
+
+    for(i = 1; i <= PlayerGroupCount(cursorCD_gv_Players); i += 1)
+    {
+        p = PlayerGroupPlayer(cursorCD_gv_Players, i);
+        if(cursorCD_gs_CursorCdUI[p].abil == null) { continue; }
+
+        u = cursorCD_GetSelectedUnit(p);
+        if (!UnitAbilityExists(u, cursorCD_gs_CursorCdUI[p].abil)) {
+            u = libCOUI_gv_cU_GPUnit[p];
+        }
+
+        if (!UnitAbilityExists(u, cursorCD_gs_CursorCdUI[p].abil)) {
+            u = libCOUI_gv_cU_GPUnitSecondary[p];
+        }
+
+        if(cursorCD_gs_CursorCdUI[p].outOfCharges)
+        {
+            if(UnitAbilityChargeInfo(u, AbilityCommand(cursorCD_gs_CursorCdUI[p].abil, cursorCD_gs_CursorCdUI[p].index), c_unitAbilChargeCountLeft) > 0)
+            {
+                cursorCD_gs_CursorCdUI[p].outOfCharges = false;
+                cursorCD_gs_CursorCdUI[p].abil = null;
+                libNtve_gf_SetDialogItemText(cursorCD_gs_CursorCdUI[p].label, IntToText(0), PlayerGroupSingle(p));
+                libNtve_gf_SetDialogItemCurrentValue(cursorCD_gs_CursorCdUI[p].progress, 0, PlayerGroupSingle(p));
+                libNtve_gf_SetDialogItemMaximumValue(cursorCD_gs_CursorCdUI[p].progress, 1, PlayerGroupSingle(p));
+                continue;
+            }
+            loc = cursorCD_GetChargeLocation(cursorCD_gs_CursorCdUI[p].abil, u, p);
+            cursorCD_GetChargeCd(cursorCD_gs_CursorCdUI[p].abil, u, loc, p, ref);
+        }
+        else
+        {
+            loc = cursorCD_GetCdLocation(cursorCD_gs_CursorCdUI[p].abil, u, p);
+            cursorCD_GetAbilCd(cursorCD_gs_CursorCdUI[p].abil, u, loc, p, ref);
+        }
+        libNtve_gf_SetDialogItemText(cursorCD_gs_CursorCdUI[p].label, FixedToText(ref.current, cursorCD_gv_Precision), PlayerGroupSingle(p));
+        libNtve_gf_SetDialogItemCurrentValue(cursorCD_gs_CursorCdUI[p].progress, ref.current, PlayerGroupSingle(p));
+        libNtve_gf_SetDialogItemMaximumValue(cursorCD_gs_CursorCdUI[p].progress, ref.max, PlayerGroupSingle(p));
+        if(ref.current == 0) { cursorCD_gs_CursorCdUI[p].abil = null; }
+    }
+
+    return true;
+}

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+  <Frame type="CommandPanel" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel" file="GameUI">
+    <Animation name="CooldownText_AnimationOFF">
+      <Event event="CooldownText_Off" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_Off"/>
+      </Controller>
+    </Animation>
+
+    <Animation name="CooldownText_AnimationON">
+      <Event event="CooldownText_On" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_On"/>
+      </Controller>
+    </Animation>
+
+    <StateGroup name="CooldownText_GroupState">
+      <DefaultState val="CooldownText_Off"/>
+
+      <State name="CooldownText_Off">
+        <Action type="SetProperty" frame="CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton03" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton04" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton05" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton06" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton07" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton08" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton09" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton10" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton11" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton12" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton13" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton14" ShowCooldownText="False"/>
+      </State>
+
+      <State name="CooldownText_On">
+        <Action type="SetProperty" frame="CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton03" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton04" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton05" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton06" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton07" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton08" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton09" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton10" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton11" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton12" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton13" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton14" ShowCooldownText="True"/>
+      </State>
+    </StateGroup>
+  </Frame>
+
+  <Frame type="CommandPanel" name="GameUI/UIContainer/FullscreenUpperContainer/GlobalCastingPanel" file="GameUI">
+    <Animation name="CooldownText_AnimationOFF">
+      <Event event="CooldownText_Off" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_Off"/>
+      </Controller>
+    </Animation>
+
+    <Animation name="CooldownText_AnimationON">
+      <Event event="CooldownText_On" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_On"/>
+      </Controller>
+    </Animation>
+
+    <StateGroup name="CooldownText_GroupState">
+      <DefaultState val="CooldownText_Off"/>
+
+      <State name="CooldownText_Off">
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/RaynorGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/RaynorGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton03" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton04" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton05" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/ZergGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/ZergGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="AlarakCasterPanelTemplate/ButtonHolder/AlarakGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="AlarakCasterPanelTemplate/ButtonHolder/AlarakGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton02" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton01" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton03" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton03" ShowCooldownText="False"/>
+
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton01" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton02" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton03" ShowCooldownText="False"/>
+      </State>
+
+      <State name="CooldownText_On">
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/RaynorGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/RaynorGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton03" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton04" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ProtossCasterPanelTemplate/SoAButtonHolder/SoACommandPanelTemplate/CommandButton05" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="TerranCasterPanelTemplate/ButtonHolder/TerranGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/ZergGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/ZergGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="AlarakCasterPanelTemplate/ButtonHolder/AlarakGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="AlarakCasterPanelTemplate/ButtonHolder/AlarakGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/StukovGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="FenixCasterPanelTemplate/SoAButtonHolder/FenixGlobalCasterCommandPanelTemplate/CommandButton02" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="ZergCasterPanelTemplate/ButtonHolder/DehakaGlobalCommandPanelTemplate/CommandButton03" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton00/CooldownLabel" Style="GameButtonCooldownSmall"/>
+        <Action type="SetProperty" frame="$parent/TychusTopBarTemplate/TychusGlobalCommandPanel/CommandButton01/CooldownLabel" Style="GameButtonCooldownSmall"/>
+
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton03" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton00/CooldownLabel" Style="GameButtonCooldownMedium"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton01/CooldownLabel" Style="GameButtonCooldownMedium"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton02/CooldownLabel" Style="GameButtonCooldownMedium"/>
+        <Action type="SetProperty" frame="$parent/ZeratulTopBar/ZeratulGlobalCommandPanel/CommandButton03/CooldownLabel" Style="GameButtonCooldownMedium"/>
+
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/StetmannTopBar/StetmannGlobalCommandPanel/CommandButton03" ShowCooldownText="True"/>
+
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton01" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton02" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="$parent/MengskTopBar/MengskGlobalCommandPanel/CommandButton03" ShowCooldownText="True"/>
+      </State>
+    </StateGroup>
+  </Frame>
+
+  <!--Frame type="CommandPanel" name="TychusGlobalCommandPanelTemplate" template="Coop_TopBar_Tychus/TychusGlobalCommandPanelTemplate" file="Coop_TopBar_Tychus">
+    <Animation name="CooldownText_AnimationOFF">
+      <Event event="CooldownText_Off" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_Off"/>
+      </Controller>
+    </Animation>
+
+    <Animation name="CooldownText_AnimationON">
+      <Event event="CooldownText_On" action="Reset,Play"/>
+      <Controller type="State" frame="$this" stateGroup="CooldownText_GroupState" end="Pause">
+        <Key type="Identifier" time="0" value="CooldownText_On"/>
+      </Controller>
+    </Animation>
+
+    <StateGroup name="CooldownText_GroupState">
+      <DefaultState val="CooldownText_Off"/>
+
+      <State name="CooldownText_Off">
+        <Action type="SetProperty" frame="CommandButton00" ShowCooldownText="False"/>
+        <Action type="SetProperty" frame="CommandButton01" ShowCooldownText="False"/>
+      </State>
+
+      <State name="CooldownText_On">
+        <Action type="SetProperty" frame="CommandButton00" ShowCooldownText="True"/>
+        <Action type="SetProperty" frame="CommandButton01" ShowCooldownText="True"/>
+      </State>
+    </StateGroup>
+  </Frame-->
+</Desc>

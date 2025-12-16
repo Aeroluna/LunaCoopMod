@@ -5550,4 +5550,20 @@
         <Supporter Subject="_Unit"/>
         <HostSiteOps Ops="SOpBankerVoidRay"/>
     </CActorModel>
+    <CActorUnit id="CursorUnit" parent="GenericUnitStandardNoAutoSoundLinks" unitName="CursorUnit">
+        <EditorCategories value=""/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <Model value="Invisible"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <On Terms="Signal.*.On" Send="HostSiteOpsSet ::Host SOpCursor 1"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorUnit>
 </Catalog>
