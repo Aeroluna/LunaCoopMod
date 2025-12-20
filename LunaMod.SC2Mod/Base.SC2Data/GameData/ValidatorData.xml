@@ -129,6 +129,10 @@
         <CombineArray value="HasCommanderPrestigeStukovNeural"/>
         <CombineArray value="CommanderPrestigeStukovNeuralTarget"/>
     </CValidatorCombine>
+    <CValidatorCombine id="CoopUnitCloakingValidators">
+        <CombineArray value="NotMothershipArtanis"/>
+        <CombineArray value="NotArbiterMP"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="HarvestableRichVespeneGeyserGas">
         <Compare value="GT"/>
         <Behavior value="HarvestableRichVespeneGeyserGas"/>
@@ -207,6 +211,10 @@
     <CValidatorCombine id="NotLarvaAndNotEncasedAndDominatedOrPlayerOwned">
         <CombineArray value="PassengerNotSuppressed"/>
     </CValidatorCombine>
+    <CValidatorUnitType id="NotMothershipArtanis">
+        <Value value="MothershipArtanis"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="OnDeathAlarakTheStrongestSurvive">
         <CombineArray index="0" value="IsAlarakHero"/>
     </CValidatorCombine>

@@ -60,9 +60,11 @@ unit gv_jinaraMothership2;
 bool[8] gv_laneActive;
 unit gv_currentDominatedUnit;
 point gv_victoryPan;
+bool gv_lock;
 bool gv_nightmare;
 string gv_hybridMinor;
 string gv_hybridMajor;
+int gv_bossAddLimit;
 unitgroup gv_bossAdds;
 point[11] gv_waveTarget;
 unit gv_bonusHercules;
@@ -84,6 +86,7 @@ void InitGlobals () {
     for (init_i = 0; init_i <= 3; init_i += 1) {
         gv_enemyGroups[init_i] = UnitGroupEmpty();
     }
+    gv_bossAddLimit = 6;
     gv_bossAdds = UnitGroupEmpty();
 }
 
@@ -91,10 +94,10 @@ void InitGlobals () {
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 void gf_CreateArrowPings (int lp_lane, fixed lp_delay, fixed lp_direction);
+void gf_WarpBC (region lp_target, bool lp_check);
 region gf_SpawnRegionforPosition (point lp_position);
 void gf_TrackUnitforLeaderboard (unit lp_unit, int lp_lane);
 void gf_Ambientcleanup (unitgroup lp_unitgroup);
-int gf_AmbientDifficultyValue (int lp_casual, int lp_normal, int lp_hard, int lp_brutal);
 unitgroup gf_SpawnAmbientUnit (int lp_amount, string lp_unittype, int lp_lane);
 void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLevel, int lp_hybridMinor, int lp_hybridMajor);
 void gf_JinaraPing (text lp_tooltip, unit lp_unit);
@@ -116,6 +119,8 @@ trigger gt_Init06MusicSound;
 trigger gt_Init07Environment;
 trigger gt_Init08Difficulties;
 trigger gt_DebugStage2;
+trigger gt_DebugStage3;
+trigger gt_DebugControl;
 trigger gt_DebugMother;
 trigger gt_DebugMother2;
 trigger gt_DebugNightmare;
@@ -154,10 +159,6 @@ trigger gt_AttackWaveTransmissionQ;
 trigger gt_AIGiveResources;
 trigger gt_BullyActivationSequence;
 trigger gt_AmbientWavesAICommander;
-trigger gt_AmbientWaves1;
-trigger gt_AmbientWaves2;
-trigger gt_AmbientWaves3;
-trigger gt_AmbientWaves4;
 trigger gt_AttackWave01;
 trigger gt_AttackWave02;
 trigger gt_AttackWave03;
@@ -435,6 +436,39 @@ bool auto_gf_CreateArrowPings_TriggerFunc (bool testConds, bool runActions) {
     return true;
 }
 
+trigger auto_gf_WarpBC_Trigger = null;
+region auto_gf_WarpBC_lp_target;
+bool auto_gf_WarpBC_lp_check;
+
+void gf_WarpBC (region lp_target, bool lp_check) {
+    auto_gf_WarpBC_lp_target = lp_target;
+    auto_gf_WarpBC_lp_check = lp_check;
+
+    if (auto_gf_WarpBC_Trigger == null) {
+        auto_gf_WarpBC_Trigger = TriggerCreate("auto_gf_WarpBC_TriggerFunc");
+    }
+
+    TriggerExecute(auto_gf_WarpBC_Trigger, false, false);
+}
+
+bool auto_gf_WarpBC_TriggerFunc (bool testConds, bool runActions) {
+    region lp_target = auto_gf_WarpBC_lp_target;
+    bool lp_check = auto_gf_WarpBC_lp_check;
+
+    // Automatic Variable Declarations
+    // Implementation
+    Wait(RandomFixed(10.0, 30.0), c_timeGame);
+    libNtve_gf_UnitCreateFacingPoint(1, "Battlecruiser", c_unitCreateIgnorePlacement, gv_pLAYER_08_DOMINION, RegionGetBoundsMin(RegionEntireMap()), RegionGetCenter(lp_target));
+    UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergy, 125.0);
+    lib74A68E34_gf_IssueOrderWithoutScriptControl(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("Hyperjump", 0), RegionGetCenter(lp_target)), c_orderQueueReplace);
+    Wait(10.0, c_timeGame);
+    if (((lp_check == false) || (UnitGroupCount(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition("Barracks", "", "", gv_pLAYER_08_DOMINION, c_unitAllianceAlly, RegionCircle(RegionGetCenter(lp_target), 8.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0))) {
+        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, lp_target, true);
+    }
+
+    return true;
+}
+
 region gf_SpawnRegionforPosition (point lp_position) {
     // Automatic Variable Declarations
     // Implementation
@@ -547,12 +581,6 @@ bool auto_gf_Ambientcleanup_TriggerFunc (bool testConds, bool runActions) {
         Wait(1.0, c_timeGame);
     }
     return true;
-}
-
-int gf_AmbientDifficultyValue (int lp_casual, int lp_normal, int lp_hard, int lp_brutal) {
-    // Automatic Variable Declarations
-    // Implementation
-    return libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), lp_casual, lp_normal, lp_hard, lp_brutal, 0, 0);
 }
 
 unitgroup gf_SpawnAmbientUnit (int lp_amount, string lp_unittype, int lp_lane) {
@@ -668,6 +696,10 @@ void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLev
             continue;
         }
 
+        while (!((gv_lock == false))) {
+            Wait(0.1, c_timeGame);
+        }
+        gv_lock = true;
         lv_gather = RegionRandomPoint(lv_spawnRegions[lv_lane]);
         auto42B1105D_n = lp_hybridMinor;
         for (auto42B1105D_i = 1; auto42B1105D_i <= auto42B1105D_n; auto42B1105D_i += 1) {
@@ -698,6 +730,7 @@ void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLev
             if (auto02CD8F6E_var == null) { break; }
             gf_TrackUnitforLeaderboard(auto02CD8F6E_var, lv_laneIndexes[lv_lane]);
         }
+        gv_lock = false;
         return ;
     }
 }
@@ -767,6 +800,10 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
     lv_attackingPlayers = PlayerGroupEmpty();
 
     // Implementation
+    while (!((gv_lock == false))) {
+        Wait(0.1, c_timeGame);
+    }
+    gv_lock = true;
     lv_gather = PointWithOffsetPolar(RegionGetCenter(RegionFromId(35)), 10.0, 225.0);
     libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resourceSize, lp_techLevel, lv_gather, true);
     UnitGroupAddUnitGroup(lv_currentWave, libCOMI_gf_LastCreatedCoopAttackForce());
@@ -808,6 +845,7 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
         }
         AIAttackWaveSend(autoBCDF73B4_var, 0, true);
     }
+    gv_lock = false;
 }
 
 trigger auto_gf_JinaraVikingWaves_Trigger = null;
@@ -836,9 +874,11 @@ bool auto_gf_JinaraVikingWaves_TriggerFunc (bool testConds, bool runActions) {
     unit auto01CDE4A6_var;
 
     // Implementation
-    Wait(20.0, c_timeAI);
+    Wait(30.0, c_timeAI);
     gv_vikingStock = (lp_vikingcount * 2);
     TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("AssaultMode", 0), false);
+    AINearestTownBullyRebuild(gv_pLAYER_08_DOMINION, false);
+    AINearestTownLimitWaveGather(gv_pLAYER_08_DOMINION, false);
     while ((UnitIsAlive(lp_boss) == true)) {
         AIAttackWaveSetGatherPoint(gv_pLAYER_08_DOMINION, PlayerStartLocation(gv_pLAYER_08_DOMINION));
         AIAttackWaveSetTargetUnit(gv_pLAYER_08_DOMINION, lp_boss);
@@ -852,7 +892,10 @@ bool auto_gf_JinaraVikingWaves_TriggerFunc (bool testConds, bool runActions) {
     }
     gv_vikingStock = 0;
     TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("AssaultMode", 0), true);
-    Wait(30.0, c_timeAI);
+    Wait(20.0, c_timeAI);
+    AINearestTownBullyRebuild(gv_pLAYER_08_DOMINION, true);
+    AINearestTownLimitWaveGather(gv_pLAYER_08_DOMINION, true);
+    Wait(10.0, c_timeAI);
     auto01CDE4A6_g = UnitGroup("VikingFighter", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     auto01CDE4A6_u = UnitGroupCount(auto01CDE4A6_g, c_unitCountAll);
     for (;; auto01CDE4A6_u -= 1) {
@@ -1163,8 +1206,6 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     TechTreeUnitAllow(gv_pLAYER_09_DEFENDERS_MID, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_09_DEFENDERS_MID, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranInfantryWeaponsLevel1", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranBuildingArmor", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_09_DEFENDERS_MID, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_09_DEFENDERS_MID, "550");
@@ -1172,8 +1213,6 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     TechTreeUnitAllow(gv_pLAYER_10_DEFENDERS_LEFT, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_10_DEFENDERS_LEFT, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranInfantryWeaponsLevel1", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranBuildingArmor", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_10_DEFENDERS_LEFT, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_10_DEFENDERS_LEFT, "550");
@@ -1182,8 +1221,6 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     TechTreeUnitAllow(gv_pLAYER_11_DEFENDERS_RIGHT, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_11_DEFENDERS_RIGHT, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranInfantryWeaponsLevel1", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranBuildingArmor", 1);
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
     CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
@@ -1202,7 +1239,7 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TechReactorAI", 1);
     CatalogFieldValueSet(c_gameCatalogAbil, "TerranBuild", "InfoArray[" + IntToString(0) + "].Time", gv_pLAYER_08_DOMINION, "60");
     CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(4) + "].Time", gv_pLAYER_08_DOMINION, "30");
-    CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(3) + "].Time", gv_pLAYER_08_DOMINION, "30");
+    CatalogFieldValueSet(c_gameCatalogAbil, "StarportTrain", "InfoArray[" + IntToString(3) + "].Time", gv_pLAYER_08_DOMINION, "60");
     return true;
 }
 
@@ -1255,7 +1292,6 @@ bool gt_Init05Units_Func (bool testConds, bool runActions) {
         for (auto1C3EF65A_i = 1; auto1C3EF65A_i <= auto1C3EF65A_n; auto1C3EF65A_i += 1) {
             AIAddBully(gv_pLAYER_08_DOMINION, "Marine", UnitGetPosition(auto6865111F_var), -1);
         }
-        UnitCargoCreate(auto6865111F_var, "Marine", 6);
     }
     libCOMI_gf_SetUnitInfoTextCampaign(UnitFromId(2044729735), null, StringExternal("Param/Value/89336E30"), null);
     UnitSetTeamColorIndex(UnitFromId(2044729735), 0);
@@ -1374,10 +1410,6 @@ bool gt_DebugStage2_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
-            return false;
-        }
-
         if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
             return false;
         }
@@ -1387,6 +1419,10 @@ bool gt_DebugStage2_Func (bool testConds, bool runActions) {
         }
 
         if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
             return false;
         }
     }
@@ -1409,16 +1445,12 @@ void gt_DebugStage2_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Debug - Mother
+// Trigger: Debug - Stage 3
 //--------------------------------------------------------------------------------------------------
-bool gt_DebugMother_Func (bool testConds, bool runActions) {
+bool gt_DebugStage3_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
-            return false;
-        }
-
         if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
             return false;
         }
@@ -1428,6 +1460,92 @@ bool gt_DebugMother_Func (bool testConds, bool runActions) {
         }
 
         if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(gt_MoreBattlecruisersOnlineQ, true, true);
+    TriggerEnable(TriggerGetCurrent(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugStage3_Init () {
+    gt_DebugStage3 = TriggerCreate("gt_DebugStage3_Func");
+    TriggerAddEventChatMessage(gt_DebugStage3, c_playerAny, "S3", true);
+    TriggerAddEventChatMessage(gt_DebugStage3, c_playerAny, "Stage3", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug - Control
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugControl_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
+            return false;
+        }
+
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_SetPlayerGroupAlliance(gv_aLLY_GROUP, libNtve_ge_AllianceSetting_AllyWithSharedVisionControlAndSpending);
+    TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "Wraith", false);
+    TriggerEnable(TriggerGetCurrent(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugControl_Init () {
+    gt_DebugControl = TriggerCreate("gt_DebugControl_Func");
+    TriggerAddEventChatMessage(gt_DebugControl, c_playerAny, "Control", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug - Mother
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugMother_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
+            return false;
+        }
+
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
             return false;
         }
     }
@@ -1456,10 +1574,6 @@ bool gt_DebugMother2_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
-            return false;
-        }
-
         if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
             return false;
         }
@@ -1469,6 +1583,10 @@ bool gt_DebugMother2_Func (bool testConds, bool runActions) {
         }
 
         if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
             return false;
         }
     }
@@ -1551,8 +1669,7 @@ bool gt_StartGameQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    PortraitCreate(20, 0, c_anchorLeft, 237, 360, "ValerianPortrait", "", "Talk", false, false);
-    ConversationDataRegisterPortrait("char_Valerian", PortraitLastCreated());
+    ConversationDataRegisterPortrait("char_Valerian", libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft));
     UIAlertPoint("Trigger", gv_pLAYER_01_USER, StringToText(""), null, PlayerStartLocation(gv_pLAYER_01_USER));
     UIAlertPoint("Trigger", gv_pLAYER_02_USER, StringToText(""), null, PlayerStartLocation(gv_pLAYER_02_USER));
     libLbty_gf_OrderWorkerstoGatherNearbyResources(RegionPlayableMap(), gv_pLAYER_01_USER);
@@ -1605,6 +1722,7 @@ void gt_StartGameQ_Init () {
 bool gt_DominionStock_Func (bool testConds, bool runActions) {
     // Variable Declarations
     const int lv_scv = 10;
+    int lv_stock;
 
     // Automatic Variable Declarations
     // Variable Initialization
@@ -1617,6 +1735,11 @@ bool gt_DominionStock_Func (bool testConds, bool runActions) {
     AIClearStock(gv_pLAYER_08_DOMINION);
     if ((gv_vikingStock > 0)) {
         AISetStock(gv_pLAYER_08_DOMINION, gv_vikingStock, "VikingFighter");
+        lv_stock = AITechCount(gv_pLAYER_08_DOMINION, "VikingFighter", c_techCountQueuedOrBetter);
+        if ((lv_stock < gv_vikingStock)) {
+            AITrain(gv_pLAYER_08_DOMINION, 100, -1, "VikingFighter", (gv_vikingStock - lv_stock));
+        }
+
     }
 
     AISetStock(gv_pLAYER_08_DOMINION, lv_scv, "SCV");
@@ -1739,6 +1862,10 @@ bool gt_BattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         if (!((libCOMI_gf_GameIsOver() == false))) {
             return false;
         }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
     }
 
     // Actions
@@ -1746,58 +1873,57 @@ bool gt_BattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    TriggerEnable(TriggerGetCurrent(), false);
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(22), true);
+        gf_WarpBC(RegionFromId(22), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_10_DEFENDERS_LEFT, RegionCircle(PointFromId(929702535), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(8), true);
+        gf_WarpBC(RegionFromId(8), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_10_DEFENDERS_LEFT, RegionCircle(PointFromId(48665747), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(10), true);
+        gf_WarpBC(RegionFromId(10), true);
     }
 
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(24), true);
+        gf_WarpBC(RegionFromId(24), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(1691027196), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(12), true);
+        gf_WarpBC(RegionFromId(12), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(1568815281), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(14), true);
+        gf_WarpBC(RegionFromId(14), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(124031490), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(16), true);
+        gf_WarpBC(RegionFromId(16), true);
     }
 
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(26), true);
+        gf_WarpBC(RegionFromId(26), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_11_DEFENDERS_RIGHT, RegionCircle(PointFromId(193599702), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(18), true);
+        gf_WarpBC(RegionFromId(18), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_11_DEFENDERS_RIGHT, RegionCircle(PointFromId(1086760803), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(20), true);
+        gf_WarpBC(RegionFromId(20), true);
     }
 
-    AISetStock(gv_pLAYER_08_DOMINION, 2, "FusionCore");
-    AIEnableStock(gv_pLAYER_08_DOMINION);
     TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "Factory", true);
     TriggerQueueEnter();
     if ((libCOMI_gf_GameIsOver() == true)) {
@@ -1830,6 +1956,10 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         if (!((libCOMI_gf_GameIsOver() == false))) {
             return false;
         }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
     }
 
     // Actions
@@ -1837,71 +1967,71 @@ bool gt_MoreBattlecruisersOnlineQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    TriggerEnable(TriggerGetCurrent(), false);
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(23), true);
+        gf_WarpBC(RegionFromId(23), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_10_DEFENDERS_LEFT, RegionCircle(PointFromId(929702535), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(9), true);
+        gf_WarpBC(RegionFromId(9), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_10_DEFENDERS_LEFT, RegionCircle(PointFromId(48665747), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(11), true);
+        gf_WarpBC(RegionFromId(11), true);
     }
 
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(25), true);
+        gf_WarpBC(RegionFromId(25), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(1691027196), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(13), true);
+        gf_WarpBC(RegionFromId(13), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(1568815281), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(15), true);
+        gf_WarpBC(RegionFromId(15), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_09_DEFENDERS_MID, RegionCircle(PointFromId(124031490), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(17), true);
+        gf_WarpBC(RegionFromId(17), true);
     }
 
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(27), true);
+        gf_WarpBC(RegionFromId(27), false);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_11_DEFENDERS_RIGHT, RegionCircle(PointFromId(193599702), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(19), true);
+        gf_WarpBC(RegionFromId(19), true);
     }
 
     if ((UnitGroupCount(UnitGroup("Barracks", gv_pLAYER_11_DEFENDERS_RIGHT, RegionCircle(PointFromId(1086760803), 2.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(21), true);
+        gf_WarpBC(RegionFromId(21), true);
     }
 
-    AISetStock(gv_pLAYER_08_DOMINION, 3, "FusionCore");
-    AIEnableStock(gv_pLAYER_08_DOMINION);
+    TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "FusionCore", true);
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(86), true);
-    }
-
-    if (true) {
-        lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(85), true);
+        gf_WarpBC(RegionFromId(86), false);
     }
 
     if (true) {
         lv_spotValid = true;
-        AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(87), true);
+        gf_WarpBC(RegionFromId(85), false);
+    }
+
+    if (true) {
+        lv_spotValid = true;
+        gf_WarpBC(RegionFromId(87), false);
     }
 
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "Stimpack", 1);
@@ -1953,7 +2083,10 @@ bool gt_DominionPlanetaryDies_Func (bool testConds, bool runActions) {
     }
 
     Wait(5.0, c_timeAI);
-    libNtve_gf_AICast(UnitGroupClosestToPoint(UnitGroup("SCV", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), lv_point), OrderTargetingPoint(AbilityCommand("TerranBuild", 0), lv_point));
+    while ((UnitGroupCount(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition("CommandCenter", "PlanetaryFortress", "OrbitalCommand", gv_pLAYER_08_DOMINION, -1, RegionCircle(lv_point, 6.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) < 1)) {
+        libNtve_gf_AICast(UnitGroupClosestToPoint(UnitGroup("SCV", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), lv_point), OrderTargetingPoint(AbilityCommand("TerranBuild", 0), lv_point));
+        Wait(20.0, c_timeAI);
+    }
     return true;
 }
 
@@ -2922,7 +3055,7 @@ bool gt_LeviathanAddDies_Func (bool testConds, bool runActions) {
             return false;
         }
 
-        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < gv_bossAddLimit))) {
             return false;
         }
     }
@@ -2955,11 +3088,14 @@ bool gt_BossAddSuicideEffect_Func (bool testConds, bool runActions) {
 
     UnitGroupAdd(gv_bossAdds, EventPlayerEffectUsedUnit(c_effectUnitTarget));
     AISetUnitSuicide(EventPlayerEffectUsedUnit(c_effectUnitTarget), true);
-    if ((UnitGroupCount(gv_bossAdds, c_unitCountAlive) >= 12)) {
+    if ((UnitGroupCount(gv_bossAdds, c_unitCountAlive) >= gv_bossAddLimit)) {
         TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnMutalisk", 0), false);
         TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnBroodLord", 0), false);
     }
-
+    else {
+        TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnMutalisk", 0), true);
+        TechTreeAbilityAllow(gv_pLAYER_05_ENEMY_AMBIENT, AbilityCommand("NovaLeviathanSpawnBroodLord", 0), true);
+    }
     return true;
 }
 
@@ -2980,6 +3116,7 @@ bool gt_BossAddSuicideWarp_Func (bool testConds, bool runActions) {
     }
 
     AISetUnitSuicide(EventUnitCreatedUnit(), true);
+    UnitGroupAdd(gv_bossAdds, EventUnitCreatedUnit());
     return true;
 }
 
@@ -3009,7 +3146,7 @@ bool gt_MothershipAdds_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < gv_bossAddLimit))) {
             return false;
         }
     }
@@ -3035,13 +3172,11 @@ bool gt_MothershipAdds_Func (bool testConds, bool runActions) {
     auto0F5D4521_n = RandomInt(6, 8);
     for (auto0F5D4521_i = 1; auto0F5D4521_i <= auto0F5D4521_n; auto0F5D4521_i += 1) {
         UnitIssueOrder(lv_warpgate, OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 7), PointWithOffsetPolar(UnitGetPosition(lv_caster), RandomFixed(4.0, 6.0), libNtve_gf_RandomAngle())), c_orderQueueAddToEnd);
-        UnitGroupAdd(gv_bossAdds, UnitLastCreated());
         Wait(0.1, c_timeGame);
     }
     autoC0F72F7C_n = RandomInt(2, 4);
     for (autoC0F72F7C_i = 1; autoC0F72F7C_i <= autoC0F72F7C_n; autoC0F72F7C_i += 1) {
         UnitIssueOrder(lv_warpgate, OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 8), PointWithOffsetPolar(UnitGetPosition(lv_caster), RandomFixed(2.0, 4.0), libNtve_gf_RandomAngle())), c_orderQueueAddToEnd);
-        UnitGroupAdd(gv_bossAdds, UnitLastCreated());
         Wait(0.1, c_timeGame);
     }
     return true;
@@ -3069,7 +3204,7 @@ bool gt_BattlecruiserAdds_Func (bool testConds, bool runActions) {
 
     // Conditions
     if (testConds) {
-        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < 12))) {
+        if (!((UnitGroupCount(gv_bossAdds, c_unitCountAlive) < gv_bossAddLimit))) {
             return false;
         }
     }
@@ -3251,9 +3386,15 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     unitgroup lv_unitgroup;
 
     // Automatic Variable Declarations
-    const int auto51D956DF_n = 10;
+    const int auto51D956DF_n = 8;
     int auto51D956DF_i;
-    const int auto8151F7A0_n = 16;
+    unitgroup auto8FF00B2A_g;
+    int auto8FF00B2A_u;
+    unit auto8FF00B2A_var;
+    unitgroup autoC437CA12_g;
+    int autoC437CA12_u;
+    unit autoC437CA12_var;
+    const int auto8151F7A0_n = 12;
     int auto8151F7A0_i;
     unitgroup auto0D527347_g;
     int auto0D527347_u;
@@ -3287,6 +3428,7 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(26), false);
     AIToggleBulliesInRegion(gv_pLAYER_08_DOMINION, RegionFromId(27), false);
     TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "Factory", false);
+    TechTreeUnitAllow(gv_pLAYER_08_DOMINION, "FusionCore", false);
     TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("CommandCenterTransport", 4), false);
     Wait(379.0, c_timeAI);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(1), false);
@@ -3311,7 +3453,23 @@ bool gt_BullyActivationSequence_Func (bool testConds, bool runActions) {
     Wait(10.0, c_timeAI);
     AISetGroupScriptControlled(lv_unitgroup, false);
     libNtve_gf_CreateUnitsWithDefaultFacing(3, "SCV", 0, gv_pLAYER_10_DEFENDERS_LEFT, PointFromId(1855620408));
+    UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
+    auto8FF00B2A_g = UnitLastCreatedGroup();
+    auto8FF00B2A_u = UnitGroupCount(auto8FF00B2A_g, c_unitCountAll);
+    for (;; auto8FF00B2A_u -= 1) {
+        auto8FF00B2A_var = UnitGroupUnitFromEnd(auto8FF00B2A_g, auto8FF00B2A_u);
+        if (auto8FF00B2A_var == null) { break; }
+        libNtve_gf_ChangeUnitDamage(auto8FF00B2A_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
+    }
     libNtve_gf_CreateUnitsWithDefaultFacing(3, "SCV", 0, gv_pLAYER_11_DEFENDERS_RIGHT, PointFromId(6083815));
+    UnitGroupAddUnitGroup(lv_unitgroup, UnitLastCreatedGroup());
+    autoC437CA12_g = UnitLastCreatedGroup();
+    autoC437CA12_u = UnitGroupCount(autoC437CA12_g, c_unitCountAll);
+    for (;; autoC437CA12_u -= 1) {
+        autoC437CA12_var = UnitGroupUnitFromEnd(autoC437CA12_g, autoC437CA12_u);
+        if (autoC437CA12_var == null) { break; }
+        libNtve_gf_ChangeUnitDamage(autoC437CA12_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Minimal);
+    }
     AINearestTownBullyRebuild(gv_pLAYER_10_DEFENDERS_LEFT, true);
     libNtve_gf_DeclareNextTown(gv_pLAYER_10_DEFENDERS_LEFT, RegionGetCenter(RegionFromId(1)));
     libNtve_gf_DeclareNextTown(gv_pLAYER_10_DEFENDERS_LEFT, RegionGetCenter(RegionFromId(2)));
@@ -3428,11 +3586,16 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
     lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
     Wait(40.0, c_timeAI);
     while ((true == true)) {
-        if ((AIGetTime() > 1020.0) && (gv_aliveOuterBases < 2)) {
-            Wait(libNtve_gf_DifficultyValueInt(35, 35, 35, 30), c_timeAI);
+        if (((UnitIsAlive(gv_jinaraMothership1) == true) || (UnitIsAlive(gv_jinaraMothership2) == true))) {
+            Wait(libNtve_gf_DifficultyValueInt(45, 45, 45, 40), c_timeAI);
         }
         else {
-            Wait(libNtve_gf_DifficultyValueInt(25, 25, 25, 20), c_timeAI);
+            if ((AIGetTime() > 1020.0) && (gv_aliveOuterBases < 2)) {
+                Wait(libNtve_gf_DifficultyValueInt(35, 35, 35, 30), c_timeAI);
+            }
+            else {
+                Wait(libNtve_gf_DifficultyValueInt(25, 25, 25, 20), c_timeAI);
+            }
         }
         if ((gv_nightmare == true)) {
             if ((AIGetTime() > 1380.0)) {
@@ -3508,6 +3671,10 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
                         Wait(1.0, c_timeAI);
                     }
                     if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
+                        while (!((gv_lock == false))) {
+                            Wait(0.1, c_timeGame);
+                        }
+                        gv_lock = true;
                         lv_currentWave = UnitGroupEmpty();
                         autoB0819F7F_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
                         if (autoB0819F7F_val == "Prot") {
@@ -3539,7 +3706,8 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
                         AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
                         AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
                         AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                        AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
+                        AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, true);
+                        gv_lock = false;
                     }
 
                 }
@@ -3549,6 +3717,10 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
         lv_i = 1;
         for ( ; ( (autoA508002E_ai >= 0 && lv_i <= autoA508002E_ae) || (autoA508002E_ai < 0 && lv_i >= autoA508002E_ae) ) ; lv_i += autoA508002E_ai ) {
             if ((gv_laneActive[lv_i] == true)) {
+                while (!((gv_lock == false))) {
+                    Wait(0.1, c_timeGame);
+                }
+                gv_lock = true;
                 lv_gather = RegionRandomPoint(lv_spawnRegions[lv_i]);
                 libCOMI_gf_SetCoopAIAttackGroupSpawnPoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_gather);
                 libCOMI_gf_SetCoopAIGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_gather);
@@ -3565,6 +3737,7 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
                     gf_TrackUnitforLeaderboard(auto8DFE8422_var, lv_laneIndexes[lv_i]);
                 }
                 gf_Ambientcleanup(libCOMI_gf_LastCreatedCoopAttackForce());
+                gv_lock = false;
             }
 
             Wait(1.0, c_timeAI);
@@ -3576,840 +3749,6 @@ bool gt_AmbientWavesAICommander_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_AmbientWavesAICommander_Init () {
     gt_AmbientWavesAICommander = TriggerCreate("gt_AmbientWavesAICommander_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Ambient Waves 1
-//--------------------------------------------------------------------------------------------------
-bool gt_AmbientWaves1_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    region[8] lv_spawnRegions;
-    point[8] lv_firstWaypoints;
-    point[8] lv_secondWaypoints;
-    int[8] lv_laneIndexes;
-    int[8] lv_laneCaps;
-    int lv_i;
-    unitgroup lv_currentWave;
-
-    // Automatic Variable Declarations
-    int auto20A62084_n;
-    int auto20A62084_i;
-    const int autoE2745ADD_ae = 7;
-    const int autoE2745ADD_ai = 1;
-    string auto171168C2_val;
-    string autoD2EBBBE5_val;
-    int autoCA1DF801_n;
-    int autoCA1DF801_i;
-    const int auto4DC49D7E_ae = 7;
-    const int auto4DC49D7E_ai = 1;
-    string auto16D201EC_val;
-    string auto6D85372F_val;
-    int auto772E53FB_n;
-    int auto772E53FB_i;
-    const int autoBADEEBFD_ae = 7;
-    const int autoBADEEBFD_ai = 1;
-    string autoC814F5BD_val;
-    string autoA79BC990_val;
-
-    // Variable Initialization
-    lv_currentWave = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_spawnRegions[1] = RegionFromId(31);
-    lv_spawnRegions[2] = RegionFromId(33);
-    lv_spawnRegions[3] = RegionFromId(34);
-    lv_spawnRegions[4] = RegionFromId(35);
-    lv_spawnRegions[5] = RegionFromId(36);
-    lv_spawnRegions[6] = RegionFromId(37);
-    lv_spawnRegions[7] = RegionFromId(39);
-    lv_firstWaypoints[1] = RegionGetCenter(RegionFromId(1));
-    lv_firstWaypoints[2] = RegionGetCenter(RegionFromId(2));
-    lv_firstWaypoints[3] = RegionGetCenter(RegionFromId(3));
-    lv_firstWaypoints[4] = RegionGetCenter(RegionFromId(4));
-    lv_firstWaypoints[5] = RegionGetCenter(RegionFromId(5));
-    lv_firstWaypoints[6] = RegionGetCenter(RegionFromId(7));
-    lv_firstWaypoints[7] = RegionGetCenter(RegionFromId(6));
-    lv_secondWaypoints[1] = PointFromId(1548);
-    lv_secondWaypoints[2] = PointFromId(1548);
-    lv_secondWaypoints[3] = PointFromId(1549);
-    lv_secondWaypoints[4] = PointFromId(1549);
-    lv_secondWaypoints[5] = PointFromId(1549);
-    lv_secondWaypoints[6] = PointFromId(1550);
-    lv_secondWaypoints[7] = PointFromId(1550);
-    lv_laneIndexes[1] = 1;
-    lv_laneIndexes[2] = 1;
-    lv_laneIndexes[3] = 2;
-    lv_laneIndexes[4] = 2;
-    lv_laneIndexes[5] = 2;
-    lv_laneIndexes[6] = 3;
-    lv_laneIndexes[7] = 3;
-    lv_laneCaps[1] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
-    lv_laneCaps[2] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
-    lv_laneCaps[3] = libNtve_gf_DifficultyValueInt(25, 25, 30, 35);
-    lv_laneCaps[4] = libNtve_gf_DifficultyValueInt(25, 25, 30, 35);
-    lv_laneCaps[5] = libNtve_gf_DifficultyValueInt(25, 25, 30, 35);
-    lv_laneCaps[6] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
-    lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(15, 15, 18, 21);
-    auto20A62084_n = libNtve_gf_DifficultyValueInt(8, 8, 8, 10);
-    for (auto20A62084_i = 1; auto20A62084_i <= auto20A62084_n; auto20A62084_i += 1) {
-        lv_i = 1;
-        for ( ; ( (autoE2745ADD_ai >= 0 && lv_i <= autoE2745ADD_ae) || (autoE2745ADD_ai < 0 && lv_i >= autoE2745ADD_ae) ) ; lv_i += autoE2745ADD_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto171168C2_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto171168C2_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(2, "Zealot", lv_i));
-                }
-                else if (auto171168C2_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(4, "Marine", lv_i));
-                }
-                else if (auto171168C2_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(6, "Zergling", lv_i));
-                }
-                else {
-                }
-                autoD2EBBBE5_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoD2EBBBE5_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(1, "Stalker", lv_i));
-                }
-                else if (autoD2EBBBE5_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(1, "Marauder", lv_i));
-                }
-                else if (autoD2EBBBE5_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(1, "Hydralisk", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(25, 25, 25, 20), c_timeAI);
-    }
-    autoCA1DF801_n = libNtve_gf_DifficultyValueInt(8, 8, 8, 10);
-    for (autoCA1DF801_i = 1; autoCA1DF801_i <= autoCA1DF801_n; autoCA1DF801_i += 1) {
-        lv_i = 1;
-        for ( ; ( (auto4DC49D7E_ai >= 0 && lv_i <= auto4DC49D7E_ae) || (auto4DC49D7E_ai < 0 && lv_i >= auto4DC49D7E_ae) ) ; lv_i += auto4DC49D7E_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto16D201EC_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto16D201EC_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 3, 3, 4, 4, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto16D201EC_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 6, 6, 0, 0), "Marine", lv_i));
-                }
-                else if (auto16D201EC_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 10, 10, 16, 16, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto6D85372F_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto6D85372F_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 2, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto6D85372F_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 2, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto6D85372F_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 2, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(25, 25, 25, 20), c_timeAI);
-    }
-    auto772E53FB_n = libNtve_gf_DifficultyValueInt(8, 8, 8, 10);
-    for (auto772E53FB_i = 1; auto772E53FB_i <= auto772E53FB_n; auto772E53FB_i += 1) {
-        lv_i = 1;
-        for ( ; ( (autoBADEEBFD_ai >= 0 && lv_i <= autoBADEEBFD_ae) || (autoBADEEBFD_ai < 0 && lv_i >= autoBADEEBFD_ae) ) ; lv_i += autoBADEEBFD_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                autoC814F5BD_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoC814F5BD_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 3, 3, 4, 4, 0, 0), "Zealot", lv_i));
-                }
-                else if (autoC814F5BD_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 6, 6, 0, 0), "Marine", lv_i));
-                }
-                else if (autoC814F5BD_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 10, 10, 16, 16, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                autoA79BC990_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoA79BC990_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (autoA79BC990_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (autoA79BC990_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(25, 25, 25, 20), c_timeAI);
-    }
-    TriggerExecute(gt_AmbientWaves2, true, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AmbientWaves1_Init () {
-    gt_AmbientWaves1 = TriggerCreate("gt_AmbientWaves1_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Ambient Waves 2
-//--------------------------------------------------------------------------------------------------
-bool gt_AmbientWaves2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    region[8] lv_spawnRegions;
-    point[8] lv_firstWaypoints;
-    point[8] lv_secondWaypoints;
-    int[8] lv_laneIndexes;
-    int[8] lv_laneCaps;
-    int lv_i;
-    unitgroup lv_currentWave;
-
-    // Automatic Variable Declarations
-    int autoEAED437A_n;
-    int autoEAED437A_i;
-    const int auto1A9A4CE2_ae = 7;
-    const int auto1A9A4CE2_ai = 1;
-    string auto4673B485_val;
-    string auto3C8B3922_val;
-    string auto972D9657_val;
-    int autoB7069A69_n;
-    int autoB7069A69_i;
-    const int auto3C06C541_ae = 7;
-    const int auto3C06C541_ai = 1;
-    string auto6AED80F3_val;
-    string auto7B6F969F_val;
-    string autoFF1C5907_val;
-
-    // Variable Initialization
-    lv_currentWave = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_spawnRegions[1] = RegionFromId(31);
-    lv_spawnRegions[2] = RegionFromId(33);
-    lv_spawnRegions[3] = RegionFromId(34);
-    lv_spawnRegions[4] = RegionFromId(35);
-    lv_spawnRegions[5] = RegionFromId(36);
-    lv_spawnRegions[6] = RegionFromId(37);
-    lv_spawnRegions[7] = RegionFromId(39);
-    lv_firstWaypoints[1] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[2] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[3] = RegionGetCenter(RegionFromId(3));
-    lv_firstWaypoints[4] = RegionGetCenter(RegionFromId(4));
-    lv_firstWaypoints[5] = RegionGetCenter(RegionFromId(5));
-    lv_firstWaypoints[6] = RegionGetCenter(RegionFromId(30));
-    lv_firstWaypoints[7] = RegionGetCenter(RegionFromId(30));
-    lv_secondWaypoints[1] = PointFromId(1548);
-    lv_secondWaypoints[2] = PointFromId(1548);
-    lv_secondWaypoints[3] = PointFromId(1549);
-    lv_secondWaypoints[4] = PointFromId(1549);
-    lv_secondWaypoints[5] = PointFromId(1549);
-    lv_secondWaypoints[6] = PointFromId(1550);
-    lv_secondWaypoints[7] = PointFromId(1550);
-    lv_laneIndexes[1] = 1;
-    lv_laneIndexes[2] = 1;
-    lv_laneIndexes[3] = 2;
-    lv_laneIndexes[4] = 2;
-    lv_laneIndexes[5] = 2;
-    lv_laneIndexes[6] = 3;
-    lv_laneIndexes[7] = 3;
-    lv_laneCaps[1] = libNtve_gf_DifficultyValueInt(21, 21, 24, 27);
-    lv_laneCaps[2] = libNtve_gf_DifficultyValueInt(21, 21, 24, 27);
-    lv_laneCaps[3] = libNtve_gf_DifficultyValueInt(35, 35, 40, 45);
-    lv_laneCaps[4] = libNtve_gf_DifficultyValueInt(35, 35, 40, 45);
-    lv_laneCaps[5] = libNtve_gf_DifficultyValueInt(35, 35, 40, 45);
-    lv_laneCaps[6] = libNtve_gf_DifficultyValueInt(21, 21, 24, 27);
-    lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(21, 21, 24, 27);
-    autoEAED437A_n = libNtve_gf_DifficultyValueInt(6, 6, 6, 6);
-    for (autoEAED437A_i = 1; autoEAED437A_i <= autoEAED437A_n; autoEAED437A_i += 1) {
-        lv_i = 1;
-        for ( ; ( (auto1A9A4CE2_ai >= 0 && lv_i <= auto1A9A4CE2_ae) || (auto1A9A4CE2_ai < 0 && lv_i >= auto1A9A4CE2_ae) ) ; lv_i += auto1A9A4CE2_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto4673B485_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto4673B485_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 3, 3, 4, 4, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto4673B485_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 6, 6, 0, 0), "Marine", lv_i));
-                }
-                else if (auto4673B485_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 10, 10, 16, 16, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto3C8B3922_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto3C8B3922_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto3C8B3922_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto3C8B3922_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                auto972D9657_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto972D9657_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Sentry", lv_i));
-                }
-                else if (auto972D9657_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Reaper", lv_i));
-                }
-                else if (auto972D9657_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Roach", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(30, 30, 30, 30), c_timeAI);
-    }
-    autoB7069A69_n = libNtve_gf_DifficultyValueInt(6, 6, 6, 6);
-    for (autoB7069A69_i = 1; autoB7069A69_i <= autoB7069A69_n; autoB7069A69_i += 1) {
-        lv_i = 1;
-        for ( ; ( (auto3C06C541_ai >= 0 && lv_i <= auto3C06C541_ae) || (auto3C06C541_ai < 0 && lv_i >= auto3C06C541_ae) ) ; lv_i += auto3C06C541_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto6AED80F3_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto6AED80F3_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 5, 5, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto6AED80F3_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 6, 6, 8, 8, 0, 0), "Marine", lv_i));
-                }
-                else if (auto6AED80F3_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 16, 16, 20, 20, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto7B6F969F_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto7B6F969F_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto7B6F969F_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto7B6F969F_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                autoFF1C5907_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoFF1C5907_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Sentry", lv_i));
-                }
-                else if (autoFF1C5907_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Reaper", lv_i));
-                }
-                else if (autoFF1C5907_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Roach", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(30, 30, 30, 30), c_timeAI);
-    }
-    TriggerExecute(gt_AmbientWaves3, true, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AmbientWaves2_Init () {
-    gt_AmbientWaves2 = TriggerCreate("gt_AmbientWaves2_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Ambient Waves 3
-//--------------------------------------------------------------------------------------------------
-bool gt_AmbientWaves3_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    region[8] lv_spawnRegions;
-    point[8] lv_firstWaypoints;
-    point[8] lv_secondWaypoints;
-    int[8] lv_laneIndexes;
-    int[8] lv_laneCaps;
-    int lv_i;
-    unitgroup lv_currentWave;
-
-    // Automatic Variable Declarations
-    int auto4993A17A_n;
-    int auto4993A17A_i;
-    const int autoF6567E2D_ae = 7;
-    const int autoF6567E2D_ai = 1;
-    string auto66A5D5E1_val;
-    string auto68F21137_val;
-    string autoC44960D8_val;
-    string autoB609BFA1_val;
-    int auto870539A4_n;
-    int auto870539A4_i;
-    const int auto99D26EC3_ae = 7;
-    const int auto99D26EC3_ai = 1;
-    string auto6BB48E61_val;
-    string auto6552BDE6_val;
-    string auto0994FE55_val;
-    string auto500874F6_val;
-    string auto419762DB_val;
-
-    // Variable Initialization
-    lv_currentWave = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_spawnRegions[1] = RegionFromId(31);
-    lv_spawnRegions[2] = RegionFromId(33);
-    lv_spawnRegions[3] = RegionFromId(34);
-    lv_spawnRegions[4] = RegionFromId(35);
-    lv_spawnRegions[5] = RegionFromId(36);
-    lv_spawnRegions[6] = RegionFromId(37);
-    lv_spawnRegions[7] = RegionFromId(39);
-    lv_firstWaypoints[1] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[2] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[3] = RegionGetCenter(RegionFromId(3));
-    lv_firstWaypoints[4] = RegionGetCenter(RegionFromId(4));
-    lv_firstWaypoints[5] = RegionGetCenter(RegionFromId(5));
-    lv_firstWaypoints[6] = RegionGetCenter(RegionFromId(30));
-    lv_firstWaypoints[7] = RegionGetCenter(RegionFromId(30));
-    lv_secondWaypoints[1] = PointFromId(1548);
-    lv_secondWaypoints[2] = PointFromId(1548);
-    lv_secondWaypoints[3] = PointFromId(1549);
-    lv_secondWaypoints[4] = PointFromId(1549);
-    lv_secondWaypoints[5] = PointFromId(1549);
-    lv_secondWaypoints[6] = PointFromId(1550);
-    lv_secondWaypoints[7] = PointFromId(1550);
-    lv_laneIndexes[1] = 1;
-    lv_laneIndexes[2] = 1;
-    lv_laneIndexes[3] = 2;
-    lv_laneIndexes[4] = 2;
-    lv_laneIndexes[5] = 2;
-    lv_laneIndexes[6] = 3;
-    lv_laneIndexes[7] = 3;
-    lv_laneCaps[1] = libNtve_gf_DifficultyValueInt(27, 27, 30, 33);
-    lv_laneCaps[2] = libNtve_gf_DifficultyValueInt(27, 27, 30, 33);
-    lv_laneCaps[3] = libNtve_gf_DifficultyValueInt(45, 45, 50, 55);
-    lv_laneCaps[4] = libNtve_gf_DifficultyValueInt(45, 45, 50, 55);
-    lv_laneCaps[5] = libNtve_gf_DifficultyValueInt(45, 45, 50, 55);
-    lv_laneCaps[6] = libNtve_gf_DifficultyValueInt(27, 27, 30, 33);
-    lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(27, 27, 30, 33);
-    auto4993A17A_n = libNtve_gf_DifficultyValueInt(6, 6, 6, 6);
-    for (auto4993A17A_i = 1; auto4993A17A_i <= auto4993A17A_n; auto4993A17A_i += 1) {
-        lv_i = 1;
-        for ( ; ( (autoF6567E2D_ai >= 0 && lv_i <= autoF6567E2D_ae) || (autoF6567E2D_ai < 0 && lv_i >= autoF6567E2D_ae) ) ; lv_i += autoF6567E2D_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto66A5D5E1_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto66A5D5E1_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 5, 5, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto66A5D5E1_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 6, 6, 8, 8, 0, 0), "Marine", lv_i));
-                }
-                else if (auto66A5D5E1_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 16, 16, 20, 20, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto68F21137_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto68F21137_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto68F21137_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto68F21137_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                autoC44960D8_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoC44960D8_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Sentry", lv_i));
-                }
-                else if (autoC44960D8_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Reaper", lv_i));
-                }
-                else if (autoC44960D8_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Roach", lv_i));
-                }
-                else {
-                }
-                autoB609BFA1_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoB609BFA1_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "VoidRay", lv_i));
-                }
-                else if (autoB609BFA1_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Banshee", lv_i));
-                }
-                else if (autoB609BFA1_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Mutalisk", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(30, 30, 30, 30), c_timeAI);
-    }
-    auto870539A4_n = libNtve_gf_DifficultyValueInt(6, 6, 6, 6);
-    for (auto870539A4_i = 1; auto870539A4_i <= auto870539A4_n; auto870539A4_i += 1) {
-        lv_i = 1;
-        for ( ; ( (auto99D26EC3_ai >= 0 && lv_i <= auto99D26EC3_ae) || (auto99D26EC3_ai < 0 && lv_i >= auto99D26EC3_ae) ) ; lv_i += auto99D26EC3_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto6BB48E61_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto6BB48E61_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 5, 5, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto6BB48E61_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 6, 6, 8, 8, 0, 0), "Marine", lv_i));
-                }
-                else if (auto6BB48E61_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 16, 16, 20, 20, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto6552BDE6_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto6552BDE6_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto6552BDE6_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto6552BDE6_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                auto0994FE55_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto0994FE55_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Sentry", lv_i));
-                }
-                else if (auto0994FE55_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Reaper", lv_i));
-                }
-                else if (auto0994FE55_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Roach", lv_i));
-                }
-                else {
-                }
-                auto500874F6_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto500874F6_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "VoidRay", lv_i));
-                }
-                else if (auto500874F6_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Banshee", lv_i));
-                }
-                else if (auto500874F6_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Mutalisk", lv_i));
-                }
-                else {
-                }
-                auto419762DB_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto419762DB_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Immortal", lv_i));
-                }
-                else if (auto419762DB_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Cyclone", lv_i));
-                }
-                else if (auto419762DB_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 2, 0, 0), "Ravager", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(30, 30, 30, 30), c_timeAI);
-    }
-    TriggerExecute(gt_AmbientWaves4, true, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AmbientWaves3_Init () {
-    gt_AmbientWaves3 = TriggerCreate("gt_AmbientWaves3_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Ambient Waves 4
-//--------------------------------------------------------------------------------------------------
-bool gt_AmbientWaves4_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    region[8] lv_spawnRegions;
-    point[8] lv_firstWaypoints;
-    point[8] lv_secondWaypoints;
-    int[8] lv_laneIndexes;
-    int[8] lv_laneCaps;
-    int lv_i;
-    unitgroup lv_currentWave;
-
-    // Automatic Variable Declarations
-    const int auto06B1D129_ae = 7;
-    const int auto06B1D129_ai = 1;
-    string auto747A94B3_val;
-    string auto41135753_val;
-    string autoD2CD9ED5_val;
-    string auto795C581B_val;
-    string auto38F6A8E0_val;
-
-    // Variable Initialization
-    lv_currentWave = UnitGroupEmpty();
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_spawnRegions[1] = RegionFromId(31);
-    lv_spawnRegions[2] = RegionFromId(33);
-    lv_spawnRegions[3] = RegionFromId(34);
-    lv_spawnRegions[4] = RegionFromId(35);
-    lv_spawnRegions[5] = RegionFromId(36);
-    lv_spawnRegions[6] = RegionFromId(37);
-    lv_spawnRegions[7] = RegionFromId(39);
-    lv_firstWaypoints[1] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[2] = RegionGetCenter(RegionFromId(28));
-    lv_firstWaypoints[3] = RegionGetCenter(RegionFromId(3));
-    lv_firstWaypoints[4] = RegionGetCenter(RegionFromId(4));
-    lv_firstWaypoints[5] = RegionGetCenter(RegionFromId(5));
-    lv_firstWaypoints[6] = RegionGetCenter(RegionFromId(30));
-    lv_firstWaypoints[7] = RegionGetCenter(RegionFromId(30));
-    lv_secondWaypoints[1] = PointFromId(1548);
-    lv_secondWaypoints[2] = PointFromId(1548);
-    lv_secondWaypoints[3] = PointFromId(1549);
-    lv_secondWaypoints[4] = PointFromId(1549);
-    lv_secondWaypoints[5] = PointFromId(1549);
-    lv_secondWaypoints[6] = PointFromId(1550);
-    lv_secondWaypoints[7] = PointFromId(1550);
-    lv_laneIndexes[1] = 1;
-    lv_laneIndexes[2] = 1;
-    lv_laneIndexes[3] = 2;
-    lv_laneIndexes[4] = 2;
-    lv_laneIndexes[5] = 2;
-    lv_laneIndexes[6] = 3;
-    lv_laneIndexes[7] = 3;
-    lv_laneCaps[1] = libNtve_gf_DifficultyValueInt(30, 30, 36, 39);
-    lv_laneCaps[2] = libNtve_gf_DifficultyValueInt(30, 30, 36, 39);
-    lv_laneCaps[3] = libNtve_gf_DifficultyValueInt(50, 50, 60, 65);
-    lv_laneCaps[4] = libNtve_gf_DifficultyValueInt(50, 50, 60, 65);
-    lv_laneCaps[5] = libNtve_gf_DifficultyValueInt(50, 50, 60, 65);
-    lv_laneCaps[6] = libNtve_gf_DifficultyValueInt(30, 30, 36, 39);
-    lv_laneCaps[7] = libNtve_gf_DifficultyValueInt(30, 30, 36, 39);
-    while (true) {
-        lv_i = 1;
-        for ( ; ( (auto06B1D129_ai >= 0 && lv_i <= auto06B1D129_ae) || (auto06B1D129_ai < 0 && lv_i >= auto06B1D129_ae) ) ; lv_i += auto06B1D129_ai ) {
-            if ((gv_currentEnemyUnits >= gv_enemyUnitsRemaining)) {
-                return true;
-            }
-
-            while (!((UnitGroupCount(gv_enemyGroups[0], c_unitCountAlive) < libNtve_gf_DifficultyValueInt(150, 150, 175, 200)))) {
-                Wait(1.0, c_timeAI);
-            }
-            if ((gv_laneActive[lv_i] == true) && (UnitGroupCount(gv_enemyGroups[lv_laneIndexes[lv_i]], c_unitCountAlive) <= lv_laneCaps[lv_i])) {
-                lv_currentWave = UnitGroupEmpty();
-                auto747A94B3_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto747A94B3_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 4, 4, 6, 6, 0, 0), "Zealot", lv_i));
-                }
-                else if (auto747A94B3_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 6, 6, 10, 10, 0, 0), "Marine", lv_i));
-                }
-                else if (auto747A94B3_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 16, 16, 24, 24, 0, 0), "Zergling", lv_i));
-                }
-                else {
-                }
-                auto41135753_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto41135753_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Stalker", lv_i));
-                }
-                else if (auto41135753_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Marauder", lv_i));
-                }
-                else if (auto41135753_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 2, 2, 2, 3, 0, 0), "Hydralisk", lv_i));
-                }
-                else {
-                }
-                autoD2CD9ED5_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (autoD2CD9ED5_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Sentry", lv_i));
-                }
-                else if (autoD2CD9ED5_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Reaper", lv_i));
-                }
-                else if (autoD2CD9ED5_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Roach", lv_i));
-                }
-                else {
-                }
-                auto795C581B_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto795C581B_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "VoidRay", lv_i));
-                }
-                else if (auto795C581B_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Banshee", lv_i));
-                }
-                else if (auto795C581B_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 2, 2, 0, 0), "Mutalisk", lv_i));
-                }
-                else {
-                }
-                auto38F6A8E0_val = PlayerRace(gv_pLAYER_05_ENEMY_AMBIENT);
-                if (auto38F6A8E0_val == "Prot") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Immortal", lv_i));
-                }
-                else if (auto38F6A8E0_val == "Terr") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 1, 0, 0), "Cyclone", lv_i));
-                }
-                else if (auto38F6A8E0_val == "Zerg") {
-                    UnitGroupAddUnitGroup(lv_currentWave, gf_SpawnAmbientUnit(libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_05_ENEMY_AMBIENT), 1, 1, 1, 2, 0, 0), "Ravager", lv_i));
-                }
-                else {
-                }
-                libCOMI_gf_DropPodWarpInUnitGroup(lv_currentWave, RegionRandomPoint(lv_spawnRegions[lv_i]));
-                AIAttackWaveSetTargetPlayer(gv_pLAYER_05_ENEMY_AMBIENT, libCOOC_gf_HumanPlayers());
-                AIAttackWaveSetGatherPoint(gv_pLAYER_05_ENEMY_AMBIENT, RegionGetCenter(lv_spawnRegions[lv_i]));
-                AIAttackWaveUseGroup(gv_pLAYER_05_ENEMY_AMBIENT, lv_currentWave);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_firstWaypoints[lv_i], false);
-                AIAttackWaveAddWaypoint(gv_pLAYER_05_ENEMY_AMBIENT, lv_secondWaypoints[lv_i], false);
-                AIAttackWaveSend(gv_pLAYER_05_ENEMY_AMBIENT, 0, false);
-            }
-
-        }
-        Wait(libNtve_gf_DifficultyValueInt(30, 30, 30, 30), c_timeAI);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_AmbientWaves4_Init () {
-    gt_AmbientWaves4 = TriggerCreate("gt_AmbientWaves4_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4680,19 +4019,19 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
     auto9294BB73_val = PlayerRace(lv_player);
     if (auto9294BB73_val == "Prot") {
         libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitAbilityEnable(UnitLastCreated(), "NovaMothershipWarpOrder", false);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/B84A5736"), null);
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaMothershipWarpOrder", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "80");
     }
     else if (auto9294BB73_val == "Terr") {
         libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitAbilityEnable(UnitLastCreated(), "NovaGorgonTrainOrder", false);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/EA2A3FD2"), null);
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaGorgonTrainOrder", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "80");
     }
     else if (auto9294BB73_val == "Zerg") {
         libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitAbilityEnable(UnitLastCreated(), "NovaLeviathanSpawnMutalisk", false);
-        UnitAbilityEnable(UnitLastCreated(), "NovaLeviathanSpawnBroodLord", false);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/F09E7091"), null);
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanSpawnMutalisk", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, "48");
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanSpawnBroodLord", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, "74");
     }
     else {
         return true;
@@ -4723,7 +4062,7 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
-    gf_JinaraVikingWaves(gv_jinaraMothership1, 6);
+    gf_JinaraVikingWaves(gv_jinaraMothership1, 4);
     autoC6E507EE_val = PlayerRace(lv_player);
     if (autoC6E507EE_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipProtN08", true, -1);
@@ -4921,16 +4260,6 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
         UnitKill(gv_jinaraMothership1);
     }
 
-    if ((gv_nightmare == false)) {
-        gv_laneActive[1] = false;
-        gv_laneActive[2] = false;
-        gv_laneActive[3] = false;
-        gv_laneActive[4] = false;
-        gv_laneActive[5] = false;
-        gv_laneActive[6] = false;
-        gv_laneActive[7] = false;
-    }
-
     TriggerQueueEnter();
     if (((libCOMI_gf_GameIsOver() == true))) {
         return true;
@@ -4940,21 +4269,22 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     autoA9F77768_val = PlayerRace(lv_player);
     if (autoA9F77768_val == "Prot") {
         libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropShieldsMax, 5000.0);
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropShieldsMax, 3000.0);
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 4500.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/31FCB525"), null);
-        CatalogFieldValueSet(c_gameCatalogAbil, "SOAMothershipLineAttackV2", "Cost[" + IntToString(1) + "].Cooldown.TimeUse", lv_player, "5");
+        CatalogFieldValueSet(c_gameCatalogAbil, "SOAMothershipLineAttackV2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
     }
     else if (autoA9F77768_val == "Terr") {
         libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 8000.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/02F20D36"), null);
-        CatalogFieldValueSet(c_gameCatalogAbil, "NovaGorgonApocalypse", "Cost[" + IntToString(1) + "].Cooldown.TimeUse", lv_player, "5");
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaGorgonApocalypse", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
     }
     else if (autoA9F77768_val == "Zerg") {
         libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 6000.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/BDA269F7"), null);
-        CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanBioStasis", "Cost[" + IntToString(1) + "].Cooldown.TimeUse", lv_player, "5");
+        CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanBioStasis", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
     }
     else {
         return true;
@@ -4985,7 +4315,7 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
-    gf_JinaraVikingWaves(gv_jinaraMothership2, 10);
+    gf_JinaraVikingWaves(gv_jinaraMothership2, 8);
     auto995D6A61_val = PlayerRace(lv_player);
     if (auto995D6A61_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipSecondProtN08", true, -1);
@@ -5281,6 +4611,8 @@ void InitTriggers () {
     gt_Init07Environment_Init();
     gt_Init08Difficulties_Init();
     gt_DebugStage2_Init();
+    gt_DebugStage3_Init();
+    gt_DebugControl_Init();
     gt_DebugMother_Init();
     gt_DebugMother2_Init();
     gt_DebugNightmare_Init();
@@ -5319,10 +4651,6 @@ void InitTriggers () {
     gt_AIGiveResources_Init();
     gt_BullyActivationSequence_Init();
     gt_AmbientWavesAICommander_Init();
-    gt_AmbientWaves1_Init();
-    gt_AmbientWaves2_Init();
-    gt_AmbientWaves3_Init();
-    gt_AmbientWaves4_Init();
     gt_AttackWave01_Init();
     gt_AttackWave02_Init();
     gt_AttackWave03_Init();

@@ -256,6 +256,7 @@ This is how long after a sound is played before another is allowed to play. Can 
 - Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
 - Fixed an issue where Corsair's Disruption Web ability affected invulnerable targets.
 - Fixed an issue where Baneling's Explode ability tooltip showed a level.
+- Fixed an issue where Arbiter's could be affected by cloaking field abilities.
 
 yeah.
 
@@ -671,6 +672,7 @@ Due to MULEs, you end up floating WAY more minerals than gas. This price reducti
   - Unit info shows single "ATX Laser Battery" weapon.
   - Will prioritize using AOE weapon unless issued attack order.
   - Removed random delay from weapon.
+  - Reworked mover.
 
 No longer have to queue a bunch of move commands to get value out of the Hyperion, it now gets full attack speed from just a-moving. Attack speed was slightly nerfed to 0.11 to adjust for Raynor's level 15 perk now properly affecting the weapon.
 
@@ -1085,7 +1087,7 @@ Disruption Web research has been replaced with Flux Vanes. Baseline Disruption W
 - Increased Dark Archon Confusion radius from 2 to 3.
 - Buffed Dark Archon Mind Control ability to no longer take up supply.
 
-Should make massing Dark Archons more viable. Why can High Archons exist as Archons with Storm while Dark Archons just tickle?
+Should make massing Dark Archons more viable. Why can High Archons do full damage while Dark Archons just tickle?
 
 - Changed Dark Archon skin.
   - Visually green instead of red.
