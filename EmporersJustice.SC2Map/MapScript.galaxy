@@ -1681,6 +1681,7 @@ bool gt_StartGameQ_Func (bool testConds, bool runActions) {
         if (auto52A88B9B_var == null) { break; }
         VisRevealArea(gv_pLAYER_01_USER, RegionCircle(UnitGetPosition(auto52A88B9B_var), 6.0), 0.0, false);
     }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, gv_mapMusicTrack, c_soundtrackCueAny, c_soundtrackIndexAny, true);
     Wait(5.0, c_timeAI);
     TriggerQueueEnter();
     TriggerExecute(gt_ObjectiveDefeattheDeathFleetCreate, true, true);
