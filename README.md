@@ -1251,6 +1251,15 @@ Should help keeping Corrosive Bile on CD with the Biomass CDR. Will try to break
 
 Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as well.
 
+- Changed Swarm Host Locust to be able to pick up Biomass for the Swarm Host.
+
+Makes microing Swarm Host much easier. No longer do you have to unburrow your Swarm Host to go pick up Biomass.
+
+- Added small delay to Toxic Nest explode when autocast.
+  - Explodes quicker against fast units.
+
+Reduces wasting Toxic Nest value by blowing up 1 Marine out of the 40.
+
 - Fixed an issue where canceling Morph to Brutalisk did not destroy the cocoon model.
 - Fixed an issue where Morph to Brutalisk did not play a sound when morphing into a cocoon.
 - Increased visual scale of Brutalisk Cocoons by 30%.
@@ -1262,7 +1271,7 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 - Changed Morph to Brutalisk to disable autocast when canceled.
 - Changed Morph to Leviathan to disable autocast when canceled.
 
-Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel button was removed from the command card but you could still stop the morph by canceling it from the queue. Cancel was likely removed because it would immediately start the morph again if you had autocast on. A little change to disable autocast when you cancel should fix that, no more accidentally turning your Vipers into Leviathans!.
+Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel button was removed from the command card but you could still stop the morph by canceling it from the queue. Cancel was likely removed because it would immediately start the morph again if you had autocast on. A little change to disable autocast when you cancel should fix that; no more accidentally turning your Vipers into Leviathans!.
 
 - Fixed an issue where Mutalisk's Sundering Glaive passive tooltip highlighted unit names.
 - Fixed an issue where Viper's Virulent Microbes passive tooltip highlighted unit names.
@@ -1273,7 +1282,7 @@ Some tooltip fixes. Only the research tooltips should highlight unit names, not 
 
 - Fixed an issue where Leviathan's air attack projectiles were all launched from one point.
 
-Leviathan's have four holes, use them all! This bug was caused by using the original WoL Leviathan's attach method instead of one for Abathur's Leviathan.
+Leviathan's have four holes, use them all! This bug was caused by using the original WoL Leviathan's attach method instead of one for Abathur's Leviathan. Fun fact: this problem is shared with Kerrigan's Leviathan in the HotS campaign.
 
 ### Alarak
 

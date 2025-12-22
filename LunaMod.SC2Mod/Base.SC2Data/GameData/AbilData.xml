@@ -47,6 +47,9 @@
             <Charge TimeUse="100"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="BiomassPickup">
+        <AutoCastFilters value="-;Ally,Neutral,Enemy,Structure,User1,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Blink">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
@@ -72,6 +75,9 @@
     <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair">
         <Flags index="AutoCastOn" value="0"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="ToxicNestExplode">
+        <AutoCastValidatorArray value="CasterHasToxicNestCounter"/>
+    </CAbilEffectInstant>
     <CAbilTransport id="TychusBunkerTransport">
         <AbilSetId value="ULdS"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>

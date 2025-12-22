@@ -4703,6 +4703,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
             TriggerEnable(lib74A68E34_gt_AbathurMorphAutoCastFix, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
+            TriggerEnable(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAbathurSymbiote", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, true);
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, true);
@@ -6055,6 +6056,47 @@ void lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init () {
     TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, c_playerAny, "LocustCreeperCreateSet");
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, c_playerAny, "LocustWeaponCreeperCreateSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurBiomassPickupLocustCheck
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_swarmhost;
+    unit lv_target;
+    unit lv_biomass;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_biomass = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(lv_target, "LocustTimedLife") == true)) {
+        lv_swarmhost = UnitBehaviorEffectUnit(lv_target, "LocustTimedLife", c_effectUnitCaster, 0);
+        if ((UnitHasBehavior2(lv_swarmhost, "BiomassMaxedMarker") == false) && ((UnitGetType(lv_swarmhost) == "SwarmHostSplitB") || (UnitGetType(lv_swarmhost) == "SwarmHostSplitBBurrowed") || (UnitGetType(lv_swarmhost) == "SwarmHostMP") || (UnitGetType(lv_swarmhost) == "SwarmHostBurrowedMP"))) {
+            UnitCreateEffectUnit(lv_biomass, "BiomassPickupDummy", lv_swarmhost);
+        }
+        else {
+            UnitBehaviorAdd(lv_target, "NoBiomassPickup", lv_target, 1);
+        }
+    }
+    else {
+        UnitCreateEffectUnit(lv_biomass, "BiomassPickupDummy", lv_target);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init () {
+    lib74A68E34_gt_AbathurBiomassPickupLocustCheck = TriggerCreate("lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, c_playerAny, "BiomassPickupDummy2");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9975,6 +10017,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init();
     lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
+    lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();

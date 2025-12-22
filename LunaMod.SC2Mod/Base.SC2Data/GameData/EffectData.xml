@@ -113,6 +113,12 @@
     <CEffectDamage id="AutoTurret">
         <Amount value="18"/>
     </CEffectDamage>
+    <CEffectSet id="BiomassPickup">
+        <ValidatorArray index="2" value="BiomassPickupValidator"/>
+        <ValidatorArray value="NothaveNoBiomassPickup"/>
+        <EffectArray index="0" value="BiomassPickupDummy2"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="BiomassPickupDummy2"/>
     <CEffectEnumArea id="CorsairMPDisruptionWebSearch">
         <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -1037,6 +1043,28 @@
     <CEffectCreatePersistent id="TimeWarpCP">
         <ValidatorArray index="2" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="ToxicNestCounter">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ToxicNestCounterFast">
+        <ValidatorArray index="0" value="ToxicNestExplodeFastEnemyCheck"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ToxicNestCounter"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ToxicNestCounterVeryFast">
+        <ValidatorArray index="0" value="ToxicNestExplodeVeryFastEnemyCheck"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ToxicNestCounter"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ToxicNestCounterSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ToxicNestCounter"/>
+        <EffectArray value="ToxicNestCounterFast"/>
+        <EffectArray value="ToxicNestCounterVeryFast"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="ToxicNestVirulentNestSnareHeroicAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>

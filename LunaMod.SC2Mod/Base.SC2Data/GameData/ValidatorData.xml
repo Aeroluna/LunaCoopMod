@@ -44,6 +44,10 @@
         <CombineArray value="IsBiological"/>
         <CombineArray value="IsTychusWarhound"/>
     </CValidatorCombine>
+    <CValidatorCombine id="BiomassPickupValidator">
+        <CombineArray value="HasLocustTimedLife"/>
+        <CombineArray value="NotSummonAndNotTimedLifeOrLarva"/>
+    </CValidatorCombine>
     <CValidatorUnitOrderQueue id="CommanderPrestigeStetmannRespawnAttacking">
         <WhichUnit Effect="CommanderPrestigeStetmannRespawnTeleport" Value="Target"/>
         <AbilLink value="attack"/>
@@ -149,6 +153,16 @@
         <Compare value="GT"/>
         <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasLocustTimedLife">
+        <Compare value="GT"/>
+        <Behavior value="LocustTimedLife"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasToxicNestCounter">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Value value="16"/>
+        <Behavior value="ToxicNestCounter"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="IsNotMohandar">
         <Value value="Mohandar"/>
         <Find value="0"/>
@@ -161,6 +175,9 @@
     <CValidatorUnitFilters id="LockOnCasterFilters">
         <Filters value="-;Stasis,Dead,Hidden,Stunned,Silenced"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitCompareBehaviorCount id="NothaveNoBiomassPickup">
+        <Behavior value="NoBiomassPickup"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeHornerDefenseCooldown">
         <Behavior value="CommanderPrestigeHornerDefenseCooldown"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -793,6 +810,11 @@
         <AreaArray index="0" Count="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorCombine id="NotSummonAndNotTimedLifeOrLarva">
+        <Type value="And"/>
+        <CombineArray value="NotSummonedUnit"/>
+        <CombineArray value="NotTimedLifeUnitAndNotLarva"/>
+    </CValidatorCombine>
     <CValidatorLocationCompareRange id="SymbiotePushCheck">
         <Range value="2"/>
     </CValidatorLocationCompareRange>
@@ -857,6 +879,34 @@
     <CValidatorUnitCompareBehaviorCount id="NotTychusMarauderHealingWardTargetUpgraded">
         <Behavior value="TychusMarauderHealingWardTargetUpgrade"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="ToxicNestExplodeFastEnemyCheck">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="1"/>
+            <Validator value="ToxicNestFastSpeedCheck"/>
+        </AreaArray>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="ToxicNestExplodeVeryFastEnemyCheck">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="1"/>
+            <Validator value="ToxicNestVeryFastSpeedCheck"/>
+        </AreaArray>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareSpeed id="ToxicNestFastSpeedCheck">
+        <Compare value="GE"/>
+        <Value value="3"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitCompareSpeed id="ToxicNestVeryFastSpeedCheck">
+        <Compare value="GE"/>
+        <Value value="4"/>
+    </CValidatorUnitCompareSpeed>
     <CValidatorPlayerRequirement id="TychusHercGrappleImpacts">
         <Find value="1"/>
         <Value value="HaveTychusHercGrappleImpacts"/>

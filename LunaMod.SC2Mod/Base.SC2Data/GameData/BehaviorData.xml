@@ -669,6 +669,12 @@
             <AbilLinkDisableArray value="HallucinationDisruptor"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NoBiomassPickup">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NovaCombatSuit">
         <Modification MoveSpeedBonus="0.6992" MoveSpeedMultiplier="1"/>
     </CBehaviorBuff>
@@ -1055,6 +1061,20 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerTowerOverchargeStetmann">
         <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ToxicNestCounter">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="65535"/>
+        <Duration value="0.1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ToxicNestCounterSearch">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="ToxicNestExplodeEnemyCheck"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ToxicNestCounterSet"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="TychusSpectreUltrasonicPulse">
         <Alignment value="Negative"/>
