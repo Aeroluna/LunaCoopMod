@@ -833,6 +833,7 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
         autoBCDF73B4_var = PlayerGroupNextPlayer(autoBCDF73B4_g, autoBCDF73B4_var);
         if (autoBCDF73B4_var < 0) { break; }
         libCOMI_gf_SetCoopAIAttackGroupSpawnPoint(autoBCDF73B4_var, lv_gather);
+        AIAttackWaveSetGatherPoint(autoBCDF73B4_var, lv_gather);
         AIAttackWaveSetTargetEscortNL(autoBCDF73B4_var, libNtve_gf_ConvertUnitToUnitGroup(lp_escortee), 0);
         autoCDAAE577_g = UnitGroupFilterPlayer(lv_currentWave, autoBCDF73B4_var, 0);
         autoCDAAE577_u = UnitGroupCount(autoCDAAE577_g, c_unitCountAll);
@@ -4016,20 +4017,24 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    while (!((gv_lock == false))) {
+        Wait(0.1, c_timeGame);
+    }
+    gv_lock = true;
     lv_player = gv_pLAYER_05_ENEMY_AMBIENT;
     auto9294BB73_val = PlayerRace(lv_player);
     if (auto9294BB73_val == "Prot") {
-        libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/B84A5736"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaMothershipWarpOrder", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "80");
     }
     else if (auto9294BB73_val == "Terr") {
-        libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/EA2A3FD2"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaGorgonTrainOrder", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "80");
     }
     else if (auto9294BB73_val == "Zerg") {
-        libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/F09E7091"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanSpawnMutalisk", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, "48");
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanSpawnBroodLord", "Cost[" + IntToString(0) + "].Charge.TimeUse", lv_player, "74");
@@ -4040,11 +4045,14 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
     gv_jinaraMothership1 = UnitLastCreated();
     gf_TrackUnitforLeaderboard(gv_jinaraMothership1, 2);
     gv_enemyUnitsRemaining += 1;
-    libCOMI_gf_DropPodWarpInUnitGroup(libNtve_gf_ConvertUnitToUnitGroup(gv_jinaraMothership1), UnitGetPosition(gv_jinaraMothership1));
+    libCOMI_gf_DropPodWarpInUnitGroup(libNtve_gf_ConvertUnitToUnitGroup(gv_jinaraMothership1), RegionGetCenter(RegionFromId(35)));
     AIAttackWaveSetTargetPoint(lv_player, gv_waveTarget[lv_player]);
+    AIAttackWaveSetGatherPoint(lv_player, RegionGetCenter(RegionFromId(35)));
     AIAttackWaveUseUnit(lv_player, gv_jinaraMothership1);
     AIAttackWaveAddWaypoint(lv_player, RegionGetCenter(RegionFromId(35)), false);
-    AIAttackWaveSend(lv_player, 5, true);
+    AIAttackWaveSend(lv_player, 5, false);
+    gv_lock = false;
+    Wait(5.0, c_timeAI);
     gf_JinaraEscort(gv_jinaraMothership1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, 2, 0);
     SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryMusic, true);
     SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "nDLC_Music_Nova08_Mothership", c_soundtrackCueAny, c_soundtrackIndexAny, true);
@@ -4266,26 +4274,33 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    while (!((gv_lock == false))) {
+        Wait(0.1, c_timeGame);
+    }
+    gv_lock = true;
     lv_player = gv_pLAYER_05_ENEMY_AMBIENT;
     autoA9F77768_val = PlayerRace(lv_player);
     if (autoA9F77768_val == "Prot") {
-        libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropShieldsMax, 3000.0);
-        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 4500.0);
+        libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropShieldsMax, 6000.0);
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 8000.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/31FCB525"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "SOAMothershipLineAttackV2", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
+        CatalogFieldValueSet(c_gameCatalogUnit, "NovaMothership", "Name", lv_player, "Chosen Tal'darim Mothership");
     }
     else if (autoA9F77768_val == "Terr") {
-        libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 8000.0);
+        libNtve_gf_UnitCreateFacingPoint(1, "GehennaCruiser", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 16000.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/02F20D36"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaGorgonApocalypse", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
+        CatalogFieldValueSet(c_gameCatalogUnit, "GehennaCruiser", "Name", lv_player, "Gorgon Battlecruiser Mk. II");
     }
     else if (autoA9F77768_val == "Zerg") {
-        libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", 0, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
-        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 6000.0);
+        libNtve_gf_UnitCreateFacingPoint(1, "NovaLeviathan", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
+        UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifeMax, 14000.0);
         libCOMI_gf_SetUnitInfoTextCampaign(UnitLastCreated(), null, StringExternal("Param/Value/BDA269F7"), null);
         CatalogFieldValueSet(c_gameCatalogAbil, "NovaLeviathanBioStasis", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", lv_player, "8");
+        CatalogFieldValueSet(c_gameCatalogUnit, "NovaLeviathan", "Name", lv_player, "Brood Leviathan");
     }
     else {
         return true;
@@ -4293,11 +4308,14 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     gv_jinaraMothership2 = UnitLastCreated();
     gf_TrackUnitforLeaderboard(UnitLastCreated(), 2);
     gv_enemyUnitsRemaining += 1;
-    libCOMI_gf_DropPodWarpInUnitGroup(libNtve_gf_ConvertUnitToUnitGroup(gv_jinaraMothership1), UnitGetPosition(gv_jinaraMothership1));
+    libCOMI_gf_DropPodWarpInUnitGroup(libNtve_gf_ConvertUnitToUnitGroup(gv_jinaraMothership2), RegionGetCenter(RegionFromId(35)));
     AIAttackWaveSetTargetPoint(lv_player, gv_waveTarget[lv_player]);
+    AIAttackWaveSetGatherPoint(lv_player, RegionGetCenter(RegionFromId(35)));
     AIAttackWaveUseUnit(lv_player, gv_jinaraMothership2);
     AIAttackWaveAddWaypoint(lv_player, RegionGetCenter(RegionFromId(35)), false);
     AIAttackWaveSend(lv_player, 5, true);
+    gv_lock = false;
+    Wait(5.0, c_timeAI);
     gf_JinaraEscort(gv_jinaraMothership2, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, 4, 2);
     SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryMusic, true);
     SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "nDLC_Music_Nova08_Mothership", c_soundtrackCueAny, c_soundtrackIndexAny, true);

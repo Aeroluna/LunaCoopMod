@@ -122,6 +122,39 @@
     <CEffectEnumArea id="CorsairMPDisruptionWebSearch">
         <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectUseMagazine id="FenixClolarionCarrierInterceptor">
+        <MagazineAbil value="FenixClolarionCarrierHangar"/>
+    </CEffectUseMagazine>
+    <CEffectUseMagazine id="FenixClolarionCarrierInterceptorBomber">
+        <EditorCategories value="Race:Protoss"/>
+        <MagazineAbil value="FenixClolarionCarrierBomberHangar"/>
+    </CEffectUseMagazine>
+    <CEffectSet id="FenixClolarionChargeBeamLaunchAndAttackCombineSet">
+        <EffectArray value="FenixClolarionInterceptorLaunchBomberPersistent"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="FenixClolarionInterceptorLaunchBomberPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="FenixClolarionCarrierInterceptorBomber"/>
+        <PeriodicPeriodArray value="1"/>
+        <InitialDelay value="0.1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="FenixClolarionInterceptorLaunchBomberUpgradedPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="FenixClolarionCarrierInterceptorBomber"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <InitialDelay value="0.1"/>
+    </CEffectCreatePersistent>
     <CEffectCreatePersistent id="GravitonPrisonCreatePersistent">
         <ValidatorArray value="NotAbducted"/>
         <ValidatorArray value="NoReaperKD8Knockback"/>
@@ -2908,16 +2941,16 @@
     <CEffectSet id="SILiberatorBaseSet">
         <EditorCategories value="Race:InfestedTerran"/>
         <EffectArray value="SILiberatorBaseLM"/>
-        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
+        <EffectArray value="SILiberatorBaseSetCooldown"/>
     </CEffectSet>
     <CEffectSet id="SILiberatorSwarmFormPermanentDamageSplashSet">
-        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown2"/>
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
     </CEffectSet>
     <CEffectSet id="SILiberatorSwarmFormPermanentImpactSet">
-        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown2"/>
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
         <EffectArray value="SILiberatorSwarmFormPermanentDamageSearchFueledAB"/>
     </CEffectSet>
-    <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown">
+    <CEffectModifyUnit id="SILiberatorBaseSetCooldown">
         <EditorCategories value="Race:InfestedTerran"/>
         <ImpactUnit Value="Caster"/>
         <Cost Abil="SILiberatorSwarmFormLaunchAttack,Execute" CooldownOperation="Max" CooldownTimeUse="6">
@@ -2927,7 +2960,7 @@
     <CEffectSet id="SILiberatorSwarmFormPermanentDummySet">
         <EffectArray index="0" removed="1"/>
     </CEffectSet>
-    <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown2">
+    <CEffectModifyUnit id="SILiberatorSwarmFormPermanentSetCooldown">
         <EditorCategories value="Race:InfestedTerran"/>
         <ImpactUnit Value="Caster"/>
         <Weapon Weapon="SILiberator" CooldownOperation="Max" CooldownFraction="1"/>
@@ -3165,7 +3198,7 @@
     </CEffectSet>
     <CEffectSet id="TempestImpactSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="TempestDamageGround"/>
+        <EffectArray value="TempestDamage"/>
         <EffectArray value="TempestDotRandomOffset"/>
     </CEffectSet>
     <CEffectLaunchMissile id="TempestLaunchMissile">

@@ -243,6 +243,60 @@ order QueenMPSpawnBroodlingsLuna (int player, unit aiUnit, unitgroup scanGroup, 
 }
 
 //--------------------------------------------------------------------------------------------------
+order QueenMPEnsnareLuna (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // AOE that slows units in an area for a duration
+    order ord;
+    point loc;
+    aifilter filter;
+    unitgroup enemyGroup;
+
+    if (!AITactCooldownAllow(aiUnit, c_EnsnareCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_AB_QueenMPEnsnare, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    // Ensnare units that have not been already marked or has existing behavior
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_AB_QueenMPEnsnare);
+    //AISetFilterLifePerMarker(filter, damage, mark);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+
+    // reimplementing this function just so we can filter structures
+    AISetFilterBits(filter, UnitFilterStr("-;Structure,Missile,Stasis,Dead,Hidden,Invulnerable"));
+
+    enemyGroup = AIGetFilterGroup(filter, scanGroup);
+    if (enemyGroup == null) {
+        return null;
+    }
+
+    loc = AIBestTargetPoint(
+        enemyGroup,
+        2, // min hits
+        20, // damage base
+        1.5, // min score
+        AIEffectFixed(player, c_EF_QueenMPEnsnareArea, c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_AB_QueenMPEnsnare, c_fieldRange0)+3,
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 void AIThinkQueenClassicLuna (int player, unit aiUnit, unitgroup scanGroup) {
     order ord;
     marker mark;
@@ -271,7 +325,7 @@ void AIThinkQueenClassicLuna (int player, unit aiUnit, unitgroup scanGroup) {
     //}
 
     mark = AIMarker(aiUnit, c_MK_Ensnare);
-    ord = QueenMPEnsnare(player, aiUnit, scanGroup, mark);
+    ord = QueenMPEnsnareLuna(player, aiUnit, scanGroup, mark);
     if (ord != null) {
         if (AIPlayerDifficulty(player) < c_campAdvanced) {
             cooldown = 15.0;

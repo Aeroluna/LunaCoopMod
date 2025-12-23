@@ -438,6 +438,7 @@ Boss fights!
 Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and Consumption have been replaced with their Versus variants. Abathur Vipers are unaffected.
 
 - Increased Brutal AI cooldown of Brood Queen's Ensnare from 0 seconds to 5 seconds.
+- Fixed an issue where Brood Queens would try to Ensnare units it cannot affect such as structures.
 - Buffed Spawn Broodling to allow targeting massive units (This only affects mind controlled Brood Queens).
 - Reworked Spawn Broodling casting AI.
   - Will not be used on Normal difficulty and lower.
@@ -1103,9 +1104,8 @@ Contrasting with the previous change, Black Hole has been changed to red to keep
 Why should that Overseer be able to detect you while it's being crushed in a Black Hole?!
 
 - Added Revelation to Oracle.
-- Buffed Revelation to additionally suppress detection.
 
-That's their main gimmick, why did they remove it? Revelation has been given an additional effect to suppress detection to make it more appealing outside of Versus.
+That's their main gimmick, why did they remove it?
 
 - Increased Oracle's Stasis Ward duration from 15 seconds to 30 seconds.
 
@@ -1118,6 +1118,10 @@ For the prestige focused on stasising things, the P2 just makes Stasis Wards sad
 - Removed deceleration from Oracle's Stasis Ward ability (no longer has to fully stop to cast).
 
 Makes casting much smoother.
+
+- Reduced Corsair subgroup priority from 119 to 115.
+
+This places Corsairs lower than Oracles.
 
 - Reworked Void Stasis into Void Prison.
   - Stuns instead of stasis.
@@ -1661,6 +1665,10 @@ Because each duplicate unit gives the same value now, it's possible to go compos
 
 It seemed weird that these upgrades did not affect their champion counterpart. Fun fact: the Scout range upgrade at the Fleet Beacon *did* affect Mojo. Not sure why this was the exception.
 
+- Reworked Adept/Talis shade attacks from a projectile to a beam.
+
+This should make shade attacks look more distinct from the Adept/Talis.
+
 - Removed Disruptors.
 
 Disruptors are never used with Fenix because it benefits from none of Fenix's Champion AI perks. The disruptors have been moved to Karax.
@@ -1669,9 +1677,21 @@ Disruptors are never used with Fenix because it benefits from none of Fenix's Ch
 
 Why was the radius nerfed so hard? Increased the match the campaign Arbiter's stasis radius.
 
+- Changed Clolarion's Interdictors to launch with the Interceptors instead of after.
+
+Launch the bombers faster!
+
+- Increased projectile scale of Talis attacks by 20%.
+- Increased projectile speed of Talis attacks by 20%.
+- Increased projectile scale of Mojo attacks by 20%.
+- Increased projectile speed of Mojo attacks by 20%.
+- Increased beam scale of Warbringer attacks by 20%.
+
 - Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.
 - Fixed an issue where Talis's Ricochet Glaive impact visual would move/rotate with the unit.
+- Fixed an issue where Clolarion would launch multiple interceptors at a time.
+- Fixed an issue where Warbringer's attack beams moved too slowly.
 
 yeah.
 

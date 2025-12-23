@@ -253,6 +253,34 @@
         <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
         <On Terms="TimerExpired; TimerName RichGeyser; ValidateUnit HarvestableRichVespeneGeyserGasZerg" Send="ModelSwap Extractor_Mecha_HighYield"/>
     </CActorUnit>
+    <CActorAction id="FenixAdeptShadeAttack" effectAttack="FenixAdeptShadeDamage" effectImpact="Bogus" effectLaunch="Bogus">
+        <On index="0" Terms="Effect.FenixAdeptShadeDamage.Stop; FromEffectTreeDescendant"/>
+        <On index="1" Terms="Effect.Bogus.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.Bogus.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.FenixAdeptShadeDamage.Start; At Caster"/>
+        <On index="6" Terms="Effect.Bogus.Start; At Caster"/>
+        <LaunchAssets Sound="FenixShade_BeamInitial_AttackLaunch"/>
+        <BeamScope value="Caster"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <Missile value="Bogus"/>
+    </CActorAction>
+    <CActorAction id="FenixTalisShadeAttack" effectAttack="FenixTalisShadeDamage" effectImpact="Bogus" effectLaunch="Bogus">
+        <On index="0" Terms="Effect.FenixTalisShadeDamage.Stop; FromEffectTreeDescendant"/>
+        <On index="1" Terms="Effect.Bogus.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.Bogus.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.FenixTalisShadeDamage.Start; At Caster"/>
+        <On index="6" Terms="Effect.Bogus.Start; At Caster"/>
+        <LaunchAssets Sound="FenixShade_BeamInitial_AttackLaunch"/>
+        <BeamScope value="Caster"/>
+        <LaunchSiteOps Ops="SOpAttachWeapon"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <Missile value="Bogus"/>
+    </CActorAction>
+    <CActorBeamSimple id="FenixTalisShadeAttackBeam" parent="BeamSimpleAnimationStyleOneShot"/>
+    <CActorUnit id="FenixClolarionCarrier">
+        <Remove Terms="Abil.FenixClolarionCarrierHangar.Launch" Send="AnimPlay Cover Cover 0 0.500000 0.500000 3.000000 AsDuration"/>
+    </CActorUnit>
     <CActorAction id="FenixTalisAdeptBounceShot1">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -277,6 +305,18 @@
     <CActorAction id="FenixTalisAdeptBounceShot8">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorSiteMover id="FenixWarbringerColossusAttackImpactSite">
+        <Acceleration value="80.000000"/>
+        <Deceleration value="80.000000"/>
+        <Speed value="4.000000"/>
+        <SpeedMax value="8.200000"/>
+    </CActorSiteMover>
+    <CActorSiteMover id="FenixWarbringerColossusAttackImpactSiteReverse">
+        <Acceleration value="80.000000"/>
+        <Deceleration value="80.000000"/>
+        <Speed value="4.000000"/>
+        <SpeedMax value="8.200000"/>
+    </CActorSiteMover>
     <CActorModel id="FungalGrowthStopMovement" parent="ModelAnimationStyleContinuous">
         <AutoScaleFactor value="1.000000"/>
         <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
@@ -312,6 +352,7 @@
     <CActorAction id="HyperionVoidCoopGroundAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorBeamSimple id="FenixAdeptShadeAttackBeam" parent="BeamSimpleAnimationStyleOneShot"/>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
