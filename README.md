@@ -143,6 +143,7 @@ thanks Enoki.
 - Added Burrow Move passive icon to the Infestor's (and variants) command card.
 - Increased visual scale of Cyclone's weapon missile by 100%.
 - Changed mineral field/vespene geyser footprint to match Versus.
+- Increased Ultralisk (and variants) armor from 1 to 2.
 
 Copied from Versus.
 
@@ -448,8 +449,9 @@ Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and 
 They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter. Fun fact: Spawn Broodling was previously only casted on Siege Tanks (Only Swann/Raynor).
 
 - Removed Detector from Oracles.
+- Added Revelation to Oracle.
 
-A leftover from granting detection to Vorazun's Oracles. Vorazun is unaffected.
+Returned Revelation to Oracles and in return they lose permanent detection.
 
 - Reduced Liberator's Defender Mode range from 9 to 5.
 - Removed bonus sight radius from Defender Mode.
@@ -771,6 +773,27 @@ Losing Omega Networks nerfed Kerrigan too hard. The new disadvantage and the lac
 
 Isn't it funny that vanilla P1 Kerrigan's best unit was Mutalisks? This should allow P1 to interact with more units.
 
+- Increased Lurker burrow time from 2 seconds to 2.5 seconds.
+- Added Lurker upgrade: Adaptive Talons.
+  - Costs 100/100 and takes 80 seconds.
+  - Researched at the Lurker Den.
+  - Reduces Lurker burrow time from 2.5 to 1.5 seconds.
+- Removed ability for Hydralisk Dens to morph into Lurker Dens.
+- Added ability for Drones to morph into Lurker Dens.
+
+Copied from Versus. Separating Lurker Den should make it easier to tech into Lurkers.
+
+- Added Ultralisk upgrade: Anabolic Synthesis.
+  - Costs 150/150 and takes 60 seconds.
+  - Researched at the Ultralisk Cavern.
+  - Increases Ultralisk movement speed off creep.
+
+Copied from Versus. Speedy Ultralisks!
+
+- Reduced Torrasque size to normal Ultralisk size.
+
+Why are Torrasques bigger when they have the same stats as an Ultralisk?
+
 - Buffed P2 to also hit structures.
   - Will prioritize units and attacking structures.
 
@@ -942,6 +965,10 @@ Even with this upgrade, Wraiths are fragile. This should help improve their surv
 
 Copied from Versus.
 
+- Changed Perdition Turrets to knockback units when unburrowing instead of being unable to unburrow.
+
+Stops Perdition Turrets from being unable to attack when units are standing on top.
+
 - Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listed wrong structures.
 - Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
 
@@ -1103,10 +1130,6 @@ Contrasting with the previous change, Black Hole has been changed to red to keep
 
 Why should that Overseer be able to detect you while it's being crushed in a Black Hole?!
 
-- Added Revelation to Oracle.
-
-That's their main gimmick, why did they remove it?
-
 - Increased Oracle's Stasis Ward duration from 15 seconds to 30 seconds.
 
 When adding Oracles to co-op, this duration got halved, presumably because it wouldn't be fun to get hit by a 30 second stasis by Amon and they were worried it would be too strong with the Stasis Ward upgrade. Realistically, it's not easy getting big hits with Stasis Wards so reverting this should make Oracles more compelling for more than just detection.
@@ -1152,7 +1175,7 @@ Funny that this passive could *nerf* some units. This happened because the buff 
 
 When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now that Vorazun is a proper hero and Shadow Guards no longer use scythes, this weapon has been renamed.
 
-- Fixed (tried to anyways) an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
+- Fixed an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
 - Fixed an issue where Shadow Guard's casting Shadow Fury did not play their attack animation.
 - Fixed an issue where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
 - Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.

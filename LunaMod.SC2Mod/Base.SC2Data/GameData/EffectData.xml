@@ -119,6 +119,14 @@
         <EffectArray index="0" value="BiomassPickupDummy2"/>
     </CEffectSet>
     <CEffectModifyUnit id="BiomassPickupDummy2"/>
+    <CEffectCreatePersistent id="CorsairMPDisruptionWebCreatePersistent">
+        <Marker Duration="0.25" Link="Abil/CorsairMPDisruptionWeb">
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="CorsairMPDisruptionWebCreatePersistentAuto" parent="CorsairMPDisruptionWebCreatePersistent">
+        <ValidatorArray value="noMarkers"/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="CorsairMPDisruptionWebSearch">
         <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -996,6 +1004,9 @@
         <EffectArray value="AutomatedRefineryRichRB"/>
         <EffectArray value="AutomatedRefineryRichZergRB"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="RevelationPersistent">
+        <ExpireDelay value="28"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="SIBarracksCorruption">
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>
@@ -1073,6 +1084,16 @@
     <CEffectDamage id="SymbioteSpikeBurstDamage">
         <Amount value="20"/>
     </CEffectDamage>
+    <CEffectEnumArea id="PerditionTurretKnockbackSE">
+        <EditorCategories value=""/>
+        <SearchFilters value="Ground;Self,Neutral,Structure,Missile,Dead,Hidden"/>
+        <AreaArray Radius="0.6" Effect="TerranBuildingKnockBack2Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TerranBuildingKnockBack2Set">
+        <ValidatorArray value="TargetIsGround"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UnitKnockbackBy2"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="TimeWarpCP">
         <ValidatorArray index="2" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectCreatePersistent>
@@ -1702,12 +1723,6 @@
             <SortArray value="TSRandom"/>
         </TargetSorts>
     </CEffectEnumArea>
-    <CEffectCreatePersistent id="CorsairMPDisruptionWebCreatePersistent">
-        <Marker Duration="0.25" Link="Abil/CorsairMPDisruptionWeb">
-            <MatchFlags index="Link" value="1"/>
-            <MismatchFlags index="Id" value="1"/>
-        </Marker>
-    </CEffectCreatePersistent>
     <CEffectEnumArea id="DarkArchonConfusionSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>

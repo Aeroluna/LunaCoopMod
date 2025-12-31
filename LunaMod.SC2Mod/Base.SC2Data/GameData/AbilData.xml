@@ -72,6 +72,27 @@
     <CAbilEffectTarget id="BuildAutoTurret">
         <Range index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="BurrowLurkerDown">
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilResearch id="LurkerDenResearch">
+        <InfoArray index="Research1" Time="80">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+        </InfoArray>
+        <InfoArray index="Research2" Time="80" Upgrade="DiggingClaws">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="EvolveDiggingClaws" Requirements="LearnDiggingClaws"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilMorph id="PerditionTurretUnburrow">
+        <Flags index="IgnorePlacement" value="1"/>
+    </CAbilMorph>
     <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair">
         <Flags index="AutoCastOn" value="0"/>
     </CAbilEffectTarget>
@@ -877,6 +898,13 @@
     <CAbilEffectInstant id="TychusWarhoundTornadoSprayMissile">
         <Flags index="PassengerAcquireExternal" value="1"/>
     </CAbilEffectInstant>
+    <CAbilResearch id="UltraliskCavernResearch">
+        <InfoArray index="Research1" Time="60" Upgrade="AnabolicSynthesis">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="EvolveAnabolicSynthesis2" Requirements="LearnAnabolicSynthesis"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="UltraliskStetmannMechanicalLifeLeech">
         <TargetSorts>
             <SortArray index="2" value="TSLifeLargestFirst"/>
@@ -1240,6 +1268,11 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OracleRevelation">
         <CmdButtonArray index="Execute" State="Available"/>
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="14"/>
+        </Cost>
+        <Range index="0" value="12"/>
     </CAbilEffectTarget>
     <CAbilBuild id="OracleStasisTrapBuildVorazun">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -1598,7 +1631,19 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="CorsairMPDisruptionWeb">
         <CmdButtonArray index="Execute" Requirements=""/>
+        <Cost index="0">
+            <Cooldown Location="Unit"/>
+        </Cost>
+        <AutoCastFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <AutoCastRange value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="CorsairMPDisruptionWebAuto" parent="CorsairMPDisruptionWeb">
+        <Name value="Abil/Name/CorsairMPDisruptionWebAuto"/>
+        <Effect index="0" value="CorsairMPDisruptionWebCreatePersistentAuto"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Stasis,Invulnerable,Stunned"/>
+        <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <!--AutoCastValidatorArray value="DisruptionWebAutocast"/-->
     </CAbilEffectTarget>
     <CAbilEffectTarget id="QueenClassicParasite">
         <Flags index="NoDeceleration" value="1"/>
@@ -2440,6 +2485,9 @@
     <CAbilBuild id="ZergBuild">
         <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">
             <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="BuildSwarmNetwork"/>
+        </InfoArray>
+        <InfoArray index="Build17" Unit="LurkerDenMP" Time="80">
+            <Button DefaultButtonFace="MutateintoLurkerDen" State="Restricted" Requirements="HaveHydraliskDen"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilTrain id="ZerglingStetmannRespawn">

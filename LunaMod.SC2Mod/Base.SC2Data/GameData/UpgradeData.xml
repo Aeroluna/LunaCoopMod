@@ -158,12 +158,42 @@
         <AffectedUnitArray value="InfestedMarineAC"/>
         <AffectedUnitArray value="NovaInfestedSiegeTank"/>
     </CUpgrade>
+    <CUpgrade id="AnabolicSynthesis">
+        <EffectArray index="0" Operation="Subtract" Reference="Unit,Ultralisk,SpeedMultiplierCreep" Value="0.1625"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HotSNoxious,SpeedMultiplierCreep" Value="0.1625"/>
+        <EffectArray Operation="Subtract" Reference="Unit,HotSTorrasque,SpeedMultiplierCreep" Value="0.1625"/>
+        <EffectArray Reference="Unit,Ultralisk,Speed" Value="0.421871"/>
+        <EffectArray Reference="Unit,HotSNoxious,Speed" Value="0.421871"/>
+        <EffectArray Reference="Unit,HotSTorrasque,Speed" Value="0.421871"/>
+        <AffectedUnitArray value="HotSNoxious"/>
+        <AffectedUnitArray value="HotSTorrasque"/>
+    </CUpgrade>
     <CUpgrade id="ArtilleryMengskRange">
         <EffectArray Reference="Weapon,ArtilleryMengskBombardment,MinScanRange" Value="25"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeTychusSquadAbilitiesMasteryGrenadeCooldown">
         <EffectArray index="0" Value="0"/>
         <EffectArray index="1" Value="0.000000"/>
+    </CUpgrade>
+    <CUpgrade id="DiggingClaws">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].RandomDelayMax" Value="0.125000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.660000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.660000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerDown,InfoArray[0].RandomDelayMax" Value="0.125000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerDown,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerDown,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="0.660000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerDown,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.660000"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <AffectedUnitArray value="LurkerMP"/>
+        <AffectedUnitArray value="LurkerMPBurrowed"/>
+        <AffectedUnitArray value="Lurker"/>
+        <AffectedUnitArray value="LurkerBurrowed"/>
     </CUpgrade>
     <CUpgrade id="ImmortalResearchShadowCannon">
         <EffectArray Reference="Unit,ImmortalShakuras,SubgroupPriorityDelta" Value="18"/>
@@ -351,6 +381,13 @@
     </CUpgrade>
     <CUpgrade id="ProtossGroundArmorsExtraLevel3" parent="ProtossGroundArmorsExtra">
         <EffectArray Operation="Set" Reference="Actor,VoidArchon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="SeismicSpines">
+        <EffectArray Reference="Weapon,LurkerMP,Range" Value="2"/>
+        <EffectArray Reference="Weapon,LurkerMP,MinScanRange" Value="2"/>
+        <EffectArray Reference="Effect,LurkerMP,PeriodCount" Value="2"/>
+        <AffectedUnitArray value="LurkerMP"/>
+        <AffectedUnitArray value="LurkerMPBurrowed"/>
     </CUpgrade>
     <CUpgrade id="TerranBuildingArmor">
         <EffectArray Reference="Abil,BunkerTransport,MaxCargoCount" Value="2"/>

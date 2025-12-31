@@ -137,6 +137,10 @@
         <CombineArray value="NotMothershipArtanis"/>
         <CombineArray value="NotArbiterMP"/>
     </CValidatorCombine>
+    <CValidatorUnitOrder id="DisruptionWebAutocast">
+        <AbilLink value="CorsairMPDisruptionWeb"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
     <CValidatorUnitCompareBehaviorCount id="HarvestableRichVespeneGeyserGas">
         <Compare value="GT"/>
         <Behavior value="HarvestableRichVespeneGeyserGas"/>
@@ -149,6 +153,11 @@
         <Compare value="GT"/>
         <Behavior value="HarvestableRichVespeneGeyserGasZerg"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="HasAnabolicSynthesisUpgrade">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveUltraliskAnabolicSynthesis"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="HasCommanderPrestigeStukovNeural">
         <Compare value="GT"/>
         <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
@@ -362,13 +371,13 @@
             <Radius value="2"/>
             <Validator value="noMarkers"/>
         </AreaArray>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum3EnemyTargets">
         <WhichLocation Value="TargetPoint"/>
         <AreaArray index="0" Count="4" Radius="2" Validator="noMarkers"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
+        <SearchFlags index="ExtendByUnitRadius" value="0"/>
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="BlackOpsAirstrikeMinimum2EnemyTargets">
         <ResultFailed value="CantFindEnoughTargets"/>
@@ -378,7 +387,6 @@
             <Radius value="2"/>
             <Validator value="noMarkers"/>
         </AreaArray>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="CarrierRepairDroneNotRecalling">
@@ -468,6 +476,7 @@
     </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="GhostMengskEMPSmallMinimum3EnemyTargets">
         <AreaArray index="0" Validator="GhostMengskEMPValidTarget"/>
+        <SearchFlags index="ExtendByUnitRadius" value="0"/>
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="GhostMengskEMPValidTarget">
         <Type value="And"/>

@@ -222,6 +222,20 @@
         <LaunchAssets Model="CycloneMissileLaunch"/>
         <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
     </CActorAction>
+    <CActorModel id="CorsairMPDisruptionWebImpact">
+        <On Terms="Effect.CorsairMPDisruptionWebCreatePersistentAuto.Start" Send="Create"/>
+        <On Terms="Effect.CorsairMPDisruptionWebCreatePersistentAuto.Stop" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSound id="CorsairMPDisruptionWebLaunchSound">
+        <On Terms="Effect.CorsairMPDisruptionWebCreatePersistentAuto.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="CorsairMP_DisruptionWebLoopSound">
+        <On Terms="Effect.CorsairMPDisruptionWebCreatePersistentAuto.Start" Send="Create"/>
+        <On Terms="Effect.CorsairMPDisruptionWebCreatePersistentAuto.Stop" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="Corsair_DisruptionWeb_Cast">
+        <On Terms="Abil.CorsairMPDisruptionWebAuto.SourceFinishStart" Send="Create"/>
+    </CActorModel>
     <CActorAction id="CycloneAttackLeft">
         <LaunchAssets Model="CycloneMissileLaunch"/>
     </CActorAction>
@@ -892,6 +906,21 @@
         <Inherits index="CloakEffect" value="0"/>
         <Inherits index="Visibility" value="0"/>
     </CActorBeamSimple>
+    <CActorUnit id="Ultralisk">
+        <On Terms="ActorCreation; ValidatePlayer HasAnabolicSynthesisUpgrade; !ValidateUnit IsUltraliskBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Add; !ValidateUnit IsUltraliskBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsUltraliskBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="AbilMorph.BurrowUltraliskUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="AbilMorph.BurrowUltraliskDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+    </CActorUnit>
+    <CActorModel id="UltraliskAnabolicSynthesisUpgrade" parent="ModelAnimationStyleContinuous">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 2.000000}"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachTarget6"/>
+    </CActorModel>
     <CActorUnit id="VespeneGeyser">
         <On Terms="Behavior.RawRichVespeneGeyserGas.HostStart" Send="SetMinimapVisibility"/>
         <On Terms="Behavior.RawRichVespeneGeyserGas.HostClear" Send="SetMinimapVisibility 1"/>
@@ -3947,6 +3976,18 @@
     <CActorUnit id="HotSTorrasque">
         <On index="85" Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; !ValidatePlayer CommanderPrestigeKerriganBrood"/>
         <On Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.200000 0.400000"/>
+        <On Terms="ActorCreation; ValidatePlayer HasAnabolicSynthesisUpgrade; !ValidateUnit IsHotSTorrasqueBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Add; !ValidateUnit IsHotSTorrasqueBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsHotSTorrasqueBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="AbilMorph.BurrowTorrasqueUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="AbilMorph.BurrowTorrasqueDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="HotSNoxious">
+        <On Terms="ActorCreation; ValidatePlayer HasAnabolicSynthesisUpgrade; !ValidateUnit IsHotSNoxiousBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Add; !ValidateUnit IsHotSNoxiousBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsHotSNoxiousBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="AbilMorph.BurrowNoxiousUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="AbilMorph.BurrowNoxiousDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="ImpalerDehaka">
         <Model value="Impaler_Primal_Collection"/>
