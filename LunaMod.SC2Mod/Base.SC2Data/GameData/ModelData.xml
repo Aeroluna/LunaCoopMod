@@ -36,6 +36,31 @@
         <ScaleMax value="1.000000,1.000000,1.000000"/>
         <ScaleMin value="1.000000,1.000000,1.000000"/>
     </CModel>
+    <CModel id="Dakrun_Coop">
+        <Events index="16">
+            <Anim value="Attack"/>
+            <Name value="Attack"/>
+            <Time value="0.550000"/>
+            <Payload value="Kraith_Vox_Attack"/>
+        </Events>
+        <Events index="17" Time="0.490000" Payload="Kraith_FoleyMovement"/>
+        <Events index="18" Anim="Spell,Start,01" Time="0.010000" Payload="Kraith_Vox_Spell"/>
+        <Events index="19" Time="0.900000" Payload="Kraith_Vox_SpellStartSpine"/>
+        <Events index="20" Anim="Spell,Start,B" Time="0.150000" Payload="Kraith_Vox_InhaleExert"/>
+        <Events index="21">
+            <Anim value="Burrow,00"/>
+            <Name value="Murvar_Burrow_Dig"/>
+            <Time value="0.326000"/>
+            <Payload value="Murvar_Burrow_Dig"/>
+        </Events>
+        <Events index="22" removed="1"/>
+    </CModel>
+    <CModel id="Dakrun_Coop_Placement" parent="Unit" Race="Zerg">
+        <Model value="Assets\Units\Zerg\Dakrun_Coop\Dakrun_Coop.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="1.050000,1.050000,1.050000"/>
+        <ScaleMin value="1.050000,1.050000,1.050000"/>
+    </CModel>
     <CModel id="DehakaRavasaurAttackImpact">
         <Model value="Assets\Effects\Zerg\RavasaurMissileImpact\RavasaurMissileImpact.m3"/>
         <ScaleMax value="0.600000,0.600000,0.600000"/>
@@ -277,12 +302,23 @@
     <CModel id="HighTemplarTaldarimWarpIn">
         <Model value="Assets\Units\Protoss\HighTemplar_Taldarim\HighTemplar_Taldarim_WarpIn.m3"/>
     </CModel>
+    <CModel id="KraithSpineVolleyAttackImpact">
+        <Model value="Assets\Effects\Zerg\Dakrun_ThornSpike_Missile_Impact\Dakrun_ThornSpike_Missile_Impact.m3"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
+    </CModel>
     <CModel id="LaserTurretPlacementNova">
         <ScaleMax value="1.000000,1.000000,1.000000"/>
         <ScaleMin value="1.000000,1.000000,1.000000"/>
     </CModel>
     <CModel id="MothershipTaldarimWarpInStargateBig">
         <Model value="Assets\Units\Protoss\Mothership_Taldarim\Mothership_Taldarim_WarpIn_StarGate_Red.m3"/>
+    </CModel>
+    <CModel id="Murvar_Coop_Placement" parent="Unit" Race="Zerg">
+        <Model value="Assets\Units\Zerg\Murvar_Coop\Murvar_Coop.m3"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
     </CModel>
     <CModel id="Mutalisk">
         <ScaleMax value="0.600000,0.600000,0.600000"/>
@@ -302,6 +338,11 @@
     </CModel>
     <CModel id="NovaWeaponPsiStrikeImpact">
         <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="DehakaDakrunMeleeImpact" parent="RaceImpactFX" Race="Other">
+        <Model value="Assets\Effects\Other\PhysicsImpactDustMassive\PhysicsImpactDustMassive.m3"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
         <ScaleMin value="2.000000,2.000000,2.000000"/>
     </CModel>
     <CModel id="RavenSilentMode" parent="PersistentSpellFX">

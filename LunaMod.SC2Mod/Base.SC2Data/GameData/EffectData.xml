@@ -130,6 +130,39 @@
     <CEffectEnumArea id="CorsairMPDisruptionWebSearch">
         <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectDamage id="DakrunMelee">
+        <AttributeBonus index="Structure" value="100"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectSet id="DakrunSpawningTargetSet">
+        <EffectArray index="0" value="DakrunSpawningTargetDamage"/>
+        <EffectArray index="1" value="DakrunSpawningTargetKnockbackSet"/>
+    </CEffectSet>
+    <CEffectSet id="DakrunSpawningTargetKnockbackSet">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="UnitKnockbackBy2"/>
+        <ValidatorArray value="NotStructure"/>
+        <ValidatorArray value="NotMapBoss"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="DehakaDakrunTopBarCU">
+        <CreateFlags index="Placement" value="0"/>
+    </CEffectCreateUnit>
+    <CEffectIssueOrder id="DehakaGlevigFirebreathSetAutocast">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectCreateUnit id="DehakaGlevigTopBarCU">
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="DehakaGlevigTopBarInitialSet"/>
+    </CEffectCreateUnit>
+    <CEffectIssueOrder id="DehakaMurvarAcidPukeSetAutocast">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="DehakaMurvarSpawnCreepersSetAutocast">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectCreateUnit id="DehakaMurvarTopBarCU">
+        <CreateFlags index="Placement" value="0"/>
+    </CEffectCreateUnit>
     <CEffectUseMagazine id="FenixClolarionCarrierInterceptor">
         <MagazineAbil value="FenixClolarionCarrierHangar"/>
     </CEffectUseMagazine>
@@ -163,6 +196,19 @@
         <PeriodicPeriodArray value="0.5"/>
         <InitialDelay value="0.1"/>
     </CEffectCreatePersistent>
+    <CEffectCreateUnit id="GlevigDeepTunnelCU">
+        <CreateFlags index="Placement" value="0"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="GlevigDeepTunnelTeleportSet">
+        <EffectArray index="2" value="DakrunSpawningTargetSearch"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="GravitonBeamUnburrow">
+        <CmdFlags index="Queued" value="0"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="GravitonBeamUnburrowCancel">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
     <CEffectCreatePersistent id="GravitonPrisonCreatePersistent">
         <ValidatorArray value="NotAbducted"/>
         <ValidatorArray value="NoReaperKD8Knockback"/>
@@ -176,6 +222,9 @@
         <EffectArray index="2" value="GravitonPrisonDamageCreatePersistent2"/>
         <EffectArray value="GravitonPrisonRaise"/>
     </CEffectSet>
+    <CEffectEnumArea id="GreaterNydusDestroyerKnockbackSearch">
+        <AreaArray index="0" Effect="DakrunSpawningTargetKnockbackSet"/>
+    </CEffectEnumArea>
     <CEffectSet id="HybridDominatorVoidGravitonPrisonSet">
         <ValidatorArray value="NoPreventKnockback"/>
         <ValidatorArray value="NotAbducted"/>
@@ -192,6 +241,48 @@
         <EffectArray value="JinaraChainsAB"/>
         <EffectArray value="JinaraChainsSlowAB"/>
     </CEffectSet>
+    <CEffectDamage id="KraithSpineVolleyDamage">
+        <Death value="Disintegrate"/>
+        <SearchFilters value="Air;Self,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="KraithSpineVolleySearch">
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <IncludeArray Effect="KraithSpineVolleyLaunchMissileSet" Value="Target"/>
+        <SearchFilters value="Air;Self,Player,Ally,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="KraithSpineVolleyShootPersistent">
+        <InitialDelay value="0"/>
+        <PeriodicOffsetArray index="1" value="0.2,0,0"/>
+        <PeriodicOffsetArray index="2" value="-0.2,0,0"/>
+        <PeriodicOffsetArray index="3" value="0,0.2,0"/>
+        <PeriodicOffsetArray index="4" value="0,-0.2,0"/>
+        <PeriodicOffsetArray index="5" value="1,0,0"/>
+        <PeriodicOffsetArray index="6" value="-1,0,0"/>
+        <PeriodicOffsetArray index="7" value="0,1,0"/>
+        <PeriodicOffsetArray index="8" value="0,-1,0"/>
+        <PeriodicOffsetArray index="9" value="0.5,0.75,0"/>
+        <PeriodicOffsetArray index="10" value="0.75,0.5,0"/>
+        <PeriodicOffsetArray index="11" value="-0.5,-0.75,0"/>
+        <PeriodicOffsetArray index="12" value="-0.75,-0.5,0"/>
+        <PeriodicOffsetArray index="13" value="-0.5,0.75,0"/>
+        <PeriodicOffsetArray index="14" value="-0.75,0.5,0"/>
+        <PeriodicOffsetArray index="15" value="0.5,-0.75,0"/>
+        <PeriodicOffsetArray index="16" value="0.75,-0.5,0"/>
+        <PeriodicPeriodArray value="0.16"/>
+        <PeriodicPeriodArray value="0.21"/>
+        <PeriodicPeriodArray value="0.225"/>
+        <PeriodicPeriodArray value="0.26"/>
+        <PeriodicPeriodArray value="0.31"/>
+        <PeriodicPeriodArray value="0.325"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="LurkerMPUnburrow">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="NydusDestroyerKnockbackSearch">
+        <AreaArray index="0" Effect="DakrunSpawningTargetKnockbackSet"/>
+    </CEffectEnumArea>
     <CEffectRemoveBehavior id="OrbitalAssimilatorRichRB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -1081,6 +1172,15 @@
     <CEffectApplyBehavior id="StukovAleksanderAirStunAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectIssueOrder id="SwarmHostMPUnburrow">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="SwarmHostUnburrow">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="SwarmHostUproot">
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
     <CEffectDamage id="SymbioteSpikeBurstDamage">
         <Amount value="20"/>
     </CEffectDamage>
@@ -2158,20 +2258,22 @@
     <CEffectCreatePersistent id="BlindingCloudCP">
         <PeriodCount value="15"/>
     </CEffectCreatePersistent>
-    <CEffectSet id="DakrunSpawningTargetSet">
-        <EffectArray index="0" value="DehakaDakrunCrashingChargeDamage"/>
-        <EffectArray index="1" value="DehakaDakrunCrashingChargeKnockbackSwitch"/>
-    </CEffectSet>
     <CEffectDamage id="DehakaDakrunCrashingChargeDamage">
-        <AttributeBonus index="Structure" value="100"/>
+        <AttributeBonus index="Structure" value="200"/>
     </CEffectDamage>
-    <CEffectSwitch id="DehakaDakrunCrashingChargeKnockbackSwitch">
+    <CEffectDamage id="DakrunSpawningTargetDamage">
+        <ValidatorArray value="TargetIsEnemy"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="50"/>
+        <Death value="Blast"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="DehakaDakrunCrashingChargeKnockbackSet">
+        <EffectArray value="UnitKnockbackBy3"/>
+        <ValidatorArray value="NotStructure"/>
+        <ValidatorArray value="NotMapBoss"/>
         <ValidatorArray value="IsNotBuried"/>
-        <ValidatorArray value="NotMapBossOrHeroic"/>
-        <EditorCategories value=""/>
-        <CaseArray Validator="IsStructure" Effect="UnitKnockbackBy2"/>
-        <CaseDefault value="UnitKnockbackBy3"/>
-    </CEffectSwitch>
+    </CEffectSet>
     <CEffectEnumArea id="DehakaDakrunCrashingChargeTargetSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -2179,7 +2281,7 @@
         <SearchFilters value="Ground;Self,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectSet id="DehakaDakrunCrashingChargeTargetSet">
-        <EffectArray index="0" value="DehakaDakrunCrashingChargeKnockbackSwitch"/>
+        <EffectArray index="0" value="DehakaDakrunCrashingChargeKnockbackSet"/>
     </CEffectSet>
     <CEffectDamage id="DehakaDakrunThornsDamage">
         <LaunchLocation Value="CasterUnit"/>

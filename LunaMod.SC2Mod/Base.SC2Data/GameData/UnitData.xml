@@ -173,9 +173,21 @@
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
     </CUnit>
+    <CUnit id="Colossus">
+        <Collide index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="ColossusPurifier">
+        <Collide index="Structure" value="0"/>
+    </CUnit>
     <CUnit id="ColossusTaldarim">
         <Level value="0"/>
         <PawnItemReduction value="11"/>
+    </CUnit>
+    <CUnit id="CoopCasterDehaka">
+        <AbilArray index="3" Link="DehakaGlevigTopBar2"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" AbilCmd="DehakaGlevigTopBar2,Execute"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="CoopCasterHorner">
         <CardLayouts index="0">
@@ -202,11 +214,40 @@
         <SubgroupPriority value="115"/>
         <AbilArray Link="CorsairMPDisruptionWebAuto"/>
     </CUnit>
+    <CUnit id="DehakaDakrunPlacement" parent="DehakaDakrun">
+        <Facing value="45"/>
+        <Collide index="Colossus" value="0"/>
+        <Radius value="2"/>
+    </CUnit>
     <CUnit id="DehakaGlevig">
+        <Attributes index="User1" value="0"/>
         <Attributes index="MapBoss" value="0"/>
+        <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
+        <CargoSize value="0"/>
+        <Collide index="RoachBurrow" value="1"/>
+    </CUnit>
+    <CUnit id="DehakaGlevigDeepTunnelPlacement">
+        <Collide index="Structure" value="1"/>
     </CUnit>
     <CUnit id="DehakaMurvar">
         <Attributes index="MapBoss" value="0"/>
+        <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
+        <CargoSize value="0"/>
+    </CUnit>
+    <CUnit id="DehakaMurvarPlacement" parent="DehakaMurvar">
+        <Facing value="45"/>
+        <Collide index="Colossus" value="0"/>
+        <CargoSize value="4"/>
+    </CUnit>
+    <CUnit id="DehakaGlevigPlacement" parent="DehakaGlevig">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Colossus" value="0"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Attributes index="User1" value="1"/>
+        <CargoSize value="8"/>
     </CUnit>
     <CUnit id="Extractor">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
@@ -220,10 +261,17 @@
     <CUnit id="FenixTalisAdeptPhaseShift">
         <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
+    <CUnit id="FenixWarbringerColossus">
+        <Collide index="Structure" value="0"/>
+    </CUnit>
     <CUnit id="Ghost">
         <CardLayouts index="0">
             <LayoutButtons index="13" removed="1"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="GreaterNydusDestroyerDeepTunnelPlacement">
+        <Facing value="29.9926"/>
+        <Collide index="RoachBurrow" value="0"/>
     </CUnit>
     <CUnit id="HHReaper">
         <Speed value="3.75"/>
@@ -243,6 +291,7 @@
     <CUnit id="Hunterling">
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="HurricaneMissileLeftStetmann">
         <Mover value="HurricaneMissileStetmann"/>
@@ -951,6 +1000,7 @@
             <LayoutButtons index="11" Column="2"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel2Up,Execute" Row="2" Column="4"/>
         </CardLayouts>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="DehakaUltraliskLevel2Burrowed">
         <SubgroupAlias value="DehakaUltraliskLevel2"/>
@@ -971,6 +1021,7 @@
             <LayoutButtons index="16" Face="DehakaUltraliskRegen" Requirements="HaveDehakaUltraliskRegen" Column="1"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaUltraliskLevel3Up,Execute" Row="2" Column="4"/>
         </CardLayouts>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="DehakaUltraliskLevel3Burrowed">
         <SubgroupAlias value="DehakaUltraliskLevel3"/>
@@ -1025,6 +1076,7 @@
     <CUnit id="HotSNoxious">
         <AlliedPushPriority value="1"/>
         <LifeArmor value="2"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="HotSSplitterlingBig">
         <CardLayouts index="0">
@@ -1082,6 +1134,7 @@
             <LayoutButtons Face="AnabolicSynthesis" Type="Passive" Requirements="HaveUltraliskAnabolicSynthesis" Row="1" Column="1"/>
         </CardLayouts>
         <LifeArmor value="2"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="HotSTorrasqueBurrowed">
         <SubgroupAlias value="HotSTorrasque"/>
@@ -1152,6 +1205,7 @@
             <LayoutButtons index="5" Column="3"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestedAbominationUp,Execute" Row="2" Column="4"/>
         </CardLayouts>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="InfestedAbominationBurrowed">
         <SubgroupAlias value="InfestedAbomination"/>
@@ -1303,6 +1357,15 @@
     <CUnit id="MutaliskMengsk">
         <LifeArmorName value="Unit/LifeArmorName/ZergAirArmor"/>
     </CUnit>
+    <CUnit id="MutatorAmonKerrigan">
+        <Collide index="Colossus" value="0"/>
+    </CUnit>
+    <CUnit id="MutatorAmonNova">
+        <Collide index="Colossus" value="0"/>
+    </CUnit>
+    <CUnit id="MutatorAmonZagara">
+        <Collide index="Colossus" value="0"/>
+    </CUnit>
     <CUnit id="MutatorCandyBowl">
         <Sight value="1"/>
     </CUnit>
@@ -1319,6 +1382,10 @@
         <AlliedPushPriority value="1"/>
         <Speed value="1.5"/>
         <SpeedMultiplierCreep value="1.5"/>
+    </CUnit>
+    <CUnit id="NydusDestroyerDeepTunnelPlacement">
+        <Facing value="29.9926"/>
+        <Collide index="RoachBurrow" value="0"/>
     </CUnit>
     <CUnit id="PerditionTurret">
         <BehaviorArray Link="PerditionTurretKnockbackBehavior"/>
@@ -1599,12 +1666,20 @@
     <CUnit id="Stalker">
         <Level value="0"/>
         <PawnItemReduction value="18"/>
-        <!--BehaviorArray Link="WarpInAttackSpeedBehavior"/-->
+    </CUnit>
+    <CUnit id="Stank">
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="StarportMengsk">
         <CardLayouts index="0">
             <LayoutButtons index="12" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="StukovApocalisk">
+        <Collide index="Structure" value="0"/>
+    </CUnit>
+    <CUnit id="StukovInfestedSiegeTankDeepTunnelPlacementUnit">
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="Supplicant">
         <Level value="0"/>
@@ -1665,6 +1740,7 @@
             <LayoutButtons Face="AnabolicSynthesis" Type="Passive" Requirements="HaveUltraliskAnabolicSynthesis" Row="1" Column="1"/>
         </CardLayouts>
         <LifeArmor value="2"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="UltraliskBurrowed">
         <SubgroupAlias value="Ultralisk"/>
@@ -1689,6 +1765,7 @@
     </CUnit>
     <CUnit id="UltraliskMengsk">
         <AlliedPushPriority value="1"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="UltraliskStetmann">
         <AlliedPushPriority value="1"/>
@@ -1699,6 +1776,7 @@
             <LayoutButtons index="9" Row="1" Column="0"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowUltraliskUpStetmann,Execute" Row="2" Column="4"/>
         </CardLayouts>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="UltraliskStetmannBurrowed">
         <SubgroupAlias value="UltraliskStetmann"/>
@@ -2154,6 +2232,7 @@
                 <Column value="1"/>
             </LayoutButtons>
         </CardLayouts>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="NovaReviveBeacon">
         <BehaviorArray index="3" Link="Unrepairable"/>
@@ -2320,6 +2399,9 @@
     <CUnit id="DehakaDakrun">
         <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
         <Attributes index="MapBoss" value="0"/>
+        <CargoSize value="0"/>
+        <WeaponArray Link="KraithSpineVolley"/>
+        <Radius value="2"/>
     </CUnit>
     <CUnit id="Devourer">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
@@ -3175,9 +3257,11 @@
     <CUnit id="ThorMengsk">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
         <AlliedPushPriority value="1"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="ThorMengskSieged">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="MarauderMengsk">
         <ShieldArmor value="1"/>
@@ -3346,6 +3430,7 @@
             <LayoutButtons index="8" Column="3"/>
             <LayoutButtons Face="SIInfestedBunkerSpawnInfestedMarine" Type="AbilCmd" AbilCmd="SIInfestedBunkerTrainMarine,Execute" Row="2" Column="0"/>
         </CardLayouts>
+        <Collide index="Colossus" value="1"/>
     </CUnit>
     <CUnit id="SIInfestedCivilian">
         <BehaviorArray index="1" Link="AllUnitBehaviorController"/>
@@ -3596,6 +3681,7 @@
         </CardLayouts>
         <BehaviorArray Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="Detector11"/>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="SIStarportFlying">
         <AlliedPushPriority value="1"/>
@@ -4012,6 +4098,7 @@
             <LayoutButtons Face="KerriganImplosion" Type="AbilCmd" AbilCmd="KerriganImplosion,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="KerriganRazorSwarm" Type="AbilCmd" AbilCmd="KerriganRazorSwarm,Execute" Row="2" Column="1"/>
         </CardLayouts>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="KerriganBroodWeapon" parent="MISSILE">
         <Race value="Zerg"/>
@@ -4638,6 +4725,7 @@
         <WeaponArray Link="ThorsHammer"/>
         <WeaponArray Link="ThorsHammerMoving"/>
         <AlliedPushPriority value="1"/>
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="ThorAP">
         <AbilArray Link="330mmBarrageCannons"/>
@@ -5006,6 +5094,9 @@
         <AIEvalFactor value="0"/>
         <SelectAlias value="VorazunCoop"/>
         <HotkeyCategory value="Unit/Category/ProtossNerazim"/>
+    </CUnit>
+    <CUnit id="ZagaraVoidCoop">
+        <Collide index="Colossus" value="0"/>
     </CUnit>
     <CUnit id="ZealotPurifier">
         <CardLayouts index="0">

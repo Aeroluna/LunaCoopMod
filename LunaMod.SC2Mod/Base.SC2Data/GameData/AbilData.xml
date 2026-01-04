@@ -79,6 +79,30 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="DehakaDakrunTopBar">
+        <PlaceUnit value="DehakaDakrunPlacement"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DehakaGlevigTopBar2">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="DehakaGlevigTopBarCU"/>
+        <Cost>
+            <Cooldown Link="Abil/DehakaGlevigTopBar" Location="Player" TimeUse="360"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DehakaDakrunTopBar" Requirements="DehakaSummonGlevig"/>
+        <PlaceUnit value="DehakaGlevigPlacement"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DehakaMurvarTopBar">
+        <PlaceUnit value="DehakaMurvarPlacement"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GlevigDeepTunnel">
+        <FinishTime index="0" value="2"/>
+        <PlaceUnit value="DehakaGlevigPlacement"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GreaterNydusDestroyerDeepTunnel">
+        <FinishTime index="0" value="2"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="LurkerDenResearch">
         <InfoArray index="Research1" Time="80">
             <Resource index="Minerals" value="150"/>
@@ -90,6 +114,9 @@
             <Button DefaultButtonFace="EvolveDiggingClaws" Requirements="LearnDiggingClaws"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="NydusDestroyerDeepTunnel">
+        <FinishTime index="0" value="2"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="PerditionTurretUnburrow">
         <Flags index="IgnorePlacement" value="1"/>
     </CAbilMorph>

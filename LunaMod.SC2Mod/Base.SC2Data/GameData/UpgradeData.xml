@@ -158,6 +158,11 @@
         <AffectedUnitArray value="InfestedMarineAC"/>
         <AffectedUnitArray value="NovaInfestedSiegeTank"/>
     </CUpgrade>
+    <CUpgrade default="1" id="DehakaPrimalWeaponsExtra">
+        <AffectedUnitArray value="DehakaDakrun"/>
+        <EffectArray Reference="Weapon,KraithSpineVolley,Level" Value="1"/>
+        <EffectArray Reference="Effect,KraithSpineVolleyDamage,Amount" Value="2"/>
+    </CUpgrade>
     <CUpgrade id="AnabolicSynthesis">
         <EffectArray index="0" Operation="Subtract" Reference="Unit,Ultralisk,SpeedMultiplierCreep" Value="0.1625"/>
         <EffectArray Operation="Subtract" Reference="Unit,HotSNoxious,SpeedMultiplierCreep" Value="0.1625"/>
@@ -552,6 +557,15 @@
         <EffectArray Operation="Set" Reference="Weapon,InfestedMarineAC,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,NovaInfestedSiegeTank,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
     </CUpgrade>
+    <CUpgrade id="DehakaPrimalWeaponsExtraLevel1" parent="DehakaPrimalWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,KraithSpineVolley,Icon" Value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="DehakaPrimalWeaponsExtraLevel2" parent="DehakaPrimalWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,KraithSpineVolley,Icon" Value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="DehakaPrimalWeaponsExtraLevel3" parent="DehakaPrimalWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,KraithSpineVolley,Icon" Value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level3.dds"/>
+    </CUpgrade>
     <!-- END OF EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="330mmBarrageCannons">
         <EffectArray index="0" Reference="Unit,ThorAP,SubgroupPriorityDelta"/>
@@ -717,6 +731,7 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeDehakaPackLeaders">
         <EffectArray Reference="Effect,DehakaDakrunThornsDamage,Amount" Value="10"/>
+        <EffectArray Operation="Subtract" Reference="Abil,DehakaGlevigTopBar2,Cost[0].Cooldown.TimeUse" Value="120.000000"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeFenixChampion" parent="CommanderPrestige">
         <EffectArray Reference="Unit,ZealotPurifier,CostResource[Minerals]" Value="100"/>

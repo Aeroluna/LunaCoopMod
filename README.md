@@ -243,6 +243,17 @@ Fun fact: the WOL campaign randomizes these model scales for some reason.
 
 This is how long after a sound is played before another is allowed to play. Can be nice for commonly selected heroes so that they don't spam their voice lines too much. This already existed on some heroes like Alarak/Kerrigan.
 
+- Fixed an issue where multiple units collided with Colossi when they shouldn't have.
+  - Affected units:
+    - Ultralisk
+    - Primal Ultralisk
+    - Kerrigan
+    - Nova
+    - Zagara
+    - Blackhammer
+
+Why couldn't Colossi walk over Nova?
+
 - Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
 - Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.
 - Fixed an issue where the Infested Swarm Eggs "popping" animation was not playing.
@@ -1741,12 +1752,51 @@ Should reduce Dehaka's reliance on psionic units for clearing waves. Dehaka gain
 Ravasaurs can be scary in the campaign with their splash damage, so why does Dehaka get a nerfed boring version?
 
 - Fixed an issue where P2 did not increase the damage of Dakrun's Greater Spiked Hide.
-- Increased Dakrun's Brutal Charge damage from 200 to 200 (+100 vs Structures).
+- Increased Dakrun's Brutal Charge damage from 200 to 200 (+200 vs Structures).
 - Buffed Dakrun's Brutal Charge to affect invisible units.
+  - Buried units will not be knockbacked.
 - Buffed Dakrun's Brutal Charge to affect structures.
-- Buffed Dakrun's spawn knockback to affect structures.
+  - Will damage but not knockback structures.
+- Changed Dakrun's Brutal Charge to ragdoll/launch killed enemies.
 
 Why did Dakrun slam his giant head into a building and do 0 damage? Also why did it not affect invisible units? Now Dakrun has a niche of smashing into buildings.
+
+- Increased Dakrun's melee attack damage from 100 to 100 (+100 vs Structures).
+- Added attack vfx to Dakrun's melee attack.
+- Changed Dakrun's melee attack to ragdoll/launch killed enemies.
+- Increased Dakrun's radius from 1.5 to 2.
+
+Lets give Dakrun's headbutt more oomph! Radius increased because Dakrun basically had to stand on top of units to hit them.
+
+- Added ranged air attack to Dakrun: Spine Volley.
+  - Launches 5 spines in a small AOE that deal 15 damage.
+
+Gives Dakrun an option against air units, but it does have less dps than his ground attack.
+
+- Reworked Pack Leader ability placement.
+  - Added a placement preview for Murvar and Dakrun that turns red when placement is invalid.
+  - Fixed an issue where Murvar and Dakrun could not be spawned on top of Colossus-like units.
+  - Fixed an issue where Glevig could not be placed on top of units, despite the placement showing as valid.
+  - Reduced the Dakrun spawn damage from 200 to 50.
+  - Changed Dakrun's spawn knockback to ragdoll/launch killed enemies.
+  - Buffed Dakrun's spawn knockback to unburrow affected units.
+  - Added Dakrun's spawn knockback to Glevig and Murvar.
+  - Fixed an issue where Pack Leaders waited 1 second before playing their unburrow animation.
+
+Why does popping out of the ground only let Dakrun do damage? Let's give that to the other Pack Leaders! Additionally helps with spawning the Pack Leaders when theres a bunch of units blocking placement.
+
+- Reworked Primal Wurm Deep Tunneling.
+  - Buffed Primal Wurm/Greater Primal Wurm/Glevig Deep Tunnel to allow tunneling under units.
+  - Added Dakrun's spawn knockbak to Glevig's Deep Tunnel.
+  - Buffed Primal Wurm and Greater Primal Wurm Deep Tunnel knockback to unburrow units.
+  - Reduced Primal Wurm/Greater Primal Wurm/Glevig Deep Tunnel finish time from 3 seconds to 2 seconds.
+  - Fixed an issue where Primal Wurms could not Deep Tunnel On to burrowed Roaches.
+
+Deep Tunneling gets the same treatment as Pack Leader spawning. However, Primal Wurms and Greater Primal Wurms don't do spawn damage.
+
+- Lowered tech requirement of Primal Wurms from requiring Glevig's Den to requiring a Primal Warden.
+
+Primal Wurms are Dehaka's only source of detection until evolving to level 5, making Dehaka extremely vulnerable to early stealth such as the We Move Unseen modifier. This buff should counteract that.
 
 - Added the Swoop ability to Primal Locust.
   - Allows manually landing flying Primal Locusts at a target location.
@@ -1763,10 +1813,6 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?feature=shared&t=93) but was removed before release for some reason. Fun fact: the visual still existed for Carriers and Void Rays only for some reason.
 
-- Lowered tech requirement of Primal Wurms from requiring Glevig's Den to requiring a Primal Warden.
-
-Primal Wurms are Dehaka's only source of detection until evolving to level 5, making Dehaka extremely vulnerable to early stealth such as the We Move Unseen modifier. This buff should counteract that.
-
 - Changed Primal Igniter weapon attack sounds.
 
 It very clearly sounded like a hellion.
@@ -1778,6 +1824,8 @@ It very clearly sounded like a hellion.
 - Changed Greater Primal Wurms to visually burrow away instead of exploding when expiring.
 - Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
 - Fixed an issue where Zweihaka had a highlight tooltip.
+- Fixed an issue where Dakrun's Brutal Charge's launch dust particles faced the incorrect direction.
+- Fixed an issue where Dakrun/Glevig/Murvar could be loaded into transports.
 
 yeah.
 

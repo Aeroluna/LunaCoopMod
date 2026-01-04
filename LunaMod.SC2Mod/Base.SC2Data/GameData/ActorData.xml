@@ -242,10 +242,52 @@
     <CActorAction id="CycloneAttackRight">
         <LaunchAssets Model="CycloneMissileLaunch"/>
     </CActorAction>
+    <CActorModel id="Dakrun_Coop_Charge_Dust">
+        <HostSiteOps Ops="SOp270"/>
+    </CActorModel>
+    <CActorUnit id="DehakaDakrun">
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.On" Send="AnimSetPaused Birth"/>
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.Off" Send="AnimSetPaused Birth 0"/>
+    </CActorUnit>
+    <CActorAction id="DehakaDakrunMelee" parent="GenericAttack" effectAttack="DakrunMelee">
+        <EditorCategories value=""/>
+        <ImpactMap index="None" Sound="Kraith_Attack_Headbutt_Impact"/>
+        <ImpactPhysics>
+            <Name value="AttackSpell"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Attack"/>
+            <Physics value="UltraliskAttackForce"/>
+        </ImpactPhysics>
+    </CActorAction>
+    <CActorUnit id="DehakaMurvar">
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.On" Send="AnimSetPaused Birth"/>
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.Off" Send="AnimSetPaused Birth 0"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaGlevig">
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.On" Send="AnimSetPaused Birth"/>
+        <Remove Terms="Behavior.DehakaBossesSummonDelay.Off" Send="AnimSetPaused Birth 0"/>
+        <On index="71" Send="AnimPlay Untunnel Unburrow 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaDakrunPlacement" parent="GenericUnitBase" unitName="DehakaDakrunPlacement">
+        <PlacementModel value="Dakrun_Coop_Placement"/>
+        <PlacementActorModel value="ZergPlacementModel"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaMurvarPlacement" parent="GenericUnitBase" unitName="DehakaMurvarPlacement">
+        <PlacementModel value="Murvar_Coop_Placement"/>
+        <PlacementActorModel value="ZergPlacementModel"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaGlevigPlacement" parent="GenericUnitBase" unitName="DehakaGlevigPlacement">
+        <PlacementModel value="Glevig_Coop"/>
+        <PlacementActorModel value="ZergPlacementModel"/>
+    </CActorUnit>
     <CActorUnit id="DehakaHatchery">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
+    <CActorUnit id="DehakaNydusDestroyer">
+        <On index="87" Send="AnimPlay Untunnel Unburrow 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+    </CActorUnit>
     <CActorUnit id="DehakaNydusDestroyerTimedNoFood">
+        <On index="88" Send="AnimPlay Untunnel Unburrow 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create YagdraBurrowDownEffects"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="Create BurrowDownUltralisk"/>
         <On Terms="Behavior.DehakaTopBarPrimalWurmSummonTimedLifeExpire.On" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
@@ -367,6 +409,36 @@
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
     <CActorBeamSimple id="FenixAdeptShadeAttackBeam" parent="BeamSimpleAnimationStyleOneShot"/>
+    <CActorForceSphere id="DakrunSpawningForce">
+        <On Terms="Effect.DakrunSpawningTargetSearch.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create DakrunSpawningForceUp"/>
+        <HostSiteOps Ops="SOpShadow SOpRandomPointInCircleDot25"/>
+        <Duration value="0.300000"/>
+        <Magnitude value="20.000000,6.000000"/>
+        <Radius value="4.000000,0.600000"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="DakrunSpawningForceUp">
+        <HostSiteOps Ops="SOpShadow SOpRotVariancerUp35"/>
+        <Field value="Directional"/>
+        <Duration value="0.500000"/>
+        <Magnitude value="10.000000,4.000000"/>
+        <Radius value="4.000000,0.600000"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="DehakaDakrunCrashingChargeForce">
+        <On Terms="Effect.DehakaDakrunCrashingChargeImpactSet.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create DehakaDakrunCrashingChargeForceUp"/>
+        <HostSiteOps Ops="SOpShadow SOpRandomPointInCircleDot25"/>
+        <Duration value="0.300000"/>
+        <Magnitude value="30.000000,8.000000"/>
+        <Radius value="4.000000,0.600000"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="DehakaDakrunCrashingChargeForceUp">
+        <HostSiteOps Ops="SOpShadow SOpRotVariancerUp35"/>
+        <Field value="Directional"/>
+        <Duration value="0.500000"/>
+        <Magnitude value="20.000000,5.000000"/>
+        <Radius value="4.000000,0.600000"/>
+    </CActorForceSphere>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
@@ -4202,6 +4274,9 @@
     <CActorEventMacro id="PhysicsDeathsVoidGround">
         <On Terms="UnitDeathCustomize; KilledByEffect ColossusTaldarimDamage" Send="DeathCustomize RagdollFire"/>
         <On Terms="UnitDeathCustomize; KilledByEffect VoidArchonResurgenceEnemyImpactDamage" Send="DeathCustomize RagdollSiegeTank"/>
+        <On Terms="UnitDeathCustomize; KilledByEffect DakrunMelee" Send="DeathCustomize RagdollSiegeTank"/>
+        <On Terms="UnitDeathCustomize; KilledByEffect DehakaDakrunCrashingChargeDamage" Send="DeathCustomize RagdollSiegeTank"/>
+        <On Terms="UnitDeathCustomize; KilledByEffect DakrunSpawningTargetDamage" Send="DeathCustomize RagdollSiegeTank"/>
     </CActorEventMacro>
     <CActorUnit id="QueenCoop">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownMedium"/>
