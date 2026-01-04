@@ -1769,7 +1769,7 @@ Why did Dakrun slam his giant head into a building and do 0 damage? Also why did
 Lets give Dakrun's headbutt more oomph! Radius increased because Dakrun basically had to stand on top of units to hit them.
 
 - Added ranged air attack to Dakrun: Spine Volley.
-  - Launches 5 spines in a small AOE that deal 15 damage.
+  - Launches 5 spines in a small AOE that deal 12 damage.
 
 Gives Dakrun an option against air units, but it does have less dps than his ground attack.
 
