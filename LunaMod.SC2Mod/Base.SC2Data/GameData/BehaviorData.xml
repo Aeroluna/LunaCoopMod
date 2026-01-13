@@ -499,6 +499,9 @@
             <StateFlags index="Stun" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="LocustMPTimedLife">
+        <Duration value="25"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MarauderMengskAbsorb">
         <Modification>
             <VitalMaxArray index="Shields" value="300"/>
@@ -2366,6 +2369,17 @@
         <RemoveValidatorArray value="CasterNotAbducted"/>
         <MaxStackCount value="2"/>
         <Duration value="2.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineBurrowedCloakingBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NotHaveDrillingClawsUpgrade"/>
+        <DisableValidatorArray value="WidowMineAttackOnCooldown"/>
+        <DisableValidatorArray value="NotHavePlayerCommander"/>
+        <!--DisableValidatorArray value="WidowMineAttackOnCooldown"/-->
+        <Modification>
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="VorazunInitialReviveTimer">
         <Alignment value="Positive"/>

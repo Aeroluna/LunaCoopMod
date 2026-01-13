@@ -439,6 +439,28 @@
         <Magnitude value="20.000000,5.000000"/>
         <Radius value="4.000000,0.600000"/>
     </CActorForceSphere>
+    <CActorModel id="LiberatorAGBirthSearchIndicatorModel">
+        <On Terms="ActorCreation; ValidateUnit LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGSearchIndicator_Upgrade"/>
+    </CActorModel>
+    <CActorSplat id="LiberatorAGTargetCursorSplat">
+        <On Terms="ActorCreation; ValidatePlayer LiberatorAGRangeUpgraded" Send="Destroy"/>
+    </CActorSplat>
+    <CActorSplat id="LiberatorAGTargetCursorSplat_Upgrade" parent="CursorSplat" abil="LiberatorAGTarget">
+        <On Terms="ActorCreation; !ValidatePlayer LiberatorAGRangeUpgraded" Send="Destroy"/>
+    </CActorSplat>
+    <CActorModel id="LiberatorAGSearchIndicatorModel">
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGSearchIndicator_Upgrade"/>
+    </CActorModel>
+    <CActorBeamSimple id="LiberatorAttackBeam">
+        <On Terms="ActorCreation; ValidateUnit LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAttackBeamUpgraded"/>
+    </CActorBeamSimple>
+    <CActorModel id="LiberatorAGAttackImpactModel" parent="GenericAttackModel">
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGAttackImpactUpgraded"/>
+    </CActorModel>
+    <CActorModel id="LiberatorDummyRange">
+        <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
+        <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
+    </CActorModel>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
@@ -5546,6 +5568,12 @@
         <SoundArray index="Yes" value="Zealot_Yes"/>
         <SoundArray index="Attack" value="Zealot_Attack"/>
         <SoundArray index="Pissed" value="Zealot_Pissed"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulXelNagaConstruct">
+        <PlacementActorModel value="ZergPlacementModel"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulXelNagaConstructCyan">
+        <PlacementActorModel value="ZergPlacementModel"/>
     </CActorUnit>
     <CActorEventMacro id="ZergBurrowMobileAnimMacro">
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowMoveEffectExtra"/>

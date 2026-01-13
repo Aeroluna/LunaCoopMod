@@ -468,6 +468,9 @@ Returned Revelation to Oracles and in return they lose permanent detection.
 - Removed bonus sight radius from Defender Mode.
 - Reduced Liberator anti-air damage from 7 to 5.
 - Reduced Liberator anti-ground damge from 85 to 75.
+- Added Advanced Ballistics upgrade:
+  - Increases the range of Liberators in Defender Mode by 2.
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
 
 Amon is smelly and gets Versus Liberators. Hopefully makes Shadow Tech less oppressive.
 
@@ -500,7 +503,7 @@ Why do Amon's Phoenixes have energy if their one ability doesn't even cost energ
 - Added Resonating Glaives upgrade for Adepts.
   - Increases attack speed by 45%.
   - Adept attacks will have orange projectiles after Resonating Glaives has been researched.
-  - Amon will gain this upgrade after 10 minutes on Brutal.
+  - Amon will gain this upgrade after never/never/900/600 seconds.
 - Reduced sight radius of Adept Shade from 9 to 4.
 
 Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
@@ -520,11 +523,7 @@ Copied from Versus. Duration of Raven's summons massively reduced, and in return
 
 - Increased Science Vessel Irradiate cost from 25 energy to 75 energy.
 - Increased Science Vessel Defensive Matrix cost from 50 energy to 100 energy.
-- Added a limit to how many Science Vessels can spawn per wave.
-  - Casual: 0
-  - Normal: 2
-  - Hard: 4
-  - Brutal: 6
+- Added a limit of 0/2/4/6 Science Vessels per wave.
 
 A full energy Science Vessel could slam out 8 Irradiates before running OOM. A late-game Classic Mech wave would spawn around 8 Science Vessels. Thats 64 Irradiates straight to your face every wave. Increasing the energy cost and limiting Science Vessels should make it less obnoxious fighting Terran with a bio army.
 
@@ -537,7 +536,7 @@ Copied from Versus. Did you know Amon's Void Rays didn't even have a working pas
 - Added Hyperflight Rotors upgrade for Banshees.
   - Increases movement speed from 2.75 to 3.75.
   - Banshees will have a boost visual after Hyperflight Rotors have been researched.
-  - Amon will gain this upgrade after 15 minutes on Brutal.
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
 
 fast banshees go nyoom.
 
@@ -562,9 +561,50 @@ fast banshees go nyoom.
 
 Copied from Versus. Transforms Infestors into the sneaky burrowing spellcasters they were always meant to be.
 
-- Reduced Tunnel Claws speed bonus from 2.25 to 1.4.
+- Reduced Roach Tunneling Claws speed bonus from 2.25 to 1.4.
 
 Copied from Versus.
+
+- Increased Locust duration from 18 seconds to 25 seconds.
+- Increased Spawn Locust cooldown from 15 to 60 seconds.
+- Reduced Locust life from 65 to 50.
+- Reduced Locust attack damage from 12 to 10.
+- Increased Flying Locust Swoop range from 4 to 6.
+- Buffed Locusts spawned by the Swarm Host to Flying Locusts. Flying Locusts can use Swoop to land and attack.
+- Reduced Swarm Host cost from 200/100 to 100/75.
+- Limited Swarm Host count to 2/3/4/5 per wave.
+
+Coped from Versus. Should make Swarm Host have a higher initial impact but less sustained poke. Fun fact: this also fixes a bug where the egg animation on their back took 60 seconds despite the cooldown being 15 seconds.
+
+- Nerfed Widow mines by making them revealed while Sentinel Missile is on cooldown.
+- Added Drilling Claws upgrade:
+  - Allows Widow Mines to burrow, unborrow and activate two times as fast.
+  - Additionally this grants invisibility while reloading.
+  - Amon will gain this upgrade after never/never/900/720 seconds.
+- Added Anabolic Synthesis upgrade:
+  - Increases the movement speed of Ultralisks off creep.
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
+- Added Seismic Spines upgrade:
+  - Increases the range of Lurkers by 2.
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
+- Added Adaptive Talons upgrade:
+  - Increases the burrow speed of Lurkers.
+  - Amon will gain this upgrade after never/never/1300/1000 seconds.
+- Added Anion Pulse-Crystals upgrade:
+  - Increases the range of Phoenixes by 2.
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
+- Added Smart Servos upgrade:
+  - Allows Hellions, Hellbats, Vikings, and Thors to transform quickly between combat modes.
+  - Amon will gain this upgrade after never/never/900/720 seconds.
+- Added Hi-Sec Auto Tracking upgrade:
+  - Adds +1 attack range to Auto-Turrets, Missile Turrets, and Planetary Fortresses.
+  - Amon will gain this upgrade after never/never/900/720 seconds.
+- Added Neosteel Armor upgrade:
+  - Increases the armor of all Terran structures by 2.
+  - Increases the cargo space of Bunkers by 2 and the load space of Command Centers and Planetary Fortresses by 5.
+  - Amon will gain this upgrade after never/never/900/720 seconds.
+
+Various fun upgrades copied from Versus given to Amon.
 
 - Removed Science Vessels from the Raiding Party (BioMechStar) composition.
 - Added Medivacs to the Raiding Party (BioMechStar) composition.
@@ -1680,6 +1720,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 - Fixed an issue where if an Infested Civilian has jumped using Anaerobic Enhancement, and an Infested Siege Tank tried to eat it, the Infested Civilian would die without healing or gaining a charge.
 - Fixed an issue where the icon of the button for Mech Attack Speed mastery was not colored.
 - Fixed an issue where you could not queue multiple upgrades on the Infested Command Center.
+- Fixed an issue where Volatile Infested would play a sad little wimpy pop sound effect when dying instead of a acid explosion.
 
 yeah. The Siege Tank bug took way too long to figure out...
 
@@ -2161,6 +2202,7 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 - Fixed an issue where Zoraya Legion's Void Rays used Zoraya's wireframe image.
 - Fixed an issue where Tesseract Monoliths were missing the Staggering Blast button from their command card.
 - Fixed an issue where Zoraya's Prismatic Beam passive tooltip incorrectly says it increases damage against massive targets.
+- Fixed an issue where the placement model for the Avatars were not transparent.
 
 yeah.
 

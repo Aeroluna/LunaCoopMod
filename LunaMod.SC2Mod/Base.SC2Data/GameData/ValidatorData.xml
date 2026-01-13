@@ -193,6 +193,15 @@
     <CValidatorUnitCompareBehaviorCount id="NotHaveCommanderPrestigeStukovNeural">
         <Behavior value="CommanderPrestigeStukovNeuralTarget"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="HasDrillingClawsUpgrade">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveWidowMineDrillingClaws"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="NotHaveDrillingClawsUpgrade">
+        <ResultNoPlayer value="Error"/>
+        <Value value="HaveWidowMineDrillingClaws"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="HaveJinaraLightningStrikesBehavior">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -491,6 +500,7 @@
     <CValidatorCombine id="HasWidowMineUpgrade">
         <CombineArray value="HasWidowMineDamage"/>
         <CombineArray value="HHWidowMineAttackRangeUpgraded"/>
+        <CombineArray value="HasDrillingClawsUpgrade"/>
     </CValidatorCombine>
     <CValidatorPlayerRequirement id="HaveBansheeSpeed">
         <ResultNoPlayer value="Error"/>
@@ -733,7 +743,16 @@
     <CValidatorCombine id="LockOnGroundAirPeriodicValidators">
         <CombineArray value="TargetNotHaveRestoration"/>
     </CValidatorCombine>
-    <CValidatorPlayerRequirement id="LiberatorAGRangeUpgraded">
+    <CValidatorCombine id="LiberatorAGRangeUpgraded">
+        <CombineArray value="HaveLiberatorStructureAttack"/>
+        <CombineArray value="HaveLiberatorRange"/>
+    </CValidatorCombine>
+    <CValidatorPlayerRequirement id="HaveLiberatorRange">
+        <Find value="1"/>
+        <Value value="HaveLiberatorRange"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="HaveLiberatorStructureAttack">
         <Find value="1"/>
         <Value value="HaveLiberatorStructureAttack"/>
         <WhichPlayer Value="Caster"/>
@@ -969,4 +988,9 @@
         <CombineArray value="IsDetected"/>
         <CombineArray value="NotCloakedAndNotBuried"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareCooldown id="WidowMineAttackOnCooldown">
+        <CooldownLink value="Abil/WidowMineAttack"/>
+        <Ability value="WidowMineAttack"/>
+        <Compare value="NE"/>
+    </CValidatorUnitCompareCooldown>
 </Catalog>

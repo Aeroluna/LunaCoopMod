@@ -1301,6 +1301,14 @@
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="LocustMP">
+        <LifeStart value="50"/>
+        <LifeMax value="50"/>
+    </CUnit>
+    <CUnit id="LocustMPFlying">
+        <LifeStart value="50"/>
+        <LifeMax value="50"/>
+    </CUnit>
     <CUnit id="LurkerDenMP">
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
@@ -1689,13 +1697,19 @@
         <SubgroupAlias value="SwarmHostMP"/>
         <CardLayouts index="0">
             <LayoutButtons Face="SwarmHostBurrowDown" Type="AbilCmd" AbilCmd="MorphToSwarmHostBurrowedMP,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="FlyingLocusts" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="75"/>
     </CUnit>
     <CUnit id="SwarmHostMP">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="3"/>
             <LayoutButtons Face="SwarmHostBurrowUp" Type="AbilCmd" AbilCmd="MorphToSwarmHostMP,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="FlyingLocusts" Type="Passive" Row="2" Column="1"/>
         </CardLayouts>
+        <CostResource index="Minerals" value="100"/>
+        <CostResource index="Vespene" value="75"/>
     </CUnit>
     <CUnit id="ToxicNestBurrowed">
         <Collide index="Burrow" value="0"/>
@@ -4953,6 +4967,8 @@
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
             <LayoutButtons Face="LockOnRangeUpgrade" Type="Passive" Requirements="HaveCycloneLockOnRangeUpgrade2" Row="2" Column="3"/>
             <LayoutButtons Face="HellburstPayload" Type="Passive" Requirements="UseWidowMineDamage" Row="1" Column="0"/>
+            <LayoutButtons Face="DrillClaws" Type="Passive" Requirements="HaveWidowMineDrillingClaws" Row="2" Column="3"/>
+            <LayoutButtons Face="WidowMineConcealment" Type="Passive" Requirements="HaveWidowMineDrillingClaws" Row="2" Column="4"/>
         </CardLayouts>
         <BehaviorArray Link="WidowMineDrillingClawsTracker"/>
     </CUnit>
@@ -4961,7 +4977,10 @@
             <LayoutButtons Face="SmartServos" Type="Passive" Requirements="HaveSmartServosSwann" Row="2" Column="4"/>
             <LayoutButtons Face="LockOnRangeUpgrade" Type="Passive" Requirements="HaveCycloneLockOnRangeUpgrade2" Row="2" Column="3"/>
             <LayoutButtons Face="HellburstPayload" Type="Passive" Requirements="UseWidowMineDamage" Row="1" Column="0"/>
+            <LayoutButtons Face="DrillClaws" Type="Passive" Requirements="HaveWidowMineDrillingClaws" Row="2" Column="3"/>
+            <LayoutButtons Face="WidowMineConcealment" Type="Passive" Requirements="HaveWidowMineDrillingClaws" Row="2" Column="4"/>
         </CardLayouts>
+        <BehaviorArray Link="WidowMineBurrowedCloakingBehavior"/>
         <BehaviorArray Link="WidowMineDrillingClawsTracker"/>
     </CUnit>
     <CUnit id="Wraith">

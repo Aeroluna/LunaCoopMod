@@ -454,11 +454,26 @@
         <AffectedUnitArray value="Lurker"/>
         <AffectedUnitArray value="LurkerBurrowed"/>
     </CUpgrade>
+    <CUpgrade id="DrillClaws">
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineUnburrow,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,WidowMineUnburrow,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="0.500000"/>
+    </CUpgrade>
     <CUpgrade id="ImmortalResearchShadowCannon">
         <EffectArray Reference="Unit,ImmortalShakuras,SubgroupPriorityDelta" Value="18"/>
     </CUpgrade>
     <CUpgrade id="ImprovedShadowCannon">
         <EffectArray index="5" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="LiberatorAGRangeUpgrade">
+        <Icon value="Assets\Textures\btn-upgrade-terran-advanceballistics.dds"/>
+        <EffectArray Reference="Abil,LiberatorAGTarget,Range[0]" Value="2"/>
+        <EffectArray Reference="Weapon,LiberatorAGWeapon,Range" Value="2"/>
+        <!--EffectArray Reference="Unit,LiberatorAG,Sight" Value="4"/-->
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Liberator"/>
+        <AffectedUnitArray value="LiberatorAG"/>
+        <!--ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/-->
     </CUpgrade>
     <CUpgrade id="NovaCommander">
         <EffectArray index="5" Value="1.5"/>
@@ -554,6 +569,52 @@
         <EffectArray Reference="Effect,LurkerMP,PeriodCount" Value="2"/>
         <AffectedUnitArray value="LurkerMP"/>
         <AffectedUnitArray value="LurkerMPBurrowed"/>
+    </CUpgrade>
+    <CUpgrade id="SmartServos">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.010000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.533000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.340000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.600000"/>
+        <EffectArray Reference="Abil,FighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.150000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.333000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <!--ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/-->
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <!--EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].RandomDelayMax" Value="0.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].RandomDelayMax" Value="0.500000"/-->
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="HellionTank"/>
+        <AffectedUnitArray value="VikingAssault"/>
+        <AffectedUnitArray value="VikingFighter"/>
+        <AffectedUnitArray value="ThorAP"/>
+        <AffectedUnitArray value="Thor"/>
     </CUpgrade>
     <CUpgrade id="TychusHercGrappleStun">
         <EffectArray Reference="Actor,TychusHercGrappleBunkerRange,Range" Value="1.500000"/>
