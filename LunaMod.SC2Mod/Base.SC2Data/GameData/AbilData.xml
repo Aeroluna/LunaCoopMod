@@ -976,8 +976,10 @@
         <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DukesRevengeYamato">
+        <Flags index="AllowMovement" value="1"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
             <Cooldown TimeUse="30"/>
@@ -994,6 +996,7 @@
         <AutoCastValidatorArray value="TargetLifeGE200"/>
         <PrepTime index="0" value="1.5"/>
         <CmdButtonArray index="Execute" Requirements="UseBattlecruiserSpecializations"/>
+        <Effect index="0" value="DukesRevengeYamato"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="DuskWingBansheeCloakingField">
         <CmdButtonArray index="On" Requirements="NotCommanderPrestigeRaynorMercenary"/>

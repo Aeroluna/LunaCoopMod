@@ -166,6 +166,20 @@
         <HeightOffset value="3.500000"/>
         <Text value="Button/Tooltip/AutomatedRefineryTextKicker6"/>
     </CActorText>
+    <CActorAction id="DukesRevengeYamatoAttack" parent="GenericAttack" effectImpact="DukesRevengeYamatoU" effectLaunch="DukesRevengeYamato">
+        <LaunchSiteOps Ops="SOpAttachCenter SOpMoveBy1"/>
+        <LaunchAssets Sound="Battlecruiser_YamatoAttackLaunch"/>
+        <Missile value="BattlecruiserYamatoAttackMissile"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpForwardLaunchGuide SOp2DRotation"/>
+        <ImpactAttachQuery Methods="Origin"/>
+        <ImpactMap index="None" Model="BattlecruiserYamatoAttackImpact" Sound="Battlecruiser_YamatoAttackImpact"/>
+        <ImpactMap index="Miss" Model="None"/>
+        <ImpactModel value="BattlecruiserYamatoAttackImpactModel"/>
+        <ImpactPhysics Name="YamatoImpact" MatchKeys="Basic" Physics="BattlecruiserYamatoAttackForce"/>
+        <ImpactPhysics Name="YamatoImpactAir" MatchKeys="BasicAir" Physics="BattlecruiserYamatoAttackForce"/>
+        <ShieldFlashType value="Full"/>
+        <ActionFlags index="LaunchForceSite" value="1"/>
+    </CActorAction>
     <CActorModel id="BunkerPlacementModel">
         <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; ModelIsLowQuality" Send="ModelSwap BunkerUpgrade"/>
         <On Terms="ActorCreation; ValidatePlayer NeosteelFramePurchased; !ModelIsLowQuality" Send="ModelSwap BunkerUpgradePlacement"/>
@@ -299,6 +313,14 @@
     <CActorSound id="DehakaRoachConeAttackLaunchSound">
         <Sound value="HH_Hellbat_WildfireExplosion"/>
     </CActorSound>
+    <CActorUnit id="DukesRevenge">
+        <On Terms="Abil.DukesRevengeYamato.SourcePrepStart" Send="AnimBracketStart SpellMorph Morph,A Stand,A Morph,B 0 1.300000 AsDuration"/>
+        <On Terms="Abil.DukesRevengeYamato.SourcePrepStop" Send="AnimBracketStop SpellMorph"/>
+        <On Terms="Abil.DukesRevengeYamato.SourceCastStart" Send="$Spell,A"/>
+    </CActorUnit>
+    <CActorModel id="DukesRevengeYamatoAttackChargeModel">
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveBy1"/>
+    </CActorModel>
     <CActorUnit id="Extractor">
         <On Terms="Behavior.HarvestableRichVespeneGeyserGasZerg.Destroy" Send="ModelSwap Extractor"/>
         <On Terms="UnitBirth" Send="TimerSet 0.100000 RichGeyser"/>
@@ -1735,6 +1757,8 @@
         <Model value="AscendantSacrificeEffect"/>
     </CActorModel>
     <CActorUnit id="Battlecruiser">
+        <On index="77" Terms="Abil.Yamato.SourcePrepStart; !ValidateUnit IsRaynorCoopCommander"/>
+        <On Terms="Abil.Yamato.SourcePrepStart; ValidateUnit IsRaynorCoopCommander" Send="$Spell 0 -1.000000 -1.000000 1.300000 AsDuration"/>
         <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA" Send="LookAtEngage Continue"/>
         <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
         <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
@@ -2500,10 +2524,10 @@
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="Heavens_COOP_GearDeliveryBeam"/>
     </CActorModel>
-    <!--CActorUnit id="DukesRevenge">
-        <On Terms="Abil.Yamato.SourcePrepStart" Send="$Spell 0 -1.000000 -1.000000 3.500000 AsDuration"/>
-        <On Terms="Abil.Yamato.SourcePrepStop" Send="AnimClear Spell"/>
-    </CActorUnit-->
+    <!--CActorUnit id="DukesRevenge">-->
+    <!--        <On Terms="Abil.Yamato.SourcePrepStart" Send="$Spell 0 -1.000000 -1.000000 3.500000 AsDuration"/>-->
+    <!--        <On Terms="Abil.Yamato.SourcePrepStop" Send="AnimClear Spell"/>-->
+    <!--    </CActorUnit-->
     <CActorUnit id="MercMedic">
         <On Terms="Abil.heal.SourceChannelStart" Send="$Spell PlayForever"/>
         <On Terms="Abil.heal.SourceChannelStop" Send="AnimClear Spell"/>
@@ -2517,6 +2541,7 @@
         <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
         <AbilSoundArray AbilCmd="HealPlusMech,Execute" Sound="Medic_HealVO"/>
         <AbilSoundArray AbilCmd="MedicRestoration,Execute" Sound="Medic_HealVO"/>
+        <PortraitModel value="MedicMercenaryPortrait"/>
     </CActorUnit>
     <CActorModel id="NexusMassRecallWarping" parent="ModelAnimationStyleContinuous">
         <!--On Terms="Behavior.NexusMassRecallWarpOut.On" Send="Create"/>
