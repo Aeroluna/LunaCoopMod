@@ -571,8 +571,8 @@ void lib74A68E34_gf_RaynorPrestigeMercenarySpawnStructure (int lp_player) {
 
     // Implementation
     lv_mineralPoint = UnitGroupCenterOfGroup(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(libCOMI_gf_CM_PrimaryTownHall(lp_player)), 10.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    if ((UnitGroupCount(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), c_unitCountAlive) > 0)) {
-        lv_spawnPoint = UnitGetPosition(UnitGroupUnit(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), 1));
+    if ((UnitGroupCount(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 1), c_unitCountAlive) > 0)) {
+        lv_spawnPoint = UnitGetPosition(UnitGroupUnit(UnitGroup("ACHeroSpawnPlacement", lp_player, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 1), 1));
     }
     else {
         TriggerDebugOutput(1, StringExternal("Param/Value/lib_74A68E34_06BC5908"), false);

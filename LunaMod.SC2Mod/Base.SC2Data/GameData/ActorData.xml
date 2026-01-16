@@ -486,6 +486,10 @@
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
+    <CActorAction id="ThorMengskAttack">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveByDot25"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMPatternThorMengsk"/>
+    </CActorAction>
     <CActorUnit id="TrooperMengsk">
         <On Terms="Abil.RepairTrooperMengsk.SourceChannelStart" Send="TimerSet 0.000000,0.300000 Repair"/>
         <On Terms="Abil.RepairTrooperMengsk.SourceChannelStop" Send="TimerKill Repair"/>
@@ -5027,7 +5031,7 @@
         <On Terms="WeaponStop.KerriganBroodRazorTalons.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="UnitBirth.K5KerriganBurrowed; ValidatePlayer HaveKerriganBroodCosmetic" Send="Create"/>
-        <On Terms="UnitBirth.K5Kerrigan" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="UnitBirth.K5KerriganBurrowed" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
         <On Terms="Abil.KerriganRazorSwarm.SourceCastStart" Send="$Spell"/>
         <On Terms="Abil.KerriganImplosion.SourceCastStart" Send="$Spell"/>
         <On Terms="Behavior.KerriganWalk.On" Send="AnimGroupApply Victory"/>

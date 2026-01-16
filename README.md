@@ -2115,6 +2115,7 @@ For an ability that's basically a Psionic Storm, the ability is set up weirdly d
 - Added a cast animation for Sirius's Deploy Warhound Turret ability.
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds fear buff used Han & Horner's fear icon.
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds fear effect would stop the AI of affected units.
+- Fixed an issue where the gear delivery beam sound was classified as UI.
 
 yeah.
 
@@ -2433,6 +2434,7 @@ Previously the status bar only showed hp.
 - Fixed an issue where Sky Fury's Phoenix Protocol did not show the cooldown on the command card.
 - Fixed an issue where Aegis Guard's Incapacitor Shells tooltip incorrectly states massive units are immune.
 - Improved Aegis Guard's Incapacitor Shells debuff tooltip.
+- Fixed an issue where Blackhammer's attack muzzle flash only appeared on the right weapon.
 
 yeah.
 
