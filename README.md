@@ -338,6 +338,8 @@ Makes defensive positions more well defended. Unfortunately not very impactful o
   - Enemies will periodically send units to harass player mineral lines.
   - Costs 7 points for Brutal+.
 
+https://github.com/user-attachments/assets/edbf9777-2af3-4900-8ba8-28e4bcdfd038
+
 Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
 
 - Added new neutral mutator: Whiteout
@@ -348,6 +350,8 @@ Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and D
   - Disables shared vision with ally.
   - Disables minimap objective pings.
   - Costs 1 point for Brutal+.
+
+https://github.com/user-attachments/assets/e53dc858-632c-49ef-a309-b6624e74e0af
 
 It's like the Darkness mutator but cooler!
 
@@ -654,6 +658,8 @@ yeah.
     - Dropped mercenaries benefit from drop pod haste mastery.
   - Disadvantage: Hyperion and Banshee Airstrike are unavailable.
 
+https://github.com/user-attachments/assets/35807304-8824-42c5-bbbc-aaec11ad40cb
+
 Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! These mercenaries will run around and do their own thing, sometimes running into their doom. In return, you get stronger units that can be bought instantly and deployed where you want them. For the disadvantage, you lose access to your powerful topbar and have to be more careful with your trades.
 
 - Added Medivacs.
@@ -663,6 +669,8 @@ Introducing my legally-distinct-from-Nova mercenaries from the WoL campaign! The
   - Units unloaded benefit from the Drop Pod Haste mastery.
   - Can carry sieged Siege Tanks.
   - Have lower cooldown Ignite Afterburners (20 seconds).
+
+https://github.com/user-attachments/assets/a4ac11e2-ed06-460d-a233-0a07f1d901ab
 
 Medivacs are cool, what more needs to be said? The more efficient healing and increased energy regen can be very useful when paired with P1. Can also be useful to have a flying Medic when going Starport units. The Drop Pod haste along with the autocast stim allows for a fun strat of doom dropping.
 
@@ -683,6 +691,8 @@ Copied from CXL. Stimmed Siege Tanks chew up attack waves and the properly worki
   - Removes any negative debuffs on target allied unit.
   - Can remove Seeker Missile, Parasitic Bomb, and Irradiate.
 - Increased Medic subgroup priority from 104 to 110.
+
+https://github.com/user-attachments/assets/bf93ddc9-d981-41a3-834b-fe9878d93265
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
@@ -805,6 +815,8 @@ yeah.
       - Broodlings have improved stats as well.
       - Lifetime increased by 200%.
 
+https://github.com/user-attachments/assets/89d8bca5-117e-48df-8180-746f344edfa2
+
 What if Nova's design met Kerrigan? Hunter Killers, Devouring Ones, and Torrasques return from Brood War with some new friends. Kerrigan has also been rebranded with a new Brood War themed skin, which is much better than the boob sacs and bone heels of SC2's design (Seriously, why did they try to make her sexy?).
 
 Elite Zerglings are my personal favorite, their Cannibalize passive fits their name perfectly and greatly improves their survivability when fighting in packs, espescially when fighting bio armies. The Queen passive should help sustain the massive health pools of the new units. Mutalisks with extra damage massively benefit from their 2 glaive upgrades, and now that their one weakness, being squishy, has been mitigated, they are monsters. The improved Broodling lifetime sounds small at first, but it snowballs fast into a huge army of elite Broodlings.
@@ -897,6 +909,8 @@ Makes units significantly cheaper at the cost of being unable to sustain an army
   - Cloaks nearby friendly units
   - Provides a power field nearby.
 
+https://github.com/user-attachments/assets/f4992063-79b8-434e-a611-e26110228b65
+
 An iconic unit thats missing from co-op, is now back. Mass Recall should help with Artanis's mobility problems. Vortex no longer grants invulnerability to enemy units so Archon toilets are back on the menu. Planet Cracker is such an iconic ability, it had to be added. Projecting a constant power field stays in line with Artanis's design of quickly warping in reinforcements during combat.
 
 - Changed Phoenix weapon damage from 7 (+5 vs Light) to 10 (+2 vs Light).
@@ -912,6 +926,8 @@ Disintegration buffs because this ability usually feels clunky. Cooldown reduced
 - Added Destabilizing Residuum upgrade at the Fleet Beacon.
   - Causes Tempest attacks to leave an AOE field that does 40 damage over 2 seconds.
   - Damage doubled by P2.
+
+https://github.com/user-attachments/assets/1040fc83-a204-4160-b0c8-a2145324ee4c
 
 These changes should make massing Tempests more viable. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
 
@@ -953,6 +969,8 @@ yeah.
     - Hellbats and Thor heavy air/ground weapons can only fire in an arc in front of them while moving.
   - Disadvantage: Hercules are unavailable. Turrets are 100% more expensive.
 
+https://github.com/user-attachments/assets/d5aaaf7b-72f1-44d4-b1e5-9a86633034cb
+
 Allows for fun playstyles like running around with battle mech or flying Wraiths around like Phoenixes.
 
 - Added Thor's High Impact Payload mode from Versus for single-target long-range damage.
@@ -960,6 +978,8 @@ Allows for fun playstyles like running around with battle mech or flying Wraiths
 - Added a launch sound effect when channeling 330m Barrage Cannon.
 - Buffed Multi-Lock Weapons System upgrade to additionally affect the Thor.
 - Reduced 330m Barrage Cannon cast and finish time from 2 to 0.75.
+
+https://github.com/user-attachments/assets/165a0113-4501-444b-8ecb-16451e5d9753
 
 These changes should make Thors much more competitive.
 
@@ -971,6 +991,8 @@ Increased Hellion/Hellbat life should make mineral dumping into them more effici
   - Added Hellburst Payload upgrade, which increases Sentinel Missile direct damage by 20 and splash damage by 80.
   - Adds a visual red light on top after researching Hellburst Payload.
   - Cyclone's Targeting Optics upgrade additionally increases Sentinel Missile range by 3.
+
+https://github.com/user-attachments/assets/ceab96c4-a010-4430-b91e-972672d985bc
 
 Why not give the mech commander more mech? Widow Mines go well with Swann's defensive design. The Hellburst Payload massively improved splash damage can be absolutely devastating.
 
@@ -1034,6 +1056,8 @@ yeah.
   - Limited to 4.
 - Changed Zagara's temporary units to visually burrow away instead of exploding when expiring.
 
+https://github.com/user-attachments/assets/41ea50b6-0778-44a5-b480-a4bd74091235
+
 If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
 
 - Added P4: Subterranean Tide
@@ -1051,6 +1075,8 @@ I added a whole new mechanic to Zagara and then created a whole prestige surroun
     - Kills target friendly non-heroic biological unit metabolizing it into 75 energy.
   - Added Metasynaptic Node upgrade at the Infestation Pit.
     - Adds 50 max energy and starts at full energy.
+
+https://github.com/user-attachments/assets/d93f483c-be85-40a6-aff6-ccb6648f8c73
 
 Gives Zagara a unit that isn't just a-move. Mixing defilers allows for taking far more efficient trades. Defilers can also easily get energy from consuming Zagara's cheap units. Try not to consume your friends.
 
@@ -2330,6 +2356,8 @@ Incentivizes spending your minerals on zerg as your frontline instead of on troo
 Earthsplitter Ordnance are in a position where you either build exclusively them and cheese every objective or you build none. Lowering their damage but giving them crowd control and making them easier to micro should lower the ability to cheese objectives with them (which isn't exactly fun for your ally) while improving their ability to support your army.
 
 - Added repair ability to Dominion Trooper (and variants).
+
+https://github.com/user-attachments/assets/4e2fb0a7-a597-409c-8593-9edb9c658d20
 
 When using mech in your army, it can be annoying having to order your troopers to build a bunker, switch to laborer, finally repair, and then switch back. If troopers can build structures, why not repair?
 
