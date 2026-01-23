@@ -2386,6 +2386,12 @@
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="SoundSetMuted 1 0"/>
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="Destroy"/>
     </CActorSound>
+    <CActorUnit id="ZeratulDisruptor">
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create PurificationNovaBirth"/>
+        <Scale value="0.912500"/>
+        <BarOffset value="83"/>
+        <BarWidth value="60"/>
+    </CActorUnit>
     <CActorAction id="ZeratulKarassAttack">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <ImpactPhysics Name="HighTemplarPsiBlastImpact" MatchKeys="Basic" Physics="HighTemplarPsiBlastDeathImpactForce"/>
@@ -4095,6 +4101,9 @@
         <On index="86" removed="1"/>
         <On index="87" removed="1"/>
         <On index="88" removed="1"/>
+        <Scale value="0.912500"/>
+        <BarOffset value="83"/>
+        <BarWidth value="60"/>
     </CActorUnit>
     <CActorUnit id="HotSTorrasque">
         <On index="85" Terms="AbilMorph.*.Finish; MorphTo HotSTorrasque; MorphFrom TorrasqueChrysalis; !ValidatePlayer CommanderPrestigeKerriganBrood"/>

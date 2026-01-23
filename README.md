@@ -63,7 +63,7 @@ Help muscle memory from Versus for people who use grid hotkeys.
 
 Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
 
-- Fixed Protoss warp-in animations.
+- Fixed an issue where Protoss warp-in animations did not match up with the warp in progress.
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
@@ -127,7 +127,10 @@ thanks Enoki.
 - Fixed an issue where Locusts spawned simultaneously would have perfectly synchronized animations rather than behaving like a swarm.
 - Changed Disruptor Purification Nova ability to be cancelled and deal no damage if the Disruptor is stunned.
 - Changed Orbital Command Scanner Sweep visual to use team color.
+- Reduced visual scale of Disruptor by 9%.
+- Increased Disruptor radius from 0.5 to 0.625.
 - Changed the name of the Disruptor Purification Nova unit from "Disruptor" to "Purifier Orb".
+- Fixed an issue where Disruptor Purification Nova unit showed a kill count.
 - Fixed an issue where Disruptor Purification Novas would show life and shield in the unit info despite being invulnerable.
 - Changed morphing to Overseer (and variants) to no longer require decelerating to cast.
 - Changed Overseer (and variants) Oversight ability to no longer require decelerating to cast.
@@ -181,6 +184,7 @@ thanks OmniSkeptic.
 - Added an impact visual for Ravager's Corrosive Bile.
 - Added visual Snow glaze effect to units on snowy maps (Void Launch).
 - Added a visual effect and sound effect when Salvaging structures.
+- Added cosmetic flame jets to Vultures when moving.
 
 It just looks nice c:
 
@@ -259,7 +263,6 @@ Why couldn't Colossi walk over Nova?
 - Fixed an issue where the Infested Swarm Eggs "popping" animation was not playing.
 - Fixed an issue where unburrowing effects (e.g. Viper Abduct, Phoenix Graviton Beam) would not unburrow most units.
 - Added a range indicator when using the Oracle's Stasis Ward ability.
-- Added cosmetic flame jets to Vultures when moving.
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 - Fixed an issue where Observer's Observation Mode did not play any sounds.
 - Fixed an issue where the shield fizzle animation played on zerg units with shields.
@@ -268,7 +271,8 @@ Why couldn't Colossi walk over Nova?
 - Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
 - Fixed an issue where Corsair's Disruption Web ability affected invulnerable targets.
 - Fixed an issue where Baneling's Explode ability tooltip showed a level.
-- Fixed an issue where Arbiter's could be affected by cloaking field abilities.
+- Fixed an issue where Arbiters could be affected by cloaking field abilities.
+- Fixed an issue where Scourge's weapon would appear disabled in the unit info panel after enabling structure attacks.
 
 yeah.
 
@@ -493,6 +497,7 @@ What the hell was Blizzard thinking giving Reapers their structure weapon back f
 
 - Reduced Phoenix's Graviton Beam ability cooldown from 30 seconds to 0 seconds.
 - Increased Phoenix's Graviton Beam ability energy cost from 0 to 50.
+- Reworked Phoenix AI to try not to have all Phoenixes channeling Graviton Beam at the same time.
 
 Why do Amon's Phoenixes have energy if their one ability doesn't even cost energy? Now EMPing them actually stops them from lifting.
 
@@ -579,6 +584,12 @@ Copied from Versus.
 - Limited Swarm Host count to 2/3/4/5 per wave.
 
 Coped from Versus. Should make Swarm Host have a higher initial impact but less sustained poke. Fun fact: this also fixes a bug where the egg animation on their back took 60 seconds despite the cooldown being 15 seconds.
+
+- Reduced cooldown of Disruptor's Purification Nova from 30 seconds to 24 seconds.
+- Reduced damage of Disruptor's Purification Nova from 150 (+50 vs shields) to 100 (+100 vs shields).
+- Reworked Disruptor AI to use Purification Nova more aggressively.
+
+Disruptors are kinda lame.
 
 - Nerfed Widow mines by making them revealed while Sentinel Missile is on cooldown.
 - Added Drilling Claws upgrade:
@@ -1253,7 +1264,7 @@ Funny that this passive could *nerf* some units. This happened because the buff 
 When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now that Vorazun is a proper hero and Shadow Guards no longer use scythes, this weapon has been renamed.
 
 - Fixed an issue where Corsair's Disruption Web ability would autocast on a single unit multiple times.
-- Fixed an issue where Shadow Guard's casting Shadow Fury did not play their attack animation.
+- Fixed an issue where Shadow Guards casting Shadow Fury did not play their attack animation.
 - Fixed an issue where Vorazun's level 7 perk Veil of Shadows would apply inconsistently.
 - Fixed an issue where Dark Templar's/Shadow Guard's Shadow Fury had no range indicator.
 - Added visual effect to Dark Pylon's Recall ability.
@@ -1295,7 +1306,7 @@ Karax's early/mid game anti-air is extremely lackluster, adding a ranged gateway
   - Has Fenix Disruptor upgrades.
   - Has regular controllable nova.
 - Increased Purification Nova speed from 2.25 -> 3.25
-- Reduced cooldown of Purification Nova from 30 seconds to 20 seconds.
+- Reduced cooldown of Purification Nova from 24 seconds to 14 seconds.
 - Increased Purification Nova radius by 20%.
 - Reduced price of Cloaking Module from 100/100 to 50/50.
 - Reduced price of Purification Echo from 150/150 to 100/100.
@@ -1505,7 +1516,7 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made training these 
 
 Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
-- Fixed an issue where Mothership using Aiur skin death ragdoll model instead of Tal'darim.
+- Fixed an issue where Mothership used standard skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Fixed an issue where Ascendant shadow trail model didn't scale with the Ascendant (noticeable with Power Overwhelming).
 - Restored missing beam effect on Ascendant's Psionic Orb.
@@ -1518,7 +1529,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsupris
 - Fixed an issue where Alarak's status bar would float much higher than other heroes.
 - Fixed an issue where warping-in Supplicants were missing the void warp-in beam.
 - Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
-- Fixed an issue where combat units would have a level in their tooltip.
+- Fixed an issue where combat units would have a level in their highlight tooltip.
 
 yeah.
 
@@ -1787,6 +1798,8 @@ Launch the bombers faster!
 - Increased projectile scale of Mojo attacks by 20%.
 - Increased projectile speed of Mojo attacks by 20%.
 - Increased beam scale of Warbringer attacks by 20%.
+
+The champions do more damage than normal units, so their projectiles should be larger to visually show that.
 
 - Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.
@@ -2392,7 +2405,7 @@ It traveled so slow that often the unit is already dead by the time the ability 
 - Improved autocasting AI for Emperor's Shadows.
   - Autocasts Pyrokinetic Immolation if no enemies near target are immolated.
   - Autocasts EMP Blast if not stunned.
-- Fixed an issue where Pyrokinetic Imomlation and EMP Blast would have their autocast toggled off after leveling up.
+- Fixed an issue where Pyrokinetic Immolation and EMP Blast would have their autocast toggled off after leveling up.
 - Changed Pyrokinetic Immolation to no longer allow casting on targets already immolated.
 
 Hopefully prevents dumping all their energy at once. Still probably more efficient to cast these yourself.

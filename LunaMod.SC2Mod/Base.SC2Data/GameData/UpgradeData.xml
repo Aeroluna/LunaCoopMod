@@ -475,6 +475,11 @@
         <!--ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/-->
     </CUpgrade>
+    <CUpgrade id="MasteryKerriganResearchSpeedandCost">
+        <EffectArray Operation="Subtract" Reference="Abil,LurkerDenResearch,InfoArray[Research2].Time" Value="2.400000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,LurkerDenResearch,InfoArray[Research2].Resource[Minerals]" Value="4"/>
+        <EffectArray Operation="Subtract" Reference="Abil,LurkerDenResearch,InfoArray[Research2].Resource[Vespene]" Value="4"/>
+    </CUpgrade>
     <CUpgrade id="NovaCommander">
         <EffectArray index="5" Value="1.5"/>
         <EffectArray index="6" Value="1.5"/>
@@ -1633,6 +1638,7 @@
         <EffectArray Reference="Unit,DefilerMP,EnergyStart" Value="200"/>
         <EffectArray Reference="Unit,DefilerMPBurrowed,EnergyStart" Value="200"/>
         <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-tissueassimilation.dds"/>
     </CUpgrade>
     <CUpgrade id="DisruptorSecondExplosion">
         <EffectArray Operation="Set" Reference="Effect,PurificationNovaTargettedSearchSet,EffectArray[0]" Value="FenixPurificationNovaUpgradedSet"/>
@@ -1665,14 +1671,14 @@
         <EffectArray index="4" removed="1"/>
     </CUpgrade>
     <CUpgrade id="HHBomberNapalmImproved">
-        <Icon value="Assets\Textures\btn-ability-hornerhan-bomberplatform-napalm.dds"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-yagdra-firewave.dds"/>
         <EffectArray Operation="Set" Reference="Effect,HHBomberAreaBombReveal,ExpireDelay" Value="12.000000"/>
     </CUpgrade>
     <CUpgrade id="HHBomberTriple">
-        <Icon value="Assets\Textures\btn-ability-hornerhan-bomberplatform-napalm.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-bansheemissilestrik.dds"/>
     </CUpgrade>
     <CUpgrade id="HHBomberEMP">
-        <Icon value="Assets\Textures\btn-ability-hornerhan-bomberplatform-napalm.dds"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-feedbackaoe-color.dds"/>
     </CUpgrade>
     <CUpgrade id="HHMultiLock">
         <EffectArray index="0" removed="1"/>
@@ -1879,6 +1885,8 @@
         <EffectArray Operation="Subtract" Reference="Abil,PurificationNovaTargeted,Cost[0].Cooldown.TimeUse" Value="10.000000"/>
         <EffectArray Reference="Unit,DisruptorPhased,Speed" Value="1.0"/>
         <EffectArray Reference="Actor,DisruptorPurificationNovaTargettedRange,Range" Value="3.000000"/>
+        <EffectArray Reference="Effect,PurificationNovaDamage,Amount" Value="50"/>
+        <EffectArray Reference="Effect,PurificationNovaDamage,ShieldBonus" Value="-50"/>
     </CUpgrade>
     <CUpgrade id="KerriganBroodCosmetic">
         <EffectArray Operation="Set" Reference="Actor,K5Kerrigan,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-zerg-infested-kerrigan-remastered.dds"/>
@@ -2018,7 +2026,9 @@
         <EffectArray Operation="Set" Reference="Abil,StarportTrain,InfoArray[Train1].Location" Value="Rally"/>
         <EffectArray Operation="Subtract" Reference="Abil,StarportTrain,InfoArray[Train1].Time" Value="2.300000"/>
     </CUpgrade>
-    <CUpgrade id="MengskAcademyMissileCount"/>
+    <CUpgrade id="MengskAcademyMissileCount">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-ripwavemissiles.dds"/>
+    </CUpgrade>
     <CUpgrade id="PitAlarak"/>
     <CUpgrade id="PunisherGrenades">
         <AffectedUnitArray value="HammerSecurity"/>
@@ -2159,6 +2169,7 @@
     </CUpgrade>
     <CUpgrade id="SIBansheeIncubationChambers">
         <AffectedUnitArray value="StukovInfestedBanshee"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-abathur-incubationchamber.dds"/>
     </CUpgrade>
     <CUpgrade id="SIBarracksCorruption"/>
     <CUpgrade id="SIBunkerArmor">
@@ -2172,7 +2183,9 @@
         <AffectedUnitArray value="SIMissileTurretFlying"/>
         <AffectedUnitArray value="SIMissileTurret"/>
     </CUpgrade>
-    <CUpgrade id="SILiberatorNecroplasmicSynthesis"/>
+    <CUpgrade id="SILiberatorNecroplasmicSynthesis">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-infestedliberatoraoe.dds"/>
+    </CUpgrade>
     <CUpgrade id="SIMarineTrooperRange">
         <EffectArray Reference="Weapon,InfestedAcidSpines,Range" Value="1"/>
     </CUpgrade>
@@ -2272,6 +2285,7 @@
         <EffectArray Operation="Set" Reference="Abil,BlinkMultiple,Cost[0].Charge.HideCount" Value="0"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,AlertTooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
         <EffectArray Operation="Set" Reference="Button,StalkerBlinkMultiple,Tooltip" Value="Button/Tooltip/StalkerBlinkMultiple"/>
+        <Icon value="Assets\Textures\btn-ability-zeratul-darkarchon-maelstrom.dds"/>
     </CUpgrade>
     <CUpgrade id="StukovInfestedBansheeInfestedLife">
         <EffectArray Reference="Unit,StukovInfestedBanshee,Speed" Value="1.000000"/>
@@ -2343,7 +2357,7 @@
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleMovementSpeed">
         <Flags index="UpgradeCheat" value="0"/>
-        <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
         <EffectArray Reference="Unit,Cyclone,Speed" Value="0.675700"/>
         <EffectArray Reference="Unit,Diamondback,Speed" Value="0.589800"/>
         <EffectArray Reference="Unit,Goliath,Speed" Value="0.539000"/>
@@ -2368,7 +2382,7 @@
     </CUpgrade>
     <CUpgrade id="SwannCommanderVehicleCooldown">
         <Flags index="UpgradeCheat" value="0"/>
-        <Icon value="Assets\Textures\btn-upgrade-swann-vehiclerangeincrease.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-optimizedlogistics.dds"/>
         <EffectArray Operation="Subtract" Reference="Abil,330mmBarrageCannons,Cost[0].Cooldown.TimeUse" Value="24.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,DefensiveMatrixTarget,Cost[0].Cooldown.TimeUse" Value="8.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,WidowMineAttack,Cost[0].Cooldown.TimeUse" Value="16.000000"/>
@@ -2391,7 +2405,7 @@
         <AffectedUnitArray value="PlanetaryFortress"/>
     </CUpgrade>
     <CUpgrade id="TempestDestabilizingResiduum">
-        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-researchgravitysling.dds"/>
         <EffectArray Reference="Effect,TempestDotRandomOffset,Chance" Value="1"/>
         <EffectArray Reference="Effect,TempestDotRandomOffsetGround,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
@@ -2537,6 +2551,14 @@
         <EffectArray Operation="Set" Reference="Unit,TemplarArchive,Description" Value="Button/Tooltip/ACVorazunTemplarArchiveUpgraded"/>
     </CUpgrade>
     <CUpgrade id="ZagaraCommander">
+        <EffectArray index="126" Value="0"/>
+        <EffectArray index="127" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Scourge,CostResource[Minerals]" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Unit,Scourge,CostResource[Vespene]" Value="28"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DefilerMP,CostResource[Minerals]" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DefilerMP,CostResource[Vespene]" Value="15"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DefilerMPBurrowed,CostResource[Minerals]" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Unit,DefilerMPBurrowed,CostResource[Vespene]" Value="15"/>
         <EffectArray Operation="Set" Reference="Unit,InfestationPit,Description" Value="Button/Tooltip/ACZagaraInfestationPit"/>
         <EffectArray Operation="Set" Reference="Button,InfestationPit,Tooltip" Value="Button/Tooltip/ACZagaraInfestationPit"/>
         <EffectArray Operation="Set" Reference="Button,InfestationPit,AlertTooltip" Value="Button/Tooltip/ACZagaraInfestationPit"/>

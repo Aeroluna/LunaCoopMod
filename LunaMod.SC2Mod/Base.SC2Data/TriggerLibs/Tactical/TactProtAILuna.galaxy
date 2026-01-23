@@ -16,6 +16,12 @@ order GravitonBeam (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
         return null;
     }
 
+    filterGroup = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+    scanCount = UnitGroupCount(filterGroup, c_unitCountAll);
+    if (scanCount == 0) {
+        return null;
+    }
+
     filter = AIFilter(player);
     AISetFilterSelf(filter, aiUnit);
     AISetFilterAlliance(filter, c_playerGroupAlly);
@@ -165,5 +171,88 @@ void AIThinkVoidRayLuna (int player, unit aiUnit, unitgroup scanGroup) {
             AICast(aiUnit, ord, c_noMarker, c_castHold);
             return;
         }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** DISRUPTOR ***
+//--------------------------------------------------------------------------------------------------
+order PurificationNovaLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unitgroup targetGroup;
+    int count;
+    point loc;
+    unitgroup filterGroup;
+    unitgroup phoenixes;
+    unit unitToCheck;
+    int scanCount;
+    int friendlyPhoenixCount;
+    int gravitons;
+    aifilter filter;
+
+    ord = AICreateOrder(player, c_AB_PurificationNova, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    targetGroup = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+    count = UnitGroupCount(targetGroup, c_unitCountAll);
+    if (count == 0) {
+        return null;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterSelf(filter, aiUnit);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    phoenixes = AIGetFilterGroup(filter, AIFindUnits(player, "Disruptor", UnitGetPosition(aiUnit), 10.0, c_noMaxCount));
+    friendlyPhoenixCount = UnitGroupCount(phoenixes, c_unitCountAlive);
+
+    scanCount = UnitGroupCount(phoenixes, c_unitCountAll);
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(phoenixes, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitHasBehavior(unitToCheck, "PurificationNovaTargettedCaster")) {
+            gravitons += 1;
+            continue;
+        }
+    }
+
+    //  dont nova if more than half of nearby disruptors are novaing
+    if (MaxF(friendlyPhoenixCount * (count * 0.05), 1) < gravitons) {
+      return null;
+    }
+
+    loc = AIBestTargetPoint(
+        targetGroup,
+        0, // min hits
+        100, // damage base
+        0, // min score
+        AIEffectFixed(player, "PurificationNovaTargettedSearch", c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        10,
+        c_unitAttributeNone
+    );
+
+    if (loc == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//---------------------------------------------------------------------------------------------
+void AIThinkDisruptorLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+
+    ord = PurificationNovaLuna(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
     }
 }
