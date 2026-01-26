@@ -161,6 +161,29 @@
     <CWeaponLegacy id="PerditionTurretFlamethrower">
         <Icon value="Assets\Textures\btn-upgrade-terran-hisecautotracking.dds"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="ReaverScarabsLaunch">
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="LinkedCooldown" value="1"/>
+        <Backswing value="0.5"/>
+        <Effect value="ScarabLaunchCheck"/>
+        <LegacyOptions index="FaceTargetWhileInCooldown" value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ReaverScarabsLaunchNoScan" parent="ReaverScarabsLaunch">
+        <MinScanRange value="0"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="ContinuousScan" value="0"/>
+        <AcquireScanFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Effect value="ScarabLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ScarabExplode">
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <MinScanRange value="0"/>
+        <Range value="0"/>
+        <TeleportResetRange value="0"/>
+        <Arc value="360"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="ShrikeTurret">
         <Icon value="Assets\Textures\btn-upgrade-terran-hisecautotracking.dds"/>
     </CWeaponLegacy>
@@ -346,6 +369,7 @@
         <Options index="LinkedCooldown" value="0"/>
         <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AcquirePrioritization value="ByDistanceFromTarget"/>
+        <Backswing value="0"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="LanceMissileLaunchers">
         <MinScanRange value="11.5"/>
@@ -358,6 +382,7 @@
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Options index="LinkedCooldown" value="0"/>
         <Arc value="69.994"/>
+        <Backswing value="0"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="LaserTurret">
         <Period value="1"/>
@@ -557,6 +582,7 @@
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Options index="LinkedCooldown" value="0"/>
         <Arc value="29.9926"/>
+        <Backswing value="0"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="TwinIbiksCannon">
         <AcquirePrioritization value="ByAngle"/>

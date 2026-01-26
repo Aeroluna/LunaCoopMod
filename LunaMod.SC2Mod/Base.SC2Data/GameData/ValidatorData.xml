@@ -256,6 +256,19 @@
     <CValidatorUnitBehaviorState id="PassengerNotSuppressed">
         <BehaviorState value="SuppressPassenger"/>
     </CValidatorUnitBehaviorState>
+    <CValidatorUnitPathable id="Pathable13">
+        <ResultFailed value="Error,Error/Pathable13"/>
+        <MaxDistance value="13"/>
+    </CValidatorUnitPathable>
+    <CValidatorUnitCompareBehaviorCount id="ScarabTargetIsFixated">
+        <WhichUnit Effect="ScarabLaunchSet"/>
+        <Compare value="GT"/>
+        <Behavior value="ScarabFixated"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitOrderQueue id="TargetIsAttacking">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="attack"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorCombine id="ShieldFizzleValidator">
         <CombineArray value="IsZerg"/>
         <CombineArray value="IsPrimalZerg"/>

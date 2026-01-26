@@ -177,6 +177,7 @@ Copied from Versus.
 - Fixed an issue where visual effects from some abilities could not be seen even when large portions of the model were well within vision range (Guardian Shield, Microbial Shroud).
 - Fixed an issue where visual effects from some abilities could be seen through the fog of war (Parasitic Bomb, Stimpack).
 - Fixed an issue where Liberators (and variants) couldn't designate an attack target while morphing from AA to AG.
+- Changed Planetary Fortress attack priority to "By Angle" instead of "By Distance".
 
 thanks OmniSkeptic.
 
@@ -198,6 +199,16 @@ It just looks nice c:
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
 Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
+
+- Increased visual scale of Reavers by 18%.
+- Increased Scarab scale by 20%.
+- Increased Scarab impact scale by 40%.
+- Reduced initial Scarab count from 5 to 0.
+- Adjusted tooltips for the Scarab Housing upgrade.
+- Reworked Reaver Scarab movement.
+  - Scarabs will now follow ground pathing to try to reach their target.
+
+Reavers are technically massive units and Scarabs do huge AOE damage, so lets make sure their visual scales matches that. Their initial Scarabs have been removed so they aren't quite as devastating after being spawned on top of your army. Most importantly, the iconic derpy Scarab movement has been recreated instead of just a boring simple projectile.
 
 - Increased Infested Swarm Egg life from 70 to 75.
 - Added Biological tag to Infested Swarm Egg.
@@ -1011,7 +1022,7 @@ Why not give the mech commander more mech? Widow Mines go well with Swann's defe
 - Added Overdrive Actuators upgrade at the Armory, which increases ground vehicle movement speed by 20% and ship movement speed by 10%.
 - Added Pulse-Loop Capacitors upgrade at the Armory, which decreases all unit cooldowns by 40%.
 
-These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
+These general improvements should make playing ground mech much smoother (Why does Raynor have fast Siege Tank morph speed but Swann doesn't?). Smart Servos helps deploying Widow Mines during combat, Overdrive Actuators helps make playing battle mech (Hellion/Cyclone) much easier to kite with, and Pulse-Loop Capacitors helps Widow Mines and Cyclones deal more consistent damage.
 
 - Added the ability to morph Orbital Commands that have access to Calldown: Extra Supplies and Scanner Sweep.
 
@@ -1023,10 +1034,6 @@ Scanner Sweeps should help Cyclones keep their Lock On active and provide detect
 
 An iconic defensive Terran structure for the defensive Terran commander.
 
-- Changed Planetary Fortress attack priority to "By Angle" instead of "By Distance".
-
-Should make Planetaries spend less time spinning around randomly when surrounded.
-
 - Added Commander Center Reactor passive from WoL Campaign.
 
 It takes forever to eco up on Swann. Maybe now not so much.
@@ -1034,6 +1041,10 @@ It takes forever to eco up on Swann. Maybe now not so much.
 - Added Dual-Fusion Welders passive from WoL Campaign.
 
 The turret/mech commander gets more improvements to sustaining turrets/mech.
+
+- Replaced Immortality Protocol Cost and Build Time mastery with Combat Unit Mineral Cost Reduction.
+
+Immortality Protocol kinda sucks with it only affecting 2 units. Instead, it's been reduced with a mastery that affects all of Swann's units. The extra minerals allow Swann to get either more Hellion/Hellbat frontline or build more turrets as defense.
 
 - Buffed P2.
   - Upgrades Fire Suppression System to heal structures to 100% life.
@@ -1488,6 +1499,19 @@ Typically when using the Death Fleet or playing P3, you would end up with a lot 
 - Increased Destroyer warp-in time from 2 seconds to 5 seconds.
 
 Destroyers having such a low warp-in time made the warp-in finish before the animation, looking buggy.
+
+- Reworked Slayer's Phase Blink ability.
+  - Removed double damage on next attack after teleporting.
+  - Can now teleport directly into other units.
+  - Knocksback nearby enemies and deals 15 damage.
+  - Added red Blink icon.
+- Changed Slayer model to Forged collection model.
+
+Alarak's Stalkers are kinda boring compared to anyone elses, so lets give them a facelift with a more unique Blink variant. Fun fact: I reused an unused upgrade for Alarak but with a few tweaks to make it play smoother.
+
+- Reworked Slayer Phase Armor to grant 100% damage reduction instead of invulnerability.
+
+Allows Slayers to actually tank with Phase Armor instead of just becoming untargetable.
 
 - Buffed Alarak's Soul Absorption passive to additionally proc when friendly units die.
 

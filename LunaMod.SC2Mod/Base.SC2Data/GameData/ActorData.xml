@@ -64,6 +64,13 @@
     <CActorAction id="AlarakSoulAbsorptionDummyAttack">
         <On Terms="Effect.JinaraSoulAbsorptionLM.Start; At Caster" Send="Create"/>
     </CActorAction>
+    <CActorModel id="AlarakStalkerForceBlast">
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
+    <CActorSound id="AlarakStalkerForceBlast_CreationSound">
+        <Sound value="AlarakStalkerForceBlast"/>
+    </CActorSound>
+    <CActorSplat id="AlarakStalkerForceBlast_CursorSplat" parent="ProtossCursorSplat" abil="BlinkSlayer"/>
     <CActorUnit id="ArtilleryMengsk">
         <On index="85" Send="AnimBracketStart Attack Attack,00 {} {} FullMatch"/>
     </CActorUnit>
@@ -166,6 +173,15 @@
         <HeightOffset value="3.500000"/>
         <Text value="Button/Tooltip/AutomatedRefineryTextKicker6"/>
     </CActorText>
+    <CActorModel id="BlinkOriginModel">
+        <On Terms="Effect.BlinkAlarak.Start; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="BlinkStopModel">
+        <On Terms="Effect.BlinkAlarak.Stop; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="BlinkStopSound">
+        <On Terms="Effect.BlinkAlarak.Stop; At Source" Send="Create"/>
+    </CActorSound>
     <CActorAction id="DukesRevengeYamatoAttack" parent="GenericAttack" effectImpact="DukesRevengeYamatoU" effectLaunch="DukesRevengeYamato">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveBy1"/>
         <LaunchAssets Sound="Battlecruiser_YamatoAttackLaunch"/>
@@ -483,6 +499,52 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorUnit id="Reaver">
+        <On index="65" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On index="66" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On index="67" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <On index="68" Terms="WeaponStart.ReaverScarabsLaunch.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On index="69" Terms="Effect.ScarabCU.Start; At Caster" Send="AnimPlay Attack Attack"/>
+        <On index="70" Terms="Effect.ScarabCU.Start; At Caster" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On index="71" Terms="Effect.ScarabCU.Start; At Caster" Send="TimerKill CoverDelay"/>
+        <On index="72" Terms="Effect.ScarabCU.Start; At Caster" Send="TimerSet 5.000000 CoverDelay"/>
+        <On index="73" Terms="UnitHeightUpdate.*.Land" Send="Create Reaver_Land"/>
+        <On index="74" Terms="TimerExpired; TimerName CoverDelay" Send="AnimBracketStop Cover"/>
+        <On index="75" Terms="Upgrade.PurifierProtoss.Add" Send="TextureSelectById PurifierHackDiffuse"/>
+        <On index="76" Terms="UnitBirth; ValidateUnit HasPurifierProtoss" Send="TextureSelectById PurifierHackDiffuse"/>
+        <On index="77" Terms="Signal.*.PurifierHack"/>
+        <On index="78" removed="1"/>
+        <On index="79" removed="1"/>
+        <On index="80" removed="1"/>
+        <On index="81" removed="1"/>
+        <On index="82" removed="1"/>
+        <On index="83" removed="1"/>
+        <On index="84" removed="1"/>
+        <On index="85" removed="1"/>
+        <On index="86" removed="1"/>
+        <On index="87" removed="1"/>
+        <On index="88" removed="1"/>
+    </CActorUnit>
+    <CActorMissile id="ScarabAttackMissile">
+        <DeathArray index="Impact" ModelLink="ScarabAttackImpact"/>
+        <HostSiteOps Ops="ScarabRotator SOpMoveByDot25 ScarabCounterRotator"/>
+    </CActorMissile>
+    <CActorAction id="ScarabExplode" parent="GenericAttack" effectAttack="ScarabExplodeTargetDamage">
+        <LaunchAssets Sound="Reaver_AttackLaunch"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide" HoldPosition="1" HoldRotation="1"/>
+        <ImpactMap index="None" Sound="Reaver_ScarabExplode"/>
+        <ImpactPhysics Name="Explosion" MatchKeys="Basic" Physics="ScarabExplosionForce"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+    <CActorSound id="ScarabLaunchSound" parent="SoundOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Effect.ScarabCU.Start; At Caster" Send="Create"/>
+        <Sound value="Reaver_AttackLaunch"/>
+    </CActorSound>
+    <CActorSiteOpRotator id="ScarabCounterRotator">
+        <LocalAxis value="0.000000,0.000000,-1.000000"/>
+        <Rate value="800.000000"/>
+    </CActorSiteOpRotator>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
@@ -1068,6 +1130,10 @@
     <CActorModel id="VoidRayEnhancementAddition03">
         <On index="9" Terms="Behavior.VoidRayChargeBeamRangePhase3.On; ValidateUnit IsNotMohandar"/>
     </CActorModel>
+    <CActorSiteOpRotator id="ScarabRotator">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="800.000000"/>
+    </CActorSiteOpRotator>
     <CActorModel id="ZeratulConstructPsionicGaleImpact" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>

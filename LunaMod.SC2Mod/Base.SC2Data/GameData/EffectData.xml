@@ -10,6 +10,9 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectTeleport id="AbathurDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectDamage id="AdeptDamage">
         <AttributeBonus index="Light" value="12"/>
         <Amount value="10"/>
@@ -58,6 +61,46 @@
         <CaseArray Validator="IsCasterAlarakCoop" Effect="AlarakLightningStrikesAB"/>
         <CaseDefault value="JinaraLightningStrikesAB"/>
     </CEffectSwitch>
+    <CEffectCreatePersistent id="AlarakStalkerBlinkDelay">
+        <InitialDelay value="0.0625"/>
+        <InitialEffect value="KillRemove"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="AlarakStalkerBlinkPrecursor">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="AlarakStalkerBlinkSet"/>
+        <SpawnUnit value="StalkerPrecursor"/>
+        <SpawnRange value="8"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="AlarakStalkerBlinkSet">
+        <EffectArray value="AlarakStalkerBlinkDelay"/>
+        <EffectArray value="BlinkAlarak"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="AlarakStalkerForceBlastCP">
+        <ValidatorArray index="0" value="IsAlarakCoopCommander"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="AlarakStalkerForceBlastDamage">
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectSet id="AlarakStalkerForceBlastInitSet">
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+        <EffectArray value="AlarakStalkerForceBlastCP"/>
+    </CEffectSet>
+    <CEffectSwitch id="AlarakStalkerForceBlastKnockbackSwitch">
+        <CaseArray Validator="NotStructure" Effect="UnitKnockbackBy2"/>
+    </CEffectSwitch>
+    <CEffectSet id="AlarakStalkerForceBlastSet">
+        <EffectArray index="1" value="AlarakStalkerForceBlastKnockbackSwitch"/>
+    </CEffectSet>
+    <CEffectTeleport id="ArbiterMPRecallTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectApplyBehavior id="ArtilleryMengskBombardmentAB">
         <ValidatorArray index="0" value="NotFrenzied"/>
         <EditorCategories value="Race:Terran"/>
@@ -119,6 +162,25 @@
         <EffectArray index="0" value="BiomassPickupDummy2"/>
     </CEffectSet>
     <CEffectModifyUnit id="BiomassPickupDummy2"/>
+    <CEffectTeleport id="Blink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="BlinkAlarak">
+        <ValidatorArray value="CasterNotFungalGrowthed"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestFog" value="0"/>
+        <TeleportEffect value="AlarakStalkerForceBlastInitSet"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="BrutaliskDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="CommanderPrestigeArtanisPowerFieldTeleport">
+        <TeleportEffect value="TeleportRemoveCategory"/>
+    </CEffectTeleport>
     <CEffectCreatePersistent id="CorsairMPDisruptionWebCreatePersistent">
         <Marker Duration="0.25" Link="Abil/CorsairMPDisruptionWeb">
             <MatchFlags index="Link" value="1"/>
@@ -144,9 +206,32 @@
         <ValidatorArray value="NotStructure"/>
         <ValidatorArray value="NotMapBoss"/>
     </CEffectSet>
+    <CEffectTeleport id="DarkPylonRecallTeleport">
+        <TeleportEffect value="TeleportRemoveCategory"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="DarkTemplarShadowDash">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="DarkTemplarShadowFuryTeleport">
+        <TeleportEffect value="DarkTemplarShadowFuryTeleportSet"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="DarkTemplarShadowFuryTeleportFinal">
+        <TeleportEffect value="DarkTemplarShadowFuryTeleportFinalSet"/>
+    </CEffectTeleport>
+    <CEffectSet id="DarkTemplarShadowFuryTeleportSet">
+        <EffectArray value="DarkTemplarShadowFuryTeleportFacing"/>
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+    </CEffectSet>
+    <CEffectSet id="DarkTemplarShadowFuryTeleportFinalSet">
+        <EffectArray value="DarkTemplarShadowFuryRemove"/>
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+    </CEffectSet>
     <CEffectCreateUnit id="DehakaDakrunTopBarCU">
         <CreateFlags index="Placement" value="0"/>
     </CEffectCreateUnit>
+    <CEffectTeleport id="DehakaDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectIssueOrder id="DehakaGlevigFirebreathSetAutocast">
         <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
@@ -200,9 +285,21 @@
         <PeriodicPeriodArray value="0.5"/>
         <InitialDelay value="0.1"/>
     </CEffectCreatePersistent>
+    <CEffectTeleport id="FenixTalisAdeptPhaseShiftTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="FleetwideJumpTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="GaryStetmannRecallTeleport">
+        <TeleportEffect value="TeleportRemoveCategory"/>
+    </CEffectTeleport>
     <CEffectCreateUnit id="GlevigDeepTunnelCU">
         <CreateFlags index="Placement" value="0"/>
     </CEffectCreateUnit>
+    <CEffectTeleport id="GlevigDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectSet id="GlevigDeepTunnelTeleportSet">
         <EffectArray index="2" value="DakrunSpawningTargetSearch"/>
     </CEffectSet>
@@ -226,9 +323,21 @@
         <EffectArray index="2" value="GravitonPrisonDamageCreatePersistent2"/>
         <EffectArray value="GravitonPrisonRaise"/>
     </CEffectSet>
+    <CEffectTeleport id="GreaterNydusDestroyerDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectEnumArea id="GreaterNydusDestroyerKnockbackSearch">
         <AreaArray index="0" Effect="DakrunSpawningTargetKnockbackSet"/>
     </CEffectEnumArea>
+    <CEffectTeleport id="HHHyperjumpTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="HHHyperjumpTeleportAirUnits">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="HybridDominatorCoopBossBlink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectSet id="HybridDominatorVoidGravitonPrisonSet">
         <ValidatorArray value="NoPreventKnockback"/>
         <ValidatorArray value="NotAbducted"/>
@@ -240,6 +349,12 @@
     <CEffectLaunchMissile id="HyperionVoidCoopGroundLM">
         <ValidatorArray value="TargetInWeaponRange"/>
     </CEffectLaunchMissile>
+    <CEffectTeleport id="HyperjumpMengskTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="HyperjumpTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectSet id="JinaraChainsImpactSet">
         <EditorCategories value=""/>
         <EffectArray value="JinaraChainsAB"/>
@@ -291,9 +406,43 @@
     <CEffectIssueOrder id="LurkerMPUnburrow">
         <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
+    <CEffectTeleport id="MassRecallTeleport">
+        <TeleportEffect value="TeleportRemoveCategory"/>
+    </CEffectTeleport>
+    <CEffectDamage id="MasterySwannArmyMineralCostDisplayDummy"/>
+    <CEffectDamage id="MasterySwannUnitVitalDisplayDummy"/>
+    <CEffectTeleport id="MutatorAmonZeratulBlink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="NovaArmorBlinkSuitBlink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="NovaGriffinTransportTeleportAirUnitsTP">
+        <TeleportEffect value="NovaGriffinTransportUnhideUnitsSet"/>
+    </CEffectTeleport>
+    <CEffectSet id="NovaGriffinTransportUnhideUnitsSet">
+        <EffectArray value="TeleportRemoveCategory"/>
+    </CEffectSet>
+    <CEffectTeleport id="NovaWeaponBlazefireBladeShadowFuryFinal">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="NovaWeaponBlazefireBladeShadowFuryTeleport">
+        <TeleportEffect value="NovaWeaponBlazefireBladeShadowFuryTeleportSet"/>
+    </CEffectTeleport>
+    <CEffectSet id="NovaWeaponBlazefireBladeShadowFuryTeleportSet">
+        <EffectArray value="NovaWeaponBlazefireBladeShadowFuryTeleportFacing"/>
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+    </CEffectSet>
+    <CEffectTeleport id="NydusDestroyerDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectEnumArea id="NydusDestroyerKnockbackSearch">
         <AreaArray index="0" Effect="DakrunSpawningTargetKnockbackSet"/>
     </CEffectEnumArea>
+    <CEffectSet id="OnDeathVorazunRecallOnDeathSet">
+        <EffectArray value="OnDeathVorazunRecallOnDeathRecentlyRecalledAB"/>
+        <EffectArray value="TeleportRemoveCategory"/>
+    </CEffectSet>
     <CEffectRemoveBehavior id="OrbitalAssimilatorRichRB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -998,6 +1147,7 @@
     <CEffectTeleport id="MothershipMassRecallTeleport">
         <PlacementAround Value="TargetUnitOrPoint"/>
         <TargetLocation Value="TargetUnitOrPoint"/>
+        <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
     <CEffectApplyBehavior id="NovaUnitLockdownAB">
         <ValidatorArray value="NotFrenzied"/>
@@ -1013,6 +1163,7 @@
     </CEffectEnumArea>
     <CEffectTeleport id="OnDeathVorazunRecallOnDeathTeleport">
         <SourceLocation Value="SourceUnit"/>
+        <TeleportEffect value="OnDeathVorazunRecallOnDeathSet"/>
     </CEffectTeleport>
     <CEffectSet id="OrdnanceFleetwideJumpSet">
         <EditorCategories value="Race:Terran"/>
@@ -1040,6 +1191,7 @@
         <PlacementRange value="15"/-->
         <TargetLocation Effect="OrdnanceFleetwideJumpCreatePrecursor" Value="TargetPoint"/>
         <TeleportFlags index="TestFog" value="0"/>
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
     <CEffectApplyBehavior id="OrdnanceFleetwideJumpTeleportAB">
         <EditorCategories value="Race:Terran"/>
@@ -1106,6 +1258,47 @@
         <EffectArray value="AutomatedRefineryRichRB"/>
         <EffectArray value="AutomatedRefineryRichZergRB"/>
     </CEffectSet>
+    <CEffectCancelOrder id="ReaverChaseCancelAttack">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <AbilCmd value="attack,Execute"/>
+    </CEffectCancelOrder>
+    <CEffectSet id="ReaverChaseSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="ReaverChaseOrder"/>
+        <EffectArray value="ReaverSetCooldown"/>
+    </CEffectSet>
+    <CEffectSwitch id="ReaverChaseSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="CasterNotHoldingPosition" Effect="ReaverChaseSet"/>
+        <CaseDefault value="ReaverChaseCancelAttack"/>
+    </CEffectSwitch>
+    <CEffectIssueOrder id="ReaverChaseOrder">
+        <ValidatorArray value="CasterNotHoldingPosition"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="ReaverChase"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="ReaverChase">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <OffsetVectorEndLocation Value="TargetUnitOrPoint"/>
+        <FinalEffect value="ReaverChaseAttack"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="ReaverChaseAttack">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Effect="ReaverChase" Value="Caster"/>
+        <Abil value="attack"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Effect="ReaverChase" Value="Caster"/>
+        <Target Effect="ReaverChase" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectTeleport id="RedstoneSalamanderTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectCreatePersistent id="RevelationPersistent">
         <ExpireDelay value="28"/>
     </CEffectCreatePersistent>
@@ -1144,6 +1337,86 @@
         <EditorCategories value=""/>
         <Behavior value="JinaraSoulAbsorptionDebuff"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ScarabAB">
+        <Behavior value="ScarabProjectileTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ScarabFixated"/>
+    <CEffectCancelOrder id="ScarabAttackCancelTarget">
+        <WhichUnit Value="Source"/>
+        <AbilCmd value="move,Move"/>
+        <Flags index="Active" value="0"/>
+        <Flags index="Queued" value="1"/>
+    </CEffectCancelOrder>
+    <CEffectSet id="ScarabAttackSet">
+        <ValidatorArray value="ScarabTargetNotDead"/>
+        <EffectArray value="ScarabAttackCancelTarget"/>
+        <EffectArray value="ScarabAttackTargetPoint"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="ScarabAttackTarget">
+        <Abil value="attack"/>
+        <Target Effect="ScarabLaunchSet" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="ScarabCUSet">
+        <EffectArray value="ScarabAttackTarget"/>
+        <EffectArray value="ScarabChase"/>
+        <EffectArray value="ScarabAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ScarabChase"/>
+    <CEffectIssueOrder id="ScarabAttackTargetPoint">
+        <WhichUnit Value="Source"/>
+        <Abil value="move"/>
+        <CmdFlags index="Queued" value="1"/>
+        <Target Effect="ScarabLaunchSet" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectCreateUnit id="ScarabCU">
+        <WhichLocation Value="CasterUnit"/>
+        <SpawnUnit value="ScarabWeapon"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="SetFacing" value="1"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <RallyUnit Value="Caster"/>
+        <SpawnRange value="10"/>
+        <SpawnEffect value="ScarabCUSet"/>
+    </CEffectCreateUnit>
+    <CEffectCancelOrder id="ScarabChaseCancelAttack">
+        <WhichUnit Value="Source"/>
+        <AbilCmd value="attack,Execute"/>
+    </CEffectCancelOrder>
+    <CEffectSet id="ScarabExplode">
+        <ValidatorArray index="0" removed="1"/>
+        <EffectArray index="0" removed="1"/>
+        <EffectArray index="1" removed="1"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ScarabLaunch">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ScarabLaunchCheck">
+        <ValidatorArray value="Pathable13"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <InitialEffect value="ScarabLaunch"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ScarabLaunchSet">
+        <EffectArray index="0" value="ScarabFixated"/>
+        <EffectArray index="2" value="ScarabCU"/>
+        <ValidatorArray value="ScarabNotArmed"/>
+    </CEffectSet>
+    <CEffectTeleport id="ShadowGuardShadowDash">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="ShadowGuardShadowFuryTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="ShadowGuardShadowFuryTeleportFinal">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectCreateUnit id="SoulAbsorptionCU">
         <EditorCategories value=""/>
         <SpawnUnit value="JinaraCoopShade"/>
@@ -1183,6 +1456,9 @@
     <CEffectApplyBehavior id="StukovAleksanderAirStunAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectTeleport id="StukovInfestedSiegeTankDeepTunnelTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectIssueOrder id="SwarmHostMPUnburrow">
         <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
@@ -1200,6 +1476,13 @@
         <SearchFilters value="Ground;Self,Neutral,Structure,Missile,Dead,Hidden"/>
         <AreaArray Radius="0.6" Effect="TerranBuildingKnockBack2Set"/>
     </CEffectEnumArea>
+    <CEffectRemoveBehavior id="TeleportRemoveCategory">
+        <BehaviorCategories index="TeleportRemove" value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="TeleportRemoveCategoryCaster">
+        <WhichUnit Value="Caster"/>
+        <BehaviorCategories index="TeleportRemove" value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectSet id="TerranBuildingKnockBack2Set">
         <ValidatorArray value="TargetIsGround"/>
         <EditorCategories value="Race:Terran"/>
@@ -1273,6 +1556,12 @@
     </CEffectSet>
     <CEffectSet id="TychusGhostDominateBunker">
         <EditorCategories value="Race:Terran"/>
+    </CEffectSet>
+    <CEffectTeleport id="TychusMedicTransportTeleportAirUnitsTP">
+        <TeleportEffect value="TychusMedicTransportUnhideUnitsSet"/>
+    </CEffectTeleport>
+    <CEffectSet id="TychusMedicTransportUnhideUnitsSet">
+        <EffectArray value="TeleportRemoveCategory"/>
     </CEffectSet>
     <CEffectSet id="TychusShredderGrenadeBunker">
         <EditorCategories value="Race:Terran"/>
@@ -1704,6 +1993,16 @@
         <EffectArray value="VoidSentryBlackHoleImpactSet"/>
         <EffectArray value="VoidSentryBlackHoleArmorAB"/>
     </CEffectSet>
+    <CEffectSet id="VoidStalkerBlinkApplySet">
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+        <EffectArray value="VoidStalkerBlinkApplyRestore"/>
+    </CEffectSet>
+    <CEffectTeleport id="VoidStalkerBlinkMultiple">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="VoidStalkerBlinkShieldRestore">
+        <TeleportEffect value="VoidStalkerBlinkApplySet"/>
+    </CEffectTeleport>
     <CEffectSet id="VoidZealotShadowChargeInitialSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="VoidZealotShadowChargeSearch"/>
@@ -1783,6 +2082,7 @@
         <TargetLocation Effect="OrdnanceFleetwideJumpSet" Value="TargetPoint"/>
         <TeleportFlags index="TestFog" value="0"/>
         <SourceLocation Value="TargetUnit"/>
+        <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
     <CEffectSet id="HHValkyrieFleetwideJumpTeleportSet">
         <EffectArray value="HHValkyrieFleetwideJumpWanderRB"/>
@@ -1934,6 +2234,7 @@
         <TeleportFlags index="TestFog" value="0"/>
         <PlacementRange value="15"/>
         <PlacementAround Effect="HyperjumpCreatePrecursorInstant"/>
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
     <CEffectSet id="HyperjumpTeleportInstantSet">
         <EditorCategories value="Race:Terran"/>
@@ -3436,6 +3737,7 @@
     <CEffectTeleport id="VorazunBlink">
         <PlacementRange value="10"/>
         <Range value="10"/>
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
     <CEffectTeleport id="VorazunBlinkReturn">
         <EditorCategories value="Race:Protoss"/>
@@ -3445,6 +3747,7 @@
         <Range value="500"/>
         <TargetLocation Value="TargetPoint"/>
         <TeleportFlags index="TestFog" value="0"/>
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
     <CEffectApplyBehavior id="VorazunBlinkReturnAB">
         <EditorCategories value=""/>
@@ -3509,6 +3812,16 @@
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="2"/>
     </CEffectEnumArea>
+    <CEffectTeleport id="VorazunShadowFuryTeleport">
+        <TeleportEffect value="VorazunShadowFuryTeleportSet"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="VorazunShadowFuryTeleportFinal">
+        <TeleportEffect value="DarkTemplarShadowFuryTeleportFinalSet"/>
+    </CEffectTeleport>
+    <CEffectSet id="VorazunShadowFuryTeleportSet">
+        <EffectArray value="VorazunShadowFuryTeleportFacing"/>
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+    </CEffectSet>
     <CEffectSet id="VorazunShadowPhaseSet">
         <EffectArray value="VorazunShadowPhaseAB"/>
         <EffectArray value="VorazunShadowPhaseSuppressedAB"/>
@@ -4357,6 +4670,9 @@
     <CEffectDamage id="ZagaraParasiteSporeDamage">
         <Amount value="28"/>
     </CEffectDamage>
+    <CEffectTeleport id="ZagaraVoidCoopDeepTunnel">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectCreateUnit id="ZagaraVoidCoopInfestedPodsImpactCU">
         <SpawnUnit index="1" value="RoachCorpser"/>
     </CEffectCreateUnit>
@@ -4379,15 +4695,27 @@
         <CaseArray Validator="HaveZealotPurifierReconstruction2" Effect="ZealotPurifierReviveSupressedApplyBehavior2"/>
         <CaseDefault value="ZealotPurifierReviveSupressedApplyBehavior"/>
     </CEffectSwitch>
+    <CEffectTeleport id="ZeratulBlink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectApplyBehavior id="ZeratulDarkArchonMaelstromApply">
         <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="ZeratulDarkArchonMaelstromSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectTeleport id="ZeratulDarkTemplarBlink">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectSet id="ZeratulKhaydarinMonolithStunSet">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
+    <CEffectTeleport id="ZeratulKhaydarinMonolithWarpTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="ZeratulPhaseCannonWarpTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectEnumArea id="ZeratulPurificationNovaTargettedSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
@@ -4429,6 +4757,9 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="3" Effect="VorazunCleaveDamage"/>
     </CEffectEnumArea>
+    <CEffectTeleport id="ZeratulStalkerBlink">
+        <TeleportEffect value="ZeratulStalkerBlinkSet"/>
+    </CEffectTeleport>
     <CEffectIssueOrder id="ZeratulStalkerBlinkIssueOrder">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
@@ -4437,6 +4768,10 @@
         <Player Value="Caster"/>
         <Target Value="TargetPoint"/>
     </CEffectIssueOrder>
+    <CEffectSet id="ZeratulStalkerBlinkSet">
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+        <EffectArray value="ZeratulStalkerBlinkGhost"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ZeratulStalkerShadowBlinkInitialPersistent">
         <ValidatorArray index="0" value="HaveZeratulArtifactTier1"/>
         <ValidatorArray index="1" value="CasterInCombat"/>

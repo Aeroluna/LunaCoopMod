@@ -1549,6 +1549,10 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Reaver">
+        <AbilArray Link="ReaverChase"/>
+        <WeaponArray Link="ReaverScarabsLaunchNoScan"/>
+    </CUnit>
     <CUnit id="Roach">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="3"/>
@@ -1660,6 +1664,58 @@
         <FogVisibility value="Visible"/>
         <MinimapRadius value="0"/>
     </CUnit>
+    <CUnit id="ScarabWeapon">
+        <FlagArray index="Turnable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="Missile" value="0"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoDeathEvent" value="0"/>
+        <FlagArray index="AILifetime" value="1"/>
+        <FlagArray index="AICantAddToWave" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <FlagArray index="PlayerRevivable" value="0"/>
+        <FlagArray index="CameraFollow" value="0"/>
+        <Mover value="Ground"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="ScarabExplode"/>
+        <PlaneArray index="Ground" value="1"/>
+        <PlaneArray index="Air" value="0"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <DefaultAcquireLevel value="None"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Speed value="6"/>
+        <Acceleration value="1000"/>
+        <Height value="0.2"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Explode" Type="AbilCmd" AbilCmd="ScarabExplode,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.1875"/>
+        <SeparationRadius value="0.1875"/>
+        <AIEvalFactor value="0"/>
+        <Mass value="0.2"/>
+        <Sight value="5"/>
+        <DeathRevealRadius value="3"/>
+        <PushPriority value="0"/>
+        <Deceleration value="0.0625"/>
+        <LateralAcceleration value="46.0625"/>
+        <InnerRadius value="0.1875"/>
+        <Fidget>
+            <ChanceArray index="Idle" value="0"/>
+        </Fidget>
+        <DeathRevealDuration value="4"/>
+        <BehaviorArray Link="ScarabMoving"/>
+        <WeaponArray Link="ScarabExplode"/>
+    </CUnit>
     <CUnit id="SentryPhasing">
         <CardLayouts index="0">
             <LayoutButtons index="9" Row="1" Column="0"/>
@@ -1679,6 +1735,24 @@
     <CUnit id="Stalker">
         <Level value="0"/>
         <PawnItemReduction value="18"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="StalkerBlinkAlarak"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="StalkerPrecursor">
+        <Race value="Prot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Radius value="0.625"/>
+        <SeparationRadius value="0.625"/>
+        <InnerRadius value="0.5"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncursorable" value="1"/>
+        <FlagArray index="KillCredit" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <EditorFlags index="NoPlacement" value="1"/>
+        <Collide index="Phased" value="1"/>
     </CUnit>
     <CUnit id="Stank">
         <Collide index="Structure" value="0"/>
@@ -4917,7 +4991,7 @@
         <TacticalAIThink value="AIThinkViperLuna"/>
     </CUnit>
     <CUnit id="VoidCoopARES">
-        <WeaponArray Link="WarbotAMoving" Turret="Phoenix"/>
+        <WeaponArray Link="WarbotAMoving" Turret="Warbot"/>
     </CUnit>
     <CUnit id="VoidRayTaldarim">
         <Food value="-6"/>

@@ -31,6 +31,15 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AlarakStalkerPhasingArmorBuff">
+        <Alignment value="Positive"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="0"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArtilleryMengskBombardmentSlow">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
@@ -1070,6 +1079,38 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="PowerTowerOverchargeStetmann">
         <Alignment value="Positive"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScarabChase">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="TargetIsAttacking"/>
+        <DisableValidatorArray value="TargetIsVisible"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="ScarabAttackSet"/>
+        <PeriodicEffect value="ScarabAttackSet"/>
+        <RemoveValidatorArray value="ScarabTargetIsFixated"/>
+        <FinalEffect value="ScarabChaseCancelAttack"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScarabFixated">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="TeleportRemove" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Duration value="6"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScarabMoving">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <DisableValidatorArray value="CasterNotAttacking"/>
+        <DisableValidatorArray value="CasterIsNotMoving"/>
+        <RemoveValidatorArray value="CasterNotDead"/>
+        <Period value="0.0625"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="ScarabExplode"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ScarabProjectileTimedLife" parent="TimedLife">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <DurationRandomMax value="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SuicideBuilding">
         <Modification>

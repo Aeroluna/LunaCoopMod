@@ -837,6 +837,49 @@ void lib74A68E34_gf_KerriganMalignantCreep () {
     }
 }
 
+void lib74A68E34_gf_SwannMasteryArmyMineralCostList (int lp_player) {
+    // Variable Declarations
+    int lv_upgradeCount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_upgradeCount = TechTreeUpgradeCount(lp_player, "MasterySwannArmyMineralCost", c_techCountCompleteOnly);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("HellionTank", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Hellion", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Goliath", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("SiegeTank", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("SiegeTankSieged", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Cyclone", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Thor", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("ThorAP", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Wraith", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Hercules", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("ScienceVessel", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("WidowMine", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("WidowMineBurrowed", lp_player, lv_upgradeCount);
+}
+
+void lib74A68E34_gf_SwannMasteryArmyMineralCostReduction (string lp_unitType, int lp_player, int lp_upgradeCount) {
+    // Variable Declarations
+    fixed lv_unitVespeneCostOriginal;
+    fixed lv_UnitVespeneCostReductionPerPoint;
+    fixed lv_unitVespeneCostReduction;
+    int lv_UnitVespeneCostNew;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_UnitVespeneCostReductionPerPoint = 100.0;
+
+    // Implementation
+    lv_unitVespeneCostOriginal = IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogUnit, lp_unitType, "CostResource[" + IntToString(0) + "]", lp_player));
+    lv_unitVespeneCostReduction = (IntToFixed(lp_upgradeCount) * lv_unitVespeneCostOriginal);
+    lv_unitVespeneCostReduction = (lv_unitVespeneCostReduction / lv_UnitVespeneCostReductionPerPoint);
+    lv_UnitVespeneCostNew = FixedToInt((lv_unitVespeneCostOriginal - lv_unitVespeneCostReduction));
+    CatalogFieldValueSet(c_gameCatalogUnit, lp_unitType, "CostResource[" + IntToString(0) + "]", lp_player, IntToString(lv_UnitVespeneCostNew));
+}
+
 void lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice (int lp_player) {
     // Variable Declarations
     bool lv_foundOrder;
@@ -3259,6 +3302,68 @@ void lib74A68E34_gt_HideACHeroSpawnPlacement_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ReaverScarabTargetDamage
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ReaverScarabTargetDamage_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_scarab;
+    unit lv_reaver;
+    unit lv_target;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_scarab = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    lv_reaver = UnitBehaviorEffectUnit(lv_scarab, "ScarabProjectileTimedLife", c_effectUnitCaster, 0);
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectUnit(lv_scarab, "SuicideImpact", lv_scarab);
+    UnitCreateEffectUnit(lv_reaver, "ScarabExplodeTargetDamage", lv_target);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ReaverScarabTargetDamage_Init () {
+    lib74A68E34_gt_ReaverScarabTargetDamage = TriggerCreate("lib74A68E34_gt_ReaverScarabTargetDamage_Func");
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_ReaverScarabTargetDamage, c_playerAny, "ScarabExplode");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ReaverPathing
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ReaverPathing_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_path;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_path = AIPathingCostMap(EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedPoint(c_effectLocationTargetUnit));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_path >= 13.0)) {
+        UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "ReaverChaseSwitch", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    }
+    else if ((lv_path > -1.0)) {
+        UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "ScarabLaunchSet", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ReaverPathing_Init () {
+    lib74A68E34_gt_ReaverPathing = TriggerCreate("lib74A68E34_gt_ReaverPathing_Func");
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_ReaverPathing, c_playerAny, "ScarabLaunch");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: SnowVisualMapInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_SnowVisualMapInit_Func (bool testConds, bool runActions) {
@@ -4669,6 +4774,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ZergKerrigan") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
             lib74A68E34_gf_KerriganMalignantCreep();
+        }
+        else if (auto560DABDD_val == "TerranSwann") {
+            lib74A68E34_gf_SwannMasteryArmyMineralCostList(lv_player);
         }
         else if (auto560DABDD_val == "ZergZagara") {
             TriggerEnable(lib74A68E34_gt_ZagaraSwarmLocusApplyDummyTimer, true);
@@ -9952,6 +10060,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_HideACHeroSpawnPlacement_Init();
+    lib74A68E34_gt_ReaverScarabTargetDamage_Init();
+    lib74A68E34_gt_ReaverPathing_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();
     lib74A68E34_gt_SnowVisualNewUnit_Init();
     lib74A68E34_gt_TestCommand_Init();
