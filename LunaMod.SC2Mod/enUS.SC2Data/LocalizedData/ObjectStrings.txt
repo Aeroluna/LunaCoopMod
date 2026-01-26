@@ -144,6 +144,8 @@ Actor/Name/330mmBarrageCannonsLaunch=330mm Barrage Cannons Launch
 Actor/Name/330mmBarrageCannonsLaunchSound=330mm Barrage Cannons Launch Sound
 Actor/Name/AdeptPurifierAttack=Adept Purifier Attack
 Actor/Name/AlarakReviveBeaconJinara=AlarakReviveBeaconJinara
+Actor/Name/AlarakStalkerForceBlastForce=AlarakStalkerForceBlastForce
+Actor/Name/AlarakStalkerForceBlastUpForce=AlarakStalkerForceBlastUpForce
 Actor/Name/AlarakStalkerForceBlast_CursorSplat=AlarakStalkerForceBlast_CursorSplat
 Actor/Name/ArtilleryMengskBombardmentImpact=ArtilleryMengskBombardmentImpact
 Actor/Name/ArtilleryMengskGlobalExperimentalStrikeWarning=ArtilleryMengskGlobalExperimentalStrikeWarning
@@ -538,6 +540,7 @@ Behavior/Tooltip/VorazunCloakDamageBoostPermanentEnergy=The attack damage and en
 Behavior/Tooltip/VorazunOracleDetector11=This unit can detect cloaked or burrowed units within its sight range.
 Button/EditorPrefix/AlarakACMyLifefortheHighlord2=Jinara -
 Button/EditorPrefix/AlarakArchonImprovedSacrifice=Alarak - Archon -
+Button/EditorPrefix/AlarakDestructionWaveDistanceJinara=Jinara -
 Button/EditorPrefix/AscendantArchonSacrifice=Ascendant Archon -
 Button/EditorPrefix/CommanderPrestigeAbathurSymbiote=Commander Prestige - Abathur -
 Button/EditorPrefix/CommanderPrestigeAlarakJinara=Commander Prestige - Alarak -
@@ -603,6 +606,7 @@ Button/EditorPrefix/MercCompoundReset=Merc Compound -
 Button/EditorPrefix/MorphToPowerTowerCancelStetmann=Stetmann -
 Button/EditorPrefix/MothershipArtanisMassTeleport=Mothership -
 Button/EditorPrefix/PlanetCrackerArtanis=Mothership -
+Button/EditorPrefix/ResearchAlarakDestructionWaveDistanceJinara=Jinara -
 Button/EditorPrefix/ResearchHHBomberEMP=HH -
 Button/EditorPrefix/ResearchHHBomberNapalmImproved=HH -
 Button/EditorPrefix/ResearchHHBomberTriple=HH -
@@ -1126,6 +1130,7 @@ Mover/Name/SOAMothershipLineAttack=SOA Mothership Line Attack
 PlayerResponse/Name/CommanderPrestigeKaraxUnitChronoBoostTarget=CommanderPrestigeKaraxUnitChronoBoostTarget
 PlayerResponse/Name/MutatorSpellDamage=MutatorSpellDamage
 PlayerResponse/Name/MutatorSpellDamageReduction=MutatorSpellDamageReduction
+Requirement/EditorPrefix/HaveAlarakDestructionWaveDistanceJinara=Jinara -
 Requirement/EditorPrefix/HaveDiggingClaws=Lurker -
 Requirement/EditorPrefix/HaveEnergizerReclamation2=Coop -
 Requirement/EditorPrefix/HaveHHBomberEMP=HaveHHBomber -
@@ -1134,8 +1139,10 @@ Requirement/EditorPrefix/HaveHHBomberTriple=HaveHHBomber -
 Requirement/EditorPrefix/HaveKaraxCommander=Coop -
 Requirement/EditorPrefix/HaveShadowCannon2=Coop -
 Requirement/EditorPrefix/HaveSignifierFade=Coop -
+Requirement/EditorPrefix/LearnAlarakDestructionWaveDistanceJinara=Jinara -
 Requirement/EditorPrefix/LearnDiggingClaws=Lurker -
 Requirement/EditorPrefix/LearnInfestedBansheeRotwingRotors=Coop -
+Requirement/EditorPrefix/LearnJinaraChainsofWrathSlow=Alarak -
 Requirement/EditorPrefix/LearnOverdriveActuators=Coop -
 Requirement/EditorPrefix/LearnPulseLoopCapacitors=Coop -
 Requirement/EditorPrefix/LearnSignifierFade=Coop -
@@ -1160,6 +1167,7 @@ Requirement/Name/CommanderPrestigeSwannMoving=CommanderPrestigeSwannMoving
 Requirement/Name/CommanderPrestigeSwannTurrets=CommanderPrestigeSwannTurrets
 Requirement/Name/CommanderPrestigeTychusOutlaws=CommanderPrestigeTychusOutlaws
 Requirement/Name/CommanderPrestigeZagaraSwarm=CommanderPrestigeZagaraSwarm
+Requirement/Name/HaveAlarakDestructionWaveDistanceJinara=Have Jinara Chains of Wrath Slow
 Requirement/Name/HaveDefilerMetasynapticNode=Have Defiler Metasynaptic Node
 Requirement/Name/HaveDehakaBarracks=Have Dehaka Barracks
 Requirement/Name/HaveDiggingClaws=Have Adaptive Talons
@@ -1181,6 +1189,7 @@ Requirement/Name/HaveVoidArchonChainReaction=Have Void Archon Chain Reaction
 Requirement/Name/HaveZealotPurifierReconstruction2=Have Revitalization Matrix
 Requirement/Name/HaveZeratulArtifactUpgradeAllPassive=HaveZeratulArtifactUpgradeAllPassive
 Requirement/Name/KerriganBroodCosmetic=Have Kerrigan Brood Cosmetic
+Requirement/Name/LearnAlarakDestructionWaveDistanceJinara=Learn Jinara Chains of Wrath Slow
 Requirement/Name/LearnCellularReactor=Learn Cellular Reactor
 Requirement/Name/LearnDefilerMetasynapticNode=Learn Defiler Metasynaptic Node
 Requirement/Name/LearnDiggingClaws=Learn Adaptive Talons
@@ -1223,7 +1232,11 @@ RequirementNode/Name/AndCountUnitAlias_LairCompleteOnly1515591279LT3730171456Cou
 RequirementNode/Name/AndCountUnitFleetBeaconCompleteOnlyTechTreeCheatEq1228785331CountUnitMothershipArtanisQueuedOrBetter0=CountUnit(FleetBeacon,CompleteOnly)[TechTreeCheat] && CountUnit(MothershipArtanis,QueuedOrBetter) == {No Mothership}0
 RequirementNode/Name/AndCountUpgradeAbathurCommanderCompleteOnlyGTECountUpgradeCommanderLevelCompleteOnly7NotCountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly=CountUpgrade(AbathurCommander,CompleteOnly) && CountUpgrade(CommanderLevel,CompleteOnly) >= 7 && !CountUpgrade(CommanderPrestigeAbathurSymbiote,CompleteOnly)
 RequirementNode/Name/AndCountUpgradeAbathurCommanderCompleteOnlyLT8CountUpgradeCommanderLevelCompleteOnly=CountUpgrade(AbathurCommander,CompleteOnly) && 8 < CountUpgrade(CommanderLevel,CompleteOnly)
+RequirementNode/Name/AndCountUpgradeAlarakCommanderCompleteOnlyGTECountUpgradeCommanderLevelCompleteOnly14CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=CountUpgrade(AlarakCommander,CompleteOnly) && CountUpgrade(CommanderLevel,CompleteOnly) >= 14 && CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
+RequirementNode/Name/AndCountUpgradeAlarakCommanderCompleteOnlyGTECountUpgradeCommanderLevelCompleteOnly14NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=CountUpgrade(AlarakCommander,CompleteOnly) && CountUpgrade(CommanderLevel,CompleteOnly) >= 14 && !CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
 RequirementNode/Name/AndCountUpgradeAlarakCommanderCompleteOnlyLT14CountUpgradeCommanderLevelCompleteOnlyNotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=CountUpgrade(AlarakCommander,CompleteOnly) && 14 < CountUpgrade(CommanderLevel,CompleteOnly) && !CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
+RequirementNode/Name/AndCountUpgradeAlarakCommanderCompleteOnlyNotCountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetterGTECountUpgradeCommanderLevelCompleteOnly14CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=CountUpgrade(AlarakCommander,CompleteOnly) && !CountUpgrade(AlarakDestructionWaveDistanceJinara,QueuedOrBetter) && CountUpgrade(CommanderLevel,CompleteOnly) >= 14 && CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
+RequirementNode/Name/AndCountUpgradeAlarakCommanderCompleteOnlyNotCountUpgradeAlarakDestructionWaveDistanceQueuedOrBetterGTECountUpgradeCommanderLevelCompleteOnly14NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=CountUpgrade(AlarakCommander,CompleteOnly) && !CountUpgrade(AlarakDestructionWaveDistance,QueuedOrBetter) && CountUpgrade(CommanderLevel,CompleteOnly) >= 14 && !CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
 RequirementNode/Name/AndCountUpgradeCommanderPrestigeNovaMeleeCompleteOnlyCountBehaviorNovaCombatSuitCompleteOnlyAtUnit=CountUpgrade(CommanderPrestigeNovaMelee,CompleteOnly) && CountBehavior(NovaCombatSuit,CompleteOnlyAtUnit)
 RequirementNode/Name/AndCountUpgradeKaraxCommanderCompleteOnlyLTE4CountUpgradeCommanderLevelCompleteOnlyCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnit=CountUpgrade(KaraxCommander,CompleteOnly) && 4 <= CountUpgrade(CommanderLevel,CompleteOnly) && CountBehavior(ZealotPurifierReviveSupressed,CompleteOnlyAtUnit)
 RequirementNode/Name/AndCountUpgradeKaraxCommanderCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressedCompleteOnlyAtUnitLTE4CountUpgradeCommanderLevelCompleteOnlyNotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit=CountUpgrade(KaraxCommander,CompleteOnly) && !CountBehavior(ZealotPurifierReviveSupressed,CompleteOnlyAtUnit) && 4 <= CountUpgrade(CommanderLevel,CompleteOnly) && !CountBehavior(ZealotPurifierReviveSupressed2,CompleteOnlyAtUnit)
@@ -1274,6 +1287,8 @@ RequirementNode/Name/CountUnitTychusOdinQueuedOrBetter=CountUnit(TychusOdin,Queu
 RequirementNode/Name/CountUnitTychusReaperCompleteOnlyAtUnit=CountUnit(TychusReaper,CompleteOnlyAtUnit)
 RequirementNode/Name/CountUnitTychusSpectreCompleteOnlyAtUnit=CountUnit(TychusSpectre,CompleteOnlyAtUnit)
 RequirementNode/Name/CountUnitTychusWarhoundCompleteOnlyAtUnit=CountUnit(TychusWarhound,CompleteOnlyAtUnit)
+RequirementNode/Name/CountUpgradeAlarakDestructionWaveDistanceJinaraCompleteOnly4149543790=CountUpgrade(AlarakDestructionWaveDistanceJinara,CompleteOnly){Research Weight of Sin at the Forge}
+RequirementNode/Name/CountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter=CountUpgrade(AlarakDestructionWaveDistanceJinara,QueuedOrBetter)
 RequirementNode/Name/CountUpgradeAnabolicSynthesisCompleteOnly=CountUpgrade(AnabolicSynthesis,CompleteOnly)
 RequirementNode/Name/CountUpgradeBansheePermaCloakCompleteOnly314643618=CountUpgrade(BansheePermaCloak,CompleteOnly){Research Phantom Drive at the Starport Tech Lab}
 RequirementNode/Name/CountUpgradeBansheeSpeedCompleteOnly=CountUpgrade(BansheeSpeed,CompleteOnly)
@@ -1366,6 +1381,7 @@ RequirementNode/Name/NotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyA
 RequirementNode/Name/NotCountUnitNukeMengskQueuedOrBetterAtUnit=!CountUnit(NukeMengsk,QueuedOrBetterAtUnit)
 RequirementNode/Name/NotCountUnitTychusMedivacPlatformCompleteOnly=!CountUnit(TychusMedivacPlatform,CompleteOnly)
 RequirementNode/Name/NotCountUnitTychusOdinQueuedOrBetter=!CountUnit(TychusOdin,QueuedOrBetter)
+RequirementNode/Name/NotCountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter=!CountUpgrade(AlarakDestructionWaveDistanceJinara,QueuedOrBetter)
 RequirementNode/Name/NotCountUpgradeBansheeSpeedQueuedOrBetter=!CountUpgrade(BansheeSpeed,QueuedOrBetter)
 RequirementNode/Name/NotCountUpgradeCommanderPrestigeAbathurSymbioteCompleteOnly=!CountUpgrade(CommanderPrestigeAbathurSymbiote,CompleteOnly)
 RequirementNode/Name/NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly=!CountUpgrade(CommanderPrestigeAlarakJinara,CompleteOnly)
@@ -1522,6 +1538,7 @@ Unit/EditorSuffix/StalkerPrecursor=Precursor
 Unit/EditorSuffix/Thor=- Explosive Payload Mode
 Unit/EditorSuffix/VorazunCoop=(AC Hero)
 Unit/Name/SupplyDummy=SupplyDummy
+Upgrade/EditorPrefix/AlarakDestructionWaveDistanceJinara=Jinara -
 Upgrade/EditorPrefix/BansheeSpeed=Banshee -
 Upgrade/EditorPrefix/DefilerMetasynapticNode=Defiler -
 Upgrade/EditorPrefix/DiggingClaws=Lurker -
@@ -1543,6 +1560,7 @@ Upgrade/EditorPrefix/SwannCommanderVehicleCooldown=Vehicle and Air Cooldown -
 Upgrade/EditorPrefix/SwannCommanderVehicleMovementSpeed=Vehicle and Air Movement Speed -
 Upgrade/EditorPrefix/TempestDestabilizingResiduum=Tempest -
 Upgrade/EditorPrefix/TychusHeroExpanded=Tychus -
+Upgrade/EditorSuffix/AlarakDestructionWaveDistanceJinara=(Chains of Wrath Slow)
 Upgrade/EditorSuffix/K5TwoDronesKerrigan=- Kerrigan
 Upgrade/EditorSuffix/KerriganBroodCosmetic=(Brood)
 Upgrade/EditorSuffix/KerriganPsionicSplash=- Brood

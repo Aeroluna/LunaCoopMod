@@ -774,6 +774,41 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="JinaraLightningStrikes"/>
     </CEffectApplyBehavior>
+    <CEffectEnumArea id="AlarakKnockbackSearchN1">
+        <AreaArray index="0" Effect="AlarakKnockbackSearchN1Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AlarakKnockbackSearchN1Set">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="AlarakKnockbackSearchN1Switch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AlarakKnockbackSearchN2">
+        <AreaArray index="0" Effect="AlarakKnockbackSearchN2Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AlarakKnockbackSearchN2Set">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="AlarakKnockbackSearchN2Switch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AlarakKnockbackSearchN3">
+        <AreaArray index="0" Effect="AlarakKnockbackSearchN3Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AlarakKnockbackSearchN3Set">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="AlarakKnockbackSearchN3Switch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AlarakKnockbackSearchN4">
+        <AreaArray index="0" Effect="AlarakKnockbackSearchN4Set"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AlarakKnockbackSearchN4Set">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="AlarakKnockbackSearchN4Switch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AlarakKnockbackSearchP">
+        <AreaArray index="0" Effect="AlarakKnockbackSearchPSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AlarakKnockbackSearchPSet">
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="AlarakKnockbackSearchPSwitch"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="AlarakLightningStrikesSacrificeAB">
         <ValidatorArray index="0" value="IsAlarakCoop"/>
         <Behavior value="AlarakLightningStrikes"/>
@@ -1848,7 +1883,7 @@
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
-            <SortArray value="TSDistanceToTarget"/>
+            <SortArray value="TSRandom"/>
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="4" Effect="DarkArchonWeapon2"/>
         <Marker Link="DarkArchonWeapon"/>
@@ -1870,7 +1905,7 @@
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
-            <SortArray value="TSDistanceToTarget"/>
+            <SortArray value="TSRandom"/>
         </TargetSorts>
         <AreaArray MaxCount="1" Radius="4" Effect="DarkArchonWeapon3"/>
         <Marker Link="DarkArchonWeapon"/>

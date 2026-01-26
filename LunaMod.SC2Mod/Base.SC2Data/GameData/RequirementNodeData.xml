@@ -17,9 +17,35 @@
         <OperandArray value="CountUpgradeAbathurCommanderCompleteOnly"/>
         <OperandArray value="LT8CountUpgradeCommanderLevelCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeAlarakCommanderCompleteOnlyGTECountUpgradeCommanderLevelCompleteOnly14CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeAlarakCommanderCompleteOnly"/>
+        <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly14"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeAlarakCommanderCompleteOnlyGTECountUpgradeCommanderLevelCompleteOnly14NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeAlarakCommanderCompleteOnly"/>
+        <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly14"/>
+        <OperandArray value="NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeAlarakCommanderCompleteOnlyLT14CountUpgradeCommanderLevelCompleteOnlyNotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly">
         <OperandArray value="CountUpgradeAlarakCommanderCompleteOnly"/>
         <OperandArray value="LT14CountUpgradeCommanderLevelCompleteOnly"/>
+        <OperandArray value="NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeAlarakCommanderCompleteOnlyNotCountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetterGTECountUpgradeCommanderLevelCompleteOnly14CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeAlarakCommanderCompleteOnly"/>
+        <OperandArray value="NotCountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter"/>
+        <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly14"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeAlarakCommanderCompleteOnlyNotCountUpgradeAlarakDestructionWaveDistanceQueuedOrBetterGTECountUpgradeCommanderLevelCompleteOnly14NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeAlarakCommanderCompleteOnly"/>
+        <OperandArray value="NotCountUpgradeAlarakDestructionWaveDistanceQueuedOrBetter"/>
+        <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly14"/>
         <OperandArray value="NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeCommanderPrestigeNovaMeleeCompleteOnlyCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
@@ -219,6 +245,15 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="TychusWarhound" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeAlarakDestructionWaveDistanceJinaraCompleteOnly4149543790">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AlarakDestructionWaveDistanceJinara" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="AlarakDestructionWaveDistanceJinara" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeAnabolicSynthesisCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AnabolicSynthesis" State="CompleteOnly"/>
@@ -579,6 +614,10 @@
     <CRequirementNot id="NotCountUnitTychusMedivacPlatformCompleteOnly"/>
     <CRequirementNot id="NotCountUnitTychusOdinQueuedOrBetter">
         <OperandArray index="0" value="CountUnitTychusOdinQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeAlarakDestructionWaveDistanceJinaraQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeBansheeSpeedQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeBansheeSpeedQueuedOrBetter"/>

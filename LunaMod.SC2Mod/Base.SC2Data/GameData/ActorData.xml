@@ -545,6 +545,22 @@
         <LocalAxis value="0.000000,0.000000,-1.000000"/>
         <Rate value="800.000000"/>
     </CActorSiteOpRotator>
+    <CActorForceSphere id="AlarakStalkerForceBlastForce">
+        <On Terms="Effect.AlarakStalkerForceBlastSearch.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create AlarakStalkerForceBlastUpForce"/>
+        <HostSiteOps Ops="SOpShadow SOpRandomPointInCircleDot25"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="25.000000,12.000000"/>
+        <Radius value="2.150000,0.200000"/>
+    </CActorForceSphere>
+    <CActorForceSphere id="AlarakStalkerForceBlastUpForce">
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpShadow SOpRotVariancerUp35"/>
+        <Field value="Directional"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="23.000000,10.000000"/>
+        <Radius value="2.150000,0.200000"/>
+    </CActorForceSphere>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>
@@ -1932,19 +1948,19 @@
     </CActorAction>
     <CActorForceSphere id="VoidArchonResurgenceAttackUpForce">
         <Host Subject="_ImpactGuide"/>
-        <HostSiteOps Ops="SOpRandomPointInCircleDot2"/>
+        <HostSiteOps Ops="SOpShadow SOpRotVariancerUp35"/>
         <Field value="Directional"/>
-        <Duration value="0.150000"/>
-        <Magnitude value="60.000000,10.000000"/>
+        <Duration value="0.300000"/>
+        <Magnitude value="30.000000,5.000000"/>
         <Radius value="4.000000,0.300000"/>
     </CActorForceSphere>
     <CActorForceSphere id="VoidArchonResurgenceAttackForce">
         <On Terms="Effect.VoidArchonResurgenceSearch.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="Create VoidArchonResurgenceAttackUpForce"/>
         <Host Subject="_ImpactGuide"/>
-        <HostSiteOps Ops="SOpRandomPointInSphereDot15"/>
-        <Duration value="0.150000"/>
-        <Magnitude value="80.000000,16.000000"/>
+        <HostSiteOps Ops="SOpShadow SOpRandomPointInCircleDot25"/>
+        <Duration value="0.300000"/>
+        <Magnitude value="32.000000,8.000000"/>
         <Radius value="4.000000,0.300000"/>
     </CActorForceSphere>
     <CActorUnit id="VoidArchon" parent="GenericUnitBase" unitName="VoidArchon">
@@ -4403,6 +4419,7 @@
         <On Terms="UnitDeathCustomize; KilledByEffect DakrunMelee" Send="DeathCustomize RagdollSiegeTank"/>
         <On Terms="UnitDeathCustomize; KilledByEffect DehakaDakrunCrashingChargeDamage" Send="DeathCustomize RagdollSiegeTank"/>
         <On Terms="UnitDeathCustomize; KilledByEffect DakrunSpawningTargetDamage" Send="DeathCustomize RagdollSiegeTank"/>
+        <On Terms="UnitDeathCustomize; KilledByEffect AlarakStalkerForceBlastDamage" Send="DeathCustomize RagdollSiegeTank"/>
     </CActorEventMacro>
     <CActorUnit id="QueenCoop">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownMedium"/>

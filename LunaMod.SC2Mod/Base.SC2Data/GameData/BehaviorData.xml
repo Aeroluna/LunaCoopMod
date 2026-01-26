@@ -31,6 +31,13 @@
     <CBehaviorBuff id="AlarakLightningStrikes">
         <Alignment value="Positive"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AlarakReviveDisable">
+        <Modification>
+            <AbilLinkDisableArray value="JinaraBarrage"/>
+            <AbilLinkDisableArray value="JinaraChains"/>
+            <AbilLinkDisableArray value="JinaraSacrificeInstant"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AlarakStalkerPhasingArmorBuff">
         <Alignment value="Positive"/>
         <Modification>
@@ -1750,7 +1757,7 @@
     <CBehaviorBuff id="SILiberatorSwarmFormHoldPositionWeapon">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:InfestedTerran,AbilityorEffectType:Units"/>
-        <Requirements value="HaveSILiberatorInfestedBees"/>
+        <Requirements value="VikingMengskSpeedAssault"/>
         <DisableValidatorArray value="CasterHasHoldPosition"/>
         <Modification>
             <WeaponEnableArray value="SILiberator"/>

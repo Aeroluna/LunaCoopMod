@@ -348,6 +348,7 @@ Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
 Button/Name/ZergGroundAttacksLevel2=Evolve Ground Attacks Level 2
 Button/Name/ZergGroundAttacksLevel3=Evolve Ground Attacks Level 3
 Button/Name/ZerglingBrood=Morph to Devouring One
+Button/Tooltip/ACAlarakTemplarArchives=Contains upgrades for Ascendants and Void Archons.<n/><n/><c val="ffff8a">Enables:</c><n/>- Ascendants at the Gateway<n/>- Void Archon Merge from Ascendants
 Button/Tooltip/ACArtanisFleetBeacon=Contains upgrades for Phoenixes.<n/><n/><c val="ffff8a">Enables:</c><n/>- Tempests at the Stargate<n/>- Mothership from the Nexus
 Button/Tooltip/ACArtanisFleetBeaconUpgraded=Contains upgrades for Phoenixes and Tempests.<n/><n/><c val="ffff8a">Enables:</c><n/>- Tempests at the Stargate<n/>- Mothership from the Nexus
 Button/Tooltip/ACRaynorStarport=Air-unit production facility. <n/><n/><c val="ffff8a">Enables:</c><n/>- Vikings<n/>- Medivacs
@@ -547,7 +548,7 @@ Button/Tooltip/InfestorStetmannInfestBuilding=Infests target enemy structure, de
 Button/Tooltip/InfestorStetmannRespawn=For every <d ref="Abil,InfestorStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Infestor Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Infestor</c> will respawn here at no cost.
 Button/Tooltip/InfestorStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,InfestorStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Infestor Remnant,Mecha Infestor Remnants</lang></c>.
 Button/Tooltip/JinaraBarrage=Unleash a torrent of chaos, dealing <d ref="Effect,JinaraBarrageDamage,Amount*Effect,JinaraBarrageCP,PeriodCount"/> damage to enemy units in the target area.
-Button/Tooltip/JinaraChains=Launch chains at a target enemy unit, slowing their attack and movement speed by <d ref="(1-Behavior,JinaraChains,Modification.AttackSpeedMultiplier)*100"/>% for <d ref="Behavior,JinaraChains,Duration"/> seconds. While chained, enemies will take up to <d ref="Effect,JinaraChainsDamage,Amount*(Behavior,JinaraChains,Duration/Behavior,JinaraChains,PeriodicPeriodArray[0])"/> damage.<n/><n/>Upon taking damage, chained targets will launch additional chains at nearby enemies.
+Button/Tooltip/JinaraChains=Launch chains at a target enemy unit, slowing their attack and movement speed by <d ref="(1-Behavior,JinaraChainsSlow,Modification.AttackSpeedMultiplier)*100"/>% for <d ref="Behavior,JinaraChains,Duration"/> seconds. While chained, enemies will take up to <d ref="Effect,JinaraChainsDamage,Amount*(Behavior,JinaraChains,Duration/Behavior,JinaraChains,PeriodicPeriodArray[0])"/> damage.<n/><n/>Upon taking damage, chained targets will launch additional chains at nearby enemies.
 Button/Tooltip/JinaraCoop=First Ascendant of the Tal'darim. Powerful psionic ranged specialist.
 Button/Tooltip/JinaraCoopShade=Resurrected short range warrior. Sacrifices itself to heal Ji'nara when she is near death.<n/></n><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/JinaraLightningStrikes=When Ji'nara sacrifices a Supplicant or Soul Shade, her next basic attack will deal <d ref="Effect,JinaraCoopLightningDamage,Amount"/> damage to <d ref="Effect,JinaraCoopLightningSearch,MaxCount + 1"/> enemy units.
@@ -724,7 +725,7 @@ Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonChainReactionResearch=<c val="ffff8a">Void Archon</c> attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.
-Button/Tooltip/VoidArchonVortex=Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After <d ref="Effect,VoidArchonVortexCreatePersistent,PeriodCount*Effect,VoidArchonVortexCreatePersistent,PeriodicPeriodArray[0]"/> seconds, the supernova detonates for damage equal to the Void Archon's max shields. The supernova's radius increases with Power Overwhelming stacks.
+Button/Tooltip/VoidArchonVortex=Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After <d ref="Effect,VoidArchonVortexCreatePersistent,PeriodCount*Effect,VoidArchonVortexCreatePersistent,PeriodicPeriodArray[0]"/> seconds, the supernova detonates for damage equal to the Void Archon's max shields. <n/><n/><c val="#ColorAttackInfo">Radius increases with Power Overwhelming stacks.</c>
 Button/Tooltip/VoidPhoenixPhasingArmor=Prevents the Mirage from taking damage for <d ref="Behavior,ImprovedPhasingArmor,Duration"/> seconds after being attacked. Cannot occur more than once every <d ref="Behavior,VoidPhoenixPhasingArmor,DamageResponse.Cost.Cooldown.TimeUse"/> seconds.
 Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.
 Button/Tooltip/VoidVoidRayBeamBounce=Prismatic Beam splits and deals damage to additional nearby targets as the Destroyer continues to attack, up to a maximum of 3 additional targets. All attacks ignore armor.
@@ -1178,6 +1179,7 @@ Param/Value/lib_74A68E34_F750562F=blast
 Param/Value/lib_74A68E34_F8B1955E=<c val="FF8000">Cooldown Text activated</c>
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
 RequirementNode/Tooltip/CountBehaviorUnderConstructionCompleteOnlyAtUnit1225867992=Construction complete
+RequirementNode/Tooltip/CountUpgradeAlarakDestructionWaveDistanceJinaraCompleteOnly4149543790=Research Weight of Sin at the Forge
 RequirementNode/Tooltip/CountUpgradeBansheeCloakCompleteOnly758801471TechTreeCheat=Research Cloaking Field at the Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeBansheePermaCloakCompleteOnly314643618=Research Phantom Drive at the Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeCarrierRepairDronesCompleteOnly3239020716=Research Hangar Expansion at the Fleet Beacon
@@ -1289,6 +1291,7 @@ Unit/ShieldArmorName/ScatterVeil=Scatter Veil
 UnitKillRank/AlarakRakShir2=Highlord
 UnitKillRank/Jinara=First Ascendant
 UnitKillRank/Vorazun=Matriarch
+Upgrade/Name/AlarakDestructionWaveDistanceJinara=Weight of Sin
 Upgrade/Name/BansheeSpeed=Hyperflight Rotors
 Upgrade/Name/CommanderPrestigeAlarakJinara=CommanderPrestigeAlarakJinara
 Upgrade/Name/CommanderPrestigeDehakaArmy=CommanderPrestigeDehakaArmy

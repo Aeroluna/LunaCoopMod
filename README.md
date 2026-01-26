@@ -1521,6 +1521,10 @@ Friendly units shouldn't be dying anyways, so why not get some value when it hap
 
 Not sure why this was nerfed to not hit invisible units at some point.
 
+- Buffed Alarak's Destruction Wave to unburrow units.
+
+Always feels weird when you apply knockback to burrowed units. They literally fly in an arc over Alarak but somehow he doesn't seem them?
+
 - Buffed Alarak's Lightning Surge to also proc when Supplicants are sacrificed by Ascendants.
 
 Seems weird there isn't a way to get Lightning Surge without killing Alarak.
