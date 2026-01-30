@@ -432,6 +432,10 @@
     <CActorUnit id="HatcheryStetmann">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
     </CActorUnit>
+    <CActorUnit id="HellbatBlackOps">
+        <On Terms="Effect.HellbatLeapLM.Start" Send="AnimBracketStart WorkerJump Jump,Start Jump Jump,End ClosingFull,ContentPlayOnce"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="AnimBracketStop WorkerJump"/>
+    </CActorUnit>
     <CActorUnit id="Hercules">
         <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="SetOpacity"/>
         <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Send="SetOpacity 1.000000"/>

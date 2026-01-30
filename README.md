@@ -483,6 +483,10 @@ They explicitly target low health units because otherwise it would just be frust
 
 Returned Revelation to Oracles and in return they lose permanent detection.
 
+- Removed AOE slow from Concussive Shells upgrade.
+
+Its kinda stinky when Amon gets your exclusive campaign upgrades. Amon gets the Versus slow instead!
+
 - Reduced Liberator's Defender Mode range from 9 to 5.
 - Removed bonus sight radius from Defender Mode.
 - Reduced Liberator anti-air damage from 7 to 5.
@@ -794,6 +798,7 @@ Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
 - Fixed an issue where Bunkers did not have Shrike Turrets in their icons.
 - Fixed an issue where Bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed an issue where the placement model for Bunkers did not change with the Neosteel upgrade.
+- Changed Concussive Shells upgrade tooltip to reflect its AOE slow.
 
 yeah.
 
@@ -1642,6 +1647,12 @@ This increases the reliability of Ghosts getting the extra snipes off. This is t
   - Reduced damage taken to a maximum of 20.
 
 Hellbats tend to not even be worth the mineral cost as they die too easily. Giving them Hardened Shield should improve their effectiveness as a frontline, especially when facing high damage burst like Yamatos.
+
+- Fixed an issue where Hellbat Ranger's Jump Jet Assault animation was missing.
+- Increased Jump Jet Assault range from 3 to 6.
+- Increased Napalm Spray scan range from 5 to 6.5.
+
+When porting the Jump Jet Assault to Co-op, Blizzard forgot to port the animation, so if you're wondering why Jump Jet Assault has no jets, thats why. The range has also been unnerfed to NCO version.
 
 - Reduced Railgun Turret life from 400 to 375.
 - Reduced life multiplier from Nova's level 1 perk from 2 to 1.5.
