@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- Constants -->
+    <Constant name="ButtonColor" val="255,255,255" />
+    <Constant name="ButtonTooltip" val="This button will open your browser." />
+    <Constant name="ButtonIcon" val="Assets\Textures\Github.dds" />
+    <Constant name="URLWebsite" val="https://github.com/Aeroluna/LunaCoopMod" />
+
+
+    <!-- Button Template -->
+    <Frame type="Button" name="LinkButtonTemplate" template="StandardTemplates/StandardGlueButton" />
+
+    <!-- URL Hack -->
+    <Frame type="Frame" name="URL" template="ScreenCustomFeatured/CTABannerTemplate">
+        <Anchor side="Top" relative="$this" pos="Min" offset="0" />
+        <Anchor side="Left" relative="$this" pos="Min" offset="0" />
+        <Frame type="LaunchURLButton" name="WebsiteButton" template="URLFrame/LinkButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0" />
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0" />
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0" />
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0" />
+            <Width val="0" />
+            <Height val="0" />
+            <Frame type="Image" name="ButtonIcon">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="8" />
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-8" />
+                <Anchor side="Left" relative="$parent" pos="Min" offset="8" />
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-8" />
+                <RenderPriority val="600" />
+                <Texture val="#ButtonIcon" />
+            </Frame>
+        </Frame>
+        <Frame type="Frame" name="BannerImage">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="BorderInner">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="BorderOuter">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="BannerVignette">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="DescriptionLabel">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="HeaderLabel">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+        <Frame type="Frame" name="MoreInfoLabel">
+            <DescFlags val="CreationDeferred" />
+        </Frame>
+    </Frame>
+
+    <!-- URL Button -->
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer/TriggerContainer"
+        file="GameUI">
+        <Frame type="Frame" name="URLContainer">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="400" />
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="-600" />
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="-600" />
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="400" />
+            <Width val="250" />
+            <Height val="250" />
+            <Frame type="Frame" name="URLContainer">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="80" />
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0" />
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0" />
+                <Anchor side="Bottom" relative="$parent" pos="Min" offset="80" />
+                <Visible val="True" />
+                <Width val="76" />
+                <Height val="76" />
+                <!-- Handle -->
+                <Handle val="URLContainer" />
+                <Frame type="Frame" name="URL" template="URLFrame/URL">
+                    <Anchor relative="$parent" />
+                    <Frame type="LaunchURLButton" name="WebsiteButton">
+                        <Text val="" />
+                        <Tooltip val="#ButtonTooltip" />
+                        <URL val="#URLWebsite" />
+                    </Frame>
+                </Frame>
+            </Frame>
+            <Label val="Label" />
+            <Frame type="Label" name="Label">
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="20" />
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="20" />
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0" />
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0" />
+                <Text val="Check the GitHub README&lt;n/&gt;for a full list of changes." />
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>

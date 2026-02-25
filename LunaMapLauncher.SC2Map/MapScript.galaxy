@@ -1,0 +1,169 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   LunaMod Co-op Launcher
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+int[33] gv_mapButton;
+
+void InitGlobals () {
+    int init_i;
+
+    for (init_i = 0; init_i <= 32; init_i += 1) {
+        gv_mapButton[init_i] = c_invalidDialogControlId;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_UISetup;
+trigger gt_ButtonsPressed;
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UI Setup
+//--------------------------------------------------------------------------------------------------
+bool gt_UISetup_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_width = 400;
+    const int lv_height = 50;
+    int lv_xoffset;
+    int lv_yoffset;
+    int lv_yincrement;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int auto7E1C2679_ae = 16;
+    const int auto7E1C2679_ai = 1;
+
+    // Variable Initialization
+    lv_yoffset = -400;
+    lv_yincrement = 55;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_HideGameUI(false, PlayerGroupAll());
+    UISetWorldVisible(PlayerGroupAll(), false);
+    CameraLockInput(1, true);
+    CameraLockInput(2, true);
+    libNtve_gf_DisplayScreenImage(1, "Assets\\Textures\\ui_void_loading_epilogue02.dds", c_triggerBlendModeAdd, 2120, 1200, c_anchorCenter, 0, 0);
+    libNtve_gf_DisplayScreenLabel(1, StringExternal("Param/Value/03542E23"), "Kicker_Minerals", 700, 200, c_anchorTop, 0, 50);
+    libNtve_gf_DisplayScreenButton(1, StringExternal("Param/Value/3553F6FD"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(2, StringExternal("Param/Value/C305177E"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(3, StringExternal("Param/Value/2EE09FD0"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(4, StringExternal("Param/Value/4CE05A70"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(5, StringExternal("Param/Value/E0676410"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(6, StringExternal("Param/Value/702E81C9"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(7, StringExternal("Param/Value/37B10C79"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(8, StringExternal("Param/Value/BE64A858"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(9, StringExternal("Param/Value/A60D5ED2"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(10, StringExternal("Param/Value/F17F539C"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(11, StringExternal("Param/Value/283B4A9B"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(12, StringExternal("Param/Value/1C097BF7"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(13, StringExternal("Param/Value/B2F5A8CD"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(14, StringExternal("Param/Value/02F2B4E5"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(15, StringExternal("Param/Value/EC0D06B1"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_yoffset += lv_yincrement;
+    libNtve_gf_DisplayScreenButton(16, StringExternal("Param/Value/A13B65F0"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
+    lv_i = 1;
+    for ( ; ( (auto7E1C2679_ai >= 0 && lv_i <= auto7E1C2679_ae) || (auto7E1C2679_ai < 0 && lv_i >= auto7E1C2679_ae) ) ; lv_i += auto7E1C2679_ai ) {
+        libNtve_gf_SetScreenButtonBorderImage(lv_i, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
+        gv_mapButton[lv_i] = libNtve_gf_ScreenButton(lv_i);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UISetup_Init () {
+    gt_UISetup = TriggerCreate("gt_UISetup_Func");
+    TriggerAddEventMapInit(gt_UISetup);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Buttons Pressed
+//--------------------------------------------------------------------------------------------------
+bool gt_ButtonsPressed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoDE83BCE0_ae = 16;
+    const int autoDE83BCE0_ai = 1;
+    int autoA7305CE4_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 1;
+    for ( ; ( (autoDE83BCE0_ai >= 0 && lv_i <= autoDE83BCE0_ae) || (autoDE83BCE0_ai < 0 && lv_i >= autoDE83BCE0_ae) ) ; lv_i += autoDE83BCE0_ai ) {
+        if ((EventDialogControl() == gv_mapButton[lv_i])) {
+            autoA7305CE4_val = lv_i;
+            if (autoA7305CE4_val == 16) {
+                OnlineMapToMapLoad(RandomInt(1, 15), GameAttributePlayersForTeam(1), PlayerGroupEmpty());
+            }
+            else {
+                OnlineMapToMapLoad(lv_i, GameAttributePlayersForTeam(1), PlayerGroupEmpty());
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ButtonsPressed_Init () {
+    gt_ButtonsPressed = TriggerCreate("gt_ButtonsPressed_Func");
+    TriggerAddEventDialogControl(gt_ButtonsPressed, 1, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(gt_ButtonsPressed, 2, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_UISetup_Init();
+    gt_ButtonsPressed_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitTriggers();
+}
