@@ -411,6 +411,10 @@
         <Speed value="4.000000"/>
         <SpeedMax value="8.200000"/>
     </CActorSiteMover>
+    <CActorModel id="FlashBangImpact">
+        <On Terms="Behavior.FlashBangGrenadeSlow.On" Send="Create"/>
+        <On Terms="Behavior.FlashBangGrenadeSlow.Off" Send="Destroy"/>
+    </CActorModel>
     <CActorModel id="FungalGrowthStopMovement" parent="ModelAnimationStyleContinuous">
         <AutoScaleFactor value="1.000000"/>
         <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>

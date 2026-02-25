@@ -420,12 +420,25 @@
     <CEffectTeleport id="NovaArmorBlinkSuitBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectApplyBehavior id="NovaGadgetFlashBangGrenadeApplyBehavior">
+        <ValidatorArray index="0" removed="1"/>
+        <ValidatorArray index="1" removed="1"/>
+        <ValidatorArray index="2" removed="1"/>
+        <ValidatorArray index="3" removed="1"/>
+    </CEffectApplyBehavior>
     <CEffectTeleport id="NovaGriffinTransportTeleportAirUnitsTP">
         <TeleportEffect value="NovaGriffinTransportUnhideUnitsSet"/>
     </CEffectTeleport>
     <CEffectSet id="NovaGriffinTransportUnhideUnitsSet">
         <EffectArray value="TeleportRemoveCategory"/>
     </CEffectSet>
+    <CEffectDamage id="NovaWeaponBlazefireBladeDamageCloaked">
+        <Kind value="Melee"/>
+    </CEffectDamage>
+    <CEffectDamage id="NovaWeaponBlazefireBladeDamageUncloaked">
+        <Kind value="Melee"/>
+        <Amount value="90"/>
+    </CEffectDamage>
     <CEffectTeleport id="NovaWeaponBlazefireBladeShadowFuryFinal">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -436,6 +449,14 @@
         <EffectArray value="NovaWeaponBlazefireBladeShadowFuryTeleportFacing"/>
         <EffectArray value="TeleportRemoveCategoryCaster"/>
     </CEffectSet>
+    <CEffectDamage id="NovaWeaponPsiBladeDamageCloaked">
+        <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectDamage id="NovaWeaponPsiBladeDamageUncloaked">
+        <Kind value="Melee"/>
+        <Amount value="120"/>
+    </CEffectDamage>
     <CEffectTeleport id="NydusDestroyerDeepTunnelTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -2497,9 +2518,21 @@
         <WhichUnit Value="Caster"/>
     </CEffectRemoveBehavior>
     <CEffectEnumArea id="NovaGadgetFlashBangGrenadeSearch">
-        <SearchFilters value="-;Self,Player,Ally,Neutral,Heroic,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable,Unstoppable"/>
+        <AreaArray index="0" Effect="NovaGadgetFlashBangGrenadeSwitch"/>
         <AreaArray index="1" removed="1"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="NovaGadgetFlashBangGrenadeSlowApplyBehavior">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="FlashBangGrenadeSlow"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="NovaGadgetFlashBangGrenadeSwitch">
+        <CaseArray Validator="NotHeroic" Effect="NovaGadgetFlashBangGrenadeApplyBehavior"/>
+        <CaseDefault value="NovaGadgetFlashBangGrenadeSlowApplyBehavior"/>
+        <ValidatorArray value="NotFrenzied"/>
+        <ValidatorArray value="TargetIsNotUnstoppable"/>
+        <ValidatorArray value="IsNotHerculesCombined"/>
+    </CEffectSwitch>
     <CEffectCreatePersistent id="NovaGriffinTransportUnloadUnitsInitialCP">
         <InitialEffect value="NovaGriffinTransportUnloadUnitsSet"/>
     </CEffectCreatePersistent>
@@ -2723,11 +2756,6 @@
     <CEffectSet id="HHBomberAreaBombInitialSet">
         <EffectArray index="1" value="HHBomberAreaBombInitialSwitch"/>
     </CEffectSet>
-    <CEffectSwitch id="HHBomberAreaBombInitialSwitch">
-        <EditorCategories value=""/>
-        <CaseArray Validator="HaveHHBomberTriple" Effect="HHBomberAreaBombTripleCP"/>
-        <CaseDefault value="HHBomberAreaBombLM"/>
-    </CEffectSwitch>
     <CEffectEnumArea id="HHBomberAreaBombSearchArea">
         <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>

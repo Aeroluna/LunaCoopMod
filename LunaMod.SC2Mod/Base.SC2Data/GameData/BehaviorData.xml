@@ -174,6 +174,19 @@
     <CBehaviorBuff id="DehakaTopBarPrimalWurmSummonTimedLife">
         <ExpireEffect value="DehakaTopBarPrimalWurmSummonTimedLifeExpire"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="FlashBangGrenadeSlow">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Slow" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5">
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="HeroCCImmunity">
         <Modification SnareMultiplier="1"/>
     </CBehaviorBuff>
@@ -457,6 +470,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FlashBangGrenade">
         <Duration value="5"/>
+        <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="GhostMengskIrradiate">
         <BehaviorCategories index="Restorable" value="1"/>
