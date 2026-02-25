@@ -2563,5 +2563,7 @@ yeah.
 - Tal'darim Stalker (Slayer) blink model. - DaveSpectre
 - Tal'darim Heroes Extras - DaveSpectre
 - Terrazine Refinery Pack V2 - SheeldWall
+- Skibi's Angels Portrait - DaveSpectre
+- Battlecruiser Loki - Yamato Animations - DaveSpectre
 
 DaveSpectre is the goat <3
