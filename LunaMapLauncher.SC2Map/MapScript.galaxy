@@ -15,44 +15,91 @@ void InitLibs () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Constants
+//--------------------------------------------------------------------------------------------------
+const int gv_mAX_BUTTONS = 16;
+const int gv_bUTTON_WIDTH = 400;
+const int gv_bUTTON_HEIGHT = 50;
+const int gv_sPACING_Y = 55;
+const int gv_mAP_ID_START = 2;
+const int gv_rANDOM_BUTTON_ID = 1;
+
+//--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
-int[33] gv_mapButton;
+int[gv_mAX_BUTTONS + 1] gv_mapButton;
+int[gv_mAX_BUTTONS + 1] gv_mapCheck;
+int gv_offsetX;
+int gv_offsetY;
+int gv_checkDialog;
+int gv_increment;
 
 void InitGlobals () {
     int init_i;
 
-    for (init_i = 0; init_i <= 32; init_i += 1) {
+    for (init_i = 0; init_i <= gv_mAX_BUTTONS; init_i += 1) {
         gv_mapButton[init_i] = c_invalidDialogControlId;
     }
+    for (init_i = 0; init_i <= gv_mAX_BUTTONS; init_i += 1) {
+        gv_mapCheck[init_i] = c_invalidDialogControlId;
+    }
+    gv_offsetY = -400;
+    gv_checkDialog = c_invalidDialogId;
+    gv_increment = gv_mAP_ID_START;
 }
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_LoadMap (int lp_slot);
+void gf_CreateMapButton (text lp_text, bool lp_enabled);
 
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
 trigger gt_UISetup;
 trigger gt_ButtonsPressed;
+trigger gt_CheckboxPressed;
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_LoadMap (int lp_slot) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((GameIsOnline() == true)) {
+        OnlineMapToMapLoad(lp_slot, GameAttributePlayersForTeam(1), PlayerGroupEmpty());
+    }
+    else {
+        TextExpressionSetToken("Param/Expression/89F652FB", "A", IntToText(lp_slot));
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/89F652FB"), true);
+    }
+}
+
+void gf_CreateMapButton (text lp_text, bool lp_enabled) {
+    // Automatic Variable Declarations
+    // Implementation
+    TextExpressionSetToken("Param/Expression/E78FBCB6", "A", lp_text);
+    libNtve_gf_DisplayScreenButton(gv_increment, TextExpressionAssemble("Param/Expression/E78FBCB6"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
+    libNtve_gf_SetScreenButtonBorderImage(gv_increment, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
+    gv_mapButton[gv_increment] = libNtve_gf_ScreenButton(gv_increment);
+    if ((lp_enabled == true)) {
+        libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), true);
+    }
+    else {
+        DialogControlSetEnabled(gv_mapButton[gv_increment], PlayerGroupAll(), false);
+        libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), false);
+    }
+    gv_mapCheck[gv_increment] = DialogControlLastCreated();
+    gv_offsetY += gv_sPACING_Y;
+    gv_increment += 1;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: UI Setup
 //--------------------------------------------------------------------------------------------------
 bool gt_UISetup_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    const int lv_width = 400;
-    const int lv_height = 50;
-    int lv_xoffset;
-    int lv_yoffset;
-    int lv_yincrement;
-    int lv_i;
-
     // Automatic Variable Declarations
-    const int auto7E1C2679_ae = 16;
-    const int auto7E1C2679_ai = 1;
-
-    // Variable Initialization
-    lv_yoffset = -400;
-    lv_yincrement = 55;
-
     // Actions
     if (!runActions) {
         return true;
@@ -62,44 +109,33 @@ bool gt_UISetup_Func (bool testConds, bool runActions) {
     UISetWorldVisible(PlayerGroupAll(), false);
     CameraLockInput(1, true);
     CameraLockInput(2, true);
+    PlayerSetRace(1, "Terr");
+    PlayerSetRace(2, "Terr");
     libNtve_gf_DisplayScreenImage(1, "Assets\\Textures\\ui_void_loading_epilogue02.dds", c_triggerBlendModeAdd, 2120, 1200, c_anchorCenter, 0, 0);
     libNtve_gf_DisplayScreenLabel(1, StringExternal("Param/Value/03542E23"), "Kicker_Minerals", 700, 200, c_anchorTop, 0, 50);
-    libNtve_gf_DisplayScreenButton(1, StringExternal("Param/Value/3553F6FD"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(2, StringExternal("Param/Value/C305177E"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(3, StringExternal("Param/Value/2EE09FD0"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(4, StringExternal("Param/Value/4CE05A70"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(5, StringExternal("Param/Value/E0676410"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(6, StringExternal("Param/Value/702E81C9"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(7, StringExternal("Param/Value/37B10C79"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(8, StringExternal("Param/Value/BE64A858"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(9, StringExternal("Param/Value/A60D5ED2"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(10, StringExternal("Param/Value/F17F539C"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(11, StringExternal("Param/Value/283B4A9B"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(12, StringExternal("Param/Value/1C097BF7"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(13, StringExternal("Param/Value/B2F5A8CD"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(14, StringExternal("Param/Value/02F2B4E5"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(15, StringExternal("Param/Value/EC0D06B1"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_yoffset += lv_yincrement;
-    libNtve_gf_DisplayScreenButton(16, StringExternal("Param/Value/A13B65F0"), lv_width, lv_height, c_anchorCenter, lv_xoffset, lv_yoffset, null);
-    lv_i = 1;
-    for ( ; ( (auto7E1C2679_ai >= 0 && lv_i <= auto7E1C2679_ae) || (auto7E1C2679_ai < 0 && lv_i >= auto7E1C2679_ae) ) ; lv_i += auto7E1C2679_ai ) {
-        libNtve_gf_SetScreenButtonBorderImage(lv_i, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
-        gv_mapButton[lv_i] = libNtve_gf_ScreenButton(lv_i);
-    }
+    DialogCreate(100, 1000, c_anchorCenter, 220, 0, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    gv_checkDialog = DialogLastCreated();
+    gf_CreateMapButton(StringExternal("Param/Value/555F28C2"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/114AC014"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/F851ACAB"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/B2EC6FED"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/5781BB5F"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/8D69E053"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/DEBD310D"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/46006C7A"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/B463BDA9"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/20A95614"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/3393E09C"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/E7B9D407"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/A4CA97E0"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/12E07CE9"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/97DF9038"), true);
+    libNtve_gf_DisplayScreenButton(gv_rANDOM_BUTTON_ID, StringExternal("Param/Value/A13B65F0"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
+    libNtve_gf_SetDialogItemTooltip(libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID), StringExternal("Param/Value/B9A5F19D"), PlayerGroupAll());
+    libNtve_gf_SetScreenButtonBorderImage(gv_rANDOM_BUTTON_ID, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
+    gv_mapButton[gv_rANDOM_BUTTON_ID] = libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID);
     return true;
 }
 
@@ -115,11 +151,15 @@ void gt_UISetup_Init () {
 bool gt_ButtonsPressed_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_i;
+    int[gv_mAX_BUTTONS + 1] lv_random_ids;
+    int lv_random_id_count;
 
     // Automatic Variable Declarations
-    const int autoDE83BCE0_ae = 16;
+    const int autoDE83BCE0_ae = gv_mAX_BUTTONS;
     const int autoDE83BCE0_ai = 1;
     int autoA7305CE4_val;
+    const int autoCF6278B5_ae = gv_mAX_BUTTONS;
+    int autoCF6278B5_var;
 
     // Variable Initialization
 
@@ -132,12 +172,24 @@ bool gt_ButtonsPressed_Func (bool testConds, bool runActions) {
     for ( ; ( (autoDE83BCE0_ai >= 0 && lv_i <= autoDE83BCE0_ae) || (autoDE83BCE0_ai < 0 && lv_i >= autoDE83BCE0_ae) ) ; lv_i += autoDE83BCE0_ai ) {
         if ((EventDialogControl() == gv_mapButton[lv_i])) {
             autoA7305CE4_val = lv_i;
-            if (autoA7305CE4_val == 16) {
-                OnlineMapToMapLoad(RandomInt(1, 15), GameAttributePlayersForTeam(1), PlayerGroupEmpty());
+            if (autoA7305CE4_val == gv_rANDOM_BUTTON_ID) {
+                autoCF6278B5_var = gv_mAP_ID_START;
+                for ( ; autoCF6278B5_var <= autoCF6278B5_ae; autoCF6278B5_var += 1 ) {
+                    if ((libNtve_gf_DialogItemIsChecked(gv_mapCheck[autoCF6278B5_var], EventPlayer()) == true)) {
+                        lv_random_ids[lv_random_id_count] = autoCF6278B5_var;
+                        lv_random_id_count += 1;
+                    }
+
+                }
+                if ((lv_random_id_count > 0)) {
+                    gf_LoadMap(lv_random_ids[RandomInt(0, (lv_random_id_count - 1))]);
+                }
+
             }
             else {
-                OnlineMapToMapLoad(lv_i, GameAttributePlayersForTeam(1), PlayerGroupEmpty());
+                gf_LoadMap(lv_i);
             }
+            return true;
         }
 
     }
@@ -152,11 +204,65 @@ void gt_ButtonsPressed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Checkbox Pressed
+//--------------------------------------------------------------------------------------------------
+bool gt_CheckboxPressed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int auto6A02F16B_ae = gv_mAX_BUTTONS;
+    const int auto6A02F16B_ai = 1;
+    const int auto2662E598_ae = gv_mAX_BUTTONS;
+    int auto2662E598_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = gv_mAP_ID_START;
+    for ( ; ( (auto6A02F16B_ai >= 0 && lv_i <= auto6A02F16B_ae) || (auto6A02F16B_ai < 0 && lv_i >= auto6A02F16B_ae) ) ; lv_i += auto6A02F16B_ai ) {
+        if ((EventDialogControl() == gv_mapCheck[lv_i])) {
+            if ((libNtve_gf_DialogItemIsChecked(EventDialogControl(), EventPlayer()) == true)) {
+                libNtve_gf_SetDialogItemChecked(gv_mapCheck[lv_i], true, PlayerGroupAll());
+                DialogControlSetEnabled(gv_mapButton[lv_i], PlayerGroupAll(), true);
+            }
+            else {
+                libNtve_gf_SetDialogItemChecked(gv_mapCheck[lv_i], false, PlayerGroupAll());
+                DialogControlSetEnabled(gv_mapButton[lv_i], PlayerGroupAll(), false);
+            }
+            auto2662E598_var = gv_mAP_ID_START;
+            for ( ; auto2662E598_var <= auto2662E598_ae; auto2662E598_var += 1 ) {
+                if ((libNtve_gf_DialogItemIsChecked(gv_mapCheck[auto2662E598_var], EventPlayer()) == true)) {
+                    DialogControlSetEnabled(gv_mapButton[gv_rANDOM_BUTTON_ID], PlayerGroupAll(), true);
+                    return true;
+                }
+
+            }
+            DialogControlSetEnabled(gv_mapButton[gv_rANDOM_BUTTON_ID], PlayerGroupAll(), false);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_CheckboxPressed_Init () {
+    gt_CheckboxPressed = TriggerCreate("gt_CheckboxPressed_Func");
+    TriggerAddEventDialogControl(gt_CheckboxPressed, 1, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+    TriggerAddEventDialogControl(gt_CheckboxPressed, 2, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
     gt_UISetup_Init();
     gt_ButtonsPressed_Init();
+    gt_CheckboxPressed_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
