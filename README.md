@@ -2282,6 +2282,8 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 - Fixed an issue where Tesseract Monoliths were missing the Staggering Blast button from their command card.
 - Fixed an issue where Zoraya's Prismatic Beam passive tooltip incorrectly says it increases damage against massive targets.
 - Fixed an issue where the placement model for the Avatars were not transparent.
+- Increased the visibility of Void Templar's Void Fury impact effect.
+- Changed the icon of Void Templar's Back to the Shadow buff.
 
 yeah.
 

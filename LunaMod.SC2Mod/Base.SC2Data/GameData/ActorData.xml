@@ -2476,6 +2476,13 @@
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="SoundSetMuted 1 0"/>
         <On Terms="WeaponStop.ZeratulDarkTemplarWarpBlades" Send="Destroy"/>
     </CActorSound>
+    <CActorAction id="ZeratulDarkTemplarBlinkAttack">
+        <ImpactModel value="ZeratulDarkTemplarBlinkImpactModel"/>
+    </CActorAction>
+    <CActorModel id="ZeratulDarkTemplarBlinkImpactModel" parent="GenericAttackImpactModel">
+        <MaxScale value="2.000000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
     <CActorUnit id="ZeratulDisruptor">
         <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create PurificationNovaBirth"/>
         <Scale value="0.912500"/>
@@ -2829,6 +2836,7 @@
     <CActorModel id="NovaWeaponPsiStrikeImpact">
         <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>
         <AutoScaleFactor value="1.000000"/>
+        <MaxScale value="3.000000"/>
     </CActorModel>
     <CActorSound id="NydusCanalTransportUnloadSound">
         <On Terms="Effect.SwarmLocusZerglingCU.Start" Send="Create"/>
@@ -5704,6 +5712,18 @@
     <CActorUnit id="ZeratulXelNagaConstructCyan">
         <PlacementActorModel value="ZergPlacementModel"/>
     </CActorUnit>
+    <CActorModel id="ZeratulXelNagaConstructEvolve1">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="ZeratulXelNagaConstructEvolve2">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="ZeratulXelNagaConstructEvolve3">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="ZeratulXelNagaConstructEvolve4">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
     <CActorEventMacro id="ZergBurrowMobileAnimMacro">
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="Create BurrowMoveEffectExtra"/>
         <On Terms="UnitMovementUpdate.*.Stand" Target="BurrowMoveEffectExtra" Send="AnimPlay Main Stand PlayForever"/>
