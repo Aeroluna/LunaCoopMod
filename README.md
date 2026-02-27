@@ -818,7 +818,7 @@ yeah.
       - Uses melee animation at short range.
     - Replaces Chain Reaction with Psionic Cleave.
       - Grants AOE damage to weapon attacks.
-  - Replaces all combat units with elite Brood War variants that have 200% more life and 50% more weapon damage but cost 200% more resources and supply.
+  - Replaces all combat units with elite Brood War variants that have 200% more life and 50% more weapon damage but cost 200% more resources and 100% more supply.
   - Replaces Zergling with Devouring One.
     - Gains Cannibalize passive.
       - Heals for 40 life when a biological unit dies nearby.
