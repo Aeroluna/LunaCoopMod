@@ -3135,6 +3135,10 @@ void lib74A68E34_gf_MutatorWhiteoutApply (unit lp_unit) {
     // Implementation
     if ((UnitHasBehavior2(lp_unit, "MutatorWhiteout") == false) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)))) == true)) {
         UnitBehaviorAddPlayer(lp_unit, "MutatorWhiteout", 1, 1);
+        if ((libNtve_gf_UnitInRegion(lp_unit, libCOMU_gf_CT_MutatorSafetyZone()) == true) && (libCOOC_gf_PlayerIsCommander(UnitGetOwner(lp_unit)) == true)) {
+            UnitBehaviorAddPlayer(lp_unit, "MutatorWhiteoutProtected", 1, 1);
+        }
+
     }
 
 }
@@ -9428,6 +9432,8 @@ bool lib74A68E34_gt_MutatorWhiteoutInit_Func (bool testConds, bool runActions) {
     }
     TriggerEnable(lib74A68E34_gt_MutatorWhiteoutNewUnit, true);
     TriggerExecute(lib74A68E34_gt_MutatorWhiteoutSpawn, true, false);
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone, true);
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone, true);
     return true;
 }
 
@@ -9646,6 +9652,62 @@ bool lib74A68E34_gt_MutatorWhiteoutShutdown_Func (bool testConds, bool runAction
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_MutatorWhiteoutShutdown_Init () {
     lib74A68E34_gt_MutatorWhiteoutShutdown = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutEntersSafetyZone
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOOC_gf_PlayerIsCommander(EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "MutatorWhiteoutProtected", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone_Init () {
+    lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone, false);
+    TriggerAddEventUnitRegion(lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone, null, libCOMU_gf_CT_MutatorSafetyZone(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorWhiteoutLeavesSafetyZone
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOOC_gf_PlayerIsCommander(EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "MutatorWhiteoutProtected", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone_Init () {
+    lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone = TriggerCreate("lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone, false);
+    TriggerAddEventUnitRegion(lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone, null, libCOMU_gf_CT_MutatorSafetyZone(), false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10219,6 +10281,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorWhiteoutInit_Init();
     lib74A68E34_gt_MutatorWhiteoutSpawn_Init();
     lib74A68E34_gt_MutatorWhiteoutShutdown_Init();
+    lib74A68E34_gt_MutatorWhiteoutEntersSafetyZone_Init();
+    lib74A68E34_gt_MutatorWhiteoutLeavesSafetyZone_Init();
     lib74A68E34_gt_MutatorSpellDamageInit_Init();
     lib74A68E34_gt_MutatorSpellDamageShutdown_Init();
     lib74A68E34_gt_MutatorStartingResourcesInit_Init();
