@@ -5378,6 +5378,10 @@ bool lib74A68E34_gt_ArtanisPrestigeWarpTimedLife_Func (bool testConds, bool runA
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
+        if (!((TechTreeUpgradeCount(EventPlayer(), "CommanderPrestigeArtanisWarp", c_techCountCompleteOnly) > 0))) {
+            return false;
+        }
+
         if (!((UnitGetType(EventUnitCreatedUnit()) != "Observer"))) {
             return false;
         }
