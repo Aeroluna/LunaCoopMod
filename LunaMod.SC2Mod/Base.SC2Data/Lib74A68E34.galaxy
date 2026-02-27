@@ -630,7 +630,7 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
     lib74A68E34_gf_RaynorPrestigeMercenaryPatrolPing(lp_patrol);
     Wait(10.0, c_timeGame);
     lv_currentRally = UnitGetPosition(UnitGroupRandomUnit(lp_patrol, c_unitCountAlive));
-    lv_unitFilter = UnitFilter((1 << c_targetFilterVisible), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
+    lv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible) | (1 << c_targetFilterBuried) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
     while ((libNtve_gf_UnitGroupIsDead(lp_patrol) == false)) {
         lv_bestpathingdistance = 10000.0;
         lv_attackingUnit = null;
