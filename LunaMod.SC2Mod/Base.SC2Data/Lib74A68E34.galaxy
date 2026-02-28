@@ -9519,6 +9519,8 @@ bool lib74A68E34_gt_MutatorWhiteoutSpawn_Func (bool testConds, bool runActions) 
             libCOMI_gf_CM_VisionShareEnable(false);
             libCOMI_gf_CM_RevealersEnableDisable(false);
             lib74A68E34_gf_MutatorWhiteoutHidePings(true);
+            PingSetVisible(libCOUI_gv_cU_MinimapAllyViewPing[1], false);
+            PingSetVisible(libCOUI_gv_cU_MinimapAllyViewPing[2], false);
             auto2ECDB212_g = libCOOC_gf_HumanPlayers();
             lv_player = -1;
             while (true) {
@@ -9563,6 +9565,8 @@ bool lib74A68E34_gt_MutatorWhiteoutSpawn_Func (bool testConds, bool runActions) 
             libCOMI_gf_CM_VisionShareEnable(true);
             libCOMI_gf_CM_RevealersEnableDisable(true);
             lib74A68E34_gf_MutatorWhiteoutHidePings(false);
+            PingSetVisible(libCOUI_gv_cU_MinimapAllyViewPing[1], true);
+            PingSetVisible(libCOUI_gv_cU_MinimapAllyViewPing[2], true);
             auto0C39C36C_g = libCOOC_gf_HumanPlayers();
             lv_player = -1;
             while (true) {

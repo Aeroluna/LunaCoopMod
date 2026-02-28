@@ -385,7 +385,7 @@ Get your High Templar ready.
 Grants an initial boost to your starting economy.
 
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
-- Added Gift Exchange to Brutal+ as a neutral mutator costing 0 points.
+- Added Gift Exchange to Brutal+ as a neutral mutator costing 4 points.
 - Added Fireworks to Brutal+ as a negative mtuator costing 5 points.
 
 Some holiday-exclusive mutators have been added to Brutal+ using the new alignment system.
@@ -1923,6 +1923,10 @@ Primal Wurms are Dehaka's only source of detection until evolving to level 5, ma
   - Allows manually exploding Explosive Creepers at a target location.
 
 Doesn't seem that useful but why not.
+
+- Reworked Explosive Creeper Swooping Burst attack to more quickly find a new target if their current target dies.
+
+Removes the weird bobbing animation Creepers do when you have a lot of them chaining targets together.
 
 - Changed Primal Impaler model.
 

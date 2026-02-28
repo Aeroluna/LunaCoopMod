@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CMoverMissile id="ArtanisAreaStunAirLaunchMover">
+        <MotionPhases index="0">
+            <Acceleration value="40"/>
+            <MaxSpeed value="6"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="DehakaCreeperFlyingAirSwoopFast">
+        <Flags index="IgnoreNoFlyZones" value="1"/>
+        <HeightMap value="Air"/>
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="20"/>
+            <MinSpeed value="6"/>
+            <MaxSpeed value="40"/>
+            <ArrivalTestType value="2D"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+        <RespectUnitHeightAtDestination value="1"/>
+    </CMoverMissile>
+    <CMoverMissile id="DehakaCreeperFlyingSwoop">
+        <Flags index="RestoreHeight" value="0"/>
+    </CMoverMissile>
+    <CMoverMissile id="DehakaCreeperFlyingSwoopFast">
+        <Flags index="IgnoreNoFlyZones" value="1"/>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="20"/>
+            <MinSpeed value="6"/>
+            <MaxSpeed value="40"/>
+            <ThrowBandYaw value="-360,-360,-360,-360"/>
+            <ThrowBandPitch value="-360,-360,-360,-360"/>
+            <YawPitchRoll value="5759.6484"/>
+        </MotionPhases>
+    </CMoverMissile>
     <CMoverMissile id="FenixMojoScoutAirWeaponLeft">
         <MotionPhases index="0" MaxSpeed="18"/>
         <MotionPhases index="2" MaxSpeed="48"/>

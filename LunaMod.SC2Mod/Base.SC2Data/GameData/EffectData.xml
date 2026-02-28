@@ -226,6 +226,43 @@
         <EffectArray value="DarkTemplarShadowFuryRemove"/>
         <EffectArray value="TeleportRemoveCategoryCaster"/>
     </CEffectSet>
+    <CEffectLaunchMissile id="DehakaCreeperFlyingAirSwoopLM">
+        <PeriodicValidator value="NotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DehakaCreeperFlyingAirSwoopFastLM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="DehakaCreeperSuicideSet"/>
+        <PeriodicValidator value="NotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+        <Movers Link="DehakaCreeperFlyingAirSwoopFast"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DehakaCreeperFlyingSwoopLM">
+        <PeriodicValidator value="NotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+        <PeriodicEffect value="DehakaCreeperRecentlySwooped"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DehakaCreeperFlyingSwoopFastLM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="DehakaCreeperExplodeSet"/>
+        <PeriodicEffect value="DehakaCreeperRecentlySwooped"/>
+        <PeriodicValidator value="NotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+        <Movers Link="DehakaCreeperFlyingSwoopFast"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectSwitch id="DehakaCreeperFlyingSwoopSwitch">
+        <CaseArray Validator="DehakaCreeperRecentlySwooped" Effect="DehakaCreeperFlyingSwoopFastLM"/>
+        <CaseDefault value="DehakaCreeperFlyingSwoopLM"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="DehakaCreeperFlyingAirSwoopSwitch">
+        <CaseArray Validator="DehakaCreeperRecentlySwooped" Effect="DehakaCreeperFlyingAirSwoopFastLM"/>
+        <CaseDefault value="DehakaCreeperFlyingAirSwoopLM"/>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="DehakaCreeperRecentlySwooped">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
     <CEffectCreateUnit id="DehakaDakrunTopBarCU">
         <CreateFlags index="Placement" value="0"/>
     </CEffectCreateUnit>
@@ -1358,6 +1395,9 @@
     <CEffectTeleport id="RedstoneSalamanderTunnelTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectLaunchMissile id="ResetHeightLaunchMissile">
+        <LaunchLocation Effect="" Value="CasterUnit"/>
+    </CEffectLaunchMissile>
     <CEffectCreatePersistent id="RevelationPersistent">
         <ExpireDelay value="28"/>
     </CEffectCreatePersistent>
