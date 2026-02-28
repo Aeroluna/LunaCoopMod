@@ -4381,8 +4381,9 @@
         <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStart" Send="$Spell PlayForever"/>
         <On Terms="Abil.MedivacHealRaynorPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
         <On Terms="AbilTransport.MedivacTransport.TransportLoad; AbilTransport SiegeTankSieged" Send="Create SiegeTankSiegedTransit"/>
-        <On Terms="Signal.*.TankTransit" Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
         <On Terms="AbilTransport.MedivacTransport.PassengerKilled; AbilTransport SiegeTankSieged" Target="::actor.Thor" Send="Signal Dead"/>
+        <On Terms="AbilTransport.MedivacTransport.TransportLoad; AbilTransport SiegeBreakerSieged" Send="Create SiegeBreakerSiegedTransit"/>
+        <On Terms="AbilTransport.MedivacTransport.PassengerKilled; AbilTransport SiegeBreakerSieged" Target="::actor.Thor" Send="Signal Dead"/>
         <On Terms="Behavior.MercAirDropB.Create" Send="Create MedivacReentry"/>
     </CActorUnit>
     <CActorBeamSimple id="MedivacHealBeamRev1">
@@ -5245,13 +5246,27 @@
         <Inherits index="TintColor" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <Inherits index="WarpGroup" value="1"/>
-        <On Terms="ActorCreation" Target="::Creator" Send="Signal TankTransit"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="Signal ThorTransit"/>
         <On Terms="AbilTransport.MedivacTransport.TransportUnload" Send="Destroy"/>
         <On Terms="Signal.*.Dead" Send="Create ThorTransitDeath"/>
         <On Terms="Signal.*.Dead" Send="Destroy"/>
         <Host Subject="::Creator"/>
         <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy1Dot5"/>
         <Model value="SiegeTankLoadTransit"/>
+    </CActorModel>
+    <CActorModel id="SiegeBreakerSiegedTransit">
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Target="::Creator" Send="Signal ThorTransit"/>
+        <On Terms="AbilTransport.MedivacTransport.TransportUnload" Send="Destroy"/>
+        <On Terms="Signal.*.Dead" Send="Create ThorTransitDeath"/>
+        <On Terms="Signal.*.Dead" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy2"/>
+        <Model value="SiegeBreakerLoadTransit"/>
     </CActorModel>
     <CActorModel id="TempestDotModel2" parent="ModelAnimationStyleContinuous">
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
