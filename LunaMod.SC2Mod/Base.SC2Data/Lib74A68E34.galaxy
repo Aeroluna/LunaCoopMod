@@ -74,22 +74,21 @@ void lib74A68E34_InitVariables () {
         lib74A68E34_gv_mutatorRandomizerCheckBoxes[init_i] = c_invalidDialogControlId;
     }
     lib74A68E34_gv_mutatorListCommanderSelectDialog = c_invalidDialogId;
-    lib74A68E34_gv_mM_MutatorDialog = c_invalidDialogId;
-    lib74A68E34_gv_mM_MutatorPanel = c_invalidDialogControlId;
-    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
-        lib74A68E34_gv_mM_MutatorItemPanels[init_i] = c_invalidDialogControlId;
+    lib74A68E34_gv_luna_MutatorDialog = c_invalidDialogId;
+    lib74A68E34_gv_luna_MutatorPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= lib74A68E34_gv_lUNA_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_luna_MutatorItemPanels[init_i] = c_invalidDialogControlId;
     }
-    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
-        lib74A68E34_gv_mM_MutatorNameLabels[init_i] = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= lib74A68E34_gv_lUNA_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_luna_MutatorNameLabels[init_i] = c_invalidDialogControlId;
     }
-    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
-        lib74A68E34_gv_mM_MutatorDescriptionLabels[init_i] = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= lib74A68E34_gv_lUNA_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_luna_MutatorDescriptionLabels[init_i] = c_invalidDialogControlId;
     }
-    for (init_i = 0; init_i <= lib74A68E34_gv_mM_MUTATORMAXCOUNT; init_i += 1) {
-        lib74A68E34_gv_mM_MutatorCheckboxes[init_i] = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= lib74A68E34_gv_lUNA_MUTATORMAXCOUNT; init_i += 1) {
+        lib74A68E34_gv_luna_MutatorCheckboxes[init_i] = c_invalidDialogControlId;
     }
-    lib74A68E34_gv_mM_MutatorAcceptButton = c_invalidDialogControlId;
-    lib74A68E34_gv_mM_MutatorCancelButton = c_invalidDialogControlId;
+    lib74A68E34_gv_luna_MutatorAcceptButton = c_invalidDialogControlId;
     lib74A68E34_gv_mutatorTeemingUnits = UnitGroupEmpty();
     for (init_i = 0; init_i <= lib74A68E34_gv_mutatorWhiteoutTrackedPingMax; init_i += 1) {
         lib74A68E34_gv_mutatorWhiteoutTrackedPings[init_i] = c_invalidPingId;
@@ -1491,7 +1490,7 @@ void lib74A68E34_gf_MutatorRandomizerUpdate () {
     // Automatic Variable Declarations
     int auto4506CB45_ai;
     int auto4506CB45_ae;
-    const int autoC2EC3EAA_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int autoC2EC3EAA_ae = lib74A68E34_gv_lUNA_MUTATORMAXCOUNT;
     int autoC2EC3EAA_var;
     int autoB748BC2B_ai;
     int autoB748BC2B_ae;
@@ -1578,6 +1577,8 @@ void lib74A68E34_gf_MutatorRandomizerUpdate () {
         libCOUI_gf_CU_CommanderUpdate(lv_indexPlayer);
     }
     lib74A68E34_gf_MutatorListCommanderSelectInit();
+    lib74A68E34_gf_Luna_MutatorInitFromData(1);
+    lib74A68E34_gf_Luna_MutatorInitFromData(2);
 }
 
 void lib74A68E34_gf_MutatorAbominationShuffleArray () {
@@ -1882,31 +1883,31 @@ void lib74A68E34_gf_MutatorListCommanderSelectCreate () {
     }
 }
 
-void lib74A68E34_gf_MM_MutatorDisplay (int lp_player) {
+void lib74A68E34_gf_Luna_MutatorDisplay (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    lib74A68E34_gf_MM_MutatorCreate();
-    lib74A68E34_gf_MM_MutatorInitFromData(lp_player);
-    lib74A68E34_gf_MM_MutatorUpdate(lp_player);
-    DialogSetVisible(lib74A68E34_gv_mM_MutatorDialog, PlayerGroupSingle(lp_player), true);
-    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, true);
-    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, true);
+    lib74A68E34_gf_Luna_MutatorCreate();
+    lib74A68E34_gf_Luna_MutatorInitFromData(lp_player);
+    lib74A68E34_gf_Luna_MutatorUpdate(lp_player);
+    DialogSetVisible(lib74A68E34_gv_luna_MutatorDialog, PlayerGroupSingle(lp_player), true);
+    TriggerEnable(lib74A68E34_gt_Luna_MutatorChecked, true);
+    TriggerEnable(lib74A68E34_gt_Luna_MutatorAcceptClicked, true);
 }
 
-void lib74A68E34_gf_MM_MutatorCreate () {
+void lib74A68E34_gf_Luna_MutatorCreate () {
     // Variable Declarations
     int lv_mutatorIndex;
     int lv_hookupFrame;
 
     // Automatic Variable Declarations
-    const int auto2C77E0C7_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int auto2C77E0C7_ae = lib74A68E34_gv_lUNA_MUTATORMAXCOUNT;
     const int auto2C77E0C7_ai = 1;
 
     // Variable Initialization
     lv_hookupFrame = c_invalidDialogControlId;
 
     // Implementation
-    if ((lib74A68E34_gv_mM_MutatorDialog != c_invalidDialogId)) {
+    if ((lib74A68E34_gv_luna_MutatorDialog != c_invalidDialogId)) {
         return ;
     }
 
@@ -1914,33 +1915,31 @@ void lib74A68E34_gf_MM_MutatorCreate () {
     DialogSetFullscreen(DialogLastCreated(), true);
     DialogSetRenderPriority(DialogLastCreated(), 1100);
     DialogSetImageVisible(DialogLastCreated(), false);
-    lib74A68E34_gv_mM_MutatorDialog = DialogLastCreated();
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mM_MutatorDialog, c_triggerControlTypePanel, "Coop_MutatorSelection_EX/MutatorSelectionTemplate");
-    lib74A68E34_gv_mM_MutatorPanel = DialogControlLastCreated();
-    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypePanel, "ScrollableMutatorList");
+    lib74A68E34_gv_luna_MutatorDialog = DialogLastCreated();
+    DialogControlCreateFromTemplate(lib74A68E34_gv_luna_MutatorDialog, c_triggerControlTypePanel, "Coop_MutatorSelection_EX_EX/MutatorSelectionTemplate");
+    lib74A68E34_gv_luna_MutatorPanel = DialogControlLastCreated();
+    DialogControlHookup(lib74A68E34_gv_luna_MutatorPanel, c_triggerControlTypePanel, "ScrollableMutatorList");
     lv_hookupFrame = DialogControlLastCreated();
     DialogControlHookup(lv_hookupFrame, c_triggerControlTypePanel, "ContainerFrame");
     lv_hookupFrame = DialogControlLastCreated();
-    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
+    lv_mutatorIndex = lib74A68E34_gv_lUNA_MUTATORMINCOUNT;
     for ( ; ( (auto2C77E0C7_ai >= 0 && lv_mutatorIndex <= auto2C77E0C7_ae) || (auto2C77E0C7_ai < 0 && lv_mutatorIndex >= auto2C77E0C7_ae) ) ; lv_mutatorIndex += auto2C77E0C7_ai ) {
         DialogControlHookup(lv_hookupFrame, c_triggerControlTypePanel, "Item" + IntToString(lv_mutatorIndex));
-        lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex] = DialogControlLastCreated();
-        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "Number");
+        lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "Number");
         libNtve_gf_SetDialogItemText(DialogControlLastCreated(), IntToText(lv_mutatorIndex), PlayerGroupAll());
-        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeCheckBox, "ActiveCheckBox");
-        lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorIndex] = DialogControlLastCreated();
-        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "NameLabel");
-        lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex] = DialogControlLastCreated();
-        DialogControlHookup(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "DescriptionLabel");
-        lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeCheckBox, "ActiveCheckBox");
+        lib74A68E34_gv_luna_MutatorCheckboxes[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "NameLabel");
+        lib74A68E34_gv_luna_MutatorNameLabels[lv_mutatorIndex] = DialogControlLastCreated();
+        DialogControlHookup(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], c_triggerControlTypeLabel, "DescriptionLabel");
+        lib74A68E34_gv_luna_MutatorDescriptionLabels[lv_mutatorIndex] = DialogControlLastCreated();
     }
-    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypeButton, "AcceptButton");
-    lib74A68E34_gv_mM_MutatorAcceptButton = DialogControlLastCreated();
-    DialogControlHookup(lib74A68E34_gv_mM_MutatorPanel, c_triggerControlTypeButton, "CancelButton");
-    lib74A68E34_gv_mM_MutatorCancelButton = DialogControlLastCreated();
+    DialogControlHookup(lib74A68E34_gv_luna_MutatorPanel, c_triggerControlTypeButton, "AcceptButton");
+    lib74A68E34_gv_luna_MutatorAcceptButton = DialogControlLastCreated();
 }
 
-void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player) {
+void lib74A68E34_gf_Luna_MutatorInitFromData (int lp_player) {
     // Variable Declarations
     string lv_indexMutator;
     int lv_mutatorCount;
@@ -1948,7 +1947,7 @@ void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player) {
     int lv_vA;
 
     // Automatic Variable Declarations
-    const int autoD1CFD900_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int autoD1CFD900_ae = lib74A68E34_gv_lUNA_MUTATORMAXCOUNT;
     const int autoD1CFD900_ai = 1;
     int autoDC922A49_ai;
     int autoDC922A49_ae;
@@ -1967,12 +1966,12 @@ void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player) {
             autoDC922A49_ai = autoDC922A49_ai+1;
             if ((UserDataGetInt("Mutators", lv_indexMutator, "ListOrder", 1) == lv_vA)) {
                 lv_mutatorCount += 1;
-                lib74A68E34_gv_mM_MutatorItems[lv_mutatorCount] = lv_indexMutator;
+                lib74A68E34_gv_luna_MutatorItems[lv_mutatorCount] = lv_indexMutator;
                 if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
-                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorCount], true, lv_updatePlayers);
+                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_luna_MutatorCheckboxes[lv_mutatorCount], true, lv_updatePlayers);
                 }
                 else {
-                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorCount], false, lv_updatePlayers);
+                    libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_luna_MutatorCheckboxes[lv_mutatorCount], false, lv_updatePlayers);
                 }
                 break;
             }
@@ -1981,7 +1980,7 @@ void lib74A68E34_gf_MM_MutatorInitFromData (int lp_player) {
     }
 }
 
-void lib74A68E34_gf_MM_MutatorClose (int lp_player) {
+void lib74A68E34_gf_Luna_MutatorClose (int lp_player) {
     // Variable Declarations
     int lv_indexPlayer;
 
@@ -1991,9 +1990,12 @@ void lib74A68E34_gf_MM_MutatorClose (int lp_player) {
     // Variable Initialization
 
     // Implementation
-    DialogSetVisible(lib74A68E34_gv_mM_MutatorDialog, PlayerGroupSingle(lp_player), false);
-    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, false);
-    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, false);
+    DialogSetVisible(lib74A68E34_gv_luna_MutatorDialog, PlayerGroupSingle(lp_player), false);
+    if ((DialogIsVisible(lib74A68E34_gv_luna_MutatorDialog, 1) == false) && (DialogIsVisible(lib74A68E34_gv_luna_MutatorDialog, 2) == false)) {
+        TriggerEnable(lib74A68E34_gt_Luna_MutatorChecked, false);
+        TriggerEnable(lib74A68E34_gt_Luna_MutatorAcceptClicked, false);
+    }
+
     if ((libCOUI_gv_cU_CommanderSelect_RefCount > 0)) {
         auto582C415C_g = libCOOC_gf_HumanPlayers();
         lv_indexPlayer = -1;
@@ -2006,40 +2008,14 @@ void lib74A68E34_gf_MM_MutatorClose (int lp_player) {
 
 }
 
-void lib74A68E34_gf_MM_MutatorUpdateData () {
-    // Variable Declarations
-    int lv_mutatorIndex;
-
-    // Automatic Variable Declarations
-    const int autoB56E098D_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
-    const int autoB56E098D_ai = 1;
-
-    // Variable Initialization
-
-    // Implementation
-    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
-    for ( ; ( (autoB56E098D_ai >= 0 && lv_mutatorIndex <= autoB56E098D_ae) || (autoB56E098D_ai < 0 && lv_mutatorIndex >= autoB56E098D_ae) ) ; lv_mutatorIndex += autoB56E098D_ai ) {
-        if ((lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex] == null)) {
-            continue;
-        }
-
-        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_mM_MutatorCheckboxes[lv_mutatorIndex], 1) == true)) {
-            libCOMU_gf_EnableDisableMutator(true, lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]);
-        }
-        else {
-            libCOMU_gf_EnableDisableMutator(false, lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]);
-        }
-    }
-}
-
-void lib74A68E34_gf_MM_MutatorUpdate (int lp_player) {
+void lib74A68E34_gf_Luna_MutatorUpdate (int lp_player) {
     // Variable Declarations
     int lv_mutatorIndex;
     playergroup lv_updatePlayers;
     color lv_vUnfinishedColor;
 
     // Automatic Variable Declarations
-    const int auto1A79352D_ae = lib74A68E34_gv_mM_MUTATORMAXCOUNT;
+    const int auto1A79352D_ae = lib74A68E34_gv_lUNA_MUTATORMAXCOUNT;
     const int auto1A79352D_ai = 1;
 
     // Variable Initialization
@@ -2048,21 +2024,21 @@ void lib74A68E34_gf_MM_MutatorUpdate (int lp_player) {
 
     // Implementation
     lv_updatePlayers = PlayerGroupSingle(lp_player);
-    lv_mutatorIndex = lib74A68E34_gv_mM_MUTATORMINCOUNT;
+    lv_mutatorIndex = lib74A68E34_gv_lUNA_MUTATORMINCOUNT;
     for ( ; ( (auto1A79352D_ai >= 0 && lv_mutatorIndex <= auto1A79352D_ae) || (auto1A79352D_ai < 0 && lv_mutatorIndex >= auto1A79352D_ae) ) ; lv_mutatorIndex += auto1A79352D_ai ) {
-        if ((lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex] == null)) {
-            DialogControlSetVisible(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, false);
+        if ((lib74A68E34_gv_luna_MutatorItems[lv_mutatorIndex] == null)) {
+            DialogControlSetVisible(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, false);
         }
         else {
-            DialogControlSetVisible(lib74A68E34_gv_mM_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, true);
+            DialogControlSetVisible(lib74A68E34_gv_luna_MutatorItemPanels[lv_mutatorIndex], lv_updatePlayers, true);
         }
-        libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorName(lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
-        libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorDescription(lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
-        if ((UserDataGetInt("Mutators", lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex], "Unfinished", 1) == 1)) {
-            TextExpressionSetToken("Param/Expression/lib_74A68E34_F75B6FAC", "A", UserDataGetText("Mutators", lib74A68E34_gv_mM_MutatorItems[lv_mutatorIndex], "Description", 1));
-            libNtve_gf_SetDialogItemText(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], TextExpressionAssemble("Param/Expression/lib_74A68E34_F75B6FAC"), lv_updatePlayers);
-            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_mM_MutatorNameLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
-            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_mM_MutatorDescriptionLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib74A68E34_gv_luna_MutatorNameLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorName(lib74A68E34_gv_luna_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
+        libNtve_gf_SetDialogItemText(lib74A68E34_gv_luna_MutatorDescriptionLabels[lv_mutatorIndex], libCOMU_gf_CT_MutatorDescription(lib74A68E34_gv_luna_MutatorItems[lv_mutatorIndex]), lv_updatePlayers);
+        if ((UserDataGetInt("Mutators", lib74A68E34_gv_luna_MutatorItems[lv_mutatorIndex], "Unfinished", 1) == 1)) {
+            TextExpressionSetToken("Param/Expression/lib_74A68E34_F75B6FAC", "A", UserDataGetText("Mutators", lib74A68E34_gv_luna_MutatorItems[lv_mutatorIndex], "Description", 1));
+            libNtve_gf_SetDialogItemText(lib74A68E34_gv_luna_MutatorDescriptionLabels[lv_mutatorIndex], TextExpressionAssemble("Param/Expression/lib_74A68E34_F75B6FAC"), lv_updatePlayers);
+            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_luna_MutatorNameLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
+            libNtve_gf_SetDialogItemColor(lib74A68E34_gv_luna_MutatorDescriptionLabels[lv_mutatorIndex], lv_vUnfinishedColor, PlayerGroupAll());
         }
 
     }
@@ -9028,9 +9004,38 @@ void lib74A68E34_gt_MutatorListCommanderSelectFinish_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: MM_CommanderMutatorsClicked
+// Trigger: MutatorSelectEnablePlayer2
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MM_CommanderMutatorsClicked_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_MutatorSelectEnablePlayer2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libCOUI_gv_cU_CommanderMutatorChallengePulldown != c_invalidDialogControlId) && (DialogControlIsVisible(libCOUI_gv_cU_CommanderMutatorChallengePulldown, 2) == false)) {
+        DialogControlSetVisible(libCOUI_gv_cU_CommanderMutatorButton, PlayerGroupSingle(2), true);
+        DialogControlSetVisible(libCOUI_gv_cU_CommanderMutatorChallengePulldown, PlayerGroupSingle(2), true);
+        TriggerEnable(TriggerGetCurrent(), false);
+    }
+
+    if ((GameGetMissionTime() > 1)) {
+        TriggerEnable(TriggerGetCurrent(), false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorSelectEnablePlayer2_Init () {
+    lib74A68E34_gt_MutatorSelectEnablePlayer2 = TriggerCreate("lib74A68E34_gt_MutatorSelectEnablePlayer2_Func");
+    TriggerAddEventTimePeriodic(lib74A68E34_gt_MutatorSelectEnablePlayer2, 0.2, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Luna_CommanderMutatorsClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_Luna_CommanderMutatorsClicked_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -9046,24 +9051,79 @@ bool lib74A68E34_gt_MM_CommanderMutatorsClicked_Func (bool testConds, bool runAc
 
     Wait(0.0, c_timeGame);
     DialogSetVisible(libCOUI_gv_cU_MutatorDialog, PlayerGroupSingle(EventPlayer()), false);
-    lib74A68E34_gf_MM_MutatorDisplay(EventPlayer());
+    lib74A68E34_gf_Luna_MutatorDisplay(EventPlayer());
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MM_CommanderMutatorsClicked_Init () {
-    lib74A68E34_gt_MM_CommanderMutatorsClicked = TriggerCreate("lib74A68E34_gt_MM_CommanderMutatorsClicked_Func");
-    TriggerAddEventDialogControl(lib74A68E34_gt_MM_CommanderMutatorsClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+void lib74A68E34_gt_Luna_CommanderMutatorsClicked_Init () {
+    lib74A68E34_gt_Luna_CommanderMutatorsClicked = TriggerCreate("lib74A68E34_gt_Luna_CommanderMutatorsClicked_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_Luna_CommanderMutatorsClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: MM_MutatorAcceptClicked
+// Trigger: Luna_MutatorChecked
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MM_MutatorAcceptClicked_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_Luna_MutatorChecked_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int auto49FE5323_ae = lib74A68E34_gv_lUNA_MUTATORMAXCOUNT;
+    int auto49FE5323_var;
+    playergroup autoC80A679F_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto49FE5323_var = lib74A68E34_gv_lUNA_MUTATORMINCOUNT;
+    for ( ; auto49FE5323_var <= auto49FE5323_ae; auto49FE5323_var += 1 ) {
+        if ((EventDialogControl() == lib74A68E34_gv_luna_MutatorCheckboxes[auto49FE5323_var])) {
+            if ((lib74A68E34_gv_luna_MutatorItems[auto49FE5323_var] == null)) {
+                continue;
+            }
+
+            if ((libNtve_gf_DialogItemIsChecked(EventDialogControl(), EventPlayer()) == true)) {
+                libNtve_gf_SetDialogItemChecked(EventDialogControl(), true, PlayerGroupAll());
+                libCOMU_gf_EnableDisableMutator(true, lib74A68E34_gv_luna_MutatorItems[auto49FE5323_var]);
+            }
+            else {
+                libNtve_gf_SetDialogItemChecked(EventDialogControl(), false, PlayerGroupAll());
+                libCOMU_gf_EnableDisableMutator(false, lib74A68E34_gv_luna_MutatorItems[auto49FE5323_var]);
+            }
+            autoC80A679F_g = libCOOC_gf_HumanPlayers();
+            lv_player = -1;
+            while (true) {
+                lv_player = PlayerGroupNextPlayer(autoC80A679F_g, lv_player);
+                if (lv_player < 0) { break; }
+                libCOUI_gf_CU_CommanderUpdate(lv_player);
+            }
+            lib74A68E34_gf_MutatorListCommanderSelectInit();
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_Luna_MutatorChecked_Init () {
+    lib74A68E34_gt_Luna_MutatorChecked = TriggerCreate("lib74A68E34_gt_Luna_MutatorChecked_Func");
+    TriggerEnable(lib74A68E34_gt_Luna_MutatorChecked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_Luna_MutatorChecked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Luna_MutatorAcceptClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_Luna_MutatorAcceptClicked_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_mM_MutatorAcceptButton))) {
+        if (!((EventDialogControl() == lib74A68E34_gv_luna_MutatorAcceptButton))) {
             return false;
         }
     }
@@ -9073,44 +9133,15 @@ bool lib74A68E34_gt_MM_MutatorAcceptClicked_Func (bool testConds, bool runAction
         return true;
     }
 
-    lib74A68E34_gf_MM_MutatorUpdateData();
-    lib74A68E34_gf_MM_MutatorClose(EventPlayer());
+    lib74A68E34_gf_Luna_MutatorClose(EventPlayer());
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MM_MutatorAcceptClicked_Init () {
-    lib74A68E34_gt_MM_MutatorAcceptClicked = TriggerCreate("lib74A68E34_gt_MM_MutatorAcceptClicked_Func");
-    TriggerEnable(lib74A68E34_gt_MM_MutatorAcceptClicked, false);
-    TriggerAddEventDialogControl(lib74A68E34_gt_MM_MutatorAcceptClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MM_MutatorCancelClicked
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MM_MutatorCancelClicked_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_mM_MutatorCancelButton))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lib74A68E34_gf_MM_MutatorClose(EventPlayer());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MM_MutatorCancelClicked_Init () {
-    lib74A68E34_gt_MM_MutatorCancelClicked = TriggerCreate("lib74A68E34_gt_MM_MutatorCancelClicked_Func");
-    TriggerEnable(lib74A68E34_gt_MM_MutatorCancelClicked, false);
-    TriggerAddEventDialogControl(lib74A68E34_gt_MM_MutatorCancelClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+void lib74A68E34_gt_Luna_MutatorAcceptClicked_Init () {
+    lib74A68E34_gt_Luna_MutatorAcceptClicked = TriggerCreate("lib74A68E34_gt_Luna_MutatorAcceptClicked_Func");
+    TriggerEnable(lib74A68E34_gt_Luna_MutatorAcceptClicked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_Luna_MutatorAcceptClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10271,9 +10302,10 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorListLoadBankInit_Init();
     lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init();
     lib74A68E34_gt_MutatorListCommanderSelectFinish_Init();
-    lib74A68E34_gt_MM_CommanderMutatorsClicked_Init();
-    lib74A68E34_gt_MM_MutatorAcceptClicked_Init();
-    lib74A68E34_gt_MM_MutatorCancelClicked_Init();
+    lib74A68E34_gt_MutatorSelectEnablePlayer2_Init();
+    lib74A68E34_gt_Luna_CommanderMutatorsClicked_Init();
+    lib74A68E34_gt_Luna_MutatorChecked_Init();
+    lib74A68E34_gt_Luna_MutatorAcceptClicked_Init();
     lib74A68E34_gt_MutatorTeemingInit_Init();
     lib74A68E34_gt_MutatorTeemingShutdown_Init();
     lib74A68E34_gt_MutatorHarassSuperWarpGateAI_Init();
