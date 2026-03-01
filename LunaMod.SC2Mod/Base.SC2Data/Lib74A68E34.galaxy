@@ -8718,6 +8718,10 @@ bool lib74A68E34_gt_MutatorInit_Func (bool testConds, bool runActions) {
     UserDataSetInt("Mutators", "GiftFight", "Alignment", 1, 1);
     UserDataSetInt("Mutators", "RedEnvelopes", "Alignment", 1, 2);
     UserDataSetInt("Mutators", "SharedSupply", "Alignment", 1, 1);
+    UserDataSetInt("Mutators", "Endurance", "Alignment", 1, 1);
+    UserDataSetInt("Mutators", "LevelPlayingField", "Alignment", 1, 1);
+    UserDataSetInt("Mutators", "SupremeCommander", "Alignment", 1, 1);
+    UserDataSetInt("Mutators", "ICollectIChange", "Alignment", 1, 1);
     auto4CEFE2E2_ae = UserDataInstanceCount("Mutators");
     lv_i = 1;
     for ( ; ( (auto4CEFE2E2_ai >= 0 && lv_i <= auto4CEFE2E2_ae) || (auto4CEFE2E2_ai < 0 && lv_i >= auto4CEFE2E2_ae) ) ; lv_i += auto4CEFE2E2_ai ) {
@@ -8764,6 +8768,7 @@ bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("Whiteout", lib74A68E34_gt_MutatorWhiteoutInit, lib74A68E34_gt_MutatorWhiteoutShutdown);
     libCOMU_gf_CT_RegisterMutator("SpellDamage", lib74A68E34_gt_MutatorSpellDamageInit, lib74A68E34_gt_MutatorSpellDamageShutdown);
     libCOMU_gf_CT_RegisterMutator("StartingResources", lib74A68E34_gt_MutatorStartingResourcesInit, lib74A68E34_gt_MutatorStartingResourcesShutdown);
+    libCOMU_gf_CT_RegisterMutator("Capacitor", lib74A68E34_gt_MutatorCapacitorInit, lib74A68E34_gt_MutatorCapacitorShutdown);
     libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
     return true;
 }
@@ -8887,6 +8892,40 @@ void lib74A68E34_gt_MutatorRandomizerRefresh_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MutatorRandomizerCheckSync
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorRandomizerCheckSync_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto5CBA6C1B_ae = 2;
+    int auto5CBA6C1B_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto5CBA6C1B_var = 0;
+    for ( ; auto5CBA6C1B_var <= auto5CBA6C1B_ae; auto5CBA6C1B_var += 1 ) {
+        if ((EventDialogControl() == lib74A68E34_gv_luna_MutatorCheckboxes[auto5CBA6C1B_var])) {
+            if ((libNtve_gf_DialogItemIsChecked(EventDialogControl(), EventPlayer()) == true)) {
+                libNtve_gf_SetDialogItemChecked(EventDialogControl(), true, PlayerGroupAll());
+            }
+            else {
+                libNtve_gf_SetDialogItemChecked(EventDialogControl(), false, PlayerGroupAll());
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorRandomizerCheckSync_Init () {
+    lib74A68E34_gt_MutatorRandomizerCheckSync = TriggerCreate("lib74A68E34_gt_MutatorRandomizerCheckSync_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorRandomizerCheckSync, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MutatorListLoadBankInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorListLoadBankInit_Func (bool testConds, bool runActions) {
@@ -8969,6 +9008,7 @@ bool lib74A68E34_gt_MutatorListCommanderSelectFinish_Func (bool testConds, bool 
     libCOUI_gf_CU_MutatorListInit();
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerSelected, false);
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerRefresh, false);
+    TriggerEnable(lib74A68E34_gt_MutatorRandomizerCheckSync, false);
     DialogDestroy(lib74A68E34_gv_mutatorRandomizerDialog);
     auto4E59C304_g = libCOOC_gf_HumanPlayers();
     lv_indexPlayer = -1;
@@ -9987,6 +10027,81 @@ void lib74A68E34_gt_MutatorStartingResourcesShutdown_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MutatorCapacitorInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorCapacitorInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorCapacitorEvent, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorCapacitorInit_Init () {
+    lib74A68E34_gt_MutatorCapacitorInit = TriggerCreate("lib74A68E34_gt_MutatorCapacitorInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorCapacitorEvent
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorCapacitorEvent_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventUnit() != EventUnitDamageSourceUnit()))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerIsEnemy(EventUnitDamageSourcePlayer(), EventPlayer(), libNtve_ge_PlayerRelation_Ally) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((RandomFixed(0.0, EventUnitDamageAttempted()) > RandomFixed(0.0, 14.0))) {
+        UnitBehaviorAdd(EventUnitDamageSourceUnit(), "MutatorCapacitorCharged", EventUnitDamageSourceUnit(), 1);
+        Wait(0.1, c_timeGame);
+        UnitCreateEffectUnit(EventUnitDamageSourceUnit(), "MutatorCapacitorDamage", EventUnit());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorCapacitorEvent_Init () {
+    lib74A68E34_gt_MutatorCapacitorEvent = TriggerCreate("lib74A68E34_gt_MutatorCapacitorEvent_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorCapacitorEvent, false);
+    TriggerAddEventUnitDamaged(lib74A68E34_gt_MutatorCapacitorEvent, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorCapacitorShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorCapacitorShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorCapacitorEvent, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorCapacitorShutdown_Init () {
+    lib74A68E34_gt_MutatorCapacitorShutdown = TriggerCreate("lib74A68E34_gt_MutatorCapacitorShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MutatorMinedOutInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorMinedOutInit_Func (bool testConds, bool runActions) {
@@ -10299,6 +10414,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorRandomizerCreate_Init();
     lib74A68E34_gt_MutatorRandomizerSelected_Init();
     lib74A68E34_gt_MutatorRandomizerRefresh_Init();
+    lib74A68E34_gt_MutatorRandomizerCheckSync_Init();
     lib74A68E34_gt_MutatorListLoadBankInit_Init();
     lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init();
     lib74A68E34_gt_MutatorListCommanderSelectFinish_Init();
@@ -10324,6 +10440,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorStartingResourcesInit_Init();
     lib74A68E34_gt_MutatorStartingResourcesStart_Init();
     lib74A68E34_gt_MutatorStartingResourcesShutdown_Init();
+    lib74A68E34_gt_MutatorCapacitorInit_Init();
+    lib74A68E34_gt_MutatorCapacitorEvent_Init();
+    lib74A68E34_gt_MutatorCapacitorShutdown_Init();
     lib74A68E34_gt_MutatorMinedOutInit_Init();
     lib74A68E34_gt_MutatorMinedOutShutdown_Init();
 }

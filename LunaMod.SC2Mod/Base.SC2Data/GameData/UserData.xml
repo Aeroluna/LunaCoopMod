@@ -1852,63 +1852,81 @@
             <Int index="0" Int="3"/>
             <User index="0" Instance="RepulsiveField"/>
         </Instances>
-        <Instances index="38" Id="Magnificent">
+        <Instances index="38" Id="Bloodlust">
+            <Int index="0" Int="3"/>
+            <User index="0" Instance="Bloodlust"/>
+        </Instances>
+        <Instances index="39" Id="Inhumane">
+            <Int index="0" Int="3"/>
+            <User index="0" Instance="Inhumane"/>
+        </Instances>
+        <Instances index="40" Id="Magnificent">
             <Int index="0" Int="4"/>
             <User index="0" Instance="Magnificent"/>
         </Instances>
-        <Instances index="39" Id="Blizzard">
+        <Instances index="41" Id="Blizzard">
             <Int index="0" Int="4"/>
             <User index="0" Instance="Blizzard"/>
         </Instances>
-        <Instances index="40" Id="Fireworks">
+        <Instances index="42" Id="Fireworks">
             <Int index="0" Int="4"/>
             <User index="0" Instance="Fireworks"/>
         </Instances>
-        <Instances index="41" Id="Avenger">
+        <Instances index="43" Id="Avenger">
+            <Int index="0" Int="5"/>
             <User index="0" Instance="Avenger"/>
         </Instances>
-        <Instances index="42" Id="MutuallyAssuredDestruction">
+        <Instances index="44" Id="MutuallyAssuredDestruction">
+            <Int index="0" Int="5"/>
             <User index="0" Instance="HybridNuke"/>
         </Instances>
-        <Instances index="43" Id="PowerOverwhelming">
+        <Instances index="45" Id="PowerOverwhelming">
             <Int index="0" Int="5"/>
             <User index="0" Instance="OopsAllCasters"/>
         </Instances>
-        <Instances index="44" Id="VoidReanimators">
+        <Instances index="46" Id="VoidReanimators">
             <Int index="0" Int="5"/>
             <User index="0" Instance="Reanimators"/>
         </Instances>
-        <Instances index="45" Id="GreatWall">
+        <Instances index="47" Id="GreatWall">
             <Int index="0" Int="5"/>
             <User index="0" Instance="GreatWall"/>
         </Instances>
-        <Instances index="46" Id="RipField">
+        <Instances index="48" Id="RipField">
             <Int index="0" Int="5"/>
             <User index="0" Instance="RipFieldGenerators"/>
         </Instances>
-        <Instances index="47" Id="KillBots">
+        <Instances index="49" Id="KillBots">
             <Int index="0" Int="6"/>
             <User index="0" Instance="KillBots"/>
         </Instances>
-        <Instances index="48" Id="Minesweeper">
+        <Instances index="50" Id="Minesweeper">
             <Int index="0" Int="6"/>
             <User index="0" Instance="SpiderMines"/>
         </Instances>
-        <Instances index="49" Id="BlackDeath">
+        <Instances index="51" Id="BlackDeath">
             <Int index="0" Int="7"/>
             <User index="0" Instance="Plague"/>
         </Instances>
-        <Instances index="50" Id="JustDie">
+        <Instances index="52" Id="JustDie">
             <Int index="0" Int="7"/>
             <User index="0" Instance="JustDie"/>
         </Instances>
-        <Instances index="51" Id="Polarity">
-            <Int index="0" Int="7"/>
-            <User index="0" Instance="Polarity"/>
+        <Instances Id="Polarity">
+            <Int Int="7">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Polarity">
+                <Field Id="Mutator"/>
+            </User>
         </Instances>
-        <Instances index="52" Id="Transmutation">
-            <Int index="0" Int="7"/>
-            <User index="0" Instance="Evolve"/>
+        <Instances Id="Transmutation">
+            <Int Int="7">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Evolve">
+                <Field Id="Mutator"/>
+            </User>
         </Instances>
         <Instances Id="Mothership">
             <Int Int="7">
@@ -1934,11 +1952,27 @@
                 <Field Id="Mutator"/>
             </User>
         </Instances>
+        <Instances Id="Matryoshka">
+            <Int Int="7">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Matryoshka">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
         <Instances Id="Propagators">
             <Int Int="8">
                 <Field Id="Points"/>
             </Int>
             <User Type="Mutators" Instance="Propagate">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
+        <Instances Id="Shapeshifters">
+            <Int Int="8">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Shapeshifters">
                 <Field Id="Mutator"/>
             </User>
         </Instances>
@@ -1950,11 +1984,11 @@
                 <Field Id="Mutator"/>
             </User>
         </Instances>
-        <Instances Id="HeroesFromTheStorm">
+        <Instances Id="TheUsualSuspects">
             <Int Int="10">
                 <Field Id="Points"/>
             </Int>
-            <User Type="Mutators" Instance="HeroesFromTheStorm">
+            <User Type="Mutators" Instance="TheUsualSuspects">
                 <Field Id="Mutator"/>
             </User>
         </Instances>
@@ -2012,6 +2046,14 @@
                 <Field Id="Mutator"/>
             </User>
         </Instances>
+        <Instances Id="Capacitor">
+            <Int Int="-3">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="Capacitor">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
     </CUser>
     <CUser id="MutationAbominationsNeutral">
         <Fields>
@@ -2030,7 +2072,7 @@
             </User>
         </Instances>
         <Instances Id="GiftExchange">
-            <Int Int="4">
+            <Int Int="5">
                 <Field Id="Points"/>
             </Int>
             <User Type="Mutators" Instance="GiftFight">
@@ -2038,7 +2080,7 @@
             </User>
         </Instances>
         <Instances Id="SpellDamage">
-            <Int>
+            <Int Int="2">
                 <Field Id="Points"/>
             </Int>
             <User Type="Mutators" Instance="SpellDamage">
@@ -2046,7 +2088,25 @@
             </User>
         </Instances>
         <Instances Id="Whiteout">
+            <Int Int="3">
+                <Field Id="Points"/>
+            </Int>
             <User Type="Mutators" Instance="Whiteout">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
+        <Instances Id="Endurance">
+            <User Type="Mutators" Instance="Endurance">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
+        <Instances Id="LevelPlayingField">
+            <User Type="Mutators" Instance="LevelPlayingField">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
+        <Instances Id="SupremeCommander">
+            <User Type="Mutators" Instance="SupremeCommander">
                 <Field Id="Mutator"/>
             </User>
         </Instances>
@@ -2214,6 +2274,26 @@
             </Text>
             <Text Text="UserData/Mutators/StartingResources_Name">
                 <Field Id="Name"/>
+            </Text>
+        </Instances>
+        <Instances Id="Capacitor">
+            <Image Image="Assets\Textures\btn-ability-kerrigan-chainreaction.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="2">
+                <Field Id="Alignment"/>
+            </Int>
+            <Int Int="1">
+                <Field Id="CustomAllowed"/>
+            </Int>
+            <Int Int="96">
+                <Field Id="ListOrder"/>
+            </Int>
+            <Text Text="UserData/Mutators/Capacitor_Name">
+                <Field Id="Name"/>
+            </Text>
+            <Text Text="UserData/Mutators/Capacitor_Description">
+                <Field Id="Description"/>
             </Text>
         </Instances>
         <Instances Id="[Override]OrderCosts">

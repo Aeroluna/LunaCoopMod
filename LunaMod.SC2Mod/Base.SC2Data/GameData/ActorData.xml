@@ -35,6 +35,15 @@
         <On Terms="Behavior.JinaraLightningStrikes.On" Send="Create"/>
         <On Terms="Behavior.JinaraLightningStrikes.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorModel id="MutatorCapacitorCharged" parent="BuffContinuous">
+        <On Terms="Behavior.MutatorCapacitorCharged.On" Send="Create"/>
+        <On Terms="Behavior.MutatorCapacitorCharged.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor {50,100,255 2.000000}"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOriginSoft SOpRotationRandomDisc"/>
+        <Model value="Alarak_COOP_LightningStrikes_PowerUp"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
     <CActorUnit id="AlarakReviveBeaconJinara" parent="GenericUnitMorph" unitName="AlarakReviveBeaconJinara">
         <On Terms="ActorCreation" Send="$Birth"/>
         <On Terms="ActorCreation" Send="Create AlarakReviveBeacon_BirthSound"/>
@@ -485,6 +494,16 @@
         <Magnitude value="20.000000,5.000000"/>
         <Radius value="4.000000,0.600000"/>
     </CActorForceSphere>
+    <CActorAction id="MutatorCapacitorAttack" parent="GenericAttack" effectAttack="MutatorCapacitorDamage">
+        <LaunchAssets Sound="FenixShade_BeamInitial_AttackLaunch"/>
+        <BeamScope value="Caster"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <LaunchAttachQuery Methods="AMFilterCenter"/>
+    </CActorAction>
+    <CActorBeamSimple id="MutatorCapacitorAttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="SetTintColor {100,100,255 2.000000}"/>
+        <Model value="FenixAdeptShadeAttackBeam"/>
+    </CActorBeamSimple>
     <CActorModel id="LiberatorAGBirthSearchIndicatorModel">
         <On Terms="ActorCreation; ValidateUnit LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGSearchIndicator_Upgrade"/>
     </CActorModel>
@@ -4661,14 +4680,10 @@
         <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="Banshee">
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveBansheeSpeed" Send="Create BansheeBoostModel"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
-        <On Terms="Behavior.VehicleAfterburners.On" Send="Create BansheeBoostModel"/>
-        <On Terms="Behavior.VehicleAfterburners.Off" Target="BansheeBoostModel" Send="Destroy"/>
-        <On Terms="Behavior.VehicleAfterburners.On" Send="Create ActorSound_Banshee_MovementBoost"/>
-        <On Terms="Behavior.VehicleAfterburners.Off" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="Create BansheeBoostModel"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="BansheeBoostModel" parent="ModelAddition">
         <Model value="BansheeBoost"/>

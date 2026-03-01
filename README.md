@@ -364,7 +364,7 @@ Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and D
   - Caps all unit sight radius to 6.
   - Disables shared vision with ally.
   - Disables minimap objective pings.
-  - Costs 1 point for Brutal+.
+  - Costs 3 point for Brutal+.
 
 https://github.com/user-attachments/assets/e53dc858-632c-49ef-a309-b6624e74e0af
 
@@ -373,6 +373,7 @@ It's like the Darkness mutator but cooler!
 - Added new neutral mutator: Ethereal
   - All spell damage is increased by 100%.
   - Non-spell damage is reduced by 50%.
+  - Costs 2 points for Brutal+.
 
 Get your High Templar ready.
 
@@ -384,20 +385,39 @@ Get your High Templar ready.
 
 Grants an initial boost to your starting economy.
 
+- Added new positive mutator: Capacitor
+  - When player units deal damage, it has a chance to deal an additional 10 damage.
+  - The chance is higher based on the amount of damage dealt.
+  - Costs -3 points for Brutal+.
+
+zap zap zap zap zap.
+
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
-- Added Gift Exchange to Brutal+ as a neutral mutator costing 4 points.
-- Added Fireworks to Brutal+ as a negative mtuator costing 5 points.
+- Added Gift Exchange to Brutal+ as a neutral mutator costing 5 points.
+- Added Fireworks to Brutal+ as a negative mutator costing 5 points.
 
 Some holiday-exclusive mutators have been added to Brutal+ using the new alignment system.
 
+- Added Bloodlust to Brutal+ costing 3 points.
 - Added Infestation Station to Brutal+ costing 3 points.
+- Added Inhumane to Brutal+ costing 3 points.
 - Added Great Wall to Brutal+ costing 5 points.
 - Added Rip Field Generators to Brutal+ costing 5 points.
 - Added Repulsive Field to Brutal+ costing 3 points.
+- Added Matryoshka to Brutal+ costing 7 points.
 - Added Mothership to Brutal+ costing 7 points.
 - Added The Mist to Brutal+ costing 7 points.
+- Added Shapeshifters to Brutal+ costing 8 points.
+- Added Endurance as a neutral mutator.
+- Added Level Playing Field as a neutral mutator.
+- Added Supreme Commander as a neutral mutator.
 
 Added Maguro mutators to Brutal+ system.
+
+- Added The Usual Suspects to Brutal+ costing 10 points.
+- Removed Heroes from the Storm from Brutal+.
+
+Replaced Heroes from the Storm with The Usual Suspects.
 
 - Reworked Fatal Attraction to no longer make the units uncommandable.
   - No longer disables units attacks, abilities, and movement.

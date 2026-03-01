@@ -36,6 +36,10 @@
         <CombineArray value="VikingAirEnemySearch"/>
         <CombineArray value="CasterHasNoOrders"/>
     </CValidatorCombine>
+    <CValidatorCombine id="BansheeBoost">
+        <CombineArray value="HaveBansheeSpeed"/>
+        <CombineArray value="VehicleAfterburnersActive"/>
+    </CValidatorCombine>
     <CValidatorLocationPlacement id="BattlecruiserPlacementCheck">
         <Range value="3"/>
         <Unit value="Battlecruiser"/>
@@ -972,6 +976,11 @@
     <CValidatorCombine id="ValidChronoBoostTarget2">
         <CombineArray index="2" removed="1"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="VehicleAfterburnersActive">
+        <WhichUnit Value="Source"/>
+        <Behavior value="VehicleAfterburners"/>
+        <Compare value="GT"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationEnumArea id="VikingAirEnemySearch">
         <AreaArray Radius="9.5"/>
         <SearchFilters value="Air,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
