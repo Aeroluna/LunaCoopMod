@@ -10052,6 +10052,10 @@ bool lib74A68E34_gt_MutatorCapacitorEvent_Func (bool testConds, bool runActions)
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
+        if (!((libCOOC_gf_PlayerIsCommander(EventUnitDamageSourcePlayer()) == true))) {
+            return false;
+        }
+
         if (!((EventUnit() != EventUnitDamageSourceUnit()))) {
             return false;
         }

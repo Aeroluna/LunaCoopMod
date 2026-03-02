@@ -2,7 +2,7 @@
 // 
 // Generated Map Script
 // 
-// Name:   Emperor's Justice
+// Name:   [Luna] Emperor's Justice
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
@@ -4279,6 +4279,7 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     }
     gv_lock = true;
     lv_player = gv_pLAYER_05_ENEMY_AMBIENT;
+    gv_bossAddLimit = 12;
     autoA9F77768_val = PlayerRace(lv_player);
     if (autoA9F77768_val == "Prot") {
         libNtve_gf_UnitCreateFacingPoint(1, "NovaMothership", c_unitCreateIgnorePlacement, lv_player, RegionGetCenter(RegionFromId(35)), PointFromId(1549));
@@ -4316,7 +4317,7 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     AIAttackWaveSend(lv_player, 5, true);
     gv_lock = false;
     Wait(5.0, c_timeAI);
-    gf_JinaraEscort(gv_jinaraMothership2, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, 4, 2);
+    gf_JinaraEscort(gv_jinaraMothership2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, 4, 2);
     SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryMusic, true);
     SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "nDLC_Music_Nova08_Mothership", c_soundtrackCueAny, c_soundtrackIndexAny, true);
     SoundChannelSetVolume(PlayerGroupAll(), c_soundCategoryMusic, 100.0, 2.0);

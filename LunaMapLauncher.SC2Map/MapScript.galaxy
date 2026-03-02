@@ -17,7 +17,7 @@ void InitLibs () {
 //--------------------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------------------
-const int gv_mAX_BUTTONS = 16;
+const int gv_mAX_BUTTONS = 18;
 const int gv_bUTTON_WIDTH = 400;
 const int gv_bUTTON_HEIGHT = 50;
 const int gv_sPACING_Y = 55;
@@ -113,10 +113,13 @@ bool gt_UISetup_Func (bool testConds, bool runActions) {
     PlayerSetRace(2, "Terr");
     libNtve_gf_DisplayScreenImage(1, "Assets\\Textures\\ui_void_loading_epilogue02.dds", c_triggerBlendModeAdd, 2120, 1200, c_anchorCenter, 0, 0);
     libNtve_gf_DisplayScreenLabel(1, StringExternal("Param/Value/03542E23"), "Kicker_Minerals", 700, 200, c_anchorTop, 0, 50);
-    DialogCreate(100, 1000, c_anchorCenter, 220, 0, true);
+    gv_offsetX = -300;
+    DialogCreate(100, 1000, c_anchorCenter, (gv_offsetX + 220), 0, true);
     DialogSetImageVisible(DialogLastCreated(), false);
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
     gv_checkDialog = DialogLastCreated();
+    libNtve_gf_DisplayScreenLabel(2, StringExternal("Param/Value/A36E4E2E"), "Kicker_Minerals", gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY);
+    gv_offsetY += gv_sPACING_Y;
     gf_CreateMapButton(StringExternal("Param/Value/555F28C2"), true);
     gf_CreateMapButton(StringExternal("Param/Value/114AC014"), true);
     gf_CreateMapButton(StringExternal("Param/Value/F851ACAB"), true);
@@ -132,10 +135,21 @@ bool gt_UISetup_Func (bool testConds, bool runActions) {
     gf_CreateMapButton(StringExternal("Param/Value/A4CA97E0"), true);
     gf_CreateMapButton(StringExternal("Param/Value/12E07CE9"), true);
     gf_CreateMapButton(StringExternal("Param/Value/97DF9038"), true);
+    gv_offsetX = 0;
     libNtve_gf_DisplayScreenButton(gv_rANDOM_BUTTON_ID, StringExternal("Param/Value/A13B65F0"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
     libNtve_gf_SetDialogItemTooltip(libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID), StringExternal("Param/Value/B9A5F19D"), PlayerGroupAll());
     libNtve_gf_SetScreenButtonBorderImage(gv_rANDOM_BUTTON_ID, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
     gv_mapButton[gv_rANDOM_BUTTON_ID] = libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID);
+    gv_offsetX = 300;
+    gv_offsetY = -400;
+    DialogCreate(100, 1000, c_anchorCenter, (gv_offsetX + 220), 0, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    gv_checkDialog = DialogLastCreated();
+    libNtve_gf_DisplayScreenLabel(3, StringExternal("Param/Value/A9F63507"), "Kicker_Minerals", gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY);
+    gv_offsetY += gv_sPACING_Y;
+    gf_CreateMapButton(StringExternal("Param/Value/C55AAA07"), false);
+    gf_CreateMapButton(StringExternal("Param/Value/931657B5"), false);
     return true;
 }
 
