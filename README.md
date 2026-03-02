@@ -390,7 +390,14 @@ Grants an initial boost to your starting economy.
   - The chance is higher based on the amount of damage dealt.
   - Costs -3 points for Brutal+.
 
-zap zap zap zap zap.
+zap zap zap zap zap. The lightning does low flat damage so its better to build things that attack fast to proc more often!
+
+- Added new positive mutator: Bounty Hunter
+  - Some enemy units are dangerous and have a bounty on them.
+  - Killing them will reward resources and temporarily buff nearby allied units.
+  - Costs -1 points for Brutal+.
+
+Wanted: Dead or Dead. Some units are marked and have improved stats, but killing them gives you a nice reward.
 
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
 - Added Gift Exchange to Brutal+ as a neutral mutator costing 5 points.

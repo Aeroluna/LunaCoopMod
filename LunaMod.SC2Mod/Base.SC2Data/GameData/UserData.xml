@@ -2054,6 +2054,14 @@
                 <Field Id="Mutator"/>
             </User>
         </Instances>
+        <Instances Id="Bounty Hunter">
+            <Int Int="-1">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="BountyHunter">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
     </CUser>
     <CUser id="MutationAbominationsNeutral">
         <Fields>
@@ -2176,11 +2184,11 @@
         </Instances>
     </CUser>
     <CUser id="Mutators">
-        <Instances Id="Teeming">
+        <Instances index="91" Id="Teeming">
             <Image Image="Assets\Textures\btn-ability-spearofadun-massrecall.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="1">
+            <Int index="0" Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="91">
@@ -2193,11 +2201,11 @@
                 <Field Id="Description"/>
             </Text>
         </Instances>
-        <Instances Id="Harass">
+        <Instances index="92" Id="Harass">
             <Image Image="Assets\Textures\btn-ability-zerg-harvestcorpse.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="1">
+            <Int index="0" Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="1">
@@ -2213,11 +2221,11 @@
                 <Field Id="Description"/>
             </Text>
         </Instances>
-        <Instances Id="Whiteout">
+        <Instances index="93" Id="Whiteout">
             <Image Image="Assets\Textures\ui_hots_icon_flashfreeze.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="1">
+            <Int index="0" Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="1">
@@ -2236,11 +2244,11 @@
                 <Field Id="Description"/>
             </Text>
         </Instances>
-        <Instances Id="SpellDamage">
+        <Instances index="94" Id="SpellDamage">
             <Image Image="Assets\Textures\btn-ability-protoss-adept-spiritform.dds">
                 <Field Id="Icon"/>
             </Image>
-            <Int Int="1">
+            <Int index="0" Int="1">
                 <Field Id="CustomAllowed"/>
             </Int>
             <Int Int="94">
@@ -2293,6 +2301,23 @@
                 <Field Id="Name"/>
             </Text>
             <Text Text="UserData/Mutators/Capacitor_Description">
+                <Field Id="Description"/>
+            </Text>
+        </Instances>
+        <Instances Id="BountyHunter">
+            <Image Image="Assets\Textures\btn-ability-hornerhan-raven-radar.dds">
+                <Field Id="Icon"/>
+            </Image>
+            <Int Int="2">
+                <Field Id="Alignment"/>
+            </Int>
+            <Int Int="97">
+                <Field Id="ListOrder"/>
+            </Int>
+            <Text Text="UserData/Mutators/BountyHunter_Name">
+                <Field Id="Name"/>
+            </Text>
+            <Text Text="UserData/Mutators/BountyHunter_Description">
                 <Field Id="Description"/>
             </Text>
         </Instances>

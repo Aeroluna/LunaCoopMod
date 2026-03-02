@@ -35,6 +35,65 @@
         <On Terms="Behavior.JinaraLightningStrikes.On" Send="Create"/>
         <On Terms="Behavior.JinaraLightningStrikes.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorModel id="Confetti_Explosion_Large" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="SOpRotationRandomDisc"/>
+    </CActorModel>
+    <CActorModel id="Confetti_Explosion_Medium" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="SOpRotationRandomDisc"/>
+    </CActorModel>
+    <CActorModel id="Confetti_Explosion_Small" parent="ModelAnimationStyleOneShot">
+        <HostSiteOps Ops="SOpRotationRandomDisc"/>
+    </CActorModel>
+    <CActorModel id="MutatorBountyHunterDeathLarge" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.MutatorBountyHunterDeathLarge.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create Confetti_Explosion_Large_AS"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.200000 Repeat"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.600000 Finish"/>
+        <On Terms="ActorCreation" Send="StatusSet Repeating 1"/>
+        <On Terms="TimerExpired; TimerName Repeat" Send="Create Confetti_Explosion_Large"/>
+        <On Terms="TimerExpired; TimerName Repeat; HasStatus Repeating" Send="TimerSet 0.200000 Repeat"/>
+        <On Terms="TimerExpired; TimerName Finish" Send="StatusSet Repeating 0"/>
+        <Model value="Confetti_Explosion_Large"/>
+    </CActorModel>
+    <CActorModel id="MutatorBountyHunterDeathMedium" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.MutatorBountyHunterDeathMedium.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create Confetti_Explosion_Medium_AS"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.200000 Repeat"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.400000 Finish"/>
+        <On Terms="ActorCreation" Send="StatusSet Repeating 1"/>
+        <On Terms="TimerExpired; TimerName Repeat" Send="Create Confetti_Explosion_Medium"/>
+        <On Terms="TimerExpired; TimerName Repeat; HasStatus Repeating" Send="TimerSet 0.200000 Repeat"/>
+        <On Terms="TimerExpired; TimerName Finish" Send="StatusSet Repeating 0"/>
+        <Model value="Confetti_Explosion_Medium"/>
+    </CActorModel>
+    <CActorModel id="MutatorBountyHunterDeathSmall" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.MutatorBountyHunterDeathSmall.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create Confetti_Explosion_Small_AS"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.200000 Repeat"/>
+        <On Terms="TimerExpired; TimerName Repeat" Send="Create Confetti_Explosion_Small"/>
+        <Model value="Confetti_Explosion_Small"/>
+    </CActorModel>
+    <CActorModel id="MutatorBountyHunterTargetingUI" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.MutatorBountyHunter.On" Send="Create"/>
+        <On Terms="Behavior.MutatorBountyHunter.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,50,50"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpByDot5"/>
+        <AutoScaleFactor value="1.200000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="MutatorBountyHunterBuff" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.MutatorBountyHunterBuff.On" Send="Create"/>
+        <On Terms="Behavior.MutatorBountyHunterBuff.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,50,50"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenterSoft SOpPointSouthWorld" HoldRotation="1"/>
+        <Model value="WildMutationBuff"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
     <CActorModel id="MutatorCapacitorCharged" parent="BuffContinuous">
         <On Terms="Behavior.MutatorCapacitorCharged.On" Send="Create"/>
         <On Terms="Behavior.MutatorCapacitorCharged.Off" Send="AnimBracketStop BSD"/>
@@ -588,6 +647,19 @@
         <Magnitude value="23.000000,10.000000"/>
         <Radius value="2.150000,0.200000"/>
     </CActorForceSphere>
+    <CActorUnit id="Shapeshifter">
+        <Model value="Shapeshifter"/>
+        <BuildModel value="Shapeshifter"/>
+        <DeathArray index="Normal" ModelLink="ShapeshifterDeath"/>
+        <PlacementModel value="Shapeshifter"/>
+        <Scale value="1.000000"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-larvalqueen.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-larvalqueen.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorStateMonitor id="TerranFlamesSmallBuilding">
         <On Terms="UnitCreation.MissileTurretMengsk" Send="Create"/>
     </CActorStateMonitor>

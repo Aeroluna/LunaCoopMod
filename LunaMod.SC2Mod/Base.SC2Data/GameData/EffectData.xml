@@ -454,6 +454,27 @@
     <CEffectTeleport id="MutatorAmonZeratulBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectApplyBehavior id="MutatorBountyHunterBuff">
+        <ValidatorArray index="0" value="TargetisAnyCommander"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="MutatorBountyHunterBuffHeal">
+        <VitalArray index="Life">
+            <ChangeFraction value="0.05"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MutatorBountyHunterDeathLarge">
+        <EffectArray value="MutatorBountyHunterDeathSearch"/>
+    </CEffectSet>
+    <CEffectSet id="MutatorBountyHunterDeathMedium">
+        <EffectArray value="MutatorBountyHunterDeathSearch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="MutatorBountyHunterDeathSearch">
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Dead"/>
+        <AreaArray Radius="12" Effect="MutatorBountyHunterBuff"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MutatorBountyHunterDeathSmall">
+        <EffectArray value="MutatorBountyHunterDeathSearch"/>
+    </CEffectSet>
     <CEffectDamage id="MutatorCapacitorDamage">
         <Amount value="10"/>
     </CEffectDamage>
