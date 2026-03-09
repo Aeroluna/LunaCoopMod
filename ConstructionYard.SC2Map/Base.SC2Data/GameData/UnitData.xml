@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="ColonistSCV" parent="SCV">
+        <AbilArray index="5" Link="ColonistSCVBuild"/>
+        <CardLayouts index="1">
+            <LayoutButtons Face="SupplyDepot" Type="AbilCmd" AbilCmd="ColonistSCVBuild,Build2" Row="0" Column="2"/>
+            <LayoutButtons Face="Bunker" Type="AbilCmd" AbilCmd="ColonistSCVBuild,Build3" Row="2" Column="0"/>
+            <LayoutButtons Face="Barracks" Type="AbilCmd" AbilCmd="ColonistSCVBuild,Build4" Row="1" Column="0"/>
+            <LayoutButtons Face="MissileTurret" Type="AbilCmd" AbilCmd="ColonistSCVBuild,Build5" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Colonist">
+        <PushPriority value="254"/>
+    </CUnit>
+    <CUnit id="ColonistBarracks" parent="Barracks">
+        <Footprint value="Footprint3x3CreepNormalContourNoBuild"/>
+        <PlacementFootprint value="Footprint3x3CreepNormalNoBuild"/>
+    </CUnit>
+    <CUnit id="ColonistBunker" parent="Bunker">
+        <Footprint value="Footprint3x3CreepNormalContourNoBuild"/>
+        <PlacementFootprint value="Footprint3x3CreepNormalNoBuild"/>
+    </CUnit>
+    <CUnit id="ColonistFemale">
+        <PushPriority value="254"/>
+    </CUnit>
+    <CUnit id="ColonistMissileTurret" parent="MissileTurret">
+        <Footprint value="Footprint2x2CreepNormalContourNoBuild"/>
+        <PlacementFootprint value="Footprint2x2CreepNormalNoBuild"/>
+    </CUnit>
+    <CUnit id="ColonistShip">
+        <Attributes index="Heroic" value="1"/>
+    </CUnit>
+    <CUnit id="ColonistSupplyDepot" parent="SupplyDepot">
+        <Footprint value="Footprint2x2CreepNormalContourNoBuild"/>
+        <PlacementFootprint value="Footprint2x2CreepNormalNoBuild"/>
+        <AbilArray index="1" removed="1"/>
+    </CUnit>
+    <CUnit id="ColonistTransport">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <PushPriority value="255"/>
+        <BehaviorArray Link="Unrepairable"/>
+        <BehaviorArray Link="PreventKnockback"/>
+        <BehaviorArray Link="TimeStopImmune"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
+        <Attributes index="Mechanical" value="0"/>
+        <Attributes index="Massive" value="1"/>
+        <Attributes index="Heroic" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <Speed value="1.1484"/>
+        <LifeArmor value="2"/>
+        <AttackTargetPriority value="0"/>
+    </CUnit>
+    <CUnit id="DestructibleGarageLarge">
+        <FlagArray index="Turnable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+    </CUnit>
+    <CUnit id="HybridScienceFacility">
+        <FlagArray index="Unstoppable" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <LifeStart value="1250"/>
+        <LifeMax value="1250"/>
+    </CUnit>
+    <CUnit id="MurlocMarine">
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+    </CUnit>
+    <CUnit id="NovaColonistHut">
+        <FlagArray index="Invulnerable" value="1"/>
+        <Sight value="0"/>
+    </CUnit>
+    <CUnit id="NuclearMissileSilo">
+        <FlagArray index="Unstoppable" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <LifeStart value="1250"/>
+        <LifeMax value="1250"/>
+        <LifeArmor value="1"/>
+    </CUnit>
+    <CUnit id="SMCivilian">
+        <FlagArray index="Unselectable" value="0"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <LifeStart value="35"/>
+        <LifeMax value="35"/>
+        <LifeArmorDisplayFlags index="DisplayRounded" value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
+    </CUnit>
+    <CUnit id="Scientist">
+        <FlagArray index="Untargetable" value="1"/>
+        <!--GlossaryCategory value="Unit/Category/TerranUnits"/-->
+    </CUnit>
+</Catalog>
