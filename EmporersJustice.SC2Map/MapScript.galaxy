@@ -646,6 +646,7 @@ void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLev
     int lv_lane;
     point lv_gather;
     int[8] lv_laneIndexes;
+    unitgroup lv_attack;
 
     // Automatic Variable Declarations
     const int auto475B3100_ae = 20;
@@ -659,6 +660,7 @@ void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLev
     unit auto02CD8F6E_var;
 
     // Variable Initialization
+    lv_attack = UnitGroupEmpty();
 
     // Implementation
     lv_spawnRegions[1] = RegionFromId(31);
@@ -701,28 +703,25 @@ void gf_SendLaneAttackWave (int lp_attacker, int lp_resourceSize, int lp_techLev
         }
         gv_lock = true;
         lv_gather = RegionRandomPoint(lv_spawnRegions[lv_lane]);
+        libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resourceSize, lp_techLevel, lv_gather, true);
+        UnitGroupAddUnitGroup(lv_attack, libCOMI_gf_LastCreatedCoopAttackForce());
         auto42B1105D_n = lp_hybridMinor;
         for (auto42B1105D_i = 1; auto42B1105D_i <= auto42B1105D_n; auto42B1105D_i += 1) {
             lv_player = RandomInt(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY);
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gv_hybridMinor, 0, lv_player, libNtve_gf_PointOffsetTowardsPoint(lv_gather, 10.0, lv_firstWaypoints[lv_lane]));
-            AIAttackWaveUseUnit(lv_player, UnitLastCreated());
+            UnitGroupAdd(lv_attack, UnitLastCreated());
         }
         autoF7D4196D_n = lp_hybridMajor;
         for (autoF7D4196D_i = 1; autoF7D4196D_i <= autoF7D4196D_n; autoF7D4196D_i += 1) {
             lv_player = RandomInt(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY);
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gv_hybridMajor, 0, lv_player, libNtve_gf_PointOffsetTowardsPoint(lv_gather, 10.0, lv_firstWaypoints[lv_lane]));
-            AIAttackWaveUseUnit(lv_player, UnitLastCreated());
+            UnitGroupAdd(lv_attack, UnitLastCreated());
         }
-        libCOMI_gf_SetCoopAIAttackGroupSpawnPoint(gv_pLAYER_03_ENEMY, lv_gather);
-        libCOMI_gf_SetCoopAIAttackGroupSpawnPoint(gv_pLAYER_04_ENEMY, lv_gather);
-        libCOMI_gf_SetCoopAIGatherPoint(gv_pLAYER_03_ENEMY, lv_gather);
-        libCOMI_gf_SetCoopAIGatherPoint(gv_pLAYER_04_ENEMY, lv_gather);
         AIAttackWaveSetTargetPoint(gv_pLAYER_03_ENEMY, gv_waveTarget[gv_pLAYER_03_ENEMY]);
         AIAttackWaveSetTargetPoint(gv_pLAYER_04_ENEMY, gv_waveTarget[gv_pLAYER_04_ENEMY]);
         libCOMI_gf_AddAttackForceWaypoint(lv_firstWaypoints[lv_lane], false);
         libCOMI_gf_AddAttackForceWaypoint(lv_secondWaypoints[lv_lane], false);
-        libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resourceSize, lp_techLevel, lv_gather, true);
-        libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, true);
+        libCOMI_gf_SendAttackWaveusingCoopAttackForce(lv_attack, 0, true);
         auto02CD8F6E_g = libCOMI_gf_LastCreatedCoopAttackForce();
         auto02CD8F6E_u = UnitGroupCount(auto02CD8F6E_g, c_unitCountAll);
         for (;; auto02CD8F6E_u -= 1) {
@@ -832,7 +831,6 @@ void gf_JinaraEscort (unit lp_escortee, int lp_resourceSize, int lp_techLevel, i
     while (true) {
         autoBCDF73B4_var = PlayerGroupNextPlayer(autoBCDF73B4_g, autoBCDF73B4_var);
         if (autoBCDF73B4_var < 0) { break; }
-        libCOMI_gf_SetCoopAIAttackGroupSpawnPoint(autoBCDF73B4_var, lv_gather);
         AIAttackWaveSetGatherPoint(autoBCDF73B4_var, lv_gather);
         AIAttackWaveSetTargetEscortNL(autoBCDF73B4_var, libNtve_gf_ConvertUnitToUnitGroup(lp_escortee), 0);
         autoCDAAE577_g = UnitGroupFilterPlayer(lv_currentWave, autoBCDF73B4_var, 0);

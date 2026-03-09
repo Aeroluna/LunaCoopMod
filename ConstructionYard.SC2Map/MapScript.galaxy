@@ -63,6 +63,8 @@ int[7] gv_aPCAttackValue;
 unit[7] gv_aPC;
 point gv_victoryPan;
 point gv_defeatPan;
+string gv_hybridMajor;
+string gv_hybridMinor;
 fixed gv_aISeconds;
 int[3] gv_bonusStatus;
 unit[3] gv_bonusBeacon;
@@ -108,9 +110,9 @@ void gf_APCEscortAttack (int lp_index, unit lp_target, int lp_resource, int lp_t
 void gf_APCPing (unit lp_apc, int lp_index);
 void gf_APCTrack (unit lp_apc, int lp_index);
 void gf_APCExpand (region lp_region, int lp_index);
-void gf_AttackCamp (int lp_index, int lp_resource, int lp_tech);
-void gf_PickRandomCampForAttack (int lp_resource, int lp_tech);
-void gf_AttackBase (int lp_resource, int lp_tech);
+void gf_AttackCamp (int lp_index, int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid);
+void gf_PickRandomCampForAttack (int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid);
+void gf_AttackBase (int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid);
 void gf_WaitForAITime (fixed lp_aITime);
 void gf_StartBonus (int lp_index);
 void gf_BonusTrack (int lp_index, unit lp_target, region lp_bonusregion);
@@ -132,7 +134,8 @@ trigger gt_Init05Units;
 trigger gt_Init06MusicSound;
 trigger gt_Init07Environment;
 trigger gt_Init08Difficulties;
-trigger gt_Control;
+trigger gt_DebugControl;
+trigger gt_DebugAttack;
 trigger gt_StartGameQ;
 trigger gt_APCSoonTransmissionFirstQ;
 trigger gt_APCSoonTransmissionNextQ;
@@ -430,6 +433,8 @@ void gf_APCPath (int lp_index, unitgroup lp_units, wave lp_escort, int lp_resour
                         AIToggleBulliesInRegion(gv_pLAYER_05_COLONISTS, RegionFromName(("Colonist Camp " + IntToString(lp_index))), true);
                         AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
                         AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
+                        AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
+                        AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
                         AIAttackWaveCancel(lp_escort);
                         AISetGroupScriptControlled(lv_cargo, false);
                     }
@@ -437,7 +442,7 @@ void gf_APCPath (int lp_index, unitgroup lp_units, wave lp_escort, int lp_resour
                     Wait(20.0, c_timeGame);
                     if ((UnitIsAlive(autoCB19184C_var) == true)) {
                         gv_aPCCamped[lp_index] = true;
-                        gv_victoryPan = UnitGetPosition(autoCB19184C_var);
+                        gv_victoryPan = RegionGetCenter(RegionFromName(("Colonist Camp " + IntToString(lp_index))));
                         TriggerExecute(gt_ObjectiveSixCampsIncrease, true, false);
                         gf_APCExpand(RegionFromName(("Colonist Camp " + IntToString(lp_index) + " Bonus")), lp_index);
                         if ((lp_index == 5)) {
@@ -540,7 +545,6 @@ bool auto_gf_APCEscortAttack_TriggerFunc (bool testConds, bool runActions) {
     while (true) {
         auto1DDB0918_var = PlayerGroupNextPlayer(auto1DDB0918_g, auto1DDB0918_var);
         if (auto1DDB0918_var < 0) { break; }
-        libCOMI_gf_SetCoopAIGatherPoint(auto1DDB0918_var, lv_attackspawn);
         AIAttackWaveSetTargetUnit(auto1DDB0918_var, lp_target);
     }
     libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
@@ -664,6 +668,8 @@ bool auto_gf_APCTrack_TriggerFunc (bool testConds, bool runActions) {
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), true);
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index) + " Bonus")), true);
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index) + " Bonus")), true);
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), true);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), true);
     return true;
 }
 
@@ -715,11 +721,15 @@ trigger auto_gf_AttackCamp_Trigger = null;
 int auto_gf_AttackCamp_lp_index;
 int auto_gf_AttackCamp_lp_resource;
 int auto_gf_AttackCamp_lp_tech;
+int auto_gf_AttackCamp_lp_minorhybrid;
+int auto_gf_AttackCamp_lp_majorhybrid;
 
-void gf_AttackCamp (int lp_index, int lp_resource, int lp_tech) {
+void gf_AttackCamp (int lp_index, int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid) {
     auto_gf_AttackCamp_lp_index = lp_index;
     auto_gf_AttackCamp_lp_resource = lp_resource;
     auto_gf_AttackCamp_lp_tech = lp_tech;
+    auto_gf_AttackCamp_lp_minorhybrid = lp_minorhybrid;
+    auto_gf_AttackCamp_lp_majorhybrid = lp_majorhybrid;
 
     if (auto_gf_AttackCamp_Trigger == null) {
         auto_gf_AttackCamp_Trigger = TriggerCreate("auto_gf_AttackCamp_TriggerFunc");
@@ -732,16 +742,24 @@ bool auto_gf_AttackCamp_TriggerFunc (bool testConds, bool runActions) {
     int lp_index = auto_gf_AttackCamp_lp_index;
     int lp_resource = auto_gf_AttackCamp_lp_resource;
     int lp_tech = auto_gf_AttackCamp_lp_tech;
+    int lp_minorhybrid = auto_gf_AttackCamp_lp_minorhybrid;
+    int lp_majorhybrid = auto_gf_AttackCamp_lp_majorhybrid;
 
     // Variable Declarations
     point lv_spawn;
     region lv_dropzone;
+    unitgroup lv_hybrid;
 
     // Automatic Variable Declarations
+    int autoCF2864AD_n;
+    int autoCF2864AD_i;
+    int auto81E8632A_n;
+    int auto81E8632A_i;
     playergroup auto107A1536_g;
     int auto107A1536_var;
 
     // Variable Initialization
+    lv_hybrid = UnitGroupEmpty();
 
     // Implementation
     if ((libCOMI_gf_GameIsOver() == true)) {
@@ -749,26 +767,36 @@ bool auto_gf_AttackCamp_TriggerFunc (bool testConds, bool runActions) {
     }
 
     lv_spawn = PointFromName(("APC Escort Attack " + IntToString(lp_index)));
-    lv_dropzone = RegionCircle(lv_spawn, 8.0);
-    if (((UnitGroupCount(UnitGroupAlliance(gv_pLAYER_03_ENEMY, c_unitAllianceAlly, lv_dropzone, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive) == 0) || (UnitGroupCount(UnitGroupAlliance(gv_pLAYER_03_ENEMY, c_unitAllianceEnemy, lv_dropzone, UnitFilter((1 << c_targetFilterVisible), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterBuried) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive) > 0))) {
+    lv_dropzone = RegionCircle(lv_spawn, 10.0);
+    if (((UnitGroupCount(UnitGroupAlliance(gv_pLAYER_03_ENEMY, c_unitAllianceAlly, lv_dropzone, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterBuried) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive) == 0) || (UnitGroupCount(UnitGroupAlliance(gv_pLAYER_03_ENEMY, c_unitAllianceEnemy, lv_dropzone, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterBuried) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0), c_unitCountAlive) > 0))) {
         lv_spawn = PointFromId(756598161);
     }
 
     libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resource, lp_tech, lv_spawn, true);
+    UnitGroupAddUnitGroup(lv_hybrid, libCOMI_gf_LastCreatedCoopAttackForce());
+    autoCF2864AD_n = lp_minorhybrid;
+    for (autoCF2864AD_i = 1; autoCF2864AD_i <= autoCF2864AD_n; autoCF2864AD_i += 1) {
+        UnitCreate(1, gv_hybridMinor, c_unitCreateIgnorePlacement, RandomInt(3, 4), lv_spawn, 225.0);
+        UnitGroupAdd(lv_hybrid, UnitLastCreated());
+    }
+    auto81E8632A_n = lp_majorhybrid;
+    for (auto81E8632A_i = 1; auto81E8632A_i <= auto81E8632A_n; auto81E8632A_i += 1) {
+        UnitCreate(1, gv_hybridMajor, c_unitCreateIgnorePlacement, RandomInt(3, 4), lv_spawn, 225.0);
+        UnitGroupAdd(lv_hybrid, UnitLastCreated());
+    }
     auto107A1536_g = gv_eNEMY_GROUP;
     auto107A1536_var = -1;
     while (true) {
         auto107A1536_var = PlayerGroupNextPlayer(auto107A1536_g, auto107A1536_var);
         if (auto107A1536_var < 0) { break; }
-        libCOMI_gf_SetCoopAIGatherPoint(auto107A1536_var, lv_spawn);
         AIAttackWaveSetTargetUnit(auto107A1536_var, gv_aPC[lp_index]);
     }
-    libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
+    libCOMI_gf_SendAttackWaveusingCoopAttackForce(lv_hybrid, 0, false);
     TriggerExecute(gt_AttackWaveTransmissionQ, true, false);
     return true;
 }
 
-void gf_PickRandomCampForAttack (int lp_resource, int lp_tech) {
+void gf_PickRandomCampForAttack (int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid) {
     // Variable Declarations
     int lv_i;
 
@@ -782,21 +810,25 @@ void gf_PickRandomCampForAttack (int lp_resource, int lp_tech) {
     lv_i = RandomInt(0, 6);
     for ( ; ( (auto48E712D9_ai >= 0 && lv_i <= auto48E712D9_ae) || (auto48E712D9_ai < 0 && lv_i >= auto48E712D9_ae) ) ; lv_i += auto48E712D9_ai ) {
         if ((gv_aPCCamped[lv_i] == true)) {
-            gf_AttackCamp(lv_i, lp_resource, lp_tech);
+            gf_AttackCamp(lv_i, lp_resource, lp_tech, lp_minorhybrid, lp_majorhybrid);
             return ;
         }
 
     }
-    gf_AttackBase(lp_resource, lp_tech);
+    gf_AttackBase(lp_resource, lp_tech, lp_minorhybrid, lp_majorhybrid);
 }
 
 trigger auto_gf_AttackBase_Trigger = null;
 int auto_gf_AttackBase_lp_resource;
 int auto_gf_AttackBase_lp_tech;
+int auto_gf_AttackBase_lp_minorhybrid;
+int auto_gf_AttackBase_lp_majorhybrid;
 
-void gf_AttackBase (int lp_resource, int lp_tech) {
+void gf_AttackBase (int lp_resource, int lp_tech, int lp_minorhybrid, int lp_majorhybrid) {
     auto_gf_AttackBase_lp_resource = lp_resource;
     auto_gf_AttackBase_lp_tech = lp_tech;
+    auto_gf_AttackBase_lp_minorhybrid = lp_minorhybrid;
+    auto_gf_AttackBase_lp_majorhybrid = lp_majorhybrid;
 
     if (auto_gf_AttackBase_Trigger == null) {
         auto_gf_AttackBase_Trigger = TriggerCreate("auto_gf_AttackBase_TriggerFunc");
@@ -808,16 +840,22 @@ void gf_AttackBase (int lp_resource, int lp_tech) {
 bool auto_gf_AttackBase_TriggerFunc (bool testConds, bool runActions) {
     int lp_resource = auto_gf_AttackBase_lp_resource;
     int lp_tech = auto_gf_AttackBase_lp_tech;
+    int lp_minorhybrid = auto_gf_AttackBase_lp_minorhybrid;
+    int lp_majorhybrid = auto_gf_AttackBase_lp_majorhybrid;
 
     // Variable Declarations
     point lv_spawn;
     region lv_dropzone;
+    unitgroup lv_hybrid;
 
     // Automatic Variable Declarations
-    playergroup auto9E08FB40_g;
-    int auto9E08FB40_var;
+    int auto1EA8BBA9_n;
+    int auto1EA8BBA9_i;
+    int auto160F7065_n;
+    int auto160F7065_i;
 
     // Variable Initialization
+    lv_hybrid = UnitGroupEmpty();
 
     // Implementation
     if ((libCOMI_gf_GameIsOver() == true)) {
@@ -826,16 +864,20 @@ bool auto_gf_AttackBase_TriggerFunc (bool testConds, bool runActions) {
 
     lv_spawn = PointFromId(756598161);
     libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resource, lp_tech, lv_spawn, true);
+    UnitGroupAddUnitGroup(lv_hybrid, libCOMI_gf_LastCreatedCoopAttackForce());
+    auto1EA8BBA9_n = lp_minorhybrid;
+    for (auto1EA8BBA9_i = 1; auto1EA8BBA9_i <= auto1EA8BBA9_n; auto1EA8BBA9_i += 1) {
+        UnitCreate(1, gv_hybridMinor, c_unitCreateIgnorePlacement, RandomInt(3, 4), lv_spawn, 225.0);
+        UnitGroupAdd(lv_hybrid, UnitLastCreated());
+    }
+    auto160F7065_n = lp_majorhybrid;
+    for (auto160F7065_i = 1; auto160F7065_i <= auto160F7065_n; auto160F7065_i += 1) {
+        UnitCreate(1, gv_hybridMajor, c_unitCreateIgnorePlacement, RandomInt(3, 4), lv_spawn, 225.0);
+        UnitGroupAdd(lv_hybrid, UnitLastCreated());
+    }
     AIAttackWaveSetTargetPlayer(gv_pLAYER_03_ENEMY, PlayerGroupSingle(gv_pLAYER_01_USER));
     AIAttackWaveSetTargetPlayer(gv_pLAYER_04_ENEMY, PlayerGroupSingle(gv_pLAYER_02_USER));
-    auto9E08FB40_g = gv_eNEMY_GROUP;
-    auto9E08FB40_var = -1;
-    while (true) {
-        auto9E08FB40_var = PlayerGroupNextPlayer(auto9E08FB40_g, auto9E08FB40_var);
-        if (auto9E08FB40_var < 0) { break; }
-        libCOMI_gf_SetCoopAIGatherPoint(auto9E08FB40_var, lv_spawn);
-    }
-    libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
+    libCOMI_gf_SendAttackWaveusingCoopAttackForce(lv_hybrid, 0, false);
     TriggerExecute(gt_AttackWaveTransmissionQ, true, false);
     return true;
 }
@@ -1008,6 +1050,8 @@ bool auto_gf_BonusTrack_TriggerFunc (bool testConds, bool runActions) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "ShieldWall", 1);
                 TriggerExecute(gt_ObjectiveNorthernFacilityComplete, true, false);
                 UnitSetState(UnitFromId(312798631), c_unitStateStatusBar, true);
+                AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(57), false);
+                AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(57), false);
             }
             else if (auto86050CB2_val == 2) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "TerranVehicleAndShipWeaponsLevel1", 1);
@@ -1016,6 +1060,8 @@ bool auto_gf_BonusTrack_TriggerFunc (bool testConds, bool runActions) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "HiSecAutoTracking", 1);
                 TriggerExecute(gt_ObjectiveSouthernFacilityComplete, true, false);
                 UnitSetState(UnitFromId(294844194), c_unitStateStatusBar, true);
+                AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(13), false);
+                AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(13), false);
             }
             else {
             }
@@ -1529,6 +1575,9 @@ void gt_Init07Environment_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_Init08Difficulties_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    int autoEFAE9CEE_val;
+    int autoF9497DAF_val;
+
     // Actions
     if (!runActions) {
         return true;
@@ -1543,6 +1592,29 @@ bool gt_Init08Difficulties_Func (bool testConds, bool runActions) {
     }
 
     libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_ConstructionYard_Primary02", libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 3, 3, 2, 2, 0, 0));
+    autoEFAE9CEE_val = RandomInt(0, 2);
+    if (autoEFAE9CEE_val == 0) {
+        gv_hybridMinor = "HybridReaver";
+    }
+    else if (autoEFAE9CEE_val == 1) {
+        gv_hybridMinor = "HybridNemesis";
+    }
+    else if (autoEFAE9CEE_val == 2) {
+        gv_hybridMinor = "HybridDestroyer";
+    }
+    else {
+    }
+    autoF9497DAF_val = RandomInt(0, 1);
+    if (autoF9497DAF_val == 0) {
+        gv_hybridMajor = "HybridDominatorVoid";
+    }
+    else if (autoF9497DAF_val == 1) {
+        gv_hybridMajor = "HybridBehemoth";
+    }
+    else {
+    }
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(1), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(1), false);
     return true;
 }
 
@@ -1552,9 +1624,9 @@ void gt_Init08Difficulties_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Control
+// Trigger: Debug - Control
 //--------------------------------------------------------------------------------------------------
-bool gt_Control_Func (bool testConds, bool runActions) {
+bool gt_DebugControl_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -1581,9 +1653,44 @@ bool gt_Control_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_Control_Init () {
-    gt_Control = TriggerCreate("gt_Control_Func");
-    TriggerAddEventChatMessage(gt_Control, c_playerAny, "Control", true);
+void gt_DebugControl_Init () {
+    gt_DebugControl = TriggerCreate("gt_DebugControl_Func");
+    TriggerAddEventChatMessage(gt_DebugControl, c_playerAny, "Control", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug - Attack
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugAttack_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((libCOMI_gf_PlayerInCinematicModeCampaign() == false))) {
+            return false;
+        }
+
+        if (!((GameIsOnline() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    gf_AttackCamp(1, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, 1, 0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugAttack_Init () {
+    gt_DebugAttack = TriggerCreate("gt_DebugAttack_Func");
+    TriggerAddEventChatMessage(gt_DebugAttack, c_playerAny, "Attack", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2497,16 +2604,16 @@ bool gt_AttackWaves_Func (bool testConds, bool runActions) {
     }
 
     gf_WaitForAITime((3.0 * 60.0));
-    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early);
+    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, 0, 0);
     gf_WaitForAITime((4.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid);
     TechTreeAbilityAllow(gv_pLAYER_05_COLONISTS, AbilityCommand("BarracksTrain", 0), true);
     gf_WaitForAITime((7.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0);
     gf_WaitForAITime((8.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__3Mid);
     gf_WaitForAITime((10.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0);
     gf_WaitForAITime((11.0 * 60.0));
     TriggerExecute(gt_BonusRevealTransmissionQ, true, false);
     gf_WaitForAITime((12.0 * 60.0));
@@ -2516,28 +2623,28 @@ bool gt_AttackWaves_Func (bool testConds, bool runActions) {
     AISetDifficulty(gv_pLAYER_03_ENEMY, c_diffWaveAvoidDanger, true);
     AISetDifficulty(gv_pLAYER_04_ENEMY, c_diffWaveAvoidDanger, true);
     gf_WaitForAITime((14.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__4LateMid);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, 0, 0);
     gf_WaitForAITime((16.5 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__4LateMid);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0);
     gf_WaitForAITime((17.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__5Late);
     gf_WaitForAITime((19.0 * 60.0));
-    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late);
+    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, 0, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0));
     gf_WaitForAITime((21.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06);
     gf_WaitForAITime((23.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0);
     gf_WaitForAITime((25.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), 0);
     gf_WaitForAITime((26.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
-    gf_WaitForAITime((28.0 * 60.0));
-    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
+    gf_WaitForAITime((27.0 * 60.0));
+    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0));
     while ((libCOMI_gf_GameIsOver() == false)) {
-        Wait((2.0 * 60.0), c_timeAI);
+        Wait((1.0 * 60.0), c_timeAI);
         gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
         Wait((1.0 * 60.0), c_timeAI);
-        gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
+        gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0));
     }
     return true;
 }
@@ -3387,7 +3494,8 @@ void InitTriggers () {
     gt_Init06MusicSound_Init();
     gt_Init07Environment_Init();
     gt_Init08Difficulties_Init();
-    gt_Control_Init();
+    gt_DebugControl_Init();
+    gt_DebugAttack_Init();
     gt_StartGameQ_Init();
     gt_APCSoonTransmissionFirstQ_Init();
     gt_APCSoonTransmissionNextQ_Init();
