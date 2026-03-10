@@ -296,6 +296,7 @@ Button/Name/ResearchSIBarracksCorruption=Increase Corruption
 Button/Name/ResearchSILiberatorBecometheSwarm=Evolve Cloud Dispersal
 Button/Name/ResearchSILiberatorEnergyLeech=Research Necroplasmic Synthesis
 Button/Name/ResearchShadowCannon2=Research Photon Reservoirs
+Button/Name/ResearchShadowDash=Research Shadow Stride
 Button/Name/ResearchSignifierFade=Research Fading Star
 Button/Name/ResearchStukovInfestedBansheeInfestedLife=Research Hyperadaptive Exoskeleton
 Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
@@ -357,6 +358,9 @@ Button/Name/XN51CloakTechnology=Phantom Drive
 Button/Name/ZealotPurifierResearchReconstruction2=Revitalization Matrix
 Button/Name/ZealotPurifierRevive2=Revitalization Matrix
 Button/Name/ZeratulAllPassive=Keystone Attunement
+Button/Name/ZeratulDarkTemplarBlink=Shadow Stride
+Button/Name/ZeratulDarkTemplarBlinkPassive=Shadow Stride
+Button/Name/ZeratulResearchDarkTemplarBlink=Artifact Enhancement: Shadow Stride
 Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
 Button/Name/ZergGroundAttacksLevel2=Evolve Ground Attacks Level 2
 Button/Name/ZergGroundAttacksLevel3=Evolve Ground Attacks Level 3
@@ -694,6 +698,8 @@ Button/Tooltip/SOAStrikefromtheShadows=Increases the weapon damage of friendly c
 Button/Tooltip/SalvageStetmann=Salvages the Stetellite, removing it and returning a charge of Deploy Stetellite if possible. Salvage takes <d time="5"/> to finish. Warning: once Salvage is triggered, it cannot be canceled.
 Button/Tooltip/SeismicSpinesMP=Increases the attack range of Lurkers by +<d ref="$UpgradeEffectArrayValue:SeismicSpines:Weapon,LurkerMP,Range$"/>.
 Button/Tooltip/SentryTaldarimForceField=Creates a solid barrier that lasts for <d ref="Behavior,ForceFieldFate,Duration"/> seconds and impedes movement of ground units.<n/><n/><c val="#ColorAttackInfo">Subjugation Fields cannot be shattered.</c>
+Button/Tooltip/ShieldBattery=Defensive structure. Recharges shields of nearby units.
+Button/Tooltip/ShieldBatteryKarax=Restores shields to nearby friendly units and structures. Can be upgraded to use Fortification Barrier.
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Ignores unit collision for the duration.
 Button/Tooltip/SignifierPassive=Templar Archives allows you to warp in Signifier.
 Button/Tooltip/SoulAbsorption=When a nearby unit dies, Alarak heals himself for 20 life and 20 shields per the unit's supply.<n/><n/>Alarak steals life from nearby units you control to heal himself when he is near death. This ability has no cooldown.
@@ -740,9 +746,9 @@ Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonChainReactionResearch=<c val="ffff8a">Void Archon</c> attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.
-Button/Tooltip/VoidArchonVortex=Upon death, Void Archons go supernova, stunning and pulling in nearby enemies. After <d ref="Effect,VoidArchonVortexCreatePersistent,PeriodCount*Effect,VoidArchonVortexCreatePersistent,PeriodicPeriodArray[0]"/> seconds, the supernova detonates for damage equal to the Void Archon's max shields. <n/><n/><c val="#ColorAttackInfo">Radius increases with Power Overwhelming stacks.</c>
+Button/Tooltip/VoidArchonVortex=Upon death, the Void Archon goes supernova, stunning and pulling in nearby enemies. After a delay, the supernova detonates for damage equal to the Void Archon's max shields. <n/><n/><c val="#ColorAttackInfo">Radius increases with Power Overwhelming stacks.</c>
 Button/Tooltip/VoidPhoenixPhasingArmor=Prevents the Mirage from taking damage for <d ref="Behavior,ImprovedPhasingArmor,Duration"/> seconds after being attacked. Cannot occur more than once every <d ref="Behavior,VoidPhoenixPhasingArmor,DamageResponse.Cost.Cooldown.TimeUse"/> seconds.
-Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.
+Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/VoidVoidRayBeamBounce=Prismatic Beam splits and deals damage to additional nearby targets as the Destroyer continues to attack, up to a maximum of 3 additional targets. All attacks ignore armor.
 Button/Tooltip/VorazunBlink=Teleports Vorazun to the targeted location. For the next <d ref="Behavior,VorazunBlinkReturn,Duration"/> seconds, the ability can be reactivated to return to the point where it was cast from.
 Button/Tooltip/VorazunBlinkReturn=Teleports Vorazun back to the point Shadow Dash was cast from.
@@ -1099,6 +1105,7 @@ Effect/Name/VoidSentryBlackHoleArmorAB=Void Sentry Black Hole Armor AB
 Effect/Name/VoidSentryBlackHoleSet=Void Sentry Black Hole Set
 Effect/Name/VoidStalkerBlinkApplySet=Void Stalker Blink Apply Set
 Effect/Name/VoidZealotShadowChargeInitialSet=Void Zealot Shadow Charge Initial Set
+Effect/Name/VoidZealotShadowChargeSelfBuffDummy=VoidZealotShadowChargeSelfBuffDummy
 Effect/Name/VorazunBlinkAB=Vorazun Blink AB
 Effect/Name/VorazunBlinkReturn=Vorazun Blink Return
 Effect/Name/VorazunBlinkReturnAB=Vorazun Blink Return AB

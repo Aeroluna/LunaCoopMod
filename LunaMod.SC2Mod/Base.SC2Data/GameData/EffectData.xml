@@ -86,7 +86,7 @@
         <ValidatorArray index="0" value="IsAlarakCoopCommander"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="AlarakStalkerForceBlastDamage">
-        <Amount value="15"/>
+        <Amount value="20"/>
     </CEffectDamage>
     <CEffectSet id="AlarakStalkerForceBlastInitSet">
         <EffectArray value="TeleportRemoveCategoryCaster"/>
@@ -2130,11 +2130,16 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="VoidZealotShadowChargeSearch"/>
         <EffectArray value="VoidZealotShadowChargeSelfBuff"/>
+        <EffectArray value="VoidZealotShadowChargeSelfBuffDummy"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectSet id="VoidZealotShadowChargeSearchImpactSet">
         <EffectArray index="1" removed="1"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="VoidZealotShadowChargeSelfBuffDummy">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="VorazunCoopDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>

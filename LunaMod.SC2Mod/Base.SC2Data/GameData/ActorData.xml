@@ -35,6 +35,12 @@
         <On Terms="Behavior.JinaraLightningStrikes.On" Send="Create"/>
         <On Terms="Behavior.JinaraLightningStrikes.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorSound id="BlinkShieldRestoreStopCloudSound" parent="SoundOneShot">
+        <On Terms="Effect.VoidStalkerBlinkShieldRestore.Stop; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Sound value="DarkTemplar_BlinkCloud"/>
+    </CActorSound>
     <CActorModel id="Confetti_Explosion_Large" parent="ModelAnimationStyleOneShot">
         <HostSiteOps Ops="SOpRotationRandomDisc"/>
     </CActorModel>
@@ -44,6 +50,13 @@
     <CActorModel id="Confetti_Explosion_Small" parent="ModelAnimationStyleOneShot">
         <HostSiteOps Ops="SOpRotationRandomDisc"/>
     </CActorModel>
+    <CActorSound id="DarkTemplarShadowDashSound">
+        <Sound value="DarkTemplar_BlinkCloud"/>
+    </CActorSound>
+    <CActorModelMaterial id="GlazeDarkcoilShields">
+        <On index="5" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.Off"/>
+        <On index="6" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.On"/>
+    </CActorModelMaterial>
     <CActorModel id="MutatorBountyHunterDeathLarge" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MutatorBountyHunterDeathLarge.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="Create Confetti_Explosion_Large_AS"/>
@@ -647,6 +660,19 @@
         <Magnitude value="23.000000,10.000000"/>
         <Radius value="2.150000,0.200000"/>
     </CActorForceSphere>
+    <CActorModel id="ShadowGuardShadowDashIn">
+        <On Terms="Effect.VorazunShadowFuryTeleport.Stop; At Source" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="VorazunShadowFuryDashOut" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="ActorCreation" Send="RefSet ::scope.Launch ::Self"/>
+        <On Terms="Effect.VorazunShadowFuryTeleport.Start; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardMohandar"/>
+        <Model value="ShadowGuardShadowDashOut"/>
+    </CActorModel>
+    <CActorSound id="ShadowGuardShadowDashSound">
+        <Sound value="DarkTemplar_BlinkCloud"/>
+    </CActorSound>
     <CActorUnit id="Shapeshifter">
         <Model value="Shapeshifter"/>
         <BuildModel value="Shapeshifter"/>
@@ -2351,11 +2377,9 @@
     </CActorSound>
     <CActorModel id="VorazunBlinkIn">
         <On Terms="Effect.VorazunBlinkReturn.Stop; At Source" Send="Create"/>
-        <On Terms="Effect.VorazunShadowFuryTeleport.Stop; At Source" Send="Create"/>
     </CActorModel>
     <CActorModel id="VorazunBlinkOut">
         <On Terms="Effect.VorazunBlinkReturn.Start; At Source" Send="Create"/>
-        <On Terms="Effect.VorazunShadowFuryTeleport.Start; At Source" Send="Create"/>
     </CActorModel>
     <CActorUnit id="VorazunBlinkReturnDummy" parent="GenericUnitBase" unitName="VorazunBlinkReturnDummy">
         <Macros value="RemoveFlyerHelperMacro"/>
@@ -2583,6 +2607,14 @@
         <BarOffset value="83"/>
         <BarWidth value="60"/>
     </CActorUnit>
+    <CActorSound id="ZeratulGenericBlinkSound">
+        <Remove Terms="Abil.ZeratulStalkerBlink.TargetCastStart" Send="Create"/>
+        <Sound value="DarkTemplar_BlinkCloud"/>
+    </CActorSound>
+    <CActorSound id="ZeratulStalkerBlinkSound" parent="SoundOneShot">
+        <On Terms="Abil.ZeratulStalkerBlink.TargetCastStart" Send="Create"/>
+        <Sound value="Zeratul_Blink"/>
+    </CActorSound>
     <CActorAction id="ZeratulKarassAttack">
         <LaunchSiteOps Ops="SOpAttachCenter SOpMoveByDot15"/>
         <ImpactPhysics Name="HighTemplarPsiBlastImpact" MatchKeys="Basic" Physics="HighTemplarPsiBlastDeathImpactForce"/>
