@@ -79,6 +79,11 @@ It was very arbitrary which effects could or could not go through the Frenzy pas
 
 This was applied weirdly where some heroes go it and others didn't. Heroes are OP anyways so who cares if they don't get slow immunity!
 
+- Readjusted scale and radius of commander Heroes.
+  - Hero scale and radius should be smaller across the board.
+
+It looked kinda freakish that P3 Kerrigan was as thick and tall as a Thor and that Tychus made Marines look like ants, despite technically being in a Marine suit. Heroes still lord over normal units, but less egregiously so.
+
 - Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Affected units:
     - Spider Mine (Raynor/Nova)
@@ -480,6 +485,14 @@ It's like Temple of the Past but cooler. You can chose to either defend the low 
 
 Boss fights!
 
+- Added new map: Construction Yard
+  - Amon's forces have captured Agria-5, a colonist settlement with rich resource mining. Help Dr. Ariel Hanson and her men reclaim their colony and rout Amon from this planet. Escort the convoys to camps and help workers to establish bases.
+  - Made by Gillan.
+  - Originally featured in RTC 2017.
+  - Completely retriggered from scratch.
+
+I know everyone has wanted to see more of Hanson... right? The original RTC 2017 version was kinda a disaster in terms of polish, so I completely redid all the triggers. Hopefully this version should feel smooth as butter.
+
 ## Commanders
 
 ### Amon
@@ -528,6 +541,10 @@ Amon is smelly and gets Versus Liberators. Hopefully makes Shadow Tech less oppr
 
 This includes adding a cast time, the 6 second wait, and some visual changes. This change pretty much only affects mind controlled Battlecruisers, but I needed it for the new Harassment mutator.
 
+- Increased Battlecruiser Yamato Cannon prep time from 1.5 seconds to 3 seconds.
+
+For some reason Co-op halves this charge time. This change returns it to normal for Amon.
+
 - Removed Reaper's D-8 Charge weapon.
 - Reduced Reaper's P-45 Guass Pistol weapon damage from 4 (+5 vs Light) to 4.
 - Increased Reaper's P-45 Guass Pistol range from 4.5 to 5.
@@ -559,10 +576,6 @@ Why do Amon's Phoenixes have energy if their one ability doesn't even cost energ
 
 Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
 
-- Increased Battlecruiser Yamato Cannon prep time from 1.5 seconds to 3 seconds.
-
-For some reason Co-op halves this charge time, this change returns it to normal for Amon.
-
 - Reduced Raven's Point Defense Drone duration from 180 seconds to 20 seconds.
 - Reduced Raven's Auto-Turret duration from 180 seconds to 11 seconds.
 - Reduced range of Raven's Build Auto-Turret from 3 to 2.
@@ -583,6 +596,12 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
   - Reduces movement speed by 25% while active.
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
+
+- Removed Shield Recharge ability from Sentries.
+- Added Hallucination ability to Sentries.
+- Added Hallucination casting AI to Sentries.
+
+Shield Recharge replaced Hallucination in the LotV campaign presumably because it's not impactful in PvE scenarios. However, if the computer is the one using it against players, it can be funny again, so let's give them back their Hallucinations!
 
 - Added Hyperflight Rotors upgrade for Banshees.
   - Increases movement speed from 2.75 to 3.75.
@@ -697,6 +716,7 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Roaches created after Tunneling Claws was researched did not have the visual change.
 - Fixed an issue where Hybrid Destroyer's Graviton Prison could target warping-in units.
 - Fixed an issue where Hybrid Destroyer's Graviton Prison did not unburrow units.
+- Fixed an issue where Orbital Commands had an unused ability that instantly creates a Supply Depot.
 
 yeah.
 
@@ -2225,6 +2245,7 @@ For an ability that's basically a Psionic Storm, the ability is set up weirdly d
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds fear buff used Han & Horner's fear icon.
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds fear effect would stop the AI of affected units.
 - Fixed an issue where the gear delivery beam sound was classified as UI.
+- Fixed an issue where Odin's weapon/armor icons did not change with upgrade level.
 
 yeah.
 
