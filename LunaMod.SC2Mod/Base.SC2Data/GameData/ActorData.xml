@@ -3525,6 +3525,10 @@
     <CActorMissile id="HHValkyrie2AttackMissile" parent="GenericAttackMissile" unitName="HHValkyrie2Weapon"/>
     <CActorUnit id="TychusCoop">
         <Remove Terms="Behavior.TychusCalldownOdinInsideOdinStun.Off" Send="AnimPlay Exit Spell,Land 0 0.000000"/>
+        <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Send="SetShowStatusBar 1"/>
+        <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="PreSelection" Send="SetVisibility 1"/>
+        <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="LocalSelection" Send="SetVisibility 1"/>
+        <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="SyncSelection" Send="SetVisibility 1"/>
     </CActorUnit>
     <CActorSimple id="HHValkyrieFleetwideJumpTeleportIn">
         <On Terms="Effect.HHValkyrieFleetwideJumpTeleportInAB.Start; At Target" Send="Create"/>

@@ -118,6 +118,8 @@ Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attac
 Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affected by Void Prison and cannot be targeted again.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
 Behavior/Tooltip/DuskWingBansheeCloak=This unit is cloaked and will only be revealed by detectors or effects. Its weapon range is also increased by 2.
+Behavior/Tooltip/Endurance=This unit has increased life.
+Behavior/Tooltip/EnduranceTrain=Trains take reduced damage with the Endurance mutator active.
 Behavior/Tooltip/Enshroud=This unit is cloaked and healing.
 Behavior/Tooltip/FenixThunderousChargeCoopSlow=This unit's attack speed and movement speed are slowed.
 Behavior/Tooltip/FenixThunderousChargeCoopStun=This unit is stunned.
@@ -160,6 +162,7 @@ Behavior/Tooltip/VorazunRegenShield=This unit is undetected and rapidly regenera
 Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by Shroud of Adun and cannot be shrouded again.
 Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Behavior/Tooltip/ZealotPurifierReviveSupressed2=This unit has been recently reconstructed and cannot be revived again.
+Behavior/Tooltip/ZeratulVoidPrisonAiur01=This unit is at a standstill.
 Button/ChargeText/CommanderPrestigeHornerDefensePassiveCharges=<d ref="$AbilChargeCount:HHBomberPlatformAreaBombTopBarOrderDummy,0$"/>
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/ChargeText/ZeratulCalldownSingleCharge=<sp/>
@@ -719,7 +722,7 @@ Button/Tooltip/TychusHeroCommonAbil8=</sp>
 Button/Tooltip/TychusHeroCommonAbil9=</sp>
 Button/Tooltip/TychusOdinNuclearStrikePassive=Barrage additionally launches a nuke at the target location. Nukes take <d ref="Effect,OdinNukePersistent,InitialDelay+Effect,OdinNukePersistent,ExpireDelay+Effect,OdinNukeDetonate,InitialDelay" precision="1"/> seconds to land, but they deal up to <d ref="Effect,OdinNukeDamage,Amount"/> damage in a large area.
 Button/Tooltip/TychusSpectreUltrasonicPulse=Fires pulses of ultrasonic energy that lasts <d ref="(Effect,TychusSpectreUltrasonicPulseCPLv1,PeriodCount+2)*Effect,TychusSpectreUltrasonicPulseCPLv1,PeriodicPeriodArray[0]"/> seconds, causing <d ref="Effect,TychusSpectreUltrasonicDamageLv1,Amount/Effect,TychusSpectreUltrasonicPulseCPLv1,PeriodicPeriodArray[0]"/> damage per second to enemy units in the target area. Does not damage friendly units. Holds up to <d ref="Abil,TychusSpectreUltrasonicPulse,Cost[0].Charge.CountMax"/> charges.
-Button/Tooltip/TychusUpgradeOdinRedButton=Upgrades the <c val="ffff8a">Odin's</c> Barrage ability to additionally drop a nuke at the target location.
+Button/Tooltip/TychusUpgradeOdinRedButton=<c val="ffff8a">Odin's</c> Barrage ability additionally drops a nuke at the target location.
 Button/Tooltip/UltraliskStetmannMechanicalLifeLeech=Absorbs <d ref="Effect,UltraliskMechanicalLifeLeechStetmannDamage,Amount"/> health from a nearby enemy or friendly mechanical unit, healing for that amount. Deals half damage to friendly units but still heals the full amount.
 Button/Tooltip/UltraliskStetmannRespawn=For every <d ref="Abil,UltraliskStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Ultralisk Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Ultralisk</c> will respawn here at no cost.
 Button/Tooltip/UltraliskStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,UltraliskStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Ultralisk Remnant,Mecha Ultralisk Remnants</lang></c>.
@@ -1351,7 +1354,7 @@ Upgrade/Name/VoidHighTemplarCloak=Void High Templar Signifier
 Upgrade/Name/VorazunImprovedShields=Vorazun Improved Shields
 Upgrade/Name/VorazunImprovedVespene=Vorazun Improved Vespene
 UserData/CoopAICommanders/TerranBuildBattleMech_Category=Terran Combined Forces
-UserData/CoopAICommanders/TerranBuildBattleMech_Description=Comprised of the fastest mech Terran has to offer, this force specializes in quick blitz attacks, capable of catching any unsuspecting victim off guard.<s val="StandardTooltipHalfSize"><n/><n/></s><c val="ffff8a">Key Units</c><n/><ul indent="2" text="•"><li/>Hellion<li/>Vulture<li/>Cyclone<li/>Banshee
+UserData/CoopAICommanders/TerranBuildBattleMech_Description=Comprised of the fastest forces Terran has to offer, this force specializes in quick blitz attacks, capable of catching any unsuspecting victim off guard.<s val="StandardTooltipHalfSize"><n/><n/></s><c val="ffff8a">Key Units</c><n/><ul indent="2" text="•"><li/>Hellion<li/>Vulture<li/>Cyclone<li/>Banshee
 UserData/CoopAICommanders/TerranBuildBattleMech_Name=Battle Mech
 UserData/CoopAICommanders/ZergBuildInfested_Category=Zerg Infested Terran
 UserData/CoopAICommanders/ZergBuildInfested_Description=In a twisted mix of Zerg and Terran, this force features the unfortunate victims of the Zerg Hyper-Evolutionary Virus.<s val="StandardTooltipHalfSize"><n/><n/></s><c val="ffff8a">Key Units</c><n/><ul indent="2" text="•"><li/>Infested Marine<li/>Infested Siege Tank<li/>Special Infested<li/>Infestor <c val="ff0000">(Hard+)</c>
