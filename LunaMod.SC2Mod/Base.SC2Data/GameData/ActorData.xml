@@ -1203,6 +1203,9 @@
         <Inherits index="CloakEffect" value="0"/>
         <Inherits index="Visibility" value="0"/>
     </CActorBeamSimple>
+    <CActorModel id="Tychus_Heavens_COOP_WarpOut">
+        <Scale value="1.000000"/>
+    </CActorModel>
     <CActorUnit id="Ultralisk">
         <On Terms="ActorCreation; ValidatePlayer HasAnabolicSynthesisUpgrade; !ValidateUnit IsUltraliskBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
         <On Terms="Upgrade.AnabolicSynthesis.Add; !ValidateUnit IsUltraliskBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
@@ -3529,6 +3532,7 @@
         <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="PreSelection" Send="SetVisibility 1"/>
         <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="LocalSelection" Send="SetVisibility 1"/>
         <On Terms="Behavior.TychusCalldownOdinExitStun.Off" Target="SyncSelection" Send="SetVisibility 1"/>
+        <Scale value="1.000000"/>
     </CActorUnit>
     <CActorSimple id="HHValkyrieFleetwideJumpTeleportIn">
         <On Terms="Effect.HHValkyrieFleetwideJumpTeleportInAB.Start; At Target" Send="Create"/>
@@ -3574,7 +3578,7 @@
     </CActorAction>
     <CActorMissile id="TychusMarauderAttackMissile">
         <On Terms="ActorCreation; ValidateUnit HaveTychusMarauderAttackSplash" Send="ModelSwap MarauderConcussiveShellMissile"/>
-        <Scale value="1.450000"/>
+        <Scale value="1.300000"/>
     </CActorMissile>
     <CActorUnit id="Ravager">
         <On index="78" Send="TimerSet 0.100000 RavAnimationSwitch"/>
@@ -4444,6 +4448,7 @@
         <On index="4" Terms="UnitConstruction.K5Kerrigan.Start; !ValidatePlayer HaveKerriganBroodCosmetic"/>
         <On index="81" Terms="UnitBirth.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
         <On index="82" Terms="UnitRevive.K5KerriganBurrowed; !ValidatePlayer HaveKerriganBroodCosmetic"/>
+        <BarOffset value="80"/>
     </CActorMissile>
     <CActorModel id="LurkerAttackSpikeAC">
         <On index="7" Send="TimerSet 0.860000 DelayDestroy"/>
@@ -4465,7 +4470,6 @@
         <On Terms="ActorCreation" Send="AnimBracketStart BSDb Birth Stand Death ContentPlayOnce"/>
         <On Terms="AnimBracketState.*.AfterClosing; AnimName BSDb" Send="Destroy"/>
         <On Terms="ActorCreation" Send="Create AC_HHViking_AirDrop_AS"/>
-        <!-- positions funny in the surround speakers -->
     </CActorModel>
     <CActorUnit id="Medivac">
         <On Terms="Behavior.VehicleAfterburners.On" Send="AnimPlay Turbo Spell,B"/>
