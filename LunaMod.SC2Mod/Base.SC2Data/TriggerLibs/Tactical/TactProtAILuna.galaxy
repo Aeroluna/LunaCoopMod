@@ -52,7 +52,7 @@ order GravitonBeam (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
 }
 
 fixed GravitonBeamCoolDown_Hard = 10;
-fixed GravitonBeamCoolDown_Brutal = 5;
+fixed GravitonBeamCoolDown_Brutal = 0;
 
 const int c_GravitonBeamCoolDown = c_tactTimerFirst;
 
@@ -254,5 +254,304 @@ void AIThinkDisruptorLuna (int player, unit aiUnit, unitgroup scanGroup) {
     if (ord != null) {
         AICast(aiUnit, ord, c_noMarker, c_castHold);
         return;
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  *** Sentry ***
+//--------------------------------------------------------------------------------------------------
+
+static bool ForceField (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    point myPos = UnitGetPosition(aiUnit);
+    aifilter filterAI;
+    unitgroup groundEnemies;
+    unitgroup meleeEnemyGroup;
+    unitgroup rangeEnemyGroup;
+    unitfilter filterUnit;
+    unitgroup friendlyGroup;
+    int friendlyCount = 0;
+    unit friendlyUnit;
+    int friendlyVit = 0;
+    bool friendlyHasMelee = false;
+    int enemyCount = 0;
+    unit enemyUnit;
+    point enemyPos;
+    fixed enemyDist;
+    int bestPrio = 0;
+    point bestEnemyPos = null;
+    point bestFriendPos = null;
+    unit bestTargetUnit = null;
+    bool extraEnergy = false;
+    point forceFieldTarget = null;
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_campExpert) {
+        return false;
+    }
+
+    // Do not proceed if the order is invalid for some reason
+    ord = AICreateOrder(player, c_AB_ForceField, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    // Filter out air units
+    filterAI = AIFilter(player);
+    AISetFilterPlane(filterAI, c_planeGround);
+    AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
+    groundEnemies = AIGetFilterGroup(filterAI, scanGroup);
+
+    // Is there a threat in the area
+    enemyCount = UnitGroupCount(groundEnemies, c_unitCountAll);
+    if (enemyCount <= 0) {
+        return false;
+    }
+
+    // Get a list of only melee enemies
+    filterAI = AIFilter(player);
+    AISetFilterMelee(filterAI, c_onlyMelee);
+    meleeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+
+    // Setup a friendly filter
+    filterUnit = UnitFilter(0,0,0,0);
+    UnitFilterSetState(filterUnit, c_targetFilterUncommandable,             c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterWorker,                    c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterUnderConstruction,         c_unitFilterExcluded);
+    UnitFilterSetState(filterUnit, c_targetFilterStructure,                 c_unitFilterExcluded);
+
+    // *** Scan the area for the following, set priority unit when found *** (highest first)
+    // Priority 4: Melee enemy close to me
+    // Priority 3: A friendly unit close to death, who has a melee enemy close by
+    // Priority 2: A friendly ranged unit who has a melee enemy close by
+    // Priority 1: Large clump of enemies (if we have extra energy)
+    //
+
+    // First check only melee enemies
+    enemyCount = UnitGroupCount(meleeEnemyGroup, c_unitCountAll);
+    while (enemyCount > 0) {
+        enemyUnit = UnitGroupUnit(meleeEnemyGroup, enemyCount);
+        enemyCount = enemyCount - 1;
+
+        enemyPos = UnitGetPosition(enemyUnit);
+        enemyDist = DistanceBetweenPoints(myPos, enemyPos);
+        if (enemyDist <= c_forceFieldMeleeRange) {
+            bestTargetUnit = enemyUnit;
+            bestEnemyPos = enemyPos;
+            bestFriendPos = myPos;
+            bestPrio = 4;
+            break;
+        }
+
+        friendlyGroup = UnitGroupAlliance(player, c_unitAllianceAlly, RegionCircle(enemyPos, c_forceFieldMeleeRange), filterUnit, c_noMaxCount);
+        friendlyHasMelee = AIUnitGroupHasMelee(friendlyGroup);
+        friendlyCount = UnitGroupCount(friendlyGroup, c_unitCountAll);
+        while (friendlyCount > 0) {
+            friendlyUnit = UnitGroupUnit(friendlyGroup, friendlyCount);
+            friendlyCount = friendlyCount - 1;
+
+            friendlyVit = UnitGetPropertyInt(friendlyUnit, c_unitPropVitalityPercent, c_unitPropCurrent);
+            if (friendlyVit < 20) {
+                bestTargetUnit = enemyUnit;
+                bestEnemyPos = enemyPos;
+                bestFriendPos = UnitGetPosition(friendlyUnit);
+                bestPrio = 3;
+                break;
+            }
+            else if (!friendlyHasMelee) {
+                bestTargetUnit = enemyUnit;
+                bestEnemyPos = enemyPos;
+                bestFriendPos = UnitGetPosition(friendlyUnit);
+                bestPrio = 2;
+            }
+        }
+    }
+
+    if (bestPrio == 0) {
+        // no dangerous melee units found, split large ranged groups if we have extra energy
+
+        if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) <= 125) {
+            if (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) > 40) {
+                // not about to die and won't have 75 energy left
+                return false;
+            }
+        }
+
+        // filter only ranged units
+        filterAI = AIFilter(player);
+        AISetFilterMelee(filterAI, c_onlyRanged);
+        rangeEnemyGroup = AIGetFilterGroup(filterAI, groundEnemies);
+
+        // see if there is a large group nearby to split
+        forceFieldTarget = AIBestTargetPoint(
+            rangeEnemyGroup,
+            6, // min hits
+            1, // damage base
+            6.0, // min score
+            c_forceFieldRadius,
+            UnitGetPosition(aiUnit),
+            c_forceFieldRange,
+            c_unitAttributeNone
+        );
+        if (forceFieldTarget == null) {
+            return false;
+        }
+    }
+    else {
+        // get a point a bit in front of the enemy to shove him away
+        enemyDist = DistanceBetweenPoints(bestFriendPos, bestEnemyPos);
+        if (enemyDist < 2.0) {
+            forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist/2.0);
+        } else {
+            forceFieldTarget = PointAlongLine(bestFriendPos, bestEnemyPos, enemyDist - 1.0);
+        }
+    }
+
+    OrderSetTargetPoint(ord, forceFieldTarget);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+static bool Hallucinate (int player, unit aiUnit, unitgroup scanGroup) {
+    point here;
+    order ord;
+    int onGround;
+    unitgroup targetGroupGround;
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+            return false;
+    }
+
+    // wait until fighting 4+ enemy units
+    //
+    if (!AIIsAttackOrder(UnitOrder(aiUnit, 0))) {
+        return false;
+    }
+    if (UnitGroupCount(scanGroup, c_unitCountAlive) < 4) {
+        return false;
+    }
+
+    // Save at least 70 energy for other spells, unless we're about to die
+    if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) <= 170) {
+        if (UnitGetPropertyInt(aiUnit, c_unitPropVitalityPercent, c_unitPropCurrent) > 25) {
+            return false;
+        }
+    }
+
+    ord = AICreateOrder(player, c_AB_Hallucinate_VoidRay, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    here = UnitGetPosition(aiUnit);
+    if (AINearbyUnits(player, c_PU_VoidRay, here, 10, 1)) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return true;
+    }
+    if (AINearbyUnits(player, c_PU_Colossus, here, 10, 1)) {
+        ord = AICreateOrder(player, c_AB_Hallucinate_Colossus, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return true;
+        }
+    }
+    if (AINearbyUnits(player, c_PU_Archon, here, 10, 1)) {
+        ord = AICreateOrder(player, c_AB_Hallucinate_Archon, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return true;
+        }
+    }
+    if (AINearbyUnits(player, c_PU_Immortal, here, 10, 1)) {
+        targetGroupGround = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+        onGround = UnitGroupCount(targetGroupGround, c_unitCountAll);
+        if (onGround > 1) {
+            ord = AICreateOrder(player, c_AB_Hallucinate_Immortal, 0);
+            if (UnitOrderIsValid(aiUnit, ord)) {
+                AICast(aiUnit, ord, c_noMarker, c_castHold);
+                return true;
+            }
+        }
+    }
+    if (AINearbyUnits(player, c_PU_Phoenix, here, 10, 1)) {
+        ord = AICreateOrder(player, c_AB_Hallucinate_Phoenix, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return true;
+        }
+    }
+    if (AINearbyUnits(player, c_PU_Adept, here, 10, 1)) {
+        targetGroupGround = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+        onGround = UnitGroupCount(targetGroupGround, c_unitCountAll);
+        if (onGround > 1) {
+            ord = AICreateOrder(player, "HallucinationAdept", 0);
+            if (UnitOrderIsValid(aiUnit, ord)) {
+                AICast(aiUnit, ord, c_noMarker, c_castHold);
+                return true;
+            }
+        }
+    }
+
+    targetGroupGround = UnitGroupFilterPlane(scanGroup, c_planeGround, 0);
+    onGround = UnitGroupCount(targetGroupGround, c_unitCountAll);
+    if (onGround > 1) {
+        ord = AICreateOrder(player, c_AB_Hallucinate_Zealot, 0);
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return true;
+        }
+    }
+    ord = AICreateOrder(player, c_AB_Hallucinate_Stalker, 0);
+    if (UnitOrderIsValid(aiUnit, ord)) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return true;
+    }
+
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
+static bool GuardianShield (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    if (!AIUnitIsInCombat(aiUnit)) {
+        return false;
+    }
+
+    if (UnitBehaviorCount(aiUnit, c_BF_GuardianShield) > 0) {
+        return false;
+    }
+
+    ord = AICreateOrder(player, c_AB_GuardianShield, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    if (UnitGroupCount(scanGroup, c_unitCountAlive) <= 2) {
+        return false;
+    }
+    if (!AIUnitGroupHasRanged(scanGroup)) {
+        return false;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkSentryLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    if (GuardianShield(player, aiUnit, scanGroup)) {
+        return;
+    }
+    if (ForceField(player, aiUnit, scanGroup)) {
+        return;
+    }
+    if (Hallucinate(player, aiUnit, scanGroup)) {
+       return;
     }
 }
