@@ -3635,6 +3635,37 @@ void lib74A68E34_gt_RandomMutationCommand_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: VictoryCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_VictoryCommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_EndCampaignMission(c_gameOverVictory);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_VictoryCommand_Init () {
+    lib74A68E34_gt_VictoryCommand = TriggerCreate("lib74A68E34_gt_VictoryCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_VictoryCommand, c_playerAny, "-victory", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MengskVeterancyCheat
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MengskVeterancyCheat_Func (bool testConds, bool runActions) {
@@ -4557,6 +4588,109 @@ bool lib74A68E34_gt_CDText_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_CDText_Init () {
     lib74A68E34_gt_CDText = TriggerCreate("lib74A68E34_gt_CDText_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_CDText, c_playerAny, "-cdtext", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ScoreReplaceCallback
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ScoreReplaceCallback_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == libCOUI_gv_cU_FanfareCloseButton))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    Wait(1.49, c_timeGame);
+    while (!((TriggerIsEnabled(lib01833E95_gt_AF_Score_FinalButtonClicked) == true))) {
+        Wait(0.1, c_timeReal);
+    }
+    TriggerEnable(lib01833E95_gt_AF_Score_FinalButtonClicked, false);
+    TriggerEnable(lib74A68E34_gt_ScoreFinalButtonClicked, true);
+    DialogSetPosition(DialogControlGetDialog(lib01833E95_gv_aF_Score_FinalButtonLabel[1]), c_anchorBottomRight, 45, 50);
+    DialogSetSize(DialogControlGetDialog(lib01833E95_gv_aF_Score_FinalButtonLabel[1]), 350, 50);
+    DialogControlSetSize(lib01833E95_gv_aF_Score_FinalButtonLabel[1], PlayerGroupAll(), 350, 50);
+    DialogControlSetSize(lib01833E95_gv_aF_Score_FinalButton[1], PlayerGroupAll(), 350, 50);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ScoreReplaceCallback_Init () {
+    lib74A68E34_gt_ScoreReplaceCallback = TriggerCreate("lib74A68E34_gt_ScoreReplaceCallback_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_ScoreReplaceCallback, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ScoreFinalButtonClicked
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ScoreFinalButtonClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    int auto9CE4834E_val;
+
+    // Conditions
+    if (testConds) {
+        if (!(((EventDialogControl() == lib01833E95_gv_aF_Score_FinalButton[0]) || (EventDialogControl() == lib01833E95_gv_aF_Score_FinalButton[1])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto9CE4834E_val = EventDialogControl();
+    if (auto9CE4834E_val == lib01833E95_gv_aF_Score_FinalButton[0]) {
+        if ((lib01833E95_gv_aF_Score_GraphVisible[EventPlayer()] == true)) {
+            DialogControlFadeTransparency(lib01833E95_gv_aF_Score_KillGraph, PlayerGroupSingle(EventPlayer()), 0.3, 100.0);
+            Wait(0.5, c_timeGame);
+            DialogSetVisible(lib01833E95_gv_aF_Score_PieCharts[1], PlayerGroupSingle(EventPlayer()), true);
+            DialogSetVisible(lib01833E95_gv_aF_Score_PieCharts[2], PlayerGroupSingle(EventPlayer()), true);
+            lib01833E95_gv_aF_Score_GraphVisible[EventPlayer()] = false;
+        }
+        else {
+            DialogSetVisible(lib01833E95_gv_aF_Score_PieCharts[1], PlayerGroupSingle(EventPlayer()), false);
+            DialogSetVisible(lib01833E95_gv_aF_Score_PieCharts[2], PlayerGroupSingle(EventPlayer()), false);
+            DialogControlFadeTransparency(lib01833E95_gv_aF_Score_KillGraph, PlayerGroupSingle(EventPlayer()), 0.3, 0.0);
+            lib01833E95_gv_aF_Score_GraphVisible[EventPlayer()] = true;
+        }
+    }
+    else if (auto9CE4834E_val == lib01833E95_gv_aF_Score_FinalButton[1]) {
+        SoundPlayForPlayer(SoundLink("UI_Void_Error_Back", -1), c_maxPlayers, libCOOC_gf_HumanPlayers(), 100.0, 0.0);
+        Wait(1.0, c_timeGame);
+        if ((GameIsOnline() == true)) {
+            if ((libCOMI_gv_cM_EndMissionResult[EventPlayer()] == c_gameOverVictory)) {
+                OnlineMapToMapLoad(1, libCOOC_gf_HumanPlayers(), PlayerGroupEmpty());
+            }
+            else {
+                OnlineMapToMapLoad(1, PlayerGroupEmpty(), libCOOC_gf_HumanPlayers());
+            }
+        }
+        else {
+            TriggerDebugOutput(2, StringExternal("Param/Value/lib_74A68E34_8580B696"), true);
+        }
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ScoreFinalButtonClicked_Init () {
+    lib74A68E34_gt_ScoreFinalButtonClicked = TriggerCreate("lib74A68E34_gt_ScoreFinalButtonClicked_Func");
+    TriggerEnable(lib74A68E34_gt_ScoreFinalButtonClicked, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_ScoreFinalButtonClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10452,6 +10586,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_CooldownImproved_Init();
     lib74A68E34_gt_AllyImproved_Init();
     lib74A68E34_gt_RandomMutationCommand_Init();
+    lib74A68E34_gt_VictoryCommand_Init();
     lib74A68E34_gt_MengskVeterancyCheat_Init();
     lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_TychusExpandedCheat_Init();
@@ -10478,6 +10613,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_CDTextBankInit_Init();
     lib74A68E34_gt_CDText_Delayed_Init();
     lib74A68E34_gt_CDText_Init();
+    lib74A68E34_gt_ScoreReplaceCallback_Init();
+    lib74A68E34_gt_ScoreFinalButtonClicked_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();
     lib74A68E34_gt_LogDisplay_Init();
     lib74A68E34_gt_LogDamageLogging_Init();
