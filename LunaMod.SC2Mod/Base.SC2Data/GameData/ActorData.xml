@@ -598,6 +598,13 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorSound id="WarpTrainStart">
+        <On Terms="Abil.ZeratulTopBarBuild.BuiltStart" Send="Create"/>
+    </CActorSound>
+    <CActorProgress id="ZeratulTopBarBuildConstruction">
+        <On Terms="Abil.ZeratulTopBarBuild.BuiltStart" Send="Create"/>
+        <StageArray AnimProps="Stand,Build,End"/>
+    </CActorProgress>
     <CActorUnit id="Reaver">
         <On index="65" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
         <On index="66" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
@@ -2538,6 +2545,8 @@
         <On Terms="Abil.WarpGateTrainSupplicantTrue.TargetStop" Send="AnimBracketStop BSD"/>
         <On Terms="Abil.ZeratulTopBarWarpTrain.TargetStart" Send="Create"/>
         <On Terms="Abil.ZeratulTopBarWarpTrain.TargetStop" Send="AnimBracketStop BSD"/>
+        <On Terms="Abil.ZeratulTopBarBuild.BuiltStart" Send="Create"/>
+        <On Terms="Abil.ZeratulTopBarBuild.BuiltStop" Send="AnimBracketStop BSD"/>
     </CActorModel>
     <CActorUnit id="Zealot">
         <SoundArray index="What" value="Zealot_What"/>
@@ -5850,9 +5859,11 @@
     </CActorUnit>
     <CActorUnit id="ZeratulXelNagaConstruct">
         <PlacementActorModel value="ZergPlacementModel"/>
+        <On Terms="UnitConstruction.ZeratulXelNagaConstruct.Start" Send="SetOpacity"/>
     </CActorUnit>
     <CActorUnit id="ZeratulXelNagaConstructCyan">
         <PlacementActorModel value="ZergPlacementModel"/>
+        <On Terms="UnitConstruction.ZeratulXelNagaConstructCyan.Start" Send="SetOpacity"/>
     </CActorUnit>
     <CActorModel id="ZeratulXelNagaConstructEvolve1">
         <Inherits index="Visibility" value="1"/>
