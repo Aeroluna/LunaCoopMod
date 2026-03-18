@@ -573,6 +573,7 @@ Why do Amon's Phoenixes have energy if their one ability doesn't even cost energ
   - Adept attacks will have orange projectiles after Resonating Glaives has been researched.
   - Amon will gain this upgrade after never/never/900/600 seconds.
 - Reduced sight radius of Adept Shade from 9 to 4.
+- Added Psionic Transfer AI to Adept.
 
 Nerfed Adept from its Campaign version to its Versus version, but in return it gets Resonating Glaives. It didn't really make sense that Amon had Purifier Adepts anyways.
 
@@ -1334,6 +1335,10 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Fixed an issue where Dark Archons would try to path around Force Fields they could shatter.
 - Fixed an issue where targets immune to Black Hole's stun would not have their armor negated.
 - Fixed an issue where Void Rays did not get beam attachments when charging up until Prismatic Range was upgraded.
+- Changed Dark Templar Blink ability visual effects.
+- Changed Dark Templar Blink ability button icon.
+- Renamed Dark Templar Blink ability to Shadow Stride.
+- Changed Centurion Darkcoil shield buff to no longer glow while out of shields.
 
 yeah.
 
@@ -2322,6 +2327,11 @@ Not sure why these guys are dead quiet but now they have a soundset for when you
 
 The Ihan-rii skin is basically a more complete version of Zeratul's skin so it used over his skin. Also added some more lore-accurate portraits.
 
+- Fixed an issue where Tesseract Monoliths had no warp-in animation.
+- Increased time to warp-in Tesseract Monoliths from 1 second to 4 seconds.
+
+Increased the warp-in time to compensate for the warp-in animation actually existing now.
+
 - Fixed an issue where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed an issue where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
 - Fixed an issue where warping in Legions were missing the void warp-in beam.
@@ -2336,6 +2346,10 @@ The Ihan-rii skin is basically a more complete version of Zeratul's skin so it u
 - Fixed an issue where the placement model for the Avatars were not transparent.
 - Increased the visibility of Void Templar's Void Fury impact effect.
 - Changed the icon of Void Templar's Back to the Shadow buff.
+- Fixed an issue where Xel'naga Constructs were visible before warping in.
+- Changed Void Templar Blink ability visual effects.
+- Changed Void Templar Blink ability button icon.
+- Renamed Void Templar Blink ability to Shadow Stride.
 
 yeah.
 
