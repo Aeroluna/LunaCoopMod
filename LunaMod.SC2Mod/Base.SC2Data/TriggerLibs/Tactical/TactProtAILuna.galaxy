@@ -555,3 +555,104 @@ void AIThinkSentryLuna (int player, unit aiUnit, unitgroup scanGroup) {
        return;
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** ADEPT ***
+//--------------------------------------------------------------------------------------------------
+
+order AIPsionicTransferWaveLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    order curOrder;
+    point targetPoint;
+    int dist;
+    wave unitWave;
+    wavetarget unitWaveTarget;
+    unitgroup waveEscortGroup;
+    unit waveEscortUnit;
+
+    //  See if this spell can be cast at all.
+    ord = AICreateOrder(player, c_AB_PsionicTransfer, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    unitWave = AIUnitGetWave(aiUnit);
+    unitWaveTarget = AIWaveGetTarget(unitWave);
+
+    waveEscortGroup = AIWaveTargetGetUnitGroup(unitWaveTarget);
+    waveEscortUnit = AIWaveTargetGetUnit(unitWaveTarget);
+
+    if (unitWave == null || waveEscortGroup != null || waveEscortUnit != null) {
+        return null;
+    }
+
+    curOrder = UnitOrder(aiUnit, 0);
+    if (curOrder == null || !AIIsMoveOrder(curOrder)) {
+        return null;  // Only transfer if we're on a move order
+    }
+
+    targetPoint = AIWaveGoal(unitWave);
+    if (targetPoint == null) {
+        return null;
+    }
+
+    dist = AIPathingCostUnit(aiUnit, targetPoint, true);
+    if (dist < c_adeptMinTransferRange) {
+        return null;  // only transfer if we'll move far enough
+    }
+
+    OrderSetTargetPoint(ord, targetPoint);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+order AIPsionicTransferCombatLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    order curOrder;
+    unit targetUnit;
+    int dist;
+
+    //  See if this spell can be cast at all.
+    ord = AICreateOrder(player, c_AB_PsionicTransfer, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    curOrder = UnitOrder(aiUnit, 0);
+    if (curOrder == null || !AIIsAttackOrder(curOrder)) {
+        return null;  // Only transfer if we're on a move order
+    }
+
+    targetUnit = OrderGetTargetUnit(curOrder);
+    if (targetUnit == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, UnitGetPosition(targetUnit));
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//---------------------------------------------------------------------------------------------
+void AIThinkAdeptLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+
+    ord = AIPsionicTransferWaveLuna(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+        return;
+    }
+
+    ord = AIPsionicTransferCombatLuna(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
+    }
+}
