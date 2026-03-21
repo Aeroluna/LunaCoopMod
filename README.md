@@ -2633,5 +2633,7 @@ yeah.
 - Terrazine Refinery Pack V2 - SheeldWall
 - Skibi's Angels Portrait - DaveSpectre
 - Battlecruiser Loki - Yamato Animations - DaveSpectre
+- Primal Ascension (RTC 2017) - OutsiderXE
+- Construction Yard (RTC 2017) - Gillan
 
 DaveSpectre is the goat <3
