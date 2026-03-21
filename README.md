@@ -77,7 +77,7 @@ It was very arbitrary which effects could or could not go through the Frenzy pas
 
 - Removed snare immunity from commander Heroes.
 
-This was applied weirdly where some heroes go it and others didn't. Heroes are OP anyways so who cares if they don't get slow immunity!
+This was applied weirdly where some heroes got it and others didn't. Heroes are OP anyways so who cares if they don't get slow immunity!
 
 - Readjusted scale and radius of commander Heroes.
   - Hero scale and radius should be smaller across the board.
@@ -197,8 +197,8 @@ It just looks nice c:
 - Reduced Cyclone life from 200 to 120.
 - Increased movement speed of Cyclone from 2.8125 to 3.375.
 - Reduced Cyclone's Lock On missile damage from 25 to 20 (Total reduced from 500 to 400).
-- Reduced Lock On with Mag-Field Accelerators missle damage from 40 to 30 (Total reduced from 1000 to 600).
-- Changed Lock On missile damage from ranged damage to spell damage (No longer affected by armor).
+- Reduced Lock On with Mag-Field Accelerators missile damage from 40 to 30 (Total reduced from 1000 to 600).
+- Changed Lock On missile damage type from ranged to spell (No longer affected by armor).
 - Changed Lock On autocast to prioritize air units that threaten the Cyclone.
 - Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
@@ -1599,7 +1599,7 @@ Copied from LOTV Nightmare. The nerf from campaign to co-op made training these 
 
 - Reworked Wrathwalker attack to hitscan instead of a projectile.
 
-Prevents situations where all your Wrathwalkers mega overkill one unit. Unsuprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
+Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurprisingly makes Wrathwalkers significantly stronger against smaller units, especially with P1.
 
 - Fixed an issue where Mothership used standard skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
@@ -2180,9 +2180,9 @@ It looked like a massive explosion for a single target nuke.
 
 Same change to Raynor's firebats.
 
-- Increased the visual scale of Rattlesnake's projectiles by 45%.
-- Increased the speed of Rattlesnake's projectiles by 45%.
-- Increased the visual scale of Blaze's attack by 40%.
+- Increased the visual scale of Rattlesnake's projectiles by 30%.
+- Increased the speed of Rattlesnake's projectiles by 30%.
+- Increased the visual scale of Blaze's attack by 30%.
 
 It looked silly having this giant unit shooting out tiny little attacks.
 
