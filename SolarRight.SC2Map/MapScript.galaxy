@@ -873,13 +873,28 @@ void gf_CreateenemyGatherer () {
 bool auto_gf_CreateenemyGatherer_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_random;
+    string lv_unittype;
 
     // Automatic Variable Declarations
+    string auto3D8E392C_val;
+
     // Variable Initialization
 
     // Implementation
     lv_random = RandomInt(1, 3);
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Probe", 0, gv_pLAYER_03_ENEMY, RegionRandomPoint(RegionFromName(("Impenetrable" + IntToString(lv_random)))));
+    auto3D8E392C_val = PlayerRace(gv_pLAYER_03_ENEMY);
+    if (auto3D8E392C_val == "Prot") {
+        lv_unittype = "Probe";
+    }
+    else if (auto3D8E392C_val == "Terr") {
+        lv_unittype = "SCV";
+    }
+    else if (auto3D8E392C_val == "Zerg") {
+        lv_unittype = "Drone";
+    }
+    else {
+    }
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_unittype, 0, gv_pLAYER_03_ENEMY, RegionRandomPoint(RegionFromName(("Impenetrable" + IntToString(lv_random)))));
     libCOMI_gf_DropPodWarpInUnitGroup(UnitLastCreatedGroup(), UnitGetPosition(UnitLastCreated()));
     UnitGroupAdd(gv_enemygatherers, UnitLastCreated());
     AISetUnitScriptControlled(UnitLastCreated(), true);
