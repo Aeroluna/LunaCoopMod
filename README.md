@@ -493,6 +493,12 @@ Boss fights!
 
 I know everyone has wanted to see more of Hanson... right? The original RTC 2017 version was kinda a disaster in terms of polish, so I completely redid all the triggers. Hopefully this version should feel smooth as butter.
 
+- Added new map: Solar Right
+  - Amon seems particulary interested in the content of an ancient Protoss temple on Qha'Dan. Escort Jacob Ramsey and his archaeological team to its gates and collect enough solarite to open them before it's too late.
+  - Made by ThePhail.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
 ## Commanders
 
 ### Amon

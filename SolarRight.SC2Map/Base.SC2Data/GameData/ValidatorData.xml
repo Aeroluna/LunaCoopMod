@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitType id="IsSolarite">
+        <Value value="Solarite"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsArchaeologistsTruck">
+        <Value value="ArchaeologistsTruck"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsSolariteProcessor">
+        <Value value="SolariteProcessor"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="IsSolariteReturn">
+        <CombineArray value="IsSolariteProcessor"/>
+        <CombineArray value="IsArchaeologistsTruck"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="SolariteUnderLimit">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="15"/>
+        <Behavior value="CarrySolarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SolariteUnderLimitLow">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="10"/>
+        <Behavior value="CarrySolarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="SolariteUnderLimitCommander">
+        <Type value="And"/>
+        <CombineArray value="SolariteUnderLimit"/>
+        <CombineArray value="IsAnyCommander"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SolariteUnderLimitCombine">
+        <CombineArray value="SolariteUnderLimitCommander"/>
+        <CombineArray value="SolariteUnderLimitLow"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="SolariteExhausted">
+        <Behavior value="Solarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SolariteNotExhausted">
+        <Compare value="NE"/>
+        <Behavior value="Solarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SolariteOverLimit">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Value value="15"/>
+        <Behavior value="CarrySolarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasSolarite">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="CarrySolarite"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="SolariteUnderLimitAndInactive">
+        <Type value="And"/>
+        <CombineArray value="SolariteUnderLimitCombine"/>
+        <CombineArray value="CasterHasLE1Orders"/>
+        <CombineArray value="CasterNotHoldingPosition"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SolariteUnderLimitAndNotExhausted">
+        <Type value="And"/>
+        <CombineArray value="SolariteNotExhausted"/>
+        <CombineArray value="SolariteUnderLimitCombine"/>
+        <CombineArray value="TargetNotDead"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsSolariteProcessorAndHasSolarite">
+        <Type value="And"/>
+        <CombineArray value="HasSolarite"/>
+        <CombineArray value="IsSolariteReturn"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="SolariteOverLimitOrExhausted">
+        <CombineArray value="SolariteExhausted"/>
+        <CombineArray value="SolariteOverLimit"/>
+    </CValidatorCombine>
+</Catalog>
