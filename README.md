@@ -6,6 +6,8 @@ Changes include new prestiges, new units, new enemies, new maps, new mutators, b
 
 NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip says 10 seconds, that corresponds to ~7.14 real time seconds on Brutal/Faster.
 
+View the changelog [here](https://github.com/Aeroluna/LunaCoopMod/blob/main/CHANGELOG.md).
+
 ### Table of Contents
 <details>
 <summary>Details</summary>
@@ -498,6 +500,8 @@ I know everyone has wanted to see more of Hanson... right? The original RTC 2017
   - Made by ThePhail.
   - Originally featured in RTC 2017.
   - Contains numerous fixes.
+
+Lots of bug fixes/polish!
 
 ## Commanders
 

@@ -2,7 +2,7 @@
 // 
 // Generated Map Script
 // 
-// Name:   Construction Yard
+// Name:   [Luna] Construction Yard
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
@@ -439,7 +439,7 @@ void gf_APCPath (int lp_index, unitgroup lp_units, wave lp_escort, int lp_resour
                         AISetGroupScriptControlled(lv_cargo, false);
                     }
 
-                    Wait(20.0, c_timeGame);
+                    Wait(30.0, c_timeGame);
                     if ((UnitIsAlive(autoCB19184C_var) == true)) {
                         gv_aPCCamped[lp_index] = true;
                         gv_victoryPan = RegionGetCenter(RegionFromName(("Colonist Camp " + IntToString(lp_index))));
@@ -2633,13 +2633,13 @@ bool gt_AttackWaves_Func (bool testConds, bool runActions) {
     gf_WaitForAITime((21.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06);
     gf_WaitForAITime((23.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__5Late, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0);
     gf_WaitForAITime((25.0 * 60.0));
-    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), 0);
+    gf_PickRandomCampForAttack(libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), 0);
     gf_WaitForAITime((26.0 * 60.0));
     gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
     gf_WaitForAITime((27.0 * 60.0));
-    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0));
+    gf_AttackBase(libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0));
     while ((libCOMI_gf_GameIsOver() == false)) {
         Wait((1.0 * 60.0), c_timeAI);
         gf_APCLaunch(libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07);
