@@ -53,21 +53,14 @@ Some console skins were missing for commanders. Many commander have correspondin
 
 Taken from starcraft2coop.com
 
-- Buffed mind control effects to keep upgrades of targeted unit.
+- Added a difficulty select to the commander selection menu.
+  - Defaults to your previous game's difficulty, otherwise Brutal.
 
-Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
+It ain't pretty but it works.
 
 - Reordered many command cards to match Versus.
 
 Help muscle memory from Versus for people who use grid hotkeys.
-
-- Added Unload Heroic ability to Nydus Worms.
-
-Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
-
-- Fixed an issue where Protoss warp-in animations did not match up with the warp in progress.
-
-For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
 - Changed alignment of all neutral buffs to either positive or negative.
 
@@ -104,6 +97,24 @@ It might be a little strong making all of the temporary units have Guardian Shel
 - Changed Void Rays to "look" at their targets.
 
 thanks Enoki.
+
+- Buffed mind control effects to keep upgrades of targeted unit.
+
+Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
+
+- Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
+- Increased Shield Battery range by 2.
+
+If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
+
+- Added Unload Heroic ability to Nydus Worms.
+
+Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
+
+- Removed Armored attribute from Queens.
+- Added autocast for Queen's Transfusion.
+
+Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
 
 - Added targeting beam to Widow Mine (and variants) attack.
 - Increased visibility of Widow Mine attack targeting line and targeted unit (Targeted unit is tinted).
@@ -223,16 +234,6 @@ Reavers are technically massive units and Scarabs do huge AOE damage, so lets ma
 
 Copied from Versus. Biological added and a slight health increase to compensate.
 
-- Added Shield Batteries to Artanis, Vorazun, Alarak, and Fenix.
-- Increased Shield Battery range by 2.
-
-If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
-
-- Removed Armored attribute from Queens.
-- Added autocast for Queen's Transfusion.
-
-Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
-
 - Fixed an issue where Carriers would not show how many Interceptors they have under their healthbar (Affects Karax and Fenix).
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
@@ -275,6 +276,10 @@ This is how long after a sound is played before another is allowed to play. Can 
     - Blackhammer
 
 Why couldn't Colossi walk over Nova?
+
+- Fixed an issue where Protoss warp-in animations did not match up with the warp in progress.
+
+For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
 
 - Fixed an issue where various commander-specific upgrades appeared on the command card of Amon's units.
 - Fixed an issue where all Zerg building construction sounds would use Stetmann's Mecha variants.

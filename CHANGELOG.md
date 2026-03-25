@@ -2,6 +2,7 @@
 
 ## 3/25/2026
 
+- Added a difficulty select to the commander selection menu.
 - Changed Kerrigan's Cocoon model to the Chrysalis from Zerus02.
 - Renamed Kerrigan's Cocoon to Kerrigan's Chrysalis
 - Increased the status bar offset for Nova's hero.
