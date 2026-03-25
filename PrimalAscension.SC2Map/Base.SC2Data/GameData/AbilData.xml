@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CAbilBuild id="AshWormBuild" parent="CreepTumorBuild">
         <Name value="Abil/Name/AshWormBuild"/>
@@ -18,6 +18,10 @@
         <Range value="255"/>
         <EffectArray index="Start" value=""/>
     </CAbilBuild>
+    <CAbilEffectTarget id="AshWormBurrowMove">
+        <CastIntroTime index="0" value="2"/>
+        <FinishTime index="0" value="2"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="BurrowSkiver">
         <AbilSetId value="BrwDb"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
@@ -97,7 +101,12 @@
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
     </CAbilEffectTarget>
     <CAbilMorph id="MorphToCollapsibleRockTowerDebrisPurifier022">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointConfirmSwarm\WayPointConfirmSwarm.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointConfirmSwarm\WayPointConfirmSwarm.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="CollapsibleTowerDebris">
             <Flags index="ToSelection" value="1"/>
@@ -167,7 +176,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="CarnozorBomb">
         <Alignment value="Negative"/>
-        <OrderArray index="0" DisplayType="Confirm" Model="Assets\UI\Cursors\WayPointConfirmSwarm\WayPointConfirmSwarm.m3"/>
+        <OrderArray index="0" Model="Assets\UI\Cursors\WayPointConfirmSwarm\WayPointConfirmSwarm.m3"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="CarnozorBombDelayCreatePersistent"/>
         <Cost>
@@ -180,7 +189,12 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="CarnozorBomb"/>
     </CAbilEffectTarget>
     <CAbilMorph id="BurrowDevastatorDown">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <AbilSetId value="BrwD"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown">
@@ -204,7 +218,12 @@
         </InfoArray>
     </CAbilMorph>
     <CAbilMorph id="BurrowDevastatorUp">
-        <OrderArray index="0" Color="255,0,255,0" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3" LineTexture="Assets\Textures\WayPointLine.dds"/>
+        <OrderArray index="0">
+            <DisplayType value="Confirm"/>
+            <Color value="255,0,255,0"/>
+            <Model value="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
+            <LineTexture value="Assets\Textures\WayPointLine.dds"/>
+        </OrderArray>
         <AbilSetId value="BrwU"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BurrowUp">
@@ -290,7 +309,6 @@
     </CAbilBehavior>
     <CAbilEffectTarget id="DevastatorCorrosiveBile">
         <Alignment value="Negative"/>
-        <OrderArray index="0" DisplayType="Confirm" Model="Assets\UI\Cursors\WayPointAttack_Void\WayPointAttack_Void.m3"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="DevastatorCorrosiveBileLaunchSet"/>
         <Cost>

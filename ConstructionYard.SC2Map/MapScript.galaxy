@@ -431,10 +431,6 @@ void gf_APCPath (int lp_index, unitgroup lp_units, wave lp_escort, int lp_resour
                     UnitGroupRemove(lv_rally, autoCB19184C_var);
                     if ((UnitIsAlive(autoCB19184C_var) == true)) {
                         AIToggleBulliesInRegion(gv_pLAYER_05_COLONISTS, RegionFromName(("Colonist Camp " + IntToString(lp_index))), true);
-                        AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
-                        AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
-                        AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
-                        AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
                         AIAttackWaveCancel(lp_escort);
                         AISetGroupScriptControlled(lv_cargo, false);
                     }
@@ -650,6 +646,12 @@ bool auto_gf_APCTrack_TriggerFunc (bool testConds, bool runActions) {
     }
 
     gv_aPCHasLaunched[lp_index] = true;
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index) + " Bonus")), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index) + " Bonus")), false);
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Camp " + IntToString(lp_index) + " Extra Bullies")), false);
     while ((UnitIsAlive(lp_apc) == true)) {
         Wait(1.0, c_timeGame);
     }
@@ -705,8 +707,6 @@ bool auto_gf_APCExpand_TriggerFunc (bool testConds, bool runActions) {
     while ((gv_aPCLaunched[lp_index] == true) && (libCOMI_gf_GameIsOver() == false)) {
         if ((UnitGroupCount(UnitGroupAlliance(gv_pLAYER_05_COLONISTS, c_unitAllianceEnemy, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
             AIToggleBulliesInRegion(gv_pLAYER_05_COLONISTS, lp_region, true);
-            AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, lp_region, false);
-            AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, lp_region, false);
             libNtve_gf_KillModel(lv_beacon);
             return true;
         }
@@ -1050,8 +1050,6 @@ bool auto_gf_BonusTrack_TriggerFunc (bool testConds, bool runActions) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "ShieldWall", 1);
                 TriggerExecute(gt_ObjectiveNorthernFacilityComplete, true, false);
                 UnitSetState(UnitFromId(312798631), c_unitStateStatusBar, true);
-                AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(57), false);
-                AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(57), false);
             }
             else if (auto86050CB2_val == 2) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "TerranVehicleAndShipWeaponsLevel1", 1);
@@ -1060,8 +1058,6 @@ bool auto_gf_BonusTrack_TriggerFunc (bool testConds, bool runActions) {
                 TechTreeUpgradeAddLevel(gv_pLAYER_05_COLONISTS, "HiSecAutoTracking", 1);
                 TriggerExecute(gt_ObjectiveSouthernFacilityComplete, true, false);
                 UnitSetState(UnitFromId(294844194), c_unitStateStatusBar, true);
-                AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(13), false);
-                AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(13), false);
             }
             else {
             }
@@ -1146,7 +1142,7 @@ string gf_TransportType (int lp_player) {
         return "Medivac";
     }
     else if (auto9C8FD134_val == "Zerg") {
-        return "Overlord";
+        return "OverlordTransport";
     }
     else {
         return "MilitarizedColonistShipFlying";
@@ -1211,6 +1207,13 @@ void gf_BonusAttackWave (int lp_resource, int lp_tech, point lp_spawn, point lp_
     // Implementation
     if ((libCOMI_gf_GameIsOver() == true)) {
         return ;
+    }
+
+    if ((PlayerRace(gv_pLAYER_03_ENEMY) == "Zerg")) {
+        TechTreeUpgradeAddLevel(gv_pLAYER_03_ENEMY, "overlordspeed", 1);
+        TechTreeUpgradeAddLevel(gv_pLAYER_04_ENEMY, "overlordspeed", 1);
+        TechTreeUpgradeAddLevel(gv_pLAYER_03_ENEMY, "overlordtransport", 1);
+        TechTreeUpgradeAddLevel(gv_pLAYER_04_ENEMY, "overlordtransport", 1);
     }
 
     libCOMI_gf_CreateCoopDropForceinTransportsatLocationandWaitforthemtospawn(gv_pLAYER_03_ENEMY, gv_pLAYER_04_ENEMY, lp_resource, lp_tech, lp_spawn, gf_TransportType(gv_pLAYER_03_ENEMY));
@@ -1615,6 +1618,10 @@ bool gt_Init08Difficulties_Func (bool testConds, bool runActions) {
     }
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(1), false);
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(1), false);
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(57), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(57), false);
+    AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(13), false);
+    AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(13), false);
     return true;
 }
 

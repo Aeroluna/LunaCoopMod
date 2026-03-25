@@ -2,10 +2,11 @@
 // 
 // Generated Map Script
 // 
-// Name:   Solar Right
+// Name:   [Luna] Solar Right
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
+include "TriggerLibs/LibertyLib"
 include "TriggerLibs/SwarmLib"
 include "LibCOOC"
 include "LibCOMI"
@@ -16,6 +17,7 @@ include "Lib01833E95"
 //--------------------------------------------------------------------------------------------------
 void InitLibs () {
     libNtve_InitLib();
+    libLbty_InitLib();
     libHots_InitLib();
     libCOOC_InitLib();
     libCOMI_InitLib();
@@ -2511,6 +2513,8 @@ bool gt_StartGame_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libLbty_gf_OrderWorkerstoGatherNearbyResources(RegionPlayableMap(), gv_pLAYER_01_USER);
+    libLbty_gf_OrderWorkerstoGatherNearbyResources(RegionPlayableMap(), gv_pLAYER_02_USER);
     Wait(7.0, c_timeReal);
     TriggerExecute(gt_StartingSequenceQ, true, false);
     TriggerExecute(gt_SolariteSpawn, true, false);
@@ -2636,7 +2640,7 @@ bool gt_MapProgression_Func (bool testConds, bool runActions) {
     TimerStart(gv_truckExpireTimers[3], (12.0 * 60.0), false, c_timeGame);
     gf_HarassWaveatTime((12.5 * 60.0), gt_ObjectiveWaveCycle3);
     gf_AttackWaveatTime((15.5 * 60.0), gt_AttackWave04OppositeExpoAttack);
-    TimerStart(gv_startBonusObjective, (16.1 * 60.0), false, c_timeGame);
+    TimerStart(gv_startBonusObjective, (14.0 * 60.0), false, c_timeGame);
     gf_HarassWaveatTime((17.0 * 60.0), gt_ObjectiveWaveCycle4);
     gf_AttackWaveatTime((20.0 * 60.0), gt_AttackWave05);
     TimerStart(gv_truckExpireTimers[4], (21.5 * 60.0), false, c_timeGame);
@@ -4355,7 +4359,7 @@ bool gt_ObjectiveSticksnStonesTimerUpdate_Func (bool testConds, bool runActions)
     }
 
     Wait(6.0, c_timeGame);
-    TimerStart(gv_sticksExpireTimer, 240.0, false, c_timeAI);
+    TimerStart(gv_sticksExpireTimer, 300.0, false, c_timeAI);
     while ((TimerGetRemaining(gv_sticksExpireTimer) > 0.0) && (UnitIsAlive(gv_bonusObjective_StoneTemplar) == true)) {
         if (((GameGetMissionTime() - AILastAttack(gv_bonusObjective_StoneTemplar)) < 3.0)) {
             TimerPause(gv_sticksExpireTimer, true);
@@ -6873,6 +6877,7 @@ bool gt_ObjectiveSticksnStonesFailed_Func (bool testConds, bool runActions) {
     }
 
     TriggerExecute(gt_ObjectiveSticksnStonesCreate, true, false);
+    TriggerExecute(gt_ObjectiveSticksnStonesUpdate, true, false);
     libCOMI_gf_ZS_SetMissionObjectiveState("SolarGatherSticksnStones", libCOOC_ge_MissionObjectiveState_Failed);
     return true;
 }

@@ -310,7 +310,6 @@ UI customization!
 
 - Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
-- Fixed an issue where `-ally` cheat did not allow spending resources for the ally.
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).

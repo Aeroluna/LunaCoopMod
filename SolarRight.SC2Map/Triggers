@@ -10445,6 +10445,8 @@
     <Element Type="Trigger" Id="95087158">
         <Variable Type="Variable" Id="70C596D8"/>
         <Action Type="Comment" Id="D630F4E0"/>
+        <Action Type="FunctionCall" Id="0B983E63"/>
+        <Action Type="FunctionCall" Id="D95C47D3"/>
         <Action Type="Comment" Id="1C5FEFE2"/>
         <Action Type="FunctionCall" Id="8CB20670"/>
         <Action Type="Comment" Id="6023ADA2"/>
@@ -10469,6 +10471,38 @@
         <Comment>
             Do initial gameplay stuff, like objective messages and hints.
         </Comment>
+    </Element>
+    <Element Type="FunctionCall" Id="0B983E63">
+        <FunctionDef Type="FunctionDef" Library="Lbty" Id="05E197DE"/>
+        <Parameter Type="Param" Id="24C5061C"/>
+        <Parameter Type="Param" Id="3EB5FC16"/>
+    </Element>
+    <Element Type="Param" Id="24C5061C">
+        <ParameterDef Type="ParamDef" Library="Lbty" Id="97BDB33A"/>
+        <FunctionCall Type="FunctionCall" Id="905CAD05"/>
+    </Element>
+    <Element Type="FunctionCall" Id="905CAD05">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="46F2D5B8"/>
+    </Element>
+    <Element Type="Param" Id="3EB5FC16">
+        <ParameterDef Type="ParamDef" Library="Lbty" Id="3F42FBCD"/>
+        <Variable Type="Variable" Id="3604097B"/>
+    </Element>
+    <Element Type="FunctionCall" Id="D95C47D3">
+        <FunctionDef Type="FunctionDef" Library="Lbty" Id="05E197DE"/>
+        <Parameter Type="Param" Id="CF0F9D47"/>
+        <Parameter Type="Param" Id="A0D378CA"/>
+    </Element>
+    <Element Type="Param" Id="CF0F9D47">
+        <ParameterDef Type="ParamDef" Library="Lbty" Id="97BDB33A"/>
+        <FunctionCall Type="FunctionCall" Id="169BB5BE"/>
+    </Element>
+    <Element Type="FunctionCall" Id="169BB5BE">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="46F2D5B8"/>
+    </Element>
+    <Element Type="Param" Id="A0D378CA">
+        <ParameterDef Type="ParamDef" Library="Lbty" Id="3F42FBCD"/>
+        <Variable Type="Variable" Id="7308FBE9"/>
     </Element>
     <Element Type="Comment" Id="1C5FEFE2">
         <Comment>
@@ -11750,7 +11784,7 @@
     </Element>
     <Element Type="Param" Id="089A5FD4">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
-        <Value>16.1</Value>
+        <Value>14.0</Value>
         <ValueType Type="fixed"/>
     </Element>
     <Element Type="Param" Id="20778848">
@@ -35345,7 +35379,7 @@
     </Element>
     <Element Type="Param" Id="159F7AD1">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000074"/>
-        <Value>240.0</Value>
+        <Value>300.0</Value>
         <ValueType Type="fixed"/>
     </Element>
     <Element Type="Param" Id="63BD1317">
@@ -56470,6 +56504,7 @@
         <Action Type="Comment" Id="BDA95B6A"/>
         <Action Type="FunctionCall" Id="A16350FE"/>
         <Action Type="Comment" Id="D19C0FD6"/>
+        <Action Type="FunctionCall" Id="D992DBDE"/>
         <Action Type="FunctionCall" Id="45C02BF4"/>
     </Element>
     <Element Type="Comment" Id="BDA95B6A">
@@ -56500,6 +56535,25 @@
         <Comment>
             Update the campaign progress for this objective.  This must be done whenever an objective&apos;s progress changes.
         </Comment>
+    </Element>
+    <Element Type="FunctionCall" Id="D992DBDE">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
+        <Parameter Type="Param" Id="EC6637AC"/>
+        <Parameter Type="Param" Id="1837468D"/>
+        <Parameter Type="Param" Id="9C3236F2"/>
+    </Element>
+    <Element Type="Param" Id="EC6637AC">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000183"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000065"/>
+    </Element>
+    <Element Type="Param" Id="1837468D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000184"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000068"/>
+    </Element>
+    <Element Type="Param" Id="9C3236F2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000182"/>
+        <ValueType Type="trigger"/>
+        <ValueElement Type="Trigger" Id="23757391"/>
     </Element>
     <Element Type="FunctionCall" Id="45C02BF4">
         <FunctionDef Type="FunctionDef" Library="COMI" Id="4C85A07A"/>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CBehaviorBuff id="KhailuCloud">
         <Alignment value="Negative"/>
@@ -25,6 +25,7 @@
                 <Cooldown Link="Behavior/ZHybridPsionicShockwaveBehaviorController"/>
             </Cost>
         </DamageResponse>
+        <Alignment value="Negative"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="IncreasedRange">
         <Alignment value="Positive"/>
@@ -216,6 +217,13 @@
                 <Cooldown Link="Behavior/HavocPermanentCloak"/>
             </Cost>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BossSuppressThreat">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.25"/>
+        <Modification>
+            <StateFlags index="SuppressThreat" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="TemporarilyCloaked">
         <Cost>

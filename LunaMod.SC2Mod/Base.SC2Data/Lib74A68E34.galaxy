@@ -3201,7 +3201,6 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(libA8FDA37D_gt_UT_OldMengsk, false);
     TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
     TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
-    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
     TriggerEnable(lib860A1A1F_gt_MM_CommanderMutatorsClicked, false);
     TriggerEnable(libA8FDA37D_gt_UT_Cooldown, false);
     TriggerEnable(libA8FDA37D_gt_UT_FastBuild, false);
@@ -3433,7 +3432,7 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     TriggerExecute(lib74A68E34_gt_FastBuildImproved, false, false);
     TriggerExecute(lib74A68E34_gt_CooldownImproved, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
-    TriggerExecute(lib74A68E34_gt_AllyImproved, false, false);
+    TriggerExecute(libA8FDA37D_gt_UT_ShareControl, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_AllySupply, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
@@ -3561,50 +3560,6 @@ bool lib74A68E34_gt_CooldownImproved_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_CooldownImproved_Init () {
     lib74A68E34_gt_CooldownImproved = TriggerCreate("lib74A68E34_gt_CooldownImproved_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_CooldownImproved, c_playerAny, "-cdr", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AllyImproved
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AllyImproved_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((PlayerGetAlliance(1, c_allianceIdControl, 2) == false)) {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_57C032DF"));
-        PlayerSetAlliance(2, c_allianceIdControl, 1, true);
-        PlayerSetAlliance(1, c_allianceIdControl, 2, true);
-        PlayerSetAlliance(2, c_allianceIdSpend, 1, true);
-        PlayerSetAlliance(1, c_allianceIdSpend, 2, true);
-        PlayerSetAlliance(2, c_allianceIdPushable, 1, true);
-        PlayerSetAlliance(1, c_allianceIdPushable, 2, true);
-    }
-    else {
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C80C6639"));
-        PlayerSetAlliance(2, c_allianceIdControl, 1, false);
-        PlayerSetAlliance(1, c_allianceIdControl, 2, false);
-        PlayerSetAlliance(2, c_allianceIdSpend, 1, false);
-        PlayerSetAlliance(1, c_allianceIdSpend, 2, false);
-        PlayerSetAlliance(2, c_allianceIdPushable, 1, false);
-        PlayerSetAlliance(1, c_allianceIdPushable, 2, false);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AllyImproved_Init () {
-    lib74A68E34_gt_AllyImproved = TriggerCreate("lib74A68E34_gt_AllyImproved_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_AllyImproved, c_playerAny, "-ally", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10584,7 +10539,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MaxSupplyCommand_Init();
     lib74A68E34_gt_EnemyUpgradeCommand_Init();
     lib74A68E34_gt_CooldownImproved_Init();
-    lib74A68E34_gt_AllyImproved_Init();
     lib74A68E34_gt_RandomMutationCommand_Init();
     lib74A68E34_gt_VictoryCommand_Init();
     lib74A68E34_gt_MengskVeterancyCheat_Init();

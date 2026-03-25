@@ -488,7 +488,7 @@
         <Model value="VoidCrystalPsiStormAuraModel"/>
     </CActorModel>
     <CActorUnit id="AshWorm">
-        <FogVisibility value="Dimmed"/>
+        <On index="35" Send="AnimPlay Birth Unburrow 0 0.000000"/>
         <On index="65" Terms="WeaponStart.AshWorm.AttackStart" Send="AnimPlay Attack Attack 0 0.250000 0.250000 0.800000 AsDuration"/>
         <On index="66" Terms="Abil.AshWormBurrowMove.SourceCastStart" Send="AnimPlay Spell Burrow"/>
         <On index="67" Terms="Abil.AshWormBurrowMove.SourceCastStart" Send="Create AshWormBurrowDownEffects"/>
@@ -499,8 +499,11 @@
         <On index="72" Terms="Abil.AshWormBurrowMove.SourceFinishStart" Send="Create AshWormBase"/>
         <On index="73" Terms="Abil.AshWormBurrowMove.SourceFinishStart" Send="Create BurrowUpLarge"/>
         <On index="74" Terms="UnitConstruction.AshWorm.Finish" Send="Create AshWormBase"/>
-        <On Terms="ActorCreation" Send="AnimPlay Birth Unburrow"/>
         <On Terms="ActorCreation" Send="Create AshWormBase"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Spell" Send="AnimClear Spell"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="WeaponStart.CollectEssence15.AttackStart" Send="$Spell PlayForever"/>
+        <On Terms="WeaponStart.CollectEssence15.AttackStop" Send="AnimClear Spell"/>
         <BuildModel value="NydusCreeperRumble"/>
         <BarWidth value="110"/>
     </CActorUnit>
@@ -761,6 +764,7 @@
         <LaunchAssets Model="" Sound="Ascendant_AttackLaunch"/>
         <Missile value="CollectEssenceWeaponMissile"/>
         <ImpactMap index="None" Model="CollectEssenceWeaponImpact" Sound="Ravager_Attack_Impact"/>
+        <ImpactSiteOps Ops="SOpAttachHead"/>
     </CActorAction>
     <CActorMissile id="CollectEssenceWeaponMissile" parent="GenericAttackMissile" unitName="CollectEssenceWeaponMissile">
         <FogVisibility value="Dimmed"/>
