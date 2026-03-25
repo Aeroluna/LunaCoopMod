@@ -308,7 +308,7 @@ yeah.
 
 UI customization!
 
-- Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-ally`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
+- Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-share`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
@@ -350,10 +350,11 @@ Added Brutal+ system.
 Now it's possible to roll some helpful mutators! Neutral mutators change the way you play without directly buffing Amon, typically these mutators will buff/debuff you and Amon equally. Positive mutators are straight buffs for you, but in return, they cost negative points, increasing the difficulty of rolled negative mutators.
 
 - Added new negative mutator: Teeming
-  - Enemies begin with twice as many units.
-  - Costs 1 points for Brutal+.
+  - Enemy defenses and attack waves will have more units.
+  - Roughly 60% more units.
+  - Costs 3 points for Brutal+.
 
-Makes defensive positions more well defended. Unfortunately not very impactful on defensive maps like Temple of the Past.
+More blood for the blood god!
 
 - Added new negative mutator: Harassment
   - Enemies will periodically send units to harass player mineral lines.
@@ -963,6 +964,11 @@ Little silly that you need to detect the unit to affect it with an *aura*.
 
 Not sure why this was nerfed to not hit invisible units at some point.
 
+- Changed Kerrigan's Cocoon model to the Chrysalis from Zerus02.
+- Renamed Kerrigan's Cocoon to Kerrigan's Chrysalis
+
+It just looks cooler! Let Zagara keep that boring old cocoon.
+
 - Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
 
 yeah.
@@ -1035,11 +1041,15 @@ Buff an underperforming prestige.
 
 Should help actually affording the high tech units with abilities like High Templar.
 
+- Fixed an issue where Psionic Storms could stack after researching Plasma Surge.
+
+Sorry High Templar enjoyers, but this was just unintuitive.
+
 - Changed Warp Stargate model slightly.
 - Fixed an issue where High Templar's Psionic Storm ability would no longer show an impact model after researching Plasma Surge.
 - Fixed an issue where Shield Overcharge mastery listed its value as `+X Percent` instead of `+X%`.
 - Fixed an issue where Feedback/Psionic Storm would only be casted by the selected subgroup when selecting both High Templar and Archons.
-- Fixed an issue where Psionic Storms could stack after researching Plasma Surge.
+- Fixed an issue where when Artanis cancels building a Warp Gate, it used the wrong death animation.
 
 yeah.
 
@@ -1624,6 +1634,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Fixed an issue where warping-in Supplicants were missing the void warp-in beam.
 - Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
 - Fixed an issue where combat units would have a level in their highlight tooltip.
+- Fixed an issue where Alarak's Imposing Presence tooltip did not list Massive unit immunity.
 
 yeah.
 
