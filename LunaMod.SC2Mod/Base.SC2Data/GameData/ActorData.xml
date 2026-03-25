@@ -57,6 +57,22 @@
         <On index="5" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.Off"/>
         <On index="6" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.On"/>
     </CActorModelMaterial>
+    <CActorUnit id="KerriganReviveCocoon">
+        <On Terms="ActorCreation; ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 10.000000 Check"/>
+        <On Terms="TimerExpired; TimerName Check; ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 110.000000 Morph"/>
+        <On Terms="TimerExpired; TimerName Check; !ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 20.000000 Morph"/>
+        <On Terms="TimerExpired; TimerName Morph" Send="AnimBracketStart Morph Stand,Morph,Start Stand,Morph"/>
+        <On Terms="TimerExpired; TimerName Morph; ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 110.000000 Victory"/>
+        <On Terms="TimerExpired; TimerName Morph; !ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 20.000000 Victory"/>
+        <On Terms="TimerExpired; TimerName Victory" Send="AnimPlay Work Victory PlayForever"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-zeruschrysalisegg.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\wireframe-zerg-zeruschrysalisegg.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-zeruschrysalisegg.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorModel id="MutatorBountyHunterDeathLarge" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MutatorBountyHunterDeathLarge.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="Create Confetti_Explosion_Large_AS"/>
@@ -2966,7 +2982,7 @@
         <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/-->
         <On Terms="Abil.NovaCoopDecoyTarget.SourceCastStart" Send="AnimPlay SpellE Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
         <Model value="NovaHeroBase"/>
-        <BarOffset value="50"/>
+        <BarOffset value="80"/>
     </CActorMissile>
     <CActorModel id="NovaWeaponPsiStrikeImpact">
         <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>

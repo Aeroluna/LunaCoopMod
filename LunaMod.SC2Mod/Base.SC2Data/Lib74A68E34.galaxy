@@ -2055,14 +2055,25 @@ point lib74A68E34_gf_GetCorner (point lp_source, point lp_target) {
     point lv_point;
 
     // Automatic Variable Declarations
+    int auto3EC424B4_val;
+
     // Variable Initialization
 
     // Implementation
-    if ((RandomInt(0, 1) == 1)) {
+    auto3EC424B4_val = RandomInt(0, 3);
+    if (auto3EC424B4_val == 0) {
         lv_point = Point(PointGetX(lp_source), PointGetY(lp_target));
     }
-    else {
+    else if (auto3EC424B4_val == 1) {
         lv_point = Point(PointGetX(lp_target), PointGetY(lp_source));
+    }
+    else if (auto3EC424B4_val == 2) {
+        lv_point = MidPoint(lp_source, lp_target);
+        lv_point = lib74A68E34_gf_VaryPosition(lv_point, (DistanceBetweenPoints(lp_source, lp_target) * 0.5));
+        lv_point = lib860A1A1F_gf_MM_FitPointToMap(lv_point);
+        return lv_point;
+    }
+    else {
     }
     if ((AbsF((PointGetX(lp_source) - PointGetX(lp_target))) < AbsF((PointGetY(lp_source) - PointGetY(lp_target))))) {
         lv_point = Point((PointGetX(lv_point) + RandomFixed(-100.0, 100.0)), PointGetY(lv_point));
@@ -2091,8 +2102,8 @@ void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlaye
 
     // Implementation
     if ((PlayerRace(lp_dropPlayer) == "Prot")) {
-        lv_weights[lib74A68E34_ge_MutatorHarassOption_Adept] = 100;
-        lv_weights[lib74A68E34_ge_MutatorHarassOption_Zealot] = 100;
+        lv_weights[lib74A68E34_ge_MutatorHarassOption_Adept] = 150;
+        lv_weights[lib74A68E34_ge_MutatorHarassOption_Zealot] = 150;
         if ((lp_dropCount > 2)) {
             lv_weights[lib74A68E34_ge_MutatorHarassOption_WarpPrism] = 100;
             lv_weights[lib74A68E34_ge_MutatorHarassOption_Phoenix] = 100;
@@ -2105,8 +2116,8 @@ void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlaye
 
     }
     else if ((PlayerRace(lp_dropPlayer) == "Terr")) {
-        lv_weights[lib74A68E34_ge_MutatorHarassOption_Hellion] = 100;
-        lv_weights[lib74A68E34_ge_MutatorHarassOption_Reaper] = 100;
+        lv_weights[lib74A68E34_ge_MutatorHarassOption_Hellion] = 150;
+        lv_weights[lib74A68E34_ge_MutatorHarassOption_Reaper] = 150;
         if ((lp_dropCount > 2)) {
             lv_weights[lib74A68E34_ge_MutatorHarassOption_Banshee] = 100;
             lv_weights[lib74A68E34_ge_MutatorHarassOption_Medivac] = 100;
@@ -2119,7 +2130,7 @@ void lib74A68E34_gf_MutatorHarassPickOption (point lp_target, int lp_targetPlaye
 
     }
     else if ((PlayerRace(lp_dropPlayer) == "Zerg")) {
-        lv_weights[lib74A68E34_ge_MutatorHarassOption_Zergling] = 100;
+        lv_weights[lib74A68E34_ge_MutatorHarassOption_Zergling] = 150;
         lv_weights[lib74A68E34_ge_MutatorHarassOption_Nydus] = 100;
         if ((lp_dropCount > 2)) {
             lv_weights[lib74A68E34_ge_MutatorHarassOption_Roach] = 100;
