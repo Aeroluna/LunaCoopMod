@@ -614,6 +614,9 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorUnit id="WarpGate">
+        <DeathArray index="UnderConstruction" ModelLink="GatewayDeathUnderConstruction"/>
+    </CActorUnit>
     <CActorSound id="WarpTrainStart">
         <On Terms="Abil.ZeratulTopBarBuild.BuiltStart" Send="Create"/>
     </CActorSound>
@@ -650,6 +653,7 @@
     <CActorMissile id="ScarabAttackMissile">
         <DeathArray index="Impact" ModelLink="ScarabAttackImpact"/>
         <HostSiteOps Ops="ScarabRotator SOpMoveByDot25 ScarabCounterRotator"/>
+        <On Terms="ActorCreation; PassChance 50.000000" Send="HostSiteOpsSet ::Host {ScarabCounterRotator SOpMoveByDot25 ScarabRotator}"/>
     </CActorMissile>
     <CActorAction id="ScarabExplode" parent="GenericAttack" effectAttack="ScarabExplodeTargetDamage">
         <LaunchAssets Sound="Reaver_AttackLaunch"/>

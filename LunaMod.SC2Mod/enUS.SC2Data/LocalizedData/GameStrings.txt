@@ -384,6 +384,7 @@ Button/Tooltip/AlarakACMyLifefortheHighlordJinara=Supplicants are the first unit
 Button/Tooltip/AlarakACSummonDeathfleet=Warps in a Crimson Sovereign and <d ref="Effect,AlarakDestroyerCreationCP,PeriodCount" player="current"/> Destroyers that are controllable and will fight for <d ref="Behavior,AlarakDestroyerTimedLife,Duration"/> seconds.
 Button/Tooltip/AlarakArchonImprovedSacrifice=The Void Archon permanently gains +<d ref="Behavior,AscendantArchonSelfBuff,Modification.DamageDealtFraction[Spell]*100"/>% damage, +<d ref="Behavior,AscendantArchonSelfBuff,Modification.VitalMaxArray[Shields]"/> shields, and +<d ref="Behavior,AscendantArchonSelfBuff,Modification.ShieldArmorBonus" precision="1"/> shield armor each time it uses Sacrifice.<n/><n/>This effect stacks up to a maximum of <d ref="Behavior,AscendantArchonSelfBuff,MaxStackCount"/>.
 Button/Tooltip/AlarakArchonImprovedSacrificeCharges=<d ref="$BehaviorStackCount:AscendantArchonSelfBuff$"/>
+Button/Tooltip/AlarakAttackStun=Alarak's attacks stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic and Massive units are slowed.</c>
 Button/Tooltip/AlarakAttackStunJinara=Ji'nara's attacks stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic units are slowed.</c>
 Button/Tooltip/AlarakDestructionWaveDistanceJinara=Increases Chains of Wrath slow to 75% and suppresses energy-based ability usage.
 Button/Tooltip/AlarakEmpowerJinara=Ji'nara gains increased attack and ability damage for each nearby friendly unit. Alarak's Mechanical units grant her double the power. This effect lasts for <d ref="Behavior,AlarakEmpowerCaster,Duration" precision="1"/> seconds.<n/><n/><c val="ffff8a">Ritual Sacrifice has no cooldown while active.</c>
@@ -578,6 +579,7 @@ Button/Tooltip/KerriganEnvenomedSpines=Attacks against units apply venom for <d 
 Button/Tooltip/KerriganImplosion=Kerrigan lifts a target, stunning them for <d ref="Behavior,KerriganImplosion,Duration"/> seconds before dropping them, dealing <d ref="Effect,KerriganImplosionDamage,Amount"/> damage to target unit.<n/><n/><c val="ffff8a">Heroic units are slowed.</c>
 Button/Tooltip/KerriganRazorSwarm=Creates a razor swarm for <d ref="Effect,KerriganRazorSwarmCreatePersistent,PeriodCount*Effect,KerriganRazorSwarmCreatePersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,KerriganRazorSwarmDamage,Amount*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> (+<d ref="Effect,KerriganRazorSwarmDamage,AttributeBonus[Structure]*(Effect,KerriganRazorSwarmCreatePersistent,PeriodCount+2)"/> vs Structures) damage to all enemy units in the target area.
 Button/Tooltip/KerriganRegenAura=Nearby friendly units gain rapid life and energy regeneration.
+Button/Tooltip/KerriganReviveCocoon=Kerrigan is reviving within this chrysalis.
 Button/Tooltip/KerriganSunderingGlaive=Attacks deal +6 vs. armored targets on the first hit.
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
 Button/Tooltip/LearnHotSPressurizedGlands=<c val="ffff8a">Locusts</c> can attack both ground and air units.
@@ -626,6 +628,7 @@ Button/Tooltip/Reaper=Raider. Can jump up and down cliffs. Regenerates life quic
 Button/Tooltip/RecallOnDeathPassive=Upon taking fatal damage, friendly cloaked or burrowed units have any negative effects removed and are recalled to their owner's primary structure. This effect cannot occur more than once every <d ref="Behavior,SOARecallOnDeathRecentlyRecalled,Duration"/> seconds.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/RepairDrones=Repair drones automatically heal friendly mechanical units near the Carrier.
 Button/Tooltip/RepairDrones2=Two additional repair drones automatically heal friendly mechanical units near the Carrier and the Carrier can hold two more interceptors.
+Button/Tooltip/ResearchAlarakAttackStun=Allows <c val="ffff8a">Alarak's</c> attacks to stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic and Massive units are slowed.</c>
 Button/Tooltip/ResearchAlarakAttackStunJinara=Allows <c val="ffff8a">Ji'nara's</c> attacks to stun enemy units for <d ref="Behavior,AlarakBaneBladesStun,Duration"/> seconds.</n></n><c val="ffff8a">Heroic units are slowed.</c>
 Button/Tooltip/ResearchAlarakDestructionWaveDistanceJinara=Increases the slow of <c val="ffff8a">Ji'nara's</c> Chains of Wrath to 75% and suppresses energy-based ability usage.
 Button/Tooltip/ResearchAlarakHavocAbilityRange=Increases the radius of the <c val="ffff8a">Havoc's</c> Squad Sight and the range of Target Lock and Subjugation Field.
@@ -1283,6 +1286,7 @@ Unit/Name/JinaraChainsWeapon=JinaraChainsWeapon
 Unit/Name/JinaraCoop=Ji'nara
 Unit/Name/JinaraCoopShade=Soul Shade
 Unit/Name/KerriganBroodWeapon=Psi Blast
+Unit/Name/KerriganReviveCocoon=Kerrigan's Chrysalis
 Unit/Name/LurkerBrood=Grave Splitter
 Unit/Name/MothershipArtanis=Mothership
 Unit/Name/MutaliskBrood=Scythewing
@@ -1386,7 +1390,7 @@ UserData/Mutators/SpellDamage_Description=All spell damage is increased by 100%.
 UserData/Mutators/SpellDamage_Name=Ethereal
 UserData/Mutators/StartingResources_Description=Player starting resources are enriched for the first 10 minutes.
 UserData/Mutators/StartingResources_Name=Gold Rush
-UserData/Mutators/Teeming_Description=Enemies begin with twice as many units.
+UserData/Mutators/Teeming_Description=Enemy defenses and attack waves will have more units.
 UserData/Mutators/Teeming_Name=Teeming
 UserData/Mutators/Whiteout_Description=Occasional whiteouts obscure the battlefield, lowering visibility and reducing unit movement speed.
 UserData/Mutators/Whiteout_Name=Whiteout
