@@ -53,6 +53,15 @@
     <CActorSound id="DarkTemplarShadowDashSound">
         <Sound value="DarkTemplar_BlinkCloud"/>
     </CActorSound>
+    <CActorUnit id="FenixArbiter">
+        <UnitKillRank Text="UnitKillRank/Fenix"/>
+    </CActorUnit>
+    <CActorUnit id="FenixCoop">
+        <UnitKillRank Text="UnitKillRank/Fenix"/>
+    </CActorUnit>
+    <CActorUnit id="FenixDragoon">
+        <UnitKillRank Text="UnitKillRank/Fenix"/>
+    </CActorUnit>
     <CActorModelMaterial id="GlazeDarkcoilShields">
         <On index="5" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.Off"/>
         <On index="6" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.On"/>
@@ -614,6 +623,24 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorUnit id="TychusFirebat">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorUnit>
+    <CActorUnit id="TychusGhost">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorUnit>
+    <CActorUnit id="TychusHERC">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorUnit>
+    <CActorUnit id="TychusMedic">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorUnit>
+    <CActorMissile id="TychusReaper">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorMissile>
+    <CActorUnit id="TychusSpectre">
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
+    </CActorUnit>
     <CActorUnit id="WarpGate">
         <DeathArray index="UnderConstruction" ModelLink="GatewayDeathUnderConstruction"/>
     </CActorUnit>
@@ -1265,6 +1292,8 @@
         <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsUltraliskBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
         <On Terms="AbilMorph.BurrowUltraliskUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
         <On Terms="AbilMorph.BurrowUltraliskDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="StatusOff.*.BurrowCharging; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Abil.UltraliskBurrowCharge.SourceCastStart" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="UltraliskAnabolicSynthesisUpgrade" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
@@ -1452,6 +1481,7 @@
         <On Terms="Behavior.AlarakACDeadlyChargeFinish.Off" Send="TimerSet 1.500000 ChargeDelay"/>
         <On Terms="TimerExpired; TimerName ChargeDelay" Send="AnimClear SpellAttack"/>
         <BarOffset value="50"/>
+        <UnitKillRank index="0" Text="UnitKillRank/AlarakRakShir2"/>
     </CActorUnit>
     <CActorAction id="JinaraCoopAttack" parent="GenericAttack" effectImpact="JinaraCoopDamage" effectLaunch="JinaraCoopLM">
         <LaunchAssets Sound="Adept_AttackLaunch"/>
@@ -1833,11 +1863,13 @@
     </CActorAction>
     <CActorUnit id="TychusMarauder">
         <On Terms="Abil.TychusMarauderBuildHealingWard.SourceCastStart" Send="AnimPlay Spell Attack,Right"/>
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
     <CActorUnit id="TychusWarhound">
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
         <On Terms="WeaponStart.*.AttackStart" Send="AnimClear Spell"/>
         <On Terms="Abil.TychusWarhoundBuildAutoTurret.SourceCastStart" Send="$Spell,A"/>
+        <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
     <CActorUnit id="UltraliskStetmann">
         <On index="83" Terms="WeaponStop.UltraliskKaiserBladesStetmann.AttackStop"/>
@@ -4371,6 +4403,8 @@
         <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsHotSTorrasqueBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
         <On Terms="AbilMorph.BurrowTorrasqueUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
         <On Terms="AbilMorph.BurrowTorrasqueDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="StatusOff.*.BurrowCharging; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Abil.UltraliskBurrowCharge.SourceCastStart" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="HotSNoxious">
         <On Terms="ActorCreation; ValidatePlayer HasAnabolicSynthesisUpgrade; !ValidateUnit IsHotSNoxiousBurrowed" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
@@ -4378,6 +4412,8 @@
         <On Terms="Upgrade.AnabolicSynthesis.Remove; !ValidateUnit IsHotSNoxiousBurrowed" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
         <On Terms="AbilMorph.BurrowNoxiousUp.Finish; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
         <On Terms="AbilMorph.BurrowNoxiousDown.Start" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
+        <On Terms="StatusOff.*.BurrowCharging; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
+        <On Terms="Abil.UltraliskBurrowCharge.SourceCastStart" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="ImpalerDehaka">
         <Model value="Impaler_Primal_Collection"/>
@@ -5135,6 +5171,7 @@
         <SoundArray index="Yes" value="Selendis_Yes"/>
         <SoundArray index="Attack" value="Selendis_Attack"/>
         <SoundArray index="Pissed" value="Selendis_Pissed"/>
+        <UnitKillRank Text="UnitKillRank/Selendis"/>
     </CActorUnit>
     <CActorBeamSimple id="MothershipArtanisAttackBeam" parent="MothershipAttackBeam">
         <On index="3" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="AnimBracketStop BSD"/>

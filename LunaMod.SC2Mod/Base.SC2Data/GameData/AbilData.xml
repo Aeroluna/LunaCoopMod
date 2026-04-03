@@ -47,6 +47,10 @@
             <Charge TimeUse="100"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="BioMechanicalTransfusion">
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="BiomassPickup">
         <AutoCastFilters value="-;Ally,Neutral,Enemy,Structure,User1,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Benign"/>
     </CAbilEffectTarget>
@@ -121,6 +125,19 @@
     <CAbilEffectTarget id="GreaterNydusDestroyerDeepTunnel">
         <FinishTime index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="HealPlusMech">
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastValidatorArray index="3" value="UnitOrAttackingStructure"/>
+        <AutoCastValidatorArray index="4" value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray index="5" removed="1"/>
+        <AutoCastValidatorArray index="6" removed="1"/>
+        <AutoCastValidatorArray index="7" removed="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HealingDroneHeal">
+        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="LocustMPFlyingSwoop">
         <Range index="0" value="6"/>
     </CAbilEffectTarget>
@@ -135,6 +152,17 @@
             <Button DefaultButtonFace="EvolveDiggingClaws" Requirements="LearnDiggingClaws"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="NanoRepair">
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <AcquireAttackers value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ScienceVesselNanoRepairDouble">
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="NydusDestroyerDeepTunnel">
         <FinishTime index="0" value="2"/>
     </CAbilEffectTarget>
@@ -160,6 +188,14 @@
     </CAbilArmMagazine>
     <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair">
         <Flags index="AutoCastOn" value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SOARepairBeam">
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <TargetSorts>
+            <SortArray index="0" value="TSNotUncommandable"/>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSLifeFraction"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="SpawnLocustsTargeted">
         <Cost index="0">
@@ -434,38 +470,9 @@
         </CmdButtonArray>
         <AbilSetId value="Feedback"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="HHOrdnanceTowerNanoRepair">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="NanoRepair"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Flags index="NoDeceleration" value="1"/>
-        <Flags index="ReExecutable" value="1"/>
-        <Flags index="Smart" value="1"/>
-        <Flags index="TransportAcquirePassengers" value="1"/>
-        <TargetFilters value="Mechanical,Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
-        <TargetSorts RequestCount="1">
-            <SortArray value="TSAlliancePassive"/>
-            <SortArray value="TSLifeFraction"/>
-            <SortArray value="TSDistance"/>
-        </TargetSorts>
-        <Range value="8"/>
-        <Arc value="360"/>
-        <SmartValidatorArray value="healSmartTargetFilters"/>
-        <SmartValidatorArray value="NotWarpingIn"/>
-        <SmartValidatorArray value="NotUnrepairable"/>
-        <AutoCastAcquireLevel value="Defensive"/>
-        <AutoCastFilters value="-;Neutral,Enemy"/>
+    <CAbilEffectTarget id="HHOrdnanceTowerNanoRepair" parent="NanoRepair">
+        <Range index="0" value="8"/>
         <AutoCastRange value="8"/>
-        <AutoCastValidatorArray value="healCasterMinEnergy"/>
-        <AutoCastValidatorArray value="NotWarpingIn"/>
-        <AutoCastValidatorArray value="NotUnrepairable"/>
-        <UseMarkerArray index="Approach" value="0"/>
-        <UseMarkerArray index="Prep" value="0"/>
-        <AINotifyEffect value="NanoRepair"/>
-        <DefaultError value="RequiresHealTarget"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Heal"/>
     </CAbilEffectTarget>
     <CAbilTrain id="HireMerc">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -833,6 +840,8 @@
     <CAbilEffectInstant id="TychusMedicAoEBunker2" parent="TychusMedicAoEBunker"/>
     <CAbilEffectTarget id="TychusMedicDefensiveMatrix">
         <Flags index="PassengerAcquireExternal" value="1"/>
+        <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusReaperBomb">
         <Cost index="0">
@@ -1295,6 +1304,9 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHeal">
         <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,Structure"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="MercCompoundReset">
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -1473,12 +1485,16 @@
     <CAbilEffectTarget id="TychusMedivacDoubleHealPlusMech">
         <Flags index="PassengerAcquireExternal" value="1"/>
         <Flags index="PassengerAcquirePassengers" value="1"/>
-        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead,MapBoss"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusMedivacHealPlusMech">
         <Flags index="PassengerAcquireExternal" value="1"/>
         <Flags index="PassengerAcquirePassengers" value="1"/>
-        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Uncommandable,UnderConstruction,Dead"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusOdinBarrage">
         <CastIntroTime index="0" value="1.5"/>
@@ -1495,6 +1511,14 @@
         <Flags index="Transient" value="1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Cancel" Requirements="VoidRayPrismaticAlligned"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="VoidSentryShieldRepair">
+        <TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidSentryShieldRepairDouble">
+        <TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="VorazunBlinkReturn">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Effect index="0" value="VorazunBlinkReturnETU"/>
@@ -1643,19 +1667,16 @@
         <Flags index="AutoCastOn" value="1"/>
     </CAbilMorph>
     <CAbilEffectTarget id="MedivacMengskDoubleBeamHeal">
-        <SmartValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray index="1" value="NotWarpingIn"/>
-        <AutoCastValidatorArray value="NotStasis"/>
-        <AutoCastValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
-        <AutoCastValidatorArray value="NotUnrepairable"/>
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacMengskHeal">
-        <SmartValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray value="NotStasis"/>
-        <AutoCastValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
-        <AutoCastValidatorArray value="NotUnrepairable"/>
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastRange value="8"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="RavenTargetLock">
         <Range index="0" value="10"/>
@@ -1701,6 +1722,9 @@
     <CAbilEffectTarget id="CarrierRepairDroneHeal">
         <Flags index="ReExecutable" value="1"/>
         <AutoCastValidatorArray index="3" value="CarrierRepairDroneCasterNotRecalling"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <TargetFilters index="0" value="Mechanical,Visible;Self,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="CommanderPrestigeStukovBansheesDeploy">
         <Flags index="AllowMovement" value="1"/>
@@ -1944,19 +1968,11 @@
         </CmdButtonArray>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHealRaynor" parent="MedivacHeal">
-        <Name value="Abil/Name/MedivacHealRaynor"/>
         <Effect index="0" value="MedivacHealACSwitch"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HealMedivac" State="Restricted" Requirements="NotHaveStabilizerMedPacks"/>
-        <SmartValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray value="NotStasis"/>
-        <AutoCastValidatorArray value="NotMaxHP"/>
-        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
-        <AutoCastValidatorArray value="NotUnrepairable"/>
-        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Structure,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHealRaynorPlusMech" parent="MedivacHealRaynor">
-        <Name value="Abil/Name/MedivacHeal"/>
-        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,Dead,Hidden,Invulnerable"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="HaveStabilizerMedPacks"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="MedivacSpeedBoost">
@@ -2257,6 +2273,8 @@
     <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
         <Range index="0" value="6"/>
         <AutoCastRange value="6"/>
+        <TargetFilters index="0" value="Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="SignifierFade">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
@@ -2300,12 +2318,14 @@
             <SortArray value="TSDistance"/>
         </TargetSorts>
         <AutoCastAcquireLevel value="Defensive"/>
-        <AutoCastFilters value="Biological,Visible;Neutral,Enemy,Missile,Stasis,Dead,Invulnerable"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="8"/>
         <AutoCastValidatorArray value="healCasterMinEnergy"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
         <AutoCastValidatorArray value="TargetHas100LifeMissing"/>
+        <Effect index="0" value="Transfusion"/>
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
     </CAbilEffectTarget>
     <CAbilResearch id="TwilightCouncilResearch">
         <InfoArray index="Research4" Time="60">
@@ -2521,6 +2541,10 @@
     <CAbilMorph id="ZeratulObserverMorphtoZeratulObserverSiege">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="ZeratulSentryShieldRepair">
+        <TargetFilters index="0" value="Visible;Self,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="ZeratulStalkerBlink">
         <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
@@ -2572,4 +2596,12 @@
             <Charge CountUse="4"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="heal">
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastValidatorArray index="3" value="UnitOrAttackingStructure"/>
+        <AutoCastValidatorArray index="4" value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray index="5" removed="1"/>
+        <AutoCastValidatorArray index="6" removed="1"/>
+        <AutoCastValidatorArray index="7" removed="1"/>
+    </CAbilEffectTarget>
 </Catalog>

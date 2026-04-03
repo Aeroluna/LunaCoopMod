@@ -4,6 +4,8 @@ A collection of changes and additions to the StarCraft 2 Co-op mode. Maguro's Mu
 
 Changes include new prestiges, new units, new enemies, new maps, new mutators, balance changes, quality-of-life changes, and a huge amount of bug fixes.
 
+Search for "LunaMod Co-op Launcher" on the NA/EU Arcade!
+
 NOTE: All times in Co-op use in-game time instead of real time e.g. if a tooltip says 10 seconds, that corresponds to ~7.14 real time seconds on Brutal/Faster.
 
 View the changelog [here](https://github.com/Aeroluna/LunaCoopMod/blob/main/CHANGELOG.md).
@@ -70,6 +72,17 @@ This changes causes all buffs to be tinted either green for positive buffs or re
 
 It was very arbitrary which effects could or could not go through the Frenzy passive. Now it is more consistent.
 
+- Fixed an issue where some heal abilities could be able to heal unrepairable units.
+- Fixed an issue where some heal abilities could be able to heal under construction units.
+- Fixed an issue where some heal abilities could be unable to heal invulnerable units.
+- Fixed an issue where some heal abilities could be unable to heal uncontrollable units.
+- Fixed an issue where some heal abilities could be able to heal stasised units.
+- Fixed an issue where some direct heal abilities could be unable to heal structures.
+- Fixed an issue where Medic's heal ability would not autocast on most defensive structures.
+- Fixed an issue where some heal abilities would not fake cast on attacking units.
+
+This affects a bunch of abilities that I don't want to list out individually.
+
 - Removed snare immunity from commander Heroes.
 
 This was applied weirdly where some heroes got it and others didn't. Heroes are OP anyways so who cares if they don't get slow immunity!
@@ -78,6 +91,10 @@ This was applied weirdly where some heroes got it and others didn't. Heroes are 
   - Hero scale and radius should be smaller across the board.
 
 It looked kinda freakish that P3 Kerrigan was as thick and tall as a Thor and that Tychus made Marines look like ants, despite technically being in a Marine suit. Heroes still lord over normal units, but less egregiously so.
+
+- Fixed an issue where some heroes did not display a rank.
+
+Some heroes had a rank and others didn't. Now they all have one.
 
 - Fixed an issue where only certain temporary units would be affected by commander buffs (i.e. Vorazun's Strike from the Shadows, Artanis's Guardian Shell, e.t.c.).
   - Affected units:
@@ -94,10 +111,6 @@ It looked kinda freakish that P3 Kerrigan was as thick and tall as a Thor and th
 
 It might be a little strong making all of the temporary units have Guardian Shell, but hey it's co-op, whats the harm in being OP?
 
-- Changed Void Rays to "look" at their targets.
-
-thanks Enoki.
-
 - Buffed mind control effects to keep upgrades of targeted unit.
 
 Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tychus's Vega, and Zeratul's Serdath Legion.
@@ -112,7 +125,8 @@ If it's good enough for Versus, it's good enough for all the Commanders! Karax's
 Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
 
 - Removed Armored attribute from Queens.
-- Added autocast for Queen's Transfusion.
+- Added autocast for Queen's Transfusion ability.
+- Fixed an issue where Queen's Transfusion ability could be cast on full health structures.
 
 Queens typically aren't built, so some buffs help. Won't cast efficiently but does help if you are overcapping energy anyways.
 
@@ -198,6 +212,10 @@ Copied from Versus.
 - Changed Planetary Fortress attack priority to "By Angle" instead of "By Distance".
 
 thanks OmniSkeptic.
+
+- Changed Void Rays to "look" at their targets.
+
+thanks Enoki.
 
 - Added a visual glaze to units targeted by a Science Vessel's Irradiate ability.
 - Added an impact visual for Ravager's Corrosive Bile.
@@ -507,6 +525,12 @@ I know everyone has wanted to see more of Hanson... right? The original RTC 2017
   - Contains numerous fixes.
 
 Lots of bug fixes/polish!
+
+- Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
+- Removed rank display from Ji'nara/Amon's Champion on Chains of Ascension.
+- Removed health display from Ji'nara/Amon's Champion on Chains of Ascension.
+
+yeah.
 
 ## Commanders
 
@@ -1186,6 +1210,7 @@ One of Zagara's greatest weaknesses is the inability to hit a critical mass of u
 - Buffed P2
   - Increased bonus life regen for Aberrations from 3 to 6.
   - New effect: Incubate Banelings and Incubate Scourge spawn twice as many units.
+- Fixed an issue where Baneling Nests can still rally despite Spawn Banelings being disabled.
 
 Fun fact: due to an oversight, the Corruptor bonus life regen is applied twice, effectively increasing their life regen by 6. The Aberration's life regen has been increased to match. Additionally increased the amount of Banelings and Scourge because it's otherwise difficult to spare the vespene to pay for those normally.
 
@@ -1422,6 +1447,10 @@ Copied from CXL. Keeps it unviable to use static defense aggressively without co
 - Reduced cost of Mirage from 150/100 to 150/50.
 
 Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
+
+- Changed Reconstruction Beam to prioritize units and attacking structures.
+
+yeah.
 
 ### Abathur
 
@@ -1922,6 +1951,7 @@ The champions do more damage than normal units, so their projectiles should be l
 - Fixed an issue where Talis's Ricochet Glaive impact visual would move/rotate with the unit.
 - Fixed an issue where Clolarion would launch multiple interceptors at a time.
 - Fixed an issue where Warbringer's attack beams moved too slowly.
+- Added "Prototype Warrior" rank to Fenix's suits unit info panel.
 
 yeah.
 
@@ -2577,10 +2607,6 @@ Sky Furies are super fragile until reaching Rank 3. Increased range should help 
 
 They had a longer cooldown than Versus Battlecruisers!
 
-- Removed fake heal from Imperial Intercessors.
-
-It was so annoying when these got stuck too far back, now they'll push up with your army. They might push up *too* far but hey, they have cloak and Ignite Afterburners. Healer AI in general may be revisited in the future.
-
 - Added Pride of Augustgrad portrait.
 - Added Sky Fury portrait.
 - Added Imperial Intercessor portrait.
@@ -2660,5 +2686,6 @@ yeah.
 - Battlecruiser Loki - Yamato Animations - DaveSpectre
 - Primal Ascension (RTC 2017) - OutsiderXE
 - Construction Yard (RTC 2017) - Gillan
+- Solar Right (RTC 2017) - ThePhail
 
 DaveSpectre is the goat <3

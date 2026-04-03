@@ -1,5 +1,29 @@
 # Changelog
 
+## 4/3/2026
+
+- Updated news ticker.
+- Fixed an issue where the Ultralisk Anabolic Synthesis upgrade visual was still visible while using Burrow Charge.
+- Fixed an issue where some heal abilities could be able to heal unrepairable units.
+- Fixed an issue where some heal abilities could be able to heal under construction units.
+- Fixed an issue where some heal abilities could be unable to heal invulnerable units.
+- Fixed an issue where some heal abilities could be unable to heal uncontrollable units.
+- Fixed an issue where some heal abilities could be able to heal stasised units.
+- Fixed an issue where some direct heal abilities could be unable to heal structures.
+- Fixed an issue where Medic's heal ability would not autocast on most defensive structures.
+- Fixed an issue where some heal abilities would not fake cast on attacking units.
+- Fixed an issue where some heroes did not display a rank.
+- Fixed an issue where Queen's Transfusion ability could be cast on full health structures.
+- Fixed an issue where Baneling Nests can still rally despite Spawn Banelings being disabled.
+- Changed Reconstruction Beam to prioritize units and attacking structures.
+- Added "Prototype Warrior" rank to Fenix's suits unit info panel.
+
+### Chains of Ascension
+
+- Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
+- Removed rank display from Ji'nara/Amon's Champion.
+- Removed health display from Ji'nara/Amon's Champion.
+
 ## 3/25/2026
 
 - Added a difficulty select to the commander selection menu.
