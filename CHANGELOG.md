@@ -17,6 +17,7 @@
 - Fixed an issue where Baneling Nests can still rally despite Spawn Banelings being disabled.
 - Changed Reconstruction Beam to prioritize units and attacking structures.
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
+- Added a crater visual to the Mothership's Planet Cracker ability.
 
 ### Chains of Ascension
 

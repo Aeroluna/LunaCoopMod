@@ -59,6 +59,14 @@
     <CActorUnit id="FenixCoop">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
     </CActorUnit>
+    <CActorModel id="MothershipArtanisPlanetCrackerCrater">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.MothershipArtanisPlanetCrackerSearch.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 25.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRotationRandomDisc SOpShadowSyncGround SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
     <CActorUnit id="FenixDragoon">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
     </CActorUnit>
@@ -82,6 +90,14 @@
             <Image index="0" value="Assets\Textures\wireframe-zerg-zeruschrysalisegg.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorModel id="MothershipArtanisPlanetCrackerBigCrater">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="Behavior.MothershipArtanisPlanetCracker.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 25.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRotationRandomDisc SOpShadowSyncGround SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
     <CActorModel id="MutatorBountyHunterDeathLarge" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MutatorBountyHunterDeathLarge.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="Create Confetti_Explosion_Large_AS"/>
@@ -4649,6 +4665,7 @@
         <On Terms="TimerExpired; TimerName BurrowDeath" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="SOAMothershipv4">
+        <On Terms="Abil.AlarakMothershipMassRecall.SourceCastStart" Send="$Spell"/>
         <On Terms="ActorCreation" Send="Create Mothership_Birth"/>
         <DeathCustoms index="5" ModelLink="Mothership_Taldarim_DeathRagdoll"/>
     </CActorUnit>
