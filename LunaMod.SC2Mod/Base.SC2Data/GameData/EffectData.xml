@@ -4192,8 +4192,10 @@
     </CEffectSwitch>
     <CEffectSet id="MothershipArtanisBeamAttack">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="MothershipArtanisBeamSet"/>
-        <EffectArray value="MothershipArtanisBeamSearch"/>
+        <EffectArray value="MothershipArtanisBeamSet1"/>
+        <EffectArray value="MothershipArtanisBeamSearch2"/>
+        <EffectArray value="MothershipArtanisBeamSearch3"/>
+        <EffectArray value="MothershipArtanisBeamSearch4"/>
     </CEffectSet>
     <CEffectDamage id="MothershipArtanisBeamDamage" parent="DU_WEAP_MISSILE">
         <ValidatorArray value="MothershipRangeCheck"/>
@@ -4207,7 +4209,7 @@
         <ValidatorArray value="MothershipRangeCheck"/>
         <EditorCategories value="Race:Protoss"/>
     </CEffectModifyUnit>
-    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent">
+    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent1">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
         <TimeScaleSource Value="Caster"/>
@@ -4217,25 +4219,44 @@
         <PeriodicEffectArray value="MothershipArtanisBeamDamage"/>
         <PeriodicPeriodArray value="0.375"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="MothershipArtanisBeamSearch">
+    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent2" parent="MothershipArtanisBeamPersistent1"/>
+    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent3" parent="MothershipArtanisBeamPersistent1"/>
+    <CEffectCreatePersistent id="MothershipArtanisBeamPersistent4" parent="MothershipArtanisBeamPersistent1"/>
+    <CEffectEnumArea id="MothershipArtanisBeamSearch2">
         <EditorCategories value="Race:Protoss"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray MaxCount="3" Radius="7.5" Effect="MothershipArtanisBeamSet"/>
+        <AreaArray MaxCount="1" Radius="7.5" Effect="MothershipArtanisBeamSet2"/>
         <ImpactLocation Value="SourceUnit"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="CenterAtLaunch" value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <SearchFlags index="OffsetAreaByAngle" value="0"/>
         <TargetSorts>
             <SortArray value="TSThreatenBattlecruiser"/>
             <SortArray value="TSPriorityDesc"/>
         </TargetSorts>
     </CEffectEnumArea>
-    <CEffectSet id="MothershipArtanisBeamSet">
+    <CEffectEnumArea id="MothershipArtanisBeamSearch3" parent="MothershipArtanisBeamSearch2">
+        <AreaArray index="0" MaxCount="1" Radius="7.5" Effect="MothershipArtanisBeamSet3"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MothershipArtanisBeamSearch4" parent="MothershipArtanisBeamSearch2">
+        <AreaArray index="0" MaxCount="1" Radius="7.5" Effect="MothershipArtanisBeamSet4"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MothershipArtanisBeamSet1">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="MothershipArtanisBeamPersistent"/>
-        <EffectArray value="MothershipArtanisSecondaryBeamPersistent"/>
+        <EffectArray value="MothershipArtanisBeamPersistent1"/>
+        <EffectArray value="MothershipArtanisSecondaryBeamPersistent1"/>
+        <ValidatorArray value="noMarkers"/>
+    </CEffectSet>
+    <CEffectSet id="MothershipArtanisBeamSet2" parent="MothershipArtanisBeamSet1">
+        <EffectArray index="0" value="MothershipArtanisBeamPersistent2"/>
+        <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent2"/>
+    </CEffectSet>
+    <CEffectSet id="MothershipArtanisBeamSet3" parent="MothershipArtanisBeamSet1">
+        <EffectArray index="0" value="MothershipArtanisBeamPersistent3"/>
+        <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent3"/>
+    </CEffectSet>
+    <CEffectSet id="MothershipArtanisBeamSet4" parent="MothershipArtanisBeamSet1">
+        <EffectArray index="0" value="MothershipArtanisBeamPersistent4"/>
+        <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent4"/>
     </CEffectSet>
     <CEffectDamage id="MothershipArtanisPlanetCrackerDamage2">
         <EditorCategories value="Race:Protoss"/>
@@ -4270,7 +4291,7 @@
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent">
+    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent1">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
         <TimeScaleSource Value="Caster"/>
@@ -4281,6 +4302,9 @@
         <PeriodicEffectArray value="MothershipArtanisBeamDamage"/>
         <PeriodicPeriodArray value="0.375"/>
     </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent2" parent="MothershipArtanisSecondaryBeamPersistent1"/>
+    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent3" parent="MothershipArtanisSecondaryBeamPersistent1"/>
+    <CEffectCreatePersistent id="MothershipArtanisSecondaryBeamPersistent4" parent="MothershipArtanisSecondaryBeamPersistent1"/>
     <CEffectIssueOrder id="MovingLockOnIssueOrder">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Source"/>

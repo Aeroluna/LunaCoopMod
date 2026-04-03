@@ -18,6 +18,8 @@
 - Changed Reconstruction Beam to prioritize units and attacking structures.
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
 - Added a crater visual to the Mothership's Planet Cracker ability.
+- Fixed an issue where Artanis's Mothership attacks would keep attacking dead units.
+- Fixed an issue where Artanis's Mothership attacks would kill all beams if any beam leashed.
 
 ### Chains of Ascension
 

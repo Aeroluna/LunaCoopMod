@@ -5190,9 +5190,6 @@
         <SoundArray index="Pissed" value="Selendis_Pissed"/>
         <UnitKillRank Text="UnitKillRank/Selendis"/>
     </CActorUnit>
-    <CActorBeamSimple id="MothershipArtanisAttackBeam" parent="MothershipAttackBeam">
-        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
-    </CActorBeamSimple>
     <CActorModel id="MothershipArtanisStargateWarpIn" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On index="0" Terms="ActorCreation" Send="$Spell 0 -1.000000 -1.000000 2.500000 AsDuration"/>
@@ -5203,23 +5200,74 @@
         <Model value="MothershipWarpIn2"/>
         <Scale value="0.600000"/>
     </CActorModel>
-    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam" parent="MothershipSecondaryAttackBeam">
-        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
+    <CActorAction id="MothershipArtanisAttack1" parent="MothershipAttack">
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent1.Start" Send="Create"/>
+        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop" Send="Destroy WhenReady"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
+        <Beam value="MothershipArtanisAttackBeam1"/>
+    </CActorAction>
+    <CActorAction id="MothershipArtanisAttack2" parent="MothershipArtanisAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent2.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisAttackBeam2"/>
+    </CActorAction>
+    <CActorAction id="MothershipArtanisAttack3" parent="MothershipArtanisAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent3.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisAttackBeam3"/>
+    </CActorAction>
+    <CActorAction id="MothershipArtanisAttack4" parent="MothershipArtanisAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent4.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisAttackBeam4"/>
+    </CActorAction>
+    <CActorBeamSimple id="MothershipArtanisAttackBeam1" parent="MothershipAttackBeam">
+        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent1.Stop" Send="AnimBracketStop BSD"/>
     </CActorBeamSimple>
-    <CActorAction id="MothershipArtanisAttack" parent="MothershipAttack">
-        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent.Start" Send="Create"/>
+    <CActorBeamSimple id="MothershipArtanisAttackBeam2" parent="MothershipArtanisAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent2.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="MothershipArtanisAttackBeam3" parent="MothershipArtanisAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent3.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="MothershipArtanisAttackBeam4" parent="MothershipArtanisAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorAction id="MothershipArtanisSecondaryAttack1" parent="MothershipSecondaryAttack">
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent1.Start" Send="Create"/>
         <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="Destroy WhenReady"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop" Send="Destroy WhenReady"/>
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
-        <Beam value="MothershipArtanisAttackBeam"/>
+        <Beam value="MothershipArtanisSecondaryAttackBeam1"/>
     </CActorAction>
-    <CActorAction id="MothershipArtanisSecondaryAttack" parent="MothershipSecondaryAttack">
-        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent.Start" Send="Create"/>
-        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent.Stop" Send="Destroy WhenReady"/>
-        <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
-        <Beam value="MothershipArtanisSecondaryAttackBeam"/>
+    <CActorAction id="MothershipArtanisSecondaryAttack2" parent="MothershipArtanisSecondaryAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent2.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisSecondaryAttackBeam2"/>
     </CActorAction>
+    <CActorAction id="MothershipArtanisSecondaryAttack3" parent="MothershipArtanisSecondaryAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent3.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisSecondaryAttackBeam3"/>
+    </CActorAction>
+    <CActorAction id="MothershipArtanisSecondaryAttack4" parent="MothershipArtanisSecondaryAttack1">
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent4.Start" Send="Create"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="Destroy WhenReady"/>
+        <Beam value="MothershipArtanisSecondaryAttackBeam4"/>
+    </CActorAction>
+    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam1" parent="MothershipSecondaryAttackBeam">
+        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent1.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam2" parent="MothershipArtanisSecondaryAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent2.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam3" parent="MothershipArtanisSecondaryAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent3.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam4" parent="MothershipArtanisSecondaryAttackBeam1">
+        <On index="3" Terms="Effect.MothershipArtanisSecondaryBeamPersistent4.Stop" Send="AnimBracketStop BSD"/>
+    </CActorBeamSimple>
     <CActorModel id="MothershipArtanisGhostWarpOut" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>
         <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
