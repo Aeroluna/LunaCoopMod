@@ -152,6 +152,18 @@
             <Button DefaultButtonFace="EvolveDiggingClaws" Requirements="LearnDiggingClaws"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="MedicFlare">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="MedicFlareLaunchMissile"/>
+        <Range value="9"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MedicFlare"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Cooldown TimeUse="2"/>
+        </Cost>
+        <CursorEffect value="MedicFlareCursor"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="NanoRepair">
         <TargetFilters index="0" value="Mechanical,Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>

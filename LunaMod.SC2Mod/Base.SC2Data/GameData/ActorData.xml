@@ -4386,11 +4386,49 @@
         <Scale value="2.000000"/>
     </CActorBeamSimple>
     <CActorUnit id="Medic">
-        <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="$Spell 0 0.200000 0.200000"/>
+        <On Terms="Abil.MedicRestoration.SourceChannelStart" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="Abil.MedicFlare.SourceChannelStart" Send="TimerSet 0.100000 RavAnimationSwitch"/>
+        <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
+        <On Terms="Abil.MedicRestoration.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.MedicFlare.SourceCastStart" Send="$Spell"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
         <AbilSoundArray AbilCmd="heal,Execute" Sound="Medic_HealVO"/>
         <AbilSoundArray AbilCmd="HealPlusMech,Execute" Sound="Medic_HealVO"/>
         <AbilSoundArray AbilCmd="MedicRestoration,Execute" Sound="Medic_HealVO"/>
+        <AbilSoundArray AbilCmd="MedicFlare,Execute" Sound="Medic_FlareVO"/>
     </CActorUnit>
+    <CActorModel id="MedicFlareAttackMissile2" parent="ModelAddition" unitName="MedicFlareWeapon">
+        <On Terms="ActorCreation" Send="SetTintColor {255,50,50 3.000000}"/>
+        <Model value="MedicFlareWeapon"/>
+        <Host Subject="_Missile"/>
+    </CActorModel>
+    <CActorModel id="MedicFlareAttackMissile3" parent="ModelAddition" unitName="MedicFlareWeapon">
+        <Host Subject="_Missile"/>
+        <Model value="MedicFlareWeapon3"/>
+    </CActorModel>
+    <CActorRange id="MedicFlareRange" parent="RangeAbil" abil="MedicFlare"/>
+    <CActorSplat id="MedicFlareCursorSplat" parent="CursorSplat" abil="MedicFlare"/>
+    <CActorSound id="MedicFlareExpire" parent="SoundOneShot"/>
+    <CActorModel id="MedicFlareExpireModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.MedicFlarePersistent.Stop; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create MedicFlareExpire"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,50,50 2.000000}"/>
+    </CActorModel>
+    <CActorSound id="MedicFlareSizzleLoop" parent="SoundContinuous"/>
+    <CActorAction id="MedicFlareAttack" parent="GenericAttack" effectLaunch="MedicFlareLaunchMissile">
+        <LaunchAssets Sound="Civilian_AttackLaunch"/>
+        <ImpactPointSiteOps Ops="SOpTargetPointStationary SOpMoveUpBy8"/>
+    </CActorAction>
+    <CActorMissile id="MedicFlareAttackMissile" parent="GenericAttackMissile" unitName="MedicFlareWeapon">
+        <On index="3" Terms="ActorCreation" Send="SetTintColor {255,50,50 3.000000}"/>
+        <On Terms="ActorCreation" Send="Create MedicFlareAttackMissile3"/>
+        <On Terms="ActorCreation" Send="Create MedicFlareSizzleLoop"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.100000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Send="Create MedicFlareAttackMissile2"/>
+        <On Terms="Effect.MedicFlareHeightMod.Start" Target="MedicFlareAttackMissile2" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.400000"/>
+        <HostSiteOps Ops="SOp2DRotation"/>
+    </CActorMissile>
     <CActorRange id="MedicRestorationRange" parent="RangeAbil" abil="MedicRestoration"/>
     <CActorSound id="MedicRestorationSound" parent="SoundOneShot">
         <On Terms="Effect.MedicRestorationSet.Start; At Target" Send="Create"/>

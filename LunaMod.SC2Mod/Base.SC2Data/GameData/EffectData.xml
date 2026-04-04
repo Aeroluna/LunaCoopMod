@@ -468,6 +468,31 @@
     </CEffectTeleport>
     <CEffectDamage id="MasterySwannArmyMineralCostDisplayDummy"/>
     <CEffectDamage id="MasterySwannUnitVitalDisplayDummy"/>
+    <CEffectEnumArea id="MedicFlareCursor">
+        <EditorCategories value="Race:Terran"/>
+        <AreaArray Radius="8"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="MedicFlareHeightMod">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Source"/>
+        <Height value="-4"/>
+        <HeightTime value="30"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="MedicFlarePersistent">
+        <EditorCategories value="Race:Terran"/>
+        <InitialEffect value="MedicFlareHeightMod"/>
+        <ExpireDelay value="20"/>
+        <ExpireEffect value="KillSource"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="MedicFlareLaunchMissile">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactOffset value="0,0,7"/>
+        <ImpactEffect value="MedicFlarePersistent"/>
+        <AmmoUnit value="MedicFlareWeapon"/>
+        <Movers Link="MedicFlareWeapon"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
     <CEffectCreateHealer id="MedivacHeal">
         <ValidatorArray index="7" value=""/>
         <ValidatorArray value="NotUnrepairable"/>

@@ -809,6 +809,11 @@ https://github.com/user-attachments/assets/bf93ddc9-d981-41a3-834b-fe9878d93265
 
 *I come to cleanse this land.* A niche ability that helps Raynor against spellcasters. Is also a powerful tool against the Black Death mutation. Gives Medics more depth than just an a-move unit.
 
+- Added new Medic ability: Signal Flare
+  - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
+
+Unfortunately these Medics can't chuck a flare at an enemy to blind them, but at least they have flares! Provides Raynor with alternate detection to Orbitals.
+
 - Added Cellular Reactor upgrade, which gives Medics full starting energy.
 
 Anyone who has played P1 knows how painful it is to get energy on these things.

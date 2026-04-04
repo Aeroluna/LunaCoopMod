@@ -1,5 +1,10 @@
 # Changelog
 
+## 4/4/2026
+
+- Added new Medic ability: Signal Flare
+  - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
+
 ## 4/3/2026
 
 - Updated news ticker.

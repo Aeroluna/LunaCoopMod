@@ -179,6 +179,16 @@
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
     </CUnit>
+    <CUnit id="MedicFlareWeapon" parent="MISSILE">
+        <Race value="Terr"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+        <Mover value="FlyIgnoreAirPathingBlockers"/>
+        <DeathRevealRadius value="1"/>
+        <DeathRevealDuration value="1"/>
+        <DeathRevealType value="Vision"/>
+        <Sight value="8"/>
+        <BehaviorArray Link="Detector8"/>
+    </CUnit>
     <CUnit id="Colossus">
         <Collide index="Structure" value="0"/>
     </CUnit>
@@ -4258,10 +4268,11 @@
     </CUnit>
     <CUnit id="Medic">
         <AbilArray Link="MedicRestoration"/>
+        <AbilArray Link="MedicFlare"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" AbilCmd="Flare,255"/>
-            <LayoutButtons index="8" AbilCmd="255,255"/>
+            <LayoutButtons index="8" Row="1" Column="0"/>
             <LayoutButtons Face="MedicRestoration" Type="AbilCmd" AbilCmd="MedicRestoration,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="MedicFlare" Type="AbilCmd" AbilCmd="MedicFlare,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <SubgroupPriority value="110"/>
     </CUnit>
