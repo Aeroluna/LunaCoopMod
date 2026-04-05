@@ -4,6 +4,7 @@
 
 - Added new Medic ability: Signal Flare
   - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
+- Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
 
 ## 4/3/2026
 

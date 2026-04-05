@@ -1262,6 +1262,10 @@ If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy.
 
 Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens. Should make the attack damage mastery competitive with the energy mastery.
 
+- Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
+
+yeah.
+
 ### Vorazun
 
 - Added P4: Shadow Hunter

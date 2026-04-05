@@ -137,6 +137,16 @@
         <CombineArray value="HasCommanderPrestigeStukovNeural"/>
         <CombineArray value="CommanderPrestigeStukovNeuralTarget"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="CoopTargetHaveSwarmling">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="CoopHaveSwarmling"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="CoopTargetHaveRaptor">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="CoopHaveRaptor"/>
+    </CValidatorPlayerRequirement>
     <CValidatorCombine id="CoopUnitCloakingValidators">
         <CombineArray value="NotMothershipArtanis"/>
         <CombineArray value="NotArbiterMP"/>
@@ -146,6 +156,73 @@
         <Compare value="GT"/>
         <Behavior value="DehakaCreeperRecentlySwooped"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareField id="DisguiseAsDehakaZergling">
+        <Field value="Race"/>
+        <Value value="PZrg"/>
+    </CValidatorUnitCompareField>
+    <CValidatorCombine id="DisguiseAsHotSRaptor">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZergling"/>
+        <CombineArray value="CoopTargetHaveRaptor"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsZealotAiur">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZealot"/>
+        <CombineArray value="TargetHaveVoidZealotWhirlwind"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsHotSSwarmlingWithWings">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZergling"/>
+        <CombineArray value="CoopTargetHaveSwarmling"/>
+        <CombineArray value="HasZerglingWingsUpgrade"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsHotSSwarmlingWithoutWings">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZergling"/>
+        <CombineArray value="CoopTargetHaveSwarmling"/>
+        <CombineArray value="MissingZerglingWingsUpgrade"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsZealotShakuras">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZealot"/>
+        <CombineArray value="TargetisVorazunCoopCommander"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsZealotPurifier">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZealot"/>
+        <CombineArray value="TargetHaveZealotPurifier"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DisguiseAsMarine_BlackOps">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsMarine"/>
+        <CombineArray value="TargetisNovaCoopCommander"/>
+    </CValidatorCombine>
+    <!--CValidatorUnitCompareField id="DisguiseAsHHMarine">
+        <Field value="Race"/>
+        <Value value="TerH"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="DisguiseAsTychusMarine">
+        <Field value="Race"/>
+        <Value value="TerT"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="DisguiseAsZeratulZealot">
+        <Field value="Race"/>
+        <Value value="ProZ"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="DisguiseAsZerglingStetmann">
+        <Field value="Race"/>
+        <Value value="ZerM"/>
+    </CValidatorUnitCompareField-->
+    <CValidatorPlayerRequirement id="DisguiseAsZerglingStetmann">
+        <Find value="1"/>
+        <Value value="HaveStetmannCommander"/>
+        <WhichPlayer Value="Target"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="DisguiseAsZerglingStetmannWithWings">
+        <Type value="And"/>
+        <CombineArray value="DisguiseAsZerglingStetmann"/>
+        <CombineArray value="TargetHasZerglingStetmannMovementSpeed"/>
+    </CValidatorCombine>
     <CValidatorUnitOrder id="DisruptionWebAutocast">
         <AbilLink value="CorsairMPDisruptionWeb"/>
         <CmdFlags index="SetAutoCast" value="1"/>
@@ -181,6 +258,21 @@
         <Value value="16"/>
         <Behavior value="ToxicNestCounter"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="TargetHasZerglingStetmannMovementSpeed">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="HaveZerglingStetmannMovementSpeed"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="TargetHaveZealotPurifier">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="HavePurifierZealot"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="TargetHaveVoidZealotWhirlwind">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="HaveVoidZealotWhirlwind"/>
+    </CValidatorPlayerRequirement>
     <CValidatorLocationCompareRange id="HellbatChargeMaxDistance">
         <Range value="6"/>
     </CValidatorLocationCompareRange>

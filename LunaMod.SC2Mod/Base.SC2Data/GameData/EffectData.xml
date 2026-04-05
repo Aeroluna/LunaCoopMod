@@ -111,6 +111,54 @@
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectCreateUnit id="DisguiseAsHotSRaptorCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingHotSRaptor"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsZealotAiurCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingZealotAiur"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsSwarmlingWithWingsCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingHotSSwarmlingWings"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsSwarmlingWithoutWingsCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingHotSSwarmling"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsZealotShakurasCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingZealotShakuras"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsZealotPurifierCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingZealotPurifier"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsDehakaZerglingCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingDehakaZergling"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsMarine_BlackOpsCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingMarine_BlackOps"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsZerglingStetmannWithWingsCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingZerglingStetmannWings"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsZerglingStetmannWithoutWingsCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingZerglingStetmann"/>
+    </CEffectCreateUnit>
+    <CEffectSwitch id="DisguiseEx3">
+        <!-- variants first, then check vanilla units -->
+        <CaseArray index="0" Validator="DisguiseAsDehakaZergling" Effect="DisguiseAsDehakaZerglingCU"/>
+        <CaseArray index="1" Validator="DisguiseAsZerglingStetmannWithWings" Effect="DisguiseAsZerglingStetmannWithWingsCU"/>
+        <CaseArray index="2" Validator="DisguiseAsZerglingStetmann" Effect="DisguiseAsZerglingStetmannWithoutWingsCU"/>
+        <CaseArray index="3" Validator="DisguiseAsZealotAiur" Effect="DisguiseAsZealotAiurCU"/>
+        <CaseArray index="4" Validator="DisguiseAsZealotShakuras" Effect="DisguiseAsZealotShakurasCU"/>
+        <CaseArray Validator="DisguiseAsZealotPurifier" Effect="DisguiseAsZealotPurifierCU"/>
+        <CaseArray Validator="DisguiseAsZealot" Effect="DisguiseAsZealotCU"/>
+        <CaseArray Validator="DisguiseAsMarine_BlackOps" Effect="DisguiseAsMarine_BlackOpsCU"/>
+        <CaseArray Validator="DisguiseAsMarineWithShield" Effect="DisguiseAsMarineWithShieldCU"/>
+        <CaseArray Validator="DisguiseAsMarineWithoutShield" Effect="DisguiseAsMarineWithoutShieldCU"/>
+        <CaseArray Validator="DisguiseAsHotSRaptor" Effect="DisguiseAsHotSRaptorCU"/>
+        <CaseArray Validator="DisguiseAsHotSSwarmlingWithWings" Effect="DisguiseAsSwarmlingWithWingsCU"/>
+        <CaseArray Validator="DisguiseAsHotSSwarmlingWithoutWings" Effect="DisguiseAsSwarmlingWithoutWingsCU"/>
+        <CaseArray Validator="DisguiseAsZerglingWithWings" Effect="DisguiseAsZerglingWithWingsCU"/>
+        <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
+    </CEffectSwitch>
     <CEffectEnumArea id="FenixArbiterRecallSearch">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetPoint"/>
@@ -416,6 +464,7 @@
     </CEffectSet>
     <CEffectLaunchMissile id="HyperionVoidCoopGroundLM">
         <ValidatorArray value="TargetInWeaponRange"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectLaunchMissile>
     <CEffectTeleport id="HyperjumpMengskTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
@@ -4321,14 +4370,17 @@
     <CEffectSet id="MothershipArtanisBeamSet2" parent="MothershipArtanisBeamSet1">
         <EffectArray index="0" value="MothershipArtanisBeamPersistent2"/>
         <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent2"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectSet>
     <CEffectSet id="MothershipArtanisBeamSet3" parent="MothershipArtanisBeamSet1">
         <EffectArray index="0" value="MothershipArtanisBeamPersistent3"/>
         <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent3"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectSet>
     <CEffectSet id="MothershipArtanisBeamSet4" parent="MothershipArtanisBeamSet1">
         <EffectArray index="0" value="MothershipArtanisBeamPersistent4"/>
         <EffectArray index="1" value="MothershipArtanisSecondaryBeamPersistent4"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectSet>
     <CEffectDamage id="MothershipArtanisPlanetCrackerDamage2">
         <EditorCategories value="Race:Protoss"/>
