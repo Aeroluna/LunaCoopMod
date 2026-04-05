@@ -2210,6 +2210,7 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where Hellbat's Wildfire Explosives would affect invulnerable units.
 - Fixed an issue where Mag Mines would not play their entire animation when firing.
 - Fixed an issue where killing a Strike Fighter Platform while the Strike Fighter is deployed would cause a mysterious Strike Fighter model to show up.
+- Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
 
 yeah.
 
@@ -2626,6 +2627,11 @@ Sky Furies are super fragile until reaching Rank 3. Increased range should help 
 - Reduced Pride of Augustgrad Yamato Cannon cooldown from 120 seconds to 100 seconds.
 
 They had a longer cooldown than Versus Battlecruisers!
+
+- Reduced visual scale of Emperor's Shadows by 14%.
+- Reduced the radius of Emperor's Shadows from 0.5 to 0.375.
+
+These things are freakishly large for being Ghosts. For some reason they are the only Royal Guard variant that is larger than their normal counterpart. They are still visually larger than normal Ghosts but less egregiously so.
 
 - Added Pride of Augustgrad portrait.
 - Added Sky Fury portrait.

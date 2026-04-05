@@ -5,6 +5,14 @@
 - Added new Medic ability: Signal Flare
   - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
 - Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
+- Reduced visual scale of Emperor's Shadows by 14%.
+- Reduced the radius of Emperor's Shadows from 0.5 to 0.375.
+- Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
+- Fixed an issue where Han & Horner's P4 could target invisible units.
+
+### Chain of Ascension
+
+- Fixed an issue where Ji'nara had wrong beam attachments.
 
 ## 4/3/2026
 
@@ -27,9 +35,9 @@
 - Fixed an issue where Artanis's Mothership attacks would keep attacking dead units.
 - Fixed an issue where Artanis's Mothership attacks would kill all beams if any beam leashed.
 
-### Chains of Ascension
+### Chain of Ascension
 
-- Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
+- Fixed an issue where Alarak's rank changes to "Challenger" when playing Chain of Ascension.
 - Removed rank display from Ji'nara/Amon's Champion.
 - Removed health display from Ji'nara/Amon's Champion.
 

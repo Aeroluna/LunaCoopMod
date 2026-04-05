@@ -1977,17 +1977,17 @@
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
     <CActorBeamSimple id="PitAlarak_Fight_Beam">
-        <On index="4" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
-        <On index="6" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
-        <On index="8" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateUnit NotHavePitAlarak"/>
+        <On index="4" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateEffect CasterIsPitAlarak"/>
+        <On index="6" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateEffect CasterIsPitAlarak"/>
+        <On index="8" Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; ValidateEffect CasterIsPitAlarak"/>
     </CActorBeamSimple>
     <CActorBeamSimple id="PitAlarak_Fight_Beam2" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateEffect CasterIsPitAlarak" Send="Create"/>
         <On Terms="Behavior.PitAlarakDummyInferiorBehavior.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create PitAlarakFightBeamLoopSound"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateEffect CasterIsPitAlarak" Send="Create PitAlarakFightBeamLoopSound"/>
         <On Terms="Behavior.PitAlarakDummyInferiorBehavior.Off" Target="PitAlarakFightBeamLoopSound" Send="Destroy"/>
-        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateUnit NotHavePitAlarak" Send="Create PitAlarakFightBeamLaunchSound"/>
+        <On Terms="Effect.PitAlarakFightBeamDelay.Start; At Target; !ValidateEffect CasterIsPitAlarak" Send="Create PitAlarakFightBeamLaunchSound"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <HostLaunch Subject="_Unit" Scope="Caster"/>
         <HostLaunchSiteOps Ops="SOpAttachWeapon01"/>
@@ -1996,11 +1996,11 @@
         <Model value="PitAlarak_Fight_Beam"/>
     </CActorBeamSimple>
     <CActorBeamSimple id="PitAlarak_Strong_Beam">
-        <On index="4" Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; ValidateUnit NotHavePitAlarak"/>
+        <On index="4" Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; ValidateEffect CasterIsPitAlarak"/>
     </CActorBeamSimple>
     <CActorBeamSimple id="PitAlarak_Strong_Beam2" parent="BeamSimpleAnimationStyleContinuous">
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; !ValidateUnit NotHavePitAlarak" Send="Create"/>
+        <On Terms="Effect.PitAlarakStrongBeamKillPersistent.Start; !ValidateEffect CasterIsPitAlarak" Send="Create"/>
         <On Terms="Effect.PitAlarakStrongBeamKillPersistent.Stop" Send="AnimBracketStop BSD"/>
         <HostLaunch Subject="_Unit" Scope="Caster"/>
         <HostLaunchSiteOps Ops="SOpAttachWeapon01"/>
