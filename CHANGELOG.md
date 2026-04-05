@@ -1,6 +1,6 @@
 # Changelog
 
-## 4/4/2026
+## 4/5/2026
 
 - Added new Medic ability: Signal Flare
   - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
@@ -9,6 +9,10 @@
 - Reduced the radius of Emperor's Shadows from 0.5 to 0.375.
 - Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
 - Fixed an issue where Han & Horner's P4 could target invisible units.
+- Added visual effects when Adept/Talis creates a shade.
+- Changed Adept/Talis shades to spawns to spawn directly on top of the Adept instead of in front.
+- Added a sound effect when Adept/Talis spawns a shade.
+- Added a small animation on Adept/Talis when a shade is active.
 
 ### Chain of Ascension
 

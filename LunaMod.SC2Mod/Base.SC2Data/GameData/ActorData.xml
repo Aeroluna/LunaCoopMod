@@ -17,6 +17,11 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorSound id="FenixAdeptShadeLaunchAS" parent="SoundOneShot">
+        <On Terms="Effect.FenixAdeptShadeSpawnShade.Start" Send="Create"/>
+        <On Terms="Effect.FenixTalisShadeSpawnShade.Start" Send="Create"/>
+        <Sound value="Adept_PsionicTransferLaunch"/>
+    </CActorSound>
     <CActorUnit id="Adept">
         <GroupIcon>
             <Image index="0" value="Assets\Textures\btn-unit-protoss-adept.dds"/>
@@ -30,6 +35,16 @@
             <Image index="1" value="Assets\Textures\wireframe-protoss-adept-shield02.dds"/>
             <Image index="2" value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
         </WireframeShield>
+    </CActorUnit>
+    <CActorUnit id="AdeptFenix">
+        <On Terms="Behavior.FenixAdeptShadeCaster.On" Send="Create AdeptSpiritSpawn"/>
+        <On Terms="Behavior.FenixAdeptShadeCaster.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.FenixAdeptShadeCaster.Off" Send="AnimBracketStop Cover"/>
+    </CActorUnit>
+    <CActorUnit id="FenixTalisAdept">
+        <On Terms="Behavior.FenixAdeptShadeCaster.On" Send="Create AdeptSpiritSpawn"/>
+        <On Terms="Behavior.FenixAdeptShadeCaster.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.FenixAdeptShadeCaster.Off" Send="AnimBracketStop Cover"/>
     </CActorUnit>
     <CActorModel id="AlarakLightningStrike">
         <On Terms="Behavior.JinaraLightningStrikes.On" Send="Create"/>

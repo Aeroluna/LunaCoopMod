@@ -159,6 +159,16 @@
         <CaseArray Validator="DisguiseAsZerglingWithWings" Effect="DisguiseAsZerglingWithWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="FenixAdeptShadeSpawnCasterBuff">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="FenixAdeptShadeCaster"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="FenixAdeptShadeSpawnShade">
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+    </CEffectCreateUnit>
     <CEffectEnumArea id="FenixArbiterRecallSearch">
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="TargetPoint"/>
@@ -393,6 +403,11 @@
     <CEffectTeleport id="FenixTalisAdeptPhaseShiftTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectCreateUnit id="FenixTalisShadeSpawnShade">
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+    </CEffectCreateUnit>
     <CEffectTeleport id="FleetwideJumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -2264,6 +2279,7 @@
     <CEffectSet id="HHOrdnanceTowerAttackSet">
         <EffectArray value="HHOrdnanceTowerAttackCooldown"/>
         <EffectArray value="HHOrdnanceTowerLM"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectSet>
     <CEffectSwitch id="HHBattlecruiserSwitch">
         <EditorCategories value="Race:Terran"/>

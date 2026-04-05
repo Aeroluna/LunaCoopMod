@@ -1942,7 +1942,14 @@ It seemed weird that these upgrades did not affect their champion counterpart. F
 
 - Reworked Adept/Talis shade attacks from a projectile to a beam.
 
-This should make shade attacks look more distinct from the Adept/Talis.
+This should make shade attacks look more distinct from the Adept/Talis. It also doesn't make sense that the shades are shooting glaives when they don't have the cannon!
+
+- Added visual effects when Adept/Talis creates a shade.
+- Changed Adept/Talis shades to spawns to spawn directly on top of the Adept instead of in front.
+- Added a sound effect when Adept/Talis spawns a shade.
+- Added a small animation on Adept/Talis when a shade is active.
+
+Visual parity with the normal Adept shades.
 
 - Removed Disruptors.
 
