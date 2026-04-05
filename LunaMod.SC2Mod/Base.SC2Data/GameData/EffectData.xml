@@ -104,6 +104,20 @@
     <CEffectSet id="AlarakStalkerForceBlastSet">
         <EffectArray index="1" value="AlarakStalkerForceBlastKnockbackSwitch"/>
     </CEffectSet>
+    <CEffectEnumArea id="ArbiterMPRecallSearch">
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
+    <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectSet>
+    <CEffectEnumArea id="FenixArbiterRecallSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Self,Neutral,Enemy,Structure,User1,Worker,Missile,Item,Uncommandable,Dead,Hidden"/>
+        <AreaArray Radius="8" Effect="ArbiterMPRecallInitialSet"/>
+        <MinCount value="1"/>
+    </CEffectEnumArea>
     <CEffectTeleport id="ArbiterMPRecallTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -500,6 +514,9 @@
     <CEffectEnumArea id="MedivacMengskHealSearch">
         <SearchFilters value="Biological,Visible;Self,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="MothershipMassRecallApplyBehavior">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectApplyBehavior>
     <CEffectTeleport id="MutatorAmonZeratulBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -539,11 +556,27 @@
         <ValidatorArray index="2" removed="1"/>
         <ValidatorArray index="3" removed="1"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="NovaGriffinTransportAirUnitsAB">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectApplyBehavior>
     <CEffectTeleport id="NovaGriffinTransportTeleportAirUnitsTP">
         <TeleportEffect value="NovaGriffinTransportUnhideUnitsSet"/>
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="NovaGriffinTransportTeleportGroundUnitsTP">
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectTeleport>
     <CEffectSet id="NovaGriffinTransportUnhideUnitsSet">
         <EffectArray value="TeleportRemoveCategory"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="NovaGriffinTransportUnitsLoadGroundUnitsAB">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="NovaGriffinTransportUnitsLoadIssueOrder">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="NovaGriffinTransportUnitsSearchDummySet">
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
     <CEffectDamage id="NovaWeaponBlazefireBladeDamageCloaked">
         <Kind value="Melee"/>
@@ -1087,6 +1120,7 @@
     </CEffectApplyBehavior>
     <CEffectSet id="ArbiterMPRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
     <CEffectSet id="ArbiterMPRecallSet">
         <EffectArray value="NexusMassRecallCastingRB"/>
@@ -1761,9 +1795,19 @@
     </CEffectSet>
     <CEffectTeleport id="TychusMedicTransportTeleportAirUnitsTP">
         <TeleportEffect value="TychusMedicTransportUnhideUnitsSet"/>
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="TychusMedicTransportTeleportGroundUnitsTP">
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectTeleport>
     <CEffectSet id="TychusMedicTransportUnhideUnitsSet">
         <EffectArray value="TeleportRemoveCategory"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="TychusMedicTransportUnitsLoadIssueOrder">
+        <ValidatorArray value="NotUnmoved"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="TychusMedicTransportUnitsSearchDummySet">
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
     <CEffectSwitch id="TychusMedivacHealInitialSwitch">
         <ValidatorArray value="NotUnrepairable"/>
@@ -1827,9 +1871,11 @@
     </CEffectCreateHealer>
     <CEffectApplyBehavior id="TychusMedicTransportAirUnitsAB">
         <ValidatorArray value="PassengerNotSuppressed"/>
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="TychusMedicTransportUnitsLoadGroundUnitsAB">
         <ValidatorArray value="PassengerNotSuppressed"/>
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectApplyBehavior>
     <CEffectIssueOrder id="TychusShredderGrenadeOrder">
         <EditorCategories value=""/>
@@ -1870,7 +1916,7 @@
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="UltraliskStetmannBurrowChargeMechanicalStunTargetSearch">
-        <SearchFilters value="Mechanical,Visible;Self,Player,Ally,Neutral,User1,Missile,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+        <SearchFilters value="Mechanical,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
     </CEffectEnumArea>
     <CEffectModifyPlayer id="UltraliskStetmannDeathRespawnAddCharge">
         <Cost>
@@ -2123,6 +2169,7 @@
     </CEffectApplyBehavior>
     <CEffectSet id="DarkPylonRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
+        <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
     <CEffectSet id="DarkPylonRecallSet">
         <EffectArray value="NexusMassRecallCastingRB"/>
@@ -2364,7 +2411,7 @@
     <CEffectEnumArea id="GhostMengskEMPSearchMarker">
         <EditorCategories value=""/>
         <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Player,Ally,User1,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Player,Ally,Hidden,Invulnerable"/>
         <AreaArray Radius="2" Effect="GhostMengskEMPMarker"/>
     </CEffectEnumArea>
     <CEffectSet id="GhostMengskEMPStartSet">
@@ -2838,7 +2885,7 @@
         <EditorCategories value="Race:Terran"/>
         <LaunchLocation Value="TargetPoint"/>
         <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Player,Ally,User1,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Player,Ally,Hidden,Invulnerable"/>
         <AreaArray Radius="4" Effect="HHBomberAreaBombEMPSet"/>
         <ValidatorArray value="HaveHHBomberEMP"/>
     </CEffectEnumArea>

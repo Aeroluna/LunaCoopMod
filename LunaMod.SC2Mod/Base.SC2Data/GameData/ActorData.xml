@@ -35,6 +35,16 @@
         <On Terms="Behavior.JinaraLightningStrikes.On" Send="Create"/>
         <On Terms="Behavior.JinaraLightningStrikes.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorSplat id="ArbiterMPRecallCursorSplat">
+        <Model value="ProtossAOECursorSplat"/>
+    </CActorSplat>
+    <CActorSplat id="FenixArbiterRecallCursorSplat" parent="ProtossCursorSplat" abil="FenixArbiterRecall">
+        <Model value="FenixDragoonAirBombCursor"/>
+    </CActorSplat>
+    <CActorRange id="FenixArbiterRecallRange" parent="RangeAbil" abil="FenixArbiterRecall">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
     <CActorSound id="BlinkShieldRestoreStopCloudSound" parent="SoundOneShot">
         <On Terms="Effect.VoidStalkerBlinkShieldRestore.Stop; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>

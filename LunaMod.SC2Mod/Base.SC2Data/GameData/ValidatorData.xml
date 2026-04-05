@@ -196,6 +196,12 @@
     <CValidatorUnitFilters id="LockOnCasterFilters">
         <Filters value="-;Stasis,Dead,Hidden,Stunned,Silenced"/>
     </CValidatorUnitFilters>
+    <CValidatorCombine id="NotLarvaAndNotEncasedAndNotNonCommanderAlly">
+        <CombineArray value="NotUnmoved"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NotUnmoved">
+        <Behavior value="Unmoved"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="NothaveNoBiomassPickup">
         <Behavior value="NoBiomassPickup"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -262,6 +268,7 @@
     </CValidatorCombine>
     <CValidatorCombine id="NotLarvaAndNotEncasedAndDominatedOrPlayerOwned">
         <CombineArray value="PassengerNotSuppressed"/>
+        <CombineArray value="NotUnmoved"/>
     </CValidatorCombine>
     <CValidatorUnitType id="NotMothershipArtanis">
         <Value value="MothershipArtanis"/>

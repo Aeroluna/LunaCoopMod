@@ -295,6 +295,10 @@ This is how long after a sound is played before another is allowed to play. Can 
 
 Why couldn't Colossi walk over Nova?
 
+- Removed the Untransportable attribute.
+
+It was kinda redundant and just bloated the attributes on the unit info panel.
+
 - Fixed an issue where Protoss warp-in animations did not match up with the warp in progress.
 
 For some reason, warp in animations had a fixed duration of 16 seconds, so it was broken for any unit that didn't take exactly 16 seconds to warp in. On a unrelated note, I'd like to complain about all the warp-in animations made in LotV. Why do half of them warp in from the top and the other half from the bottom???? They're suppose to always be from the bottom to match with the hexagon moving through the middle, but whichever artist worked on these models just *forgot* to flip the warp-in texture UV!
@@ -314,6 +318,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Baneling's Explode ability tooltip showed a level.
 - Fixed an issue where Arbiters could be affected by cloaking field abilities.
 - Fixed an issue where Scourge's weapon would appear disabled in the unit info panel after enabling structure attacks.
+- Fixed an issue where Stetmann's Larva could be targeted by some teleport effects.
 
 yeah.
 
@@ -757,6 +762,8 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Hybrid Destroyer's Graviton Prison could target warping-in units.
 - Fixed an issue where Hybrid Destroyer's Graviton Prison did not unburrow units.
 - Fixed an issue where Orbital Commands had an unused ability that instantly creates a Supply Depot.
+- Fixed an issue where Arbiter's Mass Recall ability used the same cursor splat as Fenix's.
+- Reverted Arbiter's Mass Recall ability radius to the campaign version.
 
 yeah.
 
@@ -1004,6 +1011,7 @@ Not sure why this was nerfed to not hit invisible units at some point.
 It just looks cooler! Let Zagara keep that boring old cocoon.
 
 - Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
+- Fixed an issue where Kerrigan's Cocoon had extra unnecessary attributes.
 
 yeah.
 
@@ -1393,6 +1401,7 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Changed Dark Templar Blink ability button icon.
 - Renamed Dark Templar Blink ability to Shadow Stride.
 - Changed Centurion Darkcoil shield buff to no longer glow while out of shields.
+- Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
 
 yeah.
 
@@ -1957,6 +1966,7 @@ The champions do more damage than normal units, so their projectiles should be l
 - Fixed an issue where Clolarion would launch multiple interceptors at a time.
 - Fixed an issue where Warbringer's attack beams moved too slowly.
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
+- Fixed an issue where Fenix's Recall ability tooltip said Arbiter instead of Fenix.
 
 yeah.
 
@@ -2061,6 +2071,7 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Zweihaka had a highlight tooltip.
 - Fixed an issue where Dakrun's Brutal Charge's launch dust particles faced the incorrect direction.
 - Fixed an issue where Dakrun/Glevig/Murvar could be loaded into transports.
+- Fixed an issue where Glevif could be affected by knockback effects.
 
 yeah.
 
