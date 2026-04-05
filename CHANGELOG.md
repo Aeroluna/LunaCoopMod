@@ -13,6 +13,7 @@
 - Changed Adept/Talis shades to spawns to spawn directly on top of the Adept instead of in front.
 - Added a sound effect when Adept/Talis spawns a shade.
 - Added a small animation on Adept/Talis when a shade is active.
+- Fixed an issue where Lt. Nikara did not use a fake heal.
 
 ### Chain of Ascension
 
@@ -32,7 +33,7 @@
 - Fixed an issue where some heal abilities would not fake cast on attacking units.
 - Fixed an issue where some heroes did not display a rank.
 - Fixed an issue where Queen's Transfusion ability could be cast on full health structures.
-- Fixed an issue where Baneling Nests can still rally despite Spawn Banelings being disabled.
+- Fixed an issue where Baneling Nests with Zagara P2 can still rally despite Spawn Banelings being disabled.
 - Changed Reconstruction Beam to prioritize units and attacking structures.
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
 - Added a crater visual to the Mothership's Planet Cracker ability.

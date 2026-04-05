@@ -970,7 +970,7 @@ Isn't it funny that vanilla P1 Kerrigan's best unit was Mutalisks? This should a
 - Removed ability for Hydralisk Dens to morph into Lurker Dens.
 - Added ability for Drones to morph into Lurker Dens.
 
-Copied from Versus. Separating Lurker Den should make it easier to tech into Lurkers.
+Copied from Versus. Separating Lurker Den should make it easier to tech into Lurkers without sacrificing Hydralisk upgrades.
 
 - Added Ultralisk upgrade: Anabolic Synthesis.
   - Costs 150/150 and takes 60 seconds.
@@ -2230,7 +2230,7 @@ yeah.
 The biggest pain the ass was obviously trying to get the UI to accommodate having 4 more Outlaws. Second to that is trying to get 9 abilities to fit on one shared command card. This prestige trades a weaker early/mid game without Medivacs for an overpowered late game, though it is very expensive getting gear for 9 Outlaws.
 
 - Reworked Joeyray's Bar to allow any outlaw as your first outlaw for free instead of only Tychus.
-  - It's possible to not have Tychus active at all.
+  - It is possible to not recruit Tychus at all.
   - Calldown Odin will only revive Tychus if Tychus is recruited.
   - Cannot recruit Tychus while Odin is deployed.
   - Added silly Tychus ejecting animation when Odin dies.
