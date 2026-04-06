@@ -1,5 +1,12 @@
 # Changelog
 
+## 4/6/2026
+
+- Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.
+- Fixed an issue where Medic/Medivacs could not heal Mechanical units after researching Stablizer Medpacks.
+- Reverted change that allowed some heal abilities to heal structures (I changed my mind, ok?)
+- Removed ability for Medics to heal structures.
+
 ## 4/5/2026
 
 - Added new Medic ability: Signal Flare
@@ -28,8 +35,6 @@
 - Fixed an issue where some heal abilities could be unable to heal invulnerable units.
 - Fixed an issue where some heal abilities could be unable to heal uncontrollable units.
 - Fixed an issue where some heal abilities could be able to heal stasised units.
-- Fixed an issue where some direct heal abilities could be unable to heal structures.
-- Fixed an issue where Medic's heal ability would not autocast on most defensive structures.
 - Fixed an issue where some heal abilities would not fake cast on attacking units.
 - Fixed an issue where some heroes did not display a rank.
 - Fixed an issue where Queen's Transfusion ability could be cast on full health structures.

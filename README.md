@@ -76,9 +76,8 @@ It was very arbitrary which effects could or could not go through the Frenzy pas
 - Fixed an issue where some heal abilities could be able to heal under construction units.
 - Fixed an issue where some heal abilities could be unable to heal invulnerable units.
 - Fixed an issue where some heal abilities could be unable to heal uncontrollable units.
+- Removed ability for Medics to heal structures.
 - Fixed an issue where some heal abilities could be able to heal stasised units.
-- Fixed an issue where some direct heal abilities could be unable to heal structures.
-- Fixed an issue where Medic's heal ability would not autocast on most defensive structures.
 - Fixed an issue where some heal abilities would not fake cast on attacking units.
 
 This affects a bunch of abilities that I don't want to list out individually.
@@ -898,6 +897,7 @@ Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
 - Fixed an issue where Bunkers used the Neosteel icon before upgrading Neosteel.
 - Fixed an issue where the placement model for Bunkers did not change with the Neosteel upgrade.
 - Changed Concussive Shells upgrade tooltip to reflect its AOE slow.
+- Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.
 
 yeah.
 
