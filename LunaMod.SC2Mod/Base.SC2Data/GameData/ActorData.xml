@@ -842,6 +842,11 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorSiteOpRandomPointInCircle id="SOpScarabVariance">
+        <Radius value="0.200000"/>
+        <RestrictToCircumference value="1"/>
+        <ObserveRotation value="1"/>
+    </CActorSiteOpRandomPointInCircle>
     <CActorUnit id="TychusFirebat">
         <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
@@ -871,35 +876,15 @@
         <StageArray AnimProps="Stand,Build,End"/>
     </CActorProgress>
     <CActorUnit id="Reaver">
-        <On index="65" Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
-        <On index="66" Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
-        <On index="67" Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On index="68" Terms="WeaponStart.ReaverScarabsLaunch.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
-        <On index="69" Terms="Effect.ScarabCU.Start; At Caster" Send="AnimPlay Attack Attack"/>
-        <On index="70" Terms="Effect.ScarabCU.Start; At Caster" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
-        <On index="71" Terms="Effect.ScarabCU.Start; At Caster" Send="TimerKill CoverDelay"/>
-        <On index="72" Terms="Effect.ScarabCU.Start; At Caster" Send="TimerSet 5.000000 CoverDelay"/>
-        <On index="73" Terms="UnitHeightUpdate.*.Land" Send="Create Reaver_Land"/>
-        <On index="74" Terms="TimerExpired; TimerName CoverDelay" Send="AnimBracketStop Cover"/>
-        <On index="75" Terms="Upgrade.PurifierProtoss.Add" Send="TextureSelectById PurifierHackDiffuse"/>
-        <On index="76" Terms="UnitBirth; ValidateUnit HasPurifierProtoss" Send="TextureSelectById PurifierHackDiffuse"/>
-        <On index="77" Terms="Signal.*.PurifierHack"/>
-        <On index="78" removed="1"/>
-        <On index="79" removed="1"/>
-        <On index="80" removed="1"/>
-        <On index="81" removed="1"/>
-        <On index="82" removed="1"/>
-        <On index="83" removed="1"/>
-        <On index="84" removed="1"/>
-        <On index="85" removed="1"/>
-        <On index="86" removed="1"/>
-        <On index="87" removed="1"/>
-        <On index="88" removed="1"/>
+        <On index="65" Terms="Effect.ScarabCU.Start; At Caster" Send="AnimPlay Attack Attack"/>
+        <On Terms="Effect.ScarabCU.Start; At Caster" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Effect.ScarabCU.Start; At Caster" Send="TimerKill CoverDelay"/>
+        <On Terms="Effect.ScarabCU.Start; At Caster" Send="TimerSet 5.000000 CoverDelay"/>
     </CActorUnit>
     <CActorMissile id="ScarabAttackMissile">
         <DeathArray index="Impact" ModelLink="ScarabAttackImpact"/>
-        <HostSiteOps Ops="ScarabRotator SOpMoveByDot25 ScarabCounterRotator"/>
-        <On Terms="ActorCreation; PassChance 50.000000" Send="HostSiteOpsSet ::Host {ScarabCounterRotator SOpMoveByDot25 ScarabRotator}"/>
+        <HostSiteOps Ops="ScarabRotator SOpScarabVariance ScarabCounterRotator"/>
+        <On Terms="ActorCreation; PassChance 50.000000" Send="HostSiteOpsSet ::Host {ScarabCounterRotator SOpScarabVariance ScarabRotator}"/>
     </CActorMissile>
     <CActorAction id="ScarabExplode" parent="GenericAttack" effectAttack="ScarabExplodeTargetDamage">
         <LaunchAssets Sound="Reaver_AttackLaunch"/>
