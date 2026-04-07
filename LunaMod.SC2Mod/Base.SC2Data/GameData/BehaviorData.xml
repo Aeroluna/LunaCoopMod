@@ -595,6 +595,19 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="0.1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorChangeling">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-disguise.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DurationRandomMin value="40"/>
+        <DurationRandomMax value="30"/>
+        <RefreshEffect value="MutatorChangelingSearch"/>
+        <ExpireEffect value="MutatorChangeling"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorChangelingPreBuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -623,8 +636,9 @@
     <CBehaviorBuff id="HHValkyrieRandomDelay">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="3"/>
         <Modification AttackSpeedMultiplier="1.2"/>
+        <DurationRandomMin value="3"/>
+        <DurationRandomMax value="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HUGSOverloadStetmann">
         <Alignment value="Positive"/>

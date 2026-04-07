@@ -595,3 +595,112 @@ void AIThinkInfestorBurrowedLuna (int player, unit aiUnit, unitgroup scanGroup) 
     //    return;
     //}
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** CHANGELING ***
+//--------------------------------------------------------------------------------------------------
+
+void AIThinkChangelingUnitLuna (int player, unit aiUnit, unitgroup scanGroup, string followUnit) {
+    unitgroup followGroup;
+    order ord;
+    int enemyPlayer;
+    region r;
+    unitgroup enemyGroup;
+    unitgroup unitsGroup;
+    aifilter filter;
+
+    if (AIIsFollowingUnit(aiUnit, followUnit)) {
+        return;
+    }
+
+    //  Create a move order, and check validity
+    ord = AICreateOrder(player, c_AB_Follow, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    r = RegionCircle(UnitGetPosition(aiUnit), AIUnitFixed(player, c_ZU_Overseer, c_fieldSightRange));
+    enemyGroup = UnitGroupAlliance(player, c_unitAllianceEnemy, r, null, c_noMaxCount);
+
+    enemyPlayer = AIGetPlayerGroup(enemyGroup);
+    if (enemyPlayer == -1) {
+        return;
+    }
+
+    //  By default, follow the provided unit type.
+    followGroup = AIFindUnits(enemyPlayer, followUnit, UnitGetPosition(aiUnit), AIUnitFixed(player, c_ZU_Overseer, c_fieldSightRange), c_noMaxCount);
+    ord = AIUnitGroupGetValidOrder(followGroup, ord, aiUnit, c_forwards);
+
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
+    }
+
+    //  Otherwise, find any enemy to follow.
+    ord = AICreateOrder(player, c_AB_Follow, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    // prioritize following units
+    filter = AIFilter(player);
+    AISetFilterBits(filter, UnitFilterStr("-;Structure"));
+    ord = AIUnitGroupGetValidOrder(AIGetFilterGroup(filter, scanGroup), ord, aiUnit, c_forwards);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
+    }
+
+    ord = AIUnitGroupGetValidOrder(scanGroup, ord, aiUnit, c_forwards);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
+    }
+
+    return;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkChangelingZerglingLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, c_ZU_Zergling);
+}
+
+void AIThinkChangelingMarineLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, c_TU_Marine);
+}
+
+void AIThinkChangelingZealotLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, c_PU_Zealot);
+}
+
+void AIThinkChangelingDehakaZergling (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "DehakaZergling");
+}
+
+void AIThinkChangelingHotSRaptor (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "HotSRaptor");
+}
+
+void AIThinkChangelingHotSSwarmling (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "HotSSwarmling");
+}
+
+void AIThinkChangelingMarine_BlackOps (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "Marine_BlackOps");
+}
+
+void AIThinkChangelingZealotAiur (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "ZealotAiur");
+}
+
+void AIThinkChangelingZealotPurifier (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "ZealotPurifier");
+}
+
+void AIThinkChangelingZealotShakuras (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "ZealotShakuras");
+}
+
+void AIThinkChangelingZerglingStetmann (int player, unit aiUnit, unitgroup scanGroup) {
+    AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "ZerglingStetmann");
+}

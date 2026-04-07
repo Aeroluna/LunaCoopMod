@@ -159,6 +159,10 @@
         <CaseArray Validator="DisguiseAsZerglingWithWings" Effect="DisguiseAsZerglingWithWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
     </CEffectSwitch>
+    <CEffectSet id="DisguiseEx3FinalSet">
+        <EffectArray index="4" value="MutatorChangelingInit"/>
+        <EffectArray value="DisguiseEx3RemoveCaster"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="FenixAdeptShadeSpawnCasterBuff">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -606,6 +610,16 @@
     <CEffectDamage id="MutatorCapacitorDamage">
         <Amount value="10"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="MutatorChangeling"/>
+    <CEffectApplyBehavior id="MutatorChangelingInit">
+        <Behavior value="MutatorChangeling"/>
+        <ValidatorArray index="0" value="MutatorChangelingPreBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="MutatorChangelingSearch">
+        <SearchFilters value="Visible;Player,Ally,Neutral,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="6" Effect="MutatorChangelingTriggerDummy"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="MutatorChangelingTriggerDummy"/>
     <CEffectCreateHealer id="NanoRepair">
         <ValidatorArray index="8" removed="1"/>
     </CEffectCreateHealer>
@@ -3749,6 +3763,7 @@
         <ImpactEffect value="HHValkyrie2Damage"/>
         <AmmoUnit value="HHValkyrie2Weapon"/>
         <ValidatorArray index="0" value="TargetInWeaponRange"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="HHValkyrie2Search">
         <EditorCategories value="Race:Terran"/>

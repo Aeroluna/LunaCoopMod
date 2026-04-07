@@ -391,6 +391,12 @@ https://github.com/user-attachments/assets/edbf9777-2af3-4900-8ba8-28e4bcdfd038
 
 Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and Dark Templar running through, just to name a few. Amon will send harassment units towards your minerals depending on the race you are up against.
 
+- Added new negative mutator: Imposters
+  - Imposters are among your forces! Root them out before they call in reinforcements.
+  - Costs 3 points for Brutal+.
+
+Changelings are one of the few units entirely missing from co-op. Now they have their own special mutator to show them off.
+
 - Added new neutral mutator: Whiteout
   - Adds snowy weather.
   - Occasional whiteouts obscure the battlefield.

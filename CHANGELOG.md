@@ -1,11 +1,14 @@
 # Changelog
 
-## 4/6/2026
+## 4/7/2026
 
 - Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.
 - Fixed an issue where Medic/Medivacs could not heal Mechanical units after researching Stablizer Medpacks.
 - Reverted change that allowed some heal abilities to heal structures (I changed my mind, ok?)
 - Removed ability for Medics to heal structures.
+- Added new negative mutator: Imposters
+  - Imposters are among your forces! Root them out before they call in reinforcements.
+  - Costs 3 points for Brutal+.
 
 ## 4/5/2026
 
