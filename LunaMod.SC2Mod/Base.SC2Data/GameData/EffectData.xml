@@ -1594,6 +1594,34 @@
     <CEffectApplyBehavior id="SOAMapWideChronoAB">
         <ValidatorArray index="1" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="SOAPurifierBeamDamage">
+        <ResponseFlags index="Flee" value="1"/>
+    </CEffectDamage>
+    <CEffectRandomPointInCircle id="SOAPurifierBeamMovementCircle">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="SOAPurifierBeamMovementIssueOrder"/>
+        <Radius value="4"/>
+    </CEffectRandomPointInCircle>
+    <CEffectIssueOrder id="SOAPurifierBeamMovementIssueOrder">
+        <AbilCmdIndex value="3"/>
+        <CmdFlags index="Preempt" value="0"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="SOAPurifierBeamMovementPersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="SOAPurifierBeamMovementCircle"/>
+        <InitialOffset value="0,-6,0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="SOAPurifierBeamMovementSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="TSSOAPurifierBurning"/>
+            <SortArray value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AreaArray MaxCount="1" Radius="10" Effect="SOAPurifierBeamMovementPersistent"/>
+    </CEffectEnumArea>
     <CEffectSet id="SalvageStetmannPowerTower">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="SalvageStetmannPowerTowerRB"/>

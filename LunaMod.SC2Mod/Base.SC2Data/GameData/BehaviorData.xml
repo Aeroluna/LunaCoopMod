@@ -1187,6 +1187,27 @@
             <AbilClassDisableArray index="CAbilMorph" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="SOAPurifierBeamBuildUp">
+        <Modification>
+            <BehaviorLinkDisableArray value="SOAPurifierBeamMove"/>
+            <BehaviorLinkDisableArray value="SOAPurifierBeamMoveFast"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SOAPurifierBeamMove">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="UnitHasHoldPosition"/>
+        <DisableValidatorArray value="UnitHasMoveOrder"/>
+        <Period value="1"/>
+        <PeriodicEffect value="SOAPurifierBeamMovementSearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SOAPurifierBeamMoveFast" parent="SOAPurifierBeamMove">
+        <DisableValidatorArray value="UnitHasScanMove"/>
+        <Period value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SOASolarLanceFireBeam">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ScarabChase">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>

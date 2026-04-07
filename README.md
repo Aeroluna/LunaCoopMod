@@ -1459,6 +1459,12 @@ Disruptors are rarely used with Fenix because it benefits from none of Fenix's C
 
 Karax stole Shadow Cannon and gave it to his Aiur Immortals. Karax already stole Khaydarin Monoliths so why not steal Annihilators too to be more distinct from Artanis's.
 
+- Added crater visual effects to Purifier Beam.
+- Reworked Purifier Beam movement to be floatier.
+- Reworked automatic movement of Purifier Beam.
+
+When automatically tracking, the Purifier Beam will try to sweep across enemies instead of getting stuck on one unit until it dies. This works well with the added DoT from Maguro's Karax 2.0. It also just plain looks cooler.
+
 - Fixed an issue where P1 Chrono Field would not affect ally structures.
 
 Chrono Boost and Chrono Wave affected ally structures, but not Chrono Field.

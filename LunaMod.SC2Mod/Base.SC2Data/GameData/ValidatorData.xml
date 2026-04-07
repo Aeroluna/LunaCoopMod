@@ -262,10 +262,16 @@
         <WhichUnit Value="Caster"/>
         <Value value="PitAlarak"/>
     </CValidatorUnitType>
+    <CValidatorUnitType id="IsTychusBunker">
+        <Value value="TychusBunker"/>
+    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="MutatorChangelingPreBuff">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
         <Behavior value="MutatorChangelingPreBuff"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SOAPurifierBeamBurning">
+        <Behavior value="Burning"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="TargetHasZerglingStetmannMovementSpeed">
         <WhichPlayer Value="Target"/>
@@ -1086,6 +1092,15 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitOrderQueue id="UnitHasScanMove">
+        <AbilLink value="move"/>
+        <AbilCmdIndex value="3"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorCombine id="UnitOrAttackingStructure">
+        <CombineArray value="IsTychusBunker"/>
+        <CombineArray value="BunkerMengsk"/>
+    </CValidatorCombine>
     <CValidatorCombine id="ValidChronoBoostTarget2">
         <CombineArray index="2" removed="1"/>
     </CValidatorCombine>

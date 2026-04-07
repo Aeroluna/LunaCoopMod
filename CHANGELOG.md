@@ -1,5 +1,11 @@
 # Changelog
 
+## 4/8/2026
+
+- Added crater visual effects to Purifier Beam.
+- Reworked Purifier Beam movement to be floatier.
+- Reworked automatic movement of Purifier Beam.
+
 ## 4/7/2026
 
 - Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.

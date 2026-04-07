@@ -842,6 +842,20 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorModel id="SOAPurifierBeam">
+        <On Terms="UnitBirth" Send="TimerSet 2.000000 Crater"/>
+        <On Terms="TimerExpired; TimerName Crater" Send="Create SOAPurifierBeamCrater"/>
+        <On Terms="TimerExpired; TimerName Crater" Send="TimerSet 0.400000 Crater"/>
+    </CActorModel>
+    <CActorModel id="SOAPurifierBeamCrater">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="TimerSet 5.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpRotationRandomDisc SOpShadowSyncGround SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+        <Model value="FenixDragoonPurifierCoopSolarBeamOverchargedCraterTrail"/>
+        <Scale value="1.400000,1.400000,1.000000"/>
+    </CActorModel>
     <CActorSiteOpRandomPointInCircle id="SOpScarabVariance">
         <Radius value="0.200000"/>
         <RestrictToCircumference value="1"/>
