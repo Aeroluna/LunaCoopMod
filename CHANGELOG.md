@@ -1,11 +1,16 @@
 # Changelog
 
-## 4/8/2026
+## 4/9/2026
 
 - Added crater visual effects to Purifier Beam.
 - Reworked Purifier Beam movement to be floatier.
 - Reworked automatic movement of Purifier Beam.
 - Fixed a bug with Karax's Solar Effiency upgrades that was granting way more energy than intended.
+- Removed upgrade requirement from Science Vessel's Defensive Matrix ability.
+- Added Supercritical Isotope upgrade at the Starport Tech Lab.
+  - Allows Science Vessels to cast Irradiate and Defensive Matrix in an area of effect.
+- Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
+- Seperated Irradiate into two different buffs to more easily differentiate between friendly and enemy casts.
 
 ## 4/7/2026
 

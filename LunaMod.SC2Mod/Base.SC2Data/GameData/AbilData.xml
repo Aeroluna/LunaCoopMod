@@ -26,6 +26,12 @@
             <Charge CountMax="4" CountStart="4" TimeUse="40"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilEffectTarget id="DefensiveMatrixAoE" parent="DefensiveMatrixTarget">
+        <Effect index="0" value="DefensiveMatrixAoE"/>
+        <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden"/>
+        <CursorEffect value="DefensiveMatrixAoE"/>
+        <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselAoE"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="FenixArbiterRecall">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="FenixArbiterRecallSearch"/>
@@ -139,9 +145,20 @@
     <CAbilEffectTarget id="GreaterNydusDestroyerDeepTunnel">
         <FinishTime index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="IrradiateAoE" parent="Irradiate">
+        <Effect index="0" value="IrradiateAoE"/>
+        <TargetFilters index="0" value="-;Structure,RawResource,HarvestableResource,Item,Stasis,Dead,Hidden"/>
+        <CursorEffect value="IrradiateAoE"/>
+        <CmdButtonArray index="Execute" Requirements="ScienceVesselAoE"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="ObserverTargetLock">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="StarportTechLabResearch">
+        <InfoArray index="Research15" Upgrade="ScienceVesselResearchAoE">
+            <Button DefaultButtonFace="ResearchScienceVesselAoE" Requirements="LearnScienceVesselAoE"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="UltraliskStetmannMechanicalLifeLeech">
         <TargetSorts>
             <SortArray index="2" value="TSLifeLargestFirst"/>
@@ -305,6 +322,8 @@
         <Cost index="0">
             <Vital index="Energy" value="100"/>
         </Cost>
+        <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden"/>
+        <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselNotAoE"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DehakaDeepTunnel">
         <AbilityCategories index="User1" value="1"/>
@@ -376,6 +395,8 @@
         <Cost index="0">
             <Vital index="Energy" value="75"/>
         </Cost>
+        <TargetFilters index="0" value="-;Structure,RawResource,HarvestableResource,Item,Stasis,Dead,Hidden"/>
+        <CmdButtonArray index="Execute" Requirements="ScienceVesselNotAoE"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="JinaraSacrificeInstant">
         <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
@@ -872,7 +893,7 @@
     <CAbilEffectInstant id="TychusMedicAoEBunker2" parent="TychusMedicAoEBunker"/>
     <CAbilEffectTarget id="TychusMedicDefensiveMatrix">
         <Flags index="PassengerAcquireExternal" value="1"/>
-        <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusReaperBomb">
         <Cost index="0">

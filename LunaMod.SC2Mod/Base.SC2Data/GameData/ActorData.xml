@@ -262,6 +262,14 @@
     <CActorUnit id="FenixCoop">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
     </CActorUnit>
+    <CActorRange id="IrradiateAoERange" parent="RangeAbil" abil="IrradiateAoE"/>
+    <CActorRange id="DefensiveMatrixTargetRange" parent="RangeAbil" abil="DefensiveMatrixTarget"/>
+    <CActorRange id="DefensiveMatrixAoERange" parent="RangeAbil" abil="DefensiveMatrixAoE"/>
+    <CActorModel id="IrradiateEffect">
+        <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
+        <On Terms="Behavior.IrradiateFriendly.Off" Send="Destroy"/>
+        <HostSiteOps HoldRotation="1"/>
+    </CActorModel>
     <CActorModel id="MothershipArtanisPlanetCrackerCrater">
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
@@ -861,6 +869,11 @@
         <RestrictToCircumference value="1"/>
         <ObserveRotation value="1"/>
     </CActorSiteOpRandomPointInCircle>
+    <CActorSplat id="DefensiveMatrixAoECursorSplat" parent="TerranCursorSplat" abil="DefensiveMatrixAoE"/>
+    <CActorSplat id="IrradiateAoECursorSplat" parent="TerranCursorSplat" abil="IrradiateAoE"/>
+    <CActorSound id="ScienceVessel_IrradiateImpact">
+        <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="TychusFirebat">
         <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
@@ -3000,6 +3013,8 @@
         <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
         <On Terms="Behavior.Irradiate.On" Send="Create"/>
         <On Terms="Behavior.Irradiate.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
+        <On Terms="Behavior.IrradiateFriendly.Off" Send="AnimBracketStop BSD"/>
         <Model value="GlazeParasiticBomb"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModelMaterial>

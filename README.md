@@ -1166,6 +1166,12 @@ The turret/mech commander gets more improvements to sustaining turrets/mech.
 
 Immortality Protocol kinda sucks with it only affecting 2 units. Instead, it's been reduced with a mastery that affects all of Swann's units. The extra minerals allow Swann to get either more Hellion/Hellbat frontline or build more turrets as defense.
 
+- Removed upgrade requirement from Science Vessel's Defensive Matrix ability.
+- Added Supercritical Isotope upgrade at the Starport Tech Lab.
+  - Allows Science Vessels to cast Irradiate and Defensive Matrix in an area of effect.
+
+When do people ever cast Irradiate or Defensive Matrix? Now Science Vessels get a cool upgrade making them better than their campaign version.
+
 - Buffed P2.
   - Upgrades Fire Suppression System to heal structures to 100% life.
 
@@ -1186,6 +1192,8 @@ Stops Perdition Turrets from being unable to attack when units are standing on t
 
 - Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listed wrong structures.
 - Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
+- Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
+- Seperated Irradiate into two different buffs to more easily differentiate between friendly and enemy casts.
 
 yeah.
 

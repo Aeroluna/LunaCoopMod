@@ -72,6 +72,7 @@ Behavior/Name/FenixThunderousChargeCoopStun=Stunned
 Behavior/Name/FlashBangGrenadeSlow=Flashbang Grenade
 Behavior/Name/GhostMengskCloakBuff=Shadow of the Dominion
 Behavior/Name/GhostMengskEMPStun=Shock and Awe
+Behavior/Name/IrradiateFriendly=Irradiated
 Behavior/Name/JinaraChains=Chains of Wrath
 Behavior/Name/JinaraChainsTracker=JinaraChainsTracker
 Behavior/Name/JinaraLightningStrikes=Forked Lightning
@@ -130,7 +131,8 @@ Behavior/Tooltip/FungalGrowth=Target is affected by Fungal Growth. Target is det
 Behavior/Tooltip/GhostMengskCloakBuff=This unit has increased health regeneration and movement speed while cloaked.
 Behavior/Tooltip/GhostMengskEMPStun=This unit is currently stunned.
 Behavior/Tooltip/GhostMengskSuperCloak=This unit is undetectable.
-Behavior/Tooltip/Irradiate=Irradiated unit. Enemy Biological units in or near the radiation field will take damage.
+Behavior/Tooltip/Irradiate=Irradiated unit. Biological units in or near the radiation field will take damage.
+Behavior/Tooltip/IrradiateFriendly=Irradiated unit. Enemy Biological units in or near the radiation field will take damage.
 Behavior/Tooltip/JinaraChains=This unit's attack and movement speed are slowed. If this unit takes damage, it will spread chains to more units.
 Behavior/Tooltip/JinaraLightningStrikes=Ji'naras's next basic attack deals <d ref="Effect,JinaraCoopLightningDamage,Amount"/> damage to <d ref="Effect,JinaraCoopLightningSearch,MaxCount + 1"/> enemy units.
 Behavior/Tooltip/KerriganEnvenomedSpines=Taking <d ref="$BehaviorStackCount:KerriganEnvenomedSpines$*Effect,KerriganEnvenomedSpinesDamage,Amount"/> damage per second.
@@ -299,6 +301,7 @@ Button/Name/ResearchRipwaveMissiles=Research Ripwave Munitions
 Button/Name/ResearchSIBarracksCorruption=Increase Corruption
 Button/Name/ResearchSILiberatorBecometheSwarm=Evolve Cloud Dispersal
 Button/Name/ResearchSILiberatorEnergyLeech=Research Necroplasmic Synthesis
+Button/Name/ResearchScienceVesselAoE=Research Supercritical Isotope
 Button/Name/ResearchShadowCannon2=Research Photon Reservoirs
 Button/Name/ResearchShadowDash=Research Shadow Stride
 Button/Name/ResearchSignifierFade=Research Fading Star
@@ -319,6 +322,7 @@ Button/Name/SILiberatorVolatileFuel=Volatile Fuel
 Button/Name/SILiberatorVolatileSpray=Volatile Spray
 Button/Name/SIMissileTurretRegenerativePlating=Regenerative Plating
 Button/Name/SalvageStetmann=Salvage
+Button/Name/ScienceVesselAoE=Supercritical Isotope
 Button/Name/SeismicSpinesMP=Seismic Spines
 Button/Name/SentryTaldarimForceField=Subjugation Field
 Button/Name/ShadowGuardBlink=Shadow Stride
@@ -683,6 +687,7 @@ Button/Tooltip/ResearchReaverIncreasedScarabCount=Increases the maximum and init
 Button/Tooltip/ResearchRipwaveMissiles=Upgrades the <c val="ffff8a">Viking's</c> missiles and gatling cannons to deal area damage.
 Button/Tooltip/ResearchSIBarracksCorruption=Increase the level of Corruption for this <c val="ffff8a">Infested Barracks</c>, reducing the cooldown of <c val="ffff8a">Spawn Infested Marines</c> by <d ref="Effect,StukovSIBunkerCDRDummy,Amount"/> seconds. Can have up to 5 levels of Corruption.
 Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
+Button/Tooltip/ResearchScienceVesselAoE=Allows <c val="ffff8a">Science Vessels</c> to cast Irradiate and Defensive Matrix in an area of effect.
 Button/Tooltip/ResearchShadowCannon2=<c val="ffff8a">Annihilators</c> gains an additional charge of Shadow Cannon.
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
 Button/Tooltip/ResearchSlayerTeleport=Allows <c val="ffff8a">Slayers</c> to teleport to a nearby target location, knocking back nearby enemies and dealing <d ref="Effect,AlarakStalkerForceBlastDamage,Amount"/> damage.
@@ -710,6 +715,7 @@ Button/Tooltip/SIMissileTurretRegenerativePlating=Infested Missile Turrets regen
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SOAStrikefromtheShadows=Increases the weapon damage of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanent,Modification.DamageDealtFraction[Melee]*100" player="current"/>%. Increases the energy regeneration of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanentEnergy,Modification.VitalRegenMultiplier[Energy]*100" player="current"/>%.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/SalvageStetmann=Salvages the Stetellite, removing it and returning a charge of Deploy Stetellite if possible. Salvage takes <d time="5"/> to finish. Warning: once Salvage is triggered, it cannot be canceled.
+Button/Tooltip/ScienceVesselAoE=Irradiate and Defensive Matrix cast in an area of effect.
 Button/Tooltip/SeismicSpinesMP=Increases the attack range of Lurkers by +<d ref="$UpgradeEffectArrayValue:SeismicSpines:Weapon,LurkerMP,Range$"/>.
 Button/Tooltip/SentryTaldarimForceField=Creates a solid barrier that lasts for <d ref="Behavior,ForceFieldFate,Duration"/> seconds and impedes movement of ground units.<n/><n/><c val="#ColorAttackInfo">Subjugation Fields cannot be shattered.</c>
 Button/Tooltip/ShieldBattery=Defensive structure. Recharges shields of nearby units.
@@ -884,6 +890,7 @@ Effect/Name/HurricaneMissileLeftCircleStetmann=Hurricane Missile Left Circle
 Effect/Name/HurricaneMissileRightCircleStetmann=Hurricane Missile Right Circle
 Effect/Name/InfestedCivilianAC=Infested Claws Damage
 Effect/Name/InfestedMarineAC=Infested Rifle
+Effect/Name/IrradiateApplyBehaviorFriendly=Irradiate Apply Behavior Friendly
 Effect/Name/JinaraBarrageCP=JinaraBarrageCP
 Effect/Name/JinaraBarrageDamage=JinaraBarrageDamage
 Effect/Name/JinaraBarrageLM=JinaraBarrageLM
@@ -1256,6 +1263,7 @@ RequirementNode/Tooltip/CountUpgradeMengskAcademyMissileCountCompleteOnly3665151
 RequirementNode/Tooltip/CountUpgradePsiStormTechCompleteOnly3263798822TechTreeCheat=Research Psionic Storm at the Templar Archives
 RequirementNode/Tooltip/CountUpgradeSIBansheeIncubationChambersCompleteOnly3518554317=Evolve Incubation Chambers at the Infested Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeSILiberatorNecroplasmicSynthesisCompleteOnly1838460704=Research Necroplasmic Synthesis at the Infested Starport Tech Lab
+RequirementNode/Tooltip/CountUpgradeScienceVesselResearchAoECompleteOnly3303833448=Research Supercritical Isotope at the Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeScourgeGasCostReductionCompleteOnly2371086511=Evolve Dampening Membrane at the Scourge Nest
 RequirementNode/Tooltip/CountUpgradeSignifierFadeCompleteOnly892173529=Research Fading Star at the Dark Shrine
 RequirementNode/Tooltip/CountUpgradeStalkerResearchBlinkChargesCompleteOnly1910735067=Research Displacement Core at the Twilight Council
@@ -1385,6 +1393,7 @@ Upgrade/Name/RaynorDoubleMULE=Raynor Double MULE
 Upgrade/Name/SIBansheeIncubationChambers=Incubation Chambers
 Upgrade/Name/SIBarracksCorruption=SIBarracks Corruption
 Upgrade/Name/SILiberatorNecroplasmicSynthesis=Necroplasmic Synthesis
+Upgrade/Name/ScienceVesselResearchAoE=Research AoE
 Upgrade/Name/SignifierFade=Fade
 Upgrade/Name/SmartServos=Smart Servos
 Upgrade/Name/SwannCommanderVehicleCooldown=Pulse-Loop Capacaitors

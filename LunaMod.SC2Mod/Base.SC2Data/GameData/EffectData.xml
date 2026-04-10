@@ -111,6 +111,13 @@
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectEnumArea id="DefensiveMatrixAoE">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="DefensiveMatrixSet"/>
+        <MinCount value="1"/>
+    </CEffectEnumArea>
     <CEffectCreateUnit id="DisguiseAsHotSRaptorCU" parent="DisguiseEx3CU">
         <SpawnUnit value="ChangelingHotSRaptor"/>
     </CEffectCreateUnit>
@@ -489,6 +496,24 @@
     <CEffectTeleport id="HyperjumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectEnumArea id="IrradiateAoE">
+        <EditorCategories value=""/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Visible;RawResource,HarvestableResource,Item,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="IrradiateSet"/>
+        <MinCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="IrradiateApplyBehavior">
+        <ValidatorArray index="0" value="TargetIsEnemyOrNeutral"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="IrradiateApplyBehaviorFriendly">
+        <ValidatorArray index="0" value="TargetIsAllyorPlayer"/>
+        <EditorCategories value=""/>
+        <Behavior value="IrradiateFriendly"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="IrradiateSet">
+        <EffectArray value="IrradiateApplyBehaviorFriendly"/>
+    </CEffectSet>
     <CEffectSet id="JinaraChainsImpactSet">
         <EditorCategories value=""/>
         <EffectArray value="JinaraChainsAB"/>
