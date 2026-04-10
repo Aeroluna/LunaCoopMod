@@ -5,6 +5,7 @@
 - Added crater visual effects to Purifier Beam.
 - Reworked Purifier Beam movement to be floatier.
 - Reworked automatic movement of Purifier Beam.
+- Fixed a bug with Karax's Solar Effiency upgrades that was granting way more energy than intended.
 
 ## 4/7/2026
 
