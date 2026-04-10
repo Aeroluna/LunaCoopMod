@@ -1480,6 +1480,7 @@ Karax stole Shadow Cannon and gave it to his Aiur Immortals. Karax already stole
 - Added crater visual effects to Purifier Beam.
 - Reworked Purifier Beam movement to be floatier.
 - Reworked automatic movement of Purifier Beam.
+- Fixed an issue where Purifier Beam had no death animation.
 
 When automatically tracking, the Purifier Beam will try to sweep across enemies instead of getting stuck on one unit until it dies. This works well with the added DoT from Maguro's Karax 2.0. It also just plain looks cooler.
 

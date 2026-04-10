@@ -5,6 +5,7 @@
 - Added crater visual effects to Purifier Beam.
 - Reworked Purifier Beam movement to be floatier.
 - Reworked automatic movement of Purifier Beam.
+- Fixed an issue where Purifier Beam had no death animation.
 - Fixed a bug with Karax's Solar Effiency upgrades that was granting way more energy than intended.
 - Removed upgrade requirement from Science Vessel's Defensive Matrix ability.
 - Added Supercritical Isotope upgrade at the Starport Tech Lab.

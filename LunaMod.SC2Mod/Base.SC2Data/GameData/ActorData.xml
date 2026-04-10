@@ -909,6 +909,7 @@
         <HostSiteOps Ops="SOpMoveUpBy1Dot5"/>
     </CActorModel>
     <CActorModel id="SOAPurifierBeam">
+        <On index="1" Send="AnimBracketStop BSD"/>
         <On Terms="UnitBirth" Send="TimerSet 2.000000 Crater"/>
         <On Terms="TimerExpired; TimerName Crater" Send="Create SOAPurifierBeamCrater"/>
         <On Terms="TimerExpired; TimerName Crater" Send="TimerSet 0.400000 Crater"/>
@@ -922,6 +923,9 @@
         <Model value="FenixDragoonPurifierCoopSolarBeamOverchargedCraterTrail"/>
         <Scale value="1.400000,1.400000,1.000000"/>
     </CActorModel>
+    <CActorUnit id="SOAPurifierBeamUnit">
+        <Remove Terms="Behavior.SOAPurifierBeamFiring.Off" Target="SOAPurifierBeam" Send="Destroy"/>
+    </CActorUnit>
     <CActorSiteOpRandomPointInCircle id="SOpScarabVariance">
         <Radius value="0.200000"/>
         <RestrictToCircumference value="1"/>
