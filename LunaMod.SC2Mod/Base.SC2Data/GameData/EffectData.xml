@@ -645,6 +645,17 @@
         <AreaArray MaxCount="1" Radius="6" Effect="MutatorChangelingTriggerDummy"/>
     </CEffectEnumArea>
     <CEffectDamage id="MutatorChangelingTriggerDummy"/>
+    <CEffectApplyBehavior id="MutatorHybridFacilityCharge"/>
+    <CEffectModifyUnit id="MutatorHybridFacilityChargeMU">
+        <Cost Behavior="MutatorHybridFacilityAccrue" CooldownOperation="Set">
+            <Fraction Cooldown="1"/>
+        </Cost>
+        <ValidatorArray value="MutatorHybridFacilityChargeMax"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="MutatorHybridFacilityChargeSet">
+        <EffectArray value="MutatorHybridFacilityCharge"/>
+        <EffectArray value="MutatorHybridFacilityChargeMU"/>
+    </CEffectSet>
     <CEffectCreateHealer id="NanoRepair">
         <ValidatorArray index="8" removed="1"/>
     </CEffectCreateHealer>

@@ -96,6 +96,7 @@ void lib74A68E34_InitVariables () {
         lib74A68E34_gv_mutatorWhiteoutTrackedPings[init_i] = c_invalidPingId;
     }
     lib74A68E34_gv_mutatorStartingResourcesUnits = UnitGroupEmpty();
+    lib74A68E34_gv_mutatorHybridFacility = UnitGroupEmpty();
 }
 
 // Custom Script
@@ -9175,6 +9176,7 @@ bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("Capacitor", lib74A68E34_gt_MutatorCapacitorInit, lib74A68E34_gt_MutatorCapacitorShutdown);
     libCOMU_gf_CT_RegisterMutator("BountyHunter", lib74A68E34_gt_MutatorBountyHunterInit, lib74A68E34_gt_MutatorBountyHunterShutdown);
     libCOMU_gf_CT_RegisterMutator("Changeling", lib74A68E34_gt_MutatorChangelingInit, lib74A68E34_gt_MutatorChangelingShutdown);
+    libCOMU_gf_CT_RegisterMutator("HybridFacility", lib74A68E34_gt_MutatorHybridFacilityInit, lib74A68E34_gt_MutatorHybridFacilityShutdown);
     libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
     return true;
 }
@@ -10963,6 +10965,69 @@ void lib74A68E34_gt_MutatorChangelingShutdown_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MutatorHybridFacilityInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorHybridFacilityInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_point = PointFromName("ZeratulArtifactOrigin");
+    if ((lv_point == null)) {
+        lv_point = MidPoint(PlayerStartLocation(PlayerGroupPlayer(libCOOC_gf_CommanderPlayers(), 1)), PlayerStartLocation(PlayerGroupPlayer(libCOOC_gf_CommanderPlayers(), 2)));
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorHybridFacility", 0, 1, lv_point);
+    UnitGroupAdd(lib74A68E34_gv_mutatorHybridFacility, UnitLastCreated());
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorHybridFacility", c_unitCreateIgnorePlacement, 2, UnitGetPosition(UnitLastCreated()));
+    UnitGroupAdd(lib74A68E34_gv_mutatorHybridFacility, UnitLastCreated());
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogUnit, "HybridDominatorVoid", "EnergyRegenRate", 1, 0.5625);
+    libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogUnit, "HybridDominatorVoid", "EnergyRegenRate", 2, 0.5625);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorHybridFacilityInit_Init () {
+    lib74A68E34_gt_MutatorHybridFacilityInit = TriggerCreate("lib74A68E34_gt_MutatorHybridFacilityInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorHybridFacilityShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorHybridFacilityShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto2ECB9C01_g;
+    int auto2ECB9C01_u;
+    unit auto2ECB9C01_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto2ECB9C01_g = lib74A68E34_gv_mutatorHybridFacility;
+    auto2ECB9C01_u = UnitGroupCount(auto2ECB9C01_g, c_unitCountAll);
+    for (;; auto2ECB9C01_u -= 1) {
+        auto2ECB9C01_var = UnitGroupUnitFromEnd(auto2ECB9C01_g, auto2ECB9C01_u);
+        if (auto2ECB9C01_var == null) { break; }
+        UnitRemove(auto2ECB9C01_var);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorHybridFacilityShutdown_Init () {
+    lib74A68E34_gt_MutatorHybridFacilityShutdown = TriggerCreate("lib74A68E34_gt_MutatorHybridFacilityShutdown_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MutatorMinedOutInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MutatorMinedOutInit_Func (bool testConds, bool runActions) {
@@ -11320,6 +11385,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorChangelingSpawn_Init();
     lib74A68E34_gt_MutatorChangelingRally_Init();
     lib74A68E34_gt_MutatorChangelingShutdown_Init();
+    lib74A68E34_gt_MutatorHybridFacilityInit_Init();
+    lib74A68E34_gt_MutatorHybridFacilityShutdown_Init();
     lib74A68E34_gt_MutatorMinedOutInit_Init();
     lib74A68E34_gt_MutatorMinedOutShutdown_Init();
 }

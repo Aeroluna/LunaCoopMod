@@ -1,6 +1,6 @@
 # Changelog
 
-## 4/9/2026
+## 4/10/2026
 
 - Added crater visual effects to Purifier Beam.
 - Reworked Purifier Beam movement to be floatier.
@@ -11,6 +11,14 @@
   - Allows Science Vessels to cast Irradiate and Defensive Matrix in an area of effect.
 - Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
 - Seperated Irradiate into two different buffs to more easily differentiate between friendly and enemy casts.
+- Changed voicelines for Ordnance Tower.
+- Added new positive mutator: Hybrid Domestication
+  - Players gain access to the Hybrid Facility, allowing them to train Hybrid of their own.
+  - Costs -3 points for Brutal+.
+- Fixed an issue where Hybrid Reaver's Consume Essence did not play a spell animation.
+- Added a warp-in effect for Hybrid.
+- Fixed an issue where Hybrid Behemoth's Slimed! debuff had no tooltip.
+- Fixed an issue where Hybrid Destroyer's Graviton Prison did not play a spell animation.
 
 ## 4/7/2026
 

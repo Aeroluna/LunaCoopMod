@@ -613,6 +613,23 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorHybridFacilityAccrue">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="120"/>
+        <PeriodicEffect value="MutatorHybridFacilityChargeSet"/>
+        <Cost>
+            <Cooldown TimeStart="120" TimeUse="120"/>
+        </Cost>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorHybridFacilityCharge">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="20"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorWhiteout">
         <Alignment value="Negative"/>
         <BehaviorFlags index="Permanent" value="1"/>

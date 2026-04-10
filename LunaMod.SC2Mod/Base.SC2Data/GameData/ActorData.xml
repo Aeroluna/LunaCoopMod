@@ -262,6 +262,61 @@
     <CActorUnit id="FenixCoop">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
     </CActorUnit>
+    <CActorUnit id="HybridD">
+        <On Terms="UnitBirth.HybridDestroyer" Send="Create HybridWarpInEffect"/>
+        <On Terms="Abil.GravitonPrison.SourceCastStart" Send="$Spell NonLooping"/>
+        <SoundArray index="Ready" value="Hybrid_Ready"/>
+        <SoundArray index="What" value="Hybrid_What"/>
+        <SoundArray index="Yes" value="Hybrid_Yes"/>
+        <SoundArray index="Attack" value="Hybrid_Attack"/>
+        <GroupSoundArray index="Birth" value=""/>
+        <GroupSoundArray index="Ready" value=""/>
+        <GroupSoundArray index="Help" value=""/>
+        <GroupSoundArray index="What" value=""/>
+        <GroupSoundArray index="Yes" value=""/>
+        <GroupSoundArray index="Attack" value=""/>
+        <GroupSoundArray index="Pissed" value=""/>
+        <GroupSoundArray index="Board" value=""/>
+    </CActorUnit>
+    <CActorUnit id="HybridE">
+        <On Terms="UnitBirth.HybridReaver" Send="Create HybridWarpInEffect"/>
+        <On Terms="Abil.ConsumeDNA.SourceCastStart" Send="$Spell,00"/>
+        <GroupSoundArray index="Birth" value=""/>
+        <GroupSoundArray index="Ready" value=""/>
+        <GroupSoundArray index="Help" value=""/>
+        <GroupSoundArray index="What" value=""/>
+        <GroupSoundArray index="Yes" value=""/>
+        <GroupSoundArray index="Attack" value=""/>
+        <GroupSoundArray index="Pissed" value=""/>
+        <GroupSoundArray index="Board" value=""/>
+        <SoundArray index="Attack" value="Archon_Attack"/>
+    </CActorUnit>
+    <CActorUnit id="HybridNemesis">
+        <On Terms="UnitBirth.HybridNemesis" Send="Create HybridWarpInEffect"/>
+    </CActorUnit>
+    <CActorUnit id="HybridBehemoth">
+        <On Terms="UnitBirth.HybridBehemoth" Send="Create HybridWarpInEffect"/>
+        <GroupSoundArray index="Birth" value=""/>
+        <GroupSoundArray index="Ready" value=""/>
+        <GroupSoundArray index="Help" value=""/>
+        <GroupSoundArray index="What" value=""/>
+        <GroupSoundArray index="Yes" value=""/>
+        <GroupSoundArray index="Attack" value=""/>
+        <GroupSoundArray index="Pissed" value=""/>
+        <GroupSoundArray index="Board" value=""/>
+        <SoundArray index="Ready" value="DarkArchon_Ready"/>
+        <SoundArray index="What" value="DarkArchon_What"/>
+        <SoundArray index="Yes" value="DarkArchon_Yes"/>
+        <SoundArray index="Attack" value="DarkArchon_Attack"/>
+        <SoundArray index="Pissed" value="DarkArchon_Pissed"/>
+    </CActorUnit>
+    <CActorUnit id="HybridDominatorVoid">
+        <On Terms="UnitBirth.HybridDominatorVoid" Send="Create HybridWarpInEffect"/>
+    </CActorUnit>
+    <CActorModel id="HybridWarpInEffect">
+        <AutoScaleFactor value="1.000000"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardScopeLaunch SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
     <CActorRange id="IrradiateAoERange" parent="RangeAbil" abil="IrradiateAoE"/>
     <CActorRange id="DefensiveMatrixTargetRange" parent="RangeAbil" abil="DefensiveMatrixTarget"/>
     <CActorRange id="DefensiveMatrixAoERange" parent="RangeAbil" abil="DefensiveMatrixAoE"/>
@@ -850,6 +905,9 @@
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="SetScale 1.300000"/>
         <!--On Terms="ActorCreation; ValidateCreationEffect HaveSmartServos" Send="AnimSetTimeScale Birth 1.361702"/-->
     </CActorModel>
+    <CActorModel id="MutatorHybridFacilityHologram" parent="ModelAddition">
+        <HostSiteOps Ops="SOpMoveUpBy1Dot5"/>
+    </CActorModel>
     <CActorModel id="SOAPurifierBeam">
         <On Terms="UnitBirth" Send="TimerSet 2.000000 Crater"/>
         <On Terms="TimerExpired; TimerName Crater" Send="Create SOAPurifierBeamCrater"/>
@@ -871,6 +929,23 @@
     </CActorSiteOpRandomPointInCircle>
     <CActorSplat id="DefensiveMatrixAoECursorSplat" parent="TerranCursorSplat" abil="DefensiveMatrixAoE"/>
     <CActorSplat id="IrradiateAoECursorSplat" parent="TerranCursorSplat" abil="IrradiateAoE"/>
+    <CActorUnit id="MutatorHybridFacility" parent="GenericUnitStandardNoAutoSoundLinks" unitName="MutatorHybridFacility">
+        <On Terms="ActorCreation" Send="Create MutatorHybridFacilityHologram"/>
+        <On Terms="ActorCreation" Send="SetFilter Ally"/>
+        <BarOffset value="165"/>
+        <BarWidth value="200"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-hybridholdingcellsmall.dds"/>
+        </GroupIcon>
+        <NameOffset value="150"/>
+        <UnitIcon value="Assets\Textures\btn-doodad-hybridcontainmentcell.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-hybridholdingcellsmall.dds"/>
+        </Wireframe>
+        <PortraitModel value="ConfederateAdjutantPortrait"/>
+        <SoundArray index="What" value="MercCompound_What"/>
+        <StatusBarFlags index="Life" value="0"/>
+    </CActorUnit>
     <CActorSound id="ScienceVessel_IrradiateImpact">
         <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
     </CActorSound>
@@ -3539,8 +3614,8 @@
     <CActorUnit id="HHOrdnanceTower">
         <On Terms="AbilMorph.*.Start; MorphTo HHOrdnanceTower" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom HHOrdnanceTower" Send="Destroy"/>
-        <SoundArray index="Ready" value="Bunker_Ready"/>
-        <SoundArray index="What" value="Bunker_What"/>
+        <SoundArray index="Ready" value="SensorTower_Ready"/>
+        <SoundArray index="What" value="SensorTower_What"/>
         <PlacementSound value="Terran_BuildingPlacement"/>
         <AcceptedHostedPropTransfers index="CreepEngulfment" value="0"/>
         <PlacementModel value="HHOrdnanceTower_Placement"/>

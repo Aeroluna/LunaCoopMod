@@ -439,6 +439,12 @@ zap zap zap zap zap. The lightning does low flat damage so its better to build t
 
 Wanted: Dead or Dead. Some units are marked and have improved stats, but killing them gives you a nice reward.
 
+- Added new positive mutator: Hybrid Domestication
+  - Players gain access to the Hybrid Facility, allowing them to train Hybrid of their own.
+  - Costs -3 points for Brutal+.
+
+Anything you can do, I can do better.
+
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
 - Added Gift Exchange to Brutal+ as a neutral mutator costing 5 points.
 - Added Fireworks to Brutal+ as a negative mutator costing 5 points.
@@ -769,6 +775,10 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Orbital Commands had an unused ability that instantly creates a Supply Depot.
 - Fixed an issue where Arbiter's Mass Recall ability used the same cursor splat as Fenix's.
 - Reverted Arbiter's Mass Recall ability radius to the campaign version.
+- Fixed an issue where Hybrid Reaver's Consume Essence did not play a spell animation.
+- Added a warp-in effect for Hybrid.
+- Fixed an issue where Hybrid Behemoth's Slimed! debuff had no tooltip.
+- Fixed an issue where Hybrid Destroyer's Graviton Prison did not play a spell animation.
 
 yeah.
 
