@@ -1,5 +1,14 @@
 # Changelog
 
+## 4/13/2026
+
+- Increased cost of Void Archon's Maelstrom ability from 50 to 100.
+- Fixed an issue where Ordnance Towers had different voicelines/portrait while constructing.
+- Fixed an issue where Ordnance Towers did not play the proper placement sound.
+- Fixed an issue where P4 Ordnance Towers could still send Strike Fighters while stunned or stasised.
+- Fixed an issue where Han & Horners reapers were gaining more movement speed from Jet Pack Overdrive than intended.
+- Reworded the tooltip of Supplicant's Blood Shields upgrade.
+
 ## 4/10/2026
 
 - Added crater visual effects to Purifier Beam.

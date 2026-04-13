@@ -1612,7 +1612,7 @@ Replaces Alarak with Ji'nara, a hero who focuses on Sacrifice usage to continue 
 Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant and Stalker warp-in effects going from top to bottom instead of bottom to top. Seriously, were they drunk when UV mapping these?
 
 - Added Void Archon, merged from two Ascendants.
-  - Can use Maelstrom ability for 50 energy.
+  - Can use Maelstrom ability for 100 energy.
     - Stuns enemies in an area for 8 seconds.
   - Can use Sacrifice ability to refill energy.
   - Has Power Overwhelming passive.
@@ -1718,6 +1718,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Fixed an issue where Destroyers would not play their attack animation during their warp-in animation (It still looks buggy with the beam attachments).
 - Fixed an issue where combat units would have a level in their highlight tooltip.
 - Fixed an issue where Alarak's Imposing Presence tooltip did not list Massive unit immunity.
+- Reworded the tooltip of Supplicant's Blood Shields upgrade.
 
 yeah.
 
