@@ -12,6 +12,7 @@
 - Fixed an issue where Stetmann's structures did not play the zerg building sound.
 - Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
 - Fixed an issue where Mecha Zergling Synthetic Adrenal Pumps tooltip showed incorrect energy drain.
+- Changed the visual missile of Contaminated Strike to be directional.
 
 ## 4/13/2026
 

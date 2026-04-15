@@ -2713,6 +2713,7 @@ Previously the status bar only showed hp.
 - Fixed an issue where Aegis Guard's Incapacitor Shells tooltip incorrectly states massive units are immune.
 - Improved Aegis Guard's Incapacitor Shells debuff tooltip.
 - Fixed an issue where Blackhammer's attack muzzle flash only appeared on the right weapon.
+- Changed the visual missile of Contaminated Strike to be directional.
 
 yeah.
 

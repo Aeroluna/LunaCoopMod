@@ -17,6 +17,9 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
+        <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
+    </CActorModel>
     <CActorSound id="FenixAdeptShadeLaunchAS" parent="SoundOneShot">
         <On Terms="Effect.FenixAdeptShadeSpawnShade.Start" Send="Create"/>
         <On Terms="Effect.FenixTalisShadeSpawnShade.Start" Send="Create"/>
@@ -477,6 +480,7 @@
         <On Terms="TimerExpired; TimerName Death" Send="Destroy"/>
         <Model value="ArtilleryMengskBombardmentDrop"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
     <CActorModel id="ArtilleryMengskGlobalExperimentalStrikeWarning">
         <FogVisibility value="Visible"/>
@@ -932,6 +936,9 @@
     <CActorUnit id="SOAPurifierBeamUnit">
         <Remove Terms="Behavior.SOAPurifierBeamFiring.Off" Target="SOAPurifierBeam" Send="Destroy"/>
     </CActorUnit>
+    <CActorSiteOpLocalOffset id="SOpMoveUpArtilleryMengskBombardment">
+        <LocalOffset value="0.000000,0.000000,120.000000"/>
+    </CActorSiteOpLocalOffset>
     <CActorSiteOpRandomPointInCircle id="SOpScarabVariance">
         <Radius value="0.200000"/>
         <RestrictToCircumference value="1"/>
@@ -956,6 +963,9 @@
         <SoundArray index="What" value="MercCompound_What"/>
         <StatusBarFlags index="Life" value="0"/>
     </CActorUnit>
+    <CActorSiteOpUp id="SOpUpArtilleryMengskBombardment">
+        <HostUpSiteOps Ops="SOpOriginPoint SOpMoveUpArtilleryMengskBombardment"/>
+    </CActorSiteOpUp>
     <CActorSound id="ScienceVessel_IrradiateImpact">
         <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
     </CActorSound>
