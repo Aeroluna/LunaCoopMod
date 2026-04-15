@@ -1,5 +1,18 @@
 # Changelog
 
+## 4/15/2026
+
+- Fixed an issue where Swann's P3 did not lower the cooldown of Hercules Tactical Jump.
+- Fixed an issue where the P3 tooltip on Hercule's Rapid Deployment passive would always show regardless of prestige selected.
+- Reworked Upgrade Resource Cost mastery to affect unit upgrades as well.
+- Renamed Upgrade Resource Cost to Research Resource Cost.
+- Removed ability for Mecha Hydralisk Dens to morph into Mecha Lurker Dens.
+- Added ability for Mecha Drones to morph into Mecha Lurker Dens.
+- Fixed an issue where units dropped from Mecha Overlords did not play an unload animation.
+- Fixed an issue where Stetmann's structures did not play the zerg building sound.
+- Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
+- Fixed an issue where Mecha Zergling Synthetic Adrenal Pumps tooltip showed incorrect energy drain.
+
 ## 4/13/2026
 
 - Increased cost of Void Archon's Maelstrom ability from 50 to 100.

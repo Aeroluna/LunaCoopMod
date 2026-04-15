@@ -1204,6 +1204,7 @@ Stops Perdition Turrets from being unable to attack when units are standing on t
 - Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
 - Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
 - Seperated Irradiate into two different buffs to more easily differentiate between friendly and enemy casts.
+- Fixed an issue where the P3 tooltip on Hercule's Rapid Deployment passive would always show regardless of prestige selected.
 
 yeah.
 
@@ -2489,11 +2490,16 @@ Felt very arbitrary to make Infestors unavailable. Why were Mecha Infestors spec
 - Changed Deactivated Stetellites to be selectable.
 - Added ability to Cancel rebuilding Stetellites, killing it permanently.
 
-Previously, if you put a Stetellite too far forward, a Propagator could just feast on them for free, for the rest of the game, with no way to correct the mistake. Now you can manually take down erroneous Stetellites.
+Now you can manually take down erroneous Stetellites.
 
 - Added P1 Advantage: Stetellites deploy 100% faster.
 
 This makes it easier to expend charges Stetellites quickly.
+
+- Reworked Upgrade Resource Cost mastery to affect unit upgrades as well.
+- Renamed Upgrade Resource Cost to Research Resource Cost.
+
+Why does this mastery only affect weapon/armor upgrades when no other commanders' does? Previously this mastery had a hard time competing with Gary Ability Cooldown. Now it should be more viable when you want to focus on army instead of Gary.
 
 - Buffed Mecha Corruptor's Cluster Busters ability to no longer be a channel.
 - Fixed an issue where Mecha Corruptor's Cluster Busters ability dealt damage before the missiles landed.
@@ -2527,7 +2533,12 @@ Creates an interesting Spirit Link-like effect where all the Ultralisks are tryi
 - Buffed Mecha Locusceptors to hit air units.
 - Changed Mecha Battlecarrier Lord's Mecha Locusceptor weapon icon.
 
-Mecha Battlecarrier Lords use a ridiculous amount of energy just to attack, there no opportunity to swap out of JUICE configuration. Lowering their energy costs should make them stronger in attrition battles.
+Mecha Battlecarrier Lords used a ridiculous amount of energy just to attack, leaving no opportunity to swap out of JUICE configuration. Lowering their energy costs should make them stronger in attrition battles.
+
+- Removed ability for Mecha Hydralisk Dens to morph into Mecha Lurker Dens.
+- Added ability for Mecha Drones to morph into Mecha Lurker Dens.
+
+Copied from Versus. Separating Lurker Den should make it easier to tech into Lurkers without sacrificing Hydralisk upgrades.
 
 - Fixed an issue where Mecha Ultralisks would not burrow for their Vectored Burrow Charge ability.
 - Fixed an issue where Mecha Ultralisk's Vectored Burrow Charge ability did not play some FX.
@@ -2572,6 +2583,9 @@ Copied from Versus.
 - Fixed an issue where Mecha Ravager Eggs did not have a "popping" animation.
 - Fixed an issue where Mecha Roach Eggs did not have a "popping" animation.
 - Fixed an issue where Mecha Zergling's Synthetic Adrenal Pumps passive did not drain energy.
+- Fixed an issue where units dropped from Mecha Overlords did not play an unload animation.
+- Fixed an issue where Stetmann's structures did not play the zerg building sound.
+- Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
 
 yeah.
 

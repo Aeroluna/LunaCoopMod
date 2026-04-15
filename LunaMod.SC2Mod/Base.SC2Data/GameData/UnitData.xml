@@ -288,10 +288,68 @@
             <LayoutButtons Face="Detector" Type="Passive" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="HydraliskDenStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="HydraliskStetmannRespawnLocked" Requirements="StetmannLevel09"/>
+            <LayoutButtons index="5" Face="HydraliskStetmannRespawn" AbilCmd="HydraliskStetmannRespawn,Train1"/>
+            <LayoutButtons index="10">
+                <Face value="RallyStetmannBuilding"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="RallyBuildingStetmann,Rally1"/>
+                <Requirements value=""/>
+                <Row value="1"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="11">
+                <Face value="DualQueueLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="StetmannLevel15"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="12" Face="StetmannDualQueue" Requirements="" Row="2" Column="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+            <LayoutButtons index="17" removed="1"/>
+            <LayoutButtons index="18" removed="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="KerriganReviveCocoon">
         <Attributes index="Biological" value="0"/>
         <Attributes index="Psionic" value="0"/>
         <Attributes index="Heroic" value="0"/>
+    </CUnit>
+    <CUnit id="LurkerDenStetmann">
+        <CostResource index="Minerals" value="150"/>
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="ResearchLurkerStetmannTunnelingBurstRange" AbilCmd="HydraliskDenStetmannResearch,Research4"/>
+            <LayoutButtons index="3" Face="ResearchChannelingSpinesLocked" Type="Passive" AbilCmd="" Requirements="StetmannLevel08"/>
+            <LayoutButtons index="4" Face="ReserachLurkerStetmannChannelingSpines" Type="AbilCmd" AbilCmd="HydraliskDenStetmannResearch,Research5" Requirements="" Column="1"/>
+            <LayoutButtons index="5" Face="LurkerStetmannPassive" Type="Passive" AbilCmd="" Row="1" Column="0"/>
+            <LayoutButtons index="6">
+                <Face value="DualQueueLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="StetmannLevel15"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="7" Face="StetmannDualQueue" Requirements="" Row="2" Column="0"/>
+            <LayoutButtons index="8" removed="1"/>
+            <LayoutButtons index="9" removed="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+        </CardLayouts>
+        <TechAliasArray index="0" removed="1"/>
     </CUnit>
     <CUnit id="MedicFlareWeapon" parent="MISSILE">
         <Race value="Terr"/>
@@ -1203,6 +1261,10 @@
             <LayoutButtons index="12" Row="1" Column="2"/>
             <LayoutButtons index="13" Row="1" Column="2"/>
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDroneUpStetmann,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts index="2">
+            <LayoutButtons Face="LurkerDenStetmann" Type="AbilCmd" AbilCmd="ZergBuildStetmann,Build12" Row="0" Column="2"/>
+            <LayoutButtons Face="MutateintoMechaLurkerDenLocked" Type="Passive" Requirements="StetmannLevel06" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="DroneStetmannBurrowed">
@@ -4125,8 +4187,8 @@
         </CardLayouts>
         <CardLayouts index="2">
             <LayoutButtons index="6" Face="ScourgeNest" Type="AbilCmd" AbilCmd="ZergBuild,Build25" Requirements="" Column="0"/>
-            <LayoutButtons index="7" Face="SwarmNetwork" AbilCmd="ZergBuild,Build12" Row="1"/>
-            <LayoutButtons Face="MutateintoLurkerDen" Type="AbilCmd" AbilCmd="ZergBuild,Build17" Row="0" Column="2"/>
+            <LayoutButtons index="7" Face="SwarmNetwork" AbilCmd="ZergBuild,Build17" Row="1"/>
+            <LayoutButtons Face="MutateintoLurkerDen" Type="AbilCmd" AbilCmd="ZergBuild,Build12" Row="0" Column="2"/>
             <LayoutButtons Face="MutateintoLurkerDenLocked" Type="Passive" Requirements="KerriganLevel05" Row="0" Column="2"/>
         </CardLayouts>
     </CUnit>

@@ -205,6 +205,11 @@
             <SortArray index="3" removed="1"/>
         </TargetSorts>
     </CAbilEffectTarget>
+    <CAbilBuild id="ZergBuildStetmann">
+        <InfoArray index="Build12" Unit="LurkerDenStetmann" Time="80">
+            <Button DefaultButtonFace="LurkerDenStetmann" Requirements="HaveHydraliskDenStetmann"/>
+        </InfoArray>
+    </CAbilBuild>
     <CAbilEffectTarget id="heal">
         <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
         <AutoCastValidatorArray index="5" value=""/>
@@ -2668,11 +2673,11 @@
         </Cost>
     </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
-        <InfoArray index="Build12" Unit="SwarmNetwork" Time="50">
-            <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="BuildSwarmNetwork"/>
-        </InfoArray>
-        <InfoArray index="Build17" Unit="LurkerDenMP" Time="80">
+        <InfoArray index="Build12" Unit="LurkerDenMP" Time="80">
             <Button DefaultButtonFace="MutateintoLurkerDen" State="Restricted" Requirements="HaveHydraliskDen"/>
+        </InfoArray>
+        <InfoArray index="Build17" Unit="SwarmNetwork" Time="50">
+            <Button DefaultButtonFace="SwarmNetwork" State="Restricted" Requirements="BuildSwarmNetwork"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilTrain id="ZerglingStetmannRespawn">

@@ -325,6 +325,12 @@
         <On Terms="Behavior.IrradiateFriendly.Off" Send="Destroy"/>
         <HostSiteOps HoldRotation="1"/>
     </CActorModel>
+    <CActorUnit id="LurkerDenStetmann">
+        <Remove Terms="AbilMorph.*.Cancel; MorphTo LurkerDenStetmann" Send="Destroy"/>
+        <Remove Terms="AbilMorph.*.Finish; MorphTo LurkerDenStetmann" Send="Create"/>
+        <Remove Terms="ActorCreation" Send="AnimPlay Birth Morph NonLooping 0.000000"/>
+    </CActorUnit>
+    <CActorModel id="LurkerDenStetmannBuild" parent="ZergBuildingBuild"/>
     <CActorModel id="MothershipArtanisPlanetCrackerCrater">
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Work,Start Work Work,End"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
@@ -971,6 +977,11 @@
     <CActorUnit id="TychusSpectre">
         <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
+    <CActorEventMacro id="UnloadDropAnim">
+        <On Terms="AbilTransport.OverlordStetmannTransport.CargoLoad" Send="AnimBracketStart Unload IGNORE Unload Unload,End DontResetOnUnhide"/>
+        <On Terms="AbilTransport.OverlordStetmannTransport.CargoUnload" Send="AnimBracketStop Unload"/>
+        <On Terms="AbilTransport.OverlordStetmannTransport.CargoLoadSuppressed" Send="AnimBracketStart Unload IGNORE Unload Unload,End DontResetOnUnhide"/>
+    </CActorEventMacro>
     <CActorUnit id="WarpGate">
         <DeathArray index="UnderConstruction" ModelLink="GatewayDeathUnderConstruction"/>
     </CActorUnit>
@@ -6345,6 +6356,10 @@
         <Inherits index="Scale" value="0"/>
         <Inherits index="Visibility" value="0"/>
     </CActorModel>
+    <CActorSound id="Zerg_BuildingMorphEnd">
+        <On Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 2" Send="Create"/>
+        <On Terms="ProgressLevel.ZergLairStetmannToHiveStetmann.Start; Level 2" Send="Create"/>
+    </CActorSound>
     <CActorSound id="Zerg_BuildingMorphEndStetmann">
         <Remove Terms="ProgressLevel.ZergConstructionAttached.Start; Level 6" Send="Create"/>
         <Remove Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 2" Send="Create"/>
@@ -6353,6 +6368,12 @@
         <Remove Terms="ProgressLevel.LurkerDenMPMorph.Start; Level 2" Send="Create"/>
         <Remove Terms="ProgressLevel.PrimalZergConstruction.Start; Level 6" Send="Create"/>
         <Remove Terms="ProgressLevel.PrimalZergConstructionAttachedExtra.Start; Level 6" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Zerg_BuildingMorphStart">
+        <On Terms="Abil.ZergBuildStetmann.BuiltStart" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GreaterSpireStetmann" Send="Create"/>
+        <On Terms="ProgressLevel.ZergHatcheryStetmannToLairStetmann.Start; Level 0" Send="Create"/>
+        <On Terms="ProgressLevel.ZergLairStetmannToHiveStetmann.Start; Level 0" Send="Create"/>
     </CActorSound>
     <CActorSound id="Zerg_BuildingMorphStartStetmann">
         <Remove Terms="Abil.ZergBuild.BuiltStart" Send="Create"/>
