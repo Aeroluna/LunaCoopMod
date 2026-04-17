@@ -1074,7 +1074,7 @@ void lib74A68E34_gf_ZagaraPrestigeSwarmLocusUpdatePrice (int lp_player) {
             auto208FB834_ae = (UnitOrderCount(auto1101EBC6_var) - 1);
             auto208FB834_var = 0;
             for ( ; auto208FB834_var <= auto208FB834_ae; auto208FB834_var += 1 ) {
-                if ((OrderGetAbilityCommand(UnitOrder(auto1101EBC6_var, auto208FB834_var)) == AbilityCommand("ZergBuild", 11))) {
+                if ((OrderGetAbilityCommand(UnitOrder(auto1101EBC6_var, auto208FB834_var)) == AbilityCommand("ZergBuild", 16))) {
                     lv_queued += 1;
                     break;
                 }
@@ -3533,6 +3533,71 @@ void lib74A68E34_gt_HideACHeroSpawnPlacement_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: PlayerColorsInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_PlayerColorsInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    PlayerSetColorIndex(1, 1, false);
+    PlayerSetColorIndex(2, 2, false);
+    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameAlly, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(1, false)), PlayerGroupSingle(2));
+    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameAlly, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(2, false)), PlayerGroupSingle(1));
+    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameSelf, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(2, false)), PlayerGroupSingle(2));
+    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameSelf, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(1, false)), PlayerGroupSingle(1));
+    libCOUI_gf_CU_CommanderUpdate(1);
+    libCOUI_gf_CU_CommanderUpdate(2);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_PlayerColorsInit_Init () {
+    lib74A68E34_gt_PlayerColorsInit = TriggerCreate("lib74A68E34_gt_PlayerColorsInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_PlayerColorsInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CreateAICoopCaster
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CreateAICoopCaster_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+    point lv_spawnPoint;
+
+    // Automatic Variable Declarations
+    playergroup auto0906A954_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto0906A954_g = PlayerGroupAll();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto0906A954_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        if ((PlayerGroupHasPlayer(libCOOC_gf_CommanderPlayers(), lv_indexPlayer) == true) && (PlayerType(lv_indexPlayer) != c_playerTypeUser) && (libCOOC_gf_CC_CommanderGlobalCastUnitType(libCOOC_gf_ActiveCommanderForPlayer(lv_indexPlayer)) != null)) {
+            libCOMI_gf_CM_GlobalCasterCreateUnit(lv_indexPlayer);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CreateAICoopCaster_Init () {
+    lib74A68E34_gt_CreateAICoopCaster = TriggerCreate("lib74A68E34_gt_CreateAICoopCaster_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_CreateAICoopCaster);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ReaverScarabTargetDamage
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ReaverScarabTargetDamage_Func (bool testConds, bool runActions) {
@@ -5304,34 +5369,6 @@ void lib74A68E34_gt_CommanderRandomFinish_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: PlayerColorsInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_PlayerColorsInit_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    PlayerSetColorIndex(1, 1, false);
-    PlayerSetColorIndex(2, 2, false);
-    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameAlly, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(1, false)), PlayerGroupSingle(2));
-    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameAlly, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(2, false)), PlayerGroupSingle(1));
-    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameSelf, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(2, false)), PlayerGroupSingle(2));
-    libNtve_gf_SetDialogItemColor(libCOUI_gv_cU_CommanderAccountNameSelf, libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(1, false)), PlayerGroupSingle(1));
-    libCOUI_gf_CU_CommanderUpdate(1);
-    libCOUI_gf_CU_CommanderUpdate(2);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_PlayerColorsInit_Init () {
-    lib74A68E34_gt_PlayerColorsInit = TriggerCreate("lib74A68E34_gt_PlayerColorsInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_PlayerColorsInit);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: ActivateCommanderTriggers
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActions) {
@@ -6194,7 +6231,7 @@ bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Func (bool testConds, boo
         return true;
     }
 
-    if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("ZergBuild", 11))) {
+    if ((OrderGetAbilityCommand(EventUnitOrder()) == AbilityCommand("ZergBuild", 16))) {
         auto6DA903E1_var = 1;
         for ( ; auto6DA903E1_var <= auto6DA903E1_ae; auto6DA903E1_var += 1 ) {
             if ((lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits[auto6DA903E1_var] == EventUnit())) {
@@ -6220,7 +6257,7 @@ bool lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceOrder_Func (bool testConds, boo
         auto3089ADB7_ae = (UnitOrderCount(EventUnit()) - 1);
         auto3089ADB7_var = 0;
         for ( ; auto3089ADB7_var <= auto3089ADB7_ae; auto3089ADB7_var += 1 ) {
-            if ((OrderGetAbilityCommand(UnitOrder(EventUnit(), auto3089ADB7_var)) == AbilityCommand("ZergBuild", 11))) {
+            if ((OrderGetAbilityCommand(UnitOrder(EventUnit(), auto3089ADB7_var)) == AbilityCommand("ZergBuild", 16))) {
                 lv_foundOrder = true;
                 break;
             }
@@ -6533,7 +6570,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func (bool testConds, bool runA
             return false;
         }
 
-        if (!((UnitHasBehavior2(EventUnit(), "SwarmLocusUnitSeekDestroy") == true))) {
+        if (!((UnitHasBehavior2(EventUnit(), "SwarmLocusUnitTimedLife") == true))) {
             return false;
         }
     }
@@ -6543,8 +6580,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func (bool testConds, bool runA
         return true;
     }
 
-    UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitTimedLifeSummoned", EventUnit(), 1);
-    UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitSeekDestroy", EventUnit(), 1);
+    UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitTimedLife", EventUnit(), 1);
     return true;
 }
 
@@ -11436,6 +11472,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
     lib74A68E34_gt_HideACHeroSpawnPlacement_Init();
+    lib74A68E34_gt_PlayerColorsInit_Init();
+    lib74A68E34_gt_CreateAICoopCaster_Init();
     lib74A68E34_gt_ReaverScarabTargetDamage_Init();
     lib74A68E34_gt_ReaverPathing_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();
@@ -11484,7 +11522,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_CommanderRandomCreate_Init();
     lib74A68E34_gt_CommanderRandomSelected_Init();
     lib74A68E34_gt_CommanderRandomFinish_Init();
-    lib74A68E34_gt_PlayerColorsInit_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_RestorationRemoveBehaviors_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();

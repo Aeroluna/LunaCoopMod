@@ -323,6 +323,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Scourge's weapon would appear disabled in the unit info panel after enabling structure attacks.
 - Fixed an issue where Stetmann's Larva could be targeted by some teleport effects.
 - Fixed an issue where the player colors in the commander selection screen were inconsistent.
+- Fixed an issue where AI commanders did not have a Coop caster unit.
 
 yeah.
 
@@ -2246,7 +2247,7 @@ Fun fact: the second bug was caused by trying to launch the missile to a positio
 
 - Changed Wraith reentry sound effect.
 
-It used the Banshee reentry sound effect, which had a distinct helicopter sound. It's been swapped to the Vikign reentry sound.
+It used the Banshee reentry sound effect, which had a distinct helicopter sound. It's been swapped to the Viking reentry sound.
 
 - Fixed an issue where canceling building an Assault Galleon would play the Assault Galleon's death animation instead of the generic Terran build cancel animation.
 - Fixed an issue where Sovereign Battlecruisers would always visually fire from their anti-air turrets, even when shooting ground targets.

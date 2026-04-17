@@ -8,17 +8,32 @@
 - Fixed an issue where Kerrigan could not build Lurker Dens.
 - Fixed an issue where the Teeming mutator would always attack with the newly created units.
 - Fixed an issue where the Teeming mutator would copy invulnerable units.
+- Fixed an issue where the checkboxes for Neutral/Positive/Negative mutators were not synced across players.
+- Changed the icon for Stukov's P3.
+- Fixed an issue where Mengsk's Sky Fury were missing a portrait.
+- Fixed an issue where Zagara could not build Swarm Networks
+- Fixed an issue where AI commanders did not have a Coop caster unit.
+- Fixed an issue where Kerrigan's P1 did not increase attack speed or life regen.
+- Fixed an issue where Banelings Spawns created from Splitterlings from Swarm Locus did not timeout.
+
+yeah.
+
+- Reduced the rate of Hybrid Facility gaining Fissile Material stacks from the Hybrid Domestication mutator from one per 120 seconds to one per 180 seconds.
+
+Too easy to fill your supply cap with Hybrid instead of your actual units.
+
 - Reduced chance for a bounty from the Bounty Hunter mutator from 15% to 10%.
 - Reduced resources gained from the Bounty Hunter mutator from 150/75 per supply to 100/50.
 - Removed the ability for units with less than 1 supply to have a bounty from the Bounty Hunter mutator.
 - Reduced healing of Thrill of the Kill from the Bounty Hunter mutator from 50% of max health to 20% of max health.
 - Reduced attack/movement speed of Thrill of the Kill from the Bounty Hunter mutator from 30% to 20%.
 - Increased damage of a Wanted unit from the Bounty Hunter mutator from 40% increased damage to 60% increased damage.
-- Fixed an issue where the checkboxes for Neutral/Positive/Negative mutators were not synced across players.
-- Changed the icon for Stukov's P3.
-- Fixed an issue where Mengsk's Sky Fury were missing a portrait.
-- Reduced the rate of Hybrid Facility gaining Fissile Material stacks from the Hybrid Domestication mutator from one per 120 seconds to one per 180 seconds.
-- Fixed an issue where Zagara could not build Swarm Networks
+
+This mutator was unhinged with how much money and healing it gave.
+
+- Removed the 50% increased Swarm Network units count from Zagara's P4.
+
+Sorry free unit enjoyers, but it's just too strong! (And also laggy)
 
 ## Emperor's Justice
 
