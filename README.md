@@ -2259,6 +2259,7 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where Mag Mines would not play their entire animation when firing.
 - Fixed an issue where killing a Strike Fighter Platform while the Strike Fighter is deployed would cause a mysterious Strike Fighter model to show up.
 - Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
+- Fixed an issue where Strike Fighter Platform's tooltip still listed "Limit 10" as a requirement when playing P3.
 
 yeah.
 

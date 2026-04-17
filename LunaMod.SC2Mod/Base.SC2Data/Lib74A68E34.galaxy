@@ -239,6 +239,7 @@ void lib74A68E34_gf_Cooldown (int lp_pPlayer) {
         UnitAbilityReset(auto2A7337C9_var, AbilityCommand("SuperGaryStetmannOrb", 0), c_spendLocationAll);
         UnitAbilityReset(auto2A7337C9_var, AbilityCommand("SuperGaryStetmannPowerTowerOverchargeEnergy", 0), c_spendLocationAll);
         UnitAbilityReset(auto2A7337C9_var, AbilityCommand("SuperGaryStetmannRecall", 0), c_spendLocationAll);
+        UnitAbilityReset(auto2A7337C9_var, AbilityCommand("SwarmNetworkBuildSwarmLocus", 0), c_spendLocationAll);
     }
 }
 
@@ -6566,7 +6567,23 @@ bool lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func (bool testConds, bool runA
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((UnitGetType(EventUnit()) != "CreepTumorQueen"))) {
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "CreepTumor"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "CreepTumorBurrowed"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "CreepTumorQueen"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "CreepTumorZagara"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnitCreatedUnit()) != "CreepTumorQueenNoCreep"))) {
             return false;
         }
 
@@ -6581,6 +6598,7 @@ bool lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Func (bool testConds, bool runA
     }
 
     UnitBehaviorAdd(EventUnitCreatedUnit(), "SwarmLocusUnitTimedLife", EventUnit(), 1);
+    PlayerCreateEffectUnit(1, "SwarmLocusSeekDestroyTrigger", EventUnitCreatedUnit());
     return true;
 }
 
@@ -7621,6 +7639,42 @@ void lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init () {
     lib74A68E34_gt_DehakaPrestigeCloneTooltipFix = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func");
     TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, false);
     TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: HornerPrestigeBombingPlatformsTechSwitch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto4985DC2B_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto4985DC2B_val = libNtve_gf_TriggeringProgressUpgrade();
+    if (auto4985DC2B_val == "HHBomberEMP") {
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberNapalmImproved", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberTriple", 0);
+    }
+    else if (auto4985DC2B_val == "HHBomberNapalmImproved") {
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberEMP", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberTriple", 0);
+    }
+    else if (auto4985DC2B_val == "HHBomberTriple") {
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberEMP", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "HHBomberNapalmImproved", 0);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Init () {
+    lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch = TriggerCreate("lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Func");
+    TriggerAddEventUnitResearchProgress(lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11581,6 +11635,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
     lib74A68E34_gt_DehakaPrestigeArmy_Init();
     lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init();
+    lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Init();
     lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();
     lib74A68E34_gt_HornerBomberPlatformImproved_Init();
     lib74A68E34_gt_HornerScrapDropChanged_Init();

@@ -35,7 +35,17 @@ This mutator was unhinged with how much money and healing it gave.
 
 Sorry free unit enjoyers, but it's just too strong! (And also laggy)
 
-## Emperor's Justice
+- Reworked Han & Horner P3 exclusive upgrade to allow changing to a different upgrade after researching one.
+
+You'll still only be allowed one at a time, but if you get buyer's remorse then you can pay for a different upgrade instead.
+
+- Reduced Valkyrie count of Ordnance Towers from 6 to 4.
+- Increased cost of Ordnance Towers from 600/100 to 600/200
+- Reduced attack speed of Ordnance Towers from 1.75 to 2.
+
+I love these things but they are stupidly strong.
+
+### Emperor's Justice
 
 - Removed the ability for the ally AI to detect Changelings (No ignoring my new mutator!).
 - Reduced the amount of Vikings the ally AI sends towards bosses.
@@ -47,11 +57,11 @@ Sorry free unit enjoyers, but it's just too strong! (And also laggy)
 
 AI ally was too good at holding without players.
 
-## Construction Yard
+### Construction Yard
 
 - Removed the ability for the ally AI to detect Changelings.
 
-## Solar Rite
+### Solar Rite
 
 - Increased the amount of Solarite player workers can carry from 15 to 20.
 - Increased the hit test scale of Solarite (should be easier to click).
