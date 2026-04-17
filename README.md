@@ -322,6 +322,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Arbiters could be affected by cloaking field abilities.
 - Fixed an issue where Scourge's weapon would appear disabled in the unit info panel after enabling structure attacks.
 - Fixed an issue where Stetmann's Larva could be targeted by some teleport effects.
+- Fixed an issue where the player colors in the commander selection screen were inconsistent.
 
 yeah.
 
@@ -519,6 +520,7 @@ yeah.
   - AI Terran ally will help defend.
   - Occasionally Amon will send a massive capital ship boss.
   - Amon will send periodic waves that get stronger over time.
+  - Type "Nightmare" in the commander select screen for a challenge.
 
 It's like Temple of the Past but cooler. You can chose to either defend the low ground for the bonus objective or fall back to the high ground for a better position. The AI ally will constantly reinforce the defenses, but can't defend alone. Eventually you'll have to fight a capital ship boss to end the map.
 
@@ -1958,6 +1960,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 - Fixed an issue where the icon of the button for Mech Attack Speed mastery was not colored.
 - Fixed an issue where you could not queue multiple upgrades on the Infested Command Center.
 - Fixed an issue where Volatile Infested would play a sad little wimpy pop sound effect when dying instead of a acid explosion.
+- Changed the icon for Stukov's P3.
 
 yeah. The Siege Tank bug took way too long to figure out...
 

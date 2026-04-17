@@ -874,7 +874,7 @@ bool auto_gf_JinaraVikingWaves_TriggerFunc (bool testConds, bool runActions) {
 
     // Implementation
     Wait(30.0, c_timeAI);
-    gv_vikingStock = (lp_vikingcount * 2);
+    gv_vikingStock = FixedToInt((lp_vikingcount * 1.5));
     TechTreeAbilityAllow(gv_pLAYER_08_DOMINION, AbilityCommand("AssaultMode", 0), false);
     AINearestTownBullyRebuild(gv_pLAYER_08_DOMINION, false);
     AINearestTownLimitWaveGather(gv_pLAYER_08_DOMINION, false);
@@ -972,6 +972,10 @@ void gf_BonusEvacuate () {
         UnitRemove(auto48E0EF87_var);
     }
     UnitRemove(gv_bonusHercules);
+    if ((UnitIsAlive(UnitFromId(2044729735)) == false)) {
+        return ;
+    }
+
     gv_objectiveScienceFacilityProgress += 1;
     TriggerExecute(gt_ObjectiveScienceFacilityUpdate, true, false);
     if ((gv_objectiveScienceFacilityProgress >= 3)) {
@@ -1205,35 +1209,24 @@ bool gt_Init04Technology_Func (bool testConds, bool runActions) {
     TechTreeUnitAllow(gv_pLAYER_09_DEFENDERS_MID, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_09_DEFENDERS_MID, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_09_DEFENDERS_MID, "TerranBuildingArmor", 1);
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_09_DEFENDERS_MID, "550");
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_09_DEFENDERS_MID, "550");
     TechTreeUpgradeAddLevel(gv_pLAYER_10_DEFENDERS_LEFT, "DOM", 1);
     TechTreeUnitAllow(gv_pLAYER_10_DEFENDERS_LEFT, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_10_DEFENDERS_LEFT, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_10_DEFENDERS_LEFT, "TerranBuildingArmor", 1);
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_10_DEFENDERS_LEFT, "550");
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_10_DEFENDERS_LEFT, "550");
     CatalogFieldValueSet(c_gameCatalogAbil, "BarracksAddOns", "InfoArray[" + IntToString(1) + "].Time", gv_pLAYER_10_DEFENDERS_LEFT, "15");
     TechTreeUpgradeAddLevel(gv_pLAYER_11_DEFENDERS_RIGHT, "DOM", 1);
     TechTreeUnitAllow(gv_pLAYER_11_DEFENDERS_RIGHT, "Bunker", true);
     TechTreeUnitAllow(gv_pLAYER_11_DEFENDERS_RIGHT, "Separatist", true);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_11_DEFENDERS_RIGHT, "TerranBuildingArmor", 1);
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeMax", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
-    CatalogFieldValueSet(c_gameCatalogUnit, "Bunker", "LifeStart", gv_pLAYER_11_DEFENDERS_RIGHT, "550");
     CatalogFieldValueSet(c_gameCatalogAbil, "BarracksAddOns", "InfoArray[" + IntToString(1) + "].Time", gv_pLAYER_11_DEFENDERS_RIGHT, "15");
     TechTreeUpgradeAddLevel(gv_pLAYER_08_DOMINION, "Dominion", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "FireSuppressionSystems", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "FortifiedBunkerCarapace", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "CombatShield", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "StabilizerMedPacks", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranInfantryWeaponsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranInfantryArmorsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranVehicleAndShipWeaponsLevel1", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranVehicleAndShipArmorsLevel1", 1);
-    libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TerranBuildingArmor", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "HiSecAutoTracking", 1);
     libNtve_gf_SetUpgradeLevelForPlayer(gv_pLAYER_08_DOMINION, "TechReactorAI", 1);
     CatalogFieldValueSet(c_gameCatalogAbil, "TerranBuild", "InfoArray[" + IntToString(0) + "].Time", gv_pLAYER_08_DOMINION, "60");
@@ -1261,7 +1254,7 @@ bool gt_Init05Units_Func (bool testConds, bool runActions) {
     unitgroup auto6865111F_g;
     int auto6865111F_u;
     unit auto6865111F_var;
-    const int auto1C3EF65A_n = 6;
+    const int auto1C3EF65A_n = 4;
     int auto1C3EF65A_i;
     unitgroup auto04953FBD_g;
     int auto04953FBD_u;
@@ -1281,7 +1274,7 @@ bool gt_Init05Units_Func (bool testConds, bool runActions) {
     for (;; auto18F4B303_u -= 1) {
         auto18F4B303_var = UnitGroupUnitFromEnd(auto18F4B303_g, auto18F4B303_u);
         if (auto18F4B303_var == null) { break; }
-        UnitCargoCreate(auto18F4B303_var, "Separatist", 6);
+        UnitCargoCreate(auto18F4B303_var, "Separatist", 4);
     }
     auto6865111F_g = UnitGroup("Bunker", gv_pLAYER_08_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     auto6865111F_u = UnitGroupCount(auto6865111F_g, c_unitCountAll);
@@ -3258,6 +3251,10 @@ bool gt_StartAI_Func (bool testConds, bool runActions) {
     PlayerSetDifficulty(gv_pLAYER_08_DOMINION, 4);
     AICampaignStart(gv_pLAYER_08_DOMINION);
     AIReqAddSpecialMaker("Bunker", "SCV", "TerranBuild", 22);
+    AISetDifficulty(gv_pLAYER_08_DOMINION, c_diffSpotChangelings, false);
+    AISetDifficulty(gv_pLAYER_09_DEFENDERS_MID, c_diffSpotChangelings, false);
+    AISetDifficulty(gv_pLAYER_10_DEFENDERS_LEFT, c_diffSpotChangelings, false);
+    AISetDifficulty(gv_pLAYER_11_DEFENDERS_RIGHT, c_diffSpotChangelings, false);
     libCOMI_gf_StartCoopAI(gv_pLAYER_03_ENEMY, gv_pLAYER_01_USER);
     libCOMI_gf_SetCoopAIGatherPoint(gv_pLAYER_03_ENEMY, PlayerStartLocation(gv_pLAYER_03_ENEMY));
     libCOMI_gf_StartCoopAI(gv_pLAYER_04_ENEMY, gv_pLAYER_02_USER);
@@ -3276,8 +3273,8 @@ bool gt_StartAI_Func (bool testConds, bool runActions) {
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromId(5), false);
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromId(5), false);
     TriggerExecute(gt_BullyActivationSequence, true, false);
-    TimerStart(gv_battlecruiser1Timer, 660.0, false, c_timeAI);
-    TimerStart(gv_battlecruiser2Timer, 1080.0, false, c_timeAI);
+    TimerStart(gv_battlecruiser1Timer, (15.0 * 60.0), false, c_timeAI);
+    TimerStart(gv_battlecruiser2Timer, (21.0 * 60.0), false, c_timeAI);
     TriggerExecute(gt_DefenderSideBasesOnlineQ, true, false);
     TriggerExecute(gt_DefenderBasesMaintainDefenseQ, true, false);
     gv_laneActive[3] = true;
@@ -4069,7 +4066,7 @@ bool gt_AttackWave07JinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
-    gf_JinaraVikingWaves(gv_jinaraMothership1, 4);
+    gf_JinaraVikingWaves(gv_jinaraMothership1, 3);
     autoC6E507EE_val = PlayerRace(lv_player);
     if (autoC6E507EE_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipProtN08", true, -1);
@@ -4333,7 +4330,7 @@ bool gt_FinalSpecialWaveJinaraQ_Func (bool testConds, bool runActions) {
     else {
     }
     Wait(1.0, c_timeReal);
-    gf_JinaraVikingWaves(gv_jinaraMothership2, 8);
+    gf_JinaraVikingWaves(gv_jinaraMothership2, 5);
     auto995D6A61_val = PlayerRace(lv_player);
     if (auto995D6A61_val == "Prot") {
         libCOMI_gf_SendMissionTransmission("ObjectiveCapitalShipSecondProtN08", true, -1);

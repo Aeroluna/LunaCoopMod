@@ -1,10 +1,40 @@
 # Changelog
 
-## 4/17/2027
+## 4/17/2026
 
 - Added a random option to the commander selection screen.
+- Fixed an issue where the player colors in the commander selection screen were inconsistent.
 - Fixed an issue where the animation did not play for Kerrigan's Chrysalis.
 - Fixed an issue where Kerrigan could not build Lurker Dens.
+- Fixed an issue where the Teeming mutator would always attack with the newly created units.
+- Fixed an issue where the Teeming mutator would copy invulnerable units.
+- Reduced chance for a bounty from the Bounty Hunter mutator from 15% to 10%.
+- Reduced resources gained from the Bounty Hunter mutator from 150/75 per supply to 100/50.
+- Removed the ability for units with less than 1 supply to have a bounty from the Bounty Hunter mutator.
+- Reduced healing of Thrill of the Kill from the Bounty Hunter mutator from 50% of max health to 20% of max health.
+- Reduced attack/movement speed of Thrill of the Kill from the Bounty Hunter mutator from 30% to 20%.
+- Increased damage of a Wanted unit from the Bounty Hunter mutator from 40% increased damage to 60% increased damage.
+- Fixed an issue where the checkboxes for Neutral/Positive/Negative mutators were not synced across players.
+- Changed the icon for Stukov's P3.
+- Fixed an issue where Mengsk's Sky Fury were missing a portrait.
+- Reduced the rate of Hybrid Facility gaining Fissile Material stacks from the Hybrid Domestication mutator from one per 120 seconds to one per 180 seconds.
+- Fixed an issue where Zagara could not build Swarm Networks
+
+## Emperor's Justice
+
+- Removed the ability for the ally AI to detect Changelings (No ignoring my new mutator!).
+- Reduced the amount of Vikings the ally AI sends towards bosses.
+- Fixed an issue where the bonus could still be completed after failing.
+- Removed the Neosteel Armor upgrade from all ally AIs.
+- Removed the Fortified Bunker upgrade from all ally AIs.
+- Increased the time before the first Battlecruiser reinforcements from 11 minutes to 15 minutes.
+- Increased the time before the second Battlecruiser reinforcements from 18 minutes to 21 minutes.
+
+AI ally was too good at holding without players.
+
+## Construction Yard
+
+- Removed the ability for the ally AI to detect Changelings.
 
 ## 4/15/2026
 
