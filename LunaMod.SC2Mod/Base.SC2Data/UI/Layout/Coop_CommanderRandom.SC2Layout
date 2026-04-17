@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="CommanderRandom">
+        <Width val="145"/>
+        <Height val="175"/>
+
+        <Frame type="Button" name="CommanderRandomButton">
+            <Width val="145"/>
+            <Height val="145"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            
+            <NormalImage val="NormalImage"/>
+            <HoverImage val="HoverImage"/>
+            
+            <Frame type="Image" name="BackgroundImage">
+                <Anchor relative="$parent"/>
+                <Texture val="Assets\Textures\White.dds"/>
+                <Alpha val="255"/>
+                <Color val="47,47,47"/>
+            </Frame>
+
+            <Frame type="Image" name="NormalImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_techpurchase_techbutton_available_normalpressed.dds"/>			
+                <Color val="88ffff"/>
+                <TextureType val="Border"/>
+                <StateCount val="2"/>
+                <DesaturateOnDisable val="true"/>
+                <DisabledAlpha val="255"/>
+                <Alpha val="0"/>
+            </Frame>
+
+            <Frame type="Image" name="HoverImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_techpurchase_techbutton_available_normaloverpressedover.dds"/>
+                <Color val="88ffff"/>
+                <TextureType val="Border"/>
+                <StateCount val="2"/>
+                <DesaturateOnDisable val="false"/>
+                <DisabledAlpha val="64"/>
+                <Alpha val="0"/>
+            </Frame>
+            
+            <Frame type="Image" name="BackgroundImage2">
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Width val="142"/>
+                <Height val="142"/>
+                <Texture val="Assets\Textures\White.dds"/>
+                <Alpha val="255"/>
+                <Color val="0,0,0"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon">
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Width val="150"/>
+                <Height val="150"/>
+                <Texture val="Assets\Textures\sc2_ui_coop_icon_random.dds"/>
+                <Alpha val="255"/>
+                <RenderPriority val="516"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="CheckBox" name="CommanderRandomCheckBox" template="StandardTemplates/StandardCheckBoxLabelTemplate">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="-4"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/CommanderRandomButton" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Height val="30"/>
+            <Frame type="Label" name="Label">
+                <Anchor side="Top" relative="$parent/Button" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent/Button" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Button" pos="Max" offset="0"/>
+                <Style val="StandardLabel"/>
+                <AcceptsMouseTooltip val="true"/>
+                <Text val="Roll Prestige"/>
+                <Tooltip val="Pick a random prestige as well."/>
+            </Frame>
+            <Frame type="Button" name="Button">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>

@@ -43,6 +43,9 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_gv_cDText_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_difficultySelectDialog = c_invalidDialogId;
     lib74A68E34_gv_difficultySelectPulldown = c_invalidDialogControlId;
+    lib74A68E34_gv_commanderRandomDialog = c_invalidDialogId;
+    lib74A68E34_gv_commanderRandomButton = c_invalidDialogControlId;
+    lib74A68E34_gv_commanderRandomPrestigeCheck = c_invalidDialogControlId;
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
     }
@@ -5104,6 +5107,135 @@ bool lib74A68E34_gt_DifficultySelectFinish_Func (bool testConds, bool runActions
 void lib74A68E34_gt_DifficultySelectFinish_Init () {
     lib74A68E34_gt_DifficultySelectFinish = TriggerCreate("lib74A68E34_gt_DifficultySelectFinish_Func");
     libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_DifficultySelectFinish);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CommanderRandomCreate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CommanderRandomCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_panel;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_panel = c_invalidDialogControlId;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    DialogCreate(145, 175, c_anchorTop, 360, 70, true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lib74A68E34_gv_commanderRandomDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogControlCreateFromTemplate(lib74A68E34_gv_commanderRandomDialog, c_triggerControlTypePanel, "Coop_CommanderRandom/CommanderRandom");
+    lv_panel = DialogControlLastCreated();
+    DialogControlHookup(lv_panel, c_triggerControlTypeButton, "CommanderRandomButton");
+    lib74A68E34_gv_commanderRandomButton = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), StringExternal("Param/Value/lib_74A68E34_4068FB09"), PlayerGroupAll());
+    DialogControlHookup(lv_panel, c_triggerControlTypeCheckBox, "CommanderRandomCheckBox");
+    lib74A68E34_gv_commanderRandomPrestigeCheck = DialogControlLastCreated();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CommanderRandomCreate_Init () {
+    lib74A68E34_gt_CommanderRandomCreate = TriggerCreate("lib74A68E34_gt_CommanderRandomCreate_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_CommanderRandomCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CommanderRandomSelected
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CommanderRandomSelected_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_commIndex;
+    int lv_prestige;
+
+    // Automatic Variable Declarations
+    const int auto117719E7_n = 100;
+    int auto117719E7_i;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_commanderRandomButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    for (auto117719E7_i = 1; auto117719E7_i <= auto117719E7_n; auto117719E7_i += 1) {
+        lv_commIndex = RandomInt(1, libCOUI_gv_cUC_COMMSELECTMAX);
+        if ((libCOUI_gv_cU_CommanderSelection[libCOOC_gf_CC_PlayerAlly(EventPlayer())] == libCOUI_gv_cU_CommanderList[lv_commIndex])) {
+            if ((PlayerType(libCOOC_gf_CC_PlayerAlly(EventPlayer())) != c_playerTypeUser)) {
+                libCOUI_gf_CU_CommanderSelect(libCOOC_gf_CC_PlayerAlly(EventPlayer()), libCOUI_gv_cU_CommanderSelection[EventPlayer()]);
+                libCOUI_gf_CU_CommanderSelect(EventPlayer(), libCOUI_gv_cU_CommanderList[lv_commIndex]);
+                libCOUI_gf_CU_CommanderUpdate(EventPlayer());
+                libCOUI_gf_CU_CommanderUpdate(libCOOC_gf_CC_PlayerAlly(EventPlayer()));
+                if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_commanderRandomPrestigeCheck, EventPlayer()) == true)) {
+                    lv_prestige = RandomInt(0, libCOOC_gv_cCC_PLAYERPRESTIGEMAXRANK);
+                    libCOUI_gf_CU_PrestigeSelect(EventPlayer(), lv_prestige);
+                    DataTableSetInt(true, libCOOC_gf_CC_PrestigeCommanderTableKey(libCOOC_gf_ActiveCommanderForPlayer(EventPlayer()), EventPlayer()), lv_prestige);
+                }
+
+                return true;
+            }
+
+            continue;
+        }
+
+        libCOUI_gf_CU_CommanderSelect(EventPlayer(), libCOUI_gv_cU_CommanderList[lv_commIndex]);
+        libCOUI_gf_CU_CommanderUpdate(EventPlayer());
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_commanderRandomPrestigeCheck, EventPlayer()) == true)) {
+            lv_prestige = RandomInt(0, libCOOC_gv_cCC_PLAYERPRESTIGEMAXRANK);
+            libCOUI_gf_CU_PrestigeSelect(EventPlayer(), lv_prestige);
+            DataTableSetInt(true, libCOOC_gf_CC_PrestigeCommanderTableKey(libCOOC_gf_ActiveCommanderForPlayer(EventPlayer()), EventPlayer()), lv_prestige);
+        }
+
+        return true;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CommanderRandomSelected_Init () {
+    lib74A68E34_gt_CommanderRandomSelected = TriggerCreate("lib74A68E34_gt_CommanderRandomSelected_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_CommanderRandomSelected, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CommanderRandomFinish
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_CommanderRandomFinish_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_CommanderRandomSelected, false);
+    DialogDestroy(lib74A68E34_gv_commanderRandomDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_CommanderRandomFinish_Init () {
+    lib74A68E34_gt_CommanderRandomFinish = TriggerCreate("lib74A68E34_gt_CommanderRandomFinish_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_CommanderRandomFinish);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11247,6 +11379,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_DifficultySelectCreate_Init();
     lib74A68E34_gt_DifficultySelectSelected_Init();
     lib74A68E34_gt_DifficultySelectFinish_Init();
+    lib74A68E34_gt_CommanderRandomCreate_Init();
+    lib74A68E34_gt_CommanderRandomSelected_Init();
+    lib74A68E34_gt_CommanderRandomFinish_Init();
     lib74A68E34_gt_ActivateCommanderTriggers_Init();
     lib74A68E34_gt_RestorationRemoveBehaviors_Init();
     lib74A68E34_gt_GeneralNydusUnloadHero_Init();

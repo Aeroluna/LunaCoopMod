@@ -350,7 +350,7 @@
         <On index="6" Terms="Behavior.VoidZealotShadowChargeSelfBuffDummy.On"/>
     </CActorModelMaterial>
     <CActorUnit id="KerriganReviveCocoon">
-        <On Terms="ActorCreation; ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 10.000000 Check"/>
+        <On Terms="ActorCreation" Send="TimerSet 10.000000 Check"/>
         <On Terms="TimerExpired; TimerName Check; ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 110.000000 Morph"/>
         <On Terms="TimerExpired; TimerName Check; !ValidateUnit HaveKerriganFirstReviveTimer" Send="TimerSet 20.000000 Morph"/>
         <On Terms="TimerExpired; TimerName Morph" Send="AnimBracketStart Morph Stand,Morph,Start Stand,Morph"/>

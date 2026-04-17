@@ -1,5 +1,11 @@
 # Changelog
 
+## 4/17/2027
+
+- Added a random option to the commander selection screen.
+- Fixed an issue where the animation did not play for Kerrigan's Chrysalis.
+- Fixed an issue where Kerrigan could not build Lurker Dens.
+
 ## 4/15/2026
 
 - Fixed an issue where Swann's P3 did not lower the cooldown of Hercules Tactical Jump.

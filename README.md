@@ -60,6 +60,10 @@ Taken from starcraft2coop.com
 
 It ain't pretty but it works.
 
+- Added a random option to the commander selection screen.
+
+Variety is the spice of life.
+
 - Reordered many command cards to match Versus.
 
 Help muscle memory from Versus for people who use grid hotkeys.
