@@ -262,6 +262,14 @@
         <EditorCategories value="DoodadType:Environment"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
+    <CActorModel id="SolariteHitTest">
+        <EditorCategories value=""/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorModel>
     <CActorUnit id="VoidPreserver" parent="GenericUnitStandard" unitName="VoidPreserver">
         <Aliases value="_UnitSmall"/>
         <On Terms="Abil.SoulChannel.SourceChannelStart" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
@@ -400,6 +408,7 @@
         <On Terms="StatusDecrement.*.Harvest; IsStatus Harvest 39" Send="SetScale 1.720000 0.360000"/>
         <On Terms="StatusDecrement.*.Harvest; IsStatus Harvest 44" Send="SetScale 1.860000 0.360000"/>
         <On Terms="StatusDecrement.*.Harvest; IsStatus Harvest 49" Send="SetScale 2.000000 0.360000"/>
+        <On Terms="ActorCreation" Send="Create SolariteHitTest"/>
         <DeathArray index="Normal" ModelLink="SolariteDeath"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-protoss-rawsolarite.dds"/>

@@ -36,6 +36,14 @@ AI ally was too good at holding without players.
 
 - Removed the ability for the ally AI to detect Changelings.
 
+## Solar Rite
+
+- Increased the amount of Solarite player workers can carry from 15 to 20.
+- Increased the hit test scale of Solarite (should be easier to click).
+- Changed Solarite to be visible through the Fog of War.
+
+I know that increasing the carrying capacity isn't a perfect solution to the fact that collecting Solarite is kinda tedious, but it can't hurt.
+
 ## 4/15/2026
 
 - Fixed an issue where Swann's P3 did not lower the cooldown of Hercules Tactical Jump.
