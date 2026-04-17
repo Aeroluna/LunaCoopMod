@@ -78,7 +78,7 @@ void lib74A68E34_InitVariables () {
     for (init_i = 0; init_i <= 2; init_i += 1) {
         lib74A68E34_gv_mutatorRandomizerCheckBoxes[init_i] = c_invalidDialogControlId;
     }
-    lib74A68E34_gv_mutatorListCommanderSelectDialog = c_invalidDialogId;
+    lib74A68E34_gv_mutatorListSelectDialog = c_invalidDialogId;
     lib74A68E34_gv_luna_MutatorDialog = c_invalidDialogId;
     lib74A68E34_gv_luna_MutatorPanel = c_invalidDialogControlId;
     for (init_i = 0; init_i <= lib74A68E34_gv_lUNA_MUTATORMAXCOUNT; init_i += 1) {
@@ -1744,7 +1744,7 @@ void lib74A68E34_gf_MutatorRandomizerUpdate () {
         if (lv_indexPlayer < 0) { break; }
         libCOUI_gf_CU_CommanderUpdate(lv_indexPlayer);
     }
-    lib74A68E34_gf_MutatorListCommanderSelectInit();
+    lib74A68E34_gf_MutatorListSelectInit();
     lib74A68E34_gf_Luna_MutatorInitFromData(1);
     lib74A68E34_gf_Luna_MutatorInitFromData(2);
 }
@@ -1998,10 +1998,10 @@ bool auto_lib74A68E34_gf_MutatorListLoadBank_TriggerFunc (bool testConds, bool r
     return true;
 }
 
-void lib74A68E34_gf_MutatorListCommanderSelectInit () {
+void lib74A68E34_gf_MutatorListSelectInit () {
     // Automatic Variable Declarations
     // Implementation
-    lib74A68E34_gf_MutatorListCommanderSelectCreate();
+    lib74A68E34_gf_MutatorListSelectCreate();
     if ((libCOMU_gf_CT_MutatorEnabledCount() > libCOUI_gv_cUC_MUTATOR_MAX_DISPLAY_SMALL)) {
         libCOUI_gf_CU_MutatorListInitLarge();
     }
@@ -2010,7 +2010,7 @@ void lib74A68E34_gf_MutatorListCommanderSelectInit () {
     }
 }
 
-void lib74A68E34_gf_MutatorListCommanderSelectCreate () {
+void lib74A68E34_gf_MutatorListSelectCreate () {
     // Variable Declarations
     int lv_mutatorIndex;
 
@@ -2029,9 +2029,9 @@ void lib74A68E34_gf_MutatorListCommanderSelectCreate () {
 
     DialogCreate(130, 650, c_anchorBottom, 470, 40, true);
     DialogSetImageVisible(DialogLastCreated(), false);
-    lib74A68E34_gv_mutatorListCommanderSelectDialog = DialogLastCreated();
+    lib74A68E34_gv_mutatorListSelectDialog = DialogLastCreated();
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListCommanderSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorSmallListTemplate");
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorSmallListTemplate");
     libCOUI_gv_cU_MutatorListSmallPanel = DialogControlLastCreated();
     lv_mutatorIndex = 1;
     for ( ; ( (auto02FE28AD_ai >= 0 && lv_mutatorIndex <= auto02FE28AD_ae) || (auto02FE28AD_ai < 0 && lv_mutatorIndex >= auto02FE28AD_ae) ) ; lv_mutatorIndex += auto02FE28AD_ai ) {
@@ -2040,7 +2040,7 @@ void lib74A68E34_gf_MutatorListCommanderSelectCreate () {
         DialogControlHookup(libCOUI_gv_cU_MutatorListSmallItems[lv_mutatorIndex], c_triggerControlTypeImage, "MutatorIcon");
         libCOUI_gv_cU_MutatorListSmallIcon[lv_mutatorIndex] = DialogControlLastCreated();
     }
-    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListCommanderSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorLargeListTemplate");
+    DialogControlCreateFromTemplate(lib74A68E34_gv_mutatorListSelectDialog, c_triggerControlTypePanel, "Coop_MutatorList/MutatorLargeListTemplate");
     libCOUI_gv_cU_MutatorListLargePanel = DialogControlLastCreated();
     lv_mutatorIndex = 1;
     for ( ; ( (autoDEE1F8B0_ai >= 0 && lv_mutatorIndex <= autoDEE1F8B0_ae) || (autoDEE1F8B0_ai < 0 && lv_mutatorIndex >= autoDEE1F8B0_ae) ) ; lv_mutatorIndex += autoDEE1F8B0_ai ) {
@@ -9690,30 +9690,9 @@ void lib74A68E34_gt_MutatorListLoadBankInit_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListCommanderSelectUpdate
+// Trigger: MutatorListSelectFinish
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListCommanderSelectUpdate_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    lib74A68E34_gf_MutatorListCommanderSelectInit();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init () {
-    lib74A68E34_gt_MutatorListCommanderSelectUpdate = TriggerCreate("lib74A68E34_gt_MutatorListCommanderSelectUpdate_Func");
-    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListCommanderSelectUpdate, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MutatorListCommanderSelectFinish
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_MutatorListCommanderSelectFinish_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_MutatorListSelectFinish_Func (bool testConds, bool runActions) {
     // Variable Declarations
     string lv_previousMutators;
     string lv_indexMutator;
@@ -9732,14 +9711,14 @@ bool lib74A68E34_gt_MutatorListCommanderSelectFinish_Func (bool testConds, bool 
         return true;
     }
 
-    TriggerEnable(lib74A68E34_gt_MutatorListCommanderSelectUpdate, false);
-    DialogDestroy(lib74A68E34_gv_mutatorListCommanderSelectDialog);
+    DialogDestroy(lib74A68E34_gv_mutatorListSelectDialog);
     libCOUI_gv_cU_MutatorListSmallPanel = c_invalidDialogControlId;
     libCOUI_gf_CU_MutatorListInit();
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerSelected, false);
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerRefresh, false);
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerCheckSync, false);
     DialogDestroy(lib74A68E34_gv_mutatorRandomizerDialog);
+    TriggerEnable(lib74A68E34_gt_MutatorListChallengeSync, false);
     auto4E59C304_g = libCOOC_gf_HumanPlayers();
     lv_indexPlayer = -1;
     while (true) {
@@ -9768,9 +9747,36 @@ bool lib74A68E34_gt_MutatorListCommanderSelectFinish_Func (bool testConds, bool 
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_MutatorListCommanderSelectFinish_Init () {
-    lib74A68E34_gt_MutatorListCommanderSelectFinish = TriggerCreate("lib74A68E34_gt_MutatorListCommanderSelectFinish_Func");
-    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_MutatorListCommanderSelectFinish);
+void lib74A68E34_gt_MutatorListSelectFinish_Init () {
+    lib74A68E34_gt_MutatorListSelectFinish = TriggerCreate("lib74A68E34_gt_MutatorListSelectFinish_Func");
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_MutatorListSelectFinish);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorListChallengeSync
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorListChallengeSync_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == libCOUI_gv_cU_CommanderMutatorChallengePulldown))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSelectItem(EventDialogControl(), PlayerGroupAll(), DialogControlGetSelectedItem(EventDialogControl(), EventPlayer()));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorListChallengeSync_Init () {
+    lib74A68E34_gt_MutatorListChallengeSync = TriggerCreate("lib74A68E34_gt_MutatorListChallengeSync_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MutatorListChallengeSync, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeSelectionChanged);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9872,7 +9878,7 @@ bool lib74A68E34_gt_Luna_MutatorChecked_Func (bool testConds, bool runActions) {
                 if (lv_player < 0) { break; }
                 libCOUI_gf_CU_CommanderUpdate(lv_player);
             }
-            lib74A68E34_gf_MutatorListCommanderSelectInit();
+            lib74A68E34_gf_MutatorListSelectInit();
         }
 
     }
@@ -11678,8 +11684,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorRandomizerRefresh_Init();
     lib74A68E34_gt_MutatorRandomizerCheckSync_Init();
     lib74A68E34_gt_MutatorListLoadBankInit_Init();
-    lib74A68E34_gt_MutatorListCommanderSelectUpdate_Init();
-    lib74A68E34_gt_MutatorListCommanderSelectFinish_Init();
+    lib74A68E34_gt_MutatorListSelectFinish_Init();
+    lib74A68E34_gt_MutatorListChallengeSync_Init();
     lib74A68E34_gt_MutatorSelectEnablePlayer2_Init();
     lib74A68E34_gt_Luna_CommanderMutatorsClicked_Init();
     lib74A68E34_gt_Luna_MutatorChecked_Init();

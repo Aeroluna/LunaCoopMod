@@ -15,6 +15,7 @@
 - Fixed an issue where AI commanders did not have a Coop caster unit.
 - Fixed an issue where Kerrigan's P1 did not increase attack speed or life regen.
 - Fixed an issue where Banelings Spawns created from Splitterlings from Swarm Locus did not timeout.
+- Fixed an issue where the challenge selection dropdown was not synced across players.
 
 yeah.
 
