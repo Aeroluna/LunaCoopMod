@@ -5,6 +5,7 @@
         <EffectArray value="ReturnSolariteCarrySolariteRemovebehavior"/>
         <EffectArray value="ReturnSolariteCashOutModifyPlayer"/>
     </CEffectSet>
+    <CEffectSet id="ReturnSolariteGatherAgain"/>
     <CEffectSet id="GatherSolariteExhaustedSet">
         <ValidatorArray value="SolariteOverLimitOrExhausted"/>
         <EffectArray value="GatherSolariteSuicide"/>
@@ -97,6 +98,7 @@
         <PeriodicValidator value="HasSolarite"/>
         <PeriodicEffectArray value="ReturnSolariteBehaviorsSet"/>
         <PeriodicPeriodArray value="0.1"/>
+        <FinalEffect value="ReturnSolariteGatherAgain"/>
     </CEffectCreatePersistent>
     <CEffectRemoveBehavior id="ReturnSolariteCarrySolariteRemovebehavior">
         <ValidatorArray index="0" removed="1"/>

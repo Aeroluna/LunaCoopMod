@@ -5,6 +5,10 @@
 - Fixed an issue where Wraiths had no banker.
 - Fixed an issue where Wriaths/Void Rays that get targetd by Graviton Beam would have their actor detached from the unit.
 
+### Solar Right
+
+- Changed workers to go back to gathering the same node after returning Solarite.
+
 ## 4/17/2026
 
 - Added a random option to the commander selection screen.

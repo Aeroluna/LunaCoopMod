@@ -208,6 +208,7 @@ trigger gt_GatherSolariteStoreunitgatheringsolarite;
 trigger gt_GatherSolariteRemovefromunitgroupifstops;
 trigger gt_GatherSolariteIssuetokeepgatheringifsolaritedies;
 trigger gt_GatherSolariteIssuetokeepgatheringifsolaritedies2;
+trigger gt_GatherSolariteGatheragainafterreturning;
 trigger gt_DebugSpawnSolariteNode;
 trigger gt_DebugAddSolaritetoNode;
 trigger gt_DebugPumpAnim;
@@ -1681,6 +1682,18 @@ bool gt_GatherSolariteRemovefromunitgroupifstops_Func (bool testConds, bool runA
         if (!((UnitGroupHasUnit(gv_solariteGatherer, EventUnit()) == true))) {
             return false;
         }
+
+        if (!((OrderGetAbilityCommand(EventUnitOrder()) != AbilityCommand("GatherSolarite", 0)))) {
+            return false;
+        }
+
+        if (!((OrderGetAbilityCommand(EventUnitOrder()) != AbilityCommand("ReturnSolarite", 0)))) {
+            return false;
+        }
+
+        if (!((OrderGetAbilityCommand(EventUnitOrder()) != AbilityCommand("ReturnSolariteDummy", 0)))) {
+            return false;
+        }
     }
 
     // Actions
@@ -1704,16 +1717,7 @@ bool gt_GatherSolariteRemovefromunitgroupifstops_Func (bool testConds, bool runA
 //--------------------------------------------------------------------------------------------------
 void gt_GatherSolariteRemovefromunitgroupifstops_Init () {
     gt_GatherSolariteRemovefromunitgroupifstops = TriggerCreate("gt_GatherSolariteRemovefromunitgroupifstops_Func");
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("ReturnSolarite", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("move", 2));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("stop", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("move", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("DroneHarvest", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("ProbeHarvest", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("SCVHarvest", 0));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("DroneHarvest", 1));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("ProbeHarvest", 1));
-    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, AbilityCommand("SCVHarvest", 1));
+    TriggerAddEventUnitOrder(gt_GatherSolariteRemovefromunitgroupifstops, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1828,6 +1832,54 @@ bool gt_GatherSolariteIssuetokeepgatheringifsolaritedies2_Func (bool testConds, 
 void gt_GatherSolariteIssuetokeepgatheringifsolaritedies2_Init () {
     gt_GatherSolariteIssuetokeepgatheringifsolaritedies2 = TriggerCreate("gt_GatherSolariteIssuetokeepgatheringifsolaritedies2_Func");
     TriggerAddEventUnitBecomesIdle(gt_GatherSolariteIssuetokeepgatheringifsolaritedies2, null, true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gather Solarite - Gather again after returning
+//--------------------------------------------------------------------------------------------------
+bool gt_GatherSolariteGatheragainafterreturning_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_solariteIndex;
+    unitgroup lv_group;
+    unit lv_caster;
+
+    // Automatic Variable Declarations
+    int auto4BCFA45A_ae;
+    const int auto4BCFA45A_ai = 1;
+
+    // Variable Initialization
+    lv_group = UnitGroupEmpty();
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.4, c_timeGame);
+    auto4BCFA45A_ae = gv_lastSolariteNode;
+    lv_solariteIndex = 1;
+    for ( ; ( (auto4BCFA45A_ai >= 0 && lv_solariteIndex <= auto4BCFA45A_ae) || (auto4BCFA45A_ai < 0 && lv_solariteIndex >= auto4BCFA45A_ae) ) ; lv_solariteIndex += auto4BCFA45A_ai ) {
+        lv_group = gv_solariteNode[lv_solariteIndex].lv_solariteGatherers;
+        if ((UnitGroupHasUnit(lv_group, lv_caster) == true)) {
+            if ((UnitOrderCount(lv_caster) == 0)) {
+                if ((UnitBehaviorCount(lv_caster, "CarrySolarite") < gv_maxSolarite)) {
+                    UnitIssueOrder(lv_caster, OrderTargetingUnit(AbilityCommand("GatherSolarite", 0), gv_solariteNode[lv_solariteIndex].lv_solariteNode), c_orderQueueAddToFront);
+                }
+
+            }
+
+            break;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_GatherSolariteGatheragainafterreturning_Init () {
+    gt_GatherSolariteGatheragainafterreturning = TriggerCreate("gt_GatherSolariteGatheragainafterreturning_Func");
+    TriggerAddEventPlayerEffectUsed(gt_GatherSolariteGatheragainafterreturning, c_playerAny, "ReturnSolariteGatherAgain");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6932,6 +6984,7 @@ void InitTriggers () {
     gt_GatherSolariteRemovefromunitgroupifstops_Init();
     gt_GatherSolariteIssuetokeepgatheringifsolaritedies_Init();
     gt_GatherSolariteIssuetokeepgatheringifsolaritedies2_Init();
+    gt_GatherSolariteGatheragainafterreturning_Init();
     gt_DebugSpawnSolariteNode_Init();
     gt_DebugAddSolaritetoNode_Init();
     gt_DebugPumpAnim_Init();
