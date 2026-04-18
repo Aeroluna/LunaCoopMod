@@ -1,5 +1,10 @@
 # Changelog
 
+## 4/18/2026
+
+- Fixed an issue where Wraiths had no banker.
+- Fixed an issue where Wriaths/Void Rays that get targetd by Graviton Beam would have their actor detached from the unit.
+
 ## 4/17/2026
 
 - Added a random option to the commander selection screen.

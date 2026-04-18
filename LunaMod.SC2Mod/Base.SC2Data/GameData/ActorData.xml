@@ -373,6 +373,11 @@
         <On Terms="TimerExpired; TimerName DelayDestroy" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpRotationRandomDisc SOpShadowSyncGround SOp2DRotation" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorEventMacro id="MultiActorGravitonMacro">
+        <On index="0" Target="" Send="Signal Cond1"/>
+        <On Terms="Signal.*.Cond1; !ScopeContains _GimbalZ" Send="Signal Cond2"/>
+        <On Terms="Signal.*.Cond2; !ScopeContains _VoidRayGimbal" Target="::Main" Send="RefSetFromMsg ::Host ::Sender"/>
+    </CActorEventMacro>
     <CActorModel id="MutatorBountyHunterDeathLarge" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.MutatorBountyHunterDeathLarge.Start" Send="Create"/>
         <On Terms="ActorCreation" Send="Create Confetti_Explosion_Large_AS"/>
@@ -2009,6 +2014,7 @@
         <Model value="TimeWarp"/>
         <AutoScaleFactor value="0.750000"/>
         <HostSiteOps Ops="SOpAttachCenter SOp2DRotation SOpMoveDownByDot5"/>
+        <MaxScale value="1.000000"/>
     </CActorModel>
     <CActorModel id="RavenSilentMode" parent="ModelAnimationStyleContinuous">
         <Inherits index="BaseModelScale" value="1"/>
@@ -6456,6 +6462,7 @@
         <On Terms="Signal.*.GimbalBirth" Send="RefSet ::HostForProps _Unit"/>
         <HostForProps Subject="_Unit"/>
         <Model value="Phoenix"/>
+        <HostSiteOps Ops="SOpBankerWraith"/>
     </CActorModel>
     <CActorTurret id="GimbalZTurret">
         <TurretBody Subject="_GimbalZ" FailOnNoHost="1"/>

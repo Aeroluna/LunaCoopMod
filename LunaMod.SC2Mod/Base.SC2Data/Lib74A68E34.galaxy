@@ -5535,6 +5535,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_HornerScrapDropChanged, true);
             TriggerEnable(libCOMI_gt_CM_Horner_BomberPlatform_Individual_TargetSelected, false);
             TriggerEnable(lib74A68E34_gt_HornerBomberPlatformImproved, true);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeHornerBombingPlatforms", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch, true);
+            }
+
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeHornerDefense", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch, true);
             }
@@ -7674,6 +7678,7 @@ bool lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Func (bool testCond
 //--------------------------------------------------------------------------------------------------
 void lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Init () {
     lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch = TriggerCreate("lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Func");
+    TriggerEnable(lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch, false);
     TriggerAddEventUnitResearchProgress(lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch, null, c_unitProgressStageComplete);
 }
 
@@ -9699,6 +9704,8 @@ bool lib74A68E34_gt_MutatorListSelectFinish_Func (bool testConds, bool runAction
     int lv_indexPlayer;
 
     // Automatic Variable Declarations
+    int autoCBC849B8_ai;
+    int autoCBC849B8_ae;
     playergroup auto4E59C304_g;
     int autoC9F48251_ai;
     int autoC9F48251_ae;
@@ -9719,29 +9726,39 @@ bool lib74A68E34_gt_MutatorListSelectFinish_Func (bool testConds, bool runAction
     TriggerEnable(lib74A68E34_gt_MutatorRandomizerCheckSync, false);
     DialogDestroy(lib74A68E34_gv_mutatorRandomizerDialog);
     TriggerEnable(lib74A68E34_gt_MutatorListChallengeSync, false);
-    auto4E59C304_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto4E59C304_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        BankKeyRemove(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pREVIOUS_MUTATORS_BANK);
-        autoC9F48251_ai = 1;
-        autoC9F48251_ae = UserDataInstanceCount("Mutators")+1;
-        while (autoC9F48251_ai < autoC9F48251_ae) {
-            lv_indexMutator = UserDataInstance("Mutators", autoC9F48251_ai);
-            autoC9F48251_ai = autoC9F48251_ai+1;
-            if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
-                if ((lv_previousMutators == "")) {
-                    lv_previousMutators = (lv_indexMutator);
-                }
-                else {
-                    lv_previousMutators = (lv_previousMutators + "," + (lv_indexMutator));
-                }
-            }
+    autoCBC849B8_ai = 1;
+    autoCBC849B8_ae = UserDataInstanceCount("Mutators")+1;
+    while (autoCBC849B8_ai < autoCBC849B8_ae) {
+        lv_indexMutator = UserDataInstance("Mutators", autoCBC849B8_ai);
+        autoCBC849B8_ai = autoCBC849B8_ai+1;
+        if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
+            auto4E59C304_g = libCOOC_gf_HumanPlayers();
+            lv_indexPlayer = -1;
+            while (true) {
+                lv_indexPlayer = PlayerGroupNextPlayer(auto4E59C304_g, lv_indexPlayer);
+                if (lv_indexPlayer < 0) { break; }
+                BankKeyRemove(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pREVIOUS_MUTATORS_BANK);
+                autoC9F48251_ai = 1;
+                autoC9F48251_ae = UserDataInstanceCount("Mutators")+1;
+                while (autoC9F48251_ai < autoC9F48251_ae) {
+                    lv_indexMutator = UserDataInstance("Mutators", autoC9F48251_ai);
+                    autoC9F48251_ai = autoC9F48251_ai+1;
+                    if ((libCOMU_gf_MutatorIsEnabled(lv_indexMutator) == true)) {
+                        if ((lv_previousMutators == "")) {
+                            lv_previousMutators = (lv_indexMutator);
+                        }
+                        else {
+                            lv_previousMutators = (lv_previousMutators + "," + (lv_indexMutator));
+                        }
+                    }
 
+                }
+                BankValueSetFromString(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pREVIOUS_MUTATORS_BANK, lv_previousMutators);
+                BankSave(lib74A68E34_gv_mutatorListBank[lv_indexPlayer]);
+            }
+            return true;
         }
-        BankValueSetFromString(lib74A68E34_gv_mutatorListBank[lv_indexPlayer], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pREVIOUS_MUTATORS_BANK, lv_previousMutators);
-        BankSave(lib74A68E34_gv_mutatorListBank[lv_indexPlayer]);
+
     }
     return true;
 }
