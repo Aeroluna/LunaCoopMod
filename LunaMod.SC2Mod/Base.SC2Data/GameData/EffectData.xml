@@ -108,9 +108,21 @@
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectSwitch id="BlindingCloudSwitch">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectSwitch>
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectSet id="CorsairMPDisruptionWebSet">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectSet>
+    <CEffectDamage id="CrucioShockCannonBlast">
+        <AreaArray index="0" Validator="NotFriendlyFire"/>
+        <AreaArray index="1" Validator="NotFriendlyFire"/>
+        <AreaArray index="2" Validator="NotFriendlyFire"/>
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
     <CEffectEnumArea id="DefensiveMatrixAoE">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>
@@ -169,6 +181,12 @@
     <CEffectSet id="DisguiseEx3FinalSet">
         <EffectArray index="4" value="MutatorChangelingInit"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
+    </CEffectSet>
+    <CEffectEnumArea id="EMPSearch">
+        <SearchFilters value="-;Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectSet id="EMPSet">
+        <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSet>
     <CEffectApplyBehavior id="FenixAdeptShadeSpawnCasterBuff">
         <EditorCategories value="Race:Protoss"/>
@@ -279,7 +297,7 @@
         <ValidatorArray value="noMarkers"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="CorsairMPDisruptionWebSearch">
-        <SearchFilters value="Ground;Player,Ally,Item,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Item,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectDamage id="DakrunMelee">
         <AttributeBonus index="Structure" value="100"/>
@@ -511,6 +529,12 @@
         <EditorCategories value=""/>
         <Behavior value="IrradiateFriendly"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="IrradiatePeriodicDamage">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="IrradiateSearchArea">
+        <SearchFilters value="Biological;Structure,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSet id="IrradiateSet">
         <EffectArray value="IrradiateApplyBehaviorFriendly"/>
     </CEffectSet>
@@ -519,6 +543,9 @@
         <EffectArray value="JinaraChainsAB"/>
         <EffectArray value="JinaraChainsSlowAB"/>
     </CEffectSet>
+    <CEffectDamage id="KD8ChargeExplodeDamage">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectDamage>
     <CEffectDamage id="KraithSpineVolleyDamage">
         <Death value="Disintegrate"/>
         <SearchFilters value="Air;Self,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
@@ -714,6 +741,12 @@
     <CEffectDamage id="NovaWeaponPsiBladeDamageUncloaked">
         <Kind value="Melee"/>
         <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectDamage id="NukeDamage">
+        <AreaArray index="0" Validator="NotFriendlyFire"/>
+        <AreaArray index="1" Validator="NotFriendlyFire"/>
+        <AreaArray index="2" Validator="NotFriendlyFire"/>
+        <SearchFilters value="-;Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectTeleport id="NydusDestroyerDeepTunnelTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
@@ -1543,9 +1576,18 @@
     <CEffectEnumArea id="PrimalSlashPointSearch">
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="PsiStormApplyBehavior">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="PsiStormSearch">
+        <SearchFilters value="-;Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSwitch id="PsionicLiftControllerBehaviorSwitch">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSwitch>
+    <CEffectEnumArea id="PurificationNovaTargettedSearch">
+        <SearchFilters value="Ground;Self,Missile,Item,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectCreateUnit id="QueenStukovSpawnBroodlingsCreateUnit">
         <SpawnUnit index="0" value="StukovInfestBroodling"/>
     </CEffectCreateUnit>
@@ -1575,6 +1617,12 @@
         <EffectArray value="AutomatedRefineryRichAB"/>
         <EffectArray value="AutomatedRefineryRichRB"/>
         <EffectArray value="AutomatedRefineryRichZergRB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="RavagerCorrosiveBileSearch">
+        <SearchFilters value="-;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectSet id="RavagerCorrosiveBileSet">
+        <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSet>
     <CEffectSet id="RavagerStetmannCorrosiveBileAoELaunchSet">
         <TargetLocationType value="Point"/>
@@ -1772,6 +1820,12 @@
         <ValidatorArray index="9" removed="1"/>
         <ValidatorArray index="10" removed="1"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="SeekerMissileDamage">
+        <AreaArray index="0" Validator="NotFriendlyFire"/>
+        <AreaArray index="1" Validator="NotFriendlyFire"/>
+        <AreaArray index="2" Validator="NotFriendlyFire"/>
+        <SearchFilters value="-;Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
     <CEffectTeleport id="ShadowGuardShadowDash">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -3258,6 +3312,7 @@
         <Flags index="Notification" value="1"/>
         <ShieldBonus value="100"/>
         <Amount value="100"/>
+        <ValidatorArray value="NotFriendlyFire"/>
     </CEffectDamage>
     <!--CEffectSet id="MengskZergCalldownLevel1Set">
         <EditorCategories value="Race:Terran"/>
@@ -5066,6 +5121,18 @@
     <CEffectApplyBehavior id="VortexEventHorizon">
         <ValidatorArray value="NotHeroicFriend"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="VultureSpiderMinesDamage">
+        <AreaArray index="0" Validator="NotFriendlyFire"/>
+        <AreaArray index="1" Validator="NotFriendlyFire"/>
+        <AreaArray index="2" Validator="NotFriendlyFire"/>
+        <SearchFilters value="Ground;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectDamage id="WidowMineExplodeSplash">
+        <ValidatorArray value="NotFriendlyFire"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="WidowMineExplodeSplashSearch">
+        <SearchFilters value="-;Structure,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectSwitch id="WraithMovingSwitch">
         <EditorCategories value="Race:Terran"/>
         <CaseArray Validator="TargetIsAirUnitFilter" Effect="WraithAPersistent"/>

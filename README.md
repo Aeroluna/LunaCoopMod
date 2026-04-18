@@ -559,6 +559,10 @@ yeah.
 
 ### Amon
 
+- Added friendly fire for Amon's units.
+
+Bait Amon into his own nuke or lure some Disruptor orbs onto unsuspecting Zealots. Mind controlled units still cannot friendly fire.
+
 - Removed Viper Disabling Cloud ability.
 - Added Viper Blinding Cloud ability.
 - Removed Viper Consumption ability.

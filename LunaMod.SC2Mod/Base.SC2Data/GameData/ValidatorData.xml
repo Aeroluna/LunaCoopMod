@@ -280,6 +280,14 @@
         <Value value="20"/>
         <Behavior value="MutatorHybridFacilityCharge"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="NotFriendlyFire">
+        <CombineArray value="TargetIsEnemyOrNeutral"/>
+        <CombineArray value="CreatorNotHavePlayerCommander"/>
+    </CValidatorCombine>
+    <CValidatorPlayerRequirement id="CreatorNotHavePlayerCommander">
+        <WhichPlayer Value="Creator"/>
+        <Value value="HavePlayerCommander"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="SOAPurifierBeamBurning">
         <Behavior value="Burning"/>
     </CValidatorUnitCompareBehaviorCount>

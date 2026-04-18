@@ -19,6 +19,10 @@
 
 yeah.
 
+- Added friendly fire to Amon.
+
+Honestly, I just thought it would be funny.
+
 - Reduced the rate of Hybrid Facility gaining Fissile Material stacks from the Hybrid Domestication mutator from one per 120 seconds to one per 180 seconds.
 
 Too easy to fill your supply cap with Hybrid instead of your actual units.
