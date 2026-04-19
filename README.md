@@ -30,6 +30,7 @@ View the changelog [here](https://github.com/Aeroluna/LunaCoopMod/blob/main/CHAN
   - [Alarak](#alarak)
   - [Nova](#nova)
   - [Stukov](#stukov)
+  - [Fenix](#fenix)
   - [Dehaka](#dehaka)
   - [Han & Horner](#han--horner)
   - [Tychus](#tychus)

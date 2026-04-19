@@ -1,9 +1,10 @@
 # Changelog
 
-## 4/18/2026
+## 4/19/2026
 
 - Fixed an issue where Wraiths had no banker.
 - Fixed an issue where Wriaths/Void Rays that get targetd by Graviton Beam would have their actor detached from the unit.
+- Fixed an issue where Fenix's Mass Recall did not work.
 
 ### Solar Right
 

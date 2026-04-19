@@ -17,6 +17,15 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorSimple id="ArbiterMPRecallOpacity">
+        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
+    </CActorSimple>
+    <CActorModel id="ArbiterMPRecallingImpact">
+        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="ArbiterMPRecallingImpactSound">
+        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
+    </CActorSound>
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
@@ -3189,6 +3198,8 @@
         <On Terms="Behavior.DarkPylonRecalling.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.GaryStetmannRecalling.On" Send="Create"/>
         <On Terms="Behavior.GaryStetmannRecalling.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
+        <On Terms="Behavior.FenixArbiterRecalling.Off" Send="AnimBracketStop BSD"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <AutoScaleFactor value="0.500000"/>
@@ -3217,6 +3228,7 @@
         <On Terms="Effect.MassRecallSearch.Start" Send="Create"/>
         <On Terms="Effect.DarkPylonSearch.Start" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallSearch.Start" Send="Create"/>
+        <On Terms="Effect.FenixArbiterRecallSearch.Start" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallStart"/>
     </CActorSound>
@@ -3226,6 +3238,7 @@
         <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.FenixArbiterRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin" HoldPosition="1" HoldRotation="1"/>
@@ -3239,6 +3252,7 @@
         <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.FenixArbiterRecallTeleport.Start; At Target" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <!--AutoScaleFactor value="1.000000"/-->
@@ -3251,6 +3265,7 @@
         <On Terms="Behavior.MothershipRecalling.On" Send="Create"/>
         <On Terms="Behavior.DarkPylonRecalling.On" Send="Create"/>
         <On Terms="Behavior.GaryStetmannRecalling.On" Send="Create"/>
+        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallStart"/>
     </CActorSound>
@@ -3261,6 +3276,7 @@
         <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallTeleport.Start; At Target" Send="Create"/>
+        <On Terms="Effect.FenixArbiterRecallTeleport.Start; At Target" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallEnd"/>
     </CActorSound>

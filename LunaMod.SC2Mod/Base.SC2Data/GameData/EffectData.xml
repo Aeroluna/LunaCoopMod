@@ -108,6 +108,12 @@
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectSet id="ArbiterMPRecallSet">
+        <EffectArray value="NexusMassRecallCastingRB"/>
+    </CEffectSet>
+    <CEffectTeleport id="ArbiterMPRecallTeleport">
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    </CEffectTeleport>
     <CEffectSwitch id="BlindingCloudSwitch">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSwitch>
@@ -198,16 +204,30 @@
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
     </CEffectCreateUnit>
-    <CEffectEnumArea id="FenixArbiterRecallSearch">
-        <EditorCategories value="Race:Protoss"/>
-        <ImpactLocation Value="TargetPoint"/>
+    <CEffectEnumArea id="FenixArbiterRecallSearch" parent="ArbiterMPRecallSearch">
+        <AreaArray index="0" Radius="8" Effect="FenixArbiterRecallInitialSet"/>
         <SearchFilters value="-;Self,Neutral,Enemy,Structure,User1,Worker,Missile,Item,Uncommandable,Dead,Hidden"/>
-        <AreaArray Radius="8" Effect="ArbiterMPRecallInitialSet"/>
-        <MinCount value="1"/>
     </CEffectEnumArea>
-    <CEffectTeleport id="ArbiterMPRecallTeleport">
-        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+    <CEffectSet id="FenixArbiterRecallInitialSet" parent="ArbiterMPRecallInitialSet">
+        <ValidatorArray value="NotUnmoved"/>
+        <EffectArray index="0" value="FenixArbiterRecallApplyPreRecallBehavior"/>
+        <EffectArray index="1" value="FenixArbiterRecallMagazineIterate"/>
+        <EffectArray value="NexusMassRecallCastingAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FenixArbiterRecallApplyPreRecallBehavior" parent="ArbiterMPRecallApplyPreRecallBehavior">
+        <Behavior value="FenixArbiterRecalling"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumMagazine id="FenixArbiterRecallMagazineIterate" parent="ArbiterMPRecallMagazineIterate">
+        <EffectExternal value="FenixArbiterRecallApplyPreRecallBehavior"/>
+    </CEffectEnumMagazine>
+    <CEffectTeleport id="FenixArbiterRecallTeleport" parent="ArbiterMPRecallTeleport">
+        <PlacementAround Effect="FenixArbiterRecallSearch"/>
+        <SourceLocation Effect="FenixArbiterRecallSearch"/>
+        <TargetLocation Effect="FenixArbiterRecallSearch"/>
     </CEffectTeleport>
+    <CEffectSet id="FenixArbiterRecallSet" parent="ArbiterMPRecallSet">
+        <EffectArray index="0" value="FenixArbiterRecallTeleport"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="ArtilleryMengskBombardmentAB">
         <ValidatorArray index="0" value="NotFrenzied"/>
         <EditorCategories value="Race:Terran"/>
@@ -1266,9 +1286,6 @@
     <CEffectSet id="ArbiterMPRecallInitialSet">
         <EffectArray value="NexusMassRecallCastingAB"/>
         <ValidatorArray value="NotUnmoved"/>
-    </CEffectSet>
-    <CEffectSet id="ArbiterMPRecallSet">
-        <EffectArray value="NexusMassRecallCastingRB"/>
     </CEffectSet>
     <CEffectDamage id="ArtanisResurgenceEnemyImpactDamage">
         <Kind value="Spell"/>
