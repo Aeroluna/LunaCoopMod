@@ -6,6 +6,12 @@
 - Fixed an issue where Wriaths/Void Rays that get targetd by Graviton Beam would have their actor detached from the unit.
 - Fixed an issue where Fenix's Mass Recall did not work.
 
+### Construction Yard
+
+- Adjusted attack wave/APC timings.
+
+Map should play faster, particularly around the final waves.
+
 ### Solar Right
 
 - Changed workers to go back to gathering the same node after returning Solarite.

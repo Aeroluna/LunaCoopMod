@@ -1234,7 +1234,7 @@ https://github.com/user-attachments/assets/41ea50b6-0778-44a5-b480-a4bd74091235
 If there is one think Stukov P3 has taught me, it's that throwing free units at Amon is fun as hell. The Creep Tumors also act as a form of creep spread that Zagara is lacking.
 
 - Added P4: Subterranean Tide
-  - Advantage: Swarm Networks are no longer capped, cost 25% less, and spawn 50% more units.
+  - Advantage: Swarm Networks are no longer capped and cost 25% less.
   - Disadvantage: Combat units cost 25% more. Swarm Networks cost 100 more minerals for every one built.
 
 I added a whole new mechanic to Zagara and then created a whole prestige surrounding it. Hell yeah.
