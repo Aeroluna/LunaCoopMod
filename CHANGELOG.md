@@ -9,8 +9,14 @@
 - Fixed an issue where Night of the Living special infested did not use their ablities outside of Dead of Night.
 - Fixed an issue where Nova's Assault Mode tooltip would incorrectly color appended mastery text.
 - Fixed an issue where the `-aitech` debug command did not affect all enemies.
+- Fixed an issue where using the Arbiter Recall ability while having Fenix in-game would play the Fenix Recall VO.
 
 yeah.
+
+- Added Tissue Regeneration button to Mutalisks.
+- Changed icon for Mutalisk's Rapid Regeneration upgrade.
+
+Just to be clear, I did not change Mutalisk life regen, I just added back the button from Versus that tells you about it.
 
 - Fixed an issue where Nova's Blink shield duration was paused while in stealth mode.
 - Changed Stim Infusion to be disabled after entering stealth mode.

@@ -325,6 +325,8 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Stetmann's Larva could be targeted by some teleport effects.
 - Fixed an issue where the player colors in the commander selection screen were inconsistent.
 - Fixed an issue where AI commanders did not have a Coop caster unit.
+- Added Tissue Regeneration button to Mutalisks.
+- Changed icon for Mutalisk's Rapid Regeneration upgrade.
 
 yeah.
 

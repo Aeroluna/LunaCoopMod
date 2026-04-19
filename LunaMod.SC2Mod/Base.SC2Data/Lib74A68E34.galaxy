@@ -3725,6 +3725,9 @@ void lib74A68E34_gt_SnowVisualNewUnit_Init () {
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    playergroup auto53C6907A_g;
+    int auto53C6907A_var;
+
     // Conditions
     if (testConds) {
         if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
@@ -3742,7 +3745,20 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_ShareControl, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_AllySupply, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_Control, false, false);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_0D58120D"));
+    auto53C6907A_g = PlayerGroupAll();
+    auto53C6907A_var = -1;
+    while (true) {
+        auto53C6907A_var = PlayerGroupNextPlayer(auto53C6907A_g, auto53C6907A_var);
+        if (auto53C6907A_var < 0) { break; }
+        if ((libNtve_gf_PlayerIsEnemy(auto53C6907A_var, EventPlayer(), libNtve_ge_PlayerRelation_Enemy) == true)) {
+            PlayerSetAlliance(auto53C6907A_var, c_allianceIdControl, EventPlayer(), true);
+            PlayerSetAlliance(auto53C6907A_var, c_allianceIdSpend, EventPlayer(), true);
+            PlayerSetAlliance(auto53C6907A_var, c_allianceIdVision, EventPlayer(), true);
+            PlayerSetAlliance(auto53C6907A_var, c_allianceIdPower, EventPlayer(), true);
+        }
+
+    }
     TriggerExecute(libA8FDA37D_gt_UT_PauseAI, false, false);
     TriggerExecute(lib74A68E34_gt_MaxSupplyCommand, false, false);
     PlayerModifyPropertyInt(1, c_playerPropMinerals, c_playerPropOperAdd, 50000);
@@ -5458,6 +5474,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         else if (auto560DABDD_val == "ProtossFenix") {
             TriggerEnable(lib74A68E34_gt_FenixAddHeroCarrierMorph, true);
             TriggerEnable(lib74A68E34_gt_FenixHeroCarrierFix, true);
+            TriggerEnable(libCOMI_gt_CM_AbilityTransmissionFenixMassRecall, false);
+            TriggerEnable(lib74A68E34_gt_FenixAbilityTransmissionMassRecall, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeFenixChampion", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(libCOMI_gt_CM_Fenix_ChampionMorphed, false);
                 TriggerEnable(lib74A68E34_gt_FenixPrestigeChampionMorphed, true);
@@ -7489,6 +7507,27 @@ void lib74A68E34_gt_FenixPrestigeChampionMorphed_Init () {
     lib74A68E34_gt_FenixPrestigeChampionMorphed = TriggerCreate("lib74A68E34_gt_FenixPrestigeChampionMorphed_Func");
     TriggerEnable(lib74A68E34_gt_FenixPrestigeChampionMorphed, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_FenixPrestigeChampionMorphed, c_playerAny, "FenixChampionSwapImpactUnit");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: FenixAbilityTransmissionMassRecall
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_CM_CommanderVOSend(libCOOC_gf_CC_PlayerAlly(UnitGetOwner(EventUnit())), SoundLink("FenixCommander_MassRecall", -1), PlayerGroupAll());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Init () {
+    lib74A68E34_gt_FenixAbilityTransmissionMassRecall = TriggerCreate("lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Func");
+    TriggerEnable(lib74A68E34_gt_FenixAbilityTransmissionMassRecall, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_FenixAbilityTransmissionMassRecall, null, AbilityCommand("FenixArbiterRecall", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11600,6 +11639,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
+    lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Init();
     lib74A68E34_gt_DehakaPrestigeArmy_Init();
     lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init();
     lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Init();
