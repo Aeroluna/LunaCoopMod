@@ -5,6 +5,8 @@
 - Fixed an issue where Wraiths had no banker.
 - Fixed an issue where Wriaths/Void Rays that get targetd by Graviton Beam would have their actor detached from the unit.
 - Fixed an issue where Fenix's Mass Recall did not work.
+- Fixed an issue where Night of the Living special infested played ambience sounds.
+- Fixed an issue where Night of the Living special infested did not use their ablities outside of Dead of Night.
 
 ### Construction Yard
 

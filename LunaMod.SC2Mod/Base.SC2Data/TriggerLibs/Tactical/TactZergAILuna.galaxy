@@ -345,7 +345,7 @@ void AIThinkQueenClassicLuna (int player, unit aiUnit, unitgroup scanGroup) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//  *** SIEGETANK ***
+//  *** INFESTED SIEGETANK ***
 //--------------------------------------------------------------------------------------------------
 
 const string c_AB_NovaInfestedSiegeMode = "NovaInfestedSiegeTankRoot";
@@ -703,4 +703,197 @@ void AIThinkChangelingZealotShakuras (int player, unit aiUnit, unitgroup scanGro
 
 void AIThinkChangelingZerglingStetmann (int player, unit aiUnit, unitgroup scanGroup) {
     AIThinkChangelingUnitLuna(player, aiUnit, scanGroup, "ZerglingStetmann");
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** HUNTERLING ***
+//--------------------------------------------------------------------------------------------------
+
+void AIThinkHunterling (int player, unit aiUnit, unitgroup scanGroup) {
+    int init_i;
+    unit lv_unitException;
+    unit lv_victim;
+    unitgroup lv_canidates;
+    unitgroup[3] lv_potentialTargets;
+    aifilter lv_targetFilter;
+    int lv_targetIndex;
+    int lv_unitPosition;
+    int scanCount;
+
+    // Variable Initialization
+    lv_canidates = UnitGroupEmpty();
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        lv_potentialTargets[init_i] = UnitGroupEmpty();
+    }
+    lv_targetFilter = AIFilter(player);
+
+    // Implementation
+    if (((UnitGroupCount(scanGroup, c_unitCountAlive) == 0) || (UnitAbilityGetCooldown(aiUnit, "LeapAttack", "Abil/LeapAttack") > 0.0))) {
+        return ;
+    }
+
+    AISetFilterAlliance(lv_targetFilter, c_playerGroupEnemy);
+    AISetFilterPlane(lv_targetFilter, c_planeGround);
+    AISetFilterBits(lv_targetFilter, UnitFilter((1 << c_targetFilterVisible), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile) | (1 << c_targetFilterBuried), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterInvulnerable - 32))));
+    AISetFilterRange(lv_targetFilter, aiUnit, 10.0);
+    libCOMI_gf_TacticalAIFilterSortByLife(lv_targetFilter, 100.0, 100*c_distanceFromDamage);
+    lv_canidates = AIGetFilterGroup(lv_targetFilter, scanGroup);
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    for (;; scanCount -= 1) {
+        lv_unitException = UnitGroupUnitFromEnd(lv_canidates, scanCount);
+        if (lv_unitException == null) { break; }
+        if ((UnitGetType(lv_unitException) != "SpiderMine") && (UnitGetType(lv_unitException) != "SpiderMineBurrowed")) {
+            lv_unitPosition += 1;
+            if ((UnitFilterMatch(lv_unitException, player, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true)) {
+                UnitGroupAdd(lv_potentialTargets[1], lv_unitException);
+            }
+            else {
+                UnitGroupAdd(lv_potentialTargets[2], lv_unitException);
+            }
+
+        }
+
+    }
+    if ((UnitGroupCount(lv_potentialTargets[1], c_unitCountAlive) == 0) && (UnitGroupCount(lv_potentialTargets[2], c_unitCountAlive) == 0)) {
+        return ;
+    }
+
+    for (lv_targetIndex = 1 ; lv_targetIndex <= 2 ; lv_targetIndex += 1 ) {
+        lv_victim = UnitGroupUnit(lv_potentialTargets[lv_targetIndex], 1);
+        if ((lv_victim != null)) {
+            break;
+        }
+
+    }
+    AICast(aiUnit, OrderTargetingPoint(AbilityCommand("LeapAttack", 0), UnitGetPosition(lv_victim)), c_noMarker, c_castHold);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** CHOKER ***
+//--------------------------------------------------------------------------------------------------
+
+void AIThinkChoker (int player, unit aiUnit, unitgroup scanGroup) {
+    // Variable Declarations
+    unit lv_victim;
+    unitgroup lv_candidates;
+    unit lv_unitException;
+    fixed lv_tentacleRange;
+    aifilter lv_chokerAIFilter;
+    marker lv_chokerMark;
+    point lv_bestTarget;
+    int lv_chokerAverageDelay;
+
+    // Automatic Variable Declarations
+    unitgroup auto5973CCE0_g;
+    int auto5973CCE0_u;
+
+    // Variable Initialization
+    lv_candidates = UnitGroupEmpty();
+    lv_chokerAIFilter = AIFilter(player);
+
+    // Implementation
+    lv_chokerAverageDelay = libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 15, 15, 5, 0, 0, 0);
+    if ((RandomInt(0, lv_chokerAverageDelay) != 0)) {
+        return ;
+    }
+
+    if (((UnitGroupCount(scanGroup, c_unitCountAlive) == 0) || (UnitAbilityGetCooldown(aiUnit, "TentacleAttack", "Abil/TentacleAttack") > 0.0))) {
+        return ;
+    }
+
+    lv_tentacleRange = CatalogFieldValueGetAsInt(c_gameCatalogAbil, "TentacleAttack", "Range[" + IntToString(0) + "]", player);
+    AISetFilterBits(lv_chokerAIFilter, UnitFilter((1 << c_targetFilterVisible), 0, (1 << c_targetFilterMassive) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterSummoned - 32))));
+    AISetFilterRange(lv_chokerAIFilter, aiUnit, (lv_tentacleRange + 3.0));
+    AISetFilterAlliance(lv_chokerAIFilter, c_playerGroupEnemy);
+    lv_candidates = AIGetFilterGroup(lv_chokerAIFilter, scanGroup);
+    auto5973CCE0_g = lv_candidates;
+    auto5973CCE0_u = UnitGroupCount(auto5973CCE0_g, c_unitCountAll);
+    for (;; auto5973CCE0_u -= 1) {
+        lv_victim = UnitGroupUnitFromEnd(auto5973CCE0_g, auto5973CCE0_u);
+        if (lv_victim == null) { break; }
+        if ((UnitHasBehavior2(lv_victim, "ChokePrevent") == true)) {
+            UnitGroupRemove(lv_candidates, lv_victim);
+        }
+
+    }
+    if ((UnitGroupCount(lv_candidates, c_unitCountAlive) == 0)) {
+        return ;
+    }
+
+    lv_bestTarget = AIBestTargetPoint(lv_candidates, 1, TruncI((4.0*2.0*8.0)), 2.0, 2.0, UnitGetPosition(aiUnit), lv_tentacleRange, c_unitAttributeHeroic);
+    if ((lv_bestTarget != null)) {
+        AICast(aiUnit, OrderTargetingUnit(AbilityCommand("TentacleAttack", 0), UnitGroupClosestToPoint(lv_candidates, lv_bestTarget)), c_noMarker, c_castRetreat);
+    }
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** CHOKER ***
+//--------------------------------------------------------------------------------------------------
+
+void AIThinkSpotter (int player, unit aiUnit, unitgroup scanGroup) {
+    // Variable Declarations
+    unit lv_victim;
+    unitgroup lv_nearbyObjects;
+    unitgroup lv_nearbyEnemyUnits;
+    unitgroup lv_nearbyEnemyStructures;
+    unitgroup lv_nearbyEnemyStructures_Priority;
+    aifilter lv_enemyUnitsFilter;
+    aifilter lv_enemyStructuresFilter;
+
+    // Automatic Variable Declarations
+    unitgroup auto818E9CDE_g;
+    int auto818E9CDE_u;
+
+    // Variable Initialization
+    lv_nearbyObjects = UnitGroupEmpty();
+    lv_nearbyEnemyUnits = UnitGroupEmpty();
+    lv_nearbyEnemyStructures = UnitGroupEmpty();
+    lv_nearbyEnemyStructures_Priority = UnitGroupEmpty();
+    lv_enemyUnitsFilter = AIFilter(player);
+    lv_enemyStructuresFilter = AIFilter(player);
+
+    // Implementation
+    lv_nearbyObjects = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(aiUnit), 15.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+    AISetFilterAlliance(lv_enemyUnitsFilter, c_playerGroupEnemy);
+    AISetFilterBits(lv_enemyUnitsFilter, UnitFilter(0, 0, (1 << c_targetFilterStructure), 0));
+    lv_nearbyEnemyUnits = AIGetFilterGroup(lv_enemyUnitsFilter, lv_nearbyObjects);
+    AISetFilterAlliance(lv_enemyStructuresFilter, c_playerGroupEnemy);
+    AISetFilterBits(lv_enemyStructuresFilter, UnitFilter((1 << c_targetFilterStructure), 0, 0, 0));
+    lv_nearbyEnemyStructures = AIGetFilterGroup(lv_enemyStructuresFilter, lv_nearbyObjects);
+    if ((UnitAbilityGetCooldown(aiUnit, "HybridGeneralPhaseShift", "Abil/HybridGeneralPhaseShift") <= 0.0) && (UnitGroupCount(lv_nearbyEnemyStructures, c_unitCountAlive) > 0)) {
+        auto818E9CDE_g = lv_nearbyEnemyStructures;
+        auto818E9CDE_u = UnitGroupCount(auto818E9CDE_g, c_unitCountAll);
+        for (;; auto818E9CDE_u -= 1) {
+            lv_victim = UnitGroupUnitFromEnd(auto818E9CDE_g, auto818E9CDE_u);
+            if (lv_victim == null) { break; }
+            if ((UnitHasBehavior2(lv_victim, "HybridGeneralPhaseShift") == false)) {
+                if (((UnitHasBehavior2(lv_victim, "VoidPylonPowerSource") == true) || (UnitHasBehavior2(lv_victim, "PowerSource") == true) || (UnitHasBehavior2(lv_victim, "DarkPylonPowerSource") == true))) {
+                    UnitGroupAdd(lv_nearbyEnemyStructures_Priority, lv_victim);
+                    UnitGroupRemove(lv_nearbyEnemyStructures, lv_victim);
+                }
+                else {
+                    if ((UnitWeaponCount(lv_victim) < 0)) {
+                        UnitGroupRemove(lv_nearbyEnemyStructures, lv_victim);
+                    }
+
+                }
+            }
+            else {
+                UnitGroupRemove(lv_nearbyEnemyStructures, lv_victim);
+            }
+        }
+        if ((UnitGroupCount(lv_nearbyEnemyStructures_Priority, c_unitCountAlive) > 0)) {
+            AICast(aiUnit, OrderTargetingUnit(AbilityCommand("HybridGeneralPhaseShift", 0), UnitGroupRandomUnit(lv_nearbyEnemyStructures_Priority, c_unitCountAlive)), null, true);
+        }
+        else {
+            AICast(aiUnit, OrderTargetingUnit(AbilityCommand("HybridGeneralPhaseShift", 0), UnitGroupRandomUnit(lv_nearbyEnemyStructures, c_unitCountAlive)), null, true);
+        }
+        return ;
+    }
+
+    if ((UnitAbilityGetCooldown(aiUnit, "SpotterCorruption", "Abil/SpotterCorruption") <= 0.0) && (UnitGroupCount(lv_nearbyEnemyUnits, c_unitCountAlive) > 0)) {
+        AICast(aiUnit, OrderTargetingUnit(AbilityCommand("SpotterCorruption", 0), UnitGroupRandomUnit(lv_nearbyEnemyUnits, c_unitCountAlive)), null, true);
+        return ;
+    }
 }
