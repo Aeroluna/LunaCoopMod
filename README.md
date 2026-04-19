@@ -1834,6 +1834,7 @@ Showing some love for Nova's static defense. Nova's structure life perk was ridi
 - Fixed an issue where Triple Tap could target undetected units.
 - Fixed an issue where Railgun Turret placement models were smaller than their actual model.
 - Added a buff/debuff for structures affected by P1.
+- Fixed an issue where Nova's Assault Mode tooltip would incorrectly color appended mastery text.
 
 yeah.
 

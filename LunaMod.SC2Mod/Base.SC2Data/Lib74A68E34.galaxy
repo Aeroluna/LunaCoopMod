@@ -3780,6 +3780,7 @@ bool lib74A68E34_gt_MaxSupplyCommand_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "SupplyDummy", 0, 2, RegionGetBoundsMin(RegionEntireMap()));
     }
 
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_02C1CB0E"));
     libA8FDA37D_gf_UT_Cheat();
     return true;
 }
@@ -3799,8 +3800,7 @@ bool lib74A68E34_gt_EnemyUpgradeCommand_Func (bool testConds, bool runActions) {
     int lv_index;
 
     // Automatic Variable Declarations
-    const int auto9C4DD64A_ae = 4;
-    const int auto9C4DD64A_ai = 1;
+    playergroup autoEEE1B5DC_g;
     int autoD43127F7_ae;
     const int autoD43127F7_ai = 1;
 
@@ -3818,14 +3818,18 @@ bool lib74A68E34_gt_EnemyUpgradeCommand_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_player = 3;
-    for ( ; ( (auto9C4DD64A_ai >= 0 && lv_player <= auto9C4DD64A_ae) || (auto9C4DD64A_ai < 0 && lv_player >= auto9C4DD64A_ae) ) ; lv_player += auto9C4DD64A_ai ) {
+    autoEEE1B5DC_g = PlayerGroupAlliance(c_playerGroupEnemy, 1);
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoEEE1B5DC_g, lv_player);
+        if (lv_player < 0) { break; }
         autoD43127F7_ae = UserDataInstanceCount("CoopAIUpgrade");
         lv_index = 1;
         for ( ; ( (autoD43127F7_ai >= 0 && lv_index <= autoD43127F7_ae) || (autoD43127F7_ai < 0 && lv_index >= autoD43127F7_ae) ) ; lv_index += autoD43127F7_ai ) {
             TechTreeUpgradeAddLevel(lv_player, UserDataGetUpgrade("CoopAIUpgrade", UserDataInstance("CoopAIUpgrade", lv_index), "Upgrade", 1), 1);
         }
     }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_FBF90226"));
     libA8FDA37D_gf_UT_Cheat();
     return true;
 }
@@ -3868,64 +3872,6 @@ bool lib74A68E34_gt_CooldownImproved_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_CooldownImproved_Init () {
     lib74A68E34_gt_CooldownImproved = TriggerCreate("lib74A68E34_gt_CooldownImproved_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_CooldownImproved, c_playerAny, "-cdr", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: RandomMutationCommand
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_RandomMutationCommand_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libCOUI_gf_CU_RandomMutationSelectDisplay(EventPlayer());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_RandomMutationCommand_Init () {
-    lib74A68E34_gt_RandomMutationCommand = TriggerCreate("lib74A68E34_gt_RandomMutationCommand_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_RandomMutationCommand, c_playerAny, "-mutatorabomination", true);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: VictoryCommand
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_VictoryCommand_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libCOMI_gf_GameIsOver() == false))) {
-            return false;
-        }
-
-        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libCOMI_gf_EndCampaignMission(c_gameOverVictory);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_VictoryCommand_Init () {
-    lib74A68E34_gt_VictoryCommand = TriggerCreate("lib74A68E34_gt_VictoryCommand_Func");
-    TriggerAddEventChatMessage(lib74A68E34_gt_VictoryCommand, c_playerAny, "-victory", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11559,8 +11505,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MaxSupplyCommand_Init();
     lib74A68E34_gt_EnemyUpgradeCommand_Init();
     lib74A68E34_gt_CooldownImproved_Init();
-    lib74A68E34_gt_RandomMutationCommand_Init();
-    lib74A68E34_gt_VictoryCommand_Init();
     lib74A68E34_gt_MengskVeterancyCheat_Init();
     lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_TychusExpandedCheat_Init();

@@ -845,8 +845,21 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NovaApolloCloak">
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaBlinkAbsorb">
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NovaCombatSuit">
-        <Modification MoveSpeedBonus="0.6992" MoveSpeedMultiplier="1"/>
+        <Modification MoveSpeedBonus="0.6992" MoveSpeedMultiplier="1">
+            <BehaviorLinkDisableArray value="NovaApolloCloak"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaPermanentlyCloaked">
+        <Modification>
+            <BehaviorLinkDisableArray value="SuperStimNova"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaUnitLockdown">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -1183,8 +1196,9 @@
         <RemoveValidatorArray value="CommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryController">
-        <Duration value="2"/>
+        <Duration value="1.6"/>
         <Period value="0.2"/>
+        <PeriodCount value="8"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponHellfireShotgun">
         <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
@@ -1303,6 +1317,9 @@
         <Modification>
             <WeaponDisableArray index="0" value="Suicide2"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuperStimNova">
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ToxicNestCounter">
         <InfoFlags index="Hidden" value="1"/>

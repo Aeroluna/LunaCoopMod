@@ -7,12 +7,28 @@
 - Fixed an issue where Fenix's Mass Recall did not work.
 - Fixed an issue where Night of the Living special infested played ambience sounds.
 - Fixed an issue where Night of the Living special infested did not use their ablities outside of Dead of Night.
+- Fixed an issue where Nova's Assault Mode tooltip would incorrectly color appended mastery text.
+- Fixed an issue where the `-aitech` debug command did not affect all enemies.
+
+yeah.
+
+- Fixed an issue where Nova's Blink shield duration was paused while in stealth mode.
+- Changed Stim Infusion to be disabled after entering stealth mode.
+- Changed Apollo Cloak Suit to be disabled after entering assault mode.
+- Reduced attack speed of Nova's Monomolecular Blade from 1 to 1.5.
+- Reduced the damage of Nova's Monomolecular Blade from 120 to 100.
+- Reduced the damage of Nova's Dash Attack from 100 to 50.
+- Reduced the hit count of Nova's Fury of One from 11 to 9.
+
+In hindsight, it was kinda insane how much I buffed the Monomolecular Blade over the campaign version. Now the gear should more closely align with the campaign version.
 
 ### Construction Yard
 
 - Adjusted attack wave/APC timings.
 
 Map should play faster, particularly around the final waves.
+
+- Fixed an issue where certain bullies would not get disabled.
 
 ### Solar Right
 
