@@ -10,6 +10,10 @@
 - Fixed an issue where Nova's Assault Mode tooltip would incorrectly color appended mastery text.
 - Fixed an issue where the `-aitech` debug command did not affect all enemies.
 - Fixed an issue where using the Arbiter Recall ability while having Fenix in-game would play the Fenix Recall VO.
+- Fixed an issue where a unit will lose its Abathur P4 Symbiote after finishing morphing.
+- Fixed an issue where P4 Abathur could place Symbiotes on Larva.
+- Added visual effects when a Symbiote is created using P4.
+- Reduced the delay on Toxic Nest autocast slightly.
 
 yeah.
 

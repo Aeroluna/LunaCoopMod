@@ -5433,6 +5433,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, true);
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, true);
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, true);
+                TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, true);
             }
 
         }
@@ -6749,6 +6750,130 @@ void lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AbathurPrestigeSymbioteCreate
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "CarapaceDamageResponse", EventUnit(), 1);
+    UnitAbilityAdd(EventUnit(), "SymbioteCarapacePrestige");
+    if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter((1 << c_targetFilterAir), 0, 0, 0)) == true)) {
+        UnitCreate(1, "AbathurSymbioteLeviathan", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
+        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
+            UnitSetHeight(UnitLastCreated(), 6.0, 0.0);
+        }
+        else {
+            UnitSetHeight(UnitLastCreated(), 7.0, 0.0);
+        }
+    }
+    else {
+        UnitCreate(1, "AbathurSymbioteBrutalisk", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
+        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
+            UnitSetHeight(UnitLastCreated(), 3.0, 0.0);
+        }
+        else {
+            UnitSetHeight(UnitLastCreated(), 4.0, 0.0);
+        }
+    }
+    UnitCreateEffectUnit(EventUnit(), "SymbioteFollowCP", UnitLastCreated());
+    UnitCreateEffectUnit(EventUnit(), "SymbioteCreateSet", UnitLastCreated());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteCreate = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeActivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurPrestigeSymbioteIncreaseSupply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_abathurCommander;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurPrestigeSymbioteDecreaseSupply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_abathurCommander;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", -1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurPrestigeSymbioteMorph
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventUnit(), "AbathurPrestigeSymbiote") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAddPlayer(EventUnitProgressUnit(), "AbathurPrestigeSymbiote", UnitGetOwner(EventUnit()), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteMorph = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, false);
+    TriggerAddEventUnitTrainProgress(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AbathurMorphAutoCastFix
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_AbathurMorphAutoCastFix_Func (bool testConds, bool runActions) {
@@ -6848,103 +6973,6 @@ void lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init () {
     lib74A68E34_gt_AbathurBiomassPickupLocustCheck = TriggerCreate("lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Func");
     TriggerEnable(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, c_playerAny, "BiomassPickupDummy2");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AbathurPrestigeSymbioteCreate
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitBehaviorAdd(EventUnit(), "CarapaceDamageResponse", EventUnit(), 1);
-    UnitAbilityAdd(EventUnit(), "SymbioteCarapacePrestige");
-    if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter((1 << c_targetFilterAir), 0, 0, 0)) == true)) {
-        UnitCreate(1, "AbathurSymbioteLeviathan", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
-        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
-            UnitSetHeight(UnitLastCreated(), 6.0, 0.0);
-        }
-        else {
-            UnitSetHeight(UnitLastCreated(), 7.0, 0.0);
-        }
-    }
-    else {
-        UnitCreate(1, "AbathurSymbioteBrutalisk", c_unitCreateIgnoreBirth, UnitGetOwner(UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0)), UnitGetPosition(EventUnit()), UnitGetFacing(EventUnit()));
-        UnitBehaviorAdd(UnitLastCreated(), "AllUnitBehaviorController", UnitLastCreated(), 1);
-        if ((UnitFilterMatch(EventUnit(), UnitGetOwner(EventUnit()), UnitFilter(0, 0, (1 << c_targetFilterMassive), 0)) == true)) {
-            UnitSetHeight(UnitLastCreated(), 3.0, 0.0);
-        }
-        else {
-            UnitSetHeight(UnitLastCreated(), 4.0, 0.0);
-        }
-    }
-    UnitCreateEffectUnit(EventUnit(), "SymbioteFollowCP", UnitLastCreated());
-    UnitCreateEffectUnit(EventUnit(), "SymbioteCreateSet", UnitLastCreated());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init () {
-    lib74A68E34_gt_AbathurPrestigeSymbioteCreate = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteCreate, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeActivate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AbathurPrestigeSymbioteIncreaseSupply
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_abathurCommander;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", 1);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init () {
-    lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeCreate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AbathurPrestigeSymbioteDecreaseSupply
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_abathurCommander;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_abathurCommander = libCOOC_gf_CC_PlayerOfCommanderInGroupFirst("ZergAbathur", libCOOC_gf_CommanderPlayers());
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TechTreeUpgradeAddLevel(lv_abathurCommander, "CommanderPrestigeAbathurSymbioteSupply", -1);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init () {
-    lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Func");
-    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, null, "AbathurPrestigeSymbiote", c_unitBehaviorChangeDestroy);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11613,12 +11641,13 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init();
-    lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
-    lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
-    lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
+    lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init();
+    lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
+    lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
+    lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init();
