@@ -14,6 +14,7 @@
 - Fixed an issue where P4 Abathur could place Symbiotes on Larva.
 - Added visual effects when a Symbiote is created using P4.
 - Reduced the delay on Toxic Nest autocast slightly.
+- Fixed an issue where the random commander select button was misaligned on non-16:9 aspect ratios.
 
 yeah.
 
