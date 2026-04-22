@@ -1,5 +1,13 @@
 # Changelog
 
+## 4/22/2026
+
+- Changed Tempest's Destablizing Residuum to no longer be affected by Artanis P1.
+- Fixed an issue where Reaver placement and warp-in were not scaled properly.
+- Fixed an issue where High Templar Feedback was not affected by Artanis P1.
+- Fixed an issue where units did not flee from Tempest's Destablizing Residuum.
+- Reduced the damage of Tempest's Destablizing Residuum from 40 to 20.
+
 ## 4/19/2026
 
 - Fixed an issue where Wraiths had no banker.

@@ -1087,7 +1087,6 @@ Disintegration buffs because this ability usually feels clunky. Cooldown reduced
 
 - Added Destabilizing Residuum upgrade at the Fleet Beacon.
   - Causes Tempest attacks to leave an AOE field that does 40 damage over 2 seconds.
-  - Damage doubled by P2.
 
 https://github.com/user-attachments/assets/1040fc83-a204-4160-b0c8-a2145324ee4c
 
@@ -1302,6 +1301,7 @@ If you thought Zagara's wireframe looked oddly low resolution, you aren't crazy.
 Zagara has a mastery for attack damage but her attacks felt lethargic and she attacked slower than queens. Should make the attack damage mastery competitive with the energy mastery.
 
 - Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
+- Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
 
 yeah.
 
@@ -1444,7 +1444,6 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Changed Dark Templar Blink ability button icon.
 - Renamed Dark Templar Blink ability to Shadow Stride.
 - Changed Centurion Darkcoil shield buff to no longer glow while out of shields.
-- Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
 
 yeah.
 
@@ -1724,7 +1723,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Restored missing beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
 - Changed Mothership Mass Teleport ability to teleport to the unit's current location instead of its location when the ability was cast.
-- Fixed a bug where Alarak's Destruction Wave model would not face the direction it was cast in.
+- Fixed an issue where Alarak's Destruction Wave model would not face the direction it was cast in.
 - Fixed an issue where Alarak's Destruction Wave cast animation would not play while moving.
 - Fixed an issue where Alarak's Deadly Charge cast animation would not play while moving.
 - Improved Alarak's Deadly Charge visual impact animation.
