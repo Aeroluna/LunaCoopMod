@@ -1,0 +1,294 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   Death From Above
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "LibCOOC"
+include "LibCOMI"
+include "LibCOUI"
+include "Lib01833E95"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+    libCOOC_InitLib();
+    libCOMI_InitLib();
+    libCOUI_InitLib();
+    lib01833E95_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Constants
+//--------------------------------------------------------------------------------------------------
+const fixed gv_mothershipMaxSpeed = 1.2;
+const fixed gv_mothershipNearSpeed = 0.8;
+const fixed gv_mothershipMinSpeed = 0.4;
+
+//--------------------------------------------------------------------------------------------------
+// Global Variables
+//--------------------------------------------------------------------------------------------------
+point gv_mothershipTarget;
+
+void InitGlobals () {
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Function Declarations
+//--------------------------------------------------------------------------------------------------
+void gf_EndCampaignMission (int lp_type);
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_vic;
+trigger gt_MothershipForceMove;
+trigger gt_TW_Main_Thread_Player01_Template;
+trigger gt_TW_Main_Thread_Player02_Template;
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: script
+//--------------------------------------------------------------------------------------------------
+include "TriggerLibs/MapScriptCustom"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script Initialization
+//--------------------------------------------------------------------------------------------------
+void InitCustomScript () {
+    InitMapCustom();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Global Functions
+//--------------------------------------------------------------------------------------------------
+void gf_EndCampaignMission (int lp_type) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoAC555E88_g;
+    playergroup autoFE70FBDB_g;
+
+    // Variable Initialization
+
+    // Implementation
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/DB45E4B4"));
+    TriggerSendEvent("UT_MissionEnd");
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/4CA62E8B"));
+    TextExpressionSetToken("Param/Expression/70570FA8", "A", IntToText(libCOMI_gv_cM_DebugDehakaEssenceCollected));
+    TextExpressionSetToken("Param/Expression/70570FA8", "B", IntToText(libCOMI_gv_cM_DebugDehakaEssenceDroppedNormal));
+    TextExpressionSetToken("Param/Expression/70570FA8", "C", IntToText(libCOMI_gv_cM_DebugDehakaEssenceLost));
+    TextExpressionSetToken("Param/Expression/70570FA8", "D", IntToText(libCOMI_gv_cM_DebugDehakaEssenceDroppedRefund));
+    TriggerDebugOutput(13, TextExpressionAssemble("Param/Expression/70570FA8"), false);
+    PerfTestStop();
+    TriggerQueueClear(c_triggerQueueRetain);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/AB56891F"));
+    TriggerQueuePause(true);
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/7CA05CBA"));
+    autoAC555E88_g = libCOOC_gf_NondefeatedPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoAC555E88_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/68780B25"));
+        libCOOC_gf_CC_PlayerAwardMissionXP(lp_type, lv_indexPlayer);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/110BDE69"));
+        libCOOC_gf_CC_SaveAllTransitionData((lp_type != c_gameOverVictory), lv_indexPlayer);
+        libCOMI_gv_cM_EndMissionResult[lv_indexPlayer] = lp_type;
+        libCOMI_gf_CM_MissionEndAwardAchievements(lv_indexPlayer);
+    }
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/639D45B0"));
+    autoFE70FBDB_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoFE70FBDB_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        if ((lp_type == c_gameOverVictory)) {
+            UIAlert("VictoryAlertCoop", lv_indexPlayer, StringToText(""), null);
+        }
+
+        if ((lp_type == c_gameOverDefeat)) {
+            UIAlert("DefeatAlertCoop", lv_indexPlayer, StringToText(""), null);
+        }
+
+        if ((lp_type == c_gameOverTie)) {
+            UIAlert("DrawAlertCoop", lv_indexPlayer, StringToText(""), null);
+        }
+
+        libCOOC_gf_CC_SetPlayerDefeated(lv_indexPlayer);
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/93475147"));
+        if ((libCOOC_gv_cC_InContestMap == true)) {
+            GameOver(lv_indexPlayer, libCOMI_gv_cM_EndMissionResult[lv_indexPlayer], true, true);
+        }
+        else {
+            libCOUI_gf_CU_FanfareDisplay(lp_type, lv_indexPlayer);
+        }
+        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/1AD891C7"));
+    }
+    if ((libCOOC_gf_CoopDebugModeIsOn("LogPerf", 1) == true)) {
+        PerfTestStop();
+        TriggerStop(libCOMI_gt_CM_CampaignMissionPerfLog);
+    }
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: vic
+//--------------------------------------------------------------------------------------------------
+bool gt_vic_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_GameOver(libCOMI_ge_CampaignMissionGameResultType_Victory);
+    Wait(2.0, c_timeReal);
+    libCOMI_gf_RunMissionVictorySequence(gt_VictoryFanfareQ);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_vic_Init () {
+    gt_vic = TriggerCreate("gt_vic_Func");
+    TriggerAddEventChatMessage(gt_vic, c_playerAny, "vic", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MothershipForceMove
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipForceMove_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsAlive(gv_mothership) == true))) {
+            return false;
+        }
+
+        if (!((gv_mothershipTarget != null))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(gv_mothership, OrderTargetingPoint(AbilityCommand("move", 0), gv_mothershipTarget), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipForceMove_Init () {
+    gt_MothershipForceMove = TriggerCreate("gt_MothershipForceMove_Func");
+    TriggerAddEventTimePeriodic(gt_MothershipForceMove, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TW_Main_Thread_Player01_Template
+//--------------------------------------------------------------------------------------------------
+bool gt_TW_Main_Thread_Player01_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 1);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player01_Template_Init () {
+    gt_TW_Main_Thread_Player01_Template = TriggerCreate("gt_TW_Main_Thread_Player01_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player01_Template);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TW_Main_Thread_Player02_Template
+//--------------------------------------------------------------------------------------------------
+bool gt_TW_Main_Thread_Player02_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 2);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player02_Template_Init () {
+    gt_TW_Main_Thread_Player02_Template = TriggerCreate("gt_TW_Main_Thread_Player02_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player02_Template);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_vic_Init();
+    gt_MothershipForceMove_Init();
+    gt_TW_Main_Thread_Player01_Template_Init();
+    gt_TW_Main_Thread_Player02_Template_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitGlobals();
+    InitCustomScript();
+    InitTriggers();
+}

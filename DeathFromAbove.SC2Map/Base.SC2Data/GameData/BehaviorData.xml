@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="HardenedShield2">
+        <Alignment value="Positive"/>
+        <Cost>
+            <Cooldown Link="Immortal Shield"/>
+        </Cost>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-HardenedShields.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="CasterShieldsGE1"/>
+        <DamageResponse ClampMaximum="5000" Minimum="0">
+            <Kind index="Spell" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorPurifierBeamAOE2">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="MutatorPurifierBeamDamage2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorPurifierBeamAOE22">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="MutatorPurifierBeamDamage22"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorPurifierBeamAOE3">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="MutatorPurifierBeamDamage3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NoxiousDamage">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VoodooShield">
+        <Modification>
+            <VitalMaxArray index="Shields" value="0"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0" ModifyLimit="500">
+            <Chance value="1"/>
+        </DamageResponse>
+        <RemoveValidatorArray index="0" removed="1"/>
+    </CBehaviorBuff>
+</Catalog>

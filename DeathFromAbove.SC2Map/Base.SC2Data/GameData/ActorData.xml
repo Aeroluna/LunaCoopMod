@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Artosilope                                                                            -->
+    <CActorUnit id="Artosilope">
+        <On Terms="UnitBirth" Send="$Birth PlayForever"/>
+    </CActorUnit>
+    <CActorAction id="AutoTurretRelease2" parent="GenericAttack" effectImpact="RemovePrecursor" effectLaunch="AutoTurretReleaseLM2">
+        <LaunchAssets Sound="Raven_AutoTurretReleaseLaunch"/>
+        <Missile value="AutoTurretReleaseMissile2"/>
+        <ImpactSiteOps Ops="SOpAttachOrigin SOpShadow"/>
+        <ImpactMap index="None" Sound="Gas_Birth"/>
+        <ShieldFlashType value="None"/>
+    </CActorAction>
+    <CActorMissile id="AutoTurretReleaseMissile2" parent="GenericAttackMissile" unitName="AutoTurretReleaseWeapon2"/>
+    <CActorUnit id="Beacon_Protoss">
+        <HighlightSubTooltip value="Beacon"/>
+    </CActorUnit>
+    <!-- Carrion Bug                                                                            -->
+    <CActorUnit id="CarrionBug">
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorUnit>
+    <CActorAction id="GorgonCruiserAttack">
+        <LaunchAttachQuery Methods="Center 0"/>
+        <LaunchAssets Sound="Banshee_AttackLaunch22"/>
+        <ImpactMap index="None" Sound="Banshee_AttackImpact22"/>
+    </CActorAction>
+    <CActorDoodad id="GuideArrow2">
+        <Model value="GuideArrow3"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorUnit id="GuideArrowUnit2" parent="GenericUnitStandardNoAutoSoundLinks" unitName="GuideArrowUnit">
+        <On Terms="ActorCreation" Send="$Birth"/>
+        <Model value="GuideArrow2"/>
+        <HighlightTooltip value="Unit/Name/GuideArrowUnit2"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+    </CActorUnit>
+    <CActorAction id="InfestedBansheeAttack2" parent="GenericAttack" effectImpact="InfestedBansheeDamage" effectLaunch="InfestedBansheeLaunchMissile2">
+        <LaunchAttachQuery Methods="Weapon 0"/>
+        <LaunchAssets Sound="Banshee_AttackLaunch22"/>
+        <Missile value="InfestedBansheeAttackMissile2"/>
+        <ImpactMap index="None" Model="BansheeAttackImpact2" Sound="Banshee_AttackImpact22"/>
+    </CActorAction>
+    <CActorMissile id="InfestedBansheeAttackMissile2" parent="GenericAttackMissile" unitName="InfestedBansheeWeapon2"/>
+    <CActorModel id="MothershipShadowModel2" parent="ModelAnimationStyleContinuous">
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,0,0"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.010000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin PlanetCrackerPurifierMothershipModelRotator"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="MothershipShadowModel22" parent="ModelAnimationStyleContinuous">
+        <FogVisibility value="Visible"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin PlanetCrackerPurifierMothershipModelRotator"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorUnit id="MutatorPurifierBeam2" parent="GenericUnitStandard" unitName="MutatorPurifierBeam2">
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation" Send="AttachModelOffset {} MutatorTornadoWarningSplat {Origin 0}"/>
+        <On Terms="ActorCreation" Send="Create MutatorTornadoActorSound2"/>
+        <Model value="MutatorPurifierBeam3"/>
+        <Baselines index="Walk" AnimProps="Stand"/>
+        <BuildModel value="MutatorPurifierBeam3"/>
+        <DeathArray index="Normal" ModelLink="MutatorPurifierBeam3"/>
+        <PlacementModel value="MutatorPurifierBeam3"/>
+        <MinimapIconScale value="0.000000"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\wireframe-protoss-purifierbeam.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MutatorPurifierBeam3" parent="GenericUnitStandard" unitName="MutatorPurifierBeam3">
+        <EditorCategories value=""/>
+        <On Terms="ActorCreation" Send="AttachModelOffset {} MutatorTornadoWarningSplat {Origin 0}"/>
+        <On Terms="ActorCreation" Send="Create MutatorTornadoActorSound2"/>
+        <Model value="MutatorPurifierBeam4"/>
+        <Baselines index="Walk" AnimProps="Stand"/>
+        <BuildModel value="MutatorPurifierBeam4"/>
+        <DeathArray index="Normal" ModelLink="MutatorPurifierBeam4"/>
+        <PlacementModel value="MutatorPurifierBeam4"/>
+        <MinimapIconScale value="0.000000"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\wireframe-protoss-purifierbeam.dds"/>
+    </CActorUnit>
+    <CActorSound id="MutatorPurifierBeamFiringLoopSound2" parent="SoundContinuous">
+        <On Terms="Behavior.MutatorPurifierBeamAOE2.On" Send="Create"/>
+        <On Terms="Behavior.MutatorPurifierBeamAOE2" Send="ModelMaterialMaximizePriority"/>
+        <On Terms="Behavior.MutatorPurifierBeamAOE2.Off" Send="Destroy"/>
+        <Sound value="SOAPurifierBeamFiring_Loop2"/>
+        <Layers Sound="SOAPurifierBeam_QuakeLayer_Loop"/>
+        <Layers Sound="SOAPurifierBeam_Quake_Layer"/>
+    </CActorSound>
+    <CActorSound id="MutatorPurifierBeamFiringLoopSound22" parent="SoundContinuous">
+        <On Terms="Behavior.MutatorPurifierBeamAOE22.On" Send="Create"/>
+        <On Terms="Behavior.MutatorPurifierBeamAOE22" Send="ModelMaterialMaximizePriority"/>
+        <On Terms="Behavior.MutatorPurifierBeamAOE22.Off" Send="Destroy"/>
+        <Sound value="SOAPurifierBeamFiring_Loop22"/>
+        <Layers Sound="SOAPurifierBeam_QuakeLayer_Loop"/>
+        <Layers Sound="SOAPurifierBeam_Quake_Layer"/>
+    </CActorSound>
+    <CActorSound id="MutatorTornadoActorSound2" parent="SoundContinuous">
+        <Sound value="Mutator_Tornado_Base_Loop2"/>
+        <Layers Sound="Mutator_Tornado_Spirit_OneShots_Lp"/>
+        <Layers Sound="Mutator_Tornado_Wind_OneShots_Lp"/>
+    </CActorSound>
+    <CActorUnit id="NarudEpilogue">
+        <On Terms="ActorCreation" Send="AttachModelOffset {} VoidRiftUnselectable {Origin 0} 0.000000,0.000000,-1.600000"/>
+    </CActorUnit>
+    <CActorUnit id="NaturalGas50">
+        <On Terms="ActorCreation" Send="AttachModelOffset {} GasBarrelExplodeModel {Origin 0}"/>
+    </CActorUnit>
+    <CActorModel id="NoxiousCloud">
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorUnit id="NydusCanal2" parent="NydusCanal" unitName="NydusCanal2">
+        <Filter index="Ally" value="1"/>
+        <On index="0" Terms="UnitBirth.NydusCanal2"/>
+        <On index="1" Terms="UnitBirth.NydusCanal2"/>
+        <On index="2" Terms="UnitRevive.NydusCanal2"/>
+        <On index="3" Terms="UnitRevive.NydusCanal2"/>
+        <On index="4" Terms="UnitConstruction.NydusCanal2.Start"/>
+        <On index="5" Terms="UnitConstruction.NydusCanal2.Finish"/>
+        <Model value="NydusCanal2"/>
+        <PortraitModel value="StaticPortrait"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-coopex3-caveentrance.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/NydusCanal2"/>
+        <HighlightSubTooltip value="Cave(Tunnel)"/>
+        <MinimapIcon value="Assets\Textures\btn-ac-coop-caveentrancemapicon.dds"/>
+        <MinimapIconScale value="0.500000"/>
+        <MinimapRenderPriority value="Hero"/>
+        <MinimapTooltip value="CaveEtrance"/>
+        <MinimapUseSelfColor value="0"/>
+        <MinimapUseSelectionColor value="0"/>
+        <UnitIcon value="Assets\Textures\wireframe-coopex3-caveentrance.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-coopex3-caveentrance.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <!--                                                                                         -->
+    <!-- Obelisk ............................................................................... -->
+    <!--                                                                                         -->
+    <CActorUnit id="Obelisk">
+        <On index="65" removed="1"/>
+        <On index="66" removed="1"/>
+        <On index="67" removed="1"/>
+        <On index="68" removed="1"/>
+        <On index="69" removed="1"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+        <On index="73" removed="1"/>
+        <On index="74" removed="1"/>
+        <On index="75" removed="1"/>
+        <On index="76" removed="1"/>
+        <On index="77" removed="1"/>
+        <On index="78" removed="1"/>
+        <On index="79" removed="1"/>
+        <On index="80" removed="1"/>
+        <On index="81" removed="1"/>
+        <On index="82" removed="1"/>
+        <On index="83" removed="1"/>
+        <On index="84" removed="1"/>
+        <On index="85" removed="1"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-shieldgenerator-taldarim.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-shieldgenerator-taldarim.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-shieldgenerator-taldarim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-shieldgenerator-taldarim-shield00.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-shieldgenerator-taldarim-shield01.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-shieldgenerator-taldarim-shield02.dds"/>
+        </WireframeShield>
+        <BarWidth value="170"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <PortraitModel value="ExecutorTaldarimPortrait"/>
+    </CActorUnit>
+    <CActorText id="PickupGasProtoss50Text">
+        <Text value="Button/Tooltip/PickupEnvelopeGas50Text"/>
+    </CActorText>
+    <CActorUnit id="SOAMothershipv42" parent="GenericUnitBase" unitName="SOAMothershipv42">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="Create MothershipShadowModel2"/>
+        <Model value="TaldarimMothership2"/>
+        <Baselines index="Walk" AnimProps="Walk,01"/>
+        <BuildModel value="MotherShipTaldarimWarpIn"/>
+        <DeathArray index="Normal" ModelLink="TaldarimMothershipDeath" SoundLink="Mothership_Explode" VoiceLink=""/>
+        <DeathCustoms>
+            <ActorModel value="MothershipDeathRagdoll"/>
+            <ModelLink value="Mothership_Taldarim_DeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="BasicHeavy" Model="ProtossLargeRobotSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="FireHeavy"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathActorModel value="TaldarimMothershipDeathModel"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PlacementModel value="MothershipTaldarimPlacement"/>
+        <PortraitModel value="MothershipTaldarimPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive3"/>
+        </TerrainSquibs>
+        <BarOffset value="180"/>
+        <BarWidth value="216"/>
+        <GlossaryAnim value="GLstand"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="What" value="Mothership_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="Mothership_GroupYes"/>
+        <GroupSoundArray index="Attack" value="Mothership_GroupAttack"/>
+        <GroupSoundArray index="Board" value="Mothership_GroupBoard"/>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-mothership.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <MinimapIcon value="Assets\Textures\btn-ac-protoss-taldarimmothershipmapicon.dds"/>
+        <MinimapIconScale value="0.000000"/>
+        <MinimapRenderPriority value="Hero"/>
+        <MinimapTooltip value="Unit/Name/SOAMothershipv42"/>
+        <MinimapUseSelfColor value="0"/>
+        <MinimapUseSelectionColor value="0"/>
+        <NameOffset value="130"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-mothership.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-mothership-taldarim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Mothership-taldarim-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorModel id="TaldarimMothershipGhostWarpOut2" parent="ModelAnimationStyleOneShot">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,255,255 4.000000"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachTurret"/>
+        <Model value="MothershipWarpIn22"/>
+        <Scale value="0.750000"/>
+    </CActorModel>
+    <CActorModel id="TaldarimMothershipTeleportOut2" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.MothershipArtanisTimedLifeExpire.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create MothershipCore_UpgradeToMothershipEnd2"/>
+        <Host Subject="_Selectable"/>
+        <Model value="ArtanisMothershipTeleportOut"/>
+        <Scale value="1.250000"/>
+    </CActorModel>
+    <!--                                                                                         -->
+    <!-- Tychus05 Hero Mothership .............................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Tychus05HeroMothership">
+        <On Terms="Signal.*.TeleportOut" Send="TimerSet 0.250000 FadeOutScale"/>
+        <On Terms="TimerExpired; TimerName FadeOutScale" Send="SetOpacity 0.000000 0.750000"/>
+        <On Terms="Signal.*.TeleportOut" Send="Create TaldarimMothershipGhostWarpOut2"/>
+        <On Terms="Signal.*.TeleportOut" Send="Create TaldarimMothershipTeleportOut2"/>
+        <On Terms="Signal.*.TeleportOut" Target="FlyerHelperSplat" Send="Destroy"/>
+        <On Terms="Signal.*.TeleportOut; HasStatus FlyerHelper" Send="StatusDecrement FlyerHelper"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-mothership-taldarim.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-alarak-taldarim-mothership-collection.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-mothership-taldarim.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" value="Assets\Textures\wireframe-protoss-mothership-taldarim-shield01.dds"/>
+            <Image index="1" value="Assets\Textures\wireframe-protoss-mothership-taldarim-shield02.dds"/>
+            <Image index="2" value="Assets\Textures\wireframe-protoss-mothership-taldarim-shield03.dds"/>
+        </WireframeShield>
+        <HighlightSubTooltip value="MainMothership"/>
+        <BarWidth value="170"/>
+        <CustomUnitStatusFrame value="RTC_UnitStatus/zzzBossFrame"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <BarOffset value="50"/>
+        <DeathArray index="Normal" ModelLink="MothershipDeath2"/>
+        <PortraitModel value="MothershipPortrait3"/>
+    </CActorUnit>
+    <CActorDoodad id="Vespene_Crack">
+        <On index="2" removed="1"/>
+        <On index="3" removed="1"/>
+        <On index="4" removed="1"/>
+        <On index="5" removed="1"/>
+    </CActorDoodad>
+    <CActorUnit id="VoidChasm">
+        <HighlightSubTooltip value="Chasm2"/>
+    </CActorUnit>
+    <CActorUnit id="VoidChasmDormant">
+        <HighlightTooltip value="Chasm"/>
+    </CActorUnit>
+    <CActorUnit id="VoidCorruption">
+        <MinimapTooltip value="Unit/Name/CorruptionShard"/>
+    </CActorUnit>
+    <CActorUnit id="VoidRiftUnselectable">
+        <On Terms="UnitBirth" Send="$Birth"/>
+    </CActorUnit>
+    <CActorModel id="VoidTendrilDamageFieldImpact">
+        <MaxScale value="2.000000"/>
+    </CActorModel>
+    <CActorModel id="VoodooShield">
+        <Remove Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveDownBy1" HoldRotation="1"/>
+    </CActorModel>
+</Catalog>

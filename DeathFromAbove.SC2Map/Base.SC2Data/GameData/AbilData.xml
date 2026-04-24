@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="BuildAutoTurret2" parent="BuildAutoTurret">
+        <Name value="Abil/Name/BuildAutoTurret2"/>
+        <Effect index="0" value="AutoTurretRelease2"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <Placeholder value="NaturalGas50"/>
+        <Range index="0" value="8"/>
+        <Arc value="360"/>
+        <PlaceUnit value="NaturalGas50"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="KaiserWormScourgeMissile">
+        <Cost index="0">
+            <Cooldown TimeUse="6"/>
+        </Cost>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastRange value="500"/>
+        <TargetFilters index="0" value="MapBoss;Self,Player,Ally,Neutral,Missile,Hidden"/>
+        <AutoCastFilters value="Visible,MapBoss;Player,Ally,Neutral"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="NarudEpilogueTrain">
+        <InfoArray index="Train6">
+            <Cooldown TimeUse="4"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Cooldown TimeUse="3"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="VoidThrasherLightningAoE">
+        <Cost>
+            <Charge Link="Abil/VoidThrasherLightningAoE"/>
+            <Cooldown Link="Abil/VoidThrasherLightningAoE" TimeUse="4"/>
+        </Cost>
+        <AutoCastRange value="10"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="VoodooShield">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+        <AutoCastFilters value="-;-"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="CasterInCombatLong"/>
+        <Effect index="0" value="VoodooShieldApplyBehavior"/>
+    </CAbilEffectInstant>
+</Catalog>
