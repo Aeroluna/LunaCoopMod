@@ -8,6 +8,16 @@
 - Fixed an issue where units did not flee from Tempest's Destablizing Residuum.
 - Reduced the damage of Tempest's Destablizing Residuum from 40 to 20.
 
+### Construction Yard
+
+- Added 1 mineral field to each expansion on Brutal.
+
+Maps seem weirdly inconsistent on whether Brutal removes a mineral field from the expo or not. I decided to go with "if it's uncontested, remove a mineral field", so CY and PA do not get one removed.
+
+### Primal Ascension
+
+- Added 1 mineral field to each expansion on Brutal.
+
 ## 4/19/2026
 
 - Fixed an issue where Wraiths had no banker.

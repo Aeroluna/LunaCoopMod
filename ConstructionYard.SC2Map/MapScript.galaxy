@@ -1590,14 +1590,6 @@ bool gt_Init08Difficulties_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_01_USER) == 4)) {
-        UnitRemove(UnitFromId(211));
-    }
-
-    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(gv_pLAYER_02_USER) == 4)) {
-        UnitRemove(UnitFromId(134));
-    }
-
     libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_ConstructionYard_Primary02", libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 3, 3, 2, 2, 0, 0));
     autoEFAE9CEE_val = RandomInt(0, 2);
     if (autoEFAE9CEE_val == 0) {
