@@ -6,9 +6,7 @@
 // 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
-include "LibCOOC"
 include "LibCOMI"
-include "LibCOUI"
 include "Lib01833E95"
 
 //--------------------------------------------------------------------------------------------------
@@ -16,9 +14,7 @@ include "Lib01833E95"
 //--------------------------------------------------------------------------------------------------
 void InitLibs () {
     libNtve_InitLib();
-    libCOOC_InitLib();
     libCOMI_InitLib();
-    libCOUI_InitLib();
     lib01833E95_InitLib();
 }
 
@@ -38,15 +34,11 @@ void InitGlobals () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Global Function Declarations
-//--------------------------------------------------------------------------------------------------
-void gf_EndCampaignMission (int lp_type);
-
-//--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
-trigger gt_vic;
 trigger gt_MothershipForceMove;
+trigger gt_MothershipAttackBehavior;
+trigger gt_MothershipEnemiesAreNearBehavior;
 trigger gt_TW_Main_Thread_Player01_Template;
 trigger gt_TW_Main_Thread_Player02_Template;
 
@@ -60,102 +52,6 @@ include "TriggerLibs/MapScriptCustom"
 //--------------------------------------------------------------------------------------------------
 void InitCustomScript () {
     InitMapCustom();
-}
-
-//--------------------------------------------------------------------------------------------------
-// Global Functions
-//--------------------------------------------------------------------------------------------------
-void gf_EndCampaignMission (int lp_type) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup autoAC555E88_g;
-    playergroup autoFE70FBDB_g;
-
-    // Variable Initialization
-
-    // Implementation
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/DB45E4B4"));
-    TriggerSendEvent("UT_MissionEnd");
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/4CA62E8B"));
-    TextExpressionSetToken("Param/Expression/70570FA8", "A", IntToText(libCOMI_gv_cM_DebugDehakaEssenceCollected));
-    TextExpressionSetToken("Param/Expression/70570FA8", "B", IntToText(libCOMI_gv_cM_DebugDehakaEssenceDroppedNormal));
-    TextExpressionSetToken("Param/Expression/70570FA8", "C", IntToText(libCOMI_gv_cM_DebugDehakaEssenceLost));
-    TextExpressionSetToken("Param/Expression/70570FA8", "D", IntToText(libCOMI_gv_cM_DebugDehakaEssenceDroppedRefund));
-    TriggerDebugOutput(13, TextExpressionAssemble("Param/Expression/70570FA8"), false);
-    PerfTestStop();
-    TriggerQueueClear(c_triggerQueueRetain);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/AB56891F"));
-    TriggerQueuePause(true);
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/7CA05CBA"));
-    autoAC555E88_g = libCOOC_gf_NondefeatedPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(autoAC555E88_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/68780B25"));
-        libCOOC_gf_CC_PlayerAwardMissionXP(lp_type, lv_indexPlayer);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/110BDE69"));
-        libCOOC_gf_CC_SaveAllTransitionData((lp_type != c_gameOverVictory), lv_indexPlayer);
-        libCOMI_gv_cM_EndMissionResult[lv_indexPlayer] = lp_type;
-        libCOMI_gf_CM_MissionEndAwardAchievements(lv_indexPlayer);
-    }
-    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/639D45B0"));
-    autoFE70FBDB_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(autoFE70FBDB_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        if ((lp_type == c_gameOverVictory)) {
-            UIAlert("VictoryAlertCoop", lv_indexPlayer, StringToText(""), null);
-        }
-
-        if ((lp_type == c_gameOverDefeat)) {
-            UIAlert("DefeatAlertCoop", lv_indexPlayer, StringToText(""), null);
-        }
-
-        if ((lp_type == c_gameOverTie)) {
-            UIAlert("DrawAlertCoop", lv_indexPlayer, StringToText(""), null);
-        }
-
-        libCOOC_gf_CC_SetPlayerDefeated(lv_indexPlayer);
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/93475147"));
-        if ((libCOOC_gv_cC_InContestMap == true)) {
-            GameOver(lv_indexPlayer, libCOMI_gv_cM_EndMissionResult[lv_indexPlayer], true, true);
-        }
-        else {
-            libCOUI_gf_CU_FanfareDisplay(lp_type, lv_indexPlayer);
-        }
-        UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/1AD891C7"));
-    }
-    if ((libCOOC_gf_CoopDebugModeIsOn("LogPerf", 1) == true)) {
-        PerfTestStop();
-        TriggerStop(libCOMI_gt_CM_CampaignMissionPerfLog);
-    }
-
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: vic
-//--------------------------------------------------------------------------------------------------
-bool gt_vic_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libCOMI_gf_GameOver(libCOMI_ge_CampaignMissionGameResultType_Victory);
-    Wait(2.0, c_timeReal);
-    libCOMI_gf_RunMissionVictorySequence(gt_VictoryFanfareQ);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_vic_Init () {
-    gt_vic = TriggerCreate("gt_vic_Func");
-    TriggerAddEventChatMessage(gt_vic, c_playerAny, "vic", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -187,6 +83,87 @@ bool gt_MothershipForceMove_Func (bool testConds, bool runActions) {
 void gt_MothershipForceMove_Init () {
     gt_MothershipForceMove = TriggerCreate("gt_MothershipForceMove_Func");
     TriggerAddEventTimePeriodic(gt_MothershipForceMove, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MothershipAttackBehavior
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipAttackBehavior_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((UnitIsAlive(gv_mothership) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerEnable(gt_MothershipEnemiesAreNearBehavior, false);
+    UnitSetPropertyFixed(gv_mothership, c_unitPropMovementSpeed, gv_mothershipMinSpeed);
+    Wait(7.0, c_timeGame);
+    UnitSetPropertyFixed(gv_mothership, c_unitPropMovementSpeed, gv_mothershipMaxSpeed);
+    TriggerEnable(gt_MothershipEnemiesAreNearBehavior, true);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipAttackBehavior_Init () {
+    gt_MothershipAttackBehavior = TriggerCreate("gt_MothershipAttackBehavior_Func");
+    TriggerAddEventUnitDamaged(gt_MothershipAttackBehavior, UnitRefFromVariable("gv_mothership"), c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MothershipEnemiesAreNearBehavior
+//--------------------------------------------------------------------------------------------------
+bool gt_MothershipEnemiesAreNearBehavior_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((UnitIsAlive(gv_mothership) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupCount(UnitGroupAlliance(gv_pLAYER_05_TALDARIM, c_unitAllianceEnemy, RegionCircle(UnitGetPosition(gv_mothership), 12.0), UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0)) {
+        UnitSetPropertyFixed(gv_mothership, c_unitPropMovementSpeed, gv_mothershipNearSpeed);
+    }
+    else {
+        UnitSetPropertyFixed(gv_mothership, c_unitPropMovementSpeed, gv_mothershipMaxSpeed);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_MothershipEnemiesAreNearBehavior_Init () {
+    gt_MothershipEnemiesAreNearBehavior = TriggerCreate("gt_MothershipEnemiesAreNearBehavior_Func");
+    TriggerAddEventTimePeriodic(gt_MothershipEnemiesAreNearBehavior, 1.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -277,8 +254,9 @@ void gt_TW_Main_Thread_Player02_Template_Init () {
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
-    gt_vic_Init();
     gt_MothershipForceMove_Init();
+    gt_MothershipAttackBehavior_Init();
+    gt_MothershipEnemiesAreNearBehavior_Init();
     gt_TW_Main_Thread_Player01_Template_Init();
     gt_TW_Main_Thread_Player02_Template_Init();
 }
