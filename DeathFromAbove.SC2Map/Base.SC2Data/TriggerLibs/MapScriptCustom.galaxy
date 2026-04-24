@@ -1642,6 +1642,8 @@ bool gt_StartGameQ_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libLbty_gf_OrderWorkerstoGatherNearbyResources(RegionEntireMap(), gv_pLAYER_01_USER);
+    libLbty_gf_OrderWorkerstoGatherNearbyResources(RegionEntireMap(), gv_pLAYER_02_USER);
     UIAlertPoint("Trigger", gv_pLAYER_01_USER, StringExternal("Param/Value/09DDFAF2"), null, PlayerStartLocation(gv_pLAYER_01_USER));
     UIAlertPoint("Trigger", gv_pLAYER_02_USER, StringExternal("Param/Value/69DB9E62"), null, PlayerStartLocation(gv_pLAYER_02_USER));
     libHots_gf_PlaySoundLinkasMusic(SoundLink("LOTV_Music_P09Full", -1), false, false);
@@ -2389,6 +2391,8 @@ bool gt_ShardPing3_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_EnemyAttackWaveQ3, true, false);
     Wait(20.0, c_timeAI);
     TriggerExecute(gt_EnemyAttackWaveQ4, true, false);
+    Wait(10.0, c_timeGame);
+    TriggerExecute(gt_RevealBonusObjectiveQ2, true, false);
     return true;
 }
 
@@ -2525,7 +2529,7 @@ bool gt_ShardPing5_Func (bool testConds, bool runActions) {
     Wait(50.0, c_timeAI);
     //TriggerExecute(gt_EnemyAttackWave7, true, false);
     Wait(25.0, c_timeAI);
-    TriggerExecute(gt_RevealBonusObjectiveQ2, true, false);
+    //TriggerExecute(gt_RevealBonusObjectiveQ2, true, false);
     return true;
 }
 
