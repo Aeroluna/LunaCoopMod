@@ -2616,6 +2616,7 @@ Copied from Versus.
 - Fixed an issue where units dropped from Mecha Overlords did not play an unload animation.
 - Fixed an issue where Stetmann's structures did not play the zerg building sound.
 - Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
+- Fixed an issue where Mecha Lurkers had no range indicator when burrowed.
 
 yeah.
 

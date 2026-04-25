@@ -1,6 +1,6 @@
 # Changelog
 
-## 4/24/2026
+## 4/25/2026
 
 - Changed Tempest's Destablizing Residuum to no longer be affected by Artanis P1.
 - Fixed an issue where Reaver placement and warp-in were not scaled properly.
@@ -24,6 +24,7 @@ graphic design is my passion. Seriously, I hate doing UI, but at least theres a 
 - Fixed an issue where Lurkers could not fire again until the previous spines were finished.
 - Changed Lurker weapons to be disabled while unburrowed.
 - Increased Amon Lurker damage from 20 to 20 (+10 vs Armored).
+- Fixed an issue where Mecha Lurkers had no range indicator when burrowed.
 
 Various Lurker fixes copied from Versus.
 
