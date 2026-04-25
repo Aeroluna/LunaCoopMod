@@ -9,8 +9,15 @@
 - Reduced the damage of Tempest's Destablizing Residuum from 40 to 20.
 - Reworked the map launcher to allow enabling/disabling entire categories.
 - Fixed an issue where Vipers could Consume invulnerable structures.
+- Added a max scale to Psi Storm impact visual effects.
+- Fixed an issue where units under construction could trigger Han & Horner's Salvage.
+- Fixed an issue where `-production` would still be active when it was suppose to be disabled.
 
 yeah.
+
+- Added a settings button in the minimap panel. Currently allows toggling UI commands.
+
+graphic design is my passion. Seriously, I hate doing UI, but at least theres a way to toggle these without commands. May contain more settings in the future.
 
 - Fixed an issue where Lurker spines would still fire at max range, even when their weapon range is reduced.
 - Fixed an issue where Lurker spines did not go past 12 range, even if the weapons range is boosted somehow.

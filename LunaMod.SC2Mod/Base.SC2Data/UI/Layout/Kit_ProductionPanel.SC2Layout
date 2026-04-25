@@ -133,82 +133,98 @@
             <Anchor relative="$parent"/>
             <PlayerId val="1"/>
 
-            <Frame type="PlayerProductionFrame" name="ProductionPanel">
-                <Anchor side="Top" relative="$parent/$parent/TriggerWindowPanel" pos="Min" offset="8"/>
-                <Anchor side="Right" relative="$parent/$parent/TriggerWindowPanel" pos="Max" offset="-8"/>
-                <Width val="528"/>
-                <Height val="50"/>
-
-                <PlayerId val="{$ancestor[@name=PlayerData]/@PlayerId}"/>
-                <VisibleToOwner val="True"/>
-
-                <Visible val="{$parent/$parent/$parent/FullscreenUpperContainer/ResourcePanel/@Visible}"/>
-
-                <Animation name="ProductionPanel_AnimationON">
-                    <Event event="ProductionPanel_On" action="Reset,Play"/>
-                    <Controller type="Visibility" frame="$this" end="Pause">
-                        <Key type="Bool" time="0" value="True"/>
-                    </Controller>
-                </Animation>
+            <Frame type="Frame" name="ProductionPanelWrapper">
+                <Anchor relative="$parent"/>
 
                 <Animation name="ProductionPanel_AnimationOFF">
-                    <Event event="ProductionPanel_Off" action="Reset,Play"/>
-                    <Controller type="Visibility" frame="$this" end="Pause">
-                        <Key type="Bool" time="0" value="False"/>
-                    </Controller>
+                  <Event event="ProductionPanel_Off" action="Reset,Play"/>
+                  <Controller type="State" frame="$this" stateGroup="ProductionPanel_GroupState" end="Pause">
+                    <Key type="Identifier" time="0" value="ProductionPanel_Off"/>
+                  </Controller>
                 </Animation>
 
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame0" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame1" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame0" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame2" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame1" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame3" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame2" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame4" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame3" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame5" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame4" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame6" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame5" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame7" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame6" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame8" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame7" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame9" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame8" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame10" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame9" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame11" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame10" pos="Min" offset="-4"/>
-                </Frame>
-                <Frame type="ProductionCountFrame" name="ProductionCountFrame12" template="Kit_ProductionPanel/Template_ProductionCountFrame">
-                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-                    <Anchor side="Right" relative="$parent/ProductionCountFrame11" pos="Min" offset="-4"/>
+                <Animation name="ProductionPanel_AnimationON">
+                  <Event event="ProductionPanel_On" action="Reset,Play"/>
+                  <Controller type="State" frame="$this" stateGroup="ProductionPanel_GroupState" end="Pause">
+                    <Key type="Identifier" time="0" value="ProductionPanel_On"/>
+                  </Controller>
+                </Animation>
+
+                <StateGroup name="ProductionPanel_GroupState">
+                  <DefaultState val="ProductionPanel_Off"/>
+
+                  <State name="ProductionPanel_Off">
+                    <Action type="SetProperty" frame="$this" Visible="False"/>
+                  </State>
+
+                  <State name="ProductionPanel_On">
+                    <Action type="SetProperty" frame="$this" Visible="True"/>
+                  </State>
+                </StateGroup>
+
+                <Frame type="PlayerProductionFrame" name="ProductionPanel">
+                    <Anchor side="Top" relative="$parent/$parent/$parent/TriggerWindowPanel" pos="Min" offset="8"/>
+                    <Anchor side="Right" relative="$parent/$parent/$parent/TriggerWindowPanel" pos="Max" offset="-8"/>
+                    <Width val="528"/>
+                    <Height val="50"/>
+
+                    <PlayerId val="{$ancestor[@name=PlayerData]/@PlayerId}"/>
+                    <VisibleToOwner val="True"/>
+
+                    <Visible val="{$parent/$parent/$parent/$parent/FullscreenUpperContainer/ResourcePanel/@Visible}"/>
+
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame0" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame1" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame0" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame2" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame1" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame3" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame2" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame4" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame3" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame5" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame4" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame6" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame5" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame7" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame6" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame8" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame7" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame9" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame8" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame10" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame9" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame11" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame10" pos="Min" offset="-4"/>
+                    </Frame>
+                    <Frame type="ProductionCountFrame" name="ProductionCountFrame12" template="Kit_ProductionPanel/Template_ProductionCountFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                        <Anchor side="Right" relative="$parent/ProductionCountFrame11" pos="Min" offset="-4"/>
+                    </Frame>
                 </Frame>
             </Frame>
         </Frame>

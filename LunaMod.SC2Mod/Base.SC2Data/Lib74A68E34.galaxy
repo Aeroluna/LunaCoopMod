@@ -38,6 +38,13 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_InitVariables_completed = true;
 
     lib74A68E34_gv_fearUnits = UnitGroupEmpty();
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton2 = c_invalidDialogControlId;
+    lib74A68E34_gv_cU_RandomMutationSelectDialog = c_invalidDialogId;
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton3 = c_invalidDialogControlId;
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton4 = c_invalidDialogControlId;
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton5 = c_invalidDialogControlId;
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton6 = c_invalidDialogControlId;
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton = c_invalidDialogControlId;
     lib74A68E34_gv_productionPanel_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_hotsCD_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_cDText_PlayerGroup = PlayerGroupEmpty();
@@ -263,6 +270,37 @@ void lib74A68E34_gf_FourthChangeAllyPrestige () {
     }
 }
 
+void lib74A68E34_gf_CU_RandomMutationSelectCreate () {
+    // Variable Declarations
+    fixed lv_maxPoints;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_maxPoints = 40.0;
+
+    // Implementation
+    if ((lib74A68E34_gv_cU_RandomMutationSelectDialog != c_invalidDialogId)) {
+        return ;
+    }
+
+    DialogCreate(300, 260, c_anchorBottomLeft, 0, 300, true);
+    lib74A68E34_gv_cU_RandomMutationSelectDialog = DialogLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 50, StringExternal("Param/Value/lib_74A68E34_4DF063E9"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 40, StringExternal("Param/Value/lib_74A68E34_1068DFD7"), false);
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton3 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 100, StringExternal("Param/Value/lib_74A68E34_53F3B92A"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 90, StringExternal("Param/Value/lib_74A68E34_865D1328"), false);
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton4 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 150, StringExternal("Param/Value/lib_74A68E34_D6C102E5"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 140, StringExternal("Param/Value/lib_74A68E34_2981529F"), false);
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton5 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 200, StringExternal("Param/Value/lib_74A68E34_687107F7"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 190, StringExternal("Param/Value/lib_74A68E34_DBF111C0"), false);
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton6 = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemButton(lib74A68E34_gv_cU_RandomMutationSelectDialog, 40, 40, c_anchorTopRight, 5, 5, StringToText(""), StringToText("X"), "");
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton = DialogControlLastCreated();
+}
+
 trigger auto_lib74A68E34_gf_SlimLoadBank_Trigger = null;
 int auto_lib74A68E34_gf_SlimLoadBank_lp_player;
 
@@ -308,9 +346,16 @@ void lib74A68E34_gf_SlimUIToggle (int lp_player) {
     }
     else {
         if ((GameGetMissionTime() < 5.0)) {
-            PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_CB43A38A"));
-            TriggerExecute(lib01833E95_gt_AF_SlimUI_Delayed, true, false);
+            if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+                TriggerExecute(lib01833E95_gt_AF_SlimUI_Delayed, true, false);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_2D4845B8"));
+            }
+            else {
+                PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
+                TriggerStop(lib01833E95_gt_AF_SlimUI_Delayed);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_36507A5C"));
+            }
         }
         else {
             DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer");
@@ -361,16 +406,44 @@ bool auto_lib74A68E34_gf_ProductionPanelLoadBank_TriggerFunc (bool testConds, bo
 void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanel");
-    if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
-        PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
-        DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_On");
-        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C938312F"));
+    if ((GameIsMissionTimePaused() == true)) {
+        if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
+            PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+            TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, true);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_0030FFE9"));
+        }
+        else {
+            PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+            TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, false);
+            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_71E9DE92"));
+        }
     }
     else {
-        PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
-        DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_Off");
-        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D41123C6"));
+        if ((GameGetMissionTime() < 5.0)) {
+            if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+                TriggerExecute(lib74A68E34_gt_ProductionPanel_Delayed, true, false);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_6F3E05E5"));
+            }
+            else {
+                PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+                TriggerStop(lib74A68E34_gt_ProductionPanel_Delayed);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_56E3D326"));
+            }
+        }
+        else {
+            DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanelWrapper");
+            if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_On");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_98AE8BEB"));
+            }
+            else {
+                PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
+                DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_Off");
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_EB06EA0F"));
+            }
+        }
     }
 }
 
@@ -446,13 +519,7 @@ bool auto_lib74A68E34_gf_CDTextLoadBank_TriggerFunc (bool testConds, bool runAct
 }
 
 void lib74A68E34_gf_CDTextToggle (int lp_player) {
-    // Variable Declarations
-    int lv_commandpanel;
-
     // Automatic Variable Declarations
-    // Variable Initialization
-    lv_commandpanel = c_invalidDialogControlId;
-
     // Implementation
     if ((GameIsMissionTimePaused() == true)) {
         if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
@@ -468,9 +535,16 @@ void lib74A68E34_gf_CDTextToggle (int lp_player) {
     }
     else {
         if ((GameGetMissionTime() < 5.0)) {
-            PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_B39B208C"));
-            TriggerExecute(lib74A68E34_gt_CDText_Delayed, true, false);
+            if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
+                PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+                TriggerExecute(lib74A68E34_gt_CDText_Delayed, true, false);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_6BAB0533"));
+            }
+            else {
+                PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
+                TriggerStop(lib74A68E34_gt_CDText_Delayed);
+                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_71174958"));
+            }
         }
         else {
             DialogControlHookupStandard(c_triggerControlTypeCommandPanel, "UIContainer/ConsoleUIContainer/CommandPanel");
@@ -4561,6 +4635,167 @@ void lib74A68E34_gt_FearRemove_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UISettingsInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UISettingsInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/MinimapPanel/SettingsButton");
+    lib74A68E34_gv_cU_RandomMutationSelectOKButton2 = DialogControlLastCreated();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UISettingsInit_Init () {
+    lib74A68E34_gt_UISettingsInit = TriggerCreate("lib74A68E34_gt_UISettingsInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_UISettingsInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UISettingsDisplay
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UISettingsDisplay_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_cU_RandomMutationSelectOKButton2))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((DialogIsVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, EventPlayer()) == true)) {
+        TriggerExecute(lib74A68E34_gt_UISettingsOK, false, false);
+        return true;
+    }
+
+    lib74A68E34_gf_CU_RandomMutationSelectCreate();
+    if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()) == true)) {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, false, PlayerGroupSingle(EventPlayer()));
+    }
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()) == true)) {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, false, PlayerGroupSingle(EventPlayer()));
+    }
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()) == true)) {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, false, PlayerGroupSingle(EventPlayer()));
+    }
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()) == true)) {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, false, PlayerGroupSingle(EventPlayer()));
+    }
+    DialogSetVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, PlayerGroupSingle(EventPlayer()), true);
+    TriggerEnable(lib74A68E34_gt_UISettingsCheck, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UISettingsDisplay_Init () {
+    lib74A68E34_gt_UISettingsDisplay = TriggerCreate("lib74A68E34_gt_UISettingsDisplay_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_UISettingsDisplay, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UISettingsOK
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UISettingsOK_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib74A68E34_gv_cU_RandomMutationSelectOKButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogSetVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, PlayerGroupSingle(EventPlayer()), false);
+    TriggerEnable(lib74A68E34_gt_UISettingsCheck, false);
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_sLIM_BANK, PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()));
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pRODUCTION_PANEL_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()));
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_hOTS_CD_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()));
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_cD_TEXT_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UISettingsOK_Init () {
+    lib74A68E34_gt_UISettingsOK = TriggerCreate("lib74A68E34_gt_UISettingsOK_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_UISettingsOK, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UISettingsCheck
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UISettingsCheck_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    int auto7B6A8238_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7B6A8238_val = EventDialogControl();
+    if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton3) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, EventPlayer()) != PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()))) {
+            lib74A68E34_gf_SlimUIToggle(EventPlayer());
+        }
+
+    }
+    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton4) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()))) {
+            lib74A68E34_gf_ProductionPanelToggle(EventPlayer());
+        }
+
+    }
+    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton5) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()))) {
+            lib74A68E34_gf_HotsCDToggle(EventPlayer());
+        }
+
+    }
+    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton6) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()))) {
+            lib74A68E34_gf_CDTextToggle(EventPlayer());
+        }
+
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UISettingsCheck_Init () {
+    lib74A68E34_gt_UISettingsCheck = TriggerCreate("lib74A68E34_gt_UISettingsCheck_Func");
+    TriggerEnable(lib74A68E34_gt_UISettingsCheck, false);
+    TriggerAddEventDialogControl(lib74A68E34_gt_UISettingsCheck, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: SlimLoadBankInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_SlimLoadBankInit_Func (bool testConds, bool runActions) {
@@ -4648,6 +4883,36 @@ bool lib74A68E34_gt_ProductionPanelBankInit_Func (bool testConds, bool runAction
 void lib74A68E34_gt_ProductionPanelBankInit_Init () {
     lib74A68E34_gt_ProductionPanelBankInit = TriggerCreate("lib74A68E34_gt_ProductionPanelBankInit_Func");
     TriggerAddEventMapInit(lib74A68E34_gt_ProductionPanelBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ProductionPanel_Delayed 
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ProductionPanel_Delayed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (!((GameGetMissionTime() >= 5.0))) {
+        Wait(0.5, c_timeGame);
+    }
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/PlayerData/ProductionPanelWrapper");
+    DialogControlSendAnimationEvent(DialogControlLastCreated(), lib74A68E34_gv_productionPanel_PlayerGroup, "ProductionPanel_On");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ProductionPanel_Delayed_Init () {
+    lib74A68E34_gt_ProductionPanel_Delayed = TriggerCreate("lib74A68E34_gt_ProductionPanel_Delayed_Func");
+    TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, false);
+    libCOUI_gf_CU_CommanderClosed(lib74A68E34_gt_ProductionPanel_Delayed);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7897,7 +8162,7 @@ bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions
             return false;
         }
 
-        if (!((UnitFilterMatch(EventUnit(), 1, UnitFilter(0, (1 << (c_targetFilterSummoned - 32)), 0, 0)) != true))) {
+        if (!((UnitFilterMatch(EventUnit(), 1, UnitFilter(0, 0, 0, (1 << (c_targetFilterUnderConstruction - 32)) | (1 << (c_targetFilterSummoned - 32)))) == true))) {
             return false;
         }
 
@@ -7905,7 +8170,7 @@ bool lib74A68E34_gt_HornerScrapDropChanged_Func (bool testConds, bool runActions
             return false;
         }
 
-        if (!(((UnitHasBehavior2(EventUnit(), "NoScrapDrop") != true) || ((UnitGetType(EventUnit()) == "Baneling") || (UnitGetType(EventUnit()) == "BanelingBurrowed") || (UnitGetType(EventUnit()) == "HotSSplitterlingBig") || (UnitGetType(EventUnit()) == "HotSSplitterlingBigBurrowed") || (UnitGetType(EventUnit()) == "Scourge") || (UnitGetType(EventUnit()) == "HHReaper") || (UnitGetType(EventUnit()) == "HHReaperFlying") || (UnitGetType(EventUnit()) == "HHHellion") || (UnitGetType(EventUnit()) == "HHHellionTank") || (UnitGetType(EventUnit()) == "HHWidowMine") || (UnitGetType(EventUnit()) == "HHWidowMineBurrowed") || (UnitGetType(EventUnit()) == "Supplicant"))))) {
+        if (!(((UnitHasBehavior2(EventUnit(), "NoScrapDrop") != true) || ((UnitGetType(EventUnit()) == "Baneling") || (UnitGetType(EventUnit()) == "BanelingBurrowed") || (UnitGetType(EventUnit()) == "HotSSplitterlingBig") || (UnitGetType(EventUnit()) == "HotSSplitterlingBigBurrowed") || (UnitGetType(EventUnit()) == "Scourge") || (UnitGetType(EventUnit()) == "HHReaper") || (UnitGetType(EventUnit()) == "HHReaperFlying") || (UnitGetType(EventUnit()) == "HHHellion") || (UnitGetType(EventUnit()) == "HHHellionTank") || (UnitGetType(EventUnit()) == "HHWidowMine") || (UnitGetType(EventUnit()) == "HHWidowMineBurrowed") || (UnitGetType(EventUnit()) == "Supplicant") || (UnitGetType(EventUnit()) == "VoidArchon"))))) {
             return false;
         }
     }
@@ -11589,9 +11854,14 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FearDisableTriggers_Init();
     lib74A68E34_gt_FearApply_Init();
     lib74A68E34_gt_FearRemove_Init();
+    lib74A68E34_gt_UISettingsInit_Init();
+    lib74A68E34_gt_UISettingsDisplay_Init();
+    lib74A68E34_gt_UISettingsOK_Init();
+    lib74A68E34_gt_UISettingsCheck_Init();
     lib74A68E34_gt_SlimLoadBankInit_Init();
     lib74A68E34_gt_SlimUICommand_Init();
     lib74A68E34_gt_ProductionPanelBankInit_Init();
+    lib74A68E34_gt_ProductionPanel_Delayed_Init();
     lib74A68E34_gt_ProductionPanelCommand_Init();
     lib74A68E34_gt_HotsCDBankInit_Init();
     lib74A68E34_gt_HotsCDCommand_Init();

@@ -346,6 +346,7 @@ yeah.
   - Has persistence.
 - Added `-cdtext` command to enable the cooldown text on buttons.
   - Has persistence.
+- Added a settings button in the minimap panel. Currently allows toggling UI commands.
 
 UI customization!
 
