@@ -1,12 +1,23 @@
 # Changelog
 
-## 4/22/2026
+## 4/24/2026
 
 - Changed Tempest's Destablizing Residuum to no longer be affected by Artanis P1.
 - Fixed an issue where Reaver placement and warp-in were not scaled properly.
 - Fixed an issue where High Templar Feedback was not affected by Artanis P1.
 - Fixed an issue where units did not flee from Tempest's Destablizing Residuum.
 - Reduced the damage of Tempest's Destablizing Residuum from 40 to 20.
+- Reworked the map launcher to allow enabling/disabling entire categories.
+
+yeah.
+
+- Added new map: Death from Above.
+  - Amon's forces have been deployed to the Tal'Darim outpost Trion IX, trying to corrupt the planet's large vespene supply. Assist Second Ascendant Zal'adas and escort the Tal'darim Mothership to ensure the Death Fleet has the resources needed for the reclamation of Aiur.
+  - Made by CybrosX.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
+Another map where only one enemy race was set up... This map didn't even use unit compositions properly, it was just hardcoded to spawn specific units!
 
 ### Construction Yard
 

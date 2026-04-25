@@ -17,7 +17,8 @@ void InitLibs () {
 //--------------------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------------------
-const int gv_mAX_BUTTONS = 20;
+const int gv_mAX_BUTTONS = 21;
+const int gv_mAX_CATEGORIES = 2;
 const int gv_bUTTON_WIDTH = 400;
 const int gv_bUTTON_HEIGHT = 50;
 const int gv_sPACING_Y = 55;
@@ -27,32 +28,46 @@ const int gv_rANDOM_BUTTON_ID = 1;
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
-int[gv_mAX_BUTTONS + 1] gv_mapButton;
-int[gv_mAX_BUTTONS + 1] gv_mapCheck;
+int[gv_mAX_CATEGORIES + 1][gv_mAX_BUTTONS + 1] gv_mapButton;
+int[gv_mAX_CATEGORIES + 1][gv_mAX_BUTTONS + 1] gv_mapCheck;
+int[3] gv_categoryCheck;
 int gv_offsetX;
 int gv_offsetY;
 int gv_checkDialog;
-int gv_increment;
+int[gv_mAX_CATEGORIES + 1] gv_increment;
 
 void InitGlobals () {
     int init_i;
+    int init_j;
 
-    for (init_i = 0; init_i <= gv_mAX_BUTTONS; init_i += 1) {
-        gv_mapButton[init_i] = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= gv_mAX_CATEGORIES; init_i += 1) {
+        for (init_j = 0; init_j <= gv_mAX_BUTTONS; init_j += 1) {
+            gv_mapButton[init_i][init_j] = c_invalidDialogControlId;
+        }
     }
-    for (init_i = 0; init_i <= gv_mAX_BUTTONS; init_i += 1) {
-        gv_mapCheck[init_i] = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= gv_mAX_CATEGORIES; init_i += 1) {
+        for (init_j = 0; init_j <= gv_mAX_BUTTONS; init_j += 1) {
+            gv_mapCheck[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        gv_categoryCheck[init_i] = c_invalidDialogControlId;
     }
     gv_offsetY = -400;
     gv_checkDialog = c_invalidDialogId;
-    gv_increment = gv_mAP_ID_START;
+    for (init_i = 0; init_i <= gv_mAX_CATEGORIES; init_i += 1) {
+        gv_increment[init_i] = gv_mAP_ID_START;
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
 void gf_LoadMap (int lp_slot);
-void gf_CreateMapButton (text lp_text, bool lp_enabled);
+void gf_UpdateRandomButton (int lp_triggeringplayer);
+void gf_UpdateButtonActive (int lp_button, int lp_triggeringplayer);
+int gf_GetButtonCategory (int lp_button);
+void gf_CreateMapButton (text lp_text, bool lp_enabled, int lp_category);
 
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
@@ -60,6 +75,7 @@ void gf_CreateMapButton (text lp_text, bool lp_enabled);
 trigger gt_UISetup;
 trigger gt_ButtonsPressed;
 trigger gt_CheckboxPressed;
+trigger gt_CategoryCheckPressed;
 
 //--------------------------------------------------------------------------------------------------
 // Global Functions
@@ -76,23 +92,103 @@ void gf_LoadMap (int lp_slot) {
     }
 }
 
-void gf_CreateMapButton (text lp_text, bool lp_enabled) {
+void gf_UpdateRandomButton (int lp_triggeringplayer) {
+    // Automatic Variable Declarations
+    const int auto0993F2BE_ae = gv_mAX_BUTTONS;
+    int auto0993F2BE_var;
+
+    // Implementation
+    auto0993F2BE_var = gv_mAP_ID_START;
+    for ( ; auto0993F2BE_var <= auto0993F2BE_ae; auto0993F2BE_var += 1 ) {
+        if ((DialogControlIsEnabled(gv_mapButton[0][auto0993F2BE_var], lp_triggeringplayer) == true)) {
+            DialogControlSetEnabled(gv_mapButton[0][gv_rANDOM_BUTTON_ID], PlayerGroupAll(), true);
+            return ;
+        }
+
+    }
+    DialogControlSetEnabled(gv_mapButton[0][gv_rANDOM_BUTTON_ID], PlayerGroupAll(), false);
+}
+
+void gf_UpdateButtonActive (int lp_button, int lp_triggeringplayer) {
+    // Variable Declarations
+    int lv_i;
+    int lv_cat;
+
+    // Automatic Variable Declarations
+    const int autoEF4971C6_ae = gv_mAX_BUTTONS;
+    const int autoEF4971C6_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_i = gv_mAP_ID_START;
+    for ( ; ( (autoEF4971C6_ai >= 0 && lv_i <= autoEF4971C6_ae) || (autoEF4971C6_ai < 0 && lv_i >= autoEF4971C6_ae) ) ; lv_i += autoEF4971C6_ai ) {
+        if ((lp_button == gv_mapButton[0][lv_i])) {
+            if ((libNtve_gf_DialogItemIsChecked(gv_mapCheck[0][lv_i], lp_triggeringplayer) == false)) {
+                DialogControlSetEnabled(gv_mapButton[0][lv_i], PlayerGroupAll(), false);
+            }
+            else {
+                lv_cat = gf_GetButtonCategory(lp_button);
+                if ((libNtve_gf_DialogItemIsChecked(gv_categoryCheck[lv_cat], lp_triggeringplayer) == false)) {
+                    DialogControlSetEnabled(gv_mapButton[0][lv_i], PlayerGroupAll(), false);
+                }
+                else {
+                    DialogControlSetEnabled(gv_mapButton[0][lv_i], PlayerGroupAll(), true);
+                }
+            }
+            return ;
+        }
+
+    }
+}
+
+int gf_GetButtonCategory (int lp_button) {
+    // Variable Declarations
+    int lv_cat;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int auto2B7545F1_ae = gv_mAX_CATEGORIES;
+    const int auto2B7545F1_ai = 1;
+    int autoF9680F94_ae;
+    const int autoF9680F94_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_cat = 1;
+    for ( ; ( (auto2B7545F1_ai >= 0 && lv_cat <= auto2B7545F1_ae) || (auto2B7545F1_ai < 0 && lv_cat >= auto2B7545F1_ae) ) ; lv_cat += auto2B7545F1_ai ) {
+        autoF9680F94_ae = (gv_increment[lv_cat] - 1);
+        lv_i = gv_mAP_ID_START;
+        for ( ; ( (autoF9680F94_ai >= 0 && lv_i <= autoF9680F94_ae) || (autoF9680F94_ai < 0 && lv_i >= autoF9680F94_ae) ) ; lv_i += autoF9680F94_ai ) {
+            if ((lp_button == gv_mapButton[lv_cat][lv_i])) {
+                return lv_cat;
+            }
+
+        }
+    }
+    return -1;
+}
+
+void gf_CreateMapButton (text lp_text, bool lp_enabled, int lp_category) {
     // Automatic Variable Declarations
     // Implementation
     TextExpressionSetToken("Param/Expression/E78FBCB6", "A", lp_text);
-    libNtve_gf_DisplayScreenButton(gv_increment, TextExpressionAssemble("Param/Expression/E78FBCB6"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
-    libNtve_gf_SetScreenButtonBorderImage(gv_increment, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
-    gv_mapButton[gv_increment] = libNtve_gf_ScreenButton(gv_increment);
-    if ((lp_enabled == true)) {
-        libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), true);
+    libNtve_gf_DisplayScreenButton(gv_increment[0], TextExpressionAssemble("Param/Expression/E78FBCB6"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
+    libNtve_gf_SetScreenButtonBorderImage(gv_increment[0], "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
+    gv_mapButton[0][gv_increment[0]] = libNtve_gf_ScreenButton(gv_increment[0]);
+    gv_mapButton[lp_category][gv_increment[lp_category]] = gv_mapButton[0][gv_increment[0]];
+    libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), true);
+    gv_mapCheck[0][gv_increment[0]] = DialogControlLastCreated();
+    gv_mapCheck[lp_category][gv_increment[lp_category]] = DialogControlLastCreated();
+    if ((lp_enabled == false)) {
+        DialogControlSetEnabled(gv_mapButton[0][gv_increment[0]], PlayerGroupAll(), false);
+        DialogControlSetEnabled(gv_mapCheck[0][gv_increment[0]], PlayerGroupAll(), false);
     }
-    else {
-        DialogControlSetEnabled(gv_mapButton[gv_increment], PlayerGroupAll(), false);
-        libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), false);
-    }
-    gv_mapCheck[gv_increment] = DialogControlLastCreated();
+
     gv_offsetY += gv_sPACING_Y;
-    gv_increment += 1;
+    gv_increment[0] += 1;
+    gv_increment[lp_category] += 1;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -119,27 +215,30 @@ bool gt_UISetup_Func (bool testConds, bool runActions) {
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
     gv_checkDialog = DialogLastCreated();
     libNtve_gf_DisplayScreenLabel(2, StringExternal("Param/Value/A36E4E2E"), "Kicker_Minerals", gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY);
+    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), StringExternal("Param/Value/A71D18C4"), PlayerGroupAll());
+    libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), true);
+    gv_categoryCheck[1] = DialogControlLastCreated();
     gv_offsetY += gv_sPACING_Y;
-    gf_CreateMapButton(StringExternal("Param/Value/555F28C2"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/114AC014"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/F851ACAB"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/B2EC6FED"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/5781BB5F"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/8D69E053"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/DEBD310D"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/46006C7A"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/B463BDA9"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/20A95614"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/3393E09C"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/E7B9D407"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/A4CA97E0"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/12E07CE9"), true);
-    gf_CreateMapButton(StringExternal("Param/Value/97DF9038"), true);
+    gf_CreateMapButton(StringExternal("Param/Value/555F28C2"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/114AC014"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/F851ACAB"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/B2EC6FED"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/5781BB5F"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/8D69E053"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/DEBD310D"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/46006C7A"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/B463BDA9"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/20A95614"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/3393E09C"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/E7B9D407"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/A4CA97E0"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/12E07CE9"), true, 1);
+    gf_CreateMapButton(StringExternal("Param/Value/97DF9038"), true, 1);
     gv_offsetX = 0;
     libNtve_gf_DisplayScreenButton(gv_rANDOM_BUTTON_ID, StringExternal("Param/Value/A13B65F0"), gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY, null);
     libNtve_gf_SetDialogItemTooltip(libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID), StringExternal("Param/Value/B9A5F19D"), PlayerGroupAll());
     libNtve_gf_SetScreenButtonBorderImage(gv_rANDOM_BUTTON_ID, "Assets\\Textures\\ui_generic_button_normalpressed.dds", "Assets\\Textures\\ui_generic_button_normaloverpressedover.dds", c_triggerImageTypeBorder);
-    gv_mapButton[gv_rANDOM_BUTTON_ID] = libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID);
+    gv_mapButton[0][gv_rANDOM_BUTTON_ID] = libNtve_gf_ScreenButton(gv_rANDOM_BUTTON_ID);
     gv_offsetX = 300;
     gv_offsetY = -400;
     DialogCreate(100, 1000, c_anchorCenter, (gv_offsetX + 220), 0, true);
@@ -147,11 +246,15 @@ bool gt_UISetup_Func (bool testConds, bool runActions) {
     DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
     gv_checkDialog = DialogLastCreated();
     libNtve_gf_DisplayScreenLabel(3, StringExternal("Param/Value/A9F63507"), "Kicker_Minerals", gv_bUTTON_WIDTH, gv_bUTTON_HEIGHT, c_anchorCenter, gv_offsetX, gv_offsetY);
+    libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), StringExternal("Param/Value/62B6EA94"), PlayerGroupAll());
+    libNtve_gf_CreateDialogItemCheckBox(gv_checkDialog, 50, gv_bUTTON_HEIGHT, c_anchorCenter, 0, gv_offsetY, StringToText(""), false);
+    gv_categoryCheck[2] = DialogControlLastCreated();
     gv_offsetY += gv_sPACING_Y;
-    gf_CreateMapButton(StringExternal("Param/Value/C55AAA07"), false);
-    gf_CreateMapButton(StringExternal("Param/Value/931657B5"), false);
-    gf_CreateMapButton(StringExternal("Param/Value/3C6CCC5E"), false);
-    gf_CreateMapButton(StringExternal("Param/Value/1E9DB88E"), false);
+    gf_CreateMapButton(StringExternal("Param/Value/C55AAA07"), false, 2);
+    gf_CreateMapButton(StringExternal("Param/Value/931657B5"), false, 2);
+    gf_CreateMapButton(StringExternal("Param/Value/3C6CCC5E"), false, 2);
+    gf_CreateMapButton(StringExternal("Param/Value/1E9DB88E"), false, 2);
+    gf_CreateMapButton(StringExternal("Param/Value/6DF2A8A5"), false, 2);
     return true;
 }
 
@@ -186,12 +289,12 @@ bool gt_ButtonsPressed_Func (bool testConds, bool runActions) {
 
     lv_i = 1;
     for ( ; ( (autoDE83BCE0_ai >= 0 && lv_i <= autoDE83BCE0_ae) || (autoDE83BCE0_ai < 0 && lv_i >= autoDE83BCE0_ae) ) ; lv_i += autoDE83BCE0_ai ) {
-        if ((EventDialogControl() == gv_mapButton[lv_i])) {
+        if ((EventDialogControl() == gv_mapButton[0][lv_i])) {
             autoA7305CE4_val = lv_i;
             if (autoA7305CE4_val == gv_rANDOM_BUTTON_ID) {
                 autoCF6278B5_var = gv_mAP_ID_START;
                 for ( ; autoCF6278B5_var <= autoCF6278B5_ae; autoCF6278B5_var += 1 ) {
-                    if ((libNtve_gf_DialogItemIsChecked(gv_mapCheck[autoCF6278B5_var], EventPlayer()) == true)) {
+                    if ((DialogControlIsEnabled(gv_mapButton[0][autoCF6278B5_var], EventPlayer()) == true)) {
                         lv_random_ids[lv_random_id_count] = autoCF6278B5_var;
                         lv_random_id_count += 1;
                     }
@@ -200,7 +303,9 @@ bool gt_ButtonsPressed_Func (bool testConds, bool runActions) {
                 if ((lv_random_id_count > 0)) {
                     gf_LoadMap(lv_random_ids[RandomInt(0, (lv_random_id_count - 1))]);
                 }
-
+                else {
+                    TriggerDebugOutput(1, StringExternal("Param/Value/8CF0A2D4"), true);
+                }
             }
             else {
                 gf_LoadMap(lv_i);
@@ -229,8 +334,6 @@ bool gt_CheckboxPressed_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     const int auto6A02F16B_ae = gv_mAX_BUTTONS;
     const int auto6A02F16B_ai = 1;
-    const int auto2662E598_ae = gv_mAX_BUTTONS;
-    int auto2662E598_var;
 
     // Variable Initialization
 
@@ -241,24 +344,17 @@ bool gt_CheckboxPressed_Func (bool testConds, bool runActions) {
 
     lv_i = gv_mAP_ID_START;
     for ( ; ( (auto6A02F16B_ai >= 0 && lv_i <= auto6A02F16B_ae) || (auto6A02F16B_ai < 0 && lv_i >= auto6A02F16B_ae) ) ; lv_i += auto6A02F16B_ai ) {
-        if ((EventDialogControl() == gv_mapCheck[lv_i])) {
+        if ((EventDialogControl() == gv_mapCheck[0][lv_i])) {
             if ((libNtve_gf_DialogItemIsChecked(EventDialogControl(), EventPlayer()) == true)) {
-                libNtve_gf_SetDialogItemChecked(gv_mapCheck[lv_i], true, PlayerGroupAll());
-                DialogControlSetEnabled(gv_mapButton[lv_i], PlayerGroupAll(), true);
+                libNtve_gf_SetDialogItemChecked(gv_mapCheck[0][lv_i], true, PlayerGroupAll());
+                gf_UpdateButtonActive(gv_mapButton[0][lv_i], EventPlayer());
             }
             else {
-                libNtve_gf_SetDialogItemChecked(gv_mapCheck[lv_i], false, PlayerGroupAll());
-                DialogControlSetEnabled(gv_mapButton[lv_i], PlayerGroupAll(), false);
+                libNtve_gf_SetDialogItemChecked(gv_mapCheck[0][lv_i], false, PlayerGroupAll());
+                DialogControlSetEnabled(gv_mapButton[0][lv_i], PlayerGroupAll(), false);
             }
-            auto2662E598_var = gv_mAP_ID_START;
-            for ( ; auto2662E598_var <= auto2662E598_ae; auto2662E598_var += 1 ) {
-                if ((libNtve_gf_DialogItemIsChecked(gv_mapCheck[auto2662E598_var], EventPlayer()) == true)) {
-                    DialogControlSetEnabled(gv_mapButton[gv_rANDOM_BUTTON_ID], PlayerGroupAll(), true);
-                    return true;
-                }
-
-            }
-            DialogControlSetEnabled(gv_mapButton[gv_rANDOM_BUTTON_ID], PlayerGroupAll(), false);
+            gf_UpdateRandomButton(EventPlayer());
+            return true;
         }
 
     }
@@ -273,12 +369,75 @@ void gt_CheckboxPressed_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Category Check Pressed
+//--------------------------------------------------------------------------------------------------
+bool gt_CategoryCheckPressed_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    int lv_cat;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    const int auto903CEBF6_ae = gv_mAX_CATEGORIES;
+    const int auto903CEBF6_ai = 1;
+    int autoA0B427EC_ae;
+    const int autoA0B427EC_ai = 1;
+    int autoE2EF48BE_ae;
+    const int autoE2EF48BE_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 1;
+    for ( ; ( (auto903CEBF6_ai >= 0 && lv_i <= auto903CEBF6_ae) || (auto903CEBF6_ai < 0 && lv_i >= auto903CEBF6_ae) ) ; lv_i += auto903CEBF6_ai ) {
+        if ((EventDialogControl() == gv_categoryCheck[lv_i])) {
+            lv_cat = lv_i;
+            break;
+        }
+
+    }
+    if ((lv_cat != 0)) {
+        if ((libNtve_gf_DialogItemIsChecked(EventDialogControl(), EventPlayer()) == true)) {
+            autoE2EF48BE_ae = (gv_increment[lv_cat] - 1);
+            lv_i = gv_mAP_ID_START;
+            for ( ; ( (autoE2EF48BE_ai >= 0 && lv_i <= autoE2EF48BE_ae) || (autoE2EF48BE_ai < 0 && lv_i >= autoE2EF48BE_ae) ) ; lv_i += autoE2EF48BE_ai ) {
+                DialogControlSetEnabled(gv_mapCheck[lv_cat][lv_i], PlayerGroupAll(), true);
+                gf_UpdateButtonActive(gv_mapButton[lv_cat][lv_i], EventPlayer());
+            }
+        }
+        else {
+            autoA0B427EC_ae = (gv_increment[lv_cat] - 1);
+            lv_i = gv_mAP_ID_START;
+            for ( ; ( (autoA0B427EC_ai >= 0 && lv_i <= autoA0B427EC_ae) || (autoA0B427EC_ai < 0 && lv_i >= autoA0B427EC_ae) ) ; lv_i += autoA0B427EC_ai ) {
+                DialogControlSetEnabled(gv_mapCheck[lv_cat][lv_i], PlayerGroupAll(), false);
+                DialogControlSetEnabled(gv_mapButton[lv_cat][lv_i], PlayerGroupAll(), false);
+            }
+        }
+        gf_UpdateRandomButton(EventPlayer());
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_CategoryCheckPressed_Init () {
+    gt_CategoryCheckPressed = TriggerCreate("gt_CategoryCheckPressed_Func");
+    TriggerAddEventDialogControl(gt_CategoryCheckPressed, 1, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+    TriggerAddEventDialogControl(gt_CategoryCheckPressed, 2, c_invalidDialogControlId, c_triggerControlEventTypeChecked);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
     gt_UISetup_Init();
     gt_ButtonsPressed_Init();
     gt_CheckboxPressed_Init();
+    gt_CategoryCheckPressed_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -552,6 +552,14 @@ I know everyone has wanted to see more of Hanson... right? The original RTC 2017
 
 Lots of bug fixes/polish!
 
+- Added new map: Death from Above.
+  - Amon's forces have been deployed to the Tal'Darim outpost Trion IX, trying to corrupt the planet's large vespene supply. Assist Second Ascendant Zal'adas and escort the Tal'darim Mothership to ensure the Death Fleet has the resources needed for the reclamation of Aiur.
+  - Made by CybrosX.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
+It's a little similar to Malwarfare, but variety is the spice of life!
+
 - Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
 - Removed rank display from Ji'nara/Amon's Champion on Chains of Ascension.
 - Removed health display from Ji'nara/Amon's Champion on Chains of Ascension.
@@ -2783,5 +2791,6 @@ yeah.
 - Primal Ascension (RTC 2017) - OutsiderXE
 - Construction Yard (RTC 2017) - Gillan
 - Solar Right (RTC 2017) - ThePhail
+- Death from Above (RTC 2017) - CybrosX
 
 DaveSpectre is the goat <3
