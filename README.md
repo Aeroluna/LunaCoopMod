@@ -183,6 +183,11 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Increased visual scale of Cyclone's weapon missile by 100%.
 - Changed mineral field/vespene geyser footprint to match Versus.
 - Increased Ultralisk (and variants) armor from 1 to 2.
+- Fixed an issue where Lurker spines would still fire at max range, even when their weapon range is reduced.
+- Fixed an issue where Lurker spines did not go past 12 range, even if the weapons range is boosted somehow.
+- Fixed an issue where Lurkers could not fire again until the previous spines were finished.
+- Changed Lurker weapons to be disabled while unburrowed.
+- Increased Amon Lurker damage from 20 to 20 (+10 vs Armored).
 
 Copied from Versus.
 

@@ -8,8 +8,17 @@
 - Fixed an issue where units did not flee from Tempest's Destablizing Residuum.
 - Reduced the damage of Tempest's Destablizing Residuum from 40 to 20.
 - Reworked the map launcher to allow enabling/disabling entire categories.
+- Fixed an issue where Vipers could Consume invulnerable structures.
 
 yeah.
+
+- Fixed an issue where Lurker spines would still fire at max range, even when their weapon range is reduced.
+- Fixed an issue where Lurker spines did not go past 12 range, even if the weapons range is boosted somehow.
+- Fixed an issue where Lurkers could not fire again until the previous spines were finished.
+- Changed Lurker weapons to be disabled while unburrowed.
+- Increased Amon Lurker damage from 20 to 20 (+10 vs Armored).
+
+Various Lurker fixes copied from Versus.
 
 - Added new map: Death from Above.
   - Amon's forces have been deployed to the Tal'Darim outpost Trion IX, trying to corrupt the planet's large vespene supply. Assist Second Ascendant Zal'adas and escort the Tal'darim Mothership to ensure the Death Fleet has the resources needed for the reclamation of Aiur.

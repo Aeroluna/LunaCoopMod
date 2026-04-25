@@ -283,6 +283,29 @@
     <CActorUnit id="Kaboomer">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Kaboomer_Ambience"/>
     </CActorUnit>
+    <CActorRange id="LurkerStetmannAttackRange" parent="RangeWeapon">
+        <EditorCategories value=""/>
+        <On Terms="SelectionLocalUpdate.LurkerStetmannBurrowed.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.LurkerStetmannBurrowed.Stop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LurkerStetmannBurrowed; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo LurkerStetmann" Send="Destroy"/>
+        <Weapon value="LurkerStetmann"/>
+    </CActorRange>
+    <CActorSound id="LurkerMPAttackSpikeSound">
+        <On Terms="Effect.LurkerStetmannSearch.Start" Send="Create"/>
+    </CActorSound>
+    <CActorForceSphere id="LurkerStabForce">
+        <On Terms="Effect.LurkerStetmannSearch.Start" Send="Create"/>
+    </CActorForceSphere>
+    <CActorModel id="LurkerStetmannAttackSpikeAC">
+        <On index="7" Send="TimerSet 0.860000 DelayDestroy"/>
+        <On Terms="Effect.LurkerStetmannSearch.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow SOpForwardCasterPoint SOp2DRotation LurkerMPSOpShadowSpine SOpRotVariancerUp15"/>
+    </CActorModel>
+    <CActorModel id="LurkerStetmannMPAttackSpikeImpact">
+        <Remove Terms="Effect.LurkerMPDamage.Start; At Target" Send="Create"/>
+        <Remove Terms="Effect.LurkerStetmannU.Start; At Target" Send="Create"/>
+    </CActorModel>
     <CActorUnit id="Spotter">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Spotter_Ambience"/>
     </CActorUnit>
@@ -3828,10 +3851,12 @@
     </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeEx2">
         <On index="5" Send="TimerSet 0.860000 DelayDestroy"/>
+        <On Terms="ActorCreation; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 2.000000,2.000000,1.500000"/>
         <HostSiteOps Ops="SOpShadow SOpForwardCasterPoint SOp2DRotation LurkerMPSOpShadowSpine SOpRotVariancerUp15"/>
     </CActorModel>
     <CActorModel id="LurkerMPAttackSpikeImpact">
         <Scale value="1.750000"/>
+        <On Terms="Effect.LurkerStetmannU.Start; At Target" Send="Create"/>
     </CActorModel>
     <CActorMissile id="MarauderAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PunisherGrenadesResearched" Send="ModelSwap MarauderConcussiveShellMissile"/>
@@ -4963,7 +4988,6 @@
     </CActorMissile>
     <CActorModel id="LurkerAttackSpikeAC">
         <On index="7" Send="TimerSet 0.860000 DelayDestroy"/>
-        <On Terms="ActorCreation; ValidatePlayer CommanderPrestigeKerriganBrood" Send="SetScale 1.500000"/>
     </CActorModel>
     <CActorModel id="MedicRestorationImpact" parent="ModelAnimationStyleOneShot">
         <Inherits index="BaseModelScale" value="1"/>

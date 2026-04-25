@@ -1535,6 +1535,9 @@
             <LayoutButtons Face="DiggingClaws" Type="Passive" Requirements="HaveDiggingClaws" Row="2" Column="0"/>
             <LayoutButtons Face="SeismicSpinesMP" Type="Passive" Requirements="HaveSeismicSpines" Row="2" Column="1"/>
         </CardLayouts>
+        <BehaviorArray Link="LurkerWeaponDisabled"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <EquipmentArray index="0" Weapon="Spinesdisabled"/>
     </CUnit>
     <CUnit id="LurkerMPBurrowed">
         <SubgroupAlias value="LurkerMP"/>
@@ -1543,11 +1546,15 @@
             <LayoutButtons Face="DiggingClaws" Type="Passive" Requirements="HaveDiggingClaws" Row="2" Column="0"/>
             <LayoutButtons Face="SeismicSpinesMP" Type="Passive" Requirements="HaveSeismicSpines" Row="2" Column="1"/>
         </CardLayouts>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
     </CUnit>
     <CUnit id="LurkerStetmann">
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="BurrowLurkerMP" Column="3"/>
         </CardLayouts>
+        <BehaviorArray index="0" Link="LurkerWeaponDisabled"/>
+        <BehaviorArray Link="AllUnitBehaviorController"/>
+        <EquipmentArray index="0" Weapon="LurkerStetmanndisabled"/>
     </CUnit>
     <CUnit id="LurkerStetmannBurrowed">
         <SubgroupAlias value="LurkerStetmann"/>
@@ -4532,6 +4539,8 @@
             <LayoutButtons Face="DiggingClaws" Type="Passive" Requirements="HaveDiggingClaws" Row="2" Column="0"/>
             <LayoutButtons Face="KerriganBurialRites" Type="Passive" Requirements="CommanderPrestigeKerriganBrood" Row="1" Column="0"/>
         </CardLayouts>
+        <EquipmentArray Weapon="Lurkerdisabled"/>
+        <WeaponArray index="0" removed="1"/>
     </CUnit>
     <CUnit id="LurkerBurrowed">
         <SubgroupAlias value="Lurker"/>
