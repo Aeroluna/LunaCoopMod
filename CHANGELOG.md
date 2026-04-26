@@ -1,5 +1,15 @@
 # Changelog
 
+## 4/26/2026
+
+- Added new map: Skyfall
+  - Amon's fleet in high orbit keeps attacking Cybros with aerolites. You and your ally need to protect the ship until purifiers finish the emergency reboot of the core matrix. Use Solar crystals to activated shield generators, destroy the giant meteorites before they hit the ship.
+  - Made by FroggyCatty.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
+Can I take a moment to appreciate FroggyCatty? This map was already very polished and handled all the races/compositions. The assets were also uploaded separately so I didn't even have to reupload them. How was this not even top ten in 2017? If only all the RTC maps were this easy to modernize.
+
 ## 4/25/2026
 
 - Changed Tempest's Destablizing Residuum to no longer be affected by Artanis P1.

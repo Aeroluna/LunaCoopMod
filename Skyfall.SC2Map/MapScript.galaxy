@@ -1,0 +1,120 @@
+//==================================================================================================
+// 
+// Generated Map Script
+// 
+// Name:   [Luna] Skyfall
+// 
+//==================================================================================================
+include "TriggerLibs/NativeLib"
+include "LibCOMI"
+include "LibCOUI"
+include "LibA8FDA37D"
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+void InitLibs () {
+    libNtve_InitLib();
+    libCOMI_InitLib();
+    libCOUI_InitLib();
+    libA8FDA37D_InitLib();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Variables
+//--------------------------------------------------------------------------------------------------
+trigger gt_PingExistingUnits;
+trigger gt_UntitledTrigger001;
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: script
+//--------------------------------------------------------------------------------------------------
+include "TriggerLibs/MapScriptCustom"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script Initialization
+//--------------------------------------------------------------------------------------------------
+void InitCustomScript () {
+    InitMapCustom();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: PingExistingUnits
+//--------------------------------------------------------------------------------------------------
+bool gt_PingExistingUnits_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_iter;
+
+    // Automatic Variable Declarations
+    unitgroup auto050C889F_g;
+    int auto050C889F_u;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto050C889F_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto050C889F_u = UnitGroupCount(auto050C889F_g, c_unitCountAll);
+    for (;; auto050C889F_u -= 1) {
+        lv_iter = UnitGroupUnitFromEnd(auto050C889F_g, auto050C889F_u);
+        if (lv_iter == null) { break; }
+        if ((UnitGetType(lv_iter) == "HybridDominatorVoid")) {
+            continue;
+        }
+
+        GenerateUnitPing(lv_iter);
+    }
+    TriggerEnable(lib1_gt_LIB_UnitCreate, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_PingExistingUnits_Init () {
+    gt_PingExistingUnits = TriggerCreate("gt_PingExistingUnits_Func");
+    libCOUI_gf_CU_CommanderClosed(gt_PingExistingUnits);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Untitled Trigger 001
+//--------------------------------------------------------------------------------------------------
+bool gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((TimerGetRemaining(libA8FDA37D_gv_uT_DummyTimer[0][0]) > 0.0)) {
+        TextExpressionSetToken("Param/Expression/790D0717", "timer", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(libA8FDA37D_gv_uT_DummyTimer[0][0]))));
+        libCOMI_gf_SetMissionObjectiveCustomText("AC_ShakurasTemple_Primary01", TextExpressionAssemble("Param/Expression/790D0717"));
+    }
+    else {
+        libCOMI_gf_SetMissionObjectiveCustomText("AC_ShakurasTemple_Primary01", TextExpressionAssemble("Param/Expression/B0A7AB0E"));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UntitledTrigger001_Init () {
+    gt_UntitledTrigger001 = TriggerCreate("gt_UntitledTrigger001_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger Initialization
+//--------------------------------------------------------------------------------------------------
+void InitTriggers () {
+    gt_PingExistingUnits_Init();
+    gt_UntitledTrigger001_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Map Initialization
+//--------------------------------------------------------------------------------------------------
+void InitMap () {
+    InitLibs();
+    InitCustomScript();
+    InitTriggers();
+}

@@ -566,6 +566,14 @@ Lots of bug fixes/polish!
 
 It's a little similar to Malwarfare, but variety is the spice of life!
 
+- Added new map: Skyfall
+  - Amon's fleet in high orbit keeps attacking Cybros with aerolites. You and your ally need to protect the ship until purifiers finish the emergency reboot of the core matrix. Use Solar crystals to activated shield generators, destroy the giant meteorites before they hit the ship.
+  - Made by FroggyCatty.
+  - Originally featured in RTC 2017.
+  - Contains numerous fixes.
+
+One of the most high-quality maps to come from RTC 2017, it's criminal that this map didn't even make top ten. Seriously, the Chinese SC2 community makes some quality work.
+
 - Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
 - Removed rank display from Ji'nara/Amon's Champion on Chains of Ascension.
 - Removed health display from Ji'nara/Amon's Champion on Chains of Ascension.
