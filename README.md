@@ -332,6 +332,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where AI commanders did not have a Coop caster unit.
 - Added Tissue Regeneration button to Mutalisks.
 - Changed icon for Mutalisk's Rapid Regeneration upgrade.
+- Fixed an issue where Snipe tracers would follow the target.
 
 yeah.
 
@@ -1853,6 +1854,14 @@ When porting the Jump Jet Assault to Co-op, Blizzard forgot to port the animatio
   - Adds +1 range to Railgun Turrets, Missile Turrets, Defensive Drones, and Bio-Mechanical Repair Drones.
 
 Showing some love for Nova's static defense. Nova's structure life perk was ridiculous, so its value was reduced. In return, Missile Turrets benefit from it now.
+
+- Changed Nova's Sabotage Drone's model.
+- Changed Nova's Sabotage Drone from flying to ground.
+- Added birth visual effects to Nova's Sabotage Drone.
+- Increased volume of Nova's Sabotage Drone detonation.
+- Fixed an issue where Nova's Sabotage Drone's weapon incorrectly says it can target air.
+
+Sabotage Drones look so comically silly. Just this big stupid tube floating over. Now, they instead use the unused Shredder model.
 
 - Fixed an issue where Triple Tap could target undetected units.
 - Fixed an issue where Railgun Turret placement models were smaller than their actual model.

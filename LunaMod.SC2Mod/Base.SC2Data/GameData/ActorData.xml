@@ -29,6 +29,19 @@
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorAction id="GhostSnipeAttack">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorAction id="Ghost_BlackOpsSnipeAttack">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorModel id="NovaBoomBotBirthModel" parent="ModelAnimationStyleOneShot">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
+        <Model value="RavenScramblerMissileImpact"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
     <CActorSound id="FenixAdeptShadeLaunchAS" parent="SoundOneShot">
         <On Terms="Effect.FenixAdeptShadeSpawnShade.Start" Send="Create"/>
         <On Terms="Effect.FenixTalisShadeSpawnShade.Start" Send="Create"/>
@@ -277,6 +290,10 @@
     <CActorUnit id="Choker">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Choker_Ambience"/>
     </CActorUnit>
+    <CActorSiteRocker id="GravitonBeamRocker">
+        <Remove Terms="Behavior.NovaBoombotsTimedLife.On" Send="Create"/>
+        <Remove Terms="Behavior.NovaBoombotsTimedLife.Off" Send="Transition Out 1.000000"/>
+    </CActorSiteRocker>
     <CActorMissile id="Hunterling">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Hunterling_Ambience"/>
     </CActorMissile>
@@ -306,6 +323,26 @@
         <Remove Terms="Effect.LurkerMPDamage.Start; At Target" Send="Create"/>
         <Remove Terms="Effect.LurkerStetmannU.Start; At Target" Send="Create"/>
     </CActorModel>
+    <CActorUnit id="NovaBoombot">
+        <Remove Terms="UnitBirth.NovaBoombot" Send="AnimBracketStart Burrow Burrow {} {} OpeningPlayForever,Instant"/>
+        <On index="65" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull 0.750000 AsTimeScale"/>
+        <On index="68" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull 0.750000 AsTimeScale"/>
+        <On Terms="UnitBirth.NovaBoombot" Send="Create NovaBoomBotBirthModel"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 0.500000"/>
+        <WalkAnimMoveSpeed value="2.8125"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-nova-shredder.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-nova-shredder.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-nova-shredder.dds"/>
+        </Wireframe>
+        <SoundArray index="Birth" value="Goliath_BlackOps_Lockdown"/>
+    </CActorUnit>
+    <CActorAction id="NovaWeaponImprovedCanisterRifleSnipeAttack">
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
     <CActorUnit id="Spotter">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Spotter_Ambience"/>
     </CActorUnit>
@@ -668,6 +705,7 @@
         <Model value="RavenScramblerMissileImpact"/>
         <AutoScaleFactor value="1.000000"/>
         <Scale value="2.000000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
     <CActorSound id="CommanderPrestigeStetmannRespawnTeleportSound" parent="SoundOneShot">
         <On Terms="Effect.CommanderPrestigeStetmannRespawnTeleportOrderQueueSwitch.Stop; At Target" Send="Create"/>

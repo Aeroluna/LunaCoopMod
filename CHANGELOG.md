@@ -2,6 +2,18 @@
 
 ## 4/27/2026
 
+- Fixed an issue where Snipe tracers would follow the target.
+
+yeah.
+
+- Changed Nova's Sabotage Drone's model.
+- Changed Nova's Sabotage Drone from flying to ground.
+- Added birth visual effects to Nova's Sabotage Drone.
+- Increased volume of Nova's Sabotage Drone detonation.
+- Fixed an issue where Nova's Sabotage Drone's weapon incorrectly says it can target air.
+
+Sabotage Drones look so comically silly. Just this big stupid tube floating over. Now, they instead use the unused Shredder model.
+
 - Changed P4 Dusk Wings to only autocast Cloak with at least 10 energy.
 
 Fixes them strobing their cloak when out of energy.
