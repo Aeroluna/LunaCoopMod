@@ -1,6 +1,10 @@
 # Changelog
 
-## 4/26/2026
+## 4/27/2026
+
+- Changed P4 Dusk Wings to only autocast Cloak with at least 10 energy.
+
+Fixes them strobing their cloak when out of energy.
 
 - Added new map: Skyfall
   - Amon's fleet in high orbit keeps attacking Cybros with aerolites. You and your ally need to protect the ship until purifiers finish the emergency reboot of the core matrix. Use Solar crystals to activated shield generators, destroy the giant meteorites before they hit the ship.
