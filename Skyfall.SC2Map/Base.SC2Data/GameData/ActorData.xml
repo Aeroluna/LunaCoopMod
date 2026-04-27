@@ -841,6 +841,7 @@
         <On Terms="ActorCreation" Send="Create SOLARCRYSTAL_TooltipText_Unit"/>
         <On Terms="ActorCreation" Send="RefSet ::actor.TooltipText SOLARCRYSTAL_TooltipText_Unit"/>
         <On Terms="ActorCreation" Target="::actor.TooltipText" Send="SetTextLocalized DOCSTR_SOLARCRYSTAL_UnitTooltip_SolarCrystal"/>
+        <On Terms="ActorCreation" Send="Create SOLARCRYSTAL_SolarCrystalHitTest"/>
         <Model value="SOLARCRYSTAL_SolarCrystalModel"/>
         <DeathArray index="Normal" ModelLink="SOLARCRYSTAL_ShieldGenerator"/>
         <PortraitModel value="SOLARCRYSTAL_SolarCrystalModel_Portrait"/>
@@ -862,6 +863,13 @@
             <Image value="Assets\Textures\wireframe-protoss-rawsolarite.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorModel id="SOLARCRYSTAL_SolarCrystalHitTest">
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpMoveUpBy1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorModel>
     <CActorSiteOpLocalOffset id="SOLARCRYSTAL_ShieldGenerator_AdditionSolarCrystalHeight">
         <LocalOffset value="0.000000,0.000000,0.700000"/>
     </CActorSiteOpLocalOffset>

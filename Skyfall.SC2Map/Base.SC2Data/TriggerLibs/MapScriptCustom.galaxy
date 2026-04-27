@@ -563,64 +563,121 @@ void lib1_gf_LIB_EventList () {
     string auto9BBC5476_val;
 
     // Implementation
+    lib1_gf_COOP_Objectives_Register(5.0, lib1_ge_COOP_Objectives_Type_GameTime);
+    lib1_gf_COOP_Objectives_Register(12.0, lib1_ge_COOP_Objectives_Type_GiantMeteoritesImpact);
+    lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
+    if ((RandomInt(0, 1) == 1)) {
+        lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((17.0 * 60.0), 1);
+        lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((11.0 * 60.0), 2);
+    }
+    else {
+        lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((17.0 * 60.0), 2);
+        lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((11.0 * 60.0), 1);
+    }
+    lib1_gf_METEORITE_FirstDrop(80);
+    lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((3.85 * 60.0), 0.0, 1);
+    lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    // lib1_gf_METEORITE_ShieldRelation_Wave((2.0 * 60.0), 0.0, 1, 0);
+    lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((11.5 * 60.0), 0.0, 2);
+    lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    // lib1_gf_METEORITE_ShieldRelation_Wave((9.25 * 60.0), 0.0, 2, 1);
+    lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((17.5 * 60.0), 0.0, 3);
+    lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    // lib1_gf_METEORITE_ShieldRelation_Wave((16.5 * 60.0), 0.0, 3, 2);
+    lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((23.5 * 60.0), 0.0, 3);
+    lib1_gf_COOP_AI_WaveStart_Register((24.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((24.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((24.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_COOP_AI_WaveStart_Register((24.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((29.5 * 60.0), 0.0, 3);
+    lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    // lib1_gf_METEORITE_ShieldRelation_WaveLast((23.85 * 60.0), 0.0, 4, 3);
     // auto9BBC5476_val = GameAttributeGameValue("[bnet:local/0.0/357883]3");
     // if (auto9BBC5476_val == "0002") {
-        lib1_gf_COOP_Objectives_Register(5.0, lib1_ge_COOP_Objectives_Type_GameTime);
-        lib1_gf_COOP_Objectives_Register(12.0, lib1_ge_COOP_Objectives_Type_GiantMeteoritesImpact);
-        lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
-        if ((RandomInt(0, 1) == 1)) {
-            lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((10.0 * 60.0), 1);
-            lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((15.0 * 60.0), 2);
-        }
-        else {
-            lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((15.0 * 60.0), 2);
-            lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((10.0 * 60.0), 1);
-        }
-        lib1_gf_METEORITE_FirstDrop(70);
-        lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
-        lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
-        lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
-        lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
-        lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((3.85 * 60.0), 0.0, 1);
-        lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_METEORITE_ShieldRelation_Wave((2.0 * 60.0), 0.0, 1, 0);
-        lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((11.5 * 60.0), 0.0, 2);
-        lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_METEORITE_ShieldRelation_Wave((8.25 * 60.0), 0.0, 2, 1);
-        lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((17.5 * 60.0), 0.0, 3);
-        lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_METEORITE_ShieldRelation_Wave((14.5 * 60.0), 0.0, 3, 2);
-        lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((23.5 * 60.0), 0.0, 3);
-        lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
-        lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-        lib1_gf_METEORITE_ShieldRelation_WaveLast((20.85 * 60.0), 0.0, 4, 3);
+    //     lib1_gf_COOP_Objectives_Register(5.0, lib1_ge_COOP_Objectives_Type_GameTime);
+    //     lib1_gf_COOP_Objectives_Register(12.0, lib1_ge_COOP_Objectives_Type_GiantMeteoritesImpact);
+    //     lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
+    //     if ((RandomInt(0, 1) == 1)) {
+    //         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((10.0 * 60.0), 1);
+    //         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((15.0 * 60.0), 2);
+    //     }
+    //     else {
+    //         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((15.0 * 60.0), 2);
+    //         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((10.0 * 60.0), 1);
+    //     }
+    //     lib1_gf_METEORITE_FirstDrop(70);
+    //     lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    //     lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    //     lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    //     lib1_gf_COOP_AI_WaveStart_Register((3.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerBase);
+    //     lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((3.85 * 60.0), 0.0, 1);
+    //     lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((5.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_METEORITE_ShieldRelation_Wave((2.0 * 60.0), 0.0, 1, 0);
+    //     lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((9.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((11.5 * 60.0), 0.0, 2);
+    //     lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((12.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_METEORITE_ShieldRelation_Wave((8.25 * 60.0), 0.0, 2, 1);
+    //     lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((15.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((17.5 * 60.0), 0.0, 3);
+    //     lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((19.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_METEORITE_ShieldRelation_Wave((14.5 * 60.0), 0.0, 3, 2);
+    //     lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets__5Late, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((22.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomShieldWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_METEORITE_ShieldRelation_WaveMicroSingle((23.5 * 60.0), 0.0, 3);
+    //     lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((24.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    //     lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_COOP_AI_WaveStart_Register((25.25 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
+    //     lib1_gf_METEORITE_ShieldRelation_WaveLast((20.85 * 60.0), 0.0, 4, 3);
     // }
     // else {
     // }
@@ -2399,7 +2456,7 @@ void lib1_gf_COOP_AI_WaveStart_Create (int lp_pointType, int lp_resourceBucket, 
         libCOMI_gf_SetCoopAIWaveTarget(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, AIWaveTargetPoint(PointFromId(71592078)));
         libCOMI_gf_AddAttackForceWaypoint(lv_attackPathWaypoint, false);
         libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_resourceBucketNew, lv_techBucketNew, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType], true);
-        libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, true);
+        libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
     }
     else if ((lv_targetTypeModify == lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec)) {
         PlayerGroupLoopBegin(libCOOC_gf_HumanPlayers());
@@ -2428,7 +2485,7 @@ void lib1_gf_COOP_AI_WaveStart_Create (int lp_pointType, int lp_resourceBucket, 
         AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, PointFromId(71592078));
         libCOMI_gf_AddAttackForceWaypoint(lv_attackPathWaypoint, false);
         libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_resourceBucketNew, lv_techBucketNew, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType], true);
-        libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, true);
+        libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
     }
     else if ((lv_targetTypeModify == lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator)) {
         autoB2F67917_g = UnitGroup("SOLARCRYSTAL_ShieldGenerator", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -2449,23 +2506,27 @@ void lib1_gf_COOP_AI_WaveStart_Create (int lp_pointType, int lp_resourceBucket, 
         }
 
         lv_targetUnit = UnitGroupRandomUnit(lv_targetGroup, c_unitCountAlive);
-        AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
-        AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
         libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_resourceBucketNew, lv_techBucketNew, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType], true);
         UnitGroupAddUnitGroup(lv_attackGroup, libCOMI_gf_LastCreatedCoopAttackForce());
         if ((lp_resourceBucket >= libCOMI_ge_CoopAIAttackWaveBuckets__5Large) && (lp_techBucket >= libCOMI_ge_CoopAITechLevelBuckets__5Late)) {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, "HybridDominatorVoid", 0, RandomInt(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY), lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
-            libCOMI_gf_DropPodWarpInUnitGroup(UnitLastCreatedGroup(), lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
-            UnitGroupAddUnitGroup(lv_attackGroup, UnitLastCreatedGroup());
+            // libCOMI_gf_DropPodWarpInUnitGroup(UnitLastCreatedGroup(), lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
+            // UnitGroupAddUnitGroup(lv_attackGroup, UnitLastCreatedGroup());
+            UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         }
 
-        libCOMI_gf_SendAttackWaveusingCoopAttackForce(lv_attackGroup, 0, true);
-        auto16EE0A87_g = lv_attackGroup;
-        auto16EE0A87_u = 1;
-        for ( ; auto16EE0A87_u <= UnitGroupCount(auto16EE0A87_g, c_unitCountAll) ; auto16EE0A87_u += BoolToInt(lv_selectUnit == UnitGroupUnit(auto16EE0A87_g, auto16EE0A87_u)) ) {
-            lv_selectUnit = UnitGroupUnit(auto16EE0A87_g, auto16EE0A87_u);
-            UnitIssueOrder(lv_selectUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_targetUnit)), c_orderQueueAddToEnd);
-        }
+        AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
+        AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType]);
+        AIAttackWaveSetTargetEscortNL(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, libNtve_gf_ConvertUnitToUnitGroup(lv_targetUnit), 0);
+        AIAttackWaveSetTargetEscortNL(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, libNtve_gf_ConvertUnitToUnitGroup(lv_targetUnit), 0);
+        // auto16EE0A87_g = lv_attackGroup;
+        // auto16EE0A87_u = 1;
+        // for ( ; auto16EE0A87_u <= UnitGroupCount(auto16EE0A87_g, c_unitCountAll) ; auto16EE0A87_u += BoolToInt(lv_selectUnit == UnitGroupUnit(auto16EE0A87_g, auto16EE0A87_u)) ) {
+        //     lv_selectUnit = UnitGroupUnit(auto16EE0A87_g, auto16EE0A87_u);
+        //     AIAttackWaveAddEscortUnit(UnitGetOwner(lv_selectUnit), lv_selectUnit, lv_targetUnit, RandomFixed(2.0, 8.0), libNtve_gf_RandomAngle());
+        //     //UnitIssueOrder(lv_selectUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_targetUnit)), c_orderQueueAddToEnd);
+        // }
+        libCOMI_gf_SendAttackWaveusingCoopAttackForce(lv_attackGroup, 0, false);
     }
     else if ((lv_targetTypeModify == lib1_ge_COOP_AI_Wave_StartTargetType_SolarCrystal)) {
         autoC052BFC1_g = UnitGroup("SOLARCRYSTAL_SolarCrystalUnit", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -2494,13 +2555,13 @@ void lib1_gf_COOP_AI_WaveStart_Create (int lp_pointType, int lp_resourceBucket, 
                 AIAttackWaveSetTargetUnit(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_targetUnit);
             }
             libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_resourceBucketNew, lv_techBucketNew, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType], true);
-            libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, true);
+            libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
         }
         else {
             AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, PointFromId(71592078));
             AIAttackWaveSetTargetPoint(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, PointFromId(71592078));
             libCOMI_gf_CreateCoopAttackForceatLocationandWaitforthemtospawn2(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, lib1_gv_cOOP_Init_PLAYER_04_ENEMY, lv_resourceBucketNew, lv_techBucketNew, lib1_gv_cOOP_AI_Wave_StartPoint[lp_pointType], true);
-            libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, true);
+            libCOMI_gf_SendAttackWaveusingCoopAttackForce(libCOMI_gf_LastCreatedCoopAttackForce(), 0, false);
         }
     }
 }
@@ -3421,7 +3482,7 @@ bool lib1_gt_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Func (bool testConds
     lib1_gf_SOLARCRYSTAL_Spectroscope_SetDead(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_spectroscope, false);
     lib1_gf_COOP_Transmission_Send(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_bonusFail, -1, true);
     if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartIndex >= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartCount)) {
-        TriggerExecute(lib1_gt_COOP_Objective_GiantMeteoritesImpact_Failed, true, false);
+        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Failed, true, false);
     }
 
     return true;
@@ -3984,6 +4045,11 @@ bool lib1_gt_COOP_Init_01_LoadData_Func (bool testConds, bool runActions) {
     }
     else {
     }
+    lib1_gv_mETEORITE_GiantDropTime = 420.0;
+    lib1_gv_cOOP_Objective_TotalTime = 1860.0;
+    lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime = 720.0;
+    CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerDropTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(418.0, c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerRemoveTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(420.0, c_fixedPrecisionAny));
     // autoF4F011A6_val = GameAttributeGameValue("[bnet:local/0.0/357883]3");
     // if (autoF4F011A6_val == "0001") {
     //     lib1_gv_mETEORITE_GiantDropTime = 480.0;
@@ -3993,11 +4059,11 @@ bool lib1_gt_COOP_Init_01_LoadData_Func (bool testConds, bool runActions) {
     //     CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerRemoveTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(480.0, c_fixedPrecisionAny));
     // }
     // else if (autoF4F011A6_val == "0002") {
-        lib1_gv_mETEORITE_GiantDropTime = 360.0;
-        lib1_gv_cOOP_Objective_TotalTime = 1620.0;
-        lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime = 600.0;
-        CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerDropTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(358.0, c_fixedPrecisionAny));
-        CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerRemoveTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(360.0, c_fixedPrecisionAny));
+        // lib1_gv_mETEORITE_GiantDropTime = 360.0;
+        // lib1_gv_cOOP_Objective_TotalTime = 1620.0;
+        // lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime = 600.0;
+        // CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerDropTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(358.0, c_fixedPrecisionAny));
+        // CatalogFieldValueSet(c_gameCatalogBehavior, "METEORITE_Timer_GiantImpactTimerRemoveTime", "Duration", lib1_gv_mETEORITE_MeteoritePlayer, FixedToString(360.0, c_fixedPrecisionAny));
     // }
     // else {
     // }
@@ -4035,7 +4101,7 @@ bool lib1_gt_COOP_Init_02_Players_Func (bool testConds, bool runActions) {
     libNtve_gf_SetPlayerGroupAlliance(libCOOC_gf_HumanPlayers(), libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable);
     PlayerGroupAdd(lib1_gv_cOOP_Init_EnemyGroup, lib1_gv_cOOP_Init_PLAYER_03_ENEMY);
     PlayerGroupAdd(lib1_gv_cOOP_Init_EnemyGroup, lib1_gv_cOOP_Init_PLAYER_04_ENEMY);
-    PlayerGroupAdd(lib1_gv_cOOP_Init_EnemyGroup, 15);
+    //PlayerGroupAdd(lib1_gv_cOOP_Init_EnemyGroup, 15);
     libNtve_gf_SetPlayerGroupAlliance(lib1_gv_cOOP_Init_EnemyGroup, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable);
     auto3BE56B1A_g = lib1_gv_cOOP_Init_EnemyGroup;
     auto3BE56B1A_p = 1;
@@ -4222,13 +4288,15 @@ bool lib1_gt_COOP_Init_08_Difficulties_Func (bool testConds, bool runActions) {
         // UnitRemove(UnitFromId(2142347070));
         // UnitRemove(UnitFromId(476735999));
     }
-    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(1) == 4)) {
+    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(lib1_gv_cOOP_Init_PLAYER_01_USER) == 4)) {
         UnitRemove(UnitFromId(479699153));
     }
 
-    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(2) == 4)) {
+    if ((libCOMI_gf_DifficultyLevelForPlayerCoop(lib1_gv_cOOP_Init_PLAYER_02_USER) == 4)) {
         UnitRemove(UnitFromId(1027480058));
     }
+    AIToggleBulliesInRegion(lib1_gv_cOOP_Init_PLAYER_03_ENEMY, RegionEntireMap(), false);
+    AIToggleBulliesInRegion(lib1_gv_cOOP_Init_PLAYER_04_ENEMY, RegionEntireMap(), false);
     return true;
 }
 
@@ -4323,7 +4391,8 @@ void lib1_gt_COOP_Init_10_AI_Init () {
 bool lib1_gt_COOP_Transmission_Frog_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
-        if (!(((UnitGetOwner(EventUnit()) == lib1_gv_cOOP_Init_PLAYER_01_USER) || (UnitGetOwner(EventUnit()) == lib1_gv_cOOP_Init_PLAYER_02_USER)))) {
+        if (!(((UnitGetOwner(EventUnit()) == lib1_gv_cOOP_Init_PLAYER_01_USER) || (UnitGetOwner(EventUnit()) == lib1_gv_cOOP_Init_PLAYER_02_USER))) ||
+            !(UnitFilterMatch(EventUnit(), 1, UnitFilter(0, 0, (1 << c_targetFilterAir) | (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)))))) {
             return false;
         }
     }
@@ -4546,6 +4615,7 @@ bool lib1_gt_COOP_VictoryDefeat_DefeatPrimaryObjectiveFailed_Func (bool testCond
 
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gf_GameOver(libCOMI_ge_CampaignMissionGameResultType_Defeat);
+    TransmissionClearAll();
     TriggerQueuePause(true);
     TriggerQueueClear(c_triggerQueueRemove);
     libCOMI_gf_CinematicModeCampaign(true, 1.5, true);
@@ -4634,6 +4704,7 @@ bool lib1_gt_COOP_VictoryDefeat_VictoryFanfare_Func (bool testConds, bool runAct
 
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gf_GameOver(libCOMI_ge_CampaignMissionGameResultType_Victory);
+    TransmissionClearAll();
     TriggerQueuePause(true);
     TriggerQueueClear(c_triggerQueueRemove);
     libCOMI_gf_CinematicModeCampaign(true, c_transitionDurationDefault, true);
@@ -4830,7 +4901,8 @@ bool lib1_gt_COOP_Objective_GameTime_Complete_Func (bool testConds, bool runActi
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_GameTime_Create, true, false);
-    ObjectiveSetState(lib1_gv_cOOP_Objective_GameTime, c_objectiveStateCompleted);
+    //ObjectiveSetState(lib1_gv_cOOP_Objective_GameTime, c_objectiveStateCompleted);
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Primary01", libCOOC_ge_MissionObjectiveState_Completed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -4858,7 +4930,8 @@ bool lib1_gt_COOP_Objective_GameTime_Failed_Func (bool testConds, bool runAction
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_GameTime_Create, true, false);
-    ObjectiveSetState(lib1_gv_cOOP_Objective_GameTime, c_objectiveStateFailed);
+    // ObjectiveSetState(lib1_gv_cOOP_Objective_GameTime, c_objectiveStateFailed);
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Primary01", libCOOC_ge_MissionObjectiveState_Failed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -4889,6 +4962,8 @@ bool lib1_gt_COOP_Objective_GameTime_Window_Func (bool testConds, bool runAction
     TriggerExecute(lib1_gt_COOP_Objective_GameTime_Update, true, false);
     // TextExpressionSetToken("Param/Expression/lib_1_51937B6D", "GameTime", libCOOC_gf_FormatTimeCampaign(FixedToInt((TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) - 3.0))));
     // ObjectiveSetName(lib1_gv_cOOP_Objective_GameTime, TextExpressionAssemble("Param/Expression/lib_1_51937B6D"));
+    TextExpressionSetToken("Param/Expression/790D0717", "timer", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) - 3.0)));
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Primary01", TextExpressionAssemble("Param/Expression/790D0717"));
     Wait(4.0, c_timeGame);
     while ((libCOMI_gf_GameIsOver() == false)) {
         TriggerExecute(lib1_gt_COOP_Objective_GameTime_Update, true, false);
@@ -4900,7 +4975,7 @@ bool lib1_gt_COOP_Objective_GameTime_Window_Func (bool testConds, bool runAction
             lv_pass90 = true;
             lib1_gf_COOP_Transmission_Send("DropFinalSF", -1, true);
         }
-        Wait(0.5, c_timeGame);
+        Wait(1, c_timeGame);
     }
     return true;
 }
@@ -4947,7 +5022,7 @@ bool lib1_gt_COOP_Objective_GiantMeteoritesImpact_Create_Func (bool testConds, b
 
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gf_CreateObjectiveCampaign("AC_SkyFall_Primary02");
-    libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_SkyFall_Primary02", lib1_gv_mETEORITE_GiantImpactCount);
+    libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_SkyFall_Primary02", lib1_gv_mETEORITE_GiantImpactDefeatCount);
     lib1_gv_cOOP_Objective_GiantMeteoritesImpact = ObjectiveLastCreated();
     TriggerExecute(lib1_gt_COOP_Objective_GiantMeteoritesImpact_Update, true, false);
     ObjectiveSetPriority(lib1_gv_cOOP_Objective_GiantMeteoritesImpact, 9);
@@ -5003,7 +5078,8 @@ bool lib1_gt_COOP_Objective_GiantMeteoritesImpact_Complete_Func (bool testConds,
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_GiantMeteoritesImpact_Create, true, false);
-    ObjectiveSetState(lib1_gv_cOOP_Objective_GiantMeteoritesImpact, c_objectiveStateCompleted);
+    // ObjectiveSetState(lib1_gv_cOOP_Objective_GiantMeteoritesImpact, c_objectiveStateCompleted);
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Primary02", libCOOC_ge_MissionObjectiveState_Completed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -5031,7 +5107,8 @@ bool lib1_gt_COOP_Objective_GiantMeteoritesImpact_Failed_Func (bool testConds, b
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_GiantMeteoritesImpact_Create, true, false);
-    ObjectiveSetState(lib1_gv_cOOP_Objective_GiantMeteoritesImpact, c_objectiveStateFailed);
+    // ObjectiveSetState(lib1_gv_cOOP_Objective_GiantMeteoritesImpact, c_objectiveStateFailed);
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Primary02", libCOOC_ge_MissionObjectiveState_Failed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -5113,7 +5190,8 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Complete_Func (bool testConds, bool 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, false);
     // ObjectiveSetName(lib1_gv_cOOP_Objective_DestroyMegalith, StringExternal("Param/Value/lib_1_8E01A35B"));
-    ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateCompleted);
+    // ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateCompleted);
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus01", libCOOC_ge_MissionObjectiveState_Completed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -5141,8 +5219,9 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Failed_Func (bool testConds, bool ru
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, false);
-    ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateFailed);
+    // ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateFailed);
     // ObjectiveSetName(lib1_gv_cOOP_Objective_DestroyMegalith, StringExternal("Param/Value/lib_1_AF099B29"));
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus01", libCOOC_ge_MissionObjectiveState_Failed);
     if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_01_USER].lv_ping != c_invalidPingId)) {
         PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_01_USER].lv_ping);
     }

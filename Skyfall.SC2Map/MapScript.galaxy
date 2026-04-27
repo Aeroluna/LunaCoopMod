@@ -8,7 +8,7 @@
 include "TriggerLibs/NativeLib"
 include "LibCOMI"
 include "LibCOUI"
-include "LibA8FDA37D"
+include "Lib01833E95"
 
 //--------------------------------------------------------------------------------------------------
 // Library Initialization
@@ -17,14 +17,16 @@ void InitLibs () {
     libNtve_InitLib();
     libCOMI_InitLib();
     libCOUI_InitLib();
-    libA8FDA37D_InitLib();
+    lib01833E95_InitLib();
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
-trigger gt_PingExistingUnits;
-trigger gt_UntitledTrigger001;
+trigger gt_TW_Main_Thread_Player01_Template;
+trigger gt_TW_Main_Thread_Player02_Template;
+trigger gt_SetupPings;
+trigger gt_PlayerBaseRevealer;
 
 //--------------------------------------------------------------------------------------------------
 // Custom Script: script
@@ -39,9 +41,93 @@ void InitCustomScript () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: PingExistingUnits
+// Trigger: TW_Main_Thread_Player01_Template
 //--------------------------------------------------------------------------------------------------
-bool gt_PingExistingUnits_Func (bool testConds, bool runActions) {
+bool gt_TW_Main_Thread_Player01_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 1);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player01_Template_Init () {
+    gt_TW_Main_Thread_Player01_Template = TriggerCreate("gt_TW_Main_Thread_Player01_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player01_Template);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: TW_Main_Thread_Player02_Template
+//--------------------------------------------------------------------------------------------------
+bool gt_TW_Main_Thread_Player02_Template_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const int lv_cPlayer = 2;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(lv_cPlayer) == c_playerStatusActive))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    BankLoad("MMTwitchIntegration", 2);
+    lib01833E95_gf_TW_SetUp(lv_cPlayer, BankLastCreated());
+    while (true) {
+        if ((PlayerStatus(lv_cPlayer) != c_playerStatusActive)) {
+            break;
+        }
+
+        BankReload(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        BankWait(lib01833E95_gv_tW_Bank[lv_cPlayer]);
+        lib01833E95_gf_TW_ActionCycle(lv_cPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_TW_Main_Thread_Player02_Template_Init () {
+    gt_TW_Main_Thread_Player02_Template = TriggerCreate("gt_TW_Main_Thread_Player02_Template_Func");
+    TriggerAddEventMapInit(gt_TW_Main_Thread_Player02_Template);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Setup Pings
+//--------------------------------------------------------------------------------------------------
+bool gt_SetupPings_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_iter;
 
@@ -72,42 +158,40 @@ bool gt_PingExistingUnits_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_PingExistingUnits_Init () {
-    gt_PingExistingUnits = TriggerCreate("gt_PingExistingUnits_Func");
-    libCOUI_gf_CU_CommanderClosed(gt_PingExistingUnits);
+void gt_SetupPings_Init () {
+    gt_SetupPings = TriggerCreate("gt_SetupPings_Func");
+    libCOUI_gf_CU_CommanderClosed(gt_SetupPings);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Untitled Trigger 001
+// Trigger: Player Base Revealer
 //--------------------------------------------------------------------------------------------------
-bool gt_UntitledTrigger001_Func (bool testConds, bool runActions) {
+bool gt_PlayerBaseRevealer_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Actions
     if (!runActions) {
         return true;
     }
 
-    if ((TimerGetRemaining(libA8FDA37D_gv_uT_DummyTimer[0][0]) > 0.0)) {
-        TextExpressionSetToken("Param/Expression/790D0717", "timer", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(libA8FDA37D_gv_uT_DummyTimer[0][0]))));
-        libCOMI_gf_SetMissionObjectiveCustomText("AC_ShakurasTemple_Primary01", TextExpressionAssemble("Param/Expression/790D0717"));
-    }
-    else {
-        libCOMI_gf_SetMissionObjectiveCustomText("AC_ShakurasTemple_Primary01", TextExpressionAssemble("Param/Expression/B0A7AB0E"));
-    }
+    libCOMI_gf_AutoRevealRegionCoop(RegionFromId(18), RegionFromId(18), 1);
+    libCOMI_gf_AutoRevealRegionCoop(RegionFromId(18), RegionFromId(18), 2);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_UntitledTrigger001_Init () {
-    gt_UntitledTrigger001 = TriggerCreate("gt_UntitledTrigger001_Func");
+void gt_PlayerBaseRevealer_Init () {
+    gt_PlayerBaseRevealer = TriggerCreate("gt_PlayerBaseRevealer_Func");
+    TriggerAddEventMapInit(gt_PlayerBaseRevealer);
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
-    gt_PingExistingUnits_Init();
-    gt_UntitledTrigger001_Init();
+    gt_TW_Main_Thread_Player01_Template_Init();
+    gt_TW_Main_Thread_Player02_Template_Init();
+    gt_SetupPings_Init();
+    gt_PlayerBaseRevealer_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
