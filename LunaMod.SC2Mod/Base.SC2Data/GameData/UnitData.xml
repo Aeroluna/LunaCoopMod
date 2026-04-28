@@ -128,6 +128,9 @@
     <CUnit id="AutomatedRefinery">
         <EffectArray index="Create" value="AutomatedRefineryRichSearch"/>
     </CUnit>
+    <CUnit id="Banshee_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakBanshee"/>
+    </CUnit>
     <CUnit id="BroodLordStetmann">
         <WeaponArray Link="BroodLordStetmannAirDummy"/>
         <BehaviorArray Link="BroodLordStetmannDisableInterceptor"/>
@@ -277,6 +280,15 @@
             <LayoutButtons index="8" Face="FenixArbiterRecall" AbilCmd="FenixArbiterRecall,Execute"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="GhostFemale_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
+    </CUnit>
+    <CUnit id="Ghost_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
+    </CUnit>
+    <CUnit id="Goliath_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
     <CUnit id="HybridBehemoth">
         <FlagArray index="ArmySelect" value="1"/>
         <Food value="-10"/>
@@ -323,6 +335,12 @@
         <Attributes index="Psionic" value="0"/>
         <Attributes index="Heroic" value="0"/>
     </CUnit>
+    <CUnit id="LiberatorAG_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
+    <CUnit id="Liberator_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
     <CUnit id="LurkerDenStetmann">
         <CostResource index="Minerals" value="150"/>
         <AbilArray index="3" removed="1"/>
@@ -351,6 +369,9 @@
             <LayoutButtons index="15" removed="1"/>
         </CardLayouts>
         <TechAliasArray index="0" removed="1"/>
+    </CUnit>
+    <CUnit id="Marine_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="MedicFlareWeapon" parent="MISSILE">
         <Race value="Terr"/>
@@ -1611,9 +1632,11 @@
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
         <RankDisplay value="Never"/>
+        <Radius value="0.25"/>
     </CUnit>
     <CUnit id="NovaCoopDecoy">
         <Radius value="0.5"/>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="NovaInfestedSiegeTank">
         <TacticalAIThink value="AIThinkNovaInfestedSiegeTankSieged"/>
@@ -1716,6 +1739,9 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Raven_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
     <CUnit id="Reaver">
         <AbilArray Link="ReaverChase"/>
         <WeaponArray Link="ReaverScarabsLaunchNoScan"/>
@@ -1815,6 +1841,9 @@
             <LayoutButtons index="13" Row="1" Column="4"/>
             <LayoutButtons index="14" Row="1" Column="4"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="SCV">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="SIRefinery">
         <EffectArray index="Create" value="RefineryRichSearch"/>
@@ -1983,6 +2012,9 @@
         <LifeArmor value="0"/>
         <BehaviorArray index="0" Link="ShapeshifterArmor"/>
         <BehaviorArray index="1" removed="1"/>
+    </CUnit>
+    <CUnit id="SiegeTankSieged_BlackOps">
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="Spotter">
         <CostResource index="Minerals" value="450"/>
@@ -2169,6 +2201,7 @@
         <CardLayouts>
             <LayoutButtons Face="Vortex" Type="AbilCmd" AbilCmd="VoidArchonVortex,Execute" Row="2" Column="0"/>
         </CardLayouts>
+        <BehaviorArray Link="DutchTurretTimedLife"/>
     </CUnit>
     <CUnit id="HighTemplarTaldarim">
         <AbilArray Link="VoidArchonMerge"/>
@@ -2310,6 +2343,7 @@
     </CUnit>
     <CUnit id="SiegeTank_BlackOps">
         <AlliedPushPriority value="1"/>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="SoACasterVorazun">
         <CardLayouts index="0">
@@ -2436,6 +2470,7 @@
     </CUnit>
     <CUnit id="HealingDrone">
         <BehaviorArray Link="AllUnitBehaviorController"/>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="HelsAngelAssault">
         <BehaviorArray Link="WreckingCrewAutoFighter"/>
@@ -2576,12 +2611,24 @@
         <AbilArray Link="NovaGadgetFlashBangGrenades"/>
         <AbilArray Link="NovaWeaponBlazefireBladeShadowFury"/>
         <AbilArray Link="NovaApolloCloak"/>
+        <AbilArray Link="NovaHoldFire"/>
+        <AbilArray Link="NovaWeaponsFree"/>
         <BehaviorArray Link="NovaWeaponBlazefireBlade"/>
         <BehaviorArray Link="NovaWeaponPsiBlade"/>
         <BehaviorArray Link="NovaCliffJump"/>
         <CardLayouts index="0">
+            <LayoutButtons index="5" Column="2"/>
+            <LayoutButtons index="9" Face="WeaponsFree" Type="AbilCmd" AbilCmd="NovaWeaponsFree,Execute" Behavior="" Requirements=""/>
             <LayoutButtons index="14" Face="ApolloCloakOnNova" Type="AbilCmd" AbilCmd="NovaApolloCloak,Execute" Behavior="" Requirements=""/>
             <LayoutButtons index="15" Face="NovaArmorStealthSuit" Behavior="NovaPermanentlyCloaked" Requirements="HaveNovaStealthSuit"/>
+            <LayoutButtons index="26">
+                <Face value="HoloDecoyCooldownMonitor"/>
+                <Type value="Passive"/>
+                <AbilCmd value="NovaCoopDecoyTarget,Execute"/>
+                <Behavior value="NovaDecoyCooldown"/>
+                <Requirements value="HaveNovaStealthSuit"/>
+                <Column value="3"/>
+            </LayoutButtons>
             <LayoutButtons Face="NovaWeaponBlazefireBladeShadowFury" Type="AbilCmd" AbilCmd="NovaWeaponBlazefireBladeShadowFury,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="NovaWeaponPsiBlade" Type="AbilCmd" AbilCmd="NovaPsiStrike,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="NovaGadgetFlashBangGrenades" Type="AbilCmd" AbilCmd="NovaGadgetFlashBangGrenades,Execute" Row="2" Column="2"/>
@@ -2599,6 +2646,7 @@
         <Collide index="Colossus" value="0"/>
         <Radius value="0.5"/>
         <RankDisplay value="Default"/>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakBoth"/>
     </CUnit>
     <CUnit id="NovaReviveBeacon">
         <AbilArray Link="SuperStimpackNova"/>
@@ -2647,6 +2695,7 @@
     </CUnit>
     <CUnit id="SpiderMineBurrowed">
         <BehaviorArray Link="AllUnitBehaviorController"/>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakBoth"/>
     </CUnit>
     <CUnit id="TychusBunker">
         <DeathRevealRadius value="3"/>
@@ -2911,12 +2960,14 @@
         <CardLayouts index="0">
             <LayoutButtons Face="AegisPlating" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="HellionBlackOps">
         <BehaviorArray Link="HellbatHardenedShell"/>
         <CardLayouts index="0">
             <LayoutButtons Face="AegisPlating" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="HotSLeviathan">
         <CardLayouts index="0">
@@ -3663,6 +3714,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="6" Face="MarauderMagrailMunitions" AbilCmd="MarauderMagrailMunitions,Execute"/>
         </CardLayouts>
+        <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
     <CUnit id="MedivacMengsk">
         <ShieldArmorName value="Unit/ShieldArmorName/ScatterVeil"/>

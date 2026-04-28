@@ -154,6 +154,45 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Requirements value="CommanderPrestigeNovaBioStarportNotFirst"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeNovaCloakWeak">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+            <DamageDealtFraction index="Spell" value="0.5"/>
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Splash" value="0.5"/>
+        </Modification>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="NotSpiderMineBurrowed"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeNovaCloakStrong" parent="CommanderPrestigeNovaCloakWeak">
+        <Modification>
+            <StateFlags index="Undetectable" value="1"/>
+        </Modification>
+        <DisableValidatorArray index="0" value="NotSpiderMine"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeNovaCloakBanshee" parent="CommanderPrestigeNovaCloakWeak">
+        <DisableValidatorArray index="0" removed="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeNovaCloakCombat">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <Modification>
+            <DamageDealtFraction index="Spell" value="-0.25"/>
+            <DamageDealtFraction index="Melee" value="-0.25"/>
+            <DamageDealtFraction index="Ranged" value="-0.25"/>
+            <DamageDealtFraction index="Splash" value="-0.25"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNovaCloakStrong"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNovaCloakWeak"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNovaCloakBanshee"/>
+            <BehaviorLinkDisableArray value="PermanentlyCloaked"/>
+            <BehaviorLinkDisableArray value="BansheeBlackOpsPermanentCloak"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeStetmannRespawnTeleportOrderQueueMove">
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -854,15 +893,22 @@
     <CBehaviorBuff id="NovaCombatSuit">
         <Modification MoveSpeedBonus="0.6992" MoveSpeedMultiplier="1">
             <BehaviorLinkDisableArray value="NovaApolloCloak"/>
+            <BehaviorLinkDisableArray value="GhostHoldFireB"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNovaCloakStrong"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaPermanentlyCloaked">
         <Modification>
             <BehaviorLinkDisableArray value="SuperStimNova"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNova"/>
+            <BehaviorLinkDisableArray value="CommanderPrestigeNovaCloakWeak"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaUnitLockdown">
         <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NovaWeaponImprovedCanisterRifle">
+        <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ObserverSquadSight">
         <Alignment value="Positive"/>
@@ -1201,9 +1247,6 @@
         <PeriodCount value="8"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponHellfireShotgun">
-        <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="NovaWeaponImprovedCanisterRifle">
         <RemoveValidatorArray value="NoCommanderPrestigeNovaMelee"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaWeaponBlazefireBladeShadowFuryRefundUnnamed">

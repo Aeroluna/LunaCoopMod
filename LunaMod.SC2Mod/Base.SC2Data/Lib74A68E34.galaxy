@@ -5726,6 +5726,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset, true);
             }
 
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeNovaCloak", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, true);
+                TriggerEnable(lib74A68E34_gt_NovaPrestigeCloakCombatAttack, true);
+            }
+
         }
         else if (auto560DABDD_val == "ZergStukov") {
             TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
@@ -7506,6 +7511,74 @@ void lib74A68E34_gt_AlarakMergeSetTarget_Init () {
     lib74A68E34_gt_AlarakMergeSetTarget = TriggerCreate("lib74A68E34_gt_AlarakMergeSetTarget_Func");
     TriggerEnable(lib74A68E34_gt_AlarakMergeSetTarget, false);
     TriggerAddEventUnitOrder(lib74A68E34_gt_AlarakMergeSetTarget, null, AbilityCommand("VoidArchonMerge", 1));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NovaPrestigeCloakCombatAttack
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaPrestigeCloakCombatAttack_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitHasBehavior2(EventUnitTarget(), "CommanderPrestigeNovaCloakStrong") == true) || (UnitHasBehavior2(EventUnitTarget(), "CommanderPrestigeNovaCloakWeak") == true) || (UnitHasBehavior2(EventUnitTarget(), "CommanderPrestigeNovaCloakBanshee") == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnitTarget(), "CommanderPrestigeNovaCloakCombat", EventUnitTarget(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaPrestigeCloakCombatAttack_Init () {
+    lib74A68E34_gt_NovaPrestigeCloakCombatAttack = TriggerCreate("lib74A68E34_gt_NovaPrestigeCloakCombatAttack_Func");
+    TriggerEnable(lib74A68E34_gt_NovaPrestigeCloakCombatAttack, false);
+    TriggerAddEventUnitAttacked2(lib74A68E34_gt_NovaPrestigeCloakCombatAttack, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NovaPrestigeCloakCombatAbility
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaPrestigeCloakCombatAbility_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((UnitHasBehavior2(EventUnit(), "CommanderPrestigeNovaCloakStrong") == true) || (UnitHasBehavior2(EventUnit(), "CommanderPrestigeNovaCloakWeak") == true) || (UnitHasBehavior2(EventUnit(), "CommanderPrestigeNovaCloakBanshee") == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "CommanderPrestigeNovaCloakCombat", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaPrestigeCloakCombatAbility_Init () {
+    lib74A68E34_gt_NovaPrestigeCloakCombatAbility = TriggerCreate("lib74A68E34_gt_NovaPrestigeCloakCombatAbility_Func");
+    TriggerEnable(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("MarauderMagrailMunitions", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("Snipe_BlackOps", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("EMPBlackOps", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("Banshee_BlackOpsAirstrike", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("InstantSeekerMissile_BlackOps", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("NovaWeaponImprovedCanisterRifleSnipe", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("NovaGadgetBoombots", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("NovaWeaponHellfireShotgunBlast", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("NovaCoopCasterNuke", 0), c_abilEffectStageCast, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("HellbatCharge", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("DeploySpiderMines", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("NovaCoopDecoyTarget", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_NovaPrestigeCloakCombatAbility, null, AbilityCommand("BuildAutoTurret_BlackOps", 0), c_abilEffectStageFinish, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11928,6 +12001,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init();
     lib74A68E34_gt_AlarakMergeApplyBuff_Init();
     lib74A68E34_gt_AlarakMergeSetTarget_Init();
+    lib74A68E34_gt_NovaPrestigeCloakCombatAttack_Init();
+    lib74A68E34_gt_NovaPrestigeCloakCombatAbility_Init();
     lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneHeight_Init();
     lib74A68E34_gt_NovaPrestigeMeleeFuryOfOneReset_Init();

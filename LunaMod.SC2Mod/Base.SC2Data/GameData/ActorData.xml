@@ -29,6 +29,12 @@
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorModel id="CommanderPrestigeNovaSuperCloak">
+        <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.On" Send="Create"/>
+        <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.On; ValidateUnit HaveNovaBansheeSpeed" Send="Create"/>
+        <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorAction id="GhostSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -3445,6 +3451,16 @@
         <!--On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.On" Send="AnimBracketStart Charge {} Spell,D Spell,D,End"/>
         <On Terms="Behavior.NovaWeaponBlazefireBladeShadowFuryController.Off" Send="AnimBracketStop Charge"/-->
         <On Terms="Abil.NovaCoopDecoyTarget.SourceCastStart" Send="AnimPlay SpellE Spell,E 0 -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <On Terms="Behavior.GhostHoldFireB.On" Send="AnimGroupRemove A"/>
+        <On Terms="Behavior.GhostHoldFireB.On" Send="AnimGroupApply Cover"/>
+        <On Terms="Behavior.GhostHoldFireB.On" Send="AnimPlay MorphStart Cover,Start"/>
+        <On Terms="Behavior.GhostHoldFireB.On" Send="AnimClear MorphEnd"/>
+        <On Terms="Behavior.GhostHoldFireB.On" Send="Create Ghost_HoldFire_Sound"/>
+        <On Terms="Behavior.GhostHoldFireB.Off" Send="AnimGroupApply A"/>
+        <On Terms="Behavior.GhostHoldFireB.Off" Send="AnimPlay MorphEnd Cover,End"/>
+        <On Terms="Behavior.GhostHoldFireB.Off" Send="AnimClear MorphStart"/>
+        <On Terms="Behavior.GhostHoldFireB.Off" Send="AnimGroupRemove Cover"/>
+        <On Terms="Behavior.GhostHoldFireB.Off" Send="Create Ghost_WeaponsFree_Sound"/>
         <Model value="NovaHeroBase"/>
         <BarOffset value="80"/>
     </CActorMissile>
@@ -3591,10 +3607,12 @@
         <Model value="Glaze_Regenerative_Biosteel"/>
     </CActorModelMaterial>
     <CActorUnit id="Banshee_BlackOps">
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="Create BansheeBoostModel"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveNovaBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveNovaBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveNovaBansheeSpeed" Send="StatusSet Boost 1"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet Boost 0"/>
+        <On Terms="StatusOn.*.Boost" Send="Create BansheeBoostModel"/>
+        <On Terms="StatusOff.*.Boost" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="StatusOn.*.Boost" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="StatusOff.*.Boost" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorAction id="Banshee_BlackOpsAirstrikeFakeAttack" effectImpact="Banshee_BlackOpsAirstrikeSearch">
         <LaunchAttachQuery Methods="AMPatternBansheeBlackOpsAirstrikeFake"/>
@@ -5332,16 +5350,20 @@
         <On Terms="Behavior.SOAPylonPowerPrestige.Create" Send="SetScale 1.300000"/>
     </CActorRange>
     <CActorUnit id="StukovInfestedBanshee">
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create BansheeBoostModel"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="BansheeBoostModel" Send="Destroy"/>
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="Create ActorSound_Banshee_MovementBoost"/>
-        <On Terms="UnitMovementUpdate.*.Stand; ValidateUnit HaveStukovInfestedBansheeSpeed" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit HaveStukovInfestedBansheeSpeed" Send="StatusSet Boost 1"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet Boost 0"/>
+        <On Terms="StatusOn.*.Boost" Send="Create BansheeBoostModel"/>
+        <On Terms="StatusOff.*.Boost" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="StatusOn.*.Boost" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="StatusOff.*.Boost" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="Banshee">
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="Create BansheeBoostModel"/>
-        <On Terms="UnitMovementUpdate.*.Stand" Target="BansheeBoostModel" Send="Destroy"/>
-        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="Create ActorSound_Banshee_MovementBoost"/>
-        <On Terms="UnitMovementUpdate.*.Stand" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="StatusSet Boost 1"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet Boost 0"/>
+        <On Terms="StatusOn.*.Boost" Send="Create BansheeBoostModel"/>
+        <On Terms="StatusOff.*.Boost" Target="BansheeBoostModel" Send="Destroy"/>
+        <On Terms="StatusOn.*.Boost" Send="Create ActorSound_Banshee_MovementBoost"/>
+        <On Terms="StatusOff.*.Boost" Target="ActorSound_Banshee_MovementBoost" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="BansheeBoostModel" parent="ModelAddition">
         <Model value="BansheeBoost"/>

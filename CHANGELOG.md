@@ -1,18 +1,28 @@
 # Changelog
 
-## 4/27/2026
+## 4/28/2026
 
 - Fixed an issue where Snipe tracers would follow the target.
+- Fixed an issue where Spec Ops Ghost's EMP Round ability was not affected by damage modifiers.
+- Fixed an issue where issuing multiple move commands to a Banshee with a speed upgrade would cause the boost visual to spawn multiple times.
 
 yeah.
+
+- Reworked Nova P3:
+  - Advantage: All units are cloaked and deal 50% increased damage. Units that are permanently cloaked gain Super Cloak instead.
+  - Disadvantage: Attacking or using an offensive ability disables this effect and causes the unit to deal 25% reduced damage for 2 seconds.
+  - Added Hold Fire ability to Nova instead of just being passive while cloaked.
+
+I hated P3's design. It was very polarizing which maps/compositions it was useful against, i.e. some maps it would stomp defenses with zero risk, and on other maps it would do nothing but take away your early-game AOE. Even on maps where it was good, it was just super unfun to play with a P3 ally. Hopefully by making this prestige more army-focused, there is more depth with how to play while not sacrificing the original concept.
 
 - Changed Nova's Sabotage Drone's model.
 - Changed Nova's Sabotage Drone from flying to ground.
 - Added birth visual effects to Nova's Sabotage Drone.
 - Increased volume of Nova's Sabotage Drone detonation.
 - Fixed an issue where Nova's Sabotage Drone's weapon incorrectly says it can target air.
+- Fixed an issue where Nova's Sabotage Drone explosion visual effect could randomly be smaller.
 
-Sabotage Drones look so comically silly. Just this big stupid tube floating over. Now, they instead use the unused Shredder model.
+Sabotage Drones looked so comically silly. Just this big stupid tube floating around. Now, they instead use the unused Shredder model.
 
 - Changed P4 Dusk Wings to only autocast Cloak with at least 10 energy.
 

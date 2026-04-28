@@ -1788,6 +1788,13 @@ Shows some love for the unused gear. Makes Nova less effective at supporting her
 
 P2 was such a boring prestige. Stunning enemies at least grants a niche of dropping right on top of enemies and bursting them down.
 
+- Reworked Nova P3:
+  - Advantage: All units are cloaked and deal 50% increased damage. Units that are permanently cloaked gain Super Cloak instead.
+  - Disadvantage: Attacking or using an offensive ability disables this effect and causes the unit to deal 25% reduced damage for 2 seconds.
+  - Added Hold Fire ability to Nova instead of just being passive while cloaked.
+
+I hated P3's design. It was very polarizing which maps/compositions it was useful against, i.e. some maps it would stomp defenses with zero risk, and on other maps it would do nothing but take away your early-game AOE. Even on maps where it was good, it was just super unfun to play with a P3 ally. Hopefully by making this prestige more army-focused, there is more depth with how to play while not sacrificing the original concept.
+
 - Reworked Covert Banshee's Rocket Barrage ability.
   - Now does damage over time rather than instantly.
   - Fixed an issue where missiles would launch from the center of the model instead of the weapons.
@@ -1861,7 +1868,7 @@ Showing some love for Nova's static defense. Nova's structure life perk was ridi
 - Increased volume of Nova's Sabotage Drone detonation.
 - Fixed an issue where Nova's Sabotage Drone's weapon incorrectly says it can target air.
 
-Sabotage Drones look so comically silly. Just this big stupid tube floating over. Now, they instead use the unused Shredder model.
+Sabotage Drones looked so comically silly. Just this big stupid tube floating around. Now, they instead use the unused Shredder model.
 
 - Fixed an issue where Triple Tap could target undetected units.
 - Fixed an issue where Railgun Turret placement models were smaller than their actual model.

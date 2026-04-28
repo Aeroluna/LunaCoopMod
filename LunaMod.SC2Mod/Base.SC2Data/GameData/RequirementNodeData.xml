@@ -44,6 +44,12 @@
         <OperandArray value="GTECountUpgradeCommanderLevelCompleteOnly14"/>
         <OperandArray value="NotCountUpgradeCommanderPrestigeAlarakJinaraCompleteOnly"/>
     </CRequirementAnd>
+    <CRequirementAnd id="AndCountUpgradeCommanderPrestigeNovaCloakCompleteOnlyNotCountBehaviorGhostHoldFireBCompleteOnlyAtUnitNotCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountUpgradeCommanderPrestigeNovaCloakCompleteOnly"/>
+        <OperandArray value="NotCountBehaviorGhostHoldFireBCompleteOnlyAtUnit"/>
+        <OperandArray value="NotCountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
+    </CRequirementAnd>
     <CRequirementAnd id="AndCountUpgradeCommanderPrestigeNovaMeleeCompleteOnlyCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
         <OperandArray value="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly"/>
         <OperandArray value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
@@ -320,6 +326,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeNovaBioStarportFirst" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeNovaCloakCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="CommanderPrestigeNovaCloak" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeNovaMeleeCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="CommanderPrestigeNovaMelee" State="CompleteOnly"/>
@@ -397,12 +408,10 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPInProgressOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberEMP" State="InProgressOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPQueuedOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberEMP"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberEMPQueuedOrBetter">
@@ -415,12 +424,10 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberNapalmImprovedInProgressOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberNapalmImproved" State="InProgressOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberNapalmImprovedQueuedOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberNapalmImproved"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberNapalmImprovedQueuedOrBetter">
@@ -433,12 +440,10 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberTripleInProgressOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberTriple" State="InProgressOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberTripleQueuedOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="HHBomberTriple"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeHHBomberTripleQueuedOrBetter">
@@ -630,6 +635,10 @@
     <CRequirementNot id="Not932147305OrCountUpgradeHHBomberTripleQueuedOnlyCountUpgradeHHBomberEMPQueuedOnlyCountUpgradeHHBomberEMPInProgressOnlyCountUpgradeHHBomberTripleInProgressOnly">
         <OperandArray index="0" value="OrCountUpgradeHHBomberTripleQueuedOnlyCountUpgradeHHBomberEMPQueuedOnlyCountUpgradeHHBomberEMPInProgressOnlyCountUpgradeHHBomberTripleInProgressOnly"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorPopStunCompleteOnly">
         <OperandArray index="0" value="CountBehaviorPopStunCompleteOnly"/>
     </CRequirementNot>
@@ -814,14 +823,12 @@
         <OperandArray value="CountUpgradeKaraxCommanderCompleteOnly"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeHHBomberNapalmImprovedQueuedOnlyCountUpgradeHHBomberEMPQueuedOnlyCountUpgradeHHBomberNapalmImprovedInProgressOnlyCountUpgradeHHBomberEMPInProgressOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeHHBomberNapalmImprovedQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberEMPQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberNapalmImprovedInProgressOnly"/>
         <OperandArray value="CountUpgradeHHBomberEMPInProgressOnly"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeHHBomberNapalmImprovedQueuedOnlyCountUpgradeHHBomberTripleQueuedOnlyCountUpgradeHHBomberNapalmImprovedInProgressOnlyCountUpgradeHHBomberTripleInProgressOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeHHBomberNapalmImprovedQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberTripleQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberNapalmImprovedInProgressOnly"/>
@@ -832,7 +839,6 @@
         <OperandArray value="CountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUpgradeHHBomberTripleQueuedOnlyCountUpgradeHHBomberEMPQueuedOnlyCountUpgradeHHBomberEMPInProgressOnlyCountUpgradeHHBomberTripleInProgressOnly">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUpgradeHHBomberTripleQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberEMPQueuedOnly"/>
         <OperandArray value="CountUpgradeHHBomberEMPInProgressOnly"/>

@@ -120,6 +120,30 @@
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="CommanderPrestigeNovaCloakCombat">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="CommanderPrestigeNovaCloakBoth">
+        <EditorCategories value=""/>
+        <EffectArray value="CommanderPrestigeNovaCloakStrong"/>
+        <EffectArray value="CommanderPrestigeNovaCloakWeak"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="CommanderPrestigeNovaCloakStrong">
+        <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CommanderPrestigeNovaCloakWeak">
+        <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CommanderPrestigeNovaCloakBanshee">
+        <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="CorsairMPDisruptionWebSet">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSet>
@@ -188,6 +212,14 @@
         <EffectArray index="4" value="MutatorChangelingInit"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
     </CEffectSet>
+    <CEffectDamage id="EMPBlackOpsDamage">
+        <ShieldBonus value="100"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="EMPBlackOpsModifyUnit">
+        <VitalArray index="Shields">
+            <Change value="0"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectEnumArea id="EMPSearch">
         <SearchFilters value="-;Hidden,Invulnerable"/>
     </CEffectEnumArea>

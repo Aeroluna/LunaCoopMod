@@ -814,6 +814,7 @@
     </CUpgrade>
     <CUpgrade id="BansheePermaCloak">
         <EffectArray Reference="Unit,Banshee_BlackOps,Speed" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Behavior,CommanderPrestigeNovaCloakBanshee,Modification.StateFlags[Undetectable]" Value="1"/>
     </CUpgrade>
     <CUpgrade id="BearclawNozzles">
         <EffectArray Reference="Effect,DevilDogACSearch,AreaArray[0].RectangleWidth" Value="0.48"/>
@@ -1458,6 +1459,11 @@
         <EffectArray Operation="Set" Reference="Button,NovaSwitchStealthMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchStealthModeMelee"/>
         <EffectArray Operation="Set" Reference="Button,NovaSwitchAssaultMode,AlertTooltip" Value="Button/Tooltip/NovaSwitchAssaultModeMelee"/>
         <EffectArray Reference="Behavior,NovaCombatSuit,Modification.MoveSpeedBonus" Value="0.300000"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeNovaCloak" parent="CommanderPrestige">
+        <EffectArray Operation="Set" Reference="Behavior,NovaPermanentlyCloaked,Modification.StateFlags[Cloak]" Value="0"/>
+        <EffectArray Reference="Effect,NovaBoombotBoomDamage,Amount" Value="200"/>
+        <EffectArray Reference="Effect,NovaBoombotBoomDamage,AttributeBonus[Structure]" Value="200"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeRaynorAir">
         <EffectArray index="10" Value="12"/>
