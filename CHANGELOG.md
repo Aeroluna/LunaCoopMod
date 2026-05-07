@@ -2,11 +2,20 @@
 
 ## 5/7/2026
 
+- Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
+
 ### Death from Above
 
 - Fixed an issue where Artanis could not warp in Observers.
 
 I have no idea why the original map even broke this in the first place.
+
+### Skyfall
+
+- Fixed an issue where the "Gold Rush" mutator did not affect mineral fields.
+- Fixed an issue where the loading screen was missing images.
+
+The layout is still a mess and I don't really know why.
 
 ## 4/28/2026
 

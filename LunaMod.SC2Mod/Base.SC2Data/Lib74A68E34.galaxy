@@ -1092,9 +1092,11 @@ void lib74A68E34_gf_SwannMasteryArmyMineralCostList (int lp_player) {
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Goliath", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("SiegeTank", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("SiegeTankSieged", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("SiegeTankWreckage", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Cyclone", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Thor", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("ThorAP", lp_player, lv_upgradeCount);
+    lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("ThorWreckageSwann", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Wraith", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("Hercules", lp_player, lv_upgradeCount);
     lib74A68E34_gf_SwannMasteryArmyMineralCostReduction("ScienceVessel", lp_player, lv_upgradeCount);
@@ -11086,7 +11088,7 @@ bool lib74A68E34_gt_MutatorStartingResourcesInit_Func (bool testConds, bool runA
         for (;; auto20C755BA_u -= 1) {
             auto20C755BA_var = UnitGroupUnitFromEnd(auto20C755BA_g, auto20C755BA_u);
             if (auto20C755BA_var == null) { break; }
-            if (((UnitHasBehavior2(auto20C755BA_var, "MineralFieldMinerals") == true) || (UnitHasBehavior2(auto20C755BA_var, "MutatorMineralsLowYield") == true))) {
+            if (((UnitHasBehavior2(auto20C755BA_var, "MineralFieldMinerals") == true) || (UnitHasBehavior2(auto20C755BA_var, "MutatorMineralsLowYield") == true) || (UnitHasBehavior2(auto20C755BA_var, "MineralFieldMineralsNoRemove") == true))) {
                 libNtve_gf_ShowHideUnit(auto20C755BA_var, false);
                 UnitGroupAdd(lib74A68E34_gv_mutatorStartingResourcesUnits, auto20C755BA_var);
                 UnitCreate(1, "RichMineralField", c_unitCreateIgnorePlacement | c_unitCreateIgnoreBirth, 0, UnitGetPosition(auto20C755BA_var), UnitGetFacing(auto20C755BA_var));
