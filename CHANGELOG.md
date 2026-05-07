@@ -1,5 +1,13 @@
 # Changelog
 
+## 5/7/2026
+
+### Death from Above
+
+- Fixed an issue where Artanis could not warp in Observers.
+
+I have no idea why the original map even broke this in the first place.
+
 ## 4/28/2026
 
 - Fixed an issue where Snipe tracers would follow the target.
