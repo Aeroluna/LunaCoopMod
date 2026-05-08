@@ -3,12 +3,17 @@
 ## 5/7/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
+- Fixed an issue where Amon's Science Vessels had the Supercritical Isotope button on their command card.
+- Changed Stukov P4 to remove negative debuffs after mind controlling a unit.
+- Fixed an issue where Stukov P4 could mind control hallucinations.
 
 ### Death from Above
 
 - Fixed an issue where Artanis could not warp in Observers.
 
 I have no idea why the original map even broke this in the first place.
+
+- Fixed an issue where air units could activate the bonus objectives.
 
 ### Skyfall
 

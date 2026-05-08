@@ -1153,6 +1153,10 @@ bool gt_BonusObjective1Activate_Func (bool testConds, bool runActions) {
         if (!(((UnitGetOwner(EventUnit()) == 1) || (UnitGetOwner(EventUnit()) == 2)))) {
             return false;
         }
+
+        if (!UnitFilterMatch(EventUnit(), 1, UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))))) {
+            return false;
+        }
     }
 
     // Actions
@@ -1299,6 +1303,10 @@ bool gt_BonusObjective2Activate_Func (bool testConds, bool runActions) {
     // Conditions
     if (testConds) {
         if (!(((UnitGetOwner(EventUnit()) == 1) || (UnitGetOwner(EventUnit()) == 2)))) {
+            return false;
+        }
+
+        if (!UnitFilterMatch(EventUnit(), 1, UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))))) {
             return false;
         }
     }
