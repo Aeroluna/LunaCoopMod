@@ -1083,13 +1083,13 @@
         <EditorCategories value="Race:InfestedTerran"/>
         <ImpactUnit Value="Source"/>
         <VitalArray index="Life">
-            <ChangeFraction value="0.5"/>
+            <ChangeFraction value="1"/>
         </VitalArray>
         <VitalArray index="Shields">
-            <ChangeFraction value="0.5"/>
+            <ChangeFraction value="1"/>
         </VitalArray>
         <VitalArray index="Energy">
-            <ChangeFraction value="0.5"/>
+            <ChangeFraction value="1"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectRemoveBehavior id="CommanderPrestigeStukovNeuralDebuffRB">
@@ -1885,6 +1885,14 @@
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="SILiberatorSwarmFormPermanentFake">
+        <EffectArray value="SILiberatorSwarmFormPermanentLM"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="SILiberatorSwarmFormPermanentLM">
+        <InterruptEffect value=""/>
+        <ValidatorArray index="0" value="SILiberatorSwarmFormCooldown"/>
+        <ValidatorArray value="SILiberatorSwarmFormPermanentDamageResistant"/>
+    </CEffectLaunchMissile>
     <CEffectApplyBehavior id="SOAMapWideChronoAB">
         <ValidatorArray index="1" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectApplyBehavior>
@@ -4051,7 +4059,10 @@
     <CEffectSet id="SILiberatorBaseSet">
         <EditorCategories value="Race:InfestedTerran"/>
         <EffectArray value="SILiberatorBaseLM"/>
-        <EffectArray value="SILiberatorBaseSetCooldown"/>
+        <EffectArray value="SILiberatorSwarmFormCooldown"/>
+    </CEffectSet>
+    <CEffectSet id="SILiberatorSwarmFormPermanentDamagePrimarySet">
+        <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
     </CEffectSet>
     <CEffectSet id="SILiberatorSwarmFormPermanentDamageSplashSet">
         <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
@@ -4060,13 +4071,10 @@
         <EffectArray value="SILiberatorSwarmFormPermanentSetCooldown"/>
         <EffectArray value="SILiberatorSwarmFormPermanentDamageSearchFueledAB"/>
     </CEffectSet>
-    <CEffectModifyUnit id="SILiberatorBaseSetCooldown">
+    <CEffectApplyBehavior id="SILiberatorSwarmFormCooldown">
         <EditorCategories value="Race:InfestedTerran"/>
-        <ImpactUnit Value="Caster"/>
-        <Cost Abil="SILiberatorSwarmFormLaunchAttack,Execute" CooldownOperation="Max" CooldownTimeUse="6">
-            <Player Value="Caster"/>
-        </Cost>
-    </CEffectModifyUnit>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
     <CEffectSet id="SILiberatorSwarmFormPermanentDummySet">
         <EffectArray index="0" removed="1"/>
     </CEffectSet>

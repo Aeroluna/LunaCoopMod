@@ -333,6 +333,8 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Added Tissue Regeneration button to Mutalisks.
 - Changed icon for Mutalisk's Rapid Regeneration upgrade.
 - Fixed an issue where Snipe tracers would follow the target.
+- Fixed an issue where Liberators (and variants) could cast Defender Mode up to 1 range farther than intended.
+- Added a looping sound effect while Parasitic Bomb is active.
 
 yeah.
 
@@ -1880,7 +1882,7 @@ yeah.
 ### Stukov
 
 - Added P4: Neural Dominator
-  - Advantage: Stukov has a 50% chance to gain control of units he kills for 180 seconds. Heroic units are immune.
+  - Advantage: Stukov has a 25% chance to gain control of units he kills for 120 seconds. Heroic units are immune.
   - Disadvantage: Max supply reduced by 50.
 
 *All your unit are belong to us.* It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball hard.
@@ -1966,6 +1968,11 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Increased Infested Liberator lateral acceleration to 10 (how quickly the unit turns around while moving in a different direction).
 - Increased Infested Liberator Cloud Disperal lingering duration by 1 second.
 - Fixed an issue where Infested Liberator were unable to attack while using Hold Position after researching Cloud Dispersal (will use pre-upgrade weapon).
+- Added a looping sound effect while Infested Liberators are in Cloud Dispersal.
+- Added a launch sound effect when Infested Liberators enter Cloud Dispersal.
+- Added an impact visual effect when Infested Liberators deal damage with their AA attacks.
+- Reworked Infested Liberator Cloud Dispersal attack logic.
+- Fixed an issue where Infested Liberators could still deal Cloud Dispersal damage while in Defender Mode.
 
 Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 

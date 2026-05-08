@@ -349,6 +349,30 @@
     <CActorAction id="NovaWeaponImprovedCanisterRifleSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorSound id="ParasiticBombASLoop" parent="SoundContinuous">
+        <Sound value="ParasiticBomb_Loop"/>
+        <On Terms="Behavior.ParasiticBomb.On" Send="Create"/>
+        <On Terms="Behavior.ParasiticBomb.Off" Send="Destroy"/>
+        <On Terms="Behavior.ParasiticBombSecondaryUnitSearch.On" Send="Create"/>
+        <On Terms="Behavior.ParasiticBombSecondaryUnitSearch.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="SILiberatorSwarmFormDot" parent="ModelAnimationStyleOneShot">
+        <Terms value="Cap 1"/>
+        <On Terms="Effect.SILiberatorSwarmFormPermanentDamagePrimary.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SILiberatorSwarmFormPermanentDamageSplash.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SILiberatorDamageDirect.Start; At Target" Send="Create"/>
+        <On Terms="Effect.SILiberatorDamageSplash.Start; At Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="SILiberatorSwarmFormLoop" parent="SoundContinuous">
+        <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On" Send="Create"/>
+        <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.Off" Send="Destroy"/>
+    </CActorSound>
+    <CActorSound id="SILiberatorSwarmFormLaunch" parent="SoundOneShot">
+        <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="Spotter">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Spotter_Ambience"/>
     </CActorUnit>
@@ -4404,7 +4428,7 @@
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
     <CActorModel id="SILiberatorSwarmFormCloud">
-        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOp2DRotation" HoldRotation="1"/>
     </CActorModel>
     <CActorModel id="SILiberatorVolatieSprayAcid" parent="ModelAnimationStyleContinuous">
         <EditorCategories value=""/>
@@ -5309,6 +5333,8 @@
     </CActorMissile>
     <CActorUnit id="SILiberator">
         <PortraitModel value="LiberatorInfestedPortrait"/>
+        <On index="70" Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On"/>
+        <On index="75" Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On"/>
         <On Terms="AbilMorph.*.Finish; MorphTo SILiberator" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom SILiberator" Send="Destroy"/>
         <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimClear Visor 0.000000"/>
