@@ -144,6 +144,10 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CommanderPrestigeStukovNeuralInvulnerable">
+        <EditorCategories value="Race:InfestedTerran"/>
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="CommanderPrestigeStukovNeuralRestore">
         <EditorCategories value="Race:InfestedTerran"/>
         <WhichUnit Value="Source"/>
@@ -1079,13 +1083,13 @@
         <EditorCategories value="Race:InfestedTerran"/>
         <ImpactUnit Value="Source"/>
         <VitalArray index="Life">
-            <ChangeFraction value="1"/>
+            <ChangeFraction value="0.5"/>
         </VitalArray>
         <VitalArray index="Shields">
-            <ChangeFraction value="1"/>
+            <ChangeFraction value="0.5"/>
         </VitalArray>
         <VitalArray index="Energy">
-            <ChangeFraction value="1"/>
+            <ChangeFraction value="0.5"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectRemoveBehavior id="CommanderPrestigeStukovNeuralDebuffRB">
@@ -1096,6 +1100,8 @@
     <CEffectSet id="CommanderPrestigeStukovNeuralSet">
         <EditorCategories value="Race:InfestedTerran"/>
         <EffectArray value="CommanderPrestigeStukovNeuralAB"/>
+        <EffectArray value="CommanderPrestigeStukovNeuralInvulnerable"/>
+        <EffectArray value="CommanderPrestigeStukovNeuralRestore"/>
         <EffectArray value="CommanderPrestigeStukovNeuralMU"/>
         <EffectArray value="CommanderPrestigeStukovNeuralDebuffRB"/>
         <ValidatorArray value="NotWarpingIn"/>

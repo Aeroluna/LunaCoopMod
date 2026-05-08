@@ -47,6 +47,9 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ApocaliskBurrowChargeStun">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArtilleryMengskBombardmentSlow">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
@@ -205,6 +208,13 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DamageResponse Fatal="1" Handled="CommanderPrestigeStukovNeuralSet" ModifyFraction="0">
             <ValidatorArray value="CommanderPrestigeStukovNeuralValidator"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommanderPrestigeStukovNeuralInvulnerable">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="2"/>
+        <DamageResponse ModifyFraction="0">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -1502,7 +1512,7 @@
         <DisplayDuration index="Ally" value="1"/>
         <DisplayDuration index="Neutral" value="1"/>
         <DisplayDuration index="Enemy" value="1"/>
-        <Duration value="120"/>
+        <Duration value="180"/>
         <ExpireEffect value="Suicide"/>
         <Player Value="Caster"/>
         <Modification>

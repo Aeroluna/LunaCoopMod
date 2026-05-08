@@ -482,7 +482,7 @@ Button/Tooltip/CommanderPrestigeStukovBunkersUpgrade=<n/><n/><s val="Coop_Presti
 Button/Tooltip/CommanderPrestigeStukovMech=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Factory and Starport no longer have tech requirements. Factory and Starport units cost 30% less.</n></n>Automated Mitosis and Necroplasmic Synthesis are 200% more effective.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>The Infested Colonist Compound does not spawn and cannot be built.
 Button/Tooltip/CommanderPrestigeStukovMechAutoAmmo=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% faster.
 Button/Tooltip/CommanderPrestigeStukovMechEnergyLeech=<n/><n/><s val="Coop_Prestige_Tooltip">Prestige:</s> Generates <s val="Coop_Prestige_Tooltip">200</s>% more energy.
-Button/Tooltip/CommanderPrestigeStukovNeural=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Stukov gains control of units he kills for <d time="120"/>. <n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Max supply reduced by 100.
+Button/Tooltip/CommanderPrestigeStukovNeural=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Stukov has a 50% chance to gain control of units he kills for <d time="180"/>. Heroic units are immune.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Max supply reduced by 50.
 Button/Tooltip/CommanderPrestigeSwannMoving=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Combat units can attack while moving. Start with the Multi-Lock Weapons System upgrade.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Hercules are unavailable. Turrets are 100% more expensive.
 Button/Tooltip/CommanderPrestigeTychusOutlaws=<s val="Coop_Prestige_Advantage">Advantage</s><n/>Outlaws are no longer capped.<n/><n/><s val="Coop_Prestige_Disadvantage">Disadvantage</s><n/>Medivac Platforms are unavailable.
 Button/Tooltip/CommanderPrestigeTychusOutlawsMedivac=This ability is locked by your Commander Prestige.
@@ -608,6 +608,7 @@ Button/Tooltip/KerriganReviveCocoon=Kerrigan is reviving within this chrysalis.
 Button/Tooltip/KerriganSunderingGlaive=Attacks deal +6 vs. armored targets on the first hit.
 Button/Tooltip/KerriganVortexArtanisReturn=Returns Kerrigan to her natural state.
 Button/Tooltip/LearnHotSPressurizedGlands=<c val="ffff8a">Locusts</c> can attack both ground and air units.
+Button/Tooltip/LiberatorAGRangeUpgrade=Increases the range of Liberators in Defender Mode by <d ref="$UpgradeEffectArrayValue:LiberatorAGRangeUpgrade:Weapon,LiberatorAGWeapon,Range$"/>.
 Button/Tooltip/LockOn=Locks the Cyclone's weapons on the target unit, dealing <d ref="Effect,LockOnCP,PeriodCount*Effect,CycloneWeaponDamage,Amount"/> damage over <d ref="Effect,LockOnCP,PeriodCount * Effect,LockOnCP,PeriodicPeriodArray[0]"/> seconds. Can move while firing. Cancels if target moves out of range.
 Button/Tooltip/LockOnRangeUpgrade=Increases Widow Mine Sentinel Missile and Cyclone Lock On initial and tracking range by 3 and increases Widow Mine and Cyclone sight radius by 3.
 Button/Tooltip/LurkerDenMP=Contains upgrades for Lurkers.<n/><n/><c val="ffff8a">Enables:</c><n/>- Lurkers from Hydralisks
@@ -733,8 +734,8 @@ Button/Tooltip/SILiberatorAG=Immobile defender. Deals heavy single target damage
 Button/Tooltip/SILiberatorAmmo=Consumes nearby Infested Civilians and Infested Troopers to restore 20 life and restore <d ref="Effect,SILiberatorAmmoRestockEnergy,VitalArray[Energy].Change"/> energy for the Infested Liberator. Normal energy regeneration is suppressed.
 Button/Tooltip/SILiberatorAutomatedMitosis=Infested Liberators automatically generate <d ref="Effect,SILiberatorMitosis,VitalArray[Energy].Change/Behavior,SILiberatorMitosis,Period" precision="1"/> energy every second.
 Button/Tooltip/SILiberatorNecroplasmicSynthesis=Infested Liberators regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
-Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased attack and movement speed while using Cloud Dispersal.</n></n>Uses <d ref="-1*Effect,SILiberatorVolatileFuelMU,VitalArray[Energy].Change/Behavior,SILiberatorVolatileFuel,Period" precision="4"/> energy per second.
-Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.</n></n>Each attack uses <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy every attack.
+Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased attack and movement speed while using Cloud Dispersal.<n/><n/><c val="f078ff">Drains <d ref="-1*Effect,SILiberatorVolatileFuelMU,VitalArray[Energy].Change/Behavior,SILiberatorVolatileFuel,Period" precision="4"/> energy per second.</c>
+Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.<n/><n/><c val="f078ff">Drains <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy per attack.</c>
 Button/Tooltip/SIMissileTurretRegenerativePlating=Infested Missile Turrets regenerate life twice as fast while rooted.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SOAStrikefromtheShadows=Increases the weapon damage of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanent,Modification.DamageDealtFraction[Melee]*100" player="current"/>%. Increases the energy regeneration of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanentEnergy,Modification.VitalRegenMultiplier[Energy]*100" player="current"/>%.<n/><n/><c val="ffff8a">Passive ability.</c>
@@ -870,7 +871,9 @@ Effect/Name/CommanderPrestigeStetmannRespawnTeleport=CommanderPrestigeStetmannRe
 Effect/Name/CommanderPrestigeStetmannRespawnTeleportImpact=CommanderPrestigeStetmannRespawnTeleportImpact
 Effect/Name/CommanderPrestigeStetmannTeleportCopyOrder=CommanderPrestigeStetmannTeleportCopyOrder
 Effect/Name/CommanderPrestigeStukovNeuralAB=CommanderPrestigeStukovNeuralAB
+Effect/Name/CommanderPrestigeStukovNeuralAB2=CommanderPrestigeStukovNeuralAB
 Effect/Name/CommanderPrestigeStukovNeuralDebuffRB=CommanderPrestigeStukovNeuralDebuffRB
+Effect/Name/CommanderPrestigeStukovNeuralInvulnerable=CommanderPrestigeStukovNeuralInvulnerable
 Effect/Name/CommanderPrestigeStukovNeuralMU=CommanderPrestigeStukovNeuralMU
 Effect/Name/CommanderPrestigeStukovNeuralRestore=CommanderPrestigeStukovNeuralRestore
 Effect/Name/CommanderPrestigeStukovNeuralSet=CommanderPrestigeStukovNeuralSet
@@ -1333,6 +1336,7 @@ Skin/Name/KerriganPrestigeBroodCoop=KerriganPrestigeBroodCoop
 Skin/Name/VorazunCoop=VorazunCoop
 UI/MorphingStetellite=Rebuilding
 Unit/Category/ProtossNerazim=Protoss - Nerazim
+Unit/LifeArmorName/ZergGroundArmor=Zerg Ground Carapace
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor
 Unit/Name/BroodlingBrood=Scion

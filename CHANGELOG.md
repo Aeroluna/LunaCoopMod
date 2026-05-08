@@ -4,8 +4,24 @@
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
 - Fixed an issue where Amon's Science Vessels had the Supercritical Isotope button on their command card.
+- Fixed an issue where Liberators (and variants) could cast Defender Mode up to 1 range farther than intended.
+- Fixed an issue where Amon's Infested Siege Tanks had Zerg Flyer Carapace instead of Zerg Ground Carapace.
+
+yeah.
+
 - Changed Stukov P4 to remove negative debuffs after mind controlling a unit.
 - Fixed an issue where Stukov P4 could mind control hallucinations.
+- Reduced chance of Stukov P4 mind control from 100% to 50%.
+- Increased supply cap with Stukov P4 from 100 to 150.
+- Reduced heal amount of Stukov P4 mind control from 100% to 50%.
+- Added 2 second 100% damage reduction to newly mind controlled units.
+- Increased mind control duration from 120 seconds to 180 seconds.
+
+Kinda insane how I let this prestige be as OP as it is. The mind controlled units are now much harder to get, but in return, the supply nerf is cut in half and the units you do get will stick around longer. This should make the prestige less snowbally and make the mind controlled units add to your army instead of being the brunt of it.
+
+- Removed the ability to mind control friendly units with Stukov P4.
+
+As funny as it is, now that the mind control chance has been reduced to 50%, I don't like the idea of killing your ally's units hoping that you can steal one.
 
 ### Death from Above
 

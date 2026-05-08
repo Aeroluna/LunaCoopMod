@@ -1880,10 +1880,10 @@ yeah.
 ### Stukov
 
 - Added P4: Neural Dominator
-  - Advantage: Stukov gains control of units he kills for 120 seconds.
-  - Disadvantage: Max supply reduced by 100.
+  - Advantage: Stukov has a 50% chance to gain control of units he kills for 180 seconds. Heroic units are immune.
+  - Disadvantage: Max supply reduced by 50.
 
-*All your unit are belong to us.* Heroic units are obviously immune. It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball insanely hard. And yes, you can in fact kill your allies units to steal all their units (pls don't be mean).
+*All your unit are belong to us.* It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball hard.
 
 - Reworked Infested Barracks
   - Costs 1 supply.
