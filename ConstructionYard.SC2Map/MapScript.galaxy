@@ -641,10 +641,6 @@ bool auto_gf_APCTrack_TriggerFunc (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Implementation
     gv_aPCLaunched[lp_index] = true;
-    if ((gv_aPCHasLaunched[lp_index] == true)) {
-        TriggerExecute(gt_ObjectiveDontDestroyCampsDecrease, true, false);
-    }
-
     gv_aPCHasLaunched[lp_index] = true;
     AIToggleBulliesInRegion(gv_pLAYER_03_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);
     AIToggleBulliesInRegion(gv_pLAYER_04_ENEMY, RegionFromName(("Colonist Camp " + IntToString(lp_index))), false);

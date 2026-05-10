@@ -45,6 +45,12 @@ I have no idea why the original map even broke this in the first place.
 
 The layout is still a mess and I don't really know why.
 
+### Construction Yard
+
+- Changed the "Do Not Allow APCs To Be Destroyed" to no longer decrease when a new APC is launched.
+
+I was initially concerned with having to defend such a large area causing random APC losses, but realistically, this made it impossible to lose.
+
 ## 4/28/2026
 
 - Fixed an issue where Snipe tracers would follow the target.
