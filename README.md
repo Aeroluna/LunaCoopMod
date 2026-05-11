@@ -2663,12 +2663,12 @@ yeah.
 
 Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
 
-- Reduced Earthsplitter Ordnance Bombardment damage from 100 to 80.
+- Reduced Earthsplitter Ordnance Bombardment damage from 100 to 75.
 - Added 30% attack and movement speed slow for 5 seconds to Earthsplitter Ordnance Bombardment.
 - Changed Earthsplitter Ordnance to target enemies automatically.
 - Added visual effect of a missile dropping to the Eathsplitter Ordnance Bombardment.
 
-Earthsplitter Ordnance are in a position where you either build exclusively them and cheese every objective or you build none. Lowering their damage but giving them crowd control and making them easier to micro should lower the ability to cheese objectives with them (which isn't exactly fun for your ally) while improving their ability to support your army.
+Earthsplitter Ordnance are in a position where you either build exclusively them and cheese every objective or you build none. Lowering their damage but giving them crowd control and making them easier to micro should lower their ability to cheese objectives (which isn't exactly fun for your ally) while improving their ability to support your army.
 
 - Added repair ability to Dominion Trooper (and variants).
 
