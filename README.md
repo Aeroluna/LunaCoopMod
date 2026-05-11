@@ -741,6 +741,10 @@ Copied from Versus.
 
 Coped from Versus. Should make Swarm Host have a higher initial impact but less sustained poke. Fun fact: this also fixes a bug where the egg animation on their back took 60 seconds despite the cooldown being 15 seconds.
 
+- Changed Amon's Marauder Concussive Shells from AoE to single target.
+
+Only commanders get the cool campaign version!
+
 - Reduced cooldown of Disruptor's Purification Nova from 30 seconds to 24 seconds.
 - Reduced damage of Disruptor's Purification Nova from 150 (+50 vs shields) to 100 (+100 vs shields).
 - Reworked Disruptor AI to use Purification Nova more aggressively.
@@ -2742,6 +2746,12 @@ Sky Furies are super fragile until reaching Rank 3. Increased range should help 
 - Reduced Pride of Augustgrad Yamato Cannon cooldown from 120 seconds to 100 seconds.
 
 They had a longer cooldown than Versus Battlecruisers!
+
+- Increased radius of Blackhammer Overwatch Mode by 50%.
+- Changed Blackhammer Rank 1 bonus to "Overwatch Mode can target ground units."
+- Changed Blackhammer Rank 2 bonus to "Increase Overwatch Mode radius by 33%."
+
+Blackhammers feel like something you make one of for the aura and thats it. Improving their reliability should make them more appealing.
 
 - Reduced visual scale of Emperor's Shadows by 14%.
 - Reduced the radius of Emperor's Shadows from 0.5 to 0.375.

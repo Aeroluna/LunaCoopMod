@@ -1,6 +1,6 @@
 # Changelog
 
-## 5/8/2026
+## 5/11/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
 - Fixed an issue where Amon's Science Vessels had the Supercritical Isotope button on their command card.
@@ -29,6 +29,12 @@ Kinda insane how I let this prestige be as OP as it is. The mind controlled unit
 - Removed the ability to mind control friendly units with Stukov P4.
 
 As funny as it is, now that the mind control chance has been reduced, I don't like the idea of killing your ally's units hoping that you can steal one.
+
+- Increased radius of Blackhammer Overwatch Mode by 50%.
+- Changed Blackhammer Rank 1 bonus to "Overwatch Mode can target ground units."
+- Changed Blackhammer Rank 2 bonus to "Increase Overwatch Mode radius by 33%."
+
+Blackhammers feel like something you make one of for the aura and thats it. Improving their reliability should make them more appealing.
 
 ### Death from Above
 

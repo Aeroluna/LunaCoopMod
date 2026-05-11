@@ -2124,6 +2124,32 @@
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="UnitKnockbackBy2"/>
     </CEffectSet>
+    <CEffectEnumArea id="ThorMengskSiegeTargetLargeAoESearch">
+        <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="8"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ThorMengskSiegeTargetSearch">
+        <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="6"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="ThorMengskSiegedDamageGround" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <KindSplash value="Splash"/>
+        <Amount value="8"/>
+        <Death value="Blast"/>
+        <AreaArray Radius="1.5" Fraction="1"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ThorMengskSiegedLM">
+        <ImpactEffect value="ThorMengskSiegedSwitch"/>
+    </CEffectLaunchMissile>
+    <CEffectSwitch id="ThorMengskSiegedSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="CasterLevelGTE2" Effect="ThorMengskSiegedDamageGround"/>
+        <CaseDefault value="ThorMengskSiegedDamage"/>
+    </CEffectSwitch>
     <CEffectCreatePersistent id="TimeWarpCP">
         <ValidatorArray index="2" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectCreatePersistent>

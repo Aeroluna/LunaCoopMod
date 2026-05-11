@@ -373,6 +373,9 @@
     <CActorSound id="SILiberatorSwarmFormLaunch" parent="SoundOneShot">
         <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On" Send="Create"/>
     </CActorSound>
+    <CActorSiteOpLocalOffset id="SiegeTankMengskSiegedCargoSOpOffset">
+        <LocalOffset value="0.000000,0.000000,-1.500000"/>
+    </CActorSiteOpLocalOffset>
     <CActorUnit id="Spotter">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Spotter_Ambience"/>
     </CActorUnit>
@@ -1086,6 +1089,19 @@
     <CActorSound id="ScienceVessel_IrradiateImpact">
         <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
     </CActorSound>
+    <CActorModel id="ThorMengskSiegeTargetedLargeAoEBirthSearchIndicator">
+        <Scale value="1.330000"/>
+    </CActorModel>
+    <CActorSplat id="ThorMengskSiegeTargetedLargeAoECursorSplat">
+        <Scale value="1.330000"/>
+    </CActorSplat>
+    <CActorModel id="ThorMengskSiegeTargetedLargeAoESearchIndicator">
+        <Scale value="1.330000"/>
+    </CActorModel>
+    <CActorAction id="ThorMengskSiegedAirAttack">
+        <On Terms="Effect.ThorMengskSiegedDamageGround.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On Terms="Effect.ThorMengskSiegedDamageGround.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+    </CActorAction>
     <CActorUnit id="TychusFirebat">
         <UnitKillRank Text="UnitKillRank/TychusHero"/>
     </CActorUnit>
