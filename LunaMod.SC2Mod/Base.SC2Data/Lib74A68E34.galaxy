@@ -38,16 +38,18 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_InitVariables_completed = true;
 
     lib74A68E34_gv_fearUnits = UnitGroupEmpty();
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton2 = c_invalidDialogControlId;
-    lib74A68E34_gv_cU_RandomMutationSelectDialog = c_invalidDialogId;
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton3 = c_invalidDialogControlId;
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton4 = c_invalidDialogControlId;
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton5 = c_invalidDialogControlId;
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton6 = c_invalidDialogControlId;
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsButton = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsDialog = c_invalidDialogId;
+    lib74A68E34_gv_uISettingsSlimCheck = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsProductionCheck = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsHotsCD = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsCDText = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsAllyResources = c_invalidDialogControlId;
+    lib74A68E34_gv_uISettingsOKButton = c_invalidDialogControlId;
     lib74A68E34_gv_productionPanel_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_hotsCD_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_cDText_PlayerGroup = PlayerGroupEmpty();
+    lib74A68E34_gv_allyResources_PlayerGroup = PlayerGroupEmpty();
     lib74A68E34_gv_difficultySelectDialog = c_invalidDialogId;
     lib74A68E34_gv_difficultySelectPulldown = c_invalidDialogControlId;
     lib74A68E34_gv_commanderRandomDialog = c_invalidDialogId;
@@ -250,7 +252,7 @@ void lib74A68E34_gf_Cooldown (int lp_pPlayer) {
     }
 }
 
-void lib74A68E34_gf_FourthChangeAllyPrestige () {
+void lib74A68E34_gf_FourthPrestigeAllyChange () {
     // Automatic Variable Declarations
     // Implementation
     if ((PlayerStatus(2) != c_playerStatusActive)) {
@@ -270,52 +272,21 @@ void lib74A68E34_gf_FourthChangeAllyPrestige () {
     }
 }
 
-void lib74A68E34_gf_CU_RandomMutationSelectCreate () {
-    // Variable Declarations
-    fixed lv_maxPoints;
+trigger auto_lib74A68E34_gf_UILoadBank_Trigger = null;
+int auto_lib74A68E34_gf_UILoadBank_lp_player;
 
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_maxPoints = 40.0;
+void lib74A68E34_gf_UILoadBank (int lp_player) {
+    auto_lib74A68E34_gf_UILoadBank_lp_player = lp_player;
 
-    // Implementation
-    if ((lib74A68E34_gv_cU_RandomMutationSelectDialog != c_invalidDialogId)) {
-        return ;
+    if (auto_lib74A68E34_gf_UILoadBank_Trigger == null) {
+        auto_lib74A68E34_gf_UILoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_UILoadBank_TriggerFunc");
     }
 
-    DialogCreate(300, 260, c_anchorBottomLeft, 0, 300, true);
-    lib74A68E34_gv_cU_RandomMutationSelectDialog = DialogLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 50, StringExternal("Param/Value/lib_74A68E34_4DF063E9"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 40, StringExternal("Param/Value/lib_74A68E34_1068DFD7"), false);
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton3 = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 100, StringExternal("Param/Value/lib_74A68E34_53F3B92A"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 90, StringExternal("Param/Value/lib_74A68E34_865D1328"), false);
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton4 = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 150, StringExternal("Param/Value/lib_74A68E34_D6C102E5"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 140, StringExternal("Param/Value/lib_74A68E34_2981529F"), false);
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton5 = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 200, 50, c_anchorTopLeft, 40, 200, StringExternal("Param/Value/lib_74A68E34_687107F7"), ColorWithAlpha(0,0,0,0), false, 2.0);
-    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 190, StringExternal("Param/Value/lib_74A68E34_DBF111C0"), false);
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton6 = DialogControlLastCreated();
-    libNtve_gf_CreateDialogItemButton(lib74A68E34_gv_cU_RandomMutationSelectDialog, 40, 40, c_anchorTopRight, 5, 5, StringToText(""), StringToText("X"), "");
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton = DialogControlLastCreated();
+    TriggerExecute(auto_lib74A68E34_gf_UILoadBank_Trigger, false, false);
 }
 
-trigger auto_lib74A68E34_gf_SlimLoadBank_Trigger = null;
-int auto_lib74A68E34_gf_SlimLoadBank_lp_player;
-
-void lib74A68E34_gf_SlimLoadBank (int lp_player) {
-    auto_lib74A68E34_gf_SlimLoadBank_lp_player = lp_player;
-
-    if (auto_lib74A68E34_gf_SlimLoadBank_Trigger == null) {
-        auto_lib74A68E34_gf_SlimLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_SlimLoadBank_TriggerFunc");
-    }
-
-    TriggerExecute(auto_lib74A68E34_gf_SlimLoadBank_Trigger, false, false);
-}
-
-bool auto_lib74A68E34_gf_SlimLoadBank_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_lib74A68E34_gf_SlimLoadBank_lp_player;
+bool auto_lib74A68E34_gf_UILoadBank_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib74A68E34_gf_UILoadBank_lp_player;
 
     // Automatic Variable Declarations
     // Implementation
@@ -326,7 +297,57 @@ bool auto_lib74A68E34_gf_SlimLoadBank_TriggerFunc (bool testConds, bool runActio
         lib74A68E34_gf_SlimUIToggle(lp_player);
     }
 
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pRODUCTION_PANEL_BANK) == true)) {
+        lib74A68E34_gf_ProductionPanelToggle(lp_player);
+    }
+
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_hOTS_CD_BANK) == true)) {
+        lib74A68E34_gf_HotsCDToggle(lp_player);
+    }
+
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_cD_TEXT_BANK) == true)) {
+        lib74A68E34_gf_CDTextToggle(lp_player);
+    }
+
+    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_aLLY_RESOURCES_BANK) == true)) {
+        lib74A68E34_gf_AllyResourcesToggle(lp_player);
+    }
+
     return true;
+}
+
+void lib74A68E34_gf_UISettingsCreate () {
+    // Variable Declarations
+    fixed lv_maxPoints;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_maxPoints = 40.0;
+
+    // Implementation
+    if ((lib74A68E34_gv_uISettingsDialog != c_invalidDialogId)) {
+        return ;
+    }
+
+    DialogCreate(400, 260, c_anchorBottomLeft, 0, 350, true);
+    lib74A68E34_gv_uISettingsDialog = DialogLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 40, 40, StringExternal("Param/Value/lib_74A68E34_4DF063E9"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 30, StringExternal("Param/Value/lib_74A68E34_1068DFD7"), false);
+    lib74A68E34_gv_uISettingsSlimCheck = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 40, 80, StringExternal("Param/Value/lib_74A68E34_53F3B92A"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 70, StringExternal("Param/Value/lib_74A68E34_865D1328"), false);
+    lib74A68E34_gv_uISettingsProductionCheck = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 40, 120, StringExternal("Param/Value/lib_74A68E34_D6C102E5"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 110, StringExternal("Param/Value/lib_74A68E34_2981529F"), false);
+    lib74A68E34_gv_uISettingsHotsCD = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 40, 160, StringExternal("Param/Value/lib_74A68E34_687107F7"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 150, StringExternal("Param/Value/lib_74A68E34_DBF111C0"), false);
+    lib74A68E34_gv_uISettingsCDText = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 40, 200, StringExternal("Param/Value/lib_74A68E34_F31253AA"), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libNtve_gf_CreateDialogItemCheckBox(DialogLastCreated(), 40, 40, c_anchorTopRight, 40, 190, StringExternal("Param/Value/lib_74A68E34_A0B9AF19"), false);
+    lib74A68E34_gv_uISettingsAllyResources = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemButton(lib74A68E34_gv_uISettingsDialog, 40, 40, c_anchorTopRight, 5, 5, StringToText(""), StringToText("X"), "");
+    lib74A68E34_gv_uISettingsOKButton = DialogControlLastCreated();
 }
 
 void lib74A68E34_gf_SlimUIToggle (int lp_player) {
@@ -336,12 +357,10 @@ void lib74A68E34_gf_SlimUIToggle (int lp_player) {
         if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player) == false)) {
             PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
             TriggerEnable(lib01833E95_gt_AF_SlimUI_Delayed, true);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_F43F2DA9"));
         }
         else {
             PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
             TriggerEnable(lib01833E95_gt_AF_SlimUI_Delayed, false);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C25A0548"));
         }
     }
     else {
@@ -349,12 +368,10 @@ void lib74A68E34_gf_SlimUIToggle (int lp_player) {
             if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player) == false)) {
                 PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
                 TriggerExecute(lib01833E95_gt_AF_SlimUI_Delayed, true, false);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_2D4845B8"));
             }
             else {
                 PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
                 TriggerStop(lib01833E95_gt_AF_SlimUI_Delayed);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_36507A5C"));
             }
         }
         else {
@@ -363,44 +380,14 @@ void lib74A68E34_gf_SlimUIToggle (int lp_player) {
                 PlayerGroupAdd(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
                 UISetFrameVisible(PlayerGroupSingle(lp_player), c_syncFrameTypeConsolePanel, false);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_On");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_24A79B5F"));
             }
             else {
                 PlayerGroupRemove(lib01833E95_gv_aF_SlimUI_PlayerGroup, lp_player);
                 UISetFrameVisible(PlayerGroupSingle(lp_player), c_syncFrameTypeConsolePanel, true);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "SlimUI_Off");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_35E50223"));
             }
         }
     }
-}
-
-trigger auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger = null;
-int auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player;
-
-void lib74A68E34_gf_ProductionPanelLoadBank (int lp_player) {
-    auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player = lp_player;
-
-    if (auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger == null) {
-        auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_ProductionPanelLoadBank_TriggerFunc");
-    }
-
-    TriggerExecute(auto_lib74A68E34_gf_ProductionPanelLoadBank_Trigger, false, false);
-}
-
-bool auto_lib74A68E34_gf_ProductionPanelLoadBank_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_lib74A68E34_gf_ProductionPanelLoadBank_lp_player;
-
-    // Automatic Variable Declarations
-    // Implementation
-    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
-        Wait(1.0, c_timeGame);
-    }
-    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pRODUCTION_PANEL_BANK) == true)) {
-        lib74A68E34_gf_ProductionPanelToggle(lp_player);
-    }
-
-    return true;
 }
 
 void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
@@ -410,12 +397,10 @@ void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
         if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
             PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
             TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, true);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_0030FFE9"));
         }
         else {
             PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
             TriggerEnable(lib74A68E34_gt_ProductionPanel_Delayed, false);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_71E9DE92"));
         }
     }
     else {
@@ -423,12 +408,10 @@ void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
             if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
                 PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
                 TriggerExecute(lib74A68E34_gt_ProductionPanel_Delayed, true, false);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_6F3E05E5"));
             }
             else {
                 PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
                 TriggerStop(lib74A68E34_gt_ProductionPanel_Delayed);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_56E3D326"));
             }
         }
         else {
@@ -436,43 +419,13 @@ void lib74A68E34_gf_ProductionPanelToggle (int lp_player) {
             if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player) == false)) {
                 PlayerGroupAdd(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_On");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_98AE8BEB"));
             }
             else {
                 PlayerGroupRemove(lib74A68E34_gv_productionPanel_PlayerGroup, lp_player);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "ProductionPanel_Off");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_EB06EA0F"));
             }
         }
     }
-}
-
-trigger auto_lib74A68E34_gf_HotsCDLoadBank_Trigger = null;
-int auto_lib74A68E34_gf_HotsCDLoadBank_lp_player;
-
-void lib74A68E34_gf_HotsCDLoadBank (int lp_player) {
-    auto_lib74A68E34_gf_HotsCDLoadBank_lp_player = lp_player;
-
-    if (auto_lib74A68E34_gf_HotsCDLoadBank_Trigger == null) {
-        auto_lib74A68E34_gf_HotsCDLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_HotsCDLoadBank_TriggerFunc");
-    }
-
-    TriggerExecute(auto_lib74A68E34_gf_HotsCDLoadBank_Trigger, false, false);
-}
-
-bool auto_lib74A68E34_gf_HotsCDLoadBank_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_lib74A68E34_gf_HotsCDLoadBank_lp_player;
-
-    // Automatic Variable Declarations
-    // Implementation
-    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
-        Wait(1.0, c_timeGame);
-    }
-    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_hOTS_CD_BANK) == true)) {
-        lib74A68E34_gf_HotsCDToggle(lp_player);
-    }
-
-    return true;
 }
 
 void lib74A68E34_gf_HotsCDToggle (int lp_player) {
@@ -481,41 +434,11 @@ void lib74A68E34_gf_HotsCDToggle (int lp_player) {
     if ((PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player) == false)) {
         PlayerGroupAdd(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player);
         cursorCD_ShowHideCursor(lp_player, true);
-        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_10A69BB9"));
     }
     else {
         PlayerGroupRemove(lib74A68E34_gv_hotsCD_PlayerGroup, lp_player);
         cursorCD_ShowHideCursor(lp_player, false);
-        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_43B5A483"));
     }
-}
-
-trigger auto_lib74A68E34_gf_CDTextLoadBank_Trigger = null;
-int auto_lib74A68E34_gf_CDTextLoadBank_lp_player;
-
-void lib74A68E34_gf_CDTextLoadBank (int lp_player) {
-    auto_lib74A68E34_gf_CDTextLoadBank_lp_player = lp_player;
-
-    if (auto_lib74A68E34_gf_CDTextLoadBank_Trigger == null) {
-        auto_lib74A68E34_gf_CDTextLoadBank_Trigger = TriggerCreate("auto_lib74A68E34_gf_CDTextLoadBank_TriggerFunc");
-    }
-
-    TriggerExecute(auto_lib74A68E34_gf_CDTextLoadBank_Trigger, false, false);
-}
-
-bool auto_lib74A68E34_gf_CDTextLoadBank_TriggerFunc (bool testConds, bool runActions) {
-    int lp_player = auto_lib74A68E34_gf_CDTextLoadBank_lp_player;
-
-    // Automatic Variable Declarations
-    // Implementation
-    while (!((libCOOC_gf_CC_CoopBankExists(lp_player) == true))) {
-        Wait(1.0, c_timeGame);
-    }
-    if ((BankValueGetAsFlag(libCOOC_gv_cC_CoopBank[lp_player], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_cD_TEXT_BANK) == true)) {
-        lib74A68E34_gf_CDTextToggle(lp_player);
-    }
-
-    return true;
 }
 
 void lib74A68E34_gf_CDTextToggle (int lp_player) {
@@ -525,12 +448,10 @@ void lib74A68E34_gf_CDTextToggle (int lp_player) {
         if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
             PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
             TriggerEnable(lib74A68E34_gt_CDText_Delayed, true);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_F8B1955E"));
         }
         else {
             PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
             TriggerEnable(lib74A68E34_gt_CDText_Delayed, false);
-            UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_23075EB9"));
         }
     }
     else {
@@ -538,12 +459,10 @@ void lib74A68E34_gf_CDTextToggle (int lp_player) {
             if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, lp_player) == false)) {
                 PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
                 TriggerExecute(lib74A68E34_gt_CDText_Delayed, true, false);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_6BAB0533"));
             }
             else {
                 PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
                 TriggerStop(lib74A68E34_gt_CDText_Delayed);
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_71174958"));
             }
         }
         else {
@@ -552,15 +471,37 @@ void lib74A68E34_gf_CDTextToggle (int lp_player) {
                 PlayerGroupAdd(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "CooldownText_On");
                 DialogControlSendAnimationEvent(libCOUI_gv_cU_GPPanelHolder, PlayerGroupSingle(lp_player), "CooldownText_On");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_DE3E811E"));
             }
             else {
                 PlayerGroupRemove(lib74A68E34_gv_cDText_PlayerGroup, lp_player);
                 DialogControlSendAnimationEvent(DialogControlLastCreated(), PlayerGroupSingle(lp_player), "CooldownText_Off");
                 DialogControlSendAnimationEvent(libCOUI_gv_cU_GPPanelHolder, PlayerGroupSingle(lp_player), "CooldownText_Off");
-                UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_D1E22A8A"));
             }
         }
+    }
+}
+
+void lib74A68E34_gf_AllyResourcesToggle (int lp_player) {
+    // Variable Declarations
+    int lv_panel;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_panel = c_invalidDialogControlId;
+
+    // Implementation
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/ResourcePanel/AllyResourcePanel");
+    lv_panel = DialogControlLastCreated();
+    DialogControlHookup(lv_panel, c_triggerControlTypeLabel, "PlayerIdLabel");
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), IntToText(2), PlayerGroupSingle(1));
+    libNtve_gf_SetDialogItemText(DialogControlLastCreated(), IntToText(1), PlayerGroupSingle(2));
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, lp_player) == false)) {
+        PlayerGroupAdd(lib74A68E34_gv_allyResources_PlayerGroup, lp_player);
+        DialogControlSetVisible(lv_panel, PlayerGroupSingle(lp_player), true);
+    }
+    else {
+        PlayerGroupRemove(lib74A68E34_gv_allyResources_PlayerGroup, lp_player);
+        DialogControlSetVisible(lv_panel, PlayerGroupSingle(lp_player), false);
     }
 }
 
@@ -1893,10 +1834,10 @@ void lib74A68E34_gf_CreateMutationAbomination (int lp_minMutators, int lp_maxMut
     libCOMU_gv_cT_MAbomination_MaxPoints = lp_maxPointValue;
     libCOMU_gv_cT_MAbomination_MutatorsCount = 0;
     libCOMU_gv_cT_MAbomination_CombosCounted = 0;
-    lib74A68E34_gv_cT_MAbomination_MinMutators = lp_minMutators2;
-    lib74A68E34_gv_cT_MAbomination_MinMutators2 = lp_minMutators3;
-    lib74A68E34_gv_cT_MAbomination_MinMutators3 = lp_minMutators4;
-    lib74A68E34_gv_cT_MAbomination_MinMutators4 = lp_minMutators5;
+    lib74A68E34_gv_mutatorAbomination_MinNeutral = lp_minMutators2;
+    lib74A68E34_gv_mutatorAbomination_MaxNeutral = lp_minMutators3;
+    lib74A68E34_gv_mutatorAbomination_MinPositive = lp_minMutators4;
+    lib74A68E34_gv_mutatorAbomination_MaxPositive = lp_minMutators5;
     autoA8011BFF_ai = 1;
     autoA8011BFF_ae = UserDataInstanceCount("Mutators")+1;
     while (autoA8011BFF_ai < autoA8011BFF_ae) {
@@ -3524,6 +3465,7 @@ bool lib74A68E34_gt_ApplyMaguroChanges_Func (bool testConds, bool runActions) {
     TriggerEnable(libA8FDA37D_gt_UT_Cooldown, false);
     TriggerEnable(libA8FDA37D_gt_UT_FastBuild, false);
     TriggerEnable(lib01833E95_gt_AF_SlimUI, false);
+    TriggerEnable(libA8FDA37D_gt_UT_AllySupply, false);
     return true;
 }
 
@@ -3820,7 +3762,6 @@ bool lib74A68E34_gt_TestCommand_Func (bool testConds, bool runActions) {
     TriggerExecute(lib74A68E34_gt_CooldownImproved, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_Vision, false, false);
     TriggerExecute(libA8FDA37D_gt_UT_ShareControl, false, false);
-    TriggerExecute(libA8FDA37D_gt_UT_AllySupply, false, false);
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_0D58120D"));
     auto53C6907A_g = PlayerGroupAll();
     auto53C6907A_var = -1;
@@ -4217,7 +4158,6 @@ bool lib74A68E34_gt_FourthPrestigeTriggers_Func (bool testConds, bool runActions
 
     TriggerEnable(libA8FDA37D_gt_UT_PrestigeAlly, false);
     TriggerEnable(lib01833E95_gt_AF_CS_AllyPrestigeChanged, false);
-    TriggerEnable(libA8FDA37D_gt_UT_Ally, false);
     return true;
 }
 
@@ -4244,7 +4184,7 @@ bool lib74A68E34_gt_FourthPrestigeAlly_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lib74A68E34_gf_FourthChangeAllyPrestige();
+    lib74A68E34_gf_FourthPrestigeAllyChange();
     return true;
 }
 
@@ -4271,7 +4211,7 @@ bool lib74A68E34_gt_FourthAllyPrestigeChanged_Func (bool testConds, bool runActi
         return true;
     }
 
-    lib74A68E34_gf_FourthChangeAllyPrestige();
+    lib74A68E34_gf_FourthPrestigeAllyChange();
     return true;
 }
 
@@ -4637,6 +4577,40 @@ void lib74A68E34_gt_FearRemove_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: UILoadBankInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_UILoadBankInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoE9A9131D_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    autoE9A9131D_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoE9A9131D_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        lib74A68E34_gf_UILoadBank(lv_indexPlayer);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_UILoadBankInit_Init () {
+    lib74A68E34_gt_UILoadBankInit = TriggerCreate("lib74A68E34_gt_UILoadBankInit_Func");
+    TriggerAddEventMapInit(lib74A68E34_gt_UILoadBankInit);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: UISettingsInit
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_UISettingsInit_Func (bool testConds, bool runActions) {
@@ -4647,7 +4621,7 @@ bool lib74A68E34_gt_UISettingsInit_Func (bool testConds, bool runActions) {
     }
 
     DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/MinimapPanel/SettingsButton");
-    lib74A68E34_gv_cU_RandomMutationSelectOKButton2 = DialogControlLastCreated();
+    lib74A68E34_gv_uISettingsButton = DialogControlLastCreated();
     return true;
 }
 
@@ -4664,7 +4638,7 @@ bool lib74A68E34_gt_UISettingsDisplay_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_cU_RandomMutationSelectOKButton2))) {
+        if (!((EventDialogControl() == lib74A68E34_gv_uISettingsButton))) {
             return false;
         }
     }
@@ -4674,37 +4648,43 @@ bool lib74A68E34_gt_UISettingsDisplay_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((DialogIsVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, EventPlayer()) == true)) {
+    if ((DialogIsVisible(lib74A68E34_gv_uISettingsDialog, EventPlayer()) == true)) {
         TriggerExecute(lib74A68E34_gt_UISettingsOK, false, false);
         return true;
     }
 
-    lib74A68E34_gf_CU_RandomMutationSelectCreate();
+    lib74A68E34_gf_UISettingsCreate();
     if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()) == true)) {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, true, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsSlimCheck, true, PlayerGroupSingle(EventPlayer()));
     }
     else {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsSlimCheck, false, PlayerGroupSingle(EventPlayer()));
     }
     if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()) == true)) {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, true, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsProductionCheck, true, PlayerGroupSingle(EventPlayer()));
     }
     else {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsProductionCheck, false, PlayerGroupSingle(EventPlayer()));
     }
     if ((PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()) == true)) {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, true, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsHotsCD, true, PlayerGroupSingle(EventPlayer()));
     }
     else {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsHotsCD, false, PlayerGroupSingle(EventPlayer()));
     }
     if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()) == true)) {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, true, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsCDText, true, PlayerGroupSingle(EventPlayer()));
     }
     else {
-        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsCDText, false, PlayerGroupSingle(EventPlayer()));
     }
-    DialogSetVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, PlayerGroupSingle(EventPlayer()), true);
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, EventPlayer()) == true)) {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsAllyResources, true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        libNtve_gf_SetDialogItemChecked(lib74A68E34_gv_uISettingsAllyResources, false, PlayerGroupSingle(EventPlayer()));
+    }
+    DialogSetVisible(lib74A68E34_gv_uISettingsDialog, PlayerGroupSingle(EventPlayer()), true);
     TriggerEnable(lib74A68E34_gt_UISettingsCheck, true);
     return true;
 }
@@ -4722,7 +4702,7 @@ bool lib74A68E34_gt_UISettingsOK_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((EventDialogControl() == lib74A68E34_gv_cU_RandomMutationSelectOKButton))) {
+        if (!((EventDialogControl() == lib74A68E34_gv_uISettingsOKButton))) {
             return false;
         }
     }
@@ -4732,12 +4712,13 @@ bool lib74A68E34_gt_UISettingsOK_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    DialogSetVisible(lib74A68E34_gv_cU_RandomMutationSelectDialog, PlayerGroupSingle(EventPlayer()), false);
+    DialogSetVisible(lib74A68E34_gv_uISettingsDialog, PlayerGroupSingle(EventPlayer()), false);
     TriggerEnable(lib74A68E34_gt_UISettingsCheck, false);
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_sLIM_BANK, PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()));
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pRODUCTION_PANEL_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()));
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_hOTS_CD_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()));
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_cD_TEXT_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()));
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_aLLY_RESOURCES_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, EventPlayer()));
     BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
     return true;
 }
@@ -4761,27 +4742,33 @@ bool lib74A68E34_gt_UISettingsCheck_Func (bool testConds, bool runActions) {
     }
 
     auto7B6A8238_val = EventDialogControl();
-    if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton3) {
-        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton3, EventPlayer()) != PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()))) {
+    if (auto7B6A8238_val == lib74A68E34_gv_uISettingsSlimCheck) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_uISettingsSlimCheck, EventPlayer()) != PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()))) {
             lib74A68E34_gf_SlimUIToggle(EventPlayer());
         }
 
     }
-    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton4) {
-        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton4, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()))) {
+    else if (auto7B6A8238_val == lib74A68E34_gv_uISettingsProductionCheck) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_uISettingsProductionCheck, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()))) {
             lib74A68E34_gf_ProductionPanelToggle(EventPlayer());
         }
 
     }
-    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton5) {
-        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton5, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()))) {
+    else if (auto7B6A8238_val == lib74A68E34_gv_uISettingsHotsCD) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_uISettingsHotsCD, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()))) {
             lib74A68E34_gf_HotsCDToggle(EventPlayer());
         }
 
     }
-    else if (auto7B6A8238_val == lib74A68E34_gv_cU_RandomMutationSelectOKButton6) {
-        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_cU_RandomMutationSelectOKButton6, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()))) {
+    else if (auto7B6A8238_val == lib74A68E34_gv_uISettingsCDText) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_uISettingsCDText, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()))) {
             lib74A68E34_gf_CDTextToggle(EventPlayer());
+        }
+
+    }
+    else if (auto7B6A8238_val == lib74A68E34_gv_uISettingsAllyResources) {
+        if ((libNtve_gf_DialogItemIsChecked(lib74A68E34_gv_uISettingsAllyResources, EventPlayer()) != PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, EventPlayer()))) {
+            lib74A68E34_gf_AllyResourcesToggle(EventPlayer());
         }
 
     }
@@ -4798,40 +4785,6 @@ void lib74A68E34_gt_UISettingsCheck_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: SlimLoadBankInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_SlimLoadBankInit_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup auto10896B95_g;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    auto10896B95_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto10896B95_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        lib74A68E34_gf_SlimLoadBank(lv_indexPlayer);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_SlimLoadBankInit_Init () {
-    lib74A68E34_gt_SlimLoadBankInit = TriggerCreate("lib74A68E34_gt_SlimLoadBankInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_SlimLoadBankInit);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: SlimUICommand
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_SlimUICommand_Func (bool testConds, bool runActions) {
@@ -4844,6 +4797,12 @@ bool lib74A68E34_gt_SlimUICommand_Func (bool testConds, bool runActions) {
     lib74A68E34_gf_SlimUIToggle(EventPlayer());
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_sLIM_BANK, PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()));
     BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    if ((PlayerGroupHasPlayer(lib01833E95_gv_aF_SlimUI_PlayerGroup, EventPlayer()) == true)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_A857F363"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_8B0345ED"));
+    }
     return true;
 }
 
@@ -4851,40 +4810,6 @@ bool lib74A68E34_gt_SlimUICommand_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_SlimUICommand_Init () {
     lib74A68E34_gt_SlimUICommand = TriggerCreate("lib74A68E34_gt_SlimUICommand_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_SlimUICommand, c_playerAny, "-slim", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: ProductionPanelBankInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_ProductionPanelBankInit_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup auto1E4705B5_g;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    auto1E4705B5_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto1E4705B5_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        lib74A68E34_gf_ProductionPanelLoadBank(lv_indexPlayer);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_ProductionPanelBankInit_Init () {
-    lib74A68E34_gt_ProductionPanelBankInit = TriggerCreate("lib74A68E34_gt_ProductionPanelBankInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_ProductionPanelBankInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4930,6 +4855,12 @@ bool lib74A68E34_gt_ProductionPanelCommand_Func (bool testConds, bool runActions
     lib74A68E34_gf_ProductionPanelToggle(EventPlayer());
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_pRODUCTION_PANEL_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()));
     BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_productionPanel_PlayerGroup, EventPlayer()) == true)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_58014170"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_693A9154"));
+    }
     return true;
 }
 
@@ -4937,40 +4868,6 @@ bool lib74A68E34_gt_ProductionPanelCommand_Func (bool testConds, bool runActions
 void lib74A68E34_gt_ProductionPanelCommand_Init () {
     lib74A68E34_gt_ProductionPanelCommand = TriggerCreate("lib74A68E34_gt_ProductionPanelCommand_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_ProductionPanelCommand, c_playerAny, "-production", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: HotsCDBankInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_HotsCDBankInit_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup autoB5C622F7_g;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    autoB5C622F7_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(autoB5C622F7_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        lib74A68E34_gf_HotsCDLoadBank(lv_indexPlayer);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_HotsCDBankInit_Init () {
-    lib74A68E34_gt_HotsCDBankInit = TriggerCreate("lib74A68E34_gt_HotsCDBankInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_HotsCDBankInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4986,6 +4883,12 @@ bool lib74A68E34_gt_HotsCDCommand_Func (bool testConds, bool runActions) {
     lib74A68E34_gf_HotsCDToggle(EventPlayer());
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_hOTS_CD_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()));
     BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_hotsCD_PlayerGroup, EventPlayer()) == true)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_9FA1EC8F"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_B06F9166"));
+    }
     return true;
 }
 
@@ -4993,40 +4896,6 @@ bool lib74A68E34_gt_HotsCDCommand_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_HotsCDCommand_Init () {
     lib74A68E34_gt_HotsCDCommand = TriggerCreate("lib74A68E34_gt_HotsCDCommand_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_HotsCDCommand, c_playerAny, "-hotscd", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: CDTextBankInit
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_CDTextBankInit_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_indexPlayer;
-
-    // Automatic Variable Declarations
-    playergroup auto4C856DBC_g;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    auto4C856DBC_g = libCOOC_gf_HumanPlayers();
-    lv_indexPlayer = -1;
-    while (true) {
-        lv_indexPlayer = PlayerGroupNextPlayer(auto4C856DBC_g, lv_indexPlayer);
-        if (lv_indexPlayer < 0) { break; }
-        lib74A68E34_gf_CDTextLoadBank(lv_indexPlayer);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_CDTextBankInit_Init () {
-    lib74A68E34_gt_CDTextBankInit = TriggerCreate("lib74A68E34_gt_CDTextBankInit_Func");
-    TriggerAddEventMapInit(lib74A68E34_gt_CDTextBankInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5073,6 +4942,12 @@ bool lib74A68E34_gt_CDTextCommand_Func (bool testConds, bool runActions) {
     lib74A68E34_gf_CDTextToggle(EventPlayer());
     BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_cD_TEXT_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()));
     BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_cDText_PlayerGroup, EventPlayer()) == true)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_DDDD1CBA"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_3D989F01"));
+    }
     return true;
 }
 
@@ -5080,6 +4955,34 @@ bool lib74A68E34_gt_CDTextCommand_Func (bool testConds, bool runActions) {
 void lib74A68E34_gt_CDTextCommand_Init () {
     lib74A68E34_gt_CDTextCommand = TriggerCreate("lib74A68E34_gt_CDTextCommand_Func");
     TriggerAddEventChatMessage(lib74A68E34_gt_CDTextCommand, c_playerAny, "-cdtext", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AllyResourcesCommand
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AllyResourcesCommand_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_AllyResourcesToggle(EventPlayer());
+    BankValueSetFromFlag(libCOOC_gv_cC_CoopBank[EventPlayer()], lib74A68E34_gv_lUNA_BANK_SECTION, lib74A68E34_gv_aLLY_RESOURCES_BANK, PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, EventPlayer()));
+    BankSave(libCOOC_gv_cC_CoopBank[EventPlayer()]);
+    if ((PlayerGroupHasPlayer(lib74A68E34_gv_allyResources_PlayerGroup, EventPlayer()) == true)) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_C781875E"));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_BBA8FDE7"));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AllyResourcesCommand_Init () {
+    lib74A68E34_gt_AllyResourcesCommand = TriggerCreate("lib74A68E34_gt_AllyResourcesCommand_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_AllyResourcesCommand, c_playerAny, "-allyresources", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6938,11 +6841,11 @@ bool lib74A68E34_gt_VorazunNegativeEnergyFix_Func (bool testConds, bool runActio
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "VorazunCloakDamageBoost", c_techCountCompleteOnly) == 1))) {
+        if (!((UnitHasBehavior2(EventUnit(), "VorazunCloakDamageBoostPermanent") == true))) {
             return false;
         }
 
-        if (!((UnitHasBehavior2(EventUnit(), "VorazunCloakDamageBoostPermanent") == true))) {
+        if (!((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "VorazunCloakDamageBoost", c_techCountCompleteOnly) == 1))) {
             return false;
         }
     }
@@ -11927,20 +11830,18 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FearDisableTriggers_Init();
     lib74A68E34_gt_FearApply_Init();
     lib74A68E34_gt_FearRemove_Init();
+    lib74A68E34_gt_UILoadBankInit_Init();
     lib74A68E34_gt_UISettingsInit_Init();
     lib74A68E34_gt_UISettingsDisplay_Init();
     lib74A68E34_gt_UISettingsOK_Init();
     lib74A68E34_gt_UISettingsCheck_Init();
-    lib74A68E34_gt_SlimLoadBankInit_Init();
     lib74A68E34_gt_SlimUICommand_Init();
-    lib74A68E34_gt_ProductionPanelBankInit_Init();
     lib74A68E34_gt_ProductionPanel_Delayed_Init();
     lib74A68E34_gt_ProductionPanelCommand_Init();
-    lib74A68E34_gt_HotsCDBankInit_Init();
     lib74A68E34_gt_HotsCDCommand_Init();
-    lib74A68E34_gt_CDTextBankInit_Init();
     lib74A68E34_gt_CDText_Delayed_Init();
     lib74A68E34_gt_CDTextCommand_Init();
+    lib74A68E34_gt_AllyResourcesCommand_Init();
     lib74A68E34_gt_ScoreReplaceCallback_Init();
     lib74A68E34_gt_ScoreFinalButtonClicked_Init();
     lib74A68E34_gt_LogDisableOriginal_Init();

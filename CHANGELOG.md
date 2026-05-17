@@ -1,5 +1,11 @@
 # Changelog
 
+## 5/17/2026
+
+- Added `-allyresources` command to enable showing ally resources.
+  - Removed `-allysupply` command.
+  - Has persistence.
+
 ## 5/11/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.

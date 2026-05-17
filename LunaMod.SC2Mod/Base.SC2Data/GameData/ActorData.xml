@@ -1266,10 +1266,6 @@
         <Macros value="PhysicsDeathsVoidGround"/>
         <On Terms="ActorCreation" Send="TextureSelectBySlot main {RequireAll diffuse}"/>
         <On Terms="ActorCreation" Send="TextureSelectByMatch main.specular main"/>
-        <On Terms="ActorCreation" Send="Create InfestedCivilian_Moan"/>
-        <On Terms="AbilMorph.MorphToInfestedCivilian.Finish; MorphTo InfestedCivilian" Send="Create"/>
-        <On Terms="AbilMorph.MorphToInfestedCivilian.Finish; MorphTo InfestedCivilian" Send="$Birth 0 0.000000"/>
-        <On Terms="ActorCreation" Send="Create InfestedCivilian_BirthVoxSound"/>
         <Model value="InfestedCivilian"/>
         <BuildModel value="InfestedCivilian"/>
         <DeathArray index="Normal" ModelLink="InfestedCivilianDeath" SoundLink="InfestedCivilian_Explode"/>
@@ -1394,8 +1390,6 @@
         <Aliases value="_UnitSmall"/>
         <Macros value="ZergBurrowStandardAnimMacro"/>
         <Macros value="ZergSmallBurrowEffects"/>
-        <On Terms="ActorCreation" Send="Create InfestedCivilian_Moan"/>
-        <On Terms="ActorCreation" Send="Create InfestedTerran_BirthVoxSound"/>
         <Model value="InfestedTerranCampaign"/>
         <BuildModel value="InfestedTerranCampaign"/>
         <DeathArray index="Normal" ModelLink="InfestedMarineDeath" SoundLink="InfestedTerran_Explode"/>

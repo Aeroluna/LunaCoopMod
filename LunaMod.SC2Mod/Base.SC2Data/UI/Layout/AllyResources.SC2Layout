@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer/ResourcePanel" file="GameUI">
+        <Frame type="Frame" name="AllyResourcePanel">
+            <Anchor side="Top" relative="$parent" pos="0" offset="25"/>
+            <Anchor side="Right" relative="$parent" pos="1" offset="0"/>
+            <Width val="800"/>
+            <Height val="42"/>
+            <Visible val="false"/>
+
+            <Frame type="CountdownLabel" name="ResourceLabel0" template="ResourcePanel/ResourcePanelLabelTemplate">
+                <Anchor side="Top" relative="$parent/ResourceLabel1" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/ResourceLabel1" pos="Min" offset="-17"/>
+                <Width val="120"/>
+                <Style val="AllyResourcePanel"/>
+                <Text val="{$parent/FormatMinerals/@Text}"/>
+            </Frame>
+
+            <Frame type="CountdownLabel" name="ResourceLabel1" template="ResourcePanel/ResourcePanelLabelTemplate">
+                <Anchor side="Top" relative="$parent/SupplyLabel" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/SupplyLabel" pos="Min" offset="-17"/>
+                <Width val="120"/>
+                <Style val="AllyResourcePanel"/>
+                <Text val="{$parent/FormatVespene/@Text}"/>
+            </Frame>
+
+            <Frame type="CountdownLabel" name="SupplyLabel" template="ResourcePanel/ResourcePanelLabelTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="8"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Width val="120"/>
+                <Style val="AllyResourcePanel"/>
+                <Text val="{$parent/FormatSupply/@Text}"/>
+            </Frame>
+
+            <Frame type="DataRefFrame" name="RefMinerals">
+                <Anchor relative="$parent"/>
+                <Argument name="score" val="MineralsCurrent"/>
+                <PlayerId val="{$parent/PlayerIdLabel/@Text}"/>
+            </Frame>
+
+            <Frame type="DataRefFrame" name="RefVespene">
+                <Anchor relative="$parent"/>
+                <Argument name="score" val="VespeneCurrent"/>
+                <PlayerId val="{$parent/PlayerIdLabel/@Text}"/>
+            </Frame>
+
+            <Frame type="DataRefFrame" name="RefSupplyCurrent">
+                <Anchor relative="$parent"/>
+                <Argument name="score" val="FoodUsed"/>
+                <PlayerId val="{$parent/PlayerIdLabel/@Text}"/>
+            </Frame>
+
+            <Frame type="DataRefFrame" name="RefSupplyMade">
+                <Anchor relative="$parent"/>
+                <Argument name="GameValue" val="PlayerFoodCap"/>
+                <PlayerId val="{$parent/PlayerIdLabel/@Text}"/>
+            </Frame>
+
+            <Frame type="TextFormatFrame" name="FormatMinerals">
+                <Anchor relative="$parent"/>
+                <FormatText val="%0%"/>
+                <Replacement val="{$parent/RefMinerals/@StringValue}" index="0"/>
+            </Frame>
+
+            <Frame type="TextFormatFrame" name="FormatVespene">
+                <Anchor relative="$parent"/>
+                <FormatText val="%0%"/>
+                <Replacement val="{$parent/RefVespene/@StringValue}" index="0"/>
+            </Frame>
+
+            <Frame type="TextFormatFrame" name="FormatSupply">
+                <Anchor relative="$parent"/>
+                <FormatText val="%0%/%1%"/>
+                <Replacement val="{$parent/RefSupplyCurrent/@StringValue}" index="0"/>
+                <Replacement val="{$parent/RefSupplyMade/@StringValue}" index="1"/>
+            </Frame>
+
+            <Frame type="Label" name="PlayerIdLabel">
+                <Anchor relative="$parent"/>
+                <Visible val="false"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>

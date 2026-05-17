@@ -349,11 +349,14 @@ yeah.
   - Has persistence.
 - Added `-cdtext` command to enable the cooldown text on buttons.
   - Has persistence.
+- Added `-allyresources` command to enable showing ally resources.
+  - Removed `-allysupply` command.
+  - Has persistence.
 - Added a settings button in the minimap panel. Currently allows toggling UI commands.
 
 UI customization!
 
-- Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-share`, `-allysupply`, `-control`, `-pai`, and `-maxsupply`.
+- Added `-test` cheat, combining `-fastbuild`, `-cdr`, `-vision`, `-share`, `-control`, `-pai`, and `-maxsupply`.
 - Added `-maxsupply` cheat, which maxes out supply.
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
