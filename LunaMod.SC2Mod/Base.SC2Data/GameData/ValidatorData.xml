@@ -295,6 +295,24 @@
         <Value value="20"/>
         <Behavior value="MutatorHybridFacilityCharge"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoNexusRecalled">
+        <Behavior value="NexusRecalled"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoArbiterMPRecalled">
+        <Behavior value="ArbiterMPRecalled"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoDarkPylonRecalled">
+        <Behavior value="DarkPylonRecalled"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoGaryStetmannRecalled">
+        <Behavior value="GaryStetmannRecalled"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="NoRecallingBehaviors">
+        <CombineArray value="NoNexusRecalled"/>
+        <CombineArray value="NoArbiterMPRecalled"/>
+        <CombineArray value="NoDarkPylonRecalled"/>
+        <CombineArray value="NoGaryStetmannRecalled"/>
+    </CValidatorCombine>
     <CValidatorCombine id="NotFriendlyFire">
         <CombineArray value="TargetIsEnemyOrNeutral"/>
         <CombineArray value="CreatorNotHavePlayerCommander"/>
@@ -609,6 +627,12 @@
         <Compare value="LT"/>
         <Range value="1"/>
     </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasNexusMassRecallCasting">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NexusMassRecallCasting"/>
+        <Value value="1"/>
+        <Compare value="GE"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="CommanderPrestigeAbathurSymbiote">
         <Find value="1"/>
         <Value value="CommanderPrestigeAbathurSymbiote"/>

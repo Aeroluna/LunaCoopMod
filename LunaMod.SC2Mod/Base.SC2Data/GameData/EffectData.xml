@@ -105,7 +105,7 @@
         <EffectArray index="1" value="AlarakStalkerForceBlastKnockbackSwitch"/>
     </CEffectSet>
     <CEffectEnumArea id="ArbiterMPRecallSearch">
-        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="-;Self,Neutral,Enemy,Structure,User1,Worker,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
     <CEffectSet id="ArbiterMPRecallSet">
@@ -839,6 +839,7 @@
     </CEffectEnumArea>
     <CEffectApplyBehavior id="MothershipMassRecallApplyBehavior">
         <ValidatorArray value="NotUnmoved"/>
+        <ValidatorArray value="NotSlaynElementalCocooned"/>
     </CEffectApplyBehavior>
     <CEffectTeleport id="MutatorAmonZeratulBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
@@ -1707,6 +1708,46 @@
         <TargetLocation Value="TargetUnitOrPoint"/>
         <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
+    <CEffectEnumArea id="MothershipStrategicRecallSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <MinCount value="1"/>
+        <SearchFilters value="-;Self,Neutral,Enemy,Structure,User1,Worker,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5" Effect="MothershipStrategicRecallWarpOutSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="MothershipStrategicRecallWarpOutSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray value="MothershipStrategicRecallWarpOutAB"/>
+        <EffectArray value="NexusMassRecallPhased"/>
+        <ValidatorArray value="IsStrategicWarpOut"/>
+        <ValidatorArray value="NotLarvaEgg"/>
+        <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="IsNotWarpingIn"/>
+        <ValidatorArray value="IsNotNexusMassRecallWarpingOut"/>
+        <ValidatorArray value="NotUnmoved"/>
+        <ValidatorArray value="NotSlaynElementalCocooned"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MothershipStrategicRecallWarpOutAB">
+        <Behavior value="MothershipStrategicWarpOut"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MothershipStrategicRecallSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="MothershipStrategicRecallTeleport"/>
+        <EffectArray value="NexusMassRecallPostBehavior"/>
+        <EffectArray value="MothershipStrategicRecallSetPrevent2ndRecall"/>
+    </CEffectSet>
+    <CEffectTeleport id="MothershipStrategicRecallTeleport">
+        <EditorCategories value="Race:Protoss"/>
+        <TargetLocation Effect="MothershipStrategicRecallSearch" Value="SourcePoint"/>
+        <SourceLocation Effect="MothershipStrategicRecallSearch" Value="TargetPoint"/>
+        <PlacementArc value="360"/>
+        <PlacementAround Effect="MothershipStrategicRecallSearch" Value="SourcePoint"/>
+        <PlacementRange value="15"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
     <CEffectApplyBehavior id="NovaUnitLockdownAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
@@ -2119,6 +2160,42 @@
         <WhichUnit Value="Caster"/>
         <BehaviorCategories index="TeleportRemove" value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="TemporalFieldApplyBehavior">
+        <Behavior value="TemporalField"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="TemporalFieldGrowingBubbleCreatePersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="TemporalFieldSearchAreaImpactDummy"/>
+        <PeriodicEffectArray value="TemporalFieldGrowingBubbleSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <ExpireEffect value="TemporalFieldAfterBubbleCreatePersistent"/>
+        <OwningPlayer Value="Caster"/>
+        <ExpireDelay value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="TemporalFieldAfterBubbleCreatePersistent">
+        <EditorCategories value="Race:Protoss"/>
+        <InitialEffect value="TemporalFieldSearchAreaImpactDummy"/>
+        <PeriodCount value="160"/>
+        <PeriodicEffectArray value="TemporalFieldAfterBubbleSearchArea"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="TemporalFieldGrowingBubbleSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="0.5" RadiusBonus="0.0437"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="TemporalFieldAfterBubbleSearchArea">
+        <EditorCategories value="Race:Protoss"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="3.75" Effect="TemporalFieldApplyBehavior"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="TemporalFieldDamageDummy">
+        <ResponseFlags index="Flee" value="0"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="TemporalFieldSearchAreaImpactDummy">
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="3.75"/>
+    </CEffectEnumArea>
     <CEffectSet id="TerranBuildingKnockBack2Set">
         <ValidatorArray value="TargetIsGround"/>
         <EditorCategories value="Race:Terran"/>
@@ -3095,6 +3172,29 @@
     <CEffectSet id="NexusCreateSet">
         <EffectArray value="CommandStructureAutoRally"/>
     </CEffectSet>
+    <CEffectEnumArea id="NexusMassRecallSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <MinCount value="1"/>
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="NexusMassRecallWarpOutSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NexusMassRecallWarpOutSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray value="NexusMassRecallWarpOutAB"/>
+        <EffectArray value="NexusMassRecallPhased"/>
+        <ValidatorArray value="IsNotRecallingNexus"/>
+        <ValidatorArray value="NotLarvaEgg"/>
+        <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="IsNotWarpingIn"/>
+        <ValidatorArray value="IsStrategicWarpOut"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="NexusMassRecallWarpOutAB">
+        <ValidatorArray index="0" removed="1"/>
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="NexusMassRecallCastingAB">
         <Behavior value="NexusMassRecallCasting"/>
         <WhichUnit Value="Caster"/>
@@ -3104,6 +3204,31 @@
         <WhichUnit Value="Caster"/>
         <Count value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectTeleport id="NexusMassRecallTeleport">
+        <EditorCategories value="Race:Protoss"/>
+        <TargetLocation Effect="NexusMassRecallSearch" Value="SourcePoint"/>
+        <SourceLocation Effect="NexusMassRecallSearch" Value="TargetPoint"/>
+        <PlacementArc value="360"/>
+        <PlacementAround Effect="NexusMassRecallSearch" Value="SourcePoint"/>
+        <PlacementRange value="15"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectDamage id="NexusMassRecallPreTeleportDummy"/>
+    <CEffectCreatePersistent id="NexusShieldRecharge">
+        <ValidatorArray value="ShieldsNotFull"/>
+        <ValidatorArray value="CasterHasEnergy"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="100"/>
+        <PeriodicValidator value="CasterHasEnergy"/>
+        <PeriodicEffectArray value="NexusShieldRechargeSet"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="NexusMassRecallPostBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="NexusRecalled"/>
+    </CEffectApplyBehavior>
     <CEffectApplyForce id="NovaDashAttackApplyForce">
         <WhichLocation Value="TargetPoint"/>
         <WhichUnit Value="Caster"/>

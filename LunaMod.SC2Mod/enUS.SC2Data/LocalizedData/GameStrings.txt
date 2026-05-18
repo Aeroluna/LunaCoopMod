@@ -108,6 +108,8 @@ Behavior/Name/ZealotPurifierReviveSupressed2=Recently Reconstructed
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
 Behavior/Name/ZeratulVoidPrisonMissiles=Void Sanctuary Missiles
 Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote that attacks enemies and protects their host with a damage absorbing shell.
+Behavior/Tooltip/ArbiterMPCloakFieldEffect=This unit is cloaked and will only be revealed by detectors or effects.
+Behavior/Tooltip/ArbiterMPStasisField=This unit cannot move, attack, or be damaged.
 Behavior/Tooltip/ArtilleryMengskBombardmentSlow=This unit's attack and movement speed is slowed.
 Behavior/Tooltip/AscendantArchonSelfBuff=This unit has increased shields and it deals increased damage.
 Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
@@ -158,6 +160,7 @@ Behavior/Tooltip/SiegeTankMengskStun=This unit is stunned.
 Behavior/Tooltip/SignifierFade=This unit moves and attacks more quickly while under the effects of Stimpack.
 Behavior/Tooltip/Slimed=This unit is slowed.
 Behavior/Tooltip/StukovInfestedCivilianSpawnBroodlingFlyingOnDeath=This unit will spawn a Broodling upon death.
+Behavior/Tooltip/TemporalField=This unit's attack and movement speeds are reduced by <d ref="100 - (100 * Behavior,TemporalField,Modification.AttackSpeedMultiplier)"/>%.
 Behavior/Tooltip/TychusSpectreUltrasonicPulse=Target is under the effects of Ultrasonic Pulse and will take massive damage while in this area of effect.
 Behavior/Tooltip/VikingMengskAirAttackDamage=This unit has increased attack speed.
 Behavior/Tooltip/VikingMengskCheatDeathCooldown=This unit cannot be affected by Phoenix Protocol
@@ -227,6 +230,7 @@ Button/Name/EvolveScourgeGasCostReduction=Evolve Dampening Membrane
 Button/Name/EvolveViperAbductImprovedStun=Evolve Paralytic Barbs
 Button/Name/EvolveViperImprovedCastRange=Evolve Virulent Microbes
 Button/Name/FaceEmbraceAmon=Abduct
+Button/Name/FenixArbiterCloakField=Cloaking Field
 Button/Name/FenixArbiterRecall=Recall
 Button/Name/HHBomberEMP=EMP Warhead Payload
 Button/Name/HHBomberNapalmImproved=Thermal Cascade Payload
@@ -283,7 +287,7 @@ Button/Name/MercCompoundReset=Cancel
 Button/Name/MohandarOmnislash=Shadow Assault
 Button/Name/MorphToPowerTowerCancelStetmann=Cancel
 Button/Name/MothershipArtanis=Warp In Mothership
-Button/Name/MothershipArtanisMassTeleport=Mass Recall
+Button/Name/MothershipArtanisMassTeleport=Mass Teleport
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
 Button/Name/MutaliskBrood=Morph to Scythewing
 Button/Name/MutatorHybridFacilityCharge=Fissile Material
@@ -535,6 +539,8 @@ Button/Tooltip/EvolveViperImprovedCastRange=All <c val="ffff8a">Viper</c> abilit
 Button/Tooltip/ExplosiveGlaive=Mutalisks deal 100% bonus damage vs. armored units.
 Button/Tooltip/FaceEmbrace=Pulls target unit to the Viper. Enemy units are stunned for <d ref="Behavior,YoinkEnemyStun,Duration"/> <lang rule="plural">second,seconds</lang>.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune to the stun.</c>
 Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
+Button/Tooltip/FenixArbiterCloakField=Creates a cloaking field around Fenix, preventing enemy units from seeing and attacking nearby units and structures. A cloaked unit will only be revealed by detectors or effects.<n/><n/><c val="f078ff">Drains <d ref="-1 * (Behavior,FenixArbiterCloakingFieldCaster,Modification.VitalRegenArray[2] + Unit,DuskWing,EnergyRegenRate)" precision="1"/> energy per second.</c>
+Button/Tooltip/FenixArbiterCloakFieldOff=Disables Cloaking Field, making affected units and buildings visible to enemies.
 Button/Tooltip/FenixArbiterRecall=Teleports all friendly units in the target area to the location of the Fenix.
 Button/Tooltip/FenixThunderousChargeCoop=Fenix charges at the target location, dealing <d ref="Effect,FenixThunderousChargeCoopDamage,Amount"/> damage and stunning all enemy units for <d ref="Behavior,FenixThunderousChargeCoopStun,Duration"/> seconds.</n></n><c val="#ColorAttackInfo">Heroic units are slowed.</c>
 Button/Tooltip/ForceFieldTaldarim=Barrier that lasts <d time="15"/> and impedes movement of ground units.
@@ -616,6 +622,7 @@ Button/Tooltip/LurkerDenStetmann=Contains upgrades for Mecha Lurkers.<n/><n/><c 
 Button/Tooltip/LurkerStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,LurkerStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Hydralisk Remnant,Mecha Hydralisk Remnants</lang></c>.
 Button/Tooltip/MarauderMagrailMunitions=Fires a rail gun at a target enemy unit, dealing <d ref="Effect,MarauderMagrailMunitionsDamage,Amount"/> damage and stunning for <d ref="Behavior,MarauderMagrailMunitionsStun,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are slowed.</c>
 Button/Tooltip/MarauderMengskShield=Grants the Aegis Guard a shield that absorbs <d ref="Behavior,MarauderMengskAbsorb,Modification.VitalMaxArray[Shields]"/> damage. When the shield takes fatal damage, it releases a pulse of energy that knocks back nearby ground units. This shield refreshes to full every <d ref="Behavior,MarauderMengskAbsorbReapplicator,Cost.Cooldown.TimeUse"/> seconds.
+Button/Tooltip/MassRecall=Recalls all player units in the target area to the Mothership.
 Button/Tooltip/MasteryKerriganEnergyRegen=Increases the energy regeneration of Kerrigan and her Queens.
 Button/Tooltip/MasteryKerriganRazorSwarmAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Increases damage by <c val="FFFF8A"><d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,Amount"/> (+<d ref="Effect,MasteryKerriganRazorSwarmDamageDummy,AttributeBonus[Structure]"/> vs Structures)</c>.
 Button/Tooltip/MasteryRaynorMedicAdditionalTargetHealMedivacAppend=<n/><n/><c val="FFFF8A">Mastery:</c> Heals an additional target for <c val="FFFF8A"><d ref="Effect,MasteryRaynorMedicSecondaryHealDisplayDummy,Amount"/></c>%.
@@ -636,7 +643,8 @@ Button/Tooltip/MercCompoundReset=Cancel your current mercenary selection, refund
 Button/Tooltip/MercCompoundResetCharges=<d ref="$BehaviorStackCount:HireMercMarine$*4"/>
 Button/Tooltip/MercMedic=Support trooper. Heals nearby biological units. Can use Restoration and Signal Flare.
 Button/Tooltip/MorphToPowerTowerCancelStetmann=Stops rebuilding, permanently destroying the Stetellite instantly.
-Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Recall, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/Mothership=Ultimate Protoss vessel. Can use Mass Recall and Time Warp abilities. Cloaks nearby friendly units and structures.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/MothershipArtanis=Ultimate Protoss vessel. Can use Mass Teleport, Vortex, and Planet Cracker abilities. Cloaks nearby friendly units and structures. Provides power nearby.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all nearby units you control to target friendly unit or structure's location.</n></n><c val="#ColorAttackInfo">Can only target friendly units or structures.</c>
 Button/Tooltip/MothershipPassive=Fleet Beacon enables you to warp in Motherships.
 Button/Tooltip/MultiLockTargetingSystemThor=The Thor can target ground and air units simultaneously.
@@ -761,6 +769,7 @@ Button/Tooltip/SwarmLocus=Friendly ground units can use a Nydus Worm to instantl
 Button/Tooltip/SwarmNetwork=Can summon Swarm Locus at a targeted location that will unload temporary units to fight.
 Button/Tooltip/SwarmNetworkSwarmLocus=Summons a Swarm Locus at the target location that unloads uncontrollable zerg that last 60 seconds. The summoned zerg seek out and attack the nearest enemy.
 Button/Tooltip/TempestDestabilizingResiduum=Tempest attacks leave residuum that deals <d ref="Effect,TempestDotDamage,Amount*Effect,TempestDotCP,PeriodCount"/> damage over <d ref="Effect,TempestDotCP,PeriodCount*Effect,TempestDotCP,PeriodicPeriodArray[0]"/> seconds to nearby enemies.
+Button/Tooltip/TemporalField=After a <d ref="Effect,TemporalFieldGrowingBubbleCreatePersistent,ExpireDelay"/> second delay, warps spacetime within the target area for <d ref="Effect,TemporalFieldAfterBubbleCreatePersistent,PeriodCount*Effect,TemporalFieldAfterBubbleCreatePersistent,PeriodicPeriodArray[0]"/> seconds. All enemy units and structures within the field will have attack and movement speeds reduced by <d ref="(1-Behavior,TemporalField,Modification.MoveSpeedMultiplier)*100"/>%.
 Button/Tooltip/ThorMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Overwatch Mode can target ground units.
 Button/Tooltip/ThorMengskRank1Preview=<n/><c val="777777">Rank 1: Overwatch Mode can target ground units.</c>
 Button/Tooltip/ThorMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases the area of effect of Overwatch Mode by <d ref="(Effect,ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%.

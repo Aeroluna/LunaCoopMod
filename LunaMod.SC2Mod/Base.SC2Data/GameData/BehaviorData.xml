@@ -50,6 +50,12 @@
     <CBehaviorBuff id="ApocaliskBurrowChargeStun">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ArbiterMPRecalling">
+        <BehaviorCategories index="User7" value="1"/>
+        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
+        <Period value="0.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ArtilleryMengskBombardmentSlow">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-ultrasonicpulse.dds"/>
@@ -218,6 +224,10 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DarkPylonRecalling">
+        <Period value="0.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DehakaCreeperRecentlySwooped">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -246,6 +256,10 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FenixArbiterRecalling" parent="ArbiterMPRecalling">
         <ExpireEffect value="FenixArbiterRecallSet"/>
+        <BehaviorCategories index="User7" value="1"/>
+        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
+        <Period value="0.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FlashBangGrenadeSlow">
         <Alignment value="Negative"/>
@@ -259,6 +273,10 @@
             <StateFlags index="SuppressDetection" value="1"/>
             <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GaryStetmannRecalling">
+        <Period value="1.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HHBomberAreaBombFire">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-firebeam.dds"/>
@@ -319,6 +337,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisField">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Alignment value="Negative"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ArbiterMPStasisFieldTimedLife">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -653,6 +672,10 @@
         <Modification>
             <AbilClassDisableArray index="CAbilMorph" value="1"/>
         </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipRecalling">
+        <Period value="1.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorBountyHunter">
         <Alignment value="Positive"/>
@@ -1221,6 +1244,28 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipStrategicWarpOut">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <ExpireEffect value="MothershipStrategicRecallSet"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+            <AbilLinkEnableArray value="VolatileBurstBuilding"/>
+            <AbilLinkEnableArray value="GhostCloak"/>
+            <AbilLinkEnableArray value="BansheeCloak"/>
+        </Modification>
+        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
+        <FinalEffect value="NexusMassRecallCastingRB"/>
+        <Period value="4.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+        <BehaviorCategories index="User7" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorHouseHunters">
         <RemoveValidatorArray value="MutatorHouseHuntersValidator"/>
     </CBehaviorBuff>
@@ -1229,6 +1274,18 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <!--RemoveValidatorArray value="NotHaveScramblerMissileBehavior"/-->
         <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusRecalled">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="NovaDashAttackSpeed">
         <InfoFlags index="Hidden" value="1"/>
@@ -1389,6 +1446,9 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="SuperStimNova">
         <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TemporalField">
+        <Modification MoveSpeedMultiplier="0.6" AttackSpeedMultiplier="0.6"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ThorMengskSiegeGround">
         <InfoFlags index="Hidden" value="1"/>

@@ -656,3 +656,169 @@ void AIThinkAdeptLuna (int player, unit aiUnit, unitgroup scanGroup) {
         return;
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** MOTHERSHIP ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+static order MothershipTimeWarp (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    point myPos = UnitGetPosition(aiUnit);
+    aifilter filterAI;
+    unitgroup meleeEnemyGroup;
+    int enemyCount;
+    point targetPoint;
+    int diff = AIPlayerDifficulty(player);
+
+    // Do not proceed if the order is invalid for some reason
+    ord = AICreateOrder(player, c_AB_TimeWarp, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    // Filter out air units, non-melee units, and units already in a temporal field
+    filterAI = AIFilter(player);
+    //AISetFilterMelee(filterAI, c_onlyMelee);
+    //AISetFilterPlane(filterAI, c_planeGround);
+    AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, c_airAlliesNearby);
+    AISetFilterBehaviorCount(filterAI, c_noBehaviorMin, c_noBehaviorMax, c_BF_TemporalField);
+    meleeEnemyGroup = AIGetFilterGroup(filterAI, scanGroup);
+
+    // see if there is a large enough group nearby
+    targetPoint = AIBestTargetPoint(
+        meleeEnemyGroup,
+        4, // min hits
+        1, // damage base
+        3.5, // min score
+        c_mtwRadius,
+        UnitGetPosition(aiUnit),
+        c_mtwRange,
+        c_unitAttributeNone
+        );
+    if (targetPoint == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, targetPoint);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+static order MothershipMassRecall (int player, unit aiUnit, unitgroup scanGroup) {
+    // For now just use this to try to help retreating
+    //
+    order ord;
+    point targetPoint;
+    fixed dist;
+    int enemyGroundCount;
+    int enemyAirCount;
+    aifilter groundAirFilter;
+    aifilter filter;
+    unitgroup allies;
+
+    //  See if this spell can be cast at all.
+    ord = AICreateOrder(player, "MassRecall", 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    //  Scan for enemy air and ground units
+    //
+    enemyGroundCount = 0;
+    enemyAirCount = 0;
+
+    groundAirFilter = AIFilter(player);
+    AISetFilterAlliance(groundAirFilter, c_playerGroupEnemy);
+    AISetFilterPlane(groundAirFilter, c_planeGround);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    AISetFilterPlane(groundAirFilter, c_planeAir);
+    enemyAirCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    if (enemyGroundCount + enemyAirCount < 10) {
+        return null;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    AISetFilterCanAttackEnemy(filter, enemyGroundCount, enemyAirCount);
+    allies = UnitGroup(null, player, RegionPlayableMap(), 0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterUser1) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable) | (1 << c_targetFilterBuried), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32))), 0);
+    allies = AIGetFilterGroup(filter, allies);
+
+    targetPoint = AIBestTargetPoint(
+        allies,
+        6, // min hits
+        1, // damage base
+        5.5, // min score
+        5,
+        UnitGetPosition(UnitGroupRandomUnit(allies, c_unitCountAlive)),
+        100,
+        c_unitAttributeNone
+        );
+    if (targetPoint == null) {
+        return null;
+    }
+
+    dist = DistanceBetweenPoints(UnitGetPosition(aiUnit), targetPoint);
+    if (dist < c_coreMinRecallRange) {
+        return null;  // only recall if we'll move far enough
+    }
+
+    OrderSetTargetPoint(ord, targetPoint);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+fixed TimeWarpCoolDown_Hard = 20;
+fixed TimeWarpCoolDown_Brutal = 5;
+
+fixed MassRecallCoolDown_Hard = 180;
+fixed MassRecallCoolDown_Brutal = 60;
+
+const int c_TimeWarpCoolDown = c_tactTimerFirst;
+const int c_MassRecallCoolDown = c_tactTimerSecond;
+
+void AIThinkMothershipLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    fixed cooldown;
+    int diff = AIPlayerDifficulty(player);
+
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_MassRecallCoolDown)) {
+            ord = MothershipMassRecall(player, aiUnit, scanGroup);
+            if (ord != null) {
+                if (diff == c_campAdvanced) {
+                    cooldown = MassRecallCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = MassRecallCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_MassRecallCoolDown, cooldown);
+                return;
+            }
+        }
+
+        if (AITactCooldownAllow(aiUnit, c_TimeWarpCoolDown)) {
+            ord = MothershipTimeWarp(player, aiUnit, scanGroup);
+            if (ord != null) {
+                if (diff == c_campAdvanced) {
+                    cooldown = TimeWarpCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = TimeWarpCoolDown_Brutal;
+                }
+                AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_TimeWarpCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+}

@@ -1,10 +1,26 @@
 # Changelog
 
-## 5/17/2026
+## 5/18/2026
 
 - Added `-allyresources` command to enable showing ally resources.
   - Removed `-allysupply` command.
   - Has persistence.
+- Added visual effect when Fenix's (Arbiter) Cloaking Field is active.
+- Rewored Fenix's (Arbiter) Cloaking Field tooltip.
+- Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
+- Renamed Artanis's Mothership's Mass Recall to Mass Teleport.
+- Fixed an issue where Arbiter's Stasis Field debuff had no tooltip.
+
+yeah.
+
+- Changed Mothership's Time Warp ability color to red.
+- Reworked Mothership's Time Warp ability to slow attack and movement speed of affected units by 40%.
+- Added 1 second delay to Mothership's Time Warp ability.
+- Reworked Mothership's Mass Recall ability to teleport targeted units to the Mothership.
+- Reworked Mothership AI to more consistently cast Time Warp and to cast Mass Recall.
+- Added chance for Motherships to appear in late-game skytoss comps.
+
+When asking "why did they add that?", the answer is usually "cause it sounded interesting". With that being said, Motherships now randomly Mass Recall in random units on the map.
 
 ## 5/11/2026
 

@@ -701,6 +701,15 @@ Copied from Versus. Did you know Amon's Void Rays didn't even have a working pas
 
 Shield Recharge replaced Hallucination in the LotV campaign presumably because it's not impactful in PvE scenarios. However, if the computer is the one using it against players, it can be funny again, so let's give them back their Hallucinations!
 
+- Changed Mothership's Time Warp ability color to red.
+- Reworked Mothership's Time Warp ability to slow attack and movement speed of affected units by 40%.
+- Added 1 second delay to Mothership's Time Warp ability.
+- Reworked Mothership's Mass Recall ability to teleport targeted units to the Mothership.
+- Reworked Mothership AI to more consistently cast Time Warp and to cast Mass Recall.
+- Added chance for Motherships to appear in late-game skytoss comps.
+
+Motherships are a vanilla unit, they deserve representation! It is also very funny watching them Mass Recall in some random units.
+
 - Added Hyperflight Rotors upgrade for Banshees.
   - Increases movement speed from 2.75 to 3.75.
   - Banshees will have a boost visual after Hyperflight Rotors have been researched.
@@ -821,6 +830,7 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Orbital Commands had an unused ability that instantly creates a Supply Depot.
 - Fixed an issue where Arbiter's Mass Recall ability used the same cursor splat as Fenix's.
 - Reverted Arbiter's Mass Recall ability radius to the campaign version.
+- Fixed an issue where Arbiter's Stasis Field debuff had no tooltip.
 - Fixed an issue where Hybrid Reaver's Consume Essence did not play a spell animation.
 - Added a warp-in effect for Hybrid.
 - Fixed an issue where Hybrid Behemoth's Slimed! debuff had no tooltip.
@@ -1088,7 +1098,7 @@ Makes units significantly cheaper at the cost of being unable to sustain an army
 - Added the Mothership.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
   - Uses energy to cast abilities.
-  - Can use Mass Recall ability for 50 energy.
+  - Can use Mass Teleport ability for 50 energy.
     - Identical effect to Alarak's Mass Teleport.
   - Can use Vortex ability for 50 energy.
     - Similar to Wings of Liberty Vortex.
@@ -2078,6 +2088,7 @@ The champions do more damage than normal units, so their projectiles should be l
 - Fixed an issue where Warbringer's attack beams moved too slowly.
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
 - Fixed an issue where Fenix's Recall ability tooltip said Arbiter instead of Fenix.
+- Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
 
 yeah.
 

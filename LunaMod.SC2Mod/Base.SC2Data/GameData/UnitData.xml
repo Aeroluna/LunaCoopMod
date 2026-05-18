@@ -1591,7 +1591,17 @@
         <PawnItemReduction value="12"/>
     </CUnit>
     <CUnit id="Mothership">
+        <Speed value="1.6054"/>
+        <AbilArray index="4" Link="MassRecall"/>
+        <!--AbilArray Link="MothershipCloak"/-->
+        <CardLayouts index="0">
+            <!--LayoutButtons index="5" Type="AbilCmd" AbilCmd="MothershipCloak,Execute"/-->
+            <LayoutButtons index="6" Face="MassRecall" AbilCmd="MassRecall,Execute"/>
+        </CardLayouts>
+        <GlossaryWeakArray index="2" value="Tempest"/>
+        <LateralAcceleration value="2.0625"/>
         <AlliedPushPriority value="1"/>
+        <TacticalAIThink value="AIThinkMothershipLuna"/>
     </CUnit>
     <CUnit id="MothershipAiur06">
         <AlliedPushPriority value="1"/>
@@ -2017,6 +2027,16 @@
     </CUnit>
     <CUnit id="SiegeTankSieged_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
+    <CUnit id="SoloDummy">
+        <FlagArray index="Uncommandable" value="1"/>
+        <BehaviorArray Link="Unmoved"/>
+        <BehaviorArray Link="Unrepairable"/>
+    </CUnit>
+    <CUnit id="SoloDummyPreventDefeat">
+        <FlagArray index="Uncommandable" value="1"/>
+        <BehaviorArray Link="Unmoved"/>
+        <BehaviorArray Link="Unrepairable"/>
     </CUnit>
     <CUnit id="Spotter">
         <CostResource index="Minerals" value="450"/>
@@ -4679,7 +4699,7 @@
         <AbilArray index="4" Link="MothershipArtanisPlanetCracker"/>
         <AbilArray Link="MothershipArtanisMassRecall"/>
         <CardLayouts index="0">
-            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="5" Type="AbilCmd" AbilCmd="MothershipCloak,Execute" Column="3"/>
             <LayoutButtons index="6" Face="VortexArtanis" AbilCmd="VortexArtanis,Execute" Column="1"/>
             <LayoutButtons index="7" Face="PlanetCrackerArtanis" AbilCmd="MothershipArtanisPlanetCracker,Execute" Column="2"/>
             <LayoutButtons Face="MothershipArtanisMassTeleport" Type="AbilCmd" AbilCmd="MothershipArtanisMassRecall,Execute" Row="2" Column="0"/>
