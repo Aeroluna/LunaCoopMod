@@ -825,6 +825,13 @@ Throw in some Hellbats/Widow Mines for some extra SC2 flavor for the mech compos
     - Infested Siege Tank
     - Special Infested (Kaboomer, Hunterling, Choker, Spotter)
     - Infestor (Hard+)
+- Added new Zerg composition: "Raptor Brood"
+  - A savage brood of Zerg evolved for relentless close-quarters assaults. Their swarms overwhelms defenses through sheer speed and ferocity.
+  - Key Units:
+    - Zergling
+    - Baneling
+    - Ultralisk
+    - Viper (Hard+)
 
 New compositions, new fights! Protoss has 8 compositions while Terran and Zerg only have 6 and 5 respectively, so more have been added.
 

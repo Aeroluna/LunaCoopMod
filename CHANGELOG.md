@@ -32,6 +32,16 @@ It might have looked like a beam, but it was actually shooting an invisible proj
 
 When asking "why did they add that?", the answer is usually "cause it sounded interesting". With that being said, Motherships now randomly Mass Recall in random units on the map.
 
+- Added new Zerg composition: "Raptor Brood"
+  - A savage brood of Zerg evolved for relentless close-quarters assaults. Their swarms overwhelms defenses through sheer speed and ferocity.
+  - Key Units:
+    - Zergling
+    - Baneling
+    - Ultralisk
+    - Viper (Hard+)
+
+A new melee zerg composition! Zerg could use the variety.
+
 ## 5/11/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
