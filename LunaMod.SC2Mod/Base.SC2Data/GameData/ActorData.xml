@@ -41,6 +41,58 @@
     <CActorAction id="Ghost_BlackOpsSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorAction id="MohandarAttack">
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
+        <On Terms="Effect.MohandarChargeEffect01.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.MohandarChargeEffect01.Stop" Send="Destroy"/>
+        <AccuracyHalfArc value="-1.000000"/>
+        <BeamScope value="Effect"/>
+    </CActorAction>
+    <CActorBeamSimple id="MohandarAttackBeam">
+        <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <Host Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <On Terms="ActorCreation" Target="::Host" Send="Signal VoidRayChargeAttackBeamModel"/>
+        <On Terms="ActorCreation" Send="AnimPlay Attack Attack,02 PlayForever"/>
+        <On Terms="ActorCreation; ValidateEffect VoidRayChargeBeamRangeCounterCheckPhase2Ready" Send="AnimPlay Attack Attack,04 PlayForever"/>
+        <On Terms="ActorCreation; ValidateEffect VoidRayChargeBeamRangeCounterCheckPhase3Ready" Send="AnimPlay Attack Attack,06 PlayForever"/>
+        <On Terms="Effect.VoidRayChargeBeamRangePhase2AB.Start" Send="AnimPlay Attack Attack,04 PlayForever"/>
+        <On Terms="Effect.VoidRayChargeBeamRangePhase3AB.Start" Send="AnimPlay Attack Attack,06 PlayForever"/>
+        <On Terms="Effect.MohandarChargeEffect01.Stop; At Effect" Send="TimerSet 0.125000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="RefSetFromRequest ::actor.CasterUnit _Unit Caster Find"/>
+        <On Terms="ActorCreation" Target="::actor.CasterUnit" Send="Signal CampaignBeamCreated"/>
+        <Remove Terms="ActorCreation; !ValidateUnit NotMohandarQuadAndNotMohandarDoubleDamage" Send="AnimPlay Attack Attack,02 PlayForever"/>
+        <Remove Terms="ActorCreation; ValidateUnit MohandarDoubleDamage" Send="AnimPlay Attack Attack,04 PlayForever"/>
+        <Remove Terms="ActorCreation; ValidateUnit MohandarQuadDamage" Send="AnimPlay Attack Attack,06 PlayForever"/>
+        <Remove Terms="Effect.MohandarChargeEffect01.Start; FromEffectTreeDescendant" Send="AnimPlay Attack Attack,02 PlayForever"/>
+        <Remove Terms="Effect.MohandarChargeEffect02.Start; FromEffectTreeDescendant" Send="TimerSet 0.600000 DelayAnim2"/>
+        <Remove Terms="TimerExpired; TimerName DelayAnim2" Send="AnimPlay Attack Attack,04 PlayForever"/>
+        <Remove Terms="Effect.MohandarChargeEffect03.Start; FromEffectTreeDescendant" Send="TimerSet 0.600000 DelayAnim3"/>
+        <Remove Terms="TimerExpired; TimerName DelayAnim3" Send="AnimPlay Attack Attack,06 PlayForever"/>
+        <Remove Terms="Effect.MohandarChargeChain.Stop; FromEffectTreeDescendant" Send="Destroy"/>
+        <Aliases value="_VoidRayChargeAttackBeam"/>
+    </CActorBeamSimple>
+    <CActorModel id="MohandarChargeX01">
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On; !ValidateUnit IsNotMohandar" Send="Create"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off" Send="AnimBracketStop BSD"/>
+        <Remove Terms="Effect.MohandarChargeEffect01.Start; At Source" Send="Create"/>
+        <Remove Terms="WeaponStop.*.AttackStop; ValidateUnit NotMohandarQuadAndNotMohandarDoubleDamage" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="MohandarChargeX02">
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase2.On; !ValidateUnit IsNotMohandar" Send="Create"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase2.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase3.On; !ValidateUnit IsNotMohandar" Send="Create"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase3.Off" Send="AnimBracketStop BSD"/>
+        <Remove Terms="WeaponStop.*.AttackStop; ValidateUnit NotMohandarQuadAndNotMohandarDoubleDamage" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="MohandarChargeX03">
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase3.On; !ValidateUnit IsNotMohandar" Send="Create"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangePhase3.Off" Send="AnimBracketStop BSD"/>
+        <Remove Terms="WeaponStop.*.AttackStop; ValidateUnit NotMohandarQuadAndNotMohandarDoubleDamage" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSound id="MohandarSoundEnd">
+        <Remove Terms="WeaponStop.MohandarPrismaticBeam.AttackStop" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="Mothership">
         <AbilSoundArray AbilCmd="MassRecall,Execute" Sound="Mothership_WormholeTransitVO"/>
         <AbilSoundArray AbilCmd="TemporalField,Execute" Sound="Mothership_TimeBombVO"/>
@@ -1112,6 +1164,44 @@
     <CActorSound id="ScienceVessel_IrradiateImpact">
         <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
     </CActorSound>
+    <CActorAction id="StukovInfestedDiamondBackBileStreamSprayDummyAttack">
+        <On index="0" Terms="Effect.StukovInfestedDiamondBackBileStreamSprayInitialCP.Start; At Caster"/>
+        <On index="1" Terms="Effect.StukovInfestedDiamondBackBileStreamDamage.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.StukovInfestedDiamondBackBileStreamSprayInitialCP.Stop; At Caster; FromEffectTreeDescendant"/>
+        <On Terms="Effect.StukovInfestedDiamondBackBileStreamDamage.Start" Send="Create StukovInfestedDiamondBackBileStreamSprayImpact"/>
+        <On Terms="Effect.StukovInfestedDiamondBackBileStreamDamage.Start" Send="Create StukovInfestedDiamondBackBileStreamSprayImpactAS"/>
+        <ShieldFlashType value="Facer"/>
+        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
+        <!--LaunchAssets Sound="StukovInfestedDiamondBack_AttackLaunch"/>
+        <ImpactMap index="None" Model="Infested_Diamondback_Slime_Impact" Sound="StukovInfestedDiamondBack_AttackImpact"/-->
+        <LaunchAttachQuery Methods="FilterWeapon0102"/>
+        <ImpactSite value="StukovInfestedDiamondBackBileStreamSprayImpactSite"/>
+    </CActorAction>
+    <CActorSite id="StukovInfestedDiamondBackBileStreamSprayImpactSite">
+        <HostSiteOps HoldRotation="1"/>
+    </CActorSite>
+    <CActorModel id="StukovInfestedDiamondBackBileStreamSprayImpact" parent="ModelAnimationStyleOneShot">
+        <Model value="Infested_Diamondback_Slime_Impact"/>
+        <Supporter Subject="::Creator"/>
+        <Host Subject="StukovInfestedDiamondBackBileStreamSprayImpactSite"/>
+    </CActorModel>
+    <CActorSound id="StukovInfestedDiamondBackBileStreamSprayLaunchAS" parent="SoundOneShot">
+        <On Terms="Effect.StukovInfestedDiamondBackBileStreamDamage.Start; At Caster" Send="Create"/>
+        <Sound value="StukovInfestedDiamondBack_AttackLaunch"/>
+        <Supporter Subject="::Creator"/>
+    </CActorSound>
+    <CActorSound id="StukovInfestedDiamondBackBileStreamSprayImpactAS" parent="SoundOneShot">
+        <On Terms="Effect.StukovInfestedDiamondBackBileStreamDamage.Start; At Target" Send="Create"/>
+        <Sound value="StukovInfestedDiamondBack_AttackImpact"/>
+        <Supporter Subject="::Creator"/>
+        <Host Subject="StukovInfestedDiamondBackBileStreamSprayImpactSite"/>
+    </CActorSound>
+    <CActorBeamSimple id="StukovInfestedDiamondBackBileStreamSprayDummyAttackBeam">
+        <On index="4" Terms="Effect.StukovInfestedDiamondBackBileStreamSprayInitialCP.Stop; At Effect"/>
+        <Remove Terms="ActorCreation" Send="SetVisibility"/>
+        <Model value="Infested_Diamondback_Slime"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorBeamSimple>
     <!-- Remove Stand and death from TemporalFieldGrowingBubbleModel so when the first dies and the second is created there are no blending issues -->
     <CActorModel id="TemporalFieldGrowingBubbleModel">
         <On Terms="Effect.TemporalFieldGrowingBubbleCreatePersistent.Start" Send="Create"/>
@@ -1191,6 +1281,12 @@
         <On Terms="AbilTransport.OverlordStetmannTransport.CargoUnload" Send="AnimBracketStop Unload"/>
         <On Terms="AbilTransport.OverlordStetmannTransport.CargoLoadSuppressed" Send="AnimBracketStart Unload IGNORE Unload Unload,End DontResetOnUnhide"/>
     </CActorEventMacro>
+    <CActorSound id="VoidRaySoundEnd">
+        <On Terms="Effect.MohandarChargeEffect01.Stop" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="VoidRaySoundStart">
+        <On Terms="Effect.MohandarChargeEffect01.Start" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="WarpGate">
         <DeathArray index="UnderConstruction" ModelLink="GatewayDeathUnderConstruction"/>
     </CActorUnit>
@@ -4075,6 +4171,39 @@
         <SoundArray index="Attack" value="Oracle_Attack"/>
         <SoundArray index="Pissed" value="Oracle_Pissed"/>
         <AbilSoundArray AbilCmd="RallyZeratulTopBar,Rally1" Sound="Swarm_Silent"/>
+        <On index="64" Terms="ActorCreation" Send="SetTeamColor 70,39,89 70,39,89 0.000000 OneShot TeamColor"/>
+        <On index="65" Terms="ActorCreation" Send="StatusSet WeaponAnim 0"/>
+        <On index="66" Terms="ActorCreation" Send="StatusSet WeaponAttacking 0"/>
+        <On index="67" Terms="ActorCreation" Send="StatusSet WeaponEnhanced 0"/>
+        <On index="68" Terms="WeaponStart.*.AttackStart; IsStatus WeaponAnim 0" Send="AnimBracketStart Powered Attack Stand,Channel Attack,End"/>
+        <On index="69" Terms="WeaponStart.*.AttackStart; IsStatus WeaponAnim 0" Send="StatusSet WeaponAnim 1"/>
+        <On index="70" Terms="WeaponStart.*.AttackStart" Send="StatusSet WeaponAttacking 1"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="StatusSet WeaponAttacking 0"/>
+        <On Terms="WeaponStop.*.AttackStop; IsStatus WeaponEnhanced 0" Send="AnimBracketStop Powered"/>
+        <On Terms="WeaponStop.*.AttackStop; IsStatus WeaponEnhanced 0" Send="StatusSet WeaponAnim 0"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On; IsStatus WeaponAnim 0" Send="AnimBracketStart Powered Attack Stand,Channel Attack,End"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On; IsStatus WeaponAnim 0" Send="StatusSet WeaponAnim 1"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On" Send="StatusSet WeaponEnhanced 1"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off" Send="StatusSet WeaponEnhanced 0"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off; IsStatus WeaponAttacking 0" Send="AnimBracketStop Powered"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off; IsStatus WeaponAttacking 0" Send="StatusSet WeaponAnim 0"/>
+        <On Terms="WeaponStart.*.AttackStart; IsStatus WeaponEnhanced 0" Send="Create VoidRaySound1"/>
+        <On Terms="WeaponStart.*.AttackStart; IsStatus WeaponEnhanced 1" Send="Create VoidRaySound2"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On; IsStatus WeaponAttacking 1" Target="VoidRaySound1" Send="Destroy"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On; IsStatus WeaponAttacking 1" Send="Create VoidRaySound2"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off; IsStatus WeaponAttacking 1" Target="VoidRaySound2" Send="Destroy"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off; IsStatus WeaponAttacking 1" Send="Create VoidRaySound1"/>
+        <On Terms="WeaponStop.*.AttackStop" Target="VoidRaySound1" Send="Destroy"/>
+        <On Terms="WeaponStop.*.AttackStop" Target="VoidRaySound2" Send="Destroy"/>
+        <On Terms="Signal.*.VoidRayVoidAttackBeamModel" Send="RefSetFromMsg ::actor.VoidRayVoidAttackBeamModel ::Sender"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.On" Target="::actor.VoidRayVoidAttackBeamModel" Send="Signal PowerUp"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off" Target="::actor.VoidRayVoidAttackBeamModel" Send="Signal PowerDown"/>
+        <On Terms="Signal.*.UnitRemoved" Target="VoidRayVoidCenterBeam" Send="Destroy Immediate"/>
+        <On Terms="Signal.*.UnitRemoved" Target="VoidRayEnhancementAddition01" Send="Destroy Immediate"/>
+        <On Terms="Signal.*.UnitRemoved" Target="VoidRayEnhancementAddition02" Send="Destroy Immediate"/>
+        <On Terms="Signal.*.UnitRemoved" Target="VoidRayEnhancementAddition03" Send="Destroy Immediate"/>
+        <On Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
+        <On Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
     </CActorUnit>
     <CActorRange id="NovaACLaserTurretAttackRange">
         <Abil Link=""/>

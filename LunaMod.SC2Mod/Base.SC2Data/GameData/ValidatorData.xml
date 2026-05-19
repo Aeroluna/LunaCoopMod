@@ -332,6 +332,9 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="SILiberatorSwarmFormPermanentDamageResistant"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareCooldown id="SOAMothershipLineAttackCooldown">
+        <Ability value="SOAMothershipLineAttack"/>
+    </CValidatorUnitCompareCooldown>
     <CValidatorUnitCompareBehaviorCount id="SOAPurifierBeamBurning">
         <Behavior value="Burning"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -760,6 +763,11 @@
     <CValidatorUnitCompareBehaviorCount id="NotHaveZealotPurifierReconstructionSupressed2">
         <WhichUnit Value="Source"/>
         <Behavior value="ZealotPurifierReviveSupressed2"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveBeamTargetCDBehavior">
+        <Behavior value="BeamTargetCD"/>
+        <RequireCasterUnit Value="Source"/>
+        <WhichUnit Value="Source"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="OnDeathKaraxReconstruction">
         <CombineArray index="1" value="NotHaveZealotPurifierReconstructionSupressed2"/>

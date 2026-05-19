@@ -21,9 +21,6 @@
     <CWeaponLegacy id="ArtilleryMengskBombardment">
         <AcquireFilters value="-;-"/>
         <AcquireScanFilters value="-;-"/>
-        <AcquireTargetSorts>
-            <SortArray value="TSRandom"/>
-        </AcquireTargetSorts>
         <MinScanRange value="50"/>
         <LegacyOptions index="FaceTargetWhileInCooldown" value="0"/>
         <RandomDelayMin value="-0.5"/>
@@ -105,8 +102,13 @@
     <CWeaponLegacy id="FenixClolarionPrismaticBeam">
         <AcquireTargetSorts>
             <SortArray value="AirTarget"/>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistance"/>
         </AcquireTargetSorts>
         <Effect value="FenixClolarionChargeBeamLaunchAndAttackCombineSet"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="FenixTalisShade">
         <Effect value="FenixTalisShadeDamage"/>
@@ -197,6 +199,18 @@
     <CWeaponLegacy id="LurkerMP">
         <Range value="8"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="MohandarPrismaticBeam">
+        <Options index="OnlyFireWhileInAttackOrder" value="1"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="1"/>
+        <RangeSlop value="2"/>
+        <Period value="0.6"/>
+        <Effect value="MohandarChargeEffect01"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Oracle">
+        <Options index="DisplayCooldown" value="1"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="Spinesdisabled" parent="LurkerMP">
         <Options index="Disabled" value="1"/>
     </CWeaponLegacy>
@@ -240,6 +254,9 @@
     </CWeaponLegacy>
     <CWeaponLegacy id="ShrikeTurret">
         <Icon value="Assets\Textures\btn-upgrade-terran-hisecautotracking.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StukovInfestedDiamondBack">
+        <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="Suicide2">
         <EditorCategories value="Race:Zerg"/>
@@ -603,14 +620,17 @@
         <Cost>
             <Cooldown TimeUse="2"/>
         </Cost>
-        <Period value="2"/>
+        <Period value="0.0625"/>
         <Options index="CanInitiateAttackOrder" value="1"/>
         <Options index="ContinuousScan" value="1"/>
         <Options index="DisplayCooldown" value="1"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
         <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel0.dds"/>
         <DisplayEffect value="SOAMothershipLineAttackDamage"/>
         <TargetFilters value="Ground,Visible;-"/>
         <AcquireTargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
             <SortArray value="TSRandom"/>
         </AcquireTargetSorts>
         <MinScanRange value="7.5"/>
@@ -692,6 +712,8 @@
         <Options index="Hidden" value="1"/>
         <Options index="OnlyFireWhileInAttackOrder" value="0"/>
         <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
         <DisplayName value="Weapon/Name/WraithMoving"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Effect value="WraithMovingSwitch"/>
@@ -700,6 +722,8 @@
         <AcquireTargetSorts>
             <SortArray value="TSThreatenBattlecruiser"/>
             <SortArray value="AirTarget"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistance"/>
         </AcquireTargetSorts>
     </CWeaponLegacy>
     <CWeaponLegacy id="ZagaraVoidCoopRanged">
@@ -720,5 +744,8 @@
     </CWeaponLegacy>
     <CWeaponLegacy id="ZeratulDisruptorWeapon">
         <TargetFilters value="Ground;Self,Missile,Item,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ZeratulXelNagaChargedCrystalCyan">
+        <AllowedMovement value="Slowing"/>
     </CWeaponLegacy>
 </Catalog>

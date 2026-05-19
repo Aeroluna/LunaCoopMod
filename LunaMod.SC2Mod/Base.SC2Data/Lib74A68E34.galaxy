@@ -3617,6 +3617,36 @@ void lib74A68E34_gt_CreateAICoopCaster_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: BeamWeaponCD
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_BeamWeaponCD_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_cooldown;
+    fixed lv_rate;
+    fixed lv_duration;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_cooldown = UnitWeaponPeriod(EventUnit(), 1);
+    lv_rate = UnitWeaponSpeedMultiplier(EventUnit(), 1);
+    lv_duration = ((lv_cooldown * lv_rate) / 16.0);
+    UnitBehaviorSetDuration(EventUnit(), "BeamTargetCD", lv_duration);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_BeamWeaponCD_Init () {
+    lib74A68E34_gt_BeamWeaponCD = TriggerCreate("lib74A68E34_gt_BeamWeaponCD_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_BeamWeaponCD, null, "BeamTargetCD", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ReaverScarabTargetDamage
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ReaverScarabTargetDamage_Func (bool testConds, bool runActions) {
@@ -5723,6 +5753,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(libCOMI_gt_CM_ArtifactTransmission_Upgraded, false);
             }
 
+            TriggerEnable(libCOMI_gt_CM_Zeratul_Entropic_Spawner, false);
+            TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, true);
         }
         else if (auto560DABDD_val == "TerranMengsk") {
             TriggerEnable(lib74A68E34_gt_MengskPreserveAutocast, true);
@@ -9615,6 +9647,67 @@ void lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ZeratulEntropicSpawner
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZeratulEntropicSpawner_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_spawner;
+    fixed lv_facing;
+    fixed lv_angelA;
+    fixed lv_angelA2;
+    fixed lv_angelB;
+    fixed lv_angelB2;
+    fixed lv_range;
+    int lv_p;
+    point lv_center;
+
+    // Automatic Variable Declarations
+    const int auto09ACA0E6_n = 5;
+    int auto09ACA0E6_i;
+
+    // Variable Initialization
+    lv_spawner = EventUnitCreatedUnit();
+    lv_facing = UnitGetFacing(EventUnit());
+    lv_range = 3.0;
+    lv_p = UnitGetOwner(lv_spawner);
+    lv_center = UnitGetPosition(lv_spawner);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(lv_spawner) == "ZeratulEntropicBlastCyanWeaponSpawner"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_angelA = (lv_facing - 90.0);
+    lv_angelB = (lv_facing + 90.0);
+    for (auto09ACA0E6_i = 1; auto09ACA0E6_i <= auto09ACA0E6_n; auto09ACA0E6_i += 1) {
+        UnitCreate(1, "ZeratulXelNagaChargedCrystalCyan", c_unitCreateIgnoreBirth, lv_p, PointWithOffsetPolar(lv_center, lv_range, lv_angelA), lv_angelA);
+        UnitCreateEffectUnit(lv_spawner, "ZeratulEntropicBlastCyanImpactSpawnSet", UnitLastCreated());
+        UnitCreate(1, "ZeratulXelNagaChargedCrystalCyan", c_unitCreateIgnoreBirth, lv_p, PointWithOffsetPolar(lv_center, lv_range, lv_angelB), lv_angelB);
+        UnitCreateEffectUnit(lv_spawner, "ZeratulEntropicBlastCyanImpactSpawnSet", UnitLastCreated());
+        lv_angelA += 36.0;
+        lv_angelB += 36.0;
+        Wait(0.1875, c_timeGame);
+    }
+    Wait(0.75, c_timeGame);
+    UnitKill(lv_spawner);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZeratulEntropicSpawner_Init () {
+    lib74A68E34_gt_ZeratulEntropicSpawner = TriggerCreate("lib74A68E34_gt_ZeratulEntropicSpawner_Func");
+    TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_ZeratulEntropicSpawner, null, "ZeratulEntropicBlastCyan", null);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MengskPreserveAutocast
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MengskPreserveAutocast_Func (bool testConds, bool runActions) {
@@ -11805,6 +11898,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_HideACHeroSpawnPlacement_Init();
     lib74A68E34_gt_PlayerColorsInit_Init();
     lib74A68E34_gt_CreateAICoopCaster_Init();
+    lib74A68E34_gt_BeamWeaponCD_Init();
     lib74A68E34_gt_ReaverScarabTargetDamage_Init();
     lib74A68E34_gt_ReaverPathing_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();
@@ -11951,6 +12045,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZeratulPrestigeTopBarStasis_Init();
     lib74A68E34_gt_ZeratulPrestigeTopBarLegion_Init();
     lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init();
+    lib74A68E34_gt_ZeratulEntropicSpawner_Init();
     lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
     lib74A68E34_gt_MutatorInit_Init();

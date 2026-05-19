@@ -117,6 +117,12 @@
     <CEffectSwitch id="BlindingCloudSwitch">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSwitch>
+    <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ColossusPurifierThermalLancesReverse">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
@@ -498,6 +504,12 @@
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
     </CEffectCreateUnit>
+    <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesForward">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesReverse">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectTeleport id="FleetwideJumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -837,10 +849,22 @@
     <CEffectEnumArea id="MedivacMengskHealSearch">
         <SearchFilters value="Biological,Visible;Self,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="MothershipAiur06BeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="MothershipAiur06SecondaryBeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="MothershipBeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="MothershipMassRecallApplyBehavior">
         <ValidatorArray value="NotUnmoved"/>
         <ValidatorArray value="NotSlaynElementalCocooned"/>
     </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="MothershipSecondaryBeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectTeleport id="MutatorAmonZeratulBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -1937,6 +1961,15 @@
     <CEffectApplyBehavior id="SOAMapWideChronoAB">
         <ValidatorArray index="1" value="StructureCheckCommanderPrestigeKaraxUnitChrono"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="SOAMothershipLineAttackAutoOnCheck">
+        <ValidatorArray value="SOAMothershipLineAttackCooldown"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="SOAMothershipv4BeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="SOAMothershipv4SecondaryBeamPersistent">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="SOAPurifierBeamDamage">
         <ResponseFlags index="Flee" value="1"/>
     </CEffectDamage>
@@ -2201,6 +2234,12 @@
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="UnitKnockbackBy2"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="ThermalLancesForward">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThermalLancesReverse">
+        <Flags index="Channeled" value="0"/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="ThorMengskSiegeTargetLargeAoESearch">
         <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="8"/>
@@ -3395,6 +3434,9 @@
         <WhichUnit Value="Source"/>
         <BehaviorLink value="BanelingExplode"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="BeamTargetCD">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
     <CEffectEnumArea id="BileLauncherZagaraBombardmentDamageSearch">
         <RevealerParams Duration="3" ShapeExpansion="1">
             <RevealFlags index="Unfog" value="1"/>
@@ -5690,4 +5732,126 @@
             <Charge CountUse="-1"/>
         </Cost>
     </CEffectModifyPlayer>
+    <CEffectCreatePersistent id="DisruptionBeam">
+        <InitialEffect value="DisruptionBeamPeriodicSet"/>
+        <PeriodicEffectArray index="0" value="DisruptionBeamPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="DisruptionBeamPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="DisruptionBeamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="SanitizationBeam">
+        <InitialEffect value="SanitizationBeamPeriodicSet"/>
+        <PeriodicEffectArray index="0" value="SanitizationBeamPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="SanitizationBeamPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="SanitizationBeamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="VoidRaySwarm">
+        <InitialEffect value="VoidRayWeaponPeriodicSet"/>
+        <PeriodicEffectArray index="0" value="VoidRayWeaponPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <PeriodicPeriodArray index="1" removed="1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="VoidRayWeaponPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="VoidRaySwarmDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="OracleWeaponCreatePersistent">
+        <PeriodicEffectArray index="0" value="OracleWeaponPeriodicSet"/>
+        <InitialEffect value="OracleWeaponPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="OracleWeaponPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="OracleWeaponDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="VoidRayChargeBeamRange">
+        <InitialEffect value="VoidRayChargeBeamRangeImpactSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="VoidRayChargeBeamRangeImpactSet">
+        <EffectArray value="BeamTargetCD"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="VoidRayChargeBeamBounce">
+        <InitialEffect value="VoidRayChargeBeamBounceImpactSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="VoidRayChargeBeamBounceImpactSet">
+        <EffectArray value="BeamTargetCD"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MammothBeamCP">
+        <InitialEffect value="MammothBeamPeriodicSet"/>
+        <PeriodicEffectArray index="0" value="MammothBeamPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="MammothBeamPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="MammothBeamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ZeratulDisruptionBeam">
+        <InitialEffect value="ZeratulDisruptionBeamPeriodicSet"/>
+        <PeriodicEffectArray index="0" value="ZeratulDisruptionBeamPeriodicSet"/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ZeratulDisruptionBeamPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="ZeratulDisruptionBeamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="MohandarChargeEffect01">
+        <ValidatorArray index="0" removed="1"/>
+        <ValidatorArray index="1" removed="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <ExpireEffect value=""/>
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <InitialEffect value="MohandarDamageSet1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="MohandarDamageSet1">
+        <EffectArray index="1" value="MohandarDamageSwitch"/>
+        <EffectArray value="BeamTargetCD"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectSwitch id="MohandarDamageSwitch">
+        <EditorCategories value="Race:Protoss"/>
+        <CaseArray Validator="VoidRayChargeBeamRangeCounterCheckPhase2Ready" Effect="MohandarMUx2"/>
+        <CaseArray Validator="VoidRayChargeBeamRangeCounterCheckPhase3Ready" Effect="MohandarMUx3"/>
+        <CaseDefault value="MohandarMUx1"/>
+    </CEffectSwitch>
+    <CEffectCreatePersistent id="ZeratulXelnagaChargedCrystalCyanPersist">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ZeratulXelNagaChargedCrystalCyanSet">
+        <EffectArray value="BeamTargetCD"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="FenixClolarionChargeBeamWeaponCP">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="FenixClolarionChargeBeamImpactSet">
+        <EffectArray value="BeamTargetCD"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="StukovInfestedDiamondBackBileStreamSprayInitialCP">
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <ExpireDelay value="0"/>
+        <PeriodicEffectArray value="StukovInfestedDiamondBackBileStreamSprayPeriodicSet"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="StukovInfestedDiamondBackBileStreamSprayPeriodicSet"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="StukovInfestedDiamondBackBileStreamSprayPeriodicSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="StukovInfestedDiamondBackBileStreamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
 </Catalog>

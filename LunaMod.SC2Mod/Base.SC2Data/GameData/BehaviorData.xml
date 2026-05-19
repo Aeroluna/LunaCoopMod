@@ -256,10 +256,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FenixArbiterRecalling" parent="ArbiterMPRecalling">
         <ExpireEffect value="FenixArbiterRecallSet"/>
-        <BehaviorCategories index="User7" value="1"/>
         <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
-        <Period value="0.6"/>
-        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FlashBangGrenadeSlow">
         <Alignment value="Negative"/>
@@ -568,6 +565,12 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="DuskWingBansheeCloak">
         <Modification WeaponRange="2" WeaponScanBonus="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamTargetCD">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <TimeScaleSource Value="Caster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="EMPDecloak">
         <BehaviorCategories index="Restorable" value="1"/>

@@ -747,7 +747,7 @@ static order MothershipMassRecall (int player, unit aiUnit, unitgroup scanGroup)
     filter = AIFilter(player);
     AISetFilterAlliance(filter, c_playerGroupAlly);
     AISetFilterCanAttackEnemy(filter, enemyGroundCount, enemyAirCount);
-    allies = UnitGroup(null, player, RegionPlayableMap(), 0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterUser1) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable) | (1 << c_targetFilterBuried), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32))), 0);
+    allies = UnitGroup(null, c_playerAny, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterUser1) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable) | (1 << c_targetFilterBuried), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32))), 0);
     allies = AIGetFilterGroup(filter, allies);
 
     targetPoint = AIBestTargetPoint(

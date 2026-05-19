@@ -304,6 +304,10 @@ This is how long after a sound is played before another is allowed to play. Can 
 
 Why couldn't Colossi walk over Nova?
 
+- Fixed an issue where beam weapons were unaffected by attack speed changes.
+
+With how many attack speed buffs that exist in co-op it's crazy that some units like Void Rays literally could not benefit from them.
+
 - Removed the Untransportable attribute.
 
 It was kinda redundant and just bloated the attributes on the unit info panel.
@@ -335,6 +339,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Snipe tracers would follow the target.
 - Fixed an issue where Liberators (and variants) could cast Defender Mode up to 1 range farther than intended.
 - Added a looping sound effect while Parasitic Bomb is active.
+- Fixed an issue where Colossus could not attack again until their current attack was finished.
 
 yeah.
 
@@ -2031,6 +2036,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 - Fixed an issue where you could not queue multiple upgrades on the Infested Command Center.
 - Fixed an issue where Volatile Infested would play a sad little wimpy pop sound effect when dying instead of a acid explosion.
 - Changed the icon for Stukov's P3.
+- Reworked Infested Diamondback attack to beam instead of projectile.
 
 yeah. The Siege Tank bug took way too long to figure out...
 

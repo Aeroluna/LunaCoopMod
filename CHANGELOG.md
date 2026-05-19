@@ -1,6 +1,6 @@
 # Changelog
 
-## 5/18/2026
+## 5/19/2026
 
 - Added `-allyresources` command to enable showing ally resources.
   - Removed `-allysupply` command.
@@ -10,8 +10,18 @@
 - Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
 - Renamed Artanis's Mothership's Mass Recall to Mass Teleport.
 - Fixed an issue where Arbiter's Stasis Field debuff had no tooltip.
+- Fixed an issue where Colossus could not attack again until their current attack was finished.
+- Fixed an issue where attack speed slows could cause Alarak's Mothership to not use Thermal Lance on cooldown.
 
 yeah.
+
+- Fixed an issue where beam weapons were unaffected by attack speed changes.
+
+Kinda insane that Blizzard never added a native way to make persistents be affected by attack speed.
+
+- Reworked Infested Diamondback attack to beam instead of projectile.
+
+It might have looked like a beam, but it was actually shooting an invisible projectile. For some reason it was still a channel though so attack speed changes didn't affect it. Seriously, Stukov's mech attack speed mastery didn't event work on Infested Diamondbacks!
 
 - Changed Mothership's Time Warp ability color to red.
 - Reworked Mothership's Time Warp ability to slow attack and movement speed of affected units by 40%.
