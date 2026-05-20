@@ -818,6 +818,13 @@ Throw in some Hellbats/Widow Mines for some extra SC2 flavor for the mech compos
     - Vulture
     - Cyclone
     - Banshee
+- Added new Terran composition: "Steel Tempest"
+  - This terrifying fusion combines the precision of Dominion covert operatives with the power of Terran's strongest mech.
+  - Key Units:
+    - Hellbat
+    - Ghost
+    - Siege Tank
+    - Thor
 - Added new Zerg composition: "Night of the Living"
   - In a twisted mix of Zerg and Terran, this force features the unfortunate victims of the Zerg Hyper-Evolutionary Virus.
   - Key Units:

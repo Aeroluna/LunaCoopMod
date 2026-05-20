@@ -42,6 +42,16 @@ When asking "why did they add that?", the answer is usually "cause it sounded in
 
 A new melee zerg composition! Zerg could use the variety.
 
+- Added new Terran composition: "Steel Tempest"
+  - This terrifying fusion combines the precision of Dominion covert operatives with the power of Terran's strongest mech.
+  - Key Units:
+    - Hellbat
+    - Ghost
+    - Siege Tank
+    - Thor
+
+The infamous Ghost mech composition, the horror of all ladder Zerg players.
+
 ## 5/11/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
