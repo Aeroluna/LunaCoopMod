@@ -989,6 +989,7 @@ Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
 - Fixed an issue where the placement model for Bunkers did not change with the Neosteel upgrade.
 - Changed Concussive Shells upgrade tooltip to reflect its AOE slow.
 - Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.
+- Fixed an issue where already created Spider Mines did not update their model after researching Cerberus Mines.
 
 yeah.
 
@@ -2051,6 +2052,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 - Fixed an issue where Volatile Infested would play a sad little wimpy pop sound effect when dying instead of a acid explosion.
 - Changed the icon for Stukov's P3.
 - Reworked Infested Diamondback attack to beam instead of projectile.
+- Fixed an issue where Infested Banshees did not play a sound when enabling/disabling Cloak.
 
 yeah. The Siege Tank bug took way too long to figure out...
 

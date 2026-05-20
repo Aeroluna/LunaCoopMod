@@ -29,6 +29,12 @@
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorSound id="Banshee_CloakOff">
+        <On Terms="Behavior.BansheeCloak_Stukov.Off" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Banshee_CloakOn">
+        <On Terms="Behavior.BansheeCloak_Stukov.On" Send="Create"/>
+    </CActorSound>
     <CActorModel id="CommanderPrestigeNovaSuperCloak">
         <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.On" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.Off" Send="AnimBracketStop BSD"/>
@@ -414,6 +420,15 @@
         </Wireframe>
         <SoundArray index="Birth" value="Goliath_BlackOps_Lockdown"/>
     </CActorUnit>
+    <CActorUnit id="NovaInfestedSiegeTank">
+        <SoundArray index="Ready" value="StukovInfestedSiegeTank_Ready"/>
+        <SoundArray index="Help" value="StukovInfestedSiegeTank_Help"/>
+        <SoundArray index="What" value="StukovInfestedSiegeTank_What"/>
+        <SoundArray index="Yes" value="StukovInfestedSiegeTank_Yes"/>
+        <SoundArray index="Attack" value="StukovInfestedSiegeTank_Attack"/>
+        <SoundArray index="Pissed" value="StukovInfestedSiegeTank_Pissed"/>
+        <SoundArray index="Movement" value="SISiegeTank_moveStart"/>
+    </CActorUnit>
     <CActorAction id="NovaWeaponImprovedCanisterRifleSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -451,6 +466,9 @@
     <CActorSiteOpLocalOffset id="SiegeTankMengskSiegedCargoSOpOffset">
         <LocalOffset value="0.000000,0.000000,-1.500000"/>
     </CActorSiteOpLocalOffset>
+    <CActorUnit id="SpiderMineVulture">
+        <On Terms="Upgrade.CerberusMines.Add" Send="ModelSwap CerberusMine"/>
+    </CActorUnit>
     <CActorUnit id="Spotter">
         <Remove Terms="TimerExpired; TimerName Ambience; PassChance 50.000000" Send="Create Left2Die_Spotter_Ambience"/>
     </CActorUnit>

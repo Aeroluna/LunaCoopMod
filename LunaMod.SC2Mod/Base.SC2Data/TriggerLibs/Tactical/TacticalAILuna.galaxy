@@ -1,40 +1,43 @@
 bool UnitIsSiegeUnit (unit inUnit) {
-  return UnitGetType(inUnit) == c_TU_SiegeTank ||
-         UnitGetType(inUnit) == c_TU_SiegeTankSieged ||
-         UnitGetType(inUnit) == "StukovInfestedSiegeTankUprooted" ||
-         UnitGetType(inUnit) == "StukovInfestedSiegeTank" ||
-         UnitGetType(inUnit) == "SiegeTank_BlackOps" ||
-         UnitGetType(inUnit) == "SiegeTankSieged_BlackOps" ||
-         UnitGetType(inUnit) == "SiegeTankMengsk" ||
-         UnitGetType(inUnit) == "SiegeTankMengskSieged" ||
-         //UnitGetType(inUnit) == "Liberator_BlackOps" ||
-         UnitGetType(inUnit) == "LiberatorAG_BlackOps" ||
-         //UnitGetType(inUnit) == "SILiberator" ||
-         UnitGetType(inUnit) == "SILiberatorAG" ||
-         //UnitGetType(inUnit) == "Liberator" ||
-         UnitGetType(inUnit) == "LiberatorAG" ||
-         UnitGetType(inUnit) == "Lurker" ||
-         UnitGetType(inUnit) == "LurkerBurrowed" ||
-         UnitGetType(inUnit) == "LurkerStetmann" ||
-         UnitGetType(inUnit) == "LurkerStetmannBurrowed" ||
-         UnitGetType(inUnit) == "ImpalerDehaka" ||
-         UnitGetType(inUnit) == "ImpalerDehakaBurrowed" ||
-         UnitGetType(inUnit) == "SwarmHost" ||
-         UnitGetType(inUnit) == "SwarmHostBurrowed" ||
-         UnitGetType(inUnit) == "SwarmHostMP" ||
-         UnitGetType(inUnit) == "SwarmHostBurrowedMP" ||
-         UnitGetType(inUnit) == "SwarmHostSplitB" ||
-         UnitGetType(inUnit) == "SwarmHostSplitBBurrowed" ||
-         UnitGetType(inUnit) == "DehakaSwarmHost" ||
-         UnitGetType(inUnit) == "DehakaSwarmHostBurrowed" ||
-         UnitGetType(inUnit) == "DehakaPrimalSwarmHost" ||
-         UnitGetType(inUnit) == "DehakaPrimalSwarmHostBurrowed" ||
-         UnitGetType(inUnit) == "WarpPrismTaldarim" ||
-         UnitGetType(inUnit) == "WarpPrismPhasingTaldarim" ||
-         UnitGetType(inUnit) == "ZeratulWarpPrism" ||
-         UnitGetType(inUnit) == "ZeratulWarpPrismPhasing" ||
-         UnitGetType(inUnit) == "ThorMengsk" ||
-         UnitGetType(inUnit) == "ThorMengskSieged";
+  string unitType = UnitGetType(inUnit);
+  return unitType == c_TU_SiegeTank ||
+         unitType == c_TU_SiegeTankSieged ||
+         unitType == "StukovInfestedSiegeTankUprooted" ||
+         unitType == "StukovInfestedSiegeTank" ||
+         unitType == "SiegeTank_BlackOps" ||
+         unitType == "SiegeTankSieged_BlackOps" ||
+         unitType == "SiegeTankMengsk" ||
+         unitType == "SiegeTankMengskSieged" ||
+         //unitType == "Liberator_BlackOps" ||
+         unitType == "LiberatorAG_BlackOps" ||
+         //unitType == "SILiberator" ||
+         unitType == "SILiberatorAG" ||
+         //unitType == "Liberator" ||
+         unitType == "LiberatorAG" ||
+         unitType == "Lurker" ||
+         unitType == "LurkerBurrowed" ||
+         unitType == "LurkerStetmann" ||
+         unitType == "LurkerStetmannBurrowed" ||
+         unitType == "ImpalerDehaka" ||
+         unitType == "ImpalerDehakaBurrowed" ||
+         unitType == "SwarmHost" ||
+         unitType == "SwarmHostBurrowed" ||
+         unitType == "SwarmHostMP" ||
+         unitType == "SwarmHostBurrowedMP" ||
+         unitType == "SwarmHostSplitB" ||
+         unitType == "SwarmHostSplitBBurrowed" ||
+         unitType == "DehakaSwarmHost" ||
+         unitType == "DehakaSwarmHostBurrowed" ||
+         unitType == "DehakaPrimalSwarmHost" ||
+         unitType == "DehakaPrimalSwarmHostBurrowed" ||
+         unitType == "WarpPrismTaldarim" ||
+         unitType == "WarpPrismPhasingTaldarim" ||
+         unitType == "ZeratulWarpPrism" ||
+         unitType == "ZeratulWarpPrismPhasing" ||
+         unitType == "ThorMengsk" ||
+         unitType == "ThorMengskSieged" ||
+         unitType == "NovaInfestedSiegeTankUprooted" ||
+         unitType == "NovaInfestedSiegeTank";
 }
 
 include "TriggerLibs/Tactical/TactProtAILuna"

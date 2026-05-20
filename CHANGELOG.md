@@ -1,6 +1,6 @@
 # Changelog
 
-## 5/19/2026
+## 5/20/2026
 
 - Added `-allyresources` command to enable showing ally resources.
   - Removed `-allysupply` command.
@@ -12,6 +12,8 @@
 - Fixed an issue where Arbiter's Stasis Field debuff had no tooltip.
 - Fixed an issue where Colossus could not attack again until their current attack was finished.
 - Fixed an issue where attack speed slows could cause Alarak's Mothership to not use Thermal Lance on cooldown.
+- Fixed an issue where already created Spider Mines did not update their model after researching Cerberus Mines.
+- Fixed an issue where Infested Banshees did not play a sound when enabling/disabling Cloak.
 
 yeah.
 
