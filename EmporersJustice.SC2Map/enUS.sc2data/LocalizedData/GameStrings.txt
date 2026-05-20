@@ -31,10 +31,15 @@ MapInfo/Player09/Name=Defenders of Man
 MapInfo/Player10/Name=Hostile
 MapInfo/Team00/Name=Team Amon
 MapInfo/Team01/Name=Team Universe
-Objective/Description/Nova08Bonus01=Protect the evacuation site until all the civilians are safely evacuated.
-Objective/Description/Nova08Primary01=Amon's forces won't retreat unless they suffers heavy casualties. Force them to back off by taking out as many of them as you can.
+Objective/Description/Nova08Bonus01=The civilian evacuation is still underway. Protect the evacuation site until it's finished.
+Objective/Description/Nova08Primary01=Amon's forces won't retreat unless they suffers heavy casualties. Rout them by killing as many as possible.
+Objective/Description/Nova08Primary02=Amon has sent a capital ship towards your position. If left unanswered, it will overwhelm the Dominion defenses.
+Objective/Description/Nova08Primary03=Another capital ship is on approach. Amon will not retreat until it is destroyed.
 Objective/Name/Nova08Bonus01=Protect the Evacuation Site
-Objective/Name/Nova08Primary01=Defeat Amon's Forces
+Objective/Name/Nova08Primary01=Defend the Dominion Base
+Objective/Name/Nova08Primary02=Destroy the Capital Ship
+Objective/Name/Nova08Primary03=Destroy the Capital Ship
+Param/Expression/0264E4D2=<s val="@@ObjectivePanelProgress">(<c val="FFFF00">~timer~ Remaining</c>)</s>
 Param/Value/021A3B55=Leviathan
 Param/Value/02F20D36=Gorgon Battlecruiser
 Param/Value/0E3D1C2D=<c val="ff0000">Nightmare Mode activated, good luck</c>
@@ -43,6 +48,7 @@ Param/Value/31FCB525=Tal'darim Mothership
 Param/Value/4946BC84=Gorgon Battlecruiser
 Param/Value/62FFB3D8=Evacuation Site
 Param/Value/641D5521=<c val="ff0000">Nightmare Mode deactivated</c>
+Param/Value/65B7DDB0=<s val="@@ObjectivePanelProgress">(<c val="FFFF00">0:00 Remaining</c>)</s>
 Param/Value/6BB303E1=
 Param/Value/6CC7FC25=Tal'darim Mothership
 Param/Value/81461D33=All of your ally's structures have been destroyed.
@@ -76,7 +82,9 @@ Unit/Tooltip/SubwayEntrance=
 UnitKillRank/GorgonCruiser=Moebius Corps Capital Ship
 UnitKillRank/NovaLeviathan=Monstrosity
 UnitKillRank/NovaMothership=Tal'darim Loyalist
-UserData/MissionObjective/AC_Nova08_Primary01_FormatText=~NAME~
+UserData/MissionObjective/AC_Nova08_Primary01_FormatText=~NAME~ ~CUSTOM~
+UserData/MissionObjective/AC_Nova08_Primary02_FormatText=Destroy the ~CUSTOM~
+UserData/MissionObjective/AC_Nova08_Primary03_FormatText=Destroy the ~CUSTOM~
 UserData/MissionTransmission/BonusCompletedN08_Name=N08 - Bonus Completed
 UserData/MissionTransmission/BonusCompletedN08_Suffix=- N08
 UserData/MissionTransmission/BonusFailedN08_Name=N08 - Bonus Failed

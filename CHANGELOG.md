@@ -54,6 +54,16 @@ A new melee zerg composition! Zerg could use the variety.
 
 The infamous Ghost mech composition, the horror of all ladder Zerg players.
 
+### Emporer's Justice
+
+- Increased total damage of Leviathan's Bio Stasis from 120 to 180.
+- Increased the radius of Leviathan's Bio Stasis from 2 to 3.
+- Reduced the duration of Leviathan's Bio Stasis from 8 seconds to 6 seconds.
+- Added a timer to the primary objective.
+- Added new objectives tracking the capital ship bosses.
+- Increased time before bonus objective starts from 350 seconds to 400 seconds.
+- Increased time to complete bonus objective from 390 seconds to 430 seconds.
+
 ## 5/11/2026
 
 - Fixed an issue where repairing Swann's Siege Tank/Thor wreckages would give minerals if the mineral cost reduction mastery was taken.
