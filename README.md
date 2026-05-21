@@ -768,6 +768,13 @@ Only commanders get the cool campaign version!
 
 Disruptors are kinda lame.
 
+- Removed Detector passive from Choker.
+- Removed Detector passive from Hunterling.
+- Removed Detector passive from Kaboomer.
+- Reduced Spotter's Glare movement speed buff from 100% increase to 50% increase.
+
+Dear Blizzard, not every heroic unit needs to be a detector! Spotters still get to be detectors because they're Overseers, but let's bring their movement speed buff to a more reasonably level.
+
 - Nerfed Widow mines by making them revealed while Sentinel Missile is on cooldown.
 - Added Drilling Claws upgrade:
   - Allows Widow Mines to burrow, unborrow and activate two times as fast.

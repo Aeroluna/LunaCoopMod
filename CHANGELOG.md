@@ -16,6 +16,13 @@ yeah.
 
 The co-op model is weird and missing some visual effects on the attack and has some clipping issues on its build animation.
 
+- Removed Detector passive from Choker.
+- Removed Detector passive from Hunterling.
+- Removed Detector passive from Kaboomer.
+- Reduced Spotter's Glare movement speed buff from 100% increase to 50% increase.
+
+Dear Blizzard, not every heroic unit needs to be a detector! Spotters still get to be detectors because they're Overseers, but let's bring their movement speed buff to a more reasonably level.
+
 ## 5/20/2026
 
 - Added `-allyresources` command to enable showing ally resources.
