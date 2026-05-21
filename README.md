@@ -854,6 +854,7 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Added a warp-in effect for Hybrid.
 - Fixed an issue where Hybrid Behemoth's Slimed! debuff had no tooltip.
 - Fixed an issue where Hybrid Destroyer's Graviton Prison did not play a spell animation.
+- Fixed an issue where Lurkers did not benefit from attack upgrades.
 
 yeah.
 

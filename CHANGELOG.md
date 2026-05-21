@@ -8,6 +8,7 @@
 - Fixed an issue where Drakken Laser Drill wasn't affect by attack speed changes.
 - Fixed an issue where Thor's ground weapon did not benefit from Advanced Optics after researching Multi-Lock Weapons System.
 - Fixed an issue where Infested Colonist Compound upgrades listed the wrong amount of infested.
+- Fixed an issue where Lurkers did not benefit from attack upgrades.
 
 yeah.
 
