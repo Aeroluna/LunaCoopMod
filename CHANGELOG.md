@@ -6,6 +6,11 @@
 - Added a tooltip to the Drakken Laser Drill's weapon that shows it ignores armor.
 - Fixed an issue where Drakken Laser Drill's weapon showed the wrong attack speed.
 - Fixed an issue where Drakken Laser Drill wasn't affect by attack speed changes.
+- Fixed an issue where Thor's ground weapon did not benefit from Advanced Optics after researching Multi-Lock Weapons System.
+- Fixed an issue where Infested Colonist Compound upgrades listed the wrong amount of infested.
+
+yeah.
+
 - Changed Drakken Laser Drill model to campaign model.
 
 The co-op model is weird and missing some visual effects on the attack and has some clipping issues on its build animation.
