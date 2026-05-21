@@ -227,6 +227,14 @@
         <EffectArray index="4" value="MutatorChangelingInit"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="DrakkenLaserDrillResetTurretFacingCP">
+        <InitialOffset value="0,-5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="DrakkenLaserDrillResetTurretFacingMU">
+        <ModifyTurret>
+            <Flags index="Tracking" value="1"/>
+        </ModifyTurret>
+    </CEffectModifyUnit>
     <CEffectDamage id="EMPBlackOpsDamage">
         <ShieldBonus value="100"/>
     </CEffectDamage>
@@ -656,6 +664,12 @@
         <PeriodicPeriodArray value="0.31"/>
         <PeriodicPeriodArray value="0.325"/>
     </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="LaserDrillTripodCreatePersistentCoop">
+        <TimeScaleSource Value="Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="LaserDrillTripodDamageCoop">
+        <Death value="Fire"/>
+    </CEffectDamage>
     <CEffectDamage id="LocustMPDamage">
         <Amount value="10"/>
     </CEffectDamage>
@@ -913,6 +927,18 @@
         <EffectArray value="MutatorHybridFacilityCharge"/>
         <EffectArray value="MutatorHybridFacilityChargeMU"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="MutatorLaserDrillCP">
+        <TimeScaleSource Value="Caster"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="MutatorLaserDrillDamageStageA">
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectDamage id="MutatorLaserDrillDamageStageB">
+        <Death value="Fire"/>
+    </CEffectDamage>
+    <CEffectDamage id="MutatorLaserDrillDamageStageC">
+        <Death value="Fire"/>
+    </CEffectDamage>
     <CEffectCreateHealer id="NanoRepair">
         <ValidatorArray index="8" removed="1"/>
     </CEffectCreateHealer>
@@ -5852,6 +5878,14 @@
     <CEffectSet id="StukovInfestedDiamondBackBileStreamSprayPeriodicSet">
         <EffectArray value="BeamTargetCD"/>
         <EffectArray value="StukovInfestedDiamondBackBileStreamDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="LaserDrillTripodCoopFinalPersistent">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <InitialEffect value="LaserDrillTripodCoopImpactSet"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="LaserDrillTripodCoopImpactSet">
+        <EffectArray value="BeamTargetCD"/>
         <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
     </CEffectSet>
 </Catalog>

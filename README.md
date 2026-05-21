@@ -1758,7 +1758,7 @@ Not sure why this was nerfed to not hit invisible units at some point.
 
 - Buffed Alarak's Destruction Wave to unburrow units.
 
-Always feels weird when you apply knockback to burrowed units. They literally fly in an arc over Alarak but somehow he doesn't seem them?
+Always feels weird when you apply knockback to burrowed units. They literally fly in an arc over Alarak but somehow he doesn't see them?
 
 - Buffed Alarak's Lightning Surge to also proc when Supplicants are sacrificed by Ascendants.
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## 5/21/2026
+
+- Added a tooltip to the Destroyer's weapon that shows it ignores armor.
+- Added a tooltip to the Drakken Laser Drill's weapon that shows it ignores armor.
+- Fixed an issue where Drakken Laser Drill's weapon showed the wrong attack speed.
+- Fixed an issue where Drakken Laser Drill wasn't affect by attack speed changes.
+- Changed Drakken Laser Drill model to campaign model.
+
+The co-op model is weird and missing some visual effects on the attack and has some clipping issues on its build animation.
+
 ## 5/20/2026
 
 - Added `-allyresources` command to enable showing ally resources.

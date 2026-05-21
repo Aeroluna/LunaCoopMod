@@ -41,6 +41,13 @@
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.On; ValidateUnit HaveNovaBansheeSpeed" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorUnit id="DrakkenLaserDrillCoop">
+        <On index="82" Terms="Behavior.DrakkenLaserDrillBirth.On" Send="AnimBracketStart Birth Stand,Work,End {} Stand,Work,Start OpeningPlayForever,Instant"/>
+        <On index="87" Send="AnimBracketStart Work Stand,Work,End {} Stand,Work,Start OpeningPlayForever"/>
+        <On index="93" Send="AnimPlay Attack Attack,00"/>
+        <On index="95" Send="AnimPlay Attack Attack,00 0 -1.000000 1.000000 1.350000 AsTimeScale"/>
+        <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+    </CActorUnit>
     <CActorAction id="GhostSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -113,6 +120,12 @@
         <Model value="CloakingField"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorUnit id="MutatorLaserDrill">
+        <On index="81" Send="AnimPlay Attack Attack PlayForever -1.000000 -1.000000 0.500000 AsTimeScale"/>
+        <On index="83" Send="AnimPlay AttackA Attack,A PlayForever -1.000000 -1.000000 0.750000 AsTimeScale"/>
+        <On index="85" Send="AnimPlay AttackB Attack,B PlayForever -1.000000 -1.000000 1.000000 AsTimeScale"/>
+        <Model value="MutatorLaserDrill"/>
+    </CActorUnit>
     <CActorModel id="NovaBoomBotBirthModel" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
