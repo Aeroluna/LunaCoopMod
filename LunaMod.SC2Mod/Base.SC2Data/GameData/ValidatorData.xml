@@ -57,6 +57,9 @@
         <CombineArray value="HasLocustTimedLife"/>
         <CombineArray value="NotSummonAndNotTimedLifeOrLarva"/>
     </CValidatorCombine>
+    <CValidatorCombine id="CasterThorMengskSiegedSmallAoE">
+        <CombineArray index="0" value="ThorMengskMorphValidatorCombine"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="CommanderPrestigeNovaCloak">
         <WhichPlayer Value="Creator"/>
         <Find value="1"/>
@@ -281,6 +284,26 @@
     <CValidatorUnitType id="IsTychusBunker">
         <Value value="TychusBunker"/>
     </CValidatorUnitType>
+    <CValidatorLocationCompareRange id="ThorMengskSiegedNotOutOfRange">
+        <Compare value="LE"/>
+        <Range value="8"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="LiberatorMorphValidatorCombine">
+        <CombineArray value="LiberatorNotRecallingCombine"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="ThorMengskUpgradeValidatorCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterLevelGTE3"/>
+        <CombineArray value="ThorMengskMorphValidatorCombine"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="ThorMengskMorphValidatorCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="HasLiberatorMorphBehavior"/>
+        <CombineArray value="HasNoLiberatorYoink"/>
+        <CombineArray value="LiberatorNotRecallingCombine"/>
+        <CombineArray value="ThorMengskSiegedNotOutOfRange"/>
+    </CValidatorCombine>
     <CValidatorCombine id="LurkerIsBurrowedAndNotDead">
         <CombineArray value="LurkerIsBurrowed"/>
         <CombineArray value="CasterNotDead"/>
@@ -295,6 +318,57 @@
         <Value value="20"/>
         <Behavior value="MutatorHybridFacilityCharge"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingArbiterMP">
+        <Behavior value="ArbiterMPRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingFenixArbiter">
+        <Behavior value="FenixArbiterRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingDarkPylon">
+        <Behavior value="DarkPylonRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingGaryStetmann">
+        <Behavior value="GaryStetmannRecalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingMothershipStrategicWarpOut">
+        <Behavior value="MothershipStrategicWarpOut"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsNotRecallingCombine">
+        <CombineArray value="IsNotRecallingArbiterMP"/>
+        <CombineArray value="IsNotRecallingFenixArbiter"/>
+        <CombineArray value="IsNotRecallingDarkPylon"/>
+        <CombineArray value="IsNotRecallingGaryStetmann"/>
+        <CombineArray value="IsNotRecallingMothershipStrategicWarpOut"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="LiberatorNotRecallingArbiterMP">
+        <Behavior value="ArbiterMPRecalling"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LiberatorNotRecallingFenixArbiter">
+        <Behavior value="FenixArbiterRecalling"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LiberatorNotRecallingDarkPylon">
+        <Behavior value="DarkPylonRecalling"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LiberatorNotRecallingGaryStetmann">
+        <Behavior value="GaryStetmannRecalling"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="LiberatorNotRecallingMothershipStrategicWarpOut">
+        <Behavior value="MothershipStrategicWarpOut"/>
+        <WhichUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="LiberatorNotRecallingCombine">
+        <CombineArray value="LiberatorNotRecallingMothership"/>
+        <CombineArray value="LiberatorNotRecallingMothershipCore"/>
+        <CombineArray value="LiberatorNotRecallingArbiterMP"/>
+        <CombineArray value="LiberatorNotRecallingFenixArbiter"/>
+        <CombineArray value="LiberatorNotRecallingDarkPylon"/>
+        <CombineArray value="LiberatorNotRecallingGaryStetmann"/>
+        <CombineArray value="LiberatorNotRecallingMothershipStrategicWarpOut"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NoNexusRecalled">
         <Behavior value="NexusRecalled"/>
     </CValidatorUnitCompareBehaviorCount>

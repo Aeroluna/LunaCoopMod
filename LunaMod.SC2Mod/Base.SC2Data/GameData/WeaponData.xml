@@ -122,6 +122,9 @@
     <CWeaponLegacy id="HotSBanelingDummySmall">
         <Period value="0.833"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="ImpalerDehaka">
+        <Icon value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level0.dds"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="InfestedCivilianAC">
         <EditorCategories value="Race:Zerg"/>
         <Options index="Melee" value="1"/>
@@ -281,10 +284,25 @@
         <LegacyOptions index="NoDeceleration" value="1"/>
         <AllowedMovement value="Moving"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="ThorMengskSieged">
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+            <SortArray value="TSRandom"/>
+        </AcquireTargetSorts>
+    </CWeaponLegacy>
     <CWeaponLegacy id="ThorMengskSiegedGround" parent="ThorMengskSieged">
-        <Options index="Disabled" value="1"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
         <DisplayEffect value="ThorMengskSiegedDamageGround"/>
         <TargetFilters value="Ground,Visible;Ally,Air,Worker,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+            <SortArray value="TSRandom"/>
+        </AcquireTargetSorts>
     </CWeaponLegacy>
     <CWeaponLegacy id="VorazunCoopWeapon">
         <EditorCategories value="Race:Protoss"/>

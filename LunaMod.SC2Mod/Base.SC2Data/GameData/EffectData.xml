@@ -670,6 +670,32 @@
     <CEffectDamage id="LaserDrillTripodDamageCoop">
         <Death value="Fire"/>
     </CEffectDamage>
+    <CEffectCreatePersistent id="ThorMengskInterruptedMorphDelayPersistent">
+        <EditorCategories value="Race:Terran"/>
+        <ExpireEffect value="ThorMengskUnsiegeMorphOrderSet"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThorMengskSiegeTargetCP">
+        <FinalEffect value="ThorMengskSiegeTargetSuddenUpgradeSwitch"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="ThorMengskSiegeTargetSuddenUpgradeSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="ThorMengskUpgradeValidatorCombine" Effect="ThorMengskSiegeTargetLargeAoECP"/>
+        <CaseDefault value="ThorMengskInterruptedMorphDelayPersistent"/>
+    </CEffectSwitch>
+    <CEffectIssueOrder id="ThorMengskUnsiegeMorphOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="ThorMengskUnsiege"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="ThorMengskUnsiegeMorphOrderSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LiberatorTargetAAMorphRB"/>
+        <EffectArray value="ThorMengskUnsiegeMorphOrder"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
     <CEffectDamage id="LocustMPDamage">
         <Amount value="10"/>
     </CEffectDamage>
@@ -2266,6 +2292,40 @@
     <CEffectCreatePersistent id="ThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThorMengskSiegeTargetDelayCP">
+        <ExpireEffect value="ThorMengskSiegeTargetCP"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray index="0" value="ThorMengskSiegeTargetSearch"/>
+        <PeriodicEffectArray index="1" removed="1"/>
+        <PeriodicPeriodArray index="0" value="0.25"/>
+        <PeriodicPeriodArray index="1" removed="1"/>
+        <AINotifyEffect value="ThorMengskSiegeTargetSearch"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThorMengskSiegeTargetLargeAoECP">
+        <PeriodicValidator value="ThorMengskMorphValidatorCombine"/>
+        <FinalEffect value="ThorMengskInterruptedMorphDelayPersistent"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ThorMengskSiegeTargetLargeAoEDelayCP">
+        <ExpireEffect value="ThorMengskSiegeTargetCP"/>
+        <PeriodCount value="12"/>
+        <PeriodicEffectArray index="0" value="ThorMengskSiegeTargetLargeAoESearch"/>
+        <PeriodicEffectArray index="1" removed="1"/>
+        <PeriodicPeriodArray index="0" value="0.25"/>
+        <PeriodicPeriodArray index="1" removed="1"/>
+        <AINotifyEffect value="ThorMengskSiegeTargetLargeAoESearch"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ThorMengskSiegeTargetOrderInitialSet">
+        <EffectArray value="LiberatorTargetMorphAB"/>
+        <EffectArray value="ThorMengskSiegeOrder"/>
+        <EffectArray value="ThorMengskSiegeTargetDelayCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="ThorMengskSiegeTargetLargeAoEOrderInitialSet">
+        <EffectArray value="LiberatorTargetMorphAB"/>
+        <EffectArray value="ThorMengskSiegeOrder"/>
+        <EffectArray value="ThorMengskSiegeTargetLargeAoEDelayCP"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
     <CEffectEnumArea id="ThorMengskSiegeTargetLargeAoESearch">
         <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="8"/>
@@ -2274,6 +2334,9 @@
         <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="6"/>
     </CEffectEnumArea>
+    <CEffectSet id="ThorMengskSiegeTargetSuddenUpgradeWrapper">
+        <ValidatorArray index="1" value="ThorMengskMorphValidatorCombine"/>
+    </CEffectSet>
     <CEffectDamage id="ThorMengskSiegedDamageGround" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
@@ -3716,7 +3779,7 @@
         <ImpactOffset value="0,-20,0"/>
     </CEffectLaunchMissile>
     <CEffectSet id="InstantUnburrow">
-        <ValidatorArray index="0" value="IsBuried"/>
+        <ValidatorArray index="0" removed="1"/>
     </CEffectSet>
     <CEffectModifyUnit id="MarauderMengskAbsorbMU">
         <EditorCategories value=""/>

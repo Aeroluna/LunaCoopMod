@@ -9,6 +9,10 @@
 - Fixed an issue where Thor's ground weapon did not benefit from Advanced Optics after researching Multi-Lock Weapons System.
 - Fixed an issue where Infested Colonist Compound upgrades listed the wrong amount of infested.
 - Fixed an issue where Lurkers did not benefit from attack upgrades.
+- Fixed an issue where Colossus-type units could walk through Havoc Force Fields.
+- Fixed an issue where Liberators that are Abducted don't unsiege instantly.
+- Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
+- Fixed an issue where Primal Impaler's Weapon used the wrong icon at level 0.
 
 yeah.
 

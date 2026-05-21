@@ -340,6 +340,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Liberators (and variants) could cast Defender Mode up to 1 range farther than intended.
 - Added a looping sound effect while Parasitic Bomb is active.
 - Fixed an issue where Colossus could not attack again until their current attack was finished.
+- Fixed an issue where Liberators that are Abducted don't unsiege instantly.
 
 yeah.
 
@@ -2223,7 +2224,8 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Zweihaka had a highlight tooltip.
 - Fixed an issue where Dakrun's Brutal Charge's launch dust particles faced the incorrect direction.
 - Fixed an issue where Dakrun/Glevig/Murvar could be loaded into transports.
-- Fixed an issue where Glevif could be affected by knockback effects.
+- Fixed an issue where Glevig could be affected by knockback effects.
+- Fixed an issue where Primal Impaler's Weapon used the wrong icon at level 0.
 
 yeah.
 
@@ -2830,6 +2832,7 @@ Previously the status bar only showed hp.
 - Improved Aegis Guard's Incapacitor Shells debuff tooltip.
 - Fixed an issue where Blackhammer's attack muzzle flash only appeared on the right weapon.
 - Changed the visual missile of Contaminated Strike to be directional.
+- Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
 
 yeah.
 
