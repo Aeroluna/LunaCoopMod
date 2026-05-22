@@ -6507,7 +6507,7 @@
         <UnitIcon value="Assets\Textures\btn-unit-protoss-stalker-shakuras-ds.dds"/>
     </CActorUnit>
     <CActorUnit id="VorazunShadowGuard">
-        <On Terms="Abil.ShadowGuardVoidStasis" Send="AnimPlay Spell Attack"/>
+        <On Terms="Abil.ShadowGuardVoidStasis.SourceCastStart" Send="AnimPlay Spell Attack"/>
         <On Terms="Effect.DarkTemplarShadowFuryImpactSet.Start" Send="AnimClear ShadowFury"/>
         <On Terms="Effect.DarkTemplarShadowFuryImpactSet.Start" Send="AnimPlay ShadowFury Attack,00 0 0.000000 0.000000 0.400000 AsDuration"/>
         <Model value="DarkTemplar_Golden"/>
@@ -6525,6 +6525,12 @@
             <Image index="1" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield02.dds"/>
             <Image index="2" value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield03.dds"/>
         </WireframeShield>
+        <SoundArray index="Ready" value="Mohandar_Ready"/>
+        <SoundArray index="Help" value="Mohandar_Help"/>
+        <SoundArray index="What" value="Mohandar_What"/>
+        <SoundArray index="Yes" value="Mohandar_Yes"/>
+        <SoundArray index="Attack" value="Mohandar_Attack"/>
+        <SoundArray index="Pissed" value="Mohandar_Pissed"/>
     </CActorUnit>
     <CActorUnit id="VoidRayShakuras">
         <Model value="VoidRayNerazim"/>

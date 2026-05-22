@@ -13,6 +13,11 @@
 - Fixed an issue where Liberators that are Abducted don't unsiege instantly.
 - Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
 - Fixed an issue where Primal Impaler's Weapon used the wrong icon at level 0.
+- Changed Shadow Guard voice set.
+- Fixed an issue where Shadow Guard's Void Prison animation played erroneously.
+- Fixed an issue where Vorazun's Dark Templar had the wrong Blink icon.
+- Fixed an issue where Shadow Guard's Permanently Cloaked tooltip incorrectly stated they had increased shield regeneration while undetected.
+- Fixed an issue where Shadow Guards did not have a kill display.
 
 yeah.
 
@@ -26,6 +31,12 @@ The co-op model is weird and missing some visual effects on the attack and has s
 - Reduced Spotter's Glare movement speed buff from 100% increase to 50% increase.
 
 Dear Blizzard, not every heroic unit needs to be a detector! Spotters still get to be detectors because they're Overseers, but let's bring their movement speed buff to a more reasonably level.
+
+- Reduced the cooldown of Spec Ops Ghost's Snipe ability from 10 seconds to 15 seconds.
+- Reduced the cooldown of Spec Ops Ghost's EMP Round ability from 10 seconds to 15 seconds.
+- Reduced the cooldown of Marauder Commandos's Magrail Munitions ability from 10 seconds to 15 seconds.
+
+These cooldowns are probably still way too low but they definitely need a nerf.
 
 ## 5/20/2026
 

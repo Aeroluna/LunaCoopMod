@@ -1515,6 +1515,9 @@ When Blizzard made Shadow Guard, they just stole the weapon from Vorazun. Now th
 - Changed Dark Templar Blink ability button icon.
 - Renamed Dark Templar Blink ability to Shadow Stride.
 - Changed Centurion Darkcoil shield buff to no longer glow while out of shields.
+- Changed Shadow Guard voice set.
+- Fixed an issue where Shadow Guard's Permanently Cloaked tooltip incorrectly stated they had increased shield regeneration while undetected.
+- Fixed an issue where Shadow Guards did not have a kill display.
 
 yeah.
 
@@ -1872,9 +1875,9 @@ Copied from Versus.
 Changes Magrail Munitions from a nuke to a CC ability to further reinforce the Marauder's role as a support frontliner.
 
 - Reduced the cooldown of Covert Banshee's Rocket Barrage ability from 15 seconds to 10 seconds.
-- Reduced the cooldown of Spec Ops Ghost's Snipe ability from 30 seconds to 10 seconds.
-- Reduced the cooldown of Spec Ops Ghost's EMP Round ability from 45 seconds to 10 seconds.
-- Reduced the cooldown of Marauder Commandos's Magrail Munitions ability from 30 seconds to 10 seconds.
+- Reduced the cooldown of Spec Ops Ghost's Snipe ability from 30 seconds to 15 seconds.
+- Reduced the cooldown of Spec Ops Ghost's EMP Round ability from 45 seconds to 15 seconds.
+- Reduced the cooldown of Marauder Commandos's Magrail Munitions ability from 30 seconds to 15 seconds.
 
 Many of Nova's unit cooldowns are so long that they usually are used once at the start of a fight and then never again. Reduced cooldowns should help her in longer fights.
 
