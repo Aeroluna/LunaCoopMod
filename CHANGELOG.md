@@ -31,6 +31,10 @@ They are uncommandable anyways, they shouldn't have higher priority than your re
 
 These guys are pushovers anyways, give them Blink!
 
+- Fixed an issue where many hotkeys were missing or conflicting.
+
+The problem with using Grid hotkeys is you become completely oblivious to how badly you are screwing up all the hotkeys.
+
 ## 5/21/2026
 
 - Added a tooltip to the Destroyer's weapon that shows it ignores armor.
