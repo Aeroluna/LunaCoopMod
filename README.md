@@ -698,6 +698,7 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
 - Added Prismatic Alignment ability to Void Rays.
   - Increases damage vs. armored units by +6 for 20 seconds.
   - Reduces movement speed by 25% while active.
+- Added Prismatic Alignment AI to Void Rays.
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
 
@@ -715,6 +716,14 @@ Shield Recharge replaced Hallucination in the LotV campaign presumably because i
 - Added chance for Motherships to appear in late-game skytoss comps.
 
 Motherships are a vanilla unit, they deserve representation! It is also very funny watching them Mass Recall in some random units.
+
+- Added Archon Merge ability to Dark Templar.
+- Added Shadow Stride ability to Dark Templar.
+- Added Shadow Stride upgrade:
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
+- Added Shadow Stride AI to Dark Templar.
+
+These guys are pushovers anyways, give them Blink!
 
 - Added Hyperflight Rotors upgrade for Banshees.
   - Increases movement speed from 2.75 to 3.75.

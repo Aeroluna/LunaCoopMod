@@ -4,6 +4,16 @@
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
 
+yeah.
+
+- Added Archon Merge ability to Dark Templar.
+- Added Shadow Stride ability to Dark Templar.
+- Added Shadow Stride upgrade:
+  - Amon will gain this upgrade after never/never/1200/900 seconds.
+- Added Shadow Stride AI to Dark Templar.
+
+These guys are pushovers anyways, give them Blink!
+
 ## 5/21/2026
 
 - Added a tooltip to the Destroyer's weapon that shows it ignores armor.

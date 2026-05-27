@@ -391,6 +391,26 @@
     <CEffectTeleport id="DarkPylonRecallTeleport">
         <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
+    <CEffectTeleport id="DarkTemplarBlink">
+        <EditorCategories value="Race:Protoss"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="8"/>
+        <Range value="8"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportEffect value="DarkTemplarBlinkSet"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="DarkTemplarBlinkAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="DarkTemplarBlinkAttackDelay"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DarkTemplarBlinkSet">
+        <EffectArray value="TeleportRemoveCategoryCaster"/>
+        <EffectArray value="DarkTemplarBlinkAB"/>
+    </CEffectSet>
     <CEffectTeleport id="DarkTemplarShadowDash">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>

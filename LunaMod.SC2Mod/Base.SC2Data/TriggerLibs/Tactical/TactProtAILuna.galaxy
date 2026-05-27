@@ -560,7 +560,7 @@ void AIThinkSentryLuna (int player, unit aiUnit, unitgroup scanGroup) {
 //  *** ADEPT ***
 //--------------------------------------------------------------------------------------------------
 
-order AIPsionicTransferWaveLuna (int player, unit aiUnit, unitgroup scanGroup) {
+order AIPsionicTransferWaveLuna (int player, unit aiUnit) {
     order ord;
     order curOrder;
     point targetPoint;
@@ -610,11 +610,10 @@ order AIPsionicTransferWaveLuna (int player, unit aiUnit, unitgroup scanGroup) {
 }
 
 //--------------------------------------------------------------------------------------------------
-order AIPsionicTransferCombatLuna (int player, unit aiUnit, unitgroup scanGroup) {
+order AIPsionicTransferCombatLuna (int player, unit aiUnit) {
     order ord;
     order curOrder;
     unit targetUnit;
-    int dist;
 
     //  See if this spell can be cast at all.
     ord = AICreateOrder(player, c_AB_PsionicTransfer, 0);
@@ -644,13 +643,13 @@ order AIPsionicTransferCombatLuna (int player, unit aiUnit, unitgroup scanGroup)
 void AIThinkAdeptLuna (int player, unit aiUnit, unitgroup scanGroup) {
     order ord;
 
-    ord = AIPsionicTransferWaveLuna(player, aiUnit, scanGroup);
+    ord = AIPsionicTransferWaveLuna(player, aiUnit);
     if (ord != null) {
         AICast(aiUnit, ord, c_noMarker, c_castRetreat);
         return;
     }
 
-    ord = AIPsionicTransferCombatLuna(player, aiUnit, scanGroup);
+    ord = AIPsionicTransferCombatLuna(player, aiUnit);
     if (ord != null) {
         AICast(aiUnit, ord, c_noMarker, c_castHold);
         return;
@@ -670,6 +669,7 @@ static order MothershipTimeWarp (int player, unit aiUnit, unitgroup scanGroup) {
     int enemyCount;
     point targetPoint;
     int diff = AIPlayerDifficulty(player);
+    bool groundAllies;
 
     // Do not proceed if the order is invalid for some reason
     ord = AICreateOrder(player, c_AB_TimeWarp, 0);
@@ -681,7 +681,8 @@ static order MothershipTimeWarp (int player, unit aiUnit, unitgroup scanGroup) {
     filterAI = AIFilter(player);
     //AISetFilterMelee(filterAI, c_onlyMelee);
     //AISetFilterPlane(filterAI, c_planeGround);
-    AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, c_airAlliesNearby);
+    groundAllies = AINearbyPlaneTest(UnitGetPosition(aiUnit), player, c_mtwRange, c_planeGround, c_unitAllianceAlly);
+    AISetFilterCanAttackAlly(filterAI, groundAllies, c_airAlliesNearby);
     AISetFilterBehaviorCount(filterAI, c_noBehaviorMin, c_noBehaviorMax, c_BF_TemporalField);
     meleeEnemyGroup = AIGetFilterGroup(filterAI, scanGroup);
 
@@ -817,6 +818,90 @@ void AIThinkMothershipLuna (int player, unit aiUnit, unitgroup scanGroup) {
                     cooldown = TimeWarpCoolDown_Brutal;
                 }
                 AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_TimeWarpCoolDown, cooldown);
+                return;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** Dark Templar ***
+//--------------------------------------------------------------------------------------------------
+
+order DarkTemplarBlink (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unit targetUnit;
+    fixed dist;
+    point targetPoint;
+    aifilter filterAI;
+    unitgroup enemyGroup;
+    int scanCount;
+    unit unitToCheck;
+
+    //  See if this spell can be cast at all.
+    ord = AICreateOrder(player, "DarkTemplarBlink", 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    // Filter out air units
+    filterAI = AIFilter(player);
+    AISetFilterPlane(filterAI, c_planeGround);
+    AISetFilterCanAttackAlly(filterAI, c_groundAlliesNearby, false);
+    AISetFilterRange(filterAI, aiUnit, 8);
+    enemyGroup = AIGetFilterGroup(filterAI, scanGroup);
+
+    scanCount = UnitGroupCount(enemyGroup, c_unitCountAll);
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(enemyGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (!UnitCanAttackTarget(aiUnit, unitToCheck)) {
+            UnitGroupRemove(enemyGroup, unitToCheck);
+        }
+    }
+
+    targetUnit = UnitGroupRandomUnit(enemyGroup, c_unitCountAlive);
+    if (targetUnit == null) {
+        return null;
+    }
+
+    targetPoint = UnitGetPosition(targetUnit);
+    dist = DistanceBetweenPoints(UnitGetPosition(aiUnit), targetPoint);
+    if (dist < 4) {
+        return null;  // only blink if we'll move far enough
+    }
+
+    OrderSetTargetPoint(ord, targetPoint);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+fixed DarkTemplarBlinkCoolDown_Hard = 40;
+
+const int c_DarkTemplarBlinkCoolDown = c_tactTimerFirst;
+
+void AIThinkDarkTemplar (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+    fixed cooldown;
+    int diff = AIPlayerDifficulty(player);
+
+    // Blink
+    if(AIPlayerDifficulty(player) > c_campNormal) {
+        if (AITactCooldownAllow(aiUnit, c_DarkTemplarBlinkCoolDown)) {
+            ord = DarkTemplarBlink(player, aiUnit, scanGroup);
+            if (ord != null) {
+                if (diff == c_campAdvanced) {
+                    cooldown = DarkTemplarBlinkCoolDown_Hard;
+                }
+                else if (diff == c_campExpert) {
+                    cooldown = 0;
+                }
+                AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_DarkTemplarBlinkCoolDown, cooldown);
                 return;
             }
         }

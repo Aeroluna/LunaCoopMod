@@ -378,6 +378,37 @@
     <CActorSound id="DarkTemplarShadowDashSound">
         <Sound value="DarkTemplar_BlinkCloud"/>
     </CActorSound>
+    <CActorModel id="DarkTemplarBlinkInSmoke" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardDarkTemplarBlinkLaunchLocation"/>
+        <On Terms="Effect.DarkTemplarBlink.Stop; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Impact ::Self"/>
+        <On Terms="ActorCreation" Send="Create DarkTemplarBlinkStopSound"/>
+    </CActorModel>
+    <CActorModel id="DarkTemplarBlinkOutSmoke" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardDarkTemplarBlinkTargetLocation"/>
+        <On Terms="Effect.DarkTemplarBlink.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Launch ::Self"/>
+    </CActorModel>
+    <CActorRange id="DarkTemplarBlinkRange" parent="RangeAbil" abil="DarkTemplarBlink"/>
+    <CActorSound id="DarkTemplarBlinkStopSound" parent="SoundOneShot">
+        <Sound value="DarkTemplar_Blink"/>
+        <Host Subject="_Unit"/>
+        <!-- DarkTemplarBlink should be heard only by the local player -->
+        <!-- DarkTemplarBlink should be heard only by the enemy player with detection -->
+    </CActorSound>
+    <CActorSound id="DarkTemplarBlinkCloudSound" parent="SoundOneShot">
+        <On Terms="Abil.DarkTemplarBlink.TargetCastStart" Send="Create"/>
+        <Sound value="DarkTemplar_BlinkCloud"/>
+        <!-- DarkTemplarBlinkCloudSound should be heard by enemies, allies, and observers -->
+    </CActorSound>
+    <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkTargetLocation">
+        <HostForward Subject="DarkTemplar"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkLaunchLocation">
+        <HostForward Subject="::scope.Launch"/>
+    </CActorSiteOpForward>
     <CActorUnit id="FenixArbiter">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
         <AbilSoundArray index="0" removed="1"/>
@@ -1649,6 +1680,10 @@
         <On Terms="ActorCreation" Send="ModelAnimateInvisible 1"/>
         <WalkAnimMoveSpeed value="2.25"/>
     </CActorUnit>
+    <CActorModel id="NeuralParasiteTentacle">
+        <HostSiteOps Ops="SOpAttachWeapon01"/>
+        <Model value="Infestor_Ex3_Tentacle"/>
+    </CActorModel>
     <CActorSplat id="InfestorBurrowedNeuralParasiteGroundSplat" parent="BurrowedSplat" unitName="InfestorBurrowed">
         <On Terms="Abil.NeuralParasite.SourceCastStart; ValidateUnit IsInfestorBurrowed" Send="Create"/>
         <On Terms="Abil.NeuralParasite.SourceFinishStop" Send="Destroy"/>
