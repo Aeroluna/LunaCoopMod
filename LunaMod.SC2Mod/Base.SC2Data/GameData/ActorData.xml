@@ -41,12 +41,21 @@
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.On; ValidateUnit HaveNovaBansheeSpeed" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorUnit id="DehakaMutaliskLevel3">
+        <DeathCustoms index="5" ActorModel="MutaliskDeathRagdoll"/>
+    </CActorUnit>
+    <CActorUnit id="DehakaPrimalSwarmHost">
+        <DeathCustoms index="6" ActorModel="SwarmHostDeathRagdoll"/>
+    </CActorUnit>
     <CActorUnit id="DrakkenLaserDrillCoop">
         <On index="82" Terms="Behavior.DrakkenLaserDrillBirth.On" Send="AnimBracketStart Birth Stand,Work,End {} Stand,Work,Start OpeningPlayForever,Instant"/>
         <On index="87" Send="AnimBracketStart Work Stand,Work,End {} Stand,Work,Start OpeningPlayForever"/>
         <On index="93" Send="AnimPlay Attack Attack,00"/>
         <On index="95" Send="AnimPlay Attack Attack,00 0 -1.000000 1.000000 1.350000 AsTimeScale"/>
         <Remove Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+    </CActorUnit>
+    <CActorUnit id="DroneStetmann">
+        <DeathCustoms index="5" ActorModel="DroneDeathRagdoll"/>
     </CActorUnit>
     <CActorAction id="GhostSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
@@ -403,6 +412,9 @@
         <Sound value="DarkTemplar_BlinkCloud"/>
         <!-- DarkTemplarBlinkCloudSound should be heard by enemies, allies, and observers -->
     </CActorSound>
+    <CActorUnit id="OverlordStetmann">
+        <DeathCustoms index="5" ActorModel="OverlordDeathRagdoll"/>
+    </CActorUnit>
     <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkTargetLocation">
         <HostForward Subject="DarkTemplar"/>
     </CActorSiteOpForward>
@@ -1696,6 +1708,7 @@
     </CActorSplat>
     <CActorUnit id="InfestorStetmann">
         <WalkAnimMoveSpeed value="2.25"/>
+        <DeathCustoms index="5" ActorModel="InfestorDeathRagdoll"/>
     </CActorUnit>
     <CActorUnit id="InfestorTerran">
         <On index="72" Send="Create InfestedTerranEggDeathModel"/>
@@ -1721,6 +1734,7 @@
         <On Terms="Behavior.LurkerStetmannTunnelingBurst.Off" Send="StatusSet BurrowCharging 0"/>
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1; !ModelIsLowQuality" Send="Create UltraliskStetmannBurrowChargeModel"/>
         <On Terms="TimerExpired; TimerName BurrowChargeFX; IsStatus BurrowCharging 1" Send="TimerSet 0.080000 BurrowChargeFX"/>
+        <DeathCustoms index="5" ActorModel="LurkerMPDeathRagdoll"/>
     </CActorUnit>
     <CActorSound id="MedivacTransportLoadSound">
         <On Terms="AbilTransport.TychusBunkerTransport.TransportLoad" Send="Create"/>
@@ -1730,6 +1744,7 @@
     </CActorSound>
     <CActorUnit id="MutaliskMengsk">
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
+        <DeathCustoms index="5" ActorModel="MutaliskDeathRagdoll" ModelLink="MutaliskMengskDeathRagdoll"/>
     </CActorUnit>
     <CActorUnit id="Nexus">
         <StatusHarvesterData SearchFilters="HarvestableResource;Player,Ally,Enemy,Hidden"/>
@@ -2409,6 +2424,7 @@
     </CActorUnit>
     <CActorUnit id="OverseerStetmann">
         <AbilSoundArray AbilCmd="OverseerMorphtoOverseerSiegeStetmann,Execute" Sound="Overseer_OversightVox"/>
+        <DeathCustoms index="5" ActorModel="OverseerDeathRagdoll"/>
     </CActorUnit>
     <CActorUnit id="PitAlarak">
         <On Terms="AbilMorph.*.Start; MorphFrom PitAlarak" Send="Destroy"/>
@@ -6836,6 +6852,9 @@
         <Remove Terms="Abil.ZagaraVoidCoopCreepMaster.BuiltStart" Send="Create"/>
         <Remove Terms="Abil.DehakaDroneMorph.BuiltStart" Send="Create"/>
     </CActorSound>
+    <CActorUnit id="ZerglingMengsk">
+        <DeathCustoms index="9" ActorModel="ZerglingDeathRagdoll"/>
+    </CActorUnit>
     <CActorSound id="awrpSound">
         <On Terms="Abil.VoidArchonMerge.Start" Send="Create"/>
     </CActorSound>

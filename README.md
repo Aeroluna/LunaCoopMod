@@ -342,6 +342,17 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Added a looping sound effect while Parasitic Bomb is active.
 - Fixed an issue where Colossus could not attack again until their current attack was finished.
 - Fixed an issue where Liberators that are Abducted don't unsiege instantly.
+- Fixed an issue where some units were missing ragdolls.
+  - Affected units:
+    - Primal Mutalisk
+    - Primal Host
+    - Mecha Drone
+    - Mecha Overlord
+    - Mecha Infestor
+    - Mecha Lurker
+    - Enthralled Mutalisk
+    - Mecha Overseer
+    - Enthralled Zergling
 
 yeah.
 
@@ -2846,6 +2857,7 @@ Previously the status bar only showed hp.
 - Fixed an issue where Blackhammer's attack muzzle flash only appeared on the right weapon.
 - Changed the visual missile of Contaminated Strike to be directional.
 - Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
+- Lowered subgroup priority of Enthralled Zerg.
 
 yeah.
 

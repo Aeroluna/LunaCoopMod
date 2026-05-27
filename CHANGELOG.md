@@ -4,8 +4,23 @@
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
 - Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
+- Fixed an issue where some units were missing ragdolls.
+  - Affected units:
+    - Primal Mutalisk
+    - Primal Host
+    - Mecha Drone
+    - Mecha Overlord
+    - Mecha Infestor
+    - Mecha Lurker
+    - Enthralled Mutalisk
+    - Mecha Overseer
+    - Enthralled Zergling
 
 yeah.
+
+- Lowered subgroup priority of Enthralled Zerg.
+
+They are uncommandable anyways, they shouldn't have higher priority than your real units.
 
 - Added Archon Merge ability to Dark Templar.
 - Added Shadow Stride ability to Dark Templar.
