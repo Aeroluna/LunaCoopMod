@@ -1,5 +1,9 @@
 # Changelog
 
+## 5/27/2026
+
+- Fixed an issue where using the random commander selection would cause issues with the console skin.
+
 ## 5/21/2026
 
 - Added a tooltip to the Destroyer's weapon that shows it ignores armor.

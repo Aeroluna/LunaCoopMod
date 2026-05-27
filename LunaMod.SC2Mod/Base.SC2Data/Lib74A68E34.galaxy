@@ -5466,9 +5466,6 @@ bool lib74A68E34_gt_CommanderRandomSelected_Func (bool testConds, bool runAction
     fixed lv_delay;
 
     // Automatic Variable Declarations
-    const int auto963E4609_n = 7;
-    int auto963E4609_i;
-
     // Variable Initialization
     lv_delay = 0.01;
 
@@ -5486,12 +5483,6 @@ bool lib74A68E34_gt_CommanderRandomSelected_Func (bool testConds, bool runAction
 
     TriggerEnable(libCOUI_gt_CU_CommanderClicked, false);
     TriggerEnable(lib01833E95_gt_AF_CS_CommanderSelected, false);
-    for (auto963E4609_i = 1; auto963E4609_i <= auto963E4609_n; auto963E4609_i += 1) {
-        lib74A68E34_gf_CommanderRandomRoll(EventPlayer(), false);
-        SoundPlayForPlayer(SoundLink("UI_Void_Army_Category_Click", -1), c_maxPlayers, PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
-        lv_delay += 0.01;
-        Wait(lv_delay, c_timeGame);
-    }
     lib74A68E34_gf_CommanderRandomRoll(EventPlayer(), true);
     SoundPlayForPlayer(SoundLink("UI_Void_Army_Category_Click", -1), c_maxPlayers, PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
     TriggerEnable(libCOUI_gt_CU_CommanderClicked, true);
