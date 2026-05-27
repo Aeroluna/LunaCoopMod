@@ -15,6 +15,7 @@
     - Enthralled Mutalisk
     - Mecha Overseer
     - Enthralled Zergling
+- Fixed an issue where P2's tooltip listed the wrong energy cost.
 
 yeah.
 
