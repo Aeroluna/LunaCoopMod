@@ -3,6 +3,7 @@
 ## 5/27/2026
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
+- Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
 
 yeah.
 

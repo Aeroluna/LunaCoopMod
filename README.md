@@ -188,6 +188,7 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Fixed an issue where Lurkers could not fire again until the previous spines were finished.
 - Changed Lurker weapons to be disabled while unburrowed.
 - Increased Amon Lurker damage from 20 to 20 (+10 vs Armored).
+- Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
 
 Copied from Versus.
 
