@@ -42,6 +42,21 @@
         <CursorEffect value="DefensiveMatrixAoE"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselAoE"/>
     </CAbilEffectTarget>
+    <CAbilWarpTrain id="FactoryTrainNova">
+        <InfoArray index="Train4" Unit="Hellion_BlackOpsSpawnerUnit">
+            <Resource index="Minerals" value="500"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="FactoryTrainHellbatNova"/>
+                <Location value="Player"/>
+                <TimeStart value="300"/>
+                <TimeUse value="300"/>
+            </Charge>
+            <Button DefaultButtonFace="TrainHellionNova" State="Restricted"/>
+        </InfoArray>
+    </CAbilWarpTrain>
     <CAbilEffectTarget id="FenixArbiterRecall">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Effect index="0" value="FenixArbiterRecallSearch"/>
@@ -160,6 +175,16 @@
     <CAbilEffectTarget id="GreaterNydusDestroyerDeepTunnel">
         <FinishTime index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="HHStarportTrain">
+        <InfoArray index="Train1">
+            <Button DefaultButtonFace="HHWraith"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilWarpTrain id="HHStarportTrainHorner">
+        <InfoArray index="Train1">
+            <Button DefaultButtonFace="HHWraith"/>
+        </InfoArray>
+    </CAbilWarpTrain>
     <CAbilEffectTarget id="HybridDominatorVoidPlasmaBlast">
         <TargetFilters value="-;Player,Ally"/>
     </CAbilEffectTarget>

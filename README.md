@@ -1607,6 +1607,7 @@ Copied from CXL. Keeps it unviable to use static defense aggressively without co
 Phoenixs were extremely dependent on enemy composition. Moving some damage from the bonus should help. Also decreased the vespene price to make them easier to mass when going skytoss.
 
 - Changed Reconstruction Beam to prioritize units and attacking structures.
+- Removed the voiceset from Carrier Repair Drones.
 
 yeah.
 
@@ -1942,6 +1943,10 @@ Showing some love for Nova's static defense. Nova's structure life perk was ridi
 
 Sabotage Drones looked so comically silly. Just this big stupid tube floating around. Now, they instead use the unused Shredder model.
 
+- Added Deploy Hellion Rangers to the Factory.
+
+Nova can now directly deploy Hellions instead of Hellbats. I'm not sure why you would want to, but nothing wrong with having the option.
+
 - Fixed an issue where Triple Tap could target undetected units.
 - Fixed an issue where Railgun Turret placement models were smaller than their actual model.
 - Added a buff/debuff for structures affected by P1.
@@ -2086,6 +2091,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
 - Changed the icon for Stukov's P3.
 - Reworked Infested Diamondback attack to beam instead of projectile.
 - Fixed an issue where Infested Banshees did not play a sound when enabling/disabling Cloak.
+- Fixed an issue where Volatile Infested used the wrong icon/wireframe.
 
 yeah. The Siege Tank bug took way too long to figure out...
 

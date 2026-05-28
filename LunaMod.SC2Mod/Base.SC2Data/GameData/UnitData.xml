@@ -112,6 +112,9 @@
         <AIEvalFactor value="0"/>
         <HotkeyCategory value="Unit/Category/ProtossTaldarim"/>
     </CUnit>
+    <CUnit id="ArbiterMP">
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
     <CUnit id="ArtilleryMengsk">
         <CardLayouts index="0">
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="ArtilleryMengskAttack,Execute" Row="0" Column="4"/>
@@ -124,12 +127,33 @@
     </CUnit>
     <CUnit id="AutomatedAssimilatorZeratul">
         <EffectArray index="Create" value="OrbitalAssimilatorRichSearch"/>
+        <LeaderAlias value="Assimilator"/>
+        <HotkeyAlias value="Assimilator"/>
+        <SelectAlias value="Assimilator"/>
+        <SubgroupAlias value="Assimilator"/>
+    </CUnit>
+    <CUnit id="AutomatedExtractor">
+        <LeaderAlias value="Extractor"/>
+        <HotkeyAlias value="Extractor"/>
+        <SelectAlias value="Extractor"/>
+        <SubgroupAlias value="Extractor"/>
     </CUnit>
     <CUnit id="AutomatedRefinery">
         <EffectArray index="Create" value="AutomatedRefineryRichSearch"/>
+        <LeaderAlias value="Refinery"/>
+        <HotkeyAlias value="Refinery"/>
+        <SelectAlias value="Refinery"/>
+        <SubgroupAlias value="Refinery"/>
     </CUnit>
     <CUnit id="Banshee_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakBanshee"/>
+    </CUnit>
+    <CUnit id="BarracksMengskFlying">
+        <LeaderAlias value="Barracks"/>
+        <HotkeyAlias value="Barracks"/>
+        <SelectAlias value="BarracksFlying"/>
+        <SubgroupAlias value="BarracksFlying"/>
+        <GlossaryAlias value="Barracks"/>
     </CUnit>
     <CUnit id="BroodLordStetmann">
         <WeaponArray Link="BroodLordStetmannAirDummy"/>
@@ -269,8 +293,53 @@
         <TacticalAIThink value="AIThinkChoker"/>
         <BehaviorArray index="0" removed="1"/>
     </CUnit>
+    <CUnit id="CommandCenterMengsk">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="SetCommandCenterRallyPointTrooper" AbilCmd="CommandCenterMengskRally,Rally1" Row="1"/>
+            <LayoutButtons index="2" Face="Lift" AbilCmd="CommandCenterMengskLiftOff,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="3" Face="Halt" AbilCmd="BuildInProgress,Halt" Row="2" Column="3"/>
+            <LayoutButtons index="4" Face="Cancel" AbilCmd="CommandCenterMengskQueue,CancelLast" Column="4"/>
+            <LayoutButtons index="5" Face="CancelUpgradeMorph" AbilCmd="UpgradeToPlanetaryFortress,Cancel" Column="4"/>
+            <LayoutButtons index="6" Face="CancelUpgradeMorph" AbilCmd="UpgradeToOrbital,Cancel"/>
+            <LayoutButtons index="7" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel"/>
+            <LayoutButtons index="8" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="CommandCenterMengskTrain,Train1" Row="1" Column="3"/>
+            <LayoutButtons index="9" Face="SetCommandCenterRallyPointLaborer" AbilCmd="CommandCenterMengskRally,Rally2" Row="1" Column="3"/>
+            <LayoutButtons index="10" Face="SetCommandCenterRallyPointLaborer" Type="AbilCmd" AbilCmd="CommandCenterMengskRally,Rally3"/>
+            <LayoutButtons index="11">
+                <Face value="TrooperMengskDropTrain"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveTrooperMengskDropTrain"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="12" Face="TrooperMengskEnlistCC" AbilCmd="SCVMengskEnlistNearby,Execute" Column="1"/>
+            <LayoutButtons index="13">
+                <Face value="SCVMengskEnlistCC"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="TrooperMengskEnlistNearby,Execute"/>
+                <Requirements value=""/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="14" Face="TrooperMengsk" AbilCmd="CommandCenterMengskTrainWithAlerts,Train2" Row="0"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="DamagedDrakkenLaserDrillCoop">
         <WeaponArray Turret="LaserDrillTripod"/>
+    </CUnit>
+    <CUnit id="DarkPylonOvercharged">
+        <CardLayouts index="0">
+            <LayoutButtons index="1" Face="DarkPylonRecall" AbilCmd="DarkPylonRecall,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="2" Face="DarkPylonRecallLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel11"/>
+            <LayoutButtons index="3" Face="MatrixOverload" Requirements="HaveSOAMatrixOverload"/>
+            <LayoutButtons index="4" Face="CloakingField" Type="Passive" AbilCmd="" Row="1" Column="0"/>
+            <LayoutButtons index="5" Row="1" Column="1"/>
+            <LayoutButtons index="6" removed="1"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="DarkTemplar">
         <AbilArray index="4" Link="ArchonWarp"/>
@@ -282,14 +351,43 @@
         </CardLayouts>
         <TacticalAIThink value="AIThinkDarkTemplar"/>
     </CUnit>
+    <CUnit id="DehakaBarracks">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="4"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="DehakaCoopClone">
         <HotkeyAlias value="DehakaCoop"/>
+    </CUnit>
+    <CUnit id="DehakaHatchery">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Column="4"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="DehakaNydusDestroyer">
         <Attributes index="User1" value="0"/>
     </CUnit>
     <CUnit id="DehakaNydusDestroyerTimedNoFood">
         <Attributes index="User1" value="0"/>
+    </CUnit>
+    <CUnit id="Dragoon">
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
+    <CUnit id="FactoryMengsk">
+        <LeaderAlias value="Factory"/>
+        <HotkeyAlias value="Factory"/>
+        <SelectAlias value="Factory"/>
+        <SubgroupAlias value="Factory"/>
+    </CUnit>
+    <CUnit id="FactoryMengskFlying">
+        <LeaderAlias value="Factory"/>
+        <HotkeyAlias value="Factory"/>
+        <SelectAlias value="FactoryFlying"/>
+        <SubgroupAlias value="FactoryFlying"/>
+        <GlossaryAlias value="Factory"/>
+    </CUnit>
+    <CUnit id="FenixAltarOfPsiStorms">
+        <CardLayouts index="1" removed="1"/>
     </CUnit>
     <CUnit id="FenixArbiter">
         <AbilArray index="6" Link="FenixArbiterRecall"/>
@@ -311,6 +409,47 @@
     </CUnit>
     <CUnit id="Goliath_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+    </CUnit>
+    <CUnit id="HHCommandCenter">
+        <LeaderAlias value="CommandCenter"/>
+        <HotkeyAlias value="CommandCenter"/>
+        <SelectAlias value="CommandCenter"/>
+        <SubgroupAlias value="CommandCenter"/>
+    </CUnit>
+    <CUnit id="HHCommandCenterFlying">
+        <LeaderAlias value="CommandCenter"/>
+        <HotkeyAlias value="CommandCenter"/>
+        <SelectAlias value="CommandCenterFlying"/>
+        <SubgroupAlias value="CommandCenterFlying"/>
+        <GlossaryAlias value="CommandCenter"/>
+    </CUnit>
+    <CUnit id="HHHellionTank">
+        <SelectAlias value="HHHellion"/>
+        <SubgroupAlias value="HHHellion"/>
+    </CUnit>
+    <CUnit id="HHStarport">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="HHWraith"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HHStarportFlying">
+        <HotkeyAlias value="HHStarportFlying"/>
+    </CUnit>
+    <CUnit id="HHVikingFighter">
+        <SelectAlias value="HHVikingAssault"/>
+        <SubgroupAlias value="HHVikingAssault"/>
+    </CUnit>
+    <CUnit id="Hellion_BlackOpsSpawnerUnit">
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="NoScore" value="1"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="500"/>
+        <BehaviorArray Link="HellionBlackOpsSpawner"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Other,ObjectFamily:FactionCovertOps"/>
     </CUnit>
     <CUnit id="HybridBehemoth">
         <FlagArray index="ArmySelect" value="1"/>
@@ -358,6 +497,12 @@
     </CUnit>
     <CUnit id="HydraliskMengskBurrowed">
         <SubgroupPriority value="16"/>
+        <HotkeyAlias value="HydraliskMengskBurrowed"/>
+        <HotkeyCategory value=""/>
+    </CUnit>
+    <CUnit id="ImmortalAiur">
+        <HotkeyAlias value="ImmortalAiur"/>
+        <HotkeyCategory value=""/>
     </CUnit>
     <CUnit id="Impaler">
         <CardLayouts index="0">
@@ -376,6 +521,12 @@
     </CUnit>
     <CUnit id="InterceptorStetmann">
         <AttackTargetPriority value="19"/>
+    </CUnit>
+    <CUnit id="KelMorianMissileTurret">
+        <LeaderAlias value="MissileTurret"/>
+        <HotkeyAlias value="MissileTurret"/>
+        <SelectAlias value="MissileTurret"/>
+        <SubgroupAlias value="MissileTurret"/>
     </CUnit>
     <CUnit id="KerriganReviveCocoon">
         <Attributes index="Biological" value="0"/>
@@ -516,12 +667,17 @@
         <Radius value="0.625"/>
         <MinimapRadius value="0.625"/>
         <TacticalAIThink value="AIThinkDisruptorLuna"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
     <CUnit id="Extractor">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
     </CUnit>
     <CUnit id="ExtractorStetmann">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
+        <LeaderAlias value="Extractor"/>
+        <HotkeyAlias value="Extractor"/>
+        <SelectAlias value="Extractor"/>
+        <SubgroupAlias value="Extractor"/>
     </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
@@ -1065,9 +1221,53 @@
             <LayoutButtons index="1" Column="2"/>
             <LayoutButtons index="11" Row="1" Column="0"/>
             <LayoutButtons index="12" Row="1" Column="1"/>
-            <LayoutButtons index="17" Column="2"/>
-            <LayoutButtons index="18" Column="1"/>
+            <LayoutButtons index="14">
+                <Face value="TechReactorAI"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BarracksAddOns,Build3"/>
+                <SubmenuCardId value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="15" Face="TechReactor" AbilCmd="BarracksAddOns,Build4" Column="0"/>
+            <LayoutButtons index="16">
+                <Face value="OrbitalDropPodsPassive"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveOrbitalDropPods"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="17">
+                <Face value="Reaper"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BarracksTrain,Train2"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="18" Face="TrainMarineNova" AbilCmd="BarracksTrainNova,Train1" Column="0"/>
+            <LayoutButtons index="19" Face="TrainMarauderNova" AbilCmd="BarracksTrainNova,Train2" Column="2"/>
+            <LayoutButtons index="20" Face="Ghost" AbilCmd="BarracksTrain,Train3" Column="3"/>
+            <LayoutButtons index="21">
+                <Face value="MasteryNovaArmyAttackSpeedAppend"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryNovaArmyAttackSpeed"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="22" Face="MasteryNovaArmyOOCRegenSpeedAppend" Requirements="HaveMasteryNovaArmyOOCRegenSpeed" Column="1"/>
+            <LayoutButtons index="23">
+                <Face value="TrainGhostNova"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BarracksTrainNova,Train3"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
         </CardLayouts>
+        <CardLayouts index="1" removed="1"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioBarracksDebuff"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioBarracksBuff"/>
     </CUnit>
@@ -1076,6 +1276,10 @@
             <LayoutButtons index="7" Column="2"/>
             <LayoutButtons index="8" Column="3"/>
         </CardLayouts>
+        <LeaderAlias value="Barracks"/>
+        <HotkeyAlias value="Barracks"/>
+        <SelectAlias value="Barracks"/>
+        <SubgroupAlias value="Barracks"/>
     </CUnit>
     <CUnit id="BarracksTechLab">
         <CardLayouts index="0">
@@ -1157,9 +1361,13 @@
             <LayoutButtons index="11" Face="RepairDrones2" Type="Passive" AbilCmd="" Requirements="HaveCarrierRepairDrones" Row="1"/>
             <LayoutButtons index="12" removed="1"/>
         </CardLayouts>
+        <SubgroupAlias value="CarrierAiur"/>
+        <HotkeyAlias value="CarrierAiur"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
         <InnerRadius value="0.5625"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="CoopCasterRaynor">
         <CardLayouts index="0">
@@ -1170,9 +1378,10 @@
     <CUnit id="DehakaDrone">
         <CardLayouts index="0">
             <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="9" Face="BurrowUp" AbilCmd="BurrowDehakaDroneUp,Execute"/>
             <LayoutButtons index="11" Column="2"/>
             <LayoutButtons index="12" Column="2"/>
-            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDehakaDroneUp,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="DroneCarcassHarvest,Cancel" Row="2" Column="4"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="DehakaDroneBurrowed">
@@ -1779,6 +1988,9 @@
         <Facing value="29.9926"/>
         <Collide index="RoachBurrow" value="0"/>
     </CUnit>
+    <CUnit id="OverlordStetmann">
+        <HotkeyAlias value="OverlordStetmann"/>
+    </CUnit>
     <CUnit id="OverlordTransport">
         <Speed value="0.914"/>
         <BehaviorArray Link="AllUnitBehaviorController"/>
@@ -1809,12 +2021,20 @@
                 <Column value="2"/>
             </LayoutButtons>
         </CardLayouts>
+        <HotkeyAlias value="OverseerStetmann"/>
+    </CUnit>
+    <CUnit id="OverseerStetmannSiegeMode">
+        <HotkeyAlias value="OverseerStetmann"/>
     </CUnit>
     <CUnit id="Paratrooper">
         <HotkeyAlias value="Marine"/>
     </CUnit>
     <CUnit id="PerditionTurret">
         <BehaviorArray Link="PerditionTurretKnockbackBehavior"/>
+    </CUnit>
+    <CUnit id="PerditionTurretUnderground">
+        <LeaderAlias value="PerditionTurret"/>
+        <SubgroupAlias value="PerditionTurret"/>
     </CUnit>
     <CUnit id="PitAlarak">
         <AbilArray Link="PitAlarakJinaraMorph"/>
@@ -1846,6 +2066,11 @@
     </CUnit>
     <CUnit id="PrimalUltralisk">
         <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="PylonOvercharged">
+        <HotkeyAlias value="PylonOvercharged"/>
+        <SubgroupAlias value="PylonOvercharged"/>
+        <HotkeyCategory value=""/>
     </CUnit>
     <CUnit id="Queen">
         <CardLayouts index="0">
@@ -1897,6 +2122,13 @@
     <CUnit id="Reaver">
         <AbilArray Link="ReaverChase"/>
         <WeaponArray Link="ReaverScarabsLaunchNoScan"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
+    <CUnit id="RefineryMengsk">
+        <LeaderAlias value="Refinery"/>
+        <HotkeyAlias value="Refinery"/>
+        <SelectAlias value="Refinery"/>
+        <SubgroupAlias value="Refinery"/>
     </CUnit>
     <CUnit id="Roach">
         <CardLayouts index="0">
@@ -2045,17 +2277,127 @@
     <CUnit id="SCV">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
+    <CUnit id="SICivilianStructure">
+        <CardLayouts index="0">
+            <LayoutButtons index="2" Face="SIUproot" AbilCmd="SICivilianStructureLiftOff,Execute"/>
+            <LayoutButtons index="3" AbilCmd="que5,CancelLast"/>
+            <LayoutButtons index="4" Face="Cancel" AbilCmd="BuildInProgress,Cancel" Column="4"/>
+            <LayoutButtons index="5" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons index="6" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="7" Face="SIInfestedCivilian" AbilCmd="SICivilianStructureSpawnCivilian,Execute" Row="2"/>
+            <LayoutButtons index="8" Face="ResearchSIBarracksTrainInfestedCivilianLevel2" Type="AbilCmd" AbilCmd="SIInfestedCivilianStructureResearch,Research1" Requirements=""/>
+            <LayoutButtons index="9" Face="ResearchSIBarracksTrainInfestedCivilianLevel3" AbilCmd="SIInfestedCivilianStructureResearch,Research2" Row="0" Column="0"/>
+            <LayoutButtons index="10" Face="ResearchSIBarracksTrainInfestedCivilianLevel4" AbilCmd="SIInfestedCivilianStructureResearch,Research3" Row="0"/>
+            <LayoutButtons index="11">
+                <Face value="EvolveInfestationLevel3Locked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="StukovLevel03"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="12">
+                <Face value="Halt"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="BuildInProgress,Halt"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="13" Face="EvolveStukovInfestedInfestedCivilianLeap" Type="AbilCmd" AbilCmd="SIInfestedCivilianStructureResearch,Research11" Requirements="" Column="0"/>
+            <LayoutButtons index="14" Face="EvolveStukovInfestedCivilianSpawnBroodlingsOnDeath" Type="AbilCmd" AbilCmd="SIInfestedCivilianStructureResearch,Research10" Column="1"/>
+            <LayoutButtons index="15">
+                <Face value="EvolveBroodlingGestationLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="StukovLevel07"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="16">
+                <Face value="MasteryStukovUnitRegenSpeedAppend"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryStukovUnitRegenSpeed"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="17" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="SICommandCenterTrain,Train1" Row="1" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SIFactory">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="Rally" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons index="1" Face="SIUproot" AbilCmd="SIFactoryLiftOff,Execute" Row="2"/>
+            <LayoutButtons index="2" Face="Halt" AbilCmd="BuildInProgress,Halt"/>
+            <LayoutButtons index="3" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel" Column="4"/>
+            <LayoutButtons index="6" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="" Row="1" Column="3"/>
+            <LayoutButtons index="7" Face="SITechLabFactory" Type="AbilCmd" AbilCmd="SIFactoryAddOns,Build1" Row="2" Column="0"/>
+            <LayoutButtons index="8">
+                <Face value="MasteryStukovUnitRegenSpeedAppend"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryStukovUnitRegenSpeed"/>
+                <Row value="1"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="9">
+                <Face value="StukovMasteryMechAttackSpeed"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryStukovMechAttackSpeed"/>
+                <Row value="1"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="10" Face="SIDiamondBack" Type="AbilCmd" AbilCmd="SIFactoryTrain,Train3" Requirements="" Row="0"/>
+            <LayoutButtons index="11">
+                <Face value="SISiegeTank"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="SIFactoryTrain,Train2"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SIRefinery">
         <EffectArray index="Create" value="RefineryRichSearch"/>
         <BuiltOn value="ProtossVespeneGeyser"/>
         <BuiltOn value="PurifierVespeneGeyser"/>
         <BuiltOn value="ShakurasVespeneGeyser"/>
+        <LeaderAlias value="Refinery"/>
+        <HotkeyAlias value="Refinery"/>
+        <SelectAlias value="Refinery"/>
+        <SubgroupAlias value="Refinery"/>
     </CUnit>
     <CUnit id="SISCV">
         <CardLayouts index="2">
             <LayoutButtons index="0" Row="1"/>
             <LayoutButtons index="1" Row="2" Column="0"/>
             <LayoutButtons index="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SIStarport">
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="SIBanshee" AbilCmd="SIStarportTrain,Train1" Column="4"/>
+            <LayoutButtons index="1" Face="Rally" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons index="2" Face="SIUproot" AbilCmd="SIStarportLiftOff,Execute" Row="2"/>
+            <LayoutButtons index="3" Face="Halt" AbilCmd="BuildInProgress,Halt"/>
+            <LayoutButtons index="4" Face="Cancel" AbilCmd="SIStarportAddOns,Halt" Column="4"/>
+            <LayoutButtons index="8" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="StarportTrain,Train5" Row="1" Column="3"/>
+            <LayoutButtons index="9" Face="SITechLabStarport" Type="AbilCmd" AbilCmd="SIStarportAddOns,Build1" Row="2" Column="0"/>
+            <LayoutButtons index="10" Face="SILiberator" AbilCmd="SIStarportTrain,Train2" Row="0" Column="2"/>
+            <LayoutButtons index="11" Face="MasteryStukovUnitRegenSpeedAppend" Type="Passive" AbilCmd="" Requirements="HaveMasteryStukovUnitRegenSpeed" Row="1"/>
+            <LayoutButtons index="12" Face="StukovMasteryMechAttackSpeed" Requirements="HaveMasteryStukovMechAttackSpeed" Row="1" Column="1"/>
+            <LayoutButtons index="13">
+                <Face value="SIQueen"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="SIStarportTrain,Train3"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="14" Face="SpawnBroodQueenLocked" Requirements="StukovLevel08" Row="0" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SOAMothershipv4">
@@ -2203,6 +2545,12 @@
         </CardLayouts>
         <TacticalAIThink value="AIThinkSentryLuna"/>
     </CUnit>
+    <CUnit id="SentryAiur">
+        <LeaderAlias value="Sentry"/>
+        <HotkeyAlias value="SentryAiur"/>
+        <SelectAlias value="Sentry"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
     <CUnit id="SentryPhasing">
         <CardLayouts index="0">
             <LayoutButtons index="9" Row="1" Column="0"/>
@@ -2228,6 +2576,8 @@
             <LayoutButtons index="20" removed="1"/>
             <LayoutButtons index="21" removed="1"/>
         </CardLayouts>
+        <CardLayouts index="1" removed="1"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="SoloDummy">
         <FlagArray index="Uncommandable" value="1"/>
@@ -2239,6 +2589,44 @@
         <BehaviorArray Link="Unmoved"/>
         <BehaviorArray Link="Unrepairable"/>
     </CUnit>
+    <CUnit id="SpineCrawler">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="1"/>
+        </CardLayouts>
+        <SelectAlias value="SpineCrawlerUprooted"/>
+        <SubgroupAlias value="SpineCrawlerUprooted"/>
+    </CUnit>
+    <CUnit id="SpineCrawlerStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="1"/>
+        </CardLayouts>
+        <SelectAlias value="SpineCrawlerUprooted"/>
+        <SubgroupAlias value="SpineCrawlerUprooted"/>
+        <LeaderAlias value="SpineCrawler"/>
+        <HotkeyAlias value="SpineCrawler"/>
+    </CUnit>
+    <CUnit id="SpineCrawlerUprootedStetmann">
+        <LeaderAlias value="SpineCrawler"/>
+        <HotkeyAlias value="SpineCrawler"/>
+        <SelectAlias value="SpineCrawlerUprooted"/>
+        <SubgroupAlias value="SpineCrawlerUprooted"/>
+    </CUnit>
+    <CUnit id="SporeCrawler">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="1"/>
+        </CardLayouts>
+        <SelectAlias value="SporeCrawlerUprooted"/>
+        <SubgroupAlias value="SporeCrawlerUprooted"/>
+    </CUnit>
+    <CUnit id="SporeCrawlerStetmann">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Column="1"/>
+        </CardLayouts>
+        <SelectAlias value="SporeCrawlerUprooted"/>
+        <SubgroupAlias value="SporeCrawlerUprooted"/>
+        <LeaderAlias value="SporeCrawler"/>
+        <HotkeyAlias value="SporeCrawler"/>
+    </CUnit>
     <CUnit id="Spotter">
         <CostResource index="Minerals" value="450"/>
         <CostResource index="Vespene" value="300"/>
@@ -2248,7 +2636,8 @@
         <Level value="0"/>
         <PawnItemReduction value="18"/>
         <CardLayouts index="0">
-            <LayoutButtons index="6" Face="StalkerBlinkAlarak"/>
+            <LayoutButtons index="6" AbilCmd="Blink,Execute"/>
+            <LayoutButtons index="7" Face="StalkerBlinkAlarak" AbilCmd="BlinkSlayer,Execute"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="StalkerPrecursor">
@@ -2274,6 +2663,17 @@
         <CardLayouts index="0">
             <LayoutButtons index="12" Column="3"/>
         </CardLayouts>
+        <LeaderAlias value="Starport"/>
+        <HotkeyAlias value="Starport"/>
+        <SelectAlias value="Starport"/>
+        <SubgroupAlias value="Starport"/>
+    </CUnit>
+    <CUnit id="StarportMengskFlying">
+        <LeaderAlias value="Starport"/>
+        <HotkeyAlias value="Starport"/>
+        <SelectAlias value="StarportFlying"/>
+        <SubgroupAlias value="StarportFlying"/>
+        <GlossaryAlias value="Starport"/>
     </CUnit>
     <CUnit id="StarportTechLab">
         <CardLayouts index="0">
@@ -2342,6 +2742,9 @@
         <HotkeyCategory value=""/>
         <HotkeyAlias value="SwarmHostSplitBRooted"/>
     </CUnit>
+    <CUnit id="TempestPurifier">
+        <HotkeyCategory value=""/>
+    </CUnit>
     <CUnit id="ToxicNestBurrowed">
         <Collide index="Burrow" value="0"/>
         <Collide index="Ground" value="0"/>
@@ -2373,6 +2776,19 @@
         <CardLayouts index="0">
             <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="RepairTrooperMengsk,Execute" Row="1" Column="0"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="TychusCommandCenter">
+        <LeaderAlias value="CommandCenter"/>
+        <HotkeyAlias value="CommandCenter"/>
+        <SelectAlias value="CommandCenter"/>
+        <SubgroupAlias value="CommandCenter"/>
+    </CUnit>
+    <CUnit id="TychusCommandCenterFlying">
+        <LeaderAlias value="CommandCenter"/>
+        <HotkeyAlias value="CommandCenter"/>
+        <SelectAlias value="CommandCenterFlying"/>
+        <SubgroupAlias value="CommandCenterFlying"/>
+        <GlossaryAlias value="CommandCenter"/>
     </CUnit>
     <CUnit id="Ultralisk">
         <AlliedPushPriority value="1"/>
@@ -2849,6 +3265,7 @@
         <AbilArray index="7" removed="1"/>
         <AbilArray index="8" removed="1"/>
         <AbilArray index="9" removed="1"/>
+        <HotkeyCategory value="Unit/Category/TerranRaider"/>
     </CUnit>
     <CUnit id="MercMedic">
         <LifeStart value="90"/>
@@ -4050,6 +4467,7 @@
             <LayoutButtons Face="OracleBuildStasisTrap" Type="AbilCmd" AbilCmd="OracleStasisTrapBuild,Build1" Row="2" Column="1"/>
         </CardLayouts>
         <AbilArray Link="OracleStasisTrapBuildVorazun"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
     <CUnit id="QueenClassic">
         <TacticalAIThink value="AIThinkQueenClassicLuna"/>
@@ -4093,6 +4511,7 @@
         <AbilArray Link="SIBarracksTrainCorruption"/>
         <AbilArray Link="que1"/>
         <CardLayouts index="0">
+            <LayoutButtons index="0" Column="4"/>
             <LayoutButtons index="2" AbilCmd="que1,CancelLast"/>
             <LayoutButtons Face="ResearchSIBarracksCorruption" Type="AbilCmd" AbilCmd="SIBarracksTrainCorruption,Train1" Row="1" Column="0"/>
         </CardLayouts>
@@ -4116,6 +4535,9 @@
         <AbilArray index="6" Link="que5CancelToSelection"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" Face="SICommandCenterUnloadAll"/>
+            <LayoutButtons index="6" Column="4"/>
+            <LayoutButtons index="8" Face="CancelBuilding" AbilCmd="BuildInProgress,Cancel"/>
+            <LayoutButtons index="9" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="SICommandCenterFlying">
@@ -4141,16 +4563,20 @@
     </CUnit>
     <CUnit id="SIFactoryFlying">
         <AlliedPushPriority value="1"/>
+        <LeaderAlias value="SIFactory"/>
+        <HotkeyAlias value="SIFactory"/>
+        <GlossaryAlias value="SIFactory"/>
     </CUnit>
     <CUnit id="SIInfestedBunker">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="SIInfestedBunkerSpawnInfestedMarine" AbilCmd="SIInfestedBunkerTrainMarine,Execute"/>
             <LayoutButtons index="1" Face="BunkerLoad" AbilCmd="SIInfestedBunkerTransport,Load"/>
-            <LayoutButtons index="3" Face="Cancel" AbilCmd="que5CancelToSelection,CancelLast" Column="4"/>
+            <LayoutButtons index="2" Face="SIInfestedBunkerUproot" AbilCmd="SIInfestedBunkerUproot,Execute"/>
+            <LayoutButtons index="3" Face="Cancel" AbilCmd="BuildInProgress,Cancel" Column="4"/>
             <LayoutButtons index="4">
-                <Face value="CancelBuilding"/>
+                <Face value="Cancel"/>
                 <Type value="AbilCmd"/>
-                <AbilCmd value="BuildInProgress,Cancel"/>
+                <AbilCmd value="que5CancelToSelection,CancelLast"/>
                 <Behavior value=""/>
                 <Row value="2"/>
                 <Column value="4"/>
@@ -4185,8 +4611,9 @@
             <LayoutButtons index="11" Face="SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="SIStukovPlaceHordeRally,Execute" Column="4"/>
             <LayoutButtons index="12" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="SICommandCenterTrain,Train1" Row="1"/>
             <LayoutButtons index="13" Face="Halt" AbilCmd="BuildInProgress,Halt" Column="3"/>
-            <LayoutButtons index="14" Face="SIInfestedBunkerUproot" AbilCmd="SIInfestedBunkerUproot,Execute" Column="3"/>
         </CardLayouts>
+        <SelectAlias value="SIInfestedBunkerUprooted"/>
+        <SubgroupAlias value="SIInfestedBunkerUprooted"/>
     </CUnit>
     <CUnit id="SIInfestedBunkerUprooted">
         <AlliedPushPriority value="1"/>
@@ -4301,6 +4728,7 @@
             <LayoutButtons index="19" removed="1"/>
             <LayoutButtons index="20" removed="1"/>
         </CardLayouts>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
     <CUnit id="Goliath">
         <BehaviorArray index="0" Link="ScavengingSystemsMechDeath"/>
@@ -4435,9 +4863,12 @@
     <CUnit id="SIMissileTurret">
         <LifeRegenRate value="4"/>
         <CardLayouts index="0">
+            <LayoutButtons index="0" Column="4"/>
             <LayoutButtons Face="SIInfestedMissileTurretViralBioSteel" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="SIMissileTurretRegenerativePlating" Type="Passive" Requirements="HaveSIBunkerLifeRegen" Row="1" Column="1"/>
         </CardLayouts>
+        <SelectAlias value="SIMissileTurretFlying"/>
+        <SubgroupAlias value="SIMissileTurretFlying"/>
     </CUnit>
     <CUnit id="SIMissileTurretFlying">
         <AlliedPushPriority value="1"/>
@@ -4586,9 +5017,10 @@
     <CUnit id="Drone">
         <CardLayouts index="0">
             <LayoutButtons index="8" Column="3"/>
+            <LayoutButtons index="10" Face="BurrowUp" AbilCmd="BurrowDroneUp,Execute"/>
             <LayoutButtons index="12" Column="2"/>
             <LayoutButtons index="13" Column="2"/>
-            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowDroneUp,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="DroneCarcassHarvest,Cancel" Row="2" Column="4"/>
         </CardLayouts>
         <CardLayouts index="1">
             <LayoutButtons index="4" Column="3"/>
@@ -4604,26 +5036,27 @@
         <CardLayouts index="0">
             <LayoutButtons index="0" Row="1"/>
             <LayoutButtons index="2" Column="3"/>
+            <LayoutButtons index="3" Face="Hellion" AbilCmd="FactoryTrain,Train6"/>
             <LayoutButtons index="4" Row="1" Column="1"/>
             <LayoutButtons index="5" Column="2"/>
             <LayoutButtons index="6" Column="4"/>
-            <LayoutButtons index="19" Row="1" Column="1"/>
-            <LayoutButtons index="22" Face="Hellion" AbilCmd="FactoryTrain,Train6" Column="0"/>
-            <LayoutButtons index="23" Face="TrainSiegeTankNova" AbilCmd="FactoryTrainNova,Train2" Column="2"/>
-            <LayoutButtons index="24" Face="WidowMine" Type="AbilCmd" AbilCmd="FactoryTrain,Train25" Requirements="" Row="0"/>
-            <LayoutButtons index="25" Face="MasteryNovaArmyAttackSpeedAppend" Requirements="HaveMasteryNovaArmyAttackSpeed" Column="0"/>
-            <LayoutButtons index="26" Face="MasteryNovaArmyOOCRegenSpeedAppend" Requirements="HaveMasteryNovaArmyOOCRegenSpeed" Column="1"/>
-            <LayoutButtons index="27" Face="KelMorianRocketTurretPassive" Requirements="HaveSwannCommander" Column="2"/>
-            <LayoutButtons index="28">
-                <Face value="PerditionTurretPassive"/>
-                <Type value="Passive"/>
-                <AbilCmd value=""/>
-                <Requirements value="HaveSwannCommander"/>
-                <Row value="2"/>
-                <Column value="2"/>
-            </LayoutButtons>
-            <LayoutButtons Face="TrainGoliathNova" Type="AbilCmd" AbilCmd="FactoryTrainNova,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="12" SubmenuCardId=""/>
+            <LayoutButtons index="13" SubmenuCardId=""/>
+            <LayoutButtons index="18" Face="BuildThorLocked" Type="Passive" Requirements="SwannLevel06" SubmenuCardId="" Column="1"/>
+            <LayoutButtons index="19" Face="OrbitalDropPodsPassive" Requirements="HaveOrbitalDropPods" Row="1" Column="0"/>
+            <LayoutButtons index="20" Face="TrainHellbatNova" Type="AbilCmd" AbilCmd="FactoryTrainNova,Train3" Requirements=""/>
+            <LayoutButtons index="21" Face="TrainHellionNova" AbilCmd="FactoryTrainNova,Train4"/>
+            <LayoutButtons index="22" Column="3"/>
+            <LayoutButtons index="23" Face="WidowMine" AbilCmd="FactoryTrain,Train25"/>
+            <LayoutButtons index="24" Face="MasteryNovaArmyAttackSpeedAppend" Requirements="HaveMasteryNovaArmyAttackSpeed"/>
+            <LayoutButtons index="25" Face="MasteryNovaArmyOOCRegenSpeedAppend" Requirements="HaveMasteryNovaArmyOOCRegenSpeed"/>
+            <LayoutButtons index="26" Face="KelMorianRocketTurretPassive" Requirements="HaveSwannCommander" Column="2"/>
+            <LayoutButtons index="27" Face="PerditionTurretPassive" Requirements="HaveSwannCommander" Row="2" Column="2"/>
+            <LayoutButtons index="28" Face="Vulture" AbilCmd="FactoryTrain,Train10" Row="0"/>
+            <LayoutButtons Face="TrainGoliathNova" Type="AbilCmd" AbilCmd="FactoryTrainNova,Train1" Row="0" Column="4"/>
         </CardLayouts>
+        <CardLayouts index="1" removed="1"/>
+        <CardLayouts index="2" removed="1"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioFactoryDebuff"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioFactoryBuff"/>
     </CUnit>
@@ -4732,9 +5165,16 @@
             </LayoutButtons>
             <LayoutButtons index="17" Face="Monitor" AbilCmd="GatewayTrain,Train10"/>
             <LayoutButtons index="18" Face="SentryFenix" AbilCmd="GatewayTrain,Train15"/>
-            <LayoutButtons index="19" Face="DarkArchon" AbilCmd="GatewayTrain,Train9" Row="1" Column="2"/>
-            <LayoutButtons index="20" Face="WarpInDarkArchonLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel05"/>
-            <LayoutButtons index="21" Face="AlarakMasteryUnitAttackSpeed" Requirements="HaveMasteryAlarakUnitAttackSpeed" Row="2"/>
+            <LayoutButtons index="19">
+                <Face value="AlarakMasteryUnitAttackSpeed"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveMasteryAlarakUnitAttackSpeed"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="20" removed="1"/>
+            <LayoutButtons index="21" removed="1"/>
             <LayoutButtons index="22" removed="1"/>
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
@@ -5009,6 +5449,7 @@
         <SubgroupPriority value="150"/>
         <HotkeyAlias value="MothershipArtanis"/>
         <SubgroupAlias value="MothershipArtanis"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="Mutalisk">
         <CardLayouts index="0">
@@ -5026,7 +5467,33 @@
     <CUnit id="Nexus">
         <AbilArray index="12" Link="NexusTrainMothershipArtanis"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="MothershipArtanis" Type="AbilCmd" AbilCmd="NexusTrainMothershipArtanis,Train1" Row="0" Column="1"/>
+            <LayoutButtons index="8" Face="Rally" AbilCmd="RallyNexus,Rally2" Row="1"/>
+            <LayoutButtons index="9" Face="SOARadarNexus" Type="Passive" AbilCmd="" Requirements="HaveSOARadar" Row="2"/>
+            <LayoutButtons index="10">
+                <Face value="CommanderPrestigeKaraxChronoBoostLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="CommanderPrestigeKaraxTopBar"/>
+                <Row value="2"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="11">
+                <Face value="AutomatedAssimilatorZeratul"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="NexusBuild,Build1"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="12">
+                <Face value="MothershipArtanis"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="NexusTrainMothershipArtanis,Train1"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="13" removed="1"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="NydusCanalAlly">
@@ -5288,6 +5755,9 @@
     </CUnit>
     <CUnit id="PhoenixAiur">
         <CostResource index="Vespene" value="50"/>
+        <HotkeyAlias value="PhoenixAiur"/>
+        <SubgroupAlias value="PhoenixAiur"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="PhotonCannon">
         <CardLayouts index="0">
@@ -5381,6 +5851,7 @@
             <LayoutButtons index="9" Column="0"/>
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="ShieldBattery">
         <CardLayouts index="0">
@@ -5444,6 +5915,7 @@
             <LayoutButtons index="11" Column="4"/>
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
     </CUnit>
     <CUnit id="Starport">
         <CardLayouts index="0">
@@ -5452,6 +5924,7 @@
             <LayoutButtons index="2" Row="1" Column="0"/>
             <LayoutButtons index="14" Column="1"/>
             <LayoutButtons index="16" Column="3"/>
+            <LayoutButtons index="17" Face="VikingFighter" AbilCmd="StarportTrain,Train5"/>
             <LayoutButtons index="19">
                 <Face value="CommanderPrestigeSwannHerculesLocked"/>
                 <Type value="Passive"/>
@@ -5460,14 +5933,23 @@
                 <ShowInGlossary value="0"/>
                 <Column value="1"/>
             </LayoutButtons>
-            <LayoutButtons index="20" Face="BuildScienceVessel" AbilCmd="StarportTrain,Train9"/>
-            <LayoutButtons index="21" Face="TrainRavenNova" AbilCmd="StarportTrainNova,Train2" Column="2"/>
-            <LayoutButtons index="22" Face="VikingFighter" AbilCmd="StarportTrain,Train5"/>
-            <LayoutButtons index="23" Face="TrainLiberatorNova" Type="AbilCmd" AbilCmd="StarportTrainNova,Train3" Requirements="" Row="0"/>
+            <LayoutButtons index="20" Face="BuildScienceVessel" AbilCmd="StarportTrain,Train9" Column="3"/>
+            <LayoutButtons index="21" Face="TrainRavenNova" AbilCmd="StarportTrainNova,Train2" Column="3"/>
+            <LayoutButtons index="22" Face="Wraith" AbilCmd="StarportTrain,Train8"/>
+            <LayoutButtons index="23">
+                <Face value="Liberator"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="StarportTrain,Train7"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
             <LayoutButtons index="24" Face="OrbitalDropPodsPassive" Requirements="HaveOrbitalDropPods" Column="1"/>
             <LayoutButtons index="25" Face="MasteryNovaArmyAttackSpeedAppend" Requirements="HaveMasteryNovaArmyAttackSpeed" Column="0"/>
+            <LayoutButtons Face="TrainLiberatorNova" Type="AbilCmd" AbilCmd="StarportTrainNova,Train3" Row="0" Column="2"/>
             <LayoutButtons Face="MasteryNovaArmyOOCRegenSpeedAppend" Type="Passive" Requirements="HaveMasteryNovaArmyOOCRegenSpeed" Row="1" Column="1"/>
         </CardLayouts>
+        <CardLayouts index="1" removed="1"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioStarportDebuff"/>
         <BehaviorArray Link="CommanderPrestigeNovaBioStarportBuff"/>
     </CUnit>
@@ -5647,10 +6129,12 @@
         <AbilArray Link="ViperConsumeStructure"/>
         <AbilArray Link="YoinkAmon"/>
         <CardLayouts index="0">
+            <LayoutButtons index="7" Face="BlindingCloud" AbilCmd="BlindingCloud,Execute"/>
+            <LayoutButtons index="8" Face="ViperConsume" AbilCmd="ViperConsumeStructure,Execute"/>
             <LayoutButtons index="12" Column="4"/>
             <LayoutButtons Face="FaceEmbraceAmon" Type="AbilCmd" AbilCmd="YoinkAmon,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="BlindingCloud" Type="AbilCmd" AbilCmd="BlindingCloud,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ViperConsume" Type="AbilCmd" AbilCmd="ViperConsumeStructure,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="DisablingCloud" Type="AbilCmd" AbilCmd="DisablingCloud,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ViperConsumption" Type="AbilCmd" AbilCmd="ViperConsumption,Execute" Row="2" Column="2"/>
         </CardLayouts>
         <TacticalAIThink value="AIThinkViperLuna"/>
     </CUnit>
@@ -5691,8 +6175,8 @@
             <LayoutButtons index="7" Column="3"/>
             <LayoutButtons index="12" Face="WarpInSupplicant" AbilCmd="WarpGateTrain,Train11"/>
             <LayoutButtons index="16" Face="AlarakMasteryUnitAttackSpeed" Type="Passive" AbilCmd="" Requirements="HaveMasteryAlarakUnitAttackSpeed" Row="2"/>
-            <LayoutButtons index="17" Face="DarkArchon" Type="AbilCmd" AbilCmd="WarpGateTrain,Train9" Requirements=""/>
-            <LayoutButtons index="18" Face="WarpInDarkArchonLocked" Requirements="VorazunLevel05" Row="1"/>
+            <LayoutButtons index="17" removed="1"/>
+            <LayoutButtons index="18" removed="1"/>
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
         <CardLayouts index="2" removed="1"/>
@@ -5748,6 +6232,7 @@
         <CardLayouts index="0">
             <LayoutButtons index="5" AbilCmd="ZagaraCorruption,Execute"/>
         </CardLayouts>
+        <HotkeyCategory value="Unit/Category/ZergEvolved"/>
     </CUnit>
     <CUnit id="VorazunCoop">
         <DeathTime value="-1"/>
@@ -5880,6 +6365,11 @@
     <CUnit id="ZagaraVoidCoopBurrowed">
         <RankDisplay value="Default"/>
     </CUnit>
+    <CUnit id="ZealotAiur">
+        <LeaderAlias value="Zealot"/>
+        <SelectAlias value="Zealot"/>
+        <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
     <CUnit id="ZealotPurifier">
         <CardLayouts index="0">
             <LayoutButtons Face="ZealotPurifierRevive" Type="Passive" Behavior="ZealotPurifierReviveSupressed2" Row="2" Column="1"/>
@@ -5892,9 +6382,40 @@
             <LayoutButtons index="7" AbilCmd="Darkcoil,Execute"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="ZeratulCyberneticsCore">
+        <LeaderAlias value="CyberneticsCore"/>
+        <HotkeyAlias value="CyberneticsCore"/>
+        <SelectAlias value="CyberneticsCore"/>
+        <SubgroupAlias value="CyberneticsCore"/>
+    </CUnit>
     <CUnit id="ZeratulDarkArchon">
         <InnerRadius value="0.5625"/>
         <FlagArray index="ArmySelect" value="1"/>
+    </CUnit>
+    <CUnit id="ZeratulDarkShrine">
+        <LeaderAlias value="DarkShrine"/>
+        <HotkeyAlias value="DarkShrine"/>
+        <SelectAlias value="DarkShrine"/>
+        <SubgroupAlias value="DarkShrine"/>
+    </CUnit>
+    <CUnit id="ZeratulDarkTemplar">
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="PermanentlyCloaked" Type="Passive" AbilCmd=""/>
+            <LayoutButtons index="7" Face="ZeratulDarkTemplarBlinkPassive" Requirements="HaveZeratulArtifactTier1AndDarkShine" Column="0"/>
+            <LayoutButtons index="8" Face="ZeratulVoidFuryLocked" Requirements="ZeratulLevel03" Column="1"/>
+            <LayoutButtons index="9" Face="ZeratulDarkTemplarShadowStrike" Requirements="HaveZeratulArtifactTier2AndDarkShine"/>
+            <LayoutButtons index="10" Face="ZeratulBacktotheShadowsLocked" Requirements="ZeratulLevel11" Column="2"/>
+            <LayoutButtons index="11" Face="ZeratulDarkTemplarRetreat" Behavior="ZeratulDarkTemplarRetreatCooldownDisplay" Requirements="HaveZeratulArtifactTier3AndDarkShine"/>
+            <LayoutButtons index="12">
+                <Face value="ZeratulDarkTemplarBlink"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="ZeratulDarkTemplarBlink,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="ZeratulDisruptor">
         <Radius value="0.625"/>
@@ -5902,6 +6423,20 @@
     </CUnit>
     <CUnit id="ZeratulDisruptorPhased">
         <KillDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="ZeratulGateway">
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="SentryZeratul" AbilCmd="ZeratulGatewayTrain,Train6" Column="1"/>
+            <LayoutButtons index="5" Face="StalkerZeratul" AbilCmd="ZeratulGatewayTrain,Train2" Column="2"/>
+            <LayoutButtons index="6" Row="1" Column="1"/>
+            <LayoutButtons index="7" Row="2"/>
+            <LayoutButtons index="8" Row="2"/>
+            <LayoutButtons index="9" Row="2"/>
+        </CardLayouts>
+        <LeaderAlias value="Gateway"/>
+        <HotkeyAlias value="Gateway"/>
+        <SelectAlias value="Gateway"/>
+        <SubgroupAlias value="Gateway"/>
     </CUnit>
     <CUnit id="ZeratulHeroDarkArchon">
         <InnerRadius value="0.5625"/>
@@ -5913,8 +6448,36 @@
             <LayoutButtons Face="ZeratulStaggeringBlast" Type="Passive" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="ZeratulRoboticsBay">
+        <LeaderAlias value="RoboticsBay"/>
+        <HotkeyAlias value="RoboticsBay"/>
+        <SelectAlias value="RoboticsBay"/>
+        <SubgroupAlias value="RoboticsBay"/>
+    </CUnit>
+    <CUnit id="ZeratulRoboticsFacility">
+        <CardLayouts index="0">
+            <LayoutButtons index="3" Face="ZeratulObserver" AbilCmd="ZeratulRoboticsFacilityTrain,Train2"/>
+            <LayoutButtons index="4" Face="ZeratulWarpInXelNagaVoidArrayLocked" Requirements="ZeratulLevel09"/>
+            <LayoutButtons index="5" Face="WarpInZeratulWarpPrism" AbilCmd="ZeratulRoboticsFacilityTrain,Train5"/>
+            <LayoutButtons index="6" Face="ImmortalZeratul" Type="AbilCmd" AbilCmd="ZeratulRoboticsFacilityTrain,Train6" Requirements=""/>
+            <LayoutButtons index="7" Face="ZeratulWarpInXelNagaAbrogatorLocked" Type="Passive" AbilCmd="" Requirements="ZeratulLevel04" Column="4"/>
+            <LayoutButtons index="8" Face="ZeratulWarpinDisruptor" AbilCmd="ZeratulRoboticsFacilityTrain,Train7" Column="4"/>
+            <LayoutButtons index="9" Row="2"/>
+            <LayoutButtons index="10" Row="2"/>
+            <LayoutButtons index="11" Row="2"/>
+        </CardLayouts>
+        <LeaderAlias value="RoboticsFacility"/>
+        <HotkeyAlias value="RoboticsFacility"/>
+        <SelectAlias value="RoboticsFacility"/>
+        <SubgroupAlias value="RoboticsFacility"/>
+    </CUnit>
     <CUnit id="ZeratulSummonKarass">
         <FlagArray index="ArmySelect" value="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="7" Column="1"/>
+            <LayoutButtons index="9" Column="0"/>
+            <LayoutButtons index="10" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="ZeratulSummonVoidRay">
         <FlagArray index="ArmySelect" value="1"/>
@@ -5948,6 +6511,8 @@
     </CUnit>
     <CUnit id="ZerglingMengskBurrowed">
         <SubgroupPriority value="8"/>
+        <HotkeyAlias value="ZerglingMengskBurrowed"/>
+        <HotkeyCategory value=""/>
     </CUnit>
     <CUnit id="ZerglingStetmann">
         <CardLayouts index="0">

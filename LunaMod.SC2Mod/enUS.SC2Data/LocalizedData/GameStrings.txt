@@ -353,14 +353,13 @@ Button/Name/StukovInfestedBunkerUnloadAll=Unload All
 Button/Name/SwarmNetwork=Mutate into Swarm Network
 Button/Name/SwarmNetworkSwarmLocus=Summon Swarm Locus
 Button/Name/TempestDestabilizingResiduum=Destabilizing Residuum
+Button/Name/TrainHellionNova=Deploy Hellion Rangers
 Button/Name/TychusBunker=Build Fortified Bunker
 Button/Name/TychusBunkerAutoCastPassive=Garrison Combat Interface
 Button/Name/TychusHeroCommonAbil6=Tychus Outlaw Common Ability 6
 Button/Name/TychusHeroCommonAbil7=Tychus Outlaw Common Ability 7
 Button/Name/TychusHeroCommonAbil8=Tychus Outlaw Common Ability 8
 Button/Name/TychusHeroCommonAbil9=Tychus Outlaw Common Ability 9
-Button/Name/TychusHeroCommonRedirect1=Tychus Outlaw Common Redirect 1
-Button/Name/TychusHeroCommonRedirect2=Tychus Outlaw Common Redirect 2
 Button/Name/TychusOdinNuclearStrikePassive=Big Red Button
 Button/Name/UltraliskBrood=Morph to Torrasque
 Button/Name/UpgradeBuildingArmorLevel1=Upgrade Neosteel Armor
@@ -385,6 +384,7 @@ Button/Name/ZeratulAllPassive=Keystone Attunement
 Button/Name/ZeratulDarkTemplarBlink=Shadow Stride
 Button/Name/ZeratulDarkTemplarBlinkPassive=Shadow Stride
 Button/Name/ZeratulResearchDarkTemplarBlink=Artifact Enhancement: Shadow Stride
+Button/Name/ZeratulWarpPrismUnload=Unload All
 Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
 Button/Name/ZergGroundAttacksLevel2=Evolve Ground Attacks Level 2
 Button/Name/ZergGroundAttacksLevel3=Evolve Ground Attacks Level 3
@@ -554,6 +554,8 @@ Button/Tooltip/FenixThunderousChargeCoop=Fenix charges at the target location, d
 Button/Tooltip/ForceFieldTaldarim=Barrier that lasts <d time="15"/> and impedes movement of ground units.
 Button/Tooltip/FungalGrowth=Target units take <d ref="(Behavior,FungalGrowth,Duration / Behavior,FungalGrowth,Period) * Effect,FungalGrowthDamage,Amount"/> damage over <d time="4"/> and have movement speed reduced by <d ref="(1-Behavior,FungalGrowthSlowMovement,Modification.MoveSpeedMultiplier)*100"/>%. Reveals cloaked and burrowed units. Affected units cannot Blink or load into transports or buildings.
 Button/Tooltip/GhostMengskSuperCloak=Prevents the Emperor's Shadow from being detected for <d ref="Behavior,GhostMengskSuperCloak,Duration"/> seconds.
+Button/Tooltip/GravitonBeam=Makes the target unit float in the air, disabling its abilities. Effect lasts up to <d time="10"/>.<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are immune.</c>
+Button/Tooltip/GravitonBeamVoidCampaign=Makes the target unit float in the air, disabling its abilities. Effect lasts up to <d time="10"/>.<n/><n/><c val="#ColorAttackInfo">Massive and Heroic units are immune.</c>
 Button/Tooltip/HHBomberEMP=Precision Strikes additionally deploy an EMP warhead. Depletes the shield and energy of enemy units in the target area. Enemies take damage equal to energy depleted. Stuns Mechanical units for <d ref="Effect,HHBomberAreaBombEMPStunAB,Duration"/> seconds. Cloaked unit are revealed for <d ref="Behavior,EMPMengskDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/HHBomberNapalm=Precision Strikes ignite the target location with napalm. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
 Button/Tooltip/HHBomberNapalmImproved=Precision Strikes ignite the target location with napalm that spreads farther. Enemy ground units that touch the napalm take an additional <d ref="Effect,HHBomberAreaBombFireDamage,Amount * (Behavior,HHBomberAreaBombFire,Duration / Behavior,HHBomberAreaBombFire,Period)"/> damage over <d ref="Behavior,HHBomberAreaBombFire,Duration"/> seconds.
@@ -759,6 +761,7 @@ Button/Tooltip/SILiberatorNecroplasmicSynthesis=Infested Liberators regenerate e
 Button/Tooltip/SILiberatorVolatileFuel=Infested Liberators gains 50% increased attack and movement speed while using Cloud Dispersal.<n/><n/><c val="f078ff">Drains <d ref="-1*Effect,SILiberatorVolatileFuelMU,VitalArray[Energy].Change/Behavior,SILiberatorVolatileFuel,Period" precision="4"/> energy per second.</c>
 Button/Tooltip/SILiberatorVolatileSpray=Infested Liberators uses the Volatile Spray weapon, dealing constant splash damage. Leaves behind acid pools that deals damage over time and slows by 30%.<n/><n/><c val="f078ff">Drains <d ref="Weapon,SILiberatorAGWeapon2,Cost.Vital[Energy]" precision="2"/> energy per attack.</c>
 Button/Tooltip/SIMissileTurretRegenerativePlating=Infested Missile Turrets regenerate life twice as fast while rooted.
+Button/Tooltip/SITechLabBarracks=Infantry-research structure. A Tech Lab can fit onto any production structure.<n/><n/><c val="ffff8a">Enables:</c><n/>- Upgrades for Infested Marines.
 Button/Tooltip/SOAMothershipLineAttack=Deals <d ref="Effect,SOAMothershipLineAttackDamage,Amount"/> damage to all ground enemies in a straight line up to 10 range away.
 Button/Tooltip/SOAStrikefromtheShadows=Increases the weapon damage of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanent,Modification.DamageDealtFraction[Melee]*100" player="current"/>%. Increases the energy regeneration of friendly cloaked or burrowed units by <d ref="Behavior,VorazunCloakDamageBoostPermanentEnergy,Modification.VitalRegenMultiplier[Energy]*100" player="current"/>%.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/SalvageStetmann=Salvages the Stetellite, removing it and returning a charge of Deploy Stetellite if possible. Salvage takes <d time="5"/> to finish. Warning: once Salvage is triggered, it cannot be canceled.
@@ -791,6 +794,7 @@ Button/Tooltip/ThorMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Overwatch Mode ca
 Button/Tooltip/ThorMengskRank1Preview=<n/><c val="777777">Rank 1: Overwatch Mode can target ground units.</c>
 Button/Tooltip/ThorMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases the area of effect of Overwatch Mode by <d ref="(Effect,ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%.
 Button/Tooltip/ThorMengskRank2Preview=<n/><c val="777777">Rank 2: Increases the area of effect of Overwatch Mode by <d ref="(Effect,ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%.</c>
+Button/Tooltip/TrainHellionNova=Deploys <d ref="Effect,HellbatBlackOpsSpawnerCreateUnit,SpawnCount"/> Hellion Rangers.</n></n>Elite fast scout. Has a flame attack that damages all enemy units in its line of fire. Can transform into a close range combat unit.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/TychusBunker=Defensive structure. <n/>Outlaws fight from inside. <n/><n/><c val="#ColorAttackInfo">Bonus: +2 range to units inside.</c>
 Button/Tooltip/TychusBunkerAutoCastPassive=Outlaws within Fortified Bunkers can use their abilities and enable autocasting.
 Button/Tooltip/TychusFirebatOilBomb=Douses enemy ground units in oil, reducing attack and movement speed by <d ref="(1 - Behavior,TychusFirebatOilBombed,Modification.AttackSpeedMultiplier) *100"/>% and preventing them from cloaking. When a unit under the effect of Oil Spill is hit by a fire attack, it takes <d ref="Effect,TychusFireBatOilFireDamage,Amount/Behavior,TychusFirebatOilFire,Period"/> (<d ref="(Effect,TychusFireBatOilFireDamage,AttributeBonus[Light]+Effect,TychusFireBatOilFireDamage,Amount)/Behavior,TychusFirebatOilFire,Period"/> vs Light) damage per second over <d ref="Behavior,TychusFirebatOilFire,Duration"/> seconds.
@@ -859,19 +863,29 @@ Button/Tooltip/ZerglingStetmannAttackSpeedPassive=Increases attack speed by <d r
 Button/Tooltip/ZerglingStetmannRespawn=For every <d ref="Abil,ZerglingStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Zergling Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Zergling</c> will spawn here at no cost.
 Button/Tooltip/ZerglingStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,ZerglingStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Zergling Remnant,Mecha Zergling Remnants</lang></c>.
 Card/Name/BarracksMengskFlying=Flying
+Card/Name/CarrierAiur=Aiur Faction
+Card/Name/ColossusPurifier=Purifier Faction
 Card/Name/CommandCenterMengskFlying=Flying
 Card/Name/FactoryMengskFlying=Flying
+Card/Name/FenixAdept=Purifier Faction
 Card/Name/HHCommandCenterFlying=Flying
 Card/Name/HHStarportFlying=Flying
-Card/Name/MothershipArtanis=Artanis Mothership
+Card/Name/MothershipArtanis=Aiur Faction
+Card/Name/PhoenixAiur=Aiur Faction
 Card/Name/SIBarracksFlying=Uprooted
 Card/Name/SICivilianStructureFlying=Uprooted
 Card/Name/SICommandCenterFlying=Uprooted
 Card/Name/SIFactoryFlying=Uprooted
 Card/Name/SIMissileTurretFlying=Uprooted
 Card/Name/SIStarportFlying=Uprooted
+Card/Name/SentryAiur=Aiur Faction
+Card/Name/StalkerShakuras=Nerazim Faction
 Card/Name/StarportMengskFlying=Flying
 Card/Name/TychusCommandCenterFlying=Flying
+Card/Name/VoidRayShakuras=Nerazim Faction
+Card/Name/ZealotAiur=Aiur Faction
+Card/Name/ZealotPurifier=Purifier Faction
+Card/Name/ZealotShakuras=Nerazim Faction
 DocInfo/DescLong=A collection of changes and additions to the StarCraft 2 Co-op mode. Maguro's Mutators mod is used as a base.<n/><n/>Changes include new prestiges, new units, new enemies, new maps, new mutators, balance changes, quality-of-life changes, and a huge amount of bug fixes.
 DocInfo/DescShort=2
 DocInfo/Name=LunaMod
@@ -1348,7 +1362,9 @@ RequirementNode/Tooltip/Or1394776239TechTreeCheatCountUpgradeClusterWarheadsComp
 RequirementNode/Tooltip/Or1826056550CountUpgradeCommanderPrestigeTychusOdinCompleteOnlyNotCountUnitTychusOdinQueuedOrBetter=Tychus currently piloting Odin
 RequirementNode/Tooltip/Or2895527276NotCountUnitNukeMengskQueuedOrBetterAtUnitAndCountUpgradeMengskAcademyMissileCountCompleteOnlyLTCountUnitNukeMengskQueuedOrBetterAtUnit2=No Tactical Missile at this Royal Academy
 UI/MorphingStetellite=Rebuilding
+Unit/Category/ProtossAiur=Protoss - Aiur
 Unit/Category/ProtossZeratul=Protoss - Xel'Naga
+Unit/Category/TerranRaider=Terran - Raider
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor
 Unit/Name/BroodlingBrood=Scion

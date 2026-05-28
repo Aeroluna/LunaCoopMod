@@ -1,6 +1,6 @@
 # Changelog
 
-## 5/27/2026
+## 5/28/2026
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
 - Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
@@ -16,6 +16,8 @@
     - Mecha Overseer
     - Enthralled Zergling
 - Fixed an issue where P2's tooltip listed the wrong energy cost.
+- Fixed an issue where Volatile Infested used the wrong icon/wireframe.
+- Removed the voiceset from Carrier Repair Drones.
 
 yeah.
 
@@ -31,9 +33,13 @@ They are uncommandable anyways, they shouldn't have higher priority than your re
 
 These guys are pushovers anyways, give them Blink!
 
+- Added Deploy Hellion Rangers to the Factory.
+
+Nova can now directly deploy Hellions instead of Hellbats. I'm not sure why you would want to, but nothing wrong with having the option.
+
 - Fixed an issue where many hotkeys were missing or conflicting.
 
-The problem with using Grid hotkeys is you become completely oblivious to how badly you are screwing up all the hotkeys.
+The problem with using Grid hotkeys is you become completely oblivious to how badly you are screwing up all the hotkeys. Unfortunately, to make all the hotkeys play nice, some hotkeys had to be changed (Just use grid you psychos!).
 
 ## 5/21/2026
 

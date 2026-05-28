@@ -35,6 +35,12 @@
     <CActorSound id="Banshee_CloakOn">
         <On Terms="Behavior.BansheeCloak_Stukov.On" Send="Create"/>
     </CActorSound>
+    <CActorUnit id="CarrierRepairDrone">
+        <SoundArray index="Ready" value="CarrierRepairDrone_Ready"/>
+        <SoundArray index="What" value="CarrierRepairDrone_What"/>
+        <SoundArray index="Yes" value="CarrierRepairDrone_Yes"/>
+        <SoundArray index="Pissed" value="CarrierRepairDrone_Pissed"/>
+    </CActorUnit>
     <CActorUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-archon-upgraded.dds"/>
     </CActorUnit>
@@ -66,6 +72,26 @@
     <CActorAction id="Ghost_BlackOpsSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
+    <CActorUnit id="Hellbat_BlackOpsSpawnerUnit">
+        <SoundArray index="Ready" value="HellionTank_Ready"/>
+    </CActorUnit>
+    <CActorUnit id="Hellion_BlackOpsSpawnerUnit" parent="GenericUnitBase" unitName="Hellion_BlackOpsSpawnerUnit">
+        <Model value="Hellion_BlackOps"/>
+        <BuildModel value="Hellion_BlackOps"/>
+        <PlacementModel value="Hellion_BlackOps"/>
+        <PlacementActorModel value="Hellion_BlackOpsSpawnerUnitPlacement"/>
+        <SoundArray index="Ready" value="Hellion_Ready"/>
+    </CActorUnit>
+    <CActorModel id="Hellion_BlackOpsSpawnerUnitPlacement" parent="PlacementModel">
+        <On Terms="ActorCreation" Send="Create Hellion_BlackOpsPlacementAddition"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+        <Model value="Hellion_BlackOps"/>
+    </CActorModel>
+    <CActorModel id="Hellion_BlackOpsPlacementAddition" parent="ModelAddition">
+        <Model value="Hellion_BlackOps"/>
+        <HostSiteOps Ops="SOpMoveBy1 SOpForwardSouth"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.750000"/>
+    </CActorModel>
     <CActorSplat id="LurkerBurrowedSplat">
         <Scale value="0.800000"/>
     </CActorSplat>
@@ -1601,7 +1627,7 @@
         <BarOffset value="45"/>
         <BarWidth value="36"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+            <Image value="Assets\Textures\wireframe-zerg-volatileinfested.dds"/>
         </GroupIcon>
         <GroupSoundArray index="Birth" value="InfestedTerranBirth"/>
         <GroupSoundArray index="Ready" value="InfestedTerranReady"/>
@@ -1611,7 +1637,7 @@
         <GroupSoundArray index="Attack" value="InfestedTerranYes"/>
         <GroupSoundArray index="Pissed" value="InfestedTerranPissed"/>
         <GroupSoundArray index="Board" value="InfestedCivilian_GroupBoard"/>
-        <HeroIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-volatileinfested.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
         <SoundArray index="Birth" value="InfestedTerranBirth"/>
         <SoundArray index="Ready" value="InfestedTerranReady"/>
@@ -1626,9 +1652,9 @@
         <SoundArray index="Click" value="InfestedTerranCampaignClick"/>
         <SoundArray index="ClickError" value="InfestedTerranCampaignClickError"/>
         <SoundArray index="Highlight" value="InfestedTerranCampaignHighlight"/>
-        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestedcolonist.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-volatileinfested.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Zerg-Infestedcolonist.dds"/>
+            <Image value="Assets\Textures\wireframe-zerg-volatileinfested.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorUnit id="InfestedMarineAC" parent="GenericBurrowerStandard" unitName="InfestedMarineAC">
@@ -5655,6 +5681,13 @@
         <PortraitModel value="InfestedExploderPortrait"/>
         <GroupSoundArray index="Ready" value="Bogus"/>
         <SoundArray index="Ready" value="Bogus"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-volatileinfested.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-volatileinfested.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-volatileinfested.dds"/>
+        </Wireframe>
     </CActorMissile>
     <CActorSplat id="SOAPylonPowerUnitPowerVisual">
         <On Terms="Behavior.SOAPylonPowerPrestige.Create; !Option Model Low" Send="Create"/>
