@@ -55,6 +55,21 @@ I liked free Infested Marines, but the Corruption mechanic ended up more complic
 
 These changes should make Infested Marines more spammable.
 
+### Solar Right
+
+- Removed enemy gatherers.
+
+I really resisted removing mechanics from the original map, but these guys demanded way too much multi-tasking.
+
+- Fixed an issue where Hybrid did not spawn.
+- Fixed an issue where Gather Solarite command were canceled if the Solarite left vision.
+- Removed delay before returning Solarite.
+- Adjusted attack wave timings.
+- Fixed an issue where some bullies were not disabled.
+-
+
+This map is my achilles heel.
+
 ## 5/21/2026
 
 - Added a tooltip to the Destroyer's weapon that shows it ignores armor.
