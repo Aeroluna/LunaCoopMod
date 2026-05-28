@@ -1767,12 +1767,12 @@ Typically when using the Death Fleet or playing P3, you would end up with a lot 
 
 - Increased Destroyer warp-in time from 2 seconds to 5 seconds.
 
-Destroyers having such a low warp-in time made the warp-in finish before the animation, looking buggy.
+Destroyers had such a low warp-in time that it made the warp-in finish before the animation.
 
 - Reworked Slayer's Phase Blink ability.
   - Removed double damage on next attack after teleporting.
   - Can now teleport directly into other units.
-  - Knocksback nearby enemies and deals 15 damage.
+  - Knocksback nearby enemies and deals 20 damage.
   - Added red Blink icon.
 - Changed Slayer model to Forged collection model.
 
@@ -1962,14 +1962,14 @@ yeah.
 
 *All your unit are belong to us.* It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball hard.
 
-- Reworked Infested Barracks
-  - Costs 1 supply.
-  - Automatically spawns free Infested Marines.
-  - Can pay 100/50 and 1 supply to increase level of Corruption up to 5 times, decreasing the cooldown of spawning Infested Marines.
-  - Can autocast Increase Corruption.
-- Changed Infested Siege Tanks to also consume Infested Marines.
+- Reduced Infested Marine supply cost from 1 to 0.5.
+- Reduced Infested Barrack's Spawn Infested Marine max charges from 10 to 5.
+- Increased Infested Barrack's Spawn Infested Marine charge cooldown from 5 to 20.
+- Changed Infested Barrack's Spawn Infested Marine to be autocastable.
+- Reworked Stukov level 6 perk.
+  - Now reduces cost of Infested Marine by 20% instead of increasing max charges.
 
-Infested Marines were not worth investing into over Bunkers because they are timed. The solution? Make them free! Can now choose to invest in a Bunker for immediate units and static defense, or a Barracks for a long-term investment and slightly stronger infantry.
+These changes should make Infested Marines more spammable and hopefully keep up in value with Infested Bunkers.
 
 - Added Infested Rockets weapon from Versus to Infested Marines.
 

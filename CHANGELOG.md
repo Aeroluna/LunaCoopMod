@@ -18,6 +18,7 @@
 - Fixed an issue where P2's tooltip listed the wrong energy cost.
 - Fixed an issue where Volatile Infested used the wrong icon/wireframe.
 - Removed the voiceset from Carrier Repair Drones.
+- Fixed an issue where Zealots would not ragdoll to certain effects.
 
 yeah.
 
@@ -40,6 +41,19 @@ Nova can now directly deploy Hellions instead of Hellbats. I'm not sure why you 
 - Fixed an issue where many hotkeys were missing or conflicting.
 
 The problem with using Grid hotkeys is you become completely oblivious to how badly you are screwing up all the hotkeys. Unfortunately, to make all the hotkeys play nice, some hotkeys had to be changed (Just use grid you psychos!).
+
+- Reverted Infested Barracks rework.
+
+I liked free Infested Marines, but the Corruption mechanic ended up more complicated than I liked, so it has been replaced with a lite rework.
+
+- Reduced Infested Marine supply cost from 1 to 0.5.
+- Reduced Infested Barrack's Spawn Infested Marine max charges from 10 to 5.
+- Increased Infested Barrack's Spawn Infested Marine charge cooldown from 5 to 20.
+- Changed Infested Barrack's Spawn Infested Marine to be autocastable.
+- Reworked Stukov level 6 perk.
+  - Now reduces cost of Infested Marine by 20% instead of increasing max charges.
+
+These changes should make Infested Marines more spammable.
 
 ## 5/21/2026
 

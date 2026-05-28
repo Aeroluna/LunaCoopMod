@@ -5659,7 +5659,6 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
         }
         else if (auto560DABDD_val == "ZergStukov") {
-            TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, true);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeStukovNeural", c_techCountCompleteOnly) == 1)) {
                 lib74A68E34_gf_StukovPrestigeNeuralEnable(lv_player);
                 TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, true);
@@ -7674,32 +7673,6 @@ void lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init () {
     lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Func");
     TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, null, "StukovAleksanderAirMindControl", c_unitBehaviorChangeDeactivate);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: StukovCorruptionSetCD
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_StukovCorruptionSetCD_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "CommanderPrestigeStukovBunkers", c_techCountCompleteOnly) > 0)) {
-        UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (80.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 13.3)), c_cooldownOperationSet);
-    }
-    else {
-        UnitModifyCooldown(EventUnit(), "Abil/SIBarracksTrain", (120.0 - (UnitBehaviorCount(EventUnit(), "SIBarracksCorruption") * 20.0)), c_cooldownOperationSet);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_StukovCorruptionSetCD_Init () {
-    lib74A68E34_gt_StukovCorruptionSetCD = TriggerCreate("lib74A68E34_gt_StukovCorruptionSetCD_Func");
-    TriggerEnable(lib74A68E34_gt_StukovCorruptionSetCD, false);
-    TriggerAddEventUnitCreated(lib74A68E34_gt_StukovCorruptionSetCD, null, "SIBarracksTrain", null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11995,7 +11968,6 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Init();
     lib74A68E34_gt_StukovPrestigeNeuralRally_Init();
     lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init();
-    lib74A68E34_gt_StukovCorruptionSetCD_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();

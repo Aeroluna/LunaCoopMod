@@ -759,6 +759,11 @@
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Thor"/>
     </CUpgrade>
+    <CUpgrade id="SIImprovedMarineSpawning">
+        <EffectArray index="0" Operation="Subtract" Reference="Unit,SIInfestedMarine,CostResource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SICocoonInfestedMarine,CostResource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIMorphtoInfestedMarine,InfoArray[Train1].Resource[Minerals]" Value="2"/>
+    </CUpgrade>
     <CUpgrade id="TychusHercGrappleStun">
         <EffectArray Reference="Actor,TychusHercGrappleBunkerRange,Range" Value="1.500000"/>
     </CUpgrade>
@@ -1565,9 +1570,11 @@
         <EffectArray Operation="Subtract" Reference="Abil,SICivilianStructureSpawnCivilian,Cost[0].Cooldown.TimeUse" Value="5.000000"/>
         <EffectArray Operation="Subtract" Reference="Behavior,SICivilianStructureSpawnCivilianGlobalTimer,Duration" Value="5.000000"/>
         <EffectArray Operation="Subtract" Reference="Behavior,SICivilianStructureSpawnCivilianGlobalTimerRebuild,Duration" Value="5.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeUse" Value="40.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Charge.TimeStart" Value="6.666000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Charge.TimeUse" Value="6.666000"/>
+        <!--EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeUse" Value="40.000000"/>
         <EffectArray Operation="Subtract" Reference="Effect,StukovSIBunkerCDRDummy,Amount" Value="6.6"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeStart" Value="40.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SIBarracksTrain,InfoArray[Train1].Cooldown.TimeStart" Value="40.000000"/-->
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeStukovBunkersPerk">
         <EffectArray index="2" Value="2.000000"/>

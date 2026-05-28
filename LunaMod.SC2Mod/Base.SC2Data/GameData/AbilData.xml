@@ -244,6 +244,13 @@
     <CAbilEffectTarget id="ObserverTargetLock">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="SIBarracksTrain">
+        <InfoArray index="Train1">
+            <Charge CountMax="5" TimeStart="20" TimeUse="20"/>
+            <Unit value="SICocoonInfestedMarine"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilResearch id="StarportTechLabResearch">
         <InfoArray index="Research15" Upgrade="ScienceVesselResearchAoE">
             <Button DefaultButtonFace="ResearchScienceVesselAoE" Requirements="LearnScienceVesselAoE"/>
@@ -2424,27 +2431,6 @@
     <CAbilTrain id="RoboticsFacilityTrain">
         <InfoArray index="Train19">
             <Button Requirements="HaveRoboticsBay"/>
-        </InfoArray>
-    </CAbilTrain>
-    <CAbilTrain id="SIBarracksTrain">
-        <InfoArray index="Train1">
-            <Charge>
-                <CountMax value="0"/>
-                <CountStart value="0"/>
-                <CountUse value="0"/>
-                <TimeStart value="0"/>
-                <TimeUse value="0"/>
-            </Charge>
-            <Cooldown TimeStart="120" TimeUse="120"/>
-            <Unit value="SICocoonInfestedMarine"/>
-            <Flags index="AutoCast" value="1"/>
-            <Flags index="AutoCastOn" value="1"/>
-        </InfoArray>
-        <Flags index="Transient" value="1"/>
-    </CAbilTrain>
-    <CAbilTrain id="SIMorphtoInfestedMarine">
-        <InfoArray index="Train1">
-            <Resource index="Minerals" value="0"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilEffectTarget id="ShadowGuardVoidStasis">

@@ -4506,16 +4506,6 @@
         <Speed value="3.75"/>
         <TacticalAIThink value="AIThinkReaperLuna"/>
     </CUnit>
-    <CUnit id="SIBarracks">
-        <Food value="-1"/>
-        <AbilArray Link="SIBarracksTrainCorruption"/>
-        <AbilArray Link="que1"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="0" Column="4"/>
-            <LayoutButtons index="2" AbilCmd="que1,CancelLast"/>
-            <LayoutButtons Face="ResearchSIBarracksCorruption" Type="AbilCmd" AbilCmd="SIBarracksTrainCorruption,Train1" Row="1" Column="0"/>
-        </CardLayouts>
-    </CUnit>
     <CUnit id="SIBarracksCorruptionDummy">
         <Race value="Zerg"/>
         <Mover value="Fly"/>
@@ -5509,15 +5499,13 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SICocoonInfestedMarine">
-        <CostResource index="Minerals" value="0"/>
-        <Food value="0"/>
+        <Food value="-0.5"/>
     </CUnit>
     <CUnit id="SIInfestedMarine">
-        <Food value="0"/>
+        <Food value="-0.5"/>
         <WeaponArray index="0" Link="InfestedAcidSpines"/>
         <WeaponArray Link="SIInfestedMarine"/>
         <AlliedPushPriority value="-2"/>
-        <CostResource index="Minerals" value="0"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
         <CardLayouts index="0">
@@ -5526,8 +5514,7 @@
         </CardLayouts>
     </CUnit>
     <CUnit id="SIInfestedMarineBurrowed">
-        <Food value="0"/>
-        <CostResource index="Minerals" value="0"/>
+        <Food value="-0.5"/>
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
         <BehaviorArray Link="NoScrapDrop"/>
         <SubgroupAlias value="SIInfestedMarine"/>
