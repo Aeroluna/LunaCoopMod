@@ -1718,6 +1718,30 @@
                 <Field Id="Target Upgrades"/>
             </Upgrade>
         </Instances>
+        <Instances Id="ZergFlyerArmorsExtraLevel1">
+            <Upgrade Upgrade="ZergFlyerArmorsLevel1">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsExtraLevel1">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergFlyerArmorsExtraLevel2">
+            <Upgrade Upgrade="ZergFlyerArmorsLevel2">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsExtraLevel2">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="ZergFlyerArmorsExtraLevel3">
+            <Upgrade Upgrade="ZergFlyerArmorsLevel3">
+                <Field Id="Source Upgrade"/>
+            </Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsExtraLevel3">
+                <Field Id="Target Upgrades"/>
+            </Upgrade>
+        </Instances>
         <Instances Id="ZergGroundArmorsExtraLevel1">
             <Upgrade Upgrade="ZergGroundArmorsLevel1">
                 <Field Id="Source Upgrade"/>
@@ -3031,23 +3055,6 @@
                 <Field Id="Prestige" Index="3"/>
             </User>
         </Instances>
-        <Instances Id="[Override]TerranMengsk">
-            <GameLink GameLink="VoicePackProtossMengsk">
-                <Field Id="DefaultVoicePack"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackTerranMengsk">
-                <Field Id="DefaultVoicePack" Index="1"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackZergMengsk">
-                <Field Id="DefaultVoicePack" Index="2"/>
-            </GameLink>
-            <Text Text="UserData/PlayerCommanders/[Override]TerranMengsk_Description">
-                <Field Id="Description"/>
-            </Text>
-            <User Type="PlayerPrestige" Instance="CommanderPrestigeMengskZerg">
-                <Field Id="Prestige" Index="3"/>
-            </User>
-        </Instances>
         <Instances Id="[Override]ZergKerrigan">
             <GameLink GameLink="VoicePackProtossKerrigan">
                 <Field Id="DefaultVoicePack"/>
@@ -3057,6 +3064,9 @@
             </GameLink>
             <GameLink GameLink="VoicePackZergKerrigan">
                 <Field Id="DefaultVoicePack" Index="2"/>
+            </GameLink>
+            <GameLink GameLink="KerriganCoop">
+                <Field Id="CommanderSkin"/>
             </GameLink>
             <Text Text="UserData/PlayerCommanders/[Override]ZergKerrigan_Description">
                 <Field Id="Description"/>
@@ -3121,23 +3131,6 @@
                 <Field Id="Description"/>
             </Text>
             <User Type="PlayerPrestige" Instance="CommanderPrestigeDehakaArmy">
-                <Field Id="Prestige" Index="3"/>
-            </User>
-        </Instances>
-        <Instances Id="[Override]ZergStetmann">
-            <GameLink GameLink="VoicePackProtossStetmann">
-                <Field Id="DefaultVoicePack"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackTerranStetmann">
-                <Field Id="DefaultVoicePack" Index="1"/>
-            </GameLink>
-            <GameLink GameLink="VoicePackZergStetmann">
-                <Field Id="DefaultVoicePack" Index="2"/>
-            </GameLink>
-            <Text Text="UserData/PlayerCommanders/[Override]ZergStetmann_Description">
-                <Field Id="Description"/>
-            </Text>
-            <User Type="PlayerPrestige" Instance="CommanderPrestigeStetmannRespawn">
                 <Field Id="Prestige" Index="3"/>
             </User>
         </Instances>
@@ -3270,6 +3263,40 @@
                 <Field Id="Description"/>
             </Text>
             <User Type="PlayerPrestige" Instance="CommanderPrestigeFenixChampion">
+                <Field Id="Prestige" Index="3"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]ZergStetmann">
+            <GameLink GameLink="VoicePackProtossStetmann">
+                <Field Id="DefaultVoicePack"/>
+            </GameLink>
+            <GameLink GameLink="VoicePackTerranStetmann">
+                <Field Id="DefaultVoicePack" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="VoicePackZergStetmann">
+                <Field Id="DefaultVoicePack" Index="2"/>
+            </GameLink>
+            <Text Text="UserData/PlayerCommanders/[Override]ZergStetmann_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeStetmannRespawn">
+                <Field Id="Prestige" Index="3"/>
+            </User>
+        </Instances>
+        <Instances Id="[Override]TerranMengsk">
+            <GameLink GameLink="VoicePackProtossMengsk">
+                <Field Id="DefaultVoicePack"/>
+            </GameLink>
+            <GameLink GameLink="VoicePackTerranMengsk">
+                <Field Id="DefaultVoicePack" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="VoicePackZergMengsk">
+                <Field Id="DefaultVoicePack" Index="2"/>
+            </GameLink>
+            <Text Text="UserData/PlayerCommanders/[Override]TerranMengsk_Description">
+                <Field Id="Description"/>
+            </Text>
+            <User Type="PlayerPrestige" Instance="CommanderPrestigeMengskZerg">
                 <Field Id="Prestige" Index="3"/>
             </User>
         </Instances>
@@ -3924,11 +3951,7 @@
                 <Field Id="Commander"/>
             </User>
         </Instances>
-        <Instances Id="[Override]SwarmHost">
-            <User Type="PlayerCommanders" Instance="Bogus">
-                <Field Id="Commander"/>
-            </User>
-        </Instances>
+        <Instances Id="[Override]SwarmHost"/>
         <Instances Id="[Override]SwarmHostCreeper">
             <Int>
                 <Field Id="UnlocksExternal"/>
@@ -3974,11 +3997,7 @@
                 <Field Id="Commander"/>
             </User>
         </Instances>
-        <Instances Id="[Override]ImmortalAiur">
-            <User Type="PlayerCommanders" Instance="Bogus">
-                <Field Id="Commander" Index="1"/>
-            </User>
-        </Instances>
+        <Instances Id="[Override]ImmortalAiur"/>
         <Instances Id="[Override]ImmortalShakuras">
             <User Type="PlayerCommanders" Instance="ProtossKarax">
                 <Field Id="Commander"/>

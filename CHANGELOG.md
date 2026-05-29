@@ -1,6 +1,6 @@
 # Changelog
 
-## 5/28/2026
+## 5/29/2026
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
 - Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
@@ -54,6 +54,12 @@ I liked free Infested Marines, but the Corruption mechanic ended up more complic
   - Now reduces cost of Infested Marine by 20% instead of increasing max charges.
 
 These changes should make Infested Marines more spammable.
+
+- Removed the weapon from Amon's Vipers.
+- Changed the model for Amon's Vipers to the Versus model.
+- Changed the model for Amon's Brood Lords to the Versus model.
+
+Only commanders get cool campaign variants!
 
 ### Solar Right
 

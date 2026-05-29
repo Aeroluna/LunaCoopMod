@@ -47,7 +47,6 @@ Abil/Name/VorazunBlinkReturn=Wormhole
 Abil/Name/VorazunCleave=VorazunCleave
 Abil/Name/VorazunCounterCleave=VorazunCounterCleave
 Abil/Name/VorazunRevive=Vorazun Revive
-Abil/Name/YoinkAmon=Abduct
 Abil/Name/ZagaraCorruption=Corruption
 Abil/Name/ZeratulVoidPrisonTarget=Zeratul Void Prison Target
 ArmyCategory/Name/MothershipArtanis=MothershipArtanis
@@ -231,7 +230,6 @@ Button/Name/EvolveK5ChainLightningBrood=Evolve Psionic Cleave
 Button/Name/EvolveScourgeGasCostReduction=Evolve Dampening Membrane
 Button/Name/EvolveViperAbductImprovedStun=Evolve Paralytic Barbs
 Button/Name/EvolveViperImprovedCastRange=Evolve Virulent Microbes
-Button/Name/FaceEmbraceAmon=Abduct
 Button/Name/FenixArbiterCloakField=Cloaking Field
 Button/Name/FenixArbiterRecall=Recall
 Button/Name/HHBomberEMP=EMP Warhead Payload
@@ -547,7 +545,7 @@ Button/Tooltip/EvolveScourgeGasCostReduction=Reduces the splash and spell damage
 Button/Tooltip/EvolveViperImprovedCastRange=All <c val="ffff8a">Viper</c> abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
 Button/Tooltip/ExplosiveGlaive=Mutalisks deal 100% bonus damage vs. armored units.
 Button/Tooltip/FaceEmbrace=Pulls target unit to the Viper. Enemy units are stunned for <d ref="Behavior,YoinkEnemyStun,Duration"/> <lang rule="plural">second,seconds</lang>.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune to the stun.</c>
-Button/Tooltip/FaceEmbraceAmon=Pulls target unit to the location of the Viper.
+Button/Tooltip/FaceEmbraceAbathur=Pulls target unit to the location of the Viper.
 Button/Tooltip/FenixArbiterCloakField=Creates a cloaking field around Fenix, preventing enemy units from seeing and attacking nearby units and structures. A cloaked unit will only be revealed by detectors or effects.<n/><n/><c val="f078ff">Drains <d ref="-1 * (Behavior,FenixArbiterCloakingFieldCaster,Modification.VitalRegenArray[2] + Unit,DuskWing,EnergyRegenRate)" precision="1"/> energy per second.</c>
 Button/Tooltip/FenixArbiterCloakFieldOff=Disables Cloaking Field, making affected units and buildings visible to enemies.
 Button/Tooltip/FenixArbiterRecall=Teleports all friendly units in the target area to the location of the Fenix.
@@ -822,6 +820,7 @@ Button/Tooltip/VikingMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Deals bonus dam
 Button/Tooltip/VikingMengskRank1Preview=<n/><c val="777777">Rank 1: Deals bonus damage to Massive targets and gains +2 range.</c>
 Button/Tooltip/VikingMengskSpeedAssault=Movement speed increased by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskAssault,Speed$/Unit,VikingMengskAssault,Speed*100" player="0"/>%.
 Button/Tooltip/VikingMengskSpeedResearch=Increases the movement speed of <c val="ffff8a">Sky Furies</c> in Fighter Mode by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskFighter,Speed$/Unit,VikingMengskFighter,Speed*100" player="0"/>% and Assault Mode by <d ref="$UpgradeEffectArrayValue:VikingMengskSpeed:Unit,VikingMengskAssault,Speed$/Unit,VikingMengskAssault,Speed*100" player="0"/>%.
+Button/Tooltip/ViperAbathur=Flying caster. Able to manipulate battlefield conditions. Can use Parasitic Bomb, Consumption, Disabling Cloud, and Abduct abilities.</n></n><c val="ffff8a">Can attack air units.</c>
 Button/Tooltip/ViperImprovedCastRangePassive=All Viper abilities gain +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[0].Value"/> cast range and +<d ref="Upgrade,ViperImprovedCastRange,EffectArray[4].Value"/> radius.
 Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
@@ -859,6 +858,7 @@ Button/Tooltip/ZeratulAllPassive=<c val="FFFF8A">Steadfast Reinforcements:</c> I
 Button/Tooltip/ZeratulDarkArchonMaelstrom=Temporarily stuns enemy units in an area of effect for <d ref="Behavior,ZeratulDarkArchonMaelstrom,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
 Button/Tooltip/Zergling=Fast melee unit. Spawns in groups of three. Morphs almost instantly. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
+Button/Tooltip/ZerglingBurrowMove=Can move while burrowed. Burrowed regeneration rate increased by 100%.
 Button/Tooltip/ZerglingBurrowMoveAbathur=Can move at full speed while burrowed. Burrowed regeneration rate increased by 100%.
 Button/Tooltip/ZerglingStetmannAttackSpeedPassive=Increases attack speed by <d ref="(Behavior,ZerglingAttackSpeedStetmann,Modification.AttackSpeedMultiplier-1)*100"/>%. Drains <d ref="-1*Effect,ZerglingAttackSpeedStetmannMU,VitalArray[Energy].Change"/> Egonergy per attack.
 Button/Tooltip/ZerglingStetmannRespawn=For every <d ref="Abil,ZerglingStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Zergling Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Zergling</c> will spawn here at no cost.
@@ -1366,6 +1366,7 @@ UI/MorphingStetellite=Rebuilding
 Unit/Category/ProtossAiur=Protoss - Aiur
 Unit/Category/ProtossZeratul=Protoss - Xel'Naga
 Unit/Category/TerranRaider=Terran - Raider
+Unit/Category/ZergEvolved=Zerg - Evolved
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor
 Unit/Name/BroodlingBrood=Scion

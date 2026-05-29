@@ -126,6 +126,12 @@
         <EffectArray Reference="Weapon,InterceptorStetmannBeamDummy,Level" Value="1"/>
         <AffectedUnitArray value="BroodLordStetmann"/>
     </CUpgrade>
+    <CUpgrade default="1" id="ZergFlyerArmorsExtra">
+        <EditorCategories value="Race:Zerg,UpgradeType:ArmorBonus"/>
+        <EffectArray Reference="Unit,ViperAbathur,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,ViperAbathur,LifeArmor" Value="1"/>
+        <AffectedUnitArray value="ViperAbathur"/>
+    </CUpgrade>
     <CUpgrade default="1" id="ZergGroundArmorsExtra">
         <EditorCategories value="Race:Zerg,UpgradeType:ArmorBonus"/>
         <EffectArray Reference="Unit,InfestedCivilianAC,LifeArmorLevel" Value="1"/>
@@ -169,55 +175,6 @@
         <AffectedUnitArray value="DehakaDakrun"/>
         <EffectArray Reference="Weapon,KraithSpineVolley,Level" Value="1"/>
         <EffectArray Reference="Effect,KraithSpineVolleyDamage,Amount" Value="1"/>
-    </CUpgrade>
-    <CUpgrade id="MasteryStetmannStructureMorphRate">
-        <EffectArray Operation="Subtract" Reference="Abil,ZergBuildStetmann,InfoArray[Build12].Time" Value="1.600000"/>
-    </CUpgrade>
-    <CUpgrade id="MasteryStetmannUpgradeResearchCost">
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research1].Resource[Minerals]" Value="1"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research1].Resource[Vespene]" Value="1"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research4].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research4].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research5].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research5].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research1].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research1].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research7].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research7].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research8].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research8].Resource[Vespene]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research9].Resource[Minerals]" Value="3"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research9].Resource[Vespene]" Value="3"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research10].Resource[Minerals]" Value="2"/>
-        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research10].Resource[Vespene]" Value="2"/>
     </CUpgrade>
     <CUpgrade id="TychusOutlawArmorsLevel1">
         <EffectArray Operation="Set" Reference="Actor,TychusOdin,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
@@ -462,6 +419,27 @@
         <EffectArray Operation="Set" Reference="Actor,InfestedExploderAC,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,NovaInfestedSiegeTank,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,NovaInfestedSiegeTankUprooted,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel1">
+        <EffectArray index="51" Value="3"/>
+        <AffectedUnitArray value="ViperAbathur"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel2">
+        <EffectArray index="51" Value="3"/>
+        <AffectedUnitArray value="ViperAbathur"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel3">
+        <EffectArray index="51" Value="3"/>
+        <AffectedUnitArray value="ViperAbathur"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsExtraLevel1" parent="ZergFlyerArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ViperAbathur,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsExtraLevel2" parent="ZergFlyerArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ViperAbathur,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsExtraLevel3" parent="ZergFlyerArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ViperAbathur,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
     </CUpgrade>
     <CUpgrade id="ZergMeleeWeaponsExtraLevel1" parent="ZergMeleeWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,InfestedCivilianAC,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
@@ -759,6 +737,55 @@
         <AffectedUnitArray value="ThorAP"/>
         <AffectedUnitArray value="Thor"/>
     </CUpgrade>
+    <CUpgrade id="MasteryStetmannStructureMorphRate">
+        <EffectArray Operation="Subtract" Reference="Abil,ZergBuildStetmann,InfoArray[Build12].Time" Value="1.600000"/>
+    </CUpgrade>
+    <CUpgrade id="MasteryStetmannUpgradeResearchCost">
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,BanelingNestStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research1].Resource[Minerals]" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research1].Resource[Vespene]" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ResearchHatcheryStetmann,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research4].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research4].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research5].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,HydraliskDenStetmannResearch,InfoArray[Research5].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research1].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research1].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,InfestationPitStetmannResearch2,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpawningPoolStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research1].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research1].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research2].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research2].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research3].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,UltraliskCavernStetmannResearch,InfoArray[Research3].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research7].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research7].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research8].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research8].Resource[Vespene]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research9].Resource[Minerals]" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research9].Resource[Vespene]" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research10].Resource[Minerals]" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SpireStetmannResearch,InfoArray[Research10].Resource[Vespene]" Value="2"/>
+    </CUpgrade>
     <CUpgrade id="SIImprovedMarineSpawning">
         <EffectArray index="0" Operation="Subtract" Reference="Unit,SIInfestedMarine,CostResource[Minerals]" Value="2"/>
         <EffectArray Operation="Subtract" Reference="Unit,SICocoonInfestedMarine,CostResource[Minerals]" Value="2"/>
@@ -786,6 +813,9 @@
         <EffectArray Reference="Unit,RoachVileBurrowed,Speed" Value="0.85"/>
         <EffectArray Operation="Set" Reference="Button,ZerglingBurrowMove,AlertTooltip" Value="Button/Tooltip/ZerglingBurrowMoveAbathur"/>
         <EffectArray Operation="Set" Reference="Button,ZerglingBurrowMove,Tooltip" Value="Button/Tooltip/ZerglingBurrowMoveAbathur"/>
+        <EffectArray Operation="Set" Reference="Abil,LarvaTrain,InfoArray[Train13].Unit[0]" Value="ViperAbathur"/>
+        <EffectArray Operation="Set" Reference="Button,Viper,Tooltip" Value="Button/Tooltip/ViperAbathur"/>
+        <EffectArray Operation="Set" Reference="Button,Viper,AlertTooltip" Value="Button/Tooltip/ViperAbathur"/>
     </CUpgrade>
     <CUpgrade id="AbathurDeepTunnel">
         <AffectedUnitArray value="SwarmHostSplitB"/>
@@ -885,6 +915,7 @@
     <CUpgrade id="CommanderPrestigeAbathurDeepTunnel">
         <EffectArray Reference="Unit,SwarmHostSplitB,CostResource[Vespene]" Value="25"/>
         <EffectArray Reference="Unit,SwarmHostSplitBBurrowed,CostResource[Vespene]" Value="25"/>
+        <EffectArray Reference="Unit,Viper,CostResource[Vespene]" Value="50"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeAbathurSymbioteSupply">
         <EffectArray Reference="Unit,CoopCasterAbathur,Food" Value="-6"/>
@@ -2739,15 +2770,6 @@
         <EffectArray Operation="Set" Reference="Button,InfestationPit,AlertTooltip" Value="Button/Tooltip/ACZagaraInfestationPit"/>
         <EffectArray Operation="Set" Reference="Abil,UpgradeToHive,CmdButtonArray[Execute].Requirements" Value="HaveInfestationPit"/>
         <EffectArray Reference="Unit,RoachCorpser,Speed" Value="0.750000"/>
-    </CUpgrade>
-    <CUpgrade id="ZergFlyerWeaponsLevel1">
-        <EffectArray index="51" Value="3"/>
-    </CUpgrade>
-    <CUpgrade id="ZergFlyerWeaponsLevel2">
-        <EffectArray index="51" Value="3"/>
-    </CUpgrade>
-    <CUpgrade id="ZergFlyerWeaponsLevel3">
-        <EffectArray index="51" Value="3"/>
     </CUpgrade>
     <CUpgrade id="overlordspeed">
         <EffectArray Operation="Set" Reference="Unit,OverlordTransport,Speed" Value="2.144500"/>

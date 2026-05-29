@@ -1206,9 +1206,6 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorphPlacement>
-    <CAbilEffectTarget id="DisablingCloud">
-        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="DukesRevengeYamato">
         <Flags index="AllowMovement" value="1"/>
         <Flags index="AutoCast" value="1"/>
@@ -1798,23 +1795,6 @@
     <CAbilEffectTarget id="Yamato">
         <PrepTime index="0" value="3"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="YoinkAmon">
-        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Effect index="0" value="YoinkStartSwitch"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="NoDeceleration" value="1"/>
-        <Cost>
-            <Vital index="Energy" value="75"/>
-        </Cost>
-        <TargetFilters value="Visible;Self,Structure,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
-        <Range value="9"/>
-        <UninterruptibleArray index="Cast" value="1"/>
-        <UninterruptibleArray index="Channel" value="1"/>
-        <UninterruptibleArray index="Finish" value="1"/>
-        <AINotifyEffect value="FaceEmbrace"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="FaceEmbraceAmon"/>
-        <FinishTime value="0.8"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="ZagaraCorruption">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="Corruption"/>
@@ -2133,11 +2113,6 @@
         <Range value="9"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="KerriganImplosion" State="Restricted"/>
     </CAbilEffectTarget>
-    <CAbilTrain id="LarvaTrain">
-        <InfoArray index="Train12">
-            <Unit index="0" value="ZagaraCorruptor"/>
-        </InfoArray>
-    </CAbilTrain>
     <CAbilEffectTarget id="MedicRestoration">
         <Alignment value="Positive"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -2580,7 +2555,6 @@
     </CAbilEffectInstant>
     <CAbilEffectTarget id="ViperConsumption">
         <TargetFilters index="0" value="Biological;Self,Enemy,Missile,Uncommandable,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
-        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VortexArtanis" parent="TalDarimVortex">
         <Effect index="0" value="VortexArtanisCreatePersistentInitial"/>
@@ -2666,8 +2640,18 @@
         <Range value="500"/>
     </CAbilBuild>
     <CAbilEffectTarget id="Yoink">
-        <TargetFilters index="0" value="Visible;Self,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
-        <CmdButtonArray index="Execute" Requirements="HaveAbathurCommander"/>
+        <Cost index="0">
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Self,Structure,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
+        <FinishTime value="0.8"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="YoinkAbathur" parent="Yoink">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <FinishTime index="0" removed="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="FaceEmbraceAbathur"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="VoidArchonMaelstrom">
         <Alignment value="Negative"/>

@@ -35,6 +35,11 @@
     <CActorSound id="Banshee_CloakOn">
         <On Terms="Behavior.BansheeCloak_Stukov.On" Send="Create"/>
     </CActorSound>
+    <CActorUnit id="BroodLord">
+        <Model value="BroodLord"/>
+        <DeathArray index="Normal" ModelLink="BroodLordDeath"/>
+        <PortraitModel value="BroodLordPortrait"/>
+    </CActorUnit>
     <CActorUnit id="CarrierRepairDrone">
         <SoundArray index="Ready" value="CarrierRepairDrone_Ready"/>
         <SoundArray index="What" value="CarrierRepairDrone_What"/>
@@ -1390,6 +1395,129 @@
         <On Terms="AbilTransport.OverlordStetmannTransport.CargoUnload" Send="AnimBracketStop Unload"/>
         <On Terms="AbilTransport.OverlordStetmannTransport.CargoLoadSuppressed" Send="AnimBracketStart Unload IGNORE Unload Unload,End DontResetOnUnhide"/>
     </CActorEventMacro>
+    <CActorUnit id="ViperAbathur" parent="GenericUnitMorph" unitName="ViperAbathur">
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Viper_Land"/>
+        <On Terms="Abil.YoinkAbathur.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.DisablingCloud.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.ViperConsumeStructure.SourceChannelStart" Send="AnimGroupApply Channel"/>
+        <On Terms="Abil.ViperConsumeStructure.SourceChannelStop" Send="AnimGroupRemove Channel"/>
+        <On Terms="UnitDeathCustomize" Send="SetTeamColor 255,255,255"/>
+        <On Terms="UnitDeath" Send="Create ViperDeathAddition"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Spell"/>
+        <On Terms="WeaponStart.*.AttackStart; AnimPlaying Birth" Send="AnimClear Birth"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
+        <HostSiteOps Ops="SOpSerpentHeadViper SOpRotationSmoothViper SOpBankerBroodLord"/>
+        <AnimBlendTime value="0.500000"/>
+        <HostedAttaches Name="Seg0">
+            <AttachQuery Methods="Attacher"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur0"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg1">
+            <AttachQuery Methods="Attacher 1"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur1"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg2">
+            <AttachQuery Methods="Attacher 2"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur2"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg3">
+            <AttachQuery Methods="Attacher 3"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur3"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg4">
+            <AttachQuery Methods="Attacher 4"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur4"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg5">
+            <AttachQuery Methods="Attacher 5"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur5"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg6">
+            <AttachQuery Methods="Attacher 6"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur6"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg7">
+            <AttachQuery Methods="Attacher 7"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur7"/>
+        </HostedAttaches>
+        <HostedAttaches Name="Seg8">
+            <AttachQuery Methods="Attacher 8"/>
+            <HostSiteOps Ops="SOpSerpentSegmentViperAbathur8"/>
+        </HostedAttaches>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" SoundLink="Zerg_ExplosionMedium" VoiceLink="LairViper_Death"/>
+        <DeathCustoms>
+            <ActorModel value="ViperDeathRagdoll"/>
+            <ModelLink value="ViperDeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ModelLink="ZergMediumUnitDeathLow" Name="Low"/>
+        <DeathCustoms ModelLink="ZergMediumUnitDeath_Mecha" Name="LowMecha"/>
+        <DeathCustoms>
+            <ModelLink value="DeathVoidShadowSmall"/>
+            <SoundLink value="ShadowUnit_DeathFX"/>
+            <VoiceLink value="ShadowUnit_DeathVox"/>
+            <Name value="Shadow"/>
+        </DeathCustoms>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PortraitModel value="ViperEx1Portrait"/>
+        <BarOffset value="70"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Viper.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-zerg-Viper.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
+        <NameOffset value="70"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="Ready" value="LairViper_Ready"/>
+        <SoundArray index="What" value="LairViper_What"/>
+        <SoundArray index="Yes" value="LairViper_Yes"/>
+        <SoundArray index="Attack" value="LairViper_Attack"/>
+        <SoundArray index="Pissed" value="LairViper_What"/>
+        <SoundArray index="Movement" value="LairViper_Movement"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-Viper.dds"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Viper.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathurBase">
+        <Head value="ViperAbathur"/>
+    </CActorSiteOpSerpentSegment>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur0" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur1" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur2" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur3" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur4" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur5" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur6" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur7" parent="SOpSerpentSegmentViperAbathurBase"/>
+    <CActorSiteOpSerpentSegment id="SOpSerpentSegmentViperAbathur8" parent="SOpSerpentSegmentViperAbathurBase"/>
     <CActorSound id="VoidRaySoundEnd">
         <On Terms="Effect.MohandarChargeEffect01.Stop" Send="Create"/>
     </CActorSound>

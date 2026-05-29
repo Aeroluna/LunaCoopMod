@@ -2850,6 +2850,37 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowUltraliskDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="ViperAbathur" parent="Viper">
+        <Description value="Button/Tooltip/ViperAbathur"/>
+        <AbilArray index="4" Link="YoinkAbathur"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="FaceEmbraceAbathur" AbilCmd="YoinkAbathur,Execute" Column="1"/>
+            <LayoutButtons index="7" Column="2"/>
+            <LayoutButtons index="8" Column="0"/>
+            <LayoutButtons index="12">
+                <Face value="EvolveToLeviathan"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="EvolveToLeviathanViper,Train1"/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="13">
+                <Face value="EvolveToLeviathanLocked"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="AbathurLevel02"/>
+                <Row value="2"/>
+                <Column value="4"/>
+            </LayoutButtons>
+            <LayoutButtons index="14" Face="CommanderPrestigeAbathurLeviathanLocked" Type="Passive" Requirements="CommanderPrestigeAbathurBiomass" Row="2" Column="4"/>
+        </CardLayouts>
+        <LeaderAlias value="ViperAbathur"/>
+        <HotkeyAlias value="ViperAbathur"/>
+        <SelectAlias value="ViperAbathur"/>
+        <SubgroupAlias value="ViperAbathur"/>
+        <HotkeyCategory value="Unit/Category/ZergEvolved"/>
+    </CUnit>
     <CUnit id="VoidArchonDummy">
         <Race value="Prot"/>
         <FlagArray index="Unselectable" value="1"/>
@@ -6112,18 +6143,27 @@
         <CostResource index="Vespene" value="50"/>
     </CUnit>
     <CUnit id="Viper">
-        <AbilArray Link="BlindingCloud"/>
-        <AbilArray Link="ViperConsumeStructure"/>
-        <AbilArray Link="YoinkAmon"/>
+        <AbilArray index="2" Link="ViperConsumeStructure"/>
+        <AbilArray index="3" Link="BlindingCloud"/>
+        <AbilArray index="5" Link="ParasiticBomb"/>
+        <AbilArray index="6" removed="1"/>
+        <AbilArray index="7" removed="1"/>
+        <AbilArray index="8" removed="1"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="BlindingCloud" AbilCmd="BlindingCloud,Execute"/>
-            <LayoutButtons index="8" Face="ViperConsume" AbilCmd="ViperConsumeStructure,Execute"/>
-            <LayoutButtons index="12" Column="4"/>
-            <LayoutButtons Face="FaceEmbraceAmon" Type="AbilCmd" AbilCmd="YoinkAmon,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="DisablingCloud" Type="AbilCmd" AbilCmd="DisablingCloud,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="ViperConsumption" Type="AbilCmd" AbilCmd="ViperConsumption,Execute" Row="2" Column="2"/>
+            <LayoutButtons index="3" Face="Attack"/>
+            <LayoutButtons index="6" Face="ViperConsume" AbilCmd="ViperConsumeStructure,Execute"/>
+            <LayoutButtons index="7" Face="BlindingCloud" AbilCmd="BlindingCloud,Execute" Column="2"/>
+            <LayoutButtons index="8" Face="FaceEmbrace" AbilCmd="Yoink,Execute" Column="1"/>
+            <LayoutButtons index="10" removed="1"/>
+            <LayoutButtons index="11" removed="1"/>
+            <LayoutButtons index="12" removed="1"/>
+            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="14" removed="1"/>
+            <LayoutButtons index="15" removed="1"/>
+            <LayoutButtons index="16" removed="1"/>
         </CardLayouts>
         <TacticalAIThink value="AIThinkViperLuna"/>
+        <WeaponArray index="0" removed="1"/>
     </CUnit>
     <CUnit id="VoidCoopARES">
         <WeaponArray Link="WarbotAMoving" Turret="Warbot"/>

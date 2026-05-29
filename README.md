@@ -638,10 +638,6 @@ They explicitly target low health units because otherwise it would just be frust
 
 Returned Revelation to Oracles and in return they lose permanent detection.
 
-- Removed AOE slow from Concussive Shells upgrade.
-
-Its kinda stinky when Amon gets your exclusive campaign upgrades. Amon gets the Versus slow instead!
-
 - Reduced Liberator's Defender Mode range from 9 to 5.
 - Removed bonus sight radius from Defender Mode.
 - Reduced Liberator anti-air damage from 7 to 5.
@@ -765,10 +761,6 @@ fast banshees go nyoom.
 
 Copied from Versus. Transforms Infestors into the sneaky burrowing spellcasters they were always meant to be.
 
-- Reduced Roach Tunneling Claws speed bonus from 2.25 to 1.4.
-
-Copied from Versus.
-
 - Increased Locust duration from 18 seconds to 25 seconds.
 - Increased Spawn Locust cooldown from 15 to 60 seconds.
 - Reduced Locust life from 65 to 50.
@@ -780,15 +772,19 @@ Copied from Versus.
 
 Coped from Versus. Should make Swarm Host have a higher initial impact but less sustained poke. Fun fact: this also fixes a bug where the egg animation on their back took 60 seconds despite the cooldown being 15 seconds.
 
-- Changed Amon's Marauder Concussive Shells from AoE to single target.
-
-Only commanders get the cool campaign version!
-
 - Reduced cooldown of Disruptor's Purification Nova from 30 seconds to 24 seconds.
 - Reduced damage of Disruptor's Purification Nova from 150 (+50 vs shields) to 100 (+100 vs shields).
 - Reworked Disruptor AI to use Purification Nova more aggressively.
 
 Disruptors are kinda lame.
+
+- Changed Amon's Marauder Concussive Shells from AoE to single target.
+- Removed the weapon from Amon's Vipers.
+- Changed the model for Amon's Vipers to the Versus model.
+- Changed the model for Amon's Brood Lords to the Versus model.
+- Reduced Roach Tunneling Claws speed bonus from 2.25 to 1.4.
+
+Only commanders get the cool campaign stuff!
 
 - Removed Detector passive from Choker.
 - Removed Detector passive from Hunterling.
