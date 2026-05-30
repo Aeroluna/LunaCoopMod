@@ -4,6 +4,7 @@
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
 - Fixed an issue where Brood Lords were not affected by attack speed changes.
+- Fixed an issue where Hybrid Nemesis's weapon was not affected by attack speed changes.
 
 ### Skyfall
 

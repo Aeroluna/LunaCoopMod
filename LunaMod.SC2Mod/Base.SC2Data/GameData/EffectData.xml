@@ -5994,4 +5994,14 @@
         <EffectArray value="BeamTargetCD"/>
         <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="HybridNemesisWeaponPersistent">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <InitialEffect value="HybridNemesisWeaponImpactSet"/>
+        <PeriodicEffectArray index="0" value="HybridNemesisWeaponImpactSet"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HybridNemesisWeaponImpactSet">
+        <EffectArray value="BeamTargetCD"/>
+        <EffectArray value="HybridNemesisWeaponDamage"/>
+        <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
 </Catalog>
