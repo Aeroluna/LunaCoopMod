@@ -4,6 +4,12 @@
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
 
+### Skyfall
+
+- Fixed a bug where Giant Meteorites didn't fall.
+
+I accidentally disabled them while debugging... I can't believe the main map objective has been broken for so long!
+
 ## 5/29/2026
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
