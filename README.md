@@ -1131,6 +1131,10 @@ Not sure why this was nerfed to not hit invisible units at some point.
 
 It just looks cooler! Let Zagara keep that boring old cocoon.
 
+- Changed Brood Lord's weapon tooltip attack count to 2.
+
+Fun fact: For some reason Kerrigan's Brood Lords spawn two Broodlings at a time instead of one, doubling its DPS.
+
 - Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
 - Fixed an issue where Kerrigan's Cocoon had extra unnecessary attributes.
 
@@ -2714,7 +2718,7 @@ Copied from Versus.
 - Increased Super Gary's model radius by 60%.
 - Added flying helper splat when placing Stetellites.
 - Added burrow FX to the Mecha Lurker Tunnel of TERROR Algorithm ability.
-- Fixed an issue where Mecha Lurker burrow used the wrong tooltip.
+- Fixed an issue where Mecha Lurker Burrow used the wrong tooltip.
 - Changed Mecha Ravager's Environmentally Unfriendly Eruption autocast to target forcefields.
 - Fixed an issue where Mecha Ravager Eggs used the normal zerg death model instead of the mecha one.
 - Fixed an issue where Mecha Roach Eggs used the normal zerg death model instead of the mecha one.
@@ -2727,6 +2731,7 @@ Copied from Versus.
 - Fixed an issue where Stetmann's structures did not play the zerg building sound.
 - Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
 - Fixed an issue where Mecha Lurkers had no range indicator when burrowed.
+- Fixed an issue where Mecha Battlecarrier Lords listed the wrong attack speed.
 
 yeah.
 

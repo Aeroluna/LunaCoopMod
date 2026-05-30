@@ -5,6 +5,13 @@
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
 - Fixed an issue where Brood Lords were not affected by attack speed changes.
 - Fixed an issue where Hybrid Nemesis's weapon was not affected by attack speed changes.
+- Fixed an issue where Mecha Battlecarrier Lords listed the wrong attack speed.
+
+yeah.
+
+- Changed Brood Lord's weapon tooltip attack count to 2.
+
+Fun fact: For some reason Kerrigan's Brood Lords spawn two Broodlings at a time instead of one, doubling its DPS.
 
 ### Skyfall
 
