@@ -3617,9 +3617,9 @@ void lib74A68E34_gt_CreateAICoopCaster_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: BeamWeaponCD
+// Trigger: BehaviorWeaponCD
 //--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_BeamWeaponCD_Func (bool testConds, bool runActions) {
+bool lib74A68E34_gt_BehaviorWeaponCD_Func (bool testConds, bool runActions) {
     // Variable Declarations
     fixed lv_cooldown;
     fixed lv_rate;
@@ -3636,14 +3636,15 @@ bool lib74A68E34_gt_BeamWeaponCD_Func (bool testConds, bool runActions) {
     lv_cooldown = UnitWeaponPeriod(EventUnit(), 1);
     lv_rate = UnitWeaponSpeedMultiplier(EventUnit(), 1);
     lv_duration = ((lv_cooldown * lv_rate) / 16.0);
-    UnitBehaviorSetDuration(EventUnit(), "BeamTargetCD", lv_duration);
+    UnitBehaviorSetDuration(EventUnit(), EventUnitBehavior(), lv_duration);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_BeamWeaponCD_Init () {
-    lib74A68E34_gt_BeamWeaponCD = TriggerCreate("lib74A68E34_gt_BeamWeaponCD_Func");
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_BeamWeaponCD, null, "BeamTargetCD", c_unitBehaviorChangeCreate);
+void lib74A68E34_gt_BehaviorWeaponCD_Init () {
+    lib74A68E34_gt_BehaviorWeaponCD = TriggerCreate("lib74A68E34_gt_BehaviorWeaponCD_Func");
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_BehaviorWeaponCD, null, "BeamTargetCD", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_BehaviorWeaponCD, null, "BroodLordHangarCD", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5745,6 +5746,9 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
 
             TriggerEnable(libCOMI_gt_CM_Zeratul_Entropic_Spawner, false);
             TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, true);
+        }
+        else if (auto560DABDD_val == "ZergStetmann") {
+            TriggerEnable(lib74A68E34_gt_StetmannBroodLordArmCD, true);
         }
         else if (auto560DABDD_val == "TerranMengsk") {
             TriggerEnable(lib74A68E34_gt_MengskPreserveAutocast, true);
@@ -9672,6 +9676,38 @@ void lib74A68E34_gt_ZeratulEntropicSpawner_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: StetmannBroodLordArmCD
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StetmannBroodLordArmCD_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_cooldown;
+    fixed lv_rate;
+    fixed lv_duration;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_cooldown = UnitWeaponPeriod(EventUnit(), 1);
+    lv_rate = UnitWeaponSpeedMultiplier(EventUnit(), 1);
+    lv_duration = ((lv_cooldown * lv_rate) / 16.0);
+    UnitModifyCooldown(EventUnit(), "Abil/BroodLordStetmannBroodlingEscortArm", lv_duration, c_cooldownOperationSet);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StetmannBroodLordArmCD_Init () {
+    lib74A68E34_gt_StetmannBroodLordArmCD = TriggerCreate("lib74A68E34_gt_StetmannBroodLordArmCD_Func");
+    TriggerEnable(lib74A68E34_gt_StetmannBroodLordArmCD, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_StetmannBroodLordArmCD, null, AbilityCommand("BroodLordStetmannBroodlingEscortArm", 0), c_abilEffectStageFinish, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_StetmannBroodLordArmCD, null, AbilityCommand("BroodLordStetmannBroodlingEscortArmAugment", 0), c_abilEffectStageFinish, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MengskPreserveAutocast
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_MengskPreserveAutocast_Func (bool testConds, bool runActions) {
@@ -11862,7 +11898,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_HideACHeroSpawnPlacement_Init();
     lib74A68E34_gt_PlayerColorsInit_Init();
     lib74A68E34_gt_CreateAICoopCaster_Init();
-    lib74A68E34_gt_BeamWeaponCD_Init();
+    lib74A68E34_gt_BehaviorWeaponCD_Init();
     lib74A68E34_gt_ReaverScarabTargetDamage_Init();
     lib74A68E34_gt_ReaverPathing_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();
@@ -12009,6 +12045,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZeratulPrestigeTopBarLegion_Init();
     lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init();
     lib74A68E34_gt_ZeratulEntropicSpawner_Init();
+    lib74A68E34_gt_StetmannBroodLordArmCD_Init();
     lib74A68E34_gt_MengskPreserveAutocast_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
     lib74A68E34_gt_MutatorInit_Init();

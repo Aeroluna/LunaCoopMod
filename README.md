@@ -306,8 +306,11 @@ This is how long after a sound is played before another is allowed to play. Can 
 Why couldn't Colossi walk over Nova?
 
 - Fixed an issue where beam weapons were unaffected by attack speed changes.
+- Fixed an issue where Brood Lords were not affected by attack speed changes.
 
-With how many attack speed buffs that exist in co-op it's crazy that some units like Void Rays literally could not benefit from them.
+With how many attack speed buffs/debuffs that exist in co-op it's crazy that some units like Void Rays literally could not benefit from them.
+
+Brood Lords too!
 
 - Removed the Untransportable attribute.
 

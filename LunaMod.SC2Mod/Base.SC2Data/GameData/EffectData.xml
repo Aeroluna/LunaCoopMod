@@ -117,6 +117,17 @@
     <CEffectSwitch id="BlindingCloudSwitch">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSwitch>
+    <CEffectApplyBehavior id="BroodLordHangarCD">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray index="0" value="BroodLordHangarCDCombine"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="BroodLordHangarCDOrder">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="BroodLordHangar"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>

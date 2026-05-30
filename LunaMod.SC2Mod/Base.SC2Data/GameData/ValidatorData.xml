@@ -57,6 +57,15 @@
         <CombineArray value="HasLocustTimedLife"/>
         <CombineArray value="NotSummonAndNotTimedLifeOrLarva"/>
     </CValidatorCombine>
+    <CValidatorPlayerRequirement id="ArmBroodlingEscort">
+        <Value value="ArmBroodlingEscort"/>
+        <Find value="1"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="BroodLordHangarCDCombine">
+        <CombineArray value="NoBroodLordHangarCD"/>
+        <CombineArray value="ArmBroodlingEscort"/>
+        <Type value="And"/>
+    </CValidatorCombine>
     <CValidatorCombine id="CasterThorMengskSiegedSmallAoE">
         <CombineArray index="0" value="ThorMengskMorphValidatorCombine"/>
     </CValidatorCombine>
@@ -284,6 +293,10 @@
     <CValidatorUnitType id="IsTychusBunker">
         <Value value="TychusBunker"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="NoBroodLordHangarCD">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BroodLordHangarCD"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationCompareRange id="ThorMengskSiegedNotOutOfRange">
         <Compare value="LE"/>
         <Range value="8"/>

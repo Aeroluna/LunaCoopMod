@@ -3,6 +3,7 @@
 ## 5/30/2026
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
+- Fixed an issue where Brood Lords were not affected by attack speed changes.
 
 ### Skyfall
 
