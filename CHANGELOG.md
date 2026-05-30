@@ -1,5 +1,9 @@
 # Changelog
 
+## 5/30/2026
+
+- Fixed an issue where Supplicants could not be warped in from a Warp Gate.
+
 ## 5/29/2026
 
 - Fixed an issue where using the random commander selection would cause issues with the console skin.
@@ -72,7 +76,6 @@ I really resisted removing mechanics from the original map, but these guys deman
 - Removed delay before returning Solarite.
 - Adjusted attack wave timings.
 - Fixed an issue where some bullies were not disabled.
--
 
 This map is my achilles heel.
 
