@@ -2709,10 +2709,32 @@
         <AutoScaleFactor value="0.800000"/>
     </CActorModel>
     <CActorSound id="Salvage_StartSound" parent="SoundOneShot">
-        <Sound value="Thor_EmergencyRepair_Self"/>
+        <Sound value="Salvage_Start"/>
     </CActorSound>
-    <CActorSound id="Salvage_LoopSound" parent="SoundOneShot">
-        <Sound value="Thor_EmergencyRepair_Elec_1Shot"/>
+    <CActorSound id="Salvage_LoopSound" parent="SoundContinuous">
+        <Sound value="Salvage_Loop"/>
+    </CActorSound>
+    <CActorModel id="DrakkenLaserDrillBuild" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.DrakkenLaserDrillBuild.On" Send="Create"/>
+        <On Terms="Behavior.DrakkenLaserDrillBuild.Off" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Create DrakkenLaserDrillBuild_StartSound"/>
+        <On Terms="ActorCreation" Send="Create DrakkenLaserDrillBuild_LoopSound"/>
+        <On Terms="ActorDestruction" Target="DrakkenLaserDrillBuild_LoopSound" Send="Destroy"/>
+        <On Terms="ActorDestruction" Send="Create DrakkenLaserDrillBuild_EndSound"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveDownBy1Dot5"/>
+        <Model value="ThorSelfRepair"/>
+        <Scale value="2.000000"/>
+    </CActorModel>
+    <CActorSound id="DrakkenLaserDrillBuild_EndSound" parent="SoundOneShot">
+        <Sound value="DrakkenLaserDrillBuild_End"/>
+    </CActorSound>
+    <CActorSound id="DrakkenLaserDrillBuild_StartSound" parent="SoundOneShot">
+        <Sound value="DrakkenLaserDrillBuild_Start"/>
+    </CActorSound>
+    <CActorSound id="DrakkenLaserDrillBuild_LoopSound" parent="SoundContinuous">
+        <Sound value="DrakkenLaserDrillBuild_Loop"/>
     </CActorSound>
     <CActorModel id="ScannerSweepModel">
         <Inherits index="TeamColor" value="1"/>

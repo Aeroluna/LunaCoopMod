@@ -2,6 +2,11 @@
 
 ## 5/31/2026
 
+- Fixed an issue where structures could be irradiated using the Supercritical Isotope upgrade.
+- Added visual effects while the Drakken Laser Drill is under construction.
+
+yeah.
+
 - Fixed an issue where Abathur's Viper's Abduct ability had the wrong tooltip.
 - Fixed an issue where Abathur's Viper's Abduct ability could not target Heroic units.
 
