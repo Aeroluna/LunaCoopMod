@@ -4,6 +4,8 @@
 
 - Fixed an issue where structures could be irradiated using the Supercritical Isotope upgrade.
 - Added visual effects while the Drakken Laser Drill is under construction.
+- Added VO when using Nova P4 abilities.
+- Fixed an issue where Nova's Dash Attack did not ragdoll targets.
 
 yeah.
 

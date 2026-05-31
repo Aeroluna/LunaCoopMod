@@ -446,6 +446,14 @@
         <Sound value="DarkTemplar_BlinkCloud"/>
         <!-- DarkTemplarBlinkCloudSound should be heard by enemies, allies, and observers -->
     </CActorSound>
+    <CActorForceCylinder id="NovaDashAttackForce">
+        <On Terms="Behavior.NovaDashAttackSpeed.On; !ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
+        <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="Destroy"/>
+    </CActorForceCylinder>
+    <CActorForceCylinder id="NovaDashAttackForceUpgraded" parent="NovaDashAttackForce">
+        <On index="4" Terms="Behavior.NovaDashAttackSpeed.On; ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
+        <Radius value="2.000000"/>
+    </CActorForceCylinder>
     <CActorUnit id="OverlordStetmann">
         <DeathCustoms index="5" ActorModel="OverlordDeathRagdoll"/>
     </CActorUnit>
@@ -3923,6 +3931,11 @@
         <On Terms="Behavior.GhostHoldFireB.Off" Send="Create Ghost_WeaponsFree_Sound"/>
         <Model value="NovaHeroBase"/>
         <BarOffset value="80"/>
+        <AbilSoundArray AbilCmd="NovaWeaponBlazefireBladeShadowFury,Execute" Sound="NovaCommander_SnipeVO"/>
+        <AbilSoundArray AbilCmd="NovaApolloCloak,Execute" Sound="HeroNovaMP1_Cloak"/>
+        <AbilSoundArray AbilCmd="NovaGadgetFlashBangGrenades,Execute" Sound="HeroNova_DummyVO"/>
+        <AbilSoundArray AbilCmd="NovaPsiStrike,Execute" Sound="NovaCommander_SnipeVO"/>
+        <AbilSoundArray AbilCmd="SuperStimpackNova,Execute" Sound="HeroNovaMP1_Health_Pickup"/>
     </CActorMissile>
     <CActorModel id="NovaWeaponPsiStrikeImpact">
         <On Terms="Effect.NovaDashAttackDamage.Start; At Target" Send="Create"/>
@@ -5626,6 +5639,7 @@
         <On Terms="UnitDeathCustomize; KilledByEffect DehakaDakrunCrashingChargeDamage" Send="DeathCustomize RagdollSiegeTank"/>
         <On Terms="UnitDeathCustomize; KilledByEffect DakrunSpawningTargetDamage" Send="DeathCustomize RagdollSiegeTank"/>
         <On Terms="UnitDeathCustomize; KilledByEffect AlarakStalkerForceBlastDamage" Send="DeathCustomize RagdollSiegeTank"/>
+        <On Terms="UnitDeathCustomize; KilledByEffect NovaDashAttackDamage" Send="DeathCustomize RagdollMidair"/>
     </CActorEventMacro>
     <CActorUnit id="QueenCoop">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownMedium"/>
