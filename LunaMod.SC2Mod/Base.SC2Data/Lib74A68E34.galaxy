@@ -5665,6 +5665,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, true);
                 TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralRally, true);
                 TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, true);
+                TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralVO, true);
             }
 
         }
@@ -7677,6 +7678,33 @@ void lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init () {
     lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Func");
     TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, false);
     TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, null, "StukovAleksanderAirMindControl", c_unitBehaviorChangeDeactivate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: StukovPrestigeNeuralVO
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovPrestigeNeuralVO_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((RandomInt(0, 1) == 1)) {
+        libCOMI_gf_CM_CommanderVOSend(libCOOC_gf_CC_PlayerAlly(UnitBehaviorEffectPlayer(EventUnit(), EventUnitBehavior(), c_effectPlayerCaster, 0)), SoundLink("StukovCommander_NeuralParasite", -1), PlayerGroupAll());
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    Wait(120.0, c_timeGame);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovPrestigeNeuralVO_Init () {
+    lib74A68E34_gt_StukovPrestigeNeuralVO = TriggerCreate("lib74A68E34_gt_StukovPrestigeNeuralVO_Func");
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralVO, false);
+    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_StukovPrestigeNeuralVO, null, "CommanderPrestigeStukovNeuralTarget", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12004,6 +12032,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_StukovPrestigeNeuralNewUnit_Init();
     lib74A68E34_gt_StukovPrestigeNeuralRally_Init();
     lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix_Init();
+    lib74A68E34_gt_StukovPrestigeNeuralVO_Init();
     lib74A68E34_gt_FenixAddHeroCarrierMorph_Init();
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
