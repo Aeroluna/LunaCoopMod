@@ -30,6 +30,12 @@ oopsies
 - Added a minimap ping when the truck attacked warning plays.
 - Increased the sound volume of transmissions.
 
+## Death From Above
+
+- Fixed an issue where the Mothership had infinite life regen.
+
+what am i even doing
+
 ## 5/30/2026
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
