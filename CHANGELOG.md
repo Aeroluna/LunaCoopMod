@@ -6,6 +6,7 @@
 
 - Fixed an issue where player 1's expansion vespene geysers had the incorrect amount of resources.
 - Fixed an issue where Amon had Nova's Ghost Academies instead of the normal Ghost Academies.
+- Fixed an issue where the final Giant Meteorite wave didn't fall.
 
 ## 5/30/2026
 
