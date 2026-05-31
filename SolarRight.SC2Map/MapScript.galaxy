@@ -1,9 +1,9 @@
 //==================================================================================================
-// 
+//
 // Generated Map Script
-// 
+//
 // Name:   [Luna] Solar Right
-// 
+//
 //==================================================================================================
 include "TriggerLibs/NativeLib"
 include "TriggerLibs/LibertyLib"
@@ -1678,13 +1678,11 @@ bool gt_GatherSolariteStoreunitgatheringsolarite_Func (bool testConds, bool runA
     for ( ; ( (auto5659C38B_ai >= 0 && lv_solariteIndex <= auto5659C38B_ae) || (auto5659C38B_ai < 0 && lv_solariteIndex >= auto5659C38B_ae) ) ; lv_solariteIndex += auto5659C38B_ai ) {
         if ((UnitGroupHasUnit(gv_solariteNode[lv_solariteIndex].lv_solariteGatherers, EventUnit()) == true) && (gv_solariteNode[lv_solariteIndex].lv_solariteNode != OrderGetTargetUnit(EventUnitOrder()))) {
             UnitGroupRemove(gv_solariteNode[lv_solariteIndex].lv_solariteGatherers, EventUnit());
-            break;
         }
 
         if ((UnitGroupHasUnit(gv_solariteNode[lv_solariteIndex].lv_solariteGatherers, EventUnit()) == false) && (gv_solariteNode[lv_solariteIndex].lv_solariteNode == OrderGetTargetUnit(EventUnitOrder()))) {
             UnitGroupAdd(gv_solariteNode[lv_solariteIndex].lv_solariteGatherers, EventUnit());
             UnitGroupAdd(gv_solariteGatherer, EventUnit());
-            break;
         }
 
     }
@@ -2987,14 +2985,14 @@ bool gt_SolaritePumps_Func (bool testConds, bool runActions) {
 
         if ((gv_generatorsActive == 3)) {
             gf_GenerateSolarite(ge_GeneratorType_Pump, 2);
-            Wait(16.0, c_timeGame);
+            Wait(14.0, c_timeGame);
         }
 
         if ((gv_generatorsActive == 4)) {
             gf_GenerateSolarite(ge_GeneratorType_Pump, 2);
-            Wait(18.0, c_timeGame);
+            Wait(14.0, c_timeGame);
             gf_GenerateSolarite(ge_GeneratorType_Pump, 3);
-            Wait(17.0, c_timeGame);
+            Wait(13.0, c_timeGame);
         }
 
     }
@@ -3062,20 +3060,20 @@ bool gt_SolariteCracks_Func (bool testConds, bool runActions) {
 
         if ((gv_generatorsActive == 3)) {
             gf_GenerateSolarite(ge_GeneratorType_Crack, 5);
-            Wait(20.0, c_timeGame);
+            Wait(16.0, c_timeGame);
             gf_GenerateSolarite(ge_GeneratorType_Crack, 4);
-            Wait(22.0, c_timeGame);
+            Wait(18.0, c_timeGame);
             gf_GenerateSolarite(ge_GeneratorType_Crack, 2);
-            Wait(25.0, c_timeGame);
+            Wait(21.0, c_timeGame);
         }
 
         if ((gv_generatorsActive == 4)) {
             gf_GenerateSolarite(ge_GeneratorType_Crack, 4);
-            Wait(25.0, c_timeGame);
+            Wait(15.0, c_timeGame);
             gf_GenerateSolarite(ge_GeneratorType_Crack, 5);
-            Wait(25.0, c_timeGame);
+            Wait(12.0, c_timeGame);
             gf_GenerateSolarite(ge_GeneratorType_Crack, 2);
-            Wait(30.0, c_timeGame);
+            Wait(20.0, c_timeGame);
         }
 
     }
@@ -3498,6 +3496,7 @@ bool gt_Enemyfreesolarite_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    Wait(5.0, c_timeAI);
     while (true) {
         if ((TriggerIsEnabled(TriggerGetCurrent()) == true) && (libCOMI_gf_GameIsOver() == false)) {
             PlayerModifyPropertyFixed(gv_pLAYER_03_ENEMY, c_playerPropCustom, c_playerPropOperAdd, 3.0);
@@ -4169,6 +4168,8 @@ bool gt_CheckpointsConvoyreceivesdamagefirsttimeQ_Func (bool testConds, bool run
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerQueueEnter();
+    libCOMI_gf_PingMinimapCampaign(PlayerGroupAll(), UnitGetPosition(gv_eSCORT_TRUCK), 6.0, Color(100.00, 0.00, 0.00));
+    Wait(2.0, c_timeGame);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
     libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel("RamseyPortrait"), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), SoundLink("TruckAttack", -1), 0.0, c_transmissionDurationAdd, true);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Game);
@@ -4209,6 +4210,8 @@ bool gt_CheckpointsConvoyreceivesdamage75HP_Func (bool testConds, bool runAction
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerQueueEnter();
+    libCOMI_gf_PingMinimapCampaign(PlayerGroupAll(), UnitGetPosition(gv_eSCORT_TRUCK), 6.0, Color(100.00, 0.00, 0.00));
+    Wait(2.0, c_timeGame);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
     libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel("RamseyPortrait"), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), SoundLink("TruckAttack2", -1), 0.0, c_transmissionDurationAdd, true);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Game);
@@ -4249,6 +4252,8 @@ bool gt_CheckpointsConvoyreceivesdamage50HP_Func (bool testConds, bool runAction
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerQueueEnter();
+    libCOMI_gf_PingMinimapCampaign(PlayerGroupAll(), UnitGetPosition(gv_eSCORT_TRUCK), 6.0, Color(100.00, 0.00, 0.00));
+    Wait(2.0, c_timeGame);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
     libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel("RamseyPortrait"), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), SoundLink("TruckAttack3", -1), 0.0, c_transmissionDurationAdd, true);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Game);
@@ -4289,6 +4294,8 @@ bool gt_CheckpointsConvoyreceivesdamage25HP_Func (bool testConds, bool runAction
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerQueueEnter();
+    libCOMI_gf_PingMinimapCampaign(PlayerGroupAll(), UnitGetPosition(gv_eSCORT_TRUCK), 6.0, Color(100.00, 0.00, 0.00));
+    Wait(2.0, c_timeGame);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
     libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel("RamseyPortrait"), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), SoundLink("TruckLow", -1), 0.0, c_transmissionDurationAdd, true);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Game);
@@ -4329,6 +4336,8 @@ bool gt_CheckpointsConvoyreceivesdamage10HP_Func (bool testConds, bool runAction
 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerQueueEnter();
+    libCOMI_gf_PingMinimapCampaign(PlayerGroupAll(), UnitGetPosition(gv_eSCORT_TRUCK), 6.0, Color(100.00, 0.00, 0.00));
+    Wait(2.0, c_timeGame);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
     libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel("RamseyPortrait"), libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft), SoundLink("TruckNearDeath", -1), 0.0, c_transmissionDurationAdd, true);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Game);

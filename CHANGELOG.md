@@ -15,6 +15,13 @@ oopsies
 - Fixed an issue where the Giant Meteorite warning didn't play until the meteorite lands.
 - Changed the allowed Giant Meteorites missed from 2 to 3 on Hard difficulty.
 
+## Solar Right
+
+- Fixed an issue where workers would sometimes return to the wrong node after returning.
+- Increased the speed that Solarite generates near the final checkpoint.
+- Added a minimap ping when the truck attacked warning plays.
+- Increased the sound volume of transmissions.
+
 ## 5/30/2026
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
