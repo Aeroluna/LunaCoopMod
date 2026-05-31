@@ -2,6 +2,11 @@
 
 ## 5/31/2026
 
+- Fixed an issue where Abathur's Viper's Abduct ability had the wrong tooltip.
+- Fixed an issue where Abathur's Viper's Abduct ability could not target Heroic units.
+
+oopsies
+
 ### Skyfall
 
 - Fixed an issue where player 1's expansion vespene geysers had the incorrect amount of resources.
