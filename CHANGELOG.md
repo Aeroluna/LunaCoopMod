@@ -1,5 +1,12 @@
 # Changelog
 
+## 5/31/2026
+
+### Skyfall
+
+- Fixed an issue where player 1's expansion vespene geysers had the incorrect amount of resources.
+- Fixed an issue where Amon had Nova's Ghost Academies instead of the normal Ghost Academies.
+
 ## 5/30/2026
 
 - Fixed an issue where Supplicants could not be warped in from a Warp Gate.
@@ -15,7 +22,7 @@ Fun fact: For some reason Kerrigan's Brood Lords spawn two Broodlings at a time 
 
 ### Skyfall
 
-- Fixed a bug where Giant Meteorites didn't fall.
+- Fixed an issue where Giant Meteorites didn't fall.
 
 I accidentally disabled them while debugging... I can't believe the main map objective has been broken for so long!
 
