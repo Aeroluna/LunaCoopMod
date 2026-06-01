@@ -33,6 +33,7 @@ oopsies
 ## Death From Above
 
 - Fixed an issue where the Mothership had infinite life regen.
+- Fixed an issue where the Mothership was not an enemy with Amon.
 
 what am i even doing
 
