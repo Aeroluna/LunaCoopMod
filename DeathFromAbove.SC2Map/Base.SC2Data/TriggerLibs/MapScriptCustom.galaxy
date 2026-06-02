@@ -4077,7 +4077,7 @@ bool gt_BonusAttackWave6_Func (bool testConds, bool runActions) {
     }
 
     //--TriggerDebugOutput(1, StringToText("Bonus Attack Wave 6"), true);
-    gf_EscortAttack(PointFromId(1520269738), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, 0, 0, 4);
+    gf_EscortAttack(PointFromId(1520269738), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, 0, 0, 4);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(1520269738), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_dropPodPing_WAVEMS_Ping = PingLastCreated();
@@ -4507,7 +4507,7 @@ bool gt_Mothership_Attack1_Func (bool testConds, bool runActions) {
 
     Wait(7.0, c_timeAI);
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 1"), true);
-    gf_EscortAttack(PointFromId(1004707761), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__1Early, 0, 0, 1);
+    gf_EscortAttack(PointFromId(1004707761), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0, 1);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(1004707761), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_attackWave_MothershipPing = PingLastCreated();
@@ -4551,7 +4551,7 @@ bool gt_Mothership_Attack2_Func (bool testConds, bool runActions) {
     }
 
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 2"), true);
-    gf_EscortAttack(PointFromId(498195502), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__1Early, 0, 0, 2);
+    gf_EscortAttack(PointFromId(498195502), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, 0, 0, 2);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Dialogue_TransmissionStart", -1), c_maxPlayers, PlayerGroupAll(), 150.0, 0.0);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
@@ -4601,7 +4601,7 @@ bool gt_Mothership_Attack2Def_Func (bool testConds, bool runActions) {
 
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack (2 Def)"), true);
     Wait(3.0, c_timeAI);
-    gf_EscortAttack(PointFromId(1970364063), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0, 2);
+    gf_EscortAttack(PointFromId(1970364063), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, 0, 0, 2);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(1970364063), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_mothership_Def_Ping = PingLastCreated();
@@ -4649,7 +4649,7 @@ bool gt_Mothership_Attack3Def_Func (bool testConds, bool runActions) {
 
     Wait(15.0, c_timeAI);
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack (3 Def)"), true);
-    gf_EscortAttack(PointFromId(1994468022), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0, 2);
+    gf_EscortAttack(PointFromId(1994468022), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__5Late, 0, 0, 2);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(1994468022), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_mothership_Def_Ping2 = PingLastCreated();
@@ -4695,7 +4695,7 @@ bool gt_Mothership_Attack3_Func (bool testConds, bool runActions) {
 
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 3"), true);
     Wait(3.0, c_timeAI);
-    gf_EscortAttack(PointFromId(527019706), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), 0, 3);
+    gf_EscortAttack(PointFromId(527019706), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__5Late, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 1, 1, 2, 2, 0, 0), 0, 3);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Dialogue_TransmissionStart", -1), c_maxPlayers, PlayerGroupAll(), 150.0, 0.0);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
@@ -4757,7 +4757,7 @@ bool gt_Mothership_Attack32_Func (bool testConds, bool runActions) {
 
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 3 (2)"), true);
     Wait(10.0, c_timeAI);
-    gf_EscortAttack(PointFromId(1520269738), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0, 2);
+    gf_EscortAttack(PointFromId(1520269738), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0, 2);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(1520269738), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_attackWave_MothershipPing2 = PingLastCreated();
@@ -4805,7 +4805,7 @@ bool gt_Mothership_Attack33_Func (bool testConds, bool runActions) {
 
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 3 (3)"), true);
     Wait(25.0, c_timeAI);
-    gf_EscortAttack(PointFromId(213712092), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__3Small, libCOMI_ge_CoopAITechLevelBuckets__3Mid, 0, 0, 3);
+    gf_EscortAttack(PointFromId(1384386162), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__5Late, 0, 0, 3);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(213712092), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_mothership_Def_Ping3 = PingLastCreated();
@@ -4851,7 +4851,7 @@ bool gt_Mothership_Attack4_Func (bool testConds, bool runActions) {
 
     Wait(3.0, c_timeAI);
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 4"), true);
-    gf_EscortAttack(PointFromId(1331055369), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__4Medium, libCOMI_ge_CoopAITechLevelBuckets__3Mid, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0, 4);
+    gf_EscortAttack(PointFromId(1331055369), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__6Larger, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, libCOMI_gf_DifficultyValueInt2(libCOMI_gf_GetMissionDifficulty(), 0, 0, 1, 1, 0, 0), 0, 4);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Dialogue_TransmissionStart", -1), c_maxPlayers, PlayerGroupAll(), 150.0, 0.0);
     libCOOC_gf_SetAllSoundChannelVolumesCampaign(libCOOC_ge_VolumeChannelModeCampaign_Speech);
@@ -4904,8 +4904,9 @@ bool gt_Mothership_Attack5_Func (bool testConds, bool runActions) {
     }
 
     Wait(3.0, c_timeGame);
+    Wait(30.0, c_timeGame);
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack 5"), true);
-    gf_EscortAttack(PointFromId(643438148), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__5Large, libCOMI_ge_CoopAITechLevelBuckets__4LateMid, 0, 0, 5);
+    gf_EscortAttack(PointFromId(1871748685), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, 0, 0, 5);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(643438148), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_attackWave_MothershipPing3 = PingLastCreated();
@@ -4951,7 +4952,7 @@ bool gt_Mothership_AttackStart2_Func (bool testConds, bool runActions) {
 
     Wait(20.0, c_timeAI);
     //--TriggerDebugOutput(1, StringToText("Mothership_Attack (Start 2)"), true);
-    gf_EscortAttack(PointFromId(733178069), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__1Smallest, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0, 1);
+    gf_EscortAttack(PointFromId(733178069), gv_mothership, libCOMI_ge_CoopAIAttackWaveBuckets__2Smaller, libCOMI_ge_CoopAITechLevelBuckets__2EarlyMid, 0, 0, 1);
     // SoundPlayForPlayer(SoundLink("UI_ZergWarningPing", -1), c_maxPlayers, PlayerGroupAll(), 180.0, 0.0);
     // PingCreate(PlayerGroupAll(), "PingDiamond", PointFromId(3974855), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 524287.0);
     // gv_dropPodPing_WAVEMS_Ping4 = PingLastCreated();

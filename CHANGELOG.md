@@ -7,6 +7,13 @@
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Adaptive Talons more than intended.
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Seismic Spines more than intended.
 
+### Death from Above
+
+- Adjusted attack wave sizes.
+- Adjusted attack wave spawn points.
+
+Attack waves should be generally more difficult.
+
 ## 5/31/2026
 
 - Fixed an issue where structures could be irradiated using the Supercritical Isotope upgrade.
