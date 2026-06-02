@@ -790,6 +790,10 @@ Disruptors are kinda lame.
 
 Only commanders get the cool campaign stuff!
 
+- Increased Oracle's Activate Pulsar Beam energy cost from 0 to 25.
+
+Amon's Banshees cost 25 energy to activate Cloak, but it's free for Raynor. Why shouldn't it be the same for Vorazun's Oracles?
+
 - Removed Detector passive from Choker.
 - Removed Detector passive from Hunterling.
 - Removed Detector passive from Kaboomer.

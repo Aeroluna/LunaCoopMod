@@ -8,6 +8,12 @@
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Seismic Spines more than intended.
 - Fixed an issue where Amon's Vipers did not cast abduct.
 
+yeah.
+
+- Increased Oracle's Activate Pulsar Beam energy cost from 0 to 25.
+
+Amon's Banshees cost 25 energy to activate Cloak, but it's free for Raynor. Why shouldn't it be the same for Vorazun's Oracles?
+
 ### Skyfall
 
 - Added a final attack wave.
