@@ -2,7 +2,6 @@
 //  *** Viper ***
 //--------------------------------------------------------------------------------------------------
 
-const string c_AB_ViperAbductAmon                   = "YoinkAmon";
 order AbductAmon (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
     // cast abduct on massive units and siege targets
     order ord;
@@ -12,7 +11,7 @@ order AbductAmon (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
     point aiUnitPosition;
     fixed dist;
 
-    ord = AICreateOrder(player, c_AB_ViperAbductAmon, 0);
+    ord = AICreateOrder(player, c_AB_ViperAbduct, 0);
     if (!UnitOrderIsValid(aiUnit, ord)) {
         return null;
     }
