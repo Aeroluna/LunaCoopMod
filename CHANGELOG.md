@@ -3,6 +3,9 @@
 ## 6/2/2026
 
 - Fixed an issue where Reavers could not path through force fields.
+- Fixed an issue where Kerrigan's Expeditious Evolutions mastery reduced the time of Muscular Augments more than intended.
+- Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Adaptive Talons more than intended.
+- Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Seismic Spines more than intended.
 
 ## 5/31/2026
 

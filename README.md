@@ -1138,6 +1138,7 @@ Fun fact: For some reason Kerrigan's Brood Lords spawn two Broodlings at a time 
 
 - Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
 - Fixed an issue where Kerrigan's Cocoon had extra unnecessary attributes.
+- Fixed an issue where Kerrigan's Expeditious Evolutions mastery reduced the time of Muscular Augments more than intended.
 
 yeah.
 
