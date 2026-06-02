@@ -356,6 +356,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
     - Enthralled Mutalisk
     - Mecha Overseer
     - Enthralled Zergling
+- Fixed an issue where Reavers could not path through force fields.
 
 yeah.
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 6/2/2026
+
+- Fixed an issue where Reavers could not path through force fields.
+
 ## 5/31/2026
 
 - Fixed an issue where structures could be irradiated using the Supercritical Isotope upgrade.
@@ -23,14 +27,14 @@ oopsies
 - Fixed an issue where the Giant Meteorite warning didn't play until the meteorite lands.
 - Changed the allowed Giant Meteorites missed from 2 to 3 on Hard difficulty.
 
-## Solar Right
+### Solar Right
 
 - Fixed an issue where workers would sometimes return to the wrong node after returning.
 - Increased the speed that Solarite generates near the final checkpoint.
 - Added a minimap ping when the truck attacked warning plays.
 - Increased the sound volume of transmissions.
 
-## Death From Above
+### Death From Above
 
 - Fixed an issue where the Mothership had infinite life regen.
 - Fixed an issue where the Mothership was not an enemy with Amon.
