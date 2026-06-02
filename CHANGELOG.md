@@ -7,8 +7,19 @@
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Adaptive Talons more than intended.
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Seismic Spines more than intended.
 - Fixed an issue where Amon's Vipers did not cast abduct.
+- Fixed an issue where Primal Mutalisk's Slicing Glaive weapon could bounce to the same target twice.
+- Fixed an issue where Primal Mutalisk Chrysalis used the wrong wireframe.
+- Fixed an issue where Ravasaurs could not damage friendly targets.
 
 yeah.
+
+- Increased the scale of Primal Mutalisk's projectiles by 30%.
+
+Primal Mutalisks are about 30% larger than normal Mutalisks, so their projectiles have been scaled to match.
+
+- Adjusted Ravasaur weapon projectile mover.
+
+These projectiles flew crazy high against distant targets.
 
 - Increased Oracle's Activate Pulsar Beam energy cost from 0 to 25.
 

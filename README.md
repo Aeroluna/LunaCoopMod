@@ -2265,6 +2265,10 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Dakrun/Glevig/Murvar could be loaded into transports.
 - Fixed an issue where Glevig could be affected by knockback effects.
 - Fixed an issue where Primal Impaler's Weapon used the wrong icon at level 0.
+- Fixed an issue where Primal Mutalisk's Slicing Glaive weapon could bounce to the same target twice.
+- Fixed an issue where Primal Mutalisk Chrysalis used the wrong wireframe.
+- Increased the scale of Primal Mutalisk's projectiles by 30%.
+- Adjusted Ravasaur weapon projectile mover.
 
 yeah.
 
