@@ -263,7 +263,7 @@ void lib1_gf_METEORITE_MicroGetTargetSetUsed (point lp_newUse, region lp_usedReg
 void lib1_gf_METEORITE_MeteoritesRainMicroPer (region lp_region, int lp_minCount, int lp_maxCount, fixed lp_baseDelay, fixed lp_minDelay, fixed lp_maxDelay);
 void lib1_gf_METEORITE_MeteoritesRainMicroLoop (region lp_region, int lp_perMinCount, int lp_perMaxCount, int lp_loopCount, fixed lp_baseDelay, fixed lp_minDelay, fixed lp_maxDelay, bool lp_showPrompt);
 void lib1_gf_METEORITE_MeteoritesRainMicro (region lp_region, int lp_perMinCount, int lp_perMaxCount, fixed lp_baseDelay, bool lp_showPrompt);
-void lib1_gf_METEORITE_MeteoritesRainGiant (point lp_center, fixed lp_radius, int lp_perMinCount, int lp_perMaxCount, fixed lp_baseDelay, bool lp_showPrompt);
+void lib1_gf_METEORITE_MeteoritesRainGiant (point lp_center, region lp_region, int lp_perMinCount, int lp_perMaxCount, fixed lp_baseDelay, bool lp_showPrompt);
 void lib1_gf_METEORITE_MeteoriteMicroDropNoTimer (point lp_targetPoint, fixed lp_waitTime);
 void lib1_gf_METEORITE_MeteoriteMicroDropWithTimer (point lp_targetPoint, fixed lp_waitTime);
 void lib1_gf_METEORITE_MeteoriteGiantDrop (point lp_targetPoint, fixed lp_waitTime);
@@ -619,11 +619,12 @@ void lib1_gf_LIB_EventList () {
     lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
     lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
     lib1_gf_COOP_AI_WaveStart_Register((28.5 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_ShieldGenerator);
-    lib1_gf_METEORITE_ShieldRelation_WaveLast((23.85 * 60.0), 0.0, 4, 3);
+    // one last hoorah to beat up
     lib1_gf_COOP_AI_WaveStart_Register((30.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 1, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
     lib1_gf_COOP_AI_WaveStart_Register((30.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 2, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel06, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
     lib1_gf_COOP_AI_WaveStart_Register((30.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 3, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
     lib1_gf_COOP_AI_WaveStart_Register((30.0 * 60.0), lib1_gf_COOP_AI_WaveStart_RandomBaseWavePoint(), 4, libCOMI_ge_CoopAIAttackWaveBuckets__7Largest, libCOMI_ge_CoopAITechLevelBuckets_TechLevel07, lib1_ge_COOP_AI_Wave_StartTargetType_PlayerSec);
+    lib1_gf_METEORITE_ShieldRelation_WaveLast((23.85 * 60.0), 0.0, 4, 3);
     // auto9BBC5476_val = GameAttributeGameValue("[bnet:local/0.0/357883]3");
     // if (auto9BBC5476_val == "0002") {
     //     lib1_gf_COOP_Objectives_Register(5.0, lib1_ge_COOP_Objectives_Type_GameTime);
@@ -1347,19 +1348,19 @@ void lib1_gf_METEORITE_MeteoritesRainMicro (region lp_region, int lp_perMinCount
     lib1_gf_METEORITE_MeteoritesRainMicroLoop(lp_region, lp_perMinCount, lp_perMaxCount, 3, lp_baseDelay, 0.0, (lib1_gv_mETEORITE_MeteortietRainMicroBefore * 2.0), lp_showPrompt);
 }
 
-void lib1_gf_METEORITE_MeteoritesRainGiant (point lp_center, fixed lp_radius, int lp_perMinCount, int lp_perMaxCount, fixed lp_baseDelay, bool lp_showPrompt) {
+void lib1_gf_METEORITE_MeteoritesRainGiant (point lp_center, region lp_region, int lp_perMinCount, int lp_perMaxCount, fixed lp_baseDelay, bool lp_showPrompt) {
     // Variable Declarations
-    region lv_region;
+    //region lv_region;
     fixed lv_microBaseDelay;
 
     // Variable Initialization
-    lv_region = RegionCircle(lp_center, lp_radius);
+    //lv_region = RegionCircle(lp_center, lp_radius);
     lv_microBaseDelay = ((lp_baseDelay + lib1_gv_mETEORITE_GiantDropTime) - lib1_gv_mETEORITE_MeteortietRainMicroBefore);
 
     // Implementation
     lib1_gf_METEORITE_MeteoriteGiantDrop(lp_center, lp_baseDelay);
-    RegionAddCircle(lv_region, false, lp_center, lib1_gv_mETEORITE_GiantImpactRadius);
-    lib1_gf_METEORITE_MeteoritesRainMicroLoop(lv_region, lp_perMinCount, lp_perMaxCount, 3, lv_microBaseDelay, 0.0, (lib1_gv_mETEORITE_MeteortietRainMicroBefore * 2.0), lp_showPrompt);
+    //RegionAddCircle(lv_region, false, lp_center, lib1_gv_mETEORITE_GiantImpactRadius);
+    lib1_gf_METEORITE_MeteoritesRainMicroLoop(lp_region, lp_perMinCount, lp_perMaxCount, 3, lv_microBaseDelay, 0.0, (lib1_gv_mETEORITE_MeteortietRainMicroBefore * 2.0), lp_showPrompt);
 }
 
 void lib1_gf_METEORITE_MeteoriteMicroDropNoTimer (point lp_targetPoint, fixed lp_waitTime) {
@@ -1499,7 +1500,8 @@ bool auto_lib1_gf_METEORITE_Wave_RegisterGiant_TriggerFunc (bool testConds, bool
             }
 
             lib1_gf_METEORITE_ShieldRelation_DropOperate(lv_targetIndex);
-            lib1_gf_METEORITE_MeteoritesRainGiant(lib1_gv_mETEORITE_ShieldGeneratorInfoList[lv_targetIndex].lv_targetPointList[lv_targetShield], lib1_gv_mETEORITE_Wave_MeteoritesRainRadiusInGiant, lib1_gv_mETEORITE_Wave_MinMeteoritesCountInGiant, lib1_gv_mETEORITE_Wave_MaxMeteoritesCountInGiant, lv_delay, false);
+            // lib1_gf_METEORITE_MeteoritesRainGiant(lib1_gv_mETEORITE_ShieldGeneratorInfoList[lv_targetIndex].lv_targetPointList[lv_targetShield], lib1_gv_mETEORITE_Wave_MeteoritesRainRadiusInGiant, lib1_gv_mETEORITE_Wave_MinMeteoritesCountInGiant, lib1_gv_mETEORITE_Wave_MaxMeteoritesCountInGiant, lv_delay, false);
+            lib1_gf_METEORITE_MeteoritesRainGiant(lib1_gv_mETEORITE_ShieldGeneratorInfoList[lv_targetIndex].lv_targetPointList[lv_targetShield], RegionCircle(lib1_gv_mETEORITE_ShieldGeneratorInfoList[lv_targetIndex].lv_point, lib1_gv_mETEORITE_Wave_MeteoritesRainRadiusInMicro), lib1_gv_mETEORITE_Wave_MinMeteoritesCountInGiant, lib1_gv_mETEORITE_Wave_MaxMeteoritesCountInGiant, lv_delay, true);
             UnitGroupAdd(lib1_gv_mETEORITE_Wave_DropTarget[lib1_gv_mETEORITE_Wave_MeteoriteCount], lib1_gv_mETEORITE_ShieldGeneratorInfoList[lv_targetIndex].lv_unit);
             lv_randomWeightAll -= lv_targetWeithtList[lv_i];
             lv_targetShieldIndexList[lv_i] = lv_targetShieldIndexList[lv_shieldCount];
@@ -2255,7 +2257,8 @@ void lib1_gf_COOP_PlacedConversion_ChangeUnit (unit lp_placedUnit) {
         autoEFA28502_u = 1;
         for ( ; autoEFA28502_u <= UnitGroupCount(autoEFA28502_g, c_unitCountAll) ; autoEFA28502_u += BoolToInt(lv_unit == UnitGroupUnit(autoEFA28502_g, autoEFA28502_u)) ) {
             lv_unit = UnitGroupUnit(autoEFA28502_g, autoEFA28502_u);
-            UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(lv_unitPoint, lib1_gv_cOOP_PlacedConversion_MoveRadius))), c_orderQueueReplace);
+            // UnitIssueOrder(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(lv_unitPoint, lib1_gv_cOOP_PlacedConversion_MoveRadius))), c_orderQueueReplace);
+            libNtve_gf_AICast(lv_unit, OrderTargetingPoint(AbilityCommand("move", 0), RegionRandomPoint(RegionCircle(lv_unitPoint, lib1_gv_cOOP_PlacedConversion_MoveRadius))));
         }
     }
 
@@ -2275,7 +2278,8 @@ void lib1_gf_COOP_PlacedConversion_ChangeUnit (unit lp_placedUnit) {
             auto80D95B4D_u = 1;
             for ( ; auto80D95B4D_u <= UnitGroupCount(auto80D95B4D_g, c_unitCountAll) ; auto80D95B4D_u += BoolToInt(lv_unit == UnitGroupUnit(auto80D95B4D_g, auto80D95B4D_u)) ) {
                 lv_unit = UnitGroupUnit(auto80D95B4D_g, auto80D95B4D_u);
-                UnitIssueOrder(lv_unit, Order(lv_abilityOrder), c_orderQueueReplace);
+                // UnitIssueOrder(lv_unit, Order(lv_abilityOrder), c_orderQueueReplace);
+                libNtve_gf_AICast(lv_unit, Order(lv_abilityOrder));
             }
         }
         else {
@@ -2283,7 +2287,8 @@ void lib1_gf_COOP_PlacedConversion_ChangeUnit (unit lp_placedUnit) {
             auto1A76AC96_u = 1;
             for ( ; auto1A76AC96_u <= UnitGroupCount(auto1A76AC96_g, c_unitCountAll) ; auto1A76AC96_u += BoolToInt(lv_unit == UnitGroupUnit(auto1A76AC96_g, auto1A76AC96_u)) ) {
                 lv_unit = UnitGroupUnit(auto1A76AC96_g, auto1A76AC96_u);
-                UnitIssueOrder(lv_unit, OrderTargetingPoint(lv_abilityOrder, lv_unitPoint), c_orderQueueReplace);
+                // UnitIssueOrder(lv_unit, OrderTargetingPoint(lv_abilityOrder, lv_unitPoint), c_orderQueueReplace);
+                libNtve_gf_AICast(lv_unit, OrderTargetingPoint(lv_abilityOrder, lv_unitPoint));
             }
         }
     }
@@ -2619,7 +2624,8 @@ void lib1_gf_COOP_AI_HybridDominator () {
         auto3E5653CB_u = 1;
         for ( ; auto3E5653CB_u <= UnitGroupCount(auto3E5653CB_g, c_unitCountAll) ; auto3E5653CB_u += BoolToInt(lv_units == UnitGroupUnit(auto3E5653CB_g, auto3E5653CB_u)) ) {
             lv_units = UnitGroupUnit(auto3E5653CB_g, auto3E5653CB_u);
-            UnitIssueOrder(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_hybridUnit)), c_orderQueueAddToEnd);
+            // UnitIssueOrder(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_hybridUnit)), c_orderQueueAddToEnd);
+            libNtve_gf_AICast(lv_units, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_hybridUnit)));
         }
     }
 }

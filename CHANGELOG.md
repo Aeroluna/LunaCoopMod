@@ -7,6 +7,13 @@
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Adaptive Talons more than intended.
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery affected Seismic Spines more than intended.
 
+### Skyfall
+
+- Added a final attack wave.
+- Adjusted timings of small meteorite waves.
+- Fixed an issue where giant meteorites did not have the "about to drop" warning on the minimap.
+- Fixed an issue where the small meteorite aoe was not centered for giant meteorite waves.
+
 ### Death from Above
 
 - Adjusted attack wave sizes.
