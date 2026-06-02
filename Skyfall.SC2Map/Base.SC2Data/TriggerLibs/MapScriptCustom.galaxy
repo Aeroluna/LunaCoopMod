@@ -48,6 +48,7 @@ const int lib1_ge_COOP_AI_Wave_StartTargetType_SolarCrystal = 3;
 const int lib1_ge_COOP_Objectives_Type_GameTime = 0;
 const int lib1_ge_COOP_Objectives_Type_GiantMeteoritesImpact = 1;
 const int lib1_ge_COOP_Objectives_Type_DestroyMegalith = 2;
+const int lib1_ge_COOP_Objectives_Type_DestroyMegalith2 = 3;
 
 // Constants
 const string lib1_gv_sOLARCRYSTAL_HashtableName = "SOLARCRYSTAL_Hashtable::";
@@ -177,6 +178,7 @@ int lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartCount;
 int lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartIndex;
 fixed lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime;
 lib1_gs_SOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount + 1] lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter;
+timer[lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount + 1] lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer;
 lib1_gs_PING_ModelTypeDataStruct[lib1_gv_pING_ModelTypeDataStruct_Count + 1] lib1_gv_pING_ModelTypeDataStruct;
 string[3] lib1_gv_pING_InteractColorModelForPlayer;
 point lib1_gv_mETEORITE_FirstPoint;
@@ -226,6 +228,7 @@ fixed lib1_gv_cOOP_Objective_TotalTime;
 int lib1_gv_cOOP_Objective_GameTimerWindow;
 int lib1_gv_cOOP_Objective_GiantMeteoritesImpact;
 int lib1_gv_cOOP_Objective_DestroyMegalith;
+int lib1_gv_cOOP_Objective_DestroyMegalith2;
 int lib1_gv_cOOP_Objective_Zeratul;
 // bool lib1_gv_cOOP_Objective_IsZeratulModeStart;
 // timer lib1_gv_coop_ZeratulMode_BeginTimer;
@@ -378,6 +381,10 @@ trigger lib1_gt_COOP_Objective_DestroyMegalith_Create;
 trigger lib1_gt_COOP_Objective_DestroyMegalith_Update;
 trigger lib1_gt_COOP_Objective_DestroyMegalith_Complete;
 trigger lib1_gt_COOP_Objective_DestroyMegalith_Failed;
+trigger lib1_gt_COOP_Objective_DestroyMegalith2_Create;
+trigger lib1_gt_COOP_Objective_DestroyMegalith2_Update;
+trigger lib1_gt_COOP_Objective_DestroyMegalith2_Complete;
+trigger lib1_gt_COOP_Objective_DestroyMegalith2_Failed;
 trigger lib1_gt_COOP_Objective_Zeratul_Complete;
 // trigger lib1_gt_Coop_ZeratulMode_BeginTimerExpired;
 // trigger lib1_gt_Coop_ZeratulMode_CheatMessage;
@@ -413,6 +420,7 @@ void lib1_InitVariables () {
     lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime = 960.0;
     for (init_i = 0; init_i <= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount; init_i += 1) {
         lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[init_i].lv_ping = c_invalidPingId;
+        lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[init_i] = TimerCreate();
     }
     for (init_i = 0; init_i <= lib1_gv_pING_ModelTypeDataStruct_Count; init_i += 1) {
         lib1_gv_pING_ModelTypeDataStruct[init_i].lv_angle = 270.0;
@@ -448,6 +456,7 @@ void lib1_InitVariables () {
     lib1_gv_cOOP_Objective_GameTimerWindow = c_timerWindowNone;
     lib1_gv_cOOP_Objective_GiantMeteoritesImpact = c_invalidObjectiveId;
     lib1_gv_cOOP_Objective_DestroyMegalith = c_invalidObjectiveId;
+    lib1_gv_cOOP_Objective_DestroyMegalith2 = c_invalidObjectiveId;
     lib1_gv_cOOP_Objective_Zeratul = c_invalidObjectiveId;
     // lib1_gv_coop_ZeratulMode_BeginTimer = TimerCreate();
     // lib1_gv_coop_ZeratulMode_BeginTime = 60.0;
@@ -565,12 +574,15 @@ void lib1_gf_LIB_EventList () {
     // Implementation
     lib1_gf_COOP_Objectives_Register(5.0, lib1_ge_COOP_Objectives_Type_GameTime);
     lib1_gf_COOP_Objectives_Register(12.0, lib1_ge_COOP_Objectives_Type_GiantMeteoritesImpact);
-    lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
     if ((RandomInt(0, 1) == 1)) {
+        lib1_gf_COOP_Objectives_Register((17.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
+        lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith2);
         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((17.0 * 60.0), 1);
         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((11.0 * 60.0), 2);
     }
     else {
+        lib1_gf_COOP_Objectives_Register((17.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith2);
+        lib1_gf_COOP_Objectives_Register((11.0 * 60.0), lib1_ge_COOP_Objectives_Type_DestroyMegalith);
         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((17.0 * 60.0), 2);
         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Register((11.0 * 60.0), 1);
     }
@@ -3247,10 +3259,17 @@ bool lib1_gt_LIB_UnitDeath_Func (bool testConds, bool runActions) {
             PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_ping);
         }
 
-        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Update, true, true);
-        if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount >= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount)) {
+        if (lv_i == 1) {
             TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Complete, true, true);
         }
+        else {
+            TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Complete, true, true);
+        }
+
+        // TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Update, true, true);
+        // if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount >= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount)) {
+        //     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Complete, true, true);
+        // }
 
     }
     else if (((EventUnit() == UnitFromId(400215186)) || (EventUnit() == UnitFromId(846978711)))) {
@@ -3481,8 +3500,15 @@ bool lib1_gt_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Func (bool testConds
     PingSetUnit(PingLastCreated(), lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_unit);
     lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_ping = PingLastCreated();
     lib1_gf_COOP_Transmission_Send(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartIndex].lv_bonusStart, -1, true);
+    TimerStart(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[lv_i], lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime, false, c_timeAI);
+    if (lv_i == 1) {
+        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Update, true, false);
+    }
+    else {
+        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Update, true, false);
+    }
     while (((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_step) < lib1_ge_SOLARCRYSTAL_Spectroscope_MegalithCutter_Step_Error)) {
-        Wait((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime / (lib1_ge_SOLARCRYSTAL_Spectroscope_MegalithCutter_Step_End)), c_timeGame);
+        Wait((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_ObjectivesTime / (lib1_ge_SOLARCRYSTAL_Spectroscope_MegalithCutter_Step_End)), c_timeAI);
         lib1_gf_SOLARCRYSTAL_Spectroscope_MegalithCutter_Step(lv_i);
         if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_isStart == true)) {
             return true;
@@ -3491,9 +3517,15 @@ bool lib1_gt_SOLARCRYSTAL_Spectroscope_MegalithCutter_Start_Func (bool testConds
     }
     lib1_gf_SOLARCRYSTAL_Spectroscope_SetDead(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_spectroscope, false);
     lib1_gf_COOP_Transmission_Send(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lv_i].lv_bonusFail, -1, true);
-    if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartIndex >= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartCount)) {
+    if (lv_i == 1) {
         TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Failed, true, false);
     }
+    else {
+        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Failed, true, false);
+    }
+    // if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartIndex >= lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithStartCount)) {
+    //     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Failed, true, false);
+    // }
 
     return true;
 }
@@ -4823,6 +4855,9 @@ bool lib1_gt_COOP_Objectives_Show_Func (bool testConds, bool runActions) {
     else if ((lv_type == lib1_ge_COOP_Objectives_Type_DestroyMegalith)) {
         TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, true);
     }
+    else if ((lv_type == lib1_ge_COOP_Objectives_Type_DestroyMegalith2)) {
+        TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Create, true, true);
+    }
     return true;
 }
 
@@ -4973,9 +5008,9 @@ bool lib1_gt_COOP_Objective_GameTime_Window_Func (bool testConds, bool runAction
     TriggerExecute(lib1_gt_COOP_Objective_GameTime_Update, true, false);
     // TextExpressionSetToken("Param/Expression/lib_1_51937B6D", "GameTime", libCOOC_gf_FormatTimeCampaign(FixedToInt((TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) - 3.0))));
     // ObjectiveSetName(lib1_gv_cOOP_Objective_GameTime, TextExpressionAssemble("Param/Expression/lib_1_51937B6D"));
-    TextExpressionSetToken("Param/Expression/790D0717", "timer", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) - 3.0)));
+    TextExpressionSetToken("Param/Expression/790D0717", "timer", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) - 4.0)));
     libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Primary01", TextExpressionAssemble("Param/Expression/790D0717"));
-    Wait(4.0, c_timeGame);
+    Wait(5.0, c_timeReal);
     while ((libCOMI_gf_GameIsOver() == false)) {
         TriggerExecute(lib1_gt_COOP_Objective_GameTime_Update, true, false);
         if ((lv_pass50 == false) && ((TimerGetRemaining(lib1_gv_cOOP_Objective_GameTimer) / lib1_gv_cOOP_Objective_TotalTime) <= 0.5)) {
@@ -5129,6 +5164,18 @@ void lib1_gt_COOP_Objective_GiantMeteoritesImpact_Failed_Init () {
     lib1_gt_COOP_Objective_GiantMeteoritesImpact_Failed = TriggerCreate("lib1_gt_COOP_Objective_GiantMeteoritesImpact_Failed_Func");
 }
 
+color gf_TimerColor (timer lp_timer) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((TimerGetRemaining(lp_timer) < (TimerGetDuration(lp_timer) * 0.33))) {
+        return Color(100.00, 0.00, 0.00);
+    }
+    else if ((TimerGetRemaining(lp_timer) < (TimerGetDuration(lp_timer) * 0.66))) {
+        return Color(150*100/255,150*100/255,30*100/255);
+    }
+    return Color(100,100,100);
+}
+
 //--------------------------------------------------------------------------------------------------
 // Trigger: COOP_Objective_DestroyMegalith_Create
 //--------------------------------------------------------------------------------------------------
@@ -5147,10 +5194,10 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Create_Func (bool testConds, bool ru
 
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gf_CreateObjectiveCampaign("AC_SkyFall_Bonus01");
-    libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_SkyFall_Bonus01", lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount);
+    // libCOMI_gf_SetObjectiveRequiredCountCampaign("AC_SkyFall_Bonus01", lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount);
     lib1_gv_cOOP_Objective_DestroyMegalith = ObjectiveLastCreated();
-    ObjectiveSetPriority(lib1_gv_cOOP_Objective_DestroyMegalith, 7);
-    TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Update, true, false);
+    // ObjectiveSetPriority(lib1_gv_cOOP_Objective_DestroyMegalith, 7);
+    // TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Update, true, false);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
 }
@@ -5170,10 +5217,24 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Update_Func (bool testConds, bool ru
     }
 
     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, false);
-    libCOMI_gf_SetMissionObjectiveProgress("AC_SkyFall_Bonus01", lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount);
+    // libCOMI_gf_SetMissionObjectiveProgress("AC_SkyFall_Bonus01", lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount);
     // TextExpressionSetToken("Param/Expression/lib_1_2E167A95", "KillCount", IntToText(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithKillCount));
     // TextExpressionSetToken("Param/Expression/lib_1_2E167A95", "DefeatCount", IntToText(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCount));
     // ObjectiveSetName(lib1_gv_cOOP_Objective_DestroyMegalith, TextExpressionAssemble("Param/Expression/lib_1_2E167A95"));
+    TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1]))));
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus01", TextExpressionAssemble("Param/Expression/A0835E4C"));
+    Wait(5.0, c_timeReal);
+    while ((libCOMI_gf_GameIsOver() == false) && (ObjectiveGetState(lib1_gv_cOOP_Objective_DestroyMegalith) == c_objectiveStateActive)) {
+        if ((TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1]) >= (TimerGetDuration(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1]) * 0.66))) {
+            TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1]))));
+            libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus01", TextExpressionAssemble("Param/Expression/A0835E4C"));
+        }
+        else {
+            TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextWithColor(TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1]))), gf_TimerColor(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[1])));
+            libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus01", TextExpressionAssemble("Param/Expression/A0835E4C"));
+        }
+        Wait(0.5, c_timeAI);
+    }
     return true;
 }
 
@@ -5202,6 +5263,7 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Complete_Func (bool testConds, bool 
     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, false);
     // ObjectiveSetName(lib1_gv_cOOP_Objective_DestroyMegalith, StringExternal("Param/Value/lib_1_8E01A35B"));
     // ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateCompleted);
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus01", StringToText(""));
     libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus01", libCOOC_ge_MissionObjectiveState_Completed);
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
     return true;
@@ -5232,13 +5294,10 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Failed_Func (bool testConds, bool ru
     TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith_Create, true, false);
     // ObjectiveSetState(lib1_gv_cOOP_Objective_DestroyMegalith, c_objectiveStateFailed);
     // ObjectiveSetName(lib1_gv_cOOP_Objective_DestroyMegalith, StringExternal("Param/Value/lib_1_AF099B29"));
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus01", StringToText(""));
     libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus01", libCOOC_ge_MissionObjectiveState_Failed);
-    if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_01_USER].lv_ping != c_invalidPingId)) {
-        PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_01_USER].lv_ping);
-    }
-
-    if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_02_USER].lv_ping != c_invalidPingId)) {
-        PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[lib1_gv_cOOP_Init_PLAYER_02_USER].lv_ping);
+    if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[1].lv_ping != c_invalidPingId)) {
+        PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[1].lv_ping);
     }
 
     Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
@@ -5248,6 +5307,129 @@ bool lib1_gt_COOP_Objective_DestroyMegalith_Failed_Func (bool testConds, bool ru
 //--------------------------------------------------------------------------------------------------
 void lib1_gt_COOP_Objective_DestroyMegalith_Failed_Init () {
     lib1_gt_COOP_Objective_DestroyMegalith_Failed = TriggerCreate("lib1_gt_COOP_Objective_DestroyMegalith_Failed_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: COOP_Objective_DestroyMegalith2_Create
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_COOP_Objective_DestroyMegalith2_Create_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    libCOMI_gf_CreateObjectiveCampaign("AC_SkyFall_Bonus02");
+    lib1_gv_cOOP_Objective_DestroyMegalith2 = ObjectiveLastCreated();
+    // ObjectiveSetPriority(lib1_gv_cOOP_Objective_DestroyMegalith2, 7);
+    Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_COOP_Objective_DestroyMegalith2_Create_Init () {
+    lib1_gt_COOP_Objective_DestroyMegalith2_Create = TriggerCreate("lib1_gt_COOP_Objective_DestroyMegalith2_Create_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: COOP_Objective_DestroyMegalith2_Update
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_COOP_Objective_DestroyMegalith2_Update_Func (bool testConds, bool runActions) {
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Create, true, false);
+    TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2]))));
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus02", TextExpressionAssemble("Param/Expression/A0835E4C"));
+    Wait(5.0, c_timeReal);
+    while ((libCOMI_gf_GameIsOver() == false) && (ObjectiveGetState(lib1_gv_cOOP_Objective_DestroyMegalith2) == c_objectiveStateActive)) {
+        if ((TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2]) >= (TimerGetDuration(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2]) * 0.66))) {
+            TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2]))));
+            libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus02", TextExpressionAssemble("Param/Expression/A0835E4C"));
+        }
+        else {
+            TextExpressionSetToken("Param/Expression/A0835E4C", "Time", TextWithColor(TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), FixedToInt(TimerGetRemaining(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2]))), gf_TimerColor(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter_Timer[2])));
+            libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus02", TextExpressionAssemble("Param/Expression/A0835E4C"));
+        }
+        Wait(0.5, c_timeAI);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_COOP_Objective_DestroyMegalith2_Update_Init () {
+    lib1_gt_COOP_Objective_DestroyMegalith2_Update = TriggerCreate("lib1_gt_COOP_Objective_DestroyMegalith2_Update_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: COOP_Objective_DestroyMegalith2_Complete
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_COOP_Objective_DestroyMegalith2_Complete_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Create, true, false);
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus02", StringToText(""));
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus02", libCOOC_ge_MissionObjectiveState_Completed);
+    Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_COOP_Objective_DestroyMegalith2_Complete_Init () {
+    lib1_gt_COOP_Objective_DestroyMegalith2_Complete = TriggerCreate("lib1_gt_COOP_Objective_DestroyMegalith2_Complete_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: COOP_Objective_DestroyMegalith2_Failed
+//--------------------------------------------------------------------------------------------------
+bool lib1_gt_COOP_Objective_DestroyMegalith2_Failed_Func (bool testConds, bool runActions) {
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerExecute(lib1_gt_COOP_Objective_DestroyMegalith2_Create, true, false);
+    libCOMI_gf_SetMissionObjectiveCustomText("AC_SkyFall_Bonus02", StringToText(""));
+    libCOMI_gf_ZS_SetMissionObjectiveState("AC_SkyFall_Bonus02", libCOOC_ge_MissionObjectiveState_Failed);
+    if ((lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[2].lv_ping != c_invalidPingId)) {
+        PingDestroy(lib1_gv_sOLARCRYSTAL_Spectroscope_MegalithCutter[2].lv_ping);
+    }
+
+    Wait(libCOMI_gv_campaignObjectiveDelay, c_timeReal);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib1_gt_COOP_Objective_DestroyMegalith2_Failed_Init () {
+    lib1_gt_COOP_Objective_DestroyMegalith2_Failed = TriggerCreate("lib1_gt_COOP_Objective_DestroyMegalith2_Failed_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5415,6 +5597,10 @@ void lib1_InitTriggers () {
     lib1_gt_COOP_Objective_DestroyMegalith_Update_Init();
     lib1_gt_COOP_Objective_DestroyMegalith_Complete_Init();
     lib1_gt_COOP_Objective_DestroyMegalith_Failed_Init();
+    lib1_gt_COOP_Objective_DestroyMegalith2_Create_Init();
+    lib1_gt_COOP_Objective_DestroyMegalith2_Update_Init();
+    lib1_gt_COOP_Objective_DestroyMegalith2_Complete_Init();
+    lib1_gt_COOP_Objective_DestroyMegalith2_Failed_Init();
     // lib1_gt_COOP_Objective_Zeratul_Complete_Init();
     // lib1_gt_Coop_ZeratulMode_BeginTimerExpired_Init();
     // lib1_gt_Coop_ZeratulMode_CheatMessage_Init();

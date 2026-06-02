@@ -13,6 +13,7 @@
 - Adjusted timings of small meteorite waves.
 - Fixed an issue where giant meteorites did not have the "about to drop" warning on the minimap.
 - Fixed an issue where the small meteorite aoe was not centered for giant meteorite waves.
+- Separated the bonus objective into two and added timers.
 
 ### Death from Above
 
