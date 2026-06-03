@@ -1,5 +1,12 @@
 # Changelog
 
+## 6/3/2026
+
+### Primal Ascension
+
+- Added benign flag to bosses being healed by a crystal.
+- Fixed an issue where Amon had the wrong Swarm Host variant.
+
 ## 6/2/2026
 
 - Fixed an issue where Reavers could not path through force fields.
