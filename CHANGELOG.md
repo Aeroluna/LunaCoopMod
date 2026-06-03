@@ -2,6 +2,13 @@
 
 ## 6/3/2026
 
+- Increased Shield Battery starting energy from 50 to 100.
+- Reduced Shield Battery maximum energy from 200 to 100.
+
+Karax's Shield Batteries are unaffected.
+
+- Increased Karax's Shield Battery starting energy from 50 to 200.
+
 ### Primal Ascension
 
 - Added benign flag to bosses being healed by a crystal.
