@@ -14,6 +14,12 @@ Karax's Shield Batteries are unaffected.
 - Added benign flag to bosses being healed by a crystal.
 - Fixed an issue where Amon had the wrong Swarm Host variant.
 
+### Construction Yard
+
+- Added a final attack wave that attacks the last camp.
+
+Makes the ending feel more climactic
+
 ## 6/2/2026
 
 - Fixed an issue where Reavers could not path through force fields.
