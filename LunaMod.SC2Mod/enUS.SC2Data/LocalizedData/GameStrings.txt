@@ -54,7 +54,6 @@ Behavior/Name/AbathurPrestigeSymbiote=Symbiote
 Behavior/Name/ArtilleryMengskBombardmentSlow=Shell Shocked
 Behavior/Name/AscendantArchonDummySelfBuff=Power Overwhelming
 Behavior/Name/AscendantArchonSelfBuff=Power Overwhelming
-Behavior/Name/AstralStormCripple=Astral Smolder
 Behavior/Name/CommanderPrestigeNovaAirliftStun=Lockdown
 Behavior/Name/CommanderPrestigeNovaBioBarracksBuff=Overtime
 Behavior/Name/CommanderPrestigeNovaBioBarracksDebuff=Furloughed
@@ -111,7 +110,6 @@ Behavior/Tooltip/ArbiterMPCloakFieldEffect=This unit is cloaked and will only be
 Behavior/Tooltip/ArbiterMPStasisField=This unit cannot move, attack, or be damaged.
 Behavior/Tooltip/ArtilleryMengskBombardmentSlow=This unit's attack and movement speed is slowed.
 Behavior/Tooltip/AscendantArchonSelfBuff=This unit has increased shields and it deals increased damage.
-Behavior/Tooltip/AstralStormCripple=This unit is slowed, revealed, and has its armor reduced.
 Behavior/Tooltip/Burning=This unit is taking damage over time.
 Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
 Behavior/Tooltip/CommanderPrestigeNovaBioBuff=This structure is accruing charges 100% faster.
@@ -150,7 +148,7 @@ Behavior/Tooltip/MutatorBountyHunterBuff=The thrill of a fulfilled bounty has gr
 Behavior/Tooltip/MutatorChangeling=This unit is acting suspicious, kill it before it calls in reinforcements!
 Behavior/Tooltip/MutatorWhiteout=It's a whiteout! This unit's movement speed and vision are reduced.
 Behavior/Tooltip/MutatorWhiteoutProtected=This unit is sheltered from the whiteout.
-Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
+Behavior/Tooltip/PsiStormNerazim=Target is under the effects of Astral Storm and is slowed, revealed, and has its armor reduced while in this area of effect.
 Behavior/Tooltip/SIBarracksCorruption=Has <d ref="$BehaviorStackCount:SIBarracksCorruption$"/> level(s) of Corruption, reducing the cooldown of Spawn Infested Marine by <d ref="$BehaviorStackCount:SIBarracksCorruption$*Effect,StukovSIBunkerCDRDummy,Amount"/> seconds.
 Behavior/Tooltip/SILiberatorSprayPool=This unit is slowed and taking damage over time.
 Behavior/Tooltip/SILiberatorVolatileFuel=This unit is expending energy to gain 50% increased attack and movement speed.
@@ -512,7 +510,7 @@ Button/Tooltip/CorruptorStetmannMissilePods=Fires a barrage of missiles dealing 
 Button/Tooltip/CorruptorStetmannRespawn=For every <d ref="Abil,CorruptorStetmannRespawn,InfoArray[Train1].Charge.CountUse"/> <c val="ffff8a">Mecha Corruptor Remnants</c> collected by <c val="ffff8a">Stetellites</c>, <c val="ffff8a">Gary</c>, and <c val="ffff8a">Super Gary</c>, a <c val="ffff8a">Mecha Corruptor</c> will respawn here at no cost.
 Button/Tooltip/CorruptorStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,CorruptorStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Corruptor Remnant,Mecha Corruptor Remnants</lang></c>.
 Button/Tooltip/CreateSymbiote=Creates a Symbiote with the following abilities:<n/><n/><c val="ffff00">Stab:</c> Attacks nearby enemies for <d ref="Effect,SymbioteStabDamage,Amount"/> damage every <d ref="Abil,SymbioteStab,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Spike Burst:</c> Deals <d ref="Effect,SymbioteSpikeBurstDamage,Amount"/> damage to nearby enemies every <d ref="Abil,SymbioteSpikeBurst,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.<n/><c val="ffff00">Shield:</c> Absorbs <d ref="Behavior,SymbioteCarapace,Modification.VitalMaxArray[Shields]"/> damage for the host every <d ref="Abil,SymbioteCarapace,Cost[0].Cooldown.TimeUse" precision="1"/> seconds.</n></n><c val="#ColorAttackInfo">Costs <d ref="-1*Upgrade,CommanderPrestigeAbathurSymbioteSupply,EffectArray[0].Value"/> supply.</c>
-Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref="Effect,PsiStormNerazimPersistent,PeriodCount*Effect,PsiStormNerazimPersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,PsiStormNerazimDamage,Amount*(Effect,PsiStormNerazimPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Enemy units in the target area are revealed, have their movement speed reduced, and have up to 4 armor reduced. Does not affect friendly units.
+Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref="Effect,PsiStormNerazimPersistent,PeriodCount*Effect,PsiStormNerazimPersistent,PeriodicPeriodArray[0]"/> seconds, causing up to <d ref="Effect,PsiStormNerazimDamage,Amount*(Effect,PsiStormNerazimPersistent,PeriodCount+2)"/> damage to all enemy units in the target area. Enemy units in the target area are revealed, have their movement speed reduced by 60%, and have their armor reduced by 5.
 Button/Tooltip/CyberneticsCoreKarax=Contains weapon and armor upgrades for Protoss air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Energizers at the Gateway<n/>- Instigators at the Gateway
 Button/Tooltip/CycloneLockOnDamageUpgrade=Increases the damage of Lock On by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/DakrunCrashingCharge=Charge to target location knocking back units in the area and dealing <d ref="Effect,DehakaDakrunCrashingChargeDamage,Amount"/> (+<d ref="Effect,DehakaDakrunCrashingChargeDamage,AttributeBonus[Structure]"/> vs. Structures) damage.
@@ -536,7 +534,7 @@ Button/Tooltip/DrillClaws=This unit burrows faster.
 Button/Tooltip/EMP=Deals <d ref="Effect,EMPBlackOpsDamage,ShieldBonus"/> damage to shields and depletes the energy of enemy units in the target area. Cloaked units are revealed for <d ref="Behavior,EMPDecloak,Duration"/> seconds after being hit.
 Button/Tooltip/EnergizerReclamation2=Increases the duration of Reclamation by <d time="120"/>.
 Button/Tooltip/EngineeringBayUpgradedSwann=Contains upgrades for structures. <n/><n/><c val="ffff8a">Enables:</c><n/>- Spinning Dizzys from SCVs<n/>- Big Berthas from Command Centers
-Button/Tooltip/Enshroud=Creates a veil for all friendly units in a target area, granting cloak and healing <d ref="Effect,EnshroudHeal,RechargeVitalRate"/> hitpoints per second for <d ref="Behavior,Enshroud,Duration"/> seconds.
+Button/Tooltip/Enshroud=Veils all friendly units in a target area, granting cloak and healing <d ref="Effect,EnshroudHeal,RechargeVitalRate"/> life per second for <d ref="Behavior,Enshroud,Duration"/> seconds.
 Button/Tooltip/EvolveAbathurDeepTunnel=Allows <c val="ffff8a">Swarm Hosts</c> to quickly burrow to any visible location on the map.
 Button/Tooltip/EvolveAnabolicSynthesis2=Increases the movement speed of <c val="ffff8a">Ultralisks</c> off creep.
 Button/Tooltip/EvolveDefilerMetasynapticNode=<c val="ffff8a">Defilers</c> have 50 more max energy and start with full energy.
@@ -1075,7 +1073,6 @@ Effect/Name/OrbitalAssimilatorRichSet=Orbital Assimilator Rich Set
 Effect/Name/PrestigeCreateSymbioteAB=PrestigeCreateSymbioteAB
 Effect/Name/ProtossTimedLifeExpireAB=ProtossTimedLifeExpireAB
 Effect/Name/PsiStormNerazimApplyBehavior=Psi Storm Nerazim (Apply Buff)
-Effect/Name/PsiStormNerazimApplyBehaviorCripple=Psi Storm Nerazim (Apply Cripple Buff)
 Effect/Name/PsiStormNerazimDamage=Psi Storm Nerazim (Damage)
 Effect/Name/PsiStormNerazimDamageInitial=Psi Storm Nerazim (Damage2)
 Effect/Name/PsiStormNerazimPersistent=Psi Storm Nerazim (Persistent)

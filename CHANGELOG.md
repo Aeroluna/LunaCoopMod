@@ -1,6 +1,15 @@
 # Changelog
 
-## 6/3/2026
+## 6/4/2026
+
+- Reworked Astral Storm to no longer apply a secondary lingering debuff.
+- Fixed an issue where Astral Storm did not negate shield armor.
+- Reduced Astral Storm damage from 56 to 50.
+- Increased Astral Storm armor reduction from 4 to 5.
+- Reduced Astral Storm slow from ~60% to 50%.
+- Increased Astral Storm duration from 7 seconds to 8 seconds.
+
+Simplifying an ability that is already a little overloaded.
 
 - Increased Shield Battery starting energy from 50 to 100.
 - Reduced Shield Battery maximum energy from 200 to 100.

@@ -5173,16 +5173,11 @@
         <Behavior value="Enshroud"/>
         <ValidatorArray value="NotUnrepairable"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="PsiStormNerazimApplyBehaviorCripple">
-        <ValidatorArray index="0" value="PsiStormNerazimApplyBehaviorTargetFilters"/>
-        <EditorCategories value="Race:Protoss"/>
-        <Behavior value="AstralStormCripple"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="PsiStormNerazimDamage">
         <ValidatorArray value="PsiStormUTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <Visibility value="Hidden"/>
-        <Amount value="4"/>
+        <Amount value="3.125"/>
     </CEffectDamage>
     <CEffectDamage id="PsiStormNerazimDamageInitial">
         <ValidatorArray value="PsiStormUTargetFilters"/>
@@ -5190,14 +5185,18 @@
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="4"/>
+        <Amount value="3.125"/>
     </CEffectDamage>
+    <CEffectSet id="PsiStormNerazimInitialSet">
+        <EffectArray value="PsiStormNerazimDamageInitial"/>
+        <EffectArray value="CommanderPrestigeVorazunStasisDoT"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="PsiStormNerazimPersistent">
         <EditorCategories value="Race:Protoss"/>
         <InitialEffect value="PsiStormNerazimSearchSet"/>
-        <PeriodCount value="12"/>
+        <PeriodCount value="14"/>
         <PeriodicEffectArray value="PsiStormNerazimSearchSet"/>
-        <PeriodicPeriodArray value="0.5712"/>
+        <PeriodicPeriodArray value="0.56"/>
         <AINotifyEffect value="PsiStormNerazimSearch"/>
     </CEffectCreatePersistent>
     <CEffectEnumArea id="PsiStormNerazimSearch">
@@ -5205,7 +5204,7 @@
         <AINotifyFlags index="HurtFriend" value="1"/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3" Effect="PsiStormShakurasImpactSet"/>
+        <AreaArray Radius="3" Effect="PsiStormNerazimApplyBehavior"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="EnshroudSearch">
@@ -5247,10 +5246,6 @@
         <Death value="Fire"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectSet id="PsiStormShakurasImpactSet">
-        <EffectArray index="0" value="PsiStormNerazimApplyBehavior"/>
-        <EffectArray index="1" value="PsiStormNerazimApplyBehaviorCripple"/>
-    </CEffectSet>
     <CEffectCreatePersistent id="RaynorMasteryHealMedivacSecondaryCP">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetUnit"/>
