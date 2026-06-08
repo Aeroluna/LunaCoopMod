@@ -69,6 +69,21 @@
     <CValidatorCombine id="CasterThorMengskSiegedSmallAoE">
         <CombineArray index="0" value="ThorMengskMorphValidatorCombine"/>
     </CValidatorCombine>
+    <CValidatorLocationCompareRange id="DarkTemplarTaldarimBlinkMaxDistance">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="SourceUnit"/>
+        <Compare value="LT"/>
+        <Range value="6"/>
+        <Value Value="TargetUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareOrderTargetRange id="DarkTemplarTaldarimBlinkMinTriggerDistance">
+        <ResultFailed value="TargetIsTooClose"/>
+        <WhichUnit Value="Caster"/>
+        <OtherUnit Value="Target"/>
+        <Compare value="GT"/>
+        <AbilLink value="attack"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareOrderTargetRange>
     <CValidatorPlayerRequirement id="CommanderPrestigeNovaCloak">
         <WhichPlayer Value="Creator"/>
         <Find value="1"/>
@@ -174,6 +189,14 @@
         <CombineArray value="NotMothershipArtanis"/>
         <CombineArray value="NotArbiterMP"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="DarkTemplarTaldarimDebuffExecute">
+        <Value value="10"/>
+        <Behavior value="DarkTemplarTaldarimDebuff"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="DarkTemplarTaldarimDebuffHeroicExecute">
+        <Value value="20"/>
+        <Behavior value="DarkTemplarTaldarimDebuffHeroic"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="DehakaCreeperRecentlySwooped">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>

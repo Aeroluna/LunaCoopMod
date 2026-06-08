@@ -1747,6 +1747,21 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
 
 A passive called Power Overwhelming deserves to go to an Archon unit! By accruing stacks on Ascendants and combining them, you can make a *super* archon with chain attacks that each do AOE damage. Inspired by the LotV cinematic, dying Void Archons go out with a bang, dealing massive damage in a nearby radius, though it still isn't worth sacrificing your Archons.
 
+- Added Blood Hunters.
+  - Passive: Obliteration
+    - Attacks reduce the max life of targets by 10%.
+    - Heroic target max life is reduced by 5% instead.
+    - This effect can stack.
+  - Passive: Siphon Essence
+    - Gains shield equal to 100% of all damage dealt from normal attacks.
+    - Researched at the Dark Shrine for 100/100 for 60 seconds.
+  - Ability: Shadow Strike
+    - Teleport to a nearby target.
+    - Acts similar to Zealot's Charge.
+    - Researched at the Dark Shrine for 100/100 for 60 seconds.
+
+A tank killing specialist! I couldn't resist adding Blood Hunters.
+
 - Reworked Mothership Terminator Beam to only target air units.
 - Reworked Mothership Thermal Lance.
   - Only targets ground units instead of all units.

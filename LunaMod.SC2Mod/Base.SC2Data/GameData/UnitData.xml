@@ -354,6 +354,23 @@
         </CardLayouts>
         <TacticalAIThink value="AIThinkDarkTemplar"/>
     </CUnit>
+    <!-- VoidDarkTemplarDarkArchon -->
+    <CUnit id="DarkTemplarTaldarim">
+        <ShieldsStart value="160"/>
+        <ShieldsMax value="160"/>
+        <AbilArray index="6" Link="DarkTemplarTaldarimBlink"/>
+        <AbilArray Link="VoidArchonMerge"/>
+        <BehaviorArray Link="DarkTemplarTaldarimLifesteal"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="0"/>
+            <LayoutButtons index="7" Face="DarkTemplarTaldarimDebuff" Type="Passive" AbilCmd="" Row="1"/>
+            <LayoutButtons Face="DarkTemplarTaldarimBlink" Type="AbilCmd" AbilCmd="DarkTemplarTaldarimBlink,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="VoidArchonMergeSelection2" Type="AbilCmd" AbilCmd="VoidArchonMerge,SelectedUnits" Row="2" Column="3"/>
+            <LayoutButtons Face="DarkTemplarTaldarimLifesteal" Type="Passive" Requirements="UseDarkTemplarTaldarimLifesteal" Row="1" Column="1"/>
+        </CardLayouts>
+        <PawnItemReduction value="15"/>
+        <!--BehaviorArray Link="WarpInAttackSpeedBehavior"/-->
+    </CUnit>
     <CUnit id="DehakaBarracks">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="4"/>
@@ -4729,6 +4746,8 @@
     </CUnit>
     <CUnit id="DarkShrine">
         <CardLayouts index="0">
+            <LayoutButtons index="1" Face="BloodHunterPassive" AbilCmd="" Requirements="HaveAlarakCommander"/>
+            <LayoutButtons index="2" Face="DarkTemplarPassive" AbilCmd="DarkShrineRally,Rally1" Requirements=""/>
             <LayoutButtons index="12">
                 <Face value="CommanderVorazunDarkArchonPassiveLocked"/>
                 <Type value="Passive"/>
@@ -4748,8 +4767,22 @@
             </LayoutButtons>
             <LayoutButtons index="15" Face="ResearchZeratulZealotBlinkHeal" Requirements="HaveZeratulArtifactTier2AndDarkShine" Row="2" Column="1"/>
             <LayoutButtons index="16" Face="ResearchZeratulDarkTemplarShadowFury" Requirements="HaveZeratulArtifactTier3AndDarkShine" Row="2" Column="2"/>
-            <LayoutButtons index="17" removed="1"/>
-            <LayoutButtons index="18" removed="1"/>
+            <LayoutButtons index="17">
+                <Face value="ResearchSiphonEssence"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DarkShrineResearch,Research8"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="18">
+                <Face value="ResearchShadowStrike"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="DarkShrineResearch,Research7"/>
+                <Requirements value=""/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
             <LayoutButtons index="19" removed="1"/>
             <LayoutButtons index="20" removed="1"/>
         </CardLayouts>
@@ -5003,7 +5036,7 @@
     </CUnit>
     <CUnit id="DarkTemplarShakuras">
         <CardLayouts index="0">
-            <LayoutButtons Face="DarkArchonMergeSelection" Type="AbilCmd" AbilCmd="DarkArchonMerge,SelectedUnits" Row="2" Column="3"/>
+            <LayoutButtons Face="DarkArchonMergeSelection2" Type="AbilCmd" AbilCmd="DarkArchonMerge,SelectedUnits" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="DefilerMP">

@@ -179,6 +179,55 @@
         <AreaArray index="2" Validator="NotFriendlyFire"/>
         <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
+    <CEffectTeleport id="DarkTemplarTaldarimBlink">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="6"/>
+        <Range value="6"/>
+        <TargetLocation Value="TargetUnit"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportEffect value="TeleportRemoveCategoryCaster"/>
+        <ClearQueuedOrders value="0"/>
+    </CEffectTeleport>
+    <CEffectCreatePersistent id="DarkTemplarTaldarimBlinkPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialEffect value="DarkTemplarTaldarimBlink"/>
+        <InitialOffset value="0,0,1"/>
+        <ValidatorArray value="DarkTemplarTaldarimBlinkMinTriggerDistance"/>
+        <ValidatorArray value="DarkTemplarTaldarimBlinkMaxDistance"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="DarkTemplarTaldarimDebuff"/>
+    <CEffectApplyBehavior id="DarkTemplarTaldarimDebuffHeroic"/>
+    <CEffectDamage id="DarkTemplarTaldarimDebuffExecute">
+        <Flags index="Kill" value="1"/>
+        <Death value="Blast"/>
+        <ValidatorArray value="DarkTemplarTaldarimDebuffExecute"/>
+    </CEffectDamage>
+    <CEffectDamage id="DarkTemplarTaldarimDebuffHeroicExecute">
+        <Flags index="Kill" value="1"/>
+        <Death value="Blast"/>
+        <ValidatorArray value="DarkTemplarTaldarimDebuffHeroicExecute"/>
+    </CEffectDamage>
+    <CEffectSet id="DarkTemplarTaldarimDebuffSet">
+        <EffectArray value="DarkTemplarTaldarimDebuff"/>
+        <EffectArray value="DarkTemplarTaldarimDebuffExecute"/>
+        <ValidatorArray value="NotHeroic"/>
+        <ValidatorArray value="EnemyTarget"/>
+    </CEffectSet>
+    <CEffectSet id="DarkTemplarTaldarimDebuffHeroicSet">
+        <EffectArray value="DarkTemplarTaldarimDebuffHeroic"/>
+        <EffectArray value="DarkTemplarTaldarimDebuffHeroicExecute"/>
+        <ValidatorArray value="IsHeroic"/>
+        <ValidatorArray value="EnemyTarget"/>
+    </CEffectSet>
+    <CEffectSet id="DarkTemplarTaldarimWeaponSet">
+        <EffectArray index="0" value="DarkTemplarTaldarimDebuffSet"/>
+        <EffectArray value="DarkTemplarTaldarimDebuffHeroicSet"/>
+        <EffectArray value="WarpBlades"/>
+        <EffectArray value="BeamTargetCD"/>
+    </CEffectSet>
     <CEffectEnumArea id="DefensiveMatrixAoE">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>

@@ -249,6 +249,36 @@
             <AbilCategoriesEnable index="Passive" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="DarkTemplarTaldarimDebuff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="10"/>
+        <Modification>
+            <VitalMaxFractionArray index="Life" value="-0.1"/>
+        </Modification>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DarkTemplarTaldarimDebuffHeroic">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="20"/>
+        <Modification>
+            <VitalMaxFractionArray index="Life" value="-0.05"/>
+        </Modification>
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DarkTemplarTaldarimLifesteal">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalDamageLeechArray index="Shields">
+                <KindArray index="Melee" value="1"/>
+            </VitalDamageLeechArray>
+        </Modification>
+        <Requirements value="UseDarkTemplarTaldarimLifesteal"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="DehakaCreeperRecentlySwooped">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

@@ -42,6 +42,31 @@
     <CAbilEffectTarget id="ConsumeDNA">
         <TargetFilters index="0" value="-;Self,Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="DarkShrineResearch">
+        <InfoArray index="Research7" Time="60" Upgrade="DarkTemplarTaldarimShadowStrike">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchShadowStrike" Requirements="LearnDarkTemplarTaldarimShadowStrike"/>
+        </InfoArray>
+        <InfoArray index="Research8" Time="60" Upgrade="DarkTemplarTaldarimLifesteal">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchSiphonEssence" Requirements="LearnDarkTemplarTaldarimLifesteal"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilAugment id="DarkTemplarTaldarimBlink">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DarkTemplarTaldarimBlink" Requirements="UseDarkTemplarTaldarimShadowStrike"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AbilCmd value="attack,Execute"/>
+        <Cost>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <Effect value="DarkTemplarTaldarimBlinkPersistent"/>
+        <AutoCastValidatorArray value="CasterNotHoldingPosition"/>
+        <AutoCastValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CAbilAugment>
     <CAbilEffectTarget id="DefensiveMatrixAoE" parent="DefensiveMatrixTarget">
         <Effect index="0" value="DefensiveMatrixAoE"/>
         <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden"/>

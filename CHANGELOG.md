@@ -1,5 +1,22 @@
 # Changelog
 
+## 6/8/2026
+
+- Added Blood Hunters.
+  - Passive: Obliteration
+    - Attacks reduce the max life of targets by 10%.
+    - Heroic target max life is reduced by 5% instead.
+    - This effect can stack.
+  - Passive: Siphon Essence
+    - Gains shield equal to 100% of all damage dealt from normal attacks.
+    - Researched at the Dark Shrine for 100/100 for 60 seconds.
+  - Ability: Shadow Strike
+    - Teleport to a nearby target.
+    - Acts similar to Zealot's Charge.
+    - Researched at the Dark Shrine for 100/100 for 60 seconds.
+
+I know I already gave Alarak a new unit, but I couldn't resist adding Blood Hunters!
+
 ## 6/4/2026
 
 - Reworked Astral Storm to no longer apply a secondary lingering debuff.

@@ -62,6 +62,8 @@ Behavior/Name/CommanderPrestigeNovaBioFactoryDebuff=Furloughed
 Behavior/Name/CommanderPrestigeNovaBioStarportBuff=Overtime
 Behavior/Name/CommanderPrestigeNovaBioStarportDebuff=Furloughed
 Behavior/Name/CommanderPrestigeStukovNeuralTarget=Neural Infestation
+Behavior/Name/DarkTemplarTaldarimDebuff=Obliteration
+Behavior/Name/DarkTemplarTaldarimDebuffHeroic=Obliteration
 Behavior/Name/DarkTemplarVoidStasis=Void Prison
 Behavior/Name/DarkTemplarVoidStasisCooldown=Recently Void Prisoned
 Behavior/Name/Enshroud=Aurora Veil
@@ -115,6 +117,8 @@ Behavior/Tooltip/CommanderPrestigeNovaAirliftStun=This unit is stunned.
 Behavior/Tooltip/CommanderPrestigeNovaBioBuff=This structure is accruing charges 100% faster.
 Behavior/Tooltip/CommanderPrestigeNovaBioDebuff=This structure is accruing charges 50% slower.
 Behavior/Tooltip/CommanderPrestigeStukovNeuralTarget=This unit is temporarily under Stukov's control. It will die once this effect expires.
+Behavior/Tooltip/DarkTemplarTaldarimDebuff=This unit's max life is reduced by <d ref="$BehaviorStackCount:DarkTemplarTaldarimDebuff$*10"/>%.
+Behavior/Tooltip/DarkTemplarTaldarimDebuffHeroic=This unit's max life is reduced by <d ref="$BehaviorStackCount:DarkTemplarTaldarimDebuffHeroic$*5"/>%.
 Behavior/Tooltip/DarkTemplarVoidStasis=This unit or structure cannot move, attack, or detect.
 Behavior/Tooltip/DarkTemplarVoidStasisCooldown=This unit has been recently affected by Void Prison and cannot be targeted again.
 Behavior/Tooltip/DefilerMPDarkSwarm=Units inside of Dark Cloud can not take damage from ranged or splash attacks.
@@ -213,9 +217,13 @@ Button/Name/CommanderPrestigeZagaraSwarm=Subterranean Tide
 Button/Name/CommanderPrestigeZeratulTopBar=Hand of the Xel'Naga
 Button/Name/CreateSymbiote=Create Symbiote
 Button/Name/CripplingPsionicStorm=Astral Storm
+Button/Name/DarkArchonMergeSelection2=Dark Archon Merge
 Button/Name/DarkArchonPassive2=Dark Archon
 Button/Name/DarkTemplarBlink=Shadow Stride
 Button/Name/DarkTemplarShadowDash=Shadow Stride
+Button/Name/DarkTemplarTaldarimBlink=Shadow Strike
+Button/Name/DarkTemplarTaldarimDebuff=Obliteration
+Button/Name/DarkTemplarTaldarimLifesteal=Siphon Essence
 Button/Name/DefilerMetasynapticNode=Metasynaptic Node
 Button/Name/DehakaCreeperSwoop=Swoop
 Button/Name/DiggingClaws=Adaptive Talons
@@ -314,7 +322,9 @@ Button/Name/ResearchSILiberatorEnergyLeech=Research Necroplasmic Synthesis
 Button/Name/ResearchScienceVesselAoE=Research Supercritical Isotope
 Button/Name/ResearchShadowCannon2=Research Photon Reservoirs
 Button/Name/ResearchShadowDash=Research Shadow Stride
+Button/Name/ResearchShadowStrike=Research Shadow Strike
 Button/Name/ResearchSignifierFade=Research Fading Star
+Button/Name/ResearchSiphonEssence=Research Siphon Essence
 Button/Name/ResearchStukovInfestedBansheeInfestedLife=Research Hyperadaptive Exoskeleton
 Button/Name/ResearchTempestDestabilizingResiduum=Research Destabilizing Residuum
 Button/Name/ResearchTransformationServos=Research Smart Servos
@@ -364,6 +374,7 @@ Button/Name/VikingMengskSpeedAssault=Aesir Turbines
 Button/Name/VoidArchonChainReaction=Chain Reaction
 Button/Name/VoidArchonChainReactionResearch=Research Chain Reaction
 Button/Name/VoidArchonMergeSelection=Void Archon Merge
+Button/Name/VoidArchonMergeSelection2=Void Archon Merge
 Button/Name/VoidArchonVortex=Supernova
 Button/Name/VoidStasis=Void Prison
 Button/Name/VoidStasisLocked=Void Prison
@@ -385,6 +396,7 @@ Button/Name/ZergGroundAttacksLevel1=Evolve Ground Attacks Level 1
 Button/Name/ZergGroundAttacksLevel2=Evolve Ground Attacks Level 2
 Button/Name/ZergGroundAttacksLevel3=Evolve Ground Attacks Level 3
 Button/Name/ZerglingBrood=Morph to Devouring One
+Button/Tooltip/ACAlarakDarkShrine=Contains upgrades for Blood Hunters.<n/><n/><c val="ffff8a">Enables:</c><n/>- Blood Hunters at the Gateway<n/>- Void Archon Merge from Blood Hunters
 Button/Tooltip/ACAlarakTemplarArchives=Contains upgrades for Ascendants and Void Archons.<n/><n/><c val="ffff8a">Enables:</c><n/>- Ascendants at the Gateway<n/>- Void Archon Merge from Ascendants
 Button/Tooltip/ACArtanisFleetBeacon=Contains upgrades for Phoenixes.<n/><n/><c val="ffff8a">Enables:</c><n/>- Tempests at the Stargate<n/>- Mothership from the Nexus
 Button/Tooltip/ACArtanisFleetBeaconUpgraded=Contains upgrades for Phoenixes and Tempests.<n/><n/><c val="ffff8a">Enables:</c><n/>- Tempests at the Stargate<n/>- Mothership from the Nexus
@@ -425,6 +437,7 @@ Button/Tooltip/Banshee_BlackOpsAirstrike=Deals <d ref="Effect,Banshee_BlackOpsAi
 Button/Tooltip/BiomassPassiveEnergy=Units gain <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Life]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% life, <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy, <d ref="Behavior,BiomassBuff100,Modification.AdditiveAttackSpeedFactor*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% attack speed, <d ref="Behavior,BiomassBuff100,Modification.VitalRegenMultiplier[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy regeneration, and <d ref="($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$"/>% spell damage.
 Button/Tooltip/BiomassPassiveEnergyUpgraded=Units gain <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Life]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% life, <d ref="Behavior,BiomassBuff100,Modification.VitalMaxAdditiveMultiplierArray[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy, <d ref="Behavior,BiomassBuff100,Modification.AdditiveAttackSpeedFactor*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% attack speed, <d ref="Behavior,BiomassBuff100,Modification.VitalRegenMultiplier[Energy]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% energy regeneration, <d ref="($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$"/>% spell damage, and <d ref="Behavior,BiomassBuff100,Modification.VitalDamageLeechArray[Life].KindArray[Melee]*(($BehaviorStackCount:BiomassBuff100$*100)+($BehaviorStackCount:BiomassBuff10$*10)+$BehaviorStackCount:BiomassBuff1$)"/>% Biotic Leech.
 Button/Tooltip/BlinkPurifier=Teleports the Instigator to a nearby target location. Ability can only be used once every <d ref="Abil,Blink,Cost[0].Cooldown.TimeUse"/> seconds.
+Button/Tooltip/BloodHunterPassive=Blood Shrine allows you to warp in Blood Hunters.
 Button/Tooltip/BroodLordStetmannBombers=Builds Mecha Locusceptors that automatically attack the Mecha Battlecarrier Lord's target.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/BroodLordStetmannBroodlings=Builds Mecha Broodlings that can attack ground units.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/BroodLordStetmannScrapDrop=When this unit is destroyed near an active Stetellite, Gary, or Super Gary, it will drop <d ref="-1*Effect,BroodLordStetmannDeathRespawnAddCharge,Cost.Charge.CountUse"/> <c val="ffff8a"><lang rule="plural">Mecha Corruptor Remnant,Mecha Corruptor Remnants</lang></c>.
@@ -514,10 +527,16 @@ Button/Tooltip/CripplingPsionicStorm=Creates a storm of astral energy for <d ref
 Button/Tooltip/CyberneticsCoreKarax=Contains weapon and armor upgrades for Protoss air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Energizers at the Gateway<n/>- Instigators at the Gateway
 Button/Tooltip/CycloneLockOnDamageUpgrade=Increases the damage of Lock On by <d ref="$UpgradeEffectArrayValue:CycloneLockOnDamageUpgrade:Effect,CycloneWeaponDamage,Amount$/Effect,CycloneWeaponDamage,Amount*100" player="0"/>%
 Button/Tooltip/DakrunCrashingCharge=Charge to target location knocking back units in the area and dealing <d ref="Effect,DehakaDakrunCrashingChargeDamage,Amount"/> (+<d ref="Effect,DehakaDakrunCrashingChargeDamage,AttributeBonus[Structure]"/> vs. Structures) damage.
-Button/Tooltip/DarkArchonMergeSelection=Sacrifices 2 Dark Templar or Signifiers to create a Dark Archon.
+Button/Tooltip/DarkArchonMergeSelection=Sacrifices 2 Signifiers to create a Dark Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/DarkArchonMergeSelection2=Sacrifices 2 Dark Templar to create a Dark Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/DarkArchonPassive=Dark Shrine allows you to merge Dark Archons.
 Button/Tooltip/DarkArchonPassive2=Templar Archives allows you to merge Dark Archons.
+Button/Tooltip/DarkTemplar=Deadly warrior-assassin. Cloak renders the unit invisible to enemies without detection. Can transform into an Archon.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/DarkTemplarBlink=Teleports the Dark Templar to a nearby target location. Ability can only be used once every <d ref="Abil,DarkTemplarBlink,Cost[0].Cooldown.TimeUse"/> seconds.
+Button/Tooltip/DarkTemplarTaldarim=Deadly warrior-assassin. Permanently cloaked. Attacks reduce the max life of targets. Can use Shadow Strike.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/DarkTemplarTaldarimBlink=Teleport to a nearby target.
+Button/Tooltip/DarkTemplarTaldarimDebuff=Attacks reduce the max life of targets by 10%. This effect can stack.<n/><n/><c val="#ColorAttackInfo">Heroic target max life is reduced by 5% instead.</c>
+Button/Tooltip/DarkTemplarTaldarimLifesteal=Gains shield equal to 100% of all damage dealt from normal attacks.
 Button/Tooltip/Defiler=Subversion specialist. Able to manipulate battlefield conditions. Can use the Dark Swarm, Plague, and Consume ability.
 Button/Tooltip/DefilerMP=Subversion specialist. Able to manipulate battlefield conditions. Can use the Dark Swarm, Plague, and Consume ability.
 Button/Tooltip/DefilerMPConsume=Kills target friendly non-heroic biological unit metabolizing it into <d ref="Effect,DefilerMPConsumeModifyUnit,VitalArray[Energy].Change"/> energy.
@@ -735,7 +754,9 @@ Button/Tooltip/ResearchSIBarracksTrainInfestedCivilianLevel4=<c val="ffff8a">Inf
 Button/Tooltip/ResearchSILiberatorEnergyLeech=<c val="ffff8a">Infested Liberators</c> regenerate energy equal to <d ref="Behavior,SILiberatorNecroplasmicSynthesis,Modification.VitalDamageLeechArray[Energy].KindArray[Ranged]*100" precision="1"/>% of damage dealt.
 Button/Tooltip/ResearchScienceVesselAoE=Allows <c val="ffff8a">Science Vessels</c> to cast Irradiate and Defensive Matrix in an area of effect.
 Button/Tooltip/ResearchShadowCannon2=<c val="ffff8a">Annihilators</c> gains an additional charge of Shadow Cannon.
+Button/Tooltip/ResearchShadowStrike=Allows <c val="ffff8a">Blood Hunters</c> to teleport to their targets.
 Button/Tooltip/ResearchSignifierFade=Allows <c val="ffff8a">Signifiers</c> to gain Super Cloak for a short amount of time.
+Button/Tooltip/ResearchSiphonEssence=Grants <c val="ffff8a">Blood Hunters</c> shield equal to 100% of all damage dealt from normal attacks.
 Button/Tooltip/ResearchSlayerTeleport=Allows <c val="ffff8a">Slayers</c> to teleport to a nearby target location, knocking back nearby enemies and dealing <d ref="Effect,AlarakStalkerForceBlastDamage,Amount"/> damage.
 Button/Tooltip/ResearchStabilizerMedpacks=Increases the <c val="ffff8a">Medic's</c> and <c val="ffff8a">Medivac's</c> healing speed and allows them to heal mechanical units. Units being healed by <c val="ffff8a">Medics</c> or <c val="ffff8a">Medivacs</c> take <d ref="-Behavior,RaynorMedicSafeguard,Modification.DamageTakenFraction[Melee]*100"/>% less damage.
 Button/Tooltip/ResearchStalkerPurifierTeleport=Allows <c val="ffff8a">Instigators</c> to teleport to a nearby target location.
@@ -825,7 +846,8 @@ Button/Tooltip/ViperImprovedCastRangePassive=All Viper abilities gain +<d ref="U
 Button/Tooltip/VoidArchon=Powerful attack caster. Can Maelstrom enemies.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidArchonChainReaction=Void Archon attacks jump to two additional nearby enemies.
 Button/Tooltip/VoidArchonChainReactionResearch=<c val="ffff8a">Void Archon</c> attacks jump to two additional nearby enemies.
-Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.
+Button/Tooltip/VoidArchonMergeSelection=Sacrifices 2 Ascendants to create a Void Archon. Void Archons inherit Power Overwhelming stacks from both Ascendants.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
+Button/Tooltip/VoidArchonMergeSelection2=Sacrifices 2 Blood Hunters to create a Void Archon.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/VoidArchonVortex=Upon death, the Void Archon goes supernova, stunning and pulling in nearby enemies. After a delay, the supernova detonates for damage equal to the Void Archon's max shields. <n/><n/><c val="#ColorAttackInfo">Radius increases with Power Overwhelming stacks.</c>
 Button/Tooltip/VoidPhoenixPhasingArmor=Prevents the Mirage from taking damage for <d ref="Behavior,ImprovedPhasingArmor,Duration"/> seconds after being attacked. Cannot occur more than once every <d ref="Behavior,VoidPhoenixPhasingArmor,DamageResponse.Cost.Cooldown.TimeUse"/> seconds.
 Button/Tooltip/VoidStasis=Stuns target unit or structure for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds, disabling the unit for the duration of the effect.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
@@ -1325,6 +1347,8 @@ RequirementNode/Tooltip/CountUpgradeBansheeCloakCompleteOnly758801471TechTreeChe
 RequirementNode/Tooltip/CountUpgradeBansheePermaCloakCompleteOnly314643618=Research Phantom Drive at the Starport Tech Lab
 RequirementNode/Tooltip/CountUpgradeCarrierRepairDronesCompleteOnly3239020716=Research Hangar Expansion at the Fleet Beacon
 RequirementNode/Tooltip/CountUpgradeDarkTemplarBlinkUpgradeCompleteOnly3445645436=Research Shadow Stride at the Dark Shrine
+RequirementNode/Tooltip/CountUpgradeDarkTemplarTaldarimLifestealCompleteOnly4254262810=Research Siphon Essence at the Blood Shrine
+RequirementNode/Tooltip/CountUpgradeDarkTemplarTaldarimShadowStrikeCompleteOnly1813825168=Research Shadow Strike at the Blood Shrine
 RequirementNode/Tooltip/CountUpgradeDefilerMetasynapticNodeCompleteOnly329063180=Evolve Metasynaptic Node at the Infestation Pit
 RequirementNode/Tooltip/CountUpgradeDiggingClawsCompleteOnly660444659=Evolve Adaptive Talons at the Lurker Den
 RequirementNode/Tooltip/CountUpgradeDisruptorCloakCompleteOnly1457014057=Research Cloaking Module at the Robotics Bay
@@ -1369,6 +1393,8 @@ Unit/Category/ProtossAiur=Protoss - Aiur
 Unit/Category/ProtossZeratul=Protoss - Xel'Naga
 Unit/Category/TerranRaider=Terran - Raider
 Unit/Category/ZergEvolved=Zerg - Evolved
+Unit/Name/ACAlarakDarkShrine=Blood Shrine
+Unit/Name/ACAlarakWarpInDarkShrine=Warp In Blood Shrine
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
 Unit/Name/BroodLordBrood=Primogenitor
 Unit/Name/BroodlingBrood=Scion
@@ -1428,6 +1454,8 @@ UnitKillRank/TychusHero=Outlaw
 UnitKillRank/Vorazun=Matriarch
 Upgrade/Name/AlarakDestructionWaveDistanceJinara=Weight of Sin
 Upgrade/Name/BansheeSpeed=Hyperflight Rotors
+Upgrade/Name/DarkTemplarTaldarimLifesteal=Lifesteal
+Upgrade/Name/DarkTemplarTaldarimShadowStrike=Shadow Strike
 Upgrade/Name/DefilerMetasynapticNode=Metasynaptic Node
 Upgrade/Name/DiggingClaws=Adaptive Talons
 Upgrade/Name/HHBomberEMP=EMP

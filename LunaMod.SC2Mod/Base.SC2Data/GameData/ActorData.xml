@@ -35,6 +35,10 @@
     <CActorSound id="Banshee_CloakOn">
         <On Terms="Behavior.BansheeCloak_Stukov.On" Send="Create"/>
     </CActorSound>
+    <CActorSound id="BloodHunter_AttackLaunchSound">
+        <On Terms="WeaponStop.DarkTemplarTaldarim" Send="SoundSetMuted 1 0"/>
+        <On Terms="WeaponStop.DarkTemplarTaldarim" Send="Destroy"/>
+    </CActorSound>
     <CActorUnit id="BroodLord">
         <Model value="BroodLord"/>
         <DeathArray index="Normal" ModelLink="BroodLordDeath"/>
@@ -451,9 +455,33 @@
     </CActorSound>
     <CActorSound id="DarkTemplarBlinkCloudSound" parent="SoundOneShot">
         <On Terms="Abil.DarkTemplarBlink.TargetCastStart" Send="Create"/>
+        <On Terms="Effect.DarkTemplarTaldarimBlink.Start" Send="Create"/>
         <Sound value="DarkTemplar_BlinkCloud"/>
         <!-- DarkTemplarBlinkCloudSound should be heard by enemies, allies, and observers -->
     </CActorSound>
+    <CActorModel id="DarkTemplarTaldarimBlinkInSmoke" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpForwardDarkTemplarBlinkLaunchLocation"/>
+        <On Terms="Effect.DarkTemplarTaldarimBlink.Stop; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Impact ::Self"/>
+        <On Terms="ActorCreation" Send="Create DarkTemplarBlinkStopSound"/>
+        <Model value="DarkTemplarBlinkInSmoke"/>
+    </CActorModel>
+    <CActorModel id="DarkTemplarTaldarimBlinkOutSmoke" parent="ModelAnimationStyleOneShotNoOrphan">
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary SOpForwardDarkTemplarTaldarimBlinkTargetLocation"/>
+        <On Terms="Effect.DarkTemplarTaldarimBlink.Start; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="RefSet ::scope.Launch ::Self"/>
+        <Model value="DarkTemplarBlinkOutSmoke"/>
+    </CActorModel>
+    <CActorModel id="DarkTemplarTaldarimDebuffImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.DarkTemplarTaldarimDebuff.Start; At Target" Send="Create"/>
+        <On Terms="Effect.DarkTemplarTaldarimDebuffHeroic.Start; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin" HoldRotation="1"/>
+        <AutoScaleFactor value="1.000000"/>
+        <MaxScale value="2.000000"/>
+    </CActorModel>
     <CActorForceCylinder id="NovaDashAttackForce">
         <On Terms="Behavior.NovaDashAttackSpeed.On; !ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
         <On Terms="Behavior.NovaDashAttackSpeed.Off" Send="Destroy"/>
@@ -470,6 +498,9 @@
     </CActorSiteOpForward>
     <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkLaunchLocation">
         <HostForward Subject="::scope.Launch"/>
+    </CActorSiteOpForward>
+    <CActorSiteOpForward id="SOpForwardDarkTemplarTaldarimBlinkTargetLocation">
+        <HostForward Subject="DarkTemplarTaldarim"/>
     </CActorSiteOpForward>
     <CActorUnit id="FenixArbiter">
         <UnitKillRank Text="UnitKillRank/Fenix"/>
