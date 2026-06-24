@@ -55,6 +55,13 @@
         <Speed value="4"/>
         <Sight value="4"/>
         <TacticalAIThink value="AIThinkDisruptorPhased"/>
+        <WeaponArray Link="ScanMoveDummy"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="4" Face="Rally" AbilCmd="ProgressRally,Rally1" Row="2"/>
+            <LayoutButtons index="5" Face="Cancel" AbilCmd="AdeptShadePhaseShiftCancel,Execute" Row="2"/>
+            <LayoutButtons index="6" Face="Attack" AbilCmd="attack,Execute" Row="0"/>
+            <LayoutButtons index="7" removed="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="AlarakCoop">
         <Radius value="0.5"/>
@@ -131,6 +138,7 @@
         <HotkeyAlias value="Assimilator"/>
         <SelectAlias value="Assimilator"/>
         <SubgroupAlias value="Assimilator"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="AutomatedExtractor">
         <LeaderAlias value="Extractor"/>
@@ -211,6 +219,7 @@
     <CUnit id="Changeling">
         <BehaviorArray Link="SupplyLT1"/>
         <BehaviorArray Link="AllUnitBehaviorController"/>
+        <EffectArray index="Create" value="ChangelingDeathDamageResponseAB"/>
     </CUnit>
     <CUnit id="ChangelingMarine">
         <BehaviorArray Link="SupplyLT1"/>
@@ -330,6 +339,15 @@
             <LayoutButtons index="16" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="CreepTumor">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Armored" value="0"/>
+        <BehaviorArray Link="CreepTumorActive"/>
+    </CUnit>
+    <CUnit id="CreepTumorQueen">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Armored" value="0"/>
+    </CUnit>
     <CUnit id="DamagedDrakkenLaserDrillCoop">
         <WeaponArray Turret="LaserDrillTripod"/>
     </CUnit>
@@ -390,8 +408,351 @@
     <CUnit id="DehakaNydusDestroyerTimedNoFood">
         <Attributes index="User1" value="0"/>
     </CUnit>
+    <CUnit id="DehakaTrainEggDrone">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaTrainEggHydralisk">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaTrainEggRoach">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaTrainEggSwarmHost">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaTrainEggUltralisk">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="DehakaTrainEggZergling">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Dragoon">
         <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+    </CUnit>
+    <CUnit id="DehakaTrainEgg">
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Egg">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Larva" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="EggStetmann">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Larva" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Locust" value="0"/>
+        <Collide index="Small" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
     </CUnit>
     <CUnit id="FactoryMengsk">
         <LeaderAlias value="Factory"/>
@@ -447,6 +808,9 @@
         <SelectAlias value="HHHellion"/>
         <SubgroupAlias value="HHHellion"/>
     </CUnit>
+    <CUnit id="HHRaven">
+        <Height value="4.15"/>
+    </CUnit>
     <CUnit id="HHStarport">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="HHWraith"/>
@@ -470,6 +834,11 @@
         <SeparationRadius value="0.375"/>
         <InnerRadius value="0.375"/>
         <EditorCategories value="ObjectType:Other,ObjectFamily:FactionCovertOps"/>
+    </CUnit>
+    <CUnit id="HighTemplar">
+        <AcquireMovementLimit value="7.5"/>
+        <!--BehaviorArray Link="WarpInAttackSpeedBehavior"/-->
+        <!--WeaponArray Link="HighTemplarFakeWeapon"/-->
     </CUnit>
     <CUnit id="HybridBehemoth">
         <FlagArray index="ArmySelect" value="1"/>
@@ -594,6 +963,9 @@
         </CardLayouts>
         <TechAliasArray index="0" removed="1"/>
     </CUnit>
+    <CUnit id="MULE">
+        <BehaviorArray Link="MuleRepairAutocastCheck"/>
+    </CUnit>
     <CUnit id="Marine_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
@@ -688,9 +1060,11 @@
         <MinimapRadius value="0.625"/>
         <TacticalAIThink value="AIThinkDisruptorLuna"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <AcquireMovementLimit value="7.5"/>
     </CUnit>
     <CUnit id="Extractor">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="ExtractorStetmann">
         <EffectArray index="Create" value="ExtractorRichSearch"/>
@@ -698,6 +1072,7 @@
         <HotkeyAlias value="Extractor"/>
         <SelectAlias value="Extractor"/>
         <SubgroupAlias value="Extractor"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="FenixAdeptShade">
         <BehaviorArray Link="AllUnitBehaviorController"/>
@@ -1197,6 +1572,7 @@
             <LayoutButtons Face="VorazunImprovedVespene" Type="Passive" Requirements="HaveVorazunCommander" Row="2" Column="1"/>
         </CardLayouts>
         <EffectArray index="Create" value="AssimilatorRichSearch"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="AutomatedAssimilator">
         <CardLayouts index="0">
@@ -1761,18 +2137,22 @@
     </CUnit>
     <CUnit id="Infestor">
         <CardLayouts index="0">
-            <LayoutButtons index="5" Column="1"/>
-            <LayoutButtons index="8" Column="3"/>
-            <LayoutButtons index="9" Column="0"/>
-            <LayoutButtons index="10" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="2"/>
-            <LayoutButtons index="11" Face="InfestorConsumption" AbilCmd="InfestorConsumption,Execute" Column="2"/>
-            <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="BurrowInfestorUp,Execute" Row="2" Column="4"/>
-            <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="4"/>
+            <LayoutButtons index="4" Face="FungalGrowth" Type="AbilCmd" AbilCmd="FungalGrowth,Execute" Row="2" Column="1"/>
+            <LayoutButtons index="5" Face="Attack" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons index="6" Face="BurrowMove" AbilCmd="BurrowInfestorDown,Execute" Row="2" Column="3"/>
+            <LayoutButtons index="7" Face="InfestedTerrans" AbilCmd="InfestedTerrans,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="8" Face="NeuralParasite" AbilCmd="NeuralParasite,Execute" Column="2"/>
+            <LayoutButtons index="9" Face="InfestorConsumption" AbilCmd="InfestorConsumption,Execute" Column="2"/>
+            <LayoutButtons index="10" Face="BurrowUp" AbilCmd="BurrowInfestorUp,Execute" Column="4"/>
+            <LayoutButtons index="11" Face="BurrowedMove" Type="Passive" AbilCmd="" Row="1" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="NeuralParasite,Cancel" Row="1" Column="2"/>
         </CardLayouts>
         <EnergyStart value="75"/>
         <Radius value="0.625"/>
         <TacticalAIThink value="AIThinkInfestorLuna"/>
+        <AbilArray Link="attack"/>
+        <WeaponArray Link="InfestorWeaponAcidSpores"/>
+        <AcquireMovementLimit value="5.5"/>
     </CUnit>
     <CUnit id="InfestorBurrowed">
         <SubgroupAlias value="Infestor"/>
@@ -1788,6 +2168,8 @@
         <Sight value="8"/>
         <AbilArray Link="NeuralParasite"/>
         <TacticalAIThink value="AIThinkInfestorBurrowedLuna"/>
+        <FlagArray index="Cloaked" value="0"/>
+        <BehaviorArray Link="PermanentBurrowMoveCloaked"/>
     </CUnit>
     <CUnit id="InfestorStetmann">
         <CardLayouts index="0">
@@ -1813,6 +2195,8 @@
             <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.625"/>
+        <FlagArray index="Cloaked" value="0"/>
+        <BehaviorArray Link="PermanentBurrowMoveCloaked"/>
     </CUnit>
     <CUnit id="InfestorTerran">
         <CardLayouts index="0">
@@ -1832,7 +2216,9 @@
         <RankDisplay value="Default"/>
     </CUnit>
     <CUnit id="KD8Charge">
+        <FlagArray index="Turnable" value="0"/>
         <FlagArray index="Invulnerable" value="1"/>
+        <Facing value="270"/>
     </CUnit>
     <CUnit id="Kaboomer">
         <CostResource index="Minerals" value="450"/>
@@ -1845,6 +2231,7 @@
             <LayoutButtons index="8" removed="1"/>
         </CardLayouts>
         <BehaviorArray Link="Unmoved"/>
+        <Radius value="0.3125"/>
     </CUnit>
     <CUnit id="LeviathanCocoon">
         <CardLayouts index="0">
@@ -2136,8 +2523,15 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="Raven">
+        <Height value="4.15"/>
+    </CUnit>
+    <CUnit id="RavenMengsk">
+        <Height value="4.15"/>
+    </CUnit>
     <CUnit id="Raven_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
+        <Height value="4.15"/>
     </CUnit>
     <CUnit id="Reaver">
         <AbilArray Link="ReaverChase"/>
@@ -2145,11 +2539,15 @@
         <HotkeyCategory value="Unit/Category/ProtossAiur"/>
         <Collide index="ForceField" value="0"/>
     </CUnit>
+    <CUnit id="Refinery">
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
+    </CUnit>
     <CUnit id="RefineryMengsk">
         <LeaderAlias value="Refinery"/>
         <HotkeyAlias value="Refinery"/>
         <SelectAlias value="Refinery"/>
         <SubgroupAlias value="Refinery"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="Roach">
         <CardLayouts index="0">
@@ -2181,6 +2579,10 @@
             <LayoutButtons index="15" Row="1" Column="4"/>
             <LayoutButtons index="16" Row="1" Column="4"/>
         </CardLayouts>
+        <AbilArray Link="attack"/>
+        <WeaponArray Link="ScanMoveDummy"/>
+        <FlagArray index="Cloaked" value="0"/>
+        <BehaviorArray Link="PermanentBurrowMoveCloaked"/>
     </CUnit>
     <CUnit id="RoachCorpser">
         <CardLayouts index="0">
@@ -2246,6 +2648,10 @@
             <LayoutButtons index="13" Row="1" Column="4"/>
             <LayoutButtons index="14" Row="1" Column="4"/>
         </CardLayouts>
+        <AbilArray Link="attack"/>
+        <WeaponArray Link="ScanMoveDummy"/>
+        <FlagArray index="Cloaked" value="0"/>
+        <BehaviorArray Link="PermanentBurrowMoveCloaked"/>
     </CUnit>
     <CUnit id="RoboticsBay">
         <CardLayouts index="0">
@@ -2346,6 +2752,424 @@
             <LayoutButtons index="17" Face="SelectBuilder" Type="SelectBuilder" AbilCmd="SICommandCenterTrain,Train1" Row="1" Column="3"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="SICocoon">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedAberration">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedBanshee">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedCivilian">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedDiamondBack">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedLiberator">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedOverlord">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedSCV">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedSiegeTank">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonInfestedWraith">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SICocoonQueen">
+        <Collide index="Structure" value="0"/>
+        <Radius value="0.125"/>
+        <CardLayouts index="0">
+            <LayoutButtons>
+                <Face value="MoveHoldPosition"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,HoldPos"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="MovePatrol"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Patrol"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Move"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="move,Move"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons>
+                <Face value="Stop"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="stop,Stop"/>
+                <ShowInGlossary value="0"/>
+                <Row value="0"/>
+                <Column value="1"/>
+            </LayoutButtons>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="SIFactory">
         <CardLayouts index="0">
             <LayoutButtons index="0" Face="Rally" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
@@ -2390,6 +3214,7 @@
         <HotkeyAlias value="Refinery"/>
         <SelectAlias value="Refinery"/>
         <SubgroupAlias value="Refinery"/>
+        <BehaviorArray Link="SCVMoveToGatherSeek"/>
     </CUnit>
     <CUnit id="SISCV">
         <CardLayouts index="2">
@@ -2737,6 +3562,7 @@
         </CardLayouts>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="75"/>
+        <EquipmentArray Weapon="AcidSpitSwarmhostDummy"/>
     </CUnit>
     <CUnit id="SwarmHostMP">
         <CardLayouts index="0">
@@ -2747,6 +3573,7 @@
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="75"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
+        <EquipmentArray Weapon="AcidSpitSwarmhostDummy"/>
     </CUnit>
     <CUnit id="SwarmHostRooted">
         <HotkeyCategory value=""/>
@@ -2901,6 +3728,7 @@
         <SelectAlias value="ViperAbathur"/>
         <SubgroupAlias value="ViperAbathur"/>
         <HotkeyCategory value="Unit/Category/ZergEvolved"/>
+        <AcquireMovementLimit value="6.5"/>
     </CUnit>
     <CUnit id="VoidArchonDummy">
         <Race value="Prot"/>
@@ -2929,6 +3757,7 @@
         </CardLayouts>
         <Level value="0"/>
         <PawnItemReduction value="15"/>
+        <AcquireMovementLimit value="7.5"/>
     </CUnit>
     <CUnit id="VoidArchon">
         <DeathRevealRadius value="3"/>
@@ -4504,6 +5333,12 @@
     </CUnit>
     <CUnit id="MedivacMengsk">
         <ShieldArmorName value="Unit/ShieldArmorName/ScatterVeil"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="12" Column="4"/>
+            <LayoutButtons index="13" Column="1"/>
+            <LayoutButtons index="14" Column="1"/>
+            <LayoutButtons Face="LoadNearbyMedivac" Type="AbilCmd" AbilCmd="MedivacMengskTransport,UnloadAt" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="Oracle">
         <BehaviorArray index="0" Link="AllUnitBehaviorController"/>
@@ -4512,13 +5347,20 @@
         <BehaviorArray index="3" removed="1"/>
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
-            <LayoutButtons index="7" AbilCmd="OracleStasisTrapBuildVorazun,Build1" Column="1"/>
-            <LayoutButtons index="9" Column="3"/>
-            <LayoutButtons index="11" Face="HaveOracleStasisWardUpgrade" Requirements="HaveOracleStasisWardUpgrade" Row="1" Column="0"/>
-            <LayoutButtons index="12" Face="PermanentlyCloakedOracle" Requirements="HaveCorsairPermanentCloak" Row="1" Column="1"/>
-            <LayoutButtons Face="OracleBuildStasisTrap" Type="AbilCmd" AbilCmd="OracleStasisTrapBuild,Build1" Row="2" Column="1"/>
+            <LayoutButtons index="7" Face="OracleRevelation" AbilCmd="OracleRevelation,Execute" Column="0"/>
+            <LayoutButtons index="8" Face="OracleWeaponOff" AbilCmd="OracleWeapon,Off" Column="3"/>
+            <LayoutButtons index="9" Face="Cancel" AbilCmd="OracleStasisTrapBuild,Halt" Column="4"/>
+            <LayoutButtons index="10">
+                <Face value="HaveOracleStasisWardUpgrade"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="HaveOracleStasisWardUpgrade"/>
+                <Row value="1"/>
+                <Column value="0"/>
+            </LayoutButtons>
+            <LayoutButtons index="11" Row="1" Column="1"/>
+            <LayoutButtons index="12" Face="OracleBuildStasisTrap" Type="AbilCmd" AbilCmd="OracleStasisTrapBuild,Build1" Requirements="" Column="1"/>
         </CardLayouts>
-        <AbilArray Link="OracleStasisTrapBuildVorazun"/>
         <HotkeyCategory value="Unit/Category/ProtossUnits"/>
     </CUnit>
     <CUnit id="QueenClassic">
@@ -4719,10 +5561,14 @@
     </CUnit>
     <CUnit id="CreepTumorBurrowed">
         <BehaviorArray Link="CommanderPrestigeKerriganCreepSuperCloak"/>
+        <BehaviorArray Link="CreepTumorActive"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Armored" value="0"/>
     </CUnit>
-    <CUnit id="CreepTumorQueenNoCreep"/>
     <CUnit id="CreepTumorUsed">
         <BehaviorArray Link="CommanderPrestigeKerriganCreepSuperCloak"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Armored" value="0"/>
     </CUnit>
     <CUnit id="CyberneticsCore">
         <CardLayouts index="0">
@@ -5274,6 +6120,7 @@
         <AbilArray index="7" Link="Enshroud"/>
         <AbilArray index="8" Link="SignifierFade"/>
         <AbilArray Link="DarkArchonMerge"/>
+        <AcquireMovementLimit value="7.5"/>
     </CUnit>
     <CUnit id="HighTemplarNerazimWeapon" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>
@@ -5439,6 +6286,7 @@
             </LayoutButtons>
         </CardLayouts>
         <BehaviorArray Link="Unmoved"/>
+        <Radius value="0.3125"/>
     </CUnit>
     <CUnit id="Lurker">
         <CardLayouts index="0">
@@ -5480,6 +6328,7 @@
             <LayoutButtons Face="IgniteAfterburners" Type="AbilCmd" AbilCmd="VehicleAfterburnersMedivac,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="OrbitalDropPodsMedivacPassive" Type="Passive" Requirements="HaveMasteryRaynorDropPodHaste" Row="1" Column="1"/>
             <LayoutButtons Face="StabilizerMedPacksMedivac" Type="Passive" Requirements="UseStabilizerMedpacks" Row="1" Column="0"/>
+            <LayoutButtons Face="LoadNearbyMedivac" Type="AbilCmd" AbilCmd="MedivacTransport,LoadAll" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="MothershipArtanis" parent="Mothership">
@@ -6250,6 +7099,32 @@
     <CUnit id="WarpPrism">
         <Speed value="2.9531"/>
         <Acceleration value="2.625"/>
+        <Height value="4.25"/>
+        <BehaviorArray Link="WarpPrismLoadupDecelerationFix"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="LoadNearbyWarpPrism" Type="AbilCmd" AbilCmd="WarpPrismTransport,LoadAll" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="WarpPrismPhasing">
+        <Height value="4.25"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="LoadNearbyWarpPrism" Type="AbilCmd" AbilCmd="WarpPrismTransport,LoadAll" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ZeratulWarpPrism">
+        <Height value="4.25"/>
+        <BehaviorArray Link="WarpPrismLoadupDecelerationFix"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="0"/>
+            <LayoutButtons index="7" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ZeratulWarpPrismPhasing">
+        <Height value="4.25"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="12" Column="1"/>
+            <LayoutButtons Face="LoadNearbyZeratulWarpPrism" Type="AbilCmd" AbilCmd="ZeratulWarpPrismTransport,LoadAll" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="MutatorWhiteoutEffectBlizzard">
         <FlagArray index="Unselectable" value="1"/>
@@ -6261,10 +7136,19 @@
     <CUnit id="WarpPrismPhasingTaldarim">
         <Level value="0"/>
         <PawnItemReduction value="16"/>
+        <Height value="4.25"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="LoadNearbyWarpPrism" Type="AbilCmd" AbilCmd="WarpPrismTransport,LoadAll" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="WarpPrismTaldarim">
         <Level value="0"/>
         <PawnItemReduction value="17"/>
+        <Height value="4.25"/>
+        <BehaviorArray Link="WarpPrismLoadupDecelerationFix"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="LoadNearbyWarpPrism" Type="AbilCmd" AbilCmd="WarpPrismTransport,LoadAll" Row="1" Column="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="WidowMine">
         <CardLayouts index="0">
@@ -6592,6 +7476,11 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowZerglingDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="InfestorWeapon" parent="MISSILE">
+        <Race value="Zerg"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
     </CUnit>
     <CUnit id="CursorUnit">
         <FlagArray index="Uncommandable" value="1"/>

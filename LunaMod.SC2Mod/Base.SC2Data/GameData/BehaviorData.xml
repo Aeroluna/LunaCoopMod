@@ -978,6 +978,25 @@
             <AbilLinkDisableArray value="HallucinationDisruptor"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="NeuralParasiteChildren" parent="Radar">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Zerg-NeuralParasite.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <AcquirePlayer Effect="NeuralParasiteLaunchMissile" Value="Target"/>
+        <BuffFlags index="Channeling" value="1"/>
+        <Modification>
+            <StateFlags index="Benign" value="1"/>
+        </Modification>
+        <Player Value="Caster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NeuralParasiteBlockBurrow">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilMorph" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+        <BuffFlags index="Channeling" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NoBiomassPickup">
         <BehaviorFlags index="Permanent" value="1"/>
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
@@ -2787,6 +2806,9 @@
     <CBehaviorBuff id="YoinkEnemyStun">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="YoinkMarker">
+        <RemoveValidatorArray value="CasterNotDead"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ZagaraVoidCoopInfestedPodsTimedLife">
         <ExpireEffect value="SwarmLocusUnitTimedLifeExpireAB"/>
     </CBehaviorBuff>
@@ -2970,5 +2992,144 @@
                 <Vital index="Energy" value="0"/>
             </Cost>
         </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PermanentBurrowMoveCloaked">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-burrow-color.dds"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BurrowMoveCloakSuppress">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <BehaviorLinkDisableArray value="PermanentBurrowMoveCloaked"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BurrowDownTransientStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BurrowUpTransientStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChangelingDelayMovement">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.7"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChangelingDeathDamageResponse">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <DamageResponse Fatal="1" Handled="KillOtherNearbyChangelingsSearch">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IsActiveBuilderSCV">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Period value="0.35"/>
+        <InitialEffect value="SCVMovetoBuildAntigriefAB"/>
+        <PeriodicEffect value="SCVMovetoAttack1Enum"/>
+        <FinalEffect value="SCVMovetoBuildAntigriefRB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SCVMoveToBuildSeek">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="SCVMovetoBuildSearchWorker"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SCVMovetoBuildAllyAntiGrief">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse ModifyFraction="0" TargetFilters="-;Player,Neutral,Enemy" Priority="10">
+            <Chance value="1"/>
+        </DamageResponse>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SCVMoveToGatherSeek">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsUnderConstruction"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="SCVMovetoGatherSearchHiddenVespene"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WarpPrismLoadupDecelerationFix">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="WarpPrismDecelerationQoL"/>
+        <Modification AccelerationBonus="15" DecelerationBonus="6"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WarpPrismLoadupDecFixMorphCheck">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Hallucination">
+        <InitialEffect value="CopyOrdersCaster"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CreepTumorActive">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification SubgroupPriority="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="QueenInjectStun">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2.3"/>
+        <Modification MoveSpeedMaximum="0.0117">
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="Daze" value="1"/>
+            <StateFlags index="Unstoppable" value="1"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorWander id="LarvaWander">
+        <Range value="0.1"/>
+    </CBehaviorWander>
+    <CBehaviorSpawn id="SpawnLarva">
+        <Offset index="0" value="0,-3.35"/>
+        <Offset index="1" value="1.25,-3.1"/>
+        <Offset index="2" value="-1.25,-3.1"/>
+        <Offset index="3" value="-3,-3"/>
+        <Offset index="4" value="-3,-3"/>
+        <Offset index="5" value="-3,-3"/>
+        <Offset index="6" value="-3,-1"/>
+        <Offset index="7" value="-3,-2"/>
+        <Offset index="8" value="-2,-2"/>
+        <Offset index="9" value="-1,-2"/>
+        <Offset index="10" value="0,-3"/>
+        <Offset index="11" value="1,-2"/>
+        <Offset index="12" value="2,-2"/>
+        <Offset index="13" value="3,-2"/>
+        <Offset index="14" value="3,-1"/>
+        <Offset index="15" value="3,-3"/>
+        <Offset index="16" value="0,0"/>
+        <Offset index="17" value="0,0"/>
+        <Offset index="18" value="0,0"/>
+        <Offset index="19" value="0,0"/>
+        <Offset index="20" value="0,0"/>
+        <Offset index="21" value="0,0"/>
+        <Offset index="22" value="0.8,0.25"/>
+        <Offset index="23" value="-0.8,0.25"/>
+        <InfoArray index="0" Delay="13.3"/>
+    </CBehaviorSpawn>
+    <CBehaviorBuff id="MuleRepairAutocastCheck">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="4.07"/>
+        <ExpireEffect value="MuleAutocastEnable"/>
     </CBehaviorBuff>
 </Catalog>

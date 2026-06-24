@@ -284,7 +284,9 @@
         <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
     </CEffectSwitch>
     <CEffectSet id="DisguiseEx3FinalSet">
-        <EffectArray index="4" value="MutatorChangelingInit"/>
+        <EffectArray index="4" value="KillOtherNearbyChangelingsTransferDeathResponse"/>
+        <EffectArray value="MutatorChangelingInit"/>
+        <EffectArray value="DisguiseEx3AttackMoveBugFix"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
     </CEffectSet>
     <CEffectCreatePersistent id="DrakkenLaserDrillResetTurretFacingCP">
@@ -716,6 +718,10 @@
         <EffectArray value="JinaraChainsAB"/>
         <EffectArray value="JinaraChainsSlowAB"/>
     </CEffectSet>
+    <CEffectCreateUnit id="KD8Charge">
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
     <CEffectDamage id="KD8ChargeExplodeDamage">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectDamage>
@@ -762,6 +768,18 @@
     <CEffectDamage id="LaserDrillTripodDamageCoop">
         <Death value="Fire"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="NeuralParasiteChildren">
+        <EditorCategories value="Race:Zerg"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="NeuralParasiteLaunchMissile">
+        <ValidatorArray value="NotHeroic"/>
+        <LaunchEffect value="NeuralParasiteBlockBurrowAB"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="SpawnLarvaSet">
+        <EffectArray value="QueenInjectStunAB"/>
+        <ValidatorArray value="NotContaminated"/>
+        <ValidatorArray value="QueenTargetFiltersInject"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ThorMengskInterruptedMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="ThorMengskUnsiegeMorphOrderSet"/>
@@ -3577,14 +3595,6 @@
         <ValidatorArray value="HaveTychusBigRedButton"/>
         <InitialDelay value="3"/>
     </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="OracleStasisTrapBuildDeceleration">
-        <WhichUnit Value="Caster"/>
-        <Behavior value="OracleDeceleration"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="OracleStasisTrapBuildStartSet">
-        <EffectArray value="OracleStasisTrapBuildBeamOn"/>
-        <EffectArray value="OracleStasisTrapBuildDeceleration"/>
-    </CEffectSet>
     <CEffectDamage id="P38ScytheGuassPistol">
         <AttributeBonus index="Light" value="0"/>
     </CEffectDamage>
@@ -5762,6 +5772,15 @@
     <CEffectApplyBehavior id="YoinkEnemyStunVikingGround">
         <ValidatorArray value="IsAbathurCoopCommander"/>
     </CEffectApplyBehavior>
+    <CEffectSet id="YoinkSet">
+        <ValidatorArray value="CasterNotDead"/>
+    </CEffectSet>
+    <CEffectSet id="YoinkSetVikingAir">
+        <ValidatorArray value="CasterNotDead"/>
+    </CEffectSet>
+    <CEffectSet id="YoinkSetVikingGround">
+        <ValidatorArray value="CasterNotDead"/>
+    </CEffectSet>
     <CEffectDamage id="ZagaraParasiteSporeDamage">
         <Amount value="28"/>
     </CEffectDamage>
@@ -6049,4 +6068,519 @@
         <EffectArray value="HybridNemesisWeaponDamage"/>
         <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="NeuralParasiteBlockBurrowAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NeuralParasiteBlockBurrow"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RoachBurrowTransientCloakDelay">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BurrowMoveCloakSuppress"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5556"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="RoachBurrowDownTransient">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="BurrowTransientSwitch"/>
+        <PeriodicEffectArray value="RoachBurrowTransientCloakDelay"/>
+        <PeriodicEffectArray value="RoachBurrowDownTransientStun"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="RoachBurrowUpTransient">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="BurrowTransientSwitch"/>
+        <PeriodicEffectArray value="RoachBurrowUpTransientStun"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="InfestorBurrowDownTransient">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="BurrowTransientSwitch"/>
+        <PeriodicEffectArray value="InfestorBurrowTransientCloakDelay"/>
+        <PeriodicEffectArray value="InfestorBurrowDownTransientStun"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="InfestorBurrowUpTransient">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="CasterUnit"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="BurrowTransientSwitch"/>
+        <PeriodicEffectArray value="InfestorBurrowUpTransientStun"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="BurrowTransientSwitch">
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Effect="BurrowTransientAttackLastTarget"/>
+        <CaseArray Effect="BurrowTransientMoveLastTarget"/>
+    </CEffectSwitch>
+    <CEffectLastTarget id="BurrowTransientAttackLastTarget">
+        <EditorCategories value="Race:Zerg"/>
+        <LastTargetType value="Attack"/>
+        <Effect value="BurrowTransientAttackIssueOrder"/>
+    </CEffectLastTarget>
+    <CEffectLastTarget id="BurrowTransientMoveLastTarget">
+        <EditorCategories value="Race:Zerg"/>
+        <LastTargetType value="Move"/>
+        <Effect value="BurrowTransientMoveIssueOrder"/>
+    </CEffectLastTarget>
+    <CEffectIssueOrder id="BurrowTransientAttackIssueOrder">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="attack"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="BurrowTransientMoveIssueOrder">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="move"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectApplyBehavior id="InfestorBurrowTransientCloakDelay">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BurrowMoveCloakSuppress"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5556"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RoachBurrowDownTransientStun">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="BurrowDownTransientStun"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.31"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="RoachBurrowUpTransientStun">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="BurrowUpTransientStun"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.7517"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="InfestorBurrowDownTransientStun">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="BurrowDownTransientStun"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.8"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="InfestorBurrowUpTransientStun">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="BurrowUpTransientStun"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.5"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="SpawnChangeling">
+        <SpawnEffect value="ChangelingSpawnEffectSet"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="ChangelingSpawnEffectSet">
+        <EffectArray value="ChangelingTimedLife"/>
+        <EffectArray value="CopyCasterFacing"/>
+        <EffectArray value="CopyOrdersCaster"/>
+        <EffectArray value="ChangelingDelayMovement"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="CopyOrdersCaster">
+        <LaunchUnit Value="Caster"/>
+        <ModifyFlags index="CopyAutoCast" value="1"/>
+        <CopyOrderCount value="32"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="ChangelingDelayMovement"/>
+    <CEffectApplyBehavior id="ChangelingDeathDamageResponseAB">
+        <WhichUnit Value="Source"/>
+        <Behavior value="ChangelingDeathDamageResponse"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="KillOtherNearbyChangelingsSearch">
+        <ImpactLocation Value="SourceUnit"/>
+        <AreaArray Radius="1.25" Effect="KillOtherNearbyChangelingsDelay"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="KillOtherNearbyChangelingsDelay">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <FinalEffect value="KillOtherNearbyChangelings"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="0.75"/>
+        <PeriodicPeriodArray value="0.1"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.15"/>
+        <PeriodicPeriodArray value="0.175"/>
+        <PeriodicPeriodArray value="0.2"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="KillOtherNearbyChangelings">
+        <ValidatorArray value="IsChangeling"/>
+        <LaunchLocation Value="TargetUnit"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Amount value="10"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectTransferBehavior id="KillOtherNearbyChangelingsTransferDeathResponse">
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Target"/>
+        <Behavior value="ChangelingDeathDamageResponse"/>
+    </CEffectTransferBehavior>
+    <CEffectEnumArea id="DisguiseEx3AttackMoveBugFix">
+        <AreaArray Radius="100" Effect="DisguiseEx3ChangeAttackedTargetSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DisguiseEx3ChangeAttackedTargetSet">
+        <ValidatorArray value="TargetAttackingCaster"/>
+        <EffectArray value="DisguiseEx3CancelAttackOnChangeling"/>
+        <EffectArray value="DisguiseEx3IssueAttackOnDisguise"/>
+    </CEffectSet>
+    <CEffectCancelOrder id="DisguiseEx3CancelAttackOnChangeling">
+        <OwningPlayer Value="Target"/>
+        <AbilCmd value="attack,Execute"/>
+    </CEffectCancelOrder>
+    <CEffectIssueOrder id="DisguiseEx3IssueAttackOnDisguise">
+        <Abil value="attack"/>
+        <Target Effect="DisguiseEx3FinalSet" Value="TargetUnit"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="NeuralParasitePersistentSet">
+        <EffectArray index="0" value="ApplyNeuralAcquireToAllChildren"/>
+        <EffectArray index="1" value="NeuralParasiteDroneCheck"/>
+        <EffectArray index="2" value="NeuralParasitePersistent"/>
+        <EffectArray value="NeuralParasiteLockOnRemove"/>
+        <EffectArray value="NeuralParasiteTargetSelect"/>
+    </CEffectSet>
+    <CEffectEnumMagazine id="ApplyNeuralAcquireToAllChildren">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectInternal value="NeuralParasiteChildren"/>
+        <EffectExternal value="NeuralParasiteChildren"/>
+    </CEffectEnumMagazine>
+    <CEffectModifyUnit id="NeuralParasiteTargetSelect">
+        <TransferUnit Value="Target"/>
+        <SelectTransferUnit Effect="NeuralParasiteLaunchMissile" Value="Caster"/>
+        <SelectTransferFlags index="SingleOnly" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="SCVStartBuildingSet">
+        <EffectArray value="IsBuildingSCVAB"/>
+        <EffectArray value="SCVMovetoBuildSeekRB"/>
+    </CEffectSet>
+    <CEffectSet id="SCVFinishBuildingSet">
+        <EffectArray value="IsBuildingSCVRB"/>
+        <EffectArray value="NeuralParasiteSCVRB"/>
+        <EffectArray value="SCVMovetoAttack6EnumFinal"/>
+    </CEffectSet>
+    <CEffectSet id="SCVCancelBuildingSet">
+        <EffectArray value="IsBuildingSCVRB"/>
+        <EffectArray value="SCVMovetoAttack6EnumFinal"/>
+        <EffectArray value="SCVMovetoBuildSeekAB"/>
+    </CEffectSet>
+    <CEffectEnumArea id="SCVMovetoAttack1Enum">
+        <SearchFilters value="Ground,Worker;Player,Ally,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="1" Effect="SCVMovetoAttack2SetEffects"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SCVMovetoAttack2SetEffects">
+        <ValidatorArray value="TargetHasMeleeWeapon"/>
+        <EffectArray value="SCVMovetoAttack3ActiveAttackerSet"/>
+        <EffectArray value="SCVMovetoAttack5Attack"/>
+    </CEffectSet>
+    <CEffectSet id="SCVMovetoAttack3ActiveAttackerSet">
+        <ValidatorArray value="ConstructingSCVIsActiveAttackTarget"/>
+        <ValidatorArray value="ConstructingSCVNotFollowOrderTargetBetter"/>
+        <EffectArray value="SCVMovetoAttack4CancelAttack"/>
+        <EffectArray value="SCVMovetoAttack4Follow"/>
+    </CEffectSet>
+    <CEffectCancelOrder id="SCVMovetoAttack4CancelAttack">
+        <AbilCmd value="attack,Execute"/>
+    </CEffectCancelOrder>
+    <CEffectIssueOrder id="SCVMovetoAttack4Follow">
+        <Abil value="move"/>
+        <AbilCmdIndex value="3"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="User" value="1"/>
+        <CmdFlags index="IsOrder" value="1"/>
+        <CmdFlags index="TargetSelf" value="1"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="SCVMovetoAttack5Attack">
+        <ValidatorArray value="ConstructingSCVIsActiveFollowTarget"/>
+        <ValidatorArray value="ConstructingSCVNotAttackOrderTargetBetter"/>
+        <Abil value="attack"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="User" value="1"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="SCVMovetoAttack6EnumFinal">
+        <SearchFilters value="Ground,Worker;Player,Ally,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="SCVMovetoAttack5Attack"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="SCVMovetoBuildSeekAB">
+        <Behavior value="SCVMoveToBuildSeek"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SCVMovetoBuildSeekRB">
+        <BehaviorLink value="SCVMoveToBuildSeek"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="SCVMovetoBuildAntigriefAB">
+        <Behavior value="SCVMovetoBuildAllyAntiGrief"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SCVMovetoBuildAntigriefRB">
+        <BehaviorLink value="SCVMovetoBuildAllyAntiGrief"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumArea id="SCVMovetoBuildSearchWorker">
+        <ExcludeArray Effect="SCVMovetoBuildSeekAB"/>
+        <SearchFilters value="Ground,Worker;Neutral,Enemy,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="1" Effect="SCVMovetoBuildAllySwitch"/>
+        <MaxCount value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="SCVMovetoBuildAllySwitch">
+        <CaseArray Validator="TargetIsAlly" Effect="SCVMovetoBuildChangeOwner" FallThrough="1"/>
+        <CaseArray Effect="SCVMovetoBuildOrder"/>
+    </CEffectSwitch>
+    <CEffectModifyUnit id="SCVMovetoBuildChangeOwner">
+        <ImpactUnit Effect="SCVMovetoBuildSearchWorker" Value="Source"/>
+        <ModifyFlags index="Owner" value="1"/>
+        <ModifyOwnerPlayer Value="Target"/>
+    </CEffectModifyUnit>
+    <CEffectIssueOrder id="SCVMovetoBuildOrder">
+        <ValidatorArray value="VespeneMovetoBuildCombine"/>
+        <ValidatorArray value="IsNotActiveBuilderSCV"/>
+        <Abil value="move"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <CmdFlags index="SmartClick" value="1"/>
+        <Target Value="SourceUnit"/>
+    </CEffectIssueOrder>
+    <CEffectEnumArea id="SCVMovetoGatherSearchHiddenVespene">
+        <SearchFilters value="RawResource;Enemy"/>
+        <AreaArray Radius="0.5" Effect="SCVMovetoGatherSourceSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SCVMovetoGatherSourceSet">
+        <EffectArray value="SCVMovetoGatherSearchWorker"/>
+        <SetSource value="1"/>
+    </CEffectSet>
+    <CEffectEnumArea id="SCVMovetoGatherSearchWorker">
+        <EditorCategories value=""/>
+        <SearchFilters value="Worker;Ally,Neutral,Enemy"/>
+        <AreaArray Radius="2" Effect="SCVMovetoGatherOrder"/>
+    </CEffectEnumArea>
+    <CEffectIssueOrder id="SCVMovetoGatherOrder">
+        <ValidatorArray value="VespeneMovetoGeyserIsTarget"/>
+        <EditorCategories value=""/>
+        <Abil value="SCVHarvest"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectDamage id="InfestorWeaponDamage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="4"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="InfestorWeaponLM">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="InfestorWeaponDamage"/>
+        <AmmoUnit value="InfestorWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="WarpPrismDecFixMorphCheckAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="WarpPrismLoadupDecFixMorphCheck"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="EMPDecloakRB">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="EMPDecloak"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="StasisWardPlaceSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="OracleStasisTrapBuildBeamOn"/>
+        <EffectArray value="MakeOracleFaceTargetPoint"/>
+        <EffectArray value="FaceStasisPeriodic"/>
+        <EffectArray value="BuildDeceleration"/>
+        <SetSource value="1"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="MakeOracleFaceTargetPoint">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyFlags index="InterpolateFacing" value="1"/>
+        <FacingLocation Value="TargetUnit"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="FaceStasisPeriodic">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="MakeOracleFaceTargetPoint"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="OracleFacePersistentDestroy">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Effect value="FaceStasisPeriodic"/>
+    </CEffectDestroyPersistent>
+    <CEffectApplyBehavior id="BuildDeceleration">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="OracleDeceleration"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="HerdInteractSet">
+        <EffectArray index="0" value="HerdIssueCircle"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="HerdIssueMoveOrderSelf">
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <CEffectRandomPointInCircle id="HerdIssueCircle">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <Effect value="HerdIssueMoveOrderSelf"/>
+        <Radius value="2.5"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectEnumArea id="GlaiveWurmE1">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GlaiveWurmE2">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GlaiveWurmE3">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GlaiveWurmE4">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="GlaiveWurmE5">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CoopGlaiveWurmE1">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CoopGlaiveWurmE2">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CoopGlaiveWurmE3">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CoopGlaiveWurmE4">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CoopGlaiveWurmE5">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaMutaliskAirLevel3GlaiveWurmFirstBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaMutaliskAirLevel3GlaiveWurmSecondBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaMutaliskLevel3GlaiveWurmFirstBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaMutaliskLevel3GlaiveWurmSecondBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="DehakaMutaliskLevel3GlaiveWurmThirdBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MutaliskMengskGlaiveWurmDamageFirstBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="MutaliskMengskGlaiveWurmSecondBounceSearch">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSDistanceToTarget"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectRemoveBehavior id="CreepTumorActiveRB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="CreepTumorActive"/>
+    </CEffectRemoveBehavior>
+    <CEffectModifyUnit id="Creep Tumor Selection">
+        <EditorCategories value="Race:Zerg"/>
+        <SelectTransferUnit Value="Caster"/>
+        <SelectTransferFlags index="DeselectSource" value="1"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="CreepTumorLaunchMissileSet">
+        <EffectArray value="CreepTumorActiveRB"/>
+        <EffectArray value="Creep Tumor Selection"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="QueenInjectStunAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="QueenInjectStun"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="MuleAutocastEnable">
+        <ValidatorArray value="MuleOrderIsHarvest"/>
+        <EditorCategories value=""/>
+        <Abil value="MULERepair"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <CmdFlags index="SetAutoCastOn" value="1"/>
+    </CEffectIssueOrder>
 </Catalog>

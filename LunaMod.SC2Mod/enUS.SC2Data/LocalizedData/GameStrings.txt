@@ -18,7 +18,6 @@ Abil/Name/MercCompoundReset=Reset
 Abil/Name/MorphToPowerTowerCancelStetmann=Cancel Morph
 Abil/Name/MothershipArtanisMassRecall=Mass Recall
 Abil/Name/MothershipArtanisPlanetCracker=Planet Cracker
-Abil/Name/OracleStasisTrapBuildVorazun=Build Stasis Ward
 Abil/Name/OrdnanceFleetwideJump=Tactical Jump
 Abil/Name/PitAlarakJinaraMorph=Pit Alarak Jinara Morph
 Abil/Name/PsiStormShakuras=Astral Storm
@@ -277,6 +276,7 @@ Button/Name/KerriganRazorSwarm=Razor Swarm
 Button/Name/KerriganRegenAura=Protective Brood
 Button/Name/KerriganSunderingGlaive=Sundering Glaive
 Button/Name/LearnHotSPressurizedGlands=Evolve Pressurized Glands
+Button/Name/LoadNearby=Load Nearby
 Button/Name/LurkerBrood=Morph to Grave Splitter
 Button/Name/MasteryKerriganEnergyRegen=Kerrigan and Queen Energy Regeneration
 Button/Name/MasteryStetmannUpgradeResourceCost=Research Resource Cost
@@ -863,6 +863,7 @@ Button/Tooltip/VorazunShadowFury=Rapidly teleport to random enemies within <d re
 Button/Tooltip/VorazunShadowPhase=Upon Vorazun's shield breaking, negate excess damage and become immune to damage for <d ref="Behavior,VorazunShadowPhased,Duration" precision="1"/> second. Cannot occur again until reaching max shields.
 Button/Tooltip/VortexArtanis=Creates a gravity Vortex that stuns ground and air units in the target area. Units within the Vortex are invulnerable to all damage and effects. Enemy units within the Vortex take up to <d ref="Effect,VortexArtanis,Amount*Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]/Behavior,VortexArtanisBehaviorEnemy,Period"/> damage. Lasts for <d ref="Effect,VortexArtanisCreatePersistent,PeriodCount*Effect,VortexArtanisCreatePersistent,PeriodicPeriodArray[0]"/> seconds.<n/><n/><c val="#ColorAttackInfo">Friendly heroic units are immune.</c>
 Button/Tooltip/WarpInAdept=Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/WarpPrismLoad=Loads units into the Warp Prism's matrix from up to <d ref="Abil,WarpPrismTransport,Range"/> range away.
 Button/Tooltip/WidowMineConcealment=This unit is no longer revealed while reloading.
 Button/Tooltip/XN51CloakTechnology=Covert Banshees are permanently cloaked and have increased movement speed.
 Button/Tooltip/ZagaraVoidCoopAttackUpgrade=Zagara's attacks deal 50% damage to three enemy units near her primary target.
@@ -879,6 +880,7 @@ Button/Tooltip/ZealotShakuras=Powerful melee warrior. Has Shadow Charge and Dark
 Button/Tooltip/ZeratulAllPassive=<c val="FFFF8A">Steadfast Reinforcements:</c> Increases the duration of Zeratul's Legion and Avatar calldowns by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2B:Behavior,ZeratulXelNagaConstructTimedLife,Duration$/Behavior,ZeratulTopBarTimedLife,Duration*100" player="0"/>%.<n/><n/><c val="FFFF8A">Tesseract Matrix:</c> Decreases the cooldown of Shade Projection by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse$/Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse*100" player="0"/>%. Increases the damage absorbed by Shade Barrier by <d ref="($UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit$/Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit)*100" player="0"/>%.<n/><n/><c val="FFFF8A">Void Blink:</c> Reduces the cooldown of Zeratul and his units' Blink abilities by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2A:Abil,ZeratulBlink,Cost[0].Charge.TimeUse$/Abil,ZeratulBlink,Cost[0].Charge.TimeUse*100" player="0"/>%.
 Button/Tooltip/ZeratulDarkArchonMaelstrom=Temporarily stuns enemy units in an area of effect for <d ref="Behavior,ZeratulDarkArchonMaelstrom,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
+Button/Tooltip/ZeratulWarpPrismLoad=Loads units into the Xel'Naga Void Array's matrix from up to <d ref="Abil,ZeratulWarpPrismTransport,Range"/> range away.
 Button/Tooltip/Zergling=Fast melee unit. Spawns in groups of three. Morphs almost instantly. Can morph into a Baneling.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
 Button/Tooltip/ZerglingBurrowMove=Can move while burrowed. Burrowed regeneration rate increased by 100%.
 Button/Tooltip/ZerglingBurrowMoveAbathur=Can move at full speed while burrowed. Burrowed regeneration rate increased by 100%.
@@ -1086,8 +1088,6 @@ Effect/Name/MutatorChangelingSearch=Mutator Imposter Search
 Effect/Name/MutatorChangelingTriggerDummy=Mutator Imposter Trigger Dummy
 Effect/Name/NovaGriffinTransportUnloadUnitsSet=NovaGriffinTransportUnloadUnitsSet
 Effect/Name/OnDeathControllerDeathPreventRBTarget=OnDeathControllerDeathPreventRBTarget
-Effect/Name/OracleStasisTrapBuildDeceleration=Oracle Stasis Ward Build Deceleration
-Effect/Name/OracleStasisTrapBuildStartSet=Oracle Stasis Ward Build Start Set
 Effect/Name/OrbitalAssimilatorRichAB=Orbital Assimilator Rich AB
 Effect/Name/OrbitalAssimilatorRichRB=Orbital Assimilator Rich RB
 Effect/Name/OrbitalAssimilatorRichSearch=Orbital Assimilator Rich Search

@@ -73,6 +73,16 @@
         <CursorEffect value="DefensiveMatrixAoE"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselAoE"/>
     </CAbilEffectTarget>
+    <CAbilResearch id="EvolutionChamberStetmannResearch">
+        <InfoArray index="Research8">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+        </InfoArray>
+        <InfoArray index="Research9">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilWarpTrain id="FactoryTrainNova">
         <InfoArray index="Train4" Unit="Hellion_BlackOpsSpawnerUnit">
             <Resource index="Minerals" value="500"/>
@@ -194,9 +204,28 @@
             <Button DefaultButtonFace="ResearchAlarakDestructionWaveDistanceJinara" Requirements="LearnAlarakDestructionWaveDistanceJinara"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilBehavior id="GenerateCreep">
+        <CmdButtonArray index="On">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
+    <CAbilBehavior id="GenerateCreepStukov">
+        <CmdButtonArray index="On">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilBehavior>
     <CAbilEffectTarget id="GlevigDeepTunnel">
         <FinishTime index="0" value="2"/>
         <PlaceUnit value="DehakaGlevigPlacement"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="GravitonBeamVoidCampaign">
+        <ArcSlop value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GravitonPrison">
         <Cost index="0">
@@ -216,6 +245,55 @@
             <Button DefaultButtonFace="HHWraith"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilEffectInstant id="HallucinationAdept">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationArchon">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationColossus">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationDisruptor">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationHighTemplar">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationImmortal">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationOracle">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationPhoenix">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationProbe">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationStalker">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationVoidRay">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationWarpPrism">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HallucinationZealot">
+        <Flags index="TransientPreferred" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilTransport id="HerculesTransport">
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyHercules">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="4"/>
+    </CAbilTransport>
+    <CAbilEffectTarget id="HerdInteract">
+        <Range index="0" value="10"/>
+        <AutoCastRange value="10"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="HybridDominatorVoidPlasmaBlast">
         <TargetFilters value="-;Player,Ally"/>
     </CAbilEffectTarget>
@@ -224,6 +302,32 @@
         <TargetFilters index="0" value="-;Structure,RawResource,HarvestableResource,Item,Stasis,Dead,Hidden"/>
         <CursorEffect value="IrradiateAoE"/>
         <CmdButtonArray index="Execute" Requirements="ScienceVesselAoE"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="KD8Charge">
+        <Cost index="0">
+            <Cooldown TimeUse="20"/>
+        </Cost>
+        <Placeholder value="KD8Charge"/>
+        <CursorEffect value="KD8SearchArea"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="LarvaTrain">
+        <Flags index="DisableCollision" value="0"/>
+        <!--InfoArray index="Train20" Time="27">
+            <Button DefaultButtonFace="MorphToCorpserAbathur" State="Restricted" Requirements="HaveBanelingNest2"/>
+            <Unit value="RoachCorpser"/>
+        </InfoArray-->
+    </CAbilTrain>
+    <CAbilTrain id="LarvaTrainStetmann">
+        <Flags index="DisableCollision" value="0"/>
+    </CAbilTrain>
+    <CAbilTrain id="LarvaTrainSwarm">
+        <Flags index="DisableCollision" value="0"/>
+    </CAbilTrain>
+    <CAbilTrain id="LarvaTrainSwarmling">
+        <Flags index="DisableCollision" value="0"/>
+    </CAbilTrain>
+    <CAbilEffectTarget id="MULERepair">
+        <Flags index="AutoCastOn" value="0"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MassRecall">
         <Effect index="0" value="MothershipStrategicRecallSearch"/>
@@ -272,14 +376,43 @@
         </InfoArray>
         <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilTrain>
+    <CAbilTrain id="NexusTrainMothership">
+        <Offset value="0,0"/>
+    </CAbilTrain>
     <CAbilEffectTarget id="ObserverTargetLock">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="OracleStasisTrapBuild">
+        <FlagArray index="RequireFacing" value="0"/>
+        <InfoArray index="Build1" Time="5.6"/>
+        <EffectArray index="Start" value="StasisWardPlaceSet"/>
+        <EffectArray index="Finish" value="OracleFacePersistentDestroy"/>
+        <EffectArray index="Cancel" value="OracleFacePersistentDestroy"/>
+        <FidgetDelayMax value="0.0625"/>
+    </CAbilBuild>
     <CAbilBehavior id="OracleWeapon">
         <Cost index="0">
             <Vital index="Energy" value="25"/>
         </Cost>
     </CAbilBehavior>
+    <CAbilTransport id="OverlordStetmannTransport">
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyOverlord" Requirements="HaveOverlordStetmannTransport">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="4"/>
+    </CAbilTransport>
+    <CAbilTransport id="OverlordTransport">
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyOverlord" Requirements="UseOverlordTransport">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="4"/>
+    </CAbilTransport>
+    <CAbilMorph id="PhasingMode">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="Repair">
+        <Flags index="AutoCastOn" value="0"/>
+    </CAbilEffectTarget>
     <CAbilTrain id="SIBarracksTrain">
         <InfoArray index="Train1">
             <Charge CountMax="5" TimeStart="20" TimeUse="20"/>
@@ -287,6 +420,16 @@
             <Flags index="AutoCast" value="1"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilTrain id="SILarvaTrain">
+        <Flags index="DisableCollision" value="0"/>
+    </CAbilTrain>
+    <CAbilEffectInstant id="SpawnChangeling">
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SpawnLarva">
+        <Flags index="ReExecutable" value="1"/>
+        <CastOutroTime index="0" value="0"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="StarportTechLabResearch">
         <InfoArray index="Research15" Upgrade="ScienceVesselResearchAoE">
             <Button DefaultButtonFace="ResearchScienceVesselAoE" Requirements="LearnScienceVesselAoE"/>
@@ -300,6 +443,27 @@
         </Cost-->
         <CursorEffect index="0" value="TemporalFieldAfterBubbleSearchArea"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="TerranBuild">
+        <FidgetDelayMin value="6.5"/>
+        <FidgetDelayMax value="8.5"/>
+        <EffectArray index="Start" value="SCVStartBuildingSet"/>
+        <EffectArray index="Finish" value="SCVFinishBuildingSet"/>
+        <EffectArray index="Cancel" value="SCVCancelBuildingSet"/>
+    </CAbilBuild>
+    <CAbilBuild id="TerranBuildMengsk">
+        <FidgetDelayMin value="6.5"/>
+        <FidgetDelayMax value="8.5"/>
+        <EffectArray index="Start" value="SCVStartBuildingSet"/>
+        <EffectArray index="Finish" value="SCVFinishBuildingSet"/>
+        <EffectArray index="Cancel" value="SCVCancelBuildingSet"/>
+    </CAbilBuild>
+    <CAbilBuild id="TychusTerranBuild">
+        <FidgetDelayMin value="6.5"/>
+        <FidgetDelayMax value="8.5"/>
+        <EffectArray index="Start" value="SCVStartBuildingSet"/>
+        <EffectArray index="Finish" value="SCVFinishBuildingSet"/>
+        <EffectArray index="Cancel" value="SCVCancelBuildingSet"/>
+    </CAbilBuild>
     <CAbilEffectTarget id="ThorMengskSiegeTargeted">
         <Effect index="0" value="ThorMengskSiegeTargetOrderInitialSet"/>
     </CAbilEffectTarget>
@@ -312,6 +476,30 @@
         <Effect index="0" value="ThorMengskUnsiegeMorphOrderSet"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="ThorMengskUnsiege"/>
     </CAbilEffectInstant>
+    <CAbilMorph id="TransportMode">
+        <Flags index="BestUnit" value="0"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Finish" value="WarpPrismDecFixMorphCheckAB"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="TransportModeTaldarim">
+        <Flags index="BestUnit" value="0"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Finish" value="WarpPrismDecFixMorphCheckAB"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="ZeratulWarpPrismTransportMode">
+        <Flags index="BestUnit" value="0"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Finish" value="WarpPrismDecFixMorphCheckAB"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
     <CAbilEffectTarget id="UltraliskStetmannMechanicalLifeLeech">
         <TargetSorts>
             <SortArray index="2" value="TSLifeLargestFirst"/>
@@ -321,11 +509,34 @@
     <CAbilEffectTarget id="ViperConsumeStructure">
         <TargetFilters index="0" value="Structure;Ally,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden,Invulnerable,MapBoss"/>
     </CAbilEffectTarget>
+    <CAbilTransport id="WarpPrismTransport">
+        <Range value="5"/>
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyWarpPrism">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="5"/>
+    </CAbilTransport>
+    <CAbilTransport id="ZeratulWarpPrismTransport">
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyZeratulWarpPrism">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="6"/>
+    </CAbilTransport>
     <CAbilBuild id="ZergBuildStetmann">
         <InfoArray index="Build12" Unit="LurkerDenStetmann" Time="80">
             <Button DefaultButtonFace="LurkerDenStetmann" Requirements="HaveHydraliskDenStetmann"/>
         </InfoArray>
     </CAbilBuild>
+    <CAbilResearch id="evolutionchamberresearch">
+        <InfoArray index="Research5">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+        </InfoArray>
+        <InfoArray index="Research6">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectTarget id="heal">
         <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
         <AutoCastValidatorArray index="5" value=""/>
@@ -396,9 +607,7 @@
     <CAbilArmMagazine id="ReaverHangar">
         <InfoArray index="Ammo1" CountStart="0"/>
     </CAbilArmMagazine>
-    <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair">
-        <Flags index="AutoCastOn" value="0"/>
-    </CAbilEffectTarget>
+    <CAbilEffectTarget id="RepairTrooperMengsk" parent="Repair"/>
     <CAbilEffectTarget id="SOARepairBeam">
         <TargetFilters index="0" value="Mechanical,Visible;Self,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
         <TargetSorts>
@@ -411,6 +620,7 @@
         <Cost index="0">
             <Cooldown TimeUse="60"/>
         </Cost>
+        <SharedFlags index="RegisterCooldownEvent" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ToxicNestExplode">
         <AutoCastValidatorArray value="CasterHasToxicNestCounter"/>
@@ -441,13 +651,103 @@
         <LoadValidatorArray value="NotWidowMineTarget"/>
         <LoadValidatorArray value="BiologicalOrTychusWarhound"/>
     </CAbilTransport>
-    <CAbilMorph id="BurrowInfestorUp">
-        <InfoArray index="0" RandomDelayMax="0.125">
+    <CAbilMorph id="BurrowInfestorDown">
+        <Flags index="IgnorePlacement" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0.875"/>
+                <EffectArray index="Start" value="InfestorBurrowDownTransient"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowInfestorUp">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Start" value="InfestorBurrowUpTransient"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowInfestorDownStetmann">
+        <Flags index="IgnorePlacement" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Start" value="InfestorBurrowDownTransient"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowInfestorUpStetmann">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <EffectArray index="Start" value="InfestorBurrowUpTransient"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowRoachDown">
+        <Flags index="IgnorePlacement" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.31"/>
+                <EffectArray index="Start" value="RoachBurrowDownTransient"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Delay" value="0.1"/>
             </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="0.875"/>
+                <DurationArray index="Delay" value="0.31"/>
+            </SectionArray>
+        </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="1.4"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="BurrowRoachUp">
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="SuppressMovement" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.7517"/>
+                <EffectArray index="Finish" value="RoachBurrowUpTransient"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.7517"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="HotSBurrowVileDown">
+        <Flags index="IgnorePlacement" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.31"/>
+                <EffectArray index="Start" value="RoachBurrowDownTransient"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Delay" value="0.1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.31"/>
+            </SectionArray>
+        </InfoArray>
+        <Cost>
+            <Cooldown TimeUse="1.4"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilMorph id="HotSBurrowVileUp">
+        <Flags index="Interruptible" value="1"/>
+        <Flags index="SuppressMovement" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.7517"/>
+                <EffectArray index="Finish" value="RoachBurrowUpTransient"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.7517"/>
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
@@ -1355,9 +1655,7 @@
             <Vital index="Energy" value="50"/>
             <Cooldown TimeUse="0"/>
         </Cost>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="GravitonBeamVoidCampaign">
-        <Arc value="360"/>
+        <ArcSlop value="360"/>
     </CAbilEffectTarget>
     <CAbilBuild id="HHBuild">
         <InfoArray index="Build19" Unit="HHOrdnanceTowerConstruction" Time="60">
@@ -1583,19 +1881,6 @@
         </Cost>
         <Range index="0" value="12"/>
     </CAbilEffectTarget>
-    <CAbilBuild id="OracleStasisTrapBuildVorazun">
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <InfoArray index="Build1" Unit="OracleStasisTrap" Time="5">
-            <Vital index="Energy" value="50"/>
-            <Button DefaultButtonFace="OracleBuildStasisTrap" Requirements="HaveVorazunCommander">
-                <Flags index="ShowInGlossary" value="1"/>
-            </Button>
-        </InfoArray>
-        <Range value="5"/>
-        <EffectArray index="Start" value="OracleStasisTrapBuildStartSet"/>
-        <EffectArray index="Finish" value="OracleStasisTrapBuildBeamOff"/>
-        <EffectArray index="Cancel" value="OracleStasisTrapBuildBeamOff"/>
-    </CAbilBuild>
     <CAbilMorphPlacement id="OrbitalCommandLand">
         <InfoArray index="0">
             <SectionArray index="Stats">
@@ -1723,11 +2008,6 @@
         <CursorEffect index="0" value="TychusOdinBarrageSearchArea"/>
         <CmdButtonArray index="Execute" Requirements=""/>
     </CAbilEffectTarget>
-    <CAbilBuild id="TychusTerranBuild">
-        <InfoArray index="Build4" Unit="TychusBunker">
-            <Button DefaultButtonFace="TychusBunker"/>
-        </InfoArray>
-    </CAbilBuild>
     <CAbilEffectInstant id="VoidRaySwarmDamageBoostCancel">
         <Flags index="Transient" value="1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="Cancel" Requirements="VoidRayPrismaticAlligned"/>
@@ -2178,6 +2458,10 @@
     </CAbilEffectInstant>
     <CAbilTransport id="MedivacTransport">
         <UnloadCargoEffect value="DropPodHasteAB"/>
+        <CmdButtonArray index="LoadAll" DefaultButtonFace="LoadNearbyMedivac">
+            <Flags index="Hidden" value="0"/>
+        </CmdButtonArray>
+        <SearchRadius value="4"/>
     </CAbilTransport>
     <CAbilMorph id="MorphToSwarmHostSplitBBurrowed">
         <CmdButtonArray index="Execute" Requirements=""/>
@@ -2372,6 +2656,7 @@
             <Charge Link="Abil/NexusTrainMothershipArtanis"/>
             <Cooldown Link="Abil/NexusTrainMothershipArtanis"/>
         </InfoArray>
+        <Offset value="0,0"/>
     </CAbilTrain>
     <CAbilEffectTarget id="KerriganRazorSwarm">
         <Alignment value="Negative"/>

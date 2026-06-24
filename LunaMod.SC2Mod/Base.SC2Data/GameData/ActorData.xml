@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorSplat default="1" id="BurrowedSplat">
+        <On index="2" Terms="UnitBirth.BogusBurrowed"/>
+        <On index="3" Terms="AbilMorph.*.Start; MorphTo BogusBurrowed"/>
+        <On index="4" Terms="AbilMorph.*.Finish; MorphFrom BogusBurrowed"/>
+        <On index="5" Terms="AbilMorph.*.Start; MorphFrom BogusBurrowed"/>
+    </CActorSplat>
     <CActorSound id="330mmBarrageCannonsLaunchSound" parent="SoundOneShot">
         <On Terms="Effect.330mmBarrageCannonsSearch.Impact; At Caster" Send="Create"/>
         <Sound value="Thor_BarrageLaunch"/>
@@ -26,9 +32,26 @@
     <CActorSound id="ArbiterMPRecallingImpactSound">
         <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
     </CActorSound>
+    <CActorAction id="ArchonAttack">
+        <ImpactMap index="None" Model="ArchonAttackImpact" ModelReaction="ArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="ArchonFireSplash"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
+    <CActorUnit id="Baneling">
+        <On Terms="WeaponStart.VolatileBurstBuilding.AttackStart" Send="StatusSet DeathSuicide 1"/>
+        <On Terms="UnitDeathCustomize; IsStatus DeathSuicide 0" Send="Create BanelingDeathNormalSound"/>
+        <On Terms="Signal.*.BanelingSplashHit; IsStatus DeathSuicide 0" Send="Create BanelingDeathSuicideSound"/>
+    </CActorUnit>
+    <CActorUnit id="BanelingStetmann">
+        <On Terms="WeaponStart.VolatileBurstBuilding.AttackStart" Send="StatusSet DeathSuicide 1"/>
+        <On Terms="UnitDeathCustomize; IsStatus DeathSuicide 0" Send="Create BanelingDeathNormalSound"/>
+        <On Terms="Signal.*.BanelingSplashHit; IsStatus DeathSuicide 0" Send="Create BanelingDeathSuicideSound"/>
+    </CActorUnit>
     <CActorSound id="Banshee_CloakOff">
         <On Terms="Behavior.BansheeCloak_Stukov.Off" Send="Create"/>
     </CActorSound>
@@ -49,6 +72,12 @@
         <SoundArray index="What" value="CarrierRepairDrone_What"/>
         <SoundArray index="Yes" value="CarrierRepairDrone_Yes"/>
         <SoundArray index="Pissed" value="CarrierRepairDrone_Pissed"/>
+    </CActorUnit>
+    <CActorUnit id="Changeling">
+        <On index="73" Send="ModelSwap Changeling 255 PredecessorDestroyImmediate"/>
+        <On Terms="ActionDamage; AnimPlaying Attack; AnimPlayable" Send="ActionDamagePhysics"/>
+        <On Terms="UnitBirth.Changeling" Send="TimerSet 0.450000 SpeedUpBirthAnim"/>
+        <On Terms="TimerExpired.Changeling; TimerName SpeedUpBirthAnim" Send="AnimSetTimeScale Birth 2.750000"/>
     </CActorUnit>
     <CActorUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-archon-upgraded.dds"/>
@@ -83,6 +112,37 @@
     <CActorUnit id="DroneStetmann">
         <DeathCustoms index="5" ActorModel="DroneDeathRagdoll"/>
     </CActorUnit>
+    <CActorRange id="EggMonsterHarpyRange">
+        <On index="1" Send="SetVisibility 1"/>
+        <On index="2" Send="SetVisibility 1"/>
+        <On index="3" Send="SetVisibility 1"/>
+        <On index="4" Send="SetVisibility"/>
+        <On index="5" Terms="UnitBirth.SwarmHostMP"/>
+        <On index="6" Terms="UnitDeath.SwarmHostMP"/>
+        <On Terms="UnitBirth.SwarmHostBurrowedMP" Send="Create"/>
+        <On Terms="UnitDeath.SwarmHostBurrowedMP" Send="Destroy"/>
+        <On Terms="AbilCooldown.SpawnLocustsTargeted.Regen" Send="Create"/>
+        <On Terms="AbilCooldown.SpawnLocustsTargeted.Spend" Send="Destroy"/>
+        <Remove index="0" Terms="AbilMorph.*.Start; MorphTo SwarmHostBurrowedMP; Selected"/>
+        <Remove index="1" Terms="AbilMorph.*.Start; MorphTo SwarmHostMP" Send="Destroy"/>
+        <Remove index="2" removed="1"/>
+        <Remove index="3" removed="1"/>
+        <Remove index="4" removed="1"/>
+        <Remove index="5" removed="1"/>
+    </CActorRange>
+    <CActorUnit id="EvolutionChamber">
+        <Macros index="1" value="QueueAnimSpeed135"/>
+    </CActorUnit>
+    <CActorModel id="GhostEMPAttackImpactEffect">
+        <On index="4" Terms="Effect.EMPSearch.Start" Send="TimerSet 0.750000 cleanImpactVisual"/>
+        <On Terms="TimerExpired; TimerName cleanImpactVisual" Send="SetScale 0.450000 2.500000"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
+    <CActorModel id="GhostBlackOpsEMPAttackImpactEffect">
+        <On index="4" Terms="Effect.EMPBlackOpsSearch.Start" Send="TimerSet 0.750000 cleanImpactVisual"/>
+        <On Terms="TimerExpired; TimerName cleanImpactVisual" Send="SetScale 0.450000 2.500000"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+    </CActorModel>
     <CActorAction id="GhostSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
@@ -109,6 +169,10 @@
         <HostSiteOps Ops="SOpMoveBy1 SOpForwardSouth"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.750000"/>
     </CActorModel>
+    <CActorUnit id="KD8Charge">
+        <PlaceholderActorModel value="ReaperKD8Placeholder"/>
+        <PlacementActorModel value="ReaperKD8PlacementModel"/>
+    </CActorUnit>
     <CActorSplat id="LurkerBurrowedSplat">
         <Scale value="0.800000"/>
     </CActorSplat>
@@ -490,8 +554,25 @@
         <On index="4" Terms="Behavior.NovaDashAttackSpeed.On; ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
         <Radius value="2.000000"/>
     </CActorForceCylinder>
+    <CActorAction id="OracleWeaponAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="OverlordStetmann">
         <DeathCustoms index="5" ActorModel="OverlordDeathRagdoll"/>
+    </CActorUnit>
+    <CActorRange id="PowerVisualLow">
+        <IconScale value="0.004000,0.003000"/>
+        <IconArcLength value="0.400000"/>
+    </CActorRange>
+    <CActorAction id="ProbeAttack">
+        <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorBeamSimple id="ProbeAttackBeam">
+        <Macros value="ActionTargetTeleportDestroy"/>
+    </CActorBeamSimple>
+    <CActorUnit id="RoachVile">
+        <Macros index="1" value="ZergBurrowMobileTransientAnimMacro"/>
     </CActorUnit>
     <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkTargetLocation">
         <HostForward Subject="DarkTemplar"/>
@@ -531,6 +612,18 @@
         <On Terms="AbilMorph.*.Start; MorphTo LurkerStetmann" Send="Destroy"/>
         <Weapon value="LurkerStetmann"/>
     </CActorRange>
+    <CActorSound id="LurkerEgg_DeathMP">
+        <On index="1" Terms="UnitDeath.LurkerMPEgg; PassChance 50.000000"/>
+    </CActorSound>
+    <CActorSound id="LurkerEgg_Death">
+        <On index="1" Terms="UnitDeath.LurkerEgg; PassChance 50.000000"/>
+    </CActorSound>
+    <CActorUnit id="LurkerMPEgg">
+        <On index="72" Send="$Birth 0 0.000000 -1.000000 1.750000 AsTimeScale"/>
+    </CActorUnit>
+    <CActorUnit id="LurkerEgg">
+        <On index="72" Send="$Birth 0 0.000000 -1.000000 1.750000 AsTimeScale"/>
+    </CActorUnit>
     <CActorSound id="LurkerMPAttackSpikeSound">
         <On Terms="Effect.LurkerStetmannSearch.Start" Send="Create"/>
     </CActorSound>
@@ -606,6 +699,65 @@
     <CActorSound id="SILiberatorSwarmFormLaunch" parent="SoundOneShot">
         <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On" Send="Create"/>
     </CActorSound>
+    <CActorAction id="SentryAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorBeamSimple id="SentryAttackBeam">
+        <Remove Terms="Effect.DisruptionBeam.Stop; At Effect" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.DisruptionBeam.Stop; At Effect" Send="TimerSet 0.150000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketStart; AnimName BSD" Send="AnimSetTimeScale BSD 10.000000"/>
+        <On Terms="AnimBracketState.*.AfterOpening" Send="AnimSetTimeScale BSD 1.000000"/>
+    </CActorBeamSimple>
+    <CActorUnit id="TemplarArchive">
+        <Macros index="5" value="QueueAnimSpeed135"/>
+    </CActorUnit>
+    <CActorUnit id="TwilightCouncil">
+        <On Terms="Abil.que5.Start" Send="Create TwilightCouncilResearchBeam"/>
+        <On Terms="Abil.que5.Stop" Target="TwilightCouncilResearchBeam" Send="Destroy"/>
+    </CActorUnit>
+    <CActorRange id="UnpoweredVisualLow">
+        <IconScale value="0.004000,0.003000"/>
+        <IconArcLength value="0.400000"/>
+    </CActorRange>
+    <CActorAction id="VoidRaySwarmAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="ZeratulSentryAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorBeamSimple id="ZeratulSentryAttackBeam">
+        <Remove Terms="Effect.ZeratulDisruptionBeam.Stop; At Effect" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.ZeratulDisruptionBeam.Stop; At Effect" Send="TimerSet 0.150000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketStart; AnimName BSD" Send="AnimSetTimeScale BSD 10.000000"/>
+        <On Terms="AnimBracketState.*.AfterOpening" Send="AnimSetTimeScale BSD 1.000000"/>
+    </CActorBeamSimple>
+    <CActorModel id="ShuttleTransportUnloadModel">
+        <On index="3" Terms="AbilTransport.WarpPrismTransport.CargoUnload"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0.650000"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 1.000000 0.150000"/>
+        <On Terms="ActorDestruction" Target="_Unit" Send="SetOpacity 1.000000"/>
+        <On Terms="AbilTransport.WarpPrismTransport.CargoLoad" Send="Destroy Immediate"/>
+        <HostSiteOps Ops="SOpShadow SOp2DRotation"/>
+        <MaxScale value="0.750000"/>
+        <AutoScaleFactor value="1.500000"/>
+    </CActorModel>
+    <CActorRange id="WarpprismPickupRangeIndicator">
+        <On Terms="Abil.WarpPrismTransport.TargetOn" Send="Create"/>
+        <On Terms="Abil.WarpPrismTransport.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.WarpPrismTransport.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.WarpPrismTransport.ButtonHoverOff" Send="Destroy"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconScale value="0.004000,0.004000"/>
+        <IconArcLength value="2.000000"/>
+        <Range value="3.750000"/>
+    </CActorRange>
+    <CActorBeamSimple id="WarpPrismWarpOut" parent="BeamSimpleAnimationStyleOneShot">
+        <On Terms="AbilTransport.WarpPrismTransport.CargoLoad" Send="Create"/>
+        <HostImpact Subject="_Selectable"/>
+        <HostImpactSiteOps Ops="SOpAttachOriginStationary"/>
+    </CActorBeamSimple>
     <CActorSiteOpLocalOffset id="SiegeTankMengskSiegedCargoSOpOffset">
         <LocalOffset value="0.000000,0.000000,-1.500000"/>
     </CActorSiteOpLocalOffset>
@@ -1895,7 +2047,14 @@
     </CActorModel>
     <CActorUnit id="Infestor">
         <On Terms="ActorCreation" Send="ModelAnimateInvisible 1"/>
+        <!--5.0.16 Infestor Attack-->
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack {} {} 0 3.000000"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack 0 7.000000"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <WalkAnimMoveSpeed value="2.25"/>
+        <!--5.0.16 Transient Burrow-->
+        <Macros index="1" value="ZergBurrowMobileTransientAnimMacro"/>
     </CActorUnit>
     <CActorModel id="NeuralParasiteTentacle">
         <HostSiteOps Ops="SOpAttachWeapon01"/>
@@ -1911,8 +2070,25 @@
     <CActorSplat id="InfestorBurrowedSplat">
         <HostSiteOps Ops="SOpAttachHarnessSoft" HoldRotation="1"/>
     </CActorSplat>
+    <CActorSplat id="InfestorInitialBurrowedSplat" parent="BurrowedSplatBase">
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorBurrowed" Send="RefClear ::Host"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorBurrowed" Send="RefClear ::Host"/>
+        <On Terms="TimerExpired; TimerName MorphSplat" Send="Destroy"/>
+        <Inherits index="Visibility" value="0"/>
+    </CActorSplat>
     <CActorUnit id="InfestorStetmann">
+        <!--5.0.16 Infestor Attack-->
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack {} {} 0 3.000000"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack 0 7.000000"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <WalkAnimMoveSpeed value="2.25"/>
+        <!--5.0.16 Transient Burrow-->
+        <Macros index="1" value="ZergBurrowMobileTransientAnimMacro"/>
         <DeathCustoms index="5" ActorModel="InfestorDeathRagdoll"/>
     </CActorUnit>
     <CActorUnit id="InfestorTerran">
@@ -3727,10 +3903,15 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModelMaterial>
     <CActorModel id="GuardianShield">
+        <Inherits index="TeamColor" value="1"/>
         <Inherits index="Visibility" value="0"/>
+        <HostSiteOps Ops="SOpAttachCenter GuardianShieldVisualOffset"/>
         <On Terms="AbilTransport.*.CargoLoad" Send="SetVisibility"/>
         <On Terms="AbilTransport.*.CargoUnload" Send="SetVisibility 1"/>
     </CActorModel>
+    <CActorSiteOpLocalOffset id="GuardianShieldVisualOffset">
+        <LocalOffset value="-0.050000,0.255600,0.000000"/>
+    </CActorSiteOpLocalOffset>
     <CActorModel id="MercCompoundHireBeam">
         <Flags index="SuppressSaveLoad" value="1"/>
         <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
@@ -4564,6 +4745,9 @@
     <CActorUnit id="OracleStasisTrap">
         <PlacementSound value="Protoss_BuildingPlacementSmall"/>
         <PlaceholderActorModel value="OracleStasisTrapPlaceholder"/>
+        <DeathArray index="Normal" SoundLink="Oracle_StasisTrap_Death"/>
+        <On Terms="ActorCreation" Send="Create StasisTrapHitTestBigger"/>
+        <On Terms="ActorDestruction" Target="StasisTrapHitTestBigger" Send="Destroy"/>
     </CActorUnit>
     <CActorModel id="OracleStasisTrapPlaceholder" parent="PlacementModel">
         <HostSiteOps Ops="SOpShadowAsyncPrecise" HoldPosition="1" HoldRotation="1"/>
@@ -4575,26 +4759,6 @@
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
-    <CActorRange id="OracleStasisTrapAbilityRangeVorazun" parent="RangeAbil" abil="OracleStasisTrapBuildVorazun">
-        <Icon value="Assets\Textures\RadarIcon2.dds"/>
-        <IconArcLength value="3.250000"/>
-    </CActorRange>
-    <CActorBeamSimple id="OracleStasisTrapBuildBeam">
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="AnimBracketStop BSD"/>
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="AnimBracketStop BSD"/>
-    </CActorBeamSimple>
-    <CActorSound id="OracleStasisTrapBuildBeam_ActorSound">
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStart" Send="Create"/>
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="Destroy"/>
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="Destroy"/>
-    </CActorSound>
-    <CActorSound id="OracleStasisTrapBuildBeamStart_ActorSound">
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStart" Send="Create"/>
-    </CActorSound>
-    <CActorSound id="OracleStasisTrapBuildBeamFinish_ActorSound">
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerStop" Send="Create"/>
-        <On Terms="Abil.OracleStasisTrapBuildVorazun.WorkerCancel" Send="Create"/>
-    </CActorSound>
     <CActorMissile id="PhoenixAirAttackMissile">
         <On Terms="ActorCreation; ValidateUnit PhoenixRangeUpgraded" Send="ModelSwap IonCannonsWeapon_Upgrade"/>
     </CActorMissile>
@@ -5694,6 +5858,16 @@
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="TimerSet 0.700000 BurrowDeath"/>
         <On Terms="TimerExpired; TimerName BurrowDeath" Send="Destroy"/>
     </CActorUnit>
+    <CActorSplat id="RoachInitialBurrowedSplat" parent="BurrowedSplatBase">
+        <On Terms="AbilMorph.*.Start; MorphTo RoachBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo RoachBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Start; MorphTo RoachBurrowed" Send="RefClear ::Host"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom RoachBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom RoachBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom RoachBurrowed" Send="RefClear ::Host"/>
+        <On Terms="TimerExpired; TimerName MorphSplat" Send="Destroy"/>
+        <Inherits index="Visibility" value="0"/>
+    </CActorSplat>
     <CActorUnit id="SOAMothershipv4">
         <On Terms="Abil.AlarakMothershipMassRecall.SourceCastStart" Send="$Spell"/>
         <On Terms="ActorCreation" Send="Create Mothership_Birth"/>
@@ -7101,6 +7275,340 @@
     <CActorSound id="awrpSound">
         <On Terms="Abil.VoidArchonMerge.Start" Send="Create"/>
     </CActorSound>
+    <CActorEventMacro id="ZergBurrowMobileTransientAnimMacro" parent="ZergBurrowMobileAnimMacro">
+        <On index="3" Terms="Behavior.BurrowUpTransientStun.Off"/>
+        <On index="4" Terms="Behavior.BurrowUpTransientStun.Off"/>
+        <On Terms="Behavior.BurrowDownTransientStun.Off" Send="AnimGroupRemove Ready"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimBracketStop Attack"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimClear Attack"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimBracketStop AttackCover"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimClear AttackCover"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimGroupRemove Burrow Instant"/>
+        <On Terms="Behavior.BurrowDownTransientStun.On" Send="AnimGroupApply Burrow Burrow Unburrow ClosingFull"/>
+    </CActorEventMacro>
+    <CActorSimple id="EMPTinter">
+        <On Terms="Behavior.EMPDecloak.On" Target="_Unit" Send="Create"/>
+        <On Terms="ActorCreation.EMPTinter; ValidateUnit NotStructureTarget" Target="_Unit" Send="SetTintColorBlendPair {19,77,230 1.500000} 255,255,255 1.400000 OneShot EMPTint 151.000000"/>
+        <On Terms="ActorCreation.EMPTinter; ValidateUnit IsStructureTarget" Target="_Unit" Send="SetTintColorBlendPair {113,162,242 1.500000} 255,255,255 1.400000 OneShot EMPTint 151.000000"/>
+        <On Terms="ActorCreation.EMPTinter" Send="TimerSet 1.400000 cleanVisual"/>
+        <On Terms="TimerExpired; TimerName cleanVisual" Target="_Unit" Send="ClearTintColor 0.000000 EMPTint"/>
+        <On Terms="TimerExpired; TimerName cleanVisual" Send="Destroy"/>
+        <On Terms="Behavior.EMPDecloak.Off" Target="_Unit" Send="ClearTintColor 0.000000 EMPTint"/>
+        <On Terms="Behavior.EMPDecloak.Off" Send="Destroy"/>
+        <On Terms="Behavior.EMPMengskDecloak.On" Target="_Unit" Send="Create"/>
+        <On Terms="Behavior.EMPMengskDecloak.Off" Target="_Unit" Send="ClearTintColor 0.000000 EMPTint"/>
+        <On Terms="Behavior.EMPMengskDecloak.Off" Send="Destroy"/>
+    </CActorSimple>
+    <CActorAction id="InfestorAttack" parent="GenericAttack" effectImpact="InfestorWeaponDamage" effectLaunch="InfestorWeaponLM">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveDownByDot5 SOpMoveBackByDot5"/>
+        <LaunchAssets Sound="Infestor_AttackLaunch"/>
+        <Missile value="InfestorWeaponMissile"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <ImpactMap index="None" Model="InfestorWeaponImpact" Sound="Infestor_AttackImpact"/>
+    </CActorAction>
+    <CActorMissile id="InfestorWeaponMissile" parent="GenericAttackMissile" unitName="InfestorWeapon">
+        <EditorCategories value=""/>
+        <Model value="InfestorWeaponMissile"/>
+    </CActorMissile>
+    <CActorSound id="VoidRay_PrismaticAlignmentOff" parent="SoundOneShot">
+        <On Terms="Behavior.VoidRaySwarmDamageBoost.Off" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="Immortal_Void_BarrierDestroyedSound" parent="SoundOneShot">
+        <Sound value="Immortal_Void_BarrierDestroyed"/>
+    </CActorSound>
+    <CActorUnit id="Oracle">
+        <On index="75" Send="AnimPlay Spell Start,Work,Stand 0 -1.000000 1.250000 0.750000 AsDuration 1.000000"/>
+        <On Terms="Abil.OracleStasisTrapBuild.WorkerStart" Send="AnimBracketStart Envisioning Stand,Work,Start Stand,Work Stand,Work,End 0 1.650000 AsTimeScale"/>
+        <On Terms="Abil.OracleStasisTrapBuild.WorkerStop" Send="AnimBracketStop Envisioning"/>
+        <On Terms="Abil.OracleStasisTrapBuild.WorkerCancel" Send="AnimBracketStop Envisioning"/>
+    </CActorUnit>
+    <CActorModel id="StasisTrapHitTestBigger" parent="ModelAddition">
+        <EditorCategories value=""/>
+        <Host Subject="OracleStasisTrap"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="StasisTrapModelHitTest"/>
+        <Scale value="1.200000"/>
+    </CActorModel>
+    <CActorModel id="ReaperKD8PlacementModel">
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorCreation" Send="SetLocalTintColor 245,156,158"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.900000"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <HostSiteOps Ops="SOpTipabilityFloorScope"/>
+    </CActorModel>
+    <CActorModel id="ReaperKD8Placeholder">
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorCreation" Send="SetLocalTintColor 201,175,175"/>
+        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.750000"/>
+        <On Terms="ActorCreation" Send="$Stand PlayForever,NonLooping -1.000000 -1.000000 -1.000000 AsDuration 3.000000"/>
+        <On Terms="ActorCreation" Send="AnimSetCompletion Stand 0.250000"/>
+        <On Terms="ActorCreation" Send="AnimSetPaused Stand"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <HostSiteOps Ops="SOpShadowAsyncPrecise" HoldPosition="1" HoldRotation="1"/>
+        <Model value="PlacementModel"/>
+    </CActorModel>
+    <CActorSplat id="KD8CursorSplat" parent="TerranCursorSplat" abil="KD8Charge">
+        <Model value="nukeCursorSplat"/>
+    </CActorSplat>
+    <CActorAction id="KD8ShieldHitter" parent="AoESplashShieldHitter" effectHit="KD8ChargeExplodeDamage">
+        <On index="1" Terms="Effect.KD8ChargeExplodeDamage.Start" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.KD8ChargeExplodeDamage.Stop" Send="ActionDamagePhysics"/>
+    </CActorAction>
+    <CActorAction id="DisruptorPurificationNovaShieldHitter" parent="AoESplashShieldHitter" effectHit="PurificationNovaDamage">
+        <On index="1" Terms="Effect.PurificationNovaDamage.Start" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.PurificationNovaDamage.Stop" Send="ActionDamagePhysics"/>
+        <DamageSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard"/>
+    </CActorAction>
+    <CActorAction id="RavagerCorrosiveBileAttackDown">
+        <On index="3" Terms="Effect.RavagerCorrosiveBileDamage.Start; FromEffectTreeDescendant"/>
+        <On index="4" Terms="Effect.RavagerCorrosiveBileDamage.Stop; FromEffectTreeDescendant"/>
+        <DamageSiteOps Ops="SOpAttachHarness"/>
+    </CActorAction>
+    <CActorUnit id="Archon">
+        <On Terms="UnitBirth.Archon" Send="Create ArchonMergeComplete"/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
+    </CActorUnit>
+    <CActorModel id="ArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
+        <HostSiteOps Ops="SOpAttachHead SOpMoveUpBy1" HoldRotation="1"/>
+        <Model value="ArchonMergeExplosion"/>
+    </CActorModel>
+    <CActorForceConeRoundedEnd id="ArchonAttackDeathForce">
+        <Host Subject="_ImpactGuide"/>
+        <HostSiteOps Ops="SOpForwardLaunchGuide SOp2DRotation SOpMoveBy1 SOpMoveDownByDot5"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="30.000000,11.250000"/>
+        <HostEndSiteOps Ops="SOpForwardLaunchGuide SOp2DRotation SOp180 SOpMoveBy1 SOpMoveUpBy1"/>
+        <Angle value="75.000000"/>
+    </CActorForceConeRoundedEnd>
+    <CActorModel id="ProtossBuildingFireLarge">
+        <HostSiteOps Ops="SOpAttachHarness SOpMoveUpBy1"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireMedium">
+        <HostSiteOps Ops="SOpAttachHarness SOpMoveUpBy1"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireSmall">
+        <HostSiteOps Ops="SOpAttachHarness SOpMoveUpBy1"/>
+    </CActorModel>
+    <CActorSound id="ProtossFlameLoopBlueLarge" parent="ProtossFlameSound">
+        <Sound value="ProtossFlameLoopSound"/>
+    </CActorSound>
+    <CActorSound id="ProtossFlameLoopBlueMedium" parent="ProtossFlameSound">
+        <Sound value="ProtossFlameLoopSound"/>
+    </CActorSound>
+    <CActorSound id="ProtossFlameLoopBlueSmall" parent="ProtossFlameSound">
+        <Sound value="ProtossFlameLoopSound"/>
+    </CActorSound>
+    <CActorSound id="ProtossFlameLoopSmokeLarge" parent="ProtossFlameSound">
+        <Sound value="Protoss_FlameLoopLarge"/>
+    </CActorSound>
+    <CActorSound id="ProtossFlameLoopSmokeMedium" parent="ProtossFlameSound">
+        <Sound value="Protoss_FlameLoopMedium"/>
+    </CActorSound>
+    <CActorSound id="ProtossFlameLoopSmokeSmall2" parent="ProtossFlameSound">
+        <Sound value="Protoss_FlameLoopSmall"/>
+    </CActorSound>
+    <CActorSetQueried id="ProtossFlameSetFireBlueLarge" parent="ProtossFlameSet" type="FireBlueLarge"/>
+    <CActorSetQueried id="ProtossFlameSetFireBlueMedium" parent="ProtossFlameSet" type="FireBlueMedium"/>
+    <CActorSetQueried id="ProtossFlameSetFireBlueSmall" parent="ProtossFlameSet" type="FireBlueSmall"/>
+    <CActorSetQueried id="ProtossFlameSetFireSmokeLarge" parent="ProtossFlameSet" type="FireSmokeLarge"/>
+    <CActorSetQueried id="ProtossFlameSetFireSmokeMedium" parent="ProtossFlameSet" type="FireSmokeMedium"/>
+    <CActorSetQueried id="ProtossFlameSetFireSmokeSmall" parent="ProtossFlameSet" type="FireSmokeSmall"/>
+    <CActorStateMonitor id="ProtossFlamesLargeBuilding">
+        <On index="2" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality; Cap 1" Send="Create ProtossFlameSetFireSmokeLarge"/>
+        <On index="3" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameSetFireSmokeLarge" Send="Destroy"/>
+        <On index="4" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality" Send="Create ProtossFlameLoopSmokeLarge"/>
+        <On index="5" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameLoopSmokeLarge" Send="Destroy"/>
+        <On index="6" Terms="StateChange; StateValid ProtossFireBlue" Target="" Send="Create ProtossFlameSetFireBlueLarge"/>
+        <On index="7" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameSetFireBlueLarge"/>
+        <On index="8" Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueLarge"/>
+        <On index="9" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueLarge"/>
+        <On Terms="UnitCreation.Mothership" Send="Create"/>
+        <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireLarge"/>
+        <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireLarge" Send="Destroy"/>
+        <StateArray Name="ProtossFireSmoke" Terms="ValidateUnit ProtossBuildingBurnDownFireSmoke"/>
+        <StateArray Name="ProtossFireBlue" Terms="ValidateUnit ProtossBuildingBurnDownFireBlue"/>
+    </CActorStateMonitor>
+    <CActorStateMonitor id="ProtossFlamesMediumBuilding">
+        <StateArray Name="ProtossFireSmoke" Terms="ValidateUnit ProtossBuildingBurnDownFireSmoke"/>
+        <StateArray Name="ProtossFireBlue" Terms="ValidateUnit ProtossBuildingBurnDownFireBlue"/>
+        <On index="9" Terms="UnitCreation.AssimilatorRich" Send="Create"/>
+        <On index="10" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality; Cap 1" Send="Create ProtossFlameSetFireSmokeMedium"/>
+        <On index="11" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameSetFireSmokeMedium"/>
+        <On index="12" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="" Send="Create ProtossFlameLoopSmokeMedium"/>
+        <On index="13" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameLoopSmokeMedium" Send="Destroy"/>
+        <On index="14" Terms="StateChange; StateValid ProtossFireBlue" Target="" Send="Create ProtossFlameSetFireBlueMedium"/>
+        <On index="15" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameSetFireBlueMedium" Send="Destroy"/>
+        <On Terms="UnitCreation.WarpGate" Send="Create"/>
+        <On Terms="UnitCreation.Gateway" Send="Create"/>
+        <On Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueMedium"/>
+        <On Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueMedium" Send="Destroy"/>
+        <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireMedium"/>
+        <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireMedium" Send="Destroy"/>
+    </CActorStateMonitor>
+    <CActorStateMonitor id="ProtossFlamesSmallBuilding">
+        <StateArray Name="ProtossFireSmoke" Terms="ValidateUnit ProtossBuildingBurnDownFireSmoke"/>
+        <StateArray Name="ProtossFireBlue" Terms="ValidateUnit ProtossBuildingBurnDownFireBlue"/>
+        <On index="6" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality; Cap 1" Send="Create ProtossFlameSetFireSmokeSmall"/>
+        <On index="7" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameSetFireSmokeSmall" Send="Destroy"/>
+        <On index="8" Terms="StateChange; StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="" Send="Create ProtossFlameLoopSmokeSmall2"/>
+        <On index="9" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameLoopSmokeSmall"/>
+        <On index="10" Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameSetFireBlueSmall"/>
+        <On index="11" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameSetFireBlueSmall"/>
+        <On Terms="UnitCreation.ShieldBattery" Send="Create"/>
+        <On Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueSmall"/>
+        <On Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueSmall" Send="Destroy"/>
+        <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireSmall"/>
+        <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireSmall" Send="Destroy"/>
+    </CActorStateMonitor>
+    <CActorModel id="ProtossBuildingFireBlueLarge" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 113,255,208 119,170,255 4.000000 Bounce"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireBlueMedium" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 191,255,235 196,218,255 4.000000 Bounce"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireBlueSmall" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 159,255,224 145,186,255 4.000000 Bounce"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireSmokeLarge" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 113,231,255 119,170,255 4.000000 Bounce"/>
+        <HostSiteOps Ops="SOpAttachHarness SOpRotationRandomFull"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireSmokeMedium" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 113,231,255 119,170,255 4.000000 Bounce"/>
+        <HostSiteOps Ops="SOpAttachHarness SOpRotationRandomFull"/>
+    </CActorModel>
+    <CActorModel id="ProtossBuildingFireSmokeSmall" parent="ProtossFlameModel">
+        <On Terms="ActorCreation" Send="SetTintColorBlendPair 113,231,255 119,170,255 4.000000 Bounce"/>
+        <HostSiteOps Ops="SOpAttachHarness SOpRotationRandomFull"/>
+    </CActorModel>
+    <CActorRange id="DisruptorPurificationNovaTargettedRange">
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <On index="1" Terms="UnitBirth.Disruptor"/>
+        <On index="2" Terms="Behavior.PurificationNovaTargettedCaster.On"/>
+        <On Terms="AbilCooldown.PurificationNovaTargeted.Regen" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.*.Start" Send="SetVisibility 1"/>
+        <On Terms="SelectionLocalUpdate.*.Stop" Send="SetVisibility"/>
+        <Range value="11.900000"/>
+    </CActorRange>
+    <CActorRange id="DisruptorPurificationNovaTargettedRangeOthers">
+        <Filter index="Self" value="1"/>
+        <On Terms="SelectionLocalUpdate.Disruptor.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.Disruptor.Stop" Send="Destroy"/>
+        <Range value="11.900000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+    </CActorRange>
+    <CActorUnit id="HellionTank">
+        <WalkAnimMoveSpeed value="2.3984"/>
+    </CActorUnit>
+    <CActorSimple id="BeamBreakOnCargoLoad">
+        <On Terms="ActorCreation; ScopeContains _BeamBreakOnCargoLoad" Target="_BeamBreakOnCargoLoad" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+        <On Terms="AbilTransport.*.CargoLoad" Send="Create"/>
+    </CActorSimple>
+    <CActorSite id="AttackImpactSite_BeamBreakOnCargoLoad" parent="GenericAttackImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="AttackDamageSite_BeamBreakOnCargoLoad" parent="GenericAttackDamageSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorUnit id="CreepTumor">
+        <On Terms="Abil.CreepTumorBuild.WorkerStart" Send="ModelSwap CreepTumorInactiveSelection"/>
+        <On Terms="Behavior.PrecursorCreepTumor.On" Send="Create {Creep Tumor Placeholder Model}"/>
+        <PlacementActorModel value="CreepTumorPlacementModel"/>
+    </CActorUnit>
+    <CActorModel id="CreepTumorPlacementModel" parent="PlacementModel">
+        <On index="0" Target="CreepTumorPlacementModel"/>
+        <On Terms="ActorCreation" Send="Create CreepTumorSpreadRange"/>
+        <On Terms="ActorDestruction" Target="CreepTumorSpreadRange" Send="Destroy"/>
+        <Model value="CreepTumor"/>
+    </CActorModel>
+    <CActorRange id="CreepTumorSpreadRange" parent="RangeAbil" abil="CreepTumorBuild">
+        <On index="1" Terms="ActorCreation.CreepTumorPlacementModel" Send="Create"/>
+        <On index="2" Terms="ActorCreation" Send="SetLocalTintColor"/>
+        <On index="3" removed="1"/>
+        <On index="4" removed="1"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+        <IconTint value="255,160,66,255"/>
+    </CActorRange>
+    <CActorModel id="Creep Tumor Placeholder Model" parent="PlaceholderModel">
+        <Aliases index="0" removed="1"/>
+        <Aliases index="1" removed="1"/>
+        <Aliases index="2" removed="1"/>
+        <On index="4" Terms="Behavior.PrecursorCreepTumor.Off" Send="Destroy Immediate"/>
+        <On index="5" removed="1"/>
+        <Model value="CreepTumorPlacement"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorEventMacro id="QueueAnimSpeed135" parent="QueueAnim">
+        <Remove Terms="StatusOn.*.Queuing" Send="AnimBracketStart Queuing Work,Start Work Work,End"/>
+        <On Terms="StatusOn.*.Queuing" Send="AnimBracketStart Queuing Work,Start Work Work,End 0 1.350000 AsTimeScale"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="QueueAnimSpeed350" parent="QueueAnim">
+        <Remove Terms="StatusOn.*.Queuing" Send="AnimBracketStart Queuing Work,Start Work Work,End"/>
+        <On Terms="StatusOn.*.Queuing" Send="AnimBracketStart Queuing Work,Start Work Work,End 0 3.750000 AsTimeScale"/>
+    </CActorEventMacro>
+    <CActorUnit id="Armory">
+        <On Terms="Abil.que5.Start" Send="Create ArmoryResearchBeam"/>
+        <On Terms="Abil.que5.Stop" Target="ArmoryResearchBeam" Send="Destroy"/>
+    </CActorUnit>
+    <CActorModel id="ArmoryResearchBeam" parent="ModelAnimationStyleContinuous">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Work Work Death 0 2.000000"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpArmoryResearchOffset"/>
+        <Macros value="GlobalLoopMacro"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="SOpArmoryResearchOffset">
+        <LocalOffset value="-0.210000,-0.250000,0.900000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorModel id="TwilightCouncilResearchBeam" parent="ModelAnimationStyleContinuous">
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart AttackCover Birth Birth Death ContentForceLooping 3.000000 AsTimeScale"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1"/>
+        <Host Subject="TwilightCouncil"/>
+    </CActorModel>
+    <CActorUnit id="Egg">
+        <Macros value="Egg_Grow_Macro"/>
+    </CActorUnit>
+    <CActorEventMacro id="Egg_Grow_Macro">
+        <On Terms="ActorCreation" Send="SetScale 0.300000"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.001000 Egg_Grow"/>
+        <On Terms="TimerExpired; TimerName Egg_Grow" Send="SetScale 0.980000,0.980000,0.960000 0.070000"/>
+        <On Terms="TimerExpired; TimerName Egg_Grow" Send="TimerKill Egg_Grow"/>
+    </CActorEventMacro>
+    <CActorUnit id="FleetBeacon">
+        <Macros index="5" value="QueueAnimSpeed350"/>
+    </CActorUnit>
+    <CActorSound id="BanelingDeathSuicideSound">
+        <Terms value="Cap 1"/>
+    </CActorSound>
+    <CActorSimple id="BanelingAttackSplashHitSound">
+        <Supporter Subject="_Unit" Scope="Caster"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="SupporterDestruction" Send="Destroy"/>
+        <On Terms="Effect.VolatileBurst.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.SplashDamage.Start; FromEffectTreeDescendant; At Caster" Target="::Supporter" Send="Signal BanelingSplashHit"/>
+        <On Terms="Effect.SplashDamage.Start; FromEffectTreeDescendant; At Caster" Send="Destroy"/>
+        <On Terms="Effect.VolatileBurst.Stop; At Caster" Send="Destroy"/>
+    </CActorSimple>
     <!-- IMPORTED -->
     <CActorEventMacro id="GimbalZMacro">
         <Supporter Subject="_Unit"/>
