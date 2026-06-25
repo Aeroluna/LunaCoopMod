@@ -189,6 +189,60 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Changed Lurker weapons to be disabled while unburrowed.
 - Increased Amon Lurker damage from 20 to 20 (+10 vs Armored).
 - Reduced Interceptor attack priority from 20 to 19. (Attackers now prioritize other units over Interceptors)
+- Fixed an issue where EMP visuals did not provide clear visual indication of effect radius/affected units.
+- Fixed an issue where Motherships would warp in adjacent to the Nexus rather than overtop.
+- Fixed an issue where Guardian Shield visuals would persist even after loaded into a transport.
+- Fixed an issue where melee units targeting builder SCVs would lose their attack order when the SCV moved through the structure.
+- Fixed an issue where SCVs could not have build orders queued sequentially onto structures already being constructed by another SCV.
+- Fixed an issue where Guardian Shield visuals would not update player colour post-initialization.
+- Fixed an issue where the KD8 Charge lacked a placement model and AOE effect radius cursor indicator.
+- Fixed an issue where the KD8 Charge would be thrown in front of a target unit rather than at the targeted cast point.
+- Fixed an issue where some units' spells would not trigger Protoss shield-damage graphics (Purification Nova, Corrosive Bile, KD8 Charge).
+- Fixed an issue where units with burrow move would lose their current orders when told to burrow.
+- Fixed an issue where attack commands with Adept Shades in the selection behaved erratically (eg. finishing a shade caused the attack target to be lost if the command was not issued by smart command/right click, units could unexpectedly move command etc).
+- Fixed an issue where Lurker Attack Spike sounds could be heard through the Fog of War.
+- Fixed an issue where Lurker eggs lacked polish during creation/destruction. Eggs now take less time to appear due to faster birth animation and play a death cry to communicate when destroyed early.
+- Fixed an issue where the Warp Prism would not display an unload visual model indicator.
+- Fixed an issue where the Warp Prism would not display a load range radius actor when the ability was being targeted.
+- Fixed an issue where the Warp Prism movement was highly variant/ sluggish if ordered to queue pickup orders or pick up units slightly out of immediate range.
+- Fixed an issue where commanding Oracles to build Stasis Wards in areas inside their range could result in slower execution than being commanded to build outside their range.
+- Fixed an issue where Oracles would teleport short distances if told to build a Stasis Ward while overlapping with other air units (such as other friendly oracles).
+- Fixed an issue where Stasis Wards lacked a distinct audio cue for their death.
+- Fixed an issue where players attempting to attack a Stasis Ward could easily accidentally move command underneath it instead.
+- Fixed an issue where Voidray Prismatic Alignment lacked a termination audio cue.
+- Fixed an issue where beam attack visuals would not terminate if targets were picked up by transports or teleported away (Sentry, Void Ray).
+- Fixed an issue where the Sentry's beam attack visuals were misleading due to being significantly delayed during creation and termination. They should now feel much more responsive to control.
+- Fixed an issue where the High Templar's basic weapon's visuals and sounds were not proportionate in size/volume to its impact.
+- Fixed an issue where killing a Viper prior to its Abduct tongue connecting with a target would not cancel the abduct.
+- Fixed an issue where Planetaries lacked or had misleading visual and audio indicators (splash damage impact visuals, sound).
+- Fixed an issue where Archons lacked several visual and audio indicators (birth sound, splash damage impact visuals, movement sound, attack physics).
+- Fixed an issue where friendly Disruptor Purification Nova range radius actors were displayed permanently, even if the unit was on cooldown, causing unnecessary clutter as unit count increased.
+- Fixed an issue where SwarmHost range radius actors were displayed permanently, even if the unit was on cooldown, causing unnecessary clutter as unit count increased.
+- Fixed an issue where SwarmHosts lacked an equipment (weapon) display indicator for the Locust.
+- Fixed an issue where Hellbat walk animation speed was faster than expected.
+- Fixed an issue where casting Generate Creep would only affect a subselection of Overlords or Transport Overlords rather than both variations.
+- Fixed an issue where Creep Tumors lacked placement and placeholder models when spreading themselves.
+- Fixed an issue where it could be difficult to distinguish if a research structure was active (Twilight Council, Fleet Beacon, Armory, Evolution Chamber).
+- Improved an issue where injecting Queens 'shuffle'. Allowed re-issuing inject during ongoing cast so orders are not offloaded to others queen. Long-range orders are invalid if another queen is nearby the target hatchery.
+- Improved an issue where units with their primary attack order on a changeling would lose their order if the Changeling subsequently disguised itself.
+- Improved an issue where gather orders were clunky for workers. Workers adjacent and move commanding to a geyser now update their command to a gather order if a refinement structure gets built.
+- Active Creep Tumors will now take selection precedence over Inactive Tumors.
+- Active Creep Tumors in a control group at the time of exhausting their charge will now transfer control group membership to the spread tumor.
+- Larva/Eggs will no longer collide with/block player structures or units.
+- Neural Parasite will now add the target unit to the current selection if the selection only contains one infestor.
+- Protoss structures now generate additional 'damaged' graphical models.
+- As larva increases, they will now spread further upwards around the sides of the hatchery. Larva will still start from the bottom of the hatchery.
+- Slightly polished Oracles' Revelation and Build animation transitions.
+- Casters with weak weapons are now less likely to aggro towards faraway targets.
+- Adjusted Warp Prism and Raven visual fly height to minimize clipping inside other models and reduced Warp Prism shadow size on low graphics to minimize shadow-casting on unloaded units.
+- Commands to unsiege Warp Prisms will now be issued to all Warp Prisms in the selection.
+- The Warp Prism will now attempt to immediately siege when instructed rather than prioritizing deceleration.
+- Repair is no longer automatically set to auto-cast for SCVs.
+- Mule Repair is now set to auto-cast by default (Mules with a harvest order still do not attempt to repair units).
+- Buffed Warp Gate Research to also reduces the build time of units produced by Gateways by 40%.
+- Removed Armored attribute from Creep Tumors.
+- Added Light attribute to Creep Tumors.
+- Added Load Nearby Units commands to all transports.
 
 Copied from Versus.
 
@@ -743,6 +797,18 @@ These guys are pushovers anyways, give them Blink!
   - Amon will gain this upgrade after never/never/1200/900 seconds.
 
 fast banshees go nyoom.
+
+- Increased Ghost (and variants) supply cost from 2 to 3.
+- Changed Ghost (and variants) damage from 10 (+10 vs Light) to 15.
+- Increased Ghost (and variants) attack range from 6 to 7.
+- Increased Ghost (and variants) movement speed from 2.25 to 2.75.
+- Added Light attribute to Ghosts (and variants).
+- Removed Sniper Round.
+- Added Steady Targeting.
+  - After carefully aiming for 2 seconds, the Ghost fires a sniper round dealing 170 damage. Ignores armor.
+  - Can only target biological units.
+
+Copied from Versus. These changes should further solidify Ghosts as backline snipers. Steady Targeting should also be more interruptable than Sniper Round was.
 
 - Reduced cast range of Infestor's Infested Terran ability from 9 to 8.
 - Nerfed Infestor's Fungal Growth from a root to a 75% slow.
@@ -1495,10 +1561,6 @@ When adding Oracles to co-op, this duration got halved, presumably because it wo
 - Buffed P2 to reduce Stasis Ward duration by 50% instead of 75%
 
 For the prestige focused on stasising things, the P2 just makes Stasis Wards sad. This buff combined with the increased duration should help with that.
-
-- Removed deceleration from Oracle's Stasis Ward ability (no longer has to fully stop to cast).
-
-Makes casting much smoother.
 
 - Reduced Corsair subgroup priority from 119 to 115.
 
