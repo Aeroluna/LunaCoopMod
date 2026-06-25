@@ -7437,6 +7437,8 @@
         <On index="8" Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueLarge"/>
         <On index="9" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueLarge"/>
         <On Terms="UnitCreation.Mothership" Send="Create"/>
+        <On Terms="UnitCreation.MothershipArtanis" Send="Create"/>
+        <On Terms="UnitCreation.SOAMothershipV4" Send="Create"/>
         <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireLarge"/>
         <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireLarge" Send="Destroy"/>
         <StateArray Name="ProtossFireSmoke" Terms="ValidateUnit ProtossBuildingBurnDownFireSmoke"/>
@@ -7454,6 +7456,10 @@
         <On index="15" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameSetFireBlueMedium" Send="Destroy"/>
         <On Terms="UnitCreation.WarpGate" Send="Create"/>
         <On Terms="UnitCreation.Gateway" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulGateway" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulCyberneticsCore" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulRoboticsFacility" Send="Create"/>
+        <On Terms="UnitCreation.AutomatedAssimilatorZeratul" Send="Create"/>
         <On Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueMedium"/>
         <On Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueMedium" Send="Destroy"/>
         <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireMedium"/>
@@ -7468,11 +7474,14 @@
         <On index="9" Terms="StateChange; !StateValid ProtossFireSmoke; !ModelIsLowQuality" Target="ProtossFlameLoopSmokeSmall"/>
         <On index="10" Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameSetFireBlueSmall"/>
         <On index="11" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameSetFireBlueSmall"/>
-        <On Terms="UnitCreation.ShieldBattery" Send="Create"/>
         <On Terms="StateChange; StateValid ProtossFireBlue" Send="Create ProtossFlameLoopBlueSmall"/>
         <On Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueSmall" Send="Destroy"/>
         <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireSmall"/>
         <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireSmall" Send="Destroy"/>
+        <On Terms="UnitCreation.ZeratulDarkShrine" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulPhotonCannon" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulKhaydarinMonolith" Send="Create"/>
+        <On Terms="UnitCreation.ZeratulRoboticsBay" Send="Create"/>
     </CActorStateMonitor>
     <CActorModel id="ProtossBuildingFireBlueLarge" parent="ProtossFlameModel">
         <On Terms="ActorCreation" Send="SetTintColorBlendPair 113,255,208 119,170,255 4.000000 Bounce"/>
