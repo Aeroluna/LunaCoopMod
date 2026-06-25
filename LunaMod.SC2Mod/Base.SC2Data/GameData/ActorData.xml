@@ -137,6 +137,10 @@
         <DamageMap index="None" ModelReaction="VoidArchonFireSplash"/>
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorSound id="DehakaGlevigFirebreathImpactAS" parent="SoundOneShot">
+        <On Terms="Effect.DehakaGlevigFirebreathWaitPersistent.Start" Send="Create"/>
+        <Sound value="Yagdra_Fireball_Impact"/>
+    </CActorSound>
     <CActorUnit id="DehakaMutaliskLevel3">
         <DeathCustoms index="5" ActorModel="MutaliskDeathRagdoll"/>
     </CActorUnit>
@@ -873,6 +877,20 @@
     <CActorAction id="WarHoundAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorSound id="YagdraFirebreathEndSound">
+        <On Terms="Effect.DehakaGlevigFirebreathCreateGoverningPersistent.Stop; At Caster" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="YagdraFirebreathModelImpact">
+        <On Terms="Effect.DehakaGlevigFirebreathWaitPersistent.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpForwardCasterPointInverted YagdraFirebreathVariance"/>
+        <Host Subject=""/>
+    </CActorModel>
+    <CActorSound id="YagdraFirebreathStartSound">
+        <On Terms="Effect.DehakaGlevigFirebreathCreateGoverningPersistent.Start; At Caster" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="YagdraFirebreathTargetModel">
+        <Remove Terms="Effect.DehakaGlevigFirebreathWaitPersistent.Start" Send="Create"/>
+    </CActorModel>
     <CActorAction id="ZeratulKhaydarinBeamAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>

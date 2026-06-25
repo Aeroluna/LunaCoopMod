@@ -248,6 +248,30 @@
             <AccumulatorArray value="DehakaLevelMammothBeamDamageMultiplier"/>
         </Amount>
     </CEffectDamage>
+    <CEffectCreatePersistent id="DehakaGlevigFirebreathCreateFakeDamagePersistent">
+        <PeriodicOffsetArray value="0,-0.5,0"/>
+        <PeriodicOffsetArray value="0,-1.5,0"/>
+        <PeriodicOffsetArray value="0,-2.5,0"/>
+        <PeriodicOffsetArray value="0,-3.5,0"/>
+        <PeriodicOffsetArray value="0,-4.5,0"/>
+        <PeriodicOffsetArray value="0,-5.5,0"/>
+        <PeriodicOffsetArray value="0,-6.5,0"/>
+        <PeriodicOffsetArray value="0,-7.5,0"/>
+        <PeriodicOffsetArray value="0,-8.5,0"/>
+        <PeriodicOffsetArray value="0,-9.5,0"/>
+        <PeriodicOffsetArray value="0,-10.5,0"/>
+        <PeriodicOffsetArray value="0,-11.5,0"/>
+        <PeriodicOffsetArray value="0,-12.5,0"/>
+        <PeriodicOffsetArray value="0,-13.5,0"/>
+        <Flags index="RandomOffset" value="1"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <PeriodCount value="10"/>
+        <PeriodicPeriodArray index="0" value="0.125"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="DehakaGlevigFirebreathWaitPersistent">
+        <Chance value="0.5"/>
+    </CEffectCreatePersistent>
     <CEffectCreatePersistent id="DehakaNydusDestroyerTimedNoFoodBeamCP">
         <PeriodicValidator value="NydusDestroyerBeamValidators"/>
     </CEffectCreatePersistent>
@@ -863,6 +887,9 @@
     <CEffectCreatePersistent id="NydusDestroyerBeamCP">
         <PeriodicValidator value="NydusDestroyerBeamValidators"/>
     </CEffectCreatePersistent>
+    <CEffectCreateUnit id="ReaperKD8Knockback">
+        <ValidatorArray index="2" value="IsNotBuried"/>
+    </CEffectCreateUnit>
     <CEffectSet id="SpawnLarvaSet">
         <EffectArray value="QueenInjectStunAB"/>
         <ValidatorArray value="NotContaminated"/>

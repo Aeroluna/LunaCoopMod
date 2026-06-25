@@ -94,6 +94,12 @@ Another Versus change. Hellions and Firebats should be able to roast these thing
 
 Copied from Versus. These changes should further solidify Ghosts as backline snipers. Steady Targeting should also be more interruptable than Sniper Round was.
 
+- Fixed an issue where Reaper KD8 Charge ability could knockback burrowed units.
+- Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
+- Added a countdown for tracking barrier abilities.
+
+yeah.
+
 ## 6/4/2026
 
 - Reworked Astral Storm to no longer apply a secondary lingering debuff.

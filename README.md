@@ -413,6 +413,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
     - Mecha Overseer
     - Enthralled Zergling
 - Fixed an issue where Reavers could not path through force fields.
+- Added a countdown for tracking barrier abilities.
 
 yeah.
 
@@ -2348,6 +2349,7 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Primal Mutalisk Chrysalis used the wrong wireframe.
 - Increased the scale of Primal Mutalisk's projectiles by 30%.
 - Adjusted Ravasaur weapon projectile mover.
+- Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
 
 yeah.
 
