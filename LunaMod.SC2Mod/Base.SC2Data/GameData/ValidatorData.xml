@@ -137,6 +137,35 @@
         <Compare value="GT"/>
         <Behavior value="MasteryTychusFirstHero"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ChannelSnipeBehaviorValidator">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="ChannelSnipeCombat"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="ChannelSnipeValidators">
+        <Type value="And"/>
+        <CombineArray value="ChannelSnipeBehaviorValidator"/>
+        <CombineArray value="ChannelSnipeCasterFilters"/>
+        <CombineArray value="ChannelSnipeTargetFilters"/>
+        <CombineArray value="ChannelSnipeRange"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="ChannelSnipeRefundValidator">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="ChannelSnipeRefund"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="ChannelSnipeRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="14"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitFilters id="ChannelSnipeCasterFilters">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Stasis,Dead,Hidden,Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="ChannelSnipeTargetFilters">
+        <Filters value="Biological,Visible;Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
     <CValidatorPlayerRequirement id="CommanderPrestigeArtanisWarp">
         <Find value="1"/>
         <Value value="CommanderPrestigeArtanisWarp"/>
@@ -273,6 +302,15 @@
         <AbilLink value="CorsairMPDisruptionWeb"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CValidatorUnitOrder>
+    <CValidatorCombine id="NydusDestroyerBeamValidators">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Type value="And"/>
+        <CombineArray value="NotDead"/>
+        <CombineArray value="CasterNotDead"/>
+        <CombineArray value="NotVortexd"/>
+        <CombineArray value="TargetIsVisible"/>
+        <CombineArray value="NotInvulnerable"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="HarvestableRichVespeneGeyserGas">
         <Compare value="GT"/>
         <Behavior value="HarvestableRichVespeneGeyserGas"/>

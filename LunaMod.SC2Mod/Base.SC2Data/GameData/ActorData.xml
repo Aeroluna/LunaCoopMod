@@ -23,6 +23,12 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorAction id="AlarakAAAttack">
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="AlarakLightningStrikesAttack">
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorSimple id="ArbiterMPRecallOpacity">
         <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
     </CActorSimple>
@@ -79,15 +85,58 @@
         <On Terms="UnitBirth.Changeling" Send="TimerSet 0.450000 SpeedUpBirthAnim"/>
         <On Terms="TimerExpired.Changeling; TimerName SpeedUpBirthAnim" Send="AnimSetTimeScale Birth 2.750000"/>
     </CActorUnit>
+    <CActorModel id="ChannelSnipeLaunchSquib" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachWeapon"/>
+        <On Terms="Effect.ChannelSnipeDamage.Start; At Caster" Send="Create"/>
+        <Model value="GhostSnipeAttackLaunch"/>
+    </CActorModel>
+    <CActorRange id="ChannelSnipeRange" parent="RangeAbil" abil="ChannelSnipe">
+        <Range value="10.000000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorAction id="ChannelSnipe" parent="GenericAttack" effectAttack="ChannelSnipeDamage">
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <LaunchAssets Sound="Ghost_SnipeLaunch"/>
+        <ImpactMap index="None" Sound="Ghost_SnipeImpact"/>
+    </CActorAction>
+    <CActorBeamSimple id="ChannelSnipeBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <HostLaunch Subject="_Unit"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachHead" HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="ChannelSnipeTrackingBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <HostLaunch Subject="_Unit" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachHead"/>
+        <On Terms="Effect.ChannelSnipeCombatRB.Start" Send="Destroy"/>
+    </CActorBeamSimple>
     <CActorUnit id="CommanderPrestigeArtanisOrbitalStrikesArchon">
         <UnitIcon value="Assets\Textures\btn-unit-protoss-archon-upgraded.dds"/>
+        <On Terms="UnitBirth.Archon" Send="Create ArchonMergeComplete"/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
     </CActorUnit>
+    <CActorAction id="CommanderPrestigeArtanisOrbitalStrikesArchonAttack">
+        <ImpactMap index="None" Model="ArchonAttackImpact" ModelReaction="ArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="ArchonFireSplash"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorModel id="CommanderPrestigeNovaSuperCloak">
         <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.On" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakStrong.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.On; ValidateUnit HaveNovaBansheeSpeed" Send="Create"/>
         <On Terms="Behavior.CommanderPrestigeNovaCloakBanshee.Off" Send="AnimBracketStop BSD"/>
     </CActorModel>
+    <CActorAction id="DarkArchonHeroAttack">
+        <ImpactMap index="None" Model="ArchonAttackImpact" ModelReaction="VoidArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="VoidArchonFireSplash"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="DehakaMutaliskLevel3">
         <DeathCustoms index="5" ActorModel="MutaliskDeathRagdoll"/>
     </CActorUnit>
@@ -99,6 +148,9 @@
             <Image index="0" value="Assets\Textures\wireframe-zerg-broodlordegg.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorAction id="DehakaNydusDestroyerTimedNoFoodBeamAction">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="DehakaPrimalSwarmHost">
         <DeathCustoms index="6" ActorModel="SwarmHostDeathRagdoll"/>
     </CActorUnit>
@@ -133,15 +185,28 @@
     <CActorUnit id="EvolutionChamber">
         <Macros index="1" value="QueueAnimSpeed135"/>
     </CActorUnit>
+    <CActorAction id="FenixClolarionChargeBeamAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorUnit id="Ghost">
+        <On Terms="Abil.ChannelSnipe.SourceCastStart" Send="AnimBaselineStop"/>
+        <On Terms="Abil.ChannelSnipe.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
+        <On Terms="Abil.ChannelSnipe.SourceCastStop" Send="AnimClear SpellA"/>
+        <On Terms="Abil.ChannelSnipe.SourceCastStop" Send="AnimBaselineStart"/>
+        <On Terms="Abil.ChannelSnipe.SourceChannelStart" Send="AnimPlay SpellB Spell,B PlayForever"/>
+        <On Terms="Abil.ChannelSnipe.SourceChannelStop" Send="AnimClear SpellB"/>
+        <On Terms="Effect.ChannelSnipeDamage.Start; At Caster" Send="AnimPlay SpellC Spell,C"/>
+        <On Terms="Effect.ChannelSnipeInitialSet.Start; At Caster" Send="Create ChannelSnipeTrackingBeam"/>
+    </CActorUnit>
     <CActorModel id="GhostEMPAttackImpactEffect">
         <On index="4" Terms="Effect.EMPSearch.Start" Send="TimerSet 0.750000 cleanImpactVisual"/>
         <On Terms="TimerExpired; TimerName cleanImpactVisual" Send="SetScale 0.450000 2.500000"/>
-        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+        <HostSiteOps Ops="SOpShadow SOpMoveUpByDot5"/>
     </CActorModel>
     <CActorModel id="GhostBlackOpsEMPAttackImpactEffect">
         <On index="4" Terms="Effect.EMPBlackOpsSearch.Start" Send="TimerSet 0.750000 cleanImpactVisual"/>
         <On Terms="TimerExpired; TimerName cleanImpactVisual" Send="SetScale 0.450000 2.500000"/>
-        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+        <HostSiteOps Ops="SOpShadow SOpMoveUpByDot5"/>
     </CActorModel>
     <CActorAction id="GhostSnipeAttack">
         <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
@@ -169,16 +234,43 @@
         <HostSiteOps Ops="SOpMoveBy1 SOpForwardSouth"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.750000"/>
     </CActorModel>
+    <CActorAction id="HybridNemesisWeaponAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="KD8Charge">
         <PlaceholderActorModel value="ReaperKD8Placeholder"/>
         <PlacementActorModel value="ReaperKD8PlacementModel"/>
     </CActorUnit>
+    <CActorSite id="KerriganVoidChainReaction1ImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="KerriganVoidChainReaction2ImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="KerriganVoidChainReaction3ImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="KerriganVoidChainReaction4ImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="KerriganVoidChainReaction5ImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorAction id="KhaydarinBeamAttack">
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="LaserDrillTripodBiggerAttackCoop">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorSplat id="LurkerBurrowedSplat">
         <Scale value="0.800000"/>
     </CActorSplat>
     <CActorBeamSimple id="MammothBeam">
         <On index="0" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
     </CActorBeamSimple>
+    <CActorAction id="MammothBeamAction">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorAction id="MohandarAttack">
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
         <On Terms="Effect.MohandarChargeEffect01.Start; At Caster" Send="Create"/>
@@ -235,6 +327,15 @@
         <AbilSoundArray AbilCmd="MassRecall,Execute" Sound="Mothership_WormholeTransitVO"/>
         <AbilSoundArray AbilCmd="TemporalField,Execute" Sound="Mothership_TimeBombVO"/>
     </CActorUnit>
+    <CActorAction id="MothershipAiur06Attack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="MothershipAiur06SecondaryAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="MothershipAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorModel id="MothershipCloakingField" parent="ModelAnimationStyleContinuous">
         <!--On Terms="Behavior.CloakField.On" Send="Create"/>
         <On Terms="Behavior.CloakField.Off" Send="AnimBracketStop BSD"/-->
@@ -245,12 +346,24 @@
         <Model value="CloakingField"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
+    <CActorAction id="MothershipSecondaryAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="MutatorLaserDrill">
         <On index="81" Send="AnimPlay Attack Attack PlayForever -1.000000 -1.000000 0.500000 AsTimeScale"/>
         <On index="83" Send="AnimPlay AttackA Attack,A PlayForever -1.000000 -1.000000 0.750000 AsTimeScale"/>
         <On index="85" Send="AnimPlay AttackB Attack,B PlayForever -1.000000 -1.000000 1.000000 AsTimeScale"/>
         <Model value="MutatorLaserDrill"/>
     </CActorUnit>
+    <CActorAction id="MutatorLaserDrillAttackA">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="MutatorLaserDrillAttackB">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="MutatorLaserDrillAttackC">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorModel id="NovaBoomBotBirthModel" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
@@ -554,6 +667,9 @@
         <On index="4" Terms="Behavior.NovaDashAttackSpeed.On; ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
         <Radius value="2.000000"/>
     </CActorForceCylinder>
+    <CActorAction id="NydusDestroyerBeamAction">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorAction id="OracleWeaponAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -574,6 +690,12 @@
     <CActorUnit id="RoachVile">
         <Macros index="1" value="ZergBurrowMobileTransientAnimMacro"/>
     </CActorUnit>
+    <CActorAction id="SOAMothershipv4Attack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="SOAMothershipv4SecondaryAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorSiteOpForward id="SOpForwardDarkTemplarBlinkTargetLocation">
         <HostForward Subject="DarkTemplar"/>
     </CActorSiteOpForward>
@@ -699,6 +821,16 @@
     <CActorSound id="SILiberatorSwarmFormLaunch" parent="SoundOneShot">
         <On Terms="Behavior.SILiberatorSwarmFormPermanentDamageResistant.On" Send="Create"/>
     </CActorSound>
+    <CActorAction id="SanitizationAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorBeamSimple id="SanitizationAttackBeam">
+        <Remove Terms="Effect.SanitizationBeam.Stop; At Effect" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.SanitizationBeam.Stop; At Effect" Send="TimerSet 0.150000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketStart; AnimName BSD" Send="AnimSetTimeScale BSD 10.000000"/>
+        <On Terms="AnimBracketState.*.AfterOpening" Send="AnimSetTimeScale BSD 1.000000"/>
+    </CActorBeamSimple>
     <CActorAction id="SentryAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -720,8 +852,29 @@
         <IconScale value="0.004000,0.003000"/>
         <IconArcLength value="0.400000"/>
     </CActorRange>
+    <CActorAction id="VoidRayChargeBeamAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="VoidRayChargeBeamBounce1Attack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="VoidRayChargeBeamBounce2Attack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="VoidRayChargeBeamBounce3Attack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="VoidRayChargeBeamBounceAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorAction id="VoidRaySwarmAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="WarHoundAttack">
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
+    <CActorAction id="ZeratulKhaydarinBeamAttack">
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorAction id="ZeratulSentryAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
@@ -751,7 +904,7 @@
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconScale value="0.004000,0.004000"/>
         <IconArcLength value="2.000000"/>
-        <Range value="3.750000"/>
+        <Range value="5.000000"/>
     </CActorRange>
     <CActorBeamSimple id="WarpPrismWarpOut" parent="BeamSimpleAnimationStyleOneShot">
         <On Terms="AbilTransport.WarpPrismTransport.CargoLoad" Send="Create"/>
@@ -1489,6 +1642,7 @@
         <ImpactMap index="None" Model="Infested_Diamondback_Slime_Impact" Sound="StukovInfestedDiamondBack_AttackImpact"/-->
         <LaunchAttachQuery Methods="FilterWeapon0102"/>
         <ImpactSite value="StukovInfestedDiamondBackBileStreamSprayImpactSite"/>
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorSite id="StukovInfestedDiamondBackBileStreamSprayImpactSite">
         <HostSiteOps HoldRotation="1"/>
@@ -2355,6 +2509,7 @@
     </CActorRange>
     <CActorAction id="TychusWarhoundAttack">
         <ContainerAssets Sound="TychusWarhound_AttackLaunch"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorUnit id="TychusWarhoundAutoTurret">
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
@@ -2704,6 +2859,7 @@
         <BeamScope value="Caster"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
         <ImpactPhysics Name="KerriganEpilogue03AttackForce" MatchKeys="Basic" Physics="KerriganEpilogue03AttackForce"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorBeamSimple id="JinaraLightningAttackBeam" parent="BeamSimpleAnimationStyleOneShot">
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
@@ -3218,31 +3374,47 @@
         <StatusBarFlags index="Workers" value="0"/>
         <StatusBarFlags index="Custom" value="0"/>
     </CActorUnit>
-    <CActorSite id="DarkArchon1ImpactSite" parent="GenericAttackImpactSite"/>
+    <CActorSite id="DarkArchon1ImpactSite" parent="GenericAttackImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="DarkArchon2ImpactSite" parent="GenericAttackImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
+    <CActorSite id="DarkArchon3ImpactSite" parent="GenericAttackImpactSite">
+        <Aliases value="_BeamBreakOnCargoLoad"/>
+    </CActorSite>
     <CActorAction id="DarkArchonAttack">
+        <ImpactMap index="None" Model="ArchonAttackImpact" ModelReaction="VoidArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="VoidArchonFireSplash"/>
         <ImpactSite value="DarkArchon1ImpactSite"/>
     </CActorAction>
-    <CActorSite id="DarkArchon2ImpactSite" parent="GenericAttackImpactSite"/>
     <CActorAction id="DarkArchon2Attack" parent="GenericAttack" effectAttack="DarkArchonWeapon2Damage">
         <BeamScope value="Caster"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance VoidRaySOpForwardLaunch"/>
         <LaunchAssets Sound="Archon_AttackLaunch"/>
-        <ImpactMap index="None" Model="" Sound="Archon_AttackImpact"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
         <LaunchRequest Subject="DarkArchon1ImpactSite" Actor="Find"/>
         <ImpactSite value="DarkArchon2ImpactSite"/>
         <Beam value="DarkArchonAttackBeam"/>
+        <ImpactMap index="None" Model="ArchonAttackImpact" Sound="Archon_AttackImpact" ModelReaction="VoidArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="VoidArchonFireSplash"/>
     </CActorAction>
-    <CActorSite id="DarkArchon3ImpactSite" parent="GenericAttackImpactSite"/>
     <CActorAction id="DarkArchon3Attack" parent="GenericAttack" effectAttack="DarkArchonWeapon3Damage">
         <BeamScope value="Caster"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance VoidRaySOpForwardLaunch"/>
         <LaunchAssets Sound="Archon_AttackLaunch"/>
-        <ImpactMap index="None" Model="" Sound="Archon_AttackImpact"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
         <LaunchRequest Subject="DarkArchon2ImpactSite" Actor="Find"/>
         <ImpactSite value="DarkArchon3ImpactSite"/>
         <Beam value="DarkArchonAttackBeam"/>
+        <ImpactMap index="None" Model="ArchonAttackImpact" Sound="Archon_AttackImpact" ModelReaction="VoidArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="VoidArchonFireSplash"/>
     </CActorAction>
     <CActorForceSphere id="VoidArchonResurgenceAttackUpForce">
         <Host Subject="_ImpactGuide"/>
@@ -3282,6 +3454,14 @@
         <On Terms="Abil.VoidArchonMaelstrom.SourceCastStart" Send="AnimPlay Confusion Attack,02"/>
         <On Terms="Abil.VoidArchonMaelstrom.SourceCastStart" Send="Create DarkArchonConfusionCastModel"/>
         <On Terms="Behavior.AscendantArchonSelfBuff.On" Send="Create AscendantArchonSacrificeEffect"/>
+        <On Terms="UnitBirth.VoidArchon" Send="Create VoidArchonMergeComplete"/>
+        <SoundArray index="Ready" value="DarkArchon_Ready"/>
+        <SoundArray index="Help" value="DarkArchon_Help"/>
+        <SoundArray index="What" value="DarkArchon_What"/>
+        <SoundArray index="Yes" value="DarkArchon_Yes"/>
+        <SoundArray index="Attack" value="DarkArchon_Attack"/>
+        <SoundArray index="Pissed" value="DarkArchon_Pissed"/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
         <Model value="DarkArchon"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="DarkArchon"/>
@@ -3290,7 +3470,6 @@
         <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathLarge" Name="Hallucination"/>
         <PlacementModel value="DarkArchonPlacement"/>
         <PortraitModel value="Archon_Taldarim_Collection_Portrait"/>
-        <AbilSoundArray AbilCmd="DarkArchonMindControl,Execute" Sound="DarkArchon_MindControlVO"/>
         <BarOffset value="120"/>
         <BarWidth value="66"/>
         <GroupIcon>
@@ -3298,13 +3477,6 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-darkarchon.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <SoundArray index="Birth" value=""/>
-        <SoundArray index="Ready" value="DarkArchon_Ready"/>
-        <SoundArray index="Help" value="DarkArchon_Help"/>
-        <SoundArray index="What" value="DarkArchon_What"/>
-        <SoundArray index="Yes" value="DarkArchon_Yes"/>
-        <SoundArray index="Attack" value="DarkArchon_Attack"/>
-        <SoundArray index="Pissed" value="DarkArchon_Pissed"/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-darkarchon.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-protoss-darkarchon.dds"/>
@@ -3497,6 +3669,7 @@
         <On Terms="Effect.VoidArchonVortexCreatePersistent.Stop" Send="Destroy"/>
         <!--On Terms="ActorCreation" Send="SetOpacity 0.800000"/-->
         <!--On Terms="ActorCreation" Send="SetTintColor {0,0,0 5.000000}"/-->
+        <On Terms="UnitBirth.DarkArchon" Send="Create DarkArchonMergeComplete"/>
         <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1"/>
         <Model value="MonlythForceFieldStatueAura"/>
         <Scale value="1.400000"/>
@@ -3726,6 +3899,7 @@
     <CActorAction id="ZeratulCoopAAAttack">
         <On Terms="Effect.VorazunCoopAADamage.Start; At Caster" Send="Create"/>
         <On Terms="Effect.VorazunCoopAADamage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorBeamSimple id="ZeratulCoopAAAttackBeam">
         <On index="0" Send="AnimBracketStart BSD Birth {} Death ContentPlayOnce 2.000000 AsTimeScale"/>
@@ -3760,6 +3934,7 @@
         <SoundArray index="Yes" value="DarkArchon_Yes"/>
         <SoundArray index="Attack" value="DarkArchon_Attack"/>
         <SoundArray index="Pissed" value="DarkArchon_Pissed"/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
     </CActorUnit>
     <CActorSound id="ZeratulDarkArchonMaelstromLaunchSound">
         <On Terms="Abil.VoidArchonMaelstrom.SourceCastStart" Send="Create"/>
@@ -4620,6 +4795,7 @@
         <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic" Physics="MengskDiamondbackAttackDeathForce"/>
         <BeamScope value="Caster"/>
         <ImpactMap index="None" Model="MagrailMunition_Impact" Sound="RailGun_Impact"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorBeamSimple id="MarauderMagrailMunitionsBeamAttackBeam" parent="GenericAttackBeam">
         <On Terms="ActorCreation" Send="TimerSet 0.250000 DeathDelay"/>
@@ -5166,6 +5342,7 @@
         <Missile value="Bogus"/>
         <ImpactMap index="None" Scale="1.500000"/>
         <ImpactPhysics Name="ColossusTaldarimImpact" MatchKeys="Basic" Physics="ColossusTaldarimAttackForce"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorBeamSimple id="ColossusTaldarimAttackBeam2" parent="BeamSimpleAnimationStyleOneShot">
         <On index="0" Terms="ActorCreation" Send="$Death"/>
@@ -6154,8 +6331,12 @@
         <LaunchAssets Sound="Archon_AttackLaunch"/>
         <BeamScope value="Caster"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance VoidRaySOpForwardLaunch"/>
-        <ImpactMap index="None" Model="" Sound="Archon_AttackImpact"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
+        <ImpactMap index="None" Model="ArchonAttackImpact" Sound="Archon_AttackImpact" ModelReaction="DarkArchonFireSplash"/>
+        <ImpactPhysics Name="ArchonAttackDeathForce" MatchKeys="Basic" Physics="ArchonAttackDeathForce"/>
+        <DamageSiteOpsReaction Ops="AttachHeadTop"/>
+        <DamageMap index="None" ModelReaction="DarkArchonFireSplash"/>
+        <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorUnit id="DarkArchonNerazim" parent="GenericUnitBase" unitName="DarkArchon">
         <Aliases value="_UnitLarge"/>
@@ -6188,6 +6369,9 @@
         <On Terms="StatusSet; IsStatus Variation 1" Send="SetWireframeShield 2 Assets\Textures\wireframe-protoss-shadowarchon01-shield3.dds"/>
         <On Terms="StatusSet; IsStatus Variation 0" Send="SetGroupIcon 0 Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
         <On Terms="StatusSet; IsStatus Variation 1" Send="SetGroupIcon 0 Assets\Textures\wireframe-protoss-shadowarchon01.dds"/>
+        <On Terms="UnitBirth.DarkArchon" Send="Create DarkArchonMergeComplete"/>
+        <SoundArray index="Birth" value=""/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="DarkArchonNerazimMerge"/>
         <DeathArray index="Normal" ModelLink="ArchonNerazimDeath" SoundLink="Archon_Explode"/>
@@ -6204,7 +6388,6 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
-        <SoundArray index="Birth" value=""/>
         <UnitIcon value="Assets\Textures\btn-unit-protoss-shadowarchon.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-protoss-shadowarchon00.dds"/>
@@ -6418,25 +6601,25 @@
         <Scale value="0.600000"/>
     </CActorModel>
     <CActorAction id="MothershipArtanisAttack1" parent="MothershipAttack">
-        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent1.Start" Send="Create"/>
-        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent1.Start"/>
+        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop"/>
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
         <Beam value="MothershipArtanisAttackBeam1"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisAttack2" parent="MothershipArtanisAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent2.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent2.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop"/>
         <Beam value="MothershipArtanisAttackBeam2"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisAttack3" parent="MothershipArtanisAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent3.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent3.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop"/>
         <Beam value="MothershipArtanisAttackBeam3"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisAttack4" parent="MothershipArtanisAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent4.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisBeamPersistent4.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop"/>
         <Beam value="MothershipArtanisAttackBeam4"/>
     </CActorAction>
     <CActorBeamSimple id="MothershipArtanisAttackBeam1" parent="MothershipAttackBeam">
@@ -6452,25 +6635,25 @@
         <On index="3" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="AnimBracketStop BSD"/>
     </CActorBeamSimple>
     <CActorAction id="MothershipArtanisSecondaryAttack1" parent="MothershipSecondaryAttack">
-        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent1.Start" Send="Create"/>
-        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent1.Start"/>
+        <On index="1" Terms="Effect.MothershipArtanisBeamDamage.Start; FromEffectTreeDescendant"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent1.Stop"/>
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 AMClosest2ToTarget AMPatternMothershipArtanisBeam"/>
         <Beam value="MothershipArtanisSecondaryAttackBeam1"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisSecondaryAttack2" parent="MothershipArtanisSecondaryAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent2.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent2.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent2.Stop"/>
         <Beam value="MothershipArtanisSecondaryAttackBeam2"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisSecondaryAttack3" parent="MothershipArtanisSecondaryAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent3.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent3.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent3.Stop"/>
         <Beam value="MothershipArtanisSecondaryAttackBeam3"/>
     </CActorAction>
     <CActorAction id="MothershipArtanisSecondaryAttack4" parent="MothershipArtanisSecondaryAttack1">
-        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent4.Start" Send="Create"/>
-        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop" Send="Destroy WhenReady"/>
+        <On index="0" Terms="Effect.MothershipArtanisSecondaryBeamPersistent4.Start"/>
+        <On index="2" Terms="Effect.MothershipArtanisBeamPersistent4.Stop"/>
         <Beam value="MothershipArtanisSecondaryAttackBeam4"/>
     </CActorAction>
     <CActorBeamSimple id="MothershipArtanisSecondaryAttackBeam1" parent="MothershipSecondaryAttackBeam">
@@ -7144,13 +7327,14 @@
         </WireframeShield>
     </CActorUnit>
     <CActorUnit id="ZeratulHeroDarkArchon">
-        <PlacementModel value="DarkArchonPlacement"/>
         <SoundArray index="Ready" value="Mohandar_Ready"/>
         <SoundArray index="Help" value="Mohandar_Help"/>
         <SoundArray index="What" value="Mohandar_What"/>
         <SoundArray index="Yes" value="Mohandar_Yes"/>
         <SoundArray index="Attack" value="Mohandar_Attack"/>
         <SoundArray index="Pissed" value="Mohandar_Pissed"/>
+        <SoundArray index="Movement" value="ArchonMovement"/>
+        <PlacementModel value="DarkArchonPlacement"/>
         <BuildModel value="ZeratulTopBarWarpIn"/>
         <AbilSoundArray AbilCmd="RallyZeratulTopBar,Rally1" Sound="Swarm_Silent"/>
     </CActorUnit>
@@ -7203,6 +7387,9 @@
         <SoundArray index="Attack" value="Zealot_Attack"/>
         <SoundArray index="Pissed" value="Zealot_Pissed"/>
     </CActorUnit>
+    <CActorAction id="ZeratulXelNagaChargedCrystalAttack">
+        <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
+    </CActorAction>
     <CActorUnit id="ZeratulXelNagaConstruct">
         <PlacementActorModel value="ZergPlacementModel"/>
         <On Terms="UnitConstruction.ZeratulXelNagaConstruct.Start" Send="SetOpacity"/>
@@ -7312,9 +7499,8 @@
     </CActorMissile>
     <CActorSound id="VoidRay_PrismaticAlignmentOff" parent="SoundOneShot">
         <On Terms="Behavior.VoidRaySwarmDamageBoost.Off" Send="Create"/>
-    </CActorSound>
-    <CActorSound id="Immortal_Void_BarrierDestroyedSound" parent="SoundOneShot">
-        <Sound value="Immortal_Void_BarrierDestroyed"/>
+        <On Terms="Behavior.VoidRayChargeBeamCounter.Off" Send="Create"/>
+        <On Terms="Behavior.VoidRayChargeBeamRangeCounter.Off" Send="Create"/>
     </CActorSound>
     <CActorUnit id="Oracle">
         <On index="75" Send="AnimPlay Spell Start,Work,Stand 0 -1.000000 1.250000 0.750000 AsDuration 1.000000"/>
@@ -7383,6 +7569,20 @@
     <CActorModel id="ArchonMergeComplete" parent="ModelAnimationStyleContinuous">
         <Inherits index="Visibility" value="1"/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
+        <HostSiteOps Ops="SOpAttachHead SOpMoveUpBy1" HoldRotation="1"/>
+        <Model value="ArchonMergeExplosion"/>
+    </CActorModel>
+    <CActorModel id="DarkArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <HostSiteOps Ops="SOpAttachHead SOpMoveUpBy1" HoldRotation="1"/>
+        <Model value="ArchonMergeExplosion"/>
+    </CActorModel>
+    <CActorModel id="VoidArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
+        <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
         <HostSiteOps Ops="SOpAttachHead SOpMoveUpBy1" HoldRotation="1"/>
         <Model value="ArchonMergeExplosion"/>
     </CActorModel>

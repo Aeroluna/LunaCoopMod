@@ -784,9 +784,15 @@
     </CUnit>
     <CUnit id="GhostFemale_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
+        <Speed value="2.75"/>
+        <Attributes index="Light" value="1"/>
+        <Food value="-3"/>
     </CUnit>
     <CUnit id="Ghost_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
+        <Speed value="2.75"/>
+        <Attributes index="Light" value="1"/>
+        <Food value="-3"/>
     </CUnit>
     <CUnit id="Goliath_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
@@ -1087,9 +1093,22 @@
         <Height value="3.25"/>
     </CUnit>
     <CUnit id="Ghost">
+        <AbilArray index="4" Link="ChannelSnipe"/>
+        <Speed value="2.75"/>
         <CardLayouts index="0">
-            <LayoutButtons index="13" removed="1"/>
+            <LayoutButtons index="7" Face="NukeCalldown" AbilCmd="TacNukeStrike,Execute" Row="1"/>
+            <LayoutButtons index="8" Face="CloakOnGhost" AbilCmd="GhostCloak,On" Column="2"/>
+            <LayoutButtons index="9" Face="CloakOff" AbilCmd="GhostCloak,Off" Row="2" Column="3"/>
+            <LayoutButtons index="10" Face="EMP" AbilCmd="EMP,Execute" Row="2"/>
+            <LayoutButtons index="11" Face="WeaponsFree" AbilCmd="GhostWeaponsFree,Execute" Row="1" Column="3"/>
+            <LayoutButtons index="12" Face="Cancel" Type="Undefined" AbilCmd="ChannelSnipe,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="13" Face="ChannelSnipe" Type="AbilCmd" AbilCmd="ChannelSnipe,Execute" Requirements="" Row="2"/>
         </CardLayouts>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="125"/>
+        <EnergyStart value="75"/>
+        <Attributes index="Light" value="1"/>
+        <Food value="-3"/>
     </CUnit>
     <CUnit id="GreaterNydusDestroyerDeepTunnelPlacement">
         <Facing value="29.9926"/>
@@ -2395,6 +2414,10 @@
         <Facing value="29.9926"/>
         <Collide index="RoachBurrow" value="0"/>
     </CUnit>
+    <CUnit id="Overlord">
+        <LateralAcceleration value="1"/>
+        <TurningRate value="499.9218"/>
+    </CUnit>
     <CUnit id="OverlordStetmann">
         <HotkeyAlias value="OverlordStetmann"/>
     </CUnit>
@@ -2408,6 +2431,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="HaveOverlordSpeed" Type="Passive" Requirements="HavePneumatizedCarapace" Row="1" Column="0"/>
         </CardLayouts>
+        <TurningRate value="720"/>
     </CUnit>
     <CUnit id="Overseer">
         <CardLayouts index="0">
@@ -5300,6 +5324,9 @@
         <Radius value="0.375"/>
         <InnerRadius value="0.375"/>
         <MinimapRadius value="0.375"/>
+        <Speed value="2.75"/>
+        <Attributes index="Light" value="1"/>
+        <Food value="-5"/>
     </CUnit>
     <CUnit id="ThorMengsk">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
@@ -7149,6 +7176,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="LoadNearbyWarpPrism" Type="AbilCmd" AbilCmd="WarpPrismTransport,LoadAll" Row="1" Column="2"/>
         </CardLayouts>
+        <AcquireMovementLimit value="7.5"/>
     </CUnit>
     <CUnit id="WidowMine">
         <CardLayouts index="0">

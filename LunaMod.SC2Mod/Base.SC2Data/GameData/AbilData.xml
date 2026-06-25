@@ -198,6 +198,10 @@
         <PlaceUnit value="DehakaMurvarPlacement"/>
     </CAbilEffectTarget>
     <CAbilResearch id="ForgeResearch">
+        <InfoArray index="Research8">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+        </InfoArray>
         <InfoArray index="Research25" Time="90" Upgrade="AlarakDestructionWaveDistanceJinara">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
@@ -423,6 +427,21 @@
     <CAbilTrain id="SILarvaTrain">
         <Flags index="DisableCollision" value="0"/>
     </CAbilTrain>
+    <CAbilEffectTarget id="ChannelSnipe">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ChannelSnipeInitialSet"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <TargetFilters value="Biological,Visible;Self,Player,Ally,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ChannelSnipe"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <RangeSlop value="20"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CancelableArray index="Channel" value="1"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="SpawnChangeling">
         <Flags index="Transient" value="1"/>
     </CAbilEffectInstant>
@@ -700,9 +719,6 @@
                 <DurationArray index="Delay" value="0.31"/>
             </SectionArray>
         </InfoArray>
-        <Cost>
-            <Cooldown TimeUse="1.4"/>
-        </Cost>
     </CAbilMorph>
     <CAbilMorph id="BurrowRoachUp">
         <Flags index="Interruptible" value="1"/>

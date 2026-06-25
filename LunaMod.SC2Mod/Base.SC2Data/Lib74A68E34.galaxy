@@ -958,6 +958,21 @@ bool auto_lib74A68E34_gf_RaynorPrestigeMercenaryPatrolPing_TriggerFunc (bool tes
     return true;
 }
 
+void lib74A68E34_gf_KerriganMasteryResearchSpeedCost (int lp_player) {
+    // Variable Declarations
+    int lv_upgradeCount;
+    fixed lv_costReduction;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_upgradeCount = TechTreeUpgradeCount(lp_player, "MasteryKerriganResearchSpeedandCost", c_techCountCompleteOnly);
+    lv_costReduction = ((150.0 * ((30.0 - lv_upgradeCount) + 20.0)) / 50.0);
+    CatalogFieldValueSet(c_gameCatalogAbil, "evolutionchamberresearch", "InfoArray[" + IntToString(4) + "].Resource[" + IntToString(0) + "]", lp_player, IntToString(FixedToInt(lv_costReduction)));
+    CatalogFieldValueSet(c_gameCatalogAbil, "evolutionchamberresearch", "InfoArray[" + IntToString(4) + "].Resource[" + IntToString(1) + "]", lp_player, IntToString(FixedToInt(lv_costReduction)));
+}
+
 void lib74A68E34_gf_KerriganMalignantCreep () {
     // Variable Declarations
     int lv_itPlayer;
@@ -1661,6 +1676,21 @@ void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p) {
     else if (true) {
         libCOMI_gf_CM_Tychus_SetHeroCostMultiply(lp_p, 1.0, 1.0);
     }
+}
+
+void lib74A68E34_gf_CM_MasteryStetmannUpgradeCost (int lp_player) {
+    // Variable Declarations
+    int lv_upgradeCount;
+    fixed lv_costReduction;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_upgradeCount = TechTreeUpgradeCount(lp_player, "MasteryStetmannUpgradeResearchCost", c_techCountCompleteOnly);
+    lv_costReduction = ((150 * (50 - lv_upgradeCount)) / 50);
+    CatalogFieldValueSet(c_gameCatalogAbil, "EvolutionChamberStetmannResearch", "InfoArray[" + IntToString(7) + "].Resource[" + IntToString(0) + "]", lp_player, IntToString(FixedToInt(lv_costReduction)));
+    CatalogFieldValueSet(c_gameCatalogAbil, "EvolutionChamberStetmannResearch", "InfoArray[" + IntToString(7) + "].Resource[" + IntToString(1) + "]", lp_player, IntToString(FixedToInt(lv_costReduction)));
 }
 
 void lib74A68E34_gf_MutatorRandomizerUpdate () {
@@ -5575,6 +5605,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergKerrigan") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+            lib74A68E34_gf_KerriganMasteryResearchSpeedCost(lv_player);
             lib74A68E34_gf_KerriganMalignantCreep();
         }
         else if (auto560DABDD_val == "TerranSwann") {
@@ -5749,6 +5780,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, true);
         }
         else if (auto560DABDD_val == "ZergStetmann") {
+            lib74A68E34_gf_CM_MasteryStetmannUpgradeCost(lv_player);
             TriggerEnable(lib74A68E34_gt_StetmannBroodLordArmCD, true);
         }
         else if (auto560DABDD_val == "TerranMengsk") {

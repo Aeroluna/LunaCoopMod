@@ -128,6 +128,14 @@
         <Abil value="BroodLordHangar"/>
         <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
+    <CEffectDamage id="C10CanisterRifle">
+        <AttributeBonus index="Light" value="0"/>
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectDamage id="C10CanisterRifleMengsk">
+        <AttributeBonus index="Light" value="0"/>
+        <Amount value="22"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
@@ -235,6 +243,14 @@
         <AreaArray Radius="2" Effect="DefensiveMatrixSet"/>
         <MinCount value="1"/>
     </CEffectEnumArea>
+    <CEffectDamage id="DehakaCoopAirDamage">
+        <Amount value="0">
+            <AccumulatorArray value="DehakaLevelMammothBeamDamageMultiplier"/>
+        </Amount>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="DehakaNydusDestroyerTimedNoFoodBeamCP">
+        <PeriodicValidator value="NydusDestroyerBeamValidators"/>
+    </CEffectCreatePersistent>
     <CEffectCreateUnit id="DisguiseAsHotSRaptorCU" parent="DisguiseEx3CU">
         <SpawnUnit value="ChangelingHotSRaptor"/>
     </CEffectCreateUnit>
@@ -606,6 +622,10 @@
     <CEffectTeleport id="GaryStetmannRecallTeleport">
         <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
+    <CEffectDamage id="Ghost_BlackOpsDamage">
+        <AttributeBonus index="Light" value="0"/>
+        <Amount value="22"/>
+    </CEffectDamage>
     <CEffectCreateUnit id="GlevigDeepTunnelCU">
         <CreateFlags index="Placement" value="0"/>
     </CEffectCreateUnit>
@@ -775,6 +795,74 @@
         <ValidatorArray value="NotHeroic"/>
         <LaunchEffect value="NeuralParasiteBlockBurrowAB"/>
     </CEffectLaunchMissile>
+    <CEffectModifyUnit id="ChannelSnipeEnergyRefund">
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="75"/>
+        </VitalArray>
+        <ImpactUnit Value="Caster"/>
+        <ValidatorArray value="ChannelSnipeRefundValidator"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="ChannelSnipeRefundSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeEnergyRefund"/>
+        <EffectArray value="ChannelSnipeRefundRB"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="ChannelSnipeRefundRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ChannelSnipeRefund"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="ChannelSnipeInitialSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeCreatePersistent"/>
+        <EffectArray value="ChannelSnipeCombat"/>
+        <EffectArray value="ChannelSnipeRefund"/>
+        <EffectArray value="ChannelSnipeCombatBeamDummy"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ChannelSnipeCreatePersistent">
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="Channeled" value="1"/>
+        <ExpireEffect value="ChannelSnipeDamageSet"/>
+        <PeriodCount value="32"/>
+        <PeriodicValidator value="ChannelSnipeValidators"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <WhichLocation Value="TargetUnit"/>
+        <FinalEffect value="ChannelSnipeCombatRB"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="ChannelSnipeDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="170"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ChannelSnipeCombat">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ChannelSnipeRefund">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ChannelSnipeDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeDamage"/>
+        <EffectArray value="ChannelSnipeRefundRB"/>
+        <EffectArray value="ChannelSnipeCombatRB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ChannelSnipeCombatBeamDummy">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ChannelSnipeCombatRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ChannelSnipeCombat"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="NydusDestroyerBeamCP">
+        <PeriodicValidator value="NydusDestroyerBeamValidators"/>
+    </CEffectCreatePersistent>
     <CEffectSet id="SpawnLarvaSet">
         <EffectArray value="QueenInjectStunAB"/>
         <ValidatorArray value="NotContaminated"/>
@@ -5016,10 +5104,13 @@
         <EffectArray value="AbathurBiomassLocust100Transfer"/>
     </CEffectSet>
     <CEffectDamage id="MammothBeamDamage">
-        <AreaArray Radius="1" Fraction="0.5"/>
-        <AreaArray Radius="2" Fraction="0.25"/>
+        <AreaArray Radius="0.75" Fraction="0.5"/>
+        <AreaArray Radius="1.5" Fraction="0.25"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Amount value="0">
+            <AccumulatorArray value="DehakaLevelMammothBeamDamageMultiplier"/>
+        </Amount>
     </CEffectDamage>
     <CEffectDamage id="MasteryKerriganRazorSwarmDamageDummy"/>
     <CEffectApplyBehavior id="MedicRestorationAB">
