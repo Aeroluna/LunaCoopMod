@@ -243,6 +243,8 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Removed Armored attribute from Creep Tumors.
 - Added Light attribute to Creep Tumors.
 - Added Load Nearby Units commands to all transports.
+- Reduced Infantry weapons/armor upgrades costs from 100/175/250 to 100/150/200.
+- Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
 
 Copied from Versus.
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## 6/24/2026
+## 6/25/2026
 
 - Added Blood Hunters.
   - Passive: Obliteration
@@ -67,8 +67,9 @@ I know I already gave Alarak a new unit, but I couldn't resist adding Blood Hunt
 - The Warp Prism will now attempt to immediately siege when instructed rather than prioritizing deceleration.
 - Repair is no longer automatically set to auto-cast for SCVs.
 - Mule Repair is now set to auto-cast by default (Mules with a harvest order still do not attempt to repair units).
-- Reduced Zerg Ground Carapace upgrade costs from 100/100, 175/175, 250/250 to 100/100, 150/150, 200/200.
 - Added Load Nearby commands to all transports.
+- Reduced Infantry weapons/armor upgrades costs from 100/175/250 to 100/150/200.
+- Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
 
 5.0.16 Versus fixes/changes
 
