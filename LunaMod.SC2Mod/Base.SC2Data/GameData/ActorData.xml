@@ -7585,12 +7585,14 @@
         <SoundArray index="Movement" value="ArchonMovement"/>
     </CActorUnit>
     <CActorModel id="ArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Scale" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
         <HostSiteOps Ops="SOpAttachHead SOpMoveUpBy1" HoldRotation="1"/>
         <Model value="ArchonMergeExplosion"/>
     </CActorModel>
     <CActorModel id="DarkArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Scale" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
@@ -7598,6 +7600,7 @@
         <Model value="ArchonMergeExplosion"/>
     </CActorModel>
     <CActorModel id="VoidArchonMergeComplete" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Scale" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 3.000000 AsTimeScale"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,0,0"/>
@@ -7656,7 +7659,7 @@
         <On index="9" Terms="StateChange; !StateValid ProtossFireBlue" Target="ProtossFlameLoopBlueLarge"/>
         <On Terms="UnitCreation.Mothership" Send="Create"/>
         <On Terms="UnitCreation.MothershipArtanis" Send="Create"/>
-        <On Terms="UnitCreation.SOAMothershipV4" Send="Create"/>
+        <On Terms="UnitCreation.SOAMothershipv4" Send="Create"/>
         <On Terms="StateChange; StateValid ProtossFire" Send="Create ProtossBuildingFireLarge"/>
         <On Terms="StateChange; !StateValid ProtossFire" Target="ProtossBuildingFireLarge" Send="Destroy"/>
         <StateArray Name="ProtossFireSmoke" Terms="ValidateUnit ProtossBuildingBurnDownFireSmoke"/>

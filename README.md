@@ -1803,7 +1803,7 @@ Everything looks cooler in red! Also fixed my biggest pet peeve, the Supplicant 
     - The Void Archon permanently gains +25% damage, +100 shields, and +0.5 shield armor each time it uses Sacrifice.
     - This effect stacks up to a maximum of 20.
     - Inherits stacks from constituent Ascendants.
-  - Has Chain Reaction passive.
+  - Has Chain Destruction passive.
     - Causes attacks to chain to two additional targets.
     - Requires research at the Templar Archives.
   - Has Supernova passive.
@@ -1918,6 +1918,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Fixed an issue where combat units would have a level in their highlight tooltip.
 - Fixed an issue where Alarak's Imposing Presence tooltip did not list Massive unit immunity.
 - Reworded the tooltip of Supplicant's Blood Shields upgrade.
+- Changed Havoc's Target Lock to prioritize attacking units and structures.
 
 yeah.
 
@@ -2486,6 +2487,7 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where killing a Strike Fighter Platform while the Strike Fighter is deployed would cause a mysterious Strike Fighter model to show up.
 - Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
 - Fixed an issue where Strike Fighter Platform's tooltip still listed "Limit 10" as a requirement when playing P3.
+- Changed Theia Raven's Analyze Weakness to prioritize attacking units and structures.
 
 yeah.
 

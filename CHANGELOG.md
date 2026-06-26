@@ -97,6 +97,9 @@ Copied from Versus. These changes should further solidify Ghosts as backline sni
 - Fixed an issue where Reaper KD8 Charge ability could knockback burrowed units.
 - Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
 - Added a countdown for tracking barrier abilities.
+- Changed Havoc's Target Lock to prioritize attacking units and structures.
+- Changed Theia Raven's Analyze Weakness to prioritize attacking units and structures.
+- Renamed Void Archon's Chain Reaction passive to Chain Destruction.
 
 yeah.
 
