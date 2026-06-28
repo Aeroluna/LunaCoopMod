@@ -797,6 +797,9 @@
     <CUnit id="Goliath_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
     </CUnit>
+    <CUnit id="GreaterNydusWormAlly">
+        <BehaviorArray Link="ConjoinedAllyUnit"/>
+    </CUnit>
     <CUnit id="HHCommandCenter">
         <LeaderAlias value="CommandCenter"/>
         <HotkeyAlias value="CommandCenter"/>
@@ -2437,7 +2440,24 @@
     <CUnit id="Overseer">
         <CardLayouts index="0">
             <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="7" Column="4"/>
+            <LayoutButtons Face="Contaminate" Type="AbilCmd" AbilCmd="Contaminate,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <TacticalAIThink value="AIThinkOverseerLuna"/>
+    </CUnit>
+    <CUnit id="OverseerSiegeMode">
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="4"/>
+            <LayoutButtons Face="Contaminate" Type="AbilCmd" AbilCmd="Contaminate,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="SpawnChangeling" Type="AbilCmd" AbilCmd="SpawnChangeling,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <TacticalAIThink value="AIThinkOverseerLuna"/>
     </CUnit>
     <CUnit id="OverseerStetmann">
         <CardLayouts index="0">
@@ -2503,6 +2523,9 @@
         <HotkeyAlias value="PylonOvercharged"/>
         <SubgroupAlias value="PylonOvercharged"/>
         <HotkeyCategory value=""/>
+    </CUnit>
+    <CUnit id="PylonPowerAllyUnit">
+        <BehaviorArray Link="ConjoinedAllyUnit"/>
     </CUnit>
     <CUnit id="Queen">
         <CardLayouts index="0">
@@ -3296,6 +3319,9 @@
         </CardLayouts>
         <Radius value="0"/>
         <SeparationRadius value="0"/>
+    </CUnit>
+    <CUnit id="SOAPylonPowerAllyUnit">
+        <BehaviorArray Link="ConjoinedAllyUnit"/>
     </CUnit>
     <CUnit id="ScarabWeapon">
         <FlagArray index="Turnable" value="1"/>
@@ -6436,6 +6462,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="UnloadHero" Type="AbilCmd" AbilCmd="DummyUnloadAbil,Execute" Row="2" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="ConjoinedAllyUnit"/>
     </CUnit>
     <CUnit id="NydusCanal">
         <AbilArray Link="DummyUnloadAbil"/>
@@ -6616,6 +6643,7 @@
             <LayoutButtons index="2" Column="1"/>
             <LayoutButtons index="6" Column="2"/>
         </CardLayouts>
+        <BehaviorArray Link="ConjoinedAllyUnit"/>
     </CUnit>
     <CUnit id="SwarmNetwork">
         <DeathRevealRadius value="3"/>
@@ -7143,6 +7171,12 @@
         <CostResource index="Minerals" value="250"/>
         <MinimapRadius value="1"/>
     </CUnit>
+    <CUnit id="Zealot">
+        <Speed value="2.25"/>
+        <!--AbilArray Link="AlarakZealotFrenziedOverload"/-->
+        <!--BehaviorArray Link="WarpInAttackSpeedBehavior"/-->
+        <!--BehaviorArray Link="SOACheatDeathSupply2"/-->
+    </CUnit>
     <CUnit id="ZeratulWarpPrism">
         <Height value="4.25"/>
         <BehaviorArray Link="WarpPrismLoadupDecelerationFix"/>
@@ -7356,18 +7390,21 @@
         <LeaderAlias value="Zealot"/>
         <SelectAlias value="Zealot"/>
         <HotkeyCategory value="Unit/Category/ProtossAiur"/>
+        <Speed value="2.25"/>
     </CUnit>
     <CUnit id="ZealotPurifier">
         <CardLayouts index="0">
             <LayoutButtons Face="ZealotPurifierRevive" Type="Passive" Behavior="ZealotPurifierReviveSupressed2" Row="2" Column="1"/>
             <LayoutButtons Face="ZealotPurifierRevive2" Type="Passive" Requirements="HaveZealotPurifierReconstruction2" Row="2" Column="2"/>
         </CardLayouts>
+        <Speed value="2.25"/>
     </CUnit>
     <CUnit id="ZealotShakuras">
         <AbilArray index="6" Link="Darkcoil"/>
         <CardLayouts index="0">
             <LayoutButtons index="7" AbilCmd="Darkcoil,Execute"/>
         </CardLayouts>
+        <Speed value="2.25"/>
     </CUnit>
     <CUnit id="ZeratulCyberneticsCore">
         <LeaderAlias value="CyberneticsCore"/>
@@ -7472,6 +7509,7 @@
     </CUnit>
     <CUnit id="ZeratulSummonZealot">
         <FlagArray index="ArmySelect" value="1"/>
+        <Speed value="2.25"/>
     </CUnit>
     <CUnit id="ZeratulXelNagaChargedCrystalCyan">
         <FlagArray index="ArmySelect" value="1"/>

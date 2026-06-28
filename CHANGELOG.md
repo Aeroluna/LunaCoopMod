@@ -2,12 +2,27 @@
 
 ## 6/28/2026
 
+- Increased Overseer maximum energy from 0 to 200.
+- Increased Overseer energy regeneration rate from 0 to 0.5625.
+- Increased Overseer starting energy from 0 to 50.
+- Added Spawn Changeling ability to Overseer.
+- Added Contaminate ability to Overseer.
+
+Amon's Overseers only (Spawn Changeling and Contaminate are useless for commanders). Giving these energy lets them be vulnerable to feedback abilities. I already did the work of making Changelings work with Commanders, so why not have fun with them!
+
+- Reduced Zealot (and variants) speed from 2.75 to 2.25.
+- Increased Charge speed increase from 0.25 to 1.125.
+
+Not sure why the LotV campaign increases their speed but their speeds have been reverted to Versus values.
+
 - Fixed an issue where Terran commanders could donate buildings to their ally.
 
 Why was this behavior even implemented in Versus?
 
 - Fixed an issue where units knocked back by KD8 Charges did not play a flailing animation.
 - Fixed an issue where knocking back units with shields would cause shield fizzle animations to play erroneously.
+- Reduced the opacity of Reaper KD8 Charge placeholder model.
+- Fixed an issue where Changelings could target the wrong player when targeting a Nydus Worm.
 
 yeah.
 

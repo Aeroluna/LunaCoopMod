@@ -136,6 +136,9 @@
         <AttributeBonus index="Light" value="0"/>
         <Amount value="22"/>
     </CEffectDamage>
+    <CEffectEnumArea id="ChangelingDisguiseEx3Search">
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,MapBoss"/>
+    </CEffectEnumArea>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
@@ -322,6 +325,7 @@
         <CaseArray Validator="DisguiseAsHotSSwarmlingWithoutWings" Effect="DisguiseAsSwarmlingWithoutWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithWings" Effect="DisguiseAsZerglingWithWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
+        <ValidatorArray value="NotConjoinedAllyUnit"/>
     </CEffectSwitch>
     <CEffectSet id="DisguiseEx3FinalSet">
         <EffectArray index="4" value="KillOtherNearbyChangelingsTransferDeathResponse"/>

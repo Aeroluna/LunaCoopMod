@@ -124,6 +124,16 @@ Who cares if it's OP? This affects Vorazun's Dark Archons, Karax's Sentries, Tyc
 
 If it's good enough for Versus, it's good enough for all the Commanders! Karax's are still superior.
 
+- Removed Detector from Oracles.
+- Added Revelation to Oracle.
+
+Returned Revelation to Oracles and in return they lose permanent detection.
+
+- Reduced Zealot (and variants) speed from 2.75 to 2.25.
+- Increased Charge speed increase from 0.25 to 1.125.
+
+Not sure why the LotV campaign increases their speed but their speeds have been reverted to Versus values.
+
 - Added Unload Heroic ability to Nydus Worms.
 
 Implemented by [Maguro](https://www.maguro.one/2019/06/uiux-tweaks.html), this feature has been slightly improved to not show the ability if you have no Heroic units loaded.
@@ -695,11 +705,6 @@ Is Disabling Cloud the most infurating spell to get hit by? Disabling Cloud and 
 
 They explicitly target low health units because otherwise it would just be frustating getting your expensive units sniped without a counter. Fun fact: Spawn Broodling was previously only casted on Siege Tanks (Only Swann/Raynor).
 
-- Removed Detector from Oracles.
-- Added Revelation to Oracle.
-
-Returned Revelation to Oracles and in return they lose permanent detection.
-
 - Reduced Liberator's Defender Mode range from 9 to 5.
 - Removed bonus sight radius from Defender Mode.
 - Reduced Liberator anti-air damage from 7 to 5.
@@ -845,6 +850,14 @@ Copied from Versus. Transforms Infestors into the sneaky burrowing spellcasters 
 - Limited Swarm Host count to 2/3/4/5 per wave.
 
 Coped from Versus. Should make Swarm Host have a higher initial impact but less sustained poke. Fun fact: this also fixes a bug where the egg animation on their back took 60 seconds despite the cooldown being 15 seconds.
+
+- Increased Overseer maximum energy from 0 to 200.
+- Increased Overseer energy regeneration rate from 0 to 0.5625.
+- Increased Overseer starting energy from 0 to 50.
+- Added Spawn Changeling ability to Overseer.
+- Added Contaminate ability to Overseer.
+
+Giving these energy lets them be vulnerable to feedback abilities. I already did the work of making Changelings work with Commanders, so why not have fun with them!
 
 - Reduced cooldown of Disruptor's Purification Nova from 30 seconds to 24 seconds.
 - Reduced damage of Disruptor's Purification Nova from 150 (+50 vs shields) to 100 (+100 vs shields).

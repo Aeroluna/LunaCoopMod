@@ -185,8 +185,26 @@
         <EffectArray Reference="Weapon,KraithSpineVolley,Level" Value="1"/>
         <EffectArray Reference="Effect,KraithSpineVolleyDamage,Amount" Value="1"/>
     </CUpgrade>
+    <CUpgrade id="Charge">
+        <EffectArray index="0" Value="1.125000"/>
+        <EffectArray index="1" Value="1.125000"/>
+        <EffectArray index="2" Value="1.125000"/>
+        <EffectArray index="3" Value="1.125000"/>
+    </CUpgrade>
     <CUpgrade id="KerriganCommander">
         <EffectArray Reference="Weapon,BroodlingStrike,DisplayAttackCount" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="PlayerCommander">
+        <EffectArray Operation="Set" Reference="Unit,Overseer,EnergyMax" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,Overseer,EnergyRegenRate" Value="0.000000"/>
+        <EffectArray Operation="Set" Reference="Unit,Overseer,EnergyStart" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,Overseer,Description" Value="Button/Tooltip/OverseerCommander"/>
+        <EffectArray Operation="Set" Reference="Unit,OverseerSiegeMode,EnergyMax" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,OverseerSiegeMode,EnergyRegenRate" Value="0.000000"/>
+        <EffectArray Operation="Set" Reference="Unit,OverseerSiegeMode,EnergyStart" Value="0"/>
+        <EffectArray Operation="Set" Reference="Unit,OverseerSiegeMode,Description" Value="Button/Tooltip/OverseerCommander"/>
+        <EffectArray Operation="Set" Reference="Button,MorphToOverseer,AlertTooltip" Value="Button/Tooltip/MorphToOverseerCommander"/>
+        <EffectArray Operation="Set" Reference="Button,MorphToOverseer,Tooltip" Value="Button/Tooltip/MorphToOverseerCommander"/>
     </CUpgrade>
     <CUpgrade id="TerranInfantryWeaponsLevel1">
         <EffectArray index="10" Value="2"/>
@@ -440,6 +458,9 @@
     <CUpgrade id="StetmannAirWeaponsExtraLevel1" parent="StetmannAirWeaponsExtra"/>
     <CUpgrade id="StetmannAirWeaponsExtraLevel2" parent="StetmannAirWeaponsExtra"/>
     <CUpgrade id="StetmannAirWeaponsExtraLevel3" parent="StetmannAirWeaponsExtra"/>
+    <CUpgrade id="ZealotResearchShadowCharge">
+        <EffectArray index="0" Value="1.125000"/>
+    </CUpgrade>
     <CUpgrade id="ZergGroundArmorsExtraLevel1" parent="ZergGroundArmorsExtra">
         <EffectArray Operation="Set" Reference="Actor,InfestedCivilianAC,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,InfestedMarineAC,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>

@@ -896,3 +896,136 @@ void AIThinkSpotter (int player, unit aiUnit, unitgroup scanGroup) {
         return ;
     }
 }
+
+//--------------------------------------------------------------------------------------------------
+//  *** OVERSEER ***
+//--------------------------------------------------------------------------------------------------
+
+order ChangelingLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    int enemyPlayer = -1;
+    point here;
+    order ord;
+    point camPoint;
+    fixed camDistance;
+    fixed range;
+    int diff = AIPlayerDifficulty(player);
+
+    ord = AICreateOrder(player, c_AB_Changeling, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    enemyPlayer = AIGetPlayerGroup(scanGroup);
+    if (enemyPlayer == -1) {
+        return null;
+    }
+
+    here = UnitGetPosition(aiUnit);
+
+    //  A good player should be able to tell when the enemy isn't paying attention
+    //  and then cast changeling.  To simulate this, the computer looks for an enemy
+    //  player's camera on hard and insanse.
+    //
+    if (diff >= c_campExpert) {
+        camPoint = CameraGetTarget(enemyPlayer);
+        camDistance = DistanceBetweenPoints(camPoint, here);
+
+        if (camDistance < 16) {
+            return null;
+        }
+    }
+
+    range = AIUnitFixed(player, c_ZU_Overseer, c_fieldSightRange);
+
+    //  Check to see if we already have a changeling.
+    if (AINearbyUnits(player, c_ZU_Changeling, here, range, 1) ||
+        AINearbyUnits(player, c_ZU_ChangelingZealot, here, range, 1) ||
+        AINearbyUnits(player, c_ZU_ChangelingZergling, here, range, 1) ||
+        AINearbyUnits(player, c_ZU_ChangelingMarine, here, range, 1) ||
+        AINearbyUnits(player, c_ZU_ChangelingZerglingWings, here, range, 1) ||
+        AINearbyUnits(player, "ChangelingHotSRaptor", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingZealotAiur", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingHotSSwarmling", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingHotSSwarmlingWings", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingZealotShakuras", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingZealotPurifier", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingDehakaZergling", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingMarine_BlackOps", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingZerglingStetmann", here, range, 1) ||
+        AINearbyUnits(player, "ChangelingZerglingStetmannWings", here, range, 1)) {
+        return null;
+    }
+
+    return ord;
+
+    //  Check to see if there are enough basic units around to follow.
+    // if ((UnitGroupCount(AIFilterPathable(AIFindUnits(enemyPlayer, c_PU_Zealot, here, range, c_maxEnemyCount), here), c_unitCountAlive) >= 2) ||
+    //     (UnitGroupCount(AIFilterPathable(AIFindUnits(enemyPlayer, c_ZU_Zergling, here, range, c_maxEnemyCount), here), c_unitCountAlive) >= 2) ||
+    //     (UnitGroupCount(AIFilterPathable(AIFindUnits(enemyPlayer, c_TU_Marine, here, range, c_maxEnemyCount), here), c_unitCountAlive) >= 2)) {
+    //     return ord;
+    // }
+
+    // return null;
+}
+
+//--------------------------------------------------------------------------------------------------
+bool MakeChangelingLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    aifilter filter;
+    int enemyGroundCount;
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        // don't auto make changlings on campaign
+        return false;
+    }
+
+    //  If we already have a changeling order, ignore new orders so that
+    //  we don't cast again
+    if (UnitOrderHasAbil(aiUnit, c_AB_Changeling)) {
+        return false;
+    }
+
+    if (UnitGroupCount(scanGroup, c_unitCountAlive) == 0) {
+        return false;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterPlane(filter, c_planeGround);
+    AISetFilterCanAttackAlly(filter, c_groundAlliesNearby, false);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(filter, scanGroup), c_unitCountAlive);
+
+    if (enemyGroundCount > 0) {
+        ord = ChangelingLuna(player, aiUnit, scanGroup);
+        if (ord != null) {
+            AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkOverseerLuna (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+
+    if (MakeChangelingLuna(player, aiUnit, scanGroup)) {
+        return;
+    }
+
+    mark = AIMarker(aiUnit, c_MK_Contaminate);
+    ord = Contaminate(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        AICast(aiUnit, ord, mark, c_castHold);
+        return;
+    }
+
+    //ord = AcidSpores(player, aiUnit, scanGroup);
+    //if (ord != null) {
+    //    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    //    return;
+    //}
+
+}
