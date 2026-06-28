@@ -263,6 +263,11 @@
     <CActorAction id="KhaydarinBeamAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorSimple id="KnockbackAnim">
+        <On Terms="Behavior.ReaperKD8Knockback.On; ValidateUnit IsNotConstructing; ValidateUnitType NotSiegedTank" Send="Create"/>
+        <On Terms="Behavior.ReaperKD8Knockback.Off" Target="_Unit" Send="AnimClear KnockbackFlail"/>
+        <On Terms="Behavior.ReaperKD8Knockback.Off" Send="Destroy"/>
+    </CActorSimple>
     <CActorAction id="LaserDrillTripodBiggerAttackCoop">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -7533,35 +7538,18 @@
         <Model value="StasisTrapModelHitTest"/>
         <Scale value="1.200000"/>
     </CActorModel>
-    <CActorModel id="ReaperKD8PlacementModel">
-        <Aliases value="_Main"/>
-        <Aliases value="_Unit"/>
-        <Filter index="Neutral" value="1"/>
-        <Filter index="Enemy" value="1"/>
-        <FogVisibility value="Visible"/>
+    <CActorModel id="ReaperKD8PlacementModel" parent="PlacementModel">
         <On Terms="ActorCreation" Send="SetLocalTintColor 245,156,158"/>
-        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.900000"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
-        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
-        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
-        <HostSiteOps Ops="SOpTipabilityFloorScope"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.450000"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
     </CActorModel>
-    <CActorModel id="ReaperKD8Placeholder">
-        <Aliases value="_Main"/>
-        <Aliases value="_Unit"/>
-        <Filter index="Neutral" value="1"/>
-        <Filter index="Enemy" value="1"/>
-        <FogVisibility value="Visible"/>
+    <CActorModel id="ReaperKD8Placeholder" parent="PlaceholderModel">
         <On Terms="ActorCreation" Send="SetLocalTintColor 201,175,175"/>
-        <On Terms="ActorCreation; ModelIsLowQuality" Send="SetOpacity 0.750000"/>
         <On Terms="ActorCreation" Send="$Stand PlayForever,NonLooping -1.000000 -1.000000 -1.000000 AsDuration 3.000000"/>
         <On Terms="ActorCreation" Send="AnimSetCompletion Stand 0.250000"/>
         <On Terms="ActorCreation" Send="AnimSetPaused Stand"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
-        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
-        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
-        <HostSiteOps Ops="SOpShadowAsyncPrecise" HoldPosition="1" HoldRotation="1"/>
-        <Model value="PlacementModel"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.450000"/>
+        <On Terms="ActorCreation" Send="SetCastShadows"/>
     </CActorModel>
     <CActorSplat id="KD8CursorSplat" parent="TerranCursorSplat" abil="KD8Charge">
         <Model value="nukeCursorSplat"/>

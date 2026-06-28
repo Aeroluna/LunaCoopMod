@@ -1,5 +1,16 @@
 # Changelog
 
+## 6/28/2026
+
+- Fixed an issue where Terran commanders could donate buildings to their ally.
+
+Why was this behavior even implemented in Versus?
+
+- Fixed an issue where units knocked back by KD8 Charges did not play a flailing animation.
+- Fixed an issue where knocking back units with shields would cause shield fizzle animations to play erroneously.
+
+yeah.
+
 ## 6/25/2026
 
 - Added Blood Hunters.

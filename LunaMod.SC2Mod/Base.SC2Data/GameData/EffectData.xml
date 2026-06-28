@@ -768,6 +768,7 @@
     </CEffectCreateUnit>
     <CEffectDamage id="KD8ChargeExplodeDamage">
         <ValidatorArray value="NotFriendlyFire"/>
+        <Amount value="5"/>
     </CEffectDamage>
     <CEffectDamage id="KraithSpineVolleyDamage">
         <Death value="Disintegrate"/>
@@ -6383,6 +6384,14 @@
         <SelectTransferUnit Effect="NeuralParasiteLaunchMissile" Value="Caster"/>
         <SelectTransferFlags index="SingleOnly" value="1"/>
     </CEffectModifyUnit>
+    <CEffectApplyBehavior id="IsBuildingSCVAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="IsActiveBuilderSCV"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="IsBuildingSCVRB">
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="IsActiveBuilderSCV"/>
+    </CEffectRemoveBehavior>
     <CEffectSet id="SCVStartBuildingSet">
         <EffectArray value="IsBuildingSCVAB"/>
         <EffectArray value="SCVMovetoBuildSeekRB"/>
@@ -6451,7 +6460,7 @@
     </CEffectRemoveBehavior>
     <CEffectEnumArea id="SCVMovetoBuildSearchWorker">
         <ExcludeArray Effect="SCVMovetoBuildSeekAB"/>
-        <SearchFilters value="Ground,Worker;Neutral,Enemy,Stasis,Dead,Hidden"/>
+        <SearchFilters value="Ground,Worker;Ally,Neutral,Enemy,Stasis,Dead,Hidden"/>
         <AreaArray Radius="1" Effect="SCVMovetoBuildAllySwitch"/>
         <MaxCount value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>

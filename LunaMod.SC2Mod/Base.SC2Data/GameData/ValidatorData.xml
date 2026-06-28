@@ -302,6 +302,15 @@
         <AbilLink value="CorsairMPDisruptionWeb"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CValidatorUnitOrder>
+    <CValidatorCombine id="IsNotZergAny">
+        <CombineArray value="IsZerg"/>
+        <CombineArray value="IsPrimalZerg"/>
+        <Negate value="1"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorUnitState id="NotPrecursor">
+        <State value="Precursor"/>
+    </CValidatorUnitState>
     <CValidatorCombine id="NydusDestroyerBeamValidators">
         <ResultFailed value="CantTargetThatUnit"/>
         <Type value="And"/>
@@ -618,9 +627,8 @@
         <AbilLink value="attack"/>
     </CValidatorUnitOrderQueue>
     <CValidatorCombine id="ShieldFizzleValidator">
-        <CombineArray value="IsZerg"/>
-        <CombineArray value="IsPrimalZerg"/>
-        <Negate value="1"/>
+        <CombineArray value="IsNotZergAny"/>
+        <CombineArray value="NotPrecursor"/>
         <Type value="And"/>
     </CValidatorCombine>
     <CValidatorCombine id="SourceIsAlarakHero">
@@ -1370,6 +1378,9 @@
         <Value value="InvisibleTargetDummy"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="IsNotActiveBuilderSCV">
+        <Behavior value="IsActiveBuilderSCV"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="DetectedORNotCloakedBuried">
         <CombineArray value="IsDetected"/>
         <CombineArray value="NotCloakedAndNotBuried"/>

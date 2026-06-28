@@ -384,6 +384,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Disruptor's Purification Nova ability was not affected by damage reduction/increase effects.
 - Fixed an issue where Observer's Observation Mode did not play any sounds.
 - Fixed an issue where the shield fizzle animation played on zerg units with shields.
+- Fixed an issue where knocking back units with shields would cause shield fizzle animations to play erroneously.
 - Fixed an issue where Banelings/Volatile Infested would show a buff for a moment before exploding.
 - Fixed an issue where Void Shards/Void Slivers had the attack priority of attacking structures.
 - Fixed an issue where Marine's Combat Shield passive had a missing tooltip.
