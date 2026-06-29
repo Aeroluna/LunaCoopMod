@@ -2810,6 +2810,9 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
     unitgroup auto36BE8697_g;
     int auto36BE8697_u;
     unit auto36BE8697_var;
+    unitgroup auto8C23CE25_g;
+    int auto8C23CE25_u;
+    unit auto8C23CE25_var;
 
     // Variable Initialization
     lv_transportGroup = UnitGroupEmpty();
@@ -2860,6 +2863,14 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
     }
     AISetGroupScriptControlled(lv_attackGroup, false);
     AISetGroupSuicide(lv_attackGroup, true);
+    Wait(10.0, c_timeAI);
+    auto8C23CE25_g = lv_attackGroup;
+    auto8C23CE25_u = UnitGroupCount(auto8C23CE25_g, c_unitCountAll);
+    for (;; auto8C23CE25_u -= 1) {
+        auto8C23CE25_var = UnitGroupUnitFromEnd(auto8C23CE25_g, auto8C23CE25_u);
+        if (auto8C23CE25_var == null) { break; }
+        UnitIssueOrder(auto8C23CE25_var, OrderTargetingUnit(AbilityCommand("MedivacTransport", 2), auto8C23CE25_var), c_orderQueueAddToFront);
+    }
 }
 
 void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount, point lp_dropLocation) {
@@ -3201,6 +3212,9 @@ void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer,
     unitgroup auto4B1294C1_g;
     int auto4B1294C1_u;
     unit auto4B1294C1_var;
+    unitgroup auto9AC4AC19_g;
+    int auto9AC4AC19_u;
+    unit auto9AC4AC19_var;
 
     // Variable Initialization
     lv_transportGroup = UnitGroupEmpty();
@@ -3259,6 +3273,14 @@ void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer,
     }
     AISetGroupScriptControlled(lv_attackGroup, false);
     AISetGroupSuicide(lv_attackGroup, true);
+    Wait(10.0, c_timeAI);
+    auto9AC4AC19_g = lv_attackGroup;
+    auto9AC4AC19_u = UnitGroupCount(auto9AC4AC19_g, c_unitCountAll);
+    for (;; auto9AC4AC19_u -= 1) {
+        auto9AC4AC19_var = UnitGroupUnitFromEnd(auto9AC4AC19_g, auto9AC4AC19_u);
+        if (auto9AC4AC19_var == null) { break; }
+        UnitIssueOrder(auto9AC4AC19_var, OrderTargetingUnit(AbilityCommand("OverlordTransport", 2), auto9AC4AC19_var), c_orderQueueAddToFront);
+    }
 }
 
 void lib74A68E34_gf_MutatorHarassNydus (point lp_target, int lp_targetPlayer, int lp_dropPlayer, int lp_dropCount) {

@@ -1,5 +1,17 @@
 # Changelog
 
+## 6/29/2026
+
+- Fixed an issue where many autocast abilities would target disguised Changelings.
+- Added target priority to many autocast abilities.
+- Fixed an issue where some autocast ablities would target units with the wrong Polarity.
+
+yeah.
+
+- Reduced the max scaling of the Harassment mutator.
+- Reduced Harassment mutator Brutal+ point cost from 7 to 6.
+- Increased Imposters mutator Brutal+ point cost from 3 to 4.
+
 ## 6/28/2026
 
 - Increased Overseer maximum energy from 0 to 200.
@@ -96,6 +108,8 @@ I know I already gave Alarak a new unit, but I couldn't resist adding Blood Hunt
 - Added Load Nearby commands to all transports.
 - Reduced Infantry weapons/armor upgrades costs from 100/175/250 to 100/150/200.
 - Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
+- Mutalisk Glaives now prioritize targets.
+- Mutalisk arc slop increased to 180.
 
 5.0.16 Versus fixes/changes
 

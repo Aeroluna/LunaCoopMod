@@ -255,6 +255,8 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Added Load Nearby Units commands to all transports.
 - Reduced Infantry weapons/armor upgrades costs from 100/175/250 to 100/150/200.
 - Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
+- Mutalisk Glaives now prioritize targets.
+- Mutalisk arc slop increased to 180.
 
 Copied from Versus.
 

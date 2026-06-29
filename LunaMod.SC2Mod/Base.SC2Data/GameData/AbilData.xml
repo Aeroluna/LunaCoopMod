@@ -45,6 +45,13 @@
     <CAbilEffectTarget id="ConsumeDNA">
         <TargetFilters index="0" value="-;Self,Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CorrosiveAcid">
+        <TargetSorts>
+            <SortArray value="TSThreatensMutalisk"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="DarkShrineResearch">
         <InfoArray index="Research7" Time="60" Upgrade="DarkTemplarTaldarimShadowStrike">
             <Resource index="Minerals" value="100"/>
@@ -75,6 +82,27 @@
         <TargetFilters index="0" value="Visible;Enemy,Structure,Missile,Stasis,Dead,Hidden"/>
         <CursorEffect value="DefensiveMatrixAoE"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselAoE"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DehakaGlevigFirebreath">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DehakaGuardianMineCharge">
+        <TargetSorts>
+            <SortArray index="0" value="TSThreatensMutalisk"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="DehakaTyrannozorFanOfKnives">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="DehakaUltraliskCrashingCharge">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilResearch id="EngineeringBayResearch">
         <InfoArray index="Research4">
@@ -218,6 +246,18 @@
     <CAbilEffectTarget id="DehakaMurvarTopBar">
         <PlaceUnit value="DehakaMurvarPlacement"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="FenixSoAWhirlwind">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="FenixWarbringerColossusPowerShot">
+        <TargetSorts>
+            <SortArray index="0" value="TSThreatensColossus"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="ForgeResearch">
         <InfoArray index="Research8">
             <Resource index="Minerals" value="150"/>
@@ -251,6 +291,10 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GravitonBeamVoidCampaign">
         <ArcSlop value="360"/>
+        <TargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GravitonPrison">
         <Cost index="0">
@@ -259,6 +303,12 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GreaterNydusDestroyerDeepTunnel">
         <FinishTime index="0" value="2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="HHHellionBomb">
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+        <AutoCastValidatorArray index="0" value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilTrain id="HHStarportTrain">
         <InfoArray index="Train1">
@@ -362,6 +412,9 @@
             <Cooldown Link="Abil/MassRecall" TimeUse="125"/>
         </Cost-->
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="MurvarCoopPuke">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+    </CAbilEffectTarget>
     <CAbilTrain id="MutaliskMorphToDevourer">
         <InfoArray index="Train1">
             <Button Requirements="HaveGreaterSpireAbathur"/>
@@ -407,8 +460,9 @@
     <CAbilEffectTarget id="ObserverTargetLock">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <TargetSorts>
-            <SortArray index="0" value="TSUnitsAndAttackingStructures"/>
-            <SortArray index="1" value="TSLifeLargestFirst"/>
+            <SortArray index="0" value="TSThreatensCyclone"/>
+            <SortArray index="1" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSDistance"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -450,6 +504,9 @@
             <Flags index="AutoCast" value="1"/>
         </InfoArray>
     </CAbilTrain>
+    <CAbilEffectTarget id="SIClusterRockets">
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
     <CAbilTrain id="SILarvaTrain">
         <Flags index="DisableCollision" value="0"/>
     </CAbilTrain>
@@ -480,6 +537,11 @@
             <Button DefaultButtonFace="ResearchScienceVesselAoE" Requirements="LearnScienceVesselAoE"/>
         </InfoArray>
     </CAbilResearch>
+    <CAbilEffectTarget id="StukovInfestedDiamondbackSnare">
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="TemporalField">
         <Effect index="0" value="TemporalFieldGrowingBubbleCreatePersistent"/>
         <!--Cost index="0">
@@ -537,6 +599,18 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="UltraliskBurrowCharge">
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <!--This makes it so it will no longer snap to units, also makes it so it wont autocast on units though-->
+        <!--IgnoreFilters value="Structure;-"/-->
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="VoidZealotWhirlwind">
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+    </CAbilEffectInstant>
     <CAbilMorph id="ZeratulWarpPrismTransportMode">
         <Flags index="BestUnit" value="0"/>
         <InfoArray index="0">
@@ -550,6 +624,8 @@
             <SortArray index="2" value="TSLifeLargestFirst"/>
             <SortArray index="3" removed="1"/>
         </TargetSorts>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ViperConsumeStructure">
         <TargetFilters index="0" value="Structure;Ally,Neutral,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden,Invulnerable,MapBoss"/>
@@ -836,6 +912,8 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DarkTemplarShadowFury">
         <AbilityCategories index="User1" value="1"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="DefensiveMatrixTarget">
         <Cost index="0">
@@ -933,6 +1011,7 @@
     </CAbilMorph>
     <CAbilEffectTarget id="Banshee_BlackOpsAirstrike">
         <TargetSorts>
+            <SortArray value="TSThreatenBattlecruiser"/>
             <SortArray value="TSUnitsAndAttackingStructures"/>
             <SortArray value="TSBlackOpsAirstrike4Target"/>
             <SortArray value="TSBlackOpsAirstrike3Target"/>
@@ -941,6 +1020,8 @@
         <Arc value="14.9963"/>
         <TrackingArc value="0"/>
         <AutoCastValidatorArray index="0" value="noMarkers"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
         <Cost index="0">
             <Cooldown TimeUse="10"/>
         </Cost>
@@ -1017,6 +1098,8 @@
         </Cost>
         <AutoCastRange value="1.5"/>
         <AutoCastValidatorArray value="DarkCoilEnemiesNearby"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="DehakaCreeperFlyingSwoop">
         <Alignment value="Negative"/>
@@ -1211,6 +1294,8 @@
     <CAbilEffectTarget id="RavagerStetmannCorrosiveBile">
         <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden"/>
         <AutoCastValidatorArray value="IsForceFieldOrNotInvulnerabe"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
         <TargetSorts>
             <SortArray value="TSNotForceField"/>
             <SortArray value="TSThreatensCyclone"/>
@@ -1235,6 +1320,8 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ShadowGuardShadowFury">
         <AbilityCategories index="User1" value="1"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="StukovInfestedSiegeTankDeepTunnel">
         <AbilityCategories index="User1" value="1"/>
@@ -1264,6 +1351,10 @@
         <AutoCastRange value="6"/>
         <Arc value="360"/>
         <CursorEffect value="TychusFirebatOilBombSearch"/>
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusFirebatOilBombBunker2" parent="TychusFirebatOilBombBunker"/>
     <CAbilEffectTarget id="TychusGhostDominate">
@@ -1299,9 +1390,13 @@
         <AutoCastFilters value="Visible;Player,Ally,Structure,Heroic,Missile,Stasis,Dead,Invulnerable,MapBoss"/>
         <AutoCastRange value="10"/>
         <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <AutoCastValidatorArray value="TargetLifeMaxGE100"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
         <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusGhostDominateBunker2" parent="TychusGhostDominateBunker"/>
@@ -1327,6 +1422,7 @@
         <Arc value="360"/>
         <AutoCastRange value="2"/>
         <AutoCastValidatorArray value="TychusHercGrappleEnemiesInRange"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="TychusHercGrappleBunker2" parent="TychusHercGrappleBunker"/>
     <CAbilEffectInstant id="TychusHeroCommonAbil6">
@@ -1438,12 +1534,15 @@
         </Cost>
         <TargetFilters value="-;Self,Player,Ally,Missile,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
             <SortArray value="TSLifeLargestFirst"/>
         </TargetSorts>
         <Range value="9"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="TargetLifeMaxGE100"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="TychusReaperBomb" Requirements="TychusReaperBunker">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
@@ -1472,6 +1571,11 @@
         <Alignment value="Negative"/>
         <Arc value="360"/>
         <CursorEffect value="TychusShredderGrenadeSearch"/>
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusShredderGrenadeBunker2" parent="TychusShredderGrenadeBunker"/>
     <CAbilEffectTarget id="TychusSpectreUltrasonicPulse">
@@ -1501,6 +1605,8 @@
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="Transient" value="1"/>
@@ -1510,6 +1616,9 @@
         </Marker>
         <Arc value="360"/>
         <CursorEffect value="TychusSpectreUltrasonicSearchLv1"/>
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusSpectreUltrasonicPulseBunker2" parent="TychusSpectreUltrasonicPulseBunker"/>
     <CAbilEffectTarget id="TychusWarhoundBuildAutoTurret">
@@ -1546,6 +1655,7 @@
         <Arc value="360"/>
         <Placeholder value="TychusWarhoundAutoTurret"/>
         <PlaceUnit value="TychusWarhoundAutoTurret"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="TychusWarhoundBuildAutoTurretBunker2" parent="TychusWarhoundBuildAutoTurretBunker"/>
     <CAbilEffectInstant id="TychusWarhoundTornadoSprayMissile">
@@ -1650,6 +1760,9 @@
         <Effect index="0" value="GhostMengskEMPStartSet"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="GhostMengskEMPValidTarget"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrDetected"/>
         <Marker Duration="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GhostMengskEMPShortStun">
@@ -1659,6 +1772,9 @@
         <Effect index="0" value="GhostMengskEMPStartSet"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="GhostMengskEMPValidTarget"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrDetected"/>
         <Marker Duration="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="GhostMengskIrradiateBigDamage">
@@ -1667,6 +1783,9 @@
             <Cooldown TimeUse="0"/>
         </Cost>
         <AutoCastValidatorArray value="GhostMengskIrradiateNoNearby"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrDetected"/>
         <Arc value="0"/>
         <PrepTime value="0.01"/>
         <FinishTime value="0.0625"/>
@@ -1680,6 +1799,9 @@
             <Cooldown TimeUse="0"/>
         </Cost>
         <AutoCastValidatorArray value="GhostMengskIrradiateNoNearby"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrDetected"/>
         <Arc value="0"/>
         <PrepTime value="0.01"/>
         <FinishTime value="0.0625"/>
@@ -1713,6 +1835,11 @@
     </CAbilMorphPlacement>
     <CAbilEffectTarget id="HHD8SingleCharge">
         <CursorEffect value="HHD8ChargeExplodeDamage"/>
+        <TargetSorts>
+            <SortArray index="0" value="TSThreatensCyclone"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HHHyperjump">
         <CmdButtonArray index="Execute" DefaultButtonFace="HyperjumpInstant"/>
@@ -1839,6 +1966,7 @@
         <Effect index="0" value="LockOnInitialSetNew"/>
         <AutoCastValidatorArray value="CasterIsNotHidden"/>
         <AutoCastValidatorArray value="NotLarvaEgg"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
         <TargetSorts>
             <SortArray value="TSThreatensCyclone"/>
             <SortArray value="AirTarget"/>
@@ -1857,12 +1985,14 @@
         </Cost>
         <TargetFilters index="0" value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
             <SortArray value="TSUnitsAndAttackingStructures"/>
             <SortArray value="TSMagrailStun"/>
         </TargetSorts>
         <Arc value="14.9963"/>
         <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="MedivacHeal">
         <CmdButtonArray index="Execute" Requirements="NotHaveRaynorCommander"/>
@@ -1914,6 +2044,8 @@
     <CAbilEffectTarget id="NovaWeaponBlazefireBladeShadowFury">
         <CmdButtonArray index="Execute" Requirements="HaveNovaStealthSuit"/>
         <AbilityCategories index="User1" value="1"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OracleRevelation">
         <CmdButtonArray index="Execute" State="Available"/>
@@ -1963,6 +2095,13 @@
         <Cost index="0">
             <Cooldown TimeUse="15"/>
         </Cost>
+        <TargetSorts>
+            <SortArray index="0" value="TSThreatensCyclone"/>
+            <SortArray index="1" value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilTrain id="SummonMercenaries">
         <InfoArray index="Train2">
@@ -2018,6 +2157,7 @@
         </Cost>
         <AutoCastRange value="5"/>
         <CmdButtonArray index="Execute" Requirements=""/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectInstant>
     <CAbilMorphPlacement id="TychusCommandCenterLand">
         <InfoArray index="0">
@@ -2207,8 +2347,9 @@
         <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <TargetSorts>
-            <SortArray index="0" value="TSUnitsAndAttackingStructures"/>
-            <SortArray index="1" value="TSLifeLargestFirst"/>
+            <SortArray index="0" value="TSThreatenBattlecruiser"/>
+            <SortArray index="1" value="TSUnitsAndAttackingStructures"/>
+            <SortArray value="TSLifeLargestFirst"/>
             <SortArray value="TSDistance"/>
         </TargetSorts>
     </CAbilEffectTarget>
@@ -2273,6 +2414,8 @@
         <AutoCastFilters value="Visible;Player,Ally,Neutral,Stasis,Invulnerable,Stunned"/>
         <AutoCastRange value="9"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
         <!--AutoCastValidatorArray value="DisruptionWebAutocast"/-->
     </CAbilEffectTarget>
     <CAbilEffectTarget id="QueenClassicParasite">
@@ -2379,6 +2522,8 @@
         <TargetSorts>
             <SortArray value="TSThreatenBattlecruiser"/>
         </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilResearch id="TemplarArchivesResearch">
         <InfoArray index="Research11" Time="90" Upgrade="DarkArchonMindControl">
@@ -2760,6 +2905,8 @@
         <AutoCastFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden"/>
         <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="IsForceFieldOrNotInvulnerabe"/>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilResearch id="RoboticsBayResearch">
         <InfoArray index="Research19">
@@ -2981,6 +3128,8 @@
                 <EffectArray index="Start" value="SpiderMineInvulnerable"/>
             </SectionArray>
         </InfoArray>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
     </CAbilMorph>
     <CAbilEffectTarget id="HHWidowMineBurrowedAttack">
         <PrepEffect index="0" value="WidowMineTargetTintApplyBehavior"/>

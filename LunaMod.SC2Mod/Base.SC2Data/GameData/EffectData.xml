@@ -716,6 +716,12 @@
     <CEffectCreateHealer id="HighArchonPsiStormHeal">
         <ValidatorArray value="NotUnrepairable"/>
     </CEffectCreateHealer>
+    <CEffectCreatePersistent id="HornerAirFleetMissileShot">
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="HornerAirFleetYamato">
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
+    </CEffectLaunchMissile>
     <CEffectTeleport id="HybridDominatorCoopBossBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -900,6 +906,9 @@
         <ValidatorArray value="NotContaminated"/>
         <ValidatorArray value="QueenTargetFiltersInject"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="SymbioteStabInitialCP">
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
+    </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ThorMengskInterruptedMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="ThorMengskUnsiegeMorphOrderSet"/>
@@ -3079,6 +3088,7 @@
         <EffectArray value="HHOrdnanceTowerAttackCooldown"/>
         <EffectArray value="HHOrdnanceTowerLM"/>
         <ValidatorArray value="IsNotDisguisedChangeling"/>
+        <ValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CEffectSet>
     <CEffectSwitch id="HHBattlecruiserSwitch">
         <EditorCategories value="Race:Terran"/>
@@ -4610,6 +4620,7 @@
         <AmmoUnit value="HHValkyrie2Weapon"/>
         <ValidatorArray index="0" value="TargetInWeaponRange"/>
         <ValidatorArray value="IsNotDisguisedChangeling"/>
+        <ValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CEffectLaunchMissile>
     <CEffectEnumArea id="HHValkyrie2Search">
         <EditorCategories value="Race:Terran"/>
@@ -5849,6 +5860,11 @@
         <AreaArray index="2" Validator="NotFriendlyFire"/>
         <SearchFilters value="Ground;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
+    <CEffectSet id="VultureSpiderMinesSet">
+        <ValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <ValidatorArray value="IsNotDisguisedChangeling"/>
+        <ValidatorArray value="NotHallucinationOrNotDetected"/>
+    </CEffectSet>
     <CEffectDamage id="WidowMineExplodeSplash">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectDamage>
