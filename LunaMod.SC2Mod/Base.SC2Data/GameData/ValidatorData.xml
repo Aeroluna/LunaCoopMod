@@ -69,6 +69,10 @@
     <CValidatorCombine id="CasterThorMengskSiegedSmallAoE">
         <CombineArray index="0" value="ThorMengskMorphValidatorCombine"/>
     </CValidatorCombine>
+    <CValidatorCombine id="DamageValidTarget">
+        <CombineArray value="IsNotDisguisedChangeling"/>
+        <CombineArray value="MutatorPolarityTargetCasterCheck"/>
+    </CValidatorCombine>
     <CValidatorLocationCompareRange id="DarkTemplarTaldarimBlinkMaxDistance">
         <ResultFailed value="TargetIsOutOfRange"/>
         <WhichLocation Value="SourceUnit"/>
@@ -231,6 +235,9 @@
         <Compare value="GT"/>
         <Behavior value="DehakaCreeperRecentlySwooped"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="DehakaTyrannozorFanOfKnivesEnemiesNearby">
+        <AreaArray index="0" Validator="DamageValidTarget"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareField id="DisguiseAsDehakaZergling">
         <Field value="Race"/>
         <Value value="PZrg"/>
@@ -306,6 +313,9 @@
         <AbilLink value="CorsairMPDisruptionWeb"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CValidatorUnitOrder>
+    <CValidatorLocationEnumArea id="FenixSOAWhirlwindCheck">
+        <AreaArray index="0" Validator="DamageValidTarget"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="IsNotZergAny">
         <CombineArray value="IsZerg"/>
         <CombineArray value="IsPrimalZerg"/>
@@ -680,6 +690,7 @@
         <CombineArray value="VoidZealotShadowStunRange"/>
         <CombineArray value="VoidZealotNotShadowCharging"/>
         <CombineArray value="TargetNonUnstoppableWithoutVorazunStasisPrestige"/>
+        <CombineArray value="DamageValidTarget"/>
         <Type value="And"/>
     </CValidatorCombine>
     <CValidatorPlayerRequirement id="HaveSnowVisual">
@@ -1222,7 +1233,7 @@
         <Behavior value="MedicRestoration"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationEnumArea id="SpikeBurstMinimum3EnemyTargets">
-        <AreaArray index="0" Count="1"/>
+        <AreaArray index="0" Count="1" Validator="DamageValidTarget"/>
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
     <CValidatorCombine id="NotSummonAndNotTimedLifeOrLarva">
@@ -1322,14 +1333,30 @@
         <Compare value="GE"/>
         <Value value="4"/>
     </CValidatorUnitCompareSpeed>
+    <CValidatorCombine id="TychusHercGrappleEnemiesInRangeCombine">
+        <CombineArray value="TychusHercGrappleEnemiesInRange"/>
+        <CombineArray value="TychusHercGrappleEnemiesInRangeImpactsCombine"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="TychusHercGrappleEnemiesInRangeImpactsCombine">
+        <CombineArray value="TychusHercGrappleImpacts"/>
+        <CombineArray value="TychusHercGrappleEnemiesInRangeImpacts"/>
+        <Type value="And"/>
+    </CValidatorCombine>
     <CValidatorPlayerRequirement id="TychusHercGrappleImpacts">
         <Find value="1"/>
         <Value value="HaveTychusHercGrappleImpacts"/>
     </CValidatorPlayerRequirement>
     <CValidatorLocationEnumArea id="TychusHercGrappleEnemiesInRange">
         <WhichLocation Value="CasterUnit"/>
-        <AreaArray Radius="0.2"/>
-        <AreaArray Radius="1.7" Validator="TychusHercGrappleImpacts"/>
+        <AreaArray Radius="0.2" Validator="DamageValidTarget"/>
+        <Compare value="GE"/>
+        <Count value="2"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="TychusHercGrappleEnemiesInRangeImpacts">
+        <WhichLocation Value="CasterUnit"/>
+        <AreaArray Radius="1.7" Validator="DamageValidTarget"/>
         <Compare value="GE"/>
         <Count value="2"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
@@ -1374,6 +1401,9 @@
     <CValidatorUnitCompareOrderTargetRange id="VoidZealotShadowStunRange">
         <Value value="1.5"/>
     </CValidatorUnitCompareOrderTargetRange>
+    <CValidatorLocationEnumArea id="VoidZealotWhirlwindCheck">
+        <AreaArray index="0" Validator="DamageValidTarget"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="VorazunShadowFuryTargetsInArea">
         <AreaArray index="0" Radius="2"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -1534,4 +1564,17 @@
         <ExcludeArray Value="Target"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareAttackPriority id="ThreatensColossus" parent="ThreatensUnit" unitLink="Colossus"/>
+    <CValidatorLocationEnumArea id="ZeratulXelNagaConstructDevolveTargetsInArea">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <AreaArray Compare="GE" Radius="10"/>
+        <Compare value="GE"/>
+        <Count value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Structure,Missile,Destructible,Dead,Hidden"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="ZeratulXelNagaConstructDevolveValidTarget">
+        <CombineArray value="IsNotDisguisedChangeling"/>
+        <CombineArray value="NotHallucinationOrNotDetected"/>
+    </CValidatorCombine>
 </Catalog>

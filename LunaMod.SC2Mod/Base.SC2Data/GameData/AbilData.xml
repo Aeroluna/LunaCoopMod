@@ -96,10 +96,6 @@
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="DehakaTyrannozorFanOfKnives">
-        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
-        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
-    </CAbilEffectInstant>
     <CAbilEffectTarget id="DehakaUltraliskCrashingCharge">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
@@ -246,10 +242,6 @@
     <CAbilEffectTarget id="DehakaMurvarTopBar">
         <PlaceUnit value="DehakaMurvarPlacement"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="FenixSoAWhirlwind">
-        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
-        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
-    </CAbilEffectInstant>
     <CAbilEffectTarget id="FenixWarbringerColossusPowerShot">
         <TargetSorts>
             <SortArray index="0" value="TSThreatensColossus"/>
@@ -384,6 +376,16 @@
         </Cost>
         <Placeholder value="KD8Charge"/>
         <CursorEffect value="KD8SearchArea"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="KarassFeedback">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="KarassPsiStorm">
+        <TargetSorts>
+            <SortArray value="TSThreatensCyclone"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
     <CAbilTrain id="LarvaTrain">
         <Flags index="DisableCollision" value="0"/>
@@ -610,13 +612,22 @@
             <SortArray value="TSThreatensCyclone"/>
         </TargetSorts>
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
-        <!--This makes it so it will no longer snap to units, also makes it so it wont autocast on units though-->
-        <!--IgnoreFilters value="Structure;-"/-->
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="VoidZealotWhirlwind">
-        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    <CAbilEffectTarget id="ZeratulDarkArchonMaelstrom">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
-    </CAbilEffectInstant>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulDarkArchonMindControl">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulEntropicBlastCyan">
+        <TargetSorts>
+            <SortArray value="TSThreatensColossus"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="ZeratulWarpPrismTransportMode">
         <Flags index="BestUnit" value="0"/>
         <InfoArray index="0">
@@ -649,6 +660,22 @@
         </CmdButtonArray>
         <SearchRadius value="6"/>
     </CAbilTransport>
+    <CAbilEffectInstant id="ZeratulXelNagaConstructDevolve">
+        <AutoCastValidatorArray value="ZeratulXelNagaConstructDevolveTargetsInArea"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ZeratulXelNagaConstructPsiBlast">
+        <TargetSorts>
+            <SortArray index="0" value="TSThreatensColossus"/>
+            <SortArray value="TSLifeLargestFirst"/>
+        </TargetSorts>
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulXelNagaConstructPsiStorm">
+        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+    </CAbilEffectTarget>
     <CAbilBuild id="ZergBuildStetmann">
         <InfoArray index="Build12" Unit="LurkerDenStetmann" Time="80">
             <Button DefaultButtonFace="LurkerDenStetmann" Requirements="HaveHydraliskDenStetmann"/>
@@ -1104,8 +1131,6 @@
         </Cost>
         <AutoCastRange value="1.5"/>
         <AutoCastValidatorArray value="DarkCoilEnemiesNearby"/>
-        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
-        <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
     </CAbilEffectInstant>
     <CAbilEffectTarget id="DehakaCreeperFlyingSwoop">
         <Alignment value="Negative"/>
@@ -1427,8 +1452,7 @@
         <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Arc value="360"/>
         <AutoCastRange value="2"/>
-        <AutoCastValidatorArray value="TychusHercGrappleEnemiesInRange"/>
-        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
+        <AutoCastValidatorArray value="TychusHercGrappleEnemiesInRangeCombine"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="TychusHercGrappleBunker2" parent="TychusHercGrappleBunker"/>
     <CAbilEffectInstant id="TychusHeroCommonAbil6">
@@ -2163,7 +2187,6 @@
         </Cost>
         <AutoCastRange value="5"/>
         <CmdButtonArray index="Execute" Requirements=""/>
-        <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
     </CAbilEffectInstant>
     <CAbilMorphPlacement id="TychusCommandCenterLand">
         <InfoArray index="0">

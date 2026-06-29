@@ -4354,6 +4354,10 @@ bool lib74A68E34_gt_MCAddCoopUnitBehavior_Func (bool testConds, bool runActions)
         UnitBehaviorAdd(lv_mindcontrolunit, "AllUnitBehaviorController", UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0), 1);
     }
 
+    if ((TechTreeUpgradeCount(UnitBehaviorEffectPlayer(lv_mindcontrolunit, lv_mindcontrolbehavior, c_effectPlayerCaster, 0), "CommanderPrestigeKaraxUnitChronoShared", c_techCountCompleteOnly) > 0)) {
+        UnitBehaviorAdd(lv_mindcontrolunit, "ChronoBoostTarget", UnitBehaviorEffectUnit(EventUnit(), EventUnitBehavior(), c_effectUnitCaster, 0), 1);
+    }
+
     return true;
 }
 
