@@ -1769,6 +1769,12 @@ Some tooltip fixes. Only the research tooltips should highlight unit names, not 
 
 Leviathan's have four holes, use them all! This bug was caused by using the original WoL Leviathan's attach method instead of one for Abathur's Leviathan. Fun fact: this problem is shared with Kerrigan's Leviathan in the HotS campaign.
 
+- Fixed an issue where Swarm Host Spawn Locust ability could only target within a small range.
+- Reduced the allied push priority of Locust from 0 to -1.
+- Changed Abathur P2 to double the range of Swarm Host's Spawn Locust weapon.
+
+yeah.
+
 ### Alarak
 
 - Added P4: First Ascendant
@@ -2367,6 +2373,7 @@ It very clearly sounded like a hellion.
 - Increased the scale of Primal Mutalisk's projectiles by 30%.
 - Adjusted Ravasaur weapon projectile mover.
 - Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
+- Reduced the allied push priority of Primal Locust from 0 to -1.
 
 yeah.
 

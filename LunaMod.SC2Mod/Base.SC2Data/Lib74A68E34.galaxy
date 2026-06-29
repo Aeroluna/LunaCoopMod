@@ -2259,17 +2259,19 @@ void lib74A68E34_gf_Luna_MutatorUpdate (int lp_player) {
     }
 }
 
-void lib74A68E34_gf_MutatorTeemingMultiply (unit lp_pUnit, fixed lp_pCoef) {
+unitgroup lib74A68E34_gf_MutatorTeemingMultiply (unit lp_pUnit, fixed lp_pCoef) {
     // Variable Declarations
+    unitgroup lv_results;
     int lv_vAmount;
     point lv_vIndexPoint;
 
     // Automatic Variable Declarations
     // Variable Initialization
+    lv_results = UnitGroupEmpty();
 
     // Implementation
     if ((UnitGroupHasUnit(lib74A68E34_gv_mutatorTeemingUnits, lp_pUnit) == true)) {
-        return ;
+        return lv_results;
     }
 
     lv_vIndexPoint = libA8FDA37D_gf_UT_FindPointWithPathingTo(UnitGetPosition(lp_pUnit), lv_vIndexPoint);
@@ -2277,13 +2279,17 @@ void lib74A68E34_gf_MutatorTeemingMultiply (unit lp_pUnit, fixed lp_pCoef) {
     if ((lv_vAmount >= 1)) {
         UnitCreate(lv_vAmount, UnitGetType(lp_pUnit), 0, 3, lv_vIndexPoint, UnitGetFacing(lp_pUnit));
         UnitGroupAddUnitGroup(lib74A68E34_gv_mutatorTeemingUnits, UnitLastCreatedGroup());
+        UnitGroupAddUnitGroup(lv_results, UnitLastCreatedGroup());
     }
 
     if ((RandomFixed(0.0, 1.0) <= (lp_pCoef - Trunc(lp_pCoef)))) {
         UnitCreate(1, UnitGetType(lp_pUnit), 0, 3, lv_vIndexPoint, UnitGetFacing(lp_pUnit));
         UnitGroupAdd(lib74A68E34_gv_mutatorTeemingUnits, UnitLastCreated());
+        UnitGroupAdd(lv_results, UnitLastCreated());
     }
 
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_results);
+    return lv_results;
 }
 
 point lib74A68E34_gf_VaryPosition (point lp_src, fixed lp_variance) {
@@ -2514,8 +2520,8 @@ void lib74A68E34_gf_MutatorHarassAdept (point lp_target, int lp_targetPlayer, in
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Adept", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -2556,8 +2562,8 @@ void lib74A68E34_gf_MutatorHarassOracle (point lp_target, int lp_targetPlayer, i
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 40.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -2604,8 +2610,8 @@ void lib74A68E34_gf_MutatorHarassDarkTemplar (point lp_target, int lp_targetPlay
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "DarkTemplar", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -2641,8 +2647,8 @@ void lib74A68E34_gf_MutatorHarassZealot (point lp_target, int lp_targetPlayer, i
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zealot", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -2681,8 +2687,8 @@ void lib74A68E34_gf_MutatorHarassPhoenix (point lp_target, int lp_targetPlayer, 
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 80.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -2740,8 +2746,8 @@ void lib74A68E34_gf_MutatorHarassWarpPrism (point lp_target, int lp_targetPlayer
         AISetUnitScriptControlled(UnitLastCreated(), true);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -2828,9 +2834,9 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
         UnitCargoCreate(UnitLastCreated(), "Marine", MinI(((lp_dropCount / 2) + 4), 8));
         UnitGroupAddUnitGroup(lv_cargoGroup, UnitCargoLastCreatedGroup());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_cargoGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     AISetGroupScriptControlled(lv_attackGroup, true);
     AISetGroupScriptControlled(lv_cargoGroup, false);
     AISetGroupSuicide(lv_cargoGroup, true);
@@ -2893,8 +2899,8 @@ void lib74A68E34_gf_MutatorHarassBattlecruiser (point lp_target, int lp_targetPl
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergy, 140.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(10.0, c_timeAI);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("Hyperjump", 0), lp_target), c_orderQueueReplace);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueAddToEnd);
@@ -2929,8 +2935,8 @@ void lib74A68E34_gf_MutatorHarassBanshee (point lp_target, int lp_targetPlayer, 
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 80.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -2976,8 +2982,8 @@ void lib74A68E34_gf_MutatorHarassLiberator (point lp_target, int lp_targetPlayer
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Liberator", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -3023,8 +3029,8 @@ void lib74A68E34_gf_MutatorHarassHellion (point lp_target, int lp_targetPlayer, 
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Hellion", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -3060,8 +3066,8 @@ void lib74A68E34_gf_MutatorHarassReaper (point lp_target, int lp_targetPlayer, i
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Reaper", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -3097,8 +3103,8 @@ void lib74A68E34_gf_MutatorHarassZergling (point lp_target, int lp_targetPlayer,
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zergling", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -3136,8 +3142,8 @@ void lib74A68E34_gf_MutatorHarassRoach (point lp_target, int lp_targetPlayer, in
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Roach", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -3176,8 +3182,8 @@ void lib74A68E34_gf_MutatorHarassMutalisk (point lp_target, int lp_targetPlayer,
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "Mutalisk", 0, lp_dropPlayer, lp_dropLocation);
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     lv_corner = lib74A68E34_gf_VaryPosition(lib74A68E34_gf_GetCorner(lp_dropLocation, lp_target), 8.0);
     UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lv_corner), c_orderQueueReplace);
@@ -3241,9 +3247,9 @@ void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer,
         }
         UnitGroupAddUnitGroup(lv_cargoGroup, UnitCargoLastCreatedGroup());
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_cargoGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     AISetGroupScriptControlled(lv_attackGroup, true);
     AISetGroupScriptControlled(lv_cargoGroup, false);
     AISetGroupSuicide(lv_cargoGroup, true);
@@ -3373,8 +3379,8 @@ void lib74A68E34_gf_MutatorHarassInfestor (point lp_target, int lp_targetPlayer,
         UnitGroupAdd(lv_attackGroup, UnitLastCreated());
         UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 40.0);
     }
-    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     libCOMU_gf_CT_RegisterSpawnedUnitGroup(lv_attackGroup);
+    lv_attackGroup = libCOMI_gf_CreateDropAttack(lp_dropPlayer, lv_attackGroup, lp_dropLocation);
     Wait(1.0, c_timeAI);
     if ((AIPathingCostUnit(UnitGroupRandomUnit(lv_attackGroup, c_unitCountAlive), lp_target, c_includeAllBuildings) > 0)) {
         UnitGroupIssueOrder(lv_attackGroup, OrderTargetingPoint(AbilityCommand("move", 0), lp_target), c_orderQueueReplace);
@@ -10402,9 +10408,11 @@ void lib74A68E34_gt_MutatorTeemingInit_Init () {
 bool lib74A68E34_gt_MutatorTeemingUnitCreated_Func (bool testConds, bool runActions) {
     // Variable Declarations
     point lv_vIndexPoint;
+    unitgroup lv_created;
 
     // Automatic Variable Declarations
     // Variable Initialization
+    lv_created = UnitGroupEmpty();
 
     // Conditions
     if (testConds) {
@@ -10454,9 +10462,9 @@ bool lib74A68E34_gt_MutatorTeemingUnitCreated_Func (bool testConds, bool runActi
         return true;
     }
 
-    lib74A68E34_gf_MutatorTeemingMultiply(EventUnitCreatedUnit(), lib74A68E34_gv_mutatorTeemingMultiplier);
-    if ((AIUnitGetWave(EventUnitCreatedUnit()) != null)) {
-        UnitGroupAddUnitGroup(lib74A68E34_gv_mutatorTeemingWave, UnitLastCreatedGroup());
+    lv_created = lib74A68E34_gf_MutatorTeemingMultiply(EventUnitCreatedUnit(), lib74A68E34_gv_mutatorTeemingMultiplier);
+    if ((GameGetMissionTime() > 5.0)) {
+        UnitGroupAddUnitGroup(lib74A68E34_gv_mutatorTeemingWave, lv_created);
         TriggerExecute(lib74A68E34_gt_MutatorTeemingSendWave, true, false);
     }
 
@@ -10546,6 +10554,7 @@ bool lib74A68E34_gt_MutatorHarassSuperWarpGateAI_Func (bool testConds, bool runA
 
     AISetUnitScriptControlled(EventUnitCreatedUnit(), false);
     AISetUnitSuicide(EventUnitCreatedUnit(), true);
+    libCOMU_gf_CT_RegisterSpawnedUnitGroup(libNtve_gf_ConvertUnitToUnitGroup(EventUnitCreatedUnit()));
     return true;
 }
 

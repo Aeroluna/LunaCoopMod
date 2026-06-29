@@ -6,6 +6,13 @@
 - Added target priority to many autocast abilities.
 - Fixed an issue where some autocast ablities would target units with the wrong Polarity.
 - Fixed an issue where Changelings could not disguise as a Stukov unit.
+- Fixed an issue where Abathur's Swarm Host Spawn Locust ability could only target within a small range.
+- Reduced the allied push priority of Abathur's Locust from 0 to -1.
+- Reduced the allied push priority of Primal Locust from 0 to -1.
+- Changed Abathur P2 to double the range of Swarm Host's Spawn Locust weapon.
+- Fixed an issue where Primal Host lacked an equipment (weapon) display indicator for the Locust.
+- Fixed an issue where Creeper Host lacked an equipment (weapon) display indicator for the Locust.
+- Fixed an issue where extra units from the Teeming mutator could get stuck.
 
 yeah.
 
