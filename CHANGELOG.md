@@ -5,12 +5,15 @@
 - Fixed an issue where many autocast abilities would target disguised Changelings.
 - Added target priority to many autocast abilities.
 - Fixed an issue where some autocast ablities would target units with the wrong Polarity.
+- Fixed an issue where Changelings could not disguise as a Stukov unit.
 
 yeah.
 
 - Reduced the max scaling of the Harassment mutator.
 - Reduced Harassment mutator Brutal+ point cost from 7 to 6.
 - Increased Imposters mutator Brutal+ point cost from 3 to 4.
+
+These are hard!!!!!
 
 ## 6/28/2026
 

@@ -308,6 +308,9 @@
     <CEffectCreateUnit id="DisguiseAsZerglingStetmannWithoutWingsCU" parent="DisguiseEx3CU">
         <SpawnUnit value="ChangelingZerglingStetmann"/>
     </CEffectCreateUnit>
+    <CEffectCreateUnit id="DisguiseAsSIInfestedMarineCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="ChangelingSIInfestedMarine"/>
+    </CEffectCreateUnit>
     <CEffectSwitch id="DisguiseEx3">
         <!-- variants first, then check vanilla units -->
         <CaseArray index="0" Validator="DisguiseAsDehakaZergling" Effect="DisguiseAsDehakaZerglingCU"/>
@@ -325,6 +328,7 @@
         <CaseArray Validator="DisguiseAsHotSSwarmlingWithoutWings" Effect="DisguiseAsSwarmlingWithoutWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithWings" Effect="DisguiseAsZerglingWithWingsCU"/>
         <CaseArray Validator="DisguiseAsZerglingWithoutWings" Effect="DisguiseAsZerglingWithoutWingsCU"/>
+        <CaseArray Validator="DisguiseAsSIInfestedMarine" Effect="DisguiseAsSIInfestedMarineCU"/>
         <ValidatorArray value="NotConjoinedAllyUnit"/>
     </CEffectSwitch>
     <CEffectSet id="DisguiseEx3FinalSet">

@@ -494,11 +494,11 @@ Now it's possible to roll some helpful mutators! Neutral mutators change the way
   - Roughly 60% more units.
   - Costs 3 points for Brutal+.
 
-More blood for the blood god!
+More blood for the blood god! This is as uncomplicated as it gets.
 
 - Added new negative mutator: Harassment
   - Enemies will periodically send units to harass player mineral lines.
-  - Costs 7 points for Brutal+.
+  - Costs 6 points for Brutal+.
 
 https://github.com/user-attachments/assets/edbf9777-2af3-4900-8ba8-28e4bcdfd038
 
@@ -506,7 +506,7 @@ Be prepared for Battlecruiers tactical jumping in, Nydus Worms popping up, and D
 
 - Added new negative mutator: Imposters
   - Imposters are among your forces! Root them out before they call in reinforcements.
-  - Costs 3 points for Brutal+.
+  - Costs 4 points for Brutal+.
 
 Changelings are one of the few units entirely missing from co-op. Now they have their own special mutator to show them off.
 
