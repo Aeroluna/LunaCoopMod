@@ -5964,6 +5964,12 @@
     <CEffectTeleport id="ZeratulDarkTemplarBlink">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectIssueOrder id="ZeratulEntropicBlastCyanOrder">
+        <WhichUnit Value="Caster"/>
+        <Abil value="ZeratulEntropicBlastCyan"/>
+        <Target Value="TargetPoint"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
     <CEffectSet id="ZeratulKhaydarinMonolithStunSet">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
@@ -6056,6 +6062,9 @@
     <CEffectEnumArea id="ZeratulWarpPrismPhasingRegenAuraSearch">
         <SearchFilters value="-;Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
     </CEffectEnumArea>
+    <CEffectCreatePersistent id="ZeratulXelNagaChargedCrystalPsiStormPersistent">
+        <Chance value="1"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="ZeratulXelNagaConstructDevolveHeroicAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
@@ -6180,8 +6189,12 @@
         <PeriodicPeriodArray index="0" value="0.0625"/>
     </CEffectCreatePersistent>
     <CEffectSet id="ZeratulXelNagaChargedCrystalCyanSet">
+        <EffectArray index="1" value="ZeratulXelNagaChargedCrystalPsiStorm"/>
         <EffectArray value="BeamTargetCD"/>
         <ValidatorArray value="NotHaveBeamTargetCDBehavior"/>
+    </CEffectSet>
+    <CEffectSet id="ZeratulXelNagaChargedCrystalPsiStorm">
+        <Chance value="0.1"/>
     </CEffectSet>
     <CEffectCreatePersistent id="FenixClolarionChargeBeamWeaponCP">
         <PeriodicPeriodArray index="0" value="0.0625"/>

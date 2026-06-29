@@ -622,11 +622,25 @@
         <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ZeratulEntropicBlastCyan">
+        <AutoCastFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <AutoCastRange value="0"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ZeratulEntropicBlastCyanAuto">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="ZeratulEntropicBlastCyanOrder"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <TargetSorts>
             <SortArray value="TSThreatensColossus"/>
         </TargetSorts>
+        <Range value="12"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Structure,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="12"/>
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
+        <AutoCastValidatorArray value="ZeratulEntropicBlastAuto"/>
+        <CursorEffect value="ZeratulEntropicBlastCyanDamage"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EntropicBlast" Requirements="HaveZeratulTalentUltimatePurity"/>
     </CAbilEffectTarget>
     <CAbilMorph id="ZeratulWarpPrismTransportMode">
         <Flags index="BestUnit" value="0"/>

@@ -2726,6 +2726,10 @@ Increased the warp-in time to compensate for the warp-in animation actually exis
 - Changed Void Templar Blink ability visual effects.
 - Changed Void Templar Blink ability button icon.
 - Renamed Void Templar Blink ability to Shadow Stride.
+- Fixed an issue where Avatar of Form's Summon Charged Crystal ability would track units while preparing when autocasting.
+- Fixed an issue where Charged Crystal's Psionic Winds would be place where the target was when the attack started.
+- Fixed an issue where Charged Crystal's Psionic Winds visuals would sometimes end prematurely.
+- Reworded Avatar of Form's Devolution Wave tooltip to mention heroic immunity.
 
 yeah.
 

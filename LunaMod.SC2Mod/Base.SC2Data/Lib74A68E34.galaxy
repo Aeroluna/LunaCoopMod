@@ -5808,6 +5808,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(libCOMI_gt_CM_ArtifactTransmission_Upgraded, false);
             }
 
+            TriggerEnable(lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm, true);
             TriggerEnable(libCOMI_gt_CM_Zeratul_Entropic_Spawner, false);
             TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, true);
         }
@@ -9707,6 +9708,27 @@ void lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ZeratulXelNagaChargedCrystalPsiStorm
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "ZeratulXelNagaChargedCrystalPsiStormPersistent", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm_Init () {
+    lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm = TriggerCreate("lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm_Func");
+    TriggerEnable(lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm, c_playerAny, "ZeratulXelNagaChargedCrystalPsiStorm");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ZeratulEntropicSpawner
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ZeratulEntropicSpawner_Func (bool testConds, bool runActions) {
@@ -12140,6 +12162,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZeratulPrestigeTopBarStasis_Init();
     lib74A68E34_gt_ZeratulPrestigeTopBarLegion_Init();
     lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init();
+    lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm_Init();
     lib74A68E34_gt_ZeratulEntropicSpawner_Init();
     lib74A68E34_gt_StetmannBroodLordArmCD_Init();
     lib74A68E34_gt_MengskPreserveAutocast_Init();

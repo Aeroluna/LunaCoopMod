@@ -1404,6 +1404,21 @@
     <CValidatorLocationEnumArea id="VoidZealotWhirlwindCheck">
         <AreaArray index="0" Validator="DamageValidTarget"/>
     </CValidatorLocationEnumArea>
+    <CValidatorCombine id="VorazunDetectorCombine">
+        <CombineArray value="VorazunDetector8RangeCombine"/>
+        <CombineArray value="VorazunDetector9RangeCombine"/>
+        <CombineArray value="VorazunDetector10RangeCombine"/>
+        <CombineArray value="VorazunDetector11RangeCombine"/>
+        <CombineArray value="VorazunDetector12RangeCombine"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="VorazunIsDetected">
+        <Type value="And"/>
+        <CombineArray index="0" value="VorazunDetectorCombine"/>
+        <CombineArray index="1" value="IsDetectorUnitFlag"/>
+        <CombineArray index="2" removed="1"/>
+        <CombineArray index="3" removed="1"/>
+        <CombineArray index="4" removed="1"/>
+    </CValidatorCombine>
     <CValidatorLocationEnumArea id="VorazunShadowFuryTargetsInArea">
         <AreaArray index="0" Radius="2"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -1564,6 +1579,10 @@
         <ExcludeArray Value="Target"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareAttackPriority id="ThreatensColossus" parent="ThreatensUnit" unitLink="Colossus"/>
+    <CValidatorUnitOrder id="ZeratulEntropicBlastAuto">
+        <AbilLink value="ZeratulEntropicBlastCyan"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
     <CValidatorLocationEnumArea id="ZeratulXelNagaConstructDevolveTargetsInArea">
         <ResultFailed value="CantFindEnoughTargets"/>
         <WhichLocation Value="TargetUnitOrPoint"/>

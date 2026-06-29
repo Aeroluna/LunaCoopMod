@@ -14,6 +14,10 @@
 - Fixed an issue where Creeper Host lacked an equipment (weapon) display indicator for the Locust.
 - Fixed an issue where extra units from the Teeming mutator could get stuck.
 - Fixed an issue where Karax P4 did not affect units affected by Reclamation.
+- Fixed an issue where Avatar of Form's Summon Charged Crystal ability would track units while preparing when autocasting.
+- Fixed an issue where Charged Crystal's Psionic Winds would be place where the target was when the attack started.
+- Fixed an issue where Charged Crystal's Psionic Winds visuals would sometimes end prematurely.
+- Reworded Avatar of Form's Devolution Wave tooltip to mention heroic immunity.
 
 yeah.
 
