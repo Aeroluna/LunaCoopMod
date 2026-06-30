@@ -18,6 +18,7 @@
 - Fixed an issue where Charged Crystal's Psionic Winds would be place where the target was when the attack started.
 - Fixed an issue where Charged Crystal's Psionic Winds visuals would sometimes end prematurely.
 - Reworded Avatar of Form's Devolution Wave tooltip to mention heroic immunity.
+- Fixed an issue where Blood Hunter upgrades were not restricted to Alarak.
 
 yeah.
 
