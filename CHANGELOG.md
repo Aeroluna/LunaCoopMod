@@ -1,5 +1,20 @@
 # Changelog
 
+## 7/1/2026
+
+- Fixed an issue where the Infestor's weapon used the incorrect base attack icon.
+- Fixed an issue where new Archon sounds were initialized incorrectly and would play too loudly.
+- Fixed an issue where Stasis Wards had a selection priority equivalent to units.
+- Fixed an issue where mule repair autocast mechanism was briefly unintentionally visible.
+- Fixed an issue where Swarmhost range radius actors would appear at unintended times.
+- Fixed an issue where 'Load Nearby' had the wrong default hotkey set.
+- Archon merge completion assets are now disabled if the player is using the low 'effects' graphics option.
+- Queens will now spawn facing their origin hatchery.
+- Units produced out of gateways have been given a visual spawn indicator.
+- Fixed an issue where larva spawn rate was faster than intended.
+
+5.0.16 hotfix changes.
+
 ## 6/29/2026
 
 - Fixed an issue where many autocast abilities would target disguised Changelings.

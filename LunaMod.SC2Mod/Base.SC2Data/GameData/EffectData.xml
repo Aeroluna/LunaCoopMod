@@ -6512,7 +6512,7 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectSwitch id="SCVMovetoBuildAllySwitch">
-        <CaseArray Validator="TargetIsAlly" Effect="SCVMovetoBuildChangeOwner" FallThrough="1"/>
+        <!--CaseArray Validator="TargetIsAlly" Effect="SCVMovetoBuildChangeOwner" FallThrough="1"/-->
         <CaseArray Effect="SCVMovetoBuildOrder"/>
     </CEffectSwitch>
     <CEffectModifyUnit id="SCVMovetoBuildChangeOwner">
@@ -6756,4 +6756,10 @@
         <CmdFlags index="SetAutoCast" value="1"/>
         <CmdFlags index="SetAutoCastOn" value="1"/>
     </CEffectIssueOrder>
+    <CEffectModifyUnit id="MakeQueenFaceHatchery">
+        <EditorCategories value="Race:Protoss"/>
+        <ModifyFlags index="InterpolateFacing" value="1"/>
+        <FacingLocation Value="CasterUnit"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
 </Catalog>
