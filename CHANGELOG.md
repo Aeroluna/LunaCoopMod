@@ -18,6 +18,13 @@ Now that Motherships can be found normally, the mutator has been changed to be m
 
 Completely reworked and rebalanced. The old version was boring and just acted as a simple mineral tax. This new version requires actually interacting with the Candy Bowl by bringing candy back to it. Additionally, more candy spawns than is consumed, letting you get some buffed up units. The mutator has also gotten some much needed all-around polish.
 
+- Fixed an issue where recall effects wouldn't execute.
+- Fixed an issue where the recall visual would not dissipate.
+- Fixed an issue where units affected by Gary's recall would not have their tint cleared.
+- Fixed an issue where some recall sounds wouldn't play.
+
+Oopsies bugs with recalls.
+
 ## 7/1/2026
 
 - Fixed an issue where the Infestor's weapon used the incorrect base attack icon.

@@ -108,9 +108,6 @@
         <SearchFilters value="-;Self,Neutral,Enemy,Structure,User1,Worker,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
-    <CEffectSet id="ArbiterMPRecallSet">
-        <EffectArray value="NexusMassRecallCastingRB"/>
-    </CEffectSet>
     <CEffectTeleport id="ArbiterMPRecallTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -375,9 +372,9 @@
     </CEffectEnumArea>
     <CEffectSet id="FenixArbiterRecallInitialSet" parent="ArbiterMPRecallInitialSet">
         <ValidatorArray value="NotUnmoved"/>
-        <EffectArray index="0" value="FenixArbiterRecallApplyPreRecallBehavior"/>
-        <EffectArray index="1" value="FenixArbiterRecallMagazineIterate"/>
-        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray index="0" value="NexusMassRecallCastingAB"/>
+        <EffectArray index="1" value="FenixArbiterRecallApplyPreRecallBehavior"/>
+        <EffectArray value="FenixArbiterRecallMagazineIterate"/>
     </CEffectSet>
     <CEffectApplyBehavior id="FenixArbiterRecallApplyPreRecallBehavior" parent="ArbiterMPRecallApplyPreRecallBehavior">
         <Behavior value="FenixArbiterRecalling"/>
@@ -651,9 +648,26 @@
     <CEffectTeleport id="FleetwideJumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectEnumArea id="GaryStetmannRecallSearch">
+        <AreaArray index="0" Effect="GaryStetmannRecallSearchSet"/>
+    </CEffectEnumArea>
     <CEffectTeleport id="GaryStetmannRecallTeleport">
         <TeleportEffect value="TeleportRemoveCategory"/>
     </CEffectTeleport>
+    <CEffectSet id="GaryStetmannRecallSearchSet">
+        <EffectArray value="GaryStetmannRecallCastingAB"/>
+        <EffectArray value="GaryStetmannRecallApplyBehavior"/>
+        <ValidatorArray value="NotLarvaEgg"/>
+        <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="NotReleasedInterceptor"/>
+        <ValidatorArray value="TargetIsNotNonCommanderAlly"/>
+        <ValidatorArray value="TargetNotUndergoingMassTransport"/>
+        <ValidatorArray value="PlayerOwnedOrPermanentDeathFleet"/>
+        <ValidatorArray value="NotLarvaStetmann"/>
+        <ValidatorArray value="NotUnmoved"/>
+        <ValidatorArray value="NotSlaynElementalCocooned"/>
+    </CEffectSet>
     <CEffectDamage id="Ghost_BlackOpsDamage">
         <AttributeBonus index="Light" value="0"/>
         <Amount value="22"/>
@@ -827,6 +841,9 @@
     <CEffectDamage id="LaserDrillTripodDamageCoop">
         <Death value="Fire"/>
     </CEffectDamage>
+    <CEffectEnumArea id="MothershipMassRecallSearch">
+        <AreaArray index="0" Effect="MothershipMassRecallSearchSet"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="MutatorCandyCapAB">
         <Behavior value="MutatorCandyCap"/>
     </CEffectApplyBehavior>
@@ -1194,10 +1211,20 @@
     <CEffectCreatePersistent id="MothershipBeamPersistent">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="MothershipMassRecallApplyBehavior">
+    <CEffectSet id="MothershipMassRecallSearchSet">
+        <EffectArray value="MothershipMassRecallCastingAB"/>
+        <EffectArray value="MothershipMassRecallApplyBehavior"/>
+        <ValidatorArray value="NotLarvaEgg"/>
+        <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="NotReleasedInterceptor"/>
+        <ValidatorArray value="TargetIsNotNonCommanderAlly"/>
+        <ValidatorArray value="TargetNotUndergoingMassTransport"/>
+        <ValidatorArray value="PlayerOwnedOrPermanentDeathFleet"/>
+        <ValidatorArray value="NotLarvaStetmann"/>
         <ValidatorArray value="NotUnmoved"/>
         <ValidatorArray value="NotSlaynElementalCocooned"/>
-    </CEffectApplyBehavior>
+    </CEffectSet>
     <CEffectCreatePersistent id="MothershipSecondaryBeamPersistent">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
@@ -1726,9 +1753,6 @@
         <ValidatorArray value="HaveAlarakLightningStrikes"/>
         <ValidatorArray value="IsAlarakHero"/>
     </CEffectSet>
-    <CEffectSet id="AlarakMothershipMassRecallPrepare">
-        <EffectArray value="MothershipMassRecallCastingAB"/>
-    </CEffectSet>
     <CEffectSet id="AlarakTheStrongestSurviveSearchImpact">
         <EffectArray index="3" value="AlarakLightningStrikesSwitch"/>
         <ValidatorArray index="0" value="TargetIsNotUnstoppable"/>
@@ -1848,7 +1872,9 @@
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
     <CEffectSet id="ArbiterMPRecallInitialSet">
-        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray index="0" value="NexusMassRecallCastingAB"/>
+        <EffectArray index="1" value="ArbiterMPRecallApplyPreRecallBehavior"/>
+        <EffectArray value="ArbiterMPRecallMagazineIterate"/>
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
     <CEffectDamage id="ArtanisResurgenceEnemyImpactDamage">
@@ -1986,16 +2012,11 @@
     <CEffectSet id="FenixThunderousChargeCoopStunSet">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
-    <CEffectSet id="GaryStetmannRecallPrepare">
-        <EffectArray value="GaryStetmannMassRecallCastingAB"/>
-    </CEffectSet>
-    <CEffectSet id="GaryStetmannRecallSet">
-        <EffectArray value="GaryStetmannMassRecallCastingRB"/>
-    </CEffectSet>
-    <CEffectApplyBehavior id="GaryStetmannMassRecallCastingAB">
+    <CEffectApplyBehavior id="GaryStetmannRecallCastingAB">
         <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="GaryStetmannRecallSearch"/>
     </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="GaryStetmannMassRecallCastingRB">
+    <CEffectRemoveBehavior id="GaryStetmannRecallCastingRB">
         <BehaviorLink value="NexusMassRecallCasting"/>
         <WhichUnit Effect="GaryStetmannRecallSearch"/>
         <Count value="1"/>
@@ -3097,11 +3118,10 @@
         <ValidatorArray value="NotStructureTarget"/>
     </CEffectApplyBehavior>
     <CEffectSet id="DarkPylonRecallInitialSet">
-        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray index="0" value="NexusMassRecallCastingAB"/>
+        <EffectArray index="1" value="DarkPylonRecallPreRecallAB"/>
+        <EffectArray value="DarkPylonRecallMagazineIterate"/>
         <ValidatorArray value="NotUnmoved"/>
-    </CEffectSet>
-    <CEffectSet id="DarkPylonRecallSet">
-        <EffectArray value="NexusMassRecallCastingRB"/>
     </CEffectSet>
     <CEffectEnumArea id="FenixSentryGuardianZonePhasingModeSearch">
         <SearchFlags index="SameCliff" value="0"/>
@@ -3571,11 +3591,9 @@
         <Chance value="0"/>
         <Behavior value="MasteryTychusFirstHeroPetBuff"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="MothershipMassRecallSet">
-        <EffectArray value="MothershipMassRecallCastingRB"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="MothershipMassRecallCastingAB">
         <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Effect="MothershipMassRecallSearch"/>
     </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="MothershipMassRecallCastingRB">
         <BehaviorLink value="NexusMassRecallCasting"/>

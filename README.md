@@ -2278,6 +2278,7 @@ The champions do more damage than normal units, so their projectiles should be l
 - Added "Prototype Warrior" rank to Fenix's suits unit info panel.
 - Fixed an issue where Fenix's Recall ability tooltip said Arbiter instead of Fenix.
 - Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
+- Added a visual effect to Fenix's Cloaking Field.
 
 yeah.
 

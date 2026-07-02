@@ -30,7 +30,13 @@
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
     <CActorSimple id="ArbiterMPRecallOpacity">
+        <On Terms="Behavior.ArbiterMPRecalling.Off" Send="TimerSet 0.150000 ClearRecallOpacity"/>
         <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
+        <On Terms="Behavior.FenixArbiterRecalling.Off" Send="TimerSet 0.150000 ClearRecallOpacity"/>
+        <On Terms="Behavior.ArbiterMPRecalled.Off" Target="_Unit" Send="ClearOpacity 0.250000 MassRecallOpacity"/>
+        <On Terms="Behavior.ArbiterMPRecalled.Off" Target="_Unit" Send="ClearTintColor 0.250000 MassRecallTint"/>
+        <On Terms="Behavior.ArbiterMPRecalled.Off" Send="Destroy"/>
+        <Remove Terms="Behavior.ArbiterMPRecalled.Off" Send="TimerSet 0.150000 ClearRecallOpacity"/>
     </CActorSimple>
     <CActorModel id="ArbiterMPRecallingImpact">
         <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
@@ -79,6 +85,31 @@
     <CActorUnit id="CivilianFemale">
         <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
     </CActorUnit>
+    <CActorModel id="GaryStetmannRecalledImpact">
+        <Remove Terms="Behavior.Recalled.On" Send="Create"/>
+        <Remove Terms="Behavior.SingleRecalled.On" Send="Create"/>
+        <Remove Terms="Behavior.MothershipCoreRecalled.On" Send="Create"/>
+        <Remove Terms="Behavior.HybridUrunRecalled.On" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="GaryStetmannRecalledImpactSound">
+        <Remove Terms="Behavior.Recalled.On" Send="Create"/>
+        <Remove Terms="Behavior.SingleRecalled.On" Send="Create"/>
+        <Remove Terms="Behavior.MothershipCoreRecalled.On" Send="Create"/>
+        <Remove Terms="Behavior.HybridUrunRecalled.On" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="GaryStetmannRecallingImpact">
+        <Remove Terms="Behavior.Recalling.On" Send="Create"/>
+        <Remove Terms="Behavior.SingleRecalling.On" Send="Create"/>
+        <Remove Terms="Behavior.MothershipCoreRecalling.On" Send="Create"/>
+        <Remove Terms="Behavior.HybridUrunRecalling.On" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="GaryStetmannRecallingImpactSound">
+        <Remove Terms="Behavior.Recalling.On" Send="Create"/>
+        <Remove Terms="Behavior.SingleRecalling.On" Send="Create"/>
+        <Remove Terms="Behavior.MothershipCoreRecalling.On" Send="Create"/>
+        <Remove Terms="Behavior.HybridUrunRecalling.On" Send="Create"/>
+        <On Terms="Effect.GaryStetmannRecallSearch.Start; At Target" Send="Create"/>
+    </CActorSound>
     <CActorUnit id="MothershipAiur06">
         <Model value="Mothership_Golden"/>
         <PortraitModel value="Mothership_Golden_Portrait"/>
@@ -938,11 +969,15 @@
         <On Terms="Behavior.ParasiticBombSecondaryUnitSearch.Off" Send="Destroy"/>
     </CActorSound>
     <CActorSimple id="RecallOpacity">
+        <On index="1" Send="SetOpacity 0.600000 0.250000 MassRecallOpacity"/>
+        <On index="32" Target="_Unit"/>
+        <On index="33" Target="_Unit"/>
         <On Terms="Behavior.MothershipStrategicWarpOut.On" Send="Create"/>
         <On Terms="Behavior.MothershipStrategicWarpOut.Off" Send="TimerSet 0.150000 ClearRecallOpacity"/>
         <On Terms="Behavior.NexusRecalled.Off" Target="_Unit" Send="ClearOpacity 0.250000 MassRecallOpacity"/>
         <On Terms="Behavior.NexusRecalled.Off" Target="_Unit" Send="ClearTintColor 0.250000 MassRecallTint"/>
         <On Terms="Behavior.NexusRecalled.Off" Send="Destroy"/>
+        <Remove Terms="ActorCreation; ValidatePlayer NoDarkProtoss" Target="_Unit" Send="SetTintColor 145,0,0 0.250000 OneShot MassRecallTint"/>
     </CActorSimple>
     <CActorModel id="SILiberatorSwarmFormDot" parent="ModelAnimationStyleOneShot">
         <Terms value="Cap 1"/>
@@ -4362,11 +4397,10 @@
     <CActorSound id="NexusMassRecallNexusCastingSound" parent="SoundOneShot">
         <!--On Terms="Effect.NexusMassRecallSearch.Start" Send="Create"/-->
         <On Terms="Effect.MothershipStrategicRecallSearch.Start" Send="Create"/>
-        <On Terms="Effect.ArbiterMPRecallSearch.Start" Send="Create"/>
-        <On Terms="Effect.MassRecallSearch.Start" Send="Create"/>
-        <On Terms="Effect.DarkPylonSearch.Start" Send="Create"/>
-        <On Terms="Effect.GaryStetmannRecallSearch.Start" Send="Create"/>
-        <On Terms="Effect.FenixArbiterRecallSearch.Start" Send="Create"/>
+        <On Terms="Effect.MothershipMassRecallSearch.Start; At Target" Send="Create"/>
+        <On Terms="Effect.ArbiterMPRecallSearch.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.DarkPylonRecallSearch.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.FenixArbiterRecallSearch.Start; At Caster" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallStart"/>
     </CActorSound>
@@ -4394,22 +4428,12 @@
     <CActorSound id="NexusMassRecallWarpOutSound" parent="SoundOneShot">
         <!--On Terms="Behavior.NexusMassRecallWarpOut.On" Send="Create"/-->
         <On Terms="Behavior.MothershipStrategicWarpOut.On" Send="Create"/>
-        <On Terms="Behavior.ArbiterMPRecalling.On" Send="Create"/>
-        <On Terms="Behavior.MothershipRecalling.On" Send="Create"/>
-        <On Terms="Behavior.DarkPylonRecalling.On" Send="Create"/>
-        <On Terms="Behavior.GaryStetmannRecalling.On" Send="Create"/>
-        <On Terms="Behavior.FenixArbiterRecalling.On" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallStart"/>
     </CActorSound>
     <CActorSound id="NexusMassRecallWarpInSound" parent="SoundOneShot">
         <!--On Terms="Effect.NexusMassRecallTeleport.Start; At Target" Send="Create"/-->
         <On Terms="Effect.MothershipStrategicRecallTeleport.Start; At Target" Send="Create"/>
-        <On Terms="Effect.ArbiterMPRecallTeleport.Start; At Target" Send="Create"/>
-        <On Terms="Effect.MothershipMassRecallTeleport.Start; At Target" Send="Create"/>
-        <On Terms="Effect.DarkPylonRecallTeleport.Start; At Target" Send="Create"/>
-        <On Terms="Effect.GaryStetmannRecallTeleport.Start; At Target" Send="Create"/>
-        <On Terms="Effect.FenixArbiterRecallTeleport.Start; At Target" Send="Create"/>
         <Host Subject="_Selectable"/>
         <Sound value="Mothership_RecallEnd"/>
     </CActorSound>

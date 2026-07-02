@@ -59,6 +59,7 @@
         <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
         <Period value="0.6"/>
         <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+        <FinalEffect value="NexusMassRecallCastingRB"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ArtilleryMengskBombardmentSlow">
         <Alignment value="Negative"/>
@@ -253,6 +254,8 @@
     <CBehaviorBuff id="DarkPylonRecalling">
         <Period value="0.6"/>
         <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+        <FinalEffect value="NexusMassRecallCastingRB"/>
+        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="DarkTemplarBlinkAttackDelay">
         <InfoFlags index="Hidden" value="1"/>
@@ -330,7 +333,6 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="FenixArbiterRecalling" parent="ArbiterMPRecalling">
         <ExpireEffect value="FenixArbiterRecallSet"/>
-        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="FlashBangGrenadeSlow">
         <Alignment value="Negative"/>
@@ -348,6 +350,8 @@
     <CBehaviorBuff id="GaryStetmannRecalling">
         <Period value="1.6"/>
         <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+        <FinalEffect value="GaryStetmannRecallCastingRB"/>
+        <RemoveValidatorArray value="GaryStetmannTargetHasNexusMassRecallCasting"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="HHBomberAreaBombFire">
         <InfoIcon value="Assets\Textures\btn-ability-protoss-firebeam.dds"/>
@@ -763,6 +767,8 @@
     <CBehaviorBuff id="MothershipRecalling">
         <Period value="1.6"/>
         <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+        <FinalEffect value="MothershipMassRecallCastingRB"/>
+        <RemoveValidatorArray value="MothershipTargetHasNexusMassRecallCasting"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorBountyHunter">
         <Alignment value="Positive"/>
