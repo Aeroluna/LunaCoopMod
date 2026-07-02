@@ -51,6 +51,10 @@
         <DamageMap index="None" ModelReaction="ArchonFireSplash"/>
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorUnit id="ArmoryMengsk">
+        <On Terms="Abil.que5.Start" Send="Create ArmoryResearchBeam"/>
+        <On Terms="Abil.que5.Stop" Target="ArmoryResearchBeam" Send="Destroy"/>
+    </CActorUnit>
     <CActorModel id="ArtilleryMengskExperimentalStrikeImpact">
         <HostSiteOps Ops="SOpUpArtilleryMengskBombardment" HoldPosition="1" HoldRotation="1"/>
     </CActorModel>
@@ -84,6 +88,9 @@
     </CActorUnit>
     <CActorUnit id="CivilianFemale">
         <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="EvolutionChamberStetmann">
+        <Macros index="1" value="QueueAnimSpeed135"/>
     </CActorUnit>
     <CActorModel id="GaryStetmannRecalledImpact">
         <Remove Terms="Behavior.Recalled.On" Send="Create"/>
@@ -860,6 +867,13 @@
     </CActorBeamSimple>
     <CActorUnit id="RoachVile">
         <Macros index="1" value="ZergBurrowMobileTransientAnimMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SIArmory">
+        <On Terms="Abil.que5.Start" Send="Create ArmoryResearchBeam"/>
+        <On Terms="Abil.que5.Stop" Target="ArmoryResearchBeam" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="SIEvolutionChamber">
+        <Macros index="1" value="QueueAnimSpeed135"/>
     </CActorUnit>
     <CActorAction id="SOAMothershipv4Attack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>

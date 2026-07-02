@@ -25,6 +25,12 @@ Completely reworked and rebalanced. The old version was boring and just acted as
 
 Oopsies bugs with recalls.
 
+- Fixed an issue where the previous visual change to researching structures did not affect some variants.
+- Fixed an issue where Aurora Veil tooltip listed the wrong healing rate.
+- Fixed an issue where Ordnance Depot Retrofit tooltip said nuke instead of Tactical Missile.
+
+yeah.
+
 ## 7/1/2026
 
 - Fixed an issue where the Infestor's weapon used the incorrect base attack icon.
