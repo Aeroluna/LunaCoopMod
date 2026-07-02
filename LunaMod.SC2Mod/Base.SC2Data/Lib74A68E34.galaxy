@@ -110,6 +110,7 @@ void lib74A68E34_InitVariables () {
     }
     lib74A68E34_gv_mutatorStartingResourcesUnits = UnitGroupEmpty();
     lib74A68E34_gv_mutatorHybridFacility = UnitGroupEmpty();
+    lib74A68E34_gv_mutatorTrickOrTreatBurstTimer = TimerCreate();
 }
 
 // Custom Script
@@ -2875,7 +2876,7 @@ void lib74A68E34_gf_MutatorHarassMedivac (point lp_target, int lp_targetPlayer, 
     for (;; auto8C23CE25_u -= 1) {
         auto8C23CE25_var = UnitGroupUnitFromEnd(auto8C23CE25_g, auto8C23CE25_u);
         if (auto8C23CE25_var == null) { break; }
-        UnitIssueOrder(auto8C23CE25_var, OrderTargetingUnit(AbilityCommand("MedivacTransport", 2), auto8C23CE25_var), c_orderQueueAddToFront);
+        lib74A68E34_gf_IssueOrderWithoutScriptControl(auto8C23CE25_var, OrderTargetingUnit(AbilityCommand("MedivacTransport", 2), auto8C23CE25_var), c_orderQueueAddToFront);
     }
 }
 
@@ -3285,7 +3286,7 @@ void lib74A68E34_gf_MutatorHarassOverlord (point lp_target, int lp_targetPlayer,
     for (;; auto9AC4AC19_u -= 1) {
         auto9AC4AC19_var = UnitGroupUnitFromEnd(auto9AC4AC19_g, auto9AC4AC19_u);
         if (auto9AC4AC19_var == null) { break; }
-        UnitIssueOrder(auto9AC4AC19_var, OrderTargetingUnit(AbilityCommand("OverlordTransport", 2), auto9AC4AC19_var), c_orderQueueAddToFront);
+        lib74A68E34_gf_IssueOrderWithoutScriptControl(auto9AC4AC19_var, OrderTargetingUnit(AbilityCommand("OverlordTransport", 2), auto9AC4AC19_var), c_orderQueueAddToFront);
     }
 }
 
@@ -3492,11 +3493,216 @@ bool auto_lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters_TriggerFunc (
 void lib74A68E34_gf_MutatorBountyHunterApply (unit lp_unit) {
     // Automatic Variable Declarations
     // Implementation
-    if ((RandomFixed(0.0, 100.0) > 90.0) && (UnitWeaponCount(lp_unit) > 0) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterSummoned - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32)))) == true) && (UnitGetPropertyInt(lp_unit, c_unitPropSuppliesUsed, c_unitPropCurrent) > 0) && (UnitHasBehavior2(lp_unit, "SupplyLT1") == false)) {
+    if ((RandomFixed(0.0, 100.0) > 90.0) && (UnitWeaponCount(lp_unit) > 0) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterSummoned - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32)))) == true) && (UnitGetPropertyInt(lp_unit, c_unitPropSuppliesUsed, c_unitPropCurrent) > 0) && (UnitHasBehavior2(lp_unit, "SupplyLT1") == false)) {
         UnitBehaviorAdd(lp_unit, "MutatorBountyHunter", lp_unit, 1);
         libNtve_gf_SendActorMessageToUnit(lp_unit, (("SetScale " + "1.2")));
     }
 
+}
+
+trigger auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_Trigger = null;
+unit auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_lp_civilianUnit;
+
+void lib74A68E34_gf_MutatorTrickOrTreaterLogic (unit lp_civilianUnit) {
+    auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_lp_civilianUnit = lp_civilianUnit;
+
+    if (auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_Trigger == null) {
+        auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_Trigger = TriggerCreate("auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_Trigger, false, false);
+}
+
+bool auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_civilianUnit = auto_lib74A68E34_gf_MutatorTrickOrTreaterLogic_lp_civilianUnit;
+
+    // Variable Declarations
+    unit lv_nearbyUnit;
+    int lv_index;
+    fixed lv_killerSupply;
+    fixed lv_victimSupply;
+    fixed lv_newSupply;
+    fixed lv_lifePercentage;
+    fixed lv_shieldPercentage;
+    int lv_tier;
+    int lv_type;
+    int lv_intSupply;
+    int lv_intUnit;
+    string lv_newUnitType;
+    string[11][11] lv_unitTypes;
+    point lv_spawnPosition;
+    string lv_killerTier;
+    string lv_killingUnitTestUnit;
+    int lv_tierEndpoint;
+    string lv_endpointTestUnit;
+    int lv_tierCeiling;
+    int lv_tierFloor;
+    int lv_failsafe;
+
+    // Automatic Variable Declarations
+    const int auto79B3D33A_ae = 1;
+    const int auto79B3D33A_ai = -1;
+    const int autoD960D214_ae = 1;
+    const int autoD960D214_ai = -1;
+    string auto377B7CE7_val;
+
+    // Variable Initialization
+
+    // Implementation
+    UnitSetState(lp_civilianUnit, c_unitStateInvulnerable, true);
+    UnitSetState(lp_civilianUnit, c_unitStateStatusBar, false);
+    while (((libNtve_gf_UnitInRegion(lp_civilianUnit, RegionCircle(UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit), 3.0)) == false) && (lv_failsafe < 300))) {
+        UnitIssueOrder(lp_civilianUnit, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit)), c_orderQueueReplace);
+        lv_failsafe += 1;
+        Wait(1.0, c_timeGame);
+    }
+    UnitSetPropertyFixed(lp_civilianUnit, c_unitPropMovementSpeed, 0.0);
+    if ((libNtve_gf_UnitInRegion(lp_civilianUnit, RegionCircle(UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit), 3.0)) == true) && (lib74A68E34_gv_mutatorTrickOrTreatCandy > 0)) {
+        lib74A68E34_gv_mutatorTrickOrTreatCandy -= 1;
+        lib74A68E34_gv_mutatorTrickOrTreatCandyCap -= 1;
+        UnitIssueOrder(lp_civilianUnit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+        TextTagSetText(libCOMU_gv_cT_CandyBowlTextTag, TextExpressionAssemble("Param/Expression/lib_74A68E34_8C4CD215"));
+        lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl();
+        UnitCreateEffectUnit(libCOMU_gv_cT_CandyBowlUnit, "MutatorCandyTake", lp_civilianUnit);
+        Wait(1.0, c_timeGame);
+        libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lp_civilianUnit), c_animNameDefault, "Stand Victory", 0, c_animTimeDefault);
+        Wait(1.0, c_timeGame);
+        libNtve_gf_SendActorMessageToUnit(lp_civilianUnit, "SetOpacity 0.000000 2.000000");
+        Wait(2.0, c_timeGame);
+        UnitRemove(lp_civilianUnit);
+    }
+    else {
+        if ((lib74A68E34_gv_mutatorTrickOrTreatCandy > 0)) {
+            TriggerExecute(lib74A68E34_gt_MutatorTrickOrTreatWarningReach, true, false);
+        }
+
+        UnitIssueOrder(lp_civilianUnit, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+        libNtve_gf_SendActorMessageToUnit(lp_civilianUnit, "AnimBracketStart Fidget Fidget,Inferior,Start Fidget,Inferior Fidget,Inferior,End");
+        ActorCreate(ActorScopeFromUnit(lp_civilianUnit), "MutatorCandyWarning", null, null, null);
+        Wait(2.0, c_timeGame);
+        if ((RandomInt(0, 3) != 1)) {
+            lv_tierFloor = 1;
+            if ((GameGetMissionTime() < 120.0)) {
+                lv_tierCeiling = 1;
+            }
+            else if ((GameGetMissionTime() < 240.0)) {
+                lv_tierCeiling = 2;
+            }
+            else if ((GameGetMissionTime() < 360.0)) {
+                lv_tierCeiling = 3;
+            }
+            else if ((GameGetMissionTime() < 480.0)) {
+                lv_tierCeiling = 4;
+                lv_tierFloor = 2;
+            }
+            else if ((GameGetMissionTime() < 600.0)) {
+                lv_tierCeiling = 5;
+                lv_tierFloor = 3;
+            }
+            else if ((GameGetMissionTime() < 720.0)) {
+                lv_tierCeiling = 6;
+                lv_tierFloor = 4;
+            }
+            else if ((GameGetMissionTime() < 840.0)) {
+                lv_tierCeiling = 7;
+                lv_tierFloor = 5;
+            }
+            else if ((GameGetMissionTime() < 960.0)) {
+                lv_tierCeiling = 8;
+                lv_tierFloor = 6;
+            }
+            else if ((GameGetMissionTime() < 1080.0)) {
+                lv_tierCeiling = 9;
+                lv_tierFloor = 7;
+            }
+            else if (true) {
+                lv_tierCeiling = 10;
+                lv_tierFloor = 8;
+            }
+            lv_newSupply = RandomInt(lv_tierFloor, lv_tierCeiling);
+            lv_tier = MinI(FixedToInt(lv_newSupply), 10);
+            for ( ; ( (auto79B3D33A_ai >= 0 && lv_tier <= auto79B3D33A_ae) || (auto79B3D33A_ai < 0 && lv_tier >= auto79B3D33A_ae) ) ; lv_tier += auto79B3D33A_ai ) {
+                lv_tierEndpoint = 8;
+                for ( ; ( (autoD960D214_ai >= 0 && lv_tierEndpoint <= autoD960D214_ae) || (autoD960D214_ai < 0 && lv_tierEndpoint >= autoD960D214_ae) ) ; lv_tierEndpoint += autoD960D214_ai ) {
+                    lv_endpointTestUnit = UserDataGetUnit("EvolutionTiers", UserDataInstance("EvolutionTiers", lv_tier), "UnitsToEvolveInto", lv_tierEndpoint);
+                    if ((lv_endpointTestUnit != "")) {
+                        break;
+                    }
+
+                }
+                lv_newUnitType = UserDataGetUnit("EvolutionTiers", UserDataInstance("EvolutionTiers", lv_tier), "UnitsToEvolveInto", RandomInt(1, lv_tierEndpoint));
+                if ((lv_newUnitType != "")) {
+                    break;
+                }
+
+            }
+            lv_spawnPosition = UnitGetPosition(lp_civilianUnit);
+            PointSetFacing(lv_spawnPosition, UnitGetFacing(lp_civilianUnit));
+            UnitRemove(lp_civilianUnit);
+            libNtve_gf_CreateUnitsAtPoint2(1, lv_newUnitType, c_unitCreateIgnorePlacement | c_unitCreateIgnoreBirth, RandomInt(3, 4), lv_spawnPosition);
+            libCOMU_gf_CT_RegisterSpawnedUnitGroup(UnitLastCreatedGroup());
+            UnitBehaviorAdd(UnitLastCreated(), "MutatorEvolve", UnitLastCreated(), 1);
+            auto377B7CE7_val = libCOMI_gf_GetUnitRace(UnitLastCreated());
+            if (auto377B7CE7_val == "Prot") {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "Create MutatorQuickEvolveProtoss");
+            }
+            else if (auto377B7CE7_val == "Terr") {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "Create MutatorQuickEvolveTerran");
+            }
+            else if (auto377B7CE7_val == "Zerg") {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "Create MutatorQuickEvolveZerg");
+            }
+            else {
+                libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "Create MutatorQuickEvolveZerg");
+            }
+            UnitCreateEffectUnit(lp_civilianUnit, "MutatorQuickEvolveMissleLaunch", UnitLastCreated());
+            AISetUnitSuicide(UnitLastCreated(), true);
+        }
+        else {
+            libNtve_gf_SendActorMessageToUnit(lp_civilianUnit, "SetOpacity 0.000000 2.000000");
+            Wait(2.0, c_timeGame);
+            UnitRemove(lp_civilianUnit);
+        }
+    }
+    return true;
+}
+
+void lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl () {
+    // Automatic Variable Declarations
+    // Implementation
+    libCOUI_gf_SetSingularBossBarCurrentValueVoidCampaign(lib74A68E34_gv_mutatorTrickOrTreatCandy, true);
+    libNtve_gf_SetBehaviorCount(libCOMU_gv_cT_CandyBowlUnit, "MutatorCandyCount", libCOMU_gv_cT_CandyBowlUnit, lib74A68E34_gv_mutatorTrickOrTreatCandy);
+    if ((lib74A68E34_gv_mutatorTrickOrTreatCandy >= 1)) {
+        TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty, true);
+    }
+    else {
+        TriggerExecute(lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty, true, false);
+    }
+    if ((lib74A68E34_gv_mutatorTrickOrTreatCandy >= FixedToInt((lib74A68E34_gv_mutatorTrickOrTreatMaxCandy * 0.8)))) {
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove A");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove B");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove C");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove D");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupApply D");
+    }
+    else if ((lib74A68E34_gv_mutatorTrickOrTreatCandy >= FixedToInt((lib74A68E34_gv_mutatorTrickOrTreatMaxCandy * 0.4)))) {
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove A");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove B");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove D");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupApply C");
+    }
+    else if ((lib74A68E34_gv_mutatorTrickOrTreatCandy >= 1)) {
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove A");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove C");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove D");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupApply B");
+    }
+    else if (true) {
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove B");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove C");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove D");
+        libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupApply A");
+    }
 }
 
 // Triggers
@@ -9959,6 +10165,7 @@ bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("Changeling", lib74A68E34_gt_MutatorChangelingInit, lib74A68E34_gt_MutatorChangelingShutdown);
     libCOMU_gf_CT_RegisterMutator("HybridFacility", lib74A68E34_gt_MutatorHybridFacilityInit, lib74A68E34_gt_MutatorHybridFacilityShutdown);
     libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
+    libCOMU_gf_CT_RegisterMutator("TrickOrTreat", lib74A68E34_gt_MutatorTrickOrTreatInit, lib74A68E34_gt_MutatorTrickOrTreatShutdown);
     return true;
 }
 
@@ -12009,6 +12216,404 @@ void lib74A68E34_gt_MutatorMinedOutShutdown_Init () {
     lib74A68E34_gt_MutatorMinedOutShutdown = TriggerCreate("lib74A68E34_gt_MutatorMinedOutShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_initialCandy;
+    int lv_indexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoEC16BA5C_g;
+    string autoB99553BE_val;
+
+    // Variable Initialization
+    lv_initialCandy = -10.0;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorCandyBowl", 0, 0, PointInterpolate(PlayerStartLocation(1), PlayerStartLocation(2), 0.5));
+    libCOMU_gv_cT_CandyBowlUnit = UnitLastCreated();
+    UnitStatusBarClearOverride(libCOMU_gv_cT_CandyBowlUnit);
+    TextTagCreate(StringExternal("Param/Value/lib_74A68E34_8C9F69FD"), 18, UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit), 1.0, true, false, PlayerGroupAll());
+    TextTagAttachToUnit(TextTagLastCreated(), libCOMU_gv_cT_CandyBowlUnit, 2.5);
+    libCOMU_gv_cT_CandyBowlTextTag = TextTagLastCreated();
+    TriggerEnable(libCOMU_gt_CT_CandyBowlTextUpdate, true);
+    libCOUI_gf_DisplaySingularBossBarVoidCampaign("Assets\\Textures\\btn-tips-scrap.dds", StringExternal("Param/Value/lib_74A68E34_638AE177"), lib74A68E34_gv_mutatorTrickOrTreatMaxCandy);
+    lib74A68E34_gv_mutatorTrickOrTreatCandy = 10;
+    lib74A68E34_gv_mutatorTrickOrTreatCandyCap = 10;
+    lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl();
+    if ((libCOMU_gf_MutatorIsEnabled("TrickOrTreat") == true)) {
+        TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawn, true);
+        TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch, true);
+        TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnIn, true);
+        TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy, true);
+    }
+
+    Wait(1.0, c_timeGame);
+    libCOUI_gf_SetSingularBossBarCurrentValueVoidCampaign(lib74A68E34_gv_mutatorTrickOrTreatCandy, true);
+    Wait(0.0625, c_timeGame);
+    autoEC16BA5C_g = libCOOC_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoEC16BA5C_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        autoB99553BE_val = PlayerRace(lv_indexPlayer);
+        if (autoB99553BE_val == "Terr") {
+            SoundtrackDefault(PlayerGroupSingle(lv_indexPlayer), c_soundtrackCategoryMusic, "Music_TerrHalloween", c_soundtrackCueAny, c_soundtrackIndexAny);
+        }
+        else if (autoB99553BE_val == "Prot") {
+            SoundtrackDefault(PlayerGroupSingle(lv_indexPlayer), c_soundtrackCategoryMusic, "Music_ProtHalloween", c_soundtrackCueAny, c_soundtrackIndexAny);
+        }
+        else if (autoB99553BE_val == "Zerg") {
+            SoundtrackDefault(PlayerGroupSingle(lv_indexPlayer), c_soundtrackCategoryMusic, "Music_ZergHalloween", c_soundtrackCueAny, c_soundtrackIndexAny);
+        }
+        else {
+            SoundtrackDefault(PlayerGroupSingle(lv_indexPlayer), c_soundtrackCategoryMusic, "Music_TerrHalloween", c_soundtrackCueAny, c_soundtrackIndexAny);
+        }
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "HalloweenMusic", c_soundtrackCueAny, c_soundtrackIndexAny, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatInit_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatInit = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatSpawn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatSpawn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_spawningStructure;
+    unit lv_targetStructure;
+    int lv_minSpawn;
+    int lv_maxSpawn;
+    int lv_extraSpawn;
+    int lv_spawnAttempt;
+
+    // Automatic Variable Declarations
+    const int auto74FE2BE9_ae = 100;
+    const int auto74FE2BE9_ai = 1;
+    int auto59FDE859_ae;
+    int auto59FDE859_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_spawnAttempt = 1;
+    for ( ; ( (auto74FE2BE9_ai >= 0 && lv_spawnAttempt <= auto74FE2BE9_ae) || (auto74FE2BE9_ai < 0 && lv_spawnAttempt >= auto74FE2BE9_ae) ) ; lv_spawnAttempt += auto74FE2BE9_ai ) {
+        lv_spawningStructure = UnitGroupRandomUnit(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+        lv_targetStructure = UnitGroupRandomUnit(UnitGroup(null, RandomInt(1, 2), RegionPlayableMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+        if ((PointPathingIsConnected(UnitGetPosition(lv_spawningStructure), UnitGetPosition(lv_targetStructure)) == true)) {
+            break;
+        }
+
+    }
+    lv_minSpawn = libCOMI_gf_MinimumDifficultyValueCoopInteger(1, 1, 2, 2, 2, 3);
+    lv_maxSpawn = libCOMI_gf_MinimumDifficultyValueCoopInteger(1, 1, 2, 2, 2, 3);
+    if ((GameGetMissionTime() <= 360.0)) {
+    }
+    else if ((GameGetMissionTime() <= 720.0)) {
+        lv_extraSpawn = libCOMI_gf_MinimumDifficultyValueCoopInteger(0, 1, 2, 2, 2, 2);
+    }
+    else if ((GameGetMissionTime() <= 1080.0)) {
+        lv_extraSpawn = libCOMI_gf_MinimumDifficultyValueCoopInteger(1, 2, 2, 3, 4, 4);
+    }
+    else if (true) {
+        lv_extraSpawn = libCOMI_gf_MinimumDifficultyValueCoopInteger(2, 3, 3, 4, 5, 5);
+    }
+    lv_minSpawn += lv_extraSpawn;
+    lv_maxSpawn += lv_extraSpawn;
+    auto59FDE859_ae = RandomInt(lv_minSpawn, lv_maxSpawn);
+    auto59FDE859_var = 1;
+    for ( ; auto59FDE859_var <= auto59FDE859_ae; auto59FDE859_var += 1 ) {
+        if ((RandomInt(0, 1) == 1)) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorCandyCivilian", 0, 0, PointWithOffsetPolar(UnitGetPosition(lv_spawningStructure), 1.0, libNtve_gf_RandomAngle()));
+        }
+        else {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorCandyCivilianFemale", 0, 0, PointWithOffsetPolar(UnitGetPosition(lv_spawningStructure), 1.0, libNtve_gf_RandomAngle()));
+        }
+        lib74A68E34_gf_MutatorTrickOrTreaterLogic(UnitLastCreated());
+        UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit)), c_orderQueueReplace);
+        UnitGroupAddUnitGroup(libCOMU_gv_cT_OnDeathSpawns, UnitLastCreatedGroup());
+        libCOMU_gf_CT_RegisterSpawnedUnitGroup(UnitLastCreatedGroup());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatSpawn_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatSpawn = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatSpawn_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawn, false);
+    TriggerAddEventTimePeriodic(lib74A68E34_gt_MutatorTrickOrTreatSpawn, 30.0, c_timeAI);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatTurnInSearch
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto16F92A0D_g;
+    int auto16F92A0D_u;
+    unit auto16F92A0D_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((lib74A68E34_gv_mutatorTrickOrTreatCandyCap < lib74A68E34_gv_mutatorTrickOrTreatMaxCandy))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto16F92A0D_g = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(libCOMU_gv_cT_CandyBowlUnit), 5.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto16F92A0D_u = UnitGroupCount(auto16F92A0D_g, c_unitCountAll);
+    for (;; auto16F92A0D_u -= 1) {
+        auto16F92A0D_var = UnitGroupUnitFromEnd(auto16F92A0D_g, auto16F92A0D_u);
+        if (auto16F92A0D_var == null) { break; }
+        if ((UnitBehaviorCount(auto16F92A0D_var, "MutatorCandy") > 0)) {
+            lib74A68E34_gv_mutatorTrickOrTreatCandyCap += 1;
+            UnitBehaviorAdd(auto16F92A0D_var, "MutatorCandyTurningIn", libCOMU_gv_cT_CandyBowlUnit, 1);
+            UnitBehaviorRemove(auto16F92A0D_var, "MutatorCandy", 1);
+            UnitBehaviorRemove(auto16F92A0D_var, "MutatorCandyCap", 1);
+            UnitCreateEffectUnit(auto16F92A0D_var, "MutatorCandyTurnin", libCOMU_gv_cT_CandyBowlUnit);
+            UnitBehaviorRemove(auto16F92A0D_var, "MutatorCandyTurningIn", 1);
+            return true;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch, false);
+    TriggerAddEventTimePeriodic(lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch, 0.1, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatTurnIn
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatTurnIn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gv_mutatorTrickOrTreatCandy += 1;
+    lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl();
+    if ((TimerGetRemaining(lib74A68E34_gv_mutatorTrickOrTreatBurstTimer) > 0.0)) {
+        ActorSend(lib74A68E34_gv_mutatorTrickOrTreatActor, "Destroy");
+    }
+    else {
+        lib74A68E34_gv_mutatorTrickOrTreatBurst = 0;
+    }
+    lib74A68E34_gv_mutatorTrickOrTreatBurst += 1;
+    ActorCreate(ActorScopeFromUnit(libCOMU_gv_cT_CandyBowlUnit), "CandyBowlCandyX", null, null, null);
+    ActorSend(libNtve_gf_ActorLastCreated(), (("SetText " + ("+" + IntToString(lib74A68E34_gv_mutatorTrickOrTreatBurst)))));
+    lib74A68E34_gv_mutatorTrickOrTreatActor = libNtve_gf_ActorLastCreated();
+    TimerStart(lib74A68E34_gv_mutatorTrickOrTreatBurstTimer, 2.0, false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatTurnIn_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatTurnIn = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatTurnIn_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnIn, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_MutatorTrickOrTreatTurnIn, c_playerAny, "MutatorCandyTurninDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatSpawnCandy
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_essenceBaseAmount;
+    int lv_dyingUnitSupply;
+    point lv_point;
+
+    // Automatic Variable Declarations
+    int auto331F45EF_n;
+    int auto331F45EF_i;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterSummoned - 32)))) == true))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_KillingPlayer() != c_playerAny))) {
+            return false;
+        }
+
+        if (!((PlayerGroupHasPlayer(libCOOC_gf_CommanderPlayers(), libNtve_gf_KillingPlayer()) == true))) {
+            return false;
+        }
+
+        if (!((PlayerGroupHasPlayer(libCOOC_gf_MutualAlliedCommandersofPlayerCoutInactiveAndSelf(libNtve_gf_KillingPlayer()), EventPlayer()) == false))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "NoBiomassDrop") == false))) {
+            return false;
+        }
+
+        if (!((EventUnitDamageDeathCheck(c_deathTypeRemove) == false))) {
+            return false;
+        }
+
+        if (!((libCOMU_gf_CT_UnitSpawnedByMutator(EventUnit()) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((RandomInt(0, 1) == 0)) {
+        lv_point = UnitGetPosition(EventUnit());
+        lv_dyingUnitSupply = FixedToInt(StringToFixed(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnit()), "Food", 0)));
+        if (((UnitHasBehavior2(EventUnit(), "SupplyLT1") == true) || (UnitHasBehavior2(EventUnit(), "CritterExplode") == true))) {
+            lv_essenceBaseAmount = 1;
+        }
+        else if ((UnitHasBehavior2(EventUnit(), "HybridUnitDummy") == true)) {
+            lv_essenceBaseAmount = 12;
+        }
+        else if ((lv_dyingUnitSupply == -1)) {
+            lv_essenceBaseAmount = 2;
+        }
+        else if ((lv_dyingUnitSupply == -2)) {
+            lv_essenceBaseAmount = 4;
+        }
+        else if ((lv_dyingUnitSupply == -3)) {
+            lv_essenceBaseAmount = 6;
+        }
+        else if ((lv_dyingUnitSupply == -4)) {
+            lv_essenceBaseAmount = 8;
+        }
+        else if ((lv_dyingUnitSupply < -4)) {
+            lv_essenceBaseAmount = 12;
+        }
+        if ((RandomInt(0, 1) == 0)) {
+            lv_essenceBaseAmount = FixedToInt((lv_essenceBaseAmount * 0.5));
+        }
+
+        auto331F45EF_n = lv_essenceBaseAmount;
+        for (auto331F45EF_i = 1; auto331F45EF_i <= auto331F45EF_n; auto331F45EF_i += 1) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorCandy", c_unitCreateIgnoreBirth, 0, RegionRandomPoint(RegionCircle(lv_point, (0.4 + (lv_essenceBaseAmount * 0.2)))));
+            Wait(RandomFixed(0.05, 0.25), c_timeGame);
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy, false);
+    TriggerAddEventUnitDied(lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatWarningReach
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatWarningReach_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    SoundPlayForPlayer(SoundLink("MutatorCandyBowl_What", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    libCOUI_gf_CU_MutatorListShowNotification(StringExternal("Param/Value/lib_74A68E34_79A32294"));
+    Wait(40.0, c_timeGame);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatWarningReach_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatWarningReach = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatWarningReach_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatWarningEmpty
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    SoundPlayForPlayer(SoundLink("MutatorCandyBowl_What", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    libCOUI_gf_CU_MutatorListShowNotification(StringExternal("Param/Value/lib_74A68E34_F94EDC88"));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorTrickOrTreatShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorTrickOrTreatShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawn, false);
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy, false);
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnIn, false);
+    TriggerEnable(lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorTrickOrTreatShutdown_Init () {
+    lib74A68E34_gt_MutatorTrickOrTreatShutdown = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -12215,6 +12820,14 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorHybridFacilityShutdown_Init();
     lib74A68E34_gt_MutatorMinedOutInit_Init();
     lib74A68E34_gt_MutatorMinedOutShutdown_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatInit_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatSpawn_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatTurnIn_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatWarningReach_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty_Init();
+    lib74A68E34_gt_MutatorTrickOrTreatShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

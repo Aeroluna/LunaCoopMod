@@ -1571,6 +1571,13 @@
             </Upgrade>
         </Instances>
     </CUser>
+    <CUser id="EvolutionTiers">
+        <Instances index="9">
+            <Unit Unit="Mothership">
+                <Field Id="UnitsToEvolveInto" Index="4"/>
+            </Unit>
+        </Instances>
+    </CUser>
     <CUser id="ExtraUpgrades">
         <Fields Id="Source Upgrade" Type="Upgrade"/>
         <Fields Id="Target Upgrades" Type="Upgrade" Count="4"/>
@@ -2682,6 +2689,14 @@
                 <Field Id="Mutator"/>
             </User>
         </Instances>
+        <Instances Id="TrickOrTreat">
+            <Int Int="3">
+                <Field Id="Points"/>
+            </Int>
+            <User Type="Mutators" Instance="TrickOrTreat">
+                <Field Id="Mutator"/>
+            </User>
+        </Instances>
     </CUser>
     <CUser id="MutationDifficultyLevels">
         <Instances Id="Plus7">
@@ -2939,6 +2954,11 @@
         <Instances Id="[Override]RedEnvelopes">
             <Int Int="1">
                 <Field Id="CustomAllowed"/>
+            </Int>
+        </Instances>
+        <Instances Id="[Override]TrickOrTreat">
+            <Int Int="1">
+                <Field Id="Alignment"/>
             </Int>
         </Instances>
         <Fields index="1" EditorColumn="7">

@@ -558,6 +558,15 @@ Wanted: Dead or Dead. Some units are marked and have improved stats, but killing
 
 Anything you can do, I can do better.
 
+- Reworked mutator: Trick or Treat
+  - Changed alignment to neutral.
+  - Trick-or-Treaters visit your Candy Bowl looking for treats, which are found by killing enemies.
+  - If no treats are available, the Trick-or-Treaters transform into random enemy units.
+  - The candy must be brought back to the Candy Bowl to refill it, or alternatively can be held onto for the buff.
+  - Costs 3 points for Brutal+.
+
+Completely reworked and rebalanced. The old version was boring and just acted as a simple mineral tax. This new version requires actually interacting with the Candy Bowl by bringing candy back to it. Additionally, more candy spawns than is consumed, letting you get some buffed up units. The mutator has also gotten some much needed all-around polish.
+
 - Added Lucky Envelopes to Brutal+ as a positive mutator costing -1 point.
 - Added Gift Exchange to Brutal+ as a neutral mutator costing 5 points.
 - Added Fireworks to Brutal+ as a negative mutator costing 5 points.
@@ -615,6 +624,12 @@ Replaces Going Nuclear with Nuclear Mines. Going Nuclear can be incredibly frust
 - Nerfed Mutually Assured Destruction nuke effect to no longer reveal explosion area to Amon.
 
 No more getting revealed for walking in a nuke's area. Especially noticeably when combined with the Laser Drill mutation.
+
+- Renamed Mothership mutator to Purifier.
+- Increased scale of Purifier by 25%.
+- Changed Purifier model to Golden skin.
+
+Now that Motherships can be found normally, the mutator has been changed to be more distinct.
 
 - Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
 
@@ -791,6 +806,7 @@ Shield Recharge replaced Hallucination in the LotV campaign presumably because i
 - Reworked Mothership's Mass Recall ability to teleport targeted units to the Mothership.
 - Reworked Mothership AI to more consistently cast Time Warp and to cast Mass Recall.
 - Added chance for Motherships to appear in late-game skytoss comps.
+- Added Motherships to the Transmutation mutator.
 
 Motherships are a vanilla unit, they deserve representation! It is also very funny watching them Mass Recall in some random units.
 

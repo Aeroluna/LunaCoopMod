@@ -45,6 +45,7 @@ const fixed lib74A68E34_gv_mutatorTeemingMultiplier = 1.6;
 const int lib74A68E34_gv_mutatorHarassMaxScaling = 10;
 const int lib74A68E34_gv_mutatorHarassCount = 18;
 const int lib74A68E34_gv_mutatorWhiteoutTrackedPingMax = 50;
+const int lib74A68E34_gv_mutatorTrickOrTreatMaxCandy = 100;
 
 // Structures
 struct lib74A68E34_gs_MorphUnitType {
@@ -126,6 +127,11 @@ sound lib74A68E34_gv_mutatorWhiteoutAmbience;
 unit lib74A68E34_gv_mutatorWhiteoutEffect;
 unitgroup lib74A68E34_gv_mutatorStartingResourcesUnits;
 unitgroup lib74A68E34_gv_mutatorHybridFacility;
+int lib74A68E34_gv_mutatorTrickOrTreatCandy;
+int lib74A68E34_gv_mutatorTrickOrTreatCandyCap;
+int lib74A68E34_gv_mutatorTrickOrTreatBurst;
+timer lib74A68E34_gv_mutatorTrickOrTreatBurstTimer;
+actor lib74A68E34_gv_mutatorTrickOrTreatActor;
 
 // Function Declarations
 bool lib74A68E34_gf_UnitHasBehaviorFlag (unit lp_unit, int lp_flag);
@@ -213,6 +219,8 @@ void lib74A68E34_gf_MutatorWhiteoutHidePings (bool lp_hide);
 void lib74A68E34_gf_MutatorWhiteoutApply (unit lp_unit);
 void lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters (unit lp_gas, int lp_before);
 void lib74A68E34_gf_MutatorBountyHunterApply (unit lp_unit);
+void lib74A68E34_gf_MutatorTrickOrTreaterLogic (unit lp_civilianUnit);
+void lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl ();
 
 // Trigger Declarations
 trigger lib74A68E34_gt_ApplyMaguroChanges;
@@ -420,6 +428,14 @@ trigger lib74A68E34_gt_MutatorHybridFacilityInit;
 trigger lib74A68E34_gt_MutatorHybridFacilityShutdown;
 trigger lib74A68E34_gt_MutatorMinedOutInit;
 trigger lib74A68E34_gt_MutatorMinedOutShutdown;
+trigger lib74A68E34_gt_MutatorTrickOrTreatInit;
+trigger lib74A68E34_gt_MutatorTrickOrTreatSpawn;
+trigger lib74A68E34_gt_MutatorTrickOrTreatTurnInSearch;
+trigger lib74A68E34_gt_MutatorTrickOrTreatTurnIn;
+trigger lib74A68E34_gt_MutatorTrickOrTreatSpawnCandy;
+trigger lib74A68E34_gt_MutatorTrickOrTreatWarningReach;
+trigger lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty;
+trigger lib74A68E34_gt_MutatorTrickOrTreatShutdown;
 
 // Library Initialization
 void lib74A68E34_InitVariables ();

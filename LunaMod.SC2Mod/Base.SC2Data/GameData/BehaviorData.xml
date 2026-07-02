@@ -788,6 +788,38 @@
         <PeriodicEffect value="MutatorBountyHunterBuffHeal"/>
         <Modification MoveSpeedMultiplier="1.2" AttackSpeedMultiplier="1.2"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorCandy">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\halloweencandy_coop.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <AdditiveMoveSpeedFactor value="0.025"/>
+            <AdditiveAttackSpeedFactor value="0.025"/>
+            <VitalRegenArray index="Energy" value="0.0234"/>
+        </Modification>
+        <FinalEffect value="MutatorCandyDropOffset"/>
+        <MaxStackCount value="65535"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorCandyCap">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorCandyCount">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\ui_tipicon_story-travel.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorCandyEmpty">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-tosh-mindblast.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="MutatorCandyNoCandy"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorCandyTurningIn">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorCapacitorCharged">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>

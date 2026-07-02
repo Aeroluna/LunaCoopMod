@@ -827,6 +827,59 @@
     <CEffectDamage id="LaserDrillTripodDamageCoop">
         <Death value="Fire"/>
     </CEffectDamage>
+    <CEffectApplyBehavior id="MutatorCandyCapAB">
+        <Behavior value="MutatorCandyCap"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="MutatorCandyCapRB">
+        <BehaviorLink value="MutatorCandyCap"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreateUnit id="MutatorCandyDrop">
+        <SpawnUnit value="MutatorCandy"/>
+        <WhichLocation Value="TargetPoint"/>
+    </CEffectCreateUnit>
+    <CEffectRandomPointInCircle id="MutatorCandyDropOffset">
+        <WhichLocation Value="SourceUnit"/>
+        <Effect value="MutatorCandyDrop"/>
+        <Radius value="1"/>
+        <ValidatorArray value="MutatorCandyNotTurningIn"/>
+    </CEffectRandomPointInCircle>
+    <CEffectSet id="MutatorCandyDropSet">
+        <EffectArray value="MutatorCandyCapRB"/>
+        <EffectArray value="MutatorCandyDropOffset"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="MutatorCandyPickup">
+        <Behavior value="MutatorCandy"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MutatorCandyPickupInitSet">
+        <EffectArray value="MutatorCandyCapAB"/>
+        <EffectArray value="MutatorCandyPickupLM"/>
+        <ValidatorArray value="MutatorCandyCap"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="MutatorCandyPickupLM">
+        <ImpactEffect value="MutatorCandyPickupSet"/>
+        <Movers Link="MutatorCandyMover"/>
+        <PeriodicValidator value="NotDead"/>
+        <Flags index="TravelValidation" value="1"/>
+        <Flags index="ValidateTeleport" value="0"/>
+        <DeathType value="Unknown"/>
+        <InterruptEffect value="MutatorCandyCapRB"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="MutatorCandyPickupSet">
+        <EffectArray value="MutatorCandyPickup"/>
+        <EffectArray value="VoidPickupRemoveDelay"/>
+        <ValidatorArray value="NotDead"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="MutatorCandyTurnin">
+        <ImpactEffect value="MutatorCandyTurninDummy"/>
+        <AmmoUnit value="MutatorCandyTurnin"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="MutatorCandyTake">
+        <ImpactEffect value="MutatorCandyTakeDummy"/>
+        <AmmoUnit value="MutatorCandyTurnin"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="MutatorCandyTurninDummy"/>
+    <CEffectSet id="MutatorCandyTakeDummy"/>
     <CEffectApplyBehavior id="NeuralParasiteChildren">
         <EditorCategories value="Race:Zerg"/>
     </CEffectApplyBehavior>

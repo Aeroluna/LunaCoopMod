@@ -499,6 +499,23 @@
         </CmdButtonArray>
         <SearchRadius value="4"/>
     </CAbilTransport>
+    <CAbilEffectTarget id="MutatorCandyPickup">
+        <Effect index="0" value="MutatorCandyPickupInitSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="0.5"/>
+        </Cost>
+        <Range value="2"/>
+        <Arc value="360"/>
+        <AutoCastFilters value="-;Structure,Missile,Destructible,Stasis,Dead,Hidden,Benign"/>
+        <AutoCastRange value="2"/>
+        <AutoCastValidatorArray value="PickupCheck"/>
+        <FinishTime value="3"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PickupMinerals50"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="PhasingMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>

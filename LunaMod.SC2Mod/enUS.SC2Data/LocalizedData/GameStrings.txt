@@ -84,6 +84,9 @@ Behavior/Name/MarauderMagrailMunitionsSlow=Slowed
 Behavior/Name/MarauderMagrailMunitionsStun=Stunned
 Behavior/Name/MutatorBountyHunter=Wanted
 Behavior/Name/MutatorBountyHunterBuff=Thrill of the Kill
+Behavior/Name/MutatorCandy=Sugar Rush
+Behavior/Name/MutatorCandyCount=Candy
+Behavior/Name/MutatorCandyEmpty=Out of Candy
 Behavior/Name/MutatorChangeling=Imposter
 Behavior/Name/MutatorWhiteout=Whiteout
 Behavior/Name/MutatorWhiteoutProtected=Sheltered
@@ -148,6 +151,9 @@ Behavior/Tooltip/MarauderMengskAbsorb=When active, this Aegis Barrier blocks all
 Behavior/Tooltip/MarauderMengskShrapnelSlow=Target's movement speed is reduced for a short period of time.
 Behavior/Tooltip/MutatorBountyHunter=This unit is extra dangerous! Killing it will reward resources and a temporary buff.
 Behavior/Tooltip/MutatorBountyHunterBuff=The thrill of a fulfilled bounty has granted this unit increased health regeneration and 30% increased attack and movement speed.
+Behavior/Tooltip/MutatorCandy=The sugar rush is increasing this unit's energy regeneration and attack and movement speed! Return to the candy bowl to turn in the candy.</n></n>Currently carrying <d ref="$BehaviorStackCount:MutatorCandy$"/> candy.
+Behavior/Tooltip/MutatorCandyCount=Your Candy Bowl currently has <d ref="$BehaviorStackCount:MutatorCandyCount$"/> candy.
+Behavior/Tooltip/MutatorCandyEmpty=Your Candy Bowl is empty! Refill it or the trick-or-treaters will be upset.
 Behavior/Tooltip/MutatorChangeling=This unit is acting suspicious, kill it before it calls in reinforcements!
 Behavior/Tooltip/MutatorWhiteout=It's a whiteout! This unit's movement speed and vision are reduced.
 Behavior/Tooltip/MutatorWhiteoutProtected=This unit is sheltered from the whiteout.
@@ -173,6 +179,7 @@ Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Behavior/Tooltip/ZealotPurifierReviveSupressed2=This unit has been recently reconstructed and cannot be revived again.
 Behavior/Tooltip/ZeratulVoidPrisonAiur01=This unit is at a standstill.
 Button/ChargeText/CommanderPrestigeHornerDefensePassiveCharges=<d ref="$AbilChargeCount:HHBomberPlatformAreaBombTopBarOrderDummy,0$"/>
+Button/ChargeText/MutatorCandy=<d ref="$BehaviorStackCount:MutatorCandyCount$"/>
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/ChargeText/ZeratulCalldownSingleCharge=<sp/>
 Button/Name/AegisPlating=Aegis Plating
@@ -296,6 +303,7 @@ Button/Name/MothershipArtanis=Warp In Mothership
 Button/Name/MothershipArtanisMassTeleport=Mass Teleport
 Button/Name/MultiLockTargetingSystemThor=Multi-Lock Weapons System
 Button/Name/MutaliskBrood=Morph to Scythewing
+Button/Name/MutatorCandy=Candy
 Button/Name/MutatorHybridFacilityCharge=Fissile Material
 Button/Name/NovaArmorJumpSuit=Turbojet Jumpsuit
 Button/Name/OrbitalDropPodsMedivacPassive=Hot Drop
@@ -681,6 +689,9 @@ Button/Tooltip/MothershipArtanisMassTeleport=Recalls the Mothership and all near
 Button/Tooltip/MothershipPassive=Fleet Beacon enables you to warp in Motherships.
 Button/Tooltip/MultiLockTargetingSystemThor=The Thor can target ground and air units simultaneously.
 Button/Tooltip/MutateintoLurkerDen=Contains upgrades for Lurkers.<n/><n/><c val="ffff8a">Enables:</c><n/>- Lurkers from Hydralisks
+Button/Tooltip/MutatorCandy=You better have enough treats, or you'll be in for a trick! Kill enemies to find candy, then bring it back to the Candy Bowl to refill it.
+Button/Tooltip/MutatorCandyBowl=A bowl for filling with candy. Keep it full or face the fright!
+Button/Tooltip/MutatorCandyWarning=!
 Button/Tooltip/MutatorHybridFacility=A facility where Hybrid are synthesized. Who approved this?!
 Button/Tooltip/MutatorHybridFacilityCharge=The rate of energy regeneration slowly increases over time. Currently generating <d ref="$BehaviorStackCount:MutatorHybridFacilityCharge$*Behavior,MutatorHybridFacilityCharge,Modification.VitalRegenArray[Energy]" precision="2"/> energy per second.
 Button/Tooltip/MutatorHybridFacilityChargeCharges=<d ref="$BehaviorStackCount:MutatorHybridFacilityCharge$*Behavior,MutatorHybridFacilityCharge,Modification.VitalRegenArray[Energy]" precision="2"/>
@@ -1273,6 +1284,7 @@ Param/Expression/lib_01833E95_F28D5062=<s val="WeaponUI">NEWS</s>:<s val="Void_S
 Param/Expression/lib_74A68E34_2DFFF43D=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/><s val="Kicker_Gas">~Vespene~<img path="Assets\Textures\icon-gas.dds" height="28" width="28"/>
 Param/Expression/lib_74A68E34_6F69C080=+~A~
 Param/Expression/lib_74A68E34_806DB3EB=<c val="40ff40">POSITIVE</c><n/>~A~
+Param/Expression/lib_74A68E34_8C4CD215=Candy Bowl
 Param/Expression/lib_74A68E34_9F6A3D70=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/><s val="Kicker_Gas">~Vespene~<img path="Assets\Textures\icon-gas.dds" height="28" width="28"/>
 Param/Expression/lib_74A68E34_A164617D=<s val="Kicker_Minerals">~Minerals~<img path="Assets\Textures\icon-mineral.dds" height="28" width="28"/>
 Param/Expression/lib_74A68E34_B8BD7C49=[~A~] died from [~B~]
@@ -1310,16 +1322,19 @@ Param/Value/lib_74A68E34_4DF063E9=Slim UI
 Param/Value/lib_74A68E34_53F3B92A=Production Panel
 Param/Value/lib_74A68E34_5665687B=eviscerate
 Param/Value/lib_74A68E34_58014170=<c val="FF8000">Production Panel activated</c>
+Param/Value/lib_74A68E34_638AE177=Candy Remaining
 Param/Value/lib_74A68E34_687107F7=Cooldown Text
 Param/Value/lib_74A68E34_693A9154=<c val="FF8000">Production Panel deactivated</c>
 Param/Value/lib_74A68E34_69530F93=Alarak
 Param/Value/lib_74A68E34_74181A69=<c val="FF9800">Ji'nara is ready for battle.</c>
 Param/Value/lib_74A68E34_770DBAA1=Switch Outlaws
 Param/Value/lib_74A68E34_77538148=unlink
+Param/Value/lib_74A68E34_79A32294=A Trick-or-Treater couldn't reach your Candy Bowl!
 Param/Value/lib_74A68E34_7B397919=disintegrate
 Param/Value/lib_74A68E34_8580B696=Attempted to map to map load to launcher
 Param/Value/lib_74A68E34_865D1328=Shows a production panel in the top right corner, showing everything currently in production. Made by Kit.
 Param/Value/lib_74A68E34_8B0345ED=<c val="FF8000">SlimUI deactivated</c>
+Param/Value/lib_74A68E34_8C9F69FD=<s val="@@WorldTeachingTooltipHeader">Candy Bowl</s><n/>Bring candy here to refill
 Param/Value/lib_74A68E34_972DA1D6=<c val="FF8000">Fast build enabled</c>
 Param/Value/lib_74A68E34_9FA1EC8F=<c val="FF8000">HOTS Cursor CD activated</c>
 Param/Value/lib_74A68E34_A0B9AF19=Show your ally's current resources underneath your own.
@@ -1345,6 +1360,7 @@ Param/Value/lib_74A68E34_F01BD370=normal
 Param/Value/lib_74A68E34_F31253AA=Ally Resource Display
 Param/Value/lib_74A68E34_F3A83084=morph
 Param/Value/lib_74A68E34_F750562F=blast
+Param/Value/lib_74A68E34_F94EDC88=Your Candy Bowl is empty!
 Param/Value/lib_74A68E34_FBF90226=<c val="FF8000">Added AI upgrades to all enemies</c>
 Param/Value/lib_74A68E34_FE06B0B5=+Retry
 RequirementNode/Tooltip/And3622324204CountUpgradeTychusACImplosionGrenadesCompleteOnlyCountUpgradeTychusACPiercingRoundsCompleteOnlyCountUpgradeTychusACRageGrenadesCompleteOnly=Purchase all of Tychus' other gear from the Gunslingers' Hideout
@@ -1401,6 +1417,7 @@ Unit/Category/ProtossAiur=Protoss - Aiur
 Unit/Category/ProtossZeratul=Protoss - Xel'Naga
 Unit/Category/TerranRaider=Terran - Raider
 Unit/Category/ZergEvolved=Zerg - Evolved
+Unit/InfoText/MutatorCandy=Return this candy to the Candy Bowl to refill it!
 Unit/Name/ACAlarakDarkShrine=Blood Shrine
 Unit/Name/ACAlarakWarpInDarkShrine=Warp In Blood Shrine
 Unit/Name/AlarakReviveBeaconJinara=Ji'nara's Beacon
@@ -1427,8 +1444,12 @@ Unit/Name/KerriganBroodWeapon=Psi Blast
 Unit/Name/KerriganReviveCocoon=Kerrigan's Chrysalis
 Unit/Name/LurkerBrood=Grave Splitter
 Unit/Name/MedicFlareWeapon=Flare
+Unit/Name/MothershipAiur06=Purifier
 Unit/Name/MothershipArtanis=Mothership
 Unit/Name/MutaliskBrood=Scythewing
+Unit/Name/MutatorCandy=Candy
+Unit/Name/MutatorCandyCivilian=Trick-or-Treater
+Unit/Name/MutatorCandyCivilianFemale=Trick-or-Treater
 Unit/Name/MutatorHybridFacility=Hybrid Facility
 Unit/Name/ParatrooperMarine=Paratrooper
 Unit/Name/PhaseCannon=Phasing Photon Cannon
@@ -1525,12 +1546,15 @@ UserData/Mutators/Harass_Description=Enemies will constantly send units to haras
 UserData/Mutators/Harass_Name=Harassment
 UserData/Mutators/HybridFacility_Description=Players gain access to the Hybrid Facility, allowing them to train Hybrid of their own.
 UserData/Mutators/HybridFacility_Name=Hybrid Domestication
+UserData/Mutators/Mothership_Description=An enemy Purifier roams the map and attacks player units.
+UserData/Mutators/Mothership_Name=Purifier
 UserData/Mutators/SpellDamage_Description=All spell damage is increased by 100%. Non-spell damage is reduced by 50%.
 UserData/Mutators/SpellDamage_Name=Ethereal
 UserData/Mutators/StartingResources_Description=Player starting resources are enriched for the first 10 minutes.
 UserData/Mutators/StartingResources_Name=Gold Rush
 UserData/Mutators/Teeming_Description=Enemy defenses and attack waves will have more units.
 UserData/Mutators/Teeming_Name=Teeming
+UserData/Mutators/TrickOrTreat_Description=Trick-or-Treaters visit your Candy Bowl looking for treats, which are found by killing enemies. If no treats are available, the Trick-or-Treaters transform into random enemy units.
 UserData/Mutators/Whiteout_Description=Occasional whiteouts obscure the battlefield, lowering visibility and reducing unit movement speed.
 UserData/Mutators/Whiteout_Name=Whiteout
 UserData/PlayerCommanders/[Override]ProtossAlarak_Description=Uses the presence of his own army to improve the power of his own abilities. He has powerful army units that can deal large amounts of damage in a short period of time.

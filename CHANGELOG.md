@@ -1,5 +1,23 @@
 # Changelog
 
+## 7/2/2026
+
+- Added Motherships to the Transmutation mutator.
+- Renamed Mothership mutator to Purifier.
+- Increased scale of Purifier by 25%.
+- Changed Purifier model to Golden skin.
+
+Now that Motherships can be found normally, the mutator has been changed to be more distinct.
+
+- Reworked mutator: Trick or Treat
+  - Changed alignment to neutral.
+  - Trick-or-Treaters visit your Candy Bowl looking for treats, which are found by killing enemies.
+  - If no treats are available, the Trick-or-Treaters transform into random enemy units.
+  - The candy must be brought back to the Candy Bowl to refill it, or alternatively can be held onto for the buff.
+  - Costs 3 points for Brutal+.
+
+Completely reworked and rebalanced. The old version was boring and just acted as a simple mineral tax. This new version requires actually interacting with the Candy Bowl by bringing candy back to it. Additionally, more candy spawns than is consumed, letting you get some buffed up units. The mutator has also gotten some much needed all-around polish.
+
 ## 7/1/2026
 
 - Fixed an issue where the Infestor's weapon used the incorrect base attack icon.

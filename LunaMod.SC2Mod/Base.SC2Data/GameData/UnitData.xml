@@ -316,6 +316,14 @@
         <TacticalAIThink value="AIThinkChoker"/>
         <BehaviorArray index="0" removed="1"/>
     </CUnit>
+    <CUnit id="MutatorCandyCivilian" parent="Civilian">
+        <Name value="Unit/Name/MutatorCandyCivilian"/>
+        <PushPriority value="15"/>
+    </CUnit>
+    <CUnit id="MutatorCandyCivilianFemale" parent="CivilianFemale">
+        <Name value="Unit/Name/MutatorCandyCivilianFemale"/>
+        <PushPriority value="15"/>
+    </CUnit>
     <CUnit id="CommandCenterMengsk">
         <CardLayouts index="0">
             <LayoutButtons index="1" Face="SetCommandCenterRallyPointTrooper" AbilCmd="CommandCenterMengskRally,Rally1" Row="1"/>
@@ -2364,6 +2372,7 @@
     </CUnit>
     <CUnit id="MothershipAiur06">
         <AlliedPushPriority value="1"/>
+        <Height value="4"/>
     </CUnit>
     <CUnit id="MutaliskMengsk">
         <LifeArmorName value="Unit/LifeArmorName/ZergAirArmor"/>
@@ -2380,6 +2389,12 @@
     </CUnit>
     <CUnit id="MutatorCandyBowl">
         <Sight value="1"/>
+        <AbilArray index="0" Link="ACGlobalShareUnit"/>
+        <AbilArray index="1" removed="1"/>
+        <BehaviorArray Link="MutatorCandyEmpty"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="MutatorCandy" Type="Passive" AbilCmd="" Row="2"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="NovaACLaserTurret">
         <LifeStart value="250"/>
@@ -2500,6 +2515,23 @@
     <CUnit id="Paratrooper">
         <HotkeyAlias value="Marine"/>
     </CUnit>
+    <CUnit id="MutatorCandy" parent="ITEM">
+        <Facing value="315"/>
+        <FlagArray index="Untooltipable" value="0"/>
+        <FogVisibility value="Snapshot"/>
+        <Collide index="Structure" value="1"/>
+        <Sight value="0"/>
+        <Height value="0.25"/>
+        <VisionHeight value="1"/>
+        <AbilArray Link="MutatorCandyPickup"/>
+        <BehaviorArray Link="TimeStopImmune"/>
+        <CardLayouts>
+            <LayoutButtons Face="PayloadUpgrade1b" Type="AbilCmd" AbilCmd="MutatorCandyPickup,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Campaign"/>
+        <Radius value="0.1875"/>
+    </CUnit>
     <CUnit id="PerditionTurret">
         <BehaviorArray Link="PerditionTurretKnockbackBehavior"/>
     </CUnit>
@@ -2537,6 +2569,10 @@
     </CUnit>
     <CUnit id="PrimalUltralisk">
         <AlliedPushPriority value="1"/>
+    </CUnit>
+    <CUnit id="MutatorCandyTurnin" parent="MISSILE">
+        <Mover value="MutatorCandyMover"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="PylonOvercharged">
         <HotkeyAlias value="PylonOvercharged"/>

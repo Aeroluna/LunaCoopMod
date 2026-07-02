@@ -73,6 +73,36 @@
         <DeathArray index="Normal" ModelLink="BroodLordDeath"/>
         <PortraitModel value="BroodLordPortrait"/>
     </CActorUnit>
+    <CActorUnit id="Civilian">
+        <On Terms="UnitBirth.MutatorCandyCivilian" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="CivilianFemale">
+        <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="MothershipAiur06">
+        <Model value="Mothership_Golden"/>
+        <PortraitModel value="Mothership_Golden_Portrait"/>
+        <On index="67" Send="SetScale 1.250000 0.400000"/>
+        <On index="70" Send="SetScale 1.250000 0.400000"/>
+    </CActorUnit>
+    <CActorUnit id="MutatorCandyBowl">
+        <On Terms="ButtonHover.MutatorCandy.On" Send="Create MutatorCandyRange"/>
+        <On Terms="ButtonHover.MutatorCandy.Off" Target="MutatorCandyRange" Send="Destroy"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+    </CActorUnit>
+    <CActorText id="MutatorCandyWarning">
+        <On Terms="ActorCreation" Send="TimerSet 0.010000 StartMover"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.000000 Die"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 2.000000"/>
+        <On Terms="TimerExpired; TimerName StartMover" Send="Create UnitPointsTextMover"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <Host Subject="_FloatingText"/>
+        <FixedSize value="32"/>
+        <AlignV value="Bottom"/>
+        <HeightOffset value="1.500000"/>
+        <Color value="255,255,0,0"/>
+        <Text value="Button/Tooltip/MutatorCandyWarning"/>
+    </CActorText>
     <CActorUnit id="CarrierRepairDrone">
         <SoundArray index="Ready" value="CarrierRepairDrone_Ready"/>
         <SoundArray index="What" value="CarrierRepairDrone_What"/>
@@ -366,6 +396,76 @@
     <CActorAction id="MothershipSecondaryAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorUnit id="MutatorCandy" parent="GenericUnitStandardNoAutoSoundLinks" unitName="MutatorCandy">
+        <Macros value="AntiGravDeathRemoveMacro"/>
+        <On Terms="ActorCreation" Send="Create PartsPickupHover"/>
+        <On Terms="ActorCreation" Send="SetTintColor {0,0,255 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 50.000000" Send="SetTintColor {255,0,100 4.000000}"/>
+        <On Terms="ActorCreation; PassChance 33.000000" Send="SetTintColor {0,255,0 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 25.000000" Send="SetTintColor {255,100,0 6.000000}"/>
+        <On Terms="ActorCreation" Send="Create MutatorCandySpawnModel"/>
+        <On Terms="ActorCreation" Send="Create MutatorCandySpawnSound"/>
+        <DeathArray index="Normal" ModelLink="" SoundLink="UI_Mineral_Pickup"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-general-naturalmineral.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\halloweencandy_coop.dds"/>
+        <InfoText value="Unit/InfoText/MutatorCandy"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-doodad-minerals.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-general-naturalmineral.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="MutatorCandyBuff" parent="ModelAddition">
+        <On Terms="Behavior.MutatorCandy.On" Send="Create"/>
+        <On Terms="Behavior.MutatorCandy.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {0,0,255 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 50.000000" Send="SetTintColor {255,0,100 4.000000}"/>
+        <On Terms="ActorCreation; PassChance 33.000000" Send="SetTintColor {0,255,0 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 25.000000" Send="SetTintColor {255,100,0 6.000000}"/>
+        <On Terms="ActorCreation" Send="StatusSet Stack 0"/>
+        <On Terms="BehaviorStackItem.MutatorCandy.Add" Send="StatusIncrement Stack"/>
+        <On Terms="Effect.MutatorCandyDrop.Start" Send="StatusDecrement Stack"/>
+        <On Terms="StatusDecrement.*.Stack" Send="Signal Stack"/>
+        <On Terms="StatusIncrement.*.Stack" Send="Signal Stack"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 0" Send="SetScale 1.000000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 2" Send="SetScale 1.100000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 4" Send="SetScale 1.200000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 6" Send="SetScale 1.300000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 8" Send="SetScale 1.400000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 10" Send="SetScale 1.500000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 12" Send="SetScale 1.600000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 14" Send="SetScale 1.700000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 16" Send="SetScale 1.800000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 18" Send="SetScale 1.900000 0.200000"/>
+        <On Terms="Signal.*.Stack; IsStatus Stack 20" Send="SetScale 2.000000 0.200000"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpByDot5" HoldRotation="1"/>
+        <Model value="MutatorCandy"/>
+    </CActorModel>
+    <CActorMissile id="MutatorCandyTurninMissile" parent="GenericAttackMissile" unitName="MutatorCandyTurnin">
+        <On Terms="ActorCreation" Send="SetTintColor {0,0,255 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 50.000000" Send="SetTintColor {255,0,100 4.000000}"/>
+        <On Terms="ActorCreation; PassChance 33.000000" Send="SetTintColor {0,255,0 2.000000}"/>
+        <On Terms="ActorCreation; PassChance 25.000000" Send="SetTintColor {255,100,0 6.000000}"/>
+        <Model value="MutatorCandy"/>
+    </CActorMissile>
+    <CActorAction id="MutatorCandyTurnin" parent="GenericAttack" effectImpact="MutatorCandyTurninDummy" effectLaunch="MutatorCandyTurnin">
+        <ImpactAttachQuery Methods="Center"/>
+        <ImpactMap index="None" Model="" Sound="MutatorCandyBowl_Add"/>
+        <LaunchAttachQuery Methods="AMFilterCenter"/>
+    </CActorAction>
+    <CActorAction id="MutatorCandyTake" parent="GenericAttack" effectImpact="MutatorCandyTakeDummy" effectLaunch="MutatorCandyTake">
+        <ImpactAttachQuery Methods="Center"/>
+        <ImpactMap index="None" Model="" Sound="Halloween_CandyBowl_Refill"/>
+        <LaunchAttachQuery Methods="AMFilterCenter"/>
+        <Missile value="MutatorCandyTurninMissile"/>
+    </CActorAction>
     <CActorUnit id="MutatorLaserDrill">
         <On index="81" Send="AnimPlay Attack Attack PlayForever -1.000000 -1.000000 0.500000 AsTimeScale"/>
         <On index="83" Send="AnimPlay AttackA Attack,A PlayForever -1.000000 -1.000000 0.750000 AsTimeScale"/>
@@ -381,6 +481,10 @@
     <CActorAction id="MutatorLaserDrillAttackC">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorModel id="MutatorCandySpawnModel" parent="ModelAnimationStyleOneShot"/>
+    <CActorSound id="MutatorCandySpawnSound" parent="SoundOneShot">
+        <Sound value="Mineral_Birth"/>
+    </CActorSound>
     <CActorModel id="NovaBoomBotBirthModel" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>
@@ -935,6 +1039,12 @@
         <AutoScaleFactor value="0.700000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
+    <CActorRange id="MutatorCandyRange">
+        <Range value="3.750000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconScale value="0.004000,0.004000"/>
+        <IconArcLength value="2.000000"/>
+    </CActorRange>
     <CActorSound id="YagdraFirebreathEndSound">
         <On Terms="Effect.DehakaGlevigFirebreathCreateGoverningPersistent.Stop; At Caster" Send="Destroy"/>
     </CActorSound>
