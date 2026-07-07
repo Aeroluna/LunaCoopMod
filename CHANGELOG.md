@@ -7,6 +7,8 @@
 - Reduced Kaldalis's movement speed from 3 to 2.25.
 - Fixed an issue where Legionnaires had the Reconstruction button on their command card despite not having Reconstruction.
 - Fixed an issue where Stukov's unit cocoons spawned too closely together.
+- Fixed an issue where Vipers did not display rank/kill count.
+- Fixed an issue where Blinding Cloud's visuals were larger than intended.
 
 everytime i open the editor again, i find 10 new bugs.
 
