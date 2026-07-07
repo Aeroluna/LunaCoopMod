@@ -1,5 +1,9 @@
 # Changelog
 
+## 7/7/2026
+
+- Fixed an issue where `-solo` did not allow capturing locks alone on Lock & Load.
+
 ## 7/2/2026
 
 - Added Motherships to the Transmutation mutator.
