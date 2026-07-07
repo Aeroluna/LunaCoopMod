@@ -3,6 +3,9 @@
 ## 7/7/2026
 
 - Fixed an issue where `-solo` did not allow capturing locks alone on Lock & Load.
+- Fixed an issue where Kaldalis's movement speed was unaffected by the Charge upgrade.
+- Reduced Kaldalis's movement speed from 3 to 2.25.
+- Fixed an issue where Legionnaires had the Reconstruction button on their command card despite not having Reconstruction.
 
 ## 7/2/2026
 

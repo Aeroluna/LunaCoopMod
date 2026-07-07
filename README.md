@@ -2232,6 +2232,8 @@ yeah. The Siege Tank bug took way too long to figure out...
 Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
 
 - Changed Kaldalis's Engage ability to require researching Charge at the Twilight Council.
+- Changed Charge to additionally increase Kaldalis's movement speed.
+- Reduced Kaldalis's movement speed from 3 to 2.25.
 - Changed Talis's Psionic Projection ability to require researching at the Twilight Council.
 - Reduced Warbringer's weapon from 9 to 6.
 - Changed Extended Thermal Lance to additionally affect Warbringer.

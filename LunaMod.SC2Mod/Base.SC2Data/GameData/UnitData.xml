@@ -316,6 +316,9 @@
         <TacticalAIThink value="AIThinkChoker"/>
         <BehaviorArray index="0" removed="1"/>
     </CUnit>
+    <CUnit id="FenixKaldalisZealot">
+        <Speed value="2.25"/>
+    </CUnit>
     <CUnit id="MutatorCandyCivilian" parent="Civilian">
         <Name value="Unit/Name/MutatorCandyCivilian"/>
         <PushPriority value="15"/>
@@ -7449,7 +7452,14 @@
     </CUnit>
     <CUnit id="ZealotPurifier">
         <CardLayouts index="0">
-            <LayoutButtons Face="ZealotPurifierRevive" Type="Passive" Behavior="ZealotPurifierReviveSupressed2" Row="2" Column="1"/>
+            <LayoutButtons>
+                <Face value="ZealotPurifierRevive"/>
+                <Type value="Passive"/>
+                <Behavior value="ZealotPurifierReviveSupressed2"/>
+                <Requirements value="HaveKaraxCommander"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
             <LayoutButtons Face="ZealotPurifierRevive2" Type="Passive" Requirements="HaveZealotPurifierReconstruction2" Row="2" Column="2"/>
         </CardLayouts>
         <Speed value="2.25"/>
