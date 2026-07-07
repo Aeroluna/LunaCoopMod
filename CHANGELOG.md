@@ -6,6 +6,9 @@
 - Fixed an issue where Kaldalis's movement speed was unaffected by the Charge upgrade.
 - Reduced Kaldalis's movement speed from 3 to 2.25.
 - Fixed an issue where Legionnaires had the Reconstruction button on their command card despite not having Reconstruction.
+- Fixed an issue where Stukov's unit cocoons spawned too closely together.
+
+everytime i open the editor again, i find 10 new bugs.
 
 ## 7/2/2026
 
@@ -384,6 +387,7 @@ The problem with using Grid hotkeys is you become completely oblivious to how ba
 I liked free Infested Marines, but the Corruption mechanic ended up more complicated than I liked, so it has been replaced with a lite rework.
 
 - Reduced Infested Marine supply cost from 1 to 0.5.
+- Changed Infested Marines to spawn two at a time.
 - Reduced Infested Barrack's Spawn Infested Marine max charges from 10 to 5.
 - Increased Infested Barrack's Spawn Infested Marine charge cooldown from 5 to 20.
 - Changed Infested Barrack's Spawn Infested Marine to be autocastable.

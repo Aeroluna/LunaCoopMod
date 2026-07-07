@@ -2091,6 +2091,7 @@ yeah.
 *All your unit are belong to us.* It's much harder to hit a critical mass of army but in return you can just steal Amon's. This prestige causes your pushes to snowball hard.
 
 - Reduced Infested Marine supply cost from 1 to 0.5.
+- Changed Infested Marines to spawn two at a time.
 - Reduced Infested Barrack's Spawn Infested Marine max charges from 10 to 5.
 - Increased Infested Barrack's Spawn Infested Marine charge cooldown from 5 to 20.
 - Changed Infested Barrack's Spawn Infested Marine to be autocastable.
@@ -2122,7 +2123,7 @@ What's the worst that could happen?
 This prestige was so simple to play, you could just spam down a bunch of bunkers. Lowering the bonus but applying it to more infantry should increase composition diversity.
 
 - Changed Infested Banshee P2 Deploy ability to allow casting while moving.
-- Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton, which additionally increases Infested Banshee speed by 2.
+- Replaced Braced Exoskeleton upgrade with Hyperadaptive Exoskeleton, which additionally increases Infested Banshee speed by 1.
   - Adds visual boosters to the Infested Banshee.
 
 These two simple changes make playing P2 infinitely smoother to play. Seriously, being able to deploy infested while moving is night and day. It was kinda sad that P2 was about picking up your infantry and moving them to the frontline, but the Infested Banshee was about as fast as them walking there.
