@@ -9,8 +9,28 @@
 - Fixed an issue where Stukov's unit cocoons spawned too closely together.
 - Fixed an issue where Vipers did not display rank/kill count.
 - Fixed an issue where Blinding Cloud's visuals were larger than intended.
+- Fixed an issue where Evolve to Brutalisk did not have a descriptive tooltip.
+- Fixed an issue where Evolve to Leviathan did not have a descriptive tooltip.
+- Fixed an issue where canceling Evolve to Brutalisk would remove the Biomass material glaze.
+- Fixed an issue where canceling Evolve to Leviathan would remove the Biomass material glaze.
+- Fixed an issue where burrowed Ravagers could not use Evolve to Brutalisk.
 
 everytime i open the editor again, i find 10 new bugs.
+
+- Changed Evolve to Brutalisk to have autocasting off by default.
+- Changed Evolve to Leviathan to have autocasting off by default.
+- Toggling autocast on Evolve to Brutalisk/Leviathan will now toggle autocast for all units of the same unit type.
+
+Nothing more tragic than building 100 Biomass on your Swarm Host just to accidentally morph it into a Brutalisk. Now you can choose which unit types should automatically evolve (probably Roaches and Mutalisks).
+
+- Added a sound effect for Symbiote's Spike Burst ability.
+- Reduced the volume of Symbiote's Stab ability.
+
+Those Symbiotes are loud!
+
+- Renamed Symbiote's Shell ability to Carapace.
+
+Why was this renamed from Carapace in the first place?
 
 ## 7/2/2026
 

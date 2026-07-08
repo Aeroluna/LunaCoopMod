@@ -5331,6 +5331,16 @@
     <CActorModel id="SymbioteSpikedBurst">
         <HostSiteOps Ops="SOpAttachCenter SOpMoveDownBy2Dot5"/>
     </CActorModel>
+    <CActorSound id="SymbioteSpikedBurst_AS" parent="SoundOneShot">
+        <On Terms="Effect.SymbioteSpikeBurstSearch.Start" Send="Create"/>
+        <Sound value="SymbioteSpikedBurst_Launch"/>
+        <Layers Sound="SymbioteSpikedBurst_Launch2">
+            <Chance value="100"/>
+            <Pitch value="0.000000,0.000000"/>
+            <PlayDelay value="0,0"/>
+            <Volume value="0.000000,0.000000"/>
+        </Layers>
+    </CActorSound>
     <CActorModel id="SymbiotePrestigeSpawn" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1" HoldRotation="1"/>

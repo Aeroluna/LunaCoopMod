@@ -1771,8 +1771,16 @@ Reduces wasting Toxic Nest value by blowing up 1 Marine out of the 40.
 - Fixed an issue where Leviathan Cocoons did not have the Cancel button on the command card.
 - Changed Morph to Brutalisk to disable autocast when canceled.
 - Changed Morph to Leviathan to disable autocast when canceled.
+- Fixed an issue where canceling Evolve to Brutalisk would remove the Biomass material glaze.
+- Fixed an issue where canceling Evolve to Leviathan would remove the Biomass material glaze.
 
 Did you even know you could cancel morphing Brutalisks/Leviathans? The cancel button was removed from the command card but you could still stop the morph by canceling it from the queue. Cancel was likely removed because it would immediately start the morph again if you had autocast on. A little change to disable autocast when you cancel should fix that; no more accidentally turning your Vipers into Leviathans!.
+
+- Changed Evolve to Brutalisk to have autocasting off by default.
+- Changed Evolve to Leviathan to have autocasting off by default.
+- Toggling autocast on Evolve to Brutalisk/Leviathan will now toggle autocast for all units of the same unit type.
+
+Nothing more tragic than building 100 Biomass on your Swarm Host just to accidentally morph it into a Brutalisk. Now you can choose which unit types should automatically evolve (probably Roaches and Mutalisks).
 
 - Fixed an issue where Mutalisk's Sundering Glaive passive tooltip highlighted unit names.
 - Fixed an issue where Viper's Virulent Microbes passive tooltip highlighted unit names.
@@ -1788,6 +1796,11 @@ Leviathan's have four holes, use them all! This bug was caused by using the orig
 - Fixed an issue where Swarm Host Spawn Locust ability could only target within a small range.
 - Reduced the allied push priority of Locust from 0 to -1.
 - Changed Abathur P2 to double the range of Swarm Host's Spawn Locust weapon.
+- Reduced the volume of Symbiote's Stab ability.
+- Renamed Symbiote's Shell ability to Carapace.
+- Fixed an issue where Evolve to Brutalisk did not have a descriptive tooltip.
+- Fixed an issue where Evolve to Leviathan did not have a descriptive tooltip.
+- Fixed an issue where burrowed Ravagers could not use Evolve to Brutalisk.
 
 yeah.
 

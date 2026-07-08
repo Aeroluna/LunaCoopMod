@@ -1196,6 +1196,111 @@ void lib74A68E34_gf_KaraxEnable20 (int lp_player) {
     TriggerEnable(lib01833E95_gt_K2_StructureArmorUpgrade, true);
 }
 
+int lib74A68E34_gf_AbathurMorphToggleUnitToIndex (string lp_unitType) {
+    // Automatic Variable Declarations
+    string auto654EF993_val;
+
+    // Implementation
+    auto654EF993_val = lp_unitType;
+    if (auto654EF993_val == "Queen") {
+        return 1;
+    }
+    else if (auto654EF993_val == "RavagerAbathur") {
+        return 2;
+    }
+    else if (auto654EF993_val == "Roach") {
+        return 3;
+    }
+    else if (auto654EF993_val == "SwarmHost") {
+        return 4;
+    }
+    else if (auto654EF993_val == "Mutalisk") {
+        return 5;
+    }
+    else if (auto654EF993_val == "GuardianMP") {
+        return 6;
+    }
+    else if (auto654EF993_val == "Devourer") {
+        return 7;
+    }
+    else if (auto654EF993_val == "ViperAbathur") {
+        return 8;
+    }
+    else {
+        return 0;
+    }
+}
+
+string lib74A68E34_gf_AbathurMorphToggleUnitAlias (string lp_unitType) {
+    // Automatic Variable Declarations
+    string auto103E715B_val;
+
+    // Implementation
+    auto103E715B_val = lp_unitType;
+    if (auto103E715B_val == "QueenBurrowed") {
+        return "Queen";
+    }
+    else if (auto103E715B_val == "RavagerAbathurBurrowed") {
+        return "RavagerAbathur";
+    }
+    else if (auto103E715B_val == "RoachBurrowed") {
+        return "Roach";
+    }
+    else if (auto103E715B_val == "RoachVile") {
+        return "Roach";
+    }
+    else if (auto103E715B_val == "RoachVileBurrowed") {
+        return "Roach";
+    }
+    else if (auto103E715B_val == "SwarmHostBurrowed") {
+        return "SwarmHost";
+    }
+    else if (auto103E715B_val == "SwarmHostSplitB") {
+        return "SwarmHost";
+    }
+    else if (auto103E715B_val == "SwarmHostSplitBBurrowed") {
+        return "SwarmHost";
+    }
+    else {
+        return lp_unitType;
+    }
+}
+
+void lib74A68E34_gf_AbathurUpdateBiomassScale (unit lp_unit) {
+    // Variable Declarations
+    int lv_biomassMaxStacks;
+    int lv_biomassCountTotal;
+    int lv_biomassVisualIndicatorInterval;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_biomassMaxStacks = CatalogFieldValueGetAsInt(c_gameCatalogEffect, "AbathurBiomassMaxStacksDummy", "Amount", UnitGetOwner(lp_unit));
+
+    // Implementation
+    lv_biomassCountTotal = (UnitBehaviorCount(lp_unit, "BiomassBuff100") * 100);
+    lv_biomassCountTotal += (UnitBehaviorCount(lp_unit, "BiomassBuff10") * 10);
+    lv_biomassCountTotal += UnitBehaviorCount(lp_unit, "BiomassBuff1");
+    if ((lv_biomassCountTotal > lv_biomassMaxStacks)) {
+        lv_biomassCountTotal = lv_biomassMaxStacks;
+    }
+
+    libNtve_gf_SendActorMessageToUnit(lp_unit, (("SetScale " + FixedToString((0.25 / lv_biomassMaxStacks * lv_biomassCountTotal + 1.25), 3))));
+    if ((lv_biomassCountTotal >= 10)) {
+        ActorScopeSend(ActorScopeFromUnit(lp_unit), "Create BiomassBuffGlaze");
+    }
+
+    lv_biomassVisualIndicatorInterval = ((lv_biomassMaxStacks - 10) / 3);
+    if ((lv_biomassCountTotal > (lv_biomassVisualIndicatorInterval * 2 + 10))) {
+        ActorScopeSend(ActorScopeFromUnit(lp_unit), "Signal BiomassAnimGroupC");
+    }
+    else if ((lv_biomassCountTotal > (lv_biomassVisualIndicatorInterval + 10))) {
+        ActorScopeSend(ActorScopeFromUnit(lp_unit), "Signal BiomassAnimGroupB");
+    }
+    else if ((lv_biomassCountTotal > 10)) {
+        ActorScopeSend(ActorScopeFromUnit(lp_unit), "Signal BiomassAnimGroupA");
+    }
+}
+
 void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
     // Variable Declarations
     unit lv_alarak;
@@ -5887,6 +5992,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
         }
         else if (auto560DABDD_val == "ZergAbathur") {
             TriggerEnable(lib74A68E34_gt_GeneralNydusUnloadHero, true);
+            TriggerEnable(lib74A68E34_gt_AbathurMorphToggle, true);
+            TriggerEnable(lib74A68E34_gt_AbathurMorphToggleNewUnit, true);
             TriggerEnable(lib74A68E34_gt_AbathurMorphAutoCastFix, true);
             TriggerEnable(lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast, true);
             TriggerEnable(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, true);
@@ -7347,6 +7454,104 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AbathurMorphToggle
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurMorphToggle_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_alias;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    unitgroup auto24CBE944_g;
+    int auto24CBE944_u;
+    unit auto24CBE944_var;
+
+    // Variable Initialization
+    lv_alias = lib74A68E34_gf_AbathurMorphToggleUnitAlias(UnitGetType(EventUnit()));
+    lv_index = lib74A68E34_gf_AbathurMorphToggleUnitToIndex(lv_alias);
+
+    // Conditions
+    if (testConds) {
+        if (!((lv_index != 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gv_abathurMorphToggleState[lv_index] = UnitCheckAbilCmdState(EventUnit(), EventUnitAbility(), c_cmdStateIsAutoCast);
+    auto24CBE944_g = UnitGroup(null, UnitGetOwner(EventUnit()), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto24CBE944_u = UnitGroupCount(auto24CBE944_g, c_unitCountAll);
+    for (;; auto24CBE944_u -= 1) {
+        auto24CBE944_var = UnitGroupUnitFromEnd(auto24CBE944_g, auto24CBE944_u);
+        if (auto24CBE944_var == null) { break; }
+        if ((auto24CBE944_var != EventUnit()) && (lib74A68E34_gf_AbathurMorphToggleUnitAlias(UnitGetType(auto24CBE944_var)) != lv_alias)) {
+            continue;
+        }
+
+        if ((lib74A68E34_gv_abathurMorphToggleState[lv_index] == true)) {
+            UnitIssueOrder(auto24CBE944_var, OrderSetAutoCast(EventUnitAbility(), true), c_orderQueueAddToFront);
+        }
+        else {
+            UnitIssueOrder(auto24CBE944_var, OrderSetAutoCast(EventUnitAbility(), false), c_orderQueueAddToFront);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurMorphToggle_Init () {
+    lib74A68E34_gt_AbathurMorphToggle = TriggerCreate("lib74A68E34_gt_AbathurMorphToggle_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurMorphToggle, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib74A68E34_gt_AbathurMorphToggle, null, AbilityCommand("EvolveToBrutalisk", 0), c_unitAbilAutoCastChangeAll, true);
+    TriggerAddEventUnitAbilityAutoCastChange(lib74A68E34_gt_AbathurMorphToggle, null, AbilityCommand("EvolveToLeviathan", 0), c_unitAbilAutoCastChangeAll, true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurMorphToggleNewUnit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurMorphToggleNewUnit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_alias;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_alias = lib74A68E34_gf_AbathurMorphToggleUnitAlias(UnitGetType(EventUnit()));
+    lv_index = lib74A68E34_gf_AbathurMorphToggleUnitToIndex(lv_alias);
+
+    // Conditions
+    if (testConds) {
+        if (!((lib74A68E34_gv_abathurMorphToggleState[lv_index] == true))) {
+            return false;
+        }
+
+        if (!((lv_index != 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("EvolveToBrutalisk", 0), true), c_orderQueueAddToFront);
+    UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("EvolveToLeviathan", 0), true), c_orderQueueAddToFront);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurMorphToggleNewUnit_Init () {
+    lib74A68E34_gt_AbathurMorphToggleNewUnit = TriggerCreate("lib74A68E34_gt_AbathurMorphToggleNewUnit_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurMorphToggleNewUnit, false);
+    TriggerAddEventUnitRegion(lib74A68E34_gt_AbathurMorphToggleNewUnit, null, RegionEntireMap(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AbathurMorphAutoCastFix
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_AbathurMorphAutoCastFix_Func (bool testConds, bool runActions) {
@@ -7357,6 +7562,7 @@ bool lib74A68E34_gt_AbathurMorphAutoCastFix_Func (bool testConds, bool runAction
     }
 
     UnitIssueOrder(EventUnit(), OrderSetAutoCast(EventUnitAbility(), false), c_orderQueueAddToFront);
+    TriggerExecute(libCOMI_gt_CM_Abathur_BiomassScaler, true, true);
     return true;
 }
 
@@ -12705,6 +12911,8 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init();
+    lib74A68E34_gt_AbathurMorphToggle_Init();
+    lib74A68E34_gt_AbathurMorphToggleNewUnit_Init();
     lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init();
