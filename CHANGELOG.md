@@ -1,5 +1,12 @@
 # Changelog
 
+## 7/9/2026
+
+- Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.
+- Fixed an issue where Evolve to Leviathan used the wrong Leviathan description.
+- Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
+- Fixed an issue where Abathur's Toxic Nests would autocast on Changelings/wrong Polarity/detected Hallucinations.
+
 ## 7/7/2026
 
 - Fixed an issue where `-solo` did not allow capturing locks alone on Lock & Load.

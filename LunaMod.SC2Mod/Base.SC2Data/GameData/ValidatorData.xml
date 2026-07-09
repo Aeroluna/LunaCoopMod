@@ -74,6 +74,11 @@
         <CombineArray value="MutatorPolarityTargetCasterCheck"/>
         <Type value="And"/>
     </CValidatorCombine>
+    <CValidatorCombine id="DamageValidTargetAndNotDetectedHallucination">
+        <CombineArray value="DamageValidTarget"/>
+        <CombineArray value="NotHallucinationOrNotDetected"/>
+        <Type value="And"/>
+    </CValidatorCombine>
     <CValidatorLocationCompareRange id="DarkTemplarTaldarimBlinkMaxDistance">
         <ResultFailed value="TargetIsOutOfRange"/>
         <WhichLocation Value="SourceUnit"/>
@@ -1330,6 +1335,10 @@
     <CValidatorUnitCompareBehaviorCount id="NotTychusMarauderHealingWardTargetUpgraded">
         <Behavior value="TychusMarauderHealingWardTargetUpgrade"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="ToxicNestExplodeEnemyCheck">
+        <AreaArray index="0" Validator="DamageValidTargetAndNotDetectedHallucination"/>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorLocationEnumArea id="ToxicNestExplodeFastEnemyCheck">
         <WhichLocation Value="CasterUnit"/>
         <AreaArray>

@@ -424,12 +424,11 @@
     <CActorAction id="MothershipAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
-    <CActorModel id="MothershipCloakingField" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="MothershipCloakingField" parent="ModelAddition">
         <!--On Terms="Behavior.CloakField.On" Send="Create"/>
         <On Terms="Behavior.CloakField.Off" Send="AnimBracketStop BSD"/-->
         <On Terms="Behavior.FenixArbiterCloakingFieldCaster.On" Send="Create"/>
         <On Terms="Behavior.FenixArbiterCloakingFieldCaster.Off" Send="AnimBracketStop BSD"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter SOp2DRotation" HoldRotation="1"/>
         <Model value="CloakingField"/>
         <AutoScaleFactor value="1.000000"/>
@@ -1076,16 +1075,11 @@
     <CActorAction id="WarHoundAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
-    <CActorModel id="GatewayWarpInVoidUnnamed" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="CloakEffect" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
+    <CActorModel id="GatewayWarpInVoidUnnamed" parent="ModelAddition">
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death 0 1.000000 AsTimeScale"/>
         <On Terms="AbilTrain.GatewayTrain.Trained" Send="Create"/>
         <On Terms="AbilTrain.GatewayTrain.Trained" Send="TimerSet 0.375000,0.100000"/>
         <On Terms="TimerExpired" Send="AnimBracketStop BSD 0 1.000000"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
         <Model value="GatewayTrainWarpModel"/>
         <AutoScaleFactor value="0.700000"/>
@@ -1303,19 +1297,16 @@
         <On Terms="TimerExpired; TimerName Repeat" Send="Create Confetti_Explosion_Small"/>
         <Model value="Confetti_Explosion_Small"/>
     </CActorModel>
-    <CActorModel id="MutatorBountyHunterTargetingUI" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="MutatorBountyHunterTargetingUI" parent="ModelAddition">
         <On Terms="Behavior.MutatorBountyHunter.On" Send="Create"/>
         <On Terms="Behavior.MutatorBountyHunter.Off" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,50,50"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOverhead SOpMoveUpByDot5"/>
         <AutoScaleFactor value="1.200000"/>
         <ModelFlags index="AllowHitTest" value="0"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <Inherits index="CloakEffect" value="1"/>
-        <Inherits index="Visibility" value="1"/>
     </CActorModel>
-    <CActorModel id="MutatorBountyHunterBuff" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="MutatorBountyHunterBuff" parent="ModelAddition">
         <On Terms="Behavior.MutatorBountyHunterBuff.On" Send="Create"/>
         <On Terms="Behavior.MutatorBountyHunterBuff.Off" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,50,50"/>
@@ -1324,11 +1315,10 @@
         <Model value="WildMutationBuff"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
-    <CActorModel id="MutatorCapacitorCharged" parent="BuffContinuous">
+    <CActorModel id="MutatorCapacitorCharged" parent="ModelAddition">
         <On Terms="Behavior.MutatorCapacitorCharged.On" Send="Create"/>
         <On Terms="Behavior.MutatorCapacitorCharged.Off" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor {50,100,255 2.000000}"/>
-        <Host Subject="_Unit"/>
         <HostSiteOps Ops="SOpAttachOriginSoft SOpRotationRandomDisc"/>
         <Model value="Alarak_COOP_LightningStrikes_PowerUp"/>
         <AutoScaleFactor value="1.000000"/>
@@ -1714,15 +1704,6 @@
     <CActorModel id="FlashBangImpact">
         <On Terms="Behavior.FlashBangGrenadeSlow.On" Send="Create"/>
         <On Terms="Behavior.FlashBangGrenadeSlow.Off" Send="Destroy"/>
-    </CActorModel>
-    <CActorModel id="FungalGrowthStopMovement" parent="ModelAnimationStyleContinuous">
-        <AutoScaleFactor value="1.000000"/>
-        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
-        <On Terms="Behavior.FungalGrowthMovement.On" Send="Create"/>
-        <On Terms="ActorCreation" Send="AnimBracketStart $BSD"/>
-        <On Terms="Behavior.FungalGrowthMovement.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="ActorCreation" Send="SetTintColor {255,0,0 4.000000}"/>
-        <Host Subject="_Selectable"/>
     </CActorModel>
     <CActorUnit id="HHBomberPlatform">
         <On index="96" Terms="Behavior.HHBomberPlatformAreaBombDisabler.Off; ValidateUnit SourceNotDead"/>
@@ -2781,12 +2762,8 @@
         <On Terms="StatusOff.*.BurrowCharging; ValidatePlayer HasAnabolicSynthesisUpgrade" Send="Create UltraliskAnabolicSynthesisUpgrade"/>
         <On Terms="Abil.UltraliskBurrowCharge.SourceCastStart" Target="UltraliskAnabolicSynthesisUpgrade" Send="Destroy"/>
     </CActorUnit>
-    <CActorModel id="UltraliskAnabolicSynthesisUpgrade" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
+    <CActorModel id="UltraliskAnabolicSynthesisUpgrade" parent="ModelAddition">
         <On Terms="ActorCreation" Send="SetTintColor {255,255,255 2.000000}"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachTarget6"/>
     </CActorModel>
     <CActorUnit id="VespeneGeyser">
@@ -2866,15 +2843,14 @@
         <LaunchModel value="JinaraBarrageAttackLaunchModel"/>
     </CActorAction>
     <CActorMissile id="JinaraBarrageAttackMissile" parent="GenericAttackMissile" unitName="JinaraBarrageWeapon"/>
-    <CActorModel id="JinaraChainsModel" parent="ModelAnimationStyleContinuous">
-        <EditorCategories value=""/>
+    <CActorModel id="JinaraChainsModel" parent="ModelAddition">
         <On Terms="Behavior.JinaraChains.On" Send="Create"/>
         <On Terms="Behavior.JinaraChains.Off" Send="Destroy"/>
         <On Terms="ActorCreation" Send="SetTintColor 255,100,100"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter SOpRotationRandomDisc"/>
         <AutoScaleFactor value="0.750000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Inherits index="CloakEffect" value="0"/>
     </CActorModel>
     <CActorModel id="JinaraSoulAbsorptionImpact" parent="ModelAnimationStyleOneShot">
         <InheritType value="OneShot"/>
@@ -3306,7 +3282,7 @@
     <CActorSiteOpForward id="SOpForwardAlarak">
         <HostForward Subject="AlarakCoop"/>
     </CActorSiteOpForward>
-    <CActorModel id="SalvageModel" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="SalvageModel" parent="ModelAddition">
         <On Terms="Behavior.Salvage.On" Send="Create"/>
         <On Terms="Behavior.Salvage.Off" Send="Destroy"/>
         <On Terms="Behavior.SalvageBunker.On" Send="Create"/>
@@ -3323,7 +3299,6 @@
         <On Terms="ActorCreation" Send="Create Salvage_StartSound"/>
         <On Terms="ActorCreation" Send="Create Salvage_LoopSound"/>
         <On Terms="ActorDestruction" Target="Salvage_LoopSound" Send="Destroy"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin SOpMoveDownBy1Dot5"/>
         <Model value="ThorSelfRepair"/>
         <AutoScaleFactor value="0.800000"/>
@@ -3334,7 +3309,7 @@
     <CActorSound id="Salvage_LoopSound" parent="SoundContinuous">
         <Sound value="Salvage_Loop"/>
     </CActorSound>
-    <CActorModel id="DrakkenLaserDrillBuild" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="DrakkenLaserDrillBuild" parent="ModelAddition">
         <On Terms="Behavior.DrakkenLaserDrillBuild.On" Send="Create"/>
         <On Terms="Behavior.DrakkenLaserDrillBuild.Off" Send="Destroy"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
@@ -3342,7 +3317,6 @@
         <On Terms="ActorCreation" Send="Create DrakkenLaserDrillBuild_LoopSound"/>
         <On Terms="ActorDestruction" Target="DrakkenLaserDrillBuild_LoopSound" Send="Destroy"/>
         <On Terms="ActorDestruction" Send="Create DrakkenLaserDrillBuild_EndSound"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin SOpMoveDownBy1Dot5"/>
         <Model value="ThorSelfRepair"/>
         <Scale value="2.000000"/>
@@ -3910,7 +3884,6 @@
         <On Terms="Effect.VoidArchonVortexCreatePersistent.Stop" Send="Destroy"/>
         <!--On Terms="ActorCreation" Send="SetOpacity 0.800000"/-->
         <!--On Terms="ActorCreation" Send="SetTintColor {0,0,0 5.000000}"/-->
-        <On Terms="UnitBirth.DarkArchon" Send="Create DarkArchonMergeComplete"/>
         <HostSiteOps Ops="SOpAttachOrigin SOpMoveUpBy1"/>
         <Model value="MonlythForceFieldStatueAura"/>
         <Scale value="1.400000"/>
@@ -4998,12 +4971,11 @@
     <CActorModel id="LiberatorAG_BlackOpsAttackImpactModel" parent="GenericAttackModel">
         <On Terms="ActorCreation; ValidateCreationEffect LiberatorAGRangeUpgraded" Send="ModelSwap LiberatorAGAttackImpactUpgraded"/>
     </CActorModel>
-    <CActorModel id="MarauderMagrailMunitionsModel" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="MarauderMagrailMunitionsModel" parent="ModelAddition">
         <On Terms="Behavior.MarauderMagrailMunitionsStun.On" Send="Create"/>
         <On Terms="Behavior.MarauderMagrailMunitionsStun.Off" Send="Destroy"/>
         <On Terms="Behavior.MarauderMagrailMunitionsSlow.On" Send="Create"/>
         <On Terms="Behavior.MarauderMagrailMunitionsSlow.Off" Send="Destroy"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="Ultralisk_Stetmann_COOP_Stunned"/>
     </CActorModel>
@@ -5531,8 +5503,7 @@
     <CActorModel id="SILiberatorSwarmFormCloud">
         <HostSiteOps Ops="SOpAttachOrigin SOp2DRotation" HoldRotation="1"/>
     </CActorModel>
-    <CActorModel id="SILiberatorVolatieSprayAcid" parent="ModelAnimationStyleContinuous">
-        <EditorCategories value=""/>
+    <CActorModel id="SILiberatorVolatieSprayAcid" parent="ModelAddition">
         <On Terms="Behavior.SILiberatorSprayPool.On" Send="Create"/>
         <On Terms="Behavior.SILiberatorSprayPool.Off" Send="Destroy"/>
         <Model value="KaboomerAcidDebuff"/>
@@ -6094,14 +6065,11 @@
         <On Terms="Effect.KerriganCannibalizeMU.Start" Send="Create"/>
         <Sound value="Zerg_CombatMerge_Death"/>
     </CActorSound>
-    <CActorModel id="KerriganEnvenomedSpines" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
+    <CActorModel id="KerriganEnvenomedSpines" parent="ModelAddition">
         <On Terms="Behavior.KerriganEnvenomedSpines.On" Send="Create"/>
         <On Terms="Behavior.KerriganEnvenomedSpines.Off" Send="Destroy"/>
         <On Terms="ActorCreation" Send="SetTintColor {100,255,100 2.000000}"/>
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Model value="MiasmaImpact"/>
         <AutoScaleFactor value="0.750000"/>
@@ -6541,20 +6509,12 @@
         <On Terms="Upgrade.CycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamRight" Send="Destroy"/>
         <HostSiteOps Ops="SOpBankerCyclone"/>
     </CActorUnit>
-    <CActorModel id="CycloneUpgradeBeamLeft" parent="ModelAnimationStyleContinuous">
-        <Host Subject="_Selectable"/>
+    <CActorModel id="CycloneUpgradeBeamLeft" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachWeapon01"/>
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
         <Model value="CycloneUpgradeBeam"/>
     </CActorModel>
-    <CActorModel id="CycloneUpgradeBeamRight" parent="ModelAnimationStyleContinuous">
-        <Host Subject="_Selectable"/>
+    <CActorModel id="CycloneUpgradeBeamRight" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachWeapon02"/>
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
         <Model value="CycloneUpgradeBeam"/>
     </CActorModel>
     <CActorUnit id="DarkArchon">
@@ -6745,12 +6705,9 @@
         <Model value="HighTemplarNerazimPsiStormImpact"/>
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
-    <CActorModel id="Enshroud" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
+    <CActorModel id="Enshroud" parent="ModelAddition">
         <On Terms="Behavior.Enshroud.On" Send="Create"/>
         <On Terms="Behavior.Enshroud.Off" Send="AnimBracketStop BSD"/>
-        <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenterSoft SOpPointSouthWorld" HoldRotation="1"/>
         <Model value="OracleEnvision"/>
         <Scale value="0.650000"/>
@@ -7236,11 +7193,7 @@
         <On Terms="Behavior.WidowMineDrillingClawsTracker.On" Send="Create WidowMineDrillingClawsUpgrade"/>
         <On Terms="Behavior.WidowMineDrillingClawsTracker.Off" Target="WidowMineDrillingClawsUpgrade" Send="Destroy"/>
     </CActorUnit>
-    <CActorModel id="WidowMineDrillingClawsUpgrade" parent="ModelAnimationStyleContinuous">
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <Host Subject="_Selectable"/>
+    <CActorModel id="WidowMineDrillingClawsUpgrade" parent="ModelAddition">
         <HostSiteOps Ops="SOpAttachWeapon SOpPointUp"/>
     </CActorModel>
     <CActorBeamSimple id="HHWidowMineTargetingBeam">

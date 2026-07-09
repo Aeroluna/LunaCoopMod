@@ -1415,6 +1415,10 @@ Copied from Versus.
 
 Stops Perdition Turrets from being unable to attack when units are standing on top.
 
+- Advanced Construction is no longer automatically set to auto-cast for SCVs.
+
+Very annoying when you are trying to queue up a bunch of structures and then the SCVs start derping around trying to all build the same structure.
+
 - Fixed an issue where Hi-Sec Auto Tracking upgrade tooltip listed wrong structures.
 - Fixed an issue where Hi-Sec Auto Tracking used the hotkey B instead of H.
 - Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
@@ -1504,6 +1508,7 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
 
 - Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
 - Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
+- Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
 
 yeah.
 
