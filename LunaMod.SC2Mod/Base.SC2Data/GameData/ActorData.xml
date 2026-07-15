@@ -83,6 +83,10 @@
         <DeathArray index="Normal" ModelLink="BroodLordDeath"/>
         <PortraitModel value="BroodLordPortrait"/>
     </CActorUnit>
+    <CActorUnit id="BroodLordStetmannCocoon">
+        <On index="71" Terms="AbilMorph.*.Finish; MorphTo BroodLordStetmannCocoon; MorphFrom CorruptorStetmann"/>
+        <On index="72" Terms="AbilMorph.*.Finish; MorphTo BroodLordStetmannCocoon; MorphFrom CorruptorStetmann"/>
+    </CActorUnit>
     <CActorUnit id="Civilian">
         <On Terms="UnitBirth.MutatorCandyCivilian" Send="Create"/>
     </CActorUnit>
@@ -4555,10 +4559,10 @@
         <On Terms="Behavior.SwarmLocusTimeoutKill.On" Send="Create"/>
     </CActorSound>
     <CActorAction id="PlanetaryFortressAttack">
-        <ImpactMap index="None" Scale="1.200000"/>
-        <DamageSiteOps Ops="SOpAttachHarness"/>
-        <DamageMap index="None" Model="SiegeTankSiegedAttackDamage"/>
-        <DamageModel value="SiegeTankAttackDamageModel"/>
+        <On Terms="Effect.TwinIbiksCannon.Stop; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <DamageSiteOpsReaction Ops="SOpAttachOverhead SOpMoveDownByDot35"/>
+        <DamageMap index="None" ModelReaction="PlanetaryAttackTargetImpact" ScaleReaction="0.500000"/>
+        <ShieldFlashType value="Full"/>
     </CActorAction>
     <CActorModel id="RavagerTargetImpactFire" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.RavagerCorrosiveBileDamage.Start; At Target" Send="Create"/>
@@ -7982,6 +7986,9 @@
         <Host Subject="TwilightCouncil"/>
     </CActorModel>
     <CActorUnit id="Egg">
+        <Macros value="Egg_Grow_Macro"/>
+    </CActorUnit>
+    <CActorUnit id="EggStetmann">
         <Macros value="Egg_Grow_Macro"/>
     </CActorUnit>
     <CActorEventMacro id="Egg_Grow_Macro">

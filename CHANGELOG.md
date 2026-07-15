@@ -5,7 +5,10 @@
 - Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.
 - Fixed an issue where Evolve to Leviathan used the wrong Leviathan description.
 - Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
-- Fixed an issue where Abathur's Toxic Nests would autocast on Changelings/wrong Polarity/detected Hallucinations.
+- Fixed an issue where Toxic Nests would autocast on Changelings/wrong Polarity/detected Hallucinations.
+- Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
+- Fixed an issue where the Gary to Super Gary morph model was the wrong scale.
+- Fixed an issue where the 5.0.16 Larva spawn offset change did not affect Stetmann's Larva.
 
 yeah.
 

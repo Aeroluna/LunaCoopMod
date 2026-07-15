@@ -334,11 +334,6 @@ Copied from Versus. Biological added and a slight health increase to compensate.
 
 Fun fact: This bug has existed since Fenix was released. This bug was caused by the ability for Carriers to morph into Clolarion, though I genuinely don't understand why it happens or why it affects Karax's Carriers.
 
-- Increased visual scale of Planetary Fortress's attack impact by 20%.
-- Increased sound volume of Planetary Fortress's attack.
-
-Weirdly quiet for how impactful this thing's weapon is.
-
 - Increased Wraith (and variants) sight radius from 8 to 10.
 
 I'm not sure why Blizzard made Wraiths have a sight radius lower than any other air unit, but now it's been increased to match others.
@@ -2890,6 +2885,7 @@ Copied from Versus.
 - Fixed an issue where Ravager's Environmentally Unfriendly Eruption could target units.
 - Fixed an issue where Mecha Lurkers had no range indicator when burrowed.
 - Fixed an issue where Mecha Battlecarrier Lords listed the wrong attack speed.
+- Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
 
 yeah.
 
