@@ -2896,10 +2896,10 @@ yeah.
 ### Mengsk
 
 - Added P4: Cerberus Director
-  - Advantage: Dogs of War refunds 50% of energy cost and has 100% reduced cooldown.
+  - Advantage: Dogs of War refunds 50% of energy cost and has 50% reduced cooldown. Dogs of War will continuously deploy more enthralled Zerg slowly.
   - Disadvantage: Dogs of War costs minerals. Trooper weapons cost 100% more.
 
-Incentivizes spending your minerals on zerg as your frontline instead of on troopers.
+Incentivizes spending your minerals on zerg as your frontline instead of on troopers. Over time, you'll be automatically generating an army of Zerg for free.
 
 - Reduced Earthsplitter Ordnance Bombardment damage from 100 to 75.
 - Added 30% attack and movement speed slow for 5 seconds to Earthsplitter Ordnance Bombardment.

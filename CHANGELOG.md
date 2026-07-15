@@ -1,11 +1,19 @@
 # Changelog
 
-## 7/9/2026
+## 7/15/2026
 
 - Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.
 - Fixed an issue where Evolve to Leviathan used the wrong Leviathan description.
 - Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
 - Fixed an issue where Abathur's Toxic Nests would autocast on Changelings/wrong Polarity/detected Hallucinations.
+
+yeah.
+
+- Added effect to Mengsk P4:
+  - Dogs of War will continuously deploy more enthralled Zerg slowly.
+- Reduced Mengsk P4 cooldown reduction from 100% to 50%.
+
+Just being able to a top-bar more often is boring, so I decided to give it an additional unique effect.
 
 ## 7/7/2026
 

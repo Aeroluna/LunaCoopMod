@@ -145,28 +145,59 @@
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectCreatePersistent id="CommanderPrestigeMengskZergZergling">
+        <Flags index="RandomPeriod" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="ZerglingMengskSpawnTrigger"/>
+        <PeriodicPeriodArray value="19"/>
+        <PeriodicPeriodArray value="20"/>
+        <PeriodicPeriodArray value="21"/>
+        <Chance value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="CommanderPrestigeMengskZergHydralisk">
+        <Flags index="RandomPeriod" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="HydraliskMengskSpawnTrigger"/>
+        <PeriodicPeriodArray value="59"/>
+        <PeriodicPeriodArray value="60"/>
+        <PeriodicPeriodArray value="61"/>
+        <Chance value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="CommanderPrestigeMengskZergMutalisk">
+        <Flags index="RandomPeriod" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="MutaliskMengskSpawnTrigger"/>
+        <PeriodicPeriodArray value="59"/>
+        <PeriodicPeriodArray value="60"/>
+        <PeriodicPeriodArray value="61"/>
+        <Chance value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="CommanderPrestigeMengskZergUltralisk">
+        <Flags index="RandomPeriod" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicEffectArray value="UltraliskMengskSpawnTrigger"/>
+        <PeriodicPeriodArray value="119"/>
+        <PeriodicPeriodArray value="120"/>
+        <PeriodicPeriodArray value="121"/>
+        <Chance value="0"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="CommanderPrestigeNovaCloakCombat">
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectSet id="CommanderPrestigeNovaCloakBoth">
-        <EditorCategories value=""/>
         <EffectArray value="CommanderPrestigeNovaCloakStrong"/>
         <EffectArray value="CommanderPrestigeNovaCloakWeak"/>
     </CEffectSet>
     <CEffectApplyBehavior id="CommanderPrestigeNovaCloakStrong">
         <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="CommanderPrestigeNovaCloakWeak">
         <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="CommanderPrestigeNovaCloakBanshee">
         <ValidatorArray index="0" value="CommanderPrestigeNovaCloak"/>
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="CommanderPrestigeStukovNeuralInvulnerable">
@@ -6160,6 +6191,18 @@
             <Change value="-1"/>
         </VitalArray>
     </CEffectModifyUnit>
+    <CEffectCreatePersistent id="ZerglingMengskSpawnCP">
+        <InitialEffect value="CommanderPrestigeMengskZergZergling"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="HydraliskMengskSpawnCP">
+        <InitialEffect value="CommanderPrestigeMengskZergHydralisk"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="MutaliskMengskSpawnCP">
+        <InitialEffect value="CommanderPrestigeMengskZergMutalisk"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="UltraliskMengskSpawnCP">
+        <InitialEffect value="CommanderPrestigeMengskZergUltralisk"/>
+    </CEffectCreatePersistent>
     <CEffectModifyPlayer id="ZerglingStetmannDeathRespawnAddCharge">
         <Cost>
             <Charge CountUse="-1"/>
