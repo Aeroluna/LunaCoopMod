@@ -2548,6 +2548,7 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where Strike Fighter's Napalm Payload debuff used a non-button icon.
 - Fixed an issue where Strike Fighter Platform's tooltip still listed "Limit 10" as a requirement when playing P3.
 - Changed Theia Raven's Analyze Weakness to prioritize attacking units and structures.
+- Fixed an issue where Reapers had a small delay before they actually died.
 
 yeah.
 

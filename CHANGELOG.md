@@ -1,6 +1,6 @@
 # Changelog
 
-## 7/15/2026
+## 7/16/2026
 
 - Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.
 - Fixed an issue where Evolve to Leviathan used the wrong Leviathan description.
@@ -17,6 +17,11 @@
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds would affect invulnerable units.
 - Fixed an issue where Tychus could not construct Fortified Bunkers. (wtf)
 - Fixed an issue where Fortified Bunkers would show the reduced cooldown mastery on the tooltip for all abilities.
+- Fixed an issue where the 5.0.16 KD8 Charge changes did not affect Han & Horner's Reapers.
+- Fixed an issue where Han & Horner's Reapers had a small delay before they actually died.
+- Fixed an issue where Nova P3 Sabotage Drone was doing more damage than intended.
+- Fixed an issue where Colossi could not walk over Infested Bunkers.
+- Fixed an issue where Baneling Spawn did not play an animation after timing out.
 
 yeah.
 

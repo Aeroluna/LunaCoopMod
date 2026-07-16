@@ -742,12 +742,23 @@
     <CEffectEnumArea id="GreaterNydusDestroyerKnockbackSearch">
         <AreaArray index="0" Effect="DakrunSpawningTargetKnockbackSet"/>
     </CEffectEnumArea>
+    <CEffectCreateUnit id="HHD8Cluster">
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="HHD8SingleCluster">
+        <WhichLocation Value="TargetPoint"/>
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
     <CEffectTeleport id="HHHyperjumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
     <CEffectTeleport id="HHHyperjumpTeleportAirUnits">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectCreateUnit id="HHReaperCluster">
+        <ValidatorArray index="1" value="IsNotBuried"/>
+    </CEffectCreateUnit>
     <CEffectCreateHealer id="HealingDroneHeal">
         <ValidatorArray index="7" value=""/>
     </CEffectCreateHealer>

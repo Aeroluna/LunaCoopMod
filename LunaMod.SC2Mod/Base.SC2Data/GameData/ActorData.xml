@@ -4794,17 +4794,28 @@
     </CActorModel>
     <CActorUnit id="HHD8CenterCluster">
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <PlacementActorModel value="ReaperKD8PlacementModel"/>
+        <PlaceholderActorModel value="ReaperKD8Placeholder"/>
     </CActorUnit>
     <CActorUnit id="HHD8CenterClusterUpgrade">
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <PlacementActorModel value="ReaperKD8PlacementModel"/>
+        <PlaceholderActorModel value="ReaperKD8Placeholder"/>
     </CActorUnit>
     <CActorUnit id="HHD8ClusterBomb">
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <PlacementActorModel value="ReaperKD8PlacementModel"/>
+        <PlaceholderActorModel value="ReaperKD8Placeholder"/>
     </CActorUnit>
     <CActorUnit id="HHD8SingleCluster">
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <PlacementActorModel value="ReaperKD8PlacementModel"/>
+        <PlaceholderActorModel value="ReaperKD8Placeholder"/>
+        <PlacementModel value="HHD8CenterCluster"/>
     </CActorUnit>
-    <CActorSplat id="HHD8SingleClusterCursorSplat" parent="TerranCursorSplat" abil="HHD8SingleCharge"/>
+    <CActorSplat id="HHD8SingleClusterCursorSplat" parent="TerranCursorSplat" abil="HHD8SingleCharge">
+        <Model value="nukeCursorSplat"/>
+    </CActorSplat>
     <CActorUnit id="BattlecruiserMengsk">
         <PortraitModel value="BattlecruiserMengskPortrait"/>
         <CustomUnitStatusFrame value="Coop_UnitStatus_Mengsk_Improved/MengskBattlecruiser_StatusFrame"/>
@@ -5927,6 +5938,13 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorUnit id="HotSSplitterlingBig">
+        <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownSmall"/>
+        <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create SmallBurrowDownEffects"/>
+        <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
+        <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="TimerSet 1.000000 BurrowDeath"/>
+        <On Terms="TimerExpired; TimerName BurrowDeath" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="HotSSplitterlingMedium">
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create BurrowDownSmall"/>
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="Create SmallBurrowDownEffects"/>
         <On Terms="Behavior.SwarmLocusUnitTimedLifeExpire.On" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever"/>
@@ -7762,6 +7780,14 @@
     <CActorAction id="KD8ShieldHitter" parent="AoESplashShieldHitter" effectHit="KD8ChargeExplodeDamage">
         <On index="1" Terms="Effect.KD8ChargeExplodeDamage.Start" Send="ActionDamage"/>
         <On index="2" Terms="Effect.KD8ChargeExplodeDamage.Stop" Send="ActionDamagePhysics"/>
+    </CActorAction>
+    <CActorAction id="HHD8ChargeShieldHitter" parent="AoESplashShieldHitter" effectHit="HHD8ChargeExplodeDamage">
+        <On index="1" Terms="Effect.HHD8ChargeExplodeDamage.Start" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.HHD8ChargeExplodeDamage.Stop" Send="ActionDamagePhysics"/>
+    </CActorAction>
+    <CActorAction id="HHD8ClusterBombShieldHitter" parent="AoESplashShieldHitter" effectHit="HHD8ClusterBombExplodeDamage">
+        <On index="1" Terms="Effect.HHD8ClusterBombExplodeDamage.Start" Send="ActionDamage"/>
+        <On index="2" Terms="Effect.HHD8ClusterBombExplodeDamage.Stop" Send="ActionDamagePhysics"/>
     </CActorAction>
     <CActorAction id="DisruptorPurificationNovaShieldHitter" parent="AoESplashShieldHitter" effectHit="PurificationNovaDamage">
         <On index="1" Terms="Effect.PurificationNovaDamage.Start" Send="ActionDamage"/>
