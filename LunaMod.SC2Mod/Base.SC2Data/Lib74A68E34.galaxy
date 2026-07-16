@@ -1829,6 +1829,49 @@ void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p) {
     }
 }
 
+void lib74A68E34_gf_TychusHeroSetFirstHeroUpgrade (unit lp_unit) {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    string autoFABBF266_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoFABBF266_val = UnitGetType(lp_unit);
+    if (autoFABBF266_val == "TychusCoop") {
+        lv_index = 1;
+    }
+    else if (autoFABBF266_val == "TychusReaper") {
+        lv_index = 2;
+    }
+    else if (autoFABBF266_val == "TychusWarhound") {
+        lv_index = 3;
+    }
+    else if (autoFABBF266_val == "TychusFirebat") {
+        lv_index = 4;
+    }
+    else if (autoFABBF266_val == "TychusHERC") {
+        lv_index = 5;
+    }
+    else if (autoFABBF266_val == "TychusMarauder") {
+        lv_index = 6;
+    }
+    else if (autoFABBF266_val == "TychusGhost") {
+        lv_index = 7;
+    }
+    else if (autoFABBF266_val == "TychusSpectre") {
+        lv_index = 8;
+    }
+    else if (autoFABBF266_val == "TychusMedic") {
+        lv_index = 9;
+    }
+    else {
+    }
+    libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(lp_unit), "TychusFirstHero", lv_index);
+}
+
 void lib74A68E34_gf_CM_MasteryStetmannUpgradeCost (int lp_player) {
     // Variable Declarations
     int lv_upgradeCount;
@@ -6157,6 +6200,10 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             lib74A68E34_gf_TychusHeroTechInit(lv_player);
             lib74A68E34_gf_TychusUIReorderEnable(lv_player);
             TriggerEnable(libCOMI_gt_CM_Tychus_SnareFailSafe, false);
+            if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeTychusOutlaws", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(libCOMI_gt_CM_AbilityTransmissionTychusTransportReminder, false);
+            }
+
         }
         else if (auto560DABDD_val == "ProtossZeratul") {
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeZeratulTopBar", c_techCountCompleteOnly) == 1)) {
@@ -9725,6 +9772,7 @@ bool lib74A68E34_gt_TychusUIReorderButtonClicked_Func (bool testConds, bool runA
     if ((lv_a == 0)) {
         UnitBehaviorRemove(lv_firsthero, "MasteryTychusFirstHero", 1);
         UnitBehaviorAdd(lv_hero, "MasteryTychusFirstHero", lv_hero, 1);
+        lib74A68E34_gf_TychusHeroSetFirstHeroUpgrade(lv_hero);
     }
 
     if ((lib74A68E34_gv_expanded_Tychus == true)) {
@@ -10029,6 +10077,7 @@ bool lib74A68E34_gt_TychusSetHeroUnit_Func (bool testConds, bool runActions) {
     TriggerEnable(TriggerGetCurrent(), false);
     libCOMI_gv_cM_HeroUnit[lv_p] = libCOMI_gf_EventTychusHero();
     libCOUI_gv_cU_HeroUnit[0][lv_p] = lv_unit;
+    lib74A68E34_gf_TychusHeroSetFirstHeroUpgrade(lv_unit);
     return true;
 }
 

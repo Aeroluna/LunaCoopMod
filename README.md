@@ -2664,6 +2664,7 @@ For an ability that's basically a Psionic Storm, the ability is set up weirdly d
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds fear effect would stop the AI of affected units.
 - Fixed an issue where the gear delivery beam sound was classified as UI.
 - Fixed an issue where Odin's weapon/armor icons did not change with upgrade level.
+- Fixed an issue where Sirius's Moebius M34 Terror Rounds would affect invulnerable units.
 
 yeah.
 

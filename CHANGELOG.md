@@ -14,6 +14,9 @@
 - Fixed an issue where Abathur's Viper's Abduct did not have a range indicator.
 - Increased Hybrid Behemoth's allied push priority from 0 to 1.
 - Fixed an issue where Colossi could walk through Void Thrashers.
+- Fixed an issue where Sirius's Moebius M34 Terror Rounds would affect invulnerable units.
+- Fixed an issue where Tychus could not construct Fortified Bunkers. (wtf)
+- Fixed an issue where Fortified Bunkers would show the reduced cooldown mastery on the tooltip for all abilities.
 
 yeah.
 
