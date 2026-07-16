@@ -9,6 +9,8 @@
 - Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
 - Fixed an issue where the Gary to Super Gary morph model was the wrong scale.
 - Fixed an issue where the 5.0.16 Larva spawn offset change did not affect Stetmann's Larva.
+- Fixed an issue where unburrowed Mecha Lurker's dummy weapon did not change icons with weapon level.
+- Fixed an issue where Stetmann's units had a delay before starting a morph.
 
 yeah.
 

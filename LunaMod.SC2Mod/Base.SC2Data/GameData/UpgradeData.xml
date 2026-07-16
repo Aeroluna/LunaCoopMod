@@ -126,6 +126,11 @@
         <EffectArray Reference="Weapon,InterceptorStetmannBeamDummy,Level" Value="1"/>
         <AffectedUnitArray value="BroodLordStetmann"/>
     </CUpgrade>
+    <CUpgrade default="1" id="StetmannMissileWeaponsExtra">
+        <EditorCategories value="Race:Zerg,UpgradeType:AttackBonus"/>
+        <EffectArray Reference="Weapon,LurkerStetmanndisabled,Level" Value="1"/>
+        <AffectedUnitArray value="LurkerStetmann"/>
+    </CUpgrade>
     <CUpgrade default="1" id="ZergFlyerArmorsExtra">
         <EditorCategories value="Race:Zerg,UpgradeType:ArmorBonus"/>
         <EffectArray Reference="Unit,ViperAbathur,LifeArmorLevel" Value="1"/>
@@ -465,6 +470,15 @@
     <CUpgrade id="StetmannAirWeaponsExtraLevel1" parent="StetmannAirWeaponsExtra"/>
     <CUpgrade id="StetmannAirWeaponsExtraLevel2" parent="StetmannAirWeaponsExtra"/>
     <CUpgrade id="StetmannAirWeaponsExtraLevel3" parent="StetmannAirWeaponsExtra"/>
+    <CUpgrade id="StetmannMissileWeaponsExtraLevel1" parent="StetmannMissileWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,LurkerStetmanndisabled,Icon" Value="Assets\Textures\btn-upgrade-stetmann-mechamissileattacks-level1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="StetmannMissileWeaponsExtraLevel2" parent="StetmannMissileWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,LurkerStetmanndisabled,Icon" Value="Assets\Textures\btn-upgrade-stetmann-mechamissileattacks-level2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="StetmannMissileWeaponsExtraLevel3" parent="StetmannMissileWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,LurkerStetmanndisabled,Icon" Value="Assets\Textures\btn-upgrade-stetmann-mechamissileattacks-level3.dds"/>
+    </CUpgrade>
     <CUpgrade id="ZealotResearchShadowCharge">
         <EffectArray index="0" Value="1.125000"/>
     </CUpgrade>

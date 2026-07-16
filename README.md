@@ -2840,7 +2840,7 @@ Copied from Versus. Separating Lurker Den should make it easier to tech into Lur
 - Fixed an issue where Mecha Ultralisks would not burrow for their Vectored Burrow Charge ability.
 - Fixed an issue where Mecha Ultralisk's Vectored Burrow Charge ability did not play some FX.
 
-The actor xml for Stetmann's units are such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure this ability ever had a working burrow charge animation.
+The actor xml for Stetmann's units are such a disaster, things were just copy and pasted everywhere randomly. The Mecha Ultralisk model didn't even have the correct animations loaded for the burrow charge; I'm not sure how this ability ever had a working burrow charge animation.
 
 - Increased visual scale of Mecha Ultralisk's Electrostatic Surprise! by 33%.
 - Changed Electrostatic Surprise! stun visual to auto scale with target model.
@@ -2886,6 +2886,7 @@ Copied from Versus.
 - Fixed an issue where Mecha Lurkers had no range indicator when burrowed.
 - Fixed an issue where Mecha Battlecarrier Lords listed the wrong attack speed.
 - Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
+- Fixed an issue where Stetmann's units had a delay before starting a morph.
 
 yeah.
 
