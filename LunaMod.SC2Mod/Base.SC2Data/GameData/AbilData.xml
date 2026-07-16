@@ -604,6 +604,19 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <CancelableArray index="Channel" value="1"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CommanderPrestigeRaynorMercenaryRally">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="CommanderPrestigeRaynorMercenaryRallyCP"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CommanderPrestigeRaynorMercenaryRally" Requirements="CommanderPrestigeRaynorMercenary"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="SpawnChangeling">
         <Flags index="Transient" value="1"/>
     </CAbilEffectInstant>
@@ -2409,6 +2422,9 @@
                 <DurationArray index="Delay" value="0.533"/>
                 <DurationArray index="Duration" value="1.2"/>
             </SectionArray>
+            <SectionArray index="Stats">
+                <EffectArray index="Start" value="AutoVikingCD"/>
+            </SectionArray>
         </InfoArray>
         <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Air,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastValidatorArray value="AutoVikingAssault"/>
@@ -2422,6 +2438,9 @@
         <InfoArray index="0">
             <SectionArray index="Mover">
                 <DurationArray index="Duration" value="0.85"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <EffectArray index="Start" value="AutoVikingCD"/>
             </SectionArray>
         </InfoArray>
     </CAbilMorph>

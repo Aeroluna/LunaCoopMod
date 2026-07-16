@@ -881,6 +881,22 @@
     <CActorUnit id="SIEvolutionChamber">
         <Macros index="1" value="QueueAnimSpeed135"/>
     </CActorUnit>
+    <CActorUnit id="CommanderPrestigeRaynorMercenaryRally" parent="GenericUnitMinimal" unitName="CommanderPrestigeRaynorMercenaryRally">
+        <On Terms="ActorCreation" Send="$Birth"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <MinimapIcon value="Assets\Textures\btn-ac-zerg-stukov-beaconrally.dds"/>
+        <MinimapTooltip value="Unit/Name/CommanderPrestigeRaynorMercenaryRally"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+    </CActorUnit>
     <CActorAction id="SOAMothershipv4Attack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -1043,6 +1059,9 @@
         <On Terms="Abil.que5.Start" Send="Create TwilightCouncilResearchBeam"/>
         <On Terms="Abil.que5.Stop" Target="TwilightCouncilResearchBeam" Send="Destroy"/>
     </CActorUnit>
+    <CActorSound id="UI_Stukov_RallyPoint_Place_AS">
+        <On Terms="Effect.CommanderPrestigeRaynorMercenaryRallyCP.Start" Send="Create"/>
+    </CActorSound>
     <CActorRange id="UnpoweredVisualLow">
         <IconScale value="0.004000,0.003000"/>
         <IconArcLength value="0.400000"/>

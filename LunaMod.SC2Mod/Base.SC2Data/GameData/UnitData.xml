@@ -1816,9 +1816,11 @@
     </CUnit>
     <CUnit id="CoopCasterRaynor">
         <CardLayouts index="0">
+            <LayoutButtons Face="CommanderPrestigeRaynorMercenaryRally" Type="AbilCmd" AbilCmd="CommanderPrestigeRaynorMercenaryRally,Execute" Row="0" Column="0"/>
             <LayoutButtons Face="CommanderPrestigeRaynorHyperionLocked" Type="Passive" Row="0" Column="0"/>
             <LayoutButtons Face="CommanderPrestigeRaynorBansheeAirstrike" Type="Passive" Row="0" Column="1"/>
         </CardLayouts>
+        <AbilArray Link="CommanderPrestigeRaynorMercenaryRally"/>
     </CUnit>
     <CUnit id="DehakaDrone">
         <CardLayouts index="0">
@@ -3343,6 +3345,25 @@
             </LayoutButtons>
             <LayoutButtons index="14" Face="SpawnBroodQueenLocked" Requirements="StukovLevel08" Row="0" Column="3"/>
         </CardLayouts>
+    </CUnit>
+    <CUnit id="CommanderPrestigeRaynorMercenaryRally" parent="DESTRUCTIBLE">
+        <Race value="Terr"/>
+        <FlagArray index="Untooltipable" value="0"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Undetectable" value="1"/>
+        <FlagArray index="Unradarable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoDeathEvent" value="1"/>
+        <FogVisibility value="Visible"/>
+        <LifeStart value="1000"/>
+        <LifeMax value="1000"/>
+        <Mover value="Fly"/>
+        <MinimapRadius value="0.5"/>
+        <EditorCategories value="ObjectType:Other,ObjectFamily:FactionRaider"/>
+        <LeaderAlias value=""/>
+        <HotkeyAlias value=""/>
     </CUnit>
     <CUnit id="SOAMothershipv4">
         <AlliedPushPriority value="1"/>

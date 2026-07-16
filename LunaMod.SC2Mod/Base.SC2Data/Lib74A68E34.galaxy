@@ -780,6 +780,8 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
     unit lv_currentattacktargetunit;
     fixed lv_currentpathingdistance;
     int lv_wait;
+    point lv_rally;
+    int lv_owner;
 
     // Automatic Variable Declarations
     unitgroup autoC7A5723B_g;
@@ -807,9 +809,26 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
 
     // Implementation
     lib74A68E34_gf_RaynorPrestigeMercenaryPatrolPing(lp_patrol);
+    if ((lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner] != null)) {
+        if ((lv_rally == null)) {
+            lib74A68E34_gv_raynorPrestigeMercenaryRallyCount += 1;
+        }
+
+        lv_rally = libA8FDA37D_gf_UT_FindPointWithPathingTo(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], RegionRandomPoint(RegionCircle(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], 6.0)));
+    }
+
     Wait(10.0, c_timeGame);
     lv_currentRally = UnitGetPosition(UnitGroupRandomUnit(lp_patrol, c_unitCountAlive));
-    lv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible) | (1 << c_targetFilterBuried) | (1 << c_targetFilterCloaked), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
+    lv_unitFilter = UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterBenign - 32)));
+    lv_owner = UnitGetOwner(UnitGroupRandomUnit(lp_patrol, c_unitCountAlive));
+    if ((lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner] != null)) {
+        if ((lv_rally == null)) {
+            lib74A68E34_gv_raynorPrestigeMercenaryRallyCount += 1;
+        }
+
+        lv_rally = libA8FDA37D_gf_UT_FindPointWithPathingTo(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], RegionRandomPoint(RegionCircle(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], 6.0)));
+    }
+
     while ((libNtve_gf_UnitGroupIsDead(lp_patrol) == false)) {
         lv_bestpathingdistance = 10000.0;
         lv_attackingUnit = null;
@@ -828,56 +847,65 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             lv_attackingUnit = UnitGroupRandomUnit(lp_patrol, c_unitCountAlive);
         }
 
-        auto8D8224BF_g = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lv_attackingUnit), 30.0), lv_unitFilter, 0);
-        auto8D8224BF_u = UnitGroupCount(auto8D8224BF_g, c_unitCountAll);
-        for (;; auto8D8224BF_u -= 1) {
-            lv_currentattacktargetunit = UnitGroupUnitFromEnd(auto8D8224BF_g, auto8D8224BF_u);
-            if (lv_currentattacktargetunit == null) { break; }
-            if ((UnitCanAttackTarget(lv_attackingUnit, lv_currentattacktargetunit) == true) && (libNtve_gf_UnitCanCreateEffectOnUnit(lv_currentattacktargetunit, "ThreatTest", lv_attackingUnit) == true) && (UnitHasBehavior2(lv_currentattacktargetunit, "ChangelingDisable") == false) && ((UnitFilterMatch(lv_currentattacktargetunit, UnitGetOwner(lv_attackingUnit), UnitFilter(0, 0, (1 << c_targetFilterCloaked), 0)) == true) || (libNtve_gf_UnitIsVisibleToPlayer(lv_currentattacktargetunit, UnitGetOwner(lv_attackingUnit)) == true))) {
-                lv_currentpathingdistance = AIPathingCostUnit(lv_attackingUnit, UnitGetPosition(lv_currentattacktargetunit), c_ignoreEnemyBuildings);
-                if ((lv_currentpathingdistance < 6.0)) {
-                    lv_bestattacktargetunit = lv_currentattacktargetunit;
-                    break;
-                }
-                else if ((lv_currentpathingdistance < lv_bestpathingdistance)) {
-                    lv_bestpathingdistance = lv_currentpathingdistance;
-                    lv_bestattacktargetunit = lv_currentattacktargetunit;
-                }
-            }
-
-        }
-        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
-            lv_validAttackTargets = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0);
-            auto4DA354CB_g = lv_validAttackTargets;
-            auto4DA354CB_u = UnitGroupCount(auto4DA354CB_g, c_unitCountAll);
-            for (;; auto4DA354CB_u -= 1) {
-                auto4DA354CB_var = UnitGroupUnitFromEnd(auto4DA354CB_g, auto4DA354CB_u);
-                if (auto4DA354CB_var == null) { break; }
-                if (((UnitCanAttackTarget(lv_attackingUnit, auto4DA354CB_var) == false) || (UnitHasBehavior2(lv_currentattacktargetunit, "ChangelingDisable") == true))) {
-                    UnitGroupRemove(lv_validAttackTargets, auto4DA354CB_var);
+        if ((lv_rally == null)) {
+            auto8D8224BF_g = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lv_attackingUnit), 30.0), lv_unitFilter, 0);
+            auto8D8224BF_u = UnitGroupCount(auto8D8224BF_g, c_unitCountAll);
+            for (;; auto8D8224BF_u -= 1) {
+                lv_currentattacktargetunit = UnitGroupUnitFromEnd(auto8D8224BF_g, auto8D8224BF_u);
+                if (lv_currentattacktargetunit == null) { break; }
+                if ((UnitCanAttackTarget(lv_attackingUnit, lv_currentattacktargetunit) == true) && (libNtve_gf_UnitCanCreateEffectOnUnit(lv_currentattacktargetunit, "ThreatTest", lv_attackingUnit) == true) && (ValidatorExecute("DamageValidTargetAndDetectedCloaked", lv_attackingUnit, lv_currentattacktargetunit) == 0)) {
+                    lv_currentpathingdistance = AIPathingCostUnit(lv_attackingUnit, UnitGetPosition(lv_currentattacktargetunit), c_ignoreEnemyBuildings);
+                    if ((lv_currentpathingdistance < 6.0)) {
+                        lv_bestattacktargetunit = lv_currentattacktargetunit;
+                        break;
+                    }
+                    else if ((lv_currentpathingdistance < lv_bestpathingdistance)) {
+                        lv_bestpathingdistance = lv_currentpathingdistance;
+                        lv_bestattacktargetunit = lv_currentattacktargetunit;
+                    }
                 }
 
             }
-            lv_bestattacktargetunit = UnitGroupClosestToPoint(lv_validAttackTargets, UnitGetPosition(lv_attackingUnit));
-        }
+            if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+                lv_validAttackTargets = UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0);
+                auto4DA354CB_g = lv_validAttackTargets;
+                auto4DA354CB_u = UnitGroupCount(auto4DA354CB_g, c_unitCountAll);
+                for (;; auto4DA354CB_u -= 1) {
+                    auto4DA354CB_var = UnitGroupUnitFromEnd(auto4DA354CB_g, auto4DA354CB_u);
+                    if (auto4DA354CB_var == null) { break; }
+                    if (((UnitCanAttackTarget(lv_attackingUnit, auto4DA354CB_var) == false) || (ValidatorExecute("DamageValidTargetAndDetectedCloaked", lv_attackingUnit, auto4DA354CB_var) != 0))) {
+                        UnitGroupRemove(lv_validAttackTargets, auto4DA354CB_var);
+                    }
 
-        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
-            lv_bestattacktargetunit = UnitGroupClosestToPoint(UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0), UnitGetPosition(lv_attackingUnit));
-            if ((UnitHasBehavior2(lv_currentattacktargetunit, "ChangelingDisable") == true)) {
-                lv_bestattacktargetunit = null;
+                }
+                lv_bestattacktargetunit = UnitGroupClosestToPoint(lv_validAttackTargets, UnitGetPosition(lv_attackingUnit));
             }
 
-        }
+            if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+                lv_bestattacktargetunit = UnitGroupClosestToPoint(UnitGroupAlliance(UnitGetOwner(lv_attackingUnit), c_unitAllianceEnemy, RegionEntireMap(), lv_unitFilter, 0), UnitGetPosition(lv_attackingUnit));
+            }
 
-        if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
-            lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(lv_currentRally, RandomFixed(10.0, 20.0), libNtve_gf_RandomAngle()), lv_currentRally);
-        }
-        else {
-            if ((PointPathingCost(lv_currentRally, UnitGetPosition(lv_bestattacktargetunit)) < 20)) {
-                lv_currentRally = UnitGetPosition(lv_bestattacktargetunit);
+            if ((UnitIsAlive(lv_bestattacktargetunit) == false)) {
+                lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(PointWithOffsetPolar(UnitGroupCenterOfGroup(lp_patrol), RandomFixed(10.0, 20.0), libNtve_gf_RandomAngle()), lv_currentRally);
             }
             else {
-                lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(lv_currentRally, 20.0, UnitGetPosition(lv_bestattacktargetunit)), lv_currentRally);
+                if ((ValidatorExecute("DamageValidTargetAndDetectedCloaked", lv_attackingUnit, lv_bestattacktargetunit) == 0)) {
+                    if ((PointPathingCost(lv_currentRally, UnitGetPosition(lv_bestattacktargetunit)) < 20)) {
+                        lv_currentRally = UnitGetPosition(lv_bestattacktargetunit);
+                    }
+                    else {
+                        lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(UnitGroupCenterOfGroup(lp_patrol), 20.0, UnitGetPosition(lv_bestattacktargetunit)), lv_currentRally);
+                    }
+                }
+
+            }
+        }
+        else {
+            if ((PointPathingCost(lv_currentRally, lv_rally) < 20)) {
+                lv_currentRally = lv_rally;
+            }
+            else {
+                lv_currentRally = libA8FDA37D_gf_UT_FindPointWithPathingTo(libNtve_gf_PointOffsetTowardsPoint(UnitGroupCenterOfGroup(lp_patrol), 20.0, lv_rally), lv_currentRally);
             }
         }
         UnitGroupIssueOrder(lp_patrol, OrderTargetingPoint(AbilityCommand("attack", 0), lv_currentRally), c_orderQueueReplace);
@@ -890,7 +918,15 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             UnitSetCustomValue(auto54763DC6_var, lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_currentRally));
         }
         lv_wait = 0;
-        while ((lv_wait <= 20) && (!((UnitGroupCount(UnitGroupFilterRegion(lp_patrol, RegionCircle(lv_currentRally, 8.0), 0), c_unitCountAlive) >= FixedToInt((UnitGroupCount(lp_patrol, c_unitCountAlive) * 0.8)))))) {
+        while ((lv_wait <= 25) && (!((UnitGroupCount(UnitGroupFilterRegion(lp_patrol, RegionCircle(lv_currentRally, 6.0), 0), c_unitCountAlive) >= FixedToInt((UnitGroupCount(lp_patrol, c_unitCountAlive) * 0.8)))))) {
+            if ((lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner] != null)) {
+                if ((lv_rally == null)) {
+                    lib74A68E34_gv_raynorPrestigeMercenaryRallyCount += 1;
+                }
+
+                lv_rally = libA8FDA37D_gf_UT_FindPointWithPathingTo(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], RegionRandomPoint(RegionCircle(lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_owner], 6.0)));
+            }
+
             auto00BB6BEA_g = lp_patrol;
             auto00BB6BEA_u = UnitGroupCount(auto00BB6BEA_g, c_unitCountAll);
             for (;; auto00BB6BEA_u -= 1) {
@@ -916,8 +952,17 @@ void lib74A68E34_gf_RaynorPrestigeMercenaryPatrol (unitgroup lp_patrol) {
             lv_wait += 1;
             Wait(1.0, c_timeGame);
         }
-        Wait((lv_safethinkperiod + RandomFixed(-1.0, 1.0)), c_timeGame);
+        Wait((2.0 + RandomFixed(-1.0, 1.0)), c_timeGame);
+        if ((lv_rally != null) && (PointPathingCost(lv_currentRally, lv_rally) < 4)) {
+            lv_rally = null;
+            lib74A68E34_gv_raynorPrestigeMercenaryRallyCount -= 1;
+        }
+
     }
+    if ((lv_rally != null)) {
+        lib74A68E34_gv_raynorPrestigeMercenaryRallyCount -= 1;
+    }
+
 }
 
 trigger auto_lib74A68E34_gf_RaynorPrestigeMercenaryPatrolPing_Trigger = null;
@@ -5931,6 +5976,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryLaunch, true);
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryReset, true);
                 TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, true);
+                TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced, true);
             }
 
         }
@@ -6246,7 +6292,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
 
     while ((UnitBehaviorCount(lv_compound, "HireMercMarine") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercMarine", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarPig", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)));
+        UnitCreate(1, "WarPig", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6256,7 +6302,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercFirebat") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercFirebat", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DevilDog", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)));
+        UnitCreate(1, "DevilDog", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6266,7 +6312,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercMarauder") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercMarauder", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "HammerSecurity", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)));
+        UnitCreate(1, "HammerSecurity", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6276,7 +6322,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercMedic") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercMedic", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "MercMedic", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)));
+        UnitCreate(1, "MercMedic", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6286,7 +6332,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercSiegeTank") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercSiegeTank", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "SiegeBreaker", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)));
+        UnitCreate(1, "SiegeBreaker", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 4.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6296,7 +6342,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercViking") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercViking", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "HelsAngelFighter", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)));
+        UnitCreate(1, "HelsAngelFighter", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6306,7 +6352,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercBanshee") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercBanshee", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DuskWing", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)));
+        UnitCreate(1, "DuskWing", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6316,7 +6362,7 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Func (bool testConds, bool run
     }
     while ((UnitBehaviorCount(lv_compound, "HireMercBattlecruiser") > 0)) {
         UnitBehaviorRemove(lv_compound, "HireMercBattlecruiser", 1);
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DukesRevenge", 0, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)));
+        UnitCreate(1, "DukesRevenge", c_unitCreateIgnoreBirth, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), RegionRandomPoint(RegionCircle(lv_gatherPoint, 6.0)), libNtve_gf_RandomAngle());
         UnitBehaviorAdd(UnitLastCreated(), "MercCompoundMercenary", lv_compound, 1);
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyX, PointGetX(lv_gatherPoint));
         UnitSetCustomValue(UnitLastCreated(), lib74A68E34_gv_raynorPrestigeMercenaryRallyY, PointGetY(lv_gatherPoint));
@@ -6432,9 +6478,51 @@ bool lib74A68E34_gt_RaynorPrestigeMercenaryDropPod_Func (bool testConds, bool ru
 void lib74A68E34_gt_RaynorPrestigeMercenaryDropPod_Init () {
     lib74A68E34_gt_RaynorPrestigeMercenaryDropPod = TriggerCreate("lib74A68E34_gt_RaynorPrestigeMercenaryDropPod_Func");
     TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, false);
-    TriggerAddEventUnitBehaviorChange(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, null, "PrecursorMerc", c_unitBehaviorChangeDestroy);
     TriggerAddEventUnitAbility(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, null, AbilityCommand("SiegeBreakerUnsiege", 0), c_abilMorphStageMoverEnd, false);
     TriggerAddEventUnitAbility(lib74A68E34_gt_RaynorPrestigeMercenaryDropPod, null, AbilityCommand("WreckingCrewFighterMode", 0), c_abilMorphStageMoverEnd, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: RaynorPrestigeMercenaryRallyPlaced
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_player] = EventPlayerEffectUsedPoint(c_effectLocationTargetPoint);
+    if ((lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit[lv_player] != null)) {
+        UnitRemove(lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit[lv_player]);
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "CommanderPrestigeRaynorMercenaryRally", c_unitCreateIgnorePlacement, 0, lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_player]);
+    UnitSetState(UnitLastCreated(), c_unitStateTooltipable, false);
+    lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit[lv_player] = UnitLastCreated();
+    Wait(10.0, c_timeGame);
+    lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint[lv_player] = null;
+    while (!((lib74A68E34_gv_raynorPrestigeMercenaryRallyCount == 0))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit[lv_player] != null)) {
+        UnitRemove(lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit[lv_player]);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced_Init () {
+    lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced = TriggerCreate("lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced_Func");
+    TriggerEnable(lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced, c_playerAny, "CommanderPrestigeRaynorMercenaryRallyCP");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12882,6 +12970,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_RaynorPrestigeMercenaryLaunch_Init();
     lib74A68E34_gt_RaynorPrestigeMercenaryReset_Init();
     lib74A68E34_gt_RaynorPrestigeMercenaryDropPod_Init();
+    lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced_Init();
     lib74A68E34_gt_RaynorStimpackAutocast_Init();
     lib74A68E34_gt_RaynorMULEMineralSearch_Init();
     lib74A68E34_gt_RaynorHyperionWeaponSwitch_Init();

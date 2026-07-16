@@ -1,3 +1,4 @@
+include "LibCOOC"
 include "LibA8FDA37D"
 
 //--------------------------------------------------------------------------------------------------
@@ -80,6 +81,9 @@ int lib74A68E34_gv_difficultySelectPulldown;
 int lib74A68E34_gv_commanderRandomDialog;
 int lib74A68E34_gv_commanderRandomButton;
 int lib74A68E34_gv_commanderRandomPrestigeCheck;
+point[libCOOC_gv_cCC_MAXPLAYERS + 1] lib74A68E34_gv_raynorPrestigeMercenaryRallyPoint;
+unit[libCOOC_gv_cCC_MAXPLAYERS + 1] lib74A68E34_gv_raynorPrestigeMercenaryRallyBeaconUnit;
+int lib74A68E34_gv_raynorPrestigeMercenaryRallyCount;
 int[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesPaid;
 unit[lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesMaxTracked + 1] lib74A68E34_gv_zagaraPrestigeSwarmLocusPricesUnits;
 bool[9] lib74A68E34_gv_abathurMorphToggleState;
@@ -288,6 +292,7 @@ trigger lib74A68E34_gt_GeneralNydusUnloadHero;
 trigger lib74A68E34_gt_RaynorPrestigeMercenaryLaunch;
 trigger lib74A68E34_gt_RaynorPrestigeMercenaryReset;
 trigger lib74A68E34_gt_RaynorPrestigeMercenaryDropPod;
+trigger lib74A68E34_gt_RaynorPrestigeMercenaryRallyPlaced;
 trigger lib74A68E34_gt_RaynorStimpackAutocast;
 trigger lib74A68E34_gt_RaynorMULEMineralSearch;
 trigger lib74A68E34_gt_RaynorHyperionWeaponSwitch;

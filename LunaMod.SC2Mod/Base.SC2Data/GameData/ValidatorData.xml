@@ -31,10 +31,16 @@
     </CValidatorCombine>
     <CValidatorCombine id="AutoVikingAssault">
         <CombineArray value="VikingAirEnemySearchEmpty"/>
+        <CombineArray value="AutoVikingCD"/>
+        <Type value="And"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="AutoVikingCD">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AutoVikingFighterCD"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="AutoVikingFighter">
         <CombineArray value="VikingAirEnemySearch"/>
-        <CombineArray value="CasterHasNoOrders"/>
+        <CombineArray value="DamageDealtTimeGE1"/>
     </CValidatorCombine>
     <CValidatorCombine id="BansheeBoost">
         <CombineArray value="HaveBansheeSpeed"/>
@@ -72,6 +78,11 @@
     <CValidatorCombine id="DamageValidTarget">
         <CombineArray value="IsNotDisguisedChangeling"/>
         <CombineArray value="MutatorPolarityTargetCasterCheck"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="DamageValidTargetAndDetectedCloaked">
+        <CombineArray value="DamageValidTarget"/>
+        <CombineArray value="DetectedORNotCloakedBuried"/>
         <Type value="And"/>
     </CValidatorCombine>
     <CValidatorCombine id="DamageValidTargetAndNotDetectedHallucination">

@@ -20,6 +20,12 @@ yeah.
 
 Just being able to a top-bar more often is boring, so I decided to give it an additional unique effect.
 
+- Added Rally top-bar ability to Raynor P4:
+  - 60 second cooldown.
+  - Sends all currently existing mercenary squads to the designated point.
+
+Adds a little bit of control to a sometimes frustating prestige. Ideally they are consistent enough that I can finally justify nerfing the cost of these mercenaries at some point.
+
 ## 7/7/2026
 
 - Fixed an issue where `-solo` did not allow capturing locks alone on Lock & Load.
