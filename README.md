@@ -984,6 +984,7 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Hybrid Behemoth's Slimed! debuff had no tooltip.
 - Fixed an issue where Hybrid Destroyer's Graviton Prison did not play a spell animation.
 - Fixed an issue where Lurkers did not benefit from attack upgrades.
+- Increased Hybrid Behemoth's allied push priority from 0 to 1.
 
 yeah.
 
@@ -1801,6 +1802,8 @@ Leviathan's have four holes, use them all! This bug was caused by using the orig
 - Fixed an issue where Evolve to Brutalisk did not have a descriptive tooltip.
 - Fixed an issue where Evolve to Leviathan did not have a descriptive tooltip.
 - Fixed an issue where burrowed Ravagers could not use Evolve to Brutalisk.
+- Changed Aberrations to no longer walk over massive units.
+- Changed Brutalisks to no longer walk over massive units.
 
 yeah.
 
@@ -2407,6 +2410,7 @@ It very clearly sounded like a hellion.
 - Adjusted Ravasaur weapon projectile mover.
 - Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
 - Reduced the allied push priority of Primal Locust from 0 to -1.
+- Changed Tyrannazors to no longer walk over massive units.
 
 yeah.
 

@@ -11,6 +11,9 @@
 - Fixed an issue where the 5.0.16 Larva spawn offset change did not affect Stetmann's Larva.
 - Fixed an issue where unburrowed Mecha Lurker's dummy weapon did not change icons with weapon level.
 - Fixed an issue where Stetmann's units had a delay before starting a morph.
+- Fixed an issue where Abathur's Viper's Abduct did not have a range indicator.
+- Increased Hybrid Behemoth's allied push priority from 0 to 1.
+- Fixed an issue where Colossi could walk through Void Thrashers.
 
 yeah.
 
@@ -25,6 +28,12 @@ Just being able to a top-bar more often is boring, so I decided to give it an ad
   - Sends all currently existing mercenary squads to the designated point.
 
 Adds a little bit of control to a sometimes frustating prestige. Ideally they are consistent enough that I can finally justify nerfing the cost of these mercenaries at some point.
+
+- Changed Aberrations to no longer walk over massive units.
+- Changed Brutalisks to no longer walk over massive units.
+- Changed Tyrannazors to no longer walk over massive units.
+
+It was a little disturbing watching Aberrations clip straight through Ultralisks and Thors.
 
 ## 7/7/2026
 
