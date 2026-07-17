@@ -1506,6 +1506,7 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
 - Fixed an issue where Swarmling's wireframe did not update after researching Metabolic Boost.
 - Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
 - Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
+- Added unused Mass Frenzy VO.
 
 yeah.
 

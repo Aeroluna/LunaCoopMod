@@ -13,6 +13,14 @@
 
 yeah.
 
+- Added unused Mass Frenzy VO.
+- Added additional "Thanks" VO triggers.
+  - Karax's Chrono Wave ability.
+  - Zagara's Mass Frenzy ability.
+  - Abathur's Mend ability.
+
+They went through the work of recording thank you lines for every commander, then only made Vespene Drone and Shield Overcharge actually trigger them. Now you should hear these lines a little more often. The frequency of hearing these should be lower than normal so they don't become too annoying.
+
 - Changed Murvar to no longer walk over massive units.
 - Changed Dakrun to no longer walk over massive units.
 

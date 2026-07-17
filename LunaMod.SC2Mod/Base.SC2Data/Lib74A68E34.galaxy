@@ -55,6 +55,7 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_gv_commanderRandomDialog = c_invalidDialogId;
     lib74A68E34_gv_commanderRandomButton = c_invalidDialogControlId;
     lib74A68E34_gv_commanderRandomPrestigeCheck = c_invalidDialogControlId;
+    lib74A68E34_gv_abathurMendThankTimer = TimerCreate();
     lib74A68E34_gv_stukovPrestigeNeuralChance = 25;
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
@@ -235,6 +236,7 @@ void lib74A68E34_gf_Cooldown (int lp_pPlayer) {
     libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/TychusMedicAoE");
     libNtve_gf_PlayerRemoveChargeUsed(lp_pPlayer, "Abil/TychusWarhoundBuildAutoTurret");
     libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "Abil/MothershipArtanisPlanetCracker");
+    libNtve_gf_PlayerRemoveCooldown(lp_pPlayer, "ZagaraVoidCoopMassFrenzy");
     auto2A7337C9_g = UnitGroup(null, lp_pPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
     auto2A7337C9_u = UnitGroupCount(auto2A7337C9_g, c_unitCountAll);
     for (;; auto2A7337C9_u -= 1) {
@@ -6117,6 +6119,7 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_ZagaraPrestigeSwarmLocusPriceFinish, true);
             }
 
+            TriggerEnable(lib74A68E34_gt_ZagaraMassFrenzyVO, true);
         }
         else if (auto560DABDD_val == "ProtossKarax") {
             lib74A68E34_gf_KaraxExtraUnitVitalMastery(lv_player);
@@ -6125,6 +6128,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_KaraxPrestigeUnitChronoRevive, true);
             }
 
+            TriggerEnable(libCOMI_gt_CM_AbilityTransmissionKaraxChronoMap, false);
+            TriggerEnable(lib74A68E34_gt_KaraxChronoMapVO, true);
         }
         else if (auto560DABDD_val == "ProtossVorazun") {
             TriggerEnable(lib74A68E34_gt_VorazunNegativeEnergyFix, true);
@@ -6149,8 +6154,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply, true);
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply, true);
                 TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, true);
+                TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteVO, true);
             }
 
+            TriggerEnable(libCOMI_gt_CM_AbilityTransmissionAbathurMend, false);
+            TriggerEnable(lib74A68E34_gt_AbathurMendVO, true);
         }
         else if (auto560DABDD_val == "ProtossAlarak") {
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeAlarakJinara", c_techCountCompleteOnly) == 1)) {
@@ -7355,6 +7363,42 @@ void lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ZagaraMassFrenzyVO
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZagaraMassFrenzyVO_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeUpgradeCount(EventPlayer(), "CommanderPrestigeZagaraZagara", c_techCountCompleteOnly) == 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    if ((RandomInt(0, 1) == 1)) {
+        libCOMI_gf_CM_CommanderVOSend(libCOOC_gf_CC_PlayerAlly(EventPlayer()), SoundLink("ZagaraCommander_Frenzy", -1), PlayerGroupAll());
+        SoundWait(SoundLastPlayed(), 0.0, c_soundOffsetEnd);
+        libCOMI_gf_CM_CommanderVOSend(EventPlayer(), libCOOC_gf_CC_CommanderVOLine(libCOOC_gf_ActiveCommanderForPlayer(libCOOC_gf_CC_PlayerAlly(EventPlayer())), libCOOC_ge_CC_CommanderVOLines_CC_CommanderVOThankyou), PlayerGroupSingle(EventPlayer()));
+    }
+
+    Wait(180.0, c_timeGame);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZagaraMassFrenzyVO_Init () {
+    lib74A68E34_gt_ZagaraMassFrenzyVO = TriggerCreate("lib74A68E34_gt_ZagaraMassFrenzyVO_Func");
+    TriggerEnable(lib74A68E34_gt_ZagaraMassFrenzyVO, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_ZagaraMassFrenzyVO, null, AbilityCommand("ZagaraVoidCoopMassFrenzy", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: VorazunPrestigeHeroShadowFuryHeight
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Func (bool testConds, bool runActions) {
@@ -7526,6 +7570,34 @@ void lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: KaraxChronoMapVO
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_KaraxChronoMapVO_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_CM_GPReminderDisable(UnitGetOwner(EventUnit()));
+    libCOMI_gf_CM_CommanderVOSend(libCOOC_gf_CC_PlayerAlly(UnitGetOwner(EventUnit())), SoundLink("KaraxCommander_Chrono", -1), PlayerGroupAll());
+    if ((lib74A68E34_gv_karaxChronoMapHasThanked == false)) {
+        lib74A68E34_gv_karaxChronoMapHasThanked = true;
+        SoundWait(SoundLastPlayed(), 0.0, c_soundOffsetEnd);
+        libCOMI_gf_CM_CommanderVOSend(EventPlayer(), libCOOC_gf_CC_CommanderVOLine(libCOOC_gf_ActiveCommanderForPlayer(libCOOC_gf_CC_PlayerAlly(EventPlayer())), libCOOC_ge_CC_CommanderVOLines_CC_CommanderVOThankyou), PlayerGroupSingle(EventPlayer()));
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_KaraxChronoMapVO_Init () {
+    lib74A68E34_gt_KaraxChronoMapVO = TriggerCreate("lib74A68E34_gt_KaraxChronoMapVO_Func");
+    TriggerEnable(lib74A68E34_gt_KaraxChronoMapVO, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_KaraxChronoMapVO, null, AbilityCommand("SOAMapWideChrono", 0), c_unitAbilStageExecute, false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AbathurPrestigeSymbioteCreate
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Func (bool testConds, bool runActions) {
@@ -7647,6 +7719,47 @@ void lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init () {
     lib74A68E34_gt_AbathurPrestigeSymbioteMorph = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Func");
     TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, false);
     TriggerAddEventUnitTrainProgress(lib74A68E34_gt_AbathurPrestigeSymbioteMorph, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurPrestigeSymbioteVO
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurPrestigeSymbioteVO_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventUnitTargetUnit() != null))) {
+            return false;
+        }
+
+        if (!((UnitGetOwner(EventUnit()) != UnitGetOwner(EventUnitTargetUnit())))) {
+            return false;
+        }
+
+        if (!((TimerGetRemaining(lib74A68E34_gv_abathurMendThankTimer) <= 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TimerStart(lib74A68E34_gv_abathurMendThankTimer, 180.0, false, c_timeGame);
+    Wait(4.0, c_timeGame);
+    libCOMI_gf_CM_CommanderVOSend(EventPlayer(), libCOOC_gf_CC_CommanderVOLine(libCOOC_gf_ActiveCommanderForPlayer(libCOOC_gf_CC_PlayerAlly(EventPlayer())), libCOOC_ge_CC_CommanderVOLines_CC_CommanderVOThankyou), PlayerGroupSingle(EventPlayer()));
+    TriggerEnable(TriggerGetCurrent(), false);
+    Wait(180.0, c_timeGame);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurPrestigeSymbioteVO_Init () {
+    lib74A68E34_gt_AbathurPrestigeSymbioteVO = TriggerCreate("lib74A68E34_gt_AbathurPrestigeSymbioteVO_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurPrestigeSymbioteVO, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_AbathurPrestigeSymbioteVO, null, AbilityCommand("CreateSymbiote", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7848,6 +7961,37 @@ void lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init () {
     lib74A68E34_gt_AbathurBiomassPickupLocustCheck = TriggerCreate("lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Func");
     TriggerEnable(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, false);
     TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_AbathurBiomassPickupLocustCheck, c_playerAny, "BiomassPickupDummy2");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AbathurMendVO
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_AbathurMendVO_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMI_gf_CM_GPReminderDisable(UnitGetOwner(EventUnit()));
+    libCOMI_gf_CM_CommanderVOSend(libCOOC_gf_CC_PlayerAlly(UnitGetOwner(EventUnit())), SoundLink("AbathurCommander_Mend", -1), PlayerGroupAll());
+    if ((TimerGetRemaining(lib74A68E34_gv_abathurMendThankTimer) <= 0.0)) {
+        TimerStart(lib74A68E34_gv_abathurMendThankTimer, 180.0, false, c_timeGame);
+        SoundWait(SoundLastPlayed(), 0.0, c_soundOffsetEnd);
+        libCOMI_gf_CM_CommanderVOSend(EventPlayer(), libCOOC_gf_CC_CommanderVOLine(libCOOC_gf_ActiveCommanderForPlayer(libCOOC_gf_CC_PlayerAlly(EventPlayer())), libCOOC_ge_CC_CommanderVOLines_CC_CommanderVOThankyou), PlayerGroupSingle(EventPlayer()));
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    Wait(60.0, c_timeGame);
+    TriggerEnable(TriggerGetCurrent(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_AbathurMendVO_Init () {
+    lib74A68E34_gt_AbathurMendVO = TriggerCreate("lib74A68E34_gt_AbathurMendVO_Func");
+    TriggerEnable(lib74A68E34_gt_AbathurMendVO, false);
+    TriggerAddEventUnitAbility(lib74A68E34_gt_AbathurMendVO, null, AbilityCommand("AbathurMend", 0), c_unitAbilStageExecute, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13101,21 +13245,25 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZagaraSwarmLocusRoachScale_Init();
     lib74A68E34_gt_ZagaraSwarmLocusSeekDestroy_Init();
     lib74A68E34_gt_ZagaraSwarmLocusCopyBehavior_Init();
+    lib74A68E34_gt_ZagaraMassFrenzyVO_Init();
     lib74A68E34_gt_VorazunPrestigeHeroShadowFuryHeight_Init();
     lib74A68E34_gt_VorazunPrestigeHeroShadowFuryReset_Init();
     lib74A68E34_gt_VorazunPrestigeHeroShadowPhase_Init();
     lib74A68E34_gt_VorazunNegativeEnergyFix_Init();
     lib74A68E34_gt_VorazunShadowArchonGender_Init();
     lib74A68E34_gt_KaraxPrestigeUnitChronoRevive_Init();
+    lib74A68E34_gt_KaraxChronoMapVO_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteCreate_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteIncreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteDecreaseSupply_Init();
     lib74A68E34_gt_AbathurPrestigeSymbioteMorph_Init();
+    lib74A68E34_gt_AbathurPrestigeSymbioteVO_Init();
     lib74A68E34_gt_AbathurMorphToggle_Init();
     lib74A68E34_gt_AbathurMorphToggleNewUnit_Init();
     lib74A68E34_gt_AbathurMorphAutoCastFix_Init();
     lib74A68E34_gt_AbathurSwarmHostSplitBLocustLaunchCast_Init();
     lib74A68E34_gt_AbathurBiomassPickupLocustCheck_Init();
+    lib74A68E34_gt_AbathurMendVO_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraSoulAbsorptionLaunch_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraShadeHealth_Init();
     lib74A68E34_gt_AlarakPrestigeJinaraPitTooltip_Init();
