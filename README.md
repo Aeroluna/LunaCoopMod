@@ -448,6 +448,7 @@ UI customization!
 - Added `-aitech` cheat that unlocks all of Amon's timed upgrades instantly.
 - Added `-poweroverwhelming X` cheat to add Power Overwhelming/P1 stacks to an Ascendant/Void Archon/mech unit.
 - Added `-itsabouttime` cheat that uncaps Outlaws (See [Tychus's P4](#Tychus)).
+- Added `-wololo X` cheat to set chance to neural killed enemies (See [Stukov's P4](#Stukov)).
 - Fixed an issue where `-fastbuild` cheat did not affect certain research/upgrades.
 
 Some debug cheats.
@@ -1040,7 +1041,7 @@ https://github.com/user-attachments/assets/bf93ddc9-d981-41a3-834b-fe9878d93265
 - Added new Medic ability: Signal Flare
   - Reveals an area of the map, detecting cloaked and burrowed units. Lasts 20 seconds.
 
-Unfortunately these Medics can't chuck a flare at an enemy to blind them, but at least they have flares! Provides Raynor with alternate detection to Orbitals.
+Unfortunately these Medics can't chuck a flare at an enemy to blind them, but at least they have flares! Provides Raynor with alternative detection to Orbitals.
 
 - Added Cellular Reactor upgrade, which gives Medics full starting energy.
 
@@ -1543,7 +1544,7 @@ In case it wasn't obvious, I was heavily inspired by Heroes of the Storm Zeratul
     - Grants cloak to friendly units in an area and heals their hitpoints over time for 30 seconds.
   - Can use Astral Storm ability for 75 energy.
     - Does less damage in a larger area than Psionic Storm for 7 seconds.
-    - Applies Astral Smolder to enemy units hit, revealing cloaked units, reducing movement speed, and reducing armor. This effect stacks up to 4 times.
+    - Reveals cloaked units, reduces movement speed, and reduces armor.
     - Applies P2, dealing massive damage.
   - Can use Fading Star ability after researching at a Templar Archives.
     - Grants super cloak, 50% increased movement speed, and ignores unit collision for 4 seconds.
@@ -2192,7 +2193,6 @@ Made Viral Contamination upgrade partially baseline in favor of a new upgrade th
 - Added a launch sound effect when Infested Liberators enter Cloud Dispersal.
 - Added an impact visual effect when Infested Liberators deal damage with their AA attacks.
 - Reworked Infested Liberator Cloud Dispersal attack logic.
-- Fixed an issue where Infested Liberators could still deal Cloud Dispersal damage while in Defender Mode.
 
 Adding strafing to Cloud Dispersal causes Liberators to spread out more evenly, dealing damage in a greater area and take less damage from AOE effects. It also just looks cooler. Increasing the lingering duration allows running away before the 85% damage reduction fades.
 
@@ -2227,7 +2227,7 @@ It can be frustrating trying to get into the fight when you have a P3 Stukov all
 - Changed Infested Civilian portrait.
 - Added Infested Trooper model and portrait.
 
-Blizzard got lazy and only reused portraits for Stukov, lets add new ones!
+Blizzard got lazy and only reused portraits for Stukov, lets add new ones! (DaveSpectre <3)
 
 - Fixed an issue where if an Infested Civilian has jumped using Anaerobic Enhancement, and an Infested Siege Tank tried to eat it, the Infested Civilian would die without healing or gaining a charge.
 - Fixed an issue where the icon of the button for Mech Attack Speed mastery was not colored.
@@ -2338,12 +2338,12 @@ Why did Dakrun slam his giant head into a building and do 0 damage? Also why did
 - Changed Dakrun's melee attack to ragdoll/launch killed enemies.
 - Increased Dakrun's radius from 1.5 to 2.
 
-Lets give Dakrun's headbutt more oomph! Radius increased because Dakrun basically had to stand on top of units to hit them.
+Lets give Dakrun's headbutt more oomph! Radius increased because previously Dakrun basically had to stand on top of units to hit them.
 
 - Added ranged air attack to Dakrun: Spine Volley.
   - Launches 5 spines in a small AOE that deal 12 damage.
 
-Gives Dakrun an option against air units, but it does have less dps than his ground attack.
+Gives Dakrun an option against air units, but it does have less dps than his ground attack. Hopefully now Battlecruisers will actually hit Dakrun instead of ignoring him and going for your army.
 
 - Reworked Pack Leader ability placement.
   - Added a placement preview for Murvar and Dakrun that turns red when placement is invalid.
@@ -2359,7 +2359,7 @@ Why does popping out of the ground only let Dakrun do damage? Let's give that to
 
 - Reworked Primal Wurm Deep Tunneling.
   - Buffed Primal Wurm/Greater Primal Wurm/Glevig Deep Tunnel to allow tunneling under units.
-  - Added Dakrun's spawn knockbak to Glevig's Deep Tunnel.
+  - Added Dakrun's spawn knockback to Glevig's Deep Tunnel.
   - Buffed Primal Wurm and Greater Primal Wurm Deep Tunnel knockback to unburrow units.
   - Reduced Primal Wurm/Greater Primal Wurm/Glevig Deep Tunnel finish time from 3 seconds to 2 seconds.
   - Fixed an issue where Primal Wurms could not Deep Tunnel On to burrowed Roaches.
@@ -2393,12 +2393,15 @@ This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?featu
 
 It very clearly sounded like a hellion.
 
+- Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
+
+I love my OP Pack Leaders as much as anyone else, but its very unintuitive that these units have a *hidden* tag that makes them immune to *some* effects. This tag is reserved for important objectives only.
+
 - Fixed an issue where Dehaka's units don't have reduced sight radius while burrowed (Impaler, Primal Host, and Creeper Host excluded).
 - Fixed an issue where Tyrannazors had a larger unit radius when burrowed than unburrowed.
 - Fixed an issue where Creepers could not damage friendly units.
 - Changed Explosive Creeper weapon icon.
 - Changed Greater Primal Wurms to visually burrow away instead of exploding when expiring.
-- Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
 - Fixed an issue where Zweihaka had a highlight tooltip.
 - Fixed an issue where Dakrun's Brutal Charge's launch dust particles faced the incorrect direction.
 - Fixed an issue where Dakrun/Glevig/Murvar could be loaded into transports.
@@ -2411,6 +2414,8 @@ It very clearly sounded like a hellion.
 - Fixed an issue where Glevig's Fire Breath impact sounds played on Glevig.
 - Reduced the allied push priority of Primal Locust from 0 to -1.
 - Changed Tyrannazors to no longer walk over massive units.
+- Changed Murvar to no longer walk over massive units.
+- Changed Dakrun to no longer walk over massive units.
 
 yeah.
 
@@ -2418,7 +2423,7 @@ yeah.
 
 - Added Ordnance Towers that can be built by SCVs.
   - These are flying defensive structures with long-range attacks.
-  - Spawns up to 6 Valkyries that fly around and defend the area.
+  - Spawns up to 4 Valkyries that fly around and defend the area.
     - Valkyries have 100 life and their own long-range missile attack.
   - Can use Nano-Repair ability to heal mech units.
   - Can detect cloaked units.
@@ -2455,14 +2460,14 @@ Mira's units usually trade horribly, this should help mitigate that.
   - Increases the Salvage rate from 40% to 60%.
   - Fixed an issue where some death effect passives were missing the appended prestige tooltip.
 
-Buffing a top bar ability feels kinda boring, instead P2 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
+Buffing a top bar ability feels kinda boring, instead P1 now improves how many Mira units you can produce. The improved Salvage value and the Double Salvage mastery can combine to give more minerals than you initially paid. It can look funny seeing your mineral count rubber band as you train a bunch of units and then they all suicide.
 
 - Increased Strike Fighter hitpoints from 50 to 100.
 - Buffed Precision Strike to also hit air.
 - Added visual trail to Strike Fighter.
 - Adjusted Strike Fighter acceleration.
 
-Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but not the fire from the napalm upgrade.
+Why is this thing so easy to shoot down? The initial explosion can also now hit air units, but the fire from the napalm upgrade can not.
 
 - Reworked P3:
   - Added advantage: Can research one exclusive Precision Strike upgrade.
@@ -2575,7 +2580,7 @@ It's probably still optimal to recruit Tychus, but now at least you have a choic
 - Reworked Tychus Attack Speed mastery into First Outlaw Attack Speed.
 - Reworked Tychus Shredder Grenade Cooldown mastery into First Outlaw Ability Cooldown.
 
-To go with the first outlaw change, this mastery set now affects your first outlaw instead of always buffing Tychus. If you change the Outlaw in the first slot using the UI reordering, the buff will be moved to that Outlaw instead.
+To go with the first outlaw change, this mastery set now affects your first outlaw instead of always buffing Tychus. If you change the Outlaw in the first slot using the UI reordering, the buff will be moved to that Outlaw instead. This buff also affects pets such as Sirius's turrets or Vega's dominated units.
 
 - Reordered SCV building menu.
 - Added Fortified Bunker that can be built by SCVs.
@@ -2651,7 +2656,7 @@ Makes it feel a little less bad when Cannonball crits a single zergling for 500 
   - No longer stacks.
 - Added an impact visual to Nux's Ultrasonic Pulse ability.
 
-For an ability that's basically a Psionic Storm, the ability is set up weirdly different.
+For an ability that's basically a Psionic Storm, the ability was set up weirdly different.
 
 - Added a cursor splat for Rattlesnake's Deploy Revitalizer.
 - Fixed an issue where Rattlesnake's weapon would no longer have a visual impact effect after purchasing Hammer Munitions.
@@ -2797,7 +2802,7 @@ Now you can manually take down erroneous Stetellites.
 
 - Added P1 Advantage: Stetellites deploy 100% faster.
 
-This makes it easier to expend charges Stetellites quickly.
+This makes it easier to expend Stetellites charges quickly.
 
 - Reworked Upgrade Resource Cost mastery to affect unit upgrades as well.
 - Renamed Upgrade Resource Cost to Research Resource Cost.
@@ -2922,7 +2927,7 @@ When using mech in your army, it can be annoying having to order your troopers t
 
 It's happened to everyone, the hologram lifts off and then you accidentally a-move it and kill your own blimp. *Fun fact: this bug is caused by Blizzard attaching the hologram incorrectly, then offsetting the hologram to move it where it should be, then because it's not attached properly, it randomly applies that offset over and over again.*
 
-- Reduced Tactical Missile Strike Delay from 4 to 3 seconds.
+- Reduced Tactical Missile Strike delay from 4 to 3 seconds.
 - Increased Tactical Missile Strike radius from 2 to 3.
 - Added Ordnance Depot Retrofit upgrade to the Royal Academy.
   - Requires an Armory.
@@ -2935,11 +2940,11 @@ Missile play is cool so lets make it more viable! Lower delay and bigger radius 
 
 Emperor's Shadows are limited by energy anyways, so why do they have cooldowns on their abilities?
 
-- Reduced cooldown of Emperor's Shadow's Labryinth Cloak ability from 30 seconds to 20 seconds.
+- Reduced cooldown of Emperor's Shadow's Labyrinth Cloak ability from 30 seconds to 20 seconds.
 - Added Shadow of the Dominion passive to Emperor's Shadows.
   - While cloaked, gain life regen and 30% move speed.
 
-With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labryinth Cloak. Now cloak has increased uptime and grants life regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
+With such a high target priority, Emperor's Shadows tend to get sniped off, even with Labyrinth Cloak. Now cloak has increased uptime and grants life regen and move speed to sustain themselves more easily. Additionally, this passive works when cloaked by any means, adding some synergy with commanders who can cloak ally units.
 
 - Changed Emperor's Shadow's Pyrokinetic Immolation ability to apply instantly rather with a projectile (Projectile is purely visual).
 
@@ -2957,7 +2962,7 @@ Hopefully prevents dumping all their energy at once. Still probably more efficie
 
 Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
-- Added passive to all Royal Guards that reduced spell damage taken by 50%.
+- Added passive to all Royal Guards that reduces spell damage taken by 50%.
 
 Nobody likes having their elite units Yamato'd to death, this should help their survivability against unpreventable bursts of damage.
 
@@ -2966,9 +2971,10 @@ Nobody likes having their elite units Yamato'd to death, this should help their 
 Makes it possible to track the Shield on the unit info panel. Will now interact with things like EMPs and Shield Batteries.
 
 - Increased Sky Fury's Gatling Cannon damage from 18 to 24 (+16 vs Mechanical).
-- Increased Sky Fury's Lanzer Torpedos Damage from 15 (+6 vs Armored) to 28.
+- Increased Sky Fury's Lanzer Torpedos Damage from 15 (+6 vs Armored) to 20 (+6 vs Armored).
+- Fixed an issue where Sky Furys no longer did bonus damage to armored after reaching Rank 1.
 
-Sky Furies have bad damage against non-massive targets, and still do less damage than an Aegis Guard even against massive targets.
+Sky Furies had bad damage against non-massive targets, and still did less damage than an Aegis Guard, even against massive targets.
 
 - Increased duration of Sky Fury's Tactical Realignment from 5 seconds to 10 seconds.
 - Reworked Sky Fury's Tactical Realignment to increase attack speed by 50% instead of attack damage.

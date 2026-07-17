@@ -1,5 +1,25 @@
 # Changelog
 
+## 7/17/2026
+
+- Fixed an issue where Vorazun's Void Sanctuary lasted longer than intended.
+- Fixed an issue where Tychus P4 could not purchase gear while at 5 outlaws.
+- Fixed an issue where Tychus's gear was still visible while at max outlaws.
+- Fixed an issue where Tychus's description was still visible on Joeyray's Bar at max Outlaws
+- Fixed an issue where Hercules was missing the Load Nearby command.
+- Fixed an issue where Imperial Intercessor was missing the Load Nearby command.
+
+yeah.
+
+- Changed Murvar to no longer walk over massive units.
+- Changed Dakrun to no longer walk over massive units.
+
+Missed these in the last update.
+
+- Added `-wololo X` cheat to set chance to neural killed enemies.
+
+If you want to for some reason you want to replicate the absurdity of pre-nerf Stukov P4. Works on any commander.
+
 ## 7/16/2026
 
 - Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.

@@ -917,7 +917,10 @@
     <CUpgrade id="TychusSpectreSuperUltrasonicPulse">
         <EffectArray index="0" Value="5"/>
     </CUpgrade>
-    <CUpgrade id="TychusFirstHero">
+    <CUpgrade id="TychusFirstHero" parent="TychusHeroPassive">
+        <MaxLevel value="9"/>
+    </CUpgrade>
+    <CUpgrade id="TychusHeroMax" parent="TychusHeroPassive">
         <MaxLevel value="9"/>
     </CUpgrade>
     <CUpgrade id="VikingMengskSpeed">
@@ -2797,7 +2800,7 @@
     <CUpgrade id="TychusCommander">
         <EffectArray Reference="Behavior,BunkerWeaponRangeBonus,Modification.WeaponRange" Value="1"/>
     </CUpgrade>
-    <CUpgrade id="TychusHeroExpanded"/>
+    <CUpgrade id="TychusHeroExpanded" parent="TychusHeroPassive"/>
     <CUpgrade id="ViperImprovedCastRange">
         <EffectArray Reference="Effect,ParasiticBombSearchEffect,AreaArray[0].Radius" Value="1"/>
         <EffectArray Reference="Effect,DisablingCloudSearch,AreaArray[0].Radius" Value="1"/>

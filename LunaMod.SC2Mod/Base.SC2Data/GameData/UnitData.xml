@@ -1091,6 +1091,7 @@
         <Attributes index="MapBoss" value="0"/>
         <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
         <CargoSize value="0"/>
+        <Collide index="Swarm" value="1"/>
         <Collide index="RoachBurrow" value="1"/>
         <BehaviorArray Link="Unmoved"/>
         <BehaviorArray Link="PreventKnockback"/>
@@ -1102,14 +1103,19 @@
         <Attributes index="MapBoss" value="0"/>
         <EffectArray index="Birth" value="DakrunSpawningTargetSearch"/>
         <CargoSize value="0"/>
+        <Collide index="Swarm" value="1"/>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="DehakaMurvarPlacement" parent="DehakaMurvar">
         <Facing value="45"/>
+        <Collide index="Swarm" value="0"/>
         <Collide index="Colossus" value="0"/>
+        <Collide index="Structure" value="1"/>
         <CargoSize value="4"/>
     </CUnit>
     <CUnit id="DehakaGlevigPlacement" parent="DehakaGlevig">
         <Collide index="Ground" value="0"/>
+        <Collide index="Swarm" value="0"/>
         <Collide index="Colossus" value="0"/>
         <Collide index="Structure" value="1"/>
         <Collide index="RoachBurrow" value="0"/>
@@ -1178,7 +1184,11 @@
     <CUnit id="Hercules">
         <AbilArray index="3" Link="HyperjumpNoVision"/>
         <CardLayouts index="0">
-            <LayoutButtons index="8" AbilCmd="HyperjumpNoVision,Execute"/>
+            <LayoutButtons index="4" Column="2"/>
+            <LayoutButtons index="5" Column="3"/>
+            <LayoutButtons index="7" Row="2" Column="1"/>
+            <LayoutButtons index="8" AbilCmd="HyperjumpNoVision,Execute" Column="0"/>
+            <LayoutButtons Face="LoadNearbyHercules" Type="AbilCmd" AbilCmd="HerculesTransport,LoadAll" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="HotSNoxiousBurrowed">
@@ -3797,6 +3807,21 @@
         <SubgroupAlias value="CommandCenterFlying"/>
         <GlossaryAlias value="CommandCenter"/>
     </CUnit>
+    <CUnit id="TychusMercCompound">
+        <CardLayouts index="0">
+            <LayoutButtons index="12" Requirements="TychusPassiveAC"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TychusResearchCenter">
+        <CardLayouts index="0">
+            <LayoutButtons index="33" Requirements="TychusACOwned"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TychusResearchCenterUnlocked">
+        <CardLayouts index="0">
+            <LayoutButtons index="33" Requirements="TychusACOwned"/>
+        </CardLayouts>
+    </CUnit>
     <CUnit id="Ultralisk">
         <AlliedPushPriority value="1"/>
         <CardLayouts index="0">
@@ -4558,6 +4583,8 @@
         <CargoSize value="0"/>
         <WeaponArray Link="KraithSpineVolley"/>
         <Radius value="2"/>
+        <Collide index="Swarm" value="1"/>
+        <Collide index="Structure" value="0"/>
     </CUnit>
     <CUnit id="Devourer">
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
@@ -5519,7 +5546,7 @@
             <LayoutButtons index="12" Column="4"/>
             <LayoutButtons index="13" Column="1"/>
             <LayoutButtons index="14" Column="1"/>
-            <LayoutButtons Face="LoadNearbyMedivac" Type="AbilCmd" AbilCmd="MedivacMengskTransport,UnloadAt" Row="1" Column="2"/>
+            <LayoutButtons Face="LoadNearbyMedivac" Type="AbilCmd" AbilCmd="MedivacMengskTransport,LoadAll" Row="1" Column="2"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Oracle">

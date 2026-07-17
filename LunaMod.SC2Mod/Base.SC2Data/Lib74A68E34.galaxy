@@ -55,6 +55,7 @@ void lib74A68E34_InitVariables () {
     lib74A68E34_gv_commanderRandomDialog = c_invalidDialogId;
     lib74A68E34_gv_commanderRandomButton = c_invalidDialogControlId;
     lib74A68E34_gv_commanderRandomPrestigeCheck = c_invalidDialogControlId;
+    lib74A68E34_gv_stukovPrestigeNeuralChance = 25;
     for (init_i = 0; init_i <= lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE; init_i += 1) {
         lib74A68E34_gv_expanded_TychusSquadAvailabilityProgressBars[init_i] = c_invalidDialogControlId;
     }
@@ -1401,7 +1402,7 @@ void lib74A68E34_gf_StukovPrestigeNeuralEnable (int lp_player) {
 void lib74A68E34_gf_StukovPrestigeNeuralApply (unit lp_unit) {
     // Automatic Variable Declarations
     // Implementation
-    if ((UnitHasBehavior2(lp_unit, "CommanderPrestigeStukovNeuralDebuff") == false) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32)))) == true) && (UnitTypeTestFlag(UnitGetType(lp_unit), c_unitFlagUnselectable) == false) && (RandomInt(0, 3) == 0)) {
+    if ((UnitHasBehavior2(lp_unit, "CommanderPrestigeStukovNeuralDebuff") == false) && (UnitFilterMatch(lp_unit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterUnstoppable - 32)) | (1 << (c_targetFilterMapBoss - 32)))) == true) && (UnitTypeTestFlag(UnitGetType(lp_unit), c_unitFlagUnselectable) == false) && (RandomInt(0, 99) < lib74A68E34_gv_stukovPrestigeNeuralChance)) {
         UnitBehaviorAddPlayer(lp_unit, "CommanderPrestigeStukovNeuralDebuff", lib74A68E34_gv_stukovPrestigeNeuralPlayer, 1);
     }
 
@@ -4553,6 +4554,63 @@ void lib74A68E34_gt_TychusExpandedCheat_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: StukovMindControlCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_StukovMindControlCheat_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_count;
+
+    // Automatic Variable Declarations
+    unitgroup autoCCF4E685_g;
+    int autoCCF4E685_u;
+    unit autoCCF4E685_var;
+
+    // Variable Initialization
+    lv_count = 100;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringWord(EventChatMessage(false), 2) != "")) {
+        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
+    }
+
+    TextExpressionSetToken("Param/Expression/lib_74A68E34_2EF347BA", "A", FixedToText(lv_count, c_fixedPrecisionAny));
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, TextExpressionAssemble("Param/Expression/lib_74A68E34_2EF347BA"));
+    lib74A68E34_gv_stukovPrestigeNeuralChance = lv_count;
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "CommanderPrestigeStukovNeural", 1);
+    autoCCF4E685_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    autoCCF4E685_u = UnitGroupCount(autoCCF4E685_g, c_unitCountAll);
+    for (;; autoCCF4E685_u -= 1) {
+        autoCCF4E685_var = UnitGroupUnitFromEnd(autoCCF4E685_g, autoCCF4E685_u);
+        if (autoCCF4E685_var == null) { break; }
+        UnitBehaviorRemove(autoCCF4E685_var, "CommanderPrestigeStukovNeuralDebuff", 1);
+    }
+    lib74A68E34_gf_StukovPrestigeNeuralEnable(EventPlayer());
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralNewUnit, true);
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralRally, true);
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralAleksanderFix, true);
+    TriggerEnable(lib74A68E34_gt_StukovPrestigeNeuralVO, true);
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_StukovMindControlCheat_Init () {
+    lib74A68E34_gt_StukovMindControlCheat = TriggerCreate("lib74A68E34_gt_StukovMindControlCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_StukovMindControlCheat, c_playerAny, "-wololo", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: FastResearch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_FastResearch_Func (bool testConds, bool runActions) {
@@ -6186,9 +6244,12 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(libCOMI_gt_CM_TychusSpecialistTrainingAuraOn, true);
             TriggerEnable(libCOMI_gt_CM_TychusSpecialistTrainingAuraOff, true);
             if ((TechTreeUpgradeCount(lv_player, "TychusHeroExpanded", c_techCountCompleteOnly) == 1)) {
+                libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "TychusHeroMax", lib74A68E34_gv_eXPANDED_TYCHUS_MAX_SQUAD_SIZE);
                 lib74A68E34_gf_ExpandedTychusGPInit(lv_player);
             }
-
+            else {
+                libNtve_gf_SetUpgradeLevelForPlayer(lv_player, "TychusHeroMax", libCOMI_gv_cM_Tychus_MaxHeroCount);
+            }
             TriggerEnable(libCOMI_gt_CM_TychusReplaceResearchCenter, false);
             TriggerEnable(lib74A68E34_gt_TychusReplaceResearchCenter, true);
             TriggerEnable(lib74A68E34_gt_TychusSetHeroUnit, true);
@@ -12975,6 +13036,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MengskVeterancyCheat_Init();
     lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_TychusExpandedCheat_Init();
+    lib74A68E34_gt_StukovMindControlCheat_Init();
     lib74A68E34_gt_FastResearch_Init();
     lib74A68E34_gt_FastBuildImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
