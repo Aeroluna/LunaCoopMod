@@ -2843,6 +2843,11 @@ Creates an interesting Spirit Link-like effect where all the Ultralisks are tryi
 
 Mecha Battlecarrier Lords used a ridiculous amount of energy just to attack, leaving no opportunity to swap out of JUICE configuration. Lowering their energy costs should make them stronger in attrition battles.
 
+- Changed Deconstructive Roach-nites to allow targeting non-heroic units.
+- Reduced Deconstructive Roach-nites damage from 500 to 300 (+200 vs Structures).
+
+Unlike regular Infestors, there is almost no incentive to add Mecha Infestors into your army for support, as they work better being massed in your base spawning Roaches. Allowing Deconstructive Roach-nites to have some utility on offense should make having a few Mecha Infestors in your army more appealing.
+
 - Removed ability for Mecha Hydralisk Dens to morph into Mecha Lurker Dens.
 - Added ability for Mecha Drones to morph into Mecha Lurker Dens.
 
@@ -2898,6 +2903,7 @@ Copied from Versus.
 - Fixed an issue where Mecha Battlecarrier Lords listed the wrong attack speed.
 - Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
 - Fixed an issue where Stetmann's units had a delay before starting a morph.
+- Fixed an issue where Mecha Infestors would sometimes not have their burrowed splat destroyed when unburrowing.
 
 yeah.
 

@@ -124,6 +124,42 @@
         <Remove Terms="Behavior.HybridUrunRecalling.On" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallSearch.Start; At Target" Send="Create"/>
     </CActorSound>
+    <CActorAction id="InfestorAttackStetmann" parent="GenericAttack" effectImpact="InfestorWeaponDamageStetmann" effectLaunch="InfestorWeaponLMStetmann">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveDownByDot5 SOpMoveBackByDot5"/>
+        <LaunchAssets Sound="Infestor_AttackLaunch"/>
+        <Missile value="InfestorWeaponMissileStetmann"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance"/>
+        <ImpactMap index="None" Model="InfestorWeaponImpactStetmann" Sound="Infestor_AttackImpact"/>
+    </CActorAction>
+    <CActorSplat id="InfestorStetmannBurrowedSplat">
+        <HostSiteOps Ops="SOpAttachHarnessSoft" HoldRotation="1"/>
+    </CActorSplat>
+    <CActorAction id="InfestorStetmannInfestBuildingRoachEggLaunch" parent="GenericAttack" effectImpact="InfestorStetmannInfestBuildingRoachEggImpact" effectLaunch="InfestorStetmannInfestBuildingRoachEggLM">
+        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
+        <LaunchAssets Model="InfestedTerransLaunch" Sound="Infestor_InfestedTerranAttackLaunch"/>
+        <Beam value="InfestedTerransBeam"/>
+        <Missile value="InfestorStetmannRoachEggMissile"/>
+        <ImpactAttachQuery Methods="Origin"/>
+        <ImpactMap index="None" Model="InfestedTerransImpact" Sound="InfestedTerransImpact" ModelReaction="InfestedTerransImpactReaction"/>
+        <ImpactMap index="Shield" Sound="InfestedTerransImpactShield" ModelReaction="InfestedTerransImpactReactionShield"/>
+        <DamageMap index="None" Model="InfestedTerransDamage" Sound="InfestedTerransDamage" ModelReaction="InfestedTerransDamageReaction"/>
+        <DamageMap index="Shield" Sound="InfestedTerransDamageShield" ModelReaction="InfestedTerransDamageReactionShield"/>
+    </CActorAction>
+    <CActorAction id="InfestorStetmannInfestBuildingRavagerEggLaunch" parent="GenericAttack" effectImpact="InfestorStetmannInfestBuildingRavagerEggImpact" effectLaunch="InfestorStetmannInfestBuildingRavagerEggLM">
+        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
+        <LaunchAssets Model="InfestedTerransLaunch" Sound="Infestor_InfestedTerranAttackLaunch"/>
+        <Beam value="InfestedTerransBeam"/>
+        <Missile value="InfestorStetmannRavagerEggMissile"/>
+        <ImpactAttachQuery Methods="Origin"/>
+        <ImpactMap index="None" Model="InfestedTerransImpact" Sound="InfestedTerransImpact" ModelReaction="InfestedTerransImpactReaction"/>
+        <ImpactMap index="Shield" Sound="InfestedTerransImpactShield" ModelReaction="InfestedTerransImpactReactionShield"/>
+        <DamageMap index="None" Model="InfestedTerransDamage" Sound="InfestedTerransDamage" ModelReaction="InfestedTerransDamageReaction"/>
+        <DamageMap index="Shield" Sound="InfestedTerransDamageShield" ModelReaction="InfestedTerransDamageReactionShield"/>
+    </CActorAction>
+    <CActorMissile id="InfestorWeaponMissileStetmann" parent="GenericAttackMissile" unitName="InfestorWeaponStetmann">
+        <EditorCategories value=""/>
+        <Model value="InfestorWeaponMissileStetmann"/>
+    </CActorMissile>
     <CActorUnit id="MothershipAiur06">
         <Model value="Mothership_Golden"/>
         <PortraitModel value="Mothership_Golden_Portrait"/>
@@ -2489,9 +2525,21 @@
         <On Terms="AbilMorph.*.Finish; MorphFrom InfestorBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom InfestorBurrowed" Send="RefClear ::Host"/>
         <On Terms="TimerExpired; TimerName MorphSplat" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorStetmannBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorStetmannBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Start; MorphTo InfestorStetmannBurrowed" Send="RefClear ::Host"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorStetmannBurrowed" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorStetmannBurrowed" Send="TimerSet 1.000000 MorphSplat"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom InfestorStetmannBurrowed" Send="RefClear ::Host"/>
         <Inherits index="Visibility" value="0"/>
     </CActorSplat>
     <CActorUnit id="InfestorStetmann">
+        <On index="66" Send="Create InfestorStetmannBurrowedSplat"/>
+        <On index="67" Target="InfestorStetmannBurrowedSplat"/>
+        <On index="68" Terms="Abil.InfestorStetmannHealingTentacle.SourceCastStart; ValidateUnit CasterIsInfestorStetmannBurrowed"/>
+        <On index="69" Terms="Abil.InfestorStetmannEggLaunch.SourceCastStart; ValidateUnit NotInfestorStetmannBurrowed"/>
+        <On index="70" Terms="Abil.InfestorStetmannHealingTentacle.SourceCastStart; !ValidateUnit NotInfestorStetmannBurrowed"/>
+        <On Terms="ActorCreation" Send="ModelAnimateInvisible 1"/>
         <!--5.0.16 Infestor Attack-->
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
         <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack {} {} 0 3.000000"/>
@@ -3309,6 +3357,7 @@
         <On Terms="ActorCreation" Send="Create FlyerHelperSplat"/>
     </CActorModel>
     <CActorUnit id="RavagerStetmann">
+        <On Terms="Abil.RavagerStetmannCorrosiveBile.SourceCastStart" Send="TimerSet 0.100000 RavAnimationSwitch"/>
         <On Terms="AbilMorph.*.Start; AbilKey BurrowDown" Send="AnimClear Spell"/>
         <On Terms="TimerExpired; UnitWalking; TimerName RavAnimationSwitch" Send="$Spell 0 3.000000 2.000000 1.000000 AsTimeScale 0.000000 1"/>
         <On Terms="Abil.RavagerStetmannCorrosiveBile.SourceCastStart" Send="$Spell"/>

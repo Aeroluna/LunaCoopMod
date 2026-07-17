@@ -807,6 +807,30 @@
     <CEffectTeleport id="HyperjumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
+    <CEffectLaunchMissile id="InfestorStetmannHealingTentacleLM">
+        <LaunchEffect value="NeuralParasiteBlockBurrowAB"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="InfestorStetmannInfestBuildingDamage">
+        <AttributeBonus index="Structure" value="5"/>
+        <Amount value="7.5"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="InfestorStetmannInfestBuildingEggs">
+        <PeriodicOffsetArray index="2" value="0,1,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="InfestorStetmannInfestBuildingRavagerEggInitial">
+        <EffectArray index="1" value="InfestorStetmannInfestBuildingRavagerEggLM"/>
+        <EffectArray value="MakePrecursor"/>
+    </CEffectSet>
+    <CEffectDamage id="InfestorWeaponDamageStetmann" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="4"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="InfestorWeaponLMStetmann">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="InfestorWeaponDamageStetmann"/>
+        <AmmoUnit value="InfestorWeaponStetmann"/>
+    </CEffectLaunchMissile>
     <CEffectEnumArea id="IrradiateAoE">
         <EditorCategories value=""/>
         <ImpactLocation Value="TargetPoint"/>

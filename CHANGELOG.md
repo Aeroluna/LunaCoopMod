@@ -8,6 +8,7 @@
 - Fixed an issue where Tychus's description was still visible on Joeyray's Bar at max Outlaws
 - Fixed an issue where Hercules was missing the Load Nearby command.
 - Fixed an issue where Imperial Intercessor was missing the Load Nearby command.
+- Fixed an issue where Mecha Infestors would sometimes not have their burrowed splat destroyed when unburrowing.
 
 yeah.
 
@@ -19,6 +20,11 @@ Missed these in the last update.
 - Added `-wololo X` cheat to set chance to neural killed enemies.
 
 If you want to for some reason you want to replicate the absurdity of pre-nerf Stukov P4. Works on any commander.
+
+- Changed Deconstructive Roach-nites to allow targeting non-heroic units.
+- Reduced Deconstructive Roach-nites damage from 500 to 300 (+200 vs Structures).
+
+Unlike regular Infestors, there is almost no incentive to add Mecha Infestors into your army for support, as they work better being massed in your base spawning Roaches. Allowing Deconstructive Roach-nites to have some utility on offense should make having a few Mecha Infestors in your army more appealing.
 
 ## 7/16/2026
 

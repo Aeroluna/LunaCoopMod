@@ -343,6 +343,11 @@
         <Facing value="270"/>
         <FlagArray index="Turnable" value="0"/>
     </CUnit>
+    <CUnit id="InfestorWeaponStetmann" parent="MISSILE">
+        <Race value="Zerg"/>
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
+    </CUnit>
     <CUnit id="MutatorCandyCivilian" parent="Civilian">
         <Name value="Unit/Name/MutatorCandyCivilian"/>
         <PushPriority value="15"/>
@@ -2281,6 +2286,9 @@
             <LayoutButtons Face="BurrowedMove" Type="Passive" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.625"/>
+        <AbilArray Link="attack"/>
+        <AcquireMovementLimit value="5.5"/>
+        <WeaponArray Link="InfestorWeaponAcidSporesStetmann"/>
     </CUnit>
     <CUnit id="InfestorStetmannBurrowed">
         <SubgroupAlias value="InfestorStetmann"/>
