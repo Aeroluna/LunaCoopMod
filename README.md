@@ -2248,6 +2248,11 @@ yeah. The Siege Tank bug took way too long to figure out...
 
 Because each duplicate unit gives the same value now, it's possible to go compositions without one of each champion. The disadvantage is likely not strong enough to counteract how OP this prestige is.
 
+- Added P2 advantage:
+  - Champion A.I.s have an increased attack priority.
+
+It was tragic watching everything *but* your Champion get killed. Now enemies will be lured to your Champion like a moth to the flame, giving you that sweet refund.
+
 - Changed Kaldalis's Engage ability to require researching Charge at the Twilight Council.
 - Changed Charge to additionally increase Kaldalis's movement speed.
 - Reduced Kaldalis's movement speed from 3 to 2.25.
@@ -2289,6 +2294,20 @@ Launch the bombers faster!
 
 The champions do more damage than normal units, so their projectiles should be larger to visually show that.
 
+- Reworked Kaldalis's Engage ability mover.
+  - Now moves at a fixed speed instead of having a fixed duration.
+
+This ability was slower than Charge when close to the target because of the fixed duration. Now it should always feel snappy.
+
+- Increased Champion A.I. allied push priority from 0 to 1.
+- Increased Fenix's (Dragoon) allied push priority from 0 to 1.
+
+Nobody wants their important units stuck in the back. Especially important for Champions because they usually have less range than their non-champion counterparts and often got trapped behind.
+
+- Fixed an issue where Fenix P1 did not increase the cooldown or increase regeneration of the Arbiter suit.
+
+The Arbiter suit gets the increased damage and can only last 20 seconds, but for some reason, despite not mentioning this anywhere in the description, they commented out the parts that modify the Arbiter's regen and cooldown.
+
 - Fixed an issue where Conservator's Protective Field ability/passive would not affect units on a different cliff level.
 - Added a visual effect to Fenix's Recall ability.
 - Fixed an issue where Talis's Ricochet Glaive impact visual would move/rotate with the unit.
@@ -2298,6 +2317,7 @@ The champions do more damage than normal units, so their projectiles should be l
 - Fixed an issue where Fenix's Recall ability tooltip said Arbiter instead of Fenix.
 - Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
 - Added a visual effect to Fenix's Cloaking Field.
+- Changed Avenging Protocol buff tooltip to be more descriptive and show exact speed increase.
 
 yeah.
 

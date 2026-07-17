@@ -9,6 +9,7 @@
 - Fixed an issue where Hercules was missing the Load Nearby command.
 - Fixed an issue where Imperial Intercessor was missing the Load Nearby command.
 - Fixed an issue where Mecha Infestors would sometimes not have their burrowed splat destroyed when unburrowing.
+- Changed Avenging Protocol buff tooltip to be more descriptive and show exact speed increase.
 
 yeah.
 
@@ -25,6 +26,25 @@ If you want to for some reason you want to replicate the absurdity of pre-nerf S
 - Reduced Deconstructive Roach-nites damage from 500 to 300 (+200 vs Structures).
 
 Unlike regular Infestors, there is almost no incentive to add Mecha Infestors into your army for support, as they work better being massed in your base spawning Roaches. Allowing Deconstructive Roach-nites to have some utility on offense should make having a few Mecha Infestors in your army more appealing.
+
+- Fixed an issue where Fenix P1 did not increase the cooldown or increase regeneration of the Arbiter suit.
+
+The Arbiter suit gets the increased damage and can only last 20 seconds, but for some reason, despite not mentioning this anywhere in the description, they commented out the parts that modify the Arbiter's regen and cooldown.
+
+- Increased Champion A.I. allied push priority from 0 to 1.
+- Increased Fenix's (Dragoon) allied push priority from 0 to 1.
+
+Nobody wants their important units stuck in the back. Especially important for Champions because they usually have less range than their non-champion counterparts and often got trapped behind.
+
+- Reworked Kaldalis's Engage ability mover.
+  - Now moves at a fixed speed instead of having a fixed duration.
+
+This ability was slower than Charge when close to the target because of the fixed duration. Now it should always feel snappy.
+
+- Added P2 advantage:
+  - Champion A.I.s have an increased attack priority.
+
+It was tragic watching everything *but* your Champion get killed. Now enemies will be lured to your Champion like a moth to the flame, giving you that sweet refund.
 
 ## 7/16/2026
 
