@@ -249,7 +249,7 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - The Warp Prism will now attempt to immediately siege when instructed rather than prioritizing deceleration.
 - Repair is no longer automatically set to auto-cast for SCVs.
 - Mule Repair is now set to auto-cast by default (Mules with a harvest order still do not attempt to repair units).
-- Buffed Warp Gate Research to also reduces the build time of units produced by Gateways by 40%.
+- Buffed Warp Gate Research to also reduces the build time of units produced by Gateways by 50%.
 - Removed Armored attribute from Creep Tumors.
 - Added Light attribute to Creep Tumors.
 - Added Load Nearby Units commands to all transports.
@@ -257,6 +257,10 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
 - Mutalisk Glaives now prioritize targets.
 - Mutalisk arc slop increased to 180.
+- Warpgates now have selection subgroup priority over Gateways.
+- Warpgates and Gateways are now considered distinct units when issuing 'select all' commands.
+- Gateways and Warpgates can now be issued orders to transform regardless of which is the primary subgroup selection.
+- Selection radius color is now distinct for primary subgroup selection when Colorblind mode is enabled.
 
 Copied from Versus.
 
@@ -821,7 +825,6 @@ These guys are pushovers anyways, give them Blink!
 
 fast banshees go nyoom.
 
-- Increased Ghost (and variants) supply cost from 2 to 3.
 - Changed Ghost (and variants) damage from 10 (+10 vs Light) to 15.
 - Increased Ghost (and variants) attack range from 6 to 7.
 - Increased Ghost (and variants) movement speed from 2.25 to 2.75.

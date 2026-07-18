@@ -232,6 +232,11 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="MasteryTychusFirstHeroPetBuff" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorMorphingintoWarpGateCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="MorphingintoWarpGate" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorPopStunCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="PopStun" State="CompleteOnly"/>
@@ -263,6 +268,11 @@
     <CRequirementCountBehavior id="CountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="VorazunShadowPhaseSuppressed" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorWarpgateDemorphingCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="WarpgateDemorphing" State="CompleteOnlyAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -376,7 +386,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeFenixAvengerCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="CommanderPrestigeFenixAvenger" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeCommanderPrestigeFenixChampionCompleteOnly">
@@ -714,6 +723,9 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="VoidArchonChainReaction" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeWarpGateResearchCompleteOnly3112877171TechTreeCheat">
+        <Tooltip value="RequirementNode/Tooltip/CountUpgradeWarpGateResearchCompleteOnly3112877171TechTreeCheat"/>
+    </CRequirementCountUpgrade>
     <CRequirementEq id="Eq1228785331CountUnitMothershipArtanisQueuedOrBetter0">
         <OperandArray index="0" value="CountUnitMothershipArtanisQueuedOrBetter"/>
         <OperandArray index="1" value="0"/>
@@ -818,6 +830,10 @@
     <CRequirementNot id="Not967556426OrAndNotCountUpgradeTychusMarauderOwnedCompleteOnlyEqCountBehaviorTychusHeroCountCompleteOnlyCountUpgradeTychusHeroMaxCompleteOnly">
         <OperandArray index="0" value="OrAndNotCountUpgradeTychusMarauderOwnedCompleteOnlyEqCountBehaviorTychusHeroCountCompleteOnlyCountUpgradeTychusHeroMaxCompleteOnly"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorMorphingintoWarpGateCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorMorphingintoWarpGateCompleteOnlyAtUnit"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorNovaCombatSuitCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorNovaCombatSuitCompleteOnlyAtUnit"/>
     </CRequirementNot>
@@ -832,6 +848,10 @@
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorVorazunShadowPhaseSuppressedCompleteOnlyAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorWarpgateDemorphingCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorWarpgateDemorphingCompleteOnlyAtUnit"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorZealotPurifierReviveSupressed2CompleteOnlyAtUnit"/>
@@ -1044,6 +1064,10 @@
     <CRequirementNot id="NotOrAndNotCountUpgradeTychusWarhoundOwnedCompleteOnlyEqCountBehaviorTychusHeroCountCompleteOnlyCountUpgradeTychusHeroMaxCompleteOnlyCountUpgradeTychusWarhoundTurretUpgradeCompleteOnly">
         <OperandArray index="0" value="OrAndNotCountUpgradeTychusWarhoundOwnedCompleteOnlyEqCountBehaviorTychusHeroCountCompleteOnlyCountUpgradeTychusHeroMaxCompleteOnlyCountUpgradeTychusWarhoundTurretUpgradeCompleteOnly"/>
     </CRequirementNot>
+    <CRequirementNot id="NotOrCountBehaviorWarpgateDemorphingCompleteOnlyAtUnitCountUpgradeArtanisCommanderCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="OrCountBehaviorWarpgateDemorphingCompleteOnlyAtUnitCountUpgradeArtanisCommanderCompleteOnly"/>
+    </CRequirementNot>
     <CRequirementNot id="NotOrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly">
         <OperandArray index="0" value="OrCountUpgradeHHBomberNapalmQueuedOrBetterCountUpgradeCommanderPrestigeHornerBombingPlatformsCompleteOnly"/>
     </CRequirementNot>
@@ -1237,6 +1261,11 @@
     <CRequirementOr id="OrCountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnitCountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit">
         <OperandArray value="CountBehaviorMasteryTychusFirstHeroCompleteOnlyAtUnit"/>
         <OperandArray value="CountBehaviorMasteryTychusFirstHeroPetBuffCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountBehaviorWarpgateDemorphingCompleteOnlyAtUnitCountUpgradeArtanisCommanderCompleteOnly">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="CountBehaviorWarpgateDemorphingCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUpgradeArtanisCommanderCompleteOnly"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUnitTychusGhostCompleteOnlyAtUnitCountUnitTychusSpectreCompleteOnlyAtUnitCountUnitTychusMedicCompleteOnlyAtUnit">
         <OperandArray value="CountUnitTychusGhostCompleteOnlyAtUnit"/>

@@ -54,6 +54,18 @@ This ability was slower than Charge when close to the target because of the fixe
 
 It was tragic watching everything *but* your Champion get killed. Now enemies will be lured to your Champion like a moth to the flame, giving you that sweet refund.
 
+- Gateway unit train time reduction bonus from researching Warp Gate increased from 40% to 50%.
+- Gateway train visuals will no longer trigger if 'Effects' graphics options are set to low.
+- Warpgates now have selection subgroup priority over Gateways.
+- Warpgates and Gateways are now considered distinct units when issuing 'select all' commands.
+- Gateways and Warpgates can now be issued orders to transform regardless of which is the primary subgroup selection.
+- Reverted spawned Hallucinations inheriting their caster's order queue.
+- Selection radius color is now distinct for primary subgroup selection when Colorblind mode is enabled.
+- Fixed an issue in Team games where Cyclones could fail to deal damage to units detected by an ally.
+- Ghost Supply reduced from 3 to 2.
+
+5.0.16b hotfix changes.
+
 ## 7/16/2026
 
 - Fixed an issue where some buff visuals did not inherit some properties like the cloak effect or unit scale.

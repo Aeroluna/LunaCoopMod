@@ -403,6 +403,9 @@
     <CRequirement id="UseTacticalJumpNoVision">
         <NodeArray index="Show" Link="OrCountUpgradeRaynorCommanderCompleteOnlyCountUpgradeSwannCommanderCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="UseWarpGate">
+        <NodeArray index="Show" Link="NotCountBehaviorMorphingintoWarpGateCompleteOnlyAtUnit"/>
+    </CRequirement>
     <CRequirement id="VoidRayPrismaticAlligned">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Show" Link="CountBehaviorVoidRaySwarmDamageBoostCompleteOnlyAtUnit"/>
@@ -1113,5 +1116,17 @@
         <NodeArray index="Use" Link="CountUpgradeTychusACBandofBrothersCompleteOnly"/>
         <NodeArray index="Show" Link="CountBehaviorTychusHeroExpandedCompleteOnlyAtUnit"/>
         <EditorCategories value="Race:Terran"/>
+    </CRequirement>
+    <CRequirement id="GatewayNotMorphing">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorMorphingintoWarpGateCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="WarpgateNotDemorphing">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorWarpgateDemorphingCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UseGateway">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotOrCountBehaviorWarpgateDemorphingCompleteOnlyAtUnitCountUpgradeArtanisCommanderCompleteOnly"/>
     </CRequirement>
 </Catalog>

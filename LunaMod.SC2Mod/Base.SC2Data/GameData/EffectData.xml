@@ -3080,7 +3080,7 @@
         <ArmorReduction value="0"/>
         <Amount value="20"/>
         <Kind value="Spell"/>
-        <ValidatorArray value="DetectedORNotCloakedBuried"/>
+        <ValidatorArray value="CycloneCloakFix"/>
     </CEffectDamage>
     <CEffectSet id="CycloneWeaponLaunchMissileLeftSet">
         <EffectArray index="0" value="CycloneWeaponLaunchMissileLeft"/>
@@ -6658,31 +6658,17 @@
     <CEffectRemoveBehavior id="SCVMovetoBuildSeekRB">
         <BehaviorLink value="SCVMoveToBuildSeek"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="SCVMovetoBuildAntigriefAB">
-        <Behavior value="SCVMovetoBuildAllyAntiGrief"/>
-    </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="SCVMovetoBuildAntigriefRB">
-        <BehaviorLink value="SCVMovetoBuildAllyAntiGrief"/>
-    </CEffectRemoveBehavior>
     <CEffectEnumArea id="SCVMovetoBuildSearchWorker">
         <ExcludeArray Effect="SCVMovetoBuildSeekAB"/>
         <SearchFilters value="Ground,Worker;Ally,Neutral,Enemy,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="1" Effect="SCVMovetoBuildAllySwitch"/>
+        <AreaArray Radius="1" Effect="SCVMovetoBuildOrder"/>
         <MaxCount value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
-    <CEffectSwitch id="SCVMovetoBuildAllySwitch">
-        <!--CaseArray Validator="TargetIsAlly" Effect="SCVMovetoBuildChangeOwner" FallThrough="1"/-->
-        <CaseArray Effect="SCVMovetoBuildOrder"/>
-    </CEffectSwitch>
-    <CEffectModifyUnit id="SCVMovetoBuildChangeOwner">
-        <ImpactUnit Effect="SCVMovetoBuildSearchWorker" Value="Source"/>
-        <ModifyFlags index="Owner" value="1"/>
-        <ModifyOwnerPlayer Value="Target"/>
-    </CEffectModifyUnit>
     <CEffectIssueOrder id="SCVMovetoBuildOrder">
         <ValidatorArray value="VespeneMovetoBuildCombine"/>
         <ValidatorArray value="IsNotActiveBuilderSCV"/>
+        <ValidatorArray value="IsSCVType"/>
         <Abil value="move"/>
         <CmdFlags index="Preempt" value="1"/>
         <CmdFlags index="SmartClick" value="1"/>

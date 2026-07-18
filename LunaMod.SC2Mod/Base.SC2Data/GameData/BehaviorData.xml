@@ -3147,14 +3147,6 @@
         <PeriodicEffect value="SCVMovetoBuildSearchWorker"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="SCVMovetoBuildAllyAntiGrief">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <DamageResponse ModifyFraction="0" TargetFilters="-;Player,Neutral,Enemy" Priority="10">
-            <Chance value="1"/>
-        </DamageResponse>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="SCVMoveToGatherSeek">
         <BehaviorFlags index="Permanent" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -3173,9 +3165,6 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="0.75"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="Hallucination">
-        <InitialEffect value="CopyOrdersCaster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CreepTumorActive">
         <InfoFlags index="Hidden" value="1"/>
@@ -3251,6 +3240,19 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Duration value="4.07"/>
         <ExpireEffect value="MuleAutocastEnable"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WarpgateDemorphing">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="WarpgateDemorphing"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MorphingintoWarpGate">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GatewayMorphing"/>
+        <Modification>
+            <AbilLinkDisableArray value="Rally"/>
+        </Modification>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
 </Catalog>

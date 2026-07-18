@@ -855,13 +855,11 @@
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
         <Speed value="2.75"/>
         <Attributes index="Light" value="1"/>
-        <Food value="-3"/>
     </CUnit>
     <CUnit id="Ghost_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakStrong"/>
         <Speed value="2.75"/>
         <Attributes index="Light" value="1"/>
-        <Food value="-3"/>
     </CUnit>
     <CUnit id="Goliath_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
@@ -1191,7 +1189,6 @@
         <CostResource index="Vespene" value="125"/>
         <EnergyStart value="75"/>
         <Attributes index="Light" value="1"/>
-        <Food value="-3"/>
     </CUnit>
     <CUnit id="GreaterNydusDestroyerDeepTunnelPlacement">
         <Facing value="29.9926"/>
@@ -3625,6 +3622,9 @@
         <BehaviorArray Link="Unmoved"/>
         <BehaviorArray Link="Unrepairable"/>
     </CUnit>
+    <CUnit id="Spectre">
+        <Attributes index="Light" value="1"/>
+    </CUnit>
     <CUnit id="SpineCrawler">
         <CardLayouts index="0">
             <LayoutButtons index="3" Column="1"/>
@@ -5100,6 +5100,7 @@
                 <Column value="0"/>
             </LayoutButtons>
         </CardLayouts>
+        <Attributes index="Light" value="1"/>
     </CUnit>
     <CUnit id="TychusHERC">
         <CardLayouts index="0">
@@ -5467,6 +5468,7 @@
                 <Column value="0"/>
             </LayoutButtons>
         </CardLayouts>
+        <Attributes index="Light" value="1"/>
     </CUnit>
     <CUnit id="TychusWarhound">
         <CardLayouts index="0">
@@ -5533,7 +5535,6 @@
         <MinimapRadius value="0.375"/>
         <Speed value="2.75"/>
         <Attributes index="Light" value="1"/>
-        <Food value="-5"/>
     </CUnit>
     <CUnit id="ThorMengsk">
         <BehaviorArray Link="MengskGuardSpellReduction"/>
@@ -6314,7 +6315,7 @@
                 <Row value="2"/>
                 <Column value="2"/>
             </LayoutButtons>
-            <LayoutButtons index="20" removed="1"/>
+            <LayoutButtons index="20" Face="MorphBackToGateway" AbilCmd="MorphBackToGateway,Execute" Row="2" Column="1"/>
             <LayoutButtons index="21" removed="1"/>
             <LayoutButtons index="22" removed="1"/>
         </CardLayouts>
@@ -7334,11 +7335,12 @@
             <LayoutButtons index="7" Column="3"/>
             <LayoutButtons index="12" Face="WarpInSupplicant" AbilCmd="WarpGateTrain,Train11"/>
             <LayoutButtons index="16" Face="AlarakMasteryUnitAttackSpeed" Type="Passive" AbilCmd="" Requirements="HaveMasteryAlarakUnitAttackSpeed" Row="2"/>
-            <LayoutButtons index="17" removed="1"/>
+            <LayoutButtons index="17" Face="UpgradeToWarpGate" Type="AbilCmd" AbilCmd="UpgradeToWarpGate,Execute" Row="2" Column="0"/>
             <LayoutButtons index="18" removed="1"/>
         </CardLayouts>
         <CardLayouts index="1" removed="1"/>
         <CardLayouts index="2" removed="1"/>
+        <SelectAlias value="WarpGate"/>
     </CUnit>
     <CUnit id="WarpPrism">
         <Speed value="2.9531"/>

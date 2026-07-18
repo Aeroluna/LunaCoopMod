@@ -1522,6 +1522,16 @@
     <CValidatorUnitCompareBehaviorCount id="IsNotActiveBuilderSCV">
         <Behavior value="IsActiveBuilderSCV"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsSCVType">
+        <CombineArray value="IsSCV"/>
+        <CombineArray value="IsTychusSCV"/>
+        <CombineArray value="IsSISCV"/>
+        <CombineArray value="IsTrooperMengskAnyOrLaborerMengsk"/>
+        <CombineArray value="IsHHSCV"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsHHSCV">
+        <Value value="HHSCV"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="DetectedORNotCloakedBuried">
         <CombineArray value="IsDetected"/>
         <CombineArray value="NotCloakedAndNotBuried"/>
@@ -1685,4 +1695,17 @@
         <CombineArray value="IsNotDisguisedChangeling"/>
         <CombineArray value="NotHallucinationOrNotDetected"/>
     </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="GatewayMorphing">
+        <AbilLink value="UpgradeToWarpGate"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitOrderQueue id="WarpgateDemorphing">
+        <AbilLink value="MorphBackToGateway"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorCombine id="CloakedOrBuried">
+        <CombineArray value="TargetIsCloaked"/>
+        <CombineArray value="IsBuried"/>
+    </CValidatorCombine>
+    <CValidatorCondition id="CycloneCloakFix">
+        <IfArray Test="CloakedOrBuried" Return="TargetIsVisible"/>
+    </CValidatorCondition>
 </Catalog>
