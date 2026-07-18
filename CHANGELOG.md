@@ -1,5 +1,9 @@
 # Changelog
 
+## 7/18/2026
+
+- Replaced the Drakken Laser Drill construction sound.
+
 ## 7/17/2026
 
 - Fixed an issue where Vorazun's Void Sanctuary lasted longer than intended.
