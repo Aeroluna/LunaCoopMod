@@ -1,8 +1,20 @@
 # Changelog
 
-## 7/18/2026
+## 7/20/2026
 
 - Replaced the Drakken Laser Drill construction sound.
+
+yeah.
+
+- Added Heroic attribute to Telbrus.
+- Added Heroic attribute to Zoraya.
+- Added Heroic attribute to Serdath.
+
+They deserve the Heroic attribute!
+
+### Death from Above
+
+- Fixed an issue where Zeratul's artifacts could spawn in unpathable locations.
 
 ## 7/17/2026
 
@@ -903,7 +915,7 @@ AI ally was too good at holding without players.
 
 - Removed the ability for the ally AI to detect Changelings.
 
-### Solar Rite
+### Solar Right
 
 - Increased the amount of Solarite player workers can carry from 15 to 20.
 - Increased the hit test scale of Solarite (should be easier to click).

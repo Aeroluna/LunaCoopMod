@@ -2772,9 +2772,15 @@ Not sure why these guys are dead quiet but now they have a soundset for when you
 The Ihan-rii skin is basically a more complete version of Zeratul's skin so it used over his skin. Also added some more lore-accurate portraits.
 
 - Fixed an issue where Tesseract Monoliths had no warp-in animation.
-- Increased time to warp-in Tesseract Monoliths from 1 second to 4 seconds.
+- Increased time to warp-in Tesseract Monoliths from 1 second to 5 seconds.
 
 Increased the warp-in time to compensate for the warp-in animation actually existing now.
+
+- Added Heroic attribute to Telbrus.
+- Added Heroic attribute to Zoraya.
+- Added Heroic attribute to Serdath.
+
+They deserve the Heroic attribute!
 
 - Fixed an issue where the warp-in animation for Zoraya Legion was visually attached overhead the Void Ray model.
 - Fixed an issue where Xel'naga Abrogators could not attack map objective structures (e.g. Void Shards).
