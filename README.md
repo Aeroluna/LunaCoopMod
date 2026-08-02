@@ -1762,6 +1762,10 @@ Abathur's Swarm Host already got the Deep Tunnel ability, now they poop creep as
 
 Makes microing Swarm Host much easier. No longer do you have to unburrow your Swarm Host to go pick up Biomass.
 
+- Changed Abathur P2 to double the range of Swarm Host's Spawn Locust weapon.
+
+This change in addition to the previous change makes Swarm Host play feel soooo much better.
+
 - Added small delay to Toxic Nest explode when autocast.
   - Explodes quicker against fast units.
 
@@ -1801,7 +1805,6 @@ Leviathan's have four holes, use them all! This bug was caused by using the orig
 
 - Fixed an issue where Swarm Host Spawn Locust ability could only target within a small range.
 - Reduced the allied push priority of Locust from 0 to -1.
-- Changed Abathur P2 to double the range of Swarm Host's Spawn Locust weapon.
 - Reduced the volume of Symbiote's Stab ability.
 - Renamed Symbiote's Shell ability to Carapace.
 - Fixed an issue where Evolve to Brutalisk did not have a descriptive tooltip.

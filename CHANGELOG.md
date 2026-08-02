@@ -1,5 +1,11 @@
 # Changelog
 
+## 8/2/2026
+
+- Fixed an issue where Abathur's Ravagers had no burrowed splat when burrowed.
+- Fixed an issue where Infested Bunkers had no death animation.
+- Fixed an issue where Fenix P2 did not affect phasing Conservators.
+
 ## 7/20/2026
 
 - Replaced the Drakken Laser Drill construction sound.

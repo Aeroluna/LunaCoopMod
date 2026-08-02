@@ -435,6 +435,42 @@
     <CModel id="RoboticsFacility_Zeratul_COOP_WarpIn">
         <Model value="Assets\Buildings\Protoss\RoboticsFacility_Ihanrii_WarpIn\RoboticsFacility_Ihanrii_WarpIn.m3"/>
     </CModel>
+    <CModel id="SIInfestedBunkerDeath">
+        <Events index="0" Name="SIBuilding_PreExplosionSmall" Payload="SIBuilding_PreExplosionSmall"/>
+        <Events index="1" Name="SIBuilding_ExplosionLarge" Time="0.933000" Payload="SIBuilding_ExplosionLarge"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="Zerg_ExplosionMedium"/>
+            <Type value="Sound"/>
+            <Time value="0.933000"/>
+            <Payload value="Zerg_ExplosionMedium"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="SIBuilding_PreExplosionSmall"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="SIBuilding_PreExplosionSmall"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="SIBuilding_ExplosionLarge"/>
+            <Type value="Sound"/>
+            <Time value="0.466000"/>
+            <Payload value="SIBuilding_ExplosionLarge"/>
+        </Events>
+        <Events>
+            <Anim value="Death,01"/>
+            <Name value="Zerg_ExplosionMedium"/>
+            <Type value="Sound"/>
+            <Time value="0.466000"/>
+            <Payload value="Zerg_ExplosionMedium"/>
+        </Events>
+        <Model value="Assets\Buildings\Terran\BunkerDeathEx1\BunkerDeathEx1.m3"/>
+    </CModel>
+    <CModel id="SIInfestedBunkerDeathEmpty" parent="SIInfestedBunkerDeath">
+        <Model value="Assets\Buildings\Terran\BunkerEmptyDeathEx1\BunkerEmptyDeathEx1.m3"/>
+    </CModel>
     <CModel id="SILiberatorSwarmFormDot" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Zerg\ParasiticBombImpact\ParasiticBombImpact.m3"/>
         <EditorCategories value="Race:Zerg"/>

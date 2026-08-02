@@ -622,6 +622,14 @@
     <CUpgrade id="ArtilleryMengskRange">
         <EffectArray Reference="Weapon,ArtilleryMengskBombardment,MinScanRange" Value="25"/>
     </CUpgrade>
+    <CUpgrade id="CommanderPrestigeFenixDataWeb">
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,CostResource[Minerals]" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,CostResource[Vespene]" Value="40"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,LifeMax" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,LifeStart" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,ShieldsMax" Value="20"/>
+        <EffectArray Operation="Subtract" Reference="Unit,SentryFenixPhasing,ShieldsStart" Value="20"/>
+    </CUpgrade>
     <CUpgrade id="CommanderPrestigeTychusSquadAbilitiesMasteryGrenadeCooldown">
         <EffectArray index="0" Value="0"/>
         <EffectArray index="1" Value="0.000000"/>
@@ -1822,12 +1830,14 @@
         <EffectArray Reference="Unit,KelMorianGrenadeTurret,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,MissileTurret,CostResource[Minerals]" Value="100"/>
         <EffectArray Reference="Unit,PerditionTurret,CostResource[Minerals]" Value="150"/>
+        <EffectArray Reference="Unit,PerditionTurretUnderground,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,PlanetaryFortress,CostResource[Vespene]" Value="150"/>
         <EffectArray Reference="Unit,PlanetaryFortress,CostResource[Minerals]" Value="150"/>
         <EffectArray Reference="Unit,KelMorianMissileTurret,CostResource[Minerals]" Value="100"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannMovingTurretPrice">
         <EffectArray Operation="Subtract" Reference="Unit,PerditionTurret,CostResource[Minerals]" Value="75"/>
+        <EffectArray Operation="Subtract" Reference="Unit,PerditionTurretUnderground,CostResource[Minerals]" Value="75"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannTurrets">
         <EffectArray Reference="Unit,ThorAP,CostResource[Vespene]" Value="100"/>
