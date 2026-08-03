@@ -358,6 +358,24 @@
         <Facing value="270"/>
         <FlagArray index="Turnable" value="0"/>
     </CUnit>
+    <CUnit id="HHRavenSiegeMode">
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="250"/>
+        <AbilArray Link="RavenShredderMissile"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="9" Row="1" Column="0"/>
+            <LayoutButtons Face="RavenShredderMissile" Type="AbilCmd" AbilCmd="RavenShredderMissile,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="HHRaven_SpawnerUnit">
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="250"/>
+    </CUnit>
     <CUnit id="InfestorWeaponStetmann" parent="MISSILE">
         <Race value="Zerg"/>
         <Mover value="MissileDefault"/>
@@ -886,6 +904,18 @@
     </CUnit>
     <CUnit id="HHRaven">
         <Height value="4.15"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Speed value="2.75"/>
+        <Food value="-4"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="250"/>
+        <AbilArray Link="RavenShredderMissile"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Column="2"/>
+            <LayoutButtons index="8" Row="1" Column="0"/>
+            <LayoutButtons Face="RavenShredderMissile" Type="AbilCmd" AbilCmd="RavenShredderMissile,Execute" Row="2" Column="1"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="HHStarport">
         <CardLayouts index="0">
@@ -2703,13 +2733,19 @@
     </CUnit>
     <CUnit id="Raven">
         <Height value="4.15"/>
+        <Speed value="2.75"/>
     </CUnit>
     <CUnit id="RavenMengsk">
         <Height value="4.15"/>
+        <Speed value="2.75"/>
+    </CUnit>
+    <CUnit id="RavenShredderMissileWeapon">
+        <Mover value="RavenShredderMissileDirect"/>
     </CUnit>
     <CUnit id="Raven_BlackOps">
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakWeak"/>
         <Height value="4.15"/>
+        <Speed value="2.75"/>
     </CUnit>
     <CUnit id="Reaver">
         <AbilArray Link="ReaverChase"/>

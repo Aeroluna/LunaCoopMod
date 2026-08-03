@@ -3,8 +3,24 @@
 ## 8/2/2026
 
 - Fixed an issue where Abathur's Ravagers had no burrowed splat when burrowed.
-- Fixed an issue where Infested Bunkers had no death animation.
+- Fixed an issue where rooted Infested Bunkers had no death animation (Uprooted are still missing a death animation).
 - Fixed an issue where Fenix P2 did not affect phasing Conservators.
+- Fixed an issue where Han & Horner P1 did not affect Theia Ravens in Silent Mode.
+
+yeah.
+
+- Increased movement speed of Ravens from 2.25 to 2.75.
+
+Ravens have had increased movement speed since LotV released, but somehow that change didn't make it into Co-op.
+
+- Increased Theia Raven life from 140 to 300.
+- Increased Theia Raven supply cost from 2 to 4.
+- Incraesed Theia Raven cost from 100/200 to 200/250.
+- Increased Theia Raven visual scale by 15%.
+- Added Anti-Armor Missile ability to Theia Ravens.
+  - Deploys a missile which pursues the target unit and, upon contact, reduces the armor and shield armor of affected units by 2 for 30 seconds.
+
+Han & Horner get an elite Viking, Wraith, Battlecruiser, and then randomly a normal statted Raven? Now they also get a cool ability instead of being an a-move unit.
 
 ## 7/20/2026
 

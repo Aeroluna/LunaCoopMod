@@ -1042,6 +1042,21 @@
     <CEffectCreatePersistent id="NydusDestroyerBeamCP">
         <PeriodicValidator value="NydusDestroyerBeamValidators"/>
     </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="RavenShredderMissileArmorReductionUISubtruct">
+        <ValidatorArray index="0" value="RavenShredderMissileArmorReductionUIAddTargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <Marker Link="Effect/RavenShredderMissileArmorReductionUIAdd"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="RavenShredderMissileDamage">
+        <Amount value="0"/>
+        <AreaArray index="0" Radius="0.72"/>
+        <AreaArray index="1" Radius="1.44"/>
+        <AreaArray index="2" Radius="2.88"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="RavenShredderMissileImpactSearchArea">
+        <SearchFilters value="-;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Radius="2.88" Effect="RavenShredderMissileArmorReductionUISubtruct"/>
+    </CEffectEnumArea>
     <CEffectCreateUnit id="ReaperKD8Knockback">
         <ValidatorArray index="2" value="IsNotBuried"/>
     </CEffectCreateUnit>

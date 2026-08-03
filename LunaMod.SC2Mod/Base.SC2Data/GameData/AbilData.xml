@@ -345,6 +345,10 @@
         <InfoArray index="Train1">
             <Button DefaultButtonFace="HHWraith"/>
         </InfoArray>
+        <InfoArray index="Train4">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="250"/>
+        </InfoArray>
     </CAbilWarpTrain>
     <CAbilEffectInstant id="HallucinationAdept">
         <Flags index="TransientPreferred" value="1"/>
@@ -604,6 +608,13 @@
     <CAbilMorph id="PhasingMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="RavenShredderMissile">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Repair">
         <Flags index="AutoCastOn" value="0"/>
     </CAbilEffectTarget>

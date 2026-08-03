@@ -261,6 +261,7 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Warpgates and Gateways are now considered distinct units when issuing 'select all' commands.
 - Gateways and Warpgates can now be issued orders to transform regardless of which is the primary subgroup selection.
 - Selection radius color is now distinct for primary subgroup selection when Colorblind mode is enabled.
+- Increased movement speed of Ravens from 2.25 to 2.75.
 
 Copied from Versus.
 
@@ -1812,6 +1813,7 @@ Leviathan's have four holes, use them all! This bug was caused by using the orig
 - Fixed an issue where burrowed Ravagers could not use Evolve to Brutalisk.
 - Changed Aberrations to no longer walk over massive units.
 - Changed Brutalisks to no longer walk over massive units.
+- Fixed an issue where burrowed Ravagers had no burrowed splat.
 
 yeah.
 
@@ -2244,6 +2246,7 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones! (Dave
 - Reworked Infested Diamondback attack to beam instead of projectile.
 - Fixed an issue where Infested Banshees did not play a sound when enabling/disabling Cloak.
 - Fixed an issue where Volatile Infested used the wrong icon/wireframe.
+- Fixed an issue where rooted Infested Bunkers had no death animation (Uprooted are still missing a death animation).
 
 yeah. The Siege Tank bug took way too long to figure out...
 
@@ -2325,6 +2328,7 @@ The Arbiter suit gets the increased damage and can only last 20 seconds, but for
 - Fixed an issue where Fenix (Arbiter) used incorrect voice lines when casting Stasis Field.
 - Added a visual effect to Fenix's Cloaking Field.
 - Changed Avenging Protocol buff tooltip to be more descriptive and show exact speed increase.
+- Fixed an issue where P2 did not affect phasing Conservators.
 
 yeah.
 
@@ -2533,6 +2537,15 @@ It's a damn Yamato cannon, it should be long range! Just feels natural, y'know?
 
 This should keep the Raven farther back and not randomly die as easily.
 
+- Increased Theia Raven life from 140 to 300.
+- Increased Theia Raven supply cost from 2 to 4.
+- Incraesed Theia Raven cost from 100/200 to 200/250.
+- Increased Theia Raven visual scale by 15%.
+- Added Anti-Armor Missile ability to Theia Ravens.
+  - Deploys a missile which pursues the target unit and, upon contact, reduces the armor and shield armor of affected units by 2 for 30 seconds.
+
+Han & Horner get an elite Viking, Wraith, Battlecruiser, and then randomly a normal statted Raven? Now they also get a cool ability instead of being an a-move unit.
+
 - Removed Junker skins for Deimos Viking, Theia Raven, Sovereign Battlecruiser, and Strike Fighters.
 - Added Covert-Ops portraits for Deimos Viking, Theia Raven, and Sovereign Battlecruiser.
 
@@ -2581,6 +2594,7 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where Strike Fighter Platform's tooltip still listed "Limit 10" as a requirement when playing P3.
 - Changed Theia Raven's Analyze Weakness to prioritize attacking units and structures.
 - Fixed an issue where Reapers had a small delay before they actually died.
+- Fixed an issue where P1 did not affect Theia Ravens in Silent Mode.
 
 yeah.
 
