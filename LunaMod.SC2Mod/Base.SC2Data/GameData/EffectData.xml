@@ -143,9 +143,36 @@
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
+    <CEffectCreateUnit id="CommanderPrestigeArtanisOrbitalStrikesArchonPrecursor">
+        <CreateFlags index="Precursor" value="1"/>
+    </CEffectCreateUnit>
     <CEffectSet id="CommanderPrestigeArtanisPowerFieldWarpSet">
         <ValidatorArray value="NotUnmoved"/>
     </CEffectSet>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchAir">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchArmored">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchBiological">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchLight">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchMassive">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchMechanical">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaDevourSearchPsionic">
+        <SearchFilters value="-;Neutral,Enemy,Structure,RawResource,HarvestableResource,Missile,Item,Dead,Hidden,Hallucination,MapBoss"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="CommanderPrestigeDehakaPackLeadersTrackSearch">
+        <AreaArray index="0" MaxCount="0"/>
+    </CEffectEnumArea>
     <CEffectCreatePersistent id="CommanderPrestigeMengskZergZergling">
         <Flags index="RandomPeriod" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
@@ -210,6 +237,9 @@
         <WhichUnit Value="Source"/>
         <BehaviorCategories index="Restorable" value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="ConsumeDNACP">
+        <PeriodicValidator value="NotInvulnerable"/>
+    </CEffectCreatePersistent>
     <CEffectModifyUnit id="CopyOrdersRavagerMorph">
         <ModifyFlags index="CopyAutoCast" value="0"/>
     </CEffectModifyUnit>
@@ -278,6 +308,9 @@
         <AreaArray Radius="2" Effect="DefensiveMatrixSet"/>
         <MinCount value="1"/>
     </CEffectEnumArea>
+    <CEffectModifyUnit id="DehakaConsumeEffectHealBiological">
+        <ValidatorArray value="NotUnrepairable"/>
+    </CEffectModifyUnit>
     <CEffectDamage id="DehakaCoopAirDamage">
         <Amount value="0">
             <AccumulatorArray value="DehakaLevelMammothBeamDamageMultiplier"/>
@@ -677,6 +710,9 @@
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="FenixWarbringerColossusThermalLancesMU">
+        <ValidatorArray value="NotInvulnerable"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
@@ -914,6 +950,9 @@
     <CEffectEnumArea id="MothershipMassRecallSearch">
         <AreaArray index="0" Effect="MothershipMassRecallSearchSet"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="MutatorAmonZagaraBanelingBarrageMissileScan">
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="MutatorCandyCapAB">
         <Behavior value="MutatorCandyCap"/>
     </CEffectApplyBehavior>
@@ -1064,6 +1103,13 @@
         <ValidatorArray index="2" value="IsNotBuried"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="CommanderPrestigeRaynorMercenaryRallyCP"/>
+    <CEffectCreatePersistent id="SOAOrbitalStrikeCP">
+        <InitialEffect value="SOAOrbitalStrikeImpactDummy"/>
+        <ExpireEffect value="SOAOrbitalStrikeImpactSet"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="SOAOrbitalStrikeImpactSet">
+        <EffectArray index="0" value="SOAOrbitalStrikeImpactSearch"/>
+    </CEffectSet>
     <CEffectSet id="SpawnLarvaSet">
         <EffectArray value="QueenInjectStunAB"/>
         <ValidatorArray value="NotContaminated"/>
@@ -1072,6 +1118,9 @@
     <CEffectCreatePersistent id="SymbioteStabInitialCP">
         <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="ThermalLancesMU">
+        <ValidatorArray value="NotInvulnerable"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="ThorMengskInterruptedMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
         <ExpireEffect value="ThorMengskUnsiegeMorphOrderSet"/>
@@ -6093,6 +6142,9 @@
     <CEffectDamage id="ZagaraParasiteSporeDamage">
         <Amount value="28"/>
     </CEffectDamage>
+    <CEffectSet id="ZagaraVoidCoopBanelingBarrageForceFieldExplodeSearchSet">
+        <ValidatorArray index="0" value="TargetIsForceFieldType"/>
+    </CEffectSet>
     <CEffectEnumArea id="ZagaraVoidCoopBanelingBarrageMissileScan">
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>

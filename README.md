@@ -792,7 +792,7 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
   - Increases damage vs. armored units by +6 for 20 seconds.
   - Reduces movement speed by 25% while active.
 - Added Prismatic Alignment AI to Void Rays.
-- Fixed a bug where Void Rays could still do a small amount of damage if their current target became invulnerable (Your Stetellites are now safe).
+- Fixed an issue where Void Rays could still deal damage if their current target became invulnerable.
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
 
@@ -1984,6 +1984,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Fixed an issue where Alarak's Imposing Presence tooltip did not list Massive unit immunity.
 - Reworded the tooltip of Supplicant's Blood Shields upgrade.
 - Changed Havoc's Target Lock to prioritize attacking units and structures.
+- Fixed an issue where Alarak's Soul Absorption could absorb precursor units (placeholder units for knockback effects).
 
 yeah.
 

@@ -87,6 +87,10 @@
     <CActorUnit id="CivilianFemale">
         <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
     </CActorUnit>
+    <CActorMissile id="DehakaCoop">
+        <On Terms="Behavior.CommanderPrestigeDehakaPackLeadersExitGame.On" Send="Create DehakaCoopBurrowedSplat"/>
+        <On Terms="Behavior.CommanderPrestigeDehakaPackLeadersExitGame.Off" Target="DehakaCoopBurrowedSplat" Send="Destroy"/>
+    </CActorMissile>
     <CActorModel id="DisablingCloud">
         <Model value="DisablingCloud"/>
     </CActorModel>
@@ -164,6 +168,14 @@
         <On index="67" Send="SetScale 1.250000 0.400000"/>
         <On index="70" Send="SetScale 1.250000 0.400000"/>
     </CActorUnit>
+    <CActorMissile id="MutatorAmonZagara">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\wireframe-zerg-expeditionqueenlevel2.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-expeditionqueenlevel2.dds"/>
+        </Wireframe>
+    </CActorMissile>
     <CActorUnit id="MutatorCandyBowl">
         <On Terms="ButtonHover.MutatorCandy.On" Send="Create MutatorCandyRange"/>
         <On Terms="ButtonHover.MutatorCandy.Off" Target="MutatorCandyRange" Send="Destroy"/>

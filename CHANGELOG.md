@@ -23,12 +23,22 @@
 - Fixed an issue where Abathur's Swarm Host's Spawn Locust ability did not have a descriptive tooltip.
 - Fixed an issue where Dehaka's Primal Host's Spawn Locust ability did not have a descriptive tooltip.
 - Fixed an issue where Dehaka's Creeper Host's Spawn Locust ability did not have a descriptive tooltip.
+- Fixed an issue where Artanis's P3 Unbound Fanatics would spawn slightly before the Orbital Strike landed
+- Fixed an issue where Colossi could still deal damage if their current target became invulnerable.
+- Fixed an issue where Hybrid Reaver/Behemoth's Consume DNA ability could still deal damage if the target became invulnerable.
+- Fixed an issue where lava damage on The Vermillion Problem could still deal damage if the target became invulnerable.
+- Fixed an issue where Dehaka's P1 could affect map objectives, e.g. Aurana's Transport, Harvesting Bots.
+- Fixed an issue where Dehaka's P2 disadvantage could be negated by loading Dehaka into a Nydus Worm before using Pack Leaders.
 
 I'm back with a ton of bug fixes.
 
 - Increased Abathur's Swarm Host life from 120 to 160.
 
 Parity with Amon's Swarm Host.
+
+- Added a burrowed splat when Dehaka P2 exits the map.
+
+Don't forget where you left your Dehaka!
 
 ## 8/2/2026
 

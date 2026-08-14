@@ -425,6 +425,13 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="BroodLordHangarCD"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="TargetIsForceFieldTaldarim">
+        <Value value="ForceFieldTaldarim"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="TargetIsForceFieldType">
+        <CombineArray value="TargetIsForceField"/>
+        <CombineArray value="TargetIsForceFieldTaldarim"/>
+    </CValidatorCombine>
     <CValidatorLocationCompareRange id="ThorMengskSiegedNotOutOfRange">
         <Compare value="LE"/>
         <Range value="8"/>
