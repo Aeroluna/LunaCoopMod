@@ -31,6 +31,14 @@
 - Fixed an issue where Dehaka's P2 disadvantage could be negated by loading Dehaka into a Nydus Worm before using Pack Leaders.
 - Fixed an issue where when either Dehaka gains Deadly Reach with P3, both benefit from the upgrade.
 - Fixed an issue where Zweihaka would rally towards a random unit if no rally is set.
+- Fixed an issue where invulnerable units could trigger Stasis Wards.
+- Fixed an issue where Adepts and Talis could not use Psionic Projection if stasised while on cooldown.
+- Fixed an issue where Fenix's Champion A.I.s had the wrong resources costs (This affected calculations like Han & Horners salvage).
+- Fixed an issue where Warbringer ignored armor.
+- Fixed an issue where Dominion Starports did not respawn if killed by a Propagator.
+- Fixed an issue where Parasitic Bomb did not work on Han & Horner's Reapers while flying.
+- Fixed an issue where Parasitic Bomb did not work on some ground/air units like Void Thrashers.
+- Fixed an issue where some structure disabling effects did not affect Supply Bunkers/Infested Bunkers.
 
 I'm back with a ton of bug fixes.
 

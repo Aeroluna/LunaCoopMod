@@ -115,6 +115,9 @@
     <CEffectSwitch id="BlindingCloudSwitch">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSwitch>
+    <CEffectEnumTransport id="BlindingCloudTransportIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectApplyBehavior id="BroodLordHangarCD">
         <EditorCategories value="Race:Zerg"/>
         <WhichUnit Value="Caster"/>
@@ -126,6 +129,9 @@
         <Abil value="BroodLordHangar"/>
         <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
+    <CEffectEnumTransport id="BuildingStasisIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectDamage id="C10CanisterRifle">
         <AttributeBonus index="Light" value="0"/>
         <Amount value="15"/>
@@ -144,6 +150,10 @@
     <CEffectEnumArea id="ChangelingDisguiseEx3Search">
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,MapBoss"/>
     </CEffectEnumArea>
+    <CEffectEnumTransport id="ColossusIceIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+        <!-- heroic units in a bunker will get the standard slow -->
+    </CEffectEnumTransport>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
@@ -250,6 +260,9 @@
     <CEffectModifyUnit id="CopyOrdersRavagerMorph">
         <ModifyFlags index="CopyAutoCast" value="0"/>
     </CEffectModifyUnit>
+    <CEffectEnumTransport id="CorsairMPDisruptionWebIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectSet id="CorsairMPDisruptionWebSet">
         <ValidatorArray value="NotFriendlyFire"/>
     </CEffectSet>
@@ -308,6 +321,9 @@
         <EffectArray value="WarpBlades"/>
         <EffectArray value="BeamTargetCD"/>
     </CEffectSet>
+    <CEffectEnumTransport id="DarkTemplarVoidStasisIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectEnumArea id="DefensiveMatrixAoE">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>
@@ -409,6 +425,9 @@
         <EffectArray value="DisguiseEx3AttackMoveBugFix"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
     </CEffectSet>
+    <CEffectEnumTransport id="DisruptionCloudTransportIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectCreatePersistent id="DrakkenLaserDrillResetTurretFacingCP">
         <InitialOffset value="0,-5,0"/>
     </CEffectCreatePersistent>
@@ -714,11 +733,15 @@
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
     </CEffectCreateUnit>
+    <CEffectEnumTransport id="FenixWarbringerColossusIceIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesForward">
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="FenixWarbringerColossusThermalLancesMU">
         <ValidatorArray value="NotInvulnerable"/>
+        <ArmorReduction value="1"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
@@ -802,6 +825,15 @@
     <CEffectCreateUnit id="HHReaperCluster">
         <ValidatorArray index="1" value="IsNotBuried"/>
     </CEffectCreateUnit>
+    <CEffectRemoveBehavior id="HHStarportPreventDestroyRB">
+        <BehaviorLink value="HHStarportPreventDestroy"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="HHStarportPreventDestroySet">
+        <EffectArray value="HHStarportPreventDestroyRB"/>
+        <EffectArray value="GrantKillCreditDummy"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
     <CEffectCreateHealer id="HealingDroneHeal">
         <ValidatorArray index="7" value=""/>
     </CEffectCreateHealer>
@@ -840,6 +872,9 @@
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="IsNotISInfestedBunkerUprooted"/>
     </CEffectSet>
+    <CEffectEnumTransport id="HybridGeneralPhaseShiftIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectLaunchMissile id="HyperionVoidCoopGroundLM">
         <ValidatorArray value="TargetInWeaponRange"/>
         <ValidatorArray value="IsNotDisguisedChangeling"/>
@@ -1016,6 +1051,9 @@
     <CEffectApplyBehavior id="MutatorFear">
         <ValidatorArray index="0" value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectEnumTransport id="MutatorGravitonBombIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectApplyBehavior id="NeuralParasiteChildren">
         <EditorCategories value="Race:Zerg"/>
     </CEffectApplyBehavior>
@@ -1110,6 +1148,12 @@
         <ValidatorArray index="2" value="IsNotBuried"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="CommanderPrestigeRaynorMercenaryRallyCP"/>
+    <CEffectEnumTransport id="SOABlindIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
+    <CEffectEnumTransport id="SOAGravitonBombIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectCreatePersistent id="SOAOrbitalStrikeCP">
         <InitialEffect value="SOAOrbitalStrikeImpactDummy"/>
         <ExpireEffect value="SOAOrbitalStrikeImpactSet"/>
@@ -1117,6 +1161,9 @@
     <CEffectSet id="SOAOrbitalStrikeImpactSet">
         <EffectArray index="0" value="SOAOrbitalStrikeImpactSearch"/>
     </CEffectSet>
+    <CEffectEnumTransport id="ShadowGuardDetectionDisableAuraIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+    </CEffectEnumTransport>
     <CEffectSet id="SpawnLarvaSet">
         <EffectArray value="QueenInjectStunAB"/>
         <ValidatorArray value="NotContaminated"/>
@@ -2063,6 +2110,7 @@
     </CEffectSet>
     <CEffectEnumTransport id="CoopMurvarPukePuddleIterateTransport">
         <Effect value="CoopMurvarPukePuddleBehavior"/>
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
     <CEffectSet id="CoopMurvarPukePuddleSet">
         <EffectArray index="1" value="CoopMurvarPukePuddleBehavior"/>
@@ -2124,6 +2172,7 @@
     </CEffectSet>
     <CEffectEnumTransport id="DisablingCloudIterateTransport">
         <Effect value="DisablingCloudBehaviorSet"/>
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
     <CEffectApplyBehavior id="DisablingCloudMovementApplyBehavior">
         <EditorCategories value="Race:Zerg"/>
@@ -3026,6 +3075,10 @@
     <CEffectSet id="VileAcidSlowAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectSet>
+    <CEffectEnumTransport id="VileAcidSlowIterateTransport">
+        <ValidatorArray index="0" value="IsBunkerCombine"/>
+        <!-- heroic units in a bunker will get the standard slow -->
+    </CEffectEnumTransport>
     <CEffectApplyBehavior id="VoidArchonDeathAB">
         <Behavior value="AscendantArchonDummySelfBuff"/>
         <Count value="0">

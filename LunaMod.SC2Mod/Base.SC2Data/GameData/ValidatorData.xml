@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorLocationEnumArea id="ActivateStasisWardTargetInRange">
+        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Missile,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
     <CValidatorPlayerRequirement id="AdeptGlaivesUpgraded">
         <ResultNoPlayer value="Error"/>
         <Find value="1"/>
@@ -334,14 +337,37 @@
         <AbilLink value="CorsairMPDisruptionWeb"/>
         <CmdFlags index="SetAutoCast" value="1"/>
     </CValidatorUnitOrder>
+    <CValidatorUnitCompareCooldown id="FenixAdeptShadeNotOnCooldown">
+        <Compare value="LE"/>
+    </CValidatorUnitCompareCooldown>
     <CValidatorLocationEnumArea id="FenixSOAWhirlwindCheck">
         <AreaArray index="0" Validator="DamageValidTarget"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareCooldown id="FenixTalisShadeNotOnCooldown">
+        <Compare value="LE"/>
+    </CValidatorUnitCompareCooldown>
+    <CValidatorCombine id="IsBunkerCombine">
+        <CombineArray value="SIInfestedBunker"/>
+        <CombineArray value="BunkerMengsk"/>
+        <CombineArray value="IsTychusBunker"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsDefensiveStructure">
+        <CombineArray index="1" value="IsBunkerCombine"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsDefensiveStructureOnly">
+        <CombineArray index="0" value="IsBunkerCombine"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="IsGroundAirPlane">
+        <Filters value="Air,Ground;-"/>
+    </CValidatorUnitFilters>
     <CValidatorCombine id="IsNotZergAny">
         <CombineArray value="IsZerg"/>
         <CombineArray value="IsPrimalZerg"/>
         <Negate value="1"/>
         <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="IsRoachVileStructureTarget">
+        <CombineArray index="1" value="IsBunkerCombine"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="MutatorCandyCap">
         <Behavior value="MutatorCandyCap"/>
@@ -355,6 +381,10 @@
         <Behavior value="MutatorCandyTurningIn"/>
         <WhichUnit Value="Source"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="MutatorPropagateMassiveDamage">
+        <CombineArray value="IsHHStarport"/>
+        <CombineArray value="IsHHStarportFlying"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NotConjoinedAllyUnit">
         <Behavior value="ConjoinedAllyUnit"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -425,6 +455,20 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="BroodLordHangarCD"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ParasiticBombTargetHasHHReaperFlying">
+        <WhichUnit Effect="ParasiticBombLM"/>
+        <Value value="1"/>
+        <Behavior value="HHReaperFlyingDuration"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="ParasiticBombValidatorSet">
+        <CombineArray value="ParasiticBombTargetHasHHReaperFlying"/>
+        <CombineArray value="ParasiticBombValidatorSetGroundAir"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="ParasiticBombValidatorSetGroundAir">
+        <Type value="And"/>
+        <CombineArray value="IsGroundAirPlane"/>
+        <CombineArray value="NotHidden"/>
+    </CValidatorCombine>
     <CValidatorUnitType id="TargetIsForceFieldTaldarim">
         <Value value="ForceFieldTaldarim"/>
     </CValidatorUnitType>
@@ -1469,8 +1513,7 @@
         <Find value="0"/>
     </CValidatorUnitOrderQueue>
     <CValidatorCombine id="UnitOrAttackingStructure">
-        <CombineArray value="IsTychusBunker"/>
-        <CombineArray value="BunkerMengsk"/>
+        <CombineArray index="1" value="IsBunkerCombine"/>
     </CValidatorCombine>
     <CValidatorCombine id="ValidChronoBoostTarget2">
         <CombineArray index="2" removed="1"/>

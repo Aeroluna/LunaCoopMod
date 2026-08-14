@@ -68,6 +68,9 @@
     <CActorSound id="Banshee_CloakOn">
         <On Terms="Behavior.BansheeCloak_Stukov.On" Send="Create"/>
     </CActorSound>
+    <CActorModel id="BlindingCloudStructureModelAttachment">
+        <On index="3" Terms="Behavior.BlindingCloudStructure.On; ValidateUnit IsBunkerCombine"/>
+    </CActorModel>
     <CActorSound id="BloodHunter_AttackLaunchSound">
         <On Terms="WeaponStop.DarkTemplarTaldarim" Send="SoundSetMuted 1 0"/>
         <On Terms="WeaponStop.DarkTemplarTaldarim" Send="Destroy"/>
@@ -116,6 +119,9 @@
     </CActorMissile>
     <CActorModel id="DisablingCloud">
         <Model value="DisablingCloud"/>
+    </CActorModel>
+    <CActorModel id="DisruptionCloudStructureModelAttachment">
+        <On index="3" Terms="Behavior.DisruptionCloudStructure.On; ValidateUnit IsBunkerCombine"/>
     </CActorModel>
     <CActorUnit id="EvolutionChamberStetmann">
         <Macros index="1" value="QueueAnimSpeed135"/>
@@ -1014,6 +1020,9 @@
         <On Terms="UnitDeathCustomize; ValidateUnit BunkerIsEmpty" Send="DeathCustomize Empty"/>
         <DeathCustoms ModelLink="SIInfestedBunkerDeathEmpty" Name="Empty"/>
     </CActorUnit>
+    <CActorModel id="SOABlindTargetStructureModelAttachment">
+        <On index="3" Terms="Behavior.SOABlindStructure.On; ValidateUnit IsBunkerCombine"/>
+    </CActorModel>
     <CActorAction id="SOAMothershipv4Attack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -1169,6 +1178,9 @@
         <On Terms="AnimBracketStart; AnimName BSD" Send="AnimSetTimeScale BSD 10.000000"/>
         <On Terms="AnimBracketState.*.AfterOpening" Send="AnimSetTimeScale BSD 1.000000"/>
     </CActorBeamSimple>
+    <CActorModel id="ShadowGuardDetectionDisableTargetStructureModelAttachment">
+        <On index="3" Terms="Behavior.ShadowGuardDetectionDisableStructureTarget.On; ValidateUnit IsBunkerCombine"/>
+    </CActorModel>
     <CActorSplat id="SwarmHostSplitBBurrowedSplat">
         <HostSiteOps Ops=""/>
     </CActorSplat>
