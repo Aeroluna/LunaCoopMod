@@ -10793,6 +10793,7 @@ bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("HybridFacility", lib74A68E34_gt_MutatorHybridFacilityInit, lib74A68E34_gt_MutatorHybridFacilityShutdown);
     libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
     libCOMU_gf_CT_RegisterMutator("TrickOrTreat", lib74A68E34_gt_MutatorTrickOrTreatInit, lib74A68E34_gt_MutatorTrickOrTreatShutdown);
+    libCOMU_gf_CT_RegisterMutator("Fear", lib74A68E34_gt_MutatorFearInit, lib74A68E34_gt_MutatorFearShutdown);
     return true;
 }
 
@@ -13241,6 +13242,103 @@ void lib74A68E34_gt_MutatorTrickOrTreatShutdown_Init () {
     lib74A68E34_gt_MutatorTrickOrTreatShutdown = TriggerCreate("lib74A68E34_gt_MutatorTrickOrTreatShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorFearInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorFearInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorFearApply, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorFearInit_Init () {
+    lib74A68E34_gt_MutatorFearInit = TriggerCreate("lib74A68E34_gt_MutatorFearInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorFearApply
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorFearApply_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_damagingUnit;
+    unit lv_damagedUnit;
+    fixed lv_damageAmount;
+    int lv_fearChance;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_damagingUnit = EventUnitDamageSourceUnit();
+    lv_damagedUnit = EventUnit();
+    lv_damageAmount = EventUnitDamageAmount();
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(libCOOC_gf_HumanPlayers(), UnitGetOwner(lv_damagedUnit)) == true))) {
+            return false;
+        }
+
+        if (!((PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, UnitGetOwner(lv_damagingUnit)), UnitGetOwner(lv_damagedUnit)) == true))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(lv_damagedUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)))) == true))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(lv_damagedUnit, "MutatorFear") == false))) {
+            return false;
+        }
+
+        if (!((lv_damageAmount > 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_fearChance = libCOMI_gf_MinimumDifficultyValueCoopInteger(5, 10, 15, 20, 100, 100);
+    if ((RandomInt(0, FixedToInt((UnitGetPropertyFixed(lv_damagedUnit, c_unitPropLifeMax, c_unitPropCurrent) + UnitGetPropertyFixed(lv_damagedUnit, c_unitPropShieldsMax, c_unitPropCurrent)))) <= lv_fearChance)) {
+        UnitCreateEffectUnit(lv_damagingUnit, "MutatorFear", lv_damagedUnit);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorFearApply_Init () {
+    lib74A68E34_gt_MutatorFearApply = TriggerCreate("lib74A68E34_gt_MutatorFearApply_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorFearApply, false);
+    TriggerAddEventUnitDamaged(lib74A68E34_gt_MutatorFearApply, null, c_unitDamageTypeAny, c_unitDamageEither, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorFearShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorFearShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorFearApply, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorFearShutdown_Init () {
+    lib74A68E34_gt_MutatorFearShutdown = TriggerCreate("lib74A68E34_gt_MutatorFearShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -13464,6 +13562,9 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorTrickOrTreatWarningReach_Init();
     lib74A68E34_gt_MutatorTrickOrTreatWarningEmpty_Init();
     lib74A68E34_gt_MutatorTrickOrTreatShutdown_Init();
+    lib74A68E34_gt_MutatorFearInit_Init();
+    lib74A68E34_gt_MutatorFearApply_Init();
+    lib74A68E34_gt_MutatorFearShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

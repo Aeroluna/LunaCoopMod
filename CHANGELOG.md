@@ -6,6 +6,29 @@
 - Fixed an issue where Amon's Ghosts and Wraiths could use Cloak before their upgrades are researched.
 - Fixed an issue where Nova's P1 would not apply under certain circumstances.
 - Fixed an issue where H.U.G.S. Overload shield could target invulnerable units.
+- Fixed an issue where the Fear Mutator could target Frenzied units.
+- Fixed an issue where some burrowed units could be pulled by Fatal Attraction.
+  - Affected units:
+    - Infested Civilian
+    - Infested Trooper
+    - Volatile Infested
+    - Kerrigan
+    - Spider Mine
+    - Widow Mine
+    - Sabotage Drone
+    - Ravager
+    - Infested Banshee
+    - Zagara
+- Fixed an issue where Amon's Swarm Host's Spawn Locust ability used the wrong tooltip.
+- Fixed an issue where Abathur's Swarm Host's Spawn Locust ability did not have a descriptive tooltip.
+- Fixed an issue where Dehaka's Primal Host's Spawn Locust ability did not have a descriptive tooltip.
+- Fixed an issue where Dehaka's Creeper Host's Spawn Locust ability did not have a descriptive tooltip.
+
+I'm back with a ton of bug fixes.
+
+- Increased Abathur's Swarm Host life from 120 to 160.
+
+Parity with Amon's Swarm Host.
 
 ## 8/2/2026
 

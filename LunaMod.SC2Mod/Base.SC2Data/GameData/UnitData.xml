@@ -384,6 +384,12 @@
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="250"/>
     </CUnit>
+    <CUnit id="InfestedCivilianBurrowed">
+        <Acceleration value="0"/>
+    </CUnit>
+    <CUnit id="InfestedExploderBurrowed">
+        <Acceleration value="0"/>
+    </CUnit>
     <CUnit id="InfestorWeaponStetmann" parent="MISSILE">
         <Race value="Zerg"/>
         <Mover value="MissileDefault"/>
@@ -2152,6 +2158,7 @@
             <LayoutButtons index="5" Row="1"/>
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowHunterDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="HotSSplitterlingBig">
         <CardLayouts index="0">
@@ -2373,6 +2380,7 @@
     <CUnit id="K5KerriganBurrowed">
         <Radius value="0.5"/>
         <RankDisplay value="Default"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="KD8Charge">
         <FlagArray index="Turnable" value="0"/>
@@ -2506,6 +2514,12 @@
             <LayoutButtons index="0" Face="MutatorCandy" Type="Passive" AbilCmd="" Row="2"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="MutatorSpiderMineBurrowed">
+        <Acceleration value="0"/>
+    </CUnit>
+    <CUnit id="MutatorWidowMineBurrowed">
+        <Acceleration value="0"/>
+    </CUnit>
     <CUnit id="NovaACLaserTurret">
         <LifeStart value="250"/>
         <LifeMax value="250"/>
@@ -2528,6 +2542,7 @@
         <Collide index="Small" value="1"/>
         <RankDisplay value="Never"/>
         <Radius value="0.25"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="NovaCoopDecoy">
         <Radius value="0.5"/>
@@ -2545,6 +2560,7 @@
         <HotkeyAlias value="NovaInfestedBansheeBurrowed"/>
         <SelectAlias value="NovaInfestedBansheeBurrowed"/>
         <SubgroupAlias value="NovaInfestedBansheeBurrowed"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="NovaInfestedSiegeTank">
         <TacticalAIThink value="AIThinkNovaInfestedSiegeTankSieged"/>
@@ -2718,6 +2734,7 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerAbathurDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <AbilArray Link="EvolveToBrutaliskRavager"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="RavagerBurrowed">
         <SubgroupAlias value="Ravager"/>
@@ -2725,6 +2742,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="RavagerStetmann">
         <CardLayouts index="0">
@@ -2738,6 +2756,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowRavagerDownStetmann,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="Raven">
         <Height value="4.15"/>
@@ -3782,9 +3801,13 @@
     </CUnit>
     <CUnit id="SwarmHost">
         <HotkeyCategory value="Unit/Category/ZergEvolved"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="SwarmHostBurrowed">
         <SubgroupAlias value="SwarmHost"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="SwarmHostBurrowedMP">
         <SubgroupAlias value="SwarmHostMP"/>
@@ -3810,10 +3833,14 @@
         <CostResource index="Vespene" value="75"/>
         <HotkeyCategory value="Unit/Category/ZergUnits"/>
         <EquipmentArray Weapon="AcidSpitSwarmhostDummy"/>
+        <AbilArray index="4" removed="1"/>
+        <WeaponArray index="0" removed="1"/>
     </CUnit>
     <CUnit id="SwarmHostRooted">
         <HotkeyCategory value=""/>
         <HotkeyAlias value="SwarmHostRooted"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="SwarmHostSplitABurrowed">
         <SubgroupAlias value="SwarmHostSplitA"/>
@@ -3825,6 +3852,8 @@
     <CUnit id="SwarmHostSplitBRooted">
         <HotkeyCategory value=""/>
         <HotkeyAlias value="SwarmHostSplitBRooted"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="TempestPurifier">
         <HotkeyCategory value=""/>
@@ -4507,6 +4536,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIVolatileInfestedDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="SiegeBreaker">
         <CardLayouts index="0">
@@ -4531,6 +4561,7 @@
     <CUnit id="SpiderMineBurrowed">
         <BehaviorArray Link="AllUnitBehaviorController"/>
         <EffectArray index="Create" value="CommanderPrestigeNovaCloakBoth"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="TychusBunker">
         <DeathRevealRadius value="3"/>
@@ -4777,6 +4808,7 @@
     </CUnit>
     <CUnit id="HHWidowMineBurrowed">
         <BehaviorArray Link="WidowMineDrillingClawsTracker"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="HHWidowMineBlossomWeapon">
         <Mover value="TornadoMissileWeapon"/>
@@ -5811,6 +5843,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedCivilianDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="SIInfestedTrooper">
         <AlliedPushPriority value="-2"/>
@@ -5828,6 +5861,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedTrooperDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="SILiberatorVolatileSpray" parent="MISSILE">
         <Race value="Zerg"/>
@@ -6127,6 +6161,7 @@
             <LayoutButtons Face="StukovInfestedBansheeBurrowDown" Type="AbilCmd" AbilCmd="BurrowStukovInfestedBansheeDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
         <BehaviorArray Link="SIBansheeIncubationChambersBurrowed"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="SupplyDummy">
         <FlagArray index="Unselectable" value="1"/>
@@ -6727,6 +6762,7 @@
         <CardLayouts index="0">
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="BurrowSIInfestedMarineDown,Execute" Row="2" Column="3"/>
         </CardLayouts>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="Scourge">
         <BehaviorArray Link="ScourgeSplashReduction"/>
@@ -6770,6 +6806,8 @@
         <AbilArray Link="LocustLaunchCreeper"/>
         <AbilArray Link="EvolveToBrutaliskSwarmHost"/>
         <AbilArray Link="que1"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="SwarmHostSplitBBurrowed">
         <CardLayouts index="0">
@@ -6803,6 +6841,8 @@
         <AbilArray Link="EvolveToBrutaliskSwarmHost"/>
         <Radius value="0.75"/>
         <SubgroupAlias value="SwarmHostSplitB"/>
+        <LifeStart value="160"/>
+        <LifeMax value="160"/>
     </CUnit>
     <CUnit id="SwarmLocus">
         <DeathRevealRadius value="3"/>
@@ -7479,6 +7519,7 @@
         </CardLayouts>
         <BehaviorArray Link="WidowMineBurrowedCloakingBehavior"/>
         <BehaviorArray Link="WidowMineDrillingClawsTracker"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="Wraith">
         <WeaponArray Link="WraithMoving" Turret="Phoenix"/>
@@ -7626,6 +7667,7 @@
     </CUnit>
     <CUnit id="ZagaraVoidCoopBurrowed">
         <RankDisplay value="Default"/>
+        <Acceleration value="0"/>
     </CUnit>
     <CUnit id="ZealotAiur">
         <LeaderAlias value="Zealot"/>
