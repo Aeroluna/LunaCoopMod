@@ -21933,6 +21933,8 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="3A1227AB"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="AD43BC93"/>
             <Parameter Type="Param" Library="74A68E34" Id="6A67271C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="7BBAAAB1"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="BFA84E1E"/>
             <FunctionCall Type="FunctionCall" Library="74A68E34" Id="6B0BBCAF"/>
             <FunctionCall Type="FunctionCall" Library="74A68E34" Id="7C56BE91"/>
             <FunctionCall Type="FunctionCall" Library="74A68E34" Id="4A9BD7E3"/>
@@ -21942,6 +21944,38 @@
             <Value>TerranNova</Value>
             <ValueType Type="userinstance"/>
             <ValueContext Value="PlayerCommanders"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7BBAAAB1">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000111"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="057C9A19"/>
+            <Parameter Type="Param" Library="74A68E34" Id="DDE089AE"/>
+        </Element>
+        <Element Type="Param" Id="057C9A19">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000176"/>
+            <CustomType Type="trigger"/>
+            <ScriptCode>
+                libCOMI_gt_CM_Nova_BuildingCompletedTrigger
+            </ScriptCode>
+        </Element>
+        <Element Type="Param" Id="DDE089AE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000177"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000545"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BFA84E1E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000111"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="79F8ACF7"/>
+            <Parameter Type="Param" Library="74A68E34" Id="15053656"/>
+        </Element>
+        <Element Type="Param" Id="79F8ACF7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000176"/>
+            <ValueType Type="trigger"/>
+            <ValueElement Type="Trigger" Library="74A68E34" Id="739F9D3A"/>
+        </Element>
+        <Element Type="Param" Id="15053656">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000177"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000538"/>
         </Element>
         <Element Type="FunctionCall" Id="6B0BBCAF">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000111"/>
@@ -47922,8 +47956,1370 @@
             <Variable Type="Variable" Library="74A68E34" Id="2FDD9124"/>
         </Element>
         <Element Type="Category" Id="42FB3705">
+            <Item Type="Trigger" Library="74A68E34" Id="739F9D3A"/>
+            <Item Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
             <Item Type="Category" Library="74A68E34" Id="DC971322"/>
             <Item Type="Category" Library="74A68E34" Id="AD565785"/>
+        </Element>
+        <Element Type="Trigger" Id="739F9D3A">
+            <InitOff/>
+            <Internal/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+            <Variable Type="Variable" Library="74A68E34" Id="B5BBE27D"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+            <Event Type="FunctionCall" Library="74A68E34" Id="F964376D"/>
+            <Condition Type="FunctionCall" Library="74A68E34" Id="305A67AC"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="7E19EDC2"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="8A9BE575"/>
+            <Action Type="FunctionCall" Library="74A68E34" Id="8708D53B"/>
+        </Element>
+        <Element Type="Variable" Id="436065B3">
+            <VariableType>
+                <Type Value="int"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="28E6A55F"/>
+        </Element>
+        <Element Type="Param" Id="28E6A55F">
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="713D9EC2"/>
+        </Element>
+        <Element Type="FunctionCall" Id="713D9EC2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CA11483E"/>
+        </Element>
+        <Element Type="Param" Id="CA11483E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="944EE6D0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="944EE6D0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000419"/>
+        </Element>
+        <Element Type="Variable" Id="B5BBE27D">
+            <VariableType>
+                <Type Value="unit"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="2975C5BF"/>
+        </Element>
+        <Element Type="Param" Id="2975C5BF">
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D436A09F"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D436A09F">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000419"/>
+        </Element>
+        <Element Type="Variable" Id="91ACC242">
+            <VariableType>
+                <Type Value="gamelink"/>
+                <GameType Value="Unit"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="B1371642"/>
+        </Element>
+        <Element Type="Param" Id="B1371642">
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="EF115637"/>
+        </Element>
+        <Element Type="FunctionCall" Id="EF115637">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
+            <Parameter Type="Param" Library="74A68E34" Id="44590C2E"/>
+        </Element>
+        <Element Type="Param" Id="44590C2E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="A376A14E"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A376A14E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000419"/>
+        </Element>
+        <Element Type="FunctionCall" Id="F964376D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="B0FA20B6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E296F1C0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2409BD81"/>
+        </Element>
+        <Element Type="Param" Id="E296F1C0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9B14445A"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="C84C7A78"/>
+        </Element>
+        <Element Type="Param" Id="2409BD81">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="5E741589"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000060"/>
+        </Element>
+        <Element Type="FunctionCall" Id="305A67AC">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0A6E82D2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="00309C87"/>
+            <Parameter Type="Param" Library="74A68E34" Id="93F7718E"/>
+        </Element>
+        <Element Type="Param" Id="0A6E82D2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D3F1F777"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D3F1F777">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000255"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A98F0C8F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F71D2EA3"/>
+            <Parameter Type="Param" Library="74A68E34" Id="1323BEFC"/>
+        </Element>
+        <Element Type="Param" Id="A98F0C8F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="448F39DC"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="D78D6018"/>
+        </Element>
+        <Element Type="Param" Id="F71D2EA3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000447"/>
+            <Value>NovaCommander</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Upgrade"/>
+        </Element>
+        <Element Type="Param" Id="1323BEFC">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000446"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="00309C87">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="B128CB9A"/>
+        </Element>
+        <Element Type="Param" Id="93F7718E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7E19EDC2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="DAA3BEC6"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="5F6B8FB6"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="0FD11F1E"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="8E81DC2A"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="227D39FC"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="FF48573B"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DAA3BEC6">
+            <FunctionDef Type="FunctionDef" Library="COMI" Id="7045821E"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A1AC307C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="31648F25"/>
+            <Parameter Type="Param" Library="74A68E34" Id="497E457C"/>
+        </Element>
+        <Element Type="Param" Id="A1AC307C">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="7A90EED3"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="31648F25">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="F66EFC3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="497E457C">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="E2ACD991"/>
+            <Variable Type="Variable" Library="74A68E34" Id="B5BBE27D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="5F6B8FB6">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="9A188AEE"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="C627FCF8"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9A188AEE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A7E3C6D2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="989E19C8"/>
+            <Parameter Type="Param" Library="74A68E34" Id="930EF6A4"/>
+        </Element>
+        <Element Type="Param" Id="A7E3C6D2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="989E19C8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="930EF6A4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>Barracks</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Unit"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C627FCF8">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FD154392"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BEBC2B13"/>
+            <Parameter Type="Param" Library="74A68E34" Id="19FF6AD5"/>
+        </Element>
+        <Element Type="Param" Id="FD154392">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="COMI" Id="D43AFD12"/>
+            <Array Type="Param" Library="74A68E34" Id="BCE91FAD"/>
+        </Element>
+        <Element Type="Param" Id="BCE91FAD">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="BEBC2B13">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="19FF6AD5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0FD11F1E">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="351B7395"/>
+            <Parameter Type="Param" Library="74A68E34" Id="57655D9B"/>
+            <Parameter Type="Param" Library="74A68E34" Id="1509238F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="972D3A7B"/>
+        </Element>
+        <Element Type="Param" Id="351B7395">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>BarracksTrainNovaMarine</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="57655D9B">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="1509238F">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D2064938"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D2064938">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="81DADF14"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CAF881F2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E8839103"/>
+            <Parameter Type="Param" Library="74A68E34" Id="6AED35D2"/>
+        </Element>
+        <Element Type="Param" Id="81DADF14">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="CAF881F2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="E8839103">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="6AED35D2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="87A6EB40"/>
+        </Element>
+        <Element Type="Param" Id="87A6EB40">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="972D3A7B">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="89B1B918"/>
+        </Element>
+        <Element Type="FunctionCall" Id="89B1B918">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="28B45619"/>
+            <Parameter Type="Param" Library="74A68E34" Id="20F9CBB3"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F7550C1C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B54B8535"/>
+        </Element>
+        <Element Type="Param" Id="28B45619">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="20F9CBB3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="F7550C1C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="B54B8535">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="DDF35AB8"/>
+        </Element>
+        <Element Type="Param" Id="DDF35AB8">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8E81DC2A">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A7C198E2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="04427693"/>
+            <Parameter Type="Param" Library="74A68E34" Id="37480CF2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="98EACA7B"/>
+        </Element>
+        <Element Type="Param" Id="A7C198E2">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>BarracksTrainMarauderNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="04427693">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="37480CF2">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="281AA722"/>
+        </Element>
+        <Element Type="FunctionCall" Id="281AA722">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="33E38EEF"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B8C0E8DF"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F91531C3"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D5570755"/>
+        </Element>
+        <Element Type="Param" Id="33E38EEF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="B8C0E8DF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="F91531C3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="D5570755">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="5560C8DD"/>
+        </Element>
+        <Element Type="Param" Id="5560C8DD">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="98EACA7B">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="1B3B33B5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1B3B33B5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="5831CBF7"/>
+            <Parameter Type="Param" Library="74A68E34" Id="1A2C5281"/>
+            <Parameter Type="Param" Library="74A68E34" Id="015F8BC0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="64C91AFD"/>
+        </Element>
+        <Element Type="Param" Id="5831CBF7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="1A2C5281">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="015F8BC0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="64C91AFD">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="A778901D"/>
+        </Element>
+        <Element Type="Param" Id="A778901D">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="227D39FC">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="78AB6155"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0289691F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BA1E51C1"/>
+            <Parameter Type="Param" Library="74A68E34" Id="523D77CB"/>
+        </Element>
+        <Element Type="Param" Id="78AB6155">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>BarracksTrainGhostNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="0289691F">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="BA1E51C1">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="D53F7C7C"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D53F7C7C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8BCE7387"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CDCC5FD0"/>
+            <Parameter Type="Param" Library="74A68E34" Id="6EDE1E34"/>
+            <Parameter Type="Param" Library="74A68E34" Id="398E65DD"/>
+        </Element>
+        <Element Type="Param" Id="8BCE7387">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="CDCC5FD0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="6EDE1E34">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="398E65DD">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="9022821E"/>
+        </Element>
+        <Element Type="Param" Id="9022821E">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="523D77CB">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="37E4DE5C"/>
+        </Element>
+        <Element Type="FunctionCall" Id="37E4DE5C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="54FC421E"/>
+            <Parameter Type="Param" Library="74A68E34" Id="05B69AEF"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BBFD99A4"/>
+            <Parameter Type="Param" Library="74A68E34" Id="347E959B"/>
+        </Element>
+        <Element Type="Param" Id="54FC421E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="05B69AEF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="BBFD99A4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>BarracksTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="347E959B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="8795EAED"/>
+        </Element>
+        <Element Type="Param" Id="8795EAED">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="FF48573B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="56612660"/>
+            <Parameter Type="Param" Library="74A68E34" Id="37D6EE03"/>
+        </Element>
+        <Element Type="Param" Id="56612660">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="COMI" Id="D43AFD12"/>
+            <Array Type="Param" Library="74A68E34" Id="6C750525"/>
+        </Element>
+        <Element Type="Param" Id="6C750525">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="37D6EE03">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8A9BE575">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="25D8730D"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="0DB2DEF2"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="DEDCD69C"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="6C82DA8B"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="A36F4170"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="1B880FD9"/>
+        </Element>
+        <Element Type="FunctionCall" Id="25D8730D">
+            <FunctionDef Type="FunctionDef" Library="COMI" Id="7045821E"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B657C378"/>
+            <Parameter Type="Param" Library="74A68E34" Id="82C02FE1"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7BC51D32"/>
+        </Element>
+        <Element Type="Param" Id="B657C378">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="7A90EED3"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="82C02FE1">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="F66EFC3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="7BC51D32">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="E2ACD991"/>
+            <Variable Type="Variable" Library="74A68E34" Id="B5BBE27D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0DB2DEF2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="2BC37809"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="5C30D042"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2BC37809">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="63030C0C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2A0D7017"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A74EA4DC"/>
+        </Element>
+        <Element Type="Param" Id="63030C0C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="2A0D7017">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="A74EA4DC">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>Factory</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Unit"/>
+        </Element>
+        <Element Type="FunctionCall" Id="5C30D042">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FD45C864"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CCFC1931"/>
+            <Parameter Type="Param" Library="74A68E34" Id="82C535F1"/>
+        </Element>
+        <Element Type="Param" Id="FD45C864">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="COMI" Id="CB193FCC"/>
+            <Array Type="Param" Library="74A68E34" Id="BB16BF9E"/>
+        </Element>
+        <Element Type="Param" Id="BB16BF9E">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="CCFC1931">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="82C535F1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DEDCD69C">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C58008FA"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F2D4FE53"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2EE3376D"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D5FC7D0E"/>
+        </Element>
+        <Element Type="Param" Id="C58008FA">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>FactoryTrainGoliathNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="F2D4FE53">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="2EE3376D">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="6CC1DA92"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6CC1DA92">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="20A374B9"/>
+            <Parameter Type="Param" Library="74A68E34" Id="AA84C63E"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3355E04C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="6F40A706"/>
+        </Element>
+        <Element Type="Param" Id="20A374B9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="AA84C63E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="3355E04C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="6F40A706">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="660E39C7"/>
+        </Element>
+        <Element Type="Param" Id="660E39C7">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="D5FC7D0E">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="1BBCAD50"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1BBCAD50">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="40D6BF9A"/>
+            <Parameter Type="Param" Library="74A68E34" Id="24D1981A"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9FA9491B"/>
+            <Parameter Type="Param" Library="74A68E34" Id="740186A4"/>
+        </Element>
+        <Element Type="Param" Id="40D6BF9A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="24D1981A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="9FA9491B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="740186A4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="DCC03E12"/>
+        </Element>
+        <Element Type="Param" Id="DCC03E12">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6C82DA8B">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B6280456"/>
+            <Parameter Type="Param" Library="74A68E34" Id="152D9570"/>
+            <Parameter Type="Param" Library="74A68E34" Id="263F6BBB"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2F09C463"/>
+        </Element>
+        <Element Type="Param" Id="B6280456">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>FactoryTrainSiegeTankNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="152D9570">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="263F6BBB">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="293B2BCF"/>
+        </Element>
+        <Element Type="FunctionCall" Id="293B2BCF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="73F0950B"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C703DAD8"/>
+            <Parameter Type="Param" Library="74A68E34" Id="04E0F2BA"/>
+            <Parameter Type="Param" Library="74A68E34" Id="91A3DADD"/>
+        </Element>
+        <Element Type="Param" Id="73F0950B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="C703DAD8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="04E0F2BA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="91A3DADD">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="BD145FC4"/>
+        </Element>
+        <Element Type="Param" Id="BD145FC4">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="2F09C463">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="349E7AC3"/>
+        </Element>
+        <Element Type="FunctionCall" Id="349E7AC3">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="962F65E6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C1B405F9"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9B46C9BB"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B48FC7E6"/>
+        </Element>
+        <Element Type="Param" Id="962F65E6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="C1B405F9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="9B46C9BB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="B48FC7E6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="BA12865F"/>
+        </Element>
+        <Element Type="Param" Id="BA12865F">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A36F4170">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8F11DCD3"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CA67209B"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2DD93C81"/>
+            <Parameter Type="Param" Library="74A68E34" Id="46CC8D47"/>
+        </Element>
+        <Element Type="Param" Id="8F11DCD3">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>FactoryTrainHellbatNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="CA67209B">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="2DD93C81">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="7B0068C2"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7B0068C2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="ED885E32"/>
+            <Parameter Type="Param" Library="74A68E34" Id="36E390B3"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BA883286"/>
+            <Parameter Type="Param" Library="74A68E34" Id="8560B22C"/>
+        </Element>
+        <Element Type="Param" Id="ED885E32">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="36E390B3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="BA883286">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="8560B22C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="6037BEEF"/>
+        </Element>
+        <Element Type="Param" Id="6037BEEF">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="46CC8D47">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="2C249B50"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2C249B50">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="6601395E"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0C497233"/>
+            <Parameter Type="Param" Library="74A68E34" Id="364AD24D"/>
+            <Parameter Type="Param" Library="74A68E34" Id="195F864F"/>
+        </Element>
+        <Element Type="Param" Id="6601395E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="0C497233">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="364AD24D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>FactoryTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="195F864F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="F77A9F90"/>
+        </Element>
+        <Element Type="Param" Id="F77A9F90">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1B880FD9">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="5115EBAA"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CC2E8CE3"/>
+        </Element>
+        <Element Type="Param" Id="5115EBAA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="COMI" Id="CB193FCC"/>
+            <Array Type="Param" Library="74A68E34" Id="A675A10D"/>
+        </Element>
+        <Element Type="Param" Id="A675A10D">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="CC2E8CE3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8708D53B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="308E955E"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="765FF635"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="408A6FC8"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="42F59813"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="533997E7"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="E7601423"/>
+        </Element>
+        <Element Type="FunctionCall" Id="308E955E">
+            <FunctionDef Type="FunctionDef" Library="COMI" Id="7045821E"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="ACBD0850"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F005D9AD"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0BF8C638"/>
+        </Element>
+        <Element Type="Param" Id="ACBD0850">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="7A90EED3"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="F005D9AD">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="F66EFC3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="0BF8C638">
+            <ParameterDef Type="ParamDef" Library="COMI" Id="E2ACD991"/>
+            <Variable Type="Variable" Library="74A68E34" Id="B5BBE27D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="765FF635">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000132"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="A464C108"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="24C04899"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A464C108">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9B900E50"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FFDF19B2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="AF2FFAFE"/>
+        </Element>
+        <Element Type="Param" Id="9B900E50">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="74A68E34" Id="91ACC242"/>
+        </Element>
+        <Element Type="Param" Id="FFDF19B2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="AF2FFAFE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>Starport</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Unit"/>
+        </Element>
+        <Element Type="FunctionCall" Id="24C04899">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000002"/>
+            <Parameter Type="Param" Library="74A68E34" Id="222BA512"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A2AEB576"/>
+            <Parameter Type="Param" Library="74A68E34" Id="15DC1AD7"/>
+        </Element>
+        <Element Type="Param" Id="222BA512">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="COMI" Id="3403BBCB"/>
+            <Array Type="Param" Library="74A68E34" Id="511338FD"/>
+        </Element>
+        <Element Type="Param" Id="511338FD">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="A2AEB576">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="15DC1AD7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="408A6FC8">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FF1C7036"/>
+            <Parameter Type="Param" Library="74A68E34" Id="6A6916FD"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A552538C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="726D4BA9"/>
+        </Element>
+        <Element Type="Param" Id="FF1C7036">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>StarportTrainBansheeNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="6A6916FD">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="A552538C">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="C645FEF2"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C645FEF2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="82438D16"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A47FE2EE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="025BB2FD"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C3DC100B"/>
+        </Element>
+        <Element Type="Param" Id="82438D16">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="A47FE2EE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="025BB2FD">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="C3DC100B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="D2CA51D3"/>
+        </Element>
+        <Element Type="Param" Id="D2CA51D3">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="726D4BA9">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="3694D533"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3694D533">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="04B4BAC4"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9B8AE4E6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D690BA94"/>
+            <Parameter Type="Param" Library="74A68E34" Id="610B7FAB"/>
+        </Element>
+        <Element Type="Param" Id="04B4BAC4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="9B8AE4E6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="D690BA94">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="610B7FAB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="4952B257"/>
+        </Element>
+        <Element Type="Param" Id="4952B257">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="42F59813">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="40CE5523"/>
+            <Parameter Type="Param" Library="74A68E34" Id="93BBB34F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="84078D41"/>
+            <Parameter Type="Param" Library="74A68E34" Id="FA438F52"/>
+        </Element>
+        <Element Type="Param" Id="40CE5523">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>StarportTrainRavenNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="93BBB34F">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="84078D41">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="7749334D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7749334D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="17340AE2"/>
+            <Parameter Type="Param" Library="74A68E34" Id="C0B9D4D4"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2C0624F5"/>
+            <Parameter Type="Param" Library="74A68E34" Id="81A67648"/>
+        </Element>
+        <Element Type="Param" Id="17340AE2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="C0B9D4D4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="2C0624F5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="81A67648">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="2D3A9018"/>
+        </Element>
+        <Element Type="Param" Id="2D3A9018">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FA438F52">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="80E36B66"/>
+        </Element>
+        <Element Type="FunctionCall" Id="80E36B66">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="29B5FF85"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BA2E7A60"/>
+            <Parameter Type="Param" Library="74A68E34" Id="DC7A9595"/>
+            <Parameter Type="Param" Library="74A68E34" Id="B70A851E"/>
+        </Element>
+        <Element Type="Param" Id="29B5FF85">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="BA2E7A60">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="DC7A9595">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="B70A851E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="62D30819"/>
+        </Element>
+        <Element Type="Param" Id="62D30819">
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="533997E7">
+            <FunctionDef Type="FunctionDef" Library="74A68E34" Id="6EC5FE7D"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="3D5A82BA"/>
+            <Parameter Type="Param" Library="74A68E34" Id="97289524"/>
+            <Parameter Type="Param" Library="74A68E34" Id="5104441F"/>
+            <Parameter Type="Param" Library="74A68E34" Id="A6E629E9"/>
+        </Element>
+        <Element Type="Param" Id="3D5A82BA">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Value>StarportTrainLiberatorNova</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Param" Id="97289524">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="5104441F">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="308E96CE"/>
+        </Element>
+        <Element Type="FunctionCall" Id="308E96CE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="2D55704E"/>
+            <Parameter Type="Param" Library="74A68E34" Id="10BA2A53"/>
+            <Parameter Type="Param" Library="74A68E34" Id="895178B1"/>
+            <Parameter Type="Param" Library="74A68E34" Id="4D7052A1"/>
+        </Element>
+        <Element Type="Param" Id="2D55704E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="10BA2A53">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="895178B1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="4D7052A1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.TimeUse</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="3CE8EFEE"/>
+        </Element>
+        <Element Type="Param" Id="3CE8EFEE">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="A6E629E9">
+            <ParameterDef Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="09C1E3D0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="09C1E3D0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="657B90A6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="509233BE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="460F87B6"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D8DD2822"/>
+            <Parameter Type="Param" Library="74A68E34" Id="EE5A4594"/>
+        </Element>
+        <Element Type="Param" Id="509233BE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="25D2D3A0"/>
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="460F87B6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76A98F80"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000510"/>
+        </Element>
+        <Element Type="Param" Id="D8DD2822">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C062E8B7"/>
+            <Value>StarportTrainNova</Value>
+            <ValueType Type="catalogentry"/>
+        </Element>
+        <Element Type="Param" Id="EE5A4594">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="7694107B"/>
+            <Value>InfoArray[0].Charge.CountMax</Value>
+            <ValueType Type="catalogfieldpath"/>
+            <ValueContext Value="CAbilWarpTrain"/>
+            <ValueParam Type="Param" Library="74A68E34" Id="5F7F2BEB"/>
+        </Element>
+        <Element Type="Param" Id="5F7F2BEB">
+            <Value>2</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="E7601423">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="74A68E34" Id="BA6DD8EB"/>
+            <Parameter Type="Param" Library="74A68E34" Id="48DBC1C6"/>
+        </Element>
+        <Element Type="Param" Id="BA6DD8EB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="COMI" Id="3403BBCB"/>
+            <Array Type="Param" Library="74A68E34" Id="DD8D0F87"/>
+        </Element>
+        <Element Type="Param" Id="DD8D0F87">
+            <Variable Type="Variable" Library="74A68E34" Id="436065B3"/>
+        </Element>
+        <Element Type="Param" Id="48DBC1C6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionDef" Id="6EC5FE7D">
+            <Internal/>
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+            <Variable Type="Variable" Library="74A68E34" Id="6C6DA7D6"/>
+            <Variable Type="Variable" Library="74A68E34" Id="627D040B"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="6C350DAE"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="8CCC27EA"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="A65BD0D5"/>
+        </Element>
+        <Element Type="ParamDef" Id="AA8F1BED">
+            <Identifier>maxRegenTime</Identifier>
+            <ParameterType>
+                <Type Value="fixed"/>
+            </ParameterType>
+            <Default Type="Param" Library="74A68E34" Id="D9CE1088"/>
+        </Element>
+        <Element Type="Param" Id="D9CE1088">
+            <Value>0</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="ParamDef" Id="A3C4C830">
+            <Identifier>maxChargeCount</Identifier>
+            <ParameterType>
+                <Type Value="fixed"/>
+            </ParameterType>
+            <Default Type="Param" Library="74A68E34" Id="16007E80"/>
+        </Element>
+        <Element Type="Param" Id="16007E80">
+            <Value>0</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="ParamDef" Id="070B0464">
+            <ParameterType>
+                <Type Value="string"/>
+            </ParameterType>
+            <Default Type="Param" Library="74A68E34" Id="848508C0"/>
+        </Element>
+        <Element Type="Param" Id="848508C0">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="ParamDef" Id="849CBD3B">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="74A68E34" Id="D26F5F0D"/>
+        </Element>
+        <Element Type="Param" Id="D26F5F0D">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Variable" Id="6C6DA7D6">
+            <Identifier>currentRegenTime</Identifier>
+            <VariableType>
+                <Type Value="fixed"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="F3D678C8"/>
+        </Element>
+        <Element Type="Param" Id="F3D678C8">
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="A0A47AAE"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A0A47AAE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5F8A9E51"/>
+            <Parameter Type="Param" Library="74A68E34" Id="855851E9"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E3172BB3"/>
+        </Element>
+        <Element Type="Param" Id="855851E9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4EA8F097"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+        </Element>
+        <Element Type="Param" Id="E3172BB3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F3413D92"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+        </Element>
+        <Element Type="Variable" Id="627D040B">
+            <Identifier>intendedRegenTime</Identifier>
+            <VariableType>
+                <Type Value="fixed"/>
+            </VariableType>
+            <Value Type="Param" Library="74A68E34" Id="51D93965"/>
+        </Element>
+        <Element Type="Param" Id="51D93965">
+            <ExpressionType Type="fixed"/>
+            <ExpressionText>~A~ - ~B~</ExpressionText>
+            <ExpressionParam Type="Param" Library="74A68E34" Id="BE04FE81"/>
+            <ExpressionParam Type="Param" Library="74A68E34" Id="C6638BED"/>
+        </Element>
+        <Element Type="Param" Id="BE04FE81">
+            <Parameter Type="ParamDef" Library="74A68E34" Id="AA8F1BED"/>
+            <ExpressionCode Value="A"/>
+        </Element>
+        <Element Type="Param" Id="C6638BED">
+            <Variable Type="Variable" Library="74A68E34" Id="6C6DA7D6"/>
+            <ExpressionCode Value="B"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6C350DAE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="3D9A3C0C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="0E6FF882"/>
+            <Parameter Type="Param" Library="74A68E34" Id="E5FCAD46"/>
+        </Element>
+        <Element Type="Param" Id="0E6FF882">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="95EE056B"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+        </Element>
+        <Element Type="Param" Id="E5FCAD46">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="9B72FF09"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8CCC27EA">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="1D502AEE"/>
+            <Parameter Type="Param" Library="74A68E34" Id="EBE2E4E5"/>
+            <Parameter Type="Param" Library="74A68E34" Id="D1A5BD9C"/>
+            <Parameter Type="Param" Library="74A68E34" Id="47A74D9C"/>
+        </Element>
+        <Element Type="Param" Id="EBE2E4E5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BA852648"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+        </Element>
+        <Element Type="Param" Id="D1A5BD9C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="46AD72A9"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+        </Element>
+        <Element Type="Param" Id="47A74D9C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5087ACF"/>
+            <FunctionCall Type="FunctionCall" Library="74A68E34" Id="FDB10DD0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="FDB10DD0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000129"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F3227E23"/>
+            <Parameter Type="Param" Library="74A68E34" Id="F53AC390"/>
+            <Parameter Type="Param" Library="74A68E34" Id="CA769ED1"/>
+        </Element>
+        <Element Type="Param" Id="F3227E23">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000209"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000086"/>
+        </Element>
+        <Element Type="Param" Id="F53AC390">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000210"/>
+            <Value>1</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="CA769ED1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000208"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="A3C4C830"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A65BD0D5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="E8E2A8ED"/>
+            <Parameter Type="Param" Library="74A68E34" Id="68103F32"/>
+            <Parameter Type="Param" Library="74A68E34" Id="7234A705"/>
+            <Parameter Type="Param" Library="74A68E34" Id="9F8BB79E"/>
+        </Element>
+        <Element Type="Param" Id="68103F32">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="96524691"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="849CBD3B"/>
+        </Element>
+        <Element Type="Param" Id="7234A705">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="14031B72"/>
+            <Parameter Type="ParamDef" Library="74A68E34" Id="070B0464"/>
+        </Element>
+        <Element Type="Param" Id="9F8BB79E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="0D65343F"/>
+            <Variable Type="Variable" Library="74A68E34" Id="627D040B"/>
         </Element>
         <Element Type="Category" Id="DC971322">
             <Item Type="Trigger" Library="74A68E34" Id="1F206E2C"/>

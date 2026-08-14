@@ -1383,6 +1383,22 @@ void lib74A68E34_gf_AlarakPrestigeJinaraSpawn (int lp_player) {
     }
 }
 
+void lib74A68E34_gf_NovaModifyCooldown (fixed lp_maxRegenTime, fixed lp_maxChargeCount, string lp_cooldownName, int lp_player) {
+    // Variable Declarations
+    fixed lv_currentRegenTime;
+    fixed lv_intendedRegenTime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_currentRegenTime = PlayerGetChargeRegen(lp_player, lp_cooldownName);
+    lv_intendedRegenTime = (lp_maxRegenTime - lv_currentRegenTime);
+
+    // Implementation
+    libNtve_gf_PlayerRemoveChargeUsed(lp_player, lp_cooldownName);
+    PlayerAddChargeUsed(lp_player, lp_cooldownName, (lp_maxChargeCount - 1.0));
+    PlayerAddChargeRegenRemaining(lp_player, lp_cooldownName, lv_intendedRegenTime);
+}
+
 void lib74A68E34_gf_StukovPrestigeNeuralEnable (int lp_player) {
     // Automatic Variable Declarations
     unitgroup auto1C61E62B_g;
@@ -6177,6 +6193,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_AlarakMergeSetTarget, true);
         }
         else if (auto560DABDD_val == "TerranNova") {
+            TriggerEnable(libCOMI_gt_CM_Nova_BuildingCompletedTrigger, false);
+            TriggerEnable(lib74A68E34_gt_NovaBuildingCompletedTrigger, true);
             TriggerEnable(libCOMI_gt_CM_NovaPsiStrike, false);
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeNovaMelee", c_techCountCompleteOnly) == 1)) {
                 TriggerEnable(lib74A68E34_gt_NovaPrestigeMeleeCliffJump, true);
@@ -8260,6 +8278,67 @@ void lib74A68E34_gt_AlarakMergeSetTarget_Init () {
     lib74A68E34_gt_AlarakMergeSetTarget = TriggerCreate("lib74A68E34_gt_AlarakMergeSetTarget_Func");
     TriggerEnable(lib74A68E34_gt_AlarakMergeSetTarget, false);
     TriggerAddEventUnitOrder(lib74A68E34_gt_AlarakMergeSetTarget, null, AbilityCommand("VoidArchonMerge", 1));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: NovaBuildingCompletedTrigger
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_NovaBuildingCompletedTrigger_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    unit lv_qhporlegcyhossxq;
+    string lv_hntdiilglcqjckwx;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_player = UnitGetOwner(EventUnitProgressUnit());
+    lv_qhporlegcyhossxq = EventUnitProgressUnit();
+    lv_hntdiilglcqjckwx = UnitGetType(EventUnitProgressUnit());
+
+    // Conditions
+    if (testConds) {
+        if (!((TechTreeUpgradeCount(lv_player, "NovaCommander", c_techCountCompleteOnly) >= 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((lv_hntdiilglcqjckwx == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "BarracksTrainNovaMarine", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "BarracksTrainMarauderNova", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "BarracksTrainGhostNova", lv_player);
+        libCOMI_gv_novaBarrackBuilt[lv_player] = 1;
+    }
+
+    if (((lv_hntdiilglcqjckwx == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "FactoryTrainGoliathNova", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "FactoryTrainSiegeTankNova", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "FactoryTrainHellbatNova", lv_player);
+        libCOMI_gv_novaFactoryBuilt[lv_player] = 1;
+    }
+
+    if (((lv_hntdiilglcqjckwx == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "StarportTrainBansheeNova", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "StarportTrainRavenNova", lv_player);
+        lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "StarportTrainLiberatorNova", lv_player);
+        libCOMI_gv_novaStarportBuilt[lv_player] = 1;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_NovaBuildingCompletedTrigger_Init () {
+    lib74A68E34_gt_NovaBuildingCompletedTrigger = TriggerCreate("lib74A68E34_gt_NovaBuildingCompletedTrigger_Func");
+    TriggerEnable(lib74A68E34_gt_NovaBuildingCompletedTrigger, false);
+    TriggerAddEventUnitConstructProgress(lib74A68E34_gt_NovaBuildingCompletedTrigger, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13274,6 +13353,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AlarakArchonResurgenceCleanUp_Init();
     lib74A68E34_gt_AlarakMergeApplyBuff_Init();
     lib74A68E34_gt_AlarakMergeSetTarget_Init();
+    lib74A68E34_gt_NovaBuildingCompletedTrigger_Init();
     lib74A68E34_gt_NovaPrestigeCloakCombatAttack_Init();
     lib74A68E34_gt_NovaPrestigeCloakCombatAbility_Init();
     lib74A68E34_gt_NovaPrestigeMeleeCliffJump_Init();

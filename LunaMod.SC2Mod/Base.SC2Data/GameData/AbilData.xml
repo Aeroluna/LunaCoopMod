@@ -307,6 +307,9 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilBehavior>
+    <CAbilBehavior id="GhostCloak">
+        <CmdButtonArray index="On" Requirements="UsePersonalCloaking"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="GlevigDeepTunnel">
         <FinishTime index="0" value="2"/>
         <PlaceUnit value="DehakaGlevigPlacement"/>
@@ -350,6 +353,9 @@
             <Resource index="Vespene" value="250"/>
         </InfoArray>
     </CAbilWarpTrain>
+    <CAbilEffectTarget id="HUGSOverloadStetmann">
+        <TargetFilters index="0" value="Visible;Neutral,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable,MapBoss"/>
+    </CAbilEffectTarget>
     <CAbilEffectInstant id="HallucinationAdept">
         <Flags index="TransientPreferred" value="1"/>
     </CAbilEffectInstant>
@@ -771,6 +777,9 @@
         <BehaviorOn value="MorphingintoWarpGate"/>
         <BehaviorOff value="MorphingintoWarpGate"/>
     </CAbilMorph>
+    <CAbilBehavior id="WraithCloak">
+        <CmdButtonArray index="On" Requirements="UseWraithCloak"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="ZeratulDarkArchonMaelstrom">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>

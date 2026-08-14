@@ -1,5 +1,12 @@
 # Changelog
 
+## 8/13/2026
+
+- Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
+- Fixed an issue where Amon's Ghosts and Wraiths could use Cloak before their upgrades are researched.
+- Fixed an issue where Nova's P1 would not apply under certain circumstances.
+- Fixed an issue where H.U.G.S. Overload shield could target invulnerable units.
+
 ## 8/2/2026
 
 - Fixed an issue where Abathur's Ravagers had no burrowed splat when burrowed.

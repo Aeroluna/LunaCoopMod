@@ -792,6 +792,7 @@ A full energy Science Vessel could slam out 8 Irradiates before running OOM. A l
   - Increases damage vs. armored units by +6 for 20 seconds.
   - Reduces movement speed by 25% while active.
 - Added Prismatic Alignment AI to Void Rays.
+- Fixed a bug where Void Rays could still do a small amount of damage if their current target became invulnerable (Your Stetellites are now safe).
 
 Copied from Versus. Did you know Amon's Void Rays didn't even have a working passive to charge up their attacks? Now Amon will activate Prismatic Alignment against armored targets and will cancel it if there are no armored targets in range.
 
@@ -2951,6 +2952,7 @@ Copied from Versus.
 - Fixed an issue where Mecha Battlecarrier Lord Cocoons did not play their birth animation.
 - Fixed an issue where Stetmann's units had a delay before starting a morph.
 - Fixed an issue where Mecha Infestors would sometimes not have their burrowed splat destroyed when unburrowing.
+- Fixed an issue where Deactivated Stetellites used the wrong death model.
 
 yeah.
 
