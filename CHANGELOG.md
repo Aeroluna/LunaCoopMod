@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/13/2026
+## 8/14/2026
 
 - Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
 - Fixed an issue where Amon's Ghosts and Wraiths could use Cloak before their upgrades are researched.
@@ -29,6 +29,8 @@
 - Fixed an issue where lava damage on The Vermillion Problem could still deal damage if the target became invulnerable.
 - Fixed an issue where Dehaka's P1 could affect map objectives, e.g. Aurana's Transport, Harvesting Bots.
 - Fixed an issue where Dehaka's P2 disadvantage could be negated by loading Dehaka into a Nydus Worm before using Pack Leaders.
+- Fixed an issue where when either Dehaka gains Deadly Reach with P3, both benefit from the upgrade.
+- Fixed an issue where Zweihaka would rally towards a random unit if no rally is set.
 
 I'm back with a ton of bug fixes.
 

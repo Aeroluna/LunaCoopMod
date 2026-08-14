@@ -134,6 +134,13 @@
         <AttributeBonus index="Light" value="0"/>
         <Amount value="22"/>
     </CEffectDamage>
+    <CEffectSet id="CancelDehakaLearn"/>
+    <CEffectCancelOrder id="CancelDehakaLearnDeadlyReachClone">
+        <EditorCategories value=""/>
+        <AbilCmd value="DehakaLearn,Learn12"/>
+        <Flags index="Active" value="0"/>
+        <Flags index="Queued" value="1"/>
+    </CEffectCancelOrder>
     <CEffectEnumArea id="ChangelingDisguiseEx3Search">
         <SearchFilters value="Visible;Player,Ally,Neutral,Missile,MapBoss"/>
     </CEffectEnumArea>
@@ -4541,6 +4548,9 @@
     <CEffectEnumArea id="DefilerMPPlagueSearch">
         <AreaArray index="0" Radius="3"/>
     </CEffectEnumArea>
+    <CEffectModifyPlayer id="DehakaCloneAirAttackUpgrade">
+        <Upgrades Upgrade="DehakaCloneAirAttackUpgrade" Count="1"/>
+    </CEffectModifyPlayer>
     <CEffectDamage id="DehakaCoopClawCleaveDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Zerg"/>
         <Amount value="0">
@@ -4551,7 +4561,7 @@
     <CEffectEnumArea id="DehakaCoopClawCleave">
         <EditorCategories value="Race:Zerg"/>
         <ExcludeArray Value="Target"/>
-        <SearchFilters value="Ground,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray>
             <Arc value="135"/>
             <Radius value="0.5"/>
@@ -4567,30 +4577,24 @@
         <ValidatorArray value="DehakaNoAirUpgrade"/>
         <ImpactLocation Value="SourceUnit"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="DehakaCoopClawAirCleave">
-        <ValidatorArray value="DehakaAirUpgrade"/>
-        <EditorCategories value="Race:Zerg"/>
-        <ImpactLocation Value="SourceUnit"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray>
-            <Arc value="135"/>
-            <Radius value="0.5"/>
-            <RadiusBonus value="0.5"/>
-            <Effect value="DehakaCoopClawCleaveDamage"/>
-        </AreaArray>
-        <ExtraRadiusBonus value="0">
-            <AccumulatorArray value="DehakaConsumeEffectPsionicExplosionRadiusBonus"/>
-        </ExtraRadiusBonus>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+    <CEffectEnumArea id="DehakaCoopClawAirCleave" parent="DehakaCoopClawCleave">
+        <ValidatorArray index="0" value="DehakaAirUpgrade"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectSet id="DehakaCoopClawSet">
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="DehakaCoop"/>
         <EffectArray value="DehakaCoopClawCleave"/>
         <EffectArray value="DehakaCoopClawAirCleave"/>
+    </CEffectSet>
+    <CEffectEnumArea id="DehakaCoopCloneClawAirCleave" parent="DehakaCoopClawAirCleave">
+        <ValidatorArray index="0" value="DehakaCloneAirUpgrade"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DehakaCoopCloneClawSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="DehakaCoop"/>
+        <EffectArray value="DehakaCoopClawCleave"/>
+        <EffectArray value="DehakaCoopCloneClawAirCleave"/>
     </CEffectSet>
     <CEffectCreateHealer id="EnshroudHeal">
         <PeriodCount value="16"/>

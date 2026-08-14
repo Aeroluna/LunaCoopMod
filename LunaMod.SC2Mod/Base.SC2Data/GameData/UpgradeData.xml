@@ -554,6 +554,9 @@
     <CUpgrade id="DehakaCloneColossusLegs">
         <EffectArray Operation="Set" Reference="Unit,DehakaCoopClone,Collide[Land4]" Value="1"/>
     </CUpgrade>
+    <CUpgrade id="DehakaCloneAirAttackUpgrade" parent="DehakaAirAttackUpgrade">
+        <EffectArray index="0" Operation="Set" Reference="Weapon,DehakaCoopClone,TargetFilters" Value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CUpgrade>
     <CUpgrade id="KerriganCommander">
         <EffectArray Reference="Weapon,BroodlingStrike,DisplayAttackCount" Value="2"/>
     </CUpgrade>
@@ -682,6 +685,9 @@
         <AffectedUnitArray value="LiberatorAG"/>
         <!--ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/-->
+    </CUpgrade>
+    <CUpgrade id="MasteryDehakaAttackSpeed">
+        <EffectArray Reference="Weapon,DehakaCoopClone,RateMultiplier" Value="0.01"/>
     </CUpgrade>
     <CUpgrade id="MasteryKerriganResearchSpeedandCost">
         <EffectArray index="27" Value="4"/>

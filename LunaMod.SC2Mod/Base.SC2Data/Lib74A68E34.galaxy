@@ -4629,6 +4629,49 @@ void lib74A68E34_gt_StukovMindControlCheat_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DehakaEssenceCheat
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaEssenceCheat_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_count;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_count = 10000.0;
+
+    // Conditions
+    if (testConds) {
+        if (!((libA8FDA37D_gf_UT_DevCommandsActive(libA8FDA37D_ge_UT_DevCommandTypes_Gamealtering, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((StringWord(EventChatMessage(false), 2) != "")) {
+        lv_count = StringToInt(StringWord(EventChatMessage(false), 2));
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "EssencePickup", c_unitCreateIgnorePlacement, EventPlayer(), CameraGetTarget(EventPlayer()));
+    libCOMI_gf_CM_Dehaka_EssenceSetStack(UnitLastCreated(), FixedToInt(lv_count));
+    UnitBehaviorRemove(UnitLastCreated(), "EssenceCreated", 1);
+    libCOMI_gf_CM_Dehaka_EssenceScale(UnitLastCreated(), true);
+    libCOMI_gf_CM_Dehaka_EssenceMerge(UnitLastCreated(), FixedToInt(lv_count));
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_74A68E34_10A57462"));
+    libA8FDA37D_gf_UT_Cheat();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaEssenceCheat_Init () {
+    lib74A68E34_gt_DehakaEssenceCheat = TriggerCreate("lib74A68E34_gt_DehakaEssenceCheat_Func");
+    TriggerAddEventChatMessage(lib74A68E34_gt_DehakaEssenceCheat, c_playerAny, "-essence", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: FastResearch
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_FastResearch_Func (bool testConds, bool runActions) {
@@ -6236,7 +6279,11 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             }
 
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeDehakaClone", c_techCountCompleteOnly) == 1)) {
+                TriggerEnable(libCOMI_gt_CM_Dehaka_PrestigeClone, false);
+                TriggerEnable(libCOMI_gt_CM_Dehaka_PrestigeCloneRevive, false);
                 TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, true);
+                TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneRegister, true);
+                TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneRevive, true);
             }
 
             if ((TechTreeUpgradeCount(lv_player, "CommanderPrestigeDehakaPackLeaders", c_techCountCompleteOnly) == 1)) {
@@ -8728,6 +8775,146 @@ void lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: DehakaPrestigeCloneTooltipFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_created;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_created = EventUnitCreatedUnit();
+
+    // Conditions
+    if (testConds) {
+        if (!((libCOMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((UnitGetType(lv_created) == "DehakaCoopClone"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    UnitSetState(lv_created, c_unitStateTooltipable, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init () {
+    lib74A68E34_gt_DehakaPrestigeCloneTooltipFix = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func");
+    TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DehakaPrestigeCloneRegister
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaPrestigeCloneRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_dehakaclone;
+    int lv_dehakaplayer;
+    order lv_order;
+    unit lv_reviver;
+    point lv_rallyPoint;
+    unit lv_rallyUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_dehakaclone = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_dehakaplayer = UnitGetOwner(lv_dehakaclone);
+    lv_reviver = libCOMI_gv_cM_HeroReviver[lv_dehakaplayer];
+    lv_rallyPoint = UnitRallyPointTargetPoint(lv_reviver, 1, 1);
+    lv_rallyUnit = UnitRallyPointTargetUnit(lv_reviver, 1, 1);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitRallyPointTargetCount(lv_reviver, 1) > 0)) {
+        if ((UnitIsValid(lv_rallyUnit) == true)) {
+            lv_order = OrderTargetingUnit(null, lv_rallyUnit);
+        }
+        else {
+            lv_order = OrderTargetingPoint(null, lv_rallyPoint);
+        }
+        OrderSetFlag(lv_order, c_cmdSmartRally, true);
+        UnitIssueOrder(lv_dehakaclone, lv_order, c_orderQueueReplace);
+    }
+
+    UnitBehaviorAdd(lv_dehakaclone, libCOMI_gv_cM_DehakaVeterencyBehavior[lv_dehakaplayer], lv_dehakaclone, 1);
+    if ((TechTreeUpgradeCount(lv_dehakaplayer, "MasteryDehakaAttackSpeed", c_techCountCompleteOnly) >= 1)) {
+        UnitBehaviorAdd(lv_dehakaclone, "DehakaAttEssenceMastery", lv_dehakaclone, 1);
+        UnitBehaviorRemove(lv_dehakaclone, "DehakaAttEssence", 1);
+    }
+
+    libCOMI_gf_CM_Dehaka_LevelUp(lv_dehakaplayer, lv_dehakaclone);
+    libCOUI_gf_SetHeroPanelUnitOverride(2, lv_dehakaclone, lv_dehakaplayer);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaPrestigeCloneRegister_Init () {
+    lib74A68E34_gt_DehakaPrestigeCloneRegister = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneRegister_Func");
+    TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneRegister, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_DehakaPrestigeCloneRegister, c_playerAny, "CommanderPrestigeDehakaCloneRegisterTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DehakaPrestigeCloneRevive
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_DehakaPrestigeCloneRevive_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_dehakaclone;
+    int lv_dehakaplayer;
+    order lv_order;
+    unit lv_reviver;
+    point lv_rallyPoint;
+    unit lv_rallyUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_dehakaclone = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_dehakaplayer = UnitGetOwner(lv_dehakaclone);
+    lv_reviver = libCOMI_gv_cM_HeroReviver[lv_dehakaplayer];
+    lv_rallyPoint = UnitRallyPointTargetPoint(lv_reviver, 1, 1);
+    lv_rallyUnit = UnitRallyPointTargetUnit(lv_reviver, 1, 1);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitRallyPointTargetCount(lv_reviver, 1) > 0)) {
+        if ((UnitIsValid(lv_rallyUnit) == true)) {
+            lv_order = OrderTargetingUnit(null, lv_rallyUnit);
+        }
+        else {
+            lv_order = OrderTargetingPoint(null, lv_rallyPoint);
+        }
+        OrderSetFlag(lv_order, c_cmdSmartRally, true);
+        UnitIssueOrder(lv_dehakaclone, lv_order, c_orderQueueReplace);
+    }
+
+    libCOMI_gf_CM_Dehaka_LevelUp(lv_dehakaplayer, lv_dehakaclone);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_DehakaPrestigeCloneRevive_Init () {
+    lib74A68E34_gt_DehakaPrestigeCloneRevive = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneRevive_Func");
+    TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneRevive, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_DehakaPrestigeCloneRevive, c_playerAny, "CommanderPrestigeDehakaCloneRevive");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: DehakaPrestigeArmy
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_DehakaPrestigeArmy_Func (bool testConds, bool runActions) {
@@ -8787,44 +8974,6 @@ void lib74A68E34_gt_DehakaPrestigeArmy_Init () {
     lib74A68E34_gt_DehakaPrestigeArmy = TriggerCreate("lib74A68E34_gt_DehakaPrestigeArmy_Func");
     TriggerEnable(lib74A68E34_gt_DehakaPrestigeArmy, false);
     TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeArmy, null, null, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DehakaPrestigeCloneTooltipFix
-//--------------------------------------------------------------------------------------------------
-bool lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_created;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-
-    // Conditions
-    if (testConds) {
-        if (!((libCOMI_gf_GameIsOver() == false))) {
-            return false;
-        }
-
-        if (!((UnitGetType(lv_created) == "DehakaCoopClone"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    Wait(0.1, c_timeGame);
-    UnitSetState(lv_created, c_unitStateTooltipable, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init () {
-    lib74A68E34_gt_DehakaPrestigeCloneTooltipFix = TriggerCreate("lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Func");
-    TriggerEnable(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, false);
-    TriggerAddEventUnitCreated(lib74A68E34_gt_DehakaPrestigeCloneTooltipFix, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13389,6 +13538,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_AlarakPowerOverwhelmingCheat_Init();
     lib74A68E34_gt_TychusExpandedCheat_Init();
     lib74A68E34_gt_StukovMindControlCheat_Init();
+    lib74A68E34_gt_DehakaEssenceCheat_Init();
     lib74A68E34_gt_FastResearch_Init();
     lib74A68E34_gt_FastBuildImproved_Init();
     lib74A68E34_gt_FourthPrestigeTriggers_Init();
@@ -13496,8 +13646,10 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_FenixHeroCarrierFix_Init();
     lib74A68E34_gt_FenixPrestigeChampionMorphed_Init();
     lib74A68E34_gt_FenixAbilityTransmissionMassRecall_Init();
-    lib74A68E34_gt_DehakaPrestigeArmy_Init();
     lib74A68E34_gt_DehakaPrestigeCloneTooltipFix_Init();
+    lib74A68E34_gt_DehakaPrestigeCloneRegister_Init();
+    lib74A68E34_gt_DehakaPrestigeCloneRevive_Init();
+    lib74A68E34_gt_DehakaPrestigeArmy_Init();
     lib74A68E34_gt_DehakaPrestigePackLeadersSearchFix_Init();
     lib74A68E34_gt_HornerPrestigeBombingPlatformsTechSwitch_Init();
     lib74A68E34_gt_HornerPrestigeDefenseBomberLaunch_Init();

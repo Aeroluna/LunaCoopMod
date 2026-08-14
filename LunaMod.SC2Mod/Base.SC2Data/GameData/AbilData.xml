@@ -83,6 +83,9 @@
         <CursorEffect value="DefensiveMatrixAoE"/>
         <CmdButtonArray index="Execute" State="Available" Requirements="ScienceVesselAoE"/>
     </CAbilEffectTarget>
+    <CAbilBehavior id="DehakaCloneAirAttackUpgrade" parent="DehakaAirAttackUpgrade">
+        <BehaviorArray index="0" value="DehakaCloneAirAttackUpgrade"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="DehakaGlevigFirebreath">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
@@ -96,6 +99,11 @@
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
+    <CAbilLearn id="DehakaLearn">
+        <InfoArray index="Learn12" Abil="DehakaCloneAirAttackUpgrade" VeterancyLevelMin="10">
+            <Button DefaultButtonFace="DehakaAirAttackUpgrade"/>
+        </InfoArray>
+    </CAbilLearn>
     <CAbilEffectTarget id="DehakaUltraliskCrashingCharge">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
