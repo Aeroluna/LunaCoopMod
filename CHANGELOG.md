@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/14/2026
+## 8/15/2026
 
 - Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
 - Fixed an issue where Amon's Ghosts and Wraiths could use Cloak before their upgrades are researched.
@@ -50,8 +50,19 @@
 - Fixed an issue where Zeratul's P3 tornadoes could not deal damage to units affected by time slows.
 - Fixed an issue where Void Templar had access to Blink before unlocking the level 3 perk.
 - Fixed an issue where units created by Mutators can once again drop Biomass/Essence after being devolved.
+- Fixed an issue where Han & Horner's SCVs could not Halt from their command card.
+- Fixed an issue where Assault Galleon construction could not Halt from their command card.
+- Fixed an issue where mind control effects did not break Han & Horner's Raven Analyze Weakness.
+- Fixed an issue where mind control effects did not break Alarak's Havoc Target Lock.
+- Fixed an issue where Death Grip Crystals could target units warping in.
+- Fixed an issue where units with Dehaka's P1 thorns buff have their spikes come from Dehaka instead of the unit themselves.
+- Fixed an issue where Taldarin did not have turret tracking.
+- Fixed an issue where Taldarin had no visual effect when Barrier is used.
+- Fixed an issue where Banshee Airstrikes that expire while being knockbacked will use the wrong expire animation.
+- fixed an issue where casting Assimilation Aura while leaping can cause the visual to be rotated incorrectly.
+- Fixed an issue where killing a missile from Missile Command with Just Die! active caused the respawn animation to occur on the killing unit instead of the missile.
 
-I'm back with a ton of bug fixes.
+I'm back with a ton of bug fixes. I might have found [https://starcraft2coop.com/resources/bugs](https://starcraft2coop.com/resources/bugs).
 
 - Increased Abathur's Swarm Host life from 120 to 160.
 
@@ -60,6 +71,10 @@ Parity with Amon's Swarm Host.
 - Added a burrowed splat when Dehaka P2 exits the map.
 
 Don't forget where you left your Dehaka!
+
+- Fixed an issue where Zagara's P1 removed the gas cost of Scourge.
+
+That one is my fault.
 
 ## 8/2/2026
 

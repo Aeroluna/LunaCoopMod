@@ -90,6 +90,9 @@
     <CActorUnit id="CivilianFemale">
         <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
     </CActorUnit>
+    <CActorAction id="DehakaConsumeReflectAttack">
+        <On index="6" Terms="Effect.DehakaConsumeReflectLaunchMissile.Start; At Source"/>
+    </CActorAction>
     <CActorMissile id="DehakaCoop">
         <On Terms="Behavior.CommanderPrestigeDehakaPackLeadersExitGame.On" Send="Create DehakaCoopBurrowedSplat"/>
         <On Terms="Behavior.CommanderPrestigeDehakaPackLeadersExitGame.Off" Target="DehakaCoopBurrowedSplat" Send="Destroy"/>
@@ -125,6 +128,12 @@
     </CActorModel>
     <CActorUnit id="EvolutionChamberStetmann">
         <Macros index="1" value="QueueAnimSpeed135"/>
+    </CActorUnit>
+    <CActorUnit id="FenixTaldarinImmortal">
+        <On index="74" Terms="Behavior.ImmortalOverload.On"/>
+        <On index="75" Terms="Behavior.ImmortalOverload.On"/>
+        <On index="76" Terms="Behavior.ImmortalOverload.Off"/>
+        <On index="77" Terms="Behavior.ImmortalOverload.Off"/>
     </CActorUnit>
     <CActorModel id="GaryStetmannRecalledImpact">
         <Remove Terms="Behavior.Recalled.On" Send="Create"/>
@@ -187,6 +196,9 @@
         <EditorCategories value=""/>
         <Model value="InfestorWeaponMissileStetmann"/>
     </CActorMissile>
+    <CActorModel id="KerriganEconDropImpact">
+        <HostSiteOps Ops="SOpShadow SOp2DRotation"/>
+    </CActorModel>
     <CActorMissile id="KerriganVoid">
         <Remove Terms="UnitBirth.K5KerriganBurrowed" Send="Create"/>
         <Remove Terms="UnitRevive.K5KerriganBurrowed" Send="Create"/>
@@ -585,6 +597,13 @@
         <LaunchAttachQuery Methods="AMFilterCenter"/>
         <Missile value="MutatorCandyTurninMissile"/>
     </CActorAction>
+    <CActorModel id="MutatorJustDieRespawn">
+        <!--On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.500000"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 1.000000 0.500000"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="ModelMaterialApply GlazeShadow"/>
+        <On Terms="Behavior.MutatorJustDie.Off" Target="_Selectable" Send="Destroy"/-->
+        <Host Subject="_Unit"/>
+    </CActorModel>
     <CActorUnit id="MutatorLaserDrill">
         <On index="81" Send="AnimPlay Attack Attack PlayForever -1.000000 -1.000000 0.500000 AsTimeScale"/>
         <On index="83" Send="AnimPlay AttackA Attack,A PlayForever -1.000000 -1.000000 0.750000 AsTimeScale"/>

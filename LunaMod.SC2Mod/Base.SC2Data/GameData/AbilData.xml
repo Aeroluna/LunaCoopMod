@@ -45,6 +45,9 @@
     <CAbilEffectTarget id="ConsumeDNA">
         <TargetFilters index="0" value="-;Self,Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="CoopVoidSliverDeathGripAutoCast">
+        <TargetFilters index="0" value="-;UnderConstruction"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="CorrosiveAcid">
         <TargetSorts>
             <SortArray value="TSThreatensMutalisk"/>
@@ -622,6 +625,15 @@
     <CAbilMorph id="PhasingMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="QueenBurstHeal">
+        <AutoCastValidatorArray index="3" value=""/>
+        <TargetSorts>
+            <SortArray index="0" value="TSUnitsAndAttackingStructures"/>
+            <SortArray index="1" value="TSAlliancePassive"/>
+            <SortArray index="2" value="TSLifeFraction"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="RavenShredderMissile">
         <Cost index="0">
             <Vital index="Energy" value="0"/>
@@ -785,6 +797,15 @@
         <BehaviorOn value="MorphingintoWarpGate"/>
         <BehaviorOff value="MorphingintoWarpGate"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="VoidShardACDeathGrip">
+        <TargetFilters index="0" value="-;Player,Ally,Neutral,Heroic,UnderConstruction"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidTendrilDeathGrip">
+        <TargetFilters index="0" value="-;Player,Ally,Neutral,Heroic,UnderConstruction"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="VoidTendrilDeathGripAutoCast">
+        <TargetFilters index="0" value="Ground,Visible;Self,Neutral,Massive,Structure,Heroic,Destructible,UnderConstruction,Invulnerable"/>
+    </CAbilEffectTarget>
     <CAbilBehavior id="WraithCloak">
         <CmdButtonArray index="On" Requirements="UseWraithCloak"/>
     </CAbilBehavior>
