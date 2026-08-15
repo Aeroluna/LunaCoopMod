@@ -427,6 +427,9 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
     - Enthralled Zergling
 - Fixed an issue where Reavers could not path through force fields.
 - Added a countdown for tracking barrier abilities.
+- Fixed an issue where Colossi could still deal damage if their current target became invulnerable.
+- Fixed an issue where Parasitic Bomb did not work on some ground/air units like Void Thrashers.
+- Fixed an issue where Banelings affected by time slows would have a delay before exploding.
 
 yeah.
 
@@ -633,6 +636,22 @@ No more getting revealed for walking in a nuke's area. Especially noticeably whe
 Now that Motherships can be found normally, the mutator has been changed to be more distinct.
 
 - Fixed an issue where Eminent Domain would cause Han & Horner's Assault Galleons to be unkillable.
+- Fixed an issue where the Fear Mutator could target Frenzied units.
+- Fixed an issue where some burrowed units could be pulled by Fatal Attraction.
+  - Affected units:
+    - Infested Civilian
+    - Infested Trooper
+    - Volatile Infested
+    - Kerrigan
+    - Spider Mine
+    - Widow Mine
+    - Sabotage Drone
+    - Ravager
+    - Infested Banshee
+    - Zagara
+- Fixed an issue where Hardened Will did not get removed/added while affected by time slows.
+- Fixed an issue where Black Death damage counted as self-damage.
+- Fixed an issue where killing a missile from Missile Command with Just Die! active caused the respawn animation to occur on the killing unit instead of the missile.
 
 yeah.
 
@@ -691,6 +710,7 @@ One of the most high-quality maps to come from RTC 2017, it's criminal that this
 - Fixed an issue where Alarak's rank changes to "Challenger" when playing Chains of Ascension.
 - Removed rank display from Ji'nara/Amon's Champion on Chains of Ascension.
 - Removed health display from Ji'nara/Amon's Champion on Chains of Ascension.
+- Fixed an issue where lava damage on The Vermillion Problem could still deal damage if the target became invulnerable.
 
 yeah.
 
@@ -991,6 +1011,11 @@ New compositions, new fights! Protoss has 8 compositions while Terran and Zerg o
 - Fixed an issue where Hybrid Destroyer's Graviton Prison did not play a spell animation.
 - Fixed an issue where Lurkers did not benefit from attack upgrades.
 - Increased Hybrid Behemoth's allied push priority from 0 to 1.
+- Fixed an issue where Ghosts and Wraiths could use Cloak before their upgrades are researched.
+- Fixed an issue where Swarm Host's Spawn Locust ability used the wrong tooltip.
+- Fixed an issue where Hybrid Reaver/Behemoth's Consume DNA ability could still deal damage if the target became invulnerable.
+- Fixed an issue where invulnerable units could trigger Stasis Wards.
+- Fixed an issue where Death Grip Crystals could target units warping in.
 
 yeah.
 
@@ -1127,6 +1152,7 @@ Copied from Versus. Missile Turrets and Bunkers could certainly use the buff.
 - Changed Concussive Shells upgrade tooltip to reflect its AOE slow.
 - Fixed an issue where the Terran building burn visual was not visible on Supply Depots built using Orbital Depots.
 - Fixed an issue where already created Spider Mines did not update their model after researching Cerberus Mines.
+- Fixed an issue where Banshee Airstrikes that expire while being knockbacked will use the wrong expire animation.
 
 yeah.
 
@@ -1246,6 +1272,8 @@ Fun fact: For some reason Kerrigan's Brood Lords spawn two Broodlings at a time 
 - Fixed an issue where Kerrigan's Psionic Shift ability was affected by movement speed buffs/debuffs.
 - Fixed an issue where Kerrigan's Cocoon had extra unnecessary attributes.
 - Fixed an issue where Kerrigan's Expeditious Evolutions mastery reduced the time of Muscular Augments more than intended.
+- Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
+- Fixed an issue where casting Assimilation Aura while leaping can cause the visual to be rotated incorrectly.
 
 yeah.
 
@@ -1325,6 +1353,7 @@ Sorry High Templar enjoyers, but this was just unintuitive.
 - Fixed an issue where Shield Overcharge mastery listed its value as `+X Percent` instead of `+X%`.
 - Fixed an issue where Feedback/Psionic Storm would only be casted by the selected subgroup when selecting both High Templar and Archons.
 - Fixed an issue where when Artanis cancels building a Warp Gate, it used the wrong death animation.
+- Fixed an issue where P3 Unbound Fanatics would spawn slightly before the Orbital Strike landed
 
 yeah.
 
@@ -1426,6 +1455,7 @@ Very annoying when you are trying to queue up a bunch of structures and then the
 - Fixed an issue where Science Vessel's Irradiate visual effect rotated with the unit.
 - Seperated Irradiate into two different buffs to more easily differentiate between friendly and enemy casts.
 - Fixed an issue where the P3 tooltip on Hercule's Rapid Deployment passive would always show regardless of prestige selected.
+- Fixed an issue where researching Regenerative Bio-Steel overrides health regen effects.
 
 yeah.
 
@@ -1512,6 +1542,7 @@ Zagara has a mastery for attack damage but her attacks felt lethargic and she at
 - Fixed an issue where Zagara's Cocoon had extra unnecessary attributes.
 - Fixed an issue where Zagara's Baneling Barrage would explode prematurely on Adept shades.
 - Added unused Mass Frenzy VO.
+- Fixed an issue where Zagara's Baneling Barrage did Double Edged damage against structures.
 
 yeah.
 
@@ -1768,6 +1799,10 @@ Makes microing Swarm Host much easier. No longer do you have to unburrow your Sw
 
 This change in addition to the previous change makes Swarm Host play feel soooo much better.
 
+- Increased Swarm Host life from 120 to 160.
+
+Parity with Amon's Swarm Host.
+
 - Added small delay to Toxic Nest explode when autocast.
   - Explodes quicker against fast units.
 
@@ -1815,6 +1850,7 @@ Leviathan's have four holes, use them all! This bug was caused by using the orig
 - Changed Aberrations to no longer walk over massive units.
 - Changed Brutalisks to no longer walk over massive units.
 - Fixed an issue where burrowed Ravagers had no burrowed splat.
+- Fixed an issue where Swarm Host's Spawn Locust ability did not have a descriptive tooltip.
 
 yeah.
 
@@ -1985,6 +2021,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Reworded the tooltip of Supplicant's Blood Shields upgrade.
 - Changed Havoc's Target Lock to prioritize attacking units and structures.
 - Fixed an issue where Alarak's Soul Absorption could absorb precursor units (placeholder units for knockback effects).
+- Fixed an issue where mind controlling a unit affected by Alarak's Havoc's Target Lock did not break the effect.
 
 yeah.
 
@@ -2107,6 +2144,7 @@ Nova can now directly deploy Hellions instead of Hellbats. I'm not sure why you 
 - Fixed an issue where Railgun Turret placement models were smaller than their actual model.
 - Added a buff/debuff for structures affected by P1.
 - Fixed an issue where Nova's Assault Mode tooltip would incorrectly color appended mastery text.
+- Fixed an issue where Nova's P1 only applied if at least one charge was used.
 
 yeah.
 
@@ -2249,6 +2287,8 @@ Blizzard got lazy and only reused portraits for Stukov, lets add new ones! (Dave
 - Fixed an issue where Infested Banshees did not play a sound when enabling/disabling Cloak.
 - Fixed an issue where Volatile Infested used the wrong icon/wireframe.
 - Fixed an issue where rooted Infested Bunkers had no death animation (Uprooted are still missing a death animation).
+- Fixed an issue where some structure disabling effects did not affect Infested Bunkers.
+- Fixed an issue where Infest Structure spawned double the Broodlings when used on conjoined ally units.
 
 yeah. The Siege Tank bug took way too long to figure out...
 
@@ -2331,6 +2371,11 @@ The Arbiter suit gets the increased damage and can only last 20 seconds, but for
 - Added a visual effect to Fenix's Cloaking Field.
 - Changed Avenging Protocol buff tooltip to be more descriptive and show exact speed increase.
 - Fixed an issue where P2 did not affect phasing Conservators.
+- Fixed an issue where Adepts and Talis could permanently be unable to use Psionic Projection if stasised while on cooldown.
+- Fixed an issue where Fenix's Champion A.I.s had the wrong resources costs (This affected calculations like Han & Horners salvage).
+- Fixed an issue where Warbringer ignored armor.
+- Fixed an issue where Taldarin did not have turret tracking.
+- Fixed an issue where Taldarin had no visual effect when Barrier is used.
 
 yeah.
 
@@ -2420,11 +2465,15 @@ The unit previously used the Primal Lurker skin, now it uses a proper Impaler sk
 
 - Added a visual impact model for Dehaka's Devour.
 
-This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?feature=shared&t=93) but was removed before release for some reason. Fun fact: the visual still existed for Carriers and Void Rays only for some reason.
+This visual exists in the [commander preview](https://youtu.be/R2-PzLUzam8?feature=shared&t=93) but was removed before release. Fun fact: the visual still existed but only for Carriers and Void Rays for some reason.
 
 - Changed Primal Igniter weapon attack sounds.
 
 It very clearly sounded like a hellion.
+
+- Added a burrowed splat when Dehaka P2 exits the map.
+
+Don't forget where you parked your Dehaka!
 
 - Fixed an issue where Pack Leaders had the hidden Map Boss tag, making them immune to some mutators.
 
@@ -2449,6 +2498,13 @@ I love my OP Pack Leaders as much as anyone else, but its very unintuitive that 
 - Changed Tyrannazors to no longer walk over massive units.
 - Changed Murvar to no longer walk over massive units.
 - Changed Dakrun to no longer walk over massive units.
+- Fixed an issue where Primal Host's Spawn Locust ability did not have a descriptive tooltip.
+- Fixed an issue where Creeper Host's Spawn Locust ability did not have a descriptive tooltip.
+- Fixed an issue where P1 could affect map objectives, e.g. Aurana's Transport, Harvesting Bots.
+- Fixed an issue where P2 disadvantage could be negated by loading Dehaka into a Nydus Worm before using Pack Leaders.
+- Fixed an issue where when either Dehaka gains Deadly Reach with P3, both benefit from the upgrade.
+- Fixed an issue where Zweihaka would rally towards a random unit if no rally is set.
+- Fixed an issue where units with Dehaka's P1 thorns buff have their spikes come from Dehaka instead of the unit themselves.
 
 yeah.
 
@@ -2597,6 +2653,11 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Changed Theia Raven's Analyze Weakness to prioritize attacking units and structures.
 - Fixed an issue where Reapers had a small delay before they actually died.
 - Fixed an issue where P1 did not affect Theia Ravens in Silent Mode.
+- Fixed an issue where Dominion Starports did not respawn if killed by a Propagator.
+- Fixed an issue where Parasitic Bomb did not work on Han & Horner's Reapers while flying.
+- Fixed an issue where Han & Horner's SCVs could not Halt from their command card.
+- Fixed an issue where Assault Galleon construction could not Halt from their command card.
+- Fixed an issue where mind controlling a unit affected by Theia Raven's Analyze Weakness did not break the effect.
 
 yeah.
 
@@ -2714,6 +2775,7 @@ For an ability that's basically a Psionic Storm, the ability was set up weirdly 
 - Fixed an issue where the gear delivery beam sound was classified as UI.
 - Fixed an issue where Odin's weapon/armor icons did not change with upgrade level.
 - Fixed an issue where Sirius's Moebius M34 Terror Rounds would affect invulnerable units.
+- Fixed an issue where Lt. Nikara could not heal non-biological/mechanical units, e.g. Archons.
 
 yeah.
 
@@ -2823,6 +2885,9 @@ They deserve the Heroic attribute!
 - Fixed an issue where Charged Crystal's Psionic Winds would be place where the target was when the attack started.
 - Fixed an issue where Charged Crystal's Psionic Winds visuals would sometimes end prematurely.
 - Reworded Avatar of Form's Devolution Wave tooltip to mention heroic immunity.
+- Fixed an issue where P3 tornadoes could not deal damage to units affected by time slows.
+- Fixed an issue where Void Templar had access to Blink before unlocking the level 3 perk.
+- Fixed an issue where units created by Mutators can once again drop Biomass/Essence after being devolved.
 
 yeah.
 
@@ -2954,6 +3019,8 @@ Copied from Versus.
 - Fixed an issue where Stetmann's units had a delay before starting a morph.
 - Fixed an issue where Mecha Infestors would sometimes not have their burrowed splat destroyed when unburrowing.
 - Fixed an issue where Deactivated Stetellites used the wrong death model.
+- Fixed an issue where H.U.G.S. Overload shield could target invulnerable units.
+- Fixed an issue where Stetellites only respawned once with the Eminent Domain mutator.
 
 yeah.
 
@@ -3091,6 +3158,7 @@ Previously the status bar only showed hp.
 - Changed the visual missile of Contaminated Strike to be directional.
 - Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
 - Lowered subgroup priority of Enthralled Zerg.
+- Fixed an issue where some structure disabling effects did not affect Supply Bunkers.
 
 yeah.
 

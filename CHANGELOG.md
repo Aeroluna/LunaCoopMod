@@ -4,7 +4,7 @@
 
 - Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
 - Fixed an issue where Amon's Ghosts and Wraiths could use Cloak before their upgrades are researched.
-- Fixed an issue where Nova's P1 would not apply under certain circumstances.
+- Fixed an issue where Nova's P1 only applied if at least one charge was used.
 - Fixed an issue where H.U.G.S. Overload shield could target invulnerable units.
 - Fixed an issue where the Fear Mutator could target Frenzied units.
 - Fixed an issue where some burrowed units could be pulled by Fatal Attraction.
@@ -32,7 +32,7 @@
 - Fixed an issue where when either Dehaka gains Deadly Reach with P3, both benefit from the upgrade.
 - Fixed an issue where Zweihaka would rally towards a random unit if no rally is set.
 - Fixed an issue where invulnerable units could trigger Stasis Wards.
-- Fixed an issue where Adepts and Talis could not use Psionic Projection if stasised while on cooldown.
+- Fixed an issue where Adepts and Talis could permanently be unable to use Psionic Projection if stasised while on cooldown.
 - Fixed an issue where Fenix's Champion A.I.s had the wrong resources costs (This affected calculations like Han & Horners salvage).
 - Fixed an issue where Warbringer ignored armor.
 - Fixed an issue where Dominion Starports did not respawn if killed by a Propagator.
@@ -52,14 +52,14 @@
 - Fixed an issue where units created by Mutators can once again drop Biomass/Essence after being devolved.
 - Fixed an issue where Han & Horner's SCVs could not Halt from their command card.
 - Fixed an issue where Assault Galleon construction could not Halt from their command card.
-- Fixed an issue where mind control effects did not break Han & Horner's Raven Analyze Weakness.
-- Fixed an issue where mind control effects did not break Alarak's Havoc Target Lock.
+- Fixed an issue where mind controlling a unit affected by Han & Horner's Theia Raven's Analyze Weakness did not break the effect.
+- Fixed an issue where mind controlling a unit affected by Alarak's Havoc's Target Lock did not break the effect.
 - Fixed an issue where Death Grip Crystals could target units warping in.
 - Fixed an issue where units with Dehaka's P1 thorns buff have their spikes come from Dehaka instead of the unit themselves.
 - Fixed an issue where Taldarin did not have turret tracking.
 - Fixed an issue where Taldarin had no visual effect when Barrier is used.
 - Fixed an issue where Banshee Airstrikes that expire while being knockbacked will use the wrong expire animation.
-- fixed an issue where casting Assimilation Aura while leaping can cause the visual to be rotated incorrectly.
+- Fixed an issue where casting Assimilation Aura while leaping can cause the visual to be rotated incorrectly.
 - Fixed an issue where killing a missile from Missile Command with Just Die! active caused the respawn animation to occur on the killing unit instead of the missile.
 
 I'm back with a ton of bug fixes. I might have found [https://starcraft2coop.com/resources/bugs](https://starcraft2coop.com/resources/bugs).
@@ -70,7 +70,7 @@ Parity with Amon's Swarm Host.
 
 - Added a burrowed splat when Dehaka P2 exits the map.
 
-Don't forget where you left your Dehaka!
+Don't forget where you parked your Dehaka!
 
 - Fixed an issue where Zagara's P1 removed the gas cost of Scourge.
 
