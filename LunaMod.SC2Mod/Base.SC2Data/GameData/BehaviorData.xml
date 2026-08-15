@@ -55,6 +55,9 @@
             <BehaviorLinkDisableArray value="WreckingCrewAutoFighter"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BanelingStetmannExplodeDelay">
+        <TimeScaleSource Value="Global"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeFenixAvengerThreat">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -112,6 +115,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="BanelingExplodeDelay">
         <InfoFlags index="Hidden" value="1"/>
+        <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="BroodLordHangarCD">
         <InfoFlags index="Hidden" value="1"/>
@@ -878,6 +882,9 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MutatorHardenedWillSelfCycle">
+        <TimeScaleSource Value="Global"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MutatorHybridFacilityAccrue">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -1020,6 +1027,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorHardenedWill">
         <Alignment value="Positive"/>
+        <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MutatorInfestedTurkeyTerrifyingGobble">
         <BehaviorCategories index="Restorable" value="1"/>
@@ -1772,6 +1780,8 @@
         <Modification>
             <StateFlags index="Stun" value="1"/>
         </Modification>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="SOAMapWideChronoPassive">
         <RemoveValidatorArray value="NoCommanderPrestigeKaraxUnitChrono"/>
@@ -2165,6 +2175,21 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="GravitonPrison">
         <BehaviorCategories index="Restorable" value="1"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <StateFlags index="SuppressRadar" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilLinkEnableArray value="TerranBuild"/>
+            <BehaviorClassDisableArray index="CBehaviorCreepSource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorPowerSource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorResource" value="1"/>
+            <BehaviorClassDisableArray index="CBehaviorSpawn" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="HHWidowMineBurrowAutocast">
         <InfoFlags index="Hidden" value="1"/>

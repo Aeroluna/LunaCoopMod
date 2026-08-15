@@ -1054,6 +1054,9 @@
     <CEffectEnumTransport id="MutatorGravitonBombIterateTransport">
         <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
+    <CEffectDamage id="MutatorPlagueBehaviorDPS">
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="NeuralParasiteChildren">
         <EditorCategories value="Race:Zerg"/>
     </CEffectApplyBehavior>
@@ -1148,6 +1151,9 @@
         <ValidatorArray index="2" value="IsNotBuried"/>
     </CEffectCreateUnit>
     <CEffectCreatePersistent id="CommanderPrestigeRaynorMercenaryRallyCP"/>
+    <CEffectSet id="SIStukovInfestStructureSpawnSet">
+        <ValidatorArray value="NotConjoinedAllyUnit"/>
+    </CEffectSet>
     <CEffectEnumTransport id="SOABlindIterateTransport">
         <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
@@ -3011,6 +3017,7 @@
     <CEffectCreateHealer id="TychusMedicHeal">
         <ValidatorArray index="2" value=""/>
         <ValidatorArray index="3" value=""/>
+        <ValidatorArray index="6" value=""/>
     </CEffectCreateHealer>
     <CEffectApplyBehavior id="TychusMedicTransportAirUnitsAB">
         <ValidatorArray value="PassengerNotSuppressed"/>

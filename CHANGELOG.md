@@ -39,6 +39,12 @@
 - Fixed an issue where Parasitic Bomb did not work on Han & Horner's Reapers while flying.
 - Fixed an issue where Parasitic Bomb did not work on some ground/air units like Void Thrashers.
 - Fixed an issue where some structure disabling effects did not affect Supply Bunkers/Infested Bunkers.
+- Fixed an issue where Stetellites only respawned once with the Eminent Domain mutator.
+- Fixed an issue where Infest Structure spawned double the Broodlings when used on conjoined ally units.
+- Fixed an issue where researching Regenerative Bio-Steel overrides health regen effects.
+- Fixed an issue where Lt. Nikara could not heal non-biological/mechanical units, e.g. Archons.
+- Fixed an issue where Banelings affected by time slows would have a delay before exploding.
+- Fixed an issue where Hardened Will did not get removed/added while affected by time slows.
 
 I'm back with a ton of bug fixes.
 
