@@ -1891,6 +1891,47 @@ void lib74A68E34_gf_TychusHeroSetFirstHeroUpgrade (unit lp_unit) {
     libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(lp_unit), "TychusFirstHero", lv_index);
 }
 
+void lib74A68E34_gf_ZeratulDevolveApply (unit lp_targetUnit) {
+    // Variable Declarations
+    fixed lv_lifePercentage;
+    fixed lv_shieldPercentage;
+    fixed lv_energyPercentage;
+    string lv_oldUnitType;
+    string lv_newUnitType;
+    int lv_owner;
+    point lv_spawnPosition;
+    bool lv_mutatorUnit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_lifePercentage = UnitGetPropertyFixed(lp_targetUnit, c_unitPropLifePercent, c_unitPropCurrent);
+    lv_shieldPercentage = UnitGetPropertyFixed(lp_targetUnit, c_unitPropShieldsPercent, c_unitPropCurrent);
+    lv_oldUnitType = UnitGetType(lp_targetUnit);
+    lv_newUnitType = libCOMI_gf_CM_Zeratul_DevolveGetNewUnitType(lv_oldUnitType, (libCOMI_gf_CM_Zeratul_DevolveGetUnitTier(UnitGetType(lp_targetUnit)) - 1));
+    lv_owner = UnitGetOwner(lp_targetUnit);
+
+    // Implementation
+    if ((lv_newUnitType == null)) {
+        return ;
+    }
+
+    lv_spawnPosition = UnitGetPosition(lp_targetUnit);
+    PointSetFacing(lv_spawnPosition, UnitGetFacing(lp_targetUnit));
+    lv_mutatorUnit = libCOMU_gf_CT_UnitSpawnedByMutator(lp_targetUnit);
+    UnitRemove(lp_targetUnit);
+    libNtve_gf_CreateUnitsAtPoint2(1, lv_newUnitType, c_unitCreateIgnorePlacement, lv_owner, lv_spawnPosition);
+    if ((lv_mutatorUnit == true)) {
+        libCOMU_gf_CT_RegisterSpawnedUnit(UnitLastCreated());
+    }
+
+    UnitGroupAdd(libCOMI_gv_cM_Zeratul_DevolvedUnits, UnitLastCreated());
+    UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifePercent, lv_lifePercentage);
+    UnitSetPropertyFixed(UnitLastCreated(), c_unitPropShieldsPercent, lv_shieldPercentage);
+    UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 0.0);
+    libNtve_gf_SendActorMessageToUnit(UnitLastCreated(), "Create ZeratulDevolve");
+    AISetUnitSuicide(UnitLastCreated(), true);
+}
+
 void lib74A68E34_gf_CM_MasteryStetmannUpgradeCost (int lp_player) {
     // Variable Declarations
     int lv_upgradeCount;
@@ -3914,6 +3955,72 @@ void lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl () {
         libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove C");
         libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupRemove D");
         libNtve_gf_SendActorMessageToUnit(libCOMU_gv_cT_CandyBowlUnit, "AnimGroupApply A");
+    }
+}
+
+void lib74A68E34_gf_MutatorPlagueApply (unit lp_newUnit) {
+    // Variable Declarations
+    int lv_plagueChance;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if (((libCOMU_gf_MutatorIsEnabled("Plague") == false) || (UnitGetOwner(lp_newUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_newUnit)) == false) || (UnitFilterMatch(lp_newUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterInvulnerable - 32)))) == false) || (UnitGetType(lp_newUnit) == "AdeptPhaseShift") || (UnitGetType(lp_newUnit) == "DisruptorPhased") || (UnitGetType(lp_newUnit) == "BiomassPickup"))) {
+        return ;
+    }
+    else {
+        lv_plagueChance = libCOMI_gf_MinimumDifficultyValueCoopInteger(20, 10, 5, 3, 0, 0);
+        if ((RandomInt(1, lv_plagueChance) == 1)) {
+            UnitBehaviorAdd(lp_newUnit, "MutatorPlagueBehaviorVisual", lp_newUnit, 1);
+        }
+
+    }
+}
+
+void lib74A68E34_gf_CT_ApplyPlagueOnDeath (unit lp_killedUnit) {
+    // Variable Declarations
+    unitgroup lv_playerUnitGroup;
+    int lv_infectedUnitCount;
+    int lv_infectedUnitCountMax;
+    fixed lv_infectionRange;
+    point lv_unitPosition;
+    unit lv_indexUnit;
+
+    // Automatic Variable Declarations
+    unitgroup autoD77D10A3_g;
+    int autoD77D10A3_u;
+
+    // Variable Initialization
+    lv_playerUnitGroup = UnitGroupEmpty();
+    lv_infectionRange = 5.0;
+
+    // Implementation
+    if (((UnitGetOwner(lp_killedUnit) == c_playerAny))) {
+        return ;
+    }
+
+    if (((UnitHasBehavior2(lp_killedUnit, "MutatorPlagueBehavior") == true) || (UnitHasBehavior2(lp_killedUnit, "MutatorPlagueBehaviorVisual") == true))) {
+        lv_infectedUnitCountMax = libCOMI_gf_MinimumDifficultyValueCoopInteger(1, 1, 2, 3, 0, 0);
+        autoD77D10A3_g = UnitGroupAlliance(1, c_unitAllianceAlly, RegionCircle(UnitGetPosition(lp_killedUnit), lv_infectionRange), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+        autoD77D10A3_u = UnitGroupCount(autoD77D10A3_g, c_unitCountAll);
+        for (;; autoD77D10A3_u -= 1) {
+            lv_indexUnit = UnitGroupUnitFromEnd(autoD77D10A3_g, autoD77D10A3_u);
+            if (lv_indexUnit == null) { break; }
+            if (((UnitHasBehavior2(lv_indexUnit, "MutatorPlagueBehavior") == false) && (UnitGetType(lv_indexUnit) != "AdeptPhaseShift") && (UnitGetType(lv_indexUnit) != "BiomassPickup") && (UnitGetType(lv_indexUnit) != "DisruptorPhased") && (UnitGetType(lv_indexUnit) != "Larva") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedOverlord") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedCivilian") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedMarine") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedDiamondBack") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedSiegeTank") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedBanshee") && (UnitGetType(lv_indexUnit) != "SICocoonQueen") && (UnitGetType(lv_indexUnit) != "SICocoonInfestedLiberator") && (UnitGetType(lv_indexUnit) != "DehakaTrainEgg") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggDrone") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggZergling") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggRoach") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggHydralisk") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggSwarmHost") && (UnitGetType(lv_indexUnit) != "DehakaTrainEggUltralisk") && (UnitGetType(lv_indexUnit) != "CODFlatbedTruck") && (UnitGetType(lv_indexUnit) != "CODFlatbedTruckFlying") && ((UnitGetOwner(lv_indexUnit) == 1) || (UnitGetOwner(lv_indexUnit) == 2)))) {
+                UnitBehaviorAdd(lv_indexUnit, "MutatorPlagueBehavior", lp_killedUnit, 1);
+                lv_infectedUnitCount += 1;
+                if ((lv_infectedUnitCount >= lv_infectedUnitCountMax)) {
+                    break;
+                }
+
+            }
+
+        }
+        UnitBehaviorRemove(lp_killedUnit, "MutatorPlagueBehavior", 1);
+    }
+    else {
+        return ;
     }
 }
 
@@ -6355,6 +6462,8 @@ bool lib74A68E34_gt_ActivateCommanderTriggers_Func (bool testConds, bool runActi
             TriggerEnable(lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm, true);
             TriggerEnable(libCOMI_gt_CM_Zeratul_Entropic_Spawner, false);
             TriggerEnable(lib74A68E34_gt_ZeratulEntropicSpawner, true);
+            TriggerEnable(libCOMI_gt_CM_Zeratul_Devolve, false);
+            TriggerEnable(lib74A68E34_gt_ZeratulDevolve, true);
         }
         else if (auto560DABDD_val == "ZergStetmann") {
             lib74A68E34_gf_CM_MasteryStetmannUpgradeCost(lv_player);
@@ -8337,14 +8446,14 @@ void lib74A68E34_gt_AlarakMergeSetTarget_Init () {
 bool lib74A68E34_gt_NovaBuildingCompletedTrigger_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_player;
-    unit lv_qhporlegcyhossxq;
-    string lv_hntdiilglcqjckwx;
+    unit lv_vhnbqqvrepjrhhkg;
+    string lv_iggjwhdswstkqgrb;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_player = UnitGetOwner(EventUnitProgressUnit());
-    lv_qhporlegcyhossxq = EventUnitProgressUnit();
-    lv_hntdiilglcqjckwx = UnitGetType(EventUnitProgressUnit());
+    lv_vhnbqqvrepjrhhkg = EventUnitProgressUnit();
+    lv_iggjwhdswstkqgrb = UnitGetType(EventUnitProgressUnit());
 
     // Conditions
     if (testConds) {
@@ -8358,24 +8467,24 @@ bool lib74A68E34_gt_NovaBuildingCompletedTrigger_Func (bool testConds, bool runA
         return true;
     }
 
-    if (((lv_hntdiilglcqjckwx == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+    if (((lv_iggjwhdswstkqgrb == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "BarracksTrainNovaMarine", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "BarracksTrainMarauderNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "BarracksTrainGhostNova", lv_player);
         libCOMI_gv_novaBarrackBuilt[lv_player] = 1;
     }
 
-    if (((lv_hntdiilglcqjckwx == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+    if (((lv_iggjwhdswstkqgrb == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "FactoryTrainGoliathNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "FactoryTrainSiegeTankNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "FactoryTrainHellbatNova", lv_player);
         libCOMI_gv_novaFactoryBuilt[lv_player] = 1;
     }
 
-    if (((lv_hntdiilglcqjckwx == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_hntdiilglcqjckwx, lv_qhporlegcyhossxq, lv_player);
+    if (((lv_iggjwhdswstkqgrb == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "StarportTrainBansheeNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "StarportTrainRavenNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "StarportTrainLiberatorNova", lv_player);
@@ -10803,6 +10912,27 @@ void lib74A68E34_gt_ZeratulEntropicSpawner_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: ZeratulDevolve
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_ZeratulDevolve_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_ZeratulDevolveApply(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_ZeratulDevolve_Init () {
+    lib74A68E34_gt_ZeratulDevolve = TriggerCreate("lib74A68E34_gt_ZeratulDevolve_Func");
+    TriggerEnable(lib74A68E34_gt_ZeratulDevolve, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_ZeratulDevolve, c_playerAny, "ZeratulXelNagaConstructDevolveModifyUnit");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: StetmannBroodLordArmCD
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_StetmannBroodLordArmCD_Func (bool testConds, bool runActions) {
@@ -10974,6 +11104,7 @@ bool lib74A68E34_gt_MutatorRegister_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_RegisterMutator("NoResources", lib74A68E34_gt_MutatorMinedOutInit, lib74A68E34_gt_MutatorMinedOutShutdown);
     libCOMU_gf_CT_RegisterMutator("TrickOrTreat", lib74A68E34_gt_MutatorTrickOrTreatInit, lib74A68E34_gt_MutatorTrickOrTreatShutdown);
     libCOMU_gf_CT_RegisterMutator("Fear", lib74A68E34_gt_MutatorFearInit, lib74A68E34_gt_MutatorFearShutdown);
+    libCOMU_gf_CT_RegisterMutator("Plague", lib74A68E34_gt_MutatorPlagueInit, lib74A68E34_gt_MutatorPlagueShutdown);
     return true;
 }
 
@@ -13519,6 +13650,189 @@ void lib74A68E34_gt_MutatorFearShutdown_Init () {
     lib74A68E34_gt_MutatorFearShutdown = TriggerCreate("lib74A68E34_gt_MutatorFearShutdown_Func");
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorPlagueInit
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorPlagueInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_difficultyModifier;
+
+    // Automatic Variable Declarations
+    unitgroup auto7196F9BA_g;
+    int auto7196F9BA_u;
+    unit auto7196F9BA_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueDeath, true);
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitDeath, true);
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitCreation, true);
+    lv_difficultyModifier = libCOMI_gf_MinimumDifficultyValueCoopInteger(20, 10, 5, 3, 0, 0);
+    auto7196F9BA_g = UnitGroupAlliance(1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto7196F9BA_u = UnitGroupCount(auto7196F9BA_g, c_unitCountAll);
+    for (;; auto7196F9BA_u -= 1) {
+        auto7196F9BA_var = UnitGroupUnitFromEnd(auto7196F9BA_g, auto7196F9BA_u);
+        if (auto7196F9BA_var == null) { break; }
+        if ((RandomInt(1, lv_difficultyModifier) == 1)) {
+            UnitBehaviorAdd(auto7196F9BA_var, "MutatorPlagueBehaviorVisual", auto7196F9BA_var, 1);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorPlagueInit_Init () {
+    lib74A68E34_gt_MutatorPlagueInit = TriggerCreate("lib74A68E34_gt_MutatorPlagueInit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorPlagueUnitCreation
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorPlagueUnitCreation_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MutatorPlagueApply(EventUnitCreatedUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorPlagueUnitCreation_Init () {
+    lib74A68E34_gt_MutatorPlagueUnitCreation = TriggerCreate("lib74A68E34_gt_MutatorPlagueUnitCreation_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitCreation, false);
+    TriggerAddEventUnitCreated(lib74A68E34_gt_MutatorPlagueUnitCreation, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorPlagueUnitDeath
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorPlagueUnitDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) != "DisruptorPhased"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "AdeptPhaseShift"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "TerranDropPod"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPodLarge"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPod"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPodCreep"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnitDamageDeathCheck(c_deathTypeRemove) == true)) {
+        return true;
+    }
+
+    if (((UnitGetType(EventUnit()) == "MutatorMissileNuke") || (UnitGetType(EventUnit()) == "MutatorMissilePointDefense") || (UnitGetType(EventUnit()) == "MutatorMissileSplitter") || (UnitGetType(EventUnit()) == "MutatorMissileSplitterChild") || (UnitGetType(EventUnit()) == "MutatorMissileStandard"))) {
+        return true;
+    }
+
+    lib74A68E34_gf_CT_ApplyPlagueOnDeath(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorPlagueUnitDeath_Init () {
+    lib74A68E34_gt_MutatorPlagueUnitDeath = TriggerCreate("lib74A68E34_gt_MutatorPlagueUnitDeath_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitDeath, false);
+    TriggerAddEventUnitDied(lib74A68E34_gt_MutatorPlagueUnitDeath, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorPlagueDeath
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorPlagueDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != "DisruptorPhased"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != "AdeptPhaseShift"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib74A68E34_gf_MutatorPlagueApply(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorPlagueDeath_Init () {
+    lib74A68E34_gt_MutatorPlagueDeath = TriggerCreate("lib74A68E34_gt_MutatorPlagueDeath_Func");
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueDeath, false);
+    TriggerAddEventPlayerEffectUsed(lib74A68E34_gt_MutatorPlagueDeath, c_playerAny, "MutatorPlagueDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MutatorPlagueShutdown
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MutatorPlagueShutdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup autoD2414FA8_g;
+    int autoD2414FA8_u;
+    unit autoD2414FA8_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueDeath, false);
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitDeath, false);
+    TriggerEnable(lib74A68E34_gt_MutatorPlagueUnitCreation, false);
+    autoD2414FA8_g = UnitGroupAlliance(1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoD2414FA8_u = UnitGroupCount(autoD2414FA8_g, c_unitCountAll);
+    for (;; autoD2414FA8_u -= 1) {
+        autoD2414FA8_var = UnitGroupUnitFromEnd(autoD2414FA8_g, autoD2414FA8_u);
+        if (autoD2414FA8_var == null) { break; }
+        UnitBehaviorRemove(autoD2414FA8_var, "MutatorPlagueBehavior", c_unitBehaviorCountAll);
+        UnitBehaviorRemove(autoD2414FA8_var, "MutatorPlagueBehaviorVisual", c_unitBehaviorCountAll);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MutatorPlagueShutdown_Init () {
+    lib74A68E34_gt_MutatorPlagueShutdown = TriggerCreate("lib74A68E34_gt_MutatorPlagueShutdown_Func");
+}
+
 void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ApplyMaguroChanges_Init();
     lib74A68E34_gt_ExtraUpgrades_Init();
@@ -13687,6 +14001,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain_Init();
     lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm_Init();
     lib74A68E34_gt_ZeratulEntropicSpawner_Init();
+    lib74A68E34_gt_ZeratulDevolve_Init();
     lib74A68E34_gt_StetmannBroodLordArmCD_Init();
     lib74A68E34_gt_MengskPrestigeZergRefund_Init();
     lib74A68E34_gt_MengskPreserveAutocast_Init();
@@ -13749,6 +14064,11 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_MutatorFearInit_Init();
     lib74A68E34_gt_MutatorFearApply_Init();
     lib74A68E34_gt_MutatorFearShutdown_Init();
+    lib74A68E34_gt_MutatorPlagueInit_Init();
+    lib74A68E34_gt_MutatorPlagueUnitCreation_Init();
+    lib74A68E34_gt_MutatorPlagueUnitDeath_Init();
+    lib74A68E34_gt_MutatorPlagueDeath_Init();
+    lib74A68E34_gt_MutatorPlagueShutdown_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

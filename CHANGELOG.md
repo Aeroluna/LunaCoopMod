@@ -45,6 +45,11 @@
 - Fixed an issue where Lt. Nikara could not heal non-biological/mechanical units, e.g. Archons.
 - Fixed an issue where Banelings affected by time slows would have a delay before exploding.
 - Fixed an issue where Hardened Will did not get removed/added while affected by time slows.
+- Fixed an issue where Black Death damage counted as self-damage.
+- Fixed an issue where Zagara's Baneling Barrage did Double Edged damage against structures.
+- Fixed an issue where Zeratul's P3 tornadoes could not deal damage to units affected by time slows.
+- Fixed an issue where Void Templar had access to Blink before unlocking the level 3 perk.
+- Fixed an issue where units created by Mutators can once again drop Biomass/Essence after being devolved.
 
 I'm back with a ton of bug fixes.
 

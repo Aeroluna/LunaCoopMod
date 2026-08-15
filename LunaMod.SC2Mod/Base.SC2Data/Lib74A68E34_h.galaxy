@@ -192,6 +192,7 @@ void lib74A68E34_gf_TychusHeroTechInit (int lp_player);
 void lib74A68E34_gf_TychusHeroAvailabilityInitialProgressBar ();
 void lib74A68E34_gf_TychusUpdateHeroTechTreeChanged (int lp_p);
 void lib74A68E34_gf_TychusHeroSetFirstHeroUpgrade (unit lp_unit);
+void lib74A68E34_gf_ZeratulDevolveApply (unit lp_targetUnit);
 void lib74A68E34_gf_CM_MasteryStetmannUpgradeCost (int lp_player);
 void lib74A68E34_gf_MutatorRandomizerUpdate ();
 void lib74A68E34_gf_MutatorAbominationShuffleArray ();
@@ -234,6 +235,8 @@ void lib74A68E34_gf_MutatorStartingResourcesFindGasHarvesters (unit lp_gas, int 
 void lib74A68E34_gf_MutatorBountyHunterApply (unit lp_unit);
 void lib74A68E34_gf_MutatorTrickOrTreaterLogic (unit lp_civilianUnit);
 void lib74A68E34_gf_MutatorTrickOrTreatUpdateBowl ();
+void lib74A68E34_gf_MutatorPlagueApply (unit lp_newUnit);
+void lib74A68E34_gf_CT_ApplyPlagueOnDeath (unit lp_killedUnit);
 
 // Trigger Declarations
 trigger lib74A68E34_gt_ApplyMaguroChanges;
@@ -403,6 +406,7 @@ trigger lib74A68E34_gt_ZeratulPrestigeTopBarLegion;
 trigger lib74A68E34_gt_ZeratulPrestigeTopBarWarpTrain;
 trigger lib74A68E34_gt_ZeratulXelNagaChargedCrystalPsiStorm;
 trigger lib74A68E34_gt_ZeratulEntropicSpawner;
+trigger lib74A68E34_gt_ZeratulDevolve;
 trigger lib74A68E34_gt_StetmannBroodLordArmCD;
 trigger lib74A68E34_gt_MengskPrestigeZergRefund;
 trigger lib74A68E34_gt_MengskPreserveAutocast;
@@ -465,6 +469,11 @@ trigger lib74A68E34_gt_MutatorTrickOrTreatShutdown;
 trigger lib74A68E34_gt_MutatorFearInit;
 trigger lib74A68E34_gt_MutatorFearApply;
 trigger lib74A68E34_gt_MutatorFearShutdown;
+trigger lib74A68E34_gt_MutatorPlagueInit;
+trigger lib74A68E34_gt_MutatorPlagueUnitCreation;
+trigger lib74A68E34_gt_MutatorPlagueUnitDeath;
+trigger lib74A68E34_gt_MutatorPlagueDeath;
+trigger lib74A68E34_gt_MutatorPlagueShutdown;
 
 // Library Initialization
 void lib74A68E34_InitVariables ();

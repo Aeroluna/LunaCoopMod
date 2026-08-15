@@ -1129,6 +1129,10 @@
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="ChannelSnipeCombat"/>
     </CEffectRemoveBehavior>
+    <CEffectSet id="NoPathSuicideSet">
+        <EffectArray index="4" value="Suicide"/>
+        <EffectArray index="5" removed="1"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="NydusDestroyerBeamCP">
         <PeriodicValidator value="NydusDestroyerBeamValidators"/>
     </CEffectCreatePersistent>
@@ -6206,8 +6210,25 @@
     <CEffectDamage id="ZagaraParasiteSporeDamage">
         <Amount value="28"/>
     </CEffectDamage>
+    <CEffectSet id="ZagaraVoidCoopBanelingBarrageExplodeSearchSet">
+        <EffectArray index="4" value="Suicide"/>
+        <EffectArray index="5" removed="1"/>
+    </CEffectSet>
+    <CEffectDamage id="ZagaraVoidCoopBanelingBarrageExplodeSearchUnit">
+        <!-- the double edge mutator explicity ignores this effect-->
+        <!-- i can only guess its cause technically its the baneling doing the damage and not zag?-->
+        <!-- for some reason this exclusion doesnt extend to the structure damage effect-->
+        <!-- to fix this, i combined the structure effect into this one-->
+        <AttributeBonus index="Structure" value="40"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
     <CEffectSet id="ZagaraVoidCoopBanelingBarrageForceFieldExplodeSearchSet">
         <ValidatorArray index="0" value="TargetIsForceFieldType"/>
+        <EffectArray index="4" value="Suicide"/>
+        <EffectArray index="5" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="ZagaraVoidCoopBanelingBarrageImpactDummySet">
+        <EffectArray index="2" removed="1"/>
     </CEffectSet>
     <CEffectEnumArea id="ZagaraVoidCoopBanelingBarrageMissileScan">
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
