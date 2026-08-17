@@ -3164,6 +3164,11 @@ Previously the status bar only showed hp.
 - Fixed an issue where Blackhammers that are Abducted don't have their Overwatch Mode cancelled.
 - Lowered subgroup priority of Enthralled Zerg.
 - Fixed an issue where some structure disabling effects did not affect Supply Bunkers.
+- Fixed an issue where Emperor's Shadow's Rank 3 Pyrokinetic Immolation always exploded when expiring, regardless of the target being alive.
+- Added a visual glaze to units targeted by a Emperor's Shadow's Pyrokinetic Immolation ability.
+- Adjusted Emperor's Shadow's Pyrokinetic Immolation ability visual effect scale.
+- Changed Nuclear Annihilation's cursor splat.
+- Added a cursor splat to Dogs of War.
 
 yeah.
 

@@ -4,6 +4,7 @@
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
+- Fixed an issue where Emperor's Shadow's Rank 3 Pyrokinetic Immolation always exploded when expiring, regardless of the target being alive.
 
 yeah.
 
@@ -11,6 +12,13 @@ yeah.
 - Increased weapon speed of Shock Division firing from Intercessors from 4.5 to 4.
 
 Fun fact: Shock Division in Intercessors actually *lost* damage when they hit max rank due to a bugged value. The attack speed has been slightly increased to compensate.
+
+- Added a visual glaze to units targeted by a Emperor's Shadow's Pyrokinetic Immolation ability.
+- Adjusted Emperor's Shadow's Pyrokinetic Immolation ability visual effect scale.
+- Changed Nuclear Annihilation's cursor splat.
+- Added a cursor splat to Dogs of War.
+
+Make some Mengsk stuff prettier.
 
 ## 8/15/2026
 

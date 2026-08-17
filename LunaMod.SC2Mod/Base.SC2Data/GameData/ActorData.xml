@@ -160,6 +160,12 @@
         <Remove Terms="Behavior.HybridUrunRecalling.On" Send="Create"/>
         <On Terms="Effect.GaryStetmannRecallSearch.Start; At Target" Send="Create"/>
     </CActorSound>
+    <CActorModel id="GhostMengskIrradiate">
+        <On Terms="ActorCreation" Send="SetScale"/>
+        <On Terms="ActorCreation" Send="SetScale 3.000000 2.000000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.600000"/>
+        <AutoScaleFactor value="0.000000"/>
+    </CActorModel>
     <CActorAction id="InfestorAttackStetmann" parent="GenericAttack" effectImpact="InfestorWeaponDamageStetmann" effectLaunch="InfestorWeaponLMStetmann">
         <LaunchSiteOps Ops="SOpAttachHarness SOpMoveDownByDot5 SOpMoveBackByDot5"/>
         <LaunchAssets Sound="Infestor_AttackLaunch"/>
@@ -945,6 +951,21 @@
         <On index="4" Terms="Behavior.NovaDashAttackSpeed.On; ValidateUnit HaveNovaShotgunBlastRange" Send="Create"/>
         <Radius value="2.000000"/>
     </CActorForceCylinder>
+    <CActorSplat id="NuclearAnnihilationMengskSplat">
+        <Scale value="1.000000"/>
+    </CActorSplat>
+    <CActorSplat id="MengskZergCalldownLevel1" parent="ZergCursorSplat" abil="MengskZergCalldownLevel1">
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="MengskZergCalldownLevel2" parent="ZergCursorSplat" abil="MengskZergCalldownLevel2">
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="MengskZergCalldownLevel3" parent="ZergCursorSplat" abil="MengskZergCalldownLevel3">
+        <Scale value="7.000000"/>
+    </CActorSplat>
+    <CActorSplat id="MengskZergCalldownLevel4" parent="ZergCursorSplat" abil="MengskZergCalldownLevel4">
+        <Scale value="7.000000"/>
+    </CActorSplat>
     <CActorAction id="NydusDestroyerBeamAction">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -4497,6 +4518,14 @@
         <On Terms="Behavior.IrradiateFriendly.On" Send="Create"/>
         <On Terms="Behavior.IrradiateFriendly.Off" Send="AnimBracketStop BSD"/>
         <Model value="GlazeParasiticBomb"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModelMaterial id="GlazeGhostMengskIrradiate" parent="GlazeParent">
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="ModelMaterialRemoveFrom ::Main"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+        <On Terms="Behavior.GhostMengskIrradiate.On" Send="Create"/>
+        <On Terms="Behavior.GhostMengskIrradiate.Off" Send="AnimBracketStop BSD"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModelMaterial>
     <CActorModel id="GuardianShield">
