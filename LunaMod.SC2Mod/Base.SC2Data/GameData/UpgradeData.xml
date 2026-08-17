@@ -199,9 +199,17 @@
         <EffectArray Reference="Weapon,DehakaLocustSwarmHostDummy,Level" Value="1"/>
         <EffectArray Reference="Weapon,DehakaCreeperSwoopSwarmHostDummy,Level" Value="1"/>
     </CUpgrade>
-    <CUpgrade id="CommanderPrestigeZagaraMaxSupply">
-        <EffectArray index="4" Value="11"/>
-        <EffectArray index="5" Value="9"/>
+    <CUpgrade id="ProtossAirWeaponsLevel1">
+        <EffectArray index="130" Reference="Effect,TempestDamage,AttributeBonus[Massive]"/>
+        <EffectArray index="131" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirWeaponsLevel2">
+        <EffectArray index="130" Reference="Effect,TempestDamage,AttributeBonus[Massive]"/>
+        <EffectArray index="131" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirWeaponsLevel3">
+        <EffectArray index="130" Reference="Effect,TempestDamage,AttributeBonus[Massive]"/>
+        <EffectArray index="131" Value="1"/>
     </CUpgrade>
     <CUpgrade id="TerranInfantryWeaponsLevel1">
         <EffectArray index="10" Value="2"/>
@@ -541,6 +549,10 @@
         <EffectArray Operation="Set" Reference="Weapon,KraithSpineVolley,Icon" Value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level3.dds"/>
     </CUpgrade>
     <!-- END OF EXTRA ARMOR/WEAPON UPGRADES -->
+    <CUpgrade id="ArtanisCommander">
+        <EffectArray index="56" Reference="Unit,Tempest,Description" Value="Button/Tooltip/TempestArtanis"/>
+        <EffectArray index="57" removed="1"/>
+    </CUpgrade>
     <CUpgrade id="CerberusMines">
         <AffectedUnitArray value="SpiderMine"/>
         <AffectedUnitArray value="SpiderMineBurrowed"/>
@@ -581,6 +593,10 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeSwannHercules">
         <EffectArray index="3" Reference="Abil,HyperjumpNoVision,Cost[0].Cooldown.TimeUse"/>
+    </CUpgrade>
+    <CUpgrade id="CommanderPrestigeZagaraMaxSupply">
+        <EffectArray index="4" Value="11"/>
+        <EffectArray index="5" Value="9"/>
     </CUpgrade>
     <CUpgrade id="DarkTemplarBlinkUpgrade">
         <Icon value="Assets\Textures\btn-ability-protoss-stealth-blink.dds"/>
@@ -2848,6 +2864,12 @@
         <EffectArray Reference="Effect,TempestDotRandomOffset,Chance" Value="1"/>
         <EffectArray Reference="Effect,TempestDotRandomOffsetGround,Chance" Value="1"/>
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Tempest"/>
+    </CUpgrade>
+    <CUpgrade id="TempestGroundAttackUpgrade">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <EffectArray Reference="Effect,TempestDamageGround,AttributeBonus[Structure]" Value="40"/>
+        <EffectArray Reference="Effect,TempestDamage,AttributeBonus[Structure]" Value="40"/>
         <AffectedUnitArray value="Tempest"/>
     </CUpgrade>
     <CUpgrade id="TransformationServos">

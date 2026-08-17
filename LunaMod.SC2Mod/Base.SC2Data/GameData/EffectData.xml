@@ -425,6 +425,9 @@
         <EffectArray value="DisguiseEx3AttackMoveBugFix"/>
         <EffectArray value="DisguiseEx3RemoveCaster"/>
     </CEffectSet>
+    <CEffectDamage id="DisruptionBeamDamage">
+        <ShieldBonus value="4"/>
+    </CEffectDamage>
     <CEffectEnumTransport id="DisruptionCloudTransportIterateTransport">
         <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
@@ -1182,6 +1185,9 @@
     <CEffectSet id="SOAOrbitalStrikeImpactSet">
         <EffectArray index="0" value="SOAOrbitalStrikeImpactSearch"/>
     </CEffectSet>
+    <CEffectDamage id="SanitizationBeamDamage">
+        <ShieldBonus value="4"/>
+    </CEffectDamage>
     <CEffectEnumTransport id="ShadowGuardDetectionDisableAuraIterateTransport">
         <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>
@@ -1193,6 +1199,13 @@
     <CEffectCreatePersistent id="SymbioteStabInitialCP">
         <ValidatorArray value="IsNotDisguisedChangeling"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="TempestDamage">
+        <AttributeBonus index="Massive" value="22"/>
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectDamage id="TempestDamageGround">
+        <Amount value="40"/>
+    </CEffectDamage>
     <CEffectDamage id="ThermalLancesMU">
         <ValidatorArray value="NotInvulnerable"/>
     </CEffectDamage>
@@ -2918,6 +2931,9 @@
     <CEffectApplyBehavior id="ToxicNestVirulentNestSnareNormalAB">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectDamage id="TwinGatlingCannons">
+        <AttributeBonus index="Mechanical" value="8"/>
+    </CEffectDamage>
     <CEffectApplyBehavior id="TychusFirebatApplyOilBombMovement">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="TychusFirebatOilBombedMovement"/>
@@ -5092,7 +5108,7 @@
     <CEffectDamage id="TempestDotDamage">
         <EditorCategories value="Race:Protoss"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="5"/>
+        <Amount value="7.5"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Visibility value="Hidden"/>

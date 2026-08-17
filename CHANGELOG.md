@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/16/2026
+## 8/17/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
@@ -20,6 +20,34 @@ Fun fact: Shock Division in Intercessors actually *lost* damage when they hit ma
 - Added a cursor splat to Dogs of War.
 
 Make some Mengsk stuff prettier.
+
+- Buffed Tempest's Disintegration ability to no longer require research.
+- Added Tectonic Destabilizers upgrade:
+  - Improves the Tempest's weapon to deal +40 damage vs structures.
+- Reduced Tempest visual scale by 10%.
+- Decreased Tempest life from 300 to 200.
+- Decreased Tempest shield from 150 to 200.
+- Decreased Tempest cost from 300/200 to 250/175.
+- Increased Tempest speed from 1.875 to 2.25.
+- Decreased Tempest ground damage from 60 to 40.
+- Decreased Tempest air damage from 60 to 30 (+22 vs Massive).
+- Increased Tempest air weapon range from 6 to 13.
+
+Copied from Versus. In Versus, Tempests are much better skirmishers with increased movement speed and better range.
+
+- Increased Destabilizing Residuum damage from 20 to 30.
+- Renamed Destabilizing Residuum to Unstable Residuum.
+
+Compensatory buff for Artanis specific upgrade. Renamed because it sounded too similar to Tectonic Destablizers.
+
+- Renamed Artanis's Mothership to Shield of Aiur.
+
+This Mothership was significantly stronger than normal Motherships so it's been given a unique name to represent that.
+
+- Increased Sentry damage from 6 to 6 (+4 vs Shields).
+- Increased Viking ground damage 12 to 12 (+8 vs Mechanical).
+
+I'm usually hesistant to directly buff Amon, but I have an addiction to Versus parity.
 
 ## 8/15/2026
 

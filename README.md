@@ -262,6 +262,8 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Gateways and Warpgates can now be issued orders to transform regardless of which is the primary subgroup selection.
 - Selection radius color is now distinct for primary subgroup selection when Colorblind mode is enabled.
 - Increased movement speed of Ravens from 2.25 to 2.75.
+- Increased Sentry damage from 6 to 6 (+4 vs Shields).
+- Increased Viking ground damage 12 to 12 (+8 vs Mechanical).
 
 Copied from Versus.
 
@@ -317,7 +319,18 @@ It just looks nice c:
 - Increased Lock On autocast range from 7 to 7.5 (Ability is still cast at 7 range).
 - Increased dummy weapon range while channeling Lock On (Cyclones will stand farther back when attack moved).
 
-Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much. This change affects Swann.
+Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so much.
+
+- Reduced Tempest visual scale by 10%.
+- Decreased Tempest life from 300 to 200.
+- Decreased Tempest shield from 150 to 200.
+- Decreased Tempest cost from 300/200 to 250/175.
+- Increased Tempest speed from 1.875 to 2.25.
+- Decreased Tempest ground damage from 60 to 40.
+- Decreased Tempest air damage from 60 to 30 (+22 vs Massive).
+- Increased Tempest air weapon range from 6 to 13.
+
+Copied from Versus. In Versus, Tempests are much better skirmishers with increased movement speed and better range.
 
 - Increased visual scale of Reavers by 18%.
 - Increased Scarab scale by 20%.
@@ -1097,7 +1110,6 @@ Old Raynor nerfs reverted. Double MULEs in particular should help out P0 Raynor.
 Ever get annoyed when you *slightly* missed a mineral field and your MULE just AFKed? Does not affect MULEs dropped too far away from minerals.
 
 - Buffed Viking Ripwave Missiles to additionally grant Gatling Cannons splash.
-- Increased Viking Gatling Cannon damage from 12 to 12 (+8 vs Mechanical).
 - Added faster transformation speed to Phobos Weapons System.
 
 Some ground Viking buffs because why not.
@@ -1286,7 +1298,7 @@ yeah.
 
 Makes units significantly cheaper at the cost of being unable to sustain an army. Units that die are *not* refunded. Pairs nicely with Artanis's warp haste mastery and increased High Templar starting energy upgrade. Be prepared to make *a lot* of gateways. Motherships and Observers are exempt from being recalled, use them to keep vision on the map for more warp-ins.
 
-- Added the Mothership.
+- Added the Shield of Aiur.
   - Available from the Nexus for 1000/1000 after building a Fleet Beacon.
   - Uses energy to cast abilities.
   - Can use Mass Teleport ability for 50 energy.
@@ -1318,12 +1330,18 @@ Phoenixs were extremely dependent on enemy composition. Moving some damage from 
 
 Disintegration buffs because this ability usually feels clunky. Cooldown reduced to match Yamato cooldown. Deals damage faster to keep up with the faster kill-time nature of co-op.
 
-- Added Destabilizing Residuum upgrade at the Fleet Beacon.
-  - Causes Tempest attacks to leave an AOE field that does 40 damage over 2 seconds.
+- Added Unstable Residuum upgrade at the Fleet Beacon.
+  - Causes Tempest attacks to leave an AOE field that does 30 damage over 2 seconds.
 
 https://github.com/user-attachments/assets/1040fc83-a204-4160-b0c8-a2145324ee4c
 
 These changes should make massing Tempests more viable. The new AOE upgrade makes Tempest shots still get value even if their target has already been killed by another Tempest first.
+
+- Buffed Tempest's Disintegration ability to no longer require research.
+- Added Tectonic Destabilizers upgrade:
+  - Improves the Tempest's weapon to deal +40 damage vs structures.
+
+I want the cool toys from Versus!
 
 - Changed Tempest voice lines to Versus quotes.
 

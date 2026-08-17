@@ -6109,7 +6109,36 @@
         <SoundArray index="Yes" value="Tempest_Yes"/>
         <SoundArray index="Attack" value="Tempest_Attack"/>
         <SoundArray index="Pissed" value="Tempest_Pissed"/>
+        <Scale value="0.900000"/>
+        <BarOffset value="86"/>
+        <BarWidth value="140"/>
+        <NameOffset value="99"/>
     </CActorUnit>
+    <CActorMissile id="TempestAttackMissile">
+        <Scale value="0.900000"/>
+        <On Terms="ActorCreation" Send="SetTintColor 219,151,255 0.000000 OneShot {} 100.000000"/>
+        <On Terms="ActorCreation; ValidateUnit TempestGroundAttackUpgraded; ValidateCreationEffect IsStructureTarget" Send="ModelSwap TempestWeaponGroundUpgraded"/>
+        <On Terms="ActorCreation; ValidateUnit TempestGroundAttackUpgraded; ValidateCreationEffect IsStructureTarget" Send="SetTintColor {255,128,0 5.000000}"/>
+    </CActorMissile>
+    <CActorMissile id="TempestAttackGroundMissile">
+        <On Terms="ActorCreation" Send="SetTintColor 219,151,255 0.000000 OneShot {} 100.000000"/>
+        <On Terms="ActorCreation; ValidateUnit TempestGroundAttackUpgraded; ValidateCreationEffect IsStructureTarget" Send="ModelSwap TempestWeaponGroundUpgraded"/>
+        <On Terms="ActorCreation; ValidateUnit TempestGroundAttackUpgraded; ValidateCreationEffect IsStructureTarget" Send="SetTintColor {255,128,0 5.000000}"/>
+        <Scale value="0.900000"/>
+    </CActorMissile>
+    <CActorModel id="TempestAttackGroundImpact" parent="GenericAttackModel">
+        <On Terms="ActorCreation; ValidateUnit IsStructureTarget; ValidateCreationEffect TempestGroundAttackUpgraded" Send="ModelSwap TempestGroundAttackImpactUpgraded"/>
+        <On Terms="ActorCreation; ValidateCreationEffect TempestGroundAttackUpgraded" Send="SetTintColor 219,151,255 0.000000 OneShot {} 100.000000"/>
+        <On Terms="ActorCreation; ValidateUnit IsStructureTarget; ValidateCreationEffect TempestGroundAttackUpgraded" Send="SetTintColor {255,128,0 5.000000}"/>
+    </CActorModel>
+    <CActorAction id="TempestAttack">
+        <ImpactModel value="TempestAttackGroundImpact"/>
+        <!--Allows for the impact model to change colour-->
+    </CActorAction>
+    <CActorAction id="TempestAttackGround">
+        <ImpactModel value="TempestAttackGroundImpact"/>
+        <!--ImpactModel value="TempestGroundAttackImpactModel"/-->
+    </CActorAction>
     <CActorSound id="TempestDotSound" parent="SoundContinuous">
         <On Terms="Effect.TempestDotCP.Start" Send="Create"/>
         <On Terms="Effect.TempestDotCP.Stop" Send="Destroy"/>
@@ -7046,6 +7075,7 @@
         <SoundArray index="Attack" value="Selendis_Attack"/>
         <SoundArray index="Pissed" value="Selendis_Pissed"/>
         <UnitKillRank Text="UnitKillRank/Selendis"/>
+        <HighlightTooltip value="Unit/Name/MothershipArtanis"/>
     </CActorUnit>
     <CActorModel id="MothershipArtanisStargateWarpIn" parent="ModelAnimationStyleOneShot">
         <EditorCategories value=""/>

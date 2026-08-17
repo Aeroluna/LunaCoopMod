@@ -6208,8 +6208,25 @@
     </CUnit>
     <CUnit id="Tempest">
         <CardLayouts index="0">
-            <LayoutButtons Face="TempestDestabilizingResiduum" Type="Passive" Requirements="HaveTempestDestabilizingResiduum" Row="2" Column="1"/>
+            <LayoutButtons Face="TempestGroundAttackUpgrade" Type="Passive" Requirements="HaveTempestGroundAttackUpgrade" Row="2" Column="1"/>
+            <LayoutButtons Face="TempestDestabilizingResiduum" Type="Passive" Requirements="HaveTempestDestabilizingResiduum" Row="2" Column="2"/>
         </CardLayouts>
+        <Deceleration value="3"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <CostResource index="Minerals" value="250"/>
+        <CostResource index="Vespene" value="175"/>
+        <Speed value="2.25"/>
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <Acceleration value="3"/>
+        <Radius value="1.125"/>
+        <SeparationRadius value="1.125"/>
+        <MinimapRadius value="1.125"/>
+        <WeaponArray index="0" Link="Tempest"/>
+        <WeaponArray index="1" Link="TempestGround"/>
+        <!-- dont let amon's tempest cast disintegration -->
+        <TacticalAIThink value=""/>
     </CUnit>
     <CUnit id="TemplarArchive">
         <CardLayouts index="0">
@@ -6328,28 +6345,28 @@
     <CUnit id="FleetBeacon">
         <CardLayouts index="0">
             <LayoutButtons index="5" Requirements="HaveCoopArtanisUpgrade" Column="1"/>
-            <LayoutButtons index="8" Face="ResearchFenixScoutWeaponRange" AbilCmd="FleetBeaconResearch,Research22"/>
-            <LayoutButtons index="9" Face="ResearchVoidRayVoidPrismaticRange" AbilCmd="FleetBeaconResearch,Research16" Column="1"/>
-            <LayoutButtons index="10" Face="ResearchCarrierRepairDrones" AbilCmd="FleetBeaconResearch,Research10"/>
-            <LayoutButtons index="11" Face="ResearchFenixChampionScoutAOEMissiles" AbilCmd="FleetBeaconResearch,Research20"/>
-            <LayoutButtons index="12" Face="ResearchDisintegrationLocked" Type="Passive" AbilCmd="" Requirements="ArtanisLevel12"/>
-            <LayoutButtons index="13" Face="ResearchPrismaticRangeLocked" Requirements="VorazunLevel12" Column="1"/>
-            <LayoutButtons index="14" Face="ResearchRepairDronesLocked" Requirements="KaraxLevel14"/>
-            <LayoutButtons index="15" Face="ResearchFenixChampionScoutAOEMissilesLocked" Requirements="FenixLevel12"/>
-            <LayoutButtons index="16" Face="ResearchOracleStasisWardUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research15" Requirements="" Column="3"/>
-            <LayoutButtons index="17" Face="ResearchFenixChampionCarrierBombers" AbilCmd="FleetBeaconResearch,Research21"/>
-            <LayoutButtons index="18" Face="ResearchOracleStasisWardUpgradeLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel12"/>
-            <LayoutButtons index="19" Face="ResearchFenixChampionCarrierBombersLocked" Requirements="FenixLevel14"/>
-            <LayoutButtons index="20" Face="ResearchKaraxCarrerInterceptorLaunchSpeed" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research18" Requirements=""/>
-            <LayoutButtons index="21" Face="ResearchDoubleGravitonBeam" AbilCmd="FleetBeaconResearch,Research8" Column="1"/>
-            <LayoutButtons index="22" Face="ResearchCorsairPermanentCloak" AbilCmd="FleetBeaconResearch,Research13" Column="2"/>
-            <LayoutButtons index="23" Face="ResearchPhaseArmor" AbilCmd="FleetBeaconResearch,Research17"/>
-            <LayoutButtons index="24" Face="ResearchInterceptorLaunchSpeedUpgrade" AbilCmd="FleetBeaconResearch,Research1"/>
-            <LayoutButtons index="25" Face="ResearchPhaseArmorLocked" Type="Passive" AbilCmd="" Requirements="KaraxLevel14"/>
-            <LayoutButtons index="26" Face="ResearchDoubleGravitonBeamLocked" Requirements="ArtanisLevel12"/>
-            <LayoutButtons index="27" Face="ResearchCorsairPermanentCloakLocked" Requirements="VorazunLevel12" Column="2"/>
-            <LayoutButtons index="28" Face="ResearchVoidRaySpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research19" Requirements="" Column="0"/>
-            <LayoutButtons Face="ResearchTempestDestabilizingResiduum" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research23" Row="0" Column="3"/>
+            <LayoutButtons index="7" Face="ResearchFenixScoutWeaponRange" AbilCmd="FleetBeaconResearch,Research22" Column="0"/>
+            <LayoutButtons index="8" Face="ResearchVoidRayVoidPrismaticRange" AbilCmd="FleetBeaconResearch,Research16" Column="1"/>
+            <LayoutButtons index="9" Face="ResearchCarrierRepairDrones" AbilCmd="FleetBeaconResearch,Research10" Column="2"/>
+            <LayoutButtons index="10" Face="ResearchFenixChampionScoutAOEMissiles" AbilCmd="FleetBeaconResearch,Research20"/>
+            <LayoutButtons index="11" Face="ResearchPrismaticRangeLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel12" Column="1"/>
+            <LayoutButtons index="12" Face="ResearchRepairDronesLocked" Type="Passive" AbilCmd="" Requirements="KaraxLevel14"/>
+            <LayoutButtons index="13" Face="ResearchFenixChampionScoutAOEMissilesLocked" Requirements="FenixLevel12"/>
+            <LayoutButtons index="14" Face="ResearchOracleStasisWardUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research15" Requirements="" Column="3"/>
+            <LayoutButtons index="15" Face="ResearchFenixChampionCarrierBombers" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research21" Requirements="" Column="3"/>
+            <LayoutButtons index="16" Face="ResearchOracleStasisWardUpgradeLocked" Requirements="VorazunLevel12" Column="3"/>
+            <LayoutButtons index="17" Face="ResearchFenixChampionCarrierBombersLocked" Type="Passive" AbilCmd="" Requirements="FenixLevel14"/>
+            <LayoutButtons index="18" Face="ResearchKaraxCarrerInterceptorLaunchSpeed" AbilCmd="FleetBeaconResearch,Research18"/>
+            <LayoutButtons index="19" Face="ResearchDoubleGravitonBeam" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research8" Requirements="" Column="1"/>
+            <LayoutButtons index="20" Face="ResearchCorsairPermanentCloak" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research13" Requirements="" Column="2"/>
+            <LayoutButtons index="21" Face="ResearchPhaseArmor" AbilCmd="FleetBeaconResearch,Research17" Column="1"/>
+            <LayoutButtons index="22" Face="ResearchInterceptorLaunchSpeedUpgrade" AbilCmd="FleetBeaconResearch,Research1"/>
+            <LayoutButtons index="23" Face="ResearchPhaseArmorLocked" Type="Passive" AbilCmd="" Requirements="KaraxLevel14"/>
+            <LayoutButtons index="24" Face="ResearchDoubleGravitonBeamLocked" Type="Passive" AbilCmd="" Requirements="ArtanisLevel12"/>
+            <LayoutButtons index="25" Face="ResearchCorsairPermanentCloakLocked" Type="Passive" AbilCmd="" Requirements="VorazunLevel12" Column="2"/>
+            <LayoutButtons index="26" Face="ResearchVoidRaySpeedUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research19" Requirements="" Column="0"/>
+            <LayoutButtons index="27" Face="TempestResearchGroundAttackUpgrade" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research24" Requirements="" Column="2"/>
+            <LayoutButtons index="28" Face="ResearchTempestDestabilizingResiduum" Type="AbilCmd" AbilCmd="FleetBeaconResearch,Research23" Requirements="" Column="3"/>
         </CardLayouts>
     </CUnit>
     <CUnit id="Forge">
@@ -6683,8 +6700,6 @@
     <CUnit id="MothershipArtanis" parent="Mothership">
         <Name value="Unit/Name/MothershipArtanis"/>
         <Description value="Button/Tooltip/MothershipArtanis"/>
-        <WeaponArray index="0" Link="MothershipArtanisBeam"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Coop"/>
         <LifeStart value="1000"/>
         <LifeMax value="1000"/>
         <ShieldsStart value="1000"/>
@@ -6695,14 +6710,16 @@
         <AbilArray index="3" Link="VortexArtanis"/>
         <AbilArray index="4" Link="MothershipArtanisPlanetCracker"/>
         <AbilArray Link="MothershipArtanisMassRecall"/>
+        <BehaviorArray Link="PowerSource"/>
+        <WeaponArray index="0" Link="MothershipArtanisBeam"/>
         <CardLayouts index="0">
             <LayoutButtons index="5" AbilCmd="MothershipCloak,255" Column="3"/>
             <LayoutButtons index="6" Face="VortexArtanis" AbilCmd="VortexArtanis,Execute" Column="1"/>
             <LayoutButtons index="7" Face="PlanetCrackerArtanis" AbilCmd="MothershipArtanisPlanetCracker,Execute" Column="2"/>
             <LayoutButtons Face="MothershipArtanisMassTeleport" Type="AbilCmd" AbilCmd="MothershipArtanisMassRecall,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <BehaviorArray Link="PowerSource"/>
         <SubgroupPriority value="150"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Coop"/>
         <HotkeyAlias value="MothershipArtanis"/>
         <SubgroupAlias value="MothershipArtanis"/>
         <HotkeyCategory value="Unit/Category/ProtossAiur"/>
