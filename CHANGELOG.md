@@ -1,5 +1,12 @@
 # Changelog
 
+## 8/16/2026
+
+- Fixed an issue where Kerrigan P3 played the wrong death sound.
+- Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
+
+yeah.
+
 ## 8/15/2026
 
 - Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
