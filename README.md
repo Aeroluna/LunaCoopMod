@@ -3123,6 +3123,11 @@ They had a longer cooldown than Versus Battlecruisers!
 
 Blackhammers feel like something you make one of for the aura and thats it. Improving their reliability should make them more appealing.
 
+- Fixed an issue where Shock Division firing from Intercessors did more damage than intended while below rank 3.
+- Increased weapon speed of Shock Division firing from Intercessors from 4.5 to 4.
+
+Fun fact: Shock Division in Intercessors actually *lost* damage when they hit max rank due to a bugged value. The attack speed has been slightly increased to compensate.
+
 - Reduced visual scale of Emperor's Shadows by 14%.
 - Reduced the radius of Emperor's Shadows from 0.5 to 0.375.
 

@@ -7,6 +7,11 @@
 
 yeah.
 
+- Fixed an issue where Shock Division firing from Intercessors did more damage than intended while below rank 3.
+- Increased weapon speed of Shock Division firing from Intercessors from 4.5 to 4.
+
+Fun fact: Shock Division in Intercessors actually *lost* damage when they hit max rank due to a bugged value. The attack speed has been slightly increased to compensate.
+
 ## 8/15/2026
 
 - Fixed an issue where killing Kerrigan while burrowed would spawn a duplicate Kerrigan actor after reviving.
