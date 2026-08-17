@@ -5,6 +5,7 @@
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
 - Fixed an issue where Emperor's Shadow's Rank 3 Pyrokinetic Immolation always exploded when expiring, regardless of the target being alive.
+- Fixed an issue where the shield fizzle animation played on invulnerable units, e.g. Disruptor orb, Adept shade.
 
 yeah.
 
