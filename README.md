@@ -332,6 +332,18 @@ Parity with Versus Cyclones. Not sure why Co-op changed the Lock On ability so m
 
 Copied from Versus. In Versus, Tempests are much better skirmishers with increased movement speed and better range.
 
+- Decreased Yamato Cannon damage from 300 to 240.
+- Removed random delay between shots from Battlecruiser's weapon.
+- Reduced Battlecruiser air damage from 6 to 5.
+- Buffed Battlecruisers to move while shooting.
+
+Copied from Versus. All the commanders get the moving-while-shooting Battlecruiers, now Amon gets them too. Battlecruisers still have energy to keep them susceptible to feedback effects.
+
+- Changed Battlecruiser's Yamato Cannon to still cost energy when it gets cancelled.
+- Changed Hybrid Dominator's Plasma Blast to still cost energy/cooldown when it gets cancelled.
+
+Makes dodging these single target nukes way easier.
+
 - Increased visual scale of Reavers by 18%.
 - Increased Scarab scale by 20%.
 - Increased Scarab impact scale by 40%.
@@ -444,6 +456,7 @@ For some reason, warp in animations had a fixed duration of 16 seconds, so it wa
 - Fixed an issue where Colossi could still deal damage if their current target became invulnerable.
 - Fixed an issue where Parasitic Bomb did not work on some ground/air units like Void Thrashers.
 - Fixed an issue where Banelings affected by time slows would have a delay before exploding.
+- Fixed an issue where upon researching Warpgate Research, Gateways will automatically transform into Warpgates, even if a unit is in production.
 
 yeah.
 
@@ -1066,7 +1079,6 @@ Necessary so Medivacs can only carry one Siege Tank. Unintentially nerfs Swann s
 
 - Buffed Ignite Afterburners to additionally increase acceleration by 1000.
 - Added visual boost effect to Medivac and Banshee when using Ignite Afterburners.
-- Removed the random delay on Battlecruiser weapons.
 - Reworked P2.
   - Removed Ignite Afterburners cooldown.
   - Added autocast to Ignite Afterburners.
@@ -2637,10 +2649,6 @@ Despite being called Han & Horner, once you got all the upgrades, it just turned
 
 Some visual QOL and a small buff to the KD8 Charge radius. Not sure why the damage and knockback had different radii.
 
-- Removed random delay between shots from Sovereign Battlecruiser's weapon.
-
-Overall increases attack speed and allows the Sovereign Battlecruiser to be affected by attack speed buffs.
-
 - Changed the Tactical Jump out animation to be reversed.
 
 For some reason, it looked like ships were teleporting backwards from their destination.
@@ -3099,10 +3107,6 @@ It traveled so slow that often the unit is already dead by the time the ability 
 - Changed Pyrokinetic Immolation to no longer allow casting on targets already immolated.
 
 Hopefully prevents dumping all their energy at once. Still probably more efficient to cast these yourself.
-
-- Removed random delay between shots from Pride of Augustgrad's weapon.
-
-Overall increases attack speed and allows the Battlecruiser to be affected by attack speed buffs.
 
 - Added passive to all Royal Guards that reduces spell damage taken by 50%.
 

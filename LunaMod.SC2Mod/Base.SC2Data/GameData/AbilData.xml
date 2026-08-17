@@ -291,6 +291,9 @@
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="MutatorPolarityTargetCasterCheck"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="FleetwideJump">
+        <AbilityCategories index="User1" value="1"/>
+    </CAbilEffectTarget>
     <CAbilResearch id="ForgeResearch">
         <InfoArray index="Research8">
             <Resource index="Minerals" value="150"/>
@@ -418,6 +421,7 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="HybridDominatorVoidPlasmaBlast">
         <TargetFilters value="-;Player,Ally"/>
+        <CancelEffect index="Prep" value="HybridDominatorVoidPlasmaBlastCD"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="InfestorStetmannInfestBuilding">
         <TargetFilters index="0" value="Visible;Player,Ally,Neutral,Heroic,User1,Missile,Item,Stasis,Dead,Hidden,Invulnerable,MapBoss"/>
@@ -799,6 +803,7 @@
         </InfoArray>
         <BehaviorOn value="MorphingintoWarpGate"/>
         <BehaviorOff value="MorphingintoWarpGate"/>
+        <AutoCastValidatorArray value="CasterHasNoOrders"/>
     </CAbilMorph>
     <CAbilEffectTarget id="VoidShardACDeathGrip">
         <TargetFilters index="0" value="-;Player,Ally,Neutral,Heroic,UnderConstruction"/>
@@ -1208,9 +1213,6 @@
         <CmdButtonArray index="Execute">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="FleetwideJump">
-        <AbilityCategories index="User1" value="1"/>
     </CAbilEffectTarget>
     <CAbilMorph id="HHAssaultMode">
         <Flags index="WaitUntilStopped" value="0"/>
@@ -2153,7 +2155,11 @@
             <Vital index="Energy" value="125"/>
             <Cooldown TimeUse="0"/>
         </Cost>
+        <InterruptCost>
+            <Vital index="Energy" value="125"/>
+        </InterruptCost>
         <ProgressButtonArray index="Prep" value="Hyperjump"/>
+        <CancelEffect index="Prep" value="BattlecruiserTacticalJumpCD"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <Effect index="0" value="HyperjumpInitialCP"/>
@@ -2559,6 +2565,14 @@
     </CAbilMorph>
     <CAbilEffectTarget id="Yamato">
         <PrepTime index="0" value="3"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="IgnoreOrderPlayerIdInStageValidate" value="1"/>
+        <InterruptCost>
+            <Vital index="Energy" value="100"/>
+        </InterruptCost>
+        <ValidatedArray index="Cast" value="0"/>
+        <ValidatedArray index="Channel" value="0"/>
+        <CancelEffect index="Prep" value="BattlecruiserYamatoCD"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="ZagaraCorruption">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>

@@ -10,6 +10,40 @@
         <PeriodCount value="12"/>
         <PeriodicPeriodArray index="0" value="0.25"/>
     </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="ATALaserBatteryLM">
+        <ValidatorArray index="0" value="BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="ATALaserBatteryU">
+        <Amount value="5"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ATSLaserBatteryLM">
+        <ValidatorArray index="0" value="BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectSwitch id="BattlecruiserDamageSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="GroundUnitFilter" Effect="ATSLaserBatteryLM"/>
+        <CaseDefault value="ATALaserBatteryLM"/>
+        <Marker Count="0" Link="Effect/BattlecruiserAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSwitch>
+    <CEffectModifyUnit id="BattlecruiserTacticalJumpCD">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <!--Cost Abil="Hyperjump,Execute" CooldownTimeUse="120"/-->
+        <VitalArray index="Energy">
+            <Change value="-125"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="BattlecruiserYamatoCD">
+        <EditorCategories value="Race:Terran"/>
+        <Marker Link="Effect/BattlecruiserTacticalJumpCD"/>
+        <ImpactUnit Value="Caster"/>
+        <!--Cost Abil="Yamato,Execute" CooldownTimeUse="100"/-->
+        <VitalArray index="Energy">
+            <Change value="-100"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectTeleport id="AbathurDeepTunnelTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -694,6 +728,9 @@
     <CEffectLaunchMissile id="DukesRevengeYamato" parent="Yamato">
         <ImpactEffect value="DukesRevengeYamatoU"/>
     </CEffectLaunchMissile>
+    <CEffectDamage id="YamatoU">
+        <Amount value="240"/>
+    </CEffectDamage>
     <CEffectDamage id="DukesRevengeYamatoU" parent="YamatoU"/>
     <CEffectUseMagazine id="FenixClolarionCarrierInterceptor">
         <MagazineAbil value="FenixClolarionCarrierHangar"/>
@@ -878,6 +915,14 @@
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="IsNotISInfestedBunkerUprooted"/>
     </CEffectSet>
+    <CEffectModifyUnit id="HybridDominatorVoidPlasmaBlastCD">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <Cost Abil="HybridDominatorVoidPlasmaBlast,Execute" CooldownTimeUse="10"/>
+        <VitalArray index="Energy">
+            <Change value="-25"/>
+        </VitalArray>
+    </CEffectModifyUnit>
     <CEffectEnumTransport id="HybridGeneralPhaseShiftIterateTransport">
         <ValidatorArray index="0" value="IsBunkerCombine"/>
     </CEffectEnumTransport>

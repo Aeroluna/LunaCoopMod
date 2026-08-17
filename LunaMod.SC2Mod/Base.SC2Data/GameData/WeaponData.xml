@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CWeaponLegacy id="BattlecruiserWeaponSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="IgnoreThreat" value="1"/>
+        <Options index="IgnoreAttackPriority" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <DisplayEffect value="ATSLaserBatteryU"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSTrackedByBattlecruiser"/>
+            <SortArray value="TSThreatenBattlecruiser"/>
+            <SortArray value="TSPriorityDesc"/>
+            <SortArray value="TSTransientBattlecruiser"/>
+            <SortArray value="GroundTarget"/>
+        </AcquireTargetSorts>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <Marker Count="0" Link="Effect/BattlecruiserAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+        <Period value="0.225"/>
+        <Effect value="BattlecruiserDamageSwitch"/>
+        <AllowedMovement value="Moving"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
     <CWeaponLegacy id="Adept">
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <MinScanRange value="5"/>

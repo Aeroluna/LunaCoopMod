@@ -58,6 +58,13 @@
         <Range value="3"/>
         <Unit value="Battlecruiser"/>
     </CValidatorLocationPlacement>
+    <CValidatorCombine id="BattlecruiserIsNotYamatoing">
+        <CombineArray value="BattlecruiserIsYamatoing"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="BattlecruiserIsYamatoing">
+        <AbilLink value="Yamato"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorCombine id="BiologicalOrTychusWarhound">
         <CombineArray value="IsBiological"/>
         <CombineArray value="IsTychusWarhound"/>

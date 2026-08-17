@@ -3746,10 +3746,10 @@
     <CActorUnit id="Battlecruiser">
         <On index="77" Terms="Abil.Yamato.SourcePrepStart; !ValidateUnit IsRaynorCoopCommander"/>
         <On Terms="Abil.Yamato.SourcePrepStart; ValidateUnit IsRaynorCoopCommander" Send="$Spell 0 -1.000000 -1.000000 1.300000 AsDuration"/>
-        <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA" Send="LookAtEngage Continue"/>
-        <On Terms="WeaponStart.SwitchLaserBattery.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
-        <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
-        <On Terms="WeaponStop.SwitchLaserBattery.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
+        <On Terms="WeaponStart.BattlecruiserWeaponSwitch.AttackStart; WeaponTargetElevation GT -20.000000" Target="_BattlecruiserTurretATA" Send="LookAtEngage Continue"/>
+        <On Terms="WeaponStart.BattlecruiserWeaponSwitch.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
+        <On Terms="WeaponStop.BattlecruiserWeaponSwitch.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
+        <On Terms="WeaponStop.BattlecruiserWeaponSwitch.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
         <On Terms="Effect.HyperjumpTeleport" Send="CombatRevealClearTimers"/>
         <On Terms="Behavior.HyperjumpTeleportInstantOut.On" Send="SetOpacity"/>
         <On Terms="Behavior.HyperjumpTeleportInstantIn.Off" Send="SetOpacity 1.000000"/>

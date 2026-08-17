@@ -6,6 +6,8 @@
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
 - Fixed an issue where Emperor's Shadow's Rank 3 Pyrokinetic Immolation always exploded when expiring, regardless of the target being alive.
 - Fixed an issue where the shield fizzle animation played on invulnerable units, e.g. Disruptor orb, Adept shade.
+- Fixed an issue where upon researching Warpgate Research, Gateways will automatically transform into Warpgates, even if a unit is in production.
+- Fixed an issue where Overlords did not have the Load Nearby command.
 
 yeah.
 
@@ -48,6 +50,18 @@ This Mothership was significantly stronger than normal Motherships so it's been 
 - Increased Viking ground damage 12 to 12 (+8 vs Mechanical).
 
 I'm usually hesistant to directly buff Amon, but I have an addiction to Versus parity.
+
+- Decreased Yamato Cannon damage from 300 to 240.
+- Removed random delay between shots from Battlecruiser's weapon.
+- Reduced Battlecruiser air damage from 6 to 5.
+- Buffed Battlecruisers to move while shooting.
+
+Copied from Versus. All the commanders get the moving-while-shooting Battlecruiers, now Amon gets them too. Battlecruisers still have energy to keep them susceptible to feedback effects.
+
+- Changed Battlecruiser's Yamato Cannon to still cost energy when it gets cancelled.
+- Changed Hybrid Dominator's Plasma Blast to still cost energy/cooldown when it gets cancelled.
+
+Makes dodging these single target nukes way easier.
 
 ## 8/15/2026
 
