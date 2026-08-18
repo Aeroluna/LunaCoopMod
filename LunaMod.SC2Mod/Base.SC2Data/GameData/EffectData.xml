@@ -728,6 +728,69 @@
     <CEffectLaunchMissile id="DukesRevengeYamato" parent="Yamato">
         <ImpactEffect value="DukesRevengeYamatoU"/>
     </CEffectLaunchMissile>
+    <CEffectCreatePersistent id="HHVikingACCP">
+        <ValidatorArray value="HaveHHVikingPiercingAttackUpgrade"/>
+        <PeriodicOffsetArray index="0" value="0,-8.5,0"/>
+        <InitialEffect value="HHVikingDummyCP"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="HHVikingShootSearch">
+        <AreaArray index="0" RectangleHeight="16"/>
+        <ExcludeArray index="0" Effect="HHVikingShootSet"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="HHVikingDummyCP">
+        <EditorCategories value="Race:Terran"/>
+        <PeriodCount value="16"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodicEffectArray value="HHVikingDummyCU"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="0,-3,0"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicOffsetArray value="0,-5,0"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+        <PeriodicOffsetArray value="0,-7,0"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicOffsetArray value="0,-9,0"/>
+        <PeriodicOffsetArray value="0,-10,0"/>
+        <PeriodicOffsetArray value="0,-11,0"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+        <PeriodicOffsetArray value="0,-13,0"/>
+        <PeriodicOffsetArray value="0,-14,0"/>
+        <PeriodicOffsetArray value="0,-15,0"/>
+        <PeriodicOffsetArray value="0,-16,0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="HHVikingDummySpawnSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HHVikingDummySet"/>
+        <EffectArray value="KillRemove"/>
+    </CEffectSet>
+    <CEffectSet id="HHVikingDummySet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HHVikingDummyDestroyPersistent"/>
+        <ValidatorArray value="NotWeaponInRange"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="HHVikingDummyCU">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="HHVikingDummySpawnSet"/>
+        <SpawnUnit value="InvisibleTargetDummy"/>
+    </CEffectCreateUnit>
+    <CEffectDestroyPersistent id="HHVikingDummyDestroyPersistent">
+        <EditorCategories value="Race:Terran"/>
+        <OwningPlayer Value="Source"/>
+        <WhichLocation Value="SourcePoint"/>
+        <Effect value="HHVikingDummyCP"/>
+        <Count value="1"/>
+    </CEffectDestroyPersistent>
     <CEffectDamage id="YamatoU">
         <Amount value="240"/>
     </CEffectDamage>
@@ -3553,6 +3616,7 @@
     </CEffectSet>
     <CEffectDamage id="HHTwinGatlingCannons">
         <AttributeBonus index="Mechanical" value="12"/>
+        <ValidatorArray value="WeaponInRange"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="HHValkyrieRecallAB">
         <EditorCategories value=""/>

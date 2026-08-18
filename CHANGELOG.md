@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/17/2026
+## 8/18/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
@@ -8,6 +8,11 @@
 - Fixed an issue where the shield fizzle animation played on invulnerable units, e.g. Disruptor orb, Adept shade.
 - Fixed an issue where upon researching Warpgate Research, Gateways will automatically transform into Warpgates, even if a unit is in production.
 - Fixed an issue where Overlords did not have the Load Nearby command.
+- Fixed an issue where Horner's units did not have the Dominion decal after researching their unit's respective upgrade.
+- Fixed an issue where Deimos Vikings with the Shredder Rounds upgrade dealt damage to their main target an extra time.
+- Fixed an issue where the pierce effect from Deimos Viking's Shredder Rounds did not factor weapon range.
+- Fixed an issue where Deimos Vikings with the Shredder Rounds upgrade would play the firing sound/muzzle flash/beam for each enemy hit.
+- Reworked Deimos Viking's Shredder Rounds visuals to scale with weapon range.
 
 yeah.
 

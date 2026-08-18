@@ -166,6 +166,80 @@
         <On Terms="ActorCreation" Send="SetOpacity 0.600000"/>
         <AutoScaleFactor value="0.000000"/>
     </CActorModel>
+    <CActorAction id="HHVikingAssaultAttack">
+        <On index="3" Terms="Effect.HHTwinGatlingCannons.Start; FromEffectTreeDescendant"/>
+        <On index="4" Terms="Effect.HHTwinGatlingCannons.Stop; FromEffectTreeDescendant"/>
+        <On index="5" Terms="Effect.HHVikingShootSet.Start; At Caster"/>
+        <ImpactMap index="None" Model="HHVikingAssaultAttackImpact" Sound="HHVikingAssaultAttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction=""/>
+        <ImpactPhysics index="0" removed="1"/>
+        <DamageMap index="None" Model="VikingAssaultAttackImpact" Sound="Viking_AssaultAttackImpact" ModelReaction="HHVikingAssaultAttackImpactReaction"/>
+        <DamageMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <DamageMap index="Shield" Sound="HHVikingAssaultAttackImpactShield" ModelReaction="HHVikingAssaultAttackImpactReactionShield"/>
+        <DamagePhysics Name="GatlingCannonImpact" MatchKeys="Basic" Physics="VikingAssaultAttackForce"/>
+    </CActorAction>
+    <CActorBeamSimple id="HHVikingAssaultLaunchBeam" parent="BeamSimpleAnimationStyleOneShot">
+        <Model value="HHVikingAssaultAttackBeam"/>
+        <HostLaunch Subject="_Unit"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeaponRight" HoldPosition="1" HoldRotation="1"/>
+        <HostImpactSiteOps Ops="SOpTargetPoint SOpForwardLaunchGuide HHVikingAssaultVariance" HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultRightLaunchBeam" parent="HHVikingAssaultLaunchBeam">
+        <HostImpactSiteOps Ops="SOpTargetPoint SOpForwardLaunchGuide HHVikingAssaultRightOffset HHVikingAssaultVariance"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultRight1LaunchBeam" parent="HHVikingAssaultRightLaunchBeam">
+        <On Terms="Effect.HHVikingDummySet.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultRight2LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultRight2LaunchBeam" parent="HHVikingAssaultRightLaunchBeam">
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultRight3LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultRight3LaunchBeam" parent="HHVikingAssaultRightLaunchBeam">
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultRight4LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultRight4LaunchBeam" parent="HHVikingAssaultRightLaunchBeam"/>
+    <CActorBeamSimple id="HHVikingAssaultLeftLaunchBeam" parent="HHVikingAssaultLaunchBeam">
+        <HostLaunchSiteOps Ops="SOpAttachWeaponLeft"/>
+        <HostImpactSiteOps Ops="SOpTargetPoint SOpForwardLaunchGuide HHVikingAssaultLeftOffset HHVikingAssaultVariance"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultLeft1LaunchBeam" parent="HHVikingAssaultLeftLaunchBeam">
+        <On Terms="Effect.HHVikingDummySet.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultLeft2LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultLeft2LaunchBeam" parent="HHVikingAssaultLeftLaunchBeam">
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultLeft3LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultLeft3LaunchBeam" parent="HHVikingAssaultLeftLaunchBeam">
+        <On Terms="ActorCreation" Send="TimerSet 0.062500 Pierce"/>
+        <On Terms="TimerExpired; TimerName Pierce" Send="Create HHVikingAssaultLeft4LaunchBeam"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="HHVikingAssaultLeft4LaunchBeam" parent="HHVikingAssaultLeftLaunchBeam"/>
+    <CActorSiteOpRandomPointInSphere id="HHVikingAssaultVariance">
+        <Radius value="1.000000"/>
+    </CActorSiteOpRandomPointInSphere>
+    <CActorSiteOpLocalOffset id="HHVikingAssaultLeftOffset">
+        <LocalOffset value="-0.500000,0.000000,1.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="HHVikingAssaultRightOffset">
+        <LocalOffset value="0.500000,0.000000,1.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorModel id="HHVikingAssaultLeftLaunchSquib">
+        <Remove Terms="Effect.HHTwinGatlingCannons.Start; ValidatePlayer HaveHHVikingPiercingAttackUpgrade; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="HHVikingAssaultRightLaunchSquib">
+        <Remove Terms="Effect.HHTwinGatlingCannons.Start; ValidatePlayer HaveHHVikingPiercingAttackUpgrade; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorSound id="HH_VikingAssault_AttackLaunchSound">
+        <On index="1" Terms="Effect.HHVikingShootSet.Start; !ValidatePlayer HaveHHVikingPiercingAttackUpgrade; At Caster"/>
+    </CActorSound>
+    <CActorSound id="HH_VikingAssault_UpgradedAttackLaunchSound">
+        <On index="1" Terms="Effect.HHVikingShootSet.Start; ValidatePlayer HaveHHVikingPiercingAttackUpgrade; At Caster"/>
+    </CActorSound>
     <CActorAction id="InfestorAttackStetmann" parent="GenericAttack" effectImpact="InfestorWeaponDamageStetmann" effectLaunch="InfestorWeaponLMStetmann">
         <LaunchSiteOps Ops="SOpAttachHarness SOpMoveDownByDot5 SOpMoveBackByDot5"/>
         <LaunchAssets Sound="Infestor_AttackLaunch"/>

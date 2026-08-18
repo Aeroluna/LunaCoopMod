@@ -2685,6 +2685,10 @@ It used the Banshee reentry sound effect, which had a distinct helicopter sound.
 - Fixed an issue where Han & Horner's SCVs could not Halt from their command card.
 - Fixed an issue where Assault Galleon construction could not Halt from their command card.
 - Fixed an issue where mind controlling a unit affected by Theia Raven's Analyze Weakness did not break the effect.
+- Fixed an issue where Deimos Vikings with the Shredder Rounds upgrade dealt damage to their main target an extra time.
+- Fixed an issue where the pierce effect from Deimos Viking's Shredder Rounds did not factor weapon range.
+- Fixed an issue where Deimos Vikings with the Shredder Rounds upgrade would play the firing sound/muzzle flash/beam for each enemy hit.
+- Reworked Deimos Viking's Shredder Rounds visuals to scale with weapon range.
 
 yeah.
 
