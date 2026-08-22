@@ -17,6 +17,9 @@
     <CActorSound id="ActorSound_Banshee_MovementBoost">
         <Sound value="Banshee_MovementBoost"/>
     </CActorSound>
+    <CActorSound id="ActorSound_PsionicTransferLaunch">
+        <On Terms="Abil.ZeratulAdeptPhaseShift.SourceCastStart" Send="Create"/>
+    </CActorSound>
     <CActorAction id="AlarakAAAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -89,6 +92,42 @@
     </CActorUnit>
     <CActorUnit id="CivilianFemale">
         <On Terms="UnitBirth.MutatorCandyCivilianFemale" Send="Create"/>
+    </CActorUnit>
+    <CActorAction id="ZeratulAdeptAttack" parent="GenericAttack" effectImpact="ZeratulAdeptDamage" effectLaunch="ZeratulAdeptLM">
+        <LaunchAssets Sound="Adept_AttackLaunch"/>
+        <ImpactMap index="None" Model="ZeratulAdeptImpact" Sound="Adept_AttackImpact"/>
+        <ImpactSiteOps HoldPosition="1" HoldRotation="1"/>
+    </CActorAction>
+    <CActorMissile id="ZeratulAdeptAttackMissile" parent="GenericAttackMissile" unitName="ZeratulAdeptWeapon">
+        <On Terms="ActorCreation" Send="SetTintColor {0,255,100 2.000000}"/>
+    </CActorMissile>
+    <CActorAction id="ZeratulAdeptTornadoAttack" parent="GenericAttack" effectAttack="ZeratulAdeptTornadoDamage">
+        <ImpactModel value="ZeratulAdeptTornadoImpactModel"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOp2DRotation"/>
+    </CActorAction>
+    <CActorModel id="ZeratulAdeptTornadoImpactModel" parent="GenericAttackImpactModel">
+        <MaxScale value="2.000000"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="ZeratulPurificationNovaBirth" parent="ModelAnimationStyleOneShot">
+        <Inherits index="Visibility" value="1"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+    </CActorModel>
+    <CActorSound id="ZeratulAdeptTornadoActorSound" parent="SoundContinuous">
+        <Sound value="ZeratulAdeptTornadoBaseLoop"/>
+        <Layers Sound="ZeratulAdeptTornadoSpiritOneShotsLp"/>
+        <Layers Sound="ZeratulAdeptTornadoWindOneShotsLp"/>
+    </CActorSound>
+    <CActorUnit id="ZeratulAdeptTornado" parent="GenericUnitStandard" unitName="ZeratulAdeptTornado">
+        <Aliases value="_NoGlaze"/>
+        <On Terms="ActorCreation" Send="Create ZeratulAdeptTornadoActorSound"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.200000 0.000000 TornadoOpacity"/>
+        <On Terms="Behavior.ZeratulAdeptTornadoFade.On" Send="SetOpacity 0.000000 0.500000 TornadoOpacity"/>
+        <HighlightTooltip value=""/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <HostSiteOps Ops="SOpRotationRandomDisc"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorUnit>
     <CActorAction id="DehakaConsumeReflectAttack">
         <On index="6" Terms="Effect.DehakaConsumeReflectLaunchMissile.Start; At Source"/>
@@ -1401,6 +1440,12 @@
     <CActorAction id="ZeratulKhaydarinBeamAttack">
         <ImpactSite value="AttackImpactSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
+    <CActorUnit id="ZeratulSentry">
+        <On Terms="Upgrade.ZeratulArtifactTier1.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier1.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+    </CActorUnit>
     <CActorAction id="ZeratulSentryAttack">
         <DamageSite value="AttackDamageSite_BeamBreakOnCargoLoad"/>
     </CActorAction>
@@ -3252,7 +3297,7 @@
         <ImpactMap index="None" Model="FenixTalisAdeptBounceShot1Impact" Sound="Adept_AttackImpact"/>
         <ImpactModel value="JinaraCoopAttackImpactModel"/>
     </CActorAction>
-    <CActorMissile id="JinaraCoopAttackMissile" parent="GenericAttackMissile" unitName="FenixTalisAdeptWeapon2">
+    <CActorMissile id="JinaraCoopAttackMissile" parent="GenericAttackMissile" unitName="JinaraCoopWeapon">
         <On Terms="ActorCreation" Send="SetTintColor {255,0,0 2.000000}"/>
         <Model value="FenixTalisAdeptBounceShotLM1Weapon"/>
         <Scale value="0.600000"/>
@@ -4468,10 +4513,18 @@
         <AutoScaleFactor value="1.000000"/>
     </CActorModel>
     <CActorUnit id="ZeratulDisruptor">
-        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create PurificationNovaBirth"/>
+        <On Terms="Behavior.ZeratulPurificationNovaTargettedCaster.On" Send="Create ZeratulPurificationNovaBirth"/>
+        <On Terms="Upgrade.ZeratulArtifactTier2.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier2.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUpSound"/>
         <Scale value="0.912500"/>
         <BarOffset value="83"/>
         <BarWidth value="60"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulStalker">
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUpSound"/>
     </CActorUnit>
     <CActorSound id="ZeratulGenericBlinkSound">
         <Remove Terms="Abil.ZeratulStalkerBlink.TargetCastStart" Send="Create"/>
@@ -7869,6 +7922,129 @@
             <Image value="Assets\Textures\wireframe-protoss-vorazun-shield03.dds"/>
         </WireframeShield>
         <PortraitActor value="VorazunEx2Portrait"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulAdept" parent="GenericUnitStandard" unitName="ZeratulAdept">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Adept_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="Abil.ZeratulAdeptPhaseShift.SourceCastStart; !UnitWalking" Send="$Spell"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleport.Stop" Send="Create AdeptSpiritIn"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleport.Stop" Send="Create AdeptSpiritInSound"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.On" Send="Create AdeptSpiritSpawn"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.On" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Behavior.AdeptPhaseShiftCaster.Off" Send="AnimBracketStop Cover"/>
+        <On Terms="UnitMovementUpdate.*.Walk; AnimPlaying Spell" Send="AnimClear Spell"/>
+        <On Terms="Signal.*.NeuralLinkStarted" Send="RefSetFromMsg ::actor.NeuralLinkSite ::Sender"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleportSet.Start" Target="::actor.NeuralLinkSite" Send="Signal BreakLinkInstant"/>
+        <On Terms="UnitDeathCustomize; !ValidateUnit IsHallucination" Send="Create AdeptProtossSpiritDeathModel"/>
+        <On Terms="Effect.AdeptPhaseShiftTeleportSet.Start" Send="CombatRevealClearTimers"/>
+        <On Terms="Upgrade.ZeratulArtifactTier1.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier1.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+        <On Terms="Upgrade.ZeratulArtifactTier2.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier2.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUp"/>
+        <On Terms="Upgrade.ZeratulArtifactTier3.Add" Send="Create ZeratulArtifactPowerUpSound"/>
+        <AnimBlendTime value="0.200000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="Adept_Ihanrii_WarpIn"/>
+        <DeathArray index="Normal" ModelLink="Adept_Ihanrii_Death" SoundLink="Adept_DeathFX"/>
+        <DeathCustoms ActorModel="AdeptDeathRagdoll" ModelLink="Adept_Ihanrii_DeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="BloodReduced"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollWithTeamColor" ModelLink="AdeptDeathRagdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <PlacementModel value="AdeptPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="Adept_Ihanrii_Portrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <WalkAnimMoveSpeed value="2.5"/>
+        <AbilSoundArray AbilCmd="ZeratulAdeptPhaseShift,Execute" Sound="Adept_PsionicTransferVO"/>
+        <BarOffset value="60"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-unit-protoss-adept-ihanrii.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-adept-ihanrii.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-adept.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
+        </WireframeShield>
+        <Model value="Adept_Ihanrii"/>
+        <SoundArray index="Ready" value="Adept_Ready"/>
+        <SoundArray index="Help" value="Adept_Help"/>
+        <SoundArray index="What" value="Adept_What"/>
+        <SoundArray index="Yes" value="Adept_Yes"/>
+        <SoundArray index="Attack" value="Adept_Attack"/>
+        <SoundArray index="Pissed" value="Adept_Pissed"/>
+    </CActorUnit>
+    <CActorUnit id="ZeratulAdeptPhaseShift" parent="GenericUnitStandard" unitName="ZeratulAdeptPhaseShift">
+        <Aliases value="_UnitSmall"/>
+        <Model value="AdeptSpirit"/>
+        <AnimBlendTime value="0.200000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="Adept_Ihanrii_WarpIn"/>
+        <DeathArray index="Normal" ModelLink="AdeptSpiritDeath" SoundLink="Adept_DeathFX"/>
+        <PlacementModel value="AdeptPlacement"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PortraitModel value="Adept_Ihanrii_Portrait"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarOffset value="60"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-unit-protoss-adept.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="AdeptShade_Ready"/>
+        <SoundArray index="Help" value="AdeptShade_Help"/>
+        <SoundArray index="What" value="AdeptShade_What"/>
+        <SoundArray index="Yes" value="AdeptShade_Yes"/>
+        <SoundArray index="Attack" value="AdeptShade_Attack"/>
+        <SoundArray index="Pissed" value="AdeptShade_Pissed"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-adept-ihanrii.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-adept.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield01.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield02.dds"/>
+            <Image value="Assets\Textures\wireframe-protoss-adept-shield03.dds"/>
+        </WireframeShield>
+        <HighlightTooltip value="Unit/Name/AdeptPhaseShift"/>
     </CActorUnit>
     <CActorUnit id="ZeratulDarkTemplar">
         <GroupIcon>

@@ -66,6 +66,11 @@
             <LayoutButtons index="7" removed="1"/>
         </CardLayouts>
     </CUnit>
+    <CUnit id="ZeratulAdeptWeapon" parent="MISSILE">
+        <Race value="Prot"/>
+        <Mover value="AdeptWeapon"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="AlarakCoop">
         <Radius value="0.5"/>
     </CUnit>
@@ -1594,8 +1599,6 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AdeptShadePhaseShiftCancel,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AlarakACMyLifefortheHighlord2" Type="Passive" Row="2" Column="0"/>
         </CardLayouts>
         <InnerRadius value="0.375"/>
@@ -1610,9 +1613,8 @@
         <Food value="-1"/>
         <PawnItemReduction value="22"/>
     </CUnit>
-    <CUnit id="FenixTalisAdeptWeapon2" parent="MISSILE">
+    <CUnit id="JinaraCoopWeapon" parent="MISSILE">
         <Race value="Prot"/>
-        <Mover value="JinaraCoopWeapon"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionPurifier"/>
     </CUnit>
     <CUnit id="JinaraCoop">
@@ -7750,11 +7752,75 @@
         </CardLayouts>
         <Speed value="2.25"/>
     </CUnit>
+    <CUnit id="ZeratulAdept" parent="Adept">
+        <Name value="Unit/Name/ZeratulAdept"/>
+        <Description value="Button/Tooltip/ZeratulAdept"/>
+        <ShieldsStart value="200"/>
+        <ShieldsMax value="200"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="200"/>
+        <LeaderAlias value="ZeratulAdept"/>
+        <HotkeyAlias value="ZeratulAdept"/>
+        <SelectAlias value="ZeratulAdept"/>
+        <SubgroupAlias value="ZeratulAdept"/>
+        <HotkeyCategory value="Unit/Category/ProtossStory"/>
+        <AbilArray index="5" Link="ZeratulAdeptPhaseShift"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="5" Face="ZeratulAdeptPhaseShift" AbilCmd="ZeratulAdeptPhaseShift,Execute"/>
+            <LayoutButtons index="8" Face="ZeratulAdeptTornadoPassive" Behavior="" Requirements="HaveZeratulArtifactTier1AndCyberCore" Row="1" Column="0"/>
+            <LayoutButtons Face="ZeratulAdeptAttackSpeedPassive" Type="Passive" Requirements="HaveZeratulArtifactTier2AndCyberCore" Row="1" Column="1"/>
+            <LayoutButtons Face="ZeratulAdeptTornadoPersistPassive" Type="Passive" Requirements="HaveZeratulArtifactTier3AndCyberCore" Row="1" Column="2"/>
+        </CardLayouts>
+        <WeaponArray index="0" Link="ZeratulAdept"/>
+    </CUnit>
+    <CUnit id="ZeratulAdeptTornado">
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Uncloakable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Unstoppable" value="1"/>
+        <Attributes index="MapBoss" value="1"/>
+        <Mover value="FlyIgnoreAirPathingBlockers"/>
+        <Speed value="20"/>
+        <Acceleration value="100"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <Radius value="0"/>
+        <MinimapRadius value="0"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <LateralAcceleration value="2"/>
+        <SeparationRadius value="0"/>
+        <Sight value="1"/>
+    </CUnit>
+    <CUnit id="ZeratulAdeptPhaseShift" parent="AdeptPhaseShift">
+        <ReviveType value="ZeratulAdept"/>
+        <LeaderAlias value="ZeratulAdept"/>
+        <HotkeyAlias value="ZeratulAdept"/>
+        <HotkeyCategory value="Unit/Category/ProtossZeratul"/>
+        <AIEvaluateAlias value="ZeratulAdept"/>
+        <AbilArray Link="ZeratulAdeptTornadoMagazine"/>
+        <AbilArray Link="que1Passive"/>
+    </CUnit>
     <CUnit id="ZeratulCyberneticsCore">
         <LeaderAlias value="CyberneticsCore"/>
         <HotkeyAlias value="CyberneticsCore"/>
         <SelectAlias value="CyberneticsCore"/>
         <SubgroupAlias value="CyberneticsCore"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="ShadewalkerPassive" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="ResearchZeratulAdeptTornado" Type="Passive" Requirements="HaveZeratulArtifactTier1AndCyberCore" Row="0" Column="3"/>
+            <LayoutButtons Face="ResearchZeratulAdeptAttackSpeed" Type="Passive" Requirements="HaveZeratulArtifactTier2AndCyberCore" Row="1" Column="3"/>
+            <LayoutButtons Face="ResearchZeratulAdeptTornadoPersist" Type="Passive" Requirements="HaveZeratulArtifactTier3AndCyberCore" Row="2" Column="3"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="ZeratulDarkArchon">
         <InnerRadius value="0.5625"/>
@@ -7802,6 +7868,7 @@
             <LayoutButtons index="7" Row="2"/>
             <LayoutButtons index="8" Row="2"/>
             <LayoutButtons index="9" Row="2"/>
+            <LayoutButtons Face="AdeptZeratul" Type="AbilCmd" AbilCmd="ZeratulGatewayTrain,Train7" Row="0" Column="3"/>
         </CardLayouts>
         <LeaderAlias value="Gateway"/>
         <HotkeyAlias value="Gateway"/>

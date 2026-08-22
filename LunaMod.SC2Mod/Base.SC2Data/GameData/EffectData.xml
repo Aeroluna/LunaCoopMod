@@ -19,6 +19,12 @@
     <CEffectLaunchMissile id="ATSLaserBatteryLM">
         <ValidatorArray index="0" value="BattlecruiserIsNotYamatoing"/>
     </CEffectLaunchMissile>
+    <CEffectSet id="AdeptPhaseShiftTeleportSet">
+        <EffectArray index="2" value="ZeratulAdeptTornadoIterate"/>
+        <EffectArray index="3" value="AdeptPhaseShiftKillDummy"/>
+        <EffectArray index="4" value="AdeptPhaseShiftTeleport"/>
+        <EffectArray value="AdeptPhaseUnitOrderQueue"/>
+    </CEffectSet>
     <CEffectSwitch id="BattlecruiserDamageSwitch">
         <EditorCategories value="Race:Terran"/>
         <CaseArray Validator="GroundUnitFilter" Effect="ATSLaserBatteryLM"/>
@@ -288,6 +294,27 @@
         <WhichUnit Value="Source"/>
         <BehaviorCategories index="Restorable" value="1"/>
     </CEffectRemoveBehavior>
+    <CEffectTeleport id="ZeratulAdeptTornadoRecallTeleport">
+        <PlacementAround Value="CasterUnit"/>
+        <SourceLocation Value="TargetUnit"/>
+    </CEffectTeleport>
+    <CEffectDamage id="ZeratulAdeptTornadoDamage">
+        <ValidatorArray value="NotStasis"/>
+        <ValidatorArray value="NotInvulnerable"/>
+        <Amount value="4"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoDoT"/>
+    <CEffectEnumArea id="ZeratulAdeptTornadoSearch">
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Destructible,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="ZeratulAdeptTornadoDoT"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoSlow">
+        <ValidatorArray index="0" value="NotUltraliskFrenzy"/>
+    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="ConsumeDNACP">
         <PeriodicValidator value="NotInvulnerable"/>
     </CEffectCreatePersistent>
@@ -791,6 +818,10 @@
         <Effect value="HHVikingDummyCP"/>
         <Count value="1"/>
     </CEffectDestroyPersistent>
+    <CEffectSet id="PhaseShiftTimerCancelSet">
+        <EffectArray index="1" value="ZeratulAdeptTornadoIterate"/>
+        <EffectArray value="AdeptPhaseShiftKillDummy"/>
+    </CEffectSet>
     <CEffectDamage id="YamatoU">
         <Amount value="240"/>
     </CEffectDamage>
@@ -2342,7 +2373,7 @@
     <CEffectLaunchMissile id="JinaraCoopLM">
         <EditorCategories value="Race:Protoss"/>
         <ImpactEffect value="JinaraCoopSet"/>
-        <AmmoUnit value="FenixTalisAdeptWeapon2"/>
+        <AmmoUnit value="JinaraCoopWeapon"/>
         <Movers Link="JinaraCoopWeapon"/>
     </CEffectLaunchMissile>
     <CEffectSet id="FenixThunderousChargeCoopStunSet">
@@ -5190,9 +5221,6 @@
         <Abil value="move"/>
         <Target Value="CasterPoint"/>
     </CEffectIssueOrder>
-    <CEffectApplyForce id="SymbioteRecallPush">
-        <Amount value="-0.5"/>
-    </CEffectApplyForce>
     <CEffectEnumArea id="SymbioteSpikeBurstSearch">
         <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden"/>
         <AreaArray index="0" Radius="5"/>
@@ -6382,6 +6410,65 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="85"/>
     </CEffectDamage>
+    <CEffectDamage id="ZeratulAdeptDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Light" value="12"/>
+        <Kind value="Ranged"/>
+        <Amount value="32"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ZeratulAdeptLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="ZeratulAdeptDamage"/>
+        <AmmoUnit value="ZeratulAdeptWeapon"/>
+        <Movers Link="AdeptWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectIssueOrder id="ZeratulAdeptPhaseShiftIssueOrder">
+        <EditorCategories value="Race:Protoss"/>
+        <Abil value="move"/>
+        <Target Effect="ZeratulAdeptPhaseShiftCU" Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="ZeratulAdeptPhaseShiftSpawnSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="AdeptPhaseShiftSpawnAB"/>
+        <EffectArray value="AdeptPhaseShiftTimerSpawnAB"/>
+        <EffectArray value="ZeratulAdeptPhaseShiftTornado"/>
+        <EffectArray value="ZeratulAdeptPhaseShiftIssueOrder"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="ZeratulAdeptPhaseShiftCU">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="CasterUnit"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="ZeratulAdeptPhaseShiftSpawnSet"/>
+        <SpawnUnit value="ZeratulAdeptPhaseShift"/>
+        <SpawnRange value="1"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="ZeratulAdeptPhaseShiftInitialSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="AdeptPhaseShiftCasterAB"/>
+        <EffectArray value="ZeratulAdeptPhaseShiftCU"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ZeratulAdeptPhaseShiftTornado">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ZeratulAdeptPhaseShiftTornadoRemove">
+        <BehaviorLink value="ZeratulAdeptPhaseShiftTornado"/>
+        <WhichUnit Effect="ZeratulAdeptPhaseShiftTornado"/>
+    </CEffectRemoveBehavior>
+    <CEffectEnumMagazine id="ZeratulAdeptPhaseShiftTornadoIterate">
+        <!-- complicated way of applying the damage search so the damage is credited to the adept properly -->
+        <EffectExternal value="ZeratulAdeptPhaseShiftTornadoSet"/>
+        <WhichUnit Effect="ZeratulAdeptPhaseShiftTornado"/>
+    </CEffectEnumMagazine>
+    <CEffectSet id="ZeratulAdeptPhaseShiftTornadoSet">
+        <EffectArray value="ZeratulAdeptPhaseShiftTornadoRemove"/>
+        <EffectArray value="ZeratulAdeptTornado"/>
+    </CEffectSet>
     <CEffectSet id="ZealotPurifierReviveSet">
         <EffectArray index="0" value="ZealotPurifierReviveSupressedSwitch"/>
     </CEffectSet>
@@ -6462,6 +6549,53 @@
         <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="3" Effect="VorazunCleaveDamage"/>
     </CEffectEnumArea>
+    <CEffectEnumMagazine id="ZeratulAdeptTornadoIterate">
+        <EffectExternal value="ZeratulAdeptTornadoIterateSwitch"/>
+        <WhichUnit Effect="AdeptPhaseShiftTimerSpawnAB"/>
+    </CEffectEnumMagazine>
+    <CEffectSwitch id="ZeratulAdeptTornadoIterateSwitch">
+        <CaseArray Validator="HaveZeratulArtifactTier3AndCyberCore" Effect="ZeratulAdeptTornadoFinish"/>
+        <CaseDefault value="KillTargetDeathNormal"/>
+    </CEffectSwitch>
+    <CEffectSet id="ZeratulAdeptTornadoFinish">
+        <EffectArray value="ZeratulAdeptTornadoReleaseMagazine"/>
+        <EffectArray value="ZeratulAdeptTornadoRelease"/>
+        <EffectArray value="ZeratulAdeptTornadoWander"/>
+        <EffectArray value="ZeratulAdeptTornadoRemoveRecall"/>
+    </CEffectSet>
+    <CEffectReleaseMagazine id="ZeratulAdeptTornadoReleaseMagazine">
+        <WhichUnit Value="Target"/>
+    </CEffectReleaseMagazine>
+    <CEffectRemoveBehavior id="ZeratulAdeptTornadoRemoveRecall">
+        <BehaviorLink value="ZeratulAdeptTornadoRecall"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoRelease">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoWander">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoFade">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ZeratulAdeptTornado">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ZeratulAdeptTornadoRecall">
+        <EditorCategories value="Race:Protoss"/>
+    </CEffectApplyBehavior>
+    <CEffectRandomPointInCircle id="ZeratulAdeptTornadoBetterWander">
+        <WhichLocation Value="TargetUnit"/>
+        <Effect value="ZeratulAdeptTornadoBetterWanderMove"/>
+        <Radius value="10"/>
+        <RestrictToCircumference value="1"/>
+    </CEffectRandomPointInCircle>
+    <CEffectIssueOrder id="ZeratulAdeptTornadoBetterWanderMove">
+        <Abil value="move"/>
+        <Target Value="TargetPoint"/>
+        <WhichUnit Effect="ZeratulAdeptTornadoWander"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
     <CEffectTeleport id="ZeratulStalkerBlink">
         <TeleportEffect value="ZeratulStalkerBlinkSet"/>
     </CEffectTeleport>

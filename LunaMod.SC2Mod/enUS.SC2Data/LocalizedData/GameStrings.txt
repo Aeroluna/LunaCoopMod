@@ -109,6 +109,7 @@ Behavior/Name/VoidSentryBlackHoleArmor=Black Hole
 Behavior/Name/VorazunShadowPhaseSuppressed=Recently Shrouded
 Behavior/Name/VorazunShadowPhased=Shrouded
 Behavior/Name/ZealotPurifierReviveSupressed2=Recently Reconstructed
+Behavior/Name/ZeratulAdeptTornadoDoT=Void Dervish
 Behavior/Name/ZeratulVoidPrisonAiur01=Void Sanctuary
 Behavior/Name/ZeratulVoidPrisonMissiles=Void Sanctuary Missiles
 Behavior/Tooltip/AbathurPrestigeSymbiote=This unit is followed by a Symbiote that attacks enemies and protects their host with a damage absorbing shell.
@@ -187,11 +188,13 @@ Behavior/Tooltip/VorazunRegenShield=This unit is undetected and rapidly regenera
 Behavior/Tooltip/VorazunShadowPhaseSuppressed=This unit was recently affected by Shroud of Adun and cannot be shrouded again.
 Behavior/Tooltip/VorazunShadowPhased=This unit is immune to damage.
 Behavior/Tooltip/ZealotPurifierReviveSupressed2=This unit has been recently reconstructed and cannot be revived again.
+Behavior/Tooltip/ZeratulAdeptTornadoDoT=Attack and movement speed reduced. Taking damage over time.
 Behavior/Tooltip/ZeratulVoidPrisonAiur01=This unit is at a standstill.
 Button/ChargeText/CommanderPrestigeHornerDefensePassiveCharges=<d ref="$AbilChargeCount:HHBomberPlatformAreaBombTopBarOrderDummy,0$"/>
 Button/ChargeText/MutatorCandy=<d ref="$BehaviorStackCount:MutatorCandyCount$"/>
 Button/ChargeText/SILiberatorAmmo=<d ref="$BehaviorStackCount:StukovInfestedSiegeTankAmmo$"/>
 Button/ChargeText/ZeratulCalldownSingleCharge=<sp/>
+Button/Name/AdeptZeratul=Warp In Shadewalker
 Button/Name/AegisPlating=Aegis Plating
 Button/Name/AlarakACMyLifefortheHighlord2=Eternal Servitude
 Button/Name/AlarakArchonImprovedSacrifice=Power Overwhelming
@@ -352,6 +355,9 @@ Button/Name/ResearchTransformationServos=Research Smart Servos
 Button/Name/ResearchVoidStasis=Research Void Prison
 Button/Name/ResearchVoidStasisLocked=Research Void Prison
 Button/Name/ResearchXN51CloakTechnology=Research Phantom Drive
+Button/Name/ResearchZeratulAdeptAttackSpeed=Artifact Enhancement: Accelerated Glaives
+Button/Name/ResearchZeratulAdeptTornado=Artifact Enhancement: Entropic Gale
+Button/Name/ResearchZeratulAdeptTornadoPersist=Artifact Enhancement: Chaotic Currents
 Button/Name/RipwaveMissiles=Ripwave Munitions
 Button/Name/SIBansheeIncubationChambers=Incubation Chambers
 Button/Name/SIBansheeResearchIncubationChambers=Evolve Incubation Chambers
@@ -367,6 +373,7 @@ Button/Name/SalvageStetmann=Salvage
 Button/Name/ScienceVesselAoE=Supercritical Isotope
 Button/Name/SeismicSpinesMP=Seismic Spines
 Button/Name/SentryTaldarimForceField=Subjugation Field
+Button/Name/ShadewalkerPassive=Shadewalker
 Button/Name/ShadowGuardBlink=Shadow Stride
 Button/Name/SignifierFade=Fading Star
 Button/Name/SignifierPassive=Signifier
@@ -410,6 +417,10 @@ Button/Name/VortexArtanis=Vortex
 Button/Name/WidowMineConcealment=Concealment
 Button/Name/ZealotPurifierResearchReconstruction2=Research Revitalization Matrix
 Button/Name/ZealotPurifierRevive2=Revitalization Matrix
+Button/Name/ZeratulAdeptAttackSpeedPassive=Accelerated Glaives
+Button/Name/ZeratulAdeptPhaseShift=Psionic Transfer
+Button/Name/ZeratulAdeptTornadoPassive=Entropic Gale
+Button/Name/ZeratulAdeptTornadoPersistPassive=Chaotic Currents
 Button/Name/ZeratulAllPassive=Keystone Attunement
 Button/Name/ZeratulDarkTemplarBlink=Shadow Stride
 Button/Name/ZeratulDarkTemplarBlinkPassive=Shadow Stride
@@ -810,6 +821,9 @@ Button/Tooltip/ResearchTransformationServos=Allows <c val="ffff8a">Hellions</c>,
 Button/Tooltip/ResearchVoidStasis=Grants <c val="ffff8a">Dark Templar</c> an ability to phase a target unit or structure out of existence for <d ref="Behavior,DarkTemplarVoidStasis,Duration"/> seconds. This disables it entirely but still allows it to be attacked by units or abilities.<n/><n/><c val="#ColorAttackInfo">Can target structures or units.</c>
 Button/Tooltip/ResearchWarpGate=Enables <c val="ffff8a">Gateways</c> to upgrade to Warp Gates and reduces the build time of units produced by <c val="ffff8a">Gateways</c> by 50%.
 Button/Tooltip/ResearchXN51CloakTechnology=Allows <c val="ffff8a">Covert Banshees</c> to remain permanently cloaked and have increased movement speed.
+Button/Tooltip/ResearchZeratulAdeptAttackSpeed=Increases <c val="ffff8a">Shadewalker</c> attack speed by 45%.
+Button/Tooltip/ResearchZeratulAdeptTornado=When a <c val="ffff8a">Shadewalker</c> uses Psionic Transfer, it will create a tornado that deals <d ref="Effect,ZeratulAdeptTornadoDamage,Amount/Behavior,ZeratulAdeptTornadoDoT,Period"/> damage per second and applies a <d ref="(1-Behavior,ZeratulAdeptTornadoSlow,Modification.MoveSpeedMultiplier)*100"/>% slow to nearby enemies.
+Button/Tooltip/ResearchZeratulAdeptTornadoPersist=Tornadoes from the <c val="ffff8a">Shadewalker's</c> Psionic Transfer will persist for an additional <d ref="Behavior,ZeratulAdeptTornadoRelease,Duration"/> seconds.
 Button/Tooltip/ResearchZerglingStetmannAttackSpeed=Increases attack speed of <c val="ffff8a">Mecha Zerglings</c> by <d ref="(Behavior,ZerglingAttackSpeedStetmann,Modification.AttackSpeedMultiplier-1)*100"/>%. Drains <d ref="-1*Effect,ZerglingAttackSpeedStetmannMU,VitalArray[Energy].Change"/> Egonergy per attack.
 Button/Tooltip/ReserachUltraliskStetmannMechanicalLifeLeech=Grants the <c val="ffff8a">Mecha Ultralisk</c> the ability to absorb <d ref="Effect,UltraliskMechanicalLifeLeechStetmannDamage,Amount"/> life from nearby enemy or friendly mechanical units, healing for that amount. Deals half damage to friendly units but still heals the full amount.
 Button/Tooltip/RipwaveMissiles=Viking missiles and gatlings cannons deal area damage.
@@ -833,6 +847,7 @@ Button/Tooltip/SalvageStetmann=Salvages the Stetellite, removing it and returnin
 Button/Tooltip/ScienceVesselAoE=Irradiate and Defensive Matrix cast in an area of effect.
 Button/Tooltip/SeismicSpinesMP=Increases the attack range of Lurkers by +<d ref="$UpgradeEffectArrayValue:SeismicSpines:Weapon,LurkerMP,Range$"/>.
 Button/Tooltip/SentryTaldarimForceField=Creates a solid barrier that lasts for <d ref="Behavior,ForceFieldFate,Duration"/> seconds and impedes movement of ground units.<n/><n/><c val="#ColorAttackInfo">Subjugation Fields cannot be shattered.</c>
+Button/Tooltip/ShadewalkerPassive=Core Forge allows you to warp in Shadewalkers.
 Button/Tooltip/ShieldBattery=Defensive structure. Recharges shields of nearby units.
 Button/Tooltip/ShieldBatteryKarax=Restores shields to nearby friendly units and structures. Can be upgraded to use Fortification Barrier.
 Button/Tooltip/SignifierFade=Fades away, granting Super Cloak and 50% movement speed for <d ref="Behavior,SignifierFade,Duration"/> seconds. Ignores unit collision for the duration.
@@ -930,8 +945,15 @@ Button/Tooltip/ZealotPurifierRevive=Revives the Sentinel when killed. This effec
 Button/Tooltip/ZealotPurifierRevive2=Reduces the cooldown of Reconstruction by <d time="120"/>.
 Button/Tooltip/ZealotPurifierRevive3=Revives the Sentinel when killed. This effect can only occur once every 120 seconds.
 Button/Tooltip/ZealotShakuras=Powerful melee warrior. Has Shadow Charge and Darkcoil abilities.<n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/ZeratulAdept=Ranged specialist. Can use Psionic Transfer to create tornadoes.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/ZeratulAdeptAttackSpeedPassive=This unit's attack speed is increased by 45%.
+Button/Tooltip/ZeratulAdeptPhaseShift=Projects an invulnerable Shade that can move but cannot attack.<n/><n/>The Shadewalker teleports to the Shade's location <d ref="Behavior,AdeptPhaseShiftTimer,Duration"/> seconds after activation.<n/><n/>Can be canceled after activation.
+Button/Tooltip/ZeratulAdeptPhaseShiftAppend=<n/><n/><c val="FFFF8A">Void Blink:</c> Reduces the cooldown of Psionic Transfer by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2A:Abil,ZeratulBlink,Cost[0].Charge.TimeUse$/Abil,ZeratulBlink,Cost[0].Charge.TimeUse*100" player="0"/>%.
+Button/Tooltip/ZeratulAdeptTornadoPassive=Psionic Transfer will create a tornado that deals <d ref="Effect,ZeratulAdeptTornadoDamage,Amount/Behavior,ZeratulAdeptTornadoDoT,Period"/> damage per second and applies a <d ref="(1-Behavior,ZeratulAdeptTornadoSlow,Modification.MoveSpeedMultiplier)*100"/>% slow to nearby enemies.
+Button/Tooltip/ZeratulAdeptTornadoPersistPassive=Tornadoes from Psionic Transfer will persist for an additional <d ref="Behavior,ZeratulAdeptTornadoRelease,Duration"/> seconds.
 Button/Tooltip/ZeratulAllPassive=<c val="FFFF8A">Steadfast Reinforcements:</c> Increases the duration of Zeratul's Legion and Avatar calldowns by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2B:Behavior,ZeratulXelNagaConstructTimedLife,Duration$/Behavior,ZeratulTopBarTimedLife,Duration*100" player="0"/>%.<n/><n/><c val="FFFF8A">Tesseract Matrix:</c> Decreases the cooldown of Shade Projection by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse$/Abil,PhaseCannonProjection,Cost[0].Cooldown.TimeUse*100" player="0"/>%. Increases the damage absorbed by Shade Barrier by <d ref="($UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2C:Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit$/Behavior,ZeratulStructureBarrier,DamageResponse.ModifyLimit)*100" player="0"/>%.<n/><n/><c val="FFFF8A">Void Blink:</c> Reduces the cooldown of Zeratul and his units' Blink abilities by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2A:Abil,ZeratulBlink,Cost[0].Charge.TimeUse$/Abil,ZeratulBlink,Cost[0].Charge.TimeUse*100" player="0"/>%.
 Button/Tooltip/ZeratulDarkArchonMaelstrom=Temporarily stuns enemy units in an area of effect for <d ref="Behavior,ZeratulDarkArchonMaelstrom,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
+Button/Tooltip/ZeratulDarkTemplarBlinkAppend=<n/><n/><c val="FFFF8A">Void Blink:</c> Reduces the cooldown of Shadow Stride by <d ref="$UpgradeEffectArrayValue:ZeratulArtifactUpgradeTier2A:Abil,ZeratulBlink,Cost[0].Charge.TimeUse$/Abil,ZeratulBlink,Cost[0].Charge.TimeUse*100" player="0"/>%.
 Button/Tooltip/ZeratulVoidPrisonAiur01=Creates a large dome in which enemies are slowed to a standstill and cannot detect for <d ref="Effect,ZeratulVoidPrisonAiur01,PeriodCount*Effect,ZeratulVoidPrisonAiur01,PeriodicPeriodArray[0]"/> seconds.
 Button/Tooltip/ZeratulWarpPrismLoad=Loads units into the Xel'Naga Void Array's matrix from up to <d ref="Abil,ZeratulWarpPrismTransport,Range"/> range away.
 Button/Tooltip/ZeratulXelNagaChargedCrystalPsiStorm=Charged Crystals have a <d ref="Effect,ZeratulXelNagaChargedCrystalPsiStorm,Chance*100"/>% chance to cast a miniature Psionic Storm with each attack, dealing <d ref="(Effect,ZeratulXelNagaChargedCrystalPsiStormPersistent,PeriodCount+2)*Effect,ZeratulXelNagaChargedCrystalPsiStormDamage,Amount"/> damage to all enemy units in a small area over <d ref="Effect,ZeratulXelNagaChargedCrystalPsiStormPersistent,PeriodCount*Effect,ZeratulXelNagaChargedCrystalPsiStormPersistent,PeriodicPeriodArray[0]+Behavior,ZeratulXelNagaChargedCrystalPsiStorm,Duration" precision ="0"/> seconds.
@@ -1527,6 +1549,7 @@ Unit/Name/UltraliskBrood=Torrasque
 Unit/Name/VoidArchon=Void Archon
 Unit/Name/VorazunCoop=Vorazun
 Unit/Name/VorazunCoopReviveBeacon=Vorazun's Beacon
+Unit/Name/ZeratulAdept=Shadewalker
 Unit/Name/ZerglingBrood=Devouring One
 Unit/ShieldArmorName/MarauderMengskShield=Aegis Barrier
 Unit/ShieldArmorName/ScatterVeil=Scatter Veil
@@ -1683,6 +1706,7 @@ Weapon/Name/VorazunCoopWeapon=Shadow Scythe
 Weapon/Name/WarbotAMoving=120mm Cannon
 Weapon/Name/WraithGMoving=Burst Lasers Moving
 Weapon/Name/WraithMoving=Moving
+Weapon/Name/ZeratulAdept=Xel'naga Glaive Cannon
 Weapon/Tip/DehakaCoopAirBeam=<c val="#ColorAttackInfo">Ignores armor.</c>
 Weapon/Tip/LaserDrillTripodLaserBeamCoop=<c val="#ColorAttackInfo">Ignores armor.</c>
 Weapon/Tip/MutatorLaserDrillBeam=<c val="#ColorAttackInfo">Ignores armor.</c>

@@ -11,6 +11,9 @@
             <StateFlags index="SuppressPassenger" value="0"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPhaseShiftTimer">
+        <RemoveValidatorArray index="1" value="CasterIsNotPhaseShiftingCombine"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AdeptPsionicTransferDamageDebuff">
         <BehaviorCategories index="Restorable" value="1"/>
     </CBehaviorBuff>
@@ -69,11 +72,53 @@
             <ModifyFlags index="OverrideAttackTargetPriority" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptPhaseShiftTornado">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="HaveZeratulArtifactTier1AndCyberCore"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ZeratulAdeptPhaseShiftTornadoIterate"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornado">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <InitialEffect value="ZeratulAdeptTornadoSearch"/>
+        <PeriodicEffect value="ZeratulAdeptTornadoSearch"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeZeratulTornadoesDoT">
         <TimeScaleSource Value="Global"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoDoT">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\tornadoes_coop.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="1"/>
+        <Period value="0.25"/>
+        <InitialEffect value="ZeratulAdeptTornadoSlow"/>
+        <RefreshEffect value="ZeratulAdeptTornadoSlow"/>
+        <PeriodicEffect value="ZeratulAdeptTornadoDamage"/>
+        <Modification AttackSpeedMultiplier="0.7"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="CommanderPrestigeZeratulTornadoesSlow">
         <TimeScaleSource Value="Global"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoRecall">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="ZeratulAdeptTornadoRecallTeleport"/>
+        <DisableValidatorArray value="CasterIsAttacking"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoSlow">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\tornadoes_coop.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="1"/>
+        <Period value="0.25"/>
+        <Modification MoveSpeedMultiplier="0.7"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ConjoinedAllyUnit">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -3092,6 +3137,27 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="60"/>
         <ExpireEffect value="ProtossTimedLifeExpireAB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoRelease">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="6"/>
+        <ExpireEffect value="ZeratulAdeptTornadoFade"/>
+        <DurationRandomMin value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoFade">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+        <ExpireEffect value="TimedLifeFate"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZeratulAdeptTornadoWander">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.5"/>
+        <InitialEffect value="ZeratulAdeptTornadoBetterWander"/>
+        <PeriodicEffect value="ZeratulAdeptTornadoBetterWander"/>
+        <Modification MoveSpeedMaximum="4" MoveSpeedMinimum="4"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ZeratulTopBarWarpingIn">
         <Modification>

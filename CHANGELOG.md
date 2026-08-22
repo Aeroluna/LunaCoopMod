@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/18/2026
+## 8/22/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
@@ -13,8 +13,18 @@
 - Fixed an issue where the pierce effect from Deimos Viking's Shredder Rounds did not factor weapon range.
 - Fixed an issue where Deimos Vikings with the Shredder Rounds upgrade would play the firing sound/muzzle flash/beam for each enemy hit.
 - Reworked Deimos Viking's Shredder Rounds visuals to scale with weapon range.
+- Fixed an issue where Xel'naga Abrogators had no visual birth effect for the Purification Nova.
+- Fixed an issue where some Zeratul units did not play a level up visual effect when picking up an artifact.
 
 yeah.
+
+- Added a new Zeratul unit: Shadewalker
+  - Adept variant.
+  - Artifact passive 1: When a Shadewalker uses Psionic Transfer, it will create a tornado that deals 16 damage per second and applies a 30% slow to nearby enemies.
+  - Artifact passive 2: Increases Shadewalker attack speed by 45%.
+  - Artifact passive 3: Tornadoes from the Shadewalker's Psionic Transfer will persist for an additional 6 seconds.
+
+Zeratul has 6 different units to pick from, he deserves more variety! I wanted to add a unit that takes micro to use, so my first thought was making a High Templar variant. However, Zeratul technically already has a High Templar in the form of Telbrus, and 3 other commanders have their own High Templar, so I went with an Adept instead.
 
 - Fixed an issue where Shock Division firing from Intercessors did more damage than intended while below rank 3.
 - Increased weapon speed of Shock Division firing from Intercessors from 4.5 to 4.

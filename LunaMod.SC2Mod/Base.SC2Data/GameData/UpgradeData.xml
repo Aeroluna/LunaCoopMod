@@ -199,6 +199,24 @@
         <EffectArray Reference="Weapon,DehakaLocustSwarmHostDummy,Level" Value="1"/>
         <EffectArray Reference="Weapon,DehakaCreeperSwoopSwarmHostDummy,Level" Value="1"/>
     </CUpgrade>
+    <CUpgrade default="1" id="ZeratulWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,ZeratulAdept,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+        <EffectArray Reference="Weapon,ZeratulAdept,Level" Value="1"/>
+        <EffectArray Reference="Effect,ZeratulAdeptDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,ZeratulAdeptDamage,AttributeBonus[Light]" Value="1"/>
+        <AffectedUnitArray value="ZeratulAdept"/>
+    </CUpgrade>
+    <CUpgrade default="1" id="ZeratulShieldsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <EffectArray Reference="Unit,ZeratulAdept,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,ZeratulAdept,ShieldArmor" Value="1"/>
+        <AffectedUnitArray value="ZeratulAdept"/>
+    </CUpgrade>
+    <CUpgrade default="1" id="ZeratulArmorsExtra">
+        <EffectArray Reference="Unit,ZeratulAdept,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,ZeratulAdept,LifeArmor" Value="1"/>
+        <AffectedUnitArray value="ZeratulAdept"/>
+    </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel1">
         <EffectArray index="130" Reference="Effect,TempestDamage,AttributeBonus[Massive]"/>
         <EffectArray index="131" Value="1"/>
@@ -464,6 +482,12 @@
     <CUpgrade id="ZealotResearchShadowCharge">
         <EffectArray index="0" Value="1.125000"/>
     </CUpgrade>
+    <CUpgrade id="ZeratulArtifactTier2_CyberneticsCore">
+        <EffectArray Reference="Weapon,ZeratulAdept,RateMultiplier" Value="0.45"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulArtifactUpgradeTier2A">
+        <EffectArray Operation="Subtract" Reference="Abil,ZeratulAdeptPhaseShift,Cost[0].Cooldown.TimeUse" Value="8.000000"/>
+    </CUpgrade>
     <CUpgrade id="ZergGroundArmorsExtraLevel1" parent="ZergGroundArmorsExtra">
         <EffectArray Operation="Set" Reference="Actor,InfestedCivilianAC,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,InfestedMarineAC,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
@@ -547,6 +571,45 @@
     </CUpgrade>
     <CUpgrade id="DehakaPrimalWeaponsExtraLevel3" parent="DehakaPrimalWeaponsExtra">
         <EffectArray Operation="Set" Reference="Weapon,KraithSpineVolley,Icon" Value="Assets\Textures\btn-upgrade-dehaka-missileattacks-level3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulWeaponsExtraLevel1" parent="ZeratulWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,ZeratulAdept,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulWeaponsExtraLevel2" parent="ZeratulWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,ZeratulAdept,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulWeaponsExtraLevel3" parent="ZeratulWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,ZeratulAdept,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulWeaponsExtraLevel4" parent="ZeratulWeaponsExtra">
+        <EffectArray Operation="Set" Reference="Weapon,ZeratulAdept,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <MaxLevel value="100"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulShieldsExtraLevel1" parent="ZeratulShieldsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulShieldsExtraLevel2" parent="ZeratulShieldsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulShieldsExtraLevel3" parent="ZeratulShieldsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulShieldsExtraLevel4" parent="ZeratulShieldsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+        <MaxLevel value="100"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulArmorsExtraLevel1" parent="ZeratulArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulArmorsExtraLevel2" parent="ZeratulArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulArmorsExtraLevel3" parent="ZeratulArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZeratulArmorsExtraLevel4" parent="ZeratulArmorsExtra">
+        <EffectArray Operation="Set" Reference="Actor,ZeratulAdept,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
+        <MaxLevel value="100"/>
     </CUpgrade>
     <!-- END OF EXTRA ARMOR/WEAPON UPGRADES -->
     <CUpgrade id="ArtanisCommander">
@@ -736,6 +799,9 @@
         <EditorCategories value="Race:Terran"/>
         <MaxLevel value="30"/>
         <LeaderAlias value=""/>
+    </CUpgrade>
+    <CUpgrade id="MasteryZeratulCombatUnitAttackSpeed">
+        <EffectArray Reference="Weapon,ZeratulAdept,RateMultiplier" Value="0.005"/>
     </CUpgrade>
     <CUpgrade id="NovaCommander">
         <EffectArray index="5" Value="1.5"/>
@@ -2005,6 +2071,8 @@
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeZeratulArtifactFragments">
         <EffectArray Reference="Unit,ZeratulPhotonCannon,CostResource[Minerals]" Value="75"/>
+        <EffectArray Reference="Unit,ZeratulAdept,CostResource[Minerals]" Value="50"/>
+        <EffectArray Reference="Unit,ZeratulAdept,CostResource[Vespene]" Value="50"/>
     </CUpgrade>
     <CUpgrade id="CommanderPrestigeZeratulTopBar" parent="CommanderPrestige">
         <EffectArray Operation="Set" Reference="Abil,ZeratulTopBarWarpTrain,InfoArray[Train1].Cooldown.Link" Value="Abil/ZeratulTelbrus"/>

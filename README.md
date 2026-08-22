@@ -1993,7 +1993,7 @@ Destroyers had such a low warp-in time that it made the warp-in finish before th
 - Reworked Slayer's Phase Blink ability.
   - Removed double damage on next attack after teleporting.
   - Can now teleport directly into other units.
-  - Knocksback nearby enemies and deals 20 damage.
+  - Knockbacks nearby enemies and deals 20 damage.
   - Added red Blink icon.
 - Changed Slayer model to Forged collection model.
 
@@ -2037,7 +2037,7 @@ Prevents situations where all your Wrathwalkers mega overkill one unit. Unsurpri
 - Fixed an issue where Mothership used standard skin death ragdoll model instead of Tal'darim.
 - Changed Ascendant shadow trail model to be red.
 - Fixed an issue where Ascendant shadow trail model didn't scale with the Ascendant (noticeable with Power Overwhelming).
-- Restored missing beam effect on Ascendant's Psionic Orb.
+- Restored missing visual beam effect on Ascendant's Psionic Orb.
 - Added a visual effect to Mothership's Mass Teleport ability.
 - Changed Mothership Mass Teleport ability to teleport to the unit's current location instead of its location when the ability was cast.
 - Fixed an issue where Alarak's Destruction Wave model would not face the direction it was cast in.
@@ -2919,6 +2919,8 @@ They deserve the Heroic attribute!
 - Fixed an issue where P3 tornadoes could not deal damage to units affected by time slows.
 - Fixed an issue where Void Templar had access to Blink before unlocking the level 3 perk.
 - Fixed an issue where units created by Mutators can once again drop Biomass/Essence after being devolved.
+- Fixed an issue where Xel'naga Abrogators had no visual birth effect for the Purification Nova.
+- Fixed an issue where some Zeratul units did not play a level up visual effect when picking up an artifact.
 
 yeah.
 

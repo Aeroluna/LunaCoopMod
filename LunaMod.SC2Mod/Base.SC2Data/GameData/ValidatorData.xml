@@ -148,6 +148,22 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="YoinkTentacle"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="CasterIsNotPhaseShiftingCombine">
+        <Type value="And"/>
+        <CombineArray value="CasterIsPhaseShifting"/>
+        <CombineArray value="CasterIsZeratulPhaseShifting"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsPhaseShifting">
+        <WhichUnit Effect="AdeptPhaseShiftCU" Value="Caster"/>
+        <Behavior value="AdeptPhaseShiftCancelDummy"/>
+        <Compare value="GT"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsZeratulPhaseShifting">
+        <WhichUnit Effect="ZeratulAdeptPhaseShiftCU" Value="Caster"/>
+        <Behavior value="AdeptPhaseShiftCancelDummy"/>
+        <Compare value="GT"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVital id="CasterLifeGE30Delta">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
@@ -1367,9 +1383,6 @@
         <CombineArray value="NotSummonedUnit"/>
         <CombineArray value="NotTimedLifeUnitAndNotLarva"/>
     </CValidatorCombine>
-    <CValidatorLocationCompareRange id="SymbiotePushCheck">
-        <Range value="2"/>
-    </CValidatorLocationCompareRange>
     <CValidatorUnitCompareVital id="TargetHas100LifeMissing">
         <Compare value="GE"/>
         <Type value="Delta"/>

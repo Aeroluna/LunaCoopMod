@@ -817,6 +817,42 @@
     <CAbilBehavior id="WraithCloak">
         <CmdButtonArray index="On" Requirements="UseWraithCloak"/>
     </CAbilBehavior>
+    <CAbilEffectTarget id="ZeratulAdeptPhaseShift">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
+        <Effect index="0" value="ZeratulAdeptPhaseShiftInitialSet"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="TransientPreferred" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="16"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ZeratulAdeptPhaseShift">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="ZeratulAdeptTornadoMagazine">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Flags index="ShowStatus" value="0"/>
+        <Leash value="1"/>
+        <InfoArray index="Ammo1" Manage="Recall" Unit="ZeratulAdeptTornado">
+            <Charge HideCount="1" Link="CarrierRepairDrone" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="ZeratulAdeptPhaseShift" Requirements="HaveZeratulArtifactTier1AndCyberCore">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <MaxCount value="1"/>
+        <Launch value="ReleaseAtSource"/>
+        <EffectArray index="Create" value="ZeratulAdeptTornadoRecall"/>
+        <Alert value=""/>
+    </CAbilArmMagazine>
     <CAbilEffectTarget id="ZeratulDarkArchonMaelstrom">
         <AutoCastValidatorArray value="IsNotDisguisedChangeling"/>
         <AutoCastValidatorArray value="NotHallucinationOrNotDetected"/>
@@ -846,6 +882,12 @@
         <CursorEffect value="ZeratulEntropicBlastCyanDamage"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="EntropicBlast" Requirements="HaveZeratulTalentUltimatePurity"/>
     </CAbilEffectTarget>
+    <CAbilTrain id="ZeratulGatewayTrain">
+        <InfoArray index="Train7" Time="38">
+            <Button DefaultButtonFace="AdeptZeratul" Requirements="HaveZeratulCyberneticsCore"/>
+            <Unit value="ZeratulAdept"/>
+        </InfoArray>
+    </CAbilTrain>
     <CAbilMorph id="ZeratulWarpPrismTransportMode">
         <Flags index="BestUnit" value="0"/>
         <InfoArray index="0">
