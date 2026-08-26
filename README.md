@@ -264,6 +264,10 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Increased movement speed of Ravens from 2.25 to 2.75.
 - Increased Sentry damage from 6 to 6 (+4 vs Shields).
 - Increased Viking ground damage 12 to 12 (+8 vs Mechanical).
+- Increased Sentry speed from 2.25 to 2.5.
+- Increased Guardian Shield duration from 15 to 18 seconds.
+- Increased Guardian Shield radius from 4 to 4.5.
+- Removed Light attribute from Sentry.
 
 Copied from Versus.
 

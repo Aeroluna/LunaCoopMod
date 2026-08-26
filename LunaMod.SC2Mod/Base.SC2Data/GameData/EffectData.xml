@@ -25,6 +25,9 @@
         <EffectArray index="4" value="AdeptPhaseShiftTeleport"/>
         <EffectArray value="AdeptPhaseUnitOrderQueue"/>
     </CEffectSet>
+    <CEffectRemoveBehavior id="AdeptShadePhaseShiftCancelCasterBehavior">
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
     <CEffectSwitch id="BattlecruiserDamageSwitch">
         <EditorCategories value="Race:Terran"/>
         <CaseArray Validator="GroundUnitFilter" Effect="ATSLaserBatteryLM"/>
@@ -3522,7 +3525,12 @@
         <SpawnUnit value="ForceFieldTaldarim"/>
         <SpawnRange value="0"/>
     </CEffectCreateUnit>
+    <CEffectCreatePersistent id="GuardianShieldPersistent">
+        <PeriodicValidator value="NotHaveScramblerMissileBehavior"/>
+        <PeriodCount value="36"/>
+    </CEffectCreatePersistent>
     <CEffectEnumArea id="GuardianShieldSearch">
+        <AreaArray index="0" Radius="4.5"/>
         <SearchFlags index="SameCliff" value="0"/>
     </CEffectEnumArea>
     <CEffectModifyUnit id="HHOrdnanceTowerAttackCooldown">

@@ -1,6 +1,6 @@
 # Changelog
 
-## 8/22/2026
+## 8/26/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
 - Fixed an issue where Kerrigan P4 played the death sound at the start of the map.
@@ -77,6 +77,13 @@ Copied from Versus. All the commanders get the moving-while-shooting Battlecruie
 - Changed Hybrid Dominator's Plasma Blast to still cost energy/cooldown when it gets cancelled.
 
 Makes dodging these single target nukes way easier.
+
+- Increased Sentry speed from 2.25 to 2.5.
+- Increased Guardian Shield duration from 15 to 18 seconds.
+- Increased Guardian Shield radius from 4 to 4.5.
+- Removed Light attribute from Sentry.
+
+Copied from Versus.
 
 ## 8/15/2026
 
