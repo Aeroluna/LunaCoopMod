@@ -44,10 +44,17 @@
         <EffectArray Reference="Effect,DarkArchonWeapon,Amount" Value="1"/>
         <EffectArray Reference="Effect,DarkArchonWeapon2Damage,Amount" Value="3"/>
         <EffectArray Reference="Effect,DarkArchonWeapon3Damage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,ThermalLancesMU,AttributeBonus[Light]" Value="1"/>
+        <EffectArray Reference="Effect,ThermalLancesFriendlyDamage,AttributeBonus[Light]" Value="1"/>
+        <EffectArray Reference="Effect,ColossusPurifierThermalLancesDamage,AttributeBonus[Light]" Value="1"/>
+        <EffectArray Reference="Effect,FenixWarbringerColossusThermalLancesMU,AttributeBonus[Light]" Value="1"/>
         <AffectedUnitArray value="HighTemplarShakuras"/>
         <AffectedUnitArray value="DarkArchon"/>
         <AffectedUnitArray value="AdeptFenix"/>
         <AffectedUnitArray value="VoidArchon"/>
+        <AffectedUnitArray value="Colossus"/>
+        <AffectedUnitArray value="ColossusPurifier"/>
+        <AffectedUnitArray value="FenixWarbringerColossus"/>
     </CUpgrade>
     <CUpgrade default="1" id="ProtossGroundArmorsExtra">
         <EditorCategories value="Race:Protoss,UpgradeType:ArmorBonus"/>
@@ -216,6 +223,18 @@
         <EffectArray Reference="Unit,ZeratulAdept,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,ZeratulAdept,LifeArmor" Value="1"/>
         <AffectedUnitArray value="ZeratulAdept"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel1">
+        <EffectArray index="14" Value="1"/>
+        <EffectArray index="23" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel2">
+        <EffectArray index="14" Value="1"/>
+        <EffectArray index="23" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel3">
+        <EffectArray index="14" Value="1"/>
+        <EffectArray index="23" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel1">
         <EffectArray index="130" Reference="Effect,TempestDamage,AttributeBonus[Massive]"/>
@@ -2137,7 +2156,9 @@
         <EffectArray Operation="Set" Reference="Button,SCV,AlertIcon" Value="Assets\Textures\btn-unit-terran-scvfusionwelder.dds"/>
     </CUpgrade>
     <CUpgrade id="ExtendedThermalLance">
-        <EffectArray Reference="Weapon,FenixWarbringerColossusThermalLance,Range" Value="3"/>
+        <EffectArray index="0" Value="2"/>
+        <EffectArray index="1" Value="2"/>
+        <EffectArray Reference="Weapon,FenixWarbringerColossusThermalLance,Range" Value="2"/>
     </CUpgrade>
     <CUpgrade id="FastBuild">
         <EffectArray Operation="Divide" Reference="Abil,UpgradeToLurkerDen,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="100.000000"/>

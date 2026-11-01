@@ -189,11 +189,18 @@
         <ValidatorArray index="0" value="IsBunkerCombine"/>
         <!-- heroic units in a bunker will get the standard slow -->
     </CEffectEnumTransport>
+    <CEffectDamage id="ColossusPurifierThermalLancesDamage">
+        <ValidatorArray index="0" value="MultipleHitGroundOnlyAttackTargetFilter"/>
+        <AttributeBonus index="Light" value="5"/>
+        <Amount value="15"/>
+    </CEffectDamage>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesForward">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ColossusPurifierThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="CommanderPrestigeArtanisOrbitalStrikesArchonPrecursor">
         <CreateFlags index="Precursor" value="1"/>
@@ -867,14 +874,18 @@
     </CEffectEnumTransport>
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesForward">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="FenixWarbringerColossusThermalLancesMU">
-        <ValidatorArray value="NotInvulnerable"/>
-        <ArmorReduction value="1"/>
-    </CEffectDamage>
     <CEffectCreatePersistent id="FenixWarbringerColossusThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
+    <CEffectDamage id="FenixWarbringerColossusThermalLancesMU">
+        <ValidatorArray index="0" value="MultipleHitGroundOnlyAttackTargetFilter"/>
+        <AttributeBonus index="Light" value="5"/>
+        <Amount value="20"/>
+        <ArmorReduction value="1"/>
+    </CEffectDamage>
     <CEffectTeleport id="FleetwideJumpTeleport">
         <TeleportEffect value="TeleportRemoveCategoryCaster"/>
     </CEffectTeleport>
@@ -1337,8 +1348,15 @@
     <CEffectDamage id="TempestDamageGround">
         <Amount value="40"/>
     </CEffectDamage>
+    <CEffectDamage id="ThermalLancesFriendlyDamage">
+        <Amount value="10"/>
+        <ValidatorArray index="0" value="MultipleHitSelfAlliedOnlyGroundOnlyAttackTargetFilter"/>
+        <AttributeFactor index="Light" value="5"/>
+    </CEffectDamage>
     <CEffectDamage id="ThermalLancesMU">
-        <ValidatorArray value="NotInvulnerable"/>
+        <ValidatorArray index="0" value="MultipleHitGroundOnlyAttackTargetFilter"/>
+        <Amount value="10"/>
+        <AttributeBonus index="Light" value="5"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="ThorMengskInterruptedMorphDelayPersistent">
         <EditorCategories value="Race:Terran"/>
@@ -2964,9 +2982,11 @@
     </CEffectSet>
     <CEffectCreatePersistent id="ThermalLancesForward">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ThermalLancesReverse">
         <Flags index="Channeled" value="0"/>
+        <PeriodicPeriodArray index="0" value="0.0227"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="ThorMengskSiegeTargetDelayCP">
         <ExpireEffect value="ThorMengskSiegeTargetCP"/>

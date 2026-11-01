@@ -22,6 +22,15 @@ Apparently I didn't do enough research into SC1 names.
 
 Ghost change reverts from 5.0.17.
 
+- Reworked Colossus (and variants) life from 200 to 250.
+- Reworked Colossus (and variants) shield from 150 to 100.
+- Increased Colossus (and variants) attack range from 6 to 7.
+- Decreased Extended Thermal Lance attack range bonus from 3 to 2.
+- Increased attack speed of Colossus (and variants) from 1.65 to 1.5.
+- Reworked Colossus (and variants) damage from 15 to 10 (+5 vs Light).
+
+Parity with Versus.
+
 ## 8/26/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.

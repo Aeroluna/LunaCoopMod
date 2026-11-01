@@ -1207,6 +1207,15 @@
         <CombineArray value="LifeLTHalf"/>
         <CombineArray value="CommanderPrestigeSwannTurrets"/>
     </CValidatorCombine>
+    <CValidatorUnitFilters id="MultipleHitGroundOnlyAttackTargetFilter">
+        <Filters value="Ground;Stasis,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="MultipleHitAlliedOnlyGroundOnlyAttackTargetFilter">
+        <Filters value="Ground;Neutral,Enemy,Stasis,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="MultipleHitSelfAlliedOnlyGroundOnlyAttackTargetFilter" parent="MultipleHitGroundOnlyAttackTargetFilter">
+        <Filters value="Ground;Neutral,Enemy,Stasis,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitFilters id="NotInvulnerableAndNotNeutral">
         <Filters value="-;Neutral,Invulnerable"/>
     </CValidatorUnitFilters>
