@@ -12,6 +12,16 @@
 
 Apparently I didn't do enough research into SC1 names.
 
+- Increased Ghost (and variants) life from 100 to 125.
+- Changed Ghost (and variants) damage from 15 to 10 (+10 vs Light).
+- Reduced Ghost (and variants) attack range from 7 to 6.
+- Added Steady Targeting.
+  - Damage reduced from 170 to 130 (+40 vs Psionic).
+  - Energy cost reduced from 75 to 50.
+  - Cancels upon taking damage.
+
+Ghost change reverts from 5.0.17.
+
 ## 8/26/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.
