@@ -28,8 +28,15 @@ Ghost change reverts from 5.0.17.
 - Decreased Extended Thermal Lance attack range bonus from 3 to 2.
 - Increased attack speed of Colossus (and variants) from 1.65 to 1.5.
 - Reworked Colossus (and variants) damage from 15 to 10 (+5 vs Light).
+- Increased Spore Crawler damage from 15 to 20 (+10 vs Biological).
+- Changed Centrifugal Hooks upgrade to additionally increase Baneling health by 5.
 
 Parity with Versus.
+
+- Increased Zerg Ground Carapace upgrade costs from 100/150/200 to 150/200/250.
+- Archon merge completion sound volume reduced slightly.
+
+More 5.0.17 stuff.
 
 ## 8/26/2026
 

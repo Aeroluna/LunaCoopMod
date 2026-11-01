@@ -254,7 +254,7 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Added Light attribute to Creep Tumors.
 - Added Load Nearby Units commands to all transports.
 - Reduced Infantry weapons/armor upgrades costs from 100/175/250 to 100/150/200.
-- Reduced Zerg Ground Carapace upgrade costs from 100/175/250 to 100/150/200.
+- Increased Zerg Ground Carapace upgrade costs from 100/175/250 to 150/200/250.
 - Mutalisk Glaives now prioritize targets.
 - Mutalisk arc slop increased to 180.
 - Warpgates now have selection subgroup priority over Gateways.
@@ -268,6 +268,14 @@ Queens typically aren't built, so some buffs help. Won't cast efficiently but do
 - Increased Guardian Shield duration from 15 to 18 seconds.
 - Increased Guardian Shield radius from 4 to 4.5.
 - Removed Light attribute from Sentry.
+- Reworked Colossus (and variants) life from 200 to 250.
+- Reworked Colossus (and variants) shield from 150 to 100.
+- Increased Colossus (and variants) attack range from 6 to 7.
+- Decreased Extended Thermal Lance attack range bonus from 3 to 2.
+- Increased attack speed of Colossus (and variants) from 1.65 to 1.5.
+- Reworked Colossus (and variants) damage from 15 to 10 (+5 vs Light).
+- Increased Spore Crawler damage from 15 to 20 (+10 vs Biological).
+- Changed Centrifugal Hooks upgrade to additionally increase Baneling health by 5.
 
 Copied from Versus.
 
@@ -878,14 +886,14 @@ These guys are pushovers anyways, give them Blink!
 
 fast banshees go nyoom.
 
-- Changed Ghost (and variants) damage from 10 (+10 vs Light) to 15.
-- Increased Ghost (and variants) attack range from 6 to 7.
+- Increased Ghost (and variants) life from 100 to 125.
 - Increased Ghost (and variants) movement speed from 2.25 to 2.75.
 - Added Light attribute to Ghosts (and variants).
 - Removed Sniper Round.
 - Added Steady Targeting.
-  - After carefully aiming for 2 seconds, the Ghost fires a sniper round dealing 170 damage. Ignores armor.
+  - After carefully aiming for 2 seconds, the Ghost fires a sniper round dealing 130 (+40 vs Psionic) damage. Ignores armor.
   - Can only target biological units.
+  - Cancels upon taking damage.
 
 Copied from Versus. These changes should further solidify Ghosts as backline snipers. Steady Targeting should also be more interruptable than Sniper Round was.
 
