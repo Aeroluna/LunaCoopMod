@@ -7,6 +7,11 @@
 
 [yeah.](https://github.com/Aeroluna/LunaCoopMod/issues/3)
 
+- Fixed an issue where Gold Rush mutator would not return the original mineral fields on some maps.
+- Fixed an issue where the Banshee boost model would sometimes not play.
+
+yeah 2.
+
 - Renamed Kerrigan P4's elite Mutalisk from Scythewing to Kukulza.
 - Renamed Kerrigan P4's elite Queen from Brood Matron to Matriarch.
 
