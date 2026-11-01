@@ -1,5 +1,17 @@
 # Changelog
 
+## 11/1/2026
+
+- Fixed an issue where Swann's Wraiths could not cloak.
+- Fixed an issue where the commander select mastery level display for player 2 would reset after closing a different dialog.
+
+[yeah.](https://github.com/Aeroluna/LunaCoopMod/issues/3)
+
+- Renamed Kerrigan P4's elite Mutalisk from Scythewing to Kukulza.
+- Renamed Kerrigan P4's elite Queen from Brood Matron to Matriarch.
+
+Apparently I didn't do enough research into SC1 names.
+
 ## 8/26/2026
 
 - Fixed an issue where Kerrigan P3 played the wrong death sound.

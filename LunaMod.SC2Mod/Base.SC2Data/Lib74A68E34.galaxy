@@ -4231,6 +4231,59 @@ void lib74A68E34_gt_BehaviorWeaponCD_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: MasteryPlayer2LabelFix
+//--------------------------------------------------------------------------------------------------
+bool lib74A68E34_gt_MasteryPlayer2LabelFix_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_indexMasteryUpgrade;
+    int lv_vIndex;
+    int lv_vTotalMastery;
+
+    // Automatic Variable Declarations
+    int autoDA9FC8E6_ai;
+    int autoDA9FC8E6_ae;
+    int autoDA9FC8E6_ac;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerStatus(2) != c_playerStatusActive))) {
+            return false;
+        }
+
+        if (!((EventDialogControl() == libA8FDA37D_gv_uT_MasteryButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoDA9FC8E6_ai = 0;
+    autoDA9FC8E6_ae = UserDataInstanceCount("MasteryUpgrades")+1;
+    while (autoDA9FC8E6_ai < autoDA9FC8E6_ae) {
+        autoDA9FC8E6_ai = autoDA9FC8E6_ai+1;
+        autoDA9FC8E6_ac = UserDataGetInt("MasteryUpgrades", UserDataInstance("MasteryUpgrades", autoDA9FC8E6_ai), "Category", 1);
+        if( libCOOC_gf_ActiveCommanderForPlayer(libA8FDA37D_gv_uT_MasteryTargetPlayer) == UserDataGetUserInstance("MasteryUpgrades",UserDataInstance("MasteryUpgrades", autoDA9FC8E6_ai),"Commander",1) ) {
+            lv_indexMasteryUpgrade = UserDataInstance("MasteryUpgrades", autoDA9FC8E6_ai);
+            lv_vIndex += 1;
+            lv_vTotalMastery += StringToInt(libNtve_gf_DialogItemEditValue(libA8FDA37D_gv_uT_MasteryBoxes[lv_vIndex], 1));
+        }    
+    }
+    libCOOC_gf_CC_PlayerMasteryLevelSet(libA8FDA37D_gv_uT_MasteryTargetPlayer, lv_vTotalMastery);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib74A68E34_gt_MasteryPlayer2LabelFix_Init () {
+    lib74A68E34_gt_MasteryPlayer2LabelFix = TriggerCreate("lib74A68E34_gt_MasteryPlayer2LabelFix_Func");
+    TriggerAddEventDialogControl(lib74A68E34_gt_MasteryPlayer2LabelFix, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: ReaverScarabTargetDamage
 //--------------------------------------------------------------------------------------------------
 bool lib74A68E34_gt_ReaverScarabTargetDamage_Func (bool testConds, bool runActions) {
@@ -8446,14 +8499,14 @@ void lib74A68E34_gt_AlarakMergeSetTarget_Init () {
 bool lib74A68E34_gt_NovaBuildingCompletedTrigger_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_player;
-    unit lv_vhnbqqvrepjrhhkg;
-    string lv_iggjwhdswstkqgrb;
+    unit lv_building;
+    string lv_unittype;
 
     // Automatic Variable Declarations
     // Variable Initialization
     lv_player = UnitGetOwner(EventUnitProgressUnit());
-    lv_vhnbqqvrepjrhhkg = EventUnitProgressUnit();
-    lv_iggjwhdswstkqgrb = UnitGetType(EventUnitProgressUnit());
+    lv_building = EventUnitProgressUnit();
+    lv_unittype = UnitGetType(EventUnitProgressUnit());
 
     // Conditions
     if (testConds) {
@@ -8467,24 +8520,24 @@ bool lib74A68E34_gt_NovaBuildingCompletedTrigger_Func (bool testConds, bool runA
         return true;
     }
 
-    if (((lv_iggjwhdswstkqgrb == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
+    if (((lv_unittype == "Barracks") && (libCOMI_gv_novaBarrackBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_unittype, lv_building, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "BarracksTrainNovaMarine", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "BarracksTrainMarauderNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "BarracksTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "BarracksTrainGhostNova", lv_player);
         libCOMI_gv_novaBarrackBuilt[lv_player] = 1;
     }
 
-    if (((lv_iggjwhdswstkqgrb == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
+    if (((lv_unittype == "Factory") && (libCOMI_gv_novaFactoryBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_unittype, lv_building, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "FactoryTrainGoliathNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "FactoryTrainSiegeTankNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "FactoryTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "FactoryTrainHellbatNova", lv_player);
         libCOMI_gv_novaFactoryBuilt[lv_player] = 1;
     }
 
-    if (((lv_iggjwhdswstkqgrb == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
-        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_iggjwhdswstkqgrb, lv_vhnbqqvrepjrhhkg, lv_player);
+    if (((lv_unittype == "Starport") && (libCOMI_gv_novaStarportBuilt[lv_player] == 0))) {
+        libCOMI_gf_CM_PrestigeNova_SpecializeUnitCharges(lv_unittype, lv_building, lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(0) + "].Charge.CountMax", lv_player), "StarportTrainBansheeNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(1) + "].Charge.CountMax", lv_player), "StarportTrainRavenNova", lv_player);
         lib74A68E34_gf_NovaModifyCooldown(libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.TimeUse", lv_player), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, "StarportTrainNova", "InfoArray[" + IntToString(2) + "].Charge.CountMax", lv_player), "StarportTrainLiberatorNova", lv_player);
@@ -13840,6 +13893,7 @@ void lib74A68E34_InitTriggers () {
     lib74A68E34_gt_PlayerColorsInit_Init();
     lib74A68E34_gt_CreateAICoopCaster_Init();
     lib74A68E34_gt_BehaviorWeaponCD_Init();
+    lib74A68E34_gt_MasteryPlayer2LabelFix_Init();
     lib74A68E34_gt_ReaverScarabTargetDamage_Init();
     lib74A68E34_gt_ReaverPathing_Init();
     lib74A68E34_gt_SnowVisualMapInit_Init();

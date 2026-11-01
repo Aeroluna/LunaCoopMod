@@ -1205,7 +1205,7 @@ yeah.
   - Replaces Zergling with Devouring One.
     - Gains Cannibalize passive.
       - Heals for 40 life when a biological unit dies nearby.
-  - Replaces Queen with Brood Matron.
+  - Replaces Queen with Matriarch.
     - Gains Protective Brood passive.
       - Grants 3 life and energy regeneration to nearby friendly units.
   - Replaces Hydralisk with Hunter Killer.
@@ -1217,7 +1217,7 @@ yeah.
   - Replaces Ultralisk with Torrasque.
     - Improved Reincarnation passive.
       - Cocoon is now invulnerable.
-  - Replaces Mutalisk with Scythewing.
+  - Replaces Mutalisk with Kukulza.
     - Gains Sundering Glaive passive.
       - Attacks deal +6 vs. armored targets on the first hit.
   - Replaces Brood Lord with Primogenitor.
