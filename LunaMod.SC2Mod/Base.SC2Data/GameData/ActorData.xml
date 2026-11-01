@@ -6892,6 +6892,8 @@
     <CActorUnit id="Banshee">
         <On Terms="UnitMovementUpdate.*.Walk; ValidateUnit BansheeBoost" Send="StatusSet Boost 1"/>
         <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet Boost 0"/>
+        <On Terms="Behavior.VehicleAfterburners.On" Send="StatusSet Boost 1"/>
+        <On Terms="Behavior.VehicleAfterburners.Off" Send="StatusSet Boost 0"/>
         <On Terms="StatusOn.*.Boost" Send="Create BansheeBoostModel"/>
         <On Terms="StatusOff.*.Boost" Target="BansheeBoostModel" Send="Destroy"/>
         <On Terms="StatusOn.*.Boost" Send="Create ActorSound_Banshee_MovementBoost"/>
